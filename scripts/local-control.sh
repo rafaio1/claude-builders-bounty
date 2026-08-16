@@ -70,13 +70,16 @@ start_managed() {
   systemctl start "${UNIT_IMPROVE_MAP_TIMER}"
   systemctl start "${UNIT_IMPROVE_DEV_TIMER}"
   systemctl start "${UNIT_IMPROVE_REVIEW_TIMER}"
-  systemctl start "${UNIT_INTEGRITY}"
+  systemctl start "${UNIT_INTEGRITY}" || true
   systemctl start "${UNIT_INTEGRITY_TIMER}"
   systemctl is-active --quiet "${UNIT_LOOP}" || die "${UNIT_LOOP} não iniciou"
   systemctl is-active --quiet "${UNIT_IMPROVE_MAP_TIMER}" || die "${UNIT_IMPROVE_MAP_TIMER} não iniciou"
   systemctl is-active --quiet "${UNIT_IMPROVE_DEV_TIMER}" || die "${UNIT_IMPROVE_DEV_TIMER} não iniciou"
   systemctl is-active --quiet "${UNIT_IMPROVE_REVIEW_TIMER}" || die "${UNIT_IMPROVE_REVIEW_TIMER} não iniciou"
   systemctl is-active --quiet "${UNIT_INTEGRITY_TIMER}" || die "${UNIT_INTEGRITY_TIMER} não iniciou"
+  if [[ "$(systemctl show "${UNIT_INTEGRITY}" -p Result --value)" != success ]]; then
+    echo "aviso: checagem de integridade falhou; veja data/integrity.json" >&2
+  fi
   echo "ativos: ${UNIT_LOOP}"
   echo "improve: ${UNIT_IMPROVE_MAP_TIMER}, ${UNIT_IMPROVE_DEV_TIMER}, ${UNIT_IMPROVE_REVIEW_TIMER}"
   echo "integrity: ${UNIT_INTEGRITY_TIMER}"
