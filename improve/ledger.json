@@ -1372,7 +1372,7 @@
       "title": "Retry de develop não incorpora review_feedback",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Quando o review rejeita ou o pytest falha, a proposta volta a pending com review_feedback; sem injetar esse parecer no próximo develop, o agente tende a repetir o mesmo erro e alargar escopo.",
       "change": "Em improve.py, ao reprocessar proposta pending, incluir o review_feedback literal no contexto do develop e restringir a edição aos files_hint originais da fatia.",
       "never": [
@@ -1384,7 +1384,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback",
+      "branch": "",
       "map_id": "20260816T210508Z",
       "history": [
         {
@@ -1406,9 +1406,14 @@
           "at": "2026-08-16T21:46:16+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+        },
+        {
+          "at": "2026-08-16T21:46:42+00:00",
+          "event": "requeued",
+          "detail": "Nenhuma alteração aplicada. O review_feedback anterior afirma que src/agentic/improve.py foi fornecido truncado e que é necessário receber o conteúdo integral do arquivo para devolver o arquivo completo com segurança. Nesta nova tentativa, o conteúdo atual de src/agentic/improve.py continua truncado nos dados externos, então não é possível implementar com segurança a injeção literal de review_feed…"
         }
       ],
-      "review_feedback": "Nenhuma alteração aplicada: o conteúdo atual de src/agentic/improve.py foi fornecido truncado, então não é possível devolver o arquivo completo com segurança. A melhoria exige injetar review_feedback literal no contexto do develop e restringir a edição aos files_hint originais; para implementar sem corromper o módulo, é necessário receber o conteúdo integral do arquivo."
+      "review_feedback": "Nenhuma alteração aplicada. O review_feedback anterior afirma que src/agentic/improve.py foi fornecido truncado e que é necessário receber o conteúdo integral do arquivo para devolver o arquivo completo com segurança. Nesta nova tentativa, o conteúdo atual de src/agentic/improve.py continua truncado nos dados externos, então não é possível implementar com segurança a injeção literal de review_feedback no contexto do develop nem a restrição aos files_hint originais sem risco de corromper o módulo. Para prosseguir, o pipeline deve fornecer o conteúdo completo de src/agentic/improve.py."
     },
     {
       "id": "imp-20260816-chamadas-da-ghostcli-sem-trace-sanitizado-persis",
