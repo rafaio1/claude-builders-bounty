@@ -1,6 +1,67 @@
 {
-  "version": 1,
-  "updated_at": "2026-08-16T14:33:43+00:00",
+  "id": "20260816T143343Z",
+  "created_at": "2026-08-16T14:33:43+00:00",
+  "summary": "git_clean falhou na main: prioridade é versionar em fatias (motor vs playbook) sem comandos destrutivos; depois, observabilidade do tick e traces sanitizados para avaliar o reviewer.",
+  "census": {
+    "generated_at": "2026-08-16T14:32:13+00:00",
+    "last_tick": "2026-08-16T14:31:13+00:00",
+    "tools": {
+      "playwright": true,
+      "playwright_mcp": true,
+      "jq": true,
+      "ghostcli": true,
+      "bybit_key": true,
+      "bybit_secret": true,
+      "bybit_env_file": true
+    },
+    "stats": {
+      "playwright": true,
+      "ghostcli": true
+    },
+    "code_facts": [
+      "O loop em execução é deploy/agentic-loop.service (ExecStart python -m agentic loop). Não existe src/agentic/loop.sh; não criar scripts novos.",
+      "O motor é src/agentic/loop.py (tick de saúde), env.py (GhostCLI+Bybit sem imprimir secrets), ghostcli.py (API), improve.py (map/develop/review).",
+      "Limites atuais do loop systemd: --interval 90. Mantenha AGENTIC_LIVE_TRADE=0. O tick só faz saúde de ferramentas; não envia ordens Bybit.",
+      "Limites do loop vêm da unit systemd (--interval). Mantenha AGENTIC_LIVE_TRADE=0; o loop nunca envia ordens Bybit.",
+      "Credenciais Bybit canónicas: /root/.automaton/bybit-murre.env. Env interna em .env gitignorado e internal/load-env.sh. Nunca colar chaves no git.",
+      "Navegador: playwright-cli / playwright-mcp headless --no-sandbox. Preferir CLI a MCP para poupar tokens.",
+      "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
+      "Integridade git_clean exige working tree limpa na main. Não faça um único commit com todos os arquivos sujos: fatie (motor: loop/env/cli vs playbook improve/integrity vs ferramentas). Cada proposta git_clean só versiona os files_hint da fatia. Se o review rejeitar ou o pytest falhar, a proposta volta a pending com review_feedback — o develop seguinte corrige EXATAMENTE o parecer, sem alargar escopo. PROIBIDO: reset --hard, checkout --, clean -fd, --no-verify, force, commitar .env/data/secrets, ligar AGENTIC_LIVE_TRADE=1, criar loop.sh.",
+      "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+      "git_clean FALHOU agora. Working tree suja na main. Paths: src/agentic/cli.py, src/agentic/loop.py, ARO.md, src/agentic/aro/. O primeiro bottleneck p1 DEVE ser 'Restaurar git_clean: working tree limpa na main'. Develop não reescreve esses arquivos; o pipeline stageia o disco. Só altere .gitignore se houver lixo."
+    ],
+    "loop": {
+      "interval": 90,
+      "live_trade_disabled": true,
+      "exec_start": "/Agentic/.venv/bin/python -m agentic loop --interval 90"
+    },
+    "integrity": {
+      "git_clean": false,
+      "dirty_paths": [
+        "src/agentic/cli.py",
+        "src/agentic/loop.py",
+        "ARO.md",
+        "src/agentic/aro/"
+      ],
+      "git_status": "M src/agentic/cli.py\n M src/agentic/loop.py\n?? ARO.md\n?? src/agentic/aro/"
+    }
+  },
+  "added": [
+    "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
+    "imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
+    "imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui",
+    "imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er",
+    "imp-20260816-carga-de-credenciais-sem-valida-o-expl-cita-do-a",
+    "imp-20260816-tools-padronizar-navegador-via-playwright-cli-em",
+    "imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review",
+    "imp-20260816-tools-validar-sa-das-do-censo-com-jq-antes-de-ag",
+    "imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+    "imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin",
+    "imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
+    "imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra",
+    "imp-20260816-traces-sanitizados-da-ghostcli-no-improve",
+    "imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr"
+  ],
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
