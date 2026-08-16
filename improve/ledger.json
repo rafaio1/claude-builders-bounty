@@ -263,7 +263,7 @@
       "title": "Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/cli.py, src/agentic/loop.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/cli.py, src/agentic/loop.py.",
       "never": [
@@ -278,13 +278,18 @@
         "src/agentic/loop.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
       "map_id": "20260816T143343Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
           "event": "mapped",
           "detail": "20260816T143343Z"
+        },
+        {
+          "at": "2026-08-16T15:37:43+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli"
         }
       ]
     },
