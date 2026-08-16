@@ -93,7 +93,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.command == "aro":
         from agentic.aro.constitution import STOP_COMMAND, STOP_FILENAME
         from agentic.aro.cycle import run_cycle
+        from agentic.env import apply as apply_env
 
+        env = apply_env()
         stop = settings.root / STOP_FILENAME
         if args.action == "stop":
             stop.write_text(STOP_COMMAND + "\n", encoding="utf-8")
@@ -102,7 +104,12 @@ def main(argv: list[str] | None = None) -> int:
             if stop.exists():
                 stop.unlink()
             return _json({"ok": True, "paused": False, "command": "resume"})
-        report = run_cycle(settings.root)
+        report = run_cycle(
+            settings.root,
+            ghostcli=bool(env.get("ghost_key")),
+            bybit=bool(env.get("bybit_key") and env.get("bybit_secret")),
+            live_trade=False,
+        )
         if args.action == "status":
             slim = {
                 "ok": report.get("ok"),
@@ -111,6 +118,8 @@ def main(argv: list[str] | None = None) -> int:
                 "constitution_ok": report.get("constitution_ok"),
                 "payout_destination_configured": report.get("payout_destination_configured"),
                 "financial_limits_configured": report.get("financial_limits_configured"),
+                "fiscal": report.get("fiscal"),
+                "identity": report.get("identity"),
                 "offers": report.get("offers"),
                 "decision": report.get("decision"),
                 "note": report.get("note"),
