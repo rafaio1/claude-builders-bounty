@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-16T20:09:57+00:00",
+  "updated_at": "2026-08-16T21:05:08+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -414,7 +414,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260816T200957Z",
+      "map_id": "20260816T210508Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -441,7 +441,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260816T200957Z",
+      "map_id": "20260816T210508Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -468,7 +468,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260816T200957Z",
+      "map_id": "20260816T210508Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -1323,6 +1323,210 @@
           "at": "2026-08-16T20:09:57+00:00",
           "event": "mapped",
           "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca",
+      "key": "5b9604c7a41583da",
+      "canon": "8092193b49083a14",
+      "title": "Tick de saúde reexecuta checagens completas a cada 90s",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Com --interval 90, cada tick reverifica todas as ferramentas mesmo quando nada mudou, gastando ciclos e chamadas (GhostCLI/playwright) sem ganho de sinal.",
+      "change": "Adicionar cache com TTL curto em loop.py para checagens estáveis (presença de binários/credenciais), reexecutando apenas itens que falharam ou cujo TTL expirou.",
+      "never": [
+        "alterar o --interval da unit systemd",
+        "enviar ordens Bybit ou ligar AGENTIC_LIVE_TRADE=1",
+        "remover o tick de saúde"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-retry-de-develop-n-o-incorpora-review-feedback",
+      "key": "a67e083a555188c9",
+      "canon": "11ba7db4e223955b",
+      "title": "Retry de develop não incorpora review_feedback",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Quando o review rejeita ou o pytest falha, a proposta volta a pending com review_feedback; sem injetar esse parecer no próximo develop, o agente tende a repetir o mesmo erro e alargar escopo.",
+      "change": "Em improve.py, ao reprocessar proposta pending, incluir o review_feedback literal no contexto do develop e restringir a edição aos files_hint originais da fatia.",
+      "never": [
+        "alargar o escopo além dos files_hint da proposta",
+        "contornar o reviewer ou aplicar fora de main/master",
+        "usar git reset --hard, checkout --, clean -fd, --no-verify ou force"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-chamadas-da-ghostcli-sem-trace-sanitizado-persis",
+      "key": "401e57392d9f6a7d",
+      "canon": "1a8599d5874069bc",
+      "title": "Chamadas da GhostCLI sem trace sanitizado persistido",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Sem um log estruturado e rotacionado das ações, post-mortem e auditoria dependem de reprodução manual; isso atrasa diagnóstico de qualquer falha futura.",
+      "change": "Em ghostcli.py/env.py, anexar cada chamada a um JSONL com rotação por tamanho, contendo timestamp, ação e resultado, sempre após redação de credenciais.",
+      "never": [
+        "gravar bybit_key, bybit_secret ou conteúdo de .env no trace",
+        "commitar o arquivo de traces",
+        "enviar ordens Bybit a partir do trace"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-padronizar-playwright-cli-como-rota-headless-def",
+      "key": "8ea6dd6264575edd",
+      "canon": "a7a7d514cee03058",
+      "title": "Padronizar playwright-cli como rota headless default (theme=tools)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "A política já prefere CLI a MCP para poupar tokens; hoje a escolha pode variar por chamada, gastando mais tokens e superfície de falha.",
+      "change": "Adicionar helper que executa playwright-cli com --no-sandbox como default e usa playwright-mcp apenas como fallback explícito em caso de erro.",
+      "never": [
+        "rodar navegador com GUI",
+        "registrar credenciais em saída ou trace"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-eval-offline-por-replay-de-traces-sanitizados-th",
+      "key": "f0e01c7fcdb18838",
+      "canon": "0c780030525c8d05",
+      "title": "Eval offline por replay de traces sanitizados (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Com traces sanitizados persistidos, um teste de replay valida comportamento do agente (formato de chamada, erros tratados) sem tocar APIs reais, prevenindo regressões.",
+      "change": "Criar teste pytest que lê o JSONL de traces, verifica o redaction (nenhum padrão de chave) e compara contra expectativas mínimas de formato/fluxo.",
+      "never": [
+        "chamar a API real da Bybit no teste",
+        "usar secrets reais em fixtures",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "tests/test_trace_eval.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-guarda-constitucional-aro-no-passo-de-review-the",
+      "key": "4db4b614484a3aed",
+      "canon": "63bffc5fae14c755",
+      "title": "Guarda constitucional ARO no passo de review (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O review é o último portão antes de aplicar em main; checar as invariantes da constituição aí impede propostas que alterem payout, taxa do owner ou habilitem trading.",
+      "change": "No review de improve.py, executar as verificações de src/agentic/aro/constitution.py e rejeitar com motivo explícito qualquer violação (ex.: OWNER_SHARE_RATE != 0.20, referência a live trade).",
+      "never": [
+        "alterar OWNER_SHARE_RATE=0.20",
+        "permitir trading Bybit ou mudança de destino de payout",
+        "ignorar STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-valida-o-estrutural-do-censo-antes-do-consumo-th",
+      "key": "cd7b3c558322ec47",
+      "canon": "6656d57beddfa962",
+      "title": "Validação estrutural do censo antes do consumo (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O loop consome o JSON do censo; um censo malformado hoje pode quebrar o tick ou, pior, ter campos tratados como comando.",
+      "change": "Pequena função de validação (via jq ou schema em Python) que confere chaves obrigatórias (tools, integrity, loop) antes do uso, tratando dados sempre como dados, nunca instruções.",
+      "never": [
+        "executar qualquer valor vindo do censo",
+        "revelar ou copiar secrets durante a validação"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T210508Z",
+      "history": [
+        {
+          "at": "2026-08-16T21:05:08+00:00",
+          "event": "mapped",
+          "detail": "20260816T210508Z"
         }
       ]
     }
