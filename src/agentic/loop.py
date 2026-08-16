@@ -110,8 +110,9 @@ def tick(settings: Settings) -> dict[str, Any]:
             "paused": bool(aro.get("paused")),
             "ready_for_outbound": bool(aro.get("ready_for_outbound")),
             "constitution_ok": bool(aro.get("constitution_ok")),
-            "payout_destination_configured": bool(aro.get("payout_destination_configured")),
-            "offers": len(aro.get("offers") or []),
+                "payout_destination_configured": bool(aro.get("payout_destination_configured")),
+                "fiscal_destination": (aro.get("fiscal") or {}).get("destination") or "",
+                "offers": len(aro.get("offers") or []),
             "next_action": (aro.get("decision") or {}).get("next_action"),
         },
     }
