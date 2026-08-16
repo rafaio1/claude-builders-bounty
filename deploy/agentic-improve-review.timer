@@ -1,0 +1,13 @@
+[Unit]
+Description=Review and apply Agentic improvements onto the running main branch
+
+[Timer]
+Unit=agentic-improve-review.service
+OnActiveSec=18min
+OnUnitActiveSec=20min
+Persistent=true
+AccuracySec=1min
+RandomizedDelaySec=45
+
+[Install]
+WantedBy=timers.target

@@ -1,0 +1,33 @@
+[Unit]
+Description=Agentic loop (tool health; never live Bybit trade)
+Documentation=file:///Agentic/improve/README.md
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=300
+StartLimitBurst=8
+
+[Service]
+Type=simple
+WorkingDirectory=/Agentic
+EnvironmentFile=-/root/.automaton/.env
+EnvironmentFile=-/root/.automaton/bybit-murre.env
+EnvironmentFile=-/Agentic/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/Agentic/src
+Environment=AGENTIC_LIVE_TRADE=0
+UMask=0077
+ExecStartPre=/bin/mkdir -p /Agentic/data
+ExecStartPre=/bin/rm -f /Agentic/.agentic-loop.stop
+ExecStart=/Agentic/.venv/bin/python -m agentic loop --interval 90
+Restart=on-failure
+RestartSec=20
+TimeoutStopSec=60
+KillSignal=SIGTERM
+KillMode=mixed
+Nice=10
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agentic-loop
+
+[Install]
+WantedBy=multi-user.target

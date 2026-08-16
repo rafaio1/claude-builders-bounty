@@ -1,0 +1,20 @@
+[Unit]
+Description=Agentic integrity checks (git, kill switch, systemd, dead branches)
+Documentation=file:///Agentic/improve/README.md
+After=local-fs.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+EnvironmentFile=-/root/.automaton/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/Agentic/src
+Nice=10
+TimeoutStartSec=120
+ExecStart=/Agentic/.venv/bin/python -m agentic integrity
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agentic-integrity
+
+[Install]
+WantedBy=multi-user.target

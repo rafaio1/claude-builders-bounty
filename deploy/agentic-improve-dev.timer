@@ -1,0 +1,13 @@
+[Unit]
+Description=Develop one Agentic improvement from the mapped ledger
+
+[Timer]
+Unit=agentic-improve-dev.service
+OnActiveSec=12min
+OnUnitActiveSec=20min
+Persistent=true
+AccuracySec=1min
+RandomizedDelaySec=45
+
+[Install]
+WantedBy=timers.target

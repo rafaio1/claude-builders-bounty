@@ -1,0 +1,23 @@
+[Unit]
+Description=Agentic improve reviewer (GhostCLI review, merge to main, restart running loop)
+Documentation=file:///Agentic/improve/README.md
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+EnvironmentFile=-/root/.automaton/.env
+EnvironmentFile=-/Agentic/.env
+Environment=PYTHONUNBUFFERED=1
+Environment=PYTHONPATH=/Agentic/src
+Environment=AGENTIC_LIVE_TRADE=0
+Nice=12
+TimeoutStartSec=1800
+ExecStart=/Agentic/.venv/bin/python -m agentic improve review
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agentic-improve-review
+
+[Install]
+WantedBy=multi-user.target

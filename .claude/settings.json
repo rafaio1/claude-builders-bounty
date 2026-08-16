@@ -1,0 +1,22 @@
+{
+  "model": "claude-sonnet-5[1m]",
+  "permissions": {
+    "defaultMode": "bypassPermissions",
+    "allow": [
+      "Bash",
+      "Read",
+      "Edit",
+      "Write",
+      "Glob",
+      "Grep",
+      "WebFetch",
+      "WebSearch",
+      "mcp__playwright__*"
+    ]
+  },
+  "env": {
+    "BYBIT_ENV_FILE": "/root/.automaton/bybit-murre.env",
+    "BYBIT_MODE": "live",
+    "BYBIT_CATEGORY": "spot"
+  }
+}

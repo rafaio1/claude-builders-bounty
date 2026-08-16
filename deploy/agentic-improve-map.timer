@@ -1,0 +1,13 @@
+[Unit]
+Description=Map Agentic bottlenecks and plausible improvements every hour
+
+[Timer]
+Unit=agentic-improve-map.service
+OnCalendar=hourly
+OnActiveSec=8min
+Persistent=true
+AccuracySec=2min
+RandomizedDelaySec=90
+
+[Install]
+WantedBy=timers.target
