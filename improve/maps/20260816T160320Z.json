@@ -1,0 +1,434 @@
+{
+  "id": "20260816T160320Z",
+  "created_at": "2026-08-16T16:03:20+00:00",
+  "summary": "Censo com git_clean=true; foco em cache do tick de saúde, blindagem de secrets, fluxo de review fatiado e ferramentas de agentes (tools/ai).",
+  "census": {
+    "generated_at": "2026-08-16T16:00:33+00:00",
+    "last_tick": "2026-08-16T16:00:25+00:00",
+    "tools": {
+      "playwright": true,
+      "playwright_mcp": true,
+      "jq": true,
+      "ghostcli": true,
+      "bybit_key": true,
+      "bybit_secret": true,
+      "bybit_env_file": true
+    },
+    "stats": {
+      "playwright": true,
+      "ghostcli": true
+    },
+    "code_facts": [
+      "O loop em execução é deploy/agentic-loop.service (ExecStart python -m agentic loop). Não existe src/agentic/loop.sh; não criar scripts novos.",
+      "O motor é src/agentic/loop.py (tick de saúde), env.py (GhostCLI+Bybit sem imprimir secrets), ghostcli.py (API), improve.py (map/develop/review).",
+      "Limites atuais do loop systemd: --interval 90. Mantenha AGENTIC_LIVE_TRADE=0. O tick só faz saúde de ferramentas; não envia ordens Bybit.",
+      "Limites do loop vêm da unit systemd (--interval). Mantenha AGENTIC_LIVE_TRADE=0; o loop nunca envia ordens Bybit.",
+      "Credenciais Bybit canónicas: /root/.automaton/bybit-murre.env. Env interna em .env gitignorado e internal/load-env.sh. Nunca colar chaves no git.",
+      "Navegador: playwright-cli / playwright-mcp headless --no-sandbox. Preferir CLI a MCP para poupar tokens.",
+      "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
+      "Integridade git_clean exige working tree limpa na main. Não faça um único commit com todos os arquivos sujos: fatie (motor: loop/env/cli vs playbook improve/integrity vs ferramentas). Cada proposta git_clean só versiona os files_hint da fatia. Se o review rejeitar ou o pytest falhar, a proposta volta a pending com review_feedback — o develop seguinte corrige EXATAMENTE o parecer, sem alargar escopo. PROIBIDO: reset --hard, checkout --, clean -fd, --no-verify, force, commitar .env/data/secrets, ligar AGENTIC_LIVE_TRADE=1, criar loop.sh.",
+      "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+      "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
+      "Portal autenticado em agentic-portal.service (porta 8767). Theme=portal para templates/CSS/JS. Não gravar senha em texto; só Argon2id em /etc/agentic-portal/credentials."
+    ],
+    "loop": {
+      "interval": 90,
+      "live_trade_disabled": true,
+      "exec_start": "/Agentic/.venv/bin/python -m agentic loop --interval 90"
+    },
+    "integrity": {
+      "git_clean": true,
+      "dirty_paths": [],
+      "git_status": ""
+    }
+  },
+  "added": [
+    "imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s",
+    "imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
+    "imp-20260816-review-feedback-n-o-estruturado-favorece-alargam",
+    "imp-20260816-portal-autenticado-fora-do-tick-de-sa-de",
+    "imp-20260816-chamadas-ghostcli-sem-timeout-podem-travar-o-tic",
+    "imp-20260816-prefer-ncia-sistem-tica-por-playwright-cli-sobre",
+    "imp-20260816-traces-sanitizados-eval-m-nimo-das-ias",
+    "imp-20260816-testes-de-invariantes-da-constitui-o-aro",
+    "imp-20260816-auditoria-leve-de-acesso-no-portal"
+  ],
+  "proposals": [
+    {
+      "id": "imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s",
+      "key": "4e276cdafdff787d",
+      "canon": "b106ffdc061a6511",
+      "title": "Tick de saúde reexecuta probes caras a cada 90s",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "loop.py verifica playwright/ghostcli em todo tick; sem TTL, cada ciclo repete spawns e chamadas lentas, desperdiçando CPU e tokens e atrasando o loop.",
+      "change": "Adicionar cache em memória com TTL curto por ferramenta em loop.py: reusar resultado saudável recente e só re-probrar ferramenta degradada ou expirada.",
+      "never": [
+        "alterar --interval da unit systemd",
+        "enviar ordens Bybit",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "criar src/agentic/loop.sh ou scripts novos"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
+      "key": "0c3964a5d04710f1",
+      "canon": "de19845521bdd3c6",
+      "title": "Carregamento de credenciais sem cache e risco de vazamento em logs",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "env.py relê GhostCLI/Bybit a cada chamada; além de redundante, qualquer log acidental de repr/exception pode expor material sensível.",
+      "change": "Cachear env carregado em módulo e adicionar função única de máscara aplicada a todo log/trace originado de env.py; nunca serializar valores de chaves.",
+      "never": [
+        "imprimir ou logar bybit_key/bybit_secret",
+        "commitar .env ou /root/.automaton/bybit-murre.env",
+        "alterar destino de payout ou OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-review-feedback-n-o-estruturado-favorece-alargam",
+      "key": "2e790e7a7a1fe3ae",
+      "canon": "dcfc72366ab1c038",
+      "title": "review_feedback não estruturado favorece alargamento de escopo",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita, a proposta volta a pending; sem campo estruturado do parecer, o develop seguinte pode corrigir além do pedido e sujar a tree novamente.",
+      "change": "Em improve.py, persistir review_feedback como campo estruturado (arquivo+parecer) e validar no develop que o patch toca somente os files_hint da proposta.",
+      "never": [
+        "usar git reset --hard, checkout --, clean -fd, --no-verify ou force",
+        "versionar .env/data/secrets",
+        "ampliar files_hint além da fatia aprovada"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-portal-autenticado-fora-do-tick-de-sa-de",
+      "key": "90dea4cceb90279e",
+      "canon": "de3b97c42e452857",
+      "title": "Portal autenticado fora do tick de saúde",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "agentic-portal.service (8767) não é verificado pelo tick; queda do portal só é percebida manualmente.",
+      "change": "Adicionar probe HTTP leve em loop.py para a porta 8767 (status + tempo de resposta), sem autenticar de verdade nem expor credenciais.",
+      "never": [
+        "gravar senha em texto",
+        "contornar Argon2id em /etc/agentic-portal/credentials",
+        "expor o portal sem autenticação"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-chamadas-ghostcli-sem-timeout-podem-travar-o-tic",
+      "key": "83eb600f75bdaf0c",
+      "canon": "f562e69aa82f5407",
+      "title": "Chamadas GhostCLI sem timeout podem travar o tick",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "ghostcli.py pode bloquear em rede instável; um hang segura o loop inteiro de 90s.",
+      "change": "Aplicar timeout curto e um único retry com backoff nas chamadas de ghostcli.py, registrando falha sanitizada em vez de resposta crua.",
+      "never": [
+        "logar respostas cruas que contenham chaves",
+        "executar trading live",
+        "alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-prefer-ncia-sistem-tica-por-playwright-cli-sobre",
+      "key": "7965ed6cc919e012",
+      "canon": "899d6e2c198cc75a",
+      "title": "Preferência sistemática por playwright-cli sobre MCP",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O censo mostra playwright e playwright_mcp ativos; MCP consome mais tokens. Um wrapper central garante a política de preferir CLI.",
+      "change": "Criar wrapper fino de navegação que usa playwright-cli headless --no-sandbox por padrão e só cai para MCP com flag explícita, com timeout e saída resumida.",
+      "never": [
+        "criar PoC/fuzz/wordlist",
+        "acessar sistemas de trading",
+        "remover --no-sandbox exigido pelo ambiente headless"
+      ],
+      "files_hint": [
+        "src/agentic/browser.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-traces-sanitizados-eval-m-nimo-das-ias",
+      "key": "833eae73e0c60fa5",
+      "canon": "c041b926622a03dd",
+      "title": "Traces sanitizados + eval mínimo das IAs",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Sem registro padronizado das decisões de improve/review, regressões passam despercebidas; traces sanitizados permitem eval sem expor secrets.",
+      "change": "Emitir eventos JSONL (prompt resumido, decisão, arquivos tocados, parecer) com redação de segredos e adicionar teste pytest com 3 casos golden de review.",
+      "never": [
+        "persistir chaves Bybit/GhostCLI nos traces",
+        "enviar traces para serviços externos",
+        "introduzir trading live nos testes"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py",
+        "tests/test_traces_eval.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-testes-de-invariantes-da-constitui-o-aro",
+      "key": "35ec7d5706bc7caa",
+      "canon": "cd21f4bcca62d2a2",
+      "title": "Testes de invariantes da constituição ARO",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "OWNER_SHARE_RATE=0.20 e STOP_ALL_OPERATIONS são críticos; hoje nada impede regressão silenciosa em constitution.py.",
+      "change": "Adicionar pytest que trava OWNER_SHARE_RATE=0.20, verifica que STOP_ALL_OPERATIONS pausa novas operações e que nenhum caminho inicia contato comercial ou trade Bybit.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "habilitar Bybit trading ou contato comercial",
+        "modificar destino de payout"
+      ],
+      "files_hint": [
+        "src/agentic/aro/constitution.py",
+        "tests/test_aro_constitution.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-auditoria-leve-de-acesso-no-portal",
+      "key": "ec0383b519a23b62",
+      "canon": "5a56000ab1ce8538",
+      "title": "Auditoria leve de acesso no portal",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O portal autenticado não deixa trilha de tentativas de login, dificultando detecção de abuso.",
+      "change": "Registrar tentativas de login (sucesso/falha, timestamp, IP) em log estruturado sem senha, mantendo verificação Argon2id.",
+      "never": [
+        "gravar senha em texto",
+        "expor hash Argon2id em logs",
+        "abrir rota pública sem autenticação"
+      ],
+      "files_hint": [
+        "src/agentic/portal.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
+      "key": "e612baddd0bdd68a",
+      "canon": "3d02ba6803d151c6",
+      "title": "Status do loop com saúde de Playwright e GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick precisa deixar óbvio se o navegador ou a API GhostCLI caiu, sem imprimir secrets.",
+      "change": "Incluir no data/status.json versões/ok de playwright-cli e ghostcli, só booleanos para Bybit.",
+      "never": [
+        "gravar BYBIT_* ou GHOSTCLI_API_KEY no status"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra",
+      "key": "68e40d322ea82fbd",
+      "canon": "80ecdbe731131900",
+      "title": "Documentar skill playwright-cli no mapa de ferramentas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes GhostCLI descobrem o browser pela skill; o mapa precisa apontar o comando certo.",
+      "change": "Manter AGENTS.md com open/snapshot/click e headless --no-sandbox.",
+      "never": [
+        "colar chaves Bybit ou GhostCLI"
+      ],
+      "files_hint": [
+        "AGENTS.md"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-traces-sanitizados-da-ghostcli-no-improve",
+      "key": "db5193b3daedeefc",
+      "canon": "9c6c9b082cbbb0b8",
+      "title": "Traces sanitizados da GhostCLI no improve",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falhas de JSON no map/develop/review não ficam auditáveis para melhorar prompts.",
+      "change": "Contar parse fail por tarefa (map, develop, review) sem gravar o texto bruto.",
+      "never": [
+        "persistir prompts completos ou secrets"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr",
+      "key": "cb49b972a3ebddaf",
+      "canon": "1b609288af76d97b",
+      "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
+      "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
+      "never": [
+        "enviar ordem Bybit",
+        "copiar .env"
+      ],
+      "files_hint": [
+        "src/agentic/integrity.py",
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T160320Z",
+      "history": [
+        {
+          "at": "2026-08-16T16:03:20+00:00",
+          "event": "mapped",
+          "detail": "20260816T160320Z"
+        }
+      ]
+    }
+  ]
+}
