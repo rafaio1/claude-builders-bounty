@@ -305,7 +305,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/.",
       "never": [
@@ -341,9 +341,14 @@
           "at": "2026-08-16T16:39:53+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin"
+        },
+        {
+          "at": "2026-08-16T16:40:49+00:00",
+          "event": "requeued",
+          "detail": "Atualizei apenas o .gitignore para ignorar artefatos de runtime/lixo relevantes para a fatia src/agentic/aro (locks, bancos SQLite e journals, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
         }
       ],
-      "review_feedback": "Restaura git_clean da fatia src/agentic/aro apenas por versionar regras de .gitignore para artefatos de runtime/lixo (locks, bancos sqlite, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
+      "review_feedback": "Atualizei apenas o .gitignore para ignorar artefatos de runtime/lixo relevantes para a fatia src/agentic/aro (locks, bancos SQLite e journals, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
     },
     {
       "id": "imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
