@@ -82,6 +82,20 @@ def tick(settings: Settings) -> dict[str, Any]:
     if settings.live_trade:
         raise RuntimeError("AGENTIC_LIVE_TRADE=1 recusado; o loop não opera Bybit")
     census = collect_census(settings.root)
+    tools = census.get("tools") or {}
+    from agentic.aro.cycle import run_cycle
+
+    aro = run_cycle(
+        settings.root,
+        tools={
+            "playwright_cli": bool(tools.get("playwright")),
+            "playwright_mcp": bool(tools.get("playwright_mcp")),
+            "jq": bool(tools.get("jq")),
+        },
+        ghostcli=bool(tools.get("ghostcli")),
+        bybit=bool(tools.get("bybit_key") and tools.get("bybit_secret")),
+        live_trade=False,
+    )
     payload = {
         "ok": True,
         "generated_at": utcnow(),
@@ -89,12 +103,21 @@ def tick(settings: Settings) -> dict[str, Any]:
         "live_trade": False,
         "interval_seconds": settings.interval_seconds,
         "ghostcli_configured": settings.has_ghostcli,
-        "tools": census.get("tools"),
+        "tools": tools,
         "last_tick": census.get("last_tick"),
+        "aro": {
+            "ok": bool(aro.get("ok")),
+            "paused": bool(aro.get("paused")),
+            "ready_for_outbound": bool(aro.get("ready_for_outbound")),
+            "constitution_ok": bool(aro.get("constitution_ok")),
+            "payout_destination_configured": bool(aro.get("payout_destination_configured")),
+            "offers": len(aro.get("offers") or []),
+            "next_action": (aro.get("decision") or {}).get("next_action"),
+        },
     }
     missing = [
         name
-        for name, present in (census.get("tools") or {}).items()
+        for name, present in tools.items()
         if name in {"playwright", "ghostcli", "bybit_key", "bybit_secret"} and not present
     ]
     payload["ok"] = not missing

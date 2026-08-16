@@ -200,6 +200,26 @@ def run_integrity(
     else:
         add("services_active", True, "systemd ignorado neste check")
 
+    aro_pkg = root / "src" / "agentic" / "aro"
+    if aro_pkg.is_dir():
+        from agentic.aro.constitution import OWNER_SHARE_RATE, constitution_intact
+
+        intact, detail = constitution_intact(root)
+        add("aro_constitution", intact, str(detail))
+        add(
+            "aro_share_rate",
+            OWNER_SHARE_RATE == 0.20,
+            f"OWNER_SHARE_RATE={OWNER_SHARE_RATE}",
+        )
+        stop_unit = bool(KILL_SWITCH_RE.search(unit_text))
+        add(
+            "aro_no_live_trade",
+            stop_unit,
+            "ARO não opera Bybit; kill switch do loop permanece 0",
+        )
+    else:
+        add("aro_constitution", True, "ARO ausente neste tree")
+
     failed = [item["id"] for item in checks if not item["ok"]]
     ok = not failed
     return {

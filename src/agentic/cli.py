@@ -36,6 +36,9 @@ def main(argv: list[str] | None = None) -> int:
     integrity_cmd.add_argument("--no-systemd", action="store_true")
     integrity_cmd.add_argument("--output")
 
+    aro_cmd = sub.add_parser("aro", help="ciclo ARO (observar / pausar)")
+    aro_cmd.add_argument("action", choices=["status", "cycle", "stop", "resume"])
+
     args = parser.parse_args(argv)
     settings = load_settings()
     if args.command == "loop":
@@ -83,6 +86,33 @@ def main(argv: list[str] | None = None) -> int:
         )
         print(json.dumps(report, ensure_ascii=False, indent=2, default=str))
         return 0 if report.get("ok") else 1
+    if args.command == "aro":
+        from agentic.aro.constitution import STOP_COMMAND, STOP_FILENAME
+        from agentic.aro.cycle import run_cycle
+
+        stop = settings.root / STOP_FILENAME
+        if args.action == "stop":
+            stop.write_text(STOP_COMMAND + "\n", encoding="utf-8")
+            return _json({"ok": True, "paused": True, "command": STOP_COMMAND})
+        if args.action == "resume":
+            if stop.exists():
+                stop.unlink()
+            return _json({"ok": True, "paused": False, "command": "resume"})
+        report = run_cycle(settings.root)
+        if args.action == "status":
+            slim = {
+                "ok": report.get("ok"),
+                "paused": report.get("paused"),
+                "ready_for_outbound": report.get("ready_for_outbound"),
+                "constitution_ok": report.get("constitution_ok"),
+                "payout_destination_configured": report.get("payout_destination_configured"),
+                "financial_limits_configured": report.get("financial_limits_configured"),
+                "offers": report.get("offers"),
+                "decision": report.get("decision"),
+                "note": report.get("note"),
+            }
+            return _json(slim)
+        return _json(report)
     parser.error("comando desconhecido")
     return 2
 

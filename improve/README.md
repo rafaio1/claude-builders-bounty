@@ -24,6 +24,7 @@ main                    reviewer     → Ghost review + pytest + merge + restart
 .venv/bin/python -m agentic improve review
 .venv/bin/python -m agentic improve review --no-apply
 .venv/bin/python -m agentic integrity
+.venv/bin/python -m agentic aro status
 scripts/local-control.sh {install|start|stop|restart|status|logs}
 ```
 

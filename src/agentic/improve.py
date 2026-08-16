@@ -31,6 +31,7 @@ ALLOWED_PREFIXES = (
     "internal/",
     "README.md",
     "AGENTS.md",
+    "ARO.md",
     "CLAUDE.md",
     "pyproject.toml",
     ".env.example",
@@ -119,6 +120,19 @@ GIT_CLEAN_CLUSTERS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
             "scripts/local-control.sh",
         ),
     ),
+    (
+        "aro",
+        "ARO constituição e ciclo interno",
+        (
+            "ARO.md",
+            "src/agentic/aro/constitution.py",
+            "src/agentic/aro/cycle.py",
+            "src/agentic/aro/config.py",
+            "src/agentic/aro/offers.py",
+            "src/agentic/loop.py",
+            "tests/test_aro.py",
+        ),
+    ),
 )
 TERMINAL_FAILURE_RE = re.compile(
     r"loop\.sh|BEGIN (RSA |OPENSSH )?PRIVATE KEY|path recusado: \.env|"
@@ -134,6 +148,7 @@ CODE_FACTS = [
     "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
     GIT_CLEAN_PLAYBOOK,
     "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+    "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
 ]
 LOOP_FLAG_RE = re.compile(r"--(?P<name>interval)\s+(?P<value>\d+)")
 LEDGER_STOPWORDS = {
@@ -1483,6 +1498,11 @@ def apply_files(root: Path, files: list[Any]) -> list[str]:
         forbidden = scan_forbidden(text)
         if forbidden:
             raise PatchError(f"conteúdo recusado em {rel}: {forbidden}")
+        from agentic.aro.constitution import patch_weakens_constitution
+
+        weakened = patch_weakens_constitution(rel, text)
+        if weakened:
+            raise PatchError(f"conteúdo recusado em {rel}: {weakened}")
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text(text if text.endswith("\n") else text + "\n", encoding="utf-8")
         written.append(rel)

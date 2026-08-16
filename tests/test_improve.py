@@ -85,6 +85,7 @@ def test_path_and_content_gates() -> None:
     assert is_allowed_path("src/agentic/loop.py")
     assert is_allowed_path("improve/ledger.json")
     assert is_allowed_path("internal/load-env.sh")
+    assert is_allowed_path("ARO.md")
     assert not is_allowed_path(".env")
     assert not is_allowed_path("data/status.json")
     assert not is_allowed_path("../etc/passwd")

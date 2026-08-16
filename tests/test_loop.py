@@ -26,6 +26,8 @@ def test_tick_writes_status_without_secrets(tmp_path: Path, monkeypatch) -> None
     assert "GHOSTCLI_API_KEY" not in text
     assert payload["live_trade"] is False
     assert "tools" in payload
+    assert "aro" in payload
+    assert payload["aro"]["ready_for_outbound"] is False
 
 
 def test_tick_rejects_live_trade(tmp_path: Path) -> None:

@@ -62,7 +62,7 @@ codex
 
 ## Autocrescimento e deploy
 
-A versão em execução é `main`/`master` via `agentic-loop.service`. Map/develop/review da GhostCLI vivem em `improve/*` e só entram no loop depois do review. Kill switch: `AGENTIC_LIVE_TRADE=0`.
+A versão em execução é `main`/`master` via `agentic-loop.service`. Map/develop/review da GhostCLI vivem em `improve/*` e só entram no loop depois do review. Kill switch: `AGENTIC_LIVE_TRADE=0`. Constituição ARO: `ARO.md` (não enfraquecer; participação 20% imutável; sem contacto comercial até autorização).
 
 ```bash
 .venv/bin/python -m agentic improve status
