@@ -300,7 +300,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/.",
       "never": [
@@ -314,13 +314,18 @@
         "src/agentic/aro/"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin",
       "map_id": "20260816T143343Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
           "event": "mapped",
           "detail": "20260816T143343Z"
+        },
+        {
+          "at": "2026-08-16T15:58:33+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin"
         }
       ]
     },
