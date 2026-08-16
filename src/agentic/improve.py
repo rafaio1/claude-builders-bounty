@@ -52,6 +52,7 @@ FORBIDDEN_RE = (
     re.compile(r"BEGIN (RSA |OPENSSH )?PRIVATE KEY"),
     re.compile(r"GHOSTCLI_API_KEY\s*=\s*\S+"),
     re.compile(r"BYBIT_(REAL_)?API_(KEY|SECRET)\s*=\s*\S+"),
+    re.compile(r"AGENTMAIL_API_KEY\s*=\s*\S+"),
     re.compile(r"\bsqlmap\b", re.I),
     re.compile(r"\bnuclei\b", re.I),
     re.compile(r"\bffuf\b", re.I),

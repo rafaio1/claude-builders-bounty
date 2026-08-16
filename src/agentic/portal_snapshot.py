@@ -163,6 +163,31 @@ def build_snapshot(
                 "last_seen_iso": generated,
             }
         )
+    try:
+        from agentic.mail import status as mail_status
+
+        mail = mail_status()
+    except Exception:
+        mail = {"configured": False}
+    if mail.get("address"):
+        programs.insert(
+            0,
+            {
+                "handle": "aro-mail",
+                "name": mail.get("address"),
+                "status": "Verificada" if mail.get("verified") else "Aguardando OTP",
+                "findings": 1 if mail.get("configured") else 0,
+                "reports": 1 if mail.get("verified") else 0,
+                "last_seen": "AgentMail · automação ARO",
+                "last_seen_iso": generated,
+            },
+        )
+        if not mail.get("verified"):
+            next_action_mail = "Enviar o OTP de 6 dígitos no portal ou: python -m agentic mail verify --otp NNNNNN"
+        else:
+            next_action_mail = ""
+    else:
+        next_action_mail = ""
     activity = []
     for item in _load_jsonl(root / "data" / "aro" / "journal.jsonl")[-40:]:
         at = str(item.get("at") or "")
@@ -217,7 +242,8 @@ def build_snapshot(
         )
     decision = aro.get("decision") if isinstance(aro.get("decision"), dict) else {}
     next_action = str(
-        aro_status.get("next_action")
+        next_action_mail
+        or aro_status.get("next_action")
         or decision.get("next_action")
         or "Configurar identidade e destino de payout"
     )

@@ -39,6 +39,10 @@ def main(argv: list[str] | None = None) -> int:
     aro_cmd = sub.add_parser("aro", help="ciclo ARO (observar / pausar)")
     aro_cmd.add_argument("action", choices=["status", "cycle", "stop", "resume"])
 
+    mail_cmd = sub.add_parser("mail", help="caixa ARO AgentMail")
+    mail_cmd.add_argument("action", choices=["status", "verify"])
+    mail_cmd.add_argument("--otp", default="")
+
     args = parser.parse_args(argv)
     settings = load_settings()
     if args.command == "loop":
@@ -113,6 +117,14 @@ def main(argv: list[str] | None = None) -> int:
             }
             return _json(slim)
         return _json(report)
+    if args.command == "mail":
+        from agentic.mail import status as mail_status
+        from agentic.mail import verify_otp
+
+        if args.action == "verify":
+            return _json(verify_otp(args.otp))
+        payload = mail_status()
+        return _json(payload)
     parser.error("comando desconhecido")
     return 2
 

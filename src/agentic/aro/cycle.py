@@ -115,7 +115,20 @@ def process_owner_inbox(
             continue
         body = str(item.get("body") or "").strip()
         lowered = body.lower()
-        if "stop_all_operations" in lowered.replace(" ", "_"):
+        otp = None
+        try:
+            from agentic.mail import extract_otp, verify_otp
+
+            otp = extract_otp(body)
+        except Exception:
+            otp = None
+        if otp and ("otp" in lowered or "agentmail" in lowered or body.strip() == otp):
+            result = verify_otp(otp)
+            if result.get("ok"):
+                answer = "OTP aceite. Caixa agentic-aro@agentmail.to verificada para envio e recepção."
+            else:
+                answer = "OTP recusado ou expirado. Peça novo código ou envie os 6 dígitos outra vez."
+        elif "stop_all_operations" in lowered.replace(" ", "_"):
             stop = Path(root) / ".agentic-aro.stop"
             stop.write_text("STOP_ALL_OPERATIONS\n", encoding="utf-8")
             answer = (

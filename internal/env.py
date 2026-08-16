@@ -42,14 +42,22 @@ def apply() -> dict[str, object]:
     os.environ.setdefault("BYBIT_MODE", "live")
     os.environ.setdefault("BYBIT_CATEGORY", "spot")
     os.environ.setdefault("BYBIT_ENV_FILE", str(BYBIT_ENV))
+    mail_env = Path("/root/.automaton/aro-mail.env")
+    if mail_env.is_file():
+        for key, value in parse_env_file(mail_env).items():
+            os.environ.setdefault(key, value)
 
+    os.environ.setdefault("AGENTIC_LIVE_TRADE", "0")
     return {
         "bybit_env_file": BYBIT_ENV.is_file(),
         "bybit_key": bool(os.environ.get("BYBIT_REAL_API_KEY") or os.environ.get("BYBIT_API_KEY")),
         "bybit_secret": bool(os.environ.get("BYBIT_REAL_API_SECRET") or os.environ.get("BYBIT_API_SECRET")),
         "ghost_key": bool(os.environ.get("GHOSTCLI_API_KEY")),
+        "mail_key": bool(os.environ.get("AGENTMAIL_API_KEY")),
+        "mail_address": bool(os.environ.get("ARO_MAIL_ADDRESS")),
         "mode": os.environ.get("BYBIT_MODE", ""),
         "category": os.environ.get("BYBIT_CATEGORY", ""),
+        "live_trade": os.environ.get("AGENTIC_LIVE_TRADE", "0"),
     }
 
 

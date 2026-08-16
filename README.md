@@ -8,6 +8,8 @@ Três executores GhostCLI (map → develop → review) melhoram o próprio siste
 
 O loop **não** envia ordens Bybit (`AGENTIC_LIVE_TRADE=0`). ARO v1.0 corre em ciclos internos (`python -m agentic aro status`): sem propostas nem pagamentos até contas e destino de payout autorizados.
 
+Correio do ARO: `agentic-aro@agentmail.to` (AgentMail). A chave fica em `/root/.automaton/aro-mail.env`. Enquanto o OTP não for confirmado, o envio fica limitado.
+
 Portal autenticado (mesmo visual do BugHunter) em `http://179.198.117.31:8767`. Utilizador `rafaio`. A senha não vai para o git — só o hash Argon2id em `/etc/agentic-portal/credentials`.
 
 ```bash
