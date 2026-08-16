@@ -1,0 +1,159 @@
+{% extends "base.html" %}
+
+{% block title %}Entrar · Agentic{% endblock %}
+{% block body_class %}login-page{% endblock %}
+
+{% block body %}
+  <header class="login-header" aria-label="Agentic">
+    <a class="brand" href="{{ login_url | default('/login', true) }}" aria-label="Agentic, início">
+      <span class="brand-mark" aria-hidden="true">
+        <span></span>
+      </span>
+      <span class="brand-copy">
+        <strong>Agentic</strong>
+        <small>ARO console</small>
+      </span>
+    </a>
+    <span class="local-badge">
+      <span class="status-dot" aria-hidden="true"></span>
+      Acesso remoto autenticado
+    </span>
+  </header>
+
+  <main id="main-content" class="login-layout">
+    <section class="login-intro" aria-labelledby="welcome-title">
+      <p class="eyebrow"><span>01</span> Central de operações</p>
+      <h1 id="welcome-title">Operação contínua.<br><em>Caixa auditável.</em></h1>
+      <p class="login-lead">
+        Acompanhe o ARO, o loop, as ofertas e fale com o agente neste painel autenticado.
+      </p>
+
+      <div class="process-model" aria-label="Fluxo do Agentic">
+        <div class="process-track" aria-hidden="true"></div>
+        <div class="process-step">
+          <span class="process-index">01</span>
+          <span>
+            <strong>Observar</strong>
+            <small>Ferramentas e ciclo</small>
+          </span>
+        </div>
+        <div class="process-step">
+          <span class="process-index">02</span>
+          <span>
+            <strong>Executar</strong>
+            <small>Serviços verificáveis</small>
+          </span>
+        </div>
+        <div class="process-step">
+          <span class="process-index">03</span>
+          <span>
+            <strong>Receber</strong>
+            <small>Só após liquidação</small>
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <section class="auth-panel depth-card" aria-labelledby="login-title">
+      <div class="auth-panel__edge" aria-hidden="true"></div>
+      <div class="auth-heading">
+        <span class="auth-kicker">Acesso protegido</span>
+        <h2 id="login-title">Entrar no portal</h2>
+        <p>Use as credenciais configuradas para este ambiente.</p>
+      </div>
+
+      {% if error | default('', true) %}
+        <div class="alert alert--error" id="login-error" role="alert">
+          <span class="alert-icon" aria-hidden="true">!</span>
+          <span>{{ error }}</span>
+        </div>
+      {% endif %}
+
+      <form
+        class="auth-form"
+        method="post"
+        action="{{ login_url | default('/login', true) }}"
+        data-submit-once
+      >
+        {% if csrf_token | default('', true) %}
+          <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+        {% endif %}
+
+        <div class="field-group">
+          <label for="username">Usuário</label>
+          <div class="input-shell">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 12a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm7 8a7 7 0 0 0-14 0"></path>
+              </svg>
+            </span>
+            <input
+              id="username"
+              name="username"
+              type="text"
+              value="{{ username | default('', true) }}"
+              placeholder="Usuário"
+              autocomplete="username"
+              autocapitalize="none"
+              spellcheck="false"
+              required
+              autofocus
+              {% if error | default('', true) %}aria-describedby="login-error"{% endif %}
+            >
+          </div>
+        </div>
+
+        <div class="field-group">
+          <div class="field-label-row">
+            <label for="password">Senha</label>
+          </div>
+          <div class="input-shell">
+            <span class="input-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <rect x="5" y="10" width="14" height="10" rx="2"></rect>
+                <path d="M8 10V7a4 4 0 0 1 8 0v3"></path>
+              </svg>
+            </span>
+            <input
+              id="password"
+              name="password"
+              type="password"
+              placeholder="Sua senha"
+              autocomplete="current-password"
+              required
+              {% if error | default('', true) %}aria-describedby="login-error"{% endif %}
+            >
+            <button
+              class="password-toggle"
+              type="button"
+              data-password-toggle="password"
+              aria-label="Mostrar senha"
+              aria-pressed="false"
+            >Mostrar</button>
+          </div>
+        </div>
+
+        <button class="primary-button" type="submit" data-submit-label="Entrando…">
+          <span>Continuar</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m9 18 6-6-6-6"></path>
+          </svg>
+        </button>
+      </form>
+
+      <p class="privacy-note">
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+          <path d="M12 3 4.5 6v5.3c0 4.6 3.1 8.8 7.5 9.7 4.4-.9 7.5-5.1 7.5-9.7V6L12 3Z"></path>
+          <path d="m9.5 12 1.7 1.7 3.6-3.8"></path>
+        </svg>
+        A senha nunca fica em texto no repositório; só o hash Argon2id.
+      </p>
+    </section>
+  </main>
+
+  <footer class="login-footer">
+    <span>Agentic · ARO</span>
+    <span aria-hidden="true">·</span>
+    <span>{{ current_year | default('2026', true) }}</span>
+  </footer>
+{% endblock %}

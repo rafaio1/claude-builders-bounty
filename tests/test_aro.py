@@ -9,7 +9,7 @@ from agentic.aro.constitution import (
     patch_weakens_constitution,
     required_markers,
 )
-from agentic.aro.cycle import run_cycle
+from agentic.aro.cycle import process_owner_inbox, run_cycle
 from agentic.aro.store import read_jsonl
 from agentic.improve import apply_files, is_allowed_path
 
@@ -97,3 +97,18 @@ def test_constitution_intact_on_markers(tmp_path: Path) -> None:
     (tmp_path / "ARO.md").write_text(_aro_md(), encoding="utf-8")
     ok, _detail = constitution_intact(tmp_path)
     assert ok is True
+
+
+def test_owner_inbox_gets_agent_reply(tmp_path: Path) -> None:
+    (tmp_path / "ARO.md").write_text(_aro_md(), encoding="utf-8")
+    inbox = tmp_path / "inbox.jsonl"
+    inbox.write_text(
+        '{"id": "note-abc-1234", "role": "owner", "body": "qual o status?",'
+        ' "at": "2026-08-16T14:00:00+00:00"}\n',
+        encoding="utf-8",
+    )
+    replies = process_owner_inbox(tmp_path, inbox=inbox, paused=False)
+    assert len(replies) == 1
+    assert "Mensagem recebida" in replies[0]["body"]
+    again = process_owner_inbox(tmp_path, inbox=inbox, paused=False)
+    assert again == []

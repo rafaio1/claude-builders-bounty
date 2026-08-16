@@ -8,6 +8,8 @@ version = "0.1.0"
 description = "GhostCLI agents with browser/shell, auto-growth and deploy."
 requires-python = ">=3.12"
 dependencies = [
+  "Jinja2>=3.1.4",
+  "argon2-cffi>=23.1.0",
   "requests>=2.31.0",
 ]
 
@@ -19,6 +21,13 @@ agentic = "agentic.cli:main"
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.package-data]
+agentic = [
+  "portal_templates/*.html",
+  "portal_static/*.css",
+  "portal_static/*.js",
+]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]

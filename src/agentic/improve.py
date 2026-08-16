@@ -45,6 +45,7 @@ FORBIDDEN_PATH_PARTS = (
     "credentials",
     "bybit-murre",
     "settings.local.json",
+    "portal_password",
 )
 FORBIDDEN_RE = (
     re.compile(r"AGENTIC_LIVE_TRADE\s*=\s*1", re.I),
@@ -62,11 +63,12 @@ MAX_FILES = 8
 MAX_FILE_BYTES = 120_000
 MAX_PROPOSALS = 12
 MAX_REQUEUES = 3
-THEMES = ("engine", "tools", "ai")
+THEMES = ("engine", "tools", "ai", "portal")
 THEME_LABELS = {
     "engine": "Motor",
     "tools": "Ferramentas",
     "ai": "IA",
+    "portal": "Portal",
 }
 
 GIT_CLEAN_TITLE = "Restaurar git_clean: working tree limpa na main"
@@ -133,6 +135,18 @@ GIT_CLEAN_CLUSTERS: tuple[tuple[str, str, tuple[str, ...]], ...] = (
             "tests/test_aro.py",
         ),
     ),
+    (
+        "portal",
+        "Portal autenticado e snapshot",
+        (
+            "src/agentic/portal.py",
+            "src/agentic/portal_snapshot.py",
+            "src/agentic/portal_templates/dashboard.html",
+            "src/agentic/portal_static/portal.css",
+            "deploy/agentic-portal.service",
+            "tests/test_portal.py",
+        ),
+    ),
 )
 TERMINAL_FAILURE_RE = re.compile(
     r"loop\.sh|BEGIN (RSA |OPENSSH )?PRIVATE KEY|path recusado: \.env|"
@@ -149,6 +163,7 @@ CODE_FACTS = [
     GIT_CLEAN_PLAYBOOK,
     "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
     "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
+    "Portal autenticado em agentic-portal.service (porta 8767). Theme=portal para templates/CSS/JS. Não gravar senha em texto; só Argon2id em /etc/agentic-portal/credentials.",
 ]
 LOOP_FLAG_RE = re.compile(r"--(?P<name>interval)\s+(?P<value>\d+)")
 LEDGER_STOPWORDS = {
@@ -192,6 +207,8 @@ def infer_theme(raw: Any, *, title: str = "", change: str = "", files: list[str]
     if explicit in THEMES:
         return explicit
     blob = " ".join([title, change, " ".join(files or [])])
+    if re.search(r"portal|dashboard|usabilidade|\.css|\.html", blob, re.I):
+        return "portal"
     if re.search(r"playwright|navegador|browser|mcp|skill|jq", blob, re.I):
         return "tools"
     if re.search(r"eval|ghostcli|fixture|prompt|\bia\b|orquestr", blob, re.I):

@@ -94,7 +94,7 @@ def list_named(root: Path, filename: str) -> list[dict[str, Any]]:
 def ensure_stores(root: Path) -> dict[str, str]:
     base = _dir(root)
     created: dict[str, str] = {}
-    for name in ("ledger.jsonl", "journal.jsonl"):
+    for name in ("ledger.jsonl", "journal.jsonl", "messages.jsonl"):
         path = base / name
         if not path.exists():
             path.write_text("", encoding="utf-8")

@@ -1,0 +1,672 @@
+{% extends "base.html" %}
+
+{% set portal_user = user | default({}, true) %}
+{% set portal_stats = stats | default({}, true) %}
+{% set report_rows = findings | default([], true) %}
+{% set activity_rows = activity | default([], true) %}
+{% set program_rows = programs | default([], true) %}
+
+{% block title %}Visão geral · Agentic{% endblock %}
+{% block body_class %}dashboard-page{% endblock %}
+
+{% block body %}
+  <div class="dashboard-shell">
+    <button class="nav-scrim" type="button" data-nav-close aria-label="Fechar menu" tabindex="-1"></button>
+
+    <aside class="sidebar" id="portal-navigation" aria-label="Navegação principal" data-nav-panel>
+      <div class="sidebar__top">
+        <a class="brand brand--sidebar" href="{{ dashboard_url | default('/', true) }}" aria-label="Agentic, visão geral">
+          <span class="brand-mark" aria-hidden="true"><span></span></span>
+          <span class="brand-copy">
+            <strong>Agentic</strong>
+            <small>ARO console</small>
+          </span>
+        </a>
+        <button class="sidebar-close" type="button" data-nav-close aria-label="Fechar menu">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="m6 6 12 12M18 6 6 18"></path>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="primary-nav" aria-label="Seções do dashboard">
+        <p class="nav-label">Workspace</p>
+        <a class="nav-item is-active" href="#overview" aria-current="page">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <rect x="4" y="4" width="6" height="6" rx="1"></rect>
+            <rect x="14" y="4" width="6" height="6" rx="1"></rect>
+            <rect x="4" y="14" width="6" height="6" rx="1"></rect>
+            <rect x="14" y="14" width="6" height="6" rx="1"></rect>
+          </svg>
+          <span>Visão geral</span>
+        </a>
+        <a class="nav-item" href="#offers">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M6 3h8l4 4v14H6V3Z"></path>
+            <path d="M14 3v5h5M9 13h6M9 17h6"></path>
+          </svg>
+          <span>Ofertas</span>
+          {% if portal_stats.reports_ready | default(0, true) %}
+            <span class="nav-count">{{ portal_stats.reports_ready }}</span>
+          {% endif %}
+        </a>
+        <a class="nav-item" href="#tools">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M12 3 4 7v5c0 4.2 2.8 8 8 9 5.2-1 8-4.8 8-9V7l-8-4Z"></path>
+            <path d="m9 12 2 2 4-4"></path>
+          </svg>
+          <span>Contas</span>
+        </a>
+        <a class="nav-item" href="#messages">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 6h16v10H8l-4 4V6Z"></path>
+          </svg>
+          <span>Mensagens</span>
+        </a>
+        <a class="nav-item" href="#activity">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 12h3l2-6 4 12 2-6h5"></path>
+          </svg>
+          <span>Atividade</span>
+        </a>
+        <a class="nav-item" href="#improve">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M4 7h16M4 12h10M4 17h7"></path>
+            <circle cx="18" cy="17" r="3"></circle>
+          </svg>
+          <span>Mapa</span>
+          {% if (improve.counts.active | default(0, true)) %}
+            <span class="nav-count">{{ improve.counts.active }}</span>
+          {% endif %}
+        </a>
+        <a class="nav-item" href="#ai">
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <circle cx="12" cy="12" r="3"></circle>
+            <path d="M12 4v2M12 18v2M4 12h2M18 12h2M6.2 6.2l1.4 1.4M16.4 16.4l1.4 1.4M6.2 17.8l1.4-1.4M16.4 7.6l1.4-1.4"></path>
+          </svg>
+          <span>IAs</span>
+          {% if (ai_eval.failed | default(0, true)) %}
+            <span class="nav-count">{{ ai_eval.failed }}</span>
+          {% endif %}
+        </a>
+      </nav>
+
+      <div class="sidebar__bottom">
+        <section class="system-card" aria-labelledby="system-status-title">
+          <div class="system-card__header">
+            <span class="system-pulse" aria-hidden="true"><span></span></span>
+            <div>
+              <strong id="system-status-title">ARO local</strong>
+              <small data-engine-status>{{ portal_stats.engine_status | default('Em observação', true) }}</small>
+              {% if (integrity.status | default('missing', true)) == 'failed' %}
+                <small class="integrity-fail">Integridade falhou</small>
+              {% elif (integrity.status | default('missing', true)) == 'ok' %}
+                <small class="integrity-ok">Integridade ok</small>
+              {% endif %}
+            </div>
+          </div>
+          <div class="system-card__meta">
+            <span>Último ciclo</span>
+            <time datetime="{{ portal_stats.last_run_iso | default('', true) }}">
+              {{ portal_stats.last_run | default('Aguardando dados', true) }}
+            </time>
+          </div>
+        </section>
+
+        <div class="user-menu">
+          <span class="avatar" aria-hidden="true">{{ portal_user.initials | default('RF', true) }}</span>
+          <span class="user-menu__copy">
+            <strong>{{ portal_user.display_name | default(portal_user.username | default('rafaio', true), true) }}</strong>
+            <small>@{{ portal_user.username | default('rafaio', true) }}</small>
+          </span>
+          <form method="post" action="{{ logout_url | default('/logout', true) }}">
+            {% if csrf_token | default('', true) %}
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            {% endif %}
+            <button class="icon-button" type="submit" aria-label="Sair do portal" title="Sair">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <path d="M10 5H5v14h5M14 8l4 4-4 4M8 12h10"></path>
+              </svg>
+            </button>
+          </form>
+        </div>
+      </div>
+    </aside>
+
+    <div class="workspace">
+      <header class="topbar">
+        <div class="topbar__leading">
+          <button
+            class="menu-button"
+            type="button"
+            aria-controls="portal-navigation"
+            aria-expanded="false"
+            aria-label="Abrir menu"
+            data-nav-toggle
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+              <path d="M4 7h16M4 12h16M4 17h16"></path>
+            </svg>
+          </button>
+          <div class="breadcrumb" aria-label="Localização atual">
+            <span>Workspace</span>
+            <svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="m6 3 5 5-5 5"></path></svg>
+            <strong>Visão geral</strong>
+          </div>
+        </div>
+        <div class="topbar__trailing">
+          <span class="connection-state">
+            <span class="status-dot" aria-hidden="true"></span>
+            Dados locais
+          </span>
+          <span class="topbar-divider" aria-hidden="true"></span>
+          <span class="date-label">{{ current_date | default('Hoje', true) }}</span>
+        </div>
+      </header>
+
+      <main
+        id="main-content"
+        class="main-content"
+        data-snapshot-activity="{{ last_activity | default('', true) }}"
+      >
+        {% if flash_message | default('', true) %}
+          <div class="alert alert--success page-alert" role="status">
+            <span class="alert-icon" aria-hidden="true">✓</span>
+            <span>{{ flash_message }}</span>
+          </div>
+        {% endif %}
+        {% if (integrity.status | default('missing', true)) == 'failed' %}
+          <div class="alert alert--error page-alert" role="alert">
+            <span class="alert-icon" aria-hidden="true">!</span>
+            <span>
+              {{ integrity.summary | default('Checagem de integridade falhou', true) }}
+              {% if integrity.failed %}
+                · {{ integrity.failed | join(', ') }}
+              {% endif %}
+            </span>
+          </div>
+        {% endif %}
+
+        <section class="overview-hero" id="overview" aria-labelledby="overview-title">
+          <div class="hero-copy">
+            <p class="eyebrow"><span>Live</span> Painel operacional</p>
+            <h1 id="overview-title">Olá, {{ portal_user.display_name | default(portal_user.username | default('rafaio', true), true) }}.</h1>
+            <p>
+              Veja o ciclo ARO, a saúde do loop, as ofertas em rascunho e fale com o agente quando precisar.
+            </p>
+            <div class="hero-tags" aria-label="Controles ativos">
+              <span><i aria-hidden="true"></i> Livro-caixa local</span>
+              <span><i aria-hidden="true"></i> Sem contacto comercial</span>
+              <span><i aria-hidden="true"></i> Fable 5 orquestra</span>
+              <span><i aria-hidden="true"></i> Opus 5 analisa</span>
+            </div>
+          </div>
+
+          <div class="signal-model" aria-hidden="true">
+            <span class="signal-floor"></span>
+            <span class="signal-ring signal-ring--outer"></span>
+            <span class="signal-ring signal-ring--middle"></span>
+            <span class="signal-ring signal-ring--inner"></span>
+            <span class="signal-core"><i></i></span>
+            <span class="signal-node signal-node--one"></span>
+            <span class="signal-node signal-node--two"></span>
+            <span class="signal-node signal-node--three"></span>
+          </div>
+        </section>
+
+        <section class="metrics-grid" aria-label="Resumo operacional">
+          <article class="metric-card depth-card" data-tilt-card>
+            <div class="metric-icon metric-icon--violet" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M12 3 4 7v5c0 4.2 2.8 8 8 9 5.2-1 8-4.8 8-9V7l-8-4Z"></path>
+              </svg>
+            </div>
+            <div class="metric-copy">
+              <span>Ofertas em rascunho</span>
+              <strong>{{ portal_stats.programs_total | default(0, true) }}</strong>
+            </div>
+            <span class="metric-trend">Escopo local</span>
+          </article>
+
+          <article class="metric-card depth-card" data-tilt-card>
+            <div class="metric-icon metric-icon--cyan" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 12h3l2-6 4 12 2-6h5"></path>
+              </svg>
+            </div>
+            <div class="metric-copy">
+              <span>Contratos activos</span>
+              <strong>{{ portal_stats.findings_total | default(0, true) }}</strong>
+            </div>
+            <span class="metric-trend">Revisão ativa</span>
+          </article>
+
+          <article class="metric-card depth-card" data-tilt-card>
+            <div class="metric-icon metric-icon--amber" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M6 3h8l4 4v14H6V3Z"></path>
+                <path d="M14 3v5h5M9 13h6M9 17h4"></path>
+              </svg>
+            </div>
+            <div class="metric-copy">
+              <span>Pronto para publicar</span>
+              <strong>{{ portal_stats.reports_ready | default(0, true) }}</strong>
+            </div>
+            <span class="metric-trend">Só com contas autorizadas</span>
+          </article>
+
+          <article class="metric-card depth-card" data-tilt-card>
+            <div class="metric-icon metric-icon--green" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M5 12.5 9.5 17 19 7.5"></path>
+              </svg>
+            </div>
+            <div class="metric-copy">
+              <span>Receita liquidada (R$)</span>
+              <strong>{{ portal_stats.submissions_total | default(0, true) }}</strong>
+            </div>
+            <span class="metric-trend">Nunca antes da liquidação</span>
+          </article>
+
+          <article class="metric-card depth-card" data-tilt-card>
+            <div class="metric-icon metric-icon--cyan" aria-hidden="true">
+              <svg viewBox="0 0 24 24" focusable="false">
+                <path d="M4 7h16M4 12h10M4 17h7"></path>
+                <circle cx="18" cy="17" r="3"></circle>
+              </svg>
+            </div>
+            <div class="metric-copy">
+              <span>Features no mapa</span>
+              <strong>{{ improve.counts.total | default(0, true) }}</strong>
+            </div>
+            <span class="metric-trend">{{ improve.counts.active | default(0, true) }} ativas</span>
+          </article>
+        </section>
+
+        {% set feature_map = improve | default({}, true) %}
+        {% set feature_rows = feature_map.proposals | default([], true) %}
+        {% set feature_census = feature_map.census | default({}, true) %}
+        {% set feature_counts = feature_map.counts | default({}, true) %}
+        <section class="panel feature-map" id="improve" aria-labelledby="improve-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Improve · GhostCLI</p>
+              <h2 id="improve-title">Mapa de features</h2>
+            </div>
+            <span class="panel-meta">
+              {% if feature_map.updated_at %}
+                {{ feature_map.updated_at }}
+              {% else %}
+                Aguardando primeiro mapa
+              {% endif %}
+            </span>
+          </div>
+
+          {% if feature_map.summary %}
+            <p class="feature-map__summary">{{ feature_map.summary }}</p>
+          {% endif %}
+
+          <div class="map-toolbar">
+            <div class="map-filters" role="group" aria-label="Filtrar mapa">
+              <button class="map-chip is-active" type="button" data-map-filter="theme" data-map-value="all">Todos</button>
+              <button class="map-chip" type="button" data-map-filter="theme" data-map-value="portal">Portal</button>
+              <button class="map-chip" type="button" data-map-filter="theme" data-map-value="ai">IA</button>
+              <button class="map-chip" type="button" data-map-filter="theme" data-map-value="engine">Motor</button>
+            </div>
+            <label class="search-box search-box--map" for="map-search">
+              <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                <path d="m15.5 15.5 4 4"></path>
+              </svg>
+              <span class="sr-only">Filtrar features</span>
+              <input id="map-search" type="search" placeholder="Filtrar o mapa" data-map-search autocomplete="off">
+            </label>
+          </div>
+
+          <ul class="feature-census" aria-label="Censo do motor">
+            <li><strong>{{ feature_census.open_programs | default(0, true) }}</strong><span>abertos</span></li>
+            <li><strong>{{ feature_census.huntable_open | default(0, true) }}</strong><span>huntable</span></li>
+            <li><strong>{{ feature_census.huntable_without_intel | default(0, true) }}</strong><span>sem intel</span></li>
+            <li><strong>{{ feature_census.huntable_intel_without_plan | default(0, true) }}</strong><span>sem plano</span></li>
+            <li><strong>{{ feature_census.open_empty_scopes | default(0, true) }}</strong><span>scopes vazios</span></li>
+            <li><strong>{{ feature_counts.pending | default(0, true) }}</strong><span>na fila</span></li>
+            <li><strong>{{ feature_counts.developing | default(0, true) }}</strong><span>dev</span></li>
+            <li><strong>{{ feature_counts.applied | default(0, true) }}</strong><span>em main</span></li>
+          </ul>
+
+          {% if feature_rows %}
+            <div class="feature-grid">
+              {% for item in feature_rows %}
+                {% set feature_status = item.status | default('pending', true) %}
+                <article class="feature-card feature-card--{{ feature_status }}" data-search-row data-map-card data-theme="{{ item.theme | default('engine', true) }}" data-kind="{{ item.kind | default('improvement', true) }}" data-status="{{ feature_status }}">
+                  <header class="feature-card__head">
+                    <span class="feature-kind feature-kind--{{ item.kind | default('improvement', true) }}">{{ item.kind_label | default('Melhoria', true) }}</span>
+                    <span class="feature-theme feature-theme--{{ item.theme | default('engine', true) }}">{{ item.theme_label | default('Motor', true) }}</span>
+                    <span class="feature-priority">P{{ item.priority | default(3, true) }}</span>
+                    <span class="state-pill state-pill--{{ 'ready' if feature_status == 'applied' else 'blocked' if feature_status in ['rejected', 'blocked'] else 'draft' }}">
+                      {{ item.status_label | default(feature_status, true) }}
+                    </span>
+                  </header>
+                  <h3>{{ item.title | default('Feature sem título', true) }}</h3>
+                  {% if item.rationale %}
+                    <p>{{ item.rationale }}</p>
+                  {% endif %}
+                  {% if item.change %}
+                    <p class="feature-card__change"><strong>Como</strong> {{ item.change }}</p>
+                  {% endif %}
+                  {% if item.never %}
+                    <p class="feature-card__never"><strong>Nunca</strong> {{ item.never | join(' · ') }}</p>
+                  {% endif %}
+                  {% if item.branch %}
+                    <code class="feature-branch">{{ item.branch }}</code>
+                  {% endif %}
+                </article>
+              {% endfor %}
+            </div>
+          {% else %}
+            <div class="empty-state empty-state--compact">
+              <span class="empty-orbit" aria-hidden="true"><i></i></span>
+              <div>
+                <strong>Nenhuma feature mapeada</strong>
+                <p>O mapper horário grava gargalos e melhorias aqui depois do primeiro ciclo.</p>
+              </div>
+            </div>
+          {% endif %}
+        </section>
+
+        {% set eval_panel = ai_eval | default({}, true) %}
+        <section class="panel ai-panel" id="ai" aria-labelledby="ai-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Ferramentas · GhostCLI</p>
+              <h2 id="ai-title">Qualidade das IAs</h2>
+            </div>
+            <span class="panel-meta">
+              {% if eval_panel.generated_at %}
+                {{ eval_panel.generated_at }}
+              {% else %}
+                Saúde GhostCLI / Playwright
+              {% endif %}
+            </span>
+          </div>
+          <p class="feature-map__summary">{{ eval_panel.summary | default('Ferramentas e modelos configurados neste servidor, sem secrets.', true) }}</p>
+          <ul class="feature-census feature-census--ai" aria-label="Resultado do eval">
+            <li><strong>{{ eval_panel.passed | default(0, true) }}</strong><span>passaram</span></li>
+            <li><strong>{{ eval_panel.failed | default(0, true) }}</strong><span>falharam</span></li>
+            <li><strong>{{ eval_panel.total | default(0, true) }}</strong><span>fixtures</span></li>
+            <li><strong>{{ eval_panel.status | default('missing', true) }}</strong><span>status</span></li>
+          </ul>
+          {% if eval_panel.cases %}
+            <ul class="ai-cases">
+              {% for item in eval_panel.cases %}
+                <li class="ai-case ai-case--{{ 'ok' if item.ok else 'fail' }}">
+                  <strong>{{ item.id }}</strong>
+                  <span>{{ item.detail }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          {% endif %}
+        </section>
+
+        {% set message_rows = messages | default([], true) %}
+        <section class="panel message-panel" id="messages" aria-labelledby="messages-title">
+          <div class="panel-heading">
+            <div>
+              <p class="section-kicker">Canal directo</p>
+              <h2 id="messages-title">Falar com o ARO</h2>
+            </div>
+            <span class="panel-meta">Mensagens autenticadas</span>
+          </div>
+          <p class="feature-map__summary">Escreva aqui para instruir o operador. Pedidos ilegais, alteração da constituição, destino de payout ou trade live são recusados.</p>
+          {% if message_rows %}
+            <ol class="message-thread">
+              {% for item in message_rows %}
+                <li class="message-item message-item--{{ item.role | default('owner', true) }}">
+                  <div class="message-meta">
+                    <strong>{{ item.author | default('rafaio', true) }}</strong>
+                    <time datetime="{{ item.datetime | default('', true) }}">{{ item.time | default('', true) }}</time>
+                  </div>
+                  <p>{{ item.body }}</p>
+                </li>
+              {% endfor %}
+            </ol>
+          {% else %}
+            <div class="empty-state empty-state--compact">
+              <span class="empty-orbit" aria-hidden="true"><i></i></span>
+              <div>
+                <strong>Ainda sem mensagens</strong>
+                <p>O histórico aparece aqui depois da primeira nota.</p>
+              </div>
+            </div>
+          {% endif %}
+          <form class="message-form" method="post" action="/message" data-submit-once>
+            {% if csrf_token | default('', true) %}
+              <input type="hidden" name="csrf_token" value="{{ csrf_token }}">
+            {% endif %}
+            <label class="sr-only" for="message-body">Mensagem para o ARO</label>
+            <textarea id="message-body" name="body" rows="3" maxlength="2000" required placeholder="Escreva ao ARO…"></textarea>
+            <button class="primary-button" type="submit" data-submit-label="A enviar…">
+              <span>Enviar</span>
+            </button>
+          </form>
+        </section>
+
+        <div class="dashboard-grid">
+
+          <section class="panel timeline-panel" id="activity" aria-labelledby="activity-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">Fluxo recente</p>
+                <h2 id="activity-title">Linha do tempo</h2>
+              </div>
+              <span class="panel-meta">Últimos eventos</span>
+            </div>
+
+            {% if activity_rows %}
+              <ol class="timeline">
+                {% for item in activity_rows %}
+                  {% set activity_state = item.status | default('info', true) | lower %}
+                  <li class="timeline-item timeline-item--{{ 'success' if activity_state == 'success' else 'warning' if activity_state == 'warning' else 'muted' if activity_state == 'muted' else 'info' }}">
+                    <span class="timeline-marker" aria-hidden="true"><i></i></span>
+                    <div class="timeline-content">
+                      <div class="timeline-title-row">
+                        <strong>{{ item.title | default('Evento registrado', true) }}</strong>
+                        <time datetime="{{ item.datetime | default('', true) }}">{{ item.time | default('Agora', true) }}</time>
+                      </div>
+                      <p>{{ item.detail | default('Sem detalhes adicionais.', true) }}</p>
+                    </div>
+                  </li>
+                {% endfor %}
+              </ol>
+            {% else %}
+              <div class="empty-state empty-state--compact">
+                <span class="empty-orbit" aria-hidden="true"><i></i></span>
+                <div>
+                  <strong>Nenhuma atividade recente</strong>
+                  <p>Os próximos ciclos aparecerão nesta linha do tempo.</p>
+                </div>
+              </div>
+            {% endif %}
+          </section>
+
+          <aside class="panel posture-panel" aria-labelledby="posture-title">
+            <div class="panel-heading">
+              <div>
+                <p class="section-kicker">Postura</p>
+                <h2 id="posture-title">Controles do fluxo</h2>
+              </div>
+            </div>
+            <ul class="control-list">
+              <li>
+                <span class="control-icon is-on" aria-hidden="true">✓</span>
+                <span><strong>Ciclo interno</strong><small>Observar sem spam nem pagamentos</small></span>
+                <span class="control-state">Ativa</span>
+              </li>
+              <li>
+                <span class="control-icon is-on" aria-hidden="true">✓</span>
+                <span><strong>Kill switch</strong><small>AGENTIC_LIVE_TRADE=0 e constituição ARO</small></span>
+                <span class="control-state">Ativa</span>
+              </li>
+              <li>
+                <span class="control-icon is-off" aria-hidden="true">—</span>
+                <span><strong>Contacto comercial</strong><small>ARO_COMMERCIAL_OUTBOUND desligado</small></span>
+                <span class="control-state control-state--off">Desativado</span>
+              </li>
+            </ul>
+            <div class="posture-footer">
+              <span>Próxima ação</span>
+              <strong>{{ portal_stats.next_action | default('Configurar identidade e destino de payout', true) }}</strong>
+            </div>
+          </aside>
+        </div>
+
+        <section class="panel table-panel" id="offers" aria-labelledby="offers-title">
+          <div class="panel-heading panel-heading--table">
+            <div>
+              <p class="section-kicker">Catálogo interno</p>
+              <h2 id="offers-title">Ofertas ARO</h2>
+            </div>
+            <div class="table-tools">
+              <label class="search-box" for="offer-search">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                  <path d="m15.5 15.5 4 4"></path>
+                </svg>
+                <span class="sr-only">Filtrar ofertas</span>
+                <input id="offer-search" type="search" placeholder="Filtrar ofertas" data-table-search="offers-table" autocomplete="off">
+              </label>
+              <span class="result-count" data-result-count aria-live="polite">{{ report_rows | length }} itens</span>
+            </div>
+          </div>
+
+          {% if report_rows %}
+            <div class="table-scroll" tabindex="0" aria-label="Tabela de ofertas; role horizontalmente em telas menores">
+              <table class="data-table" id="offers-table">
+                <caption class="sr-only">Ofertas digitais em rascunho</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Oferta</th>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Severidade</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Atualizado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for finding in report_rows %}
+                    {% set severity = finding.severity | default('unknown', true) | lower %}
+                    {% set finding_state = finding.status | default('em revisão', true) | lower %}
+                    <tr data-search-row>
+                      <td data-label="Oferta">
+                        <span class="report-cell">
+                          <span class="report-id">#{{ finding.id | default(loop.index, true) }}</span>
+                          <strong>{{ finding.title | default('Relatório sem título', true) }}</strong>
+                        </span>
+                      </td>
+                      <td data-label="Tema"><span class="program-handle">{{ finding.program | default('—', true) }}</span></td>
+                      <td data-label="Severidade">
+                        <span class="severity severity--{{ 'critical' if severity in ['critical', 'crítica', 'critica'] else 'high' if severity in ['high', 'alta'] else 'medium' if severity in ['medium', 'média', 'media'] else 'low' if severity in ['low', 'baixa'] else 'unknown' }}">
+                          <i aria-hidden="true"></i>{{ finding.severity | default('Não definida', true) }}
+                        </span>
+                      </td>
+                      <td data-label="Estado">
+                        <span class="state-pill state-pill--{{ 'ready' if finding_state in ['ready', 'pronto', 'aprovado'] else 'blocked' if finding_state in ['blocked', 'bloqueado', 'aguardando id'] else 'draft' }}">
+                          {{ finding.status | default('Em revisão', true) }}
+                        </span>
+                      </td>
+                      <td data-label="Atualizado">
+                        <time datetime="{{ finding.updated_at_iso | default('', true) }}">{{ finding.updated_at | default('—', true) }}</time>
+                      </td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-state--filter" data-empty-filter hidden>
+              <strong>Nenhum relatório corresponde ao filtro</strong>
+              <p>Limpe a busca para voltar a ver toda a fila.</p>
+            </div>
+          {% else %}
+            <div class="empty-state">
+              <span class="empty-orbit" aria-hidden="true"><i></i></span>
+              <div>
+                <strong>Nenhuma oferta listada</strong>
+                <p>As três ofertas iniciais aparecem aqui depois do snapshot.</p>
+              </div>
+            </div>
+          {% endif %}
+        </section>
+
+        <section class="panel table-panel" id="tools" aria-labelledby="tools-title">
+          <div class="panel-heading panel-heading--table">
+            <div>
+              <p class="section-kicker">Inventário</p>
+              <h2 id="tools-title">Contas e ferramentas</h2>
+            </div>
+            <div class="table-tools">
+              <label class="search-box" for="tool-search">
+                <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                  <circle cx="10.5" cy="10.5" r="6.5"></circle>
+                  <path d="m15.5 15.5 4 4"></path>
+                </svg>
+                <span class="sr-only">Filtrar contas</span>
+                <input id="tool-search" type="search" placeholder="Filtrar contas" data-table-search="tools-table" autocomplete="off">
+              </label>
+              <span class="result-count" data-result-count aria-live="polite">{{ program_rows | length }} itens</span>
+            </div>
+          </div>
+
+          {% if program_rows %}
+            <div class="table-scroll" tabindex="0" aria-label="Tabela de contas; role horizontalmente em telas menores">
+              <table class="data-table data-table--programs" id="tools-table">
+                <caption class="sr-only">Contas e ferramentas inventariadas</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Tema</th>
+                    <th scope="col">Estado</th>
+                    <th scope="col">Presente</th>
+                    <th scope="col">Ofertas</th>
+                    <th scope="col">Notas</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for program in program_rows %}
+                    <tr data-search-row>
+                      <td data-label="Tema">
+                        <span class="program-cell">
+                          <span class="program-avatar" aria-hidden="true">{{ program.initial | default(program.name | default('P', true) | first, true) }}</span>
+                          <span><strong>{{ program.name | default(program.handle | default('Programa', true), true) }}</strong><small>@{{ program.handle | default('sem-handle', true) }}</small></span>
+                        </span>
+                      </td>
+                      <td data-label="Estado"><span class="state-pill state-pill--ready">{{ program.status | default('Monitorado', true) }}</span></td>
+                      <td data-label="Presente">{{ program.findings | default(0, true) }}</td>
+                      <td data-label="Autorizada">{{ program.reports | default(0, true) }}</td>
+                      <td data-label="Notas"><time datetime="{{ program.last_seen_iso | default('', true) }}">{{ program.last_seen | default('—', true) }}</time></td>
+                    </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+            <div class="empty-state empty-state--filter" data-empty-filter hidden>
+              <strong>Nenhum programa corresponde ao filtro</strong>
+              <p>Limpe a busca para voltar a ver o catálogo.</p>
+            </div>
+          {% else %}
+            <div class="empty-state">
+              <span class="empty-orbit" aria-hidden="true"><i></i></span>
+              <div>
+                <strong>Nenhuma conta inventariada</strong>
+                <p>O snapshot lista ferramentas e contas comprovadas.</p>
+              </div>
+            </div>
+          {% endif %}
+        </section>
+      </main>
+
+      <footer class="dashboard-footer">
+        <span>Agentic · ARO</span>
+        <span>Dados renderizados em {{ rendered_at | default('tempo real', true) }}</span>
+      </footer>
+    </div>
+  </div>
+{% endblock %}

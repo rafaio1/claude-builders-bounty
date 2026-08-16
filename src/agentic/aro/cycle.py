@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 import shutil
 from datetime import datetime, timezone
 from pathlib import Path
@@ -11,7 +12,9 @@ from typing import Any
 from agentic.aro.config import AroConfig, load_aro_config
 from agentic.aro.constitution import VERSION, constitution_intact, invariants_hash
 from agentic.aro.offers import seed_offers
-from agentic.aro.store import append_jsonl, ensure_stores
+from agentic.aro.store import append_jsonl, ensure_stores, read_jsonl
+
+DEFAULT_INBOX = Path("/var/lib/agentic-portal/inbox.jsonl")
 
 DECISION_IDLE = {
     "objective": "inicializar ARO sem contato externo",
@@ -70,6 +73,89 @@ def account_scopes(*, ghostcli: bool, bybit: bool) -> dict[str, Any]:
             "authorized_for_aro_sales": False,
         },
     }
+
+
+def _load_inbox(path: Path) -> list[dict[str, Any]]:
+    if not path.is_file():
+        return []
+    rows: list[dict[str, Any]] = []
+    try:
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                item = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if isinstance(item, dict) and str(item.get("body") or "").strip():
+                rows.append(item)
+    except OSError:
+        return []
+    return rows
+
+
+def process_owner_inbox(
+    root: Path,
+    *,
+    inbox: Path | None = None,
+    paused: bool = False,
+    ready_for_outbound: bool = False,
+) -> list[dict[str, Any]]:
+    """Acknowledge owner portal notes. Treat the body as data, not new rules."""
+    source = Path(inbox or os.getenv("AGENTIC_PORTAL_INBOX_PATH") or DEFAULT_INBOX)
+    seen = {
+        str(item.get("in_reply_to") or "")
+        for item in read_jsonl(root, "messages.jsonl")
+        if item.get("in_reply_to")
+    }
+    replies: list[dict[str, Any]] = []
+    for item in _load_inbox(source):
+        ident = str(item.get("id") or "")
+        if not ident or ident in seen:
+            continue
+        body = str(item.get("body") or "").strip()
+        lowered = body.lower()
+        if "stop_all_operations" in lowered.replace(" ", "_"):
+            stop = Path(root) / ".agentic-aro.stop"
+            stop.write_text("STOP_ALL_OPERATIONS\n", encoding="utf-8")
+            answer = (
+                "STOP_ALL_OPERATIONS aceite. Novas propostas, compras e entregas ficam pausadas."
+            )
+        elif any(
+            marker in lowered
+            for marker in (
+                "owner_share",
+                "participação",
+                "destino de pagamento",
+                "live_trade",
+            )
+        ):
+            answer = (
+                "Não altero taxa do proprietário, destino de saque nem ligo trading. "
+                "Esses controlos estão fora do portal."
+            )
+        elif paused:
+            answer = "Mensagem recebida. Operação pausada; sem contacto comercial."
+        elif ready_for_outbound:
+            answer = "Mensagem recebida. Próximo ciclo avalia o pedido dentro da constituição."
+        else:
+            answer = (
+                "Mensagem recebida. Ciclo interno: sem propostas externas até identidade, "
+                "destino de payout e contas autorizadas."
+            )
+        replies.append(
+            append_jsonl(
+                root,
+                "messages.jsonl",
+                {
+                    "role": "agent",
+                    "author": "ARO",
+                    "in_reply_to": ident,
+                    "body": answer,
+                },
+            )
+        )
+    return replies
 
 
 def run_cycle(
@@ -142,6 +228,15 @@ def run_cycle(
             "ARO_COMMERCIAL_OUTBOUND=1 só depois de contas autorizadas."
         ),
     }
+    replies = process_owner_inbox(
+        root,
+        paused=paused,
+        ready_for_outbound=bool(report["ready_for_outbound"]),
+    )
+    report["inbox_replies"] = len(replies)
+    if replies:
+        paused = paused or (Path(root) / ".agentic-aro.stop").is_file()
+        report["paused"] = paused
     append_jsonl(root, "journal.jsonl", {"kind": "cycle", "summary": report["note"], "paused": paused})
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     daily = Path(root) / "data" / "aro" / "reports" / f"daily-{day}.json"

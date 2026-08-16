@@ -18,6 +18,8 @@ EXPECTED_UNITS = (
     "agentic-improve-dev.timer",
     "agentic-improve-review.timer",
     "agentic-integrity.timer",
+    "agentic-portal.service",
+    "agentic-portal-snapshot.timer",
 )
 KILL_SWITCH_RE = re.compile(r"^Environment=AGENTIC_LIVE_TRADE=0\s*$", re.M)
 EXEC_START_RE = re.compile(r"^ExecStart=(.+)$", re.M)

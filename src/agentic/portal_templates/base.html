@@ -1,0 +1,29 @@
+{% set static_root = static_url | default('/static', true) %}
+<!doctype html>
+<html lang="{{ locale | default('pt-BR', true) }}" data-theme="dark">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <meta name="theme-color" content="#080b12">
+    {% if csrf_token | default('', true) %}
+      <meta name="csrf-token" content="{{ csrf_token }}">
+    {% endif %}
+    <title>{% block title %}BugHunter{% endblock %}</title>
+    <link rel="stylesheet" href="{{ static_root }}/portal.css">
+    <script defer src="{{ static_root }}/portal.js"></script>
+  </head>
+  <body class="{% block body_class %}{% endblock %}">
+    <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+    <div class="ambient-scene" aria-hidden="true">
+      <span class="ambient-orb ambient-orb--one"></span>
+      <span class="ambient-orb ambient-orb--two"></span>
+      <span class="ambient-grid"></span>
+    </div>
+
+    {% block body %}{% endblock %}
+
+    <div id="portal-announcer" class="sr-only" role="status" aria-live="polite"></div>
+  </body>
+</html>

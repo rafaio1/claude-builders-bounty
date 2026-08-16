@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh the Agentic portal snapshot every 30 seconds
+
+[Timer]
+Unit=agentic-portal-snapshot.service
+OnActiveSec=15s
+OnUnitActiveSec=30s
+AccuracySec=1s
+RandomizedDelaySec=3s
+Persistent=false
+
+[Install]
+WantedBy=timers.target
