@@ -203,7 +203,7 @@
       "title": "[ai] Traces sanitizados da GhostCLI + eval do reviewer",
       "kind": "improvement",
       "priority": 2,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Sem traces sanitizados e métricas de aceite/rejeição do reviewer, não dá para avaliar nem melhorar as IAs do pipeline de forma objetiva.",
       "change": "Gravar JSONL sanitizado por ciclo (proposta, ações GhostCLI, verdict, review_feedback) fora do git e usar jq para gerar um relatório simples de eval offline.",
       "never": [
@@ -217,13 +217,18 @@
         "src/agentic/improve.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review",
       "map_id": "20260816T143343Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
           "event": "mapped",
           "detail": "20260816T143343Z"
+        },
+        {
+          "at": "2026-08-16T17:20:43+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review"
         }
       ]
     },
