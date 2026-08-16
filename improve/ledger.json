@@ -203,7 +203,7 @@
       "title": "[ai] Traces sanitizados da GhostCLI + eval do reviewer",
       "kind": "improvement",
       "priority": 2,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Sem traces sanitizados e métricas de aceite/rejeição do reviewer, não dá para avaliar nem melhorar as IAs do pipeline de forma objetiva.",
       "change": "Gravar JSONL sanitizado por ciclo (proposta, ações GhostCLI, verdict, review_feedback) fora do git e usar jq para gerar um relatório simples de eval offline.",
       "never": [
@@ -217,7 +217,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review",
       "map_id": "20260816T143343Z",
       "history": [
         {
@@ -249,6 +249,11 @@
           "at": "2026-08-16T18:02:56+00:00",
           "event": "requeued",
           "detail": "Nenhuma alteração aplicada (files vazio). O review_feedback aponta que o patch anterior foi bloqueado porque os arquivos atuais estão truncados; os snapshots fornecidos continuam truncados em src/agentic/ghostcli.py (dentro de complete()) e src/agentic/improve.py (dentro de GIT_CLEAN_CLUSTERS). Como é obrigatório devolver o conteúdo completo de arquivos existentes alterados e não é seguro reescrev…"
+        },
+        {
+          "at": "2026-08-16T18:21:58+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review"
         }
       ],
       "review_feedback": "Nenhuma alteração aplicada (files vazio). O review_feedback aponta que o patch anterior foi bloqueado porque os arquivos atuais estão truncados; os snapshots fornecidos continuam truncados em src/agentic/ghostcli.py (dentro de complete()) e src/agentic/improve.py (dentro de GIT_CLEAN_CLUSTERS). Como é obrigatório devolver o conteúdo completo de arquivos existentes alterados e não é seguro reescrever módulos de produção incompletos, não implemento traces/eval sem os arquivos integrais. Para prosseguir, forneça o conteúdo completo desses arquivos ou permita patch aditivo em arquivo novo autorizado."
