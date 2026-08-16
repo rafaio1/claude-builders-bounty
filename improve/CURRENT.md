@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-16T16:03:20+00:00
+Atualizado: 2026-08-16T18:02:05+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-16T16:00:25+00:00
+- last_tick: 2026-08-16T17:59:53+00:00
 - git_clean: ok
 - dirty_paths: []
 
 ## Ghost
 
-Censo com git_clean=true; foco em cache do tick de saúde, blindagem de secrets, fluxo de review fatiado e ferramentas de agentes (tools/ai).
+Sistema estável e com working tree limpa (git_clean=true); os principais gargalos são a falta de evidência persistida entre ticks (health snapshot + traces sanitizados) e o risco de retrabalho no ciclo develop/review. Melhorias focam em poupar tokens nas ferramentas e criar eval leve sobre traces sanitizados.
 
 ## Ledger
 
-{"pending": 21, "developing": 2}
+{"pending": 25, "developing": 4, "applied": 1}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [developing/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
@@ -32,14 +32,14 @@ Censo com git_clean=true; foco em cache do tick de saúde, blindagem de secrets,
 - `imp-20260816-tools-padronizar-navegador-via-playwright-cli-em` [pending/p2] [tools] Padronizar navegador via playwright-cli em vez de MCP
 - `imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review` [pending/p2] [ai] Traces sanitizados da GhostCLI + eval do reviewer
 - `imp-20260816-tools-validar-sa-das-do-censo-com-jq-antes-de-ag` [pending/p3] [tools] Validar saídas do censo com jq antes de agir
-- `imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli` [developing/p1] Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main
+- `imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli` [applied/p1] Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main
 - `imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin` [pending/p1] Restaurar git_clean (Outros arquivos sujos): working tree limpa na main
 - `imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl` [pending/p2] Status do loop com saúde de Playwright e GhostCLI
 - `imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra` [pending/p3] Documentar skill playwright-cli no mapa de ferramentas
 - `imp-20260816-traces-sanitizados-da-ghostcli-no-improve` [pending/p2] Traces sanitizados da GhostCLI no improve
-- `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [pending/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
-- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [pending/p1] Tick de saúde reexecuta probes caras a cada 90s
-- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [pending/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
+- `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [developing/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
+- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [developing/p1] Tick de saúde reexecuta probes caras a cada 90s
+- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [developing/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
 - `imp-20260816-review-feedback-n-o-estruturado-favorece-alargam` [pending/p2] review_feedback não estruturado favorece alargamento de escopo
 - `imp-20260816-portal-autenticado-fora-do-tick-de-sa-de` [pending/p3] Portal autenticado fora do tick de saúde
 - `imp-20260816-chamadas-ghostcli-sem-timeout-podem-travar-o-tic` [pending/p3] Chamadas GhostCLI sem timeout podem travar o tick
