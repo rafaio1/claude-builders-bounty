@@ -448,7 +448,7 @@
       "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
       "kind": "improvement",
       "priority": 2,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
       "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
       "never": [
@@ -460,13 +460,18 @@
         "deploy/agentic-loop.service"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr",
       "map_id": "20260816T160320Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
           "event": "mapped",
           "detail": "20260816T143343Z"
+        },
+        {
+          "at": "2026-08-16T17:41:19+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr"
         }
       ]
     },
