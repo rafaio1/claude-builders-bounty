@@ -203,7 +203,7 @@
       "title": "[ai] Traces sanitizados da GhostCLI + eval do reviewer",
       "kind": "improvement",
       "priority": 2,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Sem traces sanitizados e métricas de aceite/rejeição do reviewer, não dá para avaliar nem melhorar as IAs do pipeline de forma objetiva.",
       "change": "Gravar JSONL sanitizado por ciclo (proposta, ações GhostCLI, verdict, review_feedback) fora do git e usar jq para gerar um relatório simples de eval offline.",
       "never": [
@@ -217,7 +217,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review",
       "map_id": "20260816T143343Z",
       "history": [
         {
@@ -259,6 +259,11 @@
           "at": "2026-08-16T18:22:44+00:00",
           "event": "requeued",
           "detail": "Nenhuma alteração aplicada (files vazio) por segurança. A proposta exige gravar traces JSONL sanitizados por ciclo (proposta, ações GhostCLI, verdict, review_feedback) fora do git e gerar relatório de eval offline, o que requer editar src/agentic/ghostcli.py e src/agentic/improve.py (files_hint). Porém o snapshot em ARQUIVOS ATUAIS continua truncado: ghostcli.py corta dentro de complete() ('return…"
+        },
+        {
+          "at": "2026-08-16T18:42:13+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review"
         }
       ],
       "review_feedback": "Nenhuma alteração aplicada (files vazio) por segurança. A proposta exige gravar traces JSONL sanitizados por ciclo (proposta, ações GhostCLI, verdict, review_feedback) fora do git e gerar relatório de eval offline, o que requer editar src/agentic/ghostcli.py e src/agentic/improve.py (files_hint). Porém o snapshot em ARQUIVOS ATUAIS continua truncado: ghostcli.py corta dentro de complete() ('return str(content or \"\"…') e improve.py corta no meio de GIT_CLEAN_CLUSTERS. Como a tarefa exige devolver o conteúdo COMPLETO de cada arquivo alterado e o loop em produção (deploy/agentic-loop.service) depende desses módulos, reescrevê-los a partir de visão parcial destruiria código não exibido (restante de GIT_CLEAN_CLUSTERS, funções de develop/review/apply, tratamento de erros). O review_feedback apo…"
