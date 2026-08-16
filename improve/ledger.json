@@ -487,7 +487,7 @@
       "title": "Carregamento de credenciais sem cache e risco de vazamento em logs",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "env.py relê GhostCLI/Bybit a cada chamada; além de redundante, qualquer log acidental de repr/exception pode expor material sensível.",
       "change": "Cachear env carregado em módulo e adicionar função única de máscara aplicada a todo log/trace originado de env.py; nunca serializar valores de chaves.",
       "never": [
@@ -499,13 +499,18 @@
         "src/agentic/env.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
       "map_id": "20260816T160320Z",
       "history": [
         {
           "at": "2026-08-16T16:03:20+00:00",
           "event": "mapped",
           "detail": "20260816T160320Z"
+        },
+        {
+          "at": "2026-08-16T16:19:21+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de"
         }
       ]
     },
