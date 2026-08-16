@@ -1083,7 +1083,7 @@
       "title": "review_feedback não chega inteiro ao develop seguinte",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Quando o review rejeita, a proposta volta a pending com parecer; se o parecer não for persistido por extenso no estado da proposta, o develop corrige no escuro e tende a alargar escopo.",
       "change": "Em improve.py, gravar review_feedback completo e o motivo da rejeição no registro da proposta ao rejeitar, e expor esse campo ao develop na rodada seguinte.",
       "never": [
@@ -1095,7 +1095,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-review-feedback-n-o-chega-inteiro-ao-develop-seg",
       "map_id": "20260816T200957Z",
       "history": [
         {
@@ -1112,6 +1112,11 @@
           "at": "2026-08-16T22:42:32+00:00",
           "event": "requeued",
           "detail": "Nenhum arquivo alterado por segurança: o snapshot de src/agentic/improve.py chegou truncado no prompt (cortado com '…' dentro da tupla GIT_CLEAN_CLUSTERS). Como o esquema exige devolver o conteúdo COMPLETO de cada arquivo alterado, reescrever improve.py sem ver o restante do código inventaria as funções de ledger/review/develop e destruiria a implementação atual em disco. Mudança pretendida, a apl…"
+        },
+        {
+          "at": "2026-08-16T23:03:34+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-review-feedback-n-o-chega-inteiro-ao-develop-seg"
         }
       ],
       "review_feedback": "Nenhum arquivo alterado por segurança: o snapshot de src/agentic/improve.py chegou truncado no prompt (cortado com '…' dentro da tupla GIT_CLEAN_CLUSTERS). Como o esquema exige devolver o conteúdo COMPLETO de cada arquivo alterado, reescrever improve.py sem ver o restante do código inventaria as funções de ledger/review/develop e destruiria a implementação atual em disco. Mudança pretendida, a aplicar na próxima rodada quando o arquivo vier inteiro: (1) no caminho de rejeição do review, gravar no registro da proposta no ledger os campos review_feedback com o parecer COMPLETO (sem truncar) e reject_reason com o motivo; (2) ao montar o contexto/prompt do develop na rodada seguinte, expor explicitamente proposal['review_feedback'] e proposal['reject_reason'] para que o develop corrija exatame…"
