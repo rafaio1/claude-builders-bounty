@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-16T18:02:05+00:00
+Atualizado: 2026-08-16T20:09:57+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-16T17:59:53+00:00
+- last_tick: 2026-08-16T20:00:51+00:00
 - git_clean: ok
 - dirty_paths: []
 
 ## Ghost
 
-Sistema estável e com working tree limpa (git_clean=true); os principais gargalos são a falta de evidência persistida entre ticks (health snapshot + traces sanitizados) e o risco de retrabalho no ciclo develop/review. Melhorias focam em poupar tokens nas ferramentas e criar eval leve sobre traces sanitizados.
+Censo saudável (git_clean=true, ferramentas ok, loop a 90s sem trade live); foco em observabilidade do tick, feedback de review persistente, economia de tokens no navegador e traces/eval sanitizados.
 
 ## Ledger
 
-{"pending": 25, "developing": 4, "applied": 1}
+{"pending": 33, "developing": 5, "blocked": 1, "applied": 1}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [developing/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
@@ -30,7 +30,7 @@ Sistema estável e com working tree limpa (git_clean=true); os principais gargal
 - `imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er` [pending/p2] review_feedback não estruturado faz o develop errar o alvo
 - `imp-20260816-carga-de-credenciais-sem-valida-o-expl-cita-do-a` [pending/p3] Carga de credenciais sem validação explícita do arquivo canônico
 - `imp-20260816-tools-padronizar-navegador-via-playwright-cli-em` [pending/p2] [tools] Padronizar navegador via playwright-cli em vez de MCP
-- `imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review` [pending/p2] [ai] Traces sanitizados da GhostCLI + eval do reviewer
+- `imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review` [blocked/p2] [ai] Traces sanitizados da GhostCLI + eval do reviewer
 - `imp-20260816-tools-validar-sa-das-do-censo-com-jq-antes-de-ag` [pending/p3] [tools] Validar saídas do censo com jq antes de agir
 - `imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli` [applied/p1] Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main
 - `imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin` [pending/p1] Restaurar git_clean (Outros arquivos sujos): working tree limpa na main

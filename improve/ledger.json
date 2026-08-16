@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-16T18:02:05+00:00",
+  "updated_at": "2026-08-16T20:09:57+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -414,7 +414,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260816T180205Z",
+      "map_id": "20260816T200957Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -441,7 +441,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260816T180205Z",
+      "map_id": "20260816T200957Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -468,7 +468,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260816T180205Z",
+      "map_id": "20260816T200957Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -1014,6 +1014,295 @@
           "at": "2026-08-16T18:02:05+00:00",
           "event": "mapped",
           "detail": "20260816T180205Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-tick-de-sa-de-sem-rastro-persistente-de-frescor",
+      "key": "a3518dea39845ea3",
+      "canon": "3edef65887c5dea8",
+      "title": "Tick de saúde sem rastro persistente de frescor",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O loop roda a cada 90s, mas se um tick falhar silenciosamente só o próximo censo revela; sem um arquivo de estado datado, portal e reviewer ficam cegos entre censos.",
+      "change": "Em loop.py, ao fim de cada tick, escrever last_tick ISO-8601 e contagem de ferramentas ok em arquivo de estado local (fora do git) já consumido pelo censo; não alterar o interval da unit.",
+      "never": [
+        "enviar ordens Bybit",
+        "alterar --interval da unit systemd",
+        "imprimir secrets"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-review-feedback-n-o-chega-inteiro-ao-develop-seg",
+      "key": "70f464b711b9ffe5",
+      "canon": "d96b72332cd313f0",
+      "title": "review_feedback não chega inteiro ao develop seguinte",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Quando o review rejeita, a proposta volta a pending com parecer; se o parecer não for persistido por extenso no estado da proposta, o develop corrige no escuro e tende a alargar escopo.",
+      "change": "Em improve.py, gravar review_feedback completo e o motivo da rejeição no registro da proposta ao rejeitar, e expor esse campo ao develop na rodada seguinte.",
+      "never": [
+        "usar reset --hard / checkout -- / clean -fd",
+        "usar --no-verify ou force",
+        "fundir fatias num commit único"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-caminho-de-navegador-pode-preferir-mcp-cli",
+      "key": "d3e2bff4c4831895",
+      "canon": "c6dda358556ce4f9",
+      "title": "Caminho de navegador pode preferir MCP à CLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O censo mostra playwright e playwright_mcp ativos; a política pede CLI primeiro para poupar tokens. Qualquer chamada que vá direto ao MCP gasta tokens sem necessidade.",
+      "change": "Helper pequeno de seleção de navegador: usar playwright-cli por padrão e só cair para playwright-mcp se a CLI falhar, registrando a escolha no log sanitizado.",
+      "never": [
+        "rodar PoC/fuzz",
+        "abrir navegador fora de headless --no-sandbox",
+        "baixar dependências novas"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-reda-o-de-secrets-espalhada-por-callsite",
+      "key": "8cc022ac438750a7",
+      "canon": "d1662324aba1741f",
+      "title": "Redação de secrets espalhada por callsite",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "env.py centraliza GhostCLI+Bybit, mas se a redação ficar duplicada em cada log, um callsite novo pode vazar credenciais; centralizar evita regressão.",
+      "change": "Adicionar em env.py uma única função de redação (mask de key/secret) usada por todo log de comando GhostCLI/Bybit, sem alterar valores nem paths canónicos.",
+      "never": [
+        "imprimir chaves Bybit/GhostCLI",
+        "commitar .env ou dados",
+        "mover /root/.automaton/bybit-murre.env"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-constitui-o-aro-sem-teste-de-imutabilidade",
+      "key": "340928590c73c454",
+      "canon": "9429691d88c68b17",
+      "title": "Constituição ARO sem teste de imutabilidade",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "OWNER_SHARE_RATE=0.20 é imutável por regra, mas nada no repositório prova isso automaticamente; uma alteração acidental passaria despercebida.",
+      "change": "Pytest pequeno que importa constitution.py e faz assert de OWNER_SHARE_RATE == 0.20 e de que STOP_ALL_OPERATIONS pausa operações novas.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "tocar em destino de payout",
+        "habilitar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-wrapper-playwright-cli-com-timeout-e-retry-theme",
+      "key": "3c91d954382fc4f6",
+      "canon": "a07a5d6e1394b7ac",
+      "title": "Wrapper playwright-cli com timeout e retry (theme=tools)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Verificações web são parte do tick de saúde; sem timeout e retry, um hang consome o ciclo inteiro de 90s.",
+      "change": "Wrapper fino sobre playwright-cli headless --no-sandbox com timeout fixo e 1 retry, retornando status estruturado consumível por jq.",
+      "never": [
+        "usar MCP como primeira opção",
+        "fazer scraping de credenciais",
+        "introduzir trade live"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-traces-sanitizados-da-ghostcli-para-eval-theme-a",
+      "key": "7d9744ba0d0c0805",
+      "canon": "f4d1491b55b4e616",
+      "title": "Traces sanitizados da GhostCLI para eval (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Sem traces não há como medir se map/develop/review melhoram entre ciclos; traces com redação permitem replay e eval sem expor secrets.",
+      "change": "Gravar um trace JSONL por ciclo improve (etapa, duração, resultado, feedback truncado) passando pela redação de env.py; arquivo fora do git.",
+      "never": [
+        "gravar secrets Bybit/GhostCLI",
+        "enviar traces para fora da máquina",
+        "ligar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-eval-m-nima-do-pipeline-improve-theme-ai",
+      "key": "60ace013970b3091",
+      "canon": "c79540ddf15885f2",
+      "title": "Eval mínima do pipeline improve (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Com traces disponíveis, um eval pequeno verifica se o develop corrige exatamente o parecer do review sem alargar escopo.",
+      "change": "Pytest que roda improve sobre um fixture minúsculo e confere: proposta respeita files_hint da fatia e endereça o review_feedback citado.",
+      "never": [
+        "fuzz/wordlist/PoC",
+        "force ou --no-verify",
+        "gerar propostas de trade"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-p-gina-de-sa-de-do-loop-no-portal-theme-portal",
+      "key": "2a9cac4fe2524adc",
+      "canon": "d9c4c40669aa4d99",
+      "title": "Página de saúde do loop no portal (theme=portal)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O portal autenticado já existe na porta 8767; exibir idade do último tick e git_clean dá visibilidade operacional quase de graça.",
+      "change": "Template read-only que lê o censo e mostra last_tick, tools ok e git_clean; autenticação segue Argon2id existente, sem gravar senha em texto.",
+      "never": [
+        "gravar senha em texto",
+        "expor secrets",
+        "abrir escrita pública"
+      ],
+      "files_hint": [],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-classificador-de-dirty-paths-por-fatia-theme-too",
+      "key": "b7e1c891e53473ca",
+      "canon": "776fac084e382133",
+      "title": "Classificador de dirty_paths por fatia (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Se git_clean virar false, é preciso fatiar (motor vs playbook/improve vs ferramentas); hoje esse agrupamento é manual e propenso a commit único.",
+      "change": "Classificador pequeno no censo que agrupa dirty_paths por fatia e emite listas prontas para propostas git_clean separadas.",
+      "never": [
+        "rodar clean -fd",
+        "commitar .env/data/secrets",
+        "sugerir patch único multi-slice"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T200957Z",
+      "history": [
+        {
+          "at": "2026-08-16T20:09:57+00:00",
+          "event": "mapped",
+          "detail": "20260816T200957Z"
         }
       ]
     }
