@@ -1,0 +1,18 @@
+{
+  "at": "2026-08-16T16:06:29+00:00",
+  "branch": "improve/dev/imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+  "proposal_id": "imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+  "verdict": "approve",
+  "reason": "O diff versiona corretamente as alterações defensivas já presentes em disco para os arquivos exatos da fatia proposta (cli.py e loop.py). Força live_trade=False, não expõe secrets e não adiciona arquivos fora do escopo, cumprindo o objetivo de restaurar o git_clean.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "............................                                             [100%]\n28 passed in 3.51s"
+  },
+  "files": [
+    "src/agentic/cli.py",
+    "src/agentic/loop.py"
+  ]
+}
