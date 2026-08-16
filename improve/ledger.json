@@ -1083,7 +1083,7 @@
       "title": "review_feedback não chega inteiro ao develop seguinte",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Quando o review rejeita, a proposta volta a pending com parecer; se o parecer não for persistido por extenso no estado da proposta, o develop corrige no escuro e tende a alargar escopo.",
       "change": "Em improve.py, gravar review_feedback completo e o motivo da rejeição no registro da proposta ao rejeitar, e expor esse campo ao develop na rodada seguinte.",
       "never": [
@@ -1095,7 +1095,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-review-feedback-n-o-chega-inteiro-ao-develop-seg",
+      "branch": "",
       "map_id": "20260816T200957Z",
       "history": [
         {
@@ -1137,6 +1137,11 @@
           "at": "2026-08-16T23:43:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-review-feedback-n-o-chega-inteiro-ao-develop-seg"
+        },
+        {
+          "at": "2026-08-16T23:43:29+00:00",
+          "event": "blocked",
+          "detail": "Nenhum arquivo alterado por segurança. O snapshot de src/agentic/improve.py chegou truncado dentro de GIT_CLEAN_CLUSTERS, impedindo devolver o conteúdo COMPLETO do arquivo alterado. Para implementar a melhoria sem inventar código, é necessário receber o arquivo inteiro. Mudança pretendida: no caminho de rejeição do review, persistir review_feedback completo e o motivo da rejeição no registro da pr…"
         }
       ],
       "review_feedback": "Nenhum arquivo alterado por segurança. A proposta exige modificar src/agentic/improve.py e devolver o conteúdo completo do arquivo, mas o snapshot fornecido está truncado com '…' dentro de GIT_CLEAN_CLUSTERS. Reescrever improve.py assim inventaria as funções de ledger, review e develop não exibidas, podendo destruir a implementação atual em disco. A mudança pretendida para a próxima rodada, com o arquivo inteiro, é: no caminho de rejeição do review, gravar review_feedback completo e o motivo da rejeição no registro da proposta, e expor esses campos ao develop na rodada seguinte."
