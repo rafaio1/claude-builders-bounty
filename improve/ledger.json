@@ -951,7 +951,7 @@
       "title": "Eval leve sobre traces sanitizados da GhostCLI",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Com traces sanitizados persistidos, um eval mínimo consegue apontar falhas recorrentes e dar sinal objetivo ao improve, fechando o loop de aprendizagem.",
       "change": "Em improve.py, adicionar função de eval que lê os traces sanitizados da GhostCLI e resume sucesso/falha por comando, alimentando o próximo develop; sem gerar novo script.",
       "never": [
@@ -965,7 +965,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli",
       "map_id": "20260816T180205Z",
       "history": [
         {
@@ -982,6 +982,11 @@
           "at": "2026-08-16T19:48:52+00:00",
           "event": "requeued",
           "detail": "conteúdo recusado em src/agentic/improve.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+        },
+        {
+          "at": "2026-08-16T20:24:55+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
         }
       ],
       "review_feedback": "conteúdo recusado em src/agentic/improve.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
