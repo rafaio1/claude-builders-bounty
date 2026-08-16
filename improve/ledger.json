@@ -951,7 +951,7 @@
       "title": "Eval leve sobre traces sanitizados da GhostCLI",
       "kind": "improvement",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Com traces sanitizados persistidos, um eval mínimo consegue apontar falhas recorrentes e dar sinal objetivo ao improve, fechando o loop de aprendizagem.",
       "change": "Em improve.py, adicionar função de eval que lê os traces sanitizados da GhostCLI e resume sucesso/falha por comando, alimentando o próximo develop; sem gerar novo script.",
       "never": [
@@ -965,7 +965,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli",
+      "branch": "",
       "map_id": "20260816T180205Z",
       "history": [
         {
@@ -987,9 +987,14 @@
           "at": "2026-08-16T20:24:55+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+        },
+        {
+          "at": "2026-08-16T20:31:44+00:00",
+          "event": "requeued",
+          "detail": "A proposta exige a adição de uma função de eval em src/agentic/improve.py. No entanto, o conteúdo do arquivo fornecido no prompt foi truncado (interrompido em GIT_CLEAN_CLUSTERS). Como a regra exige devolver o 'arquivo inteiro' e não possuo o restante do código-fonte, qualquer tentativa de reescrita removeria funções críticas existentes, quebrando o módulo improve. Adicionalmente, o review_feedbac…"
         }
       ],
-      "review_feedback": "conteúdo recusado em src/agentic/improve.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+      "review_feedback": "A proposta exige a adição de uma função de eval em src/agentic/improve.py. No entanto, o conteúdo do arquivo fornecido no prompt foi truncado (interrompido em GIT_CLEAN_CLUSTERS). Como a regra exige devolver o 'arquivo inteiro' e não possuo o restante do código-fonte, qualquer tentativa de reescrita removeria funções críticas existentes, quebrando o módulo improve. Adicionalmente, o review_feedback anterior aponta recusa por presença de AGENTIC_LIVE_TRADE\\s*=\\s*1, o que demandaria inspeção completa do arquivo para garantir a sanitização correta. Seguindo a diretriz de segurança ('Se a mudança não couber de forma segura, devolva files vazio e explique em summary'), não altero arquivos nesta iteração para preservar a integridade do repositório."
     },
     {
       "id": "imp-20260816-fortalecer-o-ciclo-develop-review-para-corre-o-e",
