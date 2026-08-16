@@ -70,8 +70,8 @@ start_managed() {
   systemctl start "${UNIT_IMPROVE_MAP_TIMER}"
   systemctl start "${UNIT_IMPROVE_DEV_TIMER}"
   systemctl start "${UNIT_IMPROVE_REVIEW_TIMER}"
-  systemctl start "${UNIT_INTEGRITY}" || true
   systemctl start "${UNIT_INTEGRITY_TIMER}"
+  systemctl start "${UNIT_INTEGRITY}" || true
   systemctl is-active --quiet "${UNIT_LOOP}" || die "${UNIT_LOOP} não iniciou"
   systemctl is-active --quiet "${UNIT_IMPROVE_MAP_TIMER}" || die "${UNIT_IMPROVE_MAP_TIMER} não iniciou"
   systemctl is-active --quiet "${UNIT_IMPROVE_DEV_TIMER}" || die "${UNIT_IMPROVE_DEV_TIMER} não iniciou"
