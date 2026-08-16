@@ -1,0 +1,429 @@
+{
+  "id": "20260816T230333Z",
+  "created_at": "2026-08-16T23:03:33+00:00",
+  "summary": "Sistema estável com git limpo; gargalos concentram-se em validação funcional, resiliência a falhas transitórias e observabilidade estruturada.",
+  "census": {
+    "generated_at": "2026-08-16T23:01:07+00:00",
+    "last_tick": "2026-08-16T23:00:45+00:00",
+    "tools": {
+      "playwright": true,
+      "playwright_mcp": true,
+      "jq": true,
+      "ghostcli": true,
+      "bybit_key": true,
+      "bybit_secret": true,
+      "bybit_env_file": true
+    },
+    "stats": {
+      "playwright": true,
+      "ghostcli": true
+    },
+    "code_facts": [
+      "O loop em execução é deploy/agentic-loop.service (ExecStart python -m agentic loop). Não existe src/agentic/loop.sh; não criar scripts novos.",
+      "O motor é src/agentic/loop.py (tick de saúde), env.py (GhostCLI+Bybit sem imprimir secrets), ghostcli.py (API), improve.py (map/develop/review).",
+      "Limites atuais do loop systemd: --interval 90. Mantenha AGENTIC_LIVE_TRADE=0. O tick só faz saúde de ferramentas; não envia ordens Bybit.",
+      "Limites do loop vêm da unit systemd (--interval). Mantenha AGENTIC_LIVE_TRADE=0; o loop nunca envia ordens Bybit.",
+      "Credenciais Bybit canónicas: /root/.automaton/bybit-murre.env. Env interna em .env gitignorado e internal/load-env.sh. Nunca colar chaves no git.",
+      "Navegador: playwright-cli / playwright-mcp headless --no-sandbox. Preferir CLI a MCP para poupar tokens.",
+      "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
+      "Integridade git_clean exige working tree limpa na main. Não faça um único commit com todos os arquivos sujos: fatie (motor: loop/env/cli vs playbook improve/integrity vs ferramentas). Cada proposta git_clean só versiona os files_hint da fatia. Se o review rejeitar ou o pytest falhar, a proposta volta a pending com review_feedback — o develop seguinte corrige EXATAMENTE o parecer, sem alargar escopo. PROIBIDO: reset --hard, checkout --, clean -fd, --no-verify, force, commitar .env/data/secrets, ligar AGENTIC_LIVE_TRADE=1, criar loop.sh.",
+      "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+      "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
+      "Portal autenticado em agentic-portal.service (porta 8767). Theme=portal para templates/CSS/JS. Não gravar senha em texto; só Argon2id em /etc/agentic-portal/credentials."
+    ],
+    "loop": {
+      "interval": 90,
+      "live_trade_disabled": true,
+      "exec_start": "/Agentic/.venv/bin/python -m agentic loop --interval 90"
+    },
+    "integrity": {
+      "git_clean": true,
+      "dirty_paths": [],
+      "git_status": ""
+    }
+  },
+  "added": [
+    "imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
+    "imp-20260816-ghostcli-sem-retry-para-falhas-transit-rias-de-r",
+    "imp-20260816-review-feedback-n-o-parseado-estruturalmente-par",
+    "imp-20260816-sem-circuit-breaker-para-falhas-consecutivas-de",
+    "imp-20260816-wrapper-playwright-cli-com-sa-da-token-eficiente",
+    "imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+    "imp-20260816-eval-harness-para-decis-es-do-agente-com-cen-rio",
+    "imp-20260816-verificador-autom-tico-de-conformidade-com-const",
+    "imp-20260816-parser-estruturado-de-logs-com-jq-para-debugging"
+  ],
+  "proposals": [
+    {
+      "id": "imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
+      "key": "4ed7c4dc8e2e4ac3",
+      "canon": "1191c60260447ed8",
+      "title": "Tick de saúde verifica presença mas não funcionamento real",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O health tick em loop.py confirma que playwright/jq/ghostcli estão instalados, mas não testa se respondem corretamente, permitindo falhas silenciosas que só aparecem em produção.",
+      "change": "Adicionar smoke test leve no tick: playwright --version + carregamento de página about:blank, jq --version, ghostcli status básico. Registrar resultado estruturado por ferramenta.",
+      "never": [
+        "enviar ordens Bybit",
+        "aumentar intervalo do loop",
+        "logar secrets"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-ghostcli-sem-retry-para-falhas-transit-rias-de-r",
+      "key": "1362930308e9f86e",
+      "canon": "65212447b771fc25",
+      "title": "GhostCLI sem retry para falhas transitórias de rede",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Timeouts ou erros HTTP 5xx na API GhostCLI abortam a operação imediatamente, gerando falsos negativos no tick de saúde e desperdiçando ciclos do loop.",
+      "change": "Implementar retry com backoff exponencial (máximo 3 tentativas, 1s/2s/4s) para erros HTTP 5xx e ConnectionError em ghostcli.py, sem retry em 4xx de autenticação.",
+      "never": [
+        "expor segredos em logs de retry",
+        "retry em erros de autenticação (401/403)",
+        "alterar credenciais ou endpoint"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-review-feedback-n-o-parseado-estruturalmente-par",
+      "key": "80fdaa072782e111",
+      "canon": "1cc163bc4d02c621",
+      "title": "Review feedback não é parseado estruturalmente para correção precisa",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita uma proposta, o develop seguinte recebe feedback textual sem estrutura, dificultando correção cirúrgica e causando alargamento de escopo.",
+      "change": "Parsear review_feedback em improve.py para extrair arquivos afetados, mensagens de erro específicas e hints de correção, alimentando o contexto do próximo develop.",
+      "never": [
+        "auto-aplicar mudanças sem review",
+        "ignorar parecer explícito do reviewer",
+        "commitar múltiplas fatias de uma vez"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-sem-circuit-breaker-para-falhas-consecutivas-de",
+      "key": "35a84c6d961d83f5",
+      "canon": "990ba51c27827dfe",
+      "title": "Sem circuit breaker para falhas consecutivas de ferramenta",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Se uma ferramenta falha repetidamente, o loop continua tentando a cada tick de 90s sem diagnóstico claro, gastando recursos e poluindo logs.",
+      "change": "Adicionar contador de falhas consecutivas em loop.py; após 3 falhas seguidas, marcar ferramenta como degradada, logar alerta estruturado e pular verificação por N ticks.",
+      "never": [
+        "desabilitar ferramenta permanentemente",
+        "enviar ordens Bybit",
+        "alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-wrapper-playwright-cli-com-sa-da-token-eficiente",
+      "key": "efe60b1c04c2b415",
+      "canon": "297a9550251bfb33",
+      "title": "Wrapper playwright-cli com saída token-eficiente",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Playwright MCP consome mais tokens que o necessário para operações simples de navegação; CLI direto com filtro de output reduz custo sem perder funcionalidade.",
+      "change": "Criar wrapper em src/agentic/tools/ que invoca playwright-cli headless --no-sandbox e filtra output para apenas dados essenciais (status HTTP, título, contagem de links), descartando HTML bruto.",
+      "never": [
+        "usar MCP quando CLI basta",
+        "logar conteúdo sensível de páginas autenticadas",
+        "executar JavaScript fora do sandbox"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright_wrapper.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+      "key": "d893029393c53c49",
+      "canon": "6e5aa25aa12fa503",
+      "title": "Sanitizador de traces GhostCLI para análise segura",
+      "kind": "improvement",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
+      "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
+      "never": [
+        "logar secrets Bybit ou GhostCLI",
+        "persistir traces não sanitizados",
+        "alterar fluxo de trade ou payout"
+      ],
+      "files_hint": [
+        "src/agentic/traces.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-eval-harness-para-decis-es-do-agente-com-cen-rio",
+      "key": "aa3e8dd00ce7ad25",
+      "canon": "e4cac88a71c3c2e9",
+      "title": "Eval harness para decisões do agente com cenários reproduzíveis",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Não há forma sistemática de avaliar se o agente toma decisões corretas ao longo do tempo; um eval harness permite detectar regressões e validar melhorias.",
+      "change": "Criar eval harness em src/agentic/eval.py que executa cenários de teste pré-definidos (input, contexto, decisão esperada) e compara contra a decisão real do agente, gerando relatório de acurácia.",
+      "never": [
+        "executar trades live",
+        "modificar OWNER_SHARE_RATE",
+        "ignorar constituição ARO ou STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/eval.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-verificador-autom-tico-de-conformidade-com-const",
+      "key": "27e27809f35b62fa",
+      "canon": "8f58375defd3c75b",
+      "title": "Verificador automático de conformidade com constituição ARO",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Regras imutáveis como OWNER_SHARE_RATE=0.20 e AGENTIC_LIVE_TRADE=0 precisam de verificação contínua para prevenir drift acidental ou configuração incorreta.",
+      "change": "Adicionar check em src/agentic/aro/constitution.py que valida OWNER_SHARE_RATE, flag AGENTIC_LIVE_TRADE=0 e ausência de flags de trading antes de cada operação do motor, falhando com erro claro se violado.",
+      "never": [
+        "modificar OWNER_SHARE_RATE",
+        "permitir live trade",
+        "ignorar STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-parser-estruturado-de-logs-com-jq-para-debugging",
+      "key": "9dc056cd499dbd42",
+      "canon": "78abe09469011867",
+      "title": "Parser estruturado de logs com jq para debugging rápido",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Logs atuais são textuais e difíceis de consultar; um parser estruturado permite filtrar por ferramenta, status ou erro sem grep manual.",
+      "change": "Criar parser em src/agentic/tools/ que usa jq para extrair campos relevantes (timestamp, tool, status, error_code) de logs JSON estruturados, com suporte a filtros por severidade.",
+      "never": [
+        "expor campos sensíveis como tokens",
+        "modificar logs originais",
+        "executar queries que exponham dados de trade"
+      ],
+      "files_hint": [
+        "src/agentic/tools/log_parser.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
+      "key": "e612baddd0bdd68a",
+      "canon": "3d02ba6803d151c6",
+      "title": "Status do loop com saúde de Playwright e GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick precisa deixar óbvio se o navegador ou a API GhostCLI caiu, sem imprimir secrets.",
+      "change": "Incluir no data/status.json versões/ok de playwright-cli e ghostcli, só booleanos para Bybit.",
+      "never": [
+        "gravar BYBIT_* ou GHOSTCLI_API_KEY no status"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra",
+      "key": "68e40d322ea82fbd",
+      "canon": "80ecdbe731131900",
+      "title": "Documentar skill playwright-cli no mapa de ferramentas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes GhostCLI descobrem o browser pela skill; o mapa precisa apontar o comando certo.",
+      "change": "Manter AGENTS.md com open/snapshot/click e headless --no-sandbox.",
+      "never": [
+        "colar chaves Bybit ou GhostCLI"
+      ],
+      "files_hint": [
+        "AGENTS.md"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-traces-sanitizados-da-ghostcli-no-improve",
+      "key": "db5193b3daedeefc",
+      "canon": "9c6c9b082cbbb0b8",
+      "title": "Traces sanitizados da GhostCLI no improve",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falhas de JSON no map/develop/review não ficam auditáveis para melhorar prompts.",
+      "change": "Contar parse fail por tarefa (map, develop, review) sem gravar o texto bruto.",
+      "never": [
+        "persistir prompts completos ou secrets"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr",
+      "key": "cb49b972a3ebddaf",
+      "canon": "1b609288af76d97b",
+      "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
+      "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
+      "never": [
+        "enviar ordem Bybit",
+        "copiar .env"
+      ],
+      "files_hint": [
+        "src/agentic/integrity.py",
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260816T230333Z",
+      "history": [
+        {
+          "at": "2026-08-16T23:03:33+00:00",
+          "event": "mapped",
+          "detail": "20260816T230333Z"
+        }
+      ]
+    }
+  ]
+}
