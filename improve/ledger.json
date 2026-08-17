@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T08:03:28+00:00",
+  "updated_at": "2026-08-17T09:04:18+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T080328Z",
+      "map_id": "20260817T090418Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T080328Z",
+      "map_id": "20260817T090418Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T080328Z",
+      "map_id": "20260817T090418Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T080328Z",
+      "map_id": "20260817T090418Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4139,6 +4139,149 @@
           "at": "2026-08-17T08:03:28+00:00",
           "event": "mapped",
           "detail": "20260817T080328Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
+      "key": "eb9927560ea57836",
+      "canon": "dee566e4b4a43ed3",
+      "title": "Falha crítica no smoke test do GhostCLI",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O census aponta 'os_error:FileNotFoundError' para o ghostcli, quebrando a fila de develop/review que depende dos modelos GhostCLI.",
+      "change": "Ajustar a resolução de caminhos ou instalação do binário/wrapper do GhostCLI no environment do .venv.",
+      "never": [
+        "Hardcodar caminhos absolutos de binários externos",
+        "Commitar chaves API ou tokens no git"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T090418Z",
+      "history": [
+        {
+          "at": "2026-08-17T09:04:18+00:00",
+          "event": "mapped",
+          "detail": "20260817T090418Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-rigidez-do-intervalo-do-loop-via-systemd",
+      "key": "376be467c90a1452",
+      "canon": "fabbd0e7cb3301c7",
+      "title": "Rigidez do intervalo do loop via systemd",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O intervalo de 90s é ditado pelo argumento --interval da unit systemd, limitando ajustes dinâmicos de saúde sem reiniciar o serviço.",
+      "change": "Permitir que o loop leia um valor de intervalo de variável de ambiente como fallback, mantendo o default de 90s.",
+      "never": [
+        "Modificar a unit systemd via código",
+        "Ativar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T090418Z",
+      "history": [
+        {
+          "at": "2026-08-17T09:04:18+00:00",
+          "event": "mapped",
+          "detail": "20260817T090418Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-otimiza-o-de-tokens-no-snapshot-do-playwright",
+      "key": "5cc7bfa03f1d24ac",
+      "canon": "b6d51259de9e19c3",
+      "title": "Otimização de tokens no snapshot do Playwright",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O Playwright CLI é preferido sobre o MCP para poupar tokens, mas snapshots de páginas grandes ainda podem estourar o contexto.",
+      "change": "Adicionar truncamento inteligente ou extração de texto estruturado no wrapper da ferramenta antes de enviar o snapshot para o LLM.",
+      "never": [
+        "Voltar a usar MCP para páginas extensas",
+        "Executar JS arbitrário sem --no-sandbox"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T090418Z",
+      "history": [
+        {
+          "at": "2026-08-17T09:04:18+00:00",
+          "event": "mapped",
+          "detail": "20260817T090418Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-eval-de-pre-flight-e-traces-sanitizados",
+      "key": "e13a1ef3b15bcad1",
+      "canon": "3d6664bb0611398f",
+      "title": "Eval de pre-flight e traces sanitizados",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A falha do GhostCLI passou despercebida até o census. Traces sanitizados ajudam a IA a diagnosticar drifts de ambiente.",
+      "change": "Criar um eval de pre-flight no improve.py que valide as ferramentas e grave traces estruturados (sem secrets) para auto-diagnóstico.",
+      "never": [
+        "Gravar traces brutos com PII ou credenciais Bybit",
+        "Reiniciar o serviço systemd automaticamente sem review"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T090418Z",
+      "history": [
+        {
+          "at": "2026-08-17T09:04:18+00:00",
+          "event": "mapped",
+          "detail": "20260817T090418Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-inje-o-estrita-de-feedback-na-fila-de-develop",
+      "key": "aef1f3d7b71278b9",
+      "canon": "a8412c4897fe9ae5",
+      "title": "Injeção estrita de feedback na fila de develop",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita ou o pytest falha, o develop seguinte deve corrigir exatamente o parecer sem alargar o escopo.",
+      "change": "Refatorar o claude_cli.py para injetar o review_feedback como uma restrição de sistema rigorosa no prompt do Claude CLI.",
+      "never": [
+        "Ignorar o feedback do reviewer",
+        "Usar git reset --hard ou clean -fd para resolver falhas"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T090418Z",
+      "history": [
+        {
+          "at": "2026-08-17T09:04:18+00:00",
+          "event": "mapped",
+          "detail": "20260817T090418Z"
         }
       ]
     }
