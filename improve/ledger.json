@@ -1843,7 +1843,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
       "never": [
@@ -1855,7 +1855,7 @@
         "src/agentic/traces.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
       "map_id": "20260816T230333Z",
       "history": [
         {
@@ -1932,6 +1932,11 @@
           "at": "2026-08-17T02:30:17+00:00",
           "event": "reopened",
           "detail": "tests/ skip API key fixtures"
+        },
+        {
+          "at": "2026-08-17T02:30:18+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
         }
       ],
       "review_feedback": "Implemente sanitize_trace() em src/agentic/ghostcli.py (sem ficheiro novo). Teste em tests/test_ghostcli.py ou tests/test_sanitize_trace.py com placeholders."
