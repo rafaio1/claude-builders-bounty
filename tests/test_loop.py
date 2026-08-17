@@ -59,6 +59,22 @@ def test_census_booleans_only(tmp_path: Path) -> None:
         assert isinstance(value, bool)
 
 
+def test_census_smoke_structured(tmp_path: Path) -> None:
+    """Smoke tests devem devolver dict estruturado por ferramenta, não apenas bool."""
+    census = collect_census(tmp_path)
+    smoke = census.get("smoke")
+    assert isinstance(smoke, dict), "census deve conter chave 'smoke' com resultados estruturados"
+    expected_tools = {"playwright", "jq", "ghostcli"}
+    assert expected_tools.issubset(smoke.keys()), f"smoke deve cobrir {expected_tools}"
+    for tool_name, result in smoke.items():
+        assert isinstance(result, dict), f"smoke[{tool_name}] deve ser dict"
+        assert "ok" in result, f"smoke[{tool_name}] deve ter campo 'ok'"
+        assert isinstance(result["ok"], bool), f"smoke[{tool_name}].ok deve ser bool"
+        assert "error" in result, f"smoke[{tool_name}] deve ter campo 'error'"
+        # tools.X deve refletir smoke.X.ok para consistência
+        assert census["tools"][tool_name] == result["ok"]
+
+
 def test_tick_writes_last_tick_snapshot(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.delenv("BYBIT_REAL_API_KEY", raising=False)
     monkeypatch.delenv("BYBIT_API_KEY", raising=False)
