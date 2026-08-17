@@ -2309,7 +2309,7 @@
       "title": "Risco de secret vazar em traceback/trace da GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "rejected",
       "rationale": "env.py carrega GhostCLI+Bybit sem imprimir secrets, mas se ghostcli.py propagar erro com saída bruta (stderr/traceback), valores de /root/.automaton/bybit-murre.env podem chegar a log ou trace.",
       "change": "Centralizar um redact() em env.py que substitui qualquer valor carregado de .env/bybit-murre.env e aplicar a toda mensagem de erro/trace emitida por ghostcli.py antes de logar.",
       "never": [
@@ -2322,7 +2322,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-risco-de-secret-vazar-em-traceback-trace-da-ghos",
+      "branch": "",
       "map_id": "20260817T000436Z",
       "history": [
         {
@@ -2364,6 +2364,11 @@
           "at": "2026-08-17T19:09:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-risco-de-secret-vazar-em-traceback-trace-da-ghos"
+        },
+        {
+          "at": "2026-08-17T19:26:44+00:00",
+          "event": "review",
+          "detail": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact()/mask_secrets em env.py e aplicar às mensagens de erro em ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py). O patch modifica src/agentic/loop.py, que não está no files_hint, e não toca em ghostcli.py. Reabrir aplicando mask_secrets dentro de ghostcli.py (nos pontos onde stderr/traceback são capturados e pro… riscos=['Escopo incorreto: loop.py não é o alvo da proposta; ghostcli.py permanece sem redaction nos seus próprios caminhos de erro', 'Possível cobertura incompleta: erros emitidos diretamente por ghostcli.p… arquivos=src/agentic/loop.py"
         }
       ],
       "review_feedback": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact() em env.py e aplicar em ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py), mas o patch modifica src/agentic/http.py e src/agentic/loop.py sem tocar nos arquivos indicados. Não há evidência de que mask_secrets foi adicionado/centralizado em env.py nesta fatia, e ghostcli.py permanece inalterado. riscos=['Diff modifica arquivos fora do escopo declarado (http.py, loop.py em vez de env.py, ghostcli.py)', 'mask_secrets é importado de env.py mas nenhuma alteração em env.py é mostrada — pode quebrar se a … arquivos=src/agentic/http.py,src/agentic/loop.py"
