@@ -52,6 +52,6 @@ def test_tick_rejects_live_trade(tmp_path: Path) -> None:
 def test_census_booleans_only(tmp_path: Path) -> None:
     census = collect_census(tmp_path)
     tools = census["tools"]
-    assert set(tools) >= {"playwright", "ghostcli", "bybit_key", "bybit_secret"}
+    assert set(tools) >= {"playwright", "claude", "ghostcli", "bybit_key", "bybit_secret"}
     for value in tools.values():
         assert isinstance(value, bool)

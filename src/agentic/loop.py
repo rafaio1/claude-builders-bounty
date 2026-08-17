@@ -49,6 +49,7 @@ def collect_census(root: Path) -> dict[str, Any]:
             last_tick = ""
     playwright = bool(_which("playwright-cli")) and _cmd_ok(["playwright-cli", "--version"])
     playwright_mcp = bool(_which("playwright-mcp"))
+    claude = bool(_which("claude")) and _cmd_ok(["claude", "--version"])
     return {
         "generated_at": utcnow(),
         "last_tick": last_tick,
@@ -56,6 +57,7 @@ def collect_census(root: Path) -> dict[str, Any]:
             "playwright": playwright,
             "playwright_mcp": playwright_mcp,
             "jq": bool(_which("jq")),
+            "claude": claude,
             "ghostcli": bool(env.get("ghost_key")),
             "bybit_key": bool(env.get("bybit_key")),
             "bybit_secret": bool(env.get("bybit_secret")),
@@ -63,6 +65,7 @@ def collect_census(root: Path) -> dict[str, Any]:
         },
         "stats": {
             "playwright": playwright,
+            "claude": claude,
             "ghostcli": bool(env.get("ghost_key")),
         },
     }

@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import os
+import shutil
 from pathlib import Path
 
 AUTOMATON_ENV = Path("/root/.automaton/.env")
@@ -44,6 +45,13 @@ def apply() -> dict[str, object]:
     os.environ.setdefault("BYBIT_CATEGORY", "spot")
     os.environ.setdefault("BYBIT_ENV_FILE", str(BYBIT_ENV))
     os.environ.setdefault("AGENTIC_LIVE_TRADE", "0")
+    ghost_key = os.environ.get("GHOSTCLI_API_KEY") or os.environ.get("GHOSTCLI_KEY") or ""
+    if ghost_key:
+        os.environ.setdefault("ANTHROPIC_API_KEY", ghost_key)
+    ghost_base = (os.environ.get("GHOSTCLI_BASE_URL") or "https://ghostcli.dev").rstrip("/")
+    if ghost_base.endswith("/v1"):
+        ghost_base = ghost_base[:-3].rstrip("/")
+    os.environ.setdefault("ANTHROPIC_BASE_URL", ghost_base or "https://ghostcli.dev")
     mail_env = Path("/root/.automaton/aro-mail.env")
     if mail_env.is_file():
         for key, value in parse_env_file(mail_env).items():
@@ -54,6 +62,7 @@ def apply() -> dict[str, object]:
         "bybit_key": bool(os.environ.get("BYBIT_REAL_API_KEY") or os.environ.get("BYBIT_API_KEY")),
         "bybit_secret": bool(os.environ.get("BYBIT_REAL_API_SECRET") or os.environ.get("BYBIT_API_SECRET")),
         "ghost_key": bool(os.environ.get("GHOSTCLI_API_KEY")),
+        "claude": bool(shutil.which("claude")),
         "mail_key": bool(os.environ.get("AGENTMAIL_API_KEY")),
         "mail_address": bool(os.environ.get("ARO_MAIL_ADDRESS")),
         "mode": os.environ.get("BYBIT_MODE", ""),

@@ -40,16 +40,26 @@ class FakeGhost:
             "improvements": [],
         }
 
-    def develop_improvement(self, prompt: str) -> dict:
-        self.calls.append("develop")
-        return {
-            "summary": "nota de otimização",
-            "files": [{"path": "improve/NOTE.md", "content": "intervalo do loop\n"}],
-        }
-
     def review_improvement(self, prompt: str) -> dict:
         self.calls.append("review")
         return {"verdict": self.verdict, "reason": "patch pequeno e defensivo", "risks": []}
+
+
+def _fake_implement(root: Path):
+    def implement(prompt: str) -> dict:
+        assert "Documentar intervalo" in prompt or "PROPOSTA" in prompt
+        note = root / "improve" / "NOTE.md"
+        note.parent.mkdir(parents=True, exist_ok=True)
+        note.write_text("intervalo do loop\n", encoding="utf-8")
+        return {
+            "ok": True,
+            "summary": "SUMMARY: nota de otimização",
+            "output": "SUMMARY: nota de otimização",
+            "returncode": 0,
+            "model": "test-model",
+        }
+
+    return implement
 
 
 def _settings(root: Path) -> Settings:
@@ -170,6 +180,7 @@ def test_map_develop_review_applies_on_primary(tmp_path: Path) -> None:
         settings,
         git=git,
         ghost=ghost,
+        implementer=_fake_implement(tmp_path),
         tester=lambda: {"ok": True, "output": "ok"},
         restarter=lambda files: {"restarted": ["agentic-loop.service"], "note": "", "errors": []},
     )
@@ -178,6 +189,7 @@ def test_map_develop_review_applies_on_primary(tmp_path: Path) -> None:
     assert git.current_branch() in {"main", "master"}
     developed = pipeline.develop()
     assert developed["status"] == "in_review"
+    assert developed.get("via") == "claude_cli+ghostcli"
     assert git.current_branch() in {"main", "master"}
     reviewed = pipeline.review()
     assert reviewed["status"] == "applied"
@@ -193,6 +205,7 @@ def test_review_reject_does_not_merge(tmp_path: Path) -> None:
         settings,
         git=git,
         ghost=FakeGhost(verdict="reject"),
+        implementer=_fake_implement(tmp_path),
         tester=lambda: {"ok": True, "output": "ok"},
         restarter=lambda files: {"restarted": [], "note": "", "errors": []},
     )

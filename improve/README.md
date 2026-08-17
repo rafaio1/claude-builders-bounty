@@ -1,18 +1,18 @@
 # Improve pipeline
 
-Três executores GhostCLI otimizam o próprio Agentic. A versão **em execução** é sempre a branch `main` (ou `master`).
+Gestão de filas: map enfileira, develop despeja no **Claude CLI** (modelos GhostCLI), review aplica em `main`.
 
 ```
-improve/map/<stamp>     mapper (1h)  → merge do censo/ledger em main
-improve/dev/<id>        developer    → patch + pytest; não entra em execução ainda
-main                    reviewer     → Ghost review + pytest + merge + restart do loop
+improve/map/<stamp>     mapper (GhostCLI JSON)  → ledger em main
+improve/dev/<id>        Claude CLI + GhostCLI   → implementa no disco; pytest
+main                    reviewer (GhostCLI)     → merge + restart do loop
 ```
 
 ## Executores
 
-1. **map** (`agentic-improve-map.timer`, horário): lê a saúde das ferramentas (Playwright, GhostCLI, Bybit só booleanos), o kill switch e o git, e pede à GhostCLI um mapa de bottlenecks **e** melhorias plausíveis. Grava `improve/maps/*.json`, atualiza `improve/ledger.json` e `improve/CURRENT.md`.
-2. **develop** (`agentic-improve-dev.timer`, ~20 min): pega a proposta `pending` de maior prioridade, reclama em `main`, abre `improve/dev/<id>` e pede à Ghost o conteúdo completo dos arquivos. Recusa `.env`, `data/`, secrets Bybit/GhostCLI e `AGENTIC_LIVE_TRADE=1`. pytest tem de passar.
-3. **review** (`agentic-improve-review.timer`, ~20 min): Ghost revisa o diff contra `main`. Só então faz merge em `main` e reinicia `agentic-loop.service`. Rejeição **não** mistura o código na versão que está rodando.
+1. **map** (`agentic-improve-map.timer`, horário): censo (Playwright, Claude CLI, GhostCLI, Bybit só booleanos) → GhostCLI devolve JSON de bottlenecks/melhorias → `improve/ledger.json` + `CURRENT.md`.
+2. **develop** (`agentic-improve-dev.timer`, ~20 min): pega `pending` de maior prioridade, reclama branch `improve/dev/<id>` e **despeja o prompt no Claude CLI**. Auth/modelos via GhostCLI (`ANTHROPIC_BASE_URL=https://ghostcli.dev`, `GHOSTCLI_MODEL` / `claude-sonnet-5[1m]`). Claude edita o disco com ferramentas; o pipeline só valida paths, pytest e commit. Recusa `.env`, `data/`, secrets e `AGENTIC_LIVE_TRADE=1`.
+3. **review** (`agentic-improve-review.timer`, ~20 min): Ghost revisa o diff contra `main`. Só então merge + restart `agentic-loop.service`.
 
 ## Comandos
 
@@ -28,7 +28,7 @@ main                    reviewer     → Ghost review + pytest + merge + restart
 scripts/local-control.sh {install|start|stop|restart|status|logs}
 ```
 
-Gates determinísticos valem mais que a Ghost: sem trade live, sem secrets, sem PoC. O loop de execução continua com `AGENTIC_LIVE_TRADE=0`.
+Gates determinísticos valem mais que a IA: sem trade live, sem secrets, sem PoC. O loop de execução continua com `AGENTIC_LIVE_TRADE=0`.
 
 ## Integridade
 
