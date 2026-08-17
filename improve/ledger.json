@@ -1769,7 +1769,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
       "never": [
@@ -1781,7 +1781,7 @@
         "src/agentic/traces.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+      "branch": "",
       "map_id": "20260816T230333Z",
       "history": [
         {
@@ -1793,8 +1793,14 @@
           "at": "2026-08-17T00:04:37+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+        },
+        {
+          "at": "2026-08-17T00:11:13+00:00",
+          "event": "requeued",
+          "detail": "Nenhuma alteração foi gerada. A proposta pede implementação em src/agentic/traces.py, mas esse arquivo não consta entre os arquivos existentes fornecidos e a política permite apenas paths já existentes, exceto testes novos. Além disso, ghostcli.py e improve.py foram fornecidos truncados; reescrevê-los por completo exigiria inventar código ausente, com risco de quebrar o pipeline ou o serviço em ex…"
         }
-      ]
+      ],
+      "review_feedback": "Nenhuma alteração foi gerada. A proposta pede implementação em src/agentic/traces.py, mas esse arquivo não consta entre os arquivos existentes fornecidos e a política permite apenas paths já existentes, exceto testes novos. Além disso, ghostcli.py e improve.py foram fornecidos truncados; reescrevê-los por completo exigiria inventar código ausente, com risco de quebrar o pipeline ou o serviço em execução. Para manter segurança e integridade, devolvo files vazio."
     },
     {
       "id": "imp-20260816-eval-harness-para-decis-es-do-agente-com-cen-rio",
