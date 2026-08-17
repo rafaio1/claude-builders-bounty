@@ -36,6 +36,7 @@ ALLOWED_PREFIXES = (
     "pyproject.toml",
     ".env.example",
     ".gitignore",
+    ".cursor/",
 )
 FORBIDDEN_PATH_PARTS = (
     ".env",
@@ -220,7 +221,7 @@ HINT_RULES = (
         ("src/agentic/ghostcli.py", "src/agentic/improve.py"),
     ),
 )
-CREATE_PREFIXES = ("tests/", "improve/", "deploy/")
+CREATE_PREFIXES = ("tests/", "improve/", "deploy/", ".cursor/")
 
 
 def infer_theme(raw: Any, *, title: str = "", change: str = "", files: list[str] | None = None) -> str:
