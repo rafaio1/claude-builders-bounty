@@ -92,6 +92,26 @@ def _load_into_environ() -> None:
             os.environ.setdefault(mkey, mvalue)
 
 
+def resolve_ghostcli_binary() -> str | None:
+    """Locate the ghostcli executable, preferring the active venv bin.
+
+    Searches in order:
+      1. ``sys.prefix/bin/ghostcli`` (covers .venv when activated or not)
+      2. Standard PATH via :func:`shutil.which`
+
+    Returns the absolute path as a string, or ``None`` if not found.
+    This helper exists so smoke tests and future subprocess callers never
+    raise ``FileNotFoundError`` due to an unactivated virtualenv.
+    """
+    import sys
+
+    venv_candidate = Path(sys.prefix) / "bin" / "ghostcli"
+    if venv_candidate.is_file() and os.access(venv_candidate, os.X_OK):
+        return str(venv_candidate.resolve())
+    found = shutil.which("ghostcli")
+    return str(Path(found).resolve()) if found else None
+
+
 def apply() -> dict[str, object]:
     """Load env files once and return a status summary (no secret values)."""
     global _APPLY_CACHE
@@ -100,6 +120,7 @@ def apply() -> dict[str, object]:
 
     _load_into_environ()
 
+    ghost_bin = resolve_ghostcli_binary()
     _APPLY_CACHE = {
         "bybit_env_file": BYBIT_ENV.is_file(),
         "bybit_key": bool(os.environ.get("BYBIT_REAL_API_KEY") or os.environ.get("BYBIT_API_KEY")),
@@ -107,6 +128,7 @@ def apply() -> dict[str, object]:
             os.environ.get("BYBIT_REAL_API_SECRET") or os.environ.get("BYBIT_API_SECRET")
         ),
         "ghost_key": bool(os.environ.get("GHOSTCLI_API_KEY")),
+        "ghostcli_bin": ghost_bin,
         "claude": bool(shutil.which("claude")),
         "mail_key": bool(os.environ.get("AGENTMAIL_API_KEY")),
         "mail_address": bool(os.environ.get("ARO_MAIL_ADDRESS")),
