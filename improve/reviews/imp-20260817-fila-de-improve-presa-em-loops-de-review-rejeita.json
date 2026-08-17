@@ -1,0 +1,21 @@
+{
+  "at": "2026-08-17T14:57:45+00:00",
+  "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+  "proposal_id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+  "verdict": "approve",
+  "reason": "Patch defensivo pequeno, limitado a src/agentic/improve.py e testes, alinhado à proposta: evita requeue infinito ao garantir estado blocked com registro de histórico e feedback quando a proposta não é mais elegível. Não há segredos, modo live, exploit ou arquivo novo fora do escopo.",
+  "risks": [
+    "Bloqueio prematuro se can_requeue classificar incorretamente uma proposta como não requeueável",
+    "Necessário garantir que os testes passem com a importação de MAX_REQUEUES"
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".......................................................                  [100%]\n55 passed in 14.09s"
+  },
+  "files": [
+    "src/agentic/improve.py",
+    "tests/test_improve.py"
+  ]
+}
