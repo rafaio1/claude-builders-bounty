@@ -3466,7 +3466,7 @@
       "title": "Avaliação automática de prompts (Eval Traces)",
       "kind": "improvement",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Não há feedback loop estruturado (theme=ai) para medir se os prompts enviados ao Claude CLI estão gerando código limpo ou causando rejeição no reviewer.",
       "change": "Implementar módulo de 'eval' em improve.py que cruza review_feedback do ledger com traces da GhostCLI, gerando métricas de eficácia de prompts.",
       "never": [
@@ -3491,6 +3491,11 @@
           "at": "2026-08-17T07:45:37+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces"
+        },
+        {
+          "at": "2026-08-17T08:31:10+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

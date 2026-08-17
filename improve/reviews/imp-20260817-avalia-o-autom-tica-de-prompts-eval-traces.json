@@ -1,0 +1,22 @@
+{
+  "at": "2026-08-17T08:31:10+00:00",
+  "branch": "improve/dev/imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces",
+  "proposal_id": "imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces",
+  "verdict": "approve",
+  "reason": "O diff corresponde exatamente à proposta: implementa 'eval' como função eval_traces() dentro do ficheiro permitido src/agentic/improve.py (sem criar módulo novo proibido como traces.py), cruzando review_feedback do ledger com traces em improve/traces e gerando métricas de eficácia de prompts. A ação é ligada ao run_action existente (caminho já chamado pelo CLI), é somente leitura e defensiva (IO best-effort, captura OSError/JSONDecodeError, limite de 200 traces, não quebra o pipeline). Não toca em AGENTIC_LIVE_TRADE, secrets Bybit/GhostCLI, ARO.md/constituição, data/.env ou loop.sh, e os testes cobrem as métricas com valores coerentes com a implementação (coverage 66,7%, requeue 33,3%, contagem de themes/methods e parse_fail=0).",
+  "risks": [
+    "Depende de símbolos já existentes em improve.py (load_json, empty_ledger, utcnow, LEDGER_PATH); se algum não existir, os testes falham — validar CI.",
+    "Assume que LEDGER_PATH aponta para improve/ledger.json, conforme usado no teste; confirmar convenção atual.",
+    "Métricas de parse_fail usam heurística simples de substring sobre parsed_summary; pode sub/sobrestimar falhas, mas é apenas observabilidade, sem efeito de escrita."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "....................................................                     [100%]\n52 passed in 3.26s"
+  },
+  "files": [
+    "src/agentic/improve.py",
+    "tests/test_improve.py"
+  ]
+}
