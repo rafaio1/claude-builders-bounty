@@ -1184,7 +1184,7 @@
       "title": "Tick de saúde sem rastro persistente de frescor",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O loop roda a cada 90s, mas se um tick falhar silenciosamente só o próximo censo revela; sem um arquivo de estado datado, portal e reviewer ficam cegos entre censos.",
       "change": "Em loop.py, ao fim de cada tick, escrever last_tick ISO-8601 e contagem de ferramentas ok em arquivo de estado local (fora do git) já consumido pelo censo; não alterar o interval da unit.",
       "never": [
@@ -1208,6 +1208,11 @@
           "at": "2026-08-17T06:44:43+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-sem-rastro-persistente-de-frescor"
+        },
+        {
+          "at": "2026-08-17T06:47:21+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },
