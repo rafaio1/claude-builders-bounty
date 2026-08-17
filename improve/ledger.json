@@ -2998,7 +2998,7 @@
       "title": "Desperdício de tokens com Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Agentes ainda podem invocar playwright-mcp em vez de playwright-cli para tarefas simples, consumindo tokens desnecessários e aumentando a latência do tick.",
       "change": "Adicionar wrapper ou regra estrita no seletor de ferramentas que force playwright-cli para navegação headless básica, reservando MCP apenas para inspeção de DOM complexa.",
       "never": [
@@ -3009,13 +3009,18 @@
         "src/agentic/tools/playwright.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp",
       "map_id": "20260817T030226Z",
       "history": [
         {
           "at": "2026-08-17T03:02:26+00:00",
           "event": "mapped",
           "detail": "20260817T030226Z"
+        },
+        {
+          "at": "2026-08-17T08:06:13+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp"
         }
       ]
     },
