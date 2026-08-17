@@ -802,7 +802,7 @@
       "title": "Tick de saúde não persiste um snapshot de estado legível por máquina",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Sem um snapshot sanitizado por tick, o improve/review re-descobre o mesmo estado a cada ciclo, gastando tokens e podendo gerar propostas repetidas.",
       "change": "Em loop.py, ao fim do tick, escrever um JSON de saúde sanitizado em caminho runtime gitignorado (ex.: data/health.json) com status por ferramenta e timestamp; sem segredos.",
       "never": [
@@ -816,7 +816,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado",
       "map_id": "20260816T180205Z",
       "history": [
         {
@@ -833,6 +833,11 @@
           "at": "2026-08-17T01:09:32+00:00",
           "event": "requeued",
           "detail": "conteúdo recusado em src/agentic/loop.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+        },
+        {
+          "at": "2026-08-17T01:53:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado"
         }
       ],
       "review_feedback": "conteúdo recusado em src/agentic/loop.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
