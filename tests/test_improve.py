@@ -100,7 +100,9 @@ def test_path_and_content_gates() -> None:
     assert not is_allowed_path("data/status.json")
     assert not is_allowed_path("../etc/passwd")
     assert scan_forbidden("AGENTIC_LIVE_TRADE=1") is not None
-    assert scan_forbidden("BYBIT_API_KEY=abc") is not None
+    assert scan_forbidden("BYBIT_API_KEY=abcd1234567890secret") is not None
+    assert scan_forbidden("GHOSTCLI_API_KEY=test") is None
+    assert scan_forbidden("GHOSTCLI_API_KEY=REDACTED") is None
     assert scan_forbidden("print('ok')") is None
 
 
@@ -154,7 +156,7 @@ def test_apply_files_rejects_secrets(tmp_path: Path) -> None:
     try:
         apply_files(
             tmp_path,
-            [{"path": "src/agentic/x.py", "content": "GHOSTCLI_API_KEY=abcd"}],
+            [{"path": "src/agentic/x.py", "content": "GHOSTCLI_API_KEY=gk-live-reallooking-secret99"}],
         )
     except ValueError as exc:
         assert "recusado" in str(exc)

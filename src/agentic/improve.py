@@ -50,9 +50,9 @@ FORBIDDEN_PATH_PARTS = (
 FORBIDDEN_RE = (
     re.compile(r"AGENTIC_LIVE_TRADE\s*=\s*1", re.I),
     re.compile(r"BEGIN (RSA |OPENSSH )?PRIVATE KEY"),
-    re.compile(r"GHOSTCLI_API_KEY\s*=\s*\S+"),
-    re.compile(r"BYBIT_(REAL_)?API_(KEY|SECRET)\s*=\s*\S+"),
-    re.compile(r"AGENTMAIL_API_KEY\s*=\s*\S+"),
+    re.compile(r"(?P<key>GHOSTCLI_API_KEY)\s*=\s*(?P<val>\S+)"),
+    re.compile(r"(?P<key>BYBIT_(?:REAL_)?API_(?:KEY|SECRET))\s*=\s*(?P<val>\S+)"),
+    re.compile(r"(?P<key>AGENTMAIL_API_KEY)\s*=\s*(?P<val>\S+)"),
     re.compile(r"\bsqlmap\b", re.I),
     re.compile(r"\bnuclei\b", re.I),
     re.compile(r"\bffuf\b", re.I),
@@ -66,6 +66,19 @@ _LIVE_TRADE_OK_CONTEXT = re.compile(
     r"live_trade_disabled|AGENTIC_LIVE_TRADE\s*=\s*0)",
     re.I,
 )
+_PLACEHOLDER_SECRET = re.compile(
+    r"^(?:test|testing|xxx+|redacted|changeme|dummy|fake|example|sample|"
+    r"your_?api_?key|gk-test|replace.?me|\*+|x{4,}|<\w+>|\{[^}]+\}|\\S\+|\\s\*)$",
+    re.I,
+)
+_SECRET_KEY_NAMES = {
+    "GHOSTCLI_API_KEY",
+    "BYBIT_API_KEY",
+    "BYBIT_API_SECRET",
+    "BYBIT_REAL_API_KEY",
+    "BYBIT_REAL_API_SECRET",
+    "AGENTMAIL_API_KEY",
+}
 SLUG_RE = re.compile(r"[^a-z0-9]+")
 MAX_FILES = 8
 MAX_FILE_BYTES = 120_000
@@ -588,10 +601,34 @@ def is_allowed_path(rel: str) -> bool:
     return any(path.startswith(prefix) for prefix in ALLOWED_PREFIXES if prefix.endswith("/"))
 
 
+def _secret_value_is_placeholder(raw: str) -> bool:
+    value = (raw or "").strip().strip('"').strip("'").strip("`")
+    if not value:
+        return True
+    if _PLACEHOLDER_SECRET.match(value):
+        return True
+    # Short fixtures in unit tests (real Ghost/Bybit keys are much longer).
+    if len(value) < 12:
+        return True
+    lower = value.lower()
+    if any(token in lower for token in ("redact", "example", "dummy", "fake", "test")):
+        return True
+    return False
+
+
 def scan_forbidden(text: str) -> str | None:
     blob = text or ""
     for pattern in FORBIDDEN_RE:
         for match in pattern.finditer(blob):
+            groups = match.groupdict() if match.re.groupindex else {}
+            key = str(groups.get("key") or "")
+            val = str(groups.get("val") or "")
+            if key.upper() in _SECRET_KEY_NAMES or "API_KEY" in pattern.pattern or "API_SECRET" in pattern.pattern:
+                if val and _secret_value_is_placeholder(val):
+                    continue
+                # Regex / docs that mention KEY=\\S+ without a literal secret.
+                if "\\S" in match.group(0) or "\\s" in match.group(0):
+                    continue
             if "AGENTIC_LIVE_TRADE" in pattern.pattern:
                 start = blob.rfind("\n", 0, match.start()) + 1
                 end = blob.find("\n", match.end())
