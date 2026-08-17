@@ -895,6 +895,9 @@ Regras:
 - Máximo {max_files} arquivos. Só paths permitidos (src/agentic/, tests/, improve/,
   deploy/, scripts/, internal/, README.md, AGENTS.md, ARO.md, CLAUDE.md,
   pyproject.toml, .gitignore). Preferir arquivos que JÁ EXISTEM; testes novos ok.
+- NÃO crie módulos novos em src/agentic/ (ex.: traces.py, queue.py, loop.sh).
+  Edite ficheiros existentes (ghostcli.py, improve.py, loop.py, env.py, …).
+  Ficheiros novos só em tests/ ou improve/ (ou deploy/ unit).
 - Não crie exploits, payloads, fuzz, wordlists, nem ligue AGENTIC_LIVE_TRADE=1.
 - Não grave secrets Bybit/GhostCLI. Não toque .env, data/, .venv, credentials.
 - Não crie src/agentic/loop.sh nem entrypoints novos. O loop em execução é
