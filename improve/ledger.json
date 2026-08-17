@@ -1404,7 +1404,7 @@
       "title": "Caminho de navegador pode preferir MCP à CLI",
       "kind": "bottleneck",
       "priority": 2,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O censo mostra playwright e playwright_mcp ativos; a política pede CLI primeiro para poupar tokens. Qualquer chamada que vá direto ao MCP gasta tokens sem necessidade.",
       "change": "Helper pequeno de seleção de navegador: usar playwright-cli por padrão e só cair para playwright-mcp se a CLI falhar, registrando a escolha no log sanitizado.",
       "never": [
@@ -1416,7 +1416,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260816-caminho-de-navegador-pode-preferir-mcp-cli",
+      "branch": "",
       "map_id": "20260816T200957Z",
       "history": [
         {
@@ -1428,8 +1428,14 @@
           "at": "2026-08-17T19:29:10+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-caminho-de-navegador-pode-preferir-mcp-cli"
+        },
+        {
+          "at": "2026-08-17T19:34:17+00:00",
+          "event": "requeued",
+          "detail": ".........................................F.....................          [100%]\n=================================== FAILURES ===================================\nE   AssertionError: assert False\n     +  where False = isinstance('cli', bool)\n/Agentic/tests/test_loop.py:66: AssertionError: assert False\n=========================== short test summary info ============================\nFAILED tests/test_…"
         }
-      ]
+      ],
+      "review_feedback": "tests_failed: .........................................F.....................          [100%]\n=================================== FAILURES ===================================\nE   AssertionError: assert False\n     +  where False = isinstance('cli', bool)\n/Agentic/tests/test_loop.py:66: AssertionError: assert False\n=========================== short test summary info ============================\nFAILED tests/test_…"
     },
     {
       "id": "imp-20260816-reda-o-de-secrets-espalhada-por-callsite",
