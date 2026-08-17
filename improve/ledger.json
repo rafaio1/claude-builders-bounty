@@ -4579,7 +4579,7 @@
       "title": "Falta de limite de retentativas na fila de improve",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Se o review rejeitar sistematicamente uma tarefa, ela volta para pending infinitamente, travando a fila de develop e consumindo recursos da GhostCLI.",
       "change": "Adicionar um contador de retries no ledger e mover a tarefa para um estado de quarantine após 3 rejeições consecutivas em improve.py.",
       "never": [
@@ -4591,7 +4591,7 @@
         "src/agentic/ledger.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
       "map_id": "20260817T110137Z",
       "history": [
         {
@@ -4638,6 +4638,11 @@
           "at": "2026-08-17T20:51:22+00:00",
           "event": "requeued",
           "detail": "Execution error"
+        },
+        {
+          "at": "2026-08-17T21:11:37+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
         }
       ],
       "review_feedback": "claude_failed: Execution error"
