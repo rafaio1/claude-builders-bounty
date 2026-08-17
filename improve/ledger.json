@@ -1789,7 +1789,7 @@
       "title": "Tick de saúde verifica presença mas não funcionamento real",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O health tick em loop.py confirma que playwright/jq/ghostcli estão instalados, mas não testa se respondem corretamente, permitindo falhas silenciosas que só aparecem em produção.",
       "change": "Adicionar smoke test leve no tick: playwright --version + carregamento de página about:blank, jq --version, ghostcli status básico. Registrar resultado estruturado por ferramenta.",
       "never": [
@@ -1823,6 +1823,11 @@
           "at": "2026-08-17T07:25:29+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona"
+        },
+        {
+          "at": "2026-08-17T08:16:21+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ],
       "review_feedback": "reject: O diff altera apenas src/agentic/loop.py, mas não corresponde integralmente à proposta: não adiciona registro estruturado por ferramenta e substitui o 'ghostcli status básico' por mera presença de 'ghost_key', mantendo checagem de presença para o GhostCLI. O smoke do Playwright também pode abrir navegador no tick e aceita falhas sem 'error' no stderr como OK, o que pode mascarar problema funcional… riscos=[\"Executar 'playwright-cli open about:blank' pode iniciar navegador ou processos filhos no health tick.\", 'Timeout pode encerrar o comando principal, mas deixar processos filhos órfãos.', \"Falha funci…"

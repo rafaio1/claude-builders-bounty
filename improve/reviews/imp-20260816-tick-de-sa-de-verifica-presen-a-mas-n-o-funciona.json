@@ -1,23 +1,22 @@
 {
-  "at": "2026-08-17T07:07:14+00:00",
+  "at": "2026-08-17T08:16:21+00:00",
   "branch": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
   "proposal_id": "imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
-  "verdict": "reject",
-  "reason": "O diff altera apenas src/agentic/loop.py, mas não corresponde integralmente à proposta: não adiciona registro estruturado por ferramenta e substitui o 'ghostcli status básico' por mera presença de 'ghost_key', mantendo checagem de presença para o GhostCLI. O smoke do Playwright também pode abrir navegador no tick e aceita falhas sem 'error' no stderr como OK, o que pode mascarar problema funcional. Reabra a proposta implementando em src/agentic/loop.py um smoke leve, sem rede/ordens/segredos, com resultado estruturado por ferramenta e testes.",
+  "verdict": "approve",
+  "reason": "O diff corresponde à proposta ao adicionar smoke funcional estruturado para playwright, jq e ghostcli em src/agentic/loop.py, registra resultado por ferramenta, não envia ordens, não altera AGENTIC_LIVE_TRADE e não expõe valores de segredos. Os testes adicionados validam a estrutura do novo campo smoke.",
   "risks": [
-    "Executar 'playwright-cli open about:blank' pode iniciar navegador ou processos filhos no health tick.",
-    "Timeout pode encerrar o comando principal, mas deixar processos filhos órfãos.",
-    "Falha funcional pode ser tratada como sucesso se o stderr não contiver a palavra 'error'.",
-    "GhostCLI continua sendo validado apenas por presença de chave, sem status básico real.",
-    "Não há evidência de testes cobrindo a nova lógica."
+    "O smoke do Playwright abre e fecha uma sessão about:blank no tick; é preciso monitorar processos filhos, timeouts e limpeza.",
+    "Os snippets de stdout/stderr persistidos no health.json não devem conter tokens ou dados sensíveis do GhostCLI/Bybit.",
+    "A execução dos smokes a cada census pode aumentar a latência do tick; avaliar cache curto se houver impacto."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "...................................................                      [100%]\n51 passed in 3.12s"
+    "output": "....................................................                     [100%]\n52 passed in 13.63s"
   },
   "files": [
-    "src/agentic/loop.py"
+    "src/agentic/loop.py",
+    "tests/test_loop.py"
   ]
 }
