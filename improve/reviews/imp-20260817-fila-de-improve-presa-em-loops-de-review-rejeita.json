@@ -1,22 +1,21 @@
 {
-  "at": "2026-08-17T21:06:56+00:00",
+  "at": "2026-08-17T22:47:50+00:00",
   "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
   "proposal_id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
   "verdict": "approve",
-  "reason": "Otimização defensiva pequena e alinhada à proposta: em src/agentic/improve.py (arquivo permitido, conforme files_hint), 'blocked' deixa de ser elegível para requeue em can_requeue e propostas não re-enfileiráveis passam a ser marcadas como 'blocked' com evento de histórico contendo o review_feedback, evitando o loop infinito de review/rejeita que travava a fila. Também corrige a atualização de ledger['updated_at']. Sem AGENTIC_LIVE_TRADE, sem segredos Bybit/GhostCLI, sem exploits, sem git reset/clean e sem arquivos novos. Inclui dois testes cobrindo bloqueio após exceder requeues e idempotência para itens já bloqueados.",
+  "reason": "Otimização defensiva pequena e coerente com a proposta: em src/agentic/improve.py (único arquivo do files_hint), adiciona contador de falhas de merge, move a proposta para 'blocked' quando o limite (> MAX_REQUEUES/3) é excedido, registra review_feedback estruturado e inclui merge_failed na contagem de consecutive_rejections. Isso elimina o loop merge_failed → requeued visível no histórico da própria proposta. Sem segredos, sem AGENTIC_LIVE_TRADE, sem git reset --hard/clean -fd, sem arquivos novos não referenciados.",
   "risks": [
-    "O estado 'blocked' torna-se terminal; qualquer fluxo que esperasse requeue automático de itens blocked deixará de recebê-los.",
-    "MAX_REQUEUES é importado nos testes sem uso direto (possível aviso de lint, sem impacto funcional).",
-    "A variável 'status' usada no novo bloco depende de definição pré-existente no laço; o pytest da suíte deve confirmar antes do merge (tests_ok_required)."
+    "delete_branch(force=True) descarta a branch ao bloquear; o trabalho daquela tentativa se perde, mas o review_feedback preserva o motivo para reabertura correta.",
+    "O rationale menciona loops de pytest, mas o diff atua sobre merge_failed (tests_failed já era contado por consecutive_rejections); o escopo efetivo está coberto, mas os testes devem validar o novo caminho de bloqueio.",
+    "Depende de MAX_REQUEUES e structured_review_feedback já existentes no módulo; se ausentes, o pytest deve falhar e o merge não deve prosseguir."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": ".......................................................                  [100%]\n55 passed in 16.27s"
+    "output": "........................................................................ [ 97%]\n..                                                                       [100%]\n74 passed in 62.38s (0:01:02)"
   },
   "files": [
-    "src/agentic/improve.py",
-    "tests/test_improve.py"
+    "src/agentic/improve.py"
   ]
 }
