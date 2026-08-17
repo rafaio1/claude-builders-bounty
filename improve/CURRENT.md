@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T06:01:42+00:00
+Atualizado: 2026-08-17T07:03:23+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T05:59:48+00:00
+- last_tick: 2026-08-17T06:59:29+00:00
 - git_clean: ok
 - dirty_paths: []
 
 ## Ghost
 
-Mapeamento de gargalos e melhorias focado em otimização de tokens, telemetria de IA e conformidade ARO.
+Mapeamento de gargalos de timeout no CLI e health checks, com melhorias em traces para eval e otimização de ferramentas.
 
 ## Ledger
 
-{"pending": 99, "blocked": 4, "applied": 7}
+{"pending": 105, "blocked": 5, "applied": 8}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
@@ -38,7 +38,7 @@ Mapeamento de gargalos e melhorias focado em otimização de tokens, telemetria 
 - `imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra` [pending/p3] Documentar skill playwright-cli no mapa de ferramentas
 - `imp-20260816-traces-sanitizados-da-ghostcli-no-improve` [pending/p2] Traces sanitizados da GhostCLI no improve
 - `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [pending/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
-- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [pending/p1] Tick de saúde reexecuta probes caras a cada 90s
+- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [blocked/p1] Tick de saúde reexecuta probes caras a cada 90s
 - `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [applied/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
 - `imp-20260816-review-feedback-n-o-estruturado-favorece-alargam` [pending/p2] review_feedback não estruturado favorece alargamento de escopo
 - `imp-20260816-portal-autenticado-fora-do-tick-de-sa-de` [pending/p3] Portal autenticado fora do tick de saúde
