@@ -367,6 +367,55 @@ def requeue_count(proposal: dict[str, Any]) -> int:
     )
 
 
+def parse_review_feedback(raw: Any) -> dict[str, Any]:
+    """Parse review_feedback into a minimal structured contract.
+
+    Returns {"verdict": str, "reason": str, "files": list[str]} so the next
+    develop can be restricted to the exact scope of the rejection instead of
+    free-form text that invites scope creep.
+    """
+    if isinstance(raw, dict):
+        verdict = str(raw.get("verdict") or raw.get("status") or "reject").strip().lower()
+        reason = str(raw.get("reason") or raw.get("detail") or raw.get("motivo") or "").strip()
+        files = [
+            str(item).replace("\\", "/").lstrip("./")
+            for item in (raw.get("files") or raw.get("arquivos") or [])
+            if str(item).strip()
+        ]
+        return {"verdict": verdict or "reject", "reason": reason, "files": files}
+    text = str(raw or "").strip()
+    if not text:
+        return {"verdict": "reject", "reason": "", "files": []}
+    verdict = "reject"
+    lower = text.lower()
+    if lower.startswith("approve"):
+        verdict = "approve"
+    elif lower.startswith("reject"):
+        verdict = "reject"
+    parts = re.split(r"\s*[—:-]\s*", text, maxsplit=1)
+    reason = parts[1].strip() if len(parts) > 1 else text
+    files = sorted(
+        {
+            match.group(0)
+            for match in re.finditer(
+                r"(?:src/agentic/|tests/|improve/|deploy/|scripts/|internal/)"
+                r"[A-Za-z0-9_./-]+\.(?:py|md|sh|service|timer|json|html|css)",
+                text,
+            )
+        }
+    )
+    return {"verdict": verdict, "reason": reason, "files": files}
+
+
+def structured_review_feedback(raw: Any) -> str:
+    """Serialize the structured feedback back into a compact string for storage."""
+    parsed = parse_review_feedback(raw)
+    reason = parsed.get("reason") or ""
+    files = parsed.get("files") or []
+    suffix = f" arquivos={','.join(files)}" if files else ""
+    return f"{parsed.get('verdict') or 'reject'}: {reason}{suffix}".strip()
+
+
 def last_failure_feedback(proposal: dict[str, Any]) -> str:
     for item in reversed(list(proposal.get("history") or [])):
         if not isinstance(item, dict):
@@ -1017,7 +1066,10 @@ Regras:
   nem force. O pipeline Agentic commita depois do pytest.
 - Se a proposta for restaurar git_clean: NÃO reescreva arquivos sujos de produto —
   o pipeline já snapshotou a fatia. Altere só .gitignore / improve/* se preciso.
-- Se review_feedback existir: corrija EXATAMENTE esse ponto, sem alargar escopo.
+- Se review_feedback existir: ele segue o contrato estruturado
+  (verdict/reason/arquivos citados). Corrija EXATAMENTE o motivo apontado e
+  limite as edições aos arquivos listados no parecer; não altere outros
+  caminhos nem amplie o escopo da proposta.
 - Ao terminar, escreva no stdout uma linha: SUMMARY: <o que mudou em pt-BR>.
 
 PROPOSTA:
@@ -1326,6 +1378,24 @@ class ImprovePipeline:
             hints = resolve_files_hint(self.settings.root, proposal)
             if hints:
                 proposal["files_hint"] = hints
+            feedback_raw = proposal.get("review_feedback")
+            feedback_struct = parse_review_feedback(feedback_raw)
+            if feedback_struct.get("reason"):
+                proposal["review_feedback"] = structured_review_feedback(feedback_raw)
+            if feedback_struct.get("files"):
+                allowed_feedback_files = [
+                    path
+                    for path in feedback_struct["files"]
+                    if is_allowed_path(path) and (self.settings.root / path).is_file()
+                ]
+                if allowed_feedback_files:
+                    hint_set.update(allowed_feedback_files)
+                    merged: list[str] = []
+                    for path in [*hints, *allowed_feedback_files]:
+                        if path not in merged:
+                            merged.append(path)
+                    hints = merged[:MAX_FILES]
+                    proposal["files_hint"] = hints
             context = self._file_context(hints)
             prompt = DEVELOP_PROMPT.format(
                 max_files=MAX_FILES,
@@ -1461,14 +1531,21 @@ class ImprovePipeline:
                     self.settings.root / REVIEWS_DIR / f"{proposal_id_value}.json",
                     review_doc,
                 )
-                feedback = (
-                    f"{verdict}: {_clip(reviewed.get('reason'), 400)}"
-                    + (
-                        f" riscos={_clip(reviewed.get('risks'), 200)}"
-                        if reviewed.get("risks")
-                        else ""
+                feedback_files = [
+                    str(name).replace("\\", "/").lstrip("./")
+                    for name in names
+                    if str(name).strip()
+                ]
+                feedback_struct = {
+                    "verdict": verdict,
+                    "reason": _clip(reviewed.get("reason"), 400),
+                    "files": feedback_files,
+                }
+                if reviewed.get("risks"):
+                    feedback_struct["reason"] = (
+                        f"{feedback_struct['reason']} riscos={_clip(reviewed.get('risks'), 200)}".strip()
                     )
-                )
+                feedback = structured_review_feedback(feedback_struct)
                 requeue = verdict != "approve" and can_requeue(
                     proposal, feedback, illegal=illegal or None
                 )
@@ -1581,7 +1658,11 @@ class ImprovePipeline:
             status="pending" if requeue else "blocked",
             event="requeued" if requeue else event,
             detail=_clip(reason, 400),
-            review_feedback=_clip(reason, 800) if requeue else None,
+            review_feedback=structured_review_feedback(
+                {"verdict": event, "reason": _clip(reason, 800), "files": []}
+            )
+            if requeue
+            else None,
             branch=branch if keep_branch else "",
         )
         self.git.add(str(LEDGER_PATH))
