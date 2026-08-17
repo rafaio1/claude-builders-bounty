@@ -53,6 +53,48 @@ def _cmd_ok(args: list[str], *, timeout: float = 8.0) -> bool:
     return completed.returncode == 0
 
 
+def _smoke_check(args: list[str], *, timeout: float = 6.0) -> dict[str, Any]:
+    """Executa comando leve de smoke e devolve resultado estruturado.
+
+    Retorna dict com `ok`, `returncode`, `stdout_snippet` e `error`.
+    Nunca levanta exceção; falhas de execução viram `ok=False` com `error`.
+    stdout_snippet é limitado a 200 chars para evitar inchar o health.json.
+    """
+    result: dict[str, Any] = {
+        "ok": False,
+        "returncode": None,
+        "stdout_snippet": "",
+        "error": "",
+    }
+    try:
+        completed = subprocess.run(
+            args,
+            capture_output=True,
+            text=True,
+            timeout=timeout,
+            check=False,
+        )
+    except OSError as exc:
+        result["error"] = f"os_error:{type(exc).__name__}"
+        return result
+    except subprocess.TimeoutExpired:
+        result["error"] = f"timeout_after_{timeout}s"
+        return result
+    result["returncode"] = completed.returncode
+    snippet = (completed.stdout or "").strip()
+    if len(snippet) > 200:
+        snippet = snippet[:197] + "..."
+    result["stdout_snippet"] = snippet
+    if completed.returncode != 0:
+        stderr_snippet = (completed.stderr or "").strip()
+        if len(stderr_snippet) > 200:
+            stderr_snippet = stderr_snippet[:197] + "..."
+        result["error"] = stderr_snippet or f"exit_code_{completed.returncode}"
+        return result
+    result["ok"] = True
+    return result
+
+
 class _CensusCache:
     """Cache em memória com TTL curto para checagens de ferramentas estáveis.
 
@@ -98,6 +140,46 @@ def _cached_check(key: str, check_fn: callable[[], bool]) -> bool:
     return result
 
 
+def _smoke_playwright() -> dict[str, Any]:
+    """Smoke test do Playwright CLI: open about:blank + close.
+
+    `open about:blank` valida binário, runtime e carregamento de página inerte
+    num único subprocesso headless. O `close` subsequente garante que nenhum
+    processo filho fica órfão. Não usa `goto` (exige browser já aberto) nem
+    `snapshot --url` (opção inexistente).
+    """
+    probe = _smoke_check(
+        ["playwright-cli", "open", "about:blank"],
+        timeout=12.0,
+    )
+    # Best-effort close para limpar sessão mesmo se open falhou parcialmente.
+    _smoke_check(["playwright-cli", "close"], timeout=4.0)
+    if not probe["ok"]:
+        probe["error"] = f"open_failed:{probe['error']}"
+    return probe
+
+
+def _smoke_jq() -> dict[str, Any]:
+    """Smoke test do jq: versão confirma binário funcional."""
+    return _smoke_check(["jq", "--version"], timeout=4.0)
+
+
+def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
+    """Smoke test do GhostCLI: presença da chave + status básico sem secrets.
+
+    Se a chave não estiver configurada, retorna ok=False com erro claro.
+    O comando `ghostcli status` é leve e não faz requests autenticados pesados.
+    """
+    if not env.get("ghost_key"):
+        return {
+            "ok": False,
+            "returncode": None,
+            "stdout_snippet": "",
+            "error": "ghost_key_not_configured",
+        }
+    return _smoke_check(["ghostcli", "status"], timeout=8.0)
+
+
 def collect_census(root: Path) -> dict[str, Any]:
     env = apply()
     status_file = Path(root) / STATUS_PATH
@@ -108,10 +190,8 @@ def collect_census(root: Path) -> dict[str, Any]:
             last_tick = str(payload.get("generated_at") or "")
         except (OSError, json.JSONDecodeError, TypeError):
             last_tick = ""
-    playwright = _cached_check(
-        "playwright",
-        lambda: bool(_which("playwright-cli")) and _cmd_ok(["playwright-cli", "--version"]),
-    )
+    playwright_smoke = _smoke_playwright()
+    playwright = playwright_smoke["ok"]
     playwright_mcp = _cached_check(
         "playwright_mcp",
         lambda: bool(_which("playwright-mcp")),
@@ -120,13 +200,20 @@ def collect_census(root: Path) -> dict[str, Any]:
         "claude",
         lambda: bool(_which("claude")) and _cmd_ok(["claude", "--version"]),
     )
-    jq = _cached_check("jq", lambda: bool(_which("jq")))
-    ghostcli = _cached_check("ghostcli", lambda: bool(env.get("ghost_key")))
+    jq_smoke = _smoke_jq()
+    jq = jq_smoke["ok"]
+    ghostcli_smoke = _smoke_ghostcli(env)
+    ghostcli = ghostcli_smoke["ok"]
     bybit_key = _cached_check("bybit_key", lambda: bool(env.get("bybit_key")))
     bybit_secret = _cached_check("bybit_secret", lambda: bool(env.get("bybit_secret")))
     bybit_env_file = _cached_check(
         "bybit_env_file", lambda: bool(env.get("bybit_env_file"))
     )
+    smoke_results = {
+        "playwright": playwright_smoke,
+        "jq": jq_smoke,
+        "ghostcli": ghostcli_smoke,
+    }
     return {
         "generated_at": utcnow(),
         "last_tick": last_tick,
@@ -140,6 +227,7 @@ def collect_census(root: Path) -> dict[str, Any]:
             "bybit_secret": bybit_secret,
             "bybit_env_file": bybit_env_file,
         },
+        "smoke": smoke_results,
         "stats": {
             "playwright": playwright,
             "claude": claude,
