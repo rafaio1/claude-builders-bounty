@@ -1789,7 +1789,7 @@
       "title": "Tick de saúde verifica presença mas não funcionamento real",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O health tick em loop.py confirma que playwright/jq/ghostcli estão instalados, mas não testa se respondem corretamente, permitindo falhas silenciosas que só aparecem em produção.",
       "change": "Adicionar smoke test leve no tick: playwright --version + carregamento de página about:blank, jq --version, ghostcli status básico. Registrar resultado estruturado por ferramenta.",
       "never": [
@@ -1801,13 +1801,18 @@
         "src/agentic/loop.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
       "map_id": "20260816T230333Z",
       "history": [
         {
           "at": "2026-08-16T23:03:33+00:00",
           "event": "mapped",
           "detail": "20260816T230333Z"
+        },
+        {
+          "at": "2026-08-17T07:04:50+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona"
         }
       ]
     },
