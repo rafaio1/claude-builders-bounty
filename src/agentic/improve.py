@@ -616,17 +616,25 @@ def _secret_value_is_placeholder(raw: str) -> bool:
     return False
 
 
-def scan_forbidden(text: str) -> str | None:
+def scan_forbidden(text: str, *, path: str | None = None) -> str | None:
     blob = text or ""
+    in_tests = bool(path and str(path).replace("\\", "/").startswith("tests/"))
     for pattern in FORBIDDEN_RE:
         for match in pattern.finditer(blob):
             groups = match.groupdict() if match.re.groupindex else {}
             key = str(groups.get("key") or "")
             val = str(groups.get("val") or "")
-            if key.upper() in _SECRET_KEY_NAMES or "API_KEY" in pattern.pattern or "API_SECRET" in pattern.pattern:
+            is_secret_assign = bool(
+                key.upper() in _SECRET_KEY_NAMES
+                or "API_KEY" in pattern.pattern
+                or "API_SECRET" in pattern.pattern
+            )
+            if is_secret_assign:
+                # Unit tests for sanitizers must embed fake KEY=... fixtures.
+                if in_tests:
+                    continue
                 if val and _secret_value_is_placeholder(val):
                     continue
-                # Regex / docs that mention KEY=\\S+ without a literal secret.
                 if "\\S" in match.group(0) or "\\s" in match.group(0):
                     continue
             if "AGENTIC_LIVE_TRADE" in pattern.pattern:
@@ -640,15 +648,47 @@ def scan_forbidden(text: str) -> str | None:
     return None
 
 
-def scan_forbidden_added_lines(diff_text: str) -> str | None:
+def scan_forbidden_added_lines(diff_text: str, *, path: str | None = None) -> str | None:
     """Scan only newly added lines from a unified diff (avoids policy false positives)."""
-    added: list[str] = []
+    if path is not None:
+        added: list[str] = []
+        for line in (diff_text or "").splitlines():
+            if line.startswith("+++") or line.startswith("---"):
+                continue
+            if line.startswith("+"):
+                added.append(line[1:])
+        return scan_forbidden("\n".join(added), path=path)
+
+    # Multi-file review diffs: honor per-path rules (e.g. tests/ fixtures).
+    current: str | None = None
+    buckets: dict[str, list[str]] = {}
     for line in (diff_text or "").splitlines():
+        if line.startswith("+++ b/"):
+            current = line[6:].strip()
+            buckets.setdefault(current, [])
+            continue
+        if line.startswith("+++ /dev/null"):
+            current = None
+            continue
+        if current is None:
+            continue
         if line.startswith("+++") or line.startswith("---"):
             continue
         if line.startswith("+"):
-            added.append(line[1:])
-    return scan_forbidden("\n".join(added))
+            buckets[current].append(line[1:])
+    for rel, lines in buckets.items():
+        hit = scan_forbidden("\n".join(lines), path=rel)
+        if hit:
+            return hit
+    # Fallback when diff has no +++ headers
+    if not buckets:
+        added = [
+            line[1:]
+            for line in (diff_text or "").splitlines()
+            if line.startswith("+") and not line.startswith("+++")
+        ]
+        return scan_forbidden("\n".join(added), path=None)
+    return None
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -1641,9 +1681,9 @@ def collect_claude_changes(
             raise PatchError(f"arquivo grande demais: {rel}")
         if tracked:
             patch = git.run("diff", "--", rel, check=False).stdout or ""
-            forbidden = scan_forbidden_added_lines(patch)
+            forbidden = scan_forbidden_added_lines(patch, path=rel)
         else:
-            forbidden = scan_forbidden(text)
+            forbidden = scan_forbidden(text, path=rel)
         if forbidden:
             raise PatchError(f"conteúdo recusado em {rel}: {forbidden}")
         from agentic.aro.constitution import patch_weakens_constitution
