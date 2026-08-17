@@ -541,7 +541,7 @@
       "title": "Tick de saúde reexecuta probes caras a cada 90s",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "loop.py verifica playwright/ghostcli em todo tick; sem TTL, cada ciclo repete spawns e chamadas lentas, desperdiçando CPU e tokens e atrasando o loop.",
       "change": "Adicionar cache em memória com TTL curto por ferramenta em loop.py: reusar resultado saudável recente e só re-probrar ferramenta degradada ou expirada.",
       "never": [
@@ -554,7 +554,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s",
+      "branch": "",
       "map_id": "20260816T160320Z",
       "history": [
         {
@@ -576,8 +576,14 @@
           "at": "2026-08-17T05:23:08+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+        },
+        {
+          "at": "2026-08-17T05:23:37+00:00",
+          "event": "requeued",
+          "detail": "SUMMARY: Cache de census com TTL de 90s já implementado em loop.py (_CensusCache + _cached_check); 12 testes passam confirmando que probes caras são reusadas dentro do TTL e falhas são sempre reavaliadas."
         }
-      ]
+      ],
+      "review_feedback": "SUMMARY: Cache de census com TTL de 90s já implementado em loop.py (_CensusCache + _cached_check); 12 testes passam confirmando que probes caras são reusadas dentro do TTL e falhas são sempre reavaliadas."
     },
     {
       "id": "imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
