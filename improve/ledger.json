@@ -3233,7 +3233,7 @@
       "title": "Falta de limite de tokens no prompt do Claude CLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O develop despeja prompts inteiros no Claude CLI sem validar o tamanho, podendo estourar contextos e gastar tokens à toa em loops de improve.",
       "change": "Adicionar truncamento ou sumarização prévia no prompt antes de chamar o Claude CLI.",
       "never": [
@@ -3244,7 +3244,7 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
       "map_id": "20260817T040232Z",
       "history": [
         {
@@ -3266,6 +3266,11 @@
           "at": "2026-08-17T21:02:27+00:00",
           "event": "requeued",
           "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
+        },
+        {
+          "at": "2026-08-17T21:32:02+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl"
         }
       ],
       "review_feedback": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
