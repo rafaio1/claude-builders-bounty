@@ -1,18 +1,22 @@
 {
-  "at": "2026-08-17T14:16:41+00:00",
+  "at": "2026-08-17T20:24:19+00:00",
   "branch": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
   "proposal_id": "imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
-  "verdict": "approve",
-  "reason": "A implementação adiciona corretamente um limite defensivo de retentativas consecutivas, movendo tarefas para o estado de 'quarantine' e evitando loops infinitos na fila de improve. A mudança é pequena, cirúrgica e acompanhada de testes unitários adequados que validam o comportamento esperado.",
-  "risks": [],
+  "verdict": "reject",
+  "reason": "O diff não corresponde integralmente à proposta: ele apenas chama requeue_failed_proposals() e commita o ledger, sem mostrar a criação do contador de retries no ledger, o limite de 3 rejeições consecutivas, a transição explícita para quarantine ou testes. Como testes_ok_required é verdadeiro e não há evidência de testes passando, não é possível aprovar. Para reabrir, implemente em src/agentic/improve.py e src/agentic/ledger.py o contador de retries, o threshold=3, o estado quarantine e testes cobrindo rejeições consecutivas.",
+  "risks": [
+    "Sem evidência de testes, o comportamento defensivo não foi validado.",
+    "O contador de retries e o limite de 3 rejeições não aparecem no diff.",
+    "A exclusão forçada de branches pode descartar trabalho indevidamente se o quarantine for mal avaliado.",
+    "A função requeue_failed_proposals e suas importações/regras não estão visíveis, podendo haver quebra ou comportamento inesperado."
+  ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "...........................................................              [100%]\n59 passed in 141.10s (0:02:21)"
+    "output": "...................................................................      [100%]\n67 passed in 103.55s (0:01:43)"
   },
   "files": [
-    "src/agentic/improve.py",
-    "tests/test_improve.py"
+    "src/agentic/improve.py"
   ]
 }

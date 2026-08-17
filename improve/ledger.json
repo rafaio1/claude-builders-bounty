@@ -4563,7 +4563,7 @@
       "title": "Falta de limite de retentativas na fila de improve",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Se o review rejeitar sistematicamente uma tarefa, ela volta para pending infinitamente, travando a fila de develop e consumindo recursos da GhostCLI.",
       "change": "Adicionar um contador de retries no ledger e mover a tarefa para um estado de quarantine após 3 rejeições consecutivas em improve.py.",
       "never": [
@@ -4575,7 +4575,7 @@
         "src/agentic/ledger.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
+      "branch": "",
       "map_id": "20260817T110137Z",
       "history": [
         {
@@ -4597,8 +4597,14 @@
           "at": "2026-08-17T20:10:02+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+        },
+        {
+          "at": "2026-08-17T20:24:19+00:00",
+          "event": "requeued",
+          "detail": "reject: O diff não corresponde integralmente à proposta: ele apenas chama requeue_failed_proposals() e commita o ledger, sem mostrar a criação do contador de retries no ledger, o limite de 3 rejeições consecutivas, a transição explícita para quarantine ou testes. Como testes_ok_required é verdadeiro e não há evidência de testes passando, não é possível aprovar. Para reabrir, implemente em src/agentic/impr… riscos=['Sem evidência de testes, o comportamento defensivo não foi validado.', 'O contador de retries e o limite de 3 rejeições não aparecem no diff.', 'A exclusão forçada de branches pode descartar trabalh… arquivos=src/agentic/improve.py"
         }
-      ]
+      ],
+      "review_feedback": "reject: O diff não corresponde integralmente à proposta: ele apenas chama requeue_failed_proposals() e commita o ledger, sem mostrar a criação do contador de retries no ledger, o limite de 3 rejeições consecutivas, a transição explícita para quarantine ou testes. Como testes_ok_required é verdadeiro e não há evidência de testes passando, não é possível aprovar. Para reabrir, implemente em src/agentic/impr… riscos=['Sem evidência de testes, o comportamento defensivo não foi validado.', 'O contador de retries e o limite de 3 rejeições não aparecem no diff.', 'A exclusão forçada de branches pode descartar trabalh… arquivos=src/agentic/improve.py"
     },
     {
       "id": "imp-20260817-skill-padronizado-para-playwright-cli",
