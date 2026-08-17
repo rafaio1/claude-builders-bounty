@@ -362,16 +362,77 @@ def _sanitize_tool_status(tools: dict[str, Any]) -> dict[str, bool]:
     return sanitized
 
 
+def _load_previous_health(root: Path) -> dict[str, Any]:
+    """Lê o health.json anterior para calcular contadores de falha consecutiva.
+
+    Retorna dict vazio se o arquivo não existir ou estiver corrompido; nunca
+    levanta exceção. O campo `tools` é normalizado para `{name: {"ok": bool,
+    "consecutive_failures": int}}` mesmo quando o formato antigo tinha apenas
+    flags booleanas.
+    """
+    path = Path(root) / HEALTH_PATH
+    if not path.is_file():
+        return {}
+    try:
+        payload = json.loads(path.read_text(encoding="utf-8"))
+    except (OSError, json.JSONDecodeError, TypeError):
+        return {}
+    if not isinstance(payload, dict):
+        return {}
+    return payload
+
+
+def _compute_tool_history(
+    current_tools: dict[str, bool], previous_health: dict[str, Any]
+) -> dict[str, dict[str, Any]]:
+    """Combina o resultado atual com o histórico anterior para cada ferramenta.
+
+    Para cada chave em `current_tools`, devolve `{"ok": bool,
+    "consecutive_failures": int}`. Se a ferramenta estava ok no tick anterior e
+    agora falhou, o contador começa em 1; se já vinha falhando, incrementa.
+    Ferramentas novas (sem histórico) partem de zero.
+    """
+    prev_tools_raw = (previous_health or {}).get("tools") or {}
+    history: dict[str, dict[str, Any]] = {}
+    for name, ok_now in (current_tools or {}).items():
+        prev_entry = prev_tools_raw.get(name)
+        # Suporta tanto o formato novo (dict com ok/failures) quanto o antigo (bool).
+        if isinstance(prev_entry, dict):
+            prev_ok = bool(prev_entry.get("ok"))
+            prev_failures = int(prev_entry.get("consecutive_failures") or 0)
+        else:
+            prev_ok = bool(prev_entry)
+            prev_failures = 0
+        if ok_now:
+            consecutive_failures = 0
+        else:
+            consecutive_failures = prev_failures + 1 if not prev_ok else 1
+        history[name] = {
+            "ok": bool(ok_now),
+            "consecutive_failures": consecutive_failures,
+        }
+    return history
+
+
 def _write_health_snapshot(
     root: Path, tools: dict[str, Any], aro: dict[str, Any]
 ) -> Path:
-    """Grava snapshot sanitizado de saúde em data/health.json (gitignorado)."""
+    """Grava snapshot sanitizado de saúde em data/health.json (gitignorado).
+
+    Inclui, por ferramenta, flag `ok` e contador `consecutive_failures` para
+    permitir detecção de flap/indisponibilidade prolongada entre ticks. O
+    contador é derivado do health.json anterior; se ele não existir ou estiver
+    ilegível, parte de zero.
+    """
     path = Path(root) / HEALTH_PATH
     path.parent.mkdir(parents=True, exist_ok=True)
+    sanitized_flags = _sanitize_tool_status(tools)
+    previous = _load_previous_health(root)
+    tool_history = _compute_tool_history(sanitized_flags, previous)
     snapshot = {
         "generated_at": utcnow(),
         "live_trade": False,
-        "tools": _sanitize_tool_status(tools),
+        "tools": tool_history,
         "aro": {
             "ok": bool((aro or {}).get("ok")),
             "paused": bool((aro or {}).get("paused")),
