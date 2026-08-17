@@ -3,7 +3,9 @@ from __future__ import annotations
 from pathlib import Path
 
 from agentic.config import Settings
-from agentic.loop import collect_census, tick
+import json
+
+from agentic.loop import LAST_TICK_PATH, collect_census, tick
 
 
 def test_tick_writes_status_without_secrets(tmp_path: Path, monkeypatch) -> None:
@@ -55,3 +57,26 @@ def test_census_booleans_only(tmp_path: Path) -> None:
     assert set(tools) >= {"playwright", "claude", "ghostcli", "bybit_key", "bybit_secret"}
     for value in tools.values():
         assert isinstance(value, bool)
+
+
+def test_tick_writes_last_tick_snapshot(tmp_path: Path, monkeypatch) -> None:
+    monkeypatch.delenv("BYBIT_REAL_API_KEY", raising=False)
+    monkeypatch.delenv("BYBIT_API_KEY", raising=False)
+    monkeypatch.setenv("GHOSTCLI_API_KEY", "")
+    settings = Settings(
+        root=tmp_path,
+        lock_path=tmp_path / ".agentic.lock",
+        ghostcli_api_key="",
+        ghostcli_base_url="https://ghost.invalid/v1",
+        ghostcli_model="x",
+        ghostcli_orchestrator_model="x",
+        interval_seconds=90,
+        live_trade=False,
+    )
+    tick(settings)
+    last_tick_file = tmp_path / LAST_TICK_PATH
+    assert last_tick_file.is_file()
+    snapshot = json.loads(last_tick_file.read_text(encoding="utf-8"))
+    assert "ts" in snapshot
+    assert isinstance(snapshot["tools_ok"], int)
+    assert snapshot["tools_ok"] >= 0
