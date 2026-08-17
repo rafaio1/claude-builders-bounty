@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T23:13:50+00:00",
+  "updated_at": "2026-08-17T23:40:14+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -497,7 +497,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260817T234014Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -524,7 +524,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260817T234014Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -551,7 +551,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260817T234014Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -580,7 +580,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260817T234014Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5486,6 +5486,153 @@
           "at": "2026-08-17T23:06:24+00:00",
           "event": "mapped",
           "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+      "key": "41b5e1296a3536bb",
+      "canon": "95b7baece2abd7f3",
+      "title": "Resiliência a falhas transitórias na fila de develop",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O improve.py despeja prompts no Claude CLI sem retry estrutrado. Falhas temporárias na API GhostCLI travam o processamento da fila pending.",
+      "change": "Adicionar timeout configurável e retry com backoff exponencial ao invocar claude_cli.py dentro do improve.py.",
+      "never": [
+        "Alterar o modelo GhostCLI",
+        "Ligar AGENTIC_LIVE_TRADE=1",
+        "Imprimir secrets da API"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T234014Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:40:14+00:00",
+          "event": "mapped",
+          "detail": "20260817T234014Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-estrita-de-diffs-no-reviewer",
+      "key": "2d1ad6db5ed639aa",
+      "canon": "9b74b49e13db7ef1",
+      "title": "Validação estrita de diffs no reviewer",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O ghostcli.py aplica patches na main/master, mas não valida se o diff retornado pela API é estruturalmente seguro antes do git apply, arriscando commits corrompidos.",
+      "change": "Inserir validação do payload/diff retornado pela API GhostCLI antes de aplicar no repositório.",
+      "never": [
+        "Fazer git reset --hard",
+        "Usar --no-verify",
+        "Aplicar em branches que não main/master"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T234014Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:40:14+00:00",
+          "event": "mapped",
+          "detail": "20260817T234014Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-exporta-o-de-traces-sanitizados-para-avalia-o-de",
+      "key": "a349064f9ee30a00",
+      "canon": "d5a3f4df13cec79f",
+      "title": "Exportação de traces sanitizados para avaliação de IA",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Avaliar a qualidade das IAs exige traces estruturados. Atualmente não há exportação padronizada das interações do claude_cli.py para análise offline (theme=ai).",
+      "change": "Capturar entrada/saída do claude_cli.py, sanitizar dados sensíveis e gravar em formato JSONL para pipelines de eval.",
+      "never": [
+        "Gravar tokens da API Bybit",
+        "Vazar chaves do .env",
+        "Modificar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T234014Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:40:14+00:00",
+          "event": "mapped",
+          "detail": "20260817T234014Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-gest-o-de-ciclo-de-vida-do-playwright-cli",
+      "key": "f54e5fda73c4e79d",
+      "canon": "9b399c6c2937c9b0",
+      "title": "Gestão de ciclo de vida do playwright-cli",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O navegador headless é usado no tick de saúde, mas a falta de fechamento explícito agressivo pode causar vazamento de memória ou processos órfãos (theme=tools).",
+      "change": "Garantir que o loop.py force o encerramento do PID do playwright-cli ao final de cada tick de saúde, liberando recursos do sistema.",
+      "never": [
+        "Ativar playwright-mcp",
+        "Usar playwright não-headless",
+        "Modificar o intervalo do systemd"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T234014Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:40:14+00:00",
+          "event": "mapped",
+          "detail": "20260817T234014Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-estrutura-o-de-logs-do-tick-para-monitoramento",
+      "key": "42631a6497fde4af",
+      "canon": "9abd94fa28ea1802",
+      "title": "Estruturação de logs do tick para monitoramento",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O tick de saúde verifica ferramentas, mas a saída não é estruturada, dificultando a criação de alertas externos baseados em falhas específicas de ferramentas.",
+      "change": "Formatar a saída do loop.py em JSON estruturado para o journald, facilitando o parsing por ferramentas de observabilidade.",
+      "never": [
+        "Alterar o --interval 90",
+        "Criar src/agentic/loop.sh",
+        "Enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T234014Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:40:14+00:00",
+          "event": "mapped",
+          "detail": "20260817T234014Z"
         }
       ]
     }
