@@ -1,0 +1,18 @@
+{
+  "at": "2026-08-17T10:53:11+00:00",
+  "branch": "improve/dev/imp-20260817-falha-cr-tica-na-ferramenta-ghostcli",
+  "proposal_id": "imp-20260817-falha-cr-tica-na-ferramenta-ghostcli",
+  "verdict": "approve",
+  "reason": "A correção substitui a chamada ao binário 'ghostcli' (que causava FileNotFoundError) por uma chamada via API HTTP usando a classe GhostCLI, resolvendo o bottleneck de forma defensiva. As exceções são tratadas sem expor segredos e os testes de regressão validam corretamente o novo comportamento.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".......................................................                  [100%]\n55 passed in 99.69s (0:01:39)"
+  },
+  "files": [
+    "src/agentic/loop.py",
+    "tests/test_loop.py"
+  ]
+}

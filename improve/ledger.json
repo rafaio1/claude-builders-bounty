@@ -4333,7 +4333,7 @@
       "title": "Falha crítica na ferramenta ghostcli",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O smoke test retorna FileNotFoundError, bloqueando a fila de develop e review que dependem da API GhostCLI.",
       "change": "Corrigir a resolução do caminho do binário/wrapper do ghostcli no ambiente de execução para que o health check passe.",
       "never": [
@@ -4358,6 +4358,11 @@
           "at": "2026-08-17T10:08:39+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-falha-cr-tica-na-ferramenta-ghostcli"
+        },
+        {
+          "at": "2026-08-17T10:53:11+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },
