@@ -61,8 +61,9 @@ FORBIDDEN_RE = (
 )
 # Mentions that refuse enabling live trade must not trip the gate.
 _LIVE_TRADE_OK_CONTEXT = re.compile(
-    r"(recus|proib|disabled|kill\s*switch|n[aã]o\s+lig|never|false|"
-    r"ligar\s+AGENTIC_LIVE_TRADE|n[aã]o\s+ligue|sem\s+trade\s+live)",
+    r"(recus|proib|rejeit|disabled|kill\s*switch|n[aã]o\s+lig|nem\s+lig|"
+    r"never|false|ligar\s+AGENTIC_LIVE_TRADE|sem\s+trade\s+live|"
+    r"live_trade_disabled|AGENTIC_LIVE_TRADE\s*=\s*0)",
     re.I,
 )
 SLUG_RE = re.compile(r"[^a-z0-9]+")
@@ -600,6 +601,17 @@ def scan_forbidden(text: str) -> str | None:
                     continue
             return pattern.pattern
     return None
+
+
+def scan_forbidden_added_lines(diff_text: str) -> str | None:
+    """Scan only newly added lines from a unified diff (avoids policy false positives)."""
+    added: list[str] = []
+    for line in (diff_text or "").splitlines():
+        if line.startswith("+++") or line.startswith("---"):
+            continue
+        if line.startswith("+"):
+            added.append(line[1:])
+    return scan_forbidden("\n".join(added))
 
 
 def load_json(path: Path, default: Any) -> Any:
@@ -1311,9 +1323,9 @@ class ImprovePipeline:
             verdict = str(reviewed.get("verdict") or "reject").strip().lower()
             if verdict not in {"approve", "reject"}:
                 verdict = "reject"
-            if illegal or not tests.get("ok") or scan_forbidden(diff):
+            if illegal or not tests.get("ok") or scan_forbidden_added_lines(diff):
                 verdict = "reject"
-            forbidden = scan_forbidden(diff)
+            forbidden = scan_forbidden_added_lines(diff)
             review_doc = {
                 "at": utcnow(),
                 "branch": branch,
@@ -1587,7 +1599,11 @@ def collect_claude_changes(
         text = target.read_text(encoding="utf-8")
         if len(text.encode("utf-8")) > MAX_FILE_BYTES:
             raise PatchError(f"arquivo grande demais: {rel}")
-        forbidden = scan_forbidden(text)
+        if tracked:
+            patch = git.run("diff", "--", rel, check=False).stdout or ""
+            forbidden = scan_forbidden_added_lines(patch)
+        else:
+            forbidden = scan_forbidden(text)
         if forbidden:
             raise PatchError(f"conteúdo recusado em {rel}: {forbidden}")
         from agentic.aro.constitution import patch_weakens_constitution

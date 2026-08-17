@@ -113,6 +113,26 @@ def test_scan_forbidden_allows_live_trade_refusal() -> None:
         is None
     )
     assert scan_forbidden("não ligue AGENTIC_LIVE_TRADE=1 em produção") is None
+    assert scan_forbidden("nem ligue AGENTIC_LIVE_TRADE=1.") is None
+    assert scan_forbidden("Rejeite se: exploits/PoC, AGENTIC_LIVE_TRADE=1, secrets") is None
+
+
+def test_scan_forbidden_added_lines_ignores_context() -> None:
+    from agentic.improve import scan_forbidden_added_lines
+
+    diff = (
+        "--- a/src/agentic/x.py\n"
+        "+++ b/src/agentic/x.py\n"
+        "@@ -1,3 +1,4 @@\n"
+        " existing wordlist mention stays\n"
+        "+print('safe change')\n"
+        " keep\n"
+    )
+    assert scan_forbidden_added_lines(diff) is None
+    bad = (
+        "--- a/x.py\n+++ b/x.py\n@@ -1 +1,2 @@\n keep\n+AGENTIC_LIVE_TRADE=1\n"
+    )
+    assert scan_forbidden_added_lines(bad) is not None
 
 
 def test_apply_files_rejects_new_loop_script(tmp_path: Path) -> None:
