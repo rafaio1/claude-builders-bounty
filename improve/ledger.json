@@ -3272,7 +3272,7 @@
       "title": "Fila de improve presa em loops de review rejeitado",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Se o pytest falhar repetidamente, o develop tenta corrigir o parecer sem limite de tentativas, travando a fila de pending.",
       "change": "Adicionar contador de tentativas; se > 3, mover para estado 'blocked' com log de erro e review_feedback.",
       "never": [
@@ -3296,6 +3296,11 @@
           "at": "2026-08-17T09:28:23+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita"
+        },
+        {
+          "at": "2026-08-17T21:06:56+00:00",
+          "event": "merge_failed",
+          "detail": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
         }
       ]
     },

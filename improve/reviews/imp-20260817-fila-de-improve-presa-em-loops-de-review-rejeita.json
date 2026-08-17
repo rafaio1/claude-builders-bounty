@@ -1,18 +1,19 @@
 {
-  "at": "2026-08-17T14:57:45+00:00",
+  "at": "2026-08-17T21:06:56+00:00",
   "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
   "proposal_id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
   "verdict": "approve",
-  "reason": "Patch defensivo pequeno, limitado a src/agentic/improve.py e testes, alinhado à proposta: evita requeue infinito ao garantir estado blocked com registro de histórico e feedback quando a proposta não é mais elegível. Não há segredos, modo live, exploit ou arquivo novo fora do escopo.",
+  "reason": "Otimização defensiva pequena e alinhada à proposta: em src/agentic/improve.py (arquivo permitido, conforme files_hint), 'blocked' deixa de ser elegível para requeue em can_requeue e propostas não re-enfileiráveis passam a ser marcadas como 'blocked' com evento de histórico contendo o review_feedback, evitando o loop infinito de review/rejeita que travava a fila. Também corrige a atualização de ledger['updated_at']. Sem AGENTIC_LIVE_TRADE, sem segredos Bybit/GhostCLI, sem exploits, sem git reset/clean e sem arquivos novos. Inclui dois testes cobrindo bloqueio após exceder requeues e idempotência para itens já bloqueados.",
   "risks": [
-    "Bloqueio prematuro se can_requeue classificar incorretamente uma proposta como não requeueável",
-    "Necessário garantir que os testes passem com a importação de MAX_REQUEUES"
+    "O estado 'blocked' torna-se terminal; qualquer fluxo que esperasse requeue automático de itens blocked deixará de recebê-los.",
+    "MAX_REQUEUES é importado nos testes sem uso direto (possível aviso de lint, sem impacto funcional).",
+    "A variável 'status' usada no novo bloco depende de definição pré-existente no laço; o pytest da suíte deve confirmar antes do merge (tests_ok_required)."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": ".......................................................                  [100%]\n55 passed in 14.09s"
+    "output": ".......................................................                  [100%]\n55 passed in 16.27s"
   },
   "files": [
     "src/agentic/improve.py",
