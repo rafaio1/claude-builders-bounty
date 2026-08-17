@@ -27,6 +27,10 @@ _SECRET_TOOL_FIELDS = frozenset(
 # verificação são sempre reexecutados no tick seguinte para detectar recuperação.
 _CENSUS_CACHE_TTL_SECONDS = 90
 
+# Limite máximo de processos playwright/chromium tolerados antes de limpeza.
+# Acima disso, considera-se vazamento/zumbi e força killall best-effort.
+_PLAYWRIGHT_PROCESS_LIMIT = 12
+
 
 def utcnow() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
@@ -142,6 +146,80 @@ def _cached_check(key: str, check_fn: callable[[], bool]) -> bool:
     return result
 
 
+def _count_playwright_processes() -> int:
+    """Conta processos chromium/playwright headless vivos no host.
+
+    Usa `pgrep -fc` com padrão amplo (chromium, chrome headless, playwright)
+    para capturar tanto o browser quanto wrappers MCP/CLI. Retorna 0 em erro
+    ou quando não há matching processes — nunca levanta exceção.
+    """
+    try:
+        completed = subprocess.run(
+            ["pgrep", "-fc", r"(chromium|chrome.*headless|playwright)"],
+            capture_output=True,
+            text=True,
+            timeout=4.0,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return 0
+    if completed.returncode not in (0, 1):
+        return 0
+    out = (completed.stdout or "").strip()
+    if not out:
+        return 0
+    try:
+        return int(out.splitlines()[0])
+    except (ValueError, IndexError):
+        return 0
+
+
+def _cleanup_playwright_zombies() -> dict[str, Any]:
+    """Força limpeza best-effort de processos playwright/chromium zumbis.
+
+    Executa SIGTERM via pkill seguido de SIGKILL após grace period curto.
+    Nunca levanta; devolve dict com contagem antes/depois e eventual erro.
+    """
+    before = _count_playwright_processes()
+    result: dict[str, Any] = {
+        "before": before,
+        "after": before,
+        "killed": False,
+        "error": "",
+    }
+    if before <= _PLAYWRIGHT_PROCESS_LIMIT:
+        return result
+    # SIGTERM primeiro para permitir cleanup gracioso do browser.
+    try:
+        subprocess.run(
+            ["pkill", "-f", r"(chromium|chrome.*headless|playwright)"],
+            capture_output=True,
+            timeout=4.0,
+            check=False,
+        )
+    except (OSError, subprocess.TimeoutExpired) as exc:
+        result["error"] = f"sigterm_failed:{type(exc).__name__}"
+        return result
+    time.sleep(1.5)
+    after = _count_playwright_processes()
+    # Se ainda acima do limite, força SIGKILL nos remanescentes.
+    if after > _PLAYWRIGHT_PROCESS_LIMIT:
+        try:
+            subprocess.run(
+                ["pkill", "-9", "-f", r"(chromium|chrome.*headless|playwright)"],
+                capture_output=True,
+                timeout=4.0,
+                check=False,
+            )
+        except (OSError, subprocess.TimeoutExpired) as exc:
+            result["error"] = f"sigkill_failed:{type(exc).__name__}"
+        time.sleep(0.5)
+        after = _count_playwright_processes()
+    result["after"] = after
+    result["killed"] = after < before
+    return result
+
+
 def _smoke_playwright() -> dict[str, Any]:
     """Smoke test do Playwright CLI: open about:blank + close.
 
@@ -149,7 +227,12 @@ def _smoke_playwright() -> dict[str, Any]:
     num único subprocesso headless. O `close` subsequente garante que nenhum
     processo filho fica órfão. Não usa `goto` (exige browser já aberto) nem
     `snapshot --url` (opção inexistente).
+
+    Antes do smoke, verifica contagem de processos playwright/chromium e força
+    limpeza se exceder `_PLAYWRIGHT_PROCESS_LIMIT`, prevenindo degradação
+    gradual por zumbis/vazamentos de sessões anteriores.
     """
+    cleanup = _cleanup_playwright_zombies()
     probe = _smoke_check(
         ["playwright-cli", "open", "about:blank"],
         timeout=12.0,
@@ -158,6 +241,11 @@ def _smoke_playwright() -> dict[str, Any]:
     _smoke_check(["playwright-cli", "close"], timeout=4.0)
     if not probe["ok"]:
         probe["error"] = f"open_failed:{probe['error']}"
+    if cleanup.get("killed"):
+        probe["zombie_cleanup"] = {
+            "before": cleanup["before"],
+            "after": cleanup["after"],
+        }
     return probe
 
 
