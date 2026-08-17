@@ -14,6 +14,7 @@ from agentic.locks import RunLock
 
 STATUS_PATH = Path("data") / "status.json"
 HEALTH_PATH = Path("data") / "health.json"
+LAST_TICK_PATH = Path("data") / "last_tick.json"
 
 # Campos de ferramentas que DEVEM ser sanitizados (nunca gravar valores reais)
 _SECRET_TOOL_FIELDS = frozenset(
@@ -204,7 +205,29 @@ def tick(settings: Settings) -> dict[str, Any]:
     payload["missing"] = missing
     write_status(settings.root, payload)
     _write_health_snapshot(settings.root, tools, aro)
+    _write_last_tick(settings.root, tools)
     return payload
+
+
+def _write_last_tick(root: Path, tools: dict[str, Any]) -> Path:
+    """Grava rastro leve de frescor do tick em data/last_tick.json (fora do git).
+
+    Contém apenas timestamp ISO-8601 e contagem de ferramentas ok, para que
+    portal/reviewer saibam se o loop está vivo entre censos sem depender do
+    status.json completo.
+    """
+    path = Path(root) / LAST_TICK_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
+    ok_count = sum(1 for v in (tools or {}).values() if bool(v))
+    snapshot = {
+        "ts": utcnow(),
+        "tools_ok": ok_count,
+    }
+    path.write_text(
+        json.dumps(snapshot, ensure_ascii=False) + "\n",
+        encoding="utf-8",
+    )
+    return path
 
 
 def _sanitize_tool_status(tools: dict[str, Any]) -> dict[str, bool]:
