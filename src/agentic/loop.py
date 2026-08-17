@@ -13,6 +13,12 @@ from agentic.env import apply
 from agentic.locks import RunLock
 
 STATUS_PATH = Path("data") / "status.json"
+HEALTH_PATH = Path("data") / "health.json"
+
+# Campos de ferramentas que DEVEM ser sanitizados (nunca gravar valores reais)
+_SECRET_TOOL_FIELDS = frozenset(
+    {"ghostcli", "bybit_key", "bybit_secret", "bybit_env_file"}
+)
 
 
 def utcnow() -> str:
@@ -127,7 +133,45 @@ def tick(settings: Settings) -> dict[str, Any]:
     payload["ok"] = not missing
     payload["missing"] = missing
     write_status(settings.root, payload)
+    _write_health_snapshot(settings.root, tools, aro)
     return payload
+
+
+def _sanitize_tool_status(tools: dict[str, Any]) -> dict[str, bool]:
+    """Retorna apenas flags booleanos; campos sensíveis viram True/False sem valores."""
+    sanitized: dict[str, bool] = {}
+    for name, value in (tools or {}).items():
+        if name in _SECRET_TOOL_FIELDS:
+            sanitized[name] = bool(value)
+        else:
+            sanitized[name] = bool(value)
+    return sanitized
+
+
+def _write_health_snapshot(
+    root: Path, tools: dict[str, Any], aro: dict[str, Any]
+) -> Path:
+    """Grava snapshot sanitizado de saúde em data/health.json (gitignorado)."""
+    path = Path(root) / HEALTH_PATH
+    path.parent.mkdir(parents=True, exist_ok=True)
+    snapshot = {
+        "generated_at": utcnow(),
+        "live_trade": False,
+        "tools": _sanitize_tool_status(tools),
+        "aro": {
+            "ok": bool((aro or {}).get("ok")),
+            "paused": bool((aro or {}).get("paused")),
+            "constitution_ok": bool((aro or {}).get("constitution_ok")),
+            "ready_for_outbound": bool((aro or {}).get("ready_for_outbound")),
+            "offers": len((aro or {}).get("offers") or []),
+            "next_action": ((aro or {}).get("decision") or {}).get("next_action"),
+        },
+    }
+    path.write_text(
+        json.dumps(snapshot, ensure_ascii=False, indent=2, default=str) + "\n",
+        encoding="utf-8",
+    )
+    return path
 
 
 def run_loop(settings: Settings | None = None, *, once: bool = False) -> int:
