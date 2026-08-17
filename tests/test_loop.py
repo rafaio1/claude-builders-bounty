@@ -5,7 +5,14 @@ from pathlib import Path
 from agentic.config import Settings
 import json
 
-from agentic.loop import LAST_TICK_PATH, collect_census, tick
+from agentic.loop import (
+    LAST_TICK_PATH,
+    _PLAYWRIGHT_PROCESS_LIMIT,
+    _cleanup_playwright_zombies,
+    _count_playwright_processes,
+    collect_census,
+    tick,
+)
 
 
 def test_tick_writes_status_without_secrets(tmp_path: Path, monkeypatch) -> None:
@@ -96,3 +103,86 @@ def test_tick_writes_last_tick_snapshot(tmp_path: Path, monkeypatch) -> None:
     assert "ts" in snapshot
     assert isinstance(snapshot["tools_ok"], int)
     assert snapshot["tools_ok"] >= 0
+
+
+def test_count_playwright_processes_returns_int(monkeypatch) -> None:
+    """_count_playwright_processes deve devolver int e nunca levantar."""
+    import subprocess
+
+    # Simula pgrep retornando contagem válida.
+    def fake_run(args, **kwargs):
+        class R:
+            returncode = 0
+            stdout = "7\n"
+            stderr = ""
+        return R()
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    assert _count_playwright_processes() == 7
+
+
+def test_count_playwright_processes_handles_error(monkeypatch) -> None:
+    """Em caso de erro/timeout, devolve 0 sem levantar."""
+    import subprocess
+
+    def fake_run(args, **kwargs):
+        raise OSError("pgrep missing")
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    assert _count_playwright_processes() == 0
+
+
+def test_cleanup_skips_when_under_limit(monkeypatch) -> None:
+    """Se contagem está abaixo do limite, não executa pkill."""
+    import subprocess
+
+    calls: list[list[str]] = []
+
+    def fake_run(args, **kwargs):
+        calls.append(args)
+        class R:
+            returncode = 1
+            stdout = "0\n"
+            stderr = ""
+        return R()
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    result = _cleanup_playwright_zombies()
+    assert result["killed"] is False
+    # Apenas pgrep deve ter sido chamado; nenhum pkill.
+    assert all(args[0] != "pkill" for args in calls)
+
+
+def test_cleanup_kills_when_over_limit(monkeypatch) -> None:
+    """Acima do limite, executa SIGTERM e (se necessário) SIGKILL."""
+    import subprocess
+
+    call_log: list[list[str]] = []
+    pgrep_results = iter(["20\n", "5\n", "5\n"])
+
+    def fake_run(args, **kwargs):
+        call_log.append(args)
+        class R:
+            pass
+        r = R()
+        if args[0] == "pgrep":
+            r.returncode = 0
+            r.stdout = next(pgrep_results)
+            r.stderr = ""
+        else:
+            # pkill
+            r.returncode = 0
+            r.stdout = ""
+            r.stderr = ""
+        return r
+
+    monkeypatch.setattr(subprocess, "run", fake_run)
+    # Acelera sleeps internos da limpeza.
+    import agentic.loop as loop_mod
+    monkeypatch.setattr(loop_mod.time, "sleep", lambda *_: None)
+
+    result = _cleanup_playwright_zombies()
+    assert result["before"] == 20
+    assert result["killed"] is True
+    # Deve ter chamado pkill pelo menos uma vez (SIGTERM).
+    assert any(args[0] == "pkill" for args in call_log)
