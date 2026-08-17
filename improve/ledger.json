@@ -4246,7 +4246,7 @@
       "title": "Falha crítica no smoke test do GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O census aponta 'os_error:FileNotFoundError' para o ghostcli, quebrando a fila de develop/review que depende dos modelos GhostCLI.",
       "change": "Ajustar a resolução de caminhos ou instalação do binário/wrapper do GhostCLI no environment do .venv.",
       "never": [
@@ -4258,7 +4258,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
       "map_id": "20260817T090418Z",
       "history": [
         {
@@ -4275,6 +4275,11 @@
           "at": "2026-08-17T19:49:31+00:00",
           "event": "released_stale",
           "detail": "developing sem diff útil; devolve à fila"
+        },
+        {
+          "at": "2026-08-17T19:49:31+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli"
         }
       ]
     },
