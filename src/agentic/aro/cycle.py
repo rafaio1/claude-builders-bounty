@@ -1,4 +1,4 @@
-"""ARO cycle 1: observe, record, do not contact or pay."""
+"""ARO cycle: observe, operate via Wise when authorized."""
 
 from __future__ import annotations
 
@@ -6,11 +6,13 @@ import json
 import os
 import shutil
 from datetime import datetime, timezone
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
 
 from agentic.aro.config import AroConfig, load_aro_config
 from agentic.aro.constitution import VERSION, constitution_intact, invariants_hash
+from agentic.aro.finance import BASE_LIMIT, snapshot as finance_snapshot
 from agentic.aro.offers import seed_offers
 from agentic.aro.store import append_jsonl, ensure_stores, read_jsonl
 
@@ -43,7 +45,6 @@ def utcnow() -> str:
 def inventory_tools() -> dict[str, bool]:
     return {
         "playwright_cli": bool(shutil.which("playwright-cli")),
-        # MCP desativado: o CLI headless cobre os casos do loop com menos tokens.
         "playwright_mcp": False,
         "jq": bool(shutil.which("jq")),
         "git": bool(shutil.which("git")),
@@ -52,7 +53,21 @@ def inventory_tools() -> dict[str, bool]:
     }
 
 
-def account_scopes(*, ghostcli: bool, bybit: bool) -> dict[str, Any]:
+def account_scopes(
+    *,
+    ghostcli: bool,
+    bybit: bool,
+    wise: dict[str, Any] | None = None,
+    may_open_receive_accounts: bool = False,
+    p2p_authorized: bool = False,
+) -> dict[str, Any]:
+    wise = wise or {}
+    bybit_scope = "p2p_buy_sell" if p2p_authorized else "optional_weekly_hop_via_wise"
+    bybit_reason = (
+        "P2P compra/venda autorizado (não é spot trading)"
+        if p2p_authorized
+        else "Bybit não transaciona o caixa ARO; hop opcional da participação via Wise"
+    )
     return {
         "ghostcli": {
             "present": ghostcli,
@@ -61,17 +76,27 @@ def account_scopes(*, ghostcli: bool, bybit: bool) -> dict[str, Any]:
         },
         "bybit": {
             "present": bybit,
-            "scope": "unauthorized_for_aro_operating_cash",
-            "authorized_for_aro_sales": False,
-            "reason": "constituição proíbe trading especulativo com o caixa operacional",
+            "scope": bybit_scope,
+            "authorized_for_aro_sales": bool(p2p_authorized and bybit),
+            "p2p_authorized": p2p_authorized,
+            "reason": bybit_reason,
+        },
+        "wise": {
+            "present": bool(wise.get("configured")),
+            "ok": bool(wise.get("ok")),
+            "scope": "receive_and_send",
+            "authorized_for_aro_sales": bool(wise.get("ok")),
+            "receive_ready": bool(wise.get("receive_ready")),
         },
         "freelancer_platforms": {
             "present": False,
             "authorized_for_aro_sales": False,
+            "authorized_to_open": bool(may_open_receive_accounts),
         },
         "payment_processor": {
-            "present": False,
-            "authorized_for_aro_sales": False,
+            "present": bool(wise.get("configured")),
+            "authorized_for_aro_sales": bool(wise.get("ok")),
+            "name": "wise",
         },
     }
 
@@ -155,7 +180,7 @@ def process_owner_inbox(
         else:
             answer = (
                 "Mensagem recebida. Ciclo interno: sem propostas externas até identidade, "
-                "destino de payout e contas autorizadas."
+                "trilho Wise e contas autorizadas."
             )
         replies.append(
             append_jsonl(
@@ -180,6 +205,7 @@ def run_cycle(
     bybit: bool = False,
     live_trade: bool = False,
     config: AroConfig | None = None,
+    operate: bool = False,
 ) -> dict[str, Any]:
     config = config or load_aro_config(root)
     intact, marker = constitution_intact(root)
@@ -187,12 +213,35 @@ def run_cycle(
         raise RuntimeError("ARO recusa AGENTIC_LIVE_TRADE ligado")
     stores = ensure_stores(root)
     offers = seed_offers(root, config)
+    from agentic.aro import wise as wise_mod
+
+    if os.getenv("AGENTIC_ARO_SKIP_WISE") == "1" or not config.wise_configured:
+        wise_status = {"ok": False, "configured": bool(config.wise_configured)}
+    else:
+        wise_status = wise_mod.status()
     inventory = inventory_tools()
     if tools:
         inventory.update({k: bool(v) for k, v in tools.items() if isinstance(v, bool)})
-    accounts = account_scopes(ghostcli=ghostcli, bybit=bybit)
+    accounts = account_scopes(
+        ghostcli=ghostcli,
+        bybit=bybit,
+        wise=wise_status,
+        may_open_receive_accounts=config.may_open_receive_accounts,
+        p2p_authorized=config.p2p_authorized,
+    )
+    try:
+        base_limit = Decimal(str(config.base_limit_brl or "50"))
+    except Exception:
+        base_limit = BASE_LIMIT
+    finance = finance_snapshot(
+        root,
+        payout_dest_ok=config.money_rail_ready,
+        base=base_limit,
+        channel=config.payout_channel,
+    )
     paused = bool(config.stop_all or not intact)
     decision = dict(DECISION_IDLE)
+    commerce_result: dict[str, Any] | None = None
     if paused:
         decision["action"] = "pause"
         decision["next_action"] = "preserve_evidence_and_wait"
@@ -201,15 +250,35 @@ def run_cycle(
         missing = []
         if not config.owner_name or not config.business_name:
             missing.append("ARO_OWNER_NAME/ARO_BUSINESS_NAME")
-        if not config.payout_destination_configured:
-            missing.append("aro-payout.dest")
+        if not config.wise_configured:
+            missing.append("WISE_API_TOKEN")
         if not config.commercial_outbound:
             missing.append("ARO_COMMERCIAL_OUTBOUND")
-        decision["next_action"] = "configure " + ", ".join(missing or ["limites financeiros"])
+        decision["next_action"] = "configure " + ", ".join(missing or ["trilho Wise"])
+    elif not wise_status.get("ok"):
+        decision["action"] = "fix_wise_rail"
+        decision["next_action"] = wise_status.get("reason") or "Wise token inválido"
+    elif finance["weekly_payout"]["due"]:
+        decision["action"] = "weekly_owner_payout"
+        decision["next_action"] = "registar/enviar participação 20% via Wise"
+        decision["expected_net_profit"] = finance["owner_accrual"]
+    else:
+        decision["action"] = "operate_via_wise"
+        decision["next_action"] = (
+            "publicar oferta; contrato; receber Wise; entregar; participação semanal"
+        )
+        decision["acceptance_evidence"] = ["wise rail", "catalog"]
+    if operate and config.ready_for_outbound and not paused and wise_status.get("ok"):
+        from agentic.aro.commerce import run_operate
+
+        commerce_result = run_operate(root, config)
+        if commerce_result.get("next"):
+            decision["next_action"] = str(commerce_result["next"])
+        finance = commerce_result.get("finance") or finance
     report = {
         "ok": intact and not live_trade,
         "paused": paused,
-        "cycle": "observe",
+        "cycle": "operate" if operate else "observe",
         "version": VERSION,
         "invariants_hash": invariants_hash(),
         "constitution": marker,
@@ -230,16 +299,28 @@ def run_cycle(
         "ready_for_outbound": config.ready_for_outbound and not paused,
         "payout_destination_configured": config.payout_destination_configured,
         "owner_share_rate": config.owner_share_rate,
-        "financial_limits_configured": bool(
-            config.minimum_payout
-            and config.max_single_expense
-            and config.minimum_cash_reserve
-        ),
+        "payout_channel": config.payout_channel,
+        "may_open_receive_accounts": config.may_open_receive_accounts,
+        "wise": {
+            "ok": bool(wise_status.get("ok")),
+            "configured": bool(wise_status.get("configured")),
+            "receive_ready": bool(wise_status.get("receive_ready")),
+            "balances": wise_status.get("balances") or [],
+            "brl_balance": wise_status.get("brl_balance"),
+            "reason": wise_status.get("reason") or "",
+        },
+        "identity": {
+            "owner_configured": bool(config.owner_name),
+            "business_configured": bool(config.business_name),
+        },
+        "finance": finance,
+        "financial_limits_configured": True,
+        "commerce": commerce_result,
         "decision": decision,
         "note": (
-            "Ciclo 1 interno: sem propostas, publicações, pagamentos ou uso de Bybit. "
-            "Configure identidade, destino de payout (ficheiro 0600 fora do git) e "
-            "ARO_COMMERCIAL_OUTBOUND=1 só depois de contas autorizadas."
+            "Receita licita no Brasil. Wise + carteira crypto; P2P pago da Wise. "
+            "20% owner semanal; reinvestir resto; milestone R$ 1000 → metade ao owner. "
+            "Sem impersonação; divulgar automação quando exigido."
         ),
     }
     replies = process_owner_inbox(
@@ -251,7 +332,16 @@ def run_cycle(
     if replies:
         paused = paused or (Path(root) / ".agentic-aro.stop").is_file()
         report["paused"] = paused
-    append_jsonl(root, "journal.jsonl", {"kind": "cycle", "summary": report["note"], "paused": paused})
+    append_jsonl(
+        root,
+        "journal.jsonl",
+        {
+            "kind": "cycle",
+            "summary": report["note"],
+            "paused": paused,
+            "operate": operate,
+        },
+    )
     day = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     daily = Path(root) / "data" / "aro" / "reports" / f"daily-{day}.json"
     daily.parent.mkdir(parents=True, exist_ok=True)

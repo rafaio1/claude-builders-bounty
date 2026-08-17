@@ -36,8 +36,16 @@ def main(argv: list[str] | None = None) -> int:
     integrity_cmd.add_argument("--no-systemd", action="store_true")
     integrity_cmd.add_argument("--output")
 
-    aro_cmd = sub.add_parser("aro", help="ciclo ARO (observar / pausar)")
-    aro_cmd.add_argument("action", choices=["status", "cycle", "stop", "resume"])
+    aro_cmd = sub.add_parser("aro", help="ciclo ARO (observar / operar / pausar)")
+    aro_cmd.add_argument(
+        "action",
+        choices=["status", "cycle", "operate", "scout", "bootstrap", "accounts", "p2p", "publish", "contract", "deliver", "stop", "resume"],
+    )
+    aro_cmd.add_argument("--offer", default="offer-bugfix-api", help="id da oferta")
+    aro_cmd.add_argument("--client", default="", help="referência do cliente (contrato)")
+    aro_cmd.add_argument("--amount", default="", help="valor BRL do contrato")
+    aro_cmd.add_argument("--contract", default="", help="id do contrato (entrega)")
+    aro_cmd.add_argument("--evidence", default="", help="nota de evidência de entrega")
 
     mail_cmd = sub.add_parser("mail", help="caixa ARO AgentMail")
     mail_cmd.add_argument("action", choices=["status", "verify"])
@@ -91,8 +99,12 @@ def main(argv: list[str] | None = None) -> int:
         print(json.dumps(report, ensure_ascii=False, indent=2, default=str))
         return 0 if report.get("ok") else 1
     if args.command == "aro":
+        from agentic.aro.accounts import run_provision
+        from agentic.aro.commerce import create_contract, deliver_contract, publish_offer, run_operate
+        from agentic.aro.config import load_aro_config
         from agentic.aro.constitution import STOP_COMMAND, STOP_FILENAME
         from agentic.aro.cycle import run_cycle
+        from agentic.aro.opportunities import run_scout
         from agentic.env import apply as apply_env
 
         env = apply_env()
@@ -104,11 +116,51 @@ def main(argv: list[str] | None = None) -> int:
             if stop.exists():
                 stop.unlink()
             return _json({"ok": True, "paused": False, "command": "resume"})
+
+        config = load_aro_config(settings.root)
+        if args.action == "publish":
+            return _json(publish_offer(settings.root, args.offer, config))
+        if args.action == "contract":
+            if not args.client or not args.amount:
+                print("contract exige --client e --amount", file=sys.stderr)
+                return 2
+            return _json(
+                create_contract(
+                    settings.root,
+                    offer_id=args.offer,
+                    client_ref=args.client,
+                    amount_brl=args.amount,
+                    config=config,
+                )
+            )
+        if args.action == "deliver":
+            if not args.contract:
+                print("deliver exige --contract", file=sys.stderr)
+                return 2
+            return _json(
+                deliver_contract(settings.root, args.contract, evidence=args.evidence or "")
+            )
+        if args.action == "operate":
+            return _json(run_operate(settings.root, config))
+        if args.action == "scout":
+            return _json(run_scout(settings.root, config))
+        if args.action == "accounts":
+            return _json(run_provision(settings.root, config))
+        if args.action == "bootstrap":
+            from agentic.aro.bootstrap import run_bootstrap
+
+            return _json(run_bootstrap(settings.root, config))
+        if args.action == "p2p":
+            from agentic.aro import p2p as p2p_mod
+
+            return _json(p2p_mod.run_p2p(settings.root, config))
+
         report = run_cycle(
             settings.root,
             ghostcli=bool(env.get("ghost_key")),
             bybit=bool(env.get("bybit_key") and env.get("bybit_secret")),
             live_trade=False,
+            operate=args.action == "cycle",
         )
         if args.action == "status":
             slim = {
@@ -118,6 +170,11 @@ def main(argv: list[str] | None = None) -> int:
                 "constitution_ok": report.get("constitution_ok"),
                 "payout_destination_configured": report.get("payout_destination_configured"),
                 "financial_limits_configured": report.get("financial_limits_configured"),
+                "may_open_receive_accounts": report.get("may_open_receive_accounts"),
+                "payout_channel": report.get("payout_channel"),
+                "wise": report.get("wise"),
+                "finance": report.get("finance"),
+                "commerce": report.get("commerce"),
                 "fiscal": report.get("fiscal"),
                 "identity": report.get("identity"),
                 "offers": report.get("offers"),
