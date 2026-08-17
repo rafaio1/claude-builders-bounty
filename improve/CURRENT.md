@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T04:02:32+00:00
+Atualizado: 2026-08-17T05:02:21+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T03:59:55+00:00
+- last_tick: 2026-08-17T05:00:09+00:00
 - git_clean: ok
 - dirty_paths: []
 
 ## Ghost
 
-Mapeamento de gargalos focado em gestão de filas, limites de tokens e segurança de credenciais, com melhorias em ferramentas e sanitização de traces.
+Mapeamento de gargalos de sanitização e eficiência do motor, com melhorias focadas em otimização de ferramentas (theme=tools) e avaliação de IAs (theme=ai).
 
 ## Ledger
 
-{"pending": 88, "blocked": 4, "applied": 3}
+{"pending": 93, "blocked": 4, "applied": 6}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
@@ -39,7 +39,7 @@ Mapeamento de gargalos focado em gestão de filas, limites de tokens e seguranç
 - `imp-20260816-traces-sanitizados-da-ghostcli-no-improve` [pending/p2] Traces sanitizados da GhostCLI no improve
 - `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [pending/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
 - `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [pending/p1] Tick de saúde reexecuta probes caras a cada 90s
-- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [pending/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
+- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [applied/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
 - `imp-20260816-review-feedback-n-o-estruturado-favorece-alargam` [pending/p2] review_feedback não estruturado favorece alargamento de escopo
 - `imp-20260816-portal-autenticado-fora-do-tick-de-sa-de` [pending/p3] Portal autenticado fora do tick de saúde
 - `imp-20260816-chamadas-ghostcli-sem-timeout-podem-travar-o-tic` [pending/p3] Chamadas GhostCLI sem timeout podem travar o tick
