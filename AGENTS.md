@@ -54,10 +54,14 @@ playwright-cli close
 
 Skill: `playwright-cli` (`~/.claude/skills/playwright-cli` e `~/.agents/skills/playwright-cli`).
 
-### MCP (apenas quando necessário)
+### MCP (desativado no motor)
 
-Servidor `playwright` via `playwright-mcp --headless --isolated --no-sandbox`.
-Use exclusivamente para os casos listados acima; documente no trace por que o CLI não foi suficiente.
+O servidor `playwright-mcp` está **desativado** no loop e no censo ARO para evitar
+desperdício de tokens — o CLI headless cobre todos os casos de uso do motor com
+custo de contexto muito menor. Mesmo que o binário esteja instalado, ele não é
+anunciado como ferramenta disponível. Se uma tarefa realmente exigir MCP,
+documente no trace a justificativa e peça reavaliação da diretriz antes de
+reativar.
 
 ## Shell e arquivos
 

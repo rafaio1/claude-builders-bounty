@@ -43,7 +43,8 @@ def utcnow() -> str:
 def inventory_tools() -> dict[str, bool]:
     return {
         "playwright_cli": bool(shutil.which("playwright-cli")),
-        "playwright_mcp": bool(shutil.which("playwright-mcp")),
+        # MCP desativado: o CLI headless cobre os casos do loop com menos tokens.
+        "playwright_mcp": False,
         "jq": bool(shutil.which("jq")),
         "git": bool(shutil.which("git")),
         "docker": bool(shutil.which("docker")),
