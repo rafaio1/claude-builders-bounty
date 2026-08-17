@@ -4570,7 +4570,7 @@
       "title": "Uso redundante de Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O censo mostra playwright_mcp ativo, mas a diretriz exige preferir playwright-cli para poupar tokens. A coexistência gera risco de rotas ineficientes e custo elevado.",
       "change": "Desativar o roteamento para playwright_mcp nas configurações de ferramentas, forçando o uso exclusivo do CLI headless.",
       "never": [
@@ -4582,13 +4582,18 @@
         "src/agentic/tools.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-uso-redundante-de-playwright-mcp",
       "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-17T10:02:06+00:00",
           "event": "mapped",
           "detail": "20260817T100206Z"
+        },
+        {
+          "at": "2026-08-17T18:48:42+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-uso-redundante-de-playwright-mcp"
         }
       ]
     },
