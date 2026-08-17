@@ -331,10 +331,11 @@ def collect_census(root: Path) -> dict[str, Any]:
             last_tick = ""
     playwright_smoke = _smoke_playwright()
     playwright = playwright_smoke["ok"]
-    playwright_mcp = _cached_check(
-        "playwright_mcp",
-        lambda: bool(_which("playwright-mcp")),
-    )
+    # Playwright MCP desativado intencionalmente: o CLI headless cobre os casos
+    # de uso do loop com custo de tokens muito menor. O binário pode até estar
+    # instalado, mas não é anunciado como ferramenta disponível para evitar que
+    # agentes o invoquem e desperdicem contexto.
+    playwright_mcp = False
     claude = _cached_check(
         "claude",
         lambda: bool(_which("claude")) and _cmd_ok(["claude", "--version"]),
