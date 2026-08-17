@@ -20,9 +20,18 @@ _SECRET_TOOL_FIELDS = frozenset(
     {"ghostcli", "bybit_key", "bybit_secret", "bybit_env_file"}
 )
 
+# TTL do cache de checagens estáveis (segundos). Itens que falharam na última
+# verificação são sempre reexecutados no tick seguinte para detectar recuperação.
+_CENSUS_CACHE_TTL_SECONDS = 90
+
 
 def utcnow() -> str:
     return datetime.now(timezone.utc).replace(microsecond=0).isoformat()
+
+
+def _monotonic() -> float:
+    """Relógio monotónico para TTL; isolado para facilitar testes."""
+    return time.monotonic()
 
 
 def _which(name: str) -> str:
@@ -43,6 +52,51 @@ def _cmd_ok(args: list[str], *, timeout: float = 8.0) -> bool:
     return completed.returncode == 0
 
 
+class _CensusCache:
+    """Cache em memória com TTL curto para checagens de ferramentas estáveis.
+
+    Evita reexecutar `_which`/subprocess a cada tick quando nada mudou.
+    Itens que falharam (`False`) nunca ficam em cache — são reavaliados no
+    próximo tick para capturar instalação/configuração tardia.
+    """
+
+    def __init__(self, ttl_seconds: int = _CENSUS_CACHE_TTL_SECONDS) -> None:
+        self._ttl = ttl_seconds
+        self._store: dict[str, tuple[float, bool]] = {}
+
+    def get(self, key: str) -> bool | None:
+        entry = self._store.get(key)
+        if entry is None:
+            return None
+        ts, value = entry
+        # Só devolve se for True e ainda dentro do TTL. Falhas nunca entram.
+        if not value or (_monotonic() - ts) > self._ttl:
+            self._store.pop(key, None)
+            return None
+        return value
+
+    def put(self, key: str, value: bool) -> None:
+        # Só armazena resultados positivos; negativos são sempre recalculados.
+        if value:
+            self._store[key] = (_monotonic(), True)
+
+    def invalidate(self, key: str) -> None:
+        self._store.pop(key, None)
+
+
+_census_cache = _CensusCache()
+
+
+def _cached_check(key: str, check_fn: callable[[], bool]) -> bool:
+    """Executa `check_fn` só se o cache não tiver um resultado válido recente."""
+    cached = _census_cache.get(key)
+    if cached is not None:
+        return cached
+    result = bool(check_fn())
+    _census_cache.put(key, result)
+    return result
+
+
 def collect_census(root: Path) -> dict[str, Any]:
     env = apply()
     status_file = Path(root) / STATUS_PATH
@@ -53,26 +107,42 @@ def collect_census(root: Path) -> dict[str, Any]:
             last_tick = str(payload.get("generated_at") or "")
         except (OSError, json.JSONDecodeError, TypeError):
             last_tick = ""
-    playwright = bool(_which("playwright-cli")) and _cmd_ok(["playwright-cli", "--version"])
-    playwright_mcp = bool(_which("playwright-mcp"))
-    claude = bool(_which("claude")) and _cmd_ok(["claude", "--version"])
+    playwright = _cached_check(
+        "playwright",
+        lambda: bool(_which("playwright-cli")) and _cmd_ok(["playwright-cli", "--version"]),
+    )
+    playwright_mcp = _cached_check(
+        "playwright_mcp",
+        lambda: bool(_which("playwright-mcp")),
+    )
+    claude = _cached_check(
+        "claude",
+        lambda: bool(_which("claude")) and _cmd_ok(["claude", "--version"]),
+    )
+    jq = _cached_check("jq", lambda: bool(_which("jq")))
+    ghostcli = _cached_check("ghostcli", lambda: bool(env.get("ghost_key")))
+    bybit_key = _cached_check("bybit_key", lambda: bool(env.get("bybit_key")))
+    bybit_secret = _cached_check("bybit_secret", lambda: bool(env.get("bybit_secret")))
+    bybit_env_file = _cached_check(
+        "bybit_env_file", lambda: bool(env.get("bybit_env_file"))
+    )
     return {
         "generated_at": utcnow(),
         "last_tick": last_tick,
         "tools": {
             "playwright": playwright,
             "playwright_mcp": playwright_mcp,
-            "jq": bool(_which("jq")),
+            "jq": jq,
             "claude": claude,
-            "ghostcli": bool(env.get("ghost_key")),
-            "bybit_key": bool(env.get("bybit_key")),
-            "bybit_secret": bool(env.get("bybit_secret")),
-            "bybit_env_file": bool(env.get("bybit_env_file")),
+            "ghostcli": ghostcli,
+            "bybit_key": bybit_key,
+            "bybit_secret": bybit_secret,
+            "bybit_env_file": bybit_env_file,
         },
         "stats": {
             "playwright": playwright,
             "claude": claude,
-            "ghostcli": bool(env.get("ghost_key")),
+            "ghostcli": ghostcli,
         },
     }
 
