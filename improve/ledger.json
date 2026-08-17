@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T21:02:27+00:00",
+  "updated_at": "2026-08-17T22:02:45+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -463,7 +463,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T210227Z",
+      "map_id": "20260817T220245Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -490,7 +490,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T210227Z",
+      "map_id": "20260817T220245Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -517,7 +517,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T210227Z",
+      "map_id": "20260817T220245Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -546,7 +546,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T210227Z",
+      "map_id": "20260817T220245Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -2229,7 +2229,7 @@
       "title": "Risco de secret vazar em traceback/trace da GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "rejected",
+      "status": "pending",
       "rationale": "env.py carrega GhostCLI+Bybit sem imprimir secrets, mas se ghostcli.py propagar erro com saída bruta (stderr/traceback), valores de /root/.automaton/bybit-murre.env podem chegar a log ou trace.",
       "change": "Centralizar um redact() em env.py que substitui qualquer valor carregado de .env/bybit-murre.env e aplicar a toda mensagem de erro/trace emitida por ghostcli.py antes de logar.",
       "never": [
@@ -2279,9 +2279,14 @@
           "at": "2026-08-17T21:27:12+00:00",
           "event": "review",
           "detail": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact() em env.py e aplicar a toda mensagem de erro/trace emitida por ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py). O patch, porém, modifica apenas src/agentic/loop.py (função _smoke_ghostcli), sem tocar em ghostcli.py nem mostrar a definição/centralização de mask_secrets em env.py. Mesmo problema já apontado … riscos=['Escopo incorreto: loop.py não está em files_hint; ghostcli.py (alvo principal da proposta) permanece sem tratamento de redact', 'Definição de mask_secrets não visível no diff — pode não existir em e… arquivos=src/agentic/loop.py"
+        },
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "requeued",
+          "detail": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact() em env.py e aplicar a toda mensagem de erro/trace emitida por ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py). O patch, porém, modifica apenas src/agentic/loop.py (função _smoke_ghostcli), sem tocar em ghostcli.py nem mostrar a definição/centralização de mask_secrets em env.py. Mesmo problema já apontado … riscos=['Escopo incorreto: loop.py não está em files_hint; ghostcli.py (alvo principal da proposta) permanece sem tratamento de redact', 'Definição de mask_secrets não visível no diff — pode não existir em e… arquivos=src/agentic/loop.py"
         }
       ],
-      "review_feedback": "muitos arquivos: 9 (máx 8)"
+      "review_feedback": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact() em env.py e aplicar a toda mensagem de erro/trace emitida por ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py). O patch, porém, modifica apenas src/agentic/loop.py (função _smoke_ghostcli), sem tocar em ghostcli.py nem mostrar a definição/centralização de mask_secrets em env.py. Mesmo problema já apontado … riscos=['Escopo incorreto: loop.py não está em files_hint; ghostcli.py (alvo principal da proposta) permanece sem tratamento de redact', 'Definição de mask_secrets não visível no diff — pode não existir em e… arquivos=src/agentic/loop.py"
     },
     {
       "id": "imp-20260817-review-feedback-sem-contrato-estruturado-permite",
@@ -2847,24 +2852,24 @@
       "id": "imp-20260817-sanitiza-o-de-traces-da-ghostcli-para-avalia-o",
       "key": "fc8ec94db2a3e438",
       "canon": "d4179d6fbc5d4936",
-      "title": "Sanitização de traces da GhostCLI para avaliação",
+      "title": "Sanitização e avaliação de traces GhostCLI",
       "kind": "improvement",
-      "priority": 3,
+      "priority": 2,
       "status": "pending",
-      "rationale": "Traces brutos podem conter dados sensíveis e dificultam a avaliação automatizada (eval) dos prompts.",
-      "change": "Adicionar um filtro de regex na resposta da GhostCLI antes de salvar no ledger, mascarando tokens, paths absolutos e chaves.",
+      "rationale": "Melhorar as IAs (theme=ai) requer traces sanitizados da GhostCLI para avaliar a qualidade dos prompts da fila develop e refinar o mapeamento.",
+      "change": "Adicionar hook em claude_cli.py para salvar traces sanitizados (sem secrets de env ou Bybit) em um diretório de eval e gerar métricas básicas de sucesso para o improve.py.",
       "never": [
         "remover logs de erro críticos",
         "alterar o OWNER_SHARE_RATE",
         "vazar credenciais Bybit"
       ],
       "files_hint": [
-        "src/agentic/ghostcli.py",
-        "src/agentic/eval.py"
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260817T220245Z",
       "history": [
         {
           "at": "2026-08-17T01:36:27+00:00",
@@ -3287,7 +3292,7 @@
       "title": "Fila de improve presa em loops de review rejeitado",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "Se o pytest falhar repetidamente, o develop tenta corrigir o parecer sem limite de tentativas, travando a fila de pending.",
       "change": "Adicionar contador de tentativas; se > 3, mover para estado 'blocked' com log de erro e review_feedback.",
       "never": [
@@ -3299,7 +3304,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+      "branch": "",
       "map_id": "20260817T040232Z",
       "history": [
         {
@@ -3316,8 +3321,14 @@
           "at": "2026-08-17T21:06:56+00:00",
           "event": "merge_failed",
           "detail": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
+        },
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "requeued",
+          "detail": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
         }
-      ]
+      ],
+      "review_feedback": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
     },
     {
       "id": "imp-20260817-valida-o-de-permiss-es-do-arquivo-de-credenciais",
@@ -5101,6 +5112,123 @@
           "at": "2026-08-17T21:02:27+00:00",
           "event": "mapped",
           "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp",
+      "key": "630f57982dba5fb0",
+      "canon": "f2d9e482af83a8d3",
+      "title": "Risco de dreno de tokens via Playwright MCP",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O censo indica playwright_mcp habilitado. Como a diretriz exige preferir playwright-cli para poupar tokens, a disponibilidade do MCP pode levar agentes a usá-lo inadvertidamente, gerando custos altos.",
+      "change": "Adicionar lógica de roteamento ou desabilitar o registro do playwright-mcp no motor, forçando o uso do playwright-cli headless.",
+      "never": [
+        "Desativar playwright-cli",
+        "Modificar AGENTIC_LIVE_TRADE",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T220245Z",
+      "history": [
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "mapped",
+          "detail": "20260817T220245Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sobreposi-o-de-ticks-de-sa-de-pesados",
+      "key": "8e97426260fad4db",
+      "canon": "033e9130f9c3c4e5",
+      "title": "Sobreposição de ticks de saúde pesados",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O smoke test do Playwright pode ser lento. Se o tick de saúde em src/agentic/loop.py demorar perto de 90s, o próximo tick do systemd pode sobrepor ou atrasar a fila.",
+      "change": "Implementar timeout estrito e assíncrono para o smoke test do navegador dentro do loop de saúde, garantindo que o tick termine bem antes de 90s.",
+      "never": [
+        "Alterar o --interval no systemd",
+        "Criar scripts bash paralelos"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T220245Z",
+      "history": [
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "mapped",
+          "detail": "20260817T220245Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-cont-nua-da-constitui-o-aro-no-tick",
+      "key": "dc14dcf1c848e5b0",
+      "canon": "ca3af47efcf2c455",
+      "title": "Validação contínua da constituição ARO no tick",
+      "kind": "improvement",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "A constituição ARO v1.0 (OWNER_SHARE_RATE=0.20 imutável) deve ser verificada a cada tick para evitar que mudanças no código ou falhas alterem o destino de payout ou regras de operação.",
+      "change": "Adicionar asserção de integridade do ARO (importando src/agentic/aro/constitution.py) no tick de saúde em src/agentic/loop.py, pausando a fila se a constituição falhar.",
+      "never": [
+        "Alterar OWNER_SHARE_RATE",
+        "Modificar ARO.md",
+        "Desativar STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T220245Z",
+      "history": [
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "mapped",
+          "detail": "20260817T220245Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-otimiza-o-de-parseamento-com-jq-nas-ferramentas",
+      "key": "ca566f09ef04a64e",
+      "canon": "b46a8d0201586be5",
+      "title": "Otimização de parseamento com jq nas ferramentas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Ferramentas dos agentes (theme=tools) como o jq podem sobrecarregar a memória do worker ao parsear respostas grandes da API durante a gestão da fila.",
+      "change": "Envolver chamadas jq em improve.py com limites de memória (ex: ulimit ou flags de streaming) e validar a integridade do JSON antes do parse completo.",
+      "never": [
+        "Instalar binários jq customizados",
+        "Usar fuzzing nas entradas",
+        "Criar PoC"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T220245Z",
+      "history": [
+        {
+          "at": "2026-08-17T22:02:45+00:00",
+          "event": "mapped",
+          "detail": "20260817T220245Z"
         }
       ]
     }
