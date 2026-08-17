@@ -1007,6 +1007,9 @@ Responda APENAS JSON:
 Rejeite se: exploits/PoC, AGENTIC_LIVE_TRADE=1, secrets Bybit/GhostCLI,
 mudança enorme sem ser git_clean, arquivo novo que o
 systemd/CLI não chama (ex.: src/agentic/loop.sh), ou se o diff não corresponde à proposta.
+Se a proposta pedia um módulo novo proibido (ex.: traces.py) e o develop
+implementou a mesma função num ficheiro existente permitido (ghostcli.py,
+improve.py, …) com testes: APROVE — é o comportamento correto do gate.
 Se a proposta for restaurar git_clean: aprove versionar código permitido que já estava
 sujo na main nesta fatia (files_hint). Rejeite misturar outras áreas, reset/secrets/
 data/.env/loop.sh. Se rejeitar por escopo ou valores, diga os valores/arquivos corretos
