@@ -1473,7 +1473,7 @@
       "title": "Tick de saúde reexecuta checagens completas a cada 90s",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Com --interval 90, cada tick reverifica todas as ferramentas mesmo quando nada mudou, gastando ciclos e chamadas (GhostCLI/playwright) sem ganho de sinal.",
       "change": "Adicionar cache com TTL curto em loop.py para checagens estáveis (presença de binários/credenciais), reexecutando apenas itens que falharam ou cujo TTL expirou.",
       "never": [
@@ -1497,6 +1497,11 @@
           "at": "2026-08-17T05:02:27+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca"
+        },
+        {
+          "at": "2026-08-17T05:05:10+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

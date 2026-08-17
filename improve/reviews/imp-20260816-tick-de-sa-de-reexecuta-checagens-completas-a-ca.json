@@ -1,0 +1,23 @@
+{
+  "at": "2026-08-17T05:05:10+00:00",
+  "branch": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca",
+  "proposal_id": "imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca",
+  "verdict": "approve",
+  "reason": "Otimização defensiva pequena em src/agentic/loop.py, exatamente no escopo da proposta: cache em memória com TTL de 90s apenas para checagens estáveis (binários/credenciais), armazenando somente resultados positivos; falhas nunca são cacheadas e são reavaliadas a cada tick. Não altera o --interval do systemd, não remove o tick de saúde, não toca em AGENTIC_LIVE_TRADE nem envia ordens Bybit. O cache guarda apenas booleanos — nenhum valor de secret (bybit_key/bybit_secret/ghost_key) é armazenado ou exposto. Acompanha suíte de testes cobrindo TTL, expiração, não-cache de False, invalidação e independência de chaves. Arquivo novo é apenas de teste, permitido.",
+  "risks": [
+    "TTL de 90s é igual ao --interval de 90s: na prática o cache pode expirar em quase todo tick, reduzindo o ganho real (risco apenas de desempenho, comportamento permanece correto e conservador).",
+    "Se uma credencial for REMOVIDA, o census pode continuar reportando true por até 90s (TTL); aceitável por ser checagem informativa com TTL curto, mas vale monitorar.",
+    "A anotação 'callable[[], bool]' depende de 'from __future__ import annotations' em loop.py para não falhar no import; como os testes importam o módulo, a passagem dos testes confirma que o import está íntegro.",
+    "Ausência de newline no fim do arquivo de teste (apenas cosmético)."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "..................................................                       [100%]\n50 passed in 1.90s"
+  },
+  "files": [
+    "src/agentic/loop.py",
+    "tests/test_loop_census_cache.py"
+  ]
+}
