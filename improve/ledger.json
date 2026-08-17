@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T10:02:06+00:00",
+  "updated_at": "2026-08-17T11:01:37+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4372,21 +4372,21 @@
       "canon": "6cf98dce07865954",
       "title": "Uso redundante de Playwright MCP",
       "kind": "bottleneck",
-      "priority": 2,
+      "priority": 1,
       "status": "pending",
-      "rationale": "O censo mostra playwright_mcp ativo, o que consome mais tokens e contexto do que a execução direta via playwright-cli.",
-      "change": "Desativar o registro do playwright_mcp nas configurações de ferramentas, forçando roteamento exclusivo para playwright-cli headless.",
+      "rationale": "O censo mostra playwright_mcp ativo, mas a diretriz exige preferir playwright-cli para poupar tokens. A coexistência gera risco de rotas ineficientes e custo elevado.",
+      "change": "Desativar o roteamento para playwright_mcp nas configurações de ferramentas, forçando o uso exclusivo do CLI headless.",
       "never": [
         "Remover o suporte ao playwright-cli",
         "Alterar as flags headless --no-sandbox",
         "Ligar AGENTIC_LIVE_TRADE=1"
       ],
       "files_hint": [
-        "src/agentic/tools/playwright.py"
+        "src/agentic/tools.py"
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260817T110137Z",
       "history": [
         {
           "at": "2026-08-17T10:02:06+00:00",
@@ -4477,6 +4477,120 @@
           "at": "2026-08-17T10:02:06+00:00",
           "event": "mapped",
           "detail": "20260817T100206Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
+      "key": "8bade91804109145",
+      "canon": "e4eb3bb140b503e6",
+      "title": "Falta de limite de retentativas na fila de improve",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Se o review rejeitar sistematicamente uma tarefa, ela volta para pending infinitamente, travando a fila de develop e consumindo recursos da GhostCLI.",
+      "change": "Adicionar um contador de retries no ledger e mover a tarefa para um estado de quarantine após 3 rejeições consecutivas em improve.py.",
+      "never": [
+        "Fazer git reset --hard",
+        "Limpar a fila manualmente sem log"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ledger.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T110137Z",
+      "history": [
+        {
+          "at": "2026-08-17T11:01:37+00:00",
+          "event": "mapped",
+          "detail": "20260817T110137Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-skill-padronizado-para-playwright-cli",
+      "key": "dfa7482532f93c44",
+      "canon": "3b4fb927c356fe5b",
+      "title": "Skill padronizado para Playwright CLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Garantir que todas as chamadas de navegação usem playwright-cli headless --no-sandbox de forma uniforme, economizando tokens do MCP (theme=tools).",
+      "change": "Criar um wrapper em python que invoque o playwright-cli via subprocess, validando os argumentos obrigatórios antes da execução.",
+      "never": [
+        "Usar playwright-mcp",
+        "Executar comandos de trade"
+      ],
+      "files_hint": [
+        "src/agentic/skills/browser.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T110137Z",
+      "history": [
+        {
+          "at": "2026-08-17T11:01:37+00:00",
+          "event": "mapped",
+          "detail": "20260817T110137Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-m-dulo-de-eval-para-traces-da-ghostcli",
+      "key": "f46d49fa8cccb067",
+      "canon": "64058140e20e0878",
+      "title": "Módulo de Eval para traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta um mecanismo automatizado para avaliar a qualidade das interações e o uso de ferramentas a partir dos traces sanitizados (theme=ai).",
+      "change": "Implementar um parser básico que lê os traces da GhostCLI e gera métricas de sucesso/falha por ferramenta para feedback do modelo.",
+      "never": [
+        "Expor secrets no eval",
+        "Modificar a constituição ARO"
+      ],
+      "files_hint": [
+        "src/agentic/eval/traces.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T110137Z",
+      "history": [
+        {
+          "at": "2026-08-17T11:01:37+00:00",
+          "event": "mapped",
+          "detail": "20260817T110137Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-indicador-de-sa-de-no-portal",
+      "key": "b8024fb43ca08581",
+      "canon": "b416d9437fd84281",
+      "title": "Indicador de saúde no Portal",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O portal autenticado não reflete em tempo real se o último tick do loop de saúde (90s) foi bem-sucedido.",
+      "change": "Adicionar um endpoint ou leitura de arquivo de estado em loop.py que o portal possa consumir para exibir um badge de status.",
+      "never": [
+        "Gravar senhas em texto",
+        "Expor credenciais Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260817T110137Z",
+      "history": [
+        {
+          "at": "2026-08-17T11:01:37+00:00",
+          "event": "mapped",
+          "detail": "20260817T110137Z"
         }
       ]
     }
