@@ -438,7 +438,7 @@ def consecutive_rejections(proposal: dict[str, Any]) -> int:
         if not isinstance(item, dict):
             continue
         event = str(item.get("event") or "")
-        if event in {"requeued", "review", "tests_failed", "blocked"}:
+        if event in {"requeued", "review", "tests_failed", "blocked", "merge_failed"}:
             count += 1
         else:
             break
@@ -1596,20 +1596,43 @@ class ImprovePipeline:
                     self.settings.root / REVIEWS_DIR / f"{proposal_id_value}.json",
                     review_doc,
                 )
+                merge_failures = sum(
+                    1
+                    for item in (proposal.get("history") or [])
+                    if isinstance(item, dict)
+                    and str(item.get("event") or "") == "merge_failed"
+                ) + 1
+                blocked = merge_failures > MAX_REQUEUES
+                feedback = structured_review_feedback(
+                    {
+                        "verdict": "reject",
+                        "reason": f"merge falhou {merge_failures}x: {str(exc)[:200]}",
+                        "files": [
+                            str(name).replace("\\", "/").lstrip("./")
+                            for name in names
+                            if str(name).strip()
+                        ],
+                    }
+                )
                 self._mark_ledger(
                     proposal_id_value,
-                    status="blocked",
+                    status="blocked" if blocked else "pending",
                     event="merge_failed",
                     detail=str(exc)[:200],
+                    review_feedback=feedback,
+                    branch=branch if not blocked else "",
                 )
                 self.git.add(str(LEDGER_PATH), str(REVIEWS_DIR / f"{proposal_id_value}.json"))
                 self.git.commit(f"merge failed {proposal_id_value}")
+                if blocked and self.git.branch_exists(branch):
+                    self.git.delete_branch(branch, force=True)
                 return {
-                    "status": "merge_failed",
+                    "status": "blocked" if blocked else "merge_failed",
                     "proposal_id": proposal_id_value,
                     "branch": branch,
                     "reason": str(exc),
                     "applied": False,
+                    "merge_failures": merge_failures,
                 }
             dump_json(
                 self.settings.root / REVIEWS_DIR / f"{proposal_id_value}.json",
