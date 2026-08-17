@@ -889,7 +889,7 @@
       "title": "Chamadas da GhostCLI não deixam rastro sanitizado para review/eval",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Sem traces persistidos, o reviewer fica sem evidência do que rodou e o eval não consegue detectar falhas recorrentes; isso trava o ciclo de melhoria.",
       "change": "Em ghostcli.py, adicionar log de trace sanitizado (redação de credenciais) gravado em diretório runtime gitignorado, com comando normalizado e resultado.",
       "never": [
@@ -924,6 +924,11 @@
           "at": "2026-08-17T04:22:13+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad"
+        },
+        {
+          "at": "2026-08-17T04:25:37+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

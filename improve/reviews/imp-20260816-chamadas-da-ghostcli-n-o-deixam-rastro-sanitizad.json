@@ -1,0 +1,23 @@
+{
+  "at": "2026-08-17T04:25:37+00:00",
+  "branch": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad",
+  "proposal_id": "imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad",
+  "verdict": "approve",
+  "reason": "O diff corresponde exatamente à proposta: adiciona trace sanitizado em src/agentic/ghostcli.py (arquivo existente permitido), persistido em diretório runtime gitignorado (improve/traces/, com a entrada necessária em .gitignore). Reaproveita sanitize_trace/mask_secrets já existentes para redação de credenciais, aplica limites de tamanho e envolve _write_trace em try/except best-effort, de modo a nunca quebrar o chamador. Não há secrets, AGENTIC_LIVE_TRADE, PoC/fuzz, alteração de payout nem arquivo novo não chamado pelo systemd/CLI; trata-se de otimização defensiva pequena e alinhada ao files_hint.",
+  "risks": [
+    "Confirmar que a suíte de testes passa sem regressão (tests_ok_required=true); a mudança é aditiva e best-effort, mas não pode quebrar testes existentes.",
+    "Garantir que sanitize_trace/mask_secrets redijam efetivamente todas as credenciais antes da persistência do trace.",
+    "TRACES_DIR usa caminho relativo (improve/traces), dependente do diretório de trabalho; mitigado pelo try/except, mas o diretório deve permanecer gitignorado e nunca commitado.",
+    "Os traces são dados de runtime e não devem conter tokens/chaves nem ser versionados."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".........................................                                [100%]\n41 passed in 4.47s"
+  },
+  "files": [
+    ".gitignore",
+    "src/agentic/ghostcli.py"
+  ]
+}
