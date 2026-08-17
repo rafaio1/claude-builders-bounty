@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T01:36:27+00:00",
+  "updated_at": "2026-08-17T01:59:18+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -45,7 +45,7 @@
       "title": "Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "ARO.md e src/agentic/aro/ estão untracked na main e impedem git_clean; precisam ser versionados em proposta separada da fatia do motor.",
       "change": "Segunda proposta git_clean, só da fatia playbook: o pipeline stageia ARO.md e src/agentic/aro/ do disco e versiona esses caminhos em commit próprio, após a fatia do motor.",
       "never": [
@@ -62,7 +62,7 @@
         "src/agentic/aro/"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
+      "branch": "",
       "map_id": "20260816T143343Z",
       "history": [
         {
@@ -74,6 +74,11 @@
           "at": "2026-08-16T15:17:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -352,7 +357,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: deploy/agentic-improve-dev.service, src/agentic/claude_cli.py, tests/test_claude_cli.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: deploy/agentic-improve-dev.service, src/agentic/claude_cli.py, tests/test_claude_cli.py.",
       "never": [
@@ -368,7 +373,7 @@
         "tests/test_claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin",
+      "branch": "",
       "map_id": "20260817T013627Z",
       "history": [
         {
@@ -400,6 +405,11 @@
           "at": "2026-08-17T01:46:31+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ],
       "review_feedback": "Atualizei apenas o .gitignore para ignorar artefatos de runtime/lixo relevantes para a fatia src/agentic/aro (locks, bancos SQLite e journals, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
@@ -492,7 +502,7 @@
       "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
       "kind": "improvement",
       "priority": 2,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
       "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
       "never": [
@@ -504,7 +514,7 @@
         "deploy/agentic-loop.service"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr",
+      "branch": "",
       "map_id": "20260816T160320Z",
       "history": [
         {
@@ -516,6 +526,11 @@
           "at": "2026-08-16T17:41:19+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -526,7 +541,7 @@
       "title": "Tick de saúde reexecuta probes caras a cada 90s",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "loop.py verifica playwright/ghostcli em todo tick; sem TTL, cada ciclo repete spawns e chamadas lentas, desperdiçando CPU e tokens e atrasando o loop.",
       "change": "Adicionar cache em memória com TTL curto por ferramenta em loop.py: reusar resultado saudável recente e só re-probrar ferramenta degradada ou expirada.",
       "never": [
@@ -539,7 +554,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s",
+      "branch": "",
       "map_id": "20260816T160320Z",
       "history": [
         {
@@ -551,6 +566,11 @@
           "at": "2026-08-16T17:00:23+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -561,7 +581,7 @@
       "title": "Carregamento de credenciais sem cache e risco de vazamento em logs",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "env.py relê GhostCLI/Bybit a cada chamada; além de redundante, qualquer log acidental de repr/exception pode expor material sensível.",
       "change": "Cachear env carregado em módulo e adicionar função única de máscara aplicada a todo log/trace originado de env.py; nunca serializar valores de chaves.",
       "never": [
@@ -573,7 +593,7 @@
         "src/agentic/env.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
+      "branch": "",
       "map_id": "20260816T160320Z",
       "history": [
         {
@@ -585,6 +605,11 @@
           "at": "2026-08-16T16:19:21+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -854,7 +879,7 @@
       "title": "Chamadas da GhostCLI não deixam rastro sanitizado para review/eval",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Sem traces persistidos, o reviewer fica sem evidência do que rodou e o eval não consegue detectar falhas recorrentes; isso trava o ciclo de melhoria.",
       "change": "Em ghostcli.py, adicionar log de trace sanitizado (redação de credenciais) gravado em diretório runtime gitignorado, com comando normalizado e resultado.",
       "never": [
@@ -867,7 +892,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad",
+      "branch": "",
       "map_id": "20260816T180205Z",
       "history": [
         {
@@ -879,6 +904,11 @@
           "at": "2026-08-16T19:23:07+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -1442,7 +1472,7 @@
       "title": "Retry de develop não incorpora review_feedback",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Quando o review rejeita ou o pytest falha, a proposta volta a pending com review_feedback; sem injetar esse parecer no próximo develop, o agente tende a repetir o mesmo erro e alargar escopo.",
       "change": "Em improve.py, ao reprocessar proposta pending, incluir o review_feedback literal no contexto do develop e restringir a edição aos files_hint originais da fatia.",
       "never": [
@@ -1454,7 +1484,7 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback",
+      "branch": "",
       "map_id": "20260816T210508Z",
       "history": [
         {
@@ -1496,6 +1526,11 @@
           "at": "2026-08-16T22:21:43+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ],
       "review_feedback": "Nenhuma alteração aplicada: o conteúdo atual de src/agentic/improve.py continua truncado nos dados externos, então não é possível devolver o arquivo completo com segurança. A melhoria exige injetar o review_feedback literal no contexto do develop e restringir a edição aos files_hint originais; sem o conteúdo integral do módulo, qualquer edição arriscaria corromper lógica existente ou alterar limites além do pedido. O patch deve ser retomado apenas quando o arquivo completo for fornecido."
@@ -1798,7 +1833,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
       "never": [
@@ -1810,7 +1845,7 @@
         "src/agentic/traces.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+      "branch": "",
       "map_id": "20260816T230333Z",
       "history": [
         {
@@ -1842,6 +1877,11 @@
           "at": "2026-08-17T00:44:41+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+        },
+        {
+          "at": "2026-08-17T01:59:18+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ],
       "review_feedback": "Nenhuma alteração gerada (files vazio), em conformidade com o parecer do review anterior. A proposta pede o sanitizador em src/agentic/traces.py, mas esse arquivo não existe entre os arquivos fornecidos e a política só permite paths já existentes, salvo testes novos. Os files_hint (src/agentic/ghostcli.py e src/agentic/improve.py) foram fornecidos truncados (terminam em '…'); como o esquema exige o conteúdo COMPLETO de cada arquivo alterado, reescrevê-los exigiria inventar o código ausente, com risco real de cortar código em produção e quebrar o pipeline ou o serviço deploy/agentic-loop.service. Implementar apenas em teste novo também não cabe: o teste importaria agentic.traces (módulo inexistente), falharia na coleta do pytest e a persistência de traces continuaria sem sanitização em runt…"
