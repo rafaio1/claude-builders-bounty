@@ -28,6 +28,10 @@ main                    reviewer (GhostCLI)     → merge + restart do loop
 scripts/local-control.sh {install|start|stop|restart|status|logs}
 ```
 
+### Claude CLI + GhostCLI
+
+O executor **develop** invoca o **Claude CLI** como ferramenta de edição; a autenticação e a seleção de modelo passam pelo proxy **GhostCLI** (`ANTHROPIC_BASE_URL=https://ghostcli.dev`, `GHOSTCLI_MODEL`). O operador não chama o Claude CLI diretamente — o pipeline injeta o prompt da proposta e valida apenas paths, pytest e commit.
+
 Gates determinísticos valem mais que a IA: sem trade live, sem secrets, sem PoC. O loop de execução continua com `AGENTIC_LIVE_TRADE=0`.
 
 ## Integridade
