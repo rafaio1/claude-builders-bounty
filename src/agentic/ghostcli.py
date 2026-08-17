@@ -1,8 +1,11 @@
 from __future__ import annotations
 
+import hashlib
 import json
 import os
 import re
+from datetime import datetime, timezone
+from pathlib import Path
 from typing import Any
 
 import requests
@@ -10,6 +13,10 @@ import requests
 from agentic.env import mask_secrets
 from agentic.http import HttpError, RateLimiter, request_json
 from agentic.jsonutil import extract_json_object
+
+# Directory for sanitized traces. Gitignored (improve/traces/).
+# Traces are written best-effort; failures here must never break the caller.
+TRACES_DIR = Path("improve") / "traces"
 
 SYSTEM_INSTRUCTION = """
 Você é um componente do Agentic. Siga só a tarefa e o esquema de saída.
@@ -55,6 +62,36 @@ def sanitize_trace(text: str) -> str:
     # trace-specific patterns missed (e.g. env-style key=value leaks).
     out = mask_secrets(out)
     return out
+
+
+def _write_trace(
+    *,
+    method: str,
+    prompt_snippet: str,
+    raw_text: str,
+    parsed_summary: str,
+    model: str,
+) -> None:
+    """Persist a sanitized trace for reviewer/eval evidence. Best-effort only."""
+    try:
+        TRACES_DIR.mkdir(parents=True, exist_ok=True)
+        ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
+        tag = hashlib.sha1(method.encode()).hexdigest()[:6]
+        filename = f"{ts}_{tag}.json"
+        record = {
+            "ts": ts,
+            "method": method,
+            "model": model,
+            "prompt_snippet": sanitize_trace(prompt_snippet)[:500],
+            "parsed_summary": sanitize_trace(parsed_summary)[:2000],
+            "raw_sanitized": sanitize_trace(raw_text)[:30000],
+        }
+        (TRACES_DIR / filename).write_text(
+            json.dumps(record, ensure_ascii=False, indent=2), encoding="utf-8"
+        )
+    except Exception:
+        # Trace persistence must never break the caller.
+        pass
 
 
 class GhostCLI:
@@ -166,6 +203,13 @@ class GhostCLI:
             raw_text, {"summary": raw_text[:500], "bottlenecks": [], "improvements": []}
         )
         parsed["raw_text"] = sanitize_trace(raw_text)[:8000]
+        _write_trace(
+            method="map_improvements",
+            prompt_snippet=prompt,
+            raw_text=raw_text,
+            parsed_summary=json.dumps(parsed, ensure_ascii=False)[:2000],
+            model=self.orchestrator_model,
+        )
         return parsed
 
     def develop_improvement(self, prompt: str) -> dict[str, Any]:
@@ -174,6 +218,13 @@ class GhostCLI:
         )
         parsed = self._parse(raw_text, {"summary": raw_text[:500], "files": []})
         parsed["raw_text"] = sanitize_trace(raw_text)[:20000]
+        _write_trace(
+            method="develop_improvement",
+            prompt_snippet=prompt,
+            raw_text=raw_text,
+            parsed_summary=json.dumps(parsed, ensure_ascii=False)[:2000],
+            model=self.model,
+        )
         return parsed
 
     def review_improvement(self, prompt: str) -> dict[str, Any]:
@@ -182,4 +233,11 @@ class GhostCLI:
         )
         parsed = self._parse(raw_text, {"verdict": "reject", "reason": raw_text[:500]})
         parsed["raw_text"] = sanitize_trace(raw_text)[:8000]
+        _write_trace(
+            method="review_improvement",
+            prompt_snippet=prompt,
+            raw_text=raw_text,
+            parsed_summary=json.dumps(parsed, ensure_ascii=False)[:2000],
+            model=self.model,
+        )
         return parsed
