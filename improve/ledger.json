@@ -352,7 +352,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: deploy/agentic-improve-dev.service, src/agentic/claude_cli.py, tests/test_claude_cli.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: deploy/agentic-improve-dev.service, src/agentic/claude_cli.py, tests/test_claude_cli.py.",
       "never": [
@@ -395,6 +395,11 @@
           "at": "2026-08-16T16:40:49+00:00",
           "event": "requeued",
           "detail": "Atualizei apenas o .gitignore para ignorar artefatos de runtime/lixo relevantes para a fatia src/agentic/aro (locks, bancos SQLite e journals, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
+        },
+        {
+          "at": "2026-08-17T01:46:31+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin"
         }
       ],
       "review_feedback": "Atualizei apenas o .gitignore para ignorar artefatos de runtime/lixo relevantes para a fatia src/agentic/aro (locks, bancos SQLite e journals, logs e pids), sem reescrever arquivos de produto, sem reset/force e sem tocar em .env, data/ ou secrets."
