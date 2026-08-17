@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T00:04:36+00:00",
+  "updated_at": "2026-08-17T01:06:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -414,7 +414,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T000436Z",
+      "map_id": "20260817T010626Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -441,7 +441,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T000436Z",
+      "map_id": "20260817T010626Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -468,7 +468,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T000436Z",
+      "map_id": "20260817T010626Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -2205,6 +2205,185 @@
           "at": "2026-08-17T00:04:36+00:00",
           "event": "mapped",
           "detail": "20260817T000436Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout",
+      "key": "f5e451ed38773bd6",
+      "canon": "6cfce45540912c56",
+      "title": "Tick de saúde pode travar por falta de timeout",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Verificações de playwright/ghostcli sem limite de tempo podem bloquear o tick de 90s e atrasar a detecção de falhas.",
+      "change": "Envolver cada checagem de ferramenta em timeout curto e registrar status de erro sanitizado em loop.py, sem alterar a unit systemd.",
+      "never": [
+        "criar src/agentic/loop.sh",
+        "alterar --interval da unit systemd",
+        "enviar ordens Bybit",
+        "imprimir credenciais"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-carregamento-de-ambiente-sem-valida-o-sanitizada",
+      "key": "73001f67abc39468",
+      "canon": "8913220342cc0b02",
+      "title": "Carregamento de ambiente sem validação sanitizada",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falhas ao carregar env podem gerar erros genéricos ou expor caminhos/valores sensíveis, dificultando diagnóstico seguro.",
+      "change": "Adicionar validação de presença dos arquivos de env e mensagens de erro sem valores em env.py, mantendo leitura segura.",
+      "never": [
+        "logar bybit_key ou bybit_secret",
+        "copiar .env para o git",
+        "alterar AGENTIC_LIVE_TRADE para 1"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-review-feedback-pode-levar-a-corre-es-com-escopo",
+      "key": "4cd3afd6e0b49cff",
+      "canon": "cf7f359ecebf5a0c",
+      "title": "Review feedback pode levar a correções com escopo maior",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando uma proposta volta pending, o develop pode corrigir além do parecer, aumentando risco de sujeira na working tree.",
+      "change": "Fazer improve.py armazenar review_feedback e restringir a próxima correção aos files_hint originais da proposta.",
+      "never": [
+        "usar git reset --hard",
+        "usar checkout --",
+        "usar clean -fd",
+        "usar --no-verify",
+        "fazer force push"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-ferramentas-checagem-padronizada-via-cli-theme-t",
+      "key": "3a39dd075c007c62",
+      "canon": "627233c04d6f2715",
+      "title": "Ferramentas: checagem padronizada via CLI (theme=tools)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Usar playwright-cli e jq diretamente reduz consumo de tokens em relação ao MCP e deixa o health check mais previsível.",
+      "change": "Em loop.py, priorizar playwright-cli headless --no-sandbox e jq para status de ferramentas, com fallback controlado para MCP apenas se CLI indisponível.",
+      "never": [
+        "usar MCP por padrão quando playwright-cli estiver disponível",
+        "executar navegador fora de modo headless",
+        "enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-ia-traces-sanitizados-para-eval-theme-ai",
+      "key": "202f3fa03f320fd8",
+      "canon": "57f9dd2ca0c4fe1a",
+      "title": "IA: traces sanitizados para eval (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Sem traces seguros fica difícil avaliar GhostCLI/improve e detectar regressões sem risco de vazar segredos.",
+      "change": "Adicionar emissão opcional de JSONL sanitizado em ghostcli.py e improve.py com ts, ação, status e classe de erro, redigindo cabeçalhos e credenciais.",
+      "never": [
+        "registrar bybit_key ou bybit_secret",
+        "gravar conteúdo integral de .env",
+        "habilitar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-integridade-confer-ncia-de-escopo-antes-de-versi",
+      "key": "b03619eafc48e15d",
+      "canon": "9c4ddbacd9a69197",
+      "title": "Integridade: conferência de escopo antes de versionar",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Propostas git_clean devem versionar apenas os arquivos da fatia, evitando commits acidentais de arquivos sujos não relacionados.",
+      "change": "Adicionar em improve.py uma validação simples que compara arquivos alterados com files_hint antes de marcar git_clean.",
+      "never": [
+        "commitar .env",
+        "commitar data/secrets",
+        "usar force",
+        "usar --no-verify"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T010626Z",
+      "history": [
+        {
+          "at": "2026-08-17T01:06:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T010626Z"
         }
       ]
     }
