@@ -83,7 +83,7 @@ def write_status(root: Path, payload: dict[str, Any]) -> Path:
 
 def tick(settings: Settings) -> dict[str, Any]:
     if settings.live_trade:
-        raise RuntimeError("AGENTIC_LIVE_TRADE=1 recusado; o loop não opera Bybit")
+        raise RuntimeError("AGENTIC_LIVE_TRADE ligado recusado; o loop não opera Bybit")
     census = collect_census(settings.root)
     tools = census.get("tools") or {}
     from agentic.aro.cycle import run_cycle

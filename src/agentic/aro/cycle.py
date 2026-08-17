@@ -183,7 +183,7 @@ def run_cycle(
     config = config or load_aro_config(root)
     intact, marker = constitution_intact(root)
     if live_trade:
-        raise RuntimeError("ARO recusa AGENTIC_LIVE_TRADE=1")
+        raise RuntimeError("ARO recusa AGENTIC_LIVE_TRADE ligado")
     stores = ensure_stores(root)
     offers = seed_offers(root, config)
     inventory = inventory_tools()
