@@ -17,6 +17,46 @@ from agentic.ghostcli import sanitize_trace
 
 _TRACES_DIR = Path("improve") / "traces"
 
+# Limite conservador de caracteres no prompt enviado ao Claude CLI.
+# Evita estourar contexto e gastar tokens em loops de improve quando o
+# prompt acumula diffs, traces ou instruções longas sem validação prévia.
+# O valor é calibrado para caber confortavelmente na janela dos modelos
+# GhostCLI suportados deixando margem para resposta e tool-use overhead.
+_MAX_PROMPT_CHARS = 60_000
+_TRUNCATION_NOTICE = (
+    "\n\n[AVISO: prompt original excedeu {limit} caracteres e foi truncado "
+    "para {kept}. O início do prompt foi preservado; o final foi omitido.]"
+)
+
+
+def truncate_prompt(prompt: str, *, limit: int = _MAX_PROMPT_CHARS) -> str:
+    """Trunca prompts que excedem o limite de caracteres antes do CLI.
+
+    Mantém o início do prompt (onde ficam instruções e contexto principal)
+    e substitui o final por um aviso explícito. O resultado final nunca
+    excede ``limit`` caracteres. Nunca levanta exceção; entradas não-string
+    são convertidas defensivamente.
+    """
+    if not isinstance(prompt, str):
+        return ""
+    if len(prompt) <= limit:
+        return prompt
+    # Calcula o aviso com kept=0 para obter o tamanho máximo do notice,
+    # depois ajusta kept para garantir que prompt[:kept] + notice <= limit.
+    notice_template = _TRUNCATION_NOTICE.format(limit=limit, kept=0)
+    max_notice_len = len(notice_template)
+    kept = max(0, limit - max_notice_len)
+    notice = _TRUNCATION_NOTICE.format(limit=limit, kept=kept)
+    # Se o notice com o kept real for menor que o estimado, podemos ter
+    # alguns chars extras; re-trunca se necessário para respeitar o limite.
+    result = prompt[:kept] + notice
+    if len(result) > limit:
+        overflow = len(result) - limit
+        kept = max(0, kept - overflow)
+        notice = _TRUNCATION_NOTICE.format(limit=limit, kept=kept)
+        result = prompt[:kept] + notice
+    return result
+
 
 def _write_cli_trace(
     *,
@@ -99,6 +139,10 @@ def run_implement(
     timeout: float = 1500.0,
 ) -> dict[str, Any]:
     """Dump one implement prompt into Claude CLI (tools on, GhostCLI models)."""
+    # Trunca prompts que excedem o limite antes de validar binário/chave.
+    # O trace abaixo já recebe o prompt truncado, refletindo o que foi enviado.
+    prompt = truncate_prompt(prompt)
+
     binary = claude_bin()
     if not binary:
         result = {
