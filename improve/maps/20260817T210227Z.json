@@ -1,0 +1,339 @@
+{
+  "id": "20260817T210227Z",
+  "created_at": "2026-08-17T21:02:27+00:00",
+  "summary": "Otimização de contexto de IA substituindo MCP por CLI e redução de latência na fila develop, com adição de traces sanitizados e pré-processamento de dados.",
+  "census": {
+    "generated_at": "2026-08-17T21:01:15+00:00",
+    "last_tick": "2026-08-17T21:00:09+00:00",
+    "tools": {
+      "playwright": true,
+      "playwright_mcp": true,
+      "jq": true,
+      "claude": true,
+      "ghostcli": true,
+      "bybit_key": true,
+      "bybit_secret": true,
+      "bybit_env_file": true
+    },
+    "smoke": {
+      "playwright": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "### Browser `default` opened with pid 3515741.\n### Ran Playwright code\n```js\nawait page.goto('about:blank');\n```\n### Page\n- Page URL: about:blank\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026...",
+        "error": ""
+      },
+      "jq": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "jq-1.7",
+        "error": ""
+      },
+      "ghostcli": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "ok",
+        "error": "",
+        "model": "claude-fable-5[1m]",
+        "binary": null
+      }
+    },
+    "stats": {
+      "playwright": true,
+      "claude": true,
+      "ghostcli": true
+    },
+    "code_facts": [
+      "O loop em execução é deploy/agentic-loop.service (ExecStart python -m agentic loop). Não existe src/agentic/loop.sh; não criar scripts novos.",
+      "O motor é src/agentic/loop.py (tick de saúde), env.py (GhostCLI+Bybit sem imprimir secrets), ghostcli.py (API map/review), claude_cli.py (develop via Claude Code → GhostCLI), improve.py (filas map/develop/review).",
+      "Limites atuais do loop systemd: --interval 90. Mantenha AGENTIC_LIVE_TRADE=0. O tick só faz saúde de ferramentas; não envia ordens Bybit.",
+      "Develop é só gestão de fila: pega pending do ledger e despeja o prompt no Claude CLI com modelos GhostCLI (ANTHROPIC_BASE_URL=https://ghostcli.dev, GHOSTCLI_MODEL).",
+      "Limites do loop vêm da unit systemd (--interval). Mantenha AGENTIC_LIVE_TRADE=0; o loop nunca envia ordens Bybit.",
+      "Credenciais Bybit canónicas: /root/.automaton/bybit-murre.env. Env interna em .env gitignorado e internal/load-env.sh. Nunca colar chaves no git.",
+      "Navegador: playwright-cli / playwright-mcp headless --no-sandbox. Preferir CLI a MCP para poupar tokens.",
+      "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
+      "Integridade git_clean exige working tree limpa na main. Não faça um único commit com todos os arquivos sujos: fatie (motor: loop/env/cli vs playbook improve/integrity vs ferramentas). Cada proposta git_clean só versiona os files_hint da fatia. Se o review rejeitar ou o pytest falhar, a proposta volta a pending com review_feedback — o develop seguinte corrige EXATAMENTE o parecer, sem alargar escopo. PROIBIDO: reset --hard, checkout --, clean -fd, --no-verify, force, commitar .env/data/secrets, ligar AGENTIC_LIVE_TRADE=1, criar loop.sh.",
+      "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+      "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
+      "Portal autenticado em agentic-portal.service (porta 8767). Theme=portal para templates/CSS/JS. Não gravar senha em texto; só Argon2id em /etc/agentic-portal/credentials."
+    ],
+    "loop": {
+      "interval": 90,
+      "live_trade_disabled": true,
+      "exec_start": "/Agentic/.venv/bin/python -m agentic loop --interval 90"
+    },
+    "integrity": {
+      "git_clean": true,
+      "dirty_paths": [],
+      "git_status": ""
+    }
+  },
+  "added": [
+    "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+    "imp-20260817-lat-ncia-de-processamento-na-fila-improve-py",
+    "imp-20260817-traces-sanitizados-e-m-tricas-de-tokens-ghostcli",
+    "imp-20260817-wrapper-de-jq-para-pr-processamento-de-api-maps",
+    "imp-20260817-dashboard-da-fila-improve-no-portal"
+  ],
+  "proposals": [
+    {
+      "id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+      "key": "d8f2e5048c47c664",
+      "canon": "9f5391180516b1eb",
+      "title": "Desperdício de tokens com Playwright MCP ativo",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O censo mostra playwright_mcp ativo, mas as diretrizes exigem preferência pelo playwright-cli headless para poupar tokens e evitar sobrecarga do contexto da IA.",
+      "change": "Desativar a inicialização e rotas do playwright-mcp no motor, forçando o uso exclusivo do playwright-cli.",
+      "never": [
+        "Criar src/agentic/loop.sh",
+        "Alterar o --interval 90 do systemd",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-lat-ncia-de-processamento-na-fila-improve-py",
+      "key": "08c969702e8b07e4",
+      "canon": "3d34f0dd26ae5cca",
+      "title": "Latência de processamento na fila improve.py",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick de 90s pode atrasar a injeção de prompts se o ledger acumular múltiplas tarefas pending, processando-as sequencialmente uma a uma.",
+      "change": "Otimizar o improve.py para ler e despachar lotes (batch) de tarefas pending para o claude_cli.py em um único tick.",
+      "never": [
+        "Fazer git reset --hard ou clean -fd",
+        "Mudar o ExecStart do agentic-loop.service",
+        "Ignorar o review_feedback"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-traces-sanitizados-e-m-tricas-de-tokens-ghostcli",
+      "key": "16581ff4bad4b7ff",
+      "canon": "7c6d7f319eb941b8",
+      "title": "Traces sanitizados e métricas de tokens GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta visibilidade estruturada sobre o consumo de tokens e latência do modelo claude-fable-5[1m] para avaliar a eficiência dos prompts (theme=ai).",
+      "change": "Adicionar middleware no ghostcli.py para gravar traces sanitizados (latência, tokens) em log estruturado, sem expor secrets.",
+      "never": [
+        "Imprimir ANTHROPIC_BASE_URL ou chaves Bybit nos logs",
+        "Alterar ARO.md ou OWNER_SHARE_RATE",
+        "Criar scripts bash externos"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-wrapper-de-jq-para-pr-processamento-de-api-maps",
+      "key": "00b86f1719906ac9",
+      "canon": "a1ec744a4b5c6b89",
+      "title": "Wrapper de JQ para pré-processamento de API maps",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Enviar respostas brutas e extensas de API maps para a IA consome contexto desnecessário. O JQ pode filtrar campos localmente (theme=tools).",
+      "change": "Implementar helper em tools/jq.py que aplica filtros JQ padrão nas saídas do ghostcli.py antes de passá-las ao claude_cli.py.",
+      "never": [
+        "Executar comandos shell arbitrários",
+        "Modificar credenciais em /root/.automaton/",
+        "Bypassar o reviewer da main"
+      ],
+      "files_hint": [
+        "src/agentic/tools/jq.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-dashboard-da-fila-improve-no-portal",
+      "key": "1d27004cd6abb2a0",
+      "canon": "fe73eef5c6e9ebd5",
+      "title": "Dashboard da fila improve no Portal",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "Operadores não têm visibilidade rápida do estado da fila (pending, review_feedback) sem acessar o ledger ou logs diretamente (theme=portal).",
+      "change": "Adicionar rota no agentic-portal.service (porta 8767) que lê o status do improve.py e exibe no frontend usando o theme=portal.",
+      "never": [
+        "Gravar senhas em texto plano",
+        "Usar Argon2id incorretamente",
+        "Expor variáveis de ambiente sensíveis no HTML"
+      ],
+      "files_hint": [
+        "src/agentic/portal/routes.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
+      "key": "e612baddd0bdd68a",
+      "canon": "3d02ba6803d151c6",
+      "title": "Status do loop com saúde de Playwright e GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick precisa deixar óbvio se o navegador ou a API GhostCLI caiu, sem imprimir secrets.",
+      "change": "Incluir no data/status.json versões/ok de playwright-cli e ghostcli, só booleanos para Bybit.",
+      "never": [
+        "gravar BYBIT_* ou GHOSTCLI_API_KEY no status"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-documentar-skill-playwright-cli-no-mapa-de-ferra",
+      "key": "68e40d322ea82fbd",
+      "canon": "80ecdbe731131900",
+      "title": "Documentar skill playwright-cli no mapa de ferramentas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes GhostCLI descobrem o browser pela skill; o mapa precisa apontar o comando certo.",
+      "change": "Manter AGENTS.md com open/snapshot/click e headless --no-sandbox.",
+      "never": [
+        "colar chaves Bybit ou GhostCLI"
+      ],
+      "files_hint": [
+        "AGENTS.md"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-traces-sanitizados-da-ghostcli-no-improve",
+      "key": "db5193b3daedeefc",
+      "canon": "9c6c9b082cbbb0b8",
+      "title": "Traces sanitizados da GhostCLI no improve",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falhas de JSON no map/develop/review não ficam auditáveis para melhorar prompts.",
+      "change": "Contar parse fail por tarefa (map, develop, review) sem gravar o texto bruto.",
+      "never": [
+        "persistir prompts completos ou secrets"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-kill-switch-agentic-live-trade-vis-vel-na-integr",
+      "key": "cb49b972a3ebddaf",
+      "canon": "1b609288af76d97b",
+      "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
+      "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
+      "never": [
+        "enviar ordem Bybit",
+        "copiar .env"
+      ],
+      "files_hint": [
+        "src/agentic/integrity.py",
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    }
+  ]
+}

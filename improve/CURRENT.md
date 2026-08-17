@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T12:01:29+00:00
+Atualizado: 2026-08-17T21:02:27+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T11:57:54+00:00
-- git_clean: FALHOU
-- dirty_paths: [".cursor/agents/"]
+- last_tick: 2026-08-17T21:00:09+00:00
+- git_clean: ok
+- dirty_paths: []
 
 ## Ghost
 
-Foco em restaurar a integridade do git na main, fatiar patches sujos e otimizar o consumo de tokens e o loop de feedback do develop.
+Otimização de contexto de IA substituindo MCP por CLI e redução de latência na fila develop, com adição de traces sanitizados e pré-processamento de dados.
 
 ## Ledger
 
-{"pending": 118, "blocked": 6, "applied": 13, "developing": 5}
+{"pending": 124, "blocked": 6, "applied": 14, "developing": 3}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
