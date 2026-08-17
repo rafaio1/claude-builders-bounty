@@ -1,0 +1,23 @@
+{
+  "at": "2026-08-17T02:36:44+00:00",
+  "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+  "proposal_id": "imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+  "verdict": "reject",
+  "reason": "O diff não corresponde à proposta: a proposta e o files_hint indicam implementação em src/agentic/traces.py, mas o patch implementa o sanitizador em src/agentic/ghostcli.py. O conteúdo é defensivo (mascara tokens/cookies/headers) e os testes novos são permitidos e adequados, mas o histórico já registra duas requeues porque traces.py não existe e a política só permite paths já existentes, exceto testes novos. Para o develop reabrir: atualize a proposta com change descrevendo o sanitizador em src/agentic/ghostcli.py e files_hint [\"src/agentic/ghostcli.py\", \"tests/test_ghostcli_sanitize.py\"], ou implemente de fato em src/agentic/traces.py com import a partir de ghostcli.py. Não misture outras áreas, reset, .env, data/ ou loop.sh.",
+  "risks": [
+    "Divergência de escopo: proposta/files_hint apontam para src/agentic/traces.py, mas o diff altera src/agentic/ghostcli.py.",
+    "O regex genérico de 32+ caracteres pode mascarar hashes/IDs longos legítimos, reduzindo utilidade dos traces (best-effort aceitável, mas a validar).",
+    "Testes contêm strings com aparência de credenciais; confirmar que são apenas placeholders e que nenhum segredo real Bybit/GhostCLI foi commitado.",
+    "sanitize_trace retorna string vazia para entradas não-string, o que pode ocultar dados inesperados em vez de sinalizar erro."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".........................................                                [100%]\n41 passed in 5.95s"
+  },
+  "files": [
+    "src/agentic/ghostcli.py",
+    "tests/test_ghostcli_sanitize.py"
+  ]
+}
