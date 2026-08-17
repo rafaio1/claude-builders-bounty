@@ -1,21 +1,21 @@
 {
-  "at": "2026-08-17T20:43:00+00:00",
+  "at": "2026-08-17T21:46:17+00:00",
   "branch": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
   "proposal_id": "imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
   "verdict": "approve",
-  "reason": "Aprovo o patch. Trata-se de uma otimização defensiva pequena e bem contida, adicionando um limite rígido de caracteres para os prompts enviados ao Claude CLI, prevenindo estouros de contexto e gastos excessivos de tokens. O diff corresponde exatamente à proposta, não há riscos ofensivos, vazamento de segredos ou ativação de flags proibidas, e os testes unitários cobrem adequadamente a nova lógica de truncamento e o ajuste de budget no improve.py.",
+  "reason": "O patch implementa exatamente o que a proposta pede: truncamento defensivo do prompt antes de chamar o Claude CLI, limitado a 60k caracteres com aviso explícito. A mudança é pequena, contida em src/agentic/claude_cli.py (conforme files_hint), e acompanhada de 7 testes cobrindo casos-limite. Não há segredos, não toca em AGENTIC_LIVE_TRADE, não altera o modelo GhostCLI, e o ficheiro novo é apenas teste (tests/test_claude_cli_truncation.py), não um módulo órfão. A lógica de truncamento preserva o início do prompt e nunca introduz comportamento ofensivo.",
   "risks": [
-    "O truncamento no meio do prompt pode ocasionalmente remover contexto crítico, mas o aviso [TRUNCATED] mitiga o risco de falhas silenciosas."
+    "Com limites muito pequenos (< tamanho do aviso), o resultado pode exceder o limite declarado na docstring — irrelevante na prática pois o limite real é 60k, mas a docstring poderia ser mais precisa.",
+    "O truncamento mantém o início e descarta o final; se contexto crítico estiver no final do prompt, será perdido. Aceitável como guarda defensiva, mas vale documentar para quem monta prompts longos."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "........................................................                 [100%]\n56 passed in 13.56s"
+    "output": "........................................................................ [ 97%]\n..                                                                       [100%]\n74 passed in 105.72s (0:01:45)"
   },
   "files": [
     "src/agentic/claude_cli.py",
-    "src/agentic/improve.py",
-    "tests/test_claude_cli.py"
+    "tests/test_claude_cli_truncation.py"
   ]
 }
