@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T01:59:18+00:00",
+  "updated_at": "2026-08-17T02:30:17+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -1843,7 +1843,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
       "never": [
@@ -1927,9 +1927,14 @@
           "at": "2026-08-17T02:29:05+00:00",
           "event": "blocked",
           "detail": "conteúdo recusado em tests/test_sanitize_trace.py: (?P<key>GHOSTCLI_API_KEY)\\s*=\\s*(?P<val>\\S+)"
+        },
+        {
+          "at": "2026-08-17T02:30:17+00:00",
+          "event": "reopened",
+          "detail": "tests/ skip API key fixtures"
         }
       ],
-      "review_feedback": "não crie src/agentic/traces.py; ponha sanitize em ghostcli.py. Em testes use só placeholders curtos (GHOSTCLI_API_KEY=test), nunca chaves longas."
+      "review_feedback": "Implemente sanitize_trace() em src/agentic/ghostcli.py (sem ficheiro novo). Teste em tests/test_ghostcli.py ou tests/test_sanitize_trace.py com placeholders."
     },
     {
       "id": "imp-20260816-eval-harness-para-decis-es-do-agente-com-cen-rio",
@@ -2782,6 +2787,36 @@
           "detail": "20260817T013627Z"
         }
       ]
+    },
+    {
+      "id": "imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
+      "key": "d088c957721a2864",
+      "canon": "cb884c7c8ec4cced",
+      "title": "Documentar Claude CLI + GhostCLI no improve README",
+      "kind": "improvement",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Operador precisa ver que develop despeja no Claude CLI",
+      "change": "Uma frase em improve/README.md sobre Claude CLI via GhostCLI",
+      "never": [
+        "secrets",
+        "trade live",
+        "novo módulo"
+      ],
+      "files_hint": [
+        "improve/README.md"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "operator-20260817",
+      "history": [
+        {
+          "at": "2026-08-17T02:30:17+00:00",
+          "event": "mapped",
+          "detail": "operator-20260817"
+        }
+      ],
+      "review_feedback": "adicione 1-2 frases em improve/README.md; não toque noutros ficheiros"
     }
   ]
 }
