@@ -7,6 +7,7 @@ from typing import Any
 
 import requests
 
+from agentic.env import mask_secrets
 from agentic.http import HttpError, RateLimiter, request_json
 from agentic.jsonutil import extract_json_object
 
@@ -41,12 +42,18 @@ def sanitize_trace(text: str) -> str:
     This is a best-effort defense-in-depth filter applied to model output
     that may echo credentials. It does NOT replace proper secret handling;
     it reduces accidental leakage in logs/traces used for eval and debugging.
+
+    Applies both the legacy trace patterns and the centralized mask_secrets
+    filter from env.py for defense in depth.
     """
     if not isinstance(text, str):
         return ""
     out = text
     for pattern, replacement in _TRACE_SECRET_PATTERNS:
         out = pattern.sub(replacement, out)
+    # Second pass through the centralized masker catches anything the
+    # trace-specific patterns missed (e.g. env-style key=value leaks).
+    out = mask_secrets(out)
     return out
 
 
