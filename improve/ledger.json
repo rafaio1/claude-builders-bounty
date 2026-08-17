@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T09:04:18+00:00",
+  "updated_at": "2026-08-17T10:02:06+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T090418Z",
+      "map_id": "20260817T100206Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T090418Z",
+      "map_id": "20260817T100206Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T090418Z",
+      "map_id": "20260817T100206Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T090418Z",
+      "map_id": "20260817T100206Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4307,6 +4307,150 @@
           "at": "2026-08-17T09:04:18+00:00",
           "event": "mapped",
           "detail": "20260817T090418Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falha-cr-tica-na-ferramenta-ghostcli",
+      "key": "39f47bb429af9a45",
+      "canon": "0bcd3a0ea43e3b83",
+      "title": "Falha crítica na ferramenta ghostcli",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O smoke test retorna FileNotFoundError, bloqueando a fila de develop e review que dependem da API GhostCLI.",
+      "change": "Corrigir a resolução do caminho do binário/wrapper do ghostcli no ambiente de execução para que o health check passe.",
+      "never": [
+        "Expor credenciais da API no log",
+        "Alterar o ANTHROPIC_BASE_URL para endpoints não oficiais",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T100206Z",
+      "history": [
+        {
+          "at": "2026-08-17T10:02:06+00:00",
+          "event": "mapped",
+          "detail": "20260817T100206Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-uso-redundante-de-playwright-mcp",
+      "key": "e765a767ba088cf1",
+      "canon": "6cf98dce07865954",
+      "title": "Uso redundante de Playwright MCP",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O censo mostra playwright_mcp ativo, o que consome mais tokens e contexto do que a execução direta via playwright-cli.",
+      "change": "Desativar o registro do playwright_mcp nas configurações de ferramentas, forçando roteamento exclusivo para playwright-cli headless.",
+      "never": [
+        "Remover o suporte ao playwright-cli",
+        "Alterar as flags headless --no-sandbox",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T100206Z",
+      "history": [
+        {
+          "at": "2026-08-17T10:02:06+00:00",
+          "event": "mapped",
+          "detail": "20260817T100206Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-truncamento-de-snapshots-do-playwright",
+      "key": "52a556b7212b0b61",
+      "canon": "77344fd335575f87",
+      "title": "Truncamento de snapshots do Playwright",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Snapshots de página geram saídas extensas que poluem o contexto do agente e aumentam o custo de tokens.",
+      "change": "Implementar um limite de caracteres ou extração de elementos DOM relevantes no output do playwright-cli antes de retornar ao agente.",
+      "never": [
+        "Desativar snapshots completamente",
+        "Usar playwright-mcp como fallback"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T100206Z",
+      "history": [
+        {
+          "at": "2026-08-17T10:02:06+00:00",
+          "event": "mapped",
+          "detail": "20260817T100206Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-m-tricas-de-eval-para-a-fila-develop",
+      "key": "53dd839354d58a8f",
+      "canon": "a2a2b3dd31f0c998",
+      "title": "Métricas de eval para a fila develop",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta visibilidade sobre a taxa de sucesso dos patches gerados pelo Claude CLI e aplicados pelo reviewer.",
+      "change": "Adicionar logging estruturado em improve.py para rastrear a proporção de patches aprovados vs rejeitados (review_feedback).",
+      "never": [
+        "Modificar a constituição ARO",
+        "Alterar o OWNER_SHARE_RATE",
+        "Enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T100206Z",
+      "history": [
+        {
+          "at": "2026-08-17T10:02:06+00:00",
+          "event": "mapped",
+          "detail": "20260817T100206Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sanitiza-o-de-traces-da-ghostcli",
+      "key": "afb9cbaaf6376435",
+      "canon": "97607c2a61fc32d0",
+      "title": "Sanitização de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Traces de chamadas à API da GhostCLI podem conter metadados sensíveis ou excesso de ruído para análise posterior.",
+      "change": "Adicionar um filtro no logger do ghostcli.py para remover headers de autenticação e limitar o tamanho do payload no trace.",
+      "never": [
+        "Gravar secrets em texto plano",
+        "Desativar o health check do loop"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T100206Z",
+      "history": [
+        {
+          "at": "2026-08-17T10:02:06+00:00",
+          "event": "mapped",
+          "detail": "20260817T100206Z"
         }
       ]
     }

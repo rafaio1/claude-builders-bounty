@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T09:04:18+00:00
+Atualizado: 2026-08-17T10:02:06+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T09:00:29+00:00
+- last_tick: 2026-08-17T10:00:24+00:00
 - git_clean: ok
 - dirty_paths: []
 
 ## Ghost
 
-Mapeamento de gargalos e melhorias focado na falha do GhostCLI, otimização de tokens no Playwright e refinamento da fila de desenvolvimento.
+Diagnóstico focado na falha do ghostcli e otimização de contexto, com melhorias pontuais em ferramentas e eval.
 
 ## Ledger
 
-{"pending": 108, "blocked": 5, "applied": 10, "developing": 3}
+{"pending": 110, "blocked": 5, "applied": 12, "developing": 4}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
