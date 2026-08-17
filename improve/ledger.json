@@ -4967,7 +4967,7 @@
       "title": "Desperdício de tokens com Playwright MCP ativo",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O censo mostra playwright_mcp ativo, mas as diretrizes exigem preferência pelo playwright-cli headless para poupar tokens e evitar sobrecarga do contexto da IA.",
       "change": "Desativar a inicialização e rotas do playwright-mcp no motor, forçando o uso exclusivo do playwright-cli.",
       "never": [
@@ -4992,6 +4992,11 @@
           "at": "2026-08-17T21:52:13+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo"
+        },
+        {
+          "at": "2026-08-17T22:06:40+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

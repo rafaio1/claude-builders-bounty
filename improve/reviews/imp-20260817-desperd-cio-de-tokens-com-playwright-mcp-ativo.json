@@ -1,0 +1,20 @@
+{
+  "at": "2026-08-17T22:06:40+00:00",
+  "branch": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+  "proposal_id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+  "verdict": "approve",
+  "reason": "A mudança é uma otimização defensiva pequena e perfeitamente alinhada com a proposta. O diff desativa o Playwright MCP no loop e no censo ARO para reduzir o consumo de tokens, forçando o uso do playwright-cli headless. Não há introdução de arquivos proibidos, alteração de variáveis sensíveis (como AGENTIC_LIVE_TRADE) ou vazamento de segredos. A documentação e os fatos do código foram atualizados consistentemente.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 97%]\n..                                                                       [100%]\n74 passed in 104.34s (0:01:44)"
+  },
+  "files": [
+    "AGENTS.md",
+    "src/agentic/aro/cycle.py",
+    "src/agentic/improve.py",
+    "src/agentic/loop.py"
+  ]
+}
