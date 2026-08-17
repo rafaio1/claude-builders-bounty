@@ -3903,7 +3903,7 @@
       "title": "Exportação de traces sanitizados para eval",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Não há histórico estruturado dos prompts e respostas do GhostCLI, impedindo a criação de datasets para eval e ajuste fino de prompts de review.",
       "change": "Gravar entradas e saídas do claude_cli.py e ghostcli.py em arquivos JSON datados em 'traces/', omitindo chaves API e secrets Bybit via regex de mascaramento.",
       "never": [
@@ -3916,13 +3916,18 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
       "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-17T07:03:23+00:00",
           "event": "mapped",
           "detail": "20260817T070323Z"
+        },
+        {
+          "at": "2026-08-17T08:26:50+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-exporta-o-de-traces-sanitizados-para-eval"
         }
       ]
     },
