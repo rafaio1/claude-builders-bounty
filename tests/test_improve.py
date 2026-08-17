@@ -104,6 +104,17 @@ def test_path_and_content_gates() -> None:
     assert scan_forbidden("print('ok')") is None
 
 
+def test_scan_forbidden_allows_live_trade_refusal() -> None:
+    assert scan_forbidden("AGENTIC_LIVE_TRADE=1") is not None
+    assert (
+        scan_forbidden(
+            'raise RuntimeError("AGENTIC_LIVE_TRADE=1 recusado; o loop não opera Bybit")'
+        )
+        is None
+    )
+    assert scan_forbidden("não ligue AGENTIC_LIVE_TRADE=1 em produção") is None
+
+
 def test_apply_files_rejects_new_loop_script(tmp_path: Path) -> None:
     try:
         apply_files(

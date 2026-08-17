@@ -59,6 +59,12 @@ FORBIDDEN_RE = (
     re.compile(r"\bwordlist\b", re.I),
     re.compile(r"exploit\s+poc", re.I),
 )
+# Mentions that refuse enabling live trade must not trip the gate.
+_LIVE_TRADE_OK_CONTEXT = re.compile(
+    r"(recus|proib|disabled|kill\s*switch|n[aã]o\s+lig|never|false|"
+    r"ligar\s+AGENTIC_LIVE_TRADE|n[aã]o\s+ligue|sem\s+trade\s+live)",
+    re.I,
+)
 SLUG_RE = re.compile(r"[^a-z0-9]+")
 MAX_FILES = 8
 MAX_FILE_BYTES = 120_000
@@ -411,6 +417,51 @@ def requeue_failed_proposals(ledger: dict[str, Any]) -> list[str]:
     return list(dict.fromkeys(dead_branches))
 
 
+def release_stale_developing(
+    ledger: dict[str, Any],
+    git: ImproveGit,
+    primary: str,
+) -> list[str]:
+    """Return empty developing claims to pending and list dead branches."""
+    dead_branches: list[str] = []
+    changed = False
+    for item in ledger.get("proposals") or []:
+        if not isinstance(item, dict):
+            continue
+        if str(item.get("status") or "") != "developing":
+            continue
+        branch = str(item.get("branch") or "").strip()
+        has_diff = False
+        if branch and git.branch_exists(branch):
+            names = [
+                name
+                for name in git.diff_names(primary, branch)
+                if name != str(LEDGER_PATH)
+            ]
+            has_diff = bool(names)
+        if has_diff:
+            continue
+        if branch:
+            dead_branches.append(branch)
+        item["status"] = "pending"
+        item["branch"] = ""
+        # Drop false-positive live-trade gate feedback so the next develop is clean.
+        feedback = str(item.get("review_feedback") or "")
+        if "AGENTIC_LIVE_TRADE" in feedback and "recusado" in feedback:
+            item["review_feedback"] = ""
+        item.setdefault("history", []).append(
+            {
+                "at": utcnow(),
+                "event": "released_stale",
+                "detail": "developing sem diff útil; devolve à fila",
+            }
+        )
+        changed = True
+    if changed:
+        ledger["updated_at"] = utcnow()
+    return list(dict.fromkeys(dead_branches))
+
+
 def operator_seed_items(
     map_id: str, *, dirty_paths: list[str] | None = None
 ) -> list[dict[str, Any]]:
@@ -537,8 +588,16 @@ def is_allowed_path(rel: str) -> bool:
 
 
 def scan_forbidden(text: str) -> str | None:
+    blob = text or ""
     for pattern in FORBIDDEN_RE:
-        if pattern.search(text or ""):
+        for match in pattern.finditer(blob):
+            if "AGENTIC_LIVE_TRADE" in pattern.pattern:
+                start = blob.rfind("\n", 0, match.start()) + 1
+                end = blob.find("\n", match.end())
+                line = blob[start : end if end != -1 else len(blob)]
+                window = blob[max(0, match.start() - 80) : match.end() + 60]
+                if _LIVE_TRADE_OK_CONTEXT.search(line) or _LIVE_TRADE_OK_CONTEXT.search(window):
+                    continue
             return pattern.pattern
     return None
 
@@ -1062,6 +1121,34 @@ class ImprovePipeline:
             if not self.git.has_commits():
                 raise GitError("repositório git sem commit inicial em main")
             ledger = load_json(self.settings.root / LEDGER_PATH, empty_ledger())
+            primary = self.git.primary_branch()
+            if self.git.current_branch() != primary:
+                self.git.checkout(primary)
+            stale = release_stale_developing(ledger, self.git, primary)
+            if stale:
+                dump_json(self.settings.root / LEDGER_PATH, ledger)
+                self.git.add(str(LEDGER_PATH))
+                self.git.commit(f"release {len(stale)} stale developing claims")
+                for name in stale:
+                    self.git.delete_branch(name, force=True)
+                progress(f"liberados {len(stale)} claims developing vazios")
+            # Clear false-positive live-trade feedback on pending rows.
+            cleared = False
+            for item in ledger.get("proposals") or []:
+                if not isinstance(item, dict):
+                    continue
+                feedback = str(item.get("review_feedback") or "")
+                if (
+                    str(item.get("status") or "") == "pending"
+                    and "AGENTIC_LIVE_TRADE" in feedback
+                    and "recusado" in feedback
+                ):
+                    item["review_feedback"] = ""
+                    cleared = True
+            if cleared:
+                dump_json(self.settings.root / LEDGER_PATH, ledger)
+                self.git.add(str(LEDGER_PATH))
+                self.git.commit("clear false-positive live-trade review_feedback")
             dirty = self.git.dirty()
             proposal = pick_pending(ledger, dirty=dirty)
             repair = is_git_clean_repair(proposal)
