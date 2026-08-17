@@ -1842,6 +1842,70 @@ def default_restarter(files: list[str]) -> dict[str, Any]:
     return {"restarted": restarted, "note": note, "errors": errors}
 
 
+def eval_traces(root: Path | None = None) -> dict[str, Any]:
+    """Cruza review_feedback do ledger com traces da GhostCLI.
+
+    Gera métricas de eficácia de prompts (theme=ai) sem criar módulos novos.
+    Leitura best-effort: falhas de IO não quebram o pipeline.
+    """
+    base = Path(root) if root is not None else Path.cwd()
+    ledger = load_json(base / LEDGER_PATH, empty_ledger())
+    proposals = [
+        item
+        for item in ledger.get("proposals") or []
+        if isinstance(item, dict)
+    ]
+    total = len(proposals)
+    with_feedback = 0
+    verdicts: dict[str, int] = {}
+    themes: dict[str, int] = {}
+    requeues = 0
+    for item in proposals:
+        status = str(item.get("status") or "")
+        verdicts[status] = verdicts.get(status, 0) + 1
+        theme = str(item.get("theme") or "engine")
+        themes[theme] = themes.get(theme, 0) + 1
+        feedback = str(item.get("review_feedback") or "").strip()
+        if feedback:
+            with_feedback += 1
+        history = item.get("history") or []
+        for event in history:
+            if isinstance(event, dict) and str(event.get("event") or "") == "requeued":
+                requeues += 1
+                break
+    traces_dir = base / "improve" / "traces"
+    trace_files = sorted(traces_dir.glob("*.json")) if traces_dir.is_dir() else []
+    trace_methods: dict[str, int] = {}
+    trace_parse_fail = 0
+    for path in trace_files[-200:]:
+        try:
+            record = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            continue
+        method = str(record.get("method") or "unknown")
+        trace_methods[method] = trace_methods.get(method, 0) + 1
+        summary = str(record.get("parsed_summary") or "")
+        if '"summary"' not in summary and '"verdict"' not in summary:
+            trace_parse_fail += 1
+    coverage = round(with_feedback / total * 100, 1) if total else 0.0
+    requeue_rate = round(requeues / total * 100, 1) if total else 0.0
+    return {
+        "generated_at": utcnow(),
+        "proposals_total": total,
+        "with_review_feedback": with_feedback,
+        "feedback_coverage_pct": coverage,
+        "requeues": requeues,
+        "requeue_rate_pct": requeue_rate,
+        "verdicts": verdicts,
+        "themes": themes,
+        "traces": {
+            "files": len(trace_files),
+            "methods": trace_methods,
+            "parse_fail_recent": trace_parse_fail,
+        },
+    }
+
+
 def run_action(
     settings: Settings,
     action: str,
@@ -1858,4 +1922,6 @@ def run_action(
         return pipeline.review(progress=progress, apply=apply)
     if action == "status":
         return pipeline.status()
+    if action == "eval":
+        return eval_traces(settings.root)
     raise HttpError(f"ação improve desconhecida: {action}")
