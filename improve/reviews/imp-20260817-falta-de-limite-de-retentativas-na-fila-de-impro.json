@@ -1,0 +1,18 @@
+{
+  "at": "2026-08-17T14:16:41+00:00",
+  "branch": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
+  "proposal_id": "imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
+  "verdict": "approve",
+  "reason": "A implementação adiciona corretamente um limite defensivo de retentativas consecutivas, movendo tarefas para o estado de 'quarantine' e evitando loops infinitos na fila de improve. A mudança é pequena, cirúrgica e acompanhada de testes unitários adequados que validam o comportamento esperado.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "...........................................................              [100%]\n59 passed in 141.10s (0:02:21)"
+  },
+  "files": [
+    "src/agentic/improve.py",
+    "tests/test_improve.py"
+  ]
+}
