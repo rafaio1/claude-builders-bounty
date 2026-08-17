@@ -3189,7 +3189,7 @@
       "title": "Fila de improve presa em loops de review rejeitado",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Se o pytest falhar repetidamente, o develop tenta corrigir o parecer sem limite de tentativas, travando a fila de pending.",
       "change": "Adicionar contador de tentativas; se > 3, mover para estado 'blocked' com log de erro e review_feedback.",
       "never": [
@@ -3201,13 +3201,18 @@
         "src/agentic/improve.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
       "map_id": "20260817T040232Z",
       "history": [
         {
           "at": "2026-08-17T04:02:32+00:00",
           "event": "mapped",
           "detail": "20260817T040232Z"
+        },
+        {
+          "at": "2026-08-17T09:28:23+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita"
         }
       ]
     },
