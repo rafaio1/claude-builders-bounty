@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T03:02:26+00:00",
+  "updated_at": "2026-08-17T04:02:32+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T030226Z",
+      "map_id": "20260817T040232Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T030226Z",
+      "map_id": "20260817T040232Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T030226Z",
+      "map_id": "20260817T040232Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T030226Z",
+      "map_id": "20260817T040232Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3024,6 +3024,232 @@
           "at": "2026-08-17T03:02:26+00:00",
           "event": "mapped",
           "detail": "20260817T030226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+      "key": "f8d10e46cc34ffcf",
+      "canon": "6db2d2c9311a1f2f",
+      "title": "Falta de limite de tokens no prompt do Claude CLI",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O develop despeja prompts inteiros no Claude CLI sem validar o tamanho, podendo estourar contextos e gastar tokens à toa em loops de improve.",
+      "change": "Adicionar truncamento ou sumarização prévia no prompt antes de chamar o Claude CLI.",
+      "never": [
+        "Alterar o modelo GhostCLI",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+      "key": "8945665b2e2b222b",
+      "canon": "1d6fa5c5a0b94e0b",
+      "title": "Fila de improve presa em loops de review rejeitado",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Se o pytest falhar repetidamente, o develop tenta corrigir o parecer sem limite de tentativas, travando a fila de pending.",
+      "change": "Adicionar contador de tentativas; se > 3, mover para estado 'blocked' com log de erro e review_feedback.",
+      "never": [
+        "Fazer git reset --hard",
+        "Ignorar o review_feedback",
+        "Usar git clean -fd"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-de-permiss-es-do-arquivo-de-credenciais",
+      "key": "d0f74c65d9986620",
+      "canon": "e8484a2b9d456c5d",
+      "title": "Validação de permissões do arquivo de credenciais Bybit",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O env.py carrega /root/.automaton/bybit-murre.env, mas não checa se as permissões são restritivas (ex: 0600), gerando risco de segurança.",
+      "change": "Adicionar checagem de st_mode no env.py ao ler o arquivo de credenciais, lançando warning se não for 0o600.",
+      "never": [
+        "Imprimir as chaves Bybit no log",
+        "Modificar o path canônico"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-tick-de-sa-de-sem-backoff-em-falhas-consecutivas",
+      "key": "0682aa3bd1005bcc",
+      "canon": "6f9dfe28b3808a71",
+      "title": "Tick de saúde sem backoff em falhas consecutivas",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O loop roda a cada 90s fixos. Se uma ferramenta crítica falhar, continuar batendo a cada 90s pode gerar spam de logs ou sobrecarga.",
+      "change": "Implementar backoff exponencial simples no loop.py se o tick de saúde falhar, resetando quando voltar ao normal.",
+      "never": [
+        "Alterar o ExecStart do systemd",
+        "Mudar o intervalo base de 90s em operação normal"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-prioriza-o-estrita-do-playwright-cli-sobre-mcp",
+      "key": "35aed1cec28cbdf2",
+      "canon": "d79e60493db9d930",
+      "title": "Priorização estrita do playwright-cli sobre MCP",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "theme=tools. O sistema prefere CLI para poupar tokens, mas a seleção de ferramentas pode cair no MCP se o CLI não for forçado explicitamente.",
+      "change": "Ajustar a lógica de seleção para desabilitar playwright-mcp quando playwright-cli estiver disponível e saudável.",
+      "never": [
+        "Remover o suporte a MCP completamente do código",
+        "Criar scripts bash novos"
+      ],
+      "files_hint": [
+        "src/agentic/tools.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sanitiza-o-de-traces-da-ghostcli-para-eval",
+      "key": "158c672661f3ecc6",
+      "canon": "c2ece402564faf80",
+      "title": "Sanitização de traces da GhostCLI para eval",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "theme=ai. Traces salvos para avaliação de IA podem conter paths internos ou fragments de secrets se não forem limpos antes do eval.",
+      "change": "Adicionar um filtro regex em ghostcli.py para redactar paths /root/ e chaves antes de salvar o trace no disco.",
+      "never": [
+        "Alterar a ANTHROPIC_BASE_URL",
+        "Enviar traces para a GhostCLI sem sanitização"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-verifica-o-de-stop-all-operations-no-tick",
+      "key": "85622b5818e4bb66",
+      "canon": "9efc89d161bc5941",
+      "title": "Verificação de STOP_ALL_OPERATIONS no tick",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A constituição ARO v1.0 define STOP_ALL_OPERATIONS, mas o loop de saúde pode não checar essa flag antes de rodar tasks pesadas.",
+      "change": "Ler a flag STOP_ALL_OPERATIONS de src/agentic/aro/constitution.py no início do loop.py e pular execuções não críticas se ativa.",
+      "never": [
+        "Modificar o OWNER_SHARE_RATE",
+        "Pausar o agentic-portal.service"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-alerta-de-expira-o-de-senha-no-portal",
+      "key": "8d4a38b70feb10db",
+      "canon": "7c5dba4d851ca0c4",
+      "title": "Alerta de expiração de senha no portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal usa Argon2id, mas não há mecanismo para alertar sobre rotação de credenciais antigas ou expiradas.",
+      "change": "Adicionar campo de 'last_password_change' e checar a idade no login do portal autenticado.",
+      "never": [
+        "Gravar senha em texto plano",
+        "Alterar a porta 8767"
+      ],
+      "files_hint": [
+        "src/agentic/portal.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260817T040232Z",
+      "history": [
+        {
+          "at": "2026-08-17T04:02:32+00:00",
+          "event": "mapped",
+          "detail": "20260817T040232Z"
         }
       ]
     }
