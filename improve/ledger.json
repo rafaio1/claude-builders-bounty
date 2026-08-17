@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T12:01:29+00:00",
+  "updated_at": "2026-08-17T15:17:37+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -3725,7 +3725,7 @@
       "title": "Uso ineficiente de tokens pelo Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O censo mostra playwright e playwright_mcp ativos. Agentes podem estar usando o MCP em vez do CLI headless, consumindo tokens excessivos e aumentando a latência.",
       "change": "Adicionar preferência explícita no mapeamento de ferramentas para forçar playwright-cli quando disponível, desabilitando o MCP em rotas padrão.",
       "never": [
@@ -3736,7 +3736,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp",
+      "branch": "",
       "map_id": "20260817T080328Z",
       "history": [
         {
@@ -3748,6 +3748,11 @@
           "at": "2026-08-17T14:57:46+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp"
+        },
+        {
+          "at": "2026-08-17T15:17:37+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
