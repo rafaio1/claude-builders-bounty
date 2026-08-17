@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T05:02:21+00:00",
+  "updated_at": "2026-08-17T06:01:42+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T050221Z",
+      "map_id": "20260817T060142Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T050221Z",
+      "map_id": "20260817T060142Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T050221Z",
+      "map_id": "20260817T060142Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T050221Z",
+      "map_id": "20260817T060142Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3547,6 +3547,206 @@
           "at": "2026-08-17T05:02:21+00:00",
           "event": "mapped",
           "detail": "20260817T050221Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp",
+      "key": "b80ef2e74b90259e",
+      "canon": "e1a2b45d7db4e64e",
+      "title": "Uso ineficiente de tokens via Playwright MCP",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O censo indica playwright_mcp ativo, mas a diretriz exige preferência por playwright-cli para poupar tokens.",
+      "change": "Ajustar a configuração do agente para desabilitar playwright-mcp quando playwright-cli estiver disponível e funcional.",
+      "never": [
+        "Criar novos wrappers MCP",
+        "Alterar a lógica de navegação headless"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py",
+        "src/agentic/config.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falta-de-m-tricas-de-avalia-o-eval-nas-chamadas",
+      "key": "6c91f0ef24e4d44f",
+      "canon": "74d5ffbc81ec172e",
+      "title": "Falta de métricas de avaliação (eval) nas chamadas GhostCLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O motor usa GhostCLI para develop/review, mas não há traces estruturados para avaliar a qualidade das respostas da IA.",
+      "change": "Adicionar extração de metadados e salvamento de traces sanitizados após cada chamada ao Claude CLI.",
+      "never": [
+        "Armazenar prompts com secrets",
+        "Modificar o ANTHROPIC_BASE_URL"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sanitiza-o-proativa-de-traces-theme-ai",
+      "key": "4fda182d69f96829",
+      "canon": "f1f2a76956df6761",
+      "title": "Sanitização proativa de traces (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Garantir que nenhum dado sensível (Bybit/GhostCLI) vaze para os logs de avaliação da IA.",
+      "change": "Adicionar filtro regex no wrapper de logs do claude_cli.py para redigir chaves e tokens antes de salvar.",
+      "never": [
+        "Desativar o log de traces",
+        "Imprimir secrets no stdout"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/utils/sanitize.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restri-o-de-escopo-do-playwright-theme-tools",
+      "key": "6230623c332f1683",
+      "canon": "1ecd3a20e5ee7d9f",
+      "title": "Restrição de escopo do Playwright (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes podem tentar usar recursos pesados do navegador desnecessariamente, gastando tokens e tempo.",
+      "change": "Limitar os comandos disponíveis no wrapper do playwright-cli apenas para ações de extração de texto e cliques simples.",
+      "never": [
+        "Habilitar modo headful",
+        "Usar playwright-mcp como padrão"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-otimiza-o-de-filas-no-improve-py",
+      "key": "97907d4535472665",
+      "canon": "a192da34b2f3844a",
+      "title": "Otimização de filas no improve.py",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A gestão de fila atual pode processar feedback de review de forma mais granular para evitar retrabalho.",
+      "change": "Implementar parse estruturado do review_feedback para injeção direta no contexto do próximo develop.",
+      "never": [
+        "Alterar o ledger de pending",
+        "Mudar a branch de destino do reviewer"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-health-check-batchado-no-loop-py",
+      "key": "d5252ce27b1d2282",
+      "canon": "96322c6cf9425958",
+      "title": "Health check batchado no loop.py",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Verificar a saúde de todas as ferramentas a cada tick de 90s pode gerar overhead se houver muitas tools.",
+      "change": "Implementar cache de curto prazo (ex: 5 min) para o status de ferramentas que não mudam com frequência.",
+      "never": [
+        "Alterar o --interval do systemd",
+        "Ligar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-de-integridade-aro-theme-ai",
+      "key": "ba9030cb6da892ca",
+      "canon": "f3143fc525c97372",
+      "title": "Validação de integridade ARO (theme=ai)",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Garantir que as operações propostas pelo improve.py não violem a constituição ARO v1.0.",
+      "change": "Adicionar um validador rápido em improve.py que cheque palavras-chave contra ARO.md antes de enviar para o develop.",
+      "never": [
+        "Alterar OWNER_SHARE_RATE",
+        "Pausar operações via STOP_ALL_OPERATIONS automaticamente"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T060142Z",
+      "history": [
+        {
+          "at": "2026-08-17T06:01:42+00:00",
+          "event": "mapped",
+          "detail": "20260817T060142Z"
         }
       ]
     }
