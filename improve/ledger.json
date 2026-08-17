@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T19:49:31+00:00",
+  "updated_at": "2026-08-17T21:02:27+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -463,7 +463,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T120129Z",
+      "map_id": "20260817T210227Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -490,7 +490,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T120129Z",
+      "map_id": "20260817T210227Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -517,7 +517,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T120129Z",
+      "map_id": "20260817T210227Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -546,7 +546,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T120129Z",
+      "map_id": "20260817T210227Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3228,7 +3228,7 @@
       "title": "Falta de limite de tokens no prompt do Claude CLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "O develop despeja prompts inteiros no Claude CLI sem validar o tamanho, podendo estourar contextos e gastar tokens à toa em loops de improve.",
       "change": "Adicionar truncamento ou sumarização prévia no prompt antes de chamar o Claude CLI.",
       "never": [
@@ -3239,7 +3239,7 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+      "branch": "",
       "map_id": "20260817T040232Z",
       "history": [
         {
@@ -3256,8 +3256,14 @@
           "at": "2026-08-17T20:43:00+00:00",
           "event": "merge_failed",
           "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
+        },
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "requeued",
+          "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
         }
-      ]
+      ],
+      "review_feedback": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
     },
     {
       "id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
@@ -4910,6 +4916,156 @@
           "at": "2026-08-17T12:01:29+00:00",
           "event": "mapped",
           "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+      "key": "d8f2e5048c47c664",
+      "canon": "9f5391180516b1eb",
+      "title": "Desperdício de tokens com Playwright MCP ativo",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O censo mostra playwright_mcp ativo, mas as diretrizes exigem preferência pelo playwright-cli headless para poupar tokens e evitar sobrecarga do contexto da IA.",
+      "change": "Desativar a inicialização e rotas do playwright-mcp no motor, forçando o uso exclusivo do playwright-cli.",
+      "never": [
+        "Criar src/agentic/loop.sh",
+        "Alterar o --interval 90 do systemd",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-lat-ncia-de-processamento-na-fila-improve-py",
+      "key": "08c969702e8b07e4",
+      "canon": "3d34f0dd26ae5cca",
+      "title": "Latência de processamento na fila improve.py",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick de 90s pode atrasar a injeção de prompts se o ledger acumular múltiplas tarefas pending, processando-as sequencialmente uma a uma.",
+      "change": "Otimizar o improve.py para ler e despachar lotes (batch) de tarefas pending para o claude_cli.py em um único tick.",
+      "never": [
+        "Fazer git reset --hard ou clean -fd",
+        "Mudar o ExecStart do agentic-loop.service",
+        "Ignorar o review_feedback"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-traces-sanitizados-e-m-tricas-de-tokens-ghostcli",
+      "key": "16581ff4bad4b7ff",
+      "canon": "7c6d7f319eb941b8",
+      "title": "Traces sanitizados e métricas de tokens GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta visibilidade estruturada sobre o consumo de tokens e latência do modelo claude-fable-5[1m] para avaliar a eficiência dos prompts (theme=ai).",
+      "change": "Adicionar middleware no ghostcli.py para gravar traces sanitizados (latência, tokens) em log estruturado, sem expor secrets.",
+      "never": [
+        "Imprimir ANTHROPIC_BASE_URL ou chaves Bybit nos logs",
+        "Alterar ARO.md ou OWNER_SHARE_RATE",
+        "Criar scripts bash externos"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-wrapper-de-jq-para-pr-processamento-de-api-maps",
+      "key": "00b86f1719906ac9",
+      "canon": "a1ec744a4b5c6b89",
+      "title": "Wrapper de JQ para pré-processamento de API maps",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Enviar respostas brutas e extensas de API maps para a IA consome contexto desnecessário. O JQ pode filtrar campos localmente (theme=tools).",
+      "change": "Implementar helper em tools/jq.py que aplica filtros JQ padrão nas saídas do ghostcli.py antes de passá-las ao claude_cli.py.",
+      "never": [
+        "Executar comandos shell arbitrários",
+        "Modificar credenciais em /root/.automaton/",
+        "Bypassar o reviewer da main"
+      ],
+      "files_hint": [
+        "src/agentic/tools/jq.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-dashboard-da-fila-improve-no-portal",
+      "key": "1d27004cd6abb2a0",
+      "canon": "fe73eef5c6e9ebd5",
+      "title": "Dashboard da fila improve no Portal",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "Operadores não têm visibilidade rápida do estado da fila (pending, review_feedback) sem acessar o ledger ou logs diretamente (theme=portal).",
+      "change": "Adicionar rota no agentic-portal.service (porta 8767) que lê o status do improve.py e exibe no frontend usando o theme=portal.",
+      "never": [
+        "Gravar senhas em texto plano",
+        "Usar Argon2id incorretamente",
+        "Expor variáveis de ambiente sensíveis no HTML"
+      ],
+      "files_hint": [
+        "src/agentic/portal/routes.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260817T210227Z",
+      "history": [
+        {
+          "at": "2026-08-17T21:02:27+00:00",
+          "event": "mapped",
+          "detail": "20260817T210227Z"
         }
       ]
     }
