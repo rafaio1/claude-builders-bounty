@@ -1843,7 +1843,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "sanitize_trace em ghostcli.py + testes; sem traces.py",
       "never": [
@@ -1856,7 +1856,7 @@
         "tests/test_ghostcli_sanitize.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
       "map_id": "20260816T230333Z",
       "history": [
         {
@@ -1943,6 +1943,11 @@
           "at": "2026-08-17T02:36:44+00:00",
           "event": "review",
           "detail": "reject: O diff não corresponde à proposta: a proposta e o files_hint indicam implementação em src/agentic/traces.py, mas o patch implementa o sanitizador em src/agentic/ghostcli.py. O conteúdo é defensivo (mascara tokens/cookies/headers) e os testes novos são permitidos e adequados, mas o histórico já registra duas requeues porque traces.py não existe e a política só permite paths já existentes, exceto te… riscos=['Divergência de escopo: proposta/files_hint apontam para src/agentic/traces.py, mas o diff altera src/agentic/ghostcli.py.', 'O regex genérico de 32+ caracteres pode mascarar hashes/IDs longos legíti…"
+        },
+        {
+          "at": "2026-08-17T02:37:29+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
         }
       ],
       "review_feedback": "Reimplemente sanitize_trace em src/agentic/ghostcli.py e testes; files_hint já aponta ghostcli.py (não traces.py)."
