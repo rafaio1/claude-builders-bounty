@@ -3919,7 +3919,7 @@
       "title": "Timeout ausente no Claude CLI durante develop",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Chamadas ao GhostCLI via claude_cli.py não possuem timeout estrito; se o modelo travar, o tick de 90s é consumido, atrasando o health check de outras ferramentas.",
       "change": "Adicionar parâmetro de timeout (ex: 60s) na invocação do subprocesso do Claude CLI em claude_cli.py e tratar TimeoutExpired como falha, devolvendo o item à fila com review_feedback.",
       "never": [
@@ -3931,13 +3931,18 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-timeout-ausente-no-claude-cli-durante-develop",
       "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-17T07:03:23+00:00",
           "event": "mapped",
           "detail": "20260817T070323Z"
+        },
+        {
+          "at": "2026-08-17T14:36:42+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-timeout-ausente-no-claude-cli-durante-develop"
         }
       ]
     },
