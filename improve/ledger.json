@@ -1404,7 +1404,7 @@
       "title": "Caminho de navegador pode preferir MCP à CLI",
       "kind": "bottleneck",
       "priority": 2,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O censo mostra playwright e playwright_mcp ativos; a política pede CLI primeiro para poupar tokens. Qualquer chamada que vá direto ao MCP gasta tokens sem necessidade.",
       "change": "Helper pequeno de seleção de navegador: usar playwright-cli por padrão e só cair para playwright-mcp se a CLI falhar, registrando a escolha no log sanitizado.",
       "never": [
@@ -1416,13 +1416,18 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-caminho-de-navegador-pode-preferir-mcp-cli",
       "map_id": "20260816T200957Z",
       "history": [
         {
           "at": "2026-08-16T20:09:57+00:00",
           "event": "mapped",
           "detail": "20260816T200957Z"
+        },
+        {
+          "at": "2026-08-17T19:29:10+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-caminho-de-navegador-pode-preferir-mcp-cli"
         }
       ]
     },
