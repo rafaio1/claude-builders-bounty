@@ -2816,7 +2816,7 @@
       "title": "Documentar Claude CLI + GhostCLI no improve README",
       "kind": "improvement",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Operador precisa ver que develop despeja no Claude CLI",
       "change": "Uma frase em improve/README.md sobre Claude CLI via GhostCLI",
       "never": [
@@ -2828,7 +2828,7 @@
         "improve/README.md"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
+      "branch": "",
       "map_id": "operator-20260817",
       "history": [
         {
@@ -2845,9 +2845,14 @@
           "at": "2026-08-17T02:41:50+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme"
+        },
+        {
+          "at": "2026-08-17T02:42:03+00:00",
+          "event": "requeued",
+          "detail": "The `improve/README.md` already contains the required documentation about Claude CLI and GhostCLI in both the overview (line 3) and the develop executor description (line 14). The review_feedback asks for exactly this, and it is already present. No edit is needed.\n\nSUMMARY: improve/README.md já documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma alteração necessária."
         }
       ],
-      "review_feedback": "Só improve/README.md: 1-2 frases dizendo que develop despeja no Claude CLI com modelos GhostCLI. Não toque noutros ficheiros."
+      "review_feedback": "The `improve/README.md` already contains the required documentation about Claude CLI and GhostCLI in both the overview (line 3) and the develop executor description (line 14). The review_feedback asks for exactly this, and it is already present. No edit is needed.\n\nSUMMARY: improve/README.md já documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma alteração necessária."
     }
   ]
 }
