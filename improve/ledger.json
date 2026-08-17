@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T06:01:42+00:00",
+  "updated_at": "2026-08-17T07:03:23+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T060142Z",
+      "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T060142Z",
+      "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T060142Z",
+      "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T060142Z",
+      "map_id": "20260817T070323Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3777,6 +3777,235 @@
           "at": "2026-08-17T06:01:42+00:00",
           "event": "mapped",
           "detail": "20260817T060142Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-timeout-ausente-no-claude-cli-durante-develop",
+      "key": "4721ed9227a23258",
+      "canon": "a5036b3ecb1964b8",
+      "title": "Timeout ausente no Claude CLI durante develop",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Chamadas ao GhostCLI via claude_cli.py não possuem timeout estrito; se o modelo travar, o tick de 90s é consumido, atrasando o health check de outras ferramentas.",
+      "change": "Adicionar parâmetro de timeout (ex: 60s) na invocação do subprocesso do Claude CLI em claude_cli.py e tratar TimeoutExpired como falha, devolvendo o item à fila com review_feedback.",
+      "never": [
+        "alterar o prompt de develop",
+        "mudar o AGENTIC_LIVE_TRADE",
+        "criar loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-health-check-do-playwright-n-o-detecta-processos",
+      "key": "b8fa42a7cd635442",
+      "canon": "d303f5b80e0f9c20",
+      "title": "Health check do Playwright não detecta processos zumbis",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O tick atual verifica a presença do binário, mas não detecta se processos headless anteriores ficaram zumbis ou vazaram memória, degradando o host gradualmente.",
+      "change": "Incluir no loop.py uma verificação rápida de contagem de processos playwright e forçar limpeza se exceder um limite, antes de rodar o health check.",
+      "never": [
+        "instalar novas dependências de monitoramento",
+        "enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falta-de-backoff-exponencial-em-falhas-de-api-do",
+      "key": "e8f9cff9a9e0f915",
+      "canon": "f3793f52aa5c9e9c",
+      "title": "Falta de backoff exponencial em falhas de API do GhostCLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Erros transitórios na API do GhostCLI fazem o improve.py retentar imediatamente no próximo tick, gerando spam de requisições e possível bloqueio por rate-limit.",
+      "change": "Implementar um contador de tentativas e backoff simples no ledger para itens que falharam na etapa de map/review via ghostcli.py.",
+      "never": [
+        "alterar a constituição ARO",
+        "ignorar review_feedback"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
+      "key": "33be5aec321d1ef4",
+      "canon": "47dd2d36ab52e497",
+      "title": "Exportação de traces sanitizados para eval",
+      "kind": "improvement",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Não há histórico estruturado dos prompts e respostas do GhostCLI, impedindo a criação de datasets para eval e ajuste fino de prompts de review.",
+      "change": "Gravar entradas e saídas do claude_cli.py e ghostcli.py em arquivos JSON datados em 'traces/', omitindo chaves API e secrets Bybit via regex de mascaramento.",
+      "never": [
+        "commitar traces no git",
+        "vazar bybit_secret",
+        "imprimir secrets no stdout"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-padroniza-o-de-playwright-cli-com-timeout",
+      "key": "3494aa2ecbbed91f",
+      "canon": "6c7e9e0bcac523e8",
+      "title": "Padronização de playwright-cli com timeout",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O uso de MCP para playwright consome mais tokens. A CLI direta é mais leve para health checks, mas precisa de flags de segurança e timeout.",
+      "change": "Padronizar chamadas de navegador no loop.py para usar 'playwright-cli headless --no-sandbox' com timeout de 30s, poupando tokens do MCP.",
+      "never": [
+        "habilitar headed mode",
+        "remover playwright-mcp do ambiente de desenvolvimento"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-estrita-de-aro-no-improve-py",
+      "key": "d265cd1ad362a026",
+      "canon": "a9c4007592a8ba12",
+      "title": "Validação estrita de ARO no improve.py",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Garantir que nenhuma tarefa de develop seja processada se STOP_ALL_OPERATIONS estiver ativo ou se a constituição ARO.md tiver sido violada.",
+      "change": "Adicionar checagem de leitura de ARO.md e variáveis de ambiente no início do ciclo do improve.py, abortando a fila se a conformidade falhar.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "modificar destino de payout"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-exposi-o-de-m-tricas-de-sa-de-para-o-portal",
+      "key": "ed5781f39fda2051",
+      "canon": "7732c627bdcb3dfa",
+      "title": "Exposição de métricas de saúde para o Portal",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O portal autenticado (porta 8767) não tem visibilidade em tempo real do status das ferramentas do motor, dificultando a depuração operacional.",
+      "change": "Fazer o loop.py gravar o último status de saúde em um arquivo JSON ('/var/lib/agentic/health.json') que o portal possa ler e exibir via API interna.",
+      "never": [
+        "expor secrets no endpoint do portal",
+        "alterar a senha Argon2id"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-otimiza-o-de-parsing-json-no-ghostcli-py",
+      "key": "f6fbeac5615ea4bd",
+      "canon": "7612f163d8ca7e8f",
+      "title": "Otimização de parsing JSON no ghostcli.py",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O uso recorrente de binários externos como 'jq' para parsear respostas simples da API adiciona latência e overhead de subprocessos no tick.",
+      "change": "Substituir chamadas de 'jq' por json.loads() nativo do Python nas respostas da API do GhostCLI, mantendo 'jq' apenas para transformações complexas em skills.",
+      "never": [
+        "remover 'jq' do ambiente do sistema",
+        "alterar a lógica de map/review"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T070323Z",
+      "history": [
+        {
+          "at": "2026-08-17T07:03:23+00:00",
+          "event": "mapped",
+          "detail": "20260817T070323Z"
         }
       ]
     }
