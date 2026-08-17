@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T11:01:37+00:00
+Atualizado: 2026-08-17T12:01:29+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T11:00:30+00:00
-- git_clean: ok
-- dirty_paths: []
+- last_tick: 2026-08-17T11:57:54+00:00
+- git_clean: FALHOU
+- dirty_paths: [".cursor/agents/"]
 
 ## Ghost
 
-Mapeamento focado em otimização de tokens, resiliência da fila de develop e avaliação estruturada de IAs.
+Foco em restaurar a integridade do git na main, fatiar patches sujos e otimizar o consumo de tokens e o loop de feedback do develop.
 
 ## Ledger
 
-{"pending": 112, "blocked": 5, "applied": 13, "developing": 5}
+{"pending": 118, "blocked": 6, "applied": 13, "developing": 5}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
@@ -33,7 +33,7 @@ Mapeamento focado em otimização de tokens, resiliência da fila de develop e a
 - `imp-20260816-ai-traces-sanitizados-da-ghostcli-eval-do-review` [blocked/p2] [ai] Traces sanitizados da GhostCLI + eval do reviewer
 - `imp-20260816-tools-validar-sa-das-do-censo-com-jq-antes-de-ag` [pending/p3] [tools] Validar saídas do censo com jq antes de agir
 - `imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli` [applied/p1] Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main
-- `imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin` [pending/p1] Restaurar git_clean (Outros arquivos sujos): working tree limpa na main
+- `imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin` [blocked/p1] Restaurar git_clean (Outros arquivos sujos): working tree limpa na main
 - `imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl` [pending/p2] Status do loop com saúde de Playwright e GhostCLI
 - `imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra` [pending/p3] Documentar skill playwright-cli no mapa de ferramentas
 - `imp-20260816-traces-sanitizados-da-ghostcli-no-improve` [pending/p2] Traces sanitizados da GhostCLI no improve

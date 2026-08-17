@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T11:01:37+00:00",
+  "updated_at": "2026-08-17T12:01:29+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -10,8 +10,8 @@
       "kind": "bottleneck",
       "priority": 1,
       "status": "pending",
-      "rationale": "A working tree está suja, bloqueando o reviewer. Esta fatia foca estritamente no motor para permitir um commit cirúrgico.",
-      "change": "O pipeline stageia e committa apenas as alterações do motor e seus testes a partir do disco, sem que o develop reescreva os arquivos.",
+      "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
+      "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
         "reset --hard",
         "checkout --",
@@ -29,7 +29,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -452,7 +452,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T110137Z",
+      "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -479,7 +479,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T110137Z",
+      "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -506,7 +506,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T110137Z",
+      "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -535,7 +535,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T110137Z",
+      "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4621,6 +4621,203 @@
           "at": "2026-08-17T11:01:37+00:00",
           "event": "mapped",
           "detail": "20260817T110137Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-fatiar-patches-de-integridade-por-tema",
+      "key": "0dd5a8e3374d8730",
+      "canon": "e90865601bc0d20e",
+      "title": "Fatiar patches de integridade por tema",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O develop pode tentar limpar todos os dirty_paths de uma vez, gerando PRs gigantes e falhas de review.",
+      "change": "Modificar improve.py para fatiar propostas git_clean por tema (motor vs playbook vs ferramentas) e versionar apenas os files_hint da fatia atual.",
+      "never": [
+        "criar patch único com todos os dirty_paths",
+        "alterar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-limitar-escopo-de-corre-o-de-review",
+      "key": "4ebe2f3b0d91ec4e",
+      "canon": "4229685d2306f001",
+      "title": "Limitar escopo de correção de review",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando uma proposta volta a pending, o develop pode alargar o escopo tentando corrigir múltiplos erros de uma vez.",
+      "change": "Ajustar claude_cli.py para forçar que o prompt do modelo GhostCLI foque exclusivamente no review_feedback recebido, sem expandir a tarefa.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "burlar a constituição ARO"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sanitiza-o-rigorosa-de-traces-do-playwright",
+      "key": "9025a06648b2c5bf",
+      "canon": "a1319b708c067191",
+      "title": "Sanitização rigorosa de traces do Playwright",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Snapshots do Playwright podem conter tokens de sessão ou dados sensíveis de páginas autenticadas.",
+      "change": "Adicionar filtro regex em ghostcli.py para remover headers de autenticação e cookies dos snapshots antes de enviar para o ledger.",
+      "never": [
+        "remover logs de erro críticos",
+        "expor segredos Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-inje-o-de-review-feedback-no-prompt-do-develop",
+      "key": "30ea13335b374739",
+      "canon": "7c04510da5d951f9",
+      "title": "Injeção de review_feedback no prompt do develop",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falta injeção estruturada do parecer do reviewer para que o modelo corrija exatamente o ponto falho.",
+      "change": "Atualizar improve.py para anexar o histórico de review_feedback ao prompt gerado para o Claude CLI ao reprocessar uma tarefa pendente.",
+      "never": [
+        "alterar destino de payout",
+        "desabilitar STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-timeout-e-fallback-estruturado-para-jq",
+      "key": "8c1431c875e031f6",
+      "canon": "bfe79aeb723f063e",
+      "title": "Timeout e fallback estruturado para JQ",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Consultas JQ complexas em logs extensos podem travar o tick de saúde de 90s.",
+      "change": "Envolver chamadas jq no loop.py com timeout de 5s e fallback para extração via regex nativo em Python.",
+      "never": [
+        "desabilitar a ferramenta jq",
+        "alterar o --interval systemd"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-m-tricas-de-consumo-de-tokens-por-modelo",
+      "key": "8c3541f047565ed7",
+      "canon": "456074244ae06b62",
+      "title": "Métricas de consumo de tokens por modelo",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Falta visibilidade sobre qual modelo (ex: claude-fable-5) está consumindo mais recursos no develop.",
+      "change": "Adicionar contador em ghostcli.py para registrar tokens de entrada/saída por GHOSTCLI_MODEL em um arquivo de métricas sanitizado.",
+      "never": [
+        "enviar métricas para endpoints externos",
+        "gravar em .env"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-de-skills-no-tick-de-sa-de",
+      "key": "56f543650ab4aa7a",
+      "canon": "87b961fa90a1fca5",
+      "title": "Validação de skills no tick de saúde",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "Skills customizadas podem quebrar sem que o tick de saúde detecte, gerando falhas silenciosas no develop.",
+      "change": "Adicionar verificação de sintaxe (ex: python -m py_compile) para scripts de skills no loop.py.",
+      "never": [
+        "executar skills em ambiente de produção",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T120129Z",
+      "history": [
+        {
+          "at": "2026-08-17T12:01:29+00:00",
+          "event": "mapped",
+          "detail": "20260817T120129Z"
         }
       ]
     }
