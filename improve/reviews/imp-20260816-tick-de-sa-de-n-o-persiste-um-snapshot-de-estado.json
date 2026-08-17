@@ -1,0 +1,21 @@
+{
+  "at": "2026-08-17T04:44:58+00:00",
+  "branch": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado",
+  "proposal_id": "imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado",
+  "verdict": "approve",
+  "reason": "Patch pequeno e defensivo, limitado a src/agentic/loop.py e aderente à proposta: escreve snapshot sanitizado em data/health.json, converte valores de ferramentas para booleanos, não expõe segredos Bybit/GhostCLI, não habilita AGENTIC_LIVE_TRADE e não cria scripts novos.",
+  "risks": [
+    "É preciso garantir que data/health.json permaneça gitignorado e nunca seja commitado.",
+    "O campo aro.decision.next_action deve ser revisado para não conter texto livre com informações sensíveis.",
+    "Confirmar que json já está importado no módulo e que testes cobrem tools/aro vazios ou ausentes."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".........................................                                [100%]\n41 passed in 4.42s"
+  },
+  "files": [
+    "src/agentic/loop.py"
+  ]
+}

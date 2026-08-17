@@ -837,7 +837,7 @@
       "title": "Tick de saúde não persiste um snapshot de estado legível por máquina",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Sem um snapshot sanitizado por tick, o improve/review re-descobre o mesmo estado a cada ciclo, gastando tokens e podendo gerar propostas repetidas.",
       "change": "Em loop.py, ao fim do tick, escrever um JSON de saúde sanitizado em caminho runtime gitignorado (ex.: data/health.json) com status por ferramenta e timestamp; sem segredos.",
       "never": [
@@ -883,6 +883,11 @@
           "at": "2026-08-17T04:42:16+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado"
+        },
+        {
+          "at": "2026-08-17T04:44:58+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ],
       "review_feedback": ""
