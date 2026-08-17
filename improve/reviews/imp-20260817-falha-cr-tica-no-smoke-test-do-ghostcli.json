@@ -1,21 +1,22 @@
 {
-  "at": "2026-08-17T13:56:22+00:00",
+  "at": "2026-08-17T20:07:51+00:00",
   "branch": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
   "proposal_id": "imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
   "verdict": "approve",
-  "reason": "O diff corresponde à proposta: adiciona resolução defensiva do binário ghostcli em src/agentic/env.py, preferindo o bin do venv e fallback via PATH, sem hardcodar caminhos externos nem expor segredos.",
+  "reason": "Patch pequeno e defensivo: amplia a resolução do binário GhostCLI em env.py, melhora o diagnóstico do smoke test em loop.py e adiciona testes coerentes; não há segredos, live trading ou código ofensivo.",
   "risks": [
-    "Se o binário não existir, resolve_ghostcli_binary() retorna None; os chamadores precisam tratar esse caso.",
-    "O diff não altera explicitamente ghostcli.py ou o smoke test; é necessário garantir que a resolução seja usada onde o FileNotFoundError ocorria.",
-    "Confirmar que os testes passam no pipeline antes do merge."
+    "GHOSTCLI_BIN permite apontar para binário arbitrário se o ambiente for comprometido ou não confiável.",
+    "O campo binary pode expor caminhos locais em logs ou diagnósticos."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": ".......................................................                  [100%]\n55 passed in 123.81s (0:02:03)"
+    "output": "...................................................................      [100%]\n67 passed in 150.87s (0:02:30)"
   },
   "files": [
-    "src/agentic/env.py"
+    "src/agentic/env.py",
+    "src/agentic/loop.py",
+    "tests/test_ghostcli_binary.py"
   ]
 }
