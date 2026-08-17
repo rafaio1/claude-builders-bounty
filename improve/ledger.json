@@ -3459,7 +3459,7 @@
       "title": "Sanitização estrita de traces da GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Traces de develop podem vazar paths internos ou variáveis de ambiente se a sanitização não for validada antes de salvar no ledger, comprometendo a segurança.",
       "change": "Adicionar filtro de regex estrito em ghostcli.py e env.py para mascarar paths absolutos e variáveis de .env antes de persistir os traces.",
       "never": [
@@ -3472,13 +3472,18 @@
         "src/agentic/env.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli",
       "map_id": "20260817T050221Z",
       "history": [
         {
           "at": "2026-08-17T05:02:21+00:00",
           "event": "mapped",
           "detail": "20260817T050221Z"
+        },
+        {
+          "at": "2026-08-17T13:56:23+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli"
         }
       ]
     },
