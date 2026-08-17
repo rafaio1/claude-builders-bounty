@@ -260,13 +260,19 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
     Valida conectividade e credencial com um request leve (`check`).
     Se a chave não estiver configurada, retorna ok=False com erro claro.
     Exceções de rede/HTTP viram ok=False com mensagem sanitizada.
+    O campo `binary` reporta a resolução do wrapper CLI para diagnóstico;
+    sua ausência não é crítica porque o smoke usa HTTP direto.
     """
+    from agentic.env import resolve_ghostcli_binary
+
+    ghost_bin = resolve_ghostcli_binary()
     if not env.get("ghost_key"):
         return {
             "ok": False,
             "returncode": None,
             "stdout_snippet": "",
             "error": "ghost_key_not_configured",
+            "binary": ghost_bin,
         }
     try:
         settings = load_settings()
@@ -284,6 +290,7 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "stdout_snippet": sample,
             "error": "" if ok else "ghostcli_check_failed",
             "model": result.get("model", ""),
+            "binary": ghost_bin,
         }
     except HttpError as exc:
         return {
@@ -291,6 +298,16 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "returncode": getattr(exc, "status_code", None),
             "stdout_snippet": "",
             "error": f"ghostcli_http:{exc}",
+            "binary": ghost_bin,
+        }
+    except FileNotFoundError as exc:
+        # Distingue explicitamente binário ausente de outros erros de runtime.
+        return {
+            "ok": False,
+            "returncode": None,
+            "stdout_snippet": "",
+            "error": f"ghostcli_binary_missing:{exc}",
+            "binary": ghost_bin,
         }
     except Exception as exc:  # noqa: BLE001
         return {
@@ -298,6 +315,7 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "returncode": None,
             "stdout_snippet": "",
             "error": f"ghostcli_exception:{type(exc).__name__}:{exc}",
+            "binary": ghost_bin,
         }
 
 

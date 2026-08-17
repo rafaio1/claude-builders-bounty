@@ -97,7 +97,10 @@ def resolve_ghostcli_binary() -> str | None:
 
     Searches in order:
       1. ``sys.prefix/bin/ghostcli`` (covers .venv when activated or not)
-      2. Standard PATH via :func:`shutil.which`
+      2. ``ROOT/.venv/bin/ghostcli`` (project-local venv when sys.prefix is
+         system Python, e.g. subprocess spawned outside the venv)
+      3. ``GHOSTCLI_BIN`` environment override (absolute path)
+      4. Standard PATH via :func:`shutil.which`
 
     Returns the absolute path as a string, or ``None`` if not found.
     This helper exists so smoke tests and future subprocess callers never
@@ -105,9 +108,16 @@ def resolve_ghostcli_binary() -> str | None:
     """
     import sys
 
-    venv_candidate = Path(sys.prefix) / "bin" / "ghostcli"
-    if venv_candidate.is_file() and os.access(venv_candidate, os.X_OK):
-        return str(venv_candidate.resolve())
+    candidates: list[Path] = [
+        Path(sys.prefix) / "bin" / "ghostcli",
+        ROOT / ".venv" / "bin" / "ghostcli",
+    ]
+    env_override = os.environ.get("GHOSTCLI_BIN")
+    if env_override:
+        candidates.insert(0, Path(env_override))
+    for candidate in candidates:
+        if candidate.is_file() and os.access(candidate, os.X_OK):
+            return str(candidate.resolve())
     found = shutil.which("ghostcli")
     return str(Path(found).resolve()) if found else None
 
