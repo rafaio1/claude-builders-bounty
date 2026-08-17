@@ -2193,7 +2193,7 @@
       "title": "Risco de secret vazar em traceback/trace da GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "env.py carrega GhostCLI+Bybit sem imprimir secrets, mas se ghostcli.py propagar erro com saída bruta (stderr/traceback), valores de /root/.automaton/bybit-murre.env podem chegar a log ou trace.",
       "change": "Centralizar um redact() em env.py que substitui qualquer valor carregado de .env/bybit-murre.env e aplicar a toda mensagem de erro/trace emitida por ghostcli.py antes de logar.",
       "never": [
@@ -2206,7 +2206,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-risco-de-secret-vazar-em-traceback-trace-da-ghos",
+      "branch": "",
       "map_id": "20260817T000436Z",
       "history": [
         {
@@ -2218,8 +2218,14 @@
           "at": "2026-08-17T10:49:06+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-risco-de-secret-vazar-em-traceback-trace-da-ghos"
+        },
+        {
+          "at": "2026-08-17T10:50:51+00:00",
+          "event": "requeued",
+          "detail": "The"
         }
-      ]
+      ],
+      "review_feedback": "The"
     },
     {
       "id": "imp-20260817-review-feedback-sem-contrato-estruturado-permite",
