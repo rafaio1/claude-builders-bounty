@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T07:03:23+00:00",
+  "updated_at": "2026-08-17T08:03:28+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T070323Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T070323Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T070323Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T070323Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3056,18 +3056,18 @@
       "kind": "improvement",
       "priority": 3,
       "status": "pending",
-      "rationale": "Garantir que a economia de tokens sugerida no censo seja aplicada na prática, evitando chamadas MCP desnecessárias e poupando contexto.",
-      "change": "Criar um validador no registro de ferramentas que intercepte chamadas de navegação simples e as redirecione para a CLI headless --no-sandbox.",
+      "rationale": "Garantir que as IAs usem a ferramenta mais econômica. O CLI headless consome menos contexto que o MCP.",
+      "change": "Injetar instrução ou wrapper no ghostcli.py que instrui o modelo a preferir playwright-cli e formata a saída de forma compacta.",
       "never": [
         "Remover suporte a MCP",
         "Expor credenciais do navegador"
       ],
       "files_hint": [
-        "src/agentic/tools/router.py"
+        "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T030226Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-17T03:02:26+00:00",
@@ -3605,23 +3605,22 @@
       "id": "imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp",
       "key": "b80ef2e74b90259e",
       "canon": "e1a2b45d7db4e64e",
-      "title": "Uso ineficiente de tokens via Playwright MCP",
+      "title": "Uso ineficiente de tokens pelo Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
       "status": "pending",
-      "rationale": "O censo indica playwright_mcp ativo, mas a diretriz exige preferência por playwright-cli para poupar tokens.",
-      "change": "Ajustar a configuração do agente para desabilitar playwright-mcp quando playwright-cli estiver disponível e funcional.",
+      "rationale": "O censo mostra playwright e playwright_mcp ativos. Agentes podem estar usando o MCP em vez do CLI headless, consumindo tokens excessivos e aumentando a latência.",
+      "change": "Adicionar preferência explícita no mapeamento de ferramentas para forçar playwright-cli quando disponível, desabilitando o MCP em rotas padrão.",
       "never": [
         "Criar novos wrappers MCP",
         "Alterar a lógica de navegação headless"
       ],
       "files_hint": [
-        "src/agentic/tools/playwright.py",
-        "src/agentic/config.py"
+        "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T060142Z",
+      "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-17T06:01:42+00:00",
@@ -4027,6 +4026,94 @@
           "at": "2026-08-17T07:03:23+00:00",
           "event": "mapped",
           "detail": "20260817T070323Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-falta-de-backoff-no-tick-de-sa-de-do-loop",
+      "key": "264809080c50d20a",
+      "canon": "56e23ca84e1448cf",
+      "title": "Falta de backoff no tick de saúde do loop",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O loop systemd tem intervalo fixo de 90s. Se uma verificação de ferramenta sofrer timeout, a próxima execução pode sobrepor ou falhar em cascata.",
+      "change": "Implementar um pequeno mecanismo de skip no src/agentic/loop.py se a verificação anterior exceder um limite de tempo curto.",
+      "never": [
+        "Alterar o --interval 90 no systemd",
+        "Ligar AGENTIC_LIVE_TRADE=1",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T080328Z",
+      "history": [
+        {
+          "at": "2026-08-17T08:03:28+00:00",
+          "event": "mapped",
+          "detail": "20260817T080328Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-m-trica-de-sucesso-de-prompts-no-develop-theme-a",
+      "key": "ed3720f99754a9b3",
+      "canon": "dfd3227a10c9c4fe",
+      "title": "Métrica de sucesso de prompts no develop (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A fila do improve.py despeja prompts no Claude CLI, mas falta um eval sanitizado para saber quais prompts geram código aprovado.",
+      "change": "Adicionar log estruturado e sanitizado em claude_cli.py/improve.py registrando hash do prompt, status do review e motivo de falha, sem vazar código.",
+      "never": [
+        "Logar código-fonte completo",
+        "Gravar .env ou chaves Bybit",
+        "Alterar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T080328Z",
+      "history": [
+        {
+          "at": "2026-08-17T08:03:28+00:00",
+          "event": "mapped",
+          "detail": "20260817T080328Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-autom-tica-de-aro-no-reviewer",
+      "key": "4a245194eb53e593",
+      "canon": "b29df3821f0b745a",
+      "title": "Validação automática de ARO no reviewer",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "A constituição ARO v1.0 é imutável (OWNER_SHARE_RATE=0.20). O reviewer atual pode deixar passar alterações acidentais.",
+      "change": "Adicionar check prévio no ghostcli.py (review) que rejeita diffs tocando src/agentic/aro/constitution.py ou ARO.md.",
+      "never": [
+        "Modificar OWNER_SHARE_RATE",
+        "Pausar STOP_ALL_OPERATIONS",
+        "Commitar dados sujos"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T080328Z",
+      "history": [
+        {
+          "at": "2026-08-17T08:03:28+00:00",
+          "event": "mapped",
+          "detail": "20260817T080328Z"
         }
       ]
     }
