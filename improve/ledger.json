@@ -4048,7 +4048,7 @@
       "title": "Health check do Playwright não detecta processos zumbis",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O tick atual verifica a presença do binário, mas não detecta se processos headless anteriores ficaram zumbis ou vazaram memória, degradando o host gradualmente.",
       "change": "Incluir no loop.py uma verificação rápida de contagem de processos playwright e forçar limpeza se exceder um limite, antes de rodar o health check.",
       "never": [
@@ -4071,6 +4071,11 @@
           "at": "2026-08-17T09:48:32+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+        },
+        {
+          "at": "2026-08-17T18:21:53+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },
