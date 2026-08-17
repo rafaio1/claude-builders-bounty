@@ -382,6 +382,20 @@ def is_terminal_failure(reason: str, *, illegal: list[str] | None = None) -> boo
     return bool(TERMINAL_FAILURE_RE.search(reason or ""))
 
 
+def consecutive_rejections(proposal: dict[str, Any]) -> int:
+    """Count consecutive rejection/requeue events at the tail of history."""
+    count = 0
+    for item in reversed(list(proposal.get("history") or [])):
+        if not isinstance(item, dict):
+            continue
+        event = str(item.get("event") or "")
+        if event in {"requeued", "review", "tests_failed", "blocked"}:
+            count += 1
+        else:
+            break
+    return count
+
+
 def can_requeue(
     proposal: dict[str, Any] | None,
     reason: str = "",
@@ -391,6 +405,8 @@ def can_requeue(
     if not isinstance(proposal, dict):
         return False
     if requeue_count(proposal) >= MAX_REQUEUES:
+        return False
+    if consecutive_rejections(proposal) >= MAX_REQUEUES:
         return False
     if is_terminal_failure(reason, illegal=illegal):
         return False
@@ -402,6 +418,7 @@ def can_requeue(
 
 def requeue_failed_proposals(ledger: dict[str, Any]) -> list[str]:
     dead_branches: list[str] = []
+    changed = False
     for item in ledger.get("proposals") or []:
         if not isinstance(item, dict):
             continue
@@ -409,6 +426,21 @@ def requeue_failed_proposals(ledger: dict[str, Any]) -> list[str]:
         if status not in {"blocked", "rejected"}:
             continue
         feedback = last_failure_feedback(item)
+        if consecutive_rejections(item) >= MAX_REQUEUES:
+            item["status"] = "quarantine"
+            item["review_feedback"] = feedback
+            item.setdefault("history", []).append(
+                {
+                    "at": utcnow(),
+                    "event": "quarantined",
+                    "detail": (
+                        f"limite de {MAX_REQUEUES} rejeições consecutivas atingido; "
+                        "requer intervenção manual"
+                    ),
+                }
+            )
+            changed = True
+            continue
         if not can_requeue(item, feedback):
             continue
         old_branch = str(item.get("branch") or "").strip()
@@ -427,7 +459,8 @@ def requeue_failed_proposals(ledger: dict[str, Any]) -> list[str]:
                 "detail": feedback or "voltar ao develop com o parecer do review/teste",
             }
         )
-    if dead_branches:
+        changed = True
+    if changed:
         ledger["updated_at"] = utcnow()
     return list(dict.fromkeys(dead_branches))
 

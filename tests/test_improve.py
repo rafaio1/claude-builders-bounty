@@ -10,12 +10,14 @@ from agentic.improve import (
     ImprovePipeline,
     apply_files,
     canonical_proposal_key,
+    consecutive_rejections,
     eval_traces,
     is_allowed_path,
     merge_proposals,
     normalize_item,
     parse_loop_unit_limits,
     pick_pending,
+    requeue_failed_proposals,
     scan_forbidden,
 )
 from agentic.improve_git import ImproveGit
@@ -322,3 +324,73 @@ def test_eval_traces_metrics(tmp_path: Path) -> None:
     assert result["traces"]["files"] == 2
     assert result["traces"]["methods"]["develop_improvement"] == 1
     assert result["traces"]["parse_fail_recent"] == 0
+
+
+def test_consecutive_rejections_counts_tail_events() -> None:
+    proposal = {
+        "history": [
+            {"event": "mapped"},
+            {"event": "review", "detail": "reject"},
+            {"event": "requeued"},
+            {"event": "tests_failed"},
+        ]
+    }
+    assert consecutive_rejections(proposal) == 3
+
+
+def test_consecutive_rejections_stops_at_non_failure_event() -> None:
+    proposal = {
+        "history": [
+            {"event": "mapped"},
+            {"event": "review", "detail": "reject"},
+            {"event": "claimed"},
+            {"event": "requeued"},
+        ]
+    }
+    assert consecutive_rejections(proposal) == 1
+
+
+def test_requeue_failed_proposals_quarantines_after_limit() -> None:
+    ledger = {
+        "proposals": [
+            {
+                "id": "imp-quarantine",
+                "status": "rejected",
+                "review_feedback": "ainda falha",
+                "history": [
+                    {"event": "mapped"},
+                    {"event": "review", "detail": "reject"},
+                    {"event": "requeued"},
+                    {"event": "review", "detail": "reject"},
+                    {"event": "requeued"},
+                    {"event": "review", "detail": "reject"},
+                ],
+            }
+        ]
+    }
+    dead = requeue_failed_proposals(ledger)
+    item = ledger["proposals"][0]
+    assert item["status"] == "quarantine"
+    assert item["history"][-1]["event"] == "quarantined"
+    assert "limite de 3" in item["history"][-1]["detail"]
+    assert dead == []
+
+
+def test_requeue_failed_proposals_keeps_under_limit_pending() -> None:
+    ledger = {
+        "proposals": [
+            {
+                "id": "imp-under",
+                "status": "rejected",
+                "review_feedback": "tente novamente",
+                "history": [
+                    {"event": "mapped"},
+                    {"event": "review", "detail": "reject"},
+                ],
+            }
+        ]
+    }
+    requeue_failed_proposals(ledger)
+    item = ledger["proposals"][0]
+    assert item["status"] == "pending"
+    assert item["history"][-1]["event"] == "requeued"
