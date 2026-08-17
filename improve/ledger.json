@@ -1769,7 +1769,7 @@
       "title": "Sanitizador de traces GhostCLI para análise segura",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Traces da GhostCLI contêm tokens, cookies e headers de autenticação; sem sanitização não podem ser persistidos para eval ou debugging sem risco de vazamento.",
       "change": "Implementar sanitizador em src/agentic/traces.py que remove ou mascara tokens, cookies, Authorization headers e campos de credenciais antes de persistir traces em disco.",
       "never": [
@@ -1781,7 +1781,7 @@
         "src/agentic/traces.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
       "map_id": "20260816T230333Z",
       "history": [
         {
@@ -1808,6 +1808,11 @@
           "at": "2026-08-17T00:25:28+00:00",
           "event": "requeued",
           "detail": "Nenhuma alteração gerada (files vazio), em conformidade com o parecer do review anterior. A proposta pede o sanitizador em src/agentic/traces.py, mas esse arquivo não existe entre os arquivos fornecidos e a política só permite paths já existentes, salvo testes novos. Os files_hint (src/agentic/ghostcli.py e src/agentic/improve.py) foram fornecidos truncados (terminam em '…'); como o esquema exige …"
+        },
+        {
+          "at": "2026-08-17T00:44:41+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
         }
       ],
       "review_feedback": "Nenhuma alteração gerada (files vazio), em conformidade com o parecer do review anterior. A proposta pede o sanitizador em src/agentic/traces.py, mas esse arquivo não existe entre os arquivos fornecidos e a política só permite paths já existentes, salvo testes novos. Os files_hint (src/agentic/ghostcli.py e src/agentic/improve.py) foram fornecidos truncados (terminam em '…'); como o esquema exige o conteúdo COMPLETO de cada arquivo alterado, reescrevê-los exigiria inventar o código ausente, com risco real de cortar código em produção e quebrar o pipeline ou o serviço deploy/agentic-loop.service. Implementar apenas em teste novo também não cabe: o teste importaria agentic.traces (módulo inexistente), falharia na coleta do pytest e a persistência de traces continuaria sem sanitização em runt…"
