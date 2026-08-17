@@ -1,0 +1,21 @@
+{
+  "at": "2026-08-17T14:35:20+00:00",
+  "branch": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+  "proposal_id": "imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+  "verdict": "approve",
+  "reason": "Otimização defensiva pequena e alinhada com a proposta. Implementa limite de caracteres e truncamento seguro no claude_cli.py, ajusta o orçamento de contexto no improve.py e adiciona testes unitários cobrindo os cenários principais.",
+  "risks": [
+    "O truncamento de prompts muito grandes pode remover instruções ou contexto importante localizados no final do texto."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................                 [100%]\n56 passed in 14.26s"
+  },
+  "files": [
+    "src/agentic/claude_cli.py",
+    "src/agentic/improve.py",
+    "tests/test_claude_cli.py"
+  ]
+}

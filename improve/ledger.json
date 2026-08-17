@@ -3228,7 +3228,7 @@
       "title": "Falta de limite de tokens no prompt do Claude CLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "O develop despeja prompts inteiros no Claude CLI sem validar o tamanho, podendo estourar contextos e gastar tokens à toa em loops de improve.",
       "change": "Adicionar truncamento ou sumarização prévia no prompt antes de chamar o Claude CLI.",
       "never": [
@@ -3251,6 +3251,11 @@
           "at": "2026-08-17T08:47:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl"
+        },
+        {
+          "at": "2026-08-17T14:35:20+00:00",
+          "event": "merge_failed",
+          "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
         }
       ]
     },
