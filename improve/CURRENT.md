@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T01:36:27+00:00
+Atualizado: 2026-08-17T03:02:26+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,20 +12,20 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T01:33:35+00:00
-- git_clean: FALHOU
-- dirty_paths: ["AGENTS.md", "deploy/agentic-improve-dev.service", "improve/README.md", "src/agentic/env.py", "src/agentic/improve.py", "src/agentic/loop.py", "tests/test_improve.py", "tests/test_loop.py", "src/agentic/claude_cli.py", "tests/test_claude_cli.py"]
+- last_tick: 2026-08-17T02:59:43+00:00
+- git_clean: ok
+- dirty_paths: []
 
 ## Ghost
 
-Gargalos críticos de integridade git fatiados por domínio e melhorias pontuais em ferramentas e traces.
+Mapeamento de gargalos e melhorias focado em otimização de tokens, resiliência da fila de improve e telemetria de IA.
 
 ## Ledger
 
-{"pending": 70, "developing": 7, "blocked": 3, "applied": 1}
+{"pending": 81, "blocked": 4, "applied": 2}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
-- `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [developing/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
+- `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
 - `imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui` [pending/p2] Tick de saúde não deixa estado legível por máquina
 - `imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er` [pending/p2] review_feedback não estruturado faz o develop errar o alvo
 - `imp-20260816-carga-de-credenciais-sem-valida-o-expl-cita-do-a` [pending/p3] Carga de credenciais sem validação explícita do arquivo canônico
@@ -37,9 +37,9 @@ Gargalos críticos de integridade git fatiados por domínio e melhorias pontuais
 - `imp-20260816-status-do-loop-com-sa-de-de-playwright-e-ghostcl` [pending/p2] Status do loop com saúde de Playwright e GhostCLI
 - `imp-20260816-documentar-skill-playwright-cli-no-mapa-de-ferra` [pending/p3] Documentar skill playwright-cli no mapa de ferramentas
 - `imp-20260816-traces-sanitizados-da-ghostcli-no-improve` [pending/p2] Traces sanitizados da GhostCLI no improve
-- `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [developing/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
-- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [developing/p1] Tick de saúde reexecuta probes caras a cada 90s
-- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [developing/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
+- `imp-20260816-kill-switch-agentic-live-trade-vis-vel-na-integr` [pending/p2] Kill switch AGENTIC_LIVE_TRADE visível na integridade
+- `imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s` [pending/p1] Tick de saúde reexecuta probes caras a cada 90s
+- `imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de` [pending/p1] Carregamento de credenciais sem cache e risco de vazamento em logs
 - `imp-20260816-review-feedback-n-o-estruturado-favorece-alargam` [pending/p2] review_feedback não estruturado favorece alargamento de escopo
 - `imp-20260816-portal-autenticado-fora-do-tick-de-sa-de` [pending/p3] Portal autenticado fora do tick de saúde
 - `imp-20260816-chamadas-ghostcli-sem-timeout-podem-travar-o-tic` [pending/p3] Chamadas GhostCLI sem timeout podem travar o tick

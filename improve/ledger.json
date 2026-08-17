@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T02:30:17+00:00",
+  "updated_at": "2026-08-17T03:02:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -432,7 +432,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260817T030226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -459,7 +459,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260817T030226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -486,7 +486,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260817T030226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -515,7 +515,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260816T160320Z",
+      "map_id": "20260817T030226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -2863,6 +2863,149 @@
         }
       ],
       "review_feedback": "SUMMARY: improve/README.md já documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma alteração necessária."
+    },
+    {
+      "id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp",
+      "key": "f2534420f53cd34e",
+      "canon": "25bff71703431229",
+      "title": "Desperdício de tokens com Playwright MCP",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Agentes ainda podem invocar playwright-mcp em vez de playwright-cli para tarefas simples, consumindo tokens desnecessários e aumentando a latência do tick.",
+      "change": "Adicionar wrapper ou regra estrita no seletor de ferramentas que force playwright-cli para navegação headless básica, reservando MCP apenas para inspeção de DOM complexa.",
+      "never": [
+        "Desativar playwright-mcp completamente",
+        "Alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T030226Z",
+      "history": [
+        {
+          "at": "2026-08-17T03:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T030226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-loop-de-review-sem-limite-de-retentativas",
+      "key": "88d9391172719c4a",
+      "canon": "604b80712fcfc780",
+      "title": "Loop de review sem limite de retentativas",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Se o reviewer rejeitar sistematicamente uma tarefa, o improve.py pode entrar em loop infinito de develop/review, travando a fila e consumindo recursos.",
+      "change": "Implementar contador de retentativas no ledger e pausa (cooldown) ou alerta se uma task falhar no review mais de 3 vezes consecutivas.",
+      "never": [
+        "Usar git reset --hard",
+        "Forçar merge de código reprovado"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ledger.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T030226Z",
+      "history": [
+        {
+          "at": "2026-08-17T03:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T030226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-roteamento-estrito-de-playwright-cli-theme-tools",
+      "key": "bf0e13478e9095a6",
+      "canon": "02e56bacf341cb53",
+      "title": "Roteamento estrito de Playwright CLI (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Garantir que a economia de tokens sugerida no censo seja aplicada na prática, evitando chamadas MCP desnecessárias e poupando contexto.",
+      "change": "Criar um validador no registro de ferramentas que intercepte chamadas de navegação simples e as redirecione para a CLI headless --no-sandbox.",
+      "never": [
+        "Remover suporte a MCP",
+        "Expor credenciais do navegador"
+      ],
+      "files_hint": [
+        "src/agentic/tools/router.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T030226Z",
+      "history": [
+        {
+          "at": "2026-08-17T03:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T030226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-m-dulo-de-eval-e-traces-para-ghostcli-theme-ai",
+      "key": "fd26420589458be7",
+      "canon": "b765c778057ade04",
+      "title": "Módulo de Eval e Traces para GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta visibilidade sobre a qualidade dos prompts gerados e a taxa de sucesso no develop via Claude CLI para GhostCLI.",
+      "change": "Adicionar hooks em claude_cli.py e ghostcli.py para salvar traces sanitizados (sem secrets) e métricas de sucesso/falha em um diretório de eval local.",
+      "never": [
+        "Gravar tokens de API ou segredos Bybit nos traces",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py",
+        "src/agentic/eval/traces.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T030226Z",
+      "history": [
+        {
+          "at": "2026-08-17T03:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T030226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-otimiza-o-do-tick-de-sa-de",
+      "key": "282d245e8e3ab5b4",
+      "canon": "525556b5a12f870d",
+      "title": "Otimização do tick de saúde",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Com o interval fixo em 90s via systemd, o tick do loop.py precisa ser o mais rápido possível para não atrasar o processamento da fila de improve.",
+      "change": "Refatorar checagens de saúde em loop.py para usar asyncio.gather e executar validações de ferramentas em paralelo.",
+      "never": [
+        "Alterar o ExecStart no systemd",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T030226Z",
+      "history": [
+        {
+          "at": "2026-08-17T03:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260817T030226Z"
+        }
+      ]
     }
   ]
 }
