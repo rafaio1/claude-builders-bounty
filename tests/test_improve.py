@@ -1,12 +1,16 @@
 from __future__ import annotations
 
+import json
 from pathlib import Path
+
+import pytest
 
 from agentic.config import Settings
 from agentic.improve import (
     ImprovePipeline,
     apply_files,
     canonical_proposal_key,
+    eval_traces,
     is_allowed_path,
     merge_proposals,
     normalize_item,
@@ -263,3 +267,57 @@ def test_pick_pending_prefers_review_feedback() -> None:
     picked = pick_pending(ledger)
     assert picked is not None
     assert picked["id"] == "a"
+
+
+def test_eval_traces_metrics(tmp_path: Path) -> None:
+    """eval_traces cruza ledger com traces e devolve métricas de eficácia."""
+    ledger = {
+        "proposals": [
+            {
+                "id": "p1",
+                "status": "approved",
+                "theme": "ai",
+                "review_feedback": "",
+                "history": [],
+            },
+            {
+                "id": "p2",
+                "status": "requeued",
+                "theme": "engine",
+                "review_feedback": "refatorar loop",
+                "history": [{"event": "requeued"}],
+            },
+            {
+                "id": "p3",
+                "status": "rejected",
+                "theme": "ai",
+                "review_feedback": "prompt vago",
+                "history": [],
+            },
+        ]
+    }
+    imp_dir = tmp_path / "improve"
+    imp_dir.mkdir()
+    (imp_dir / "ledger.json").write_text(json.dumps(ledger), encoding="utf-8")
+    traces_dir = imp_dir / "traces"
+    traces_dir.mkdir()
+    (traces_dir / "20260817T000000Z_aaa.json").write_text(
+        json.dumps({"method": "develop_improvement", "parsed_summary": '{"summary":"ok"}'}),
+        encoding="utf-8",
+    )
+    (traces_dir / "20260817T000001Z_bbb.json").write_text(
+        json.dumps({"method": "review_improvement", "parsed_summary": '{"verdict":"reject"}'}),
+        encoding="utf-8",
+    )
+    result = eval_traces(tmp_path)
+    assert result["proposals_total"] == 3
+    assert result["with_review_feedback"] == 2
+    assert result["feedback_coverage_pct"] == pytest.approx(66.7, abs=0.1)
+    assert result["requeues"] == 1
+    assert result["requeue_rate_pct"] == pytest.approx(33.3, abs=0.1)
+    assert result["verdicts"]["approved"] == 1
+    assert result["verdicts"]["requeued"] == 1
+    assert result["themes"]["ai"] == 2
+    assert result["traces"]["files"] == 2
+    assert result["traces"]["methods"]["develop_improvement"] == 1
+    assert result["traces"]["parse_fail_recent"] == 0
