@@ -3725,7 +3725,7 @@
       "title": "Uso ineficiente de tokens pelo Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O censo mostra playwright e playwright_mcp ativos. Agentes podem estar usando o MCP em vez do CLI headless, consumindo tokens excessivos e aumentando a latência.",
       "change": "Adicionar preferência explícita no mapeamento de ferramentas para forçar playwright-cli quando disponível, desabilitando o MCP em rotas padrão.",
       "never": [
@@ -3736,13 +3736,18 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp",
       "map_id": "20260817T080328Z",
       "history": [
         {
           "at": "2026-08-17T06:01:42+00:00",
           "event": "mapped",
           "detail": "20260817T060142Z"
+        },
+        {
+          "at": "2026-08-17T14:57:46+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp"
         }
       ]
     },
