@@ -45,7 +45,7 @@
       "title": "Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "ARO.md e src/agentic/aro/ estão untracked na main e impedem git_clean; precisam ser versionados em proposta separada da fatia do motor.",
       "change": "Segunda proposta git_clean, só da fatia playbook: o pipeline stageia ARO.md e src/agentic/aro/ do disco e versiona esses caminhos em commit próprio, após a fatia do motor.",
       "never": [
@@ -62,7 +62,7 @@
         "src/agentic/aro/"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
       "map_id": "20260816T143343Z",
       "history": [
         {
@@ -99,6 +99,11 @@
           "at": "2026-08-17T15:37:53+00:00",
           "event": "released_stale",
           "detail": "developing sem diff útil; devolve à fila"
+        },
+        {
+          "at": "2026-08-17T15:37:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
         }
       ],
       "review_feedback": "SUMMARY: Adicionado `.cursor/` ao .gitignore para restaurar git_clean na fatia playbook; ARO.md e src/agentic/aro/ já estavam versionados nesta branch."
