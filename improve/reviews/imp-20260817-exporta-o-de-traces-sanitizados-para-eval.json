@@ -1,0 +1,18 @@
+{
+  "at": "2026-08-17T09:52:40+00:00",
+  "branch": "improve/dev/imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
+  "proposal_id": "imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
+  "verdict": "approve",
+  "reason": "A implementação adiciona a persistência de traces de forma defensiva (best-effort com try/except para não quebrar o fluxo do chamador) e reutiliza a função de mascaramento já existente. O teste valida corretamente que secrets são sanitizados antes da gravação em disco. O diff corresponde à proposta, não há vazamento de credenciais, variáveis de ambiente sensíveis não são alteradas e nenhum arquivo proibido é modificado.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".....................................................                    [100%]\n53 passed in 13.68s"
+  },
+  "files": [
+    "src/agentic/claude_cli.py",
+    "tests/test_claude_cli.py"
+  ]
+}
