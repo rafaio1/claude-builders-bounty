@@ -10,6 +10,8 @@ from typing import Any
 
 from agentic.config import Settings, load_settings
 from agentic.env import apply
+from agentic.ghostcli import GhostCLI
+from agentic.http import HttpError
 from agentic.locks import RunLock
 
 STATUS_PATH = Path("data") / "status.json"
@@ -165,10 +167,11 @@ def _smoke_jq() -> dict[str, Any]:
 
 
 def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
-    """Smoke test do GhostCLI: presença da chave + status básico sem secrets.
+    """Smoke test do GhostCLI via API HTTP (não depende de binário no PATH).
 
+    Valida conectividade e credencial com um request leve (`check`).
     Se a chave não estiver configurada, retorna ok=False com erro claro.
-    O comando `ghostcli status` é leve e não faz requests autenticados pesados.
+    Exceções de rede/HTTP viram ok=False com mensagem sanitizada.
     """
     if not env.get("ghost_key"):
         return {
@@ -177,7 +180,37 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "stdout_snippet": "",
             "error": "ghost_key_not_configured",
         }
-    return _smoke_check(["ghostcli", "status"], timeout=8.0)
+    try:
+        settings = load_settings()
+        client = GhostCLI(
+            api_key=settings.ghostcli_api_key,
+            base_url=settings.ghostcli_base_url,
+            model=settings.ghostcli_model,
+        )
+        result = client.check()
+        ok = bool(result.get("ok"))
+        sample = str(result.get("sample") or "")[:80]
+        return {
+            "ok": ok,
+            "returncode": 0 if ok else 1,
+            "stdout_snippet": sample,
+            "error": "" if ok else "ghostcli_check_failed",
+            "model": result.get("model", ""),
+        }
+    except HttpError as exc:
+        return {
+            "ok": False,
+            "returncode": getattr(exc, "status_code", None),
+            "stdout_snippet": "",
+            "error": f"ghostcli_http:{exc}",
+        }
+    except Exception as exc:  # noqa: BLE001
+        return {
+            "ok": False,
+            "returncode": None,
+            "stdout_snippet": "",
+            "error": f"ghostcli_exception:{type(exc).__name__}:{exc}",
+        }
 
 
 def collect_census(root: Path) -> dict[str, Any]:

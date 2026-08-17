@@ -75,6 +75,32 @@ def test_census_smoke_structured(tmp_path: Path) -> None:
         assert census["tools"][tool_name] == result["ok"]
 
 
+def test_smoke_ghostcli_uses_api_not_binary(tmp_path: Path, monkeypatch) -> None:
+    """Smoke do GhostCLI deve validar via API HTTP, não por binário no PATH.
+
+    Regressão: o ambiente de execução não tem `ghostcli` como executável;
+    a integração é exclusivamente via classe GhostCLI (HTTP). O smoke test
+    antigo chamava `["ghostcli", "status"]` e quebrava com FileNotFoundError,
+    bloqueando a fila de develop/review.
+    """
+    from agentic.loop import _smoke_ghostcli
+
+    # Sem chave → erro claro, sem exceção
+    result_no_key = _smoke_ghostcli({"ghost_key": False})
+    assert result_no_key["ok"] is False
+    assert result_no_key["error"] == "ghost_key_not_configured"
+
+    # Com chave mas endpoint inválido → ok=False com erro estruturado (não FileNotFoundError)
+    monkeypatch.setenv("GHOSTCLI_API_KEY", "gk-test-smoke")
+    monkeypatch.setenv("GHOSTCLI_BASE_URL", "https://ghost.invalid/v1")
+    result_bad_host = _smoke_ghostcli({"ghost_key": True})
+    assert isinstance(result_bad_host, dict)
+    assert result_bad_host["ok"] is False
+    assert "FileNotFoundError" not in str(result_bad_host.get("error", ""))
+    assert "returncode" in result_bad_host
+    assert "error" in result_bad_host
+
+
 def test_tick_writes_last_tick_snapshot(tmp_path: Path, monkeypatch) -> None:
     monkeypatch.delenv("BYBIT_REAL_API_KEY", raising=False)
     monkeypatch.delenv("BYBIT_API_KEY", raising=False)
