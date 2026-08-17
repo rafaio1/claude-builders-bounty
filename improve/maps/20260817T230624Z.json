@@ -1,0 +1,507 @@
+{
+  "id": "20260817T230624Z",
+  "created_at": "2026-08-17T23:06:24+00:00",
+  "summary": "Mapeamento de gargalos de integridade (git_clean) fatiados e melhorias de saneamento de ferramentas e IA para o motor Agentic.",
+  "census": {
+    "generated_at": "2026-08-17T23:01:38+00:00",
+    "last_tick": "2026-08-17T22:59:52+00:00",
+    "tools": {
+      "playwright": true,
+      "playwright_mcp": false,
+      "jq": true,
+      "claude": true,
+      "ghostcli": true,
+      "bybit_key": true,
+      "bybit_secret": true,
+      "bybit_env_file": true
+    },
+    "smoke": {
+      "playwright": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "### Browser `default` opened with pid 3664354.\n### Ran Playwright code\n```js\nawait page.goto('about:blank');\n```\n### Page\n- Page URL: about:blank\n### Snapshot\n- [Snapshot](.playwright-cli/page-2026...",
+        "error": ""
+      },
+      "jq": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "jq-1.7",
+        "error": ""
+      },
+      "ghostcli": {
+        "ok": true,
+        "returncode": 0,
+        "stdout_snippet": "ok",
+        "error": "",
+        "model": "claude-fable-5[1m]",
+        "binary": null
+      }
+    },
+    "stats": {
+      "playwright": true,
+      "claude": true,
+      "ghostcli": true
+    },
+    "code_facts": [
+      "O loop em execução é deploy/agentic-loop.service (ExecStart python -m agentic loop). Não existe src/agentic/loop.sh; não criar scripts novos.",
+      "O motor é src/agentic/loop.py (tick de saúde), env.py (GhostCLI+Bybit sem imprimir secrets), ghostcli.py (API map/review), claude_cli.py (develop via Claude Code → GhostCLI), improve.py (filas map/develop/review).",
+      "Limites atuais do loop systemd: --interval 90. Mantenha AGENTIC_LIVE_TRADE=0. O tick só faz saúde de ferramentas; não envia ordens Bybit.",
+      "Develop é só gestão de fila: pega pending do ledger e despeja o prompt no Claude CLI com modelos GhostCLI (ANTHROPIC_BASE_URL=https://ghostcli.dev, GHOSTCLI_MODEL).",
+      "Limites do loop vêm da unit systemd (--interval). Mantenha AGENTIC_LIVE_TRADE=0; o loop nunca envia ordens Bybit.",
+      "Credenciais Bybit canónicas: /root/.automaton/bybit-murre.env. Env interna em .env gitignorado e internal/load-env.sh. Nunca colar chaves no git.",
+      "Navegador: playwright-cli headless --no-sandbox. O playwright-mcp está desativado no motor (loop/aro) para evitar desperdício de tokens; use exclusivamente o CLI.",
+      "O reviewer só aplica em main/master; o que está em execução é sempre essa branch.",
+      "Integridade git_clean exige working tree limpa na main. Não faça um único commit com todos os arquivos sujos: fatie (motor: loop/env/cli vs playbook improve/integrity vs ferramentas). Cada proposta git_clean só versiona os files_hint da fatia. Se o review rejeitar ou o pytest falhar, a proposta volta a pending com review_feedback — o develop seguinte corrige EXATAMENTE o parecer, sem alargar escopo. PROIBIDO: reset --hard, checkout --, clean -fd, --no-verify, force, commitar .env/data/secrets, ligar AGENTIC_LIVE_TRADE=1, criar loop.sh.",
+      "Ferramentas dos agentes (playwright, jq, skills) e traces sanitizados da GhostCLI: theme=tools ou theme=ai. Sem PoC/fuzz/trade live.",
+      "ARO v1.0: constituição em ARO.md e src/agentic/aro/constitution.py. OWNER_SHARE_RATE=0.20 imutável. Sem contacto comercial, spam, Bybit trading ou alteração de destino de payout. STOP_ALL_OPERATIONS pausa operações novas.",
+      "Portal autenticado em agentic-portal.service (porta 8767). Theme=portal para templates/CSS/JS. Não gravar senha em texto; só Argon2id em /etc/agentic-portal/credentials.",
+      "git_clean FALHOU agora. Working tree suja na main. Paths: .cursor/agents/aro-operator.md, internal/aro.env.example, src/agentic/aro/config.py, src/agentic/aro/cycle.py, src/agentic/aro/store.py, src/agentic/cli.py, src/agentic/env.py, src/agentic/mail.py, tests/test_aro.py, src/agentic/aro/accounts.py, src/agentic/aro/commerce.py, src/agentic/aro/finance.py, src/agentic/aro/opportunities.py, src/agentic/aro/wise.py, tests/test_accounts.py, tests/test_opportunities.py, tests/test_wise.py. O primeiro bottleneck p1 DEVE ser 'Restaurar git_clean: working tree limpa na main'. Develop não reescreve esses arquivos; o pipeline stageia o disco. Só altere .gitignore se houver lixo."
+    ],
+    "loop": {
+      "interval": 90,
+      "live_trade_disabled": true,
+      "exec_start": "/Agentic/.venv/bin/python -m agentic loop --interval 90"
+    },
+    "integrity": {
+      "git_clean": false,
+      "dirty_paths": [
+        ".cursor/agents/aro-operator.md",
+        "internal/aro.env.example",
+        "src/agentic/aro/config.py",
+        "src/agentic/aro/cycle.py",
+        "src/agentic/aro/store.py",
+        "src/agentic/cli.py",
+        "src/agentic/env.py",
+        "src/agentic/mail.py",
+        "tests/test_aro.py",
+        "src/agentic/aro/accounts.py",
+        "src/agentic/aro/commerce.py",
+        "src/agentic/aro/finance.py",
+        "src/agentic/aro/opportunities.py",
+        "src/agentic/aro/wise.py",
+        "tests/test_accounts.py",
+        "tests/test_opportunities.py",
+        "tests/test_wise.py"
+      ],
+      "git_status": "M .cursor/agents/aro-operator.md\n M internal/aro.env.example\n M src/agentic/aro/config.py\n M src/agentic/aro/cycle.py\n M src/agentic/aro/store.py\n M src/agentic/cli.py\n M src/agentic/env.py\n M src/agentic/mail.py\n M tests/test_aro.py\n?? src/agentic/aro/accounts.py\n?? src/agentic/aro/commerce.py\n?? src/agentic/aro/finance.py\n?? src/agentic/aro/opportunities.py\n?? src/agentic/aro/wise.py\n?? tests/test_accounts.py\n?? tests/test_opportunities.py\n?? tests/test_wise.py"
+    }
+  },
+  "added": [
+    "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+    "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+    "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+    "imp-20260817-reten-o-e-limpeza-de-snapshots-do-playwright-cli",
+    "imp-20260817-sanitiza-o-de-traces-da-ghostcli-no-pipeline-de",
+    "imp-20260817-valida-o-de-entrada-nos-novos-m-dulos-aro"
+  ],
+  "proposals": [
+    {
+      "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "key": "dba7935c51373e16",
+      "canon": "a3da6bfc747a6d5c",
+      "title": "Restaurar git_clean: working tree limpa na main (fatia motor/env/cli)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O censo indica git_clean=false. A working tree suja impede o reviewer de aplicar mudanças na main. Esta fatia isola as alterações do motor e configuração de ambiente para versionamento seguro.",
+      "change": "Stagear e commitar exclusivamente os arquivos do motor e env (cli.py, env.py, aro.env.example) após validação de que não há secrets, restaurando a integridade parcial.",
+      "never": [
+        "commitar .env com secrets",
+        "usar git reset --hard",
+        "usar git checkout --",
+        "usar git clean -fd",
+        "usar --no-verify"
+      ],
+      "files_hint": [
+        "src/agentic/cli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "key": "11eb3d3f23490a8e",
+      "canon": "2470e7b2cc981d2a",
+      "title": "Restaurar git_clean: working tree limpa na main (fatia ARO core)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Segunda fatia para limpar a working tree. Isola as alterações do núcleo do ARO (config, cycle, store) e testes associados, evitando um commit monolítico e facilitando o review.",
+      "change": "Stagear e commitar os arquivos do core do ARO e o agent prompt (.cursor), garantindo que os testes unitários (test_aro.py) passem antes do commit.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "usar git add -A",
+        "ignorar falhas no pytest",
+        "usar git reset --hard",
+        "usar git force push"
+      ],
+      "files_hint": [
+        "src/agentic/aro/config.py",
+        "src/agentic/aro/cycle.py",
+        "src/agentic/aro/store.py",
+        "src/agentic/mail.py",
+        "tests/test_aro.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "key": "3c0bf7c2e716cf87",
+      "canon": "69393055305f3d75",
+      "title": "Restaurar git_clean: working tree limpa na main (fatia novos módulos ARO)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Terceira fatia para os arquivos não rastreados (untracked). Isola a adição dos novos domínios (accounts, commerce, finance, opportunities, wise) e seus testes correspondentes.",
+      "change": "Adicionar (git add) e commitar os novos módulos e testes. O develop não reescreve, apenas versiona o que já está em disco.",
+      "never": [
+        "criar src/agentic/loop.sh",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "commitar dados sensíveis de contas",
+        "usar git reset --hard",
+        "usar git clean -fd"
+      ],
+      "files_hint": [
+        "src/agentic/aro/accounts.py",
+        "src/agentic/aro/commerce.py",
+        "src/agentic/aro/finance.py",
+        "src/agentic/aro/opportunities.py",
+        "src/agentic/aro/wise.py",
+        "tests/test_accounts.py",
+        "tests/test_opportunities.py",
+        "tests/test_wise.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-reten-o-e-limpeza-de-snapshots-do-playwright-cli",
+      "key": "86cff733e064f947",
+      "canon": "eaf4e0b2684400a4",
+      "title": "Retenção e limpeza de snapshots do playwright-cli",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O playwright-cli headless gera snapshots em .playwright-cli/ a cada tick de saúde. Sem rotação, isso consome disco e pode vazar dados de páginas se não for limpo.",
+      "change": "Adicionar rotina no final do tick de saúde em loop.py para remover snapshots antigos ou limitar a retenção a apenas o último ciclo.",
+      "never": [
+        "ativar playwright-mcp",
+        "remover a flag --no-sandbox",
+        "fazer scraping comercial"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-sanitiza-o-de-traces-da-ghostcli-no-pipeline-de",
+      "key": "0663dcbc7aaf4513",
+      "canon": "29abf2a864e07849",
+      "title": "Sanitização de traces da GhostCLI no pipeline de develop",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O develop despeja prompts no Claude CLI. Os traces da GhostCLI podem conter trechos do ledger ou paths internos que não devem ir para o review ou logs externos.",
+      "change": "Implementar filtro regex em improve.py/ghostcli.py para mascarar paths absolutos e IDs de ledger nos traces antes de salvar o feedback da IA.",
+      "never": [
+        "expor ANTHROPIC_BASE_URL",
+        "alterar GHOSTCLI_MODEL",
+        "enviar traces para endpoints externos"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-valida-o-de-entrada-nos-novos-m-dulos-aro",
+      "key": "a59d19b167ed492b",
+      "canon": "5141a2111d332632",
+      "title": "Validação de entrada nos novos módulos ARO",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Os novos módulos (accounts, commerce, finance, wise) foram adicionados mas carecem de validação estrita de payload, o que pode causar exceções não tratadas no ciclo ARO.",
+      "change": "Adicionar dataclasses com validação ou checagens de tipo nas funções de entrada dos novos módulos para falhar rápido e gerar review_feedback claro.",
+      "never": [
+        "alterar a constituição em ARO.md",
+        "fazer chamadas síncronas bloqueantes para APIs externas",
+        "modificar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/aro/accounts.py",
+        "src/agentic/aro/commerce.py",
+        "src/agentic/aro/finance.py",
+        "src/agentic/aro/wise.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+      "key": "4faadeb1e5101c22",
+      "canon": "5903002f663cf886",
+      "title": "Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/cli.py, src/agentic/env.py.",
+      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/cli.py, src/agentic/env.py.",
+      "never": [
+        "git reset --hard",
+        "commitar outras fatias neste patch",
+        "commit de .env, data/ ou secrets",
+        "criar loop.sh",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/cli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte",
+      "key": "4808d801f01a616a",
+      "canon": "2fe3fdd1f03e026a",
+      "title": "Restaurar git_clean (ARO constituição e ciclo interno): working tree limpa na main",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
+      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
+      "never": [
+        "git reset --hard",
+        "commitar outras fatias neste patch",
+        "commit de .env, data/ ou secrets",
+        "criar loop.sh",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/aro/config.py",
+        "src/agentic/aro/cycle.py",
+        "tests/test_aro.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-restaurar-git-clean-outros-arquivos-sujos-workin",
+      "key": "0c8e4bca9b30fd1a",
+      "canon": "9e4c6c9cb8141dfa",
+      "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: .cursor/agents/aro-operator.md, src/agentic/aro/store.py, src/agentic/mail.py, src/agentic/aro/accounts.py, src/agentic/aro/commerce.py, src/agentic/aro/finance.py, src/agentic/aro/opportunities.py, src/agentic/aro/wise.py.",
+      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: .cursor/agents/aro-operator.md, src/agentic/aro/store.py, src/agentic/mail.py, src/agentic/aro/accounts.py, src/agentic/aro/commerce.py, src/agentic/aro/finance.py, src/agentic/aro/opportunities.py, src/agentic/aro/wise.py.",
+      "never": [
+        "git reset --hard",
+        "commitar outras fatias neste patch",
+        "commit de .env, data/ ou secrets",
+        "criar loop.sh",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/aro/store.py",
+        "src/agentic/mail.py",
+        "src/agentic/aro/accounts.py",
+        "src/agentic/aro/commerce.py",
+        "src/agentic/aro/finance.py",
+        "src/agentic/aro/opportunities.py",
+        "src/agentic/aro/wise.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-status-do-loop-com-sa-de-de-playwright-e-ghostcl",
+      "key": "e612baddd0bdd68a",
+      "canon": "3d02ba6803d151c6",
+      "title": "Status do loop com saúde de Playwright e GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick precisa deixar óbvio se o navegador ou a API GhostCLI caiu, sem imprimir secrets.",
+      "change": "Incluir no data/status.json versões/ok de playwright-cli e ghostcli, só booleanos para Bybit.",
+      "never": [
+        "gravar BYBIT_* ou GHOSTCLI_API_KEY no status"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-documentar-skill-playwright-cli-no-mapa-de-ferra",
+      "key": "68e40d322ea82fbd",
+      "canon": "80ecdbe731131900",
+      "title": "Documentar skill playwright-cli no mapa de ferramentas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes GhostCLI descobrem o browser pela skill; o mapa precisa apontar o comando certo.",
+      "change": "Manter AGENTS.md com open/snapshot/click e headless --no-sandbox.",
+      "never": [
+        "colar chaves Bybit ou GhostCLI"
+      ],
+      "files_hint": [
+        "AGENTS.md"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-traces-sanitizados-da-ghostcli-no-improve",
+      "key": "db5193b3daedeefc",
+      "canon": "9c6c9b082cbbb0b8",
+      "title": "Traces sanitizados da GhostCLI no improve",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Falhas de JSON no map/develop/review não ficam auditáveis para melhorar prompts.",
+      "change": "Contar parse fail por tarefa (map, develop, review) sem gravar o texto bruto.",
+      "never": [
+        "persistir prompts completos ou secrets"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260817-kill-switch-agentic-live-trade-vis-vel-na-integr",
+      "key": "cb49b972a3ebddaf",
+      "canon": "1b609288af76d97b",
+      "title": "Kill switch AGENTIC_LIVE_TRADE visível na integridade",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Ordens Bybit não podem ligar por um patch do improve.",
+      "change": "Integrity e loop recusam AGENTIC_LIVE_TRADE=1; testes cobrem o gate.",
+      "never": [
+        "enviar ordem Bybit",
+        "copiar .env"
+      ],
+      "files_hint": [
+        "src/agentic/integrity.py",
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260817T230624Z",
+      "history": [
+        {
+          "at": "2026-08-17T23:06:24+00:00",
+          "event": "mapped",
+          "detail": "20260817T230624Z"
+        }
+      ]
+    }
+  ]
+}
