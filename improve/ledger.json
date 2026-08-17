@@ -45,7 +45,7 @@
       "title": "Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "ARO.md e src/agentic/aro/ estão untracked na main e impedem git_clean; precisam ser versionados em proposta separada da fatia do motor.",
       "change": "Segunda proposta git_clean, só da fatia playbook: o pipeline stageia ARO.md e src/agentic/aro/ do disco e versiona esses caminhos em commit próprio, após a fatia do motor.",
       "never": [
@@ -114,9 +114,14 @@
           "at": "2026-08-17T23:34:13+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+        },
+        {
+          "at": "2026-08-17T23:37:02+00:00",
+          "event": "requeued",
+          "detail": "Execution error"
         }
       ],
-      "review_feedback": "blocked: The review feedback rejected the previous attempt because `.cursor/` was added to `.gitignore`, but the target files (`ARO.md` and `src/agentic/aro/`) were already tracked. The current state confirms:\n1.  `ARO.md` and core `src/agentic/aro/` files are already tracked.\n2.  `.cursor/` is NOT currently in `.gitignore` (the previous stale change was likely reverted or not persisted).\n3.  There are unt…"
+      "review_feedback": "claude_failed: Execution error"
     },
     {
       "id": "imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui",
