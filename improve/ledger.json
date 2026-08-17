@@ -4568,7 +4568,7 @@
       "title": "Falta de limite de retentativas na fila de improve",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Se o review rejeitar sistematicamente uma tarefa, ela volta para pending infinitamente, travando a fila de develop e consumindo recursos da GhostCLI.",
       "change": "Adicionar um contador de retries no ledger e mover a tarefa para um estado de quarantine após 3 rejeições consecutivas em improve.py.",
       "never": [
@@ -4580,7 +4580,7 @@
         "src/agentic/ledger.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
       "map_id": "20260817T110137Z",
       "history": [
         {
@@ -4617,6 +4617,11 @@
           "at": "2026-08-17T20:34:39+00:00",
           "event": "requeued",
           "detail": "All 16 tests in `tests/test_improve.py` pass, including the 4 tests that validate the retry limit and quarantine behavior. The implementation already satisfies the proposal requirements:\n\n- **Contador de retries no ledger**: `consecutive_rejections()` counts consecutive rejection/requeue events at the tail of the proposal's history.\n- **Limite de 3 rejeições consecutivas**: `MAX_REQUEUES = 3` is e…"
+        },
+        {
+          "at": "2026-08-17T20:50:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
         }
       ],
       "review_feedback": "blocked: All 16 tests in `tests/test_improve.py` pass, including the 4 tests that validate the retry limit and quarantine behavior. The implementation already satisfies the proposal requirements:\n\n- **Contador de retries no ledger**: `consecutive_rejections()` counts consecutive rejection/requeue events at the tail of the proposal's history.\n- **Limite de 3 rejeições consecutivas**: `MAX_REQUEUES = 3` is e…"
