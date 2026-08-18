@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -50,9 +50,14 @@
           "at": "2026-08-18T15:33:15+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
+        },
+        {
+          "at": "2026-08-18T15:34:13+00:00",
+          "event": "requeued",
+          "detail": "arquivo grande demais: improve/ledger.json"
         }
       ],
-      "review_feedback": "reject: O diff não corresponde à proposta. A proposta exige adicionar '.cursor/' ao .gitignore, mas o diff modifica 'src/agentic/loop.py' para adicionar a variável 'ARO_AUTONOMOUS'. O develop deve reabrir a proposta alterando apenas o arquivo '.gitignore' para ignorar '.cursor/', sem modificar 'src/agentic/loop.py' ou incluir lógica de ARO. riscos=['Mudança de escopo: o diff altera a lógica do loop.py em vez de atualizar o .gitignore.', \"Inclusão de lógica relacionada a 'ARO_AUTONOMOUS', violando a restrição de não incluir ARO no commit.\"] arquivos=src/agentic/loop.py"
+      "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
     },
     {
       "id": "imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
