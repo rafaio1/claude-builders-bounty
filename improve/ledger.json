@@ -2823,7 +2823,7 @@
       "title": "Restaurar git_clean: fatia claude_cli",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Arquivos não rastreados do claude_cli estão sujando a main e precisam ser versionados isoladamente.",
       "change": "Adicionar e commitar apenas os novos arquivos do claude_cli e seus testes unitários correspondentes.",
       "never": [
@@ -2860,9 +2860,14 @@
           "at": "2026-08-18T02:17:31+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+        },
+        {
+          "at": "2026-08-18T02:17:50+00:00",
+          "event": "requeued",
+          "detail": "arquivo grande demais: improve/ledger.json"
         }
       ],
-      "review_feedback": "blocked: Os arquivos da fatia `claude_cli` (`src/agentic/claude_cli.py` e `tests/test_claude_cli.py`) já estão rastreados e sem modificações pendentes. `.gitignore` e `improve/README.md` também não apresentam diffs em relação ao HEAD. Não há alterações a aplicar nesta fatia — o estado `git_clean` para esses caminhos já está restaurado no branch atual.\n\nSUMMARY: Fatia claude_cli já estava versionada e limpa…"
+      "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
     },
     {
       "id": "imp-20260817-lat-ncia-do-tick-de-sa-de-no-systemd",
