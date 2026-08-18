@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T06:02:43+00:00",
+  "updated_at": "2026-08-18T07:04:49+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T060243Z",
+      "map_id": "20260818T070449Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T060243Z",
+      "map_id": "20260818T070449Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T060243Z",
+      "map_id": "20260818T070449Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T060243Z",
+      "map_id": "20260818T070449Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -7078,6 +7078,122 @@
           "at": "2026-08-18T06:02:43+00:00",
           "event": "mapped",
           "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimiza-o-de-uso-de-tokens-no-playwright-cli",
+      "key": "b8a6097db5de7f0e",
+      "canon": "8a2b0b63d78353ea",
+      "title": "Otimização de uso de tokens no Playwright CLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O Playwright MCP está desativado para evitar desperdício de tokens, mas o uso exclusivo do CLI headless ainda pode gerar snapshots grandes que consomem contexto desnecessariamente.",
+      "change": "Ajustar os parâmetros do playwright-cli no motor para limitar o tamanho do snapshot ou focar em seletores específicos em vez de capturar a página inteira.",
+      "never": [
+        "ativar playwright-mcp",
+        "vazar dados da página",
+        "executar trade ao vivo"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T070449Z",
+      "history": [
+        {
+          "at": "2026-08-18T07:04:49+00:00",
+          "event": "mapped",
+          "detail": "20260818T070449Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-expans-o-de-skills-do-agente-para-gera-o-de-chan",
+      "key": "6bfbcd357bce6811",
+      "canon": "f728b5e30c2a0ae2",
+      "title": "Expansão de skills do agente para geração de changelog",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A pasta .claude/skills/generate-changelog/ sugere a criação de novas habilidades para os agentes automatizarem a documentação de releases.",
+      "change": "Refatorar o skill de generate-changelog para usar jq e o histórico do git de forma mais eficiente, integrando-o ao pipeline de review.",
+      "never": [
+        "modificar ARO.md",
+        "alterar OWNER_SHARE_RATE",
+        "enviar spam"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T070449Z",
+      "history": [
+        {
+          "at": "2026-08-18T07:04:49+00:00",
+          "event": "mapped",
+          "detail": "20260818T070449Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-e-an-lise-de-traces-da-ghostcli",
+      "key": "d3b09db563bf8d28",
+      "canon": "a2fe9b2064b862e6",
+      "title": "Sanitização e análise de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Melhorar a avaliação (eval) das IAs requer traces limpos para analisar a qualidade dos prompts gerados pelo develop e as respostas do modelo GhostCLI.",
+      "change": "Implementar um módulo de extração e sanitização de traces no claude_cli.py e improve.py, salvando logs estruturados para posterior análise de eval sem vazar credenciais.",
+      "never": [
+        "imprimir secrets da Bybit/GhostCLI no log",
+        "alterar ANTHROPIC_BASE_URL",
+        "desativar o ledger"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T070449Z",
+      "history": [
+        {
+          "at": "2026-08-18T07:04:49+00:00",
+          "event": "mapped",
+          "detail": "20260818T070449Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-refor-o-de-seguran-a-no-agentic-portal",
+      "key": "48e3fd1a0a170298",
+      "canon": "bd2df42bba364b3b",
+      "title": "Reforço de segurança no agentic-portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal autenticado na porta 8767 gerencia interações. Garantir que o hash Argon2id esteja sempre validado e que os templates não exponham metadados sensíveis.",
+      "change": "Adicionar testes unitários para o módulo de credenciais do portal e revisar os templates CSS/JS para evitar vazamento de variáveis de ambiente no frontend.",
+      "never": [
+        "gravar senha em texto",
+        "alterar a porta 8767",
+        "modificar a constituição ARO"
+      ],
+      "files_hint": [
+        "src/agentic/portal/"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T070449Z",
+      "history": [
+        {
+          "at": "2026-08-18T07:04:49+00:00",
+          "event": "mapped",
+          "detail": "20260818T070449Z"
         }
       ]
     }
