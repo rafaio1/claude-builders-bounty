@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T07:04:49+00:00",
+  "updated_at": "2026-08-18T08:02:43+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T070449Z",
+      "map_id": "20260818T080243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T070449Z",
+      "map_id": "20260818T080243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T070449Z",
+      "map_id": "20260818T080243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T070449Z",
+      "map_id": "20260818T080243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -7225,6 +7225,150 @@
           "at": "2026-08-18T07:04:49+00:00",
           "event": "mapped",
           "detail": "20260818T070449Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-blindagem-de-logs-contra-vazamento-de-credenciai",
+      "key": "bc00d7f8e183a22e",
+      "canon": "f20db6e4bf5ee167",
+      "title": "Blindagem de logs contra vazamento de credenciais",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O env.py carrega credenciais Bybit e GhostCLI. Exceções não tratadas podem vazar fragments de variáveis de ambiente nos logs do systemd.",
+      "change": "Implementar um filtro de saneamento global no módulo de logs para mascarar qualquer string que coincida com padrões de chaves API antes da emissão.",
+      "never": [
+        "imprimir secrets no stdout/stderr",
+        "colar chaves no git",
+        "alterar o destino de payout"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T080243Z",
+      "history": [
+        {
+          "at": "2026-08-18T08:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T080243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-estabilidade-do-tick-de-sa-de-do-loop",
+      "key": "27ed71c50b27f61e",
+      "canon": "888243477f8d46bf",
+      "title": "Estabilidade do tick de saúde do loop",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O intervalo do systemd é de 90s. Se o playwright-cli headless travar por I/O, o tick estoura e gera falsos negativos de saúde.",
+      "change": "Adicionar timeouts estritos e tratamento de exceções no smoke test do playwright dentro do loop.py para abortar a verificação da ferramenta sem matar o processo do loop.",
+      "never": [
+        "ativar AGENTIC_LIVE_TRADE=1",
+        "criar src/agentic/loop.sh",
+        "alterar o --interval da unit systemd"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T080243Z",
+      "history": [
+        {
+          "at": "2026-08-18T08:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T080243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-estrutura-o-de-erros-no-wrapper-do-playwright-cl",
+      "key": "89d437fc1afa61ad",
+      "canon": "fa10988e647d3139",
+      "title": "Estruturação de erros no wrapper do playwright-cli (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-mcp está desativado para economizar tokens. O playwright-cli headless atual pode retornar erros genéricos, dificultando a automação.",
+      "change": "Padronizar a saída de erros do playwright-cli para um formato JSON estruturado com status code e motivo, facilitando a parsing pelo motor.",
+      "never": [
+        "reativar playwright-mcp no motor",
+        "criar scripts shell novos"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T080243Z",
+      "history": [
+        {
+          "at": "2026-08-18T08:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T080243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-tricas-de-consumo-e-lat-ncia-no-develop-theme",
+      "key": "79c90576aa592367",
+      "canon": "2facb32c9e86981a",
+      "title": "Métricas de consumo e latência no develop (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O develop despeja prompts no Claude CLI via GhostCLI, mas não há métricas claras de sucesso ou custo no ledger para avaliação contínua.",
+      "change": "Extrair e sanitizar metadados de uso de tokens e latência dos traces da GhostCLI, persistindo-os no ledger junto com o status do develop.",
+      "never": [
+        "gravar traces completos com dados sensíveis",
+        "alterar ARO.md ou OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T080243Z",
+      "history": [
+        {
+          "at": "2026-08-18T08:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T080243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-rota-o-de-logs-do-portal-agentic",
+      "key": "d3bfc7da1ab82572",
+      "canon": "61bf2aa2a75032cd",
+      "title": "Rotação de logs do Portal Agentic",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal autenticado na porta 8767 pode gerar logs de acesso contínuos, arriscando encher o disco do servidor.",
+      "change": "Adicionar configuração de logrotate específica para o agentic-portal.service, garantindo compressão e retenção limitada.",
+      "never": [
+        "gravar senhas em texto plano",
+        "expor o portal sem Argon2id"
+      ],
+      "files_hint": [
+        "deploy/agentic-portal.service"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T080243Z",
+      "history": [
+        {
+          "at": "2026-08-18T08:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T080243Z"
         }
       ]
     }
