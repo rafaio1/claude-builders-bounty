@@ -3050,7 +3050,7 @@
       "title": "Restaurar git_clean (Playbook git_clean e integrity): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "never": [
@@ -3066,13 +3066,18 @@
         "tests/test_improve.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri",
       "map_id": "20260817T013627Z",
       "history": [
         {
           "at": "2026-08-17T01:36:27+00:00",
           "event": "mapped",
           "detail": "20260817T013627Z"
+        },
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri"
         }
       ]
     },
