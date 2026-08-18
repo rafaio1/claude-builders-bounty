@@ -1,21 +1,19 @@
 {
-  "at": "2026-08-17T18:41:26+00:00",
+  "at": "2026-08-18T17:48:34+00:00",
   "branch": "improve/dev/imp-20260817-review-feedback-sem-contrato-estruturado-permite",
   "proposal_id": "imp-20260817-review-feedback-sem-contrato-estruturado-permite",
   "verdict": "approve",
-  "reason": "O diff corresponde exatamente à proposta: em src/agentic/improve.py, adiciona parse_review_feedback/structured_review_feedback como contrato estruturado mínimo (verdict/reason/files), normaliza o review_feedback armazenado e restringe o develop seguinte ao motivo e aos arquivos citados, filtrados por is_allowed_path e existência do arquivo. Mudança pequena, defensiva e aditiva; nenhum git reset/clean/force/--no-verify, nenhum segredo Bybit/GhostCLI, nenhum AGENTIC_LIVE_TRADE, nenhum arquivo novo fora do files_hint.",
-  "risks": [
-    "A restrição de escopo do develop é aplicada via prompt (soft enforcement); a garantia real continua dependendo do gate de revisão já existente.",
-    "O formato armazenado de review_feedback muda de texto livre para 'verdict: reason arquivos=...'; consumidores antigos que esperavam texto livre precisam ser validados pelo pytest.",
-    "O diff não inclui testes novos para parse_review_feedback/structured_review_feedback; a suíte existente precisa passar antes do merge."
-  ],
+  "reason": "A implementação atende exatamente à proposta, restringindo o escopo do develop aos arquivos citados no parecer estruturado e evitando alterações não solicitadas. Os testes cobrem adequadamente o parsing e a serialização, e não há violação de políticas, secrets ou comandos perigosos.",
+  "risks": [],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "......................................................                   [100%]\n54 passed in 14.06s"
+    "output": "........................................................................ [ 65%]\n......................................                                   [100%]\n110 passed in 123.73s (0:02:03)"
   },
   "files": [
-    "src/agentic/improve.py"
+    "improve/README.md",
+    "src/agentic/improve.py",
+    "tests/test_review_feedback_contract.py"
   ]
 }

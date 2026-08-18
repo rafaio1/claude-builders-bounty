@@ -2369,7 +2369,7 @@
       "title": "review_feedback sem contrato estruturado permite ao develop alargar escopo",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Quando o reviewer rejeita ou o pytest falha, a proposta volta a pending com review_feedback; se o parecer for texto livre, o develop seguinte pode corrigir além do pedido e sujar a working tree de novo.",
       "change": "Em improve.py, tratar review_feedback como estrutura mínima (verdict, motivo, arquivos citados) e restringir o develop seguinte a corrigir exatamente o parecer, sem tocar em arquivos fora dele.",
       "never": [
@@ -2406,6 +2406,11 @@
           "at": "2026-08-18T16:54:54+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-review-feedback-sem-contrato-estruturado-permite"
+        },
+        {
+          "at": "2026-08-18T17:48:34+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },
