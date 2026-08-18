@@ -3038,7 +3038,7 @@
       "title": "Restaurar git_clean (ARO constituição e ciclo interno): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "never": [
@@ -3066,8 +3066,14 @@
           "at": "2026-08-18T00:35:23+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+        },
+        {
+          "at": "2026-08-18T00:35:47+00:00",
+          "event": "requeued",
+          "detail": "The target files (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) have no diff against HEAD — they are already clean and versioned. The only in-scope change is the `.gitignore` addition of `.cursor/`, which is already on disk and correct. No other files in this slice need modification, and per the rules I must not touch the dirty product files outside this proposal's …"
         }
-      ]
+      ],
+      "review_feedback": "blocked: The target files (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) have no diff against HEAD — they are already clean and versioned. The only in-scope change is the `.gitignore` addition of `.cursor/`, which is already on disk and correct. No other files in this slice need modification, and per the rules I must not touch the dirty product files outside this proposal's …"
     },
     {
       "id": "imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
