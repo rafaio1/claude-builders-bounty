@@ -5514,7 +5514,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
       "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
@@ -5555,6 +5555,11 @@
           "at": "2026-08-18T07:44:06+00:00",
           "event": "requeued",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-18T08:04:13+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
