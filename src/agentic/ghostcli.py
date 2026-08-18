@@ -10,7 +10,7 @@ from typing import Any
 
 import requests
 
-from agentic.env import mask_secrets
+from agentic.env import mask_paths, mask_secrets
 from agentic.http import HttpError, RateLimiter, request_json
 from agentic.jsonutil import extract_json_object
 
@@ -61,6 +61,8 @@ def sanitize_trace(text: str) -> str:
     # Second pass through the centralized masker catches anything the
     # trace-specific patterns missed (e.g. env-style key=value leaks).
     out = mask_secrets(out)
+    # Third pass: strip absolute filesystem paths that reveal internal layout.
+    out = mask_paths(out)
     return out
 
 
