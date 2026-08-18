@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T09:02:26+00:00",
+  "updated_at": "2026-08-18T09:05:13+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -5591,7 +5591,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ARO core)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Segunda fatia para limpar a working tree. Isola as alterações do núcleo do ARO (config, cycle, store) e testes associados, evitando um commit monolítico e facilitando o review.",
       "change": "Stagear e commitar os arquivos do core do ARO e o agent prompt (.cursor), garantindo que os testes unitários (test_aro.py) passem antes do commit.",
       "never": [
@@ -5609,7 +5609,7 @@
         "tests/test_aro.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260817T230624Z",
       "history": [
         {
@@ -5621,6 +5621,11 @@
           "at": "2026-08-18T08:45:11+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-18T09:05:13+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
