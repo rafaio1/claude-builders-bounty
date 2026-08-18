@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T02:02:22+00:00",
+  "updated_at": "2026-08-18T02:26:35+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -414,8 +414,8 @@
       "kind": "bottleneck",
       "priority": 1,
       "status": "blocked",
-      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: .cursor/agents/aro-operator.md, src/agentic/aro/store.py, src/agentic/mail.py, src/agentic/aro/accounts.py, src/agentic/aro/commerce.py, src/agentic/aro/finance.py, src/agentic/aro/opportunities.py, src/agentic/aro/wise.py.",
-      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: .cursor/agents/aro-operator.md, src/agentic/aro/store.py, src/agentic/mail.py, src/agentic/aro/accounts.py, src/agentic/aro/commerce.py, src/agentic/aro/finance.py, src/agentic/aro/opportunities.py, src/agentic/aro/wise.py.",
+      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/commerce.py, src/agentic/aro/pursue.py.",
+      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/commerce.py, src/agentic/aro/pursue.py.",
       "never": [
         "git reset --hard",
         "commitar outras fatias neste patch",
@@ -424,17 +424,12 @@
         "ligar AGENTIC_LIVE_TRADE=1"
       ],
       "files_hint": [
-        "src/agentic/aro/store.py",
-        "src/agentic/mail.py",
-        "src/agentic/aro/accounts.py",
         "src/agentic/aro/commerce.py",
-        "src/agentic/aro/finance.py",
-        "src/agentic/aro/opportunities.py",
-        "src/agentic/aro/wise.py"
+        "src/agentic/aro/pursue.py"
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -512,7 +507,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T020222Z",
+      "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -539,7 +534,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T020222Z",
+      "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -566,7 +561,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T020222Z",
+      "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -595,7 +590,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T020222Z",
+      "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -6119,6 +6114,182 @@
           "at": "2026-08-18T02:02:22+00:00",
           "event": "mapped",
           "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-restaurar-git-clean-fatia-cli-e-playbook",
+      "key": "fac949d817cb9d47",
+      "canon": "1577794b9aabb136",
+      "title": "Restaurar git_clean: Fatia CLI e Playbook",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O arquivo cli.py está modificado e precisa ser isolado para manter o histórico limpo e focado no playbook/CLI.",
+      "change": "O pipeline stageia e commita exclusivamente src/agentic/cli.py na main, garantindo que o develop corrija exatamente o feedback do review.",
+      "never": [
+        "Usar git clean -fd",
+        "Fazer checkout --",
+        "Incluir arquivos de skills",
+        "git reset --hard"
+      ],
+      "files_hint": [
+        "src/agentic/cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-restaurar-git-clean-fatia-ferramentas",
+      "key": "0c1a9774be9d692c",
+      "canon": "c8e068ed61831f34",
+      "title": "Restaurar git_clean: Fatia Ferramentas",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O diretório de skills generate-changelog está untracked e polui a working tree, afetando a integridade do git_clean.",
+      "change": "O pipeline stageia o diretório ou o adiciona ao .gitignore (se for lixo gerado), commitando apenas essa fatia de ferramentas.",
+      "never": [
+        "Commitar secrets",
+        "Usar force push",
+        "Alterar ARO.md",
+        "git clean -fd"
+      ],
+      "files_hint": [],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-refor-ar-isolamento-de-credenciais-bybit",
+      "key": "7ef5f9e46f27554e",
+      "canon": "938f7a68e19855c5",
+      "title": "Reforçar isolamento de credenciais Bybit",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Credenciais canônicas estão em /root/.automaton/bybit-murre.env, mas o motor não deve jamais expor ou logar esses paths acidentalmente.",
+      "change": "Reforçar no env.py que a leitura do .env gitignorado via internal/load-env.sh silencie qualquer log de path absoluto.",
+      "never": [
+        "Colar chaves no git",
+        "Ligar AGENTIC_LIVE_TRADE=1",
+        "Enviar ordens Bybit",
+        "Imprimir secrets"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "internal/load-env.sh"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimizar-i-o-do-playwright-cli-theme-tools",
+      "key": "8088cd227c2fc291",
+      "canon": "6be8d7f5cf37ea60",
+      "title": "Otimizar I/O do playwright-cli (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-cli headless gera snapshots que podem consumir disco se não houver rotação, já que o playwright-mcp está desativado para economizar tokens.",
+      "change": "Implementar limpeza automática de snapshots antigos no loop de saúde.",
+      "never": [
+        "Ativar playwright-mcp",
+        "Criar src/agentic/loop.sh",
+        "Alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-rigorosa-de-traces-ghostcli-theme-ai",
+      "key": "3659f468be40c4b9",
+      "canon": "202b8f4d101fca9e",
+      "title": "Sanitização rigorosa de traces GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Os traces sanitizados da GhostCLI precisam garantir que nenhum contexto sensível vaze durante a gestão de fila do develop.",
+      "change": "Adicionar filtro de regex no claude_cli.py para mascarar tokens e paths absolutos antes de salvar os traces.",
+      "never": [
+        "Imprimir secrets da Bybit",
+        "Modificar ANTHROPIC_BASE_URL",
+        "Criar PoC"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-ajuste-de-intervalo-do-tick-de-sa-de",
+      "key": "9509ef01263c1226",
+      "canon": "99b1204c9f26d705",
+      "title": "Ajuste de intervalo do tick de saúde",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O intervalo de 90s pode ser conservador demais para checar apenas saúde de ferramentas, gerando carga desnecessária no systemd.",
+      "change": "Avaliar aumento do --interval na unit systemd (deploy/agentic-loop.service) após validação de estabilidade.",
+      "never": [
+        "Criar src/agentic/loop.sh",
+        "Ligar AGENTIC_LIVE_TRADE=1",
+        "Alterar limites da constituição ARO"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T022635Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:26:35+00:00",
+          "event": "mapped",
+          "detail": "20260818T022635Z"
         }
       ]
     }
