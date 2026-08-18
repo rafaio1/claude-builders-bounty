@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-17T23:40:14+00:00",
+  "updated_at": "2026-08-18T01:04:55+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -512,7 +512,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T234014Z",
+      "map_id": "20260818T010455Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -539,7 +539,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260817T234014Z",
+      "map_id": "20260818T010455Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -566,7 +566,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T234014Z",
+      "map_id": "20260818T010455Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -595,7 +595,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T234014Z",
+      "map_id": "20260818T010455Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5669,6 +5669,154 @@
           "at": "2026-08-17T23:40:14+00:00",
           "event": "mapped",
           "detail": "20260817T234014Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-isolamento-de-credenciais-no-env-py",
+      "key": "277afba4bd44074f",
+      "canon": "6af6aa11173a906c",
+      "title": "Isolamento de credenciais no env.py",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O env.py lida com GhostCLI e Bybit. É crucial garantir que nenhum print ou log acidental vaze chaves canônicas de /root/.automaton/bybit-murre.env.",
+      "change": "Adicionar validação estrita no env.py para mascarar qualquer string que corresponda ao padrão de chaves Bybit antes de qualquer log de depuração.",
+      "never": [
+        "colar chaves no git",
+        "imprimir secrets no stdout",
+        "alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T010455Z",
+      "history": [
+        {
+          "at": "2026-08-18T01:04:55+00:00",
+          "event": "mapped",
+          "detail": "20260818T010455Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-controle-de-intervalo-do-loop-systemd",
+      "key": "845e9c79b296fe87",
+      "canon": "82088520a5097188",
+      "title": "Controle de intervalo do loop systemd",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O loop está fixo em --interval 90. Um intervalo rígido pode não se adaptar a picos de carga do sistema sem causar ociosidade ou sobrecarga.",
+      "change": "Implementar leitura de variável de ambiente opcional para sobreescrever o intervalo padrão de 90s na unit systemd, mantendo o limite de segurança.",
+      "never": [
+        "remover o limite de intervalo",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T010455Z",
+      "history": [
+        {
+          "at": "2026-08-18T01:04:55+00:00",
+          "event": "mapped",
+          "detail": "20260818T010455Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-de-traces-do-playwright",
+      "key": "c4da39bc57e98d41",
+      "canon": "549119ad7e449203",
+      "title": "Sanitização de traces do Playwright",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-cli gera snapshots e logs que podem conter URLs ou dados sensíveis da página, poluindo os traces e arriscando vazamentos.",
+      "change": "Criar um wrapper em playwright-cli que filtre e sanitize o stdout, removendo tokens de sessão e URLs completas antes de salvar os traces.",
+      "never": [
+        "ativar playwright_mcp",
+        "desativar o headless",
+        "fazer fuzzing"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright.py",
+        "src/agentic/logger.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T010455Z",
+      "history": [
+        {
+          "at": "2026-08-18T01:04:55+00:00",
+          "event": "mapped",
+          "detail": "20260818T010455Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-eval-automatizado-de-prompts-no-improve-py",
+      "key": "af719a7910c26572",
+      "canon": "7edf6d037013dc00",
+      "title": "Eval automatizado de prompts no improve.py",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O develop apenas despeja o prompt no Claude CLI. Falta uma etapa de eval para garantir que a sugestão de código atende aos critérios antes do review.",
+      "change": "Adicionar uma função de eval leve em improve.py que analisa a saída do GhostCLI e atribui uma nota de aderência à constituição (ARO.md) antes de seguir para a fila de review.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "enviar ordens Bybit",
+        "modificar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/eval.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T010455Z",
+      "history": [
+        {
+          "at": "2026-08-18T01:04:55+00:00",
+          "event": "mapped",
+          "detail": "20260818T010455Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-cache-local-de-chamadas-ghostcli",
+      "key": "a95c44942b61d6f1",
+      "canon": "d766e4b0db14e142",
+      "title": "Cache local de chamadas GhostCLI",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Chamadas repetitivas de map/review com o mesmo contexto geram custo e latência desnecessários na API da GhostCLI.",
+      "change": "Implementar um cache baseado em hash do prompt em ghostcli.py, armazenando respostas em um diretório temporário local gitignorado.",
+      "never": [
+        "cachear credenciais",
+        "alterar ANTHROPIC_BASE_URL",
+        "vazar traces"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T010455Z",
+      "history": [
+        {
+          "at": "2026-08-18T01:04:55+00:00",
+          "event": "mapped",
+          "detail": "20260818T010455Z"
         }
       ]
     }
