@@ -2633,7 +2633,7 @@
       "title": "Tick de saúde pode travar por falta de timeout",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "Verificações de playwright/ghostcli sem limite de tempo podem bloquear o tick de 90s e atrasar a detecção de falhas.",
       "change": "Envolver cada checagem de ferramenta em timeout curto e registrar status de erro sanitizado em loop.py, sem alterar a unit systemd.",
       "never": [
@@ -2658,6 +2658,11 @@
           "at": "2026-08-18T17:56:14+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout"
+        },
+        {
+          "at": "2026-08-18T18:50:26+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

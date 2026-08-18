@@ -1,0 +1,19 @@
+{
+  "at": "2026-08-18T18:50:26+00:00",
+  "branch": "improve/dev/imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout",
+  "proposal_id": "imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout",
+  "verdict": "approve",
+  "reason": "O patch implementa a proposta de forma correta e defensiva. Adiciona um timeout de 10s via ThreadPoolExecutor na verificação do GhostCLI em loop.py, tratando o TimeoutError com um dicionário de erro sanitizado. Não há alterações em arquivos proibidos, systemd, loop.sh ou vazamento de segredos.",
+  "risks": [
+    "Timeout de 10s pode causar falsos negativos em cenários de rede extremamente lenta, mas é aceitável para um health check de fumaça."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 65%]\n......................................                                   [100%]\n110 passed in 146.59s (0:02:26)"
+  },
+  "files": [
+    "src/agentic/loop.py"
+  ]
+}
