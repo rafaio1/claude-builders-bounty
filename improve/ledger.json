@@ -6673,7 +6673,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
       "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
       "never": [
@@ -6696,8 +6696,14 @@
           "at": "2026-08-18T13:50:45+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-18T13:51:37+00:00",
+          "event": "requeued",
+          "detail": "SUMMARY: Adicionado `.claude/skills/` ao .gitignore para restaurar git_clean; working tree agora mostra apenas a modificação esperada em .gitignore."
         }
-      ]
+      ],
+      "review_feedback": "blocked: SUMMARY: Adicionado `.claude/skills/` ao .gitignore para restaurar git_clean; working tree agora mostra apenas a modificação esperada em .gitignore."
     },
     {
       "id": "imp-20260818-gest-o-de-falhas-no-claude-cli",
