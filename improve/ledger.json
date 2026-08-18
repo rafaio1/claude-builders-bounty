@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T12:02:02+00:00",
+  "updated_at": "2026-08-18T14:02:31+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260818T140231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260818T140231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260818T140231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260818T140231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -8114,6 +8114,153 @@
           "at": "2026-08-18T12:02:02+00:00",
           "event": "mapped",
           "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-isolamento-de-secrets-no-stdout-do-motor",
+      "key": "789a849f770fb505",
+      "canon": "db468a3d3b66fda2",
+      "title": "Isolamento de secrets no stdout do motor",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O env.py carrega credenciais Bybit e GhostCLI, e vazamentos acidentais no log do tick de saúde quebram a integridade do repositório.",
+      "change": "Revisar claude_cli.py e ghostcli.py para garantir que wrappers de subprocess usem capture_output=True e filtrem chaves antes de logar.",
+      "never": [
+        "imprimir secrets no stdout",
+        "colar chaves no git",
+        "alterar destino de payout ARO"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T140231Z",
+      "history": [
+        {
+          "at": "2026-08-18T14:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T140231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-depend-ncia-r-gida-do-interval-90-no-systemd",
+      "key": "9d0e57e41d3cbc42",
+      "canon": "47f63d5ad838043e",
+      "title": "Dependência rígida do --interval 90 no systemd",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O loop em deploy/agentic-loop.service tem o intervalo hardcoded, limitando testes de integração e ajustes de carga sem reescrever o unit.",
+      "change": "Parametrizar o intervalo via variável de ambiente no arquivo .service, mantendo o padrão 90 mas permitindo override.",
+      "never": [
+        "criar src/agentic/loop.sh",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "alterar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T140231Z",
+      "history": [
+        {
+          "at": "2026-08-18T14:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T140231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-dulo-de-eval-e-m-tricas-de-traces-theme-ai",
+      "key": "c2cf5be194a6ea9e",
+      "canon": "5ee1c4ef66b77dd4",
+      "title": "Módulo de eval e métricas de traces (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falta visibilidade sobre a qualidade dos prompts do develop e as rejeições do reviewer, dificultando o ajuste fino dos modelos GhostCLI.",
+      "change": "Criar rotina em improve.py que leia traces sanitizados e registre taxas de aceitação/rejeição e feedback em um log estruturado.",
+      "never": [
+        "enviar ordens Bybit",
+        "habilitar playwright-mcp",
+        "fuzzing"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T140231Z",
+      "history": [
+        {
+          "at": "2026-08-18T14:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T140231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-wrapper-nativo-para-ledger-json-theme-tools",
+      "key": "cc18b6aa2b7950bb",
+      "canon": "7a5228c8ec43df7e",
+      "title": "Wrapper nativo para ledger JSON (theme=tools)",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Agentes dependem excessivamente de jq via shell para manipular o ledger, o que é frágil e propenso a erros de parsing em filas grandes.",
+      "change": "Implementar classe Python em tools.py para leitura/escrita atômica e validação de schema do ledger, usando jq apenas como fallback.",
+      "never": [
+        "habilitar playwright-mcp",
+        "criar loop.sh",
+        "alterar constituição ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/tools.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T140231Z",
+      "history": [
+        {
+          "at": "2026-08-18T14:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T140231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-backoff-exponencial-no-improve-py",
+      "key": "c2c2bc159b2c3ae3",
+      "canon": "504c51df02adfb95",
+      "title": "Backoff exponencial no improve.py",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "Falhas temporárias na API da GhostCLI ou no Claude CLI fazem o pending voltar para a fila sem espera, gerando spam de requisições.",
+      "change": "Adicionar lógica de retry com backoff simples no gestor de fila do develop antes de re-enfileirar tarefas rejeitadas.",
+      "never": [
+        "bloquear o tick de saúde",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "commitar .env"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T140231Z",
+      "history": [
+        {
+          "at": "2026-08-18T14:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T140231Z"
         }
       ]
     }
