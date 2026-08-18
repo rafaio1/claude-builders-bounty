@@ -5,8 +5,10 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+import random
 import shutil
 import subprocess
+import time
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -129,6 +131,31 @@ def available() -> bool:
     return bool(claude_bin())
 
 
+_TRANSIENT_RETURN_CODES = {124, 137}
+_TRANSIENT_SUMMARY_MARKERS = (
+    "rate limit",
+    "ratelimit",
+    "too many requests",
+    "503",
+    "502",
+    "504",
+    "gateway timeout",
+    "service unavailable",
+    "connection reset",
+    "eof occurred",
+    "temporary failure",
+    "network error",
+)
+
+
+def _is_transient_failure(returncode: int, summary: str, output: str) -> bool:
+    """Heurística defensiva para falhas transitórias da API GhostCLI/CLI."""
+    if returncode in _TRANSIENT_RETURN_CODES:
+        return True
+    blob = f"{summary} {output}".lower()
+    return any(marker in blob for marker in _TRANSIENT_SUMMARY_MARKERS)
+
+
 def run_implement(
     prompt: str,
     *,
@@ -137,10 +164,18 @@ def run_implement(
     base_url: str,
     model: str,
     timeout: float = 1500.0,
+    max_attempts: int = 4,
+    backoff_base: float = 5.0,
+    backoff_cap: float = 90.0,
 ) -> dict[str, Any]:
-    """Dump one implement prompt into Claude CLI (tools on, GhostCLI models)."""
-    # Trunca prompts que excedem o limite antes de validar binário/chave.
-    # O trace abaixo já recebe o prompt truncado, refletindo o que foi enviado.
+    """Dump one implement prompt into Claude CLI with retry/backoff resiliente.
+
+    Falhas transitórias (timeout, 5xx, rate-limit) são retentadas com backoff
+    exponencial + jitter até ``max_attempts``. Erros determinísticos (binário
+    ausente, chave vazia, exit code não-transiente) retornam imediatamente.
+    O timeout por tentativa é ajustado proporcionalmente ao número máximo de
+    tentativas para evitar estouro do budget total do loop.
+    """
     prompt = truncate_prompt(prompt)
 
     binary = claude_bin()
@@ -172,9 +207,6 @@ def run_implement(
         return result
 
     env = ghostcli_env(api_key=api_key, base_url=base_url, model=model)
-    # Root cannot use --dangerously-skip-permissions. acceptEdits + allowlist works.
-    # Put the prompt after "--": --allowedTools/--disallowedTools are variadic and
-    # would otherwise swallow the prompt as fake tool names.
     cmd = [
         binary,
         "-p",
@@ -189,56 +221,88 @@ def run_implement(
         "--",
         prompt,
     ]
-    try:
-        completed = subprocess.run(
-            cmd,
-            cwd=str(cwd),
-            env=env,
-            capture_output=True,
-            text=True,
-            timeout=timeout,
-            check=False,
-        )
-    except subprocess.TimeoutExpired as exc:
-        out = ((exc.stdout or "") + "\n" + (exc.stderr or "")).strip()
-        result = {
-            "ok": False,
-            "summary": f"claude CLI timeout após {int(timeout)}s",
-            "output": out[-8000:],
-            "returncode": 124,
-            "model": model,
-        }
-        _write_cli_trace(
-            prompt=prompt, output=out[-8000:], summary=result["summary"],
-            model=model, ok=False, returncode=124,
-        )
-        return result
-    except OSError as exc:
-        result = {
-            "ok": False,
-            "summary": f"falha ao executar claude CLI: {exc}",
-            "output": "",
-            "returncode": 1,
-            "model": model,
-        }
-        _write_cli_trace(
-            prompt=prompt, output="", summary=result["summary"],
-            model=model, ok=False, returncode=1,
-        )
-        return result
 
-    output = ((completed.stdout or "") + "\n" + (completed.stderr or "")).strip()
-    summary = (completed.stdout or "").strip() or (completed.stderr or "").strip()
-    ok = completed.returncode == 0
-    result = {
-        "ok": ok,
-        "summary": summary[:2000],
-        "output": output[-12000:],
-        "returncode": completed.returncode,
+    attempts = max(1, min(max_attempts, 10))
+    per_attempt_timeout = max(60.0, timeout / attempts)
+    last_result: dict[str, Any] | None = None
+
+    for attempt in range(attempts):
+        try:
+            completed = subprocess.run(
+                cmd,
+                cwd=str(cwd),
+                env=env,
+                capture_output=True,
+                text=True,
+                timeout=per_attempt_timeout,
+                check=False,
+            )
+        except subprocess.TimeoutExpired as exc:
+            stdout = exc.stdout if isinstance(exc.stdout, str) else (exc.stdout or b"").decode("utf-8", errors="replace")
+            stderr = exc.stderr if isinstance(exc.stderr, str) else (exc.stderr or b"").decode("utf-8", errors="replace")
+            out = (stdout + "\n" + stderr).strip()
+            last_result = {
+                "ok": False,
+                "summary": f"claude CLI timeout após {int(per_attempt_timeout)}s (tentativa {attempt + 1}/{attempts})",
+                "output": out[-8000:],
+                "returncode": 124,
+                "model": model,
+            }
+            _write_cli_trace(
+                prompt=prompt, output=out[-8000:], summary=last_result["summary"],
+                model=model, ok=False, returncode=124,
+            )
+        except OSError as exc:
+            last_result = {
+                "ok": False,
+                "summary": f"falha ao executar claude CLI: {exc}",
+                "output": "",
+                "returncode": 1,
+                "model": model,
+            }
+            _write_cli_trace(
+                prompt=prompt, output="", summary=last_result["summary"],
+                model=model, ok=False, returncode=1,
+            )
+            # OSError geralmente é determinístico (perm/binário); sem retry.
+            return last_result
+        else:
+            output = ((completed.stdout or "") + "\n" + (completed.stderr or "")).strip()
+            summary = (completed.stdout or "").strip() or (completed.stderr or "").strip()
+            ok = completed.returncode == 0
+            last_result = {
+                "ok": ok,
+                "summary": summary[:2000],
+                "output": output[-12000:],
+                "returncode": completed.returncode,
+                "model": model,
+            }
+            _write_cli_trace(
+                prompt=prompt, output=output[-12000:], summary=summary[:2000],
+                model=model, ok=ok, returncode=completed.returncode,
+            )
+            if ok:
+                return last_result
+
+        if attempt >= attempts - 1:
+            break
+
+        if not _is_transient_failure(
+            last_result.get("returncode", 1),
+            last_result.get("summary", ""),
+            last_result.get("output", ""),
+        ):
+            return last_result
+
+        delay = min(backoff_cap, backoff_base * (2 ** attempt))
+        jitter = random.uniform(0, delay * 0.25)
+        sleep_for = delay + jitter
+        time.sleep(sleep_for)
+
+    return last_result or {
+        "ok": False,
+        "summary": "claude CLI falhou sem resultado capturado",
+        "output": "",
+        "returncode": 1,
         "model": model,
     }
-    _write_cli_trace(
-        prompt=prompt, output=output[-12000:], summary=summary[:2000],
-        model=model, ok=ok, returncode=completed.returncode,
-    )
-    return result
