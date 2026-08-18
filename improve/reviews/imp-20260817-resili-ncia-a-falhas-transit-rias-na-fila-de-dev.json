@@ -1,0 +1,21 @@
+{
+  "at": "2026-08-18T16:07:10+00:00",
+  "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+  "proposal_id": "imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+  "verdict": "reject",
+  "reason": "O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py.",
+  "risks": [
+    "Implementação ausente da lógica de retry e timeout.",
+    "Arquivo improve.py não foi modificado conforme o escopo da proposta.",
+    "Falta de testes para validar a nova resiliência."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 144.07s (0:02:24)"
+  },
+  "files": [
+    "src/agentic/claude_cli.py"
+  ]
+}

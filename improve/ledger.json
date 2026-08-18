@@ -5942,7 +5942,7 @@
       "title": "Resiliência a falhas transitórias na fila de develop",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O improve.py despeja prompts no Claude CLI sem retry estrutrado. Falhas temporárias na API GhostCLI travam o processamento da fila pending.",
       "change": "Adicionar timeout configurável e retry com backoff exponencial ao invocar claude_cli.py dentro do improve.py.",
       "never": [
@@ -5955,7 +5955,7 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+      "branch": "",
       "map_id": "20260817T234014Z",
       "history": [
         {
@@ -5967,8 +5967,14 @@
           "at": "2026-08-18T15:12:33+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev"
+        },
+        {
+          "at": "2026-08-18T16:07:10+00:00",
+          "event": "requeued",
+          "detail": "reject: O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py. riscos=['Implementação ausente da lógica de retry e timeout.', 'Arquivo improve.py não foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resiliência.'] arquivos=src/agentic/claude_cli.py"
         }
-      ]
+      ],
+      "review_feedback": "reject: O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py. riscos=['Implementação ausente da lógica de retry e timeout.', 'Arquivo improve.py não foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resiliência.'] arquivos=src/agentic/claude_cli.py"
     },
     {
       "id": "imp-20260817-valida-o-estrita-de-diffs-no-reviewer",
