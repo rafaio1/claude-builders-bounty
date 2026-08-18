@@ -6451,7 +6451,7 @@
       "title": "Restaurar git_clean: Fatia CLI e Playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O arquivo cli.py está modificado e precisa ser isolado para manter o histórico limpo e focado no playbook/CLI.",
       "change": "O pipeline stageia e commita exclusivamente src/agentic/cli.py na main, garantindo que o develop corrija exatamente o feedback do review.",
       "never": [
@@ -6464,13 +6464,18 @@
         "src/agentic/cli.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook",
       "map_id": "20260818T022635Z",
       "history": [
         {
           "at": "2026-08-18T02:26:35+00:00",
           "event": "mapped",
           "detail": "20260818T022635Z"
+        },
+        {
+          "at": "2026-08-18T12:08:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook"
         }
       ]
     },
