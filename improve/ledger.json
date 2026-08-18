@@ -4256,7 +4256,7 @@
       "title": "Health check do Playwright não detecta processos zumbis",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O tick atual verifica a presença do binário, mas não detecta se processos headless anteriores ficaram zumbis ou vazaram memória, degradando o host gradualmente.",
       "change": "Incluir no loop.py uma verificação rápida de contagem de processos playwright e forçar limpeza se exceder um limite, antes de rodar o health check.",
       "never": [
@@ -4267,7 +4267,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "tools",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos",
       "map_id": "20260817T070323Z",
       "history": [
         {
@@ -4294,6 +4294,11 @@
           "at": "2026-08-18T14:45:09+00:00",
           "event": "requeued",
           "detail": "reject: O diff não corresponde à proposta. A proposta exigia a inclusão da verificação de processos no arquivo src/agentic/loop.py, mas o diff apresentado apenas atualiza a documentação no AGENTS.md, sem conter as alterações reais de código. riscos=['Código não implementado', 'Documentação descrevendo funcionalidade inexistente'] arquivos=AGENTS.md"
+        },
+        {
+          "at": "2026-08-18T14:51:49+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
         }
       ],
       "review_feedback": "reject: O diff não corresponde à proposta. A proposta exigia a inclusão da verificação de processos no arquivo src/agentic/loop.py, mas o diff apresentado apenas atualiza a documentação no AGENTS.md, sem conter as alterações reais de código. riscos=['Código não implementado', 'Documentação descrevendo funcionalidade inexistente'] arquivos=AGENTS.md"
