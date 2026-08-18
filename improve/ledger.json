@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T10:47:20+00:00",
+  "updated_at": "2026-08-18T11:02:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T100215Z",
+      "map_id": "20260818T110226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T100215Z",
+      "map_id": "20260818T110226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T100215Z",
+      "map_id": "20260818T110226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T100215Z",
+      "map_id": "20260818T110226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5514,7 +5514,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "quarantine",
       "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
       "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
@@ -5615,9 +5615,14 @@
           "at": "2026-08-18T10:49:05+00:00",
           "event": "blocked",
           "detail": "SUMMARY: Working tree já está limpa; arquivos do core ARO (config.py, cycle.py, store.py, mail.py) e tests/test_aro.py já estão commitados nesta branch. Testes unitários validados: 11 passed em 1.78s. Nenhuma edição necessária — proposta satisfeita pelo estado atual do repositório."
+        },
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "quarantined",
+          "detail": "limite de 3 rejeições consecutivas atingido; requer intervenção manual"
         }
       ],
-      "review_feedback": "The working tree is already clean (only untracked `.claude/skills/generate-changelog/`, which is outside the proposal scope), and `.gitignore` already covers `data/`, `improve/traces/`, locks, and env files. No ARO core files are dirty, so there is nothing to stage or restore. The improvement's intent (\"restaurar git_clean\") is already satisfied; the pipeline will snapshot this state when it runs.…"
+      "review_feedback": "SUMMARY: Working tree já está limpa; arquivos do core ARO (config.py, cycle.py, store.py, mail.py) e tests/test_aro.py já estão commitados nesta branch. Testes unitários validados: 11 passed em 1.78s. Nenhuma edição necessária — proposta satisfeita pelo estado atual do repositório."
     },
     {
       "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
@@ -7673,6 +7678,205 @@
           "at": "2026-08-18T10:02:15+00:00",
           "event": "mapped",
           "detail": "20260818T100215Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-ac-mulo-de-snapshots-do-playwright-em-disco",
+      "key": "16d1018b5eada93d",
+      "canon": "46d9c2e3aec709a0",
+      "title": "Acúmulo de snapshots do Playwright em disco",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O tick de saúde gera snapshots (.playwright-cli/page-...) que não são limpos, podendo lotar o disco e sujar a working tree se não ignorados corretamente.",
+      "change": "Direcionar a saída dos snapshots do playwright-cli para um diretório temporário (/tmp/agentic-playwright) ou garantir que .playwright-cli/ esteja estritamente no .gitignore e em rotinas de limpeza do systemd.",
+      "never": [
+        "ativar playwright-mcp",
+        "remover a flag --no-sandbox",
+        "alterar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-falta-de-valida-o-de-schema-no-pipeline-improve",
+      "key": "3edbc97819fdec9d",
+      "canon": "29bc5d28d45b3ff1",
+      "title": "Falta de validação de schema no pipeline improve",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O develop consome prompts do ledger sem validação estrita, o que pode causar loops de retentativa se o map gerar payloads malformados.",
+      "change": "Implementar validação de schema (ex: pydantic) no improve.py antes de enfileirar a tarefa para o Claude CLI.",
+      "never": [
+        "modificar a constituição ARO.md",
+        "alterar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-avan-ada-de-traces-da-ghostcli",
+      "key": "2e4d9bedda73ca5d",
+      "canon": "4831021d1707534c",
+      "title": "Sanitização avançada de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Traces da GhostCLI podem vazar caminhos absolutos ou PIDs. A sanitização atual precisa ser mais rigorosa para proteger o ambiente (theme=ai).",
+      "change": "Adicionar filtro de regex no ghostcli.py para mascarar paths de /root/, PIDs e tokens temporários antes de salvar os traces no ledger.",
+      "never": [
+        "remover mensagens de erro críticas",
+        "alterar ANTHROPIC_BASE_URL"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-skill-de-auto-corre-o-de-linting",
+      "key": "1cc53cb84feea94c",
+      "canon": "3d6ac049e13440ad",
+      "title": "Skill de auto-correção de linting",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Erros triviais de formatação geram reviews rejeitados e voltam para pending, gastando tokens do Claude Code. Um linter automático resolveria isso (theme=tools).",
+      "change": "Criar um wrapper em src/agentic/tools/ que executa ruff/black nos arquivos modificados pelo develop antes de submeter o PR para o reviewer.",
+      "never": [
+        "executar código não confiável",
+        "modificar arquivos fora do escopo do PR"
+      ],
+      "files_hint": [
+        "src/agentic/tools/lint_wrapper.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-tricas-de-efici-ncia-no-develop",
+      "key": "d8ccb5a29e5382e4",
+      "canon": "a9304306c115fc8e",
+      "title": "Métricas de eficiência no develop",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Não há métrica de quão bem o Claude Code está resolvendo as tarefas de melhoria, dificultando a avaliação do custo-benefício do pipeline (theme=ai).",
+      "change": "Adicionar um hook no claude_cli.py que loga o tamanho do diff gerado e o tempo de execução para gerar métricas de eficiência no portal.",
+      "never": [
+        "alterar o modelo GHOSTCLI_MODEL",
+        "mudar o destino do payout"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimiza-o-de-chamadas-jq-no-tick-de-sa-de",
+      "key": "10074c6e473376bf",
+      "canon": "1813cde7f88c2eee",
+      "title": "Otimização de chamadas jq no tick de saúde",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O uso de jq via subprocess para parsing simples de JSON no loop de saúde gera overhead de I/O e processos (theme=tools).",
+      "change": "Substituir chamadas jq simples por json.loads() nativo do Python em src/agentic/loop.py, mantendo o jq apenas para filtros complexos.",
+      "never": [
+        "remover a ferramenta jq do smoke test",
+        "alterar o intervalo systemd de 90s"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-cache-de-templates-no-portal-autenticado",
+      "key": "c8d8d8c941cad358",
+      "canon": "bbb54f1f701f1c6a",
+      "title": "Cache de templates no portal autenticado",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "O portal renderiza templates a cada requisição, o que pode causar latência sob carga ou durante a geração de relatórios do ledger.",
+      "change": "Implementar cache de templates Jinja2 em memória no agentic-portal.service para acelerar a renderização das views.",
+      "never": [
+        "gravar senhas em texto",
+        "alterar a porta 8767",
+        "usar Argon2id incorretamente"
+      ],
+      "files_hint": [
+        "src/agentic/portal/app.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T110226Z",
+      "history": [
+        {
+          "at": "2026-08-18T11:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T110226Z"
         }
       ]
     }
