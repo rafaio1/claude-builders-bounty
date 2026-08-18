@@ -4266,7 +4266,7 @@
       "title": "Health check do Playwright não detecta processos zumbis",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O tick atual verifica a presença do binário, mas não detecta se processos headless anteriores ficaram zumbis ou vazaram memória, degradando o host gradualmente.",
       "change": "Incluir no loop.py uma verificação rápida de contagem de processos playwright e forçar limpeza se exceder um limite, antes de rodar o health check.",
       "never": [
@@ -4277,7 +4277,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos",
+      "branch": "",
       "map_id": "20260817T070323Z",
       "history": [
         {
@@ -4319,9 +4319,14 @@
           "at": "2026-08-18T15:53:49+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+        },
+        {
+          "at": "2026-08-18T15:54:55+00:00",
+          "event": "requeued",
+          "detail": "Execution error"
         }
       ],
-      "review_feedback": "reject: O diff não corresponde à proposta. A mudança exigida era implementar a verificação de contagem de processos zumbis e a rotina de limpeza no loop.py, mas o código apenas adiciona uma flag 'operate=True' não relacionada, atualiza a documentação e inclui um teste para uma função que não foi implementada no diff. riscos=['Funcionalidade de limpeza de zumbis não implementada no código', \"Adição de parâmetro 'operate=True' sem relação com a proposta\", 'Teste incluído para lógica inexistente no diff atual'] arquivos=AGENTS.md,src/agentic/loop.py,tests/test_loop.py"
+      "review_feedback": "claude_failed: Execution error"
     },
     {
       "id": "imp-20260817-falta-de-backoff-exponencial-em-falhas-de-api-do",
