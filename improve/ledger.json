@@ -3038,7 +3038,7 @@
       "title": "Restaurar git_clean (ARO constituição e ciclo interno): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "never": [
@@ -3081,6 +3081,11 @@
           "at": "2026-08-18T00:56:08+00:00",
           "event": "requeued",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-18T01:16:25+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
