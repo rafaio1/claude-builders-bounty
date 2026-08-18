@@ -4068,7 +4068,7 @@
       "title": "Uso ineficiente de tokens pelo Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O censo mostra playwright e playwright_mcp ativos. Agentes podem estar usando o MCP em vez do CLI headless, consumindo tokens excessivos e aumentando a latência.",
       "change": "Adicionar preferência explícita no mapeamento de ferramentas para forçar playwright-cli quando disponível, desabilitando o MCP em rotas padrão.",
       "never": [
@@ -4079,7 +4079,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp",
+      "branch": "",
       "map_id": "20260817T080328Z",
       "history": [
         {
@@ -4091,8 +4091,14 @@
           "at": "2026-08-18T18:37:05+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-uso-ineficiente-de-tokens-via-playwright-mcp"
+        },
+        {
+          "at": "2026-08-18T18:46:06+00:00",
+          "event": "requeued",
+          "detail": "....................................................................F... [ 56%]\n..........................FF...........................                  [100%]\n=================================== FAILURES ===================================\nE   KeyError: 'playwright_mcp'\n/Agentic/tests/test_loop.py:79: KeyError: 'playwright_mcp'\nE   KeyError: 'playwright_mcp'\n/Agentic/tests/test_playwright_mcp_dis…"
         }
-      ]
+      ],
+      "review_feedback": "tests_failed: ....................................................................F... [ 56%]\n..........................FF...........................                  [100%]\n=================================== FAILURES ===================================\nE   KeyError: 'playwright_mcp'\n/Agentic/tests/test_loop.py:79: KeyError: 'playwright_mcp'\nE   KeyError: 'playwright_mcp'\n/Agentic/tests/test_playwright_mcp_dis…"
     },
     {
       "id": "imp-20260817-falta-de-m-tricas-de-avalia-o-eval-nas-chamadas",
