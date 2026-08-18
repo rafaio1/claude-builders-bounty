@@ -2818,7 +2818,7 @@
       "title": "Restaurar git_clean: fatia claude_cli",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Arquivos não rastreados do claude_cli estão sujando a main e precisam ser versionados isoladamente.",
       "change": "Adicionar e commitar apenas os novos arquivos do claude_cli e seus testes unitários correspondentes.",
       "never": [
@@ -2860,6 +2860,11 @@
           "at": "2026-08-18T02:17:50+00:00",
           "event": "requeued",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-18T02:37:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
