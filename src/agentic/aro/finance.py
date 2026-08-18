@@ -20,8 +20,12 @@ def _dec(value: Any) -> Decimal:
         return Decimal("0.00")
 
 
-def _money(value: Decimal) -> str:
-    quantized = value.quantize(Decimal("0.01"), rounding=ROUND_DOWN)
+def _money(value: Any) -> str:
+    try:
+        dec_val = Decimal(str(value).replace(",", "."))
+    except Exception:
+        dec_val = Decimal("0.00")
+    quantized = dec_val.quantize(Decimal("0.01"), rounding=ROUND_DOWN)
     return f"{quantized:.2f}"
 
 
@@ -59,8 +63,12 @@ def ledger_totals(rows: list[dict[str, Any]]) -> dict[str, Decimal]:
     }
 
 
-def scaled_limits(*, cash: Decimal, base: Decimal = BASE_LIMIT) -> dict[str, Decimal]:
+def scaled_limits(*, cash: Decimal, base: Any = BASE_LIMIT) -> dict[str, Decimal]:
     """Floor 50 BRL; ceiling grows with cash. Never spend more than cash on hand."""
+    try:
+        base = Decimal(str(base).replace(",", "."))
+    except Exception:
+        base = BASE_LIMIT
     if base <= 0:
         base = BASE_LIMIT
     operating = cash * (Decimal("1.00") - OWNER_RATE)
