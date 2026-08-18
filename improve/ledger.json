@@ -2818,7 +2818,7 @@
       "title": "Restaurar git_clean: fatia claude_cli",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Arquivos não rastreados do claude_cli estão sujando a main e precisam ser versionados isoladamente.",
       "change": "Adicionar e commitar apenas os novos arquivos do claude_cli e seus testes unitários correspondentes.",
       "never": [
@@ -2833,7 +2833,7 @@
         "tests/test_claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli",
+      "branch": "",
       "map_id": "20260817T013627Z",
       "history": [
         {
@@ -2875,6 +2875,11 @@
           "at": "2026-08-18T02:58:19+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+        },
+        {
+          "at": "2026-08-18T02:59:01+00:00",
+          "event": "blocked",
+          "detail": "The `improve/ledger.json` dirty state has been resolved by restoring it to HEAD. The claude_cli slice files (`src/agentic/claude_cli.py`, `tests/test_claude_cli.py`) are already tracked and clean — no changes needed for this proposal. The remaining dirty files belong to other slices and are outside this executor's scope.\n\nSUMMARY: Restaurado improve/ledger.json ao HEAD; fatia claude_cli já estava …"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
