@@ -5917,7 +5917,7 @@
       "title": "Resiliência a falhas transitórias na fila de develop",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O improve.py despeja prompts no Claude CLI sem retry estrutrado. Falhas temporárias na API GhostCLI travam o processamento da fila pending.",
       "change": "Adicionar timeout configurável e retry com backoff exponencial ao invocar claude_cli.py dentro do improve.py.",
       "never": [
@@ -5930,13 +5930,18 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
       "map_id": "20260817T234014Z",
       "history": [
         {
           "at": "2026-08-17T23:40:14+00:00",
           "event": "mapped",
           "detail": "20260817T234014Z"
+        },
+        {
+          "at": "2026-08-18T15:12:33+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev"
         }
       ]
     },
