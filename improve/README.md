@@ -43,4 +43,4 @@ Gates determinísticos valem mais que a IA: sem trade live, sem secrets, sem PoC
 1. **Não** use `git reset --hard`, `git checkout --`, `git clean -fd`, `--no-verify` nem force. Não commite `.env`, `data/`, locks ou secrets. Não ligue trade live.
 2. **Lixo untracked**: apagar ou acrescentar no `.gitignore`.
 3. O mapper emite um bottleneck p1 **por fatia**. O develop só versiona os `files_hint` daquela fatia.
-4. Se o review rejeitar ou o pytest falhar, a proposta **volta a `pending`** com `review_feedback`. Depois de 3 requeues fica `rejected`/`blocked`.
+4. Se o review rejeitar ou o pytest falhar, a proposta **volta a `pending`** com `review_feedback` estruturado (`verdict`, `reason`, `files`). O develop seguinte corrige **exatamente** os arquivos citados no parecer; não pode alargar o escopo para paths fora dessa lista. Depois de 3 requeues fica `rejected`/`blocked`.

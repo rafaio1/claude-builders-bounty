@@ -1382,6 +1382,8 @@ class ImprovePipeline:
             feedback_struct = parse_review_feedback(feedback_raw)
             if feedback_struct.get("reason"):
                 proposal["review_feedback"] = structured_review_feedback(feedback_raw)
+            # Restrict scope to files cited in the structured review_feedback
+            # so the next develop cannot widen the change beyond the verdict.
             if feedback_struct.get("files"):
                 allowed_feedback_files = [
                     path
@@ -1389,12 +1391,8 @@ class ImprovePipeline:
                     if is_allowed_path(path) and (self.settings.root / path).is_file()
                 ]
                 if allowed_feedback_files:
-                    hint_set.update(allowed_feedback_files)
-                    merged: list[str] = []
-                    for path in [*hints, *allowed_feedback_files]:
-                        if path not in merged:
-                            merged.append(path)
-                    hints = merged[:MAX_FILES]
+                    hint_set = set(allowed_feedback_files)
+                    hints = allowed_feedback_files[:MAX_FILES]
                     proposal["files_hint"] = hints
             context = self._file_context(hints)
             prompt = DEVELOP_PROMPT.format(
