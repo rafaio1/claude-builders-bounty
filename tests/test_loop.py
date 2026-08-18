@@ -66,6 +66,22 @@ def test_census_booleans_only(tmp_path: Path) -> None:
         assert isinstance(value, bool)
 
 
+def test_census_playwright_mcp_always_disabled(tmp_path: Path) -> None:
+    """playwright_mcp deve ser sempre False no censo para evitar dreno de tokens.
+
+    Regressão: o MCP consome significativamente mais tokens que o CLI headless
+    e não traz benefício para os casos de uso do motor. A diretriz exige que
+    agentes usem exclusivamente playwright-cli; o MCP está desativado no loop
+    e no censo ARO. Se este teste falhar, alguém reativou o MCP inadvertidamente.
+    Verifique AGENTS.md e improve.py antes de alterar.
+    """
+    census = collect_census(tmp_path)
+    assert census["tools"]["playwright_mcp"] is False, (
+        "playwright_mcp deve permanecer desativado no censo; "
+        "use playwright-cli headless para evitar dreno de tokens"
+    )
+
+
 def test_census_smoke_structured(tmp_path: Path) -> None:
     """Smoke tests devem devolver dict estruturado por ferramenta, não apenas bool."""
     census = collect_census(tmp_path)
