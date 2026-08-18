@@ -3083,7 +3083,7 @@
       "title": "Restaurar git_clean (Ferramentas de agente e env interna): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: AGENTS.md.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: AGENTS.md.",
       "never": [
@@ -3109,8 +3109,14 @@
           "at": "2026-08-18T04:40:31+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
+        },
+        {
+          "at": "2026-08-18T04:40:51+00:00",
+          "event": "requeued",
+          "detail": "All five hinted files are tracked and the working tree is clean for this slice. The only untracked item (`.claude/skills/generate-changelog/`) is outside scope and already covered by the existing `.gitignore` pattern for `.claude/` local config. No edits are needed — the proposal's goal of restoring `git_clean` for agent tools and internal env is already satisfied on disk.\n\nSUMMARY: Working tree j…"
         }
-      ]
+      ],
+      "review_feedback": "blocked: All five hinted files are tracked and the working tree is clean for this slice. The only untracked item (`.claude/skills/generate-changelog/`) is outside scope and already covered by the existing `.gitignore` pattern for `.claude/` local config. No edits are needed — the proposal's goal of restoring `git_clean` for agent tools and internal env is already satisfied on disk.\n\nSUMMARY: Working tree j…"
     },
     {
       "id": "imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte",
