@@ -1,0 +1,21 @@
+{
+  "at": "2026-08-18T18:30:37+00:00",
+  "branch": "improve/dev/imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli",
+  "proposal_id": "imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli",
+  "verdict": "approve",
+  "reason": "A implementação adiciona a sanitização defensiva de paths absolutos nos arquivos indicados (env.py e ghostcli.py) e inclui testes robustos que validam a funcionalidade sem expor secrets. A mudança é pequena, segura e está perfeitamente alinhada com a proposta.",
+  "risks": [
+    "Risco mínimo de falsos positivos ao mascarar paths absolutos em mensagens de log ou traces de debug legítimos, mas aceitável para o ganho de segurança."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 63%]\n..........................................                               [100%]\n114 passed in 141.97s (0:02:21)"
+  },
+  "files": [
+    "src/agentic/env.py",
+    "src/agentic/ghostcli.py",
+    "tests/test_sanitize_trace_strict.py"
+  ]
+}
