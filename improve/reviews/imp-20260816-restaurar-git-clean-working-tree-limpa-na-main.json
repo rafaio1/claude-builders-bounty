@@ -1,0 +1,20 @@
+{
+  "at": "2026-08-18T14:25:16+00:00",
+  "branch": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
+  "proposal_id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
+  "verdict": "reject",
+  "reason": "O diff não corresponde à proposta. A proposta exige adicionar '.cursor/' ao .gitignore, mas o diff modifica 'src/agentic/loop.py' para adicionar a variável 'ARO_AUTONOMOUS'. O develop deve reabrir a proposta alterando apenas o arquivo '.gitignore' para ignorar '.cursor/', sem modificar 'src/agentic/loop.py' ou incluir lógica de ARO.",
+  "risks": [
+    "Mudança de escopo: o diff altera a lógica do loop.py em vez de atualizar o .gitignore.",
+    "Inclusão de lógica relacionada a 'ARO_AUTONOMOUS', violando a restrição de não incluir ARO no commit."
+  ],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 138.19s (0:02:18)"
+  },
+  "files": [
+    "src/agentic/loop.py"
+  ]
+}
