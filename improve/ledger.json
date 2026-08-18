@@ -5610,6 +5610,11 @@
           "at": "2026-08-18T10:28:31+00:00",
           "event": "blocked",
           "detail": "The working tree is already clean for all tracked files, and `tests/test_aro.py` passes (11/11). The three untracked items (`scripts/aro-mql5-bid.py`, `scripts/aro-submit-homelab-ntfy-pr.sh`, `.claude/skills/generate-changelog/`) are outside the ARO core scope listed in the proposal and don't affect the git-clean invariant for tracked content. No edits to `.gitignore`, `improve/README.md`, or any …"
+        },
+        {
+          "at": "2026-08-18T10:49:05+00:00",
+          "event": "blocked",
+          "detail": "SUMMARY: Working tree já está limpa; arquivos do core ARO (config.py, cycle.py, store.py, mail.py) e tests/test_aro.py já estão commitados nesta branch. Testes unitários validados: 11 passed em 1.78s. Nenhuma edição necessária — proposta satisfeita pelo estado atual do repositório."
         }
       ],
       "review_feedback": "The working tree is already clean (only untracked `.claude/skills/generate-changelog/`, which is outside the proposal scope), and `.gitignore` already covers `data/`, `improve/traces/`, locks, and env files. No ARO core files are dirty, so there is nothing to stage or restore. The improvement's intent (\"restaurar git_clean\") is already satisfied; the pipeline will snapshot this state when it runs.…"
