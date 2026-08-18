@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T11:28:27+00:00",
+  "updated_at": "2026-08-18T12:02:02+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T110226Z",
+      "map_id": "20260818T120202Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T110226Z",
+      "map_id": "20260818T120202Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T110226Z",
+      "map_id": "20260818T120202Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T110226Z",
+      "map_id": "20260818T120202Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -7912,6 +7912,151 @@
           "at": "2026-08-18T11:02:26+00:00",
           "event": "mapped",
           "detail": "20260818T110226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-resili-ncia-do-ghostcli-http-502",
+      "key": "373171388c7532e4",
+      "canon": "297787f2357e63c9",
+      "title": "Resiliência do GhostCLI (HTTP 502)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O smoke test de ghostcli falhou com HTTP 502, bloqueando develop e review, paralisando a fila do improve.py.",
+      "change": "Adicionar retry com backoff exponencial e circuit breaker temporário em ghostcli.py para falhas 5xx, evitando chamadas em cascata.",
+      "never": [
+        "expor secrets",
+        "alterar ANTHROPIC_BASE_URL",
+        "ligar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T120202Z",
+      "history": [
+        {
+          "at": "2026-08-18T12:02:02+00:00",
+          "event": "mapped",
+          "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-isolamento-de-falhas-no-ciclo-develop-review",
+      "key": "05e836de4e00a8e1",
+      "canon": "c0879953d6b5e4f1",
+      "title": "Isolamento de falhas no ciclo develop-review",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Se a GhostCLI falha consistentemente, o improve.py pode retentar o mesmo item da fila infinitamente, consumindo recursos.",
+      "change": "Implementar contagem de falhas consecutivas por item no ledger. Se exceder um limite, o item é marcado como blocked/deferred em vez de pending.",
+      "never": [
+        "alterar o motor loop.py",
+        "enviar ordens Bybit",
+        "modificar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T120202Z",
+      "history": [
+        {
+          "at": "2026-08-18T12:02:02+00:00",
+          "event": "mapped",
+          "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-automatizada-de-skills-claude-theme-too",
+      "key": "c883f395c33e2f2f",
+      "canon": "bf54f8bdb36b6972",
+      "title": "Validação automatizada de skills Claude (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "A geração de skills está sujando o repositório. Um validador previne que skills quebradas poluam a main.",
+      "change": "Adicionar um step no playbook de integridade que rode um validador de sintaxe/formato nos arquivos de .claude/skills/ antes de stagear.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "executar as skills sem sandbox"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T120202Z",
+      "history": [
+        {
+          "at": "2026-08-18T12:02:02+00:00",
+          "event": "mapped",
+          "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-e-armazenamento-de-traces-ghostcli-th",
+      "key": "6b5a42b52b4ac845",
+      "canon": "d4111296bf4fa285",
+      "title": "Sanitização e armazenamento de traces GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Para avaliar a qualidade das respostas (eval) e ajustar prompts, é necessário coletar traces sanitizados.",
+      "change": "Implementar gravação sanitizada das interações com a GhostCLI em um diretório de traces/ para posterior análise.",
+      "never": [
+        "gravar secrets Bybit",
+        "enviar traces para endpoints externos",
+        "ligar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T120202Z",
+      "history": [
+        {
+          "at": "2026-08-18T12:02:02+00:00",
+          "event": "mapped",
+          "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-healthcheck-estruturado-para-playwright-cli-them",
+      "key": "a47b7375de72945b",
+      "canon": "6e8e6c5e4ceb6666",
+      "title": "Healthcheck estruturado para Playwright CLI (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O motor usa playwright-cli sem MCP. Logs estruturados ajudam a diagnosticar falhas de DOM ou timeout.",
+      "change": "Padronizar a captura de erros do playwright-cli no loop.py para JSON estruturado.",
+      "never": [
+        "ativar playwright-mcp",
+        "abrir navegador headed",
+        "ignorar --no-sandbox"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T120202Z",
+      "history": [
+        {
+          "at": "2026-08-18T12:02:02+00:00",
+          "event": "mapped",
+          "detail": "20260818T120202Z"
         }
       ]
     }
