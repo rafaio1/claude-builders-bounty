@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T05:02:42+00:00",
+  "updated_at": "2026-08-18T06:02:43+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T050242Z",
+      "map_id": "20260818T060243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T050242Z",
+      "map_id": "20260818T060243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T050242Z",
+      "map_id": "20260818T060243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T050242Z",
+      "map_id": "20260818T060243Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -6793,6 +6793,260 @@
           "at": "2026-08-18T05:02:42+00:00",
           "event": "mapped",
           "detail": "20260818T050242Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-desenvolvimento-travado-por-review-rejeitado-sem",
+      "key": "c92c7e215dedef30",
+      "canon": "9b31b7d230225ba9",
+      "title": "Desenvolvimento travado por review rejeitado sem backoff",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "improve.py devolve itens para pending sem limite de tentativas quando review falha, gerando loops infinitos de develop que consomem tokens GhostCLI",
+      "change": "Adicionar campo 'attempts' no ledger e pausar item após 3 rejeições consecutivas, movendo para estado 'blocked' com notificação",
+      "never": [
+        "alterar ARO constitution",
+        "modificar loop interval",
+        "resetar contador globalmente"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-health-check-sem-m-tricas-estruturadas-para-obse",
+      "key": "e03f46f49a716000",
+      "canon": "2997c634fa0cd262",
+      "title": "Health check sem métricas estruturadas para observabilidade",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "loop.py só faz saúde binária de ferramentas sem histórico temporal, impedindo detecção proativa de degradação ou padrões de falha",
+      "change": "Emitir logs JSON estruturados com timestamp, tool_name e status_code em cada tick do health check",
+      "never": [
+        "expor secrets nos logs",
+        "habilitar AGENTIC_LIVE_TRADE",
+        "criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-ghostcli-traces-sem-sanitiza-o-granular-por-skil",
+      "key": "245c6bd27081117a",
+      "canon": "3be0475ac44e0d5a",
+      "title": "GhostCLI traces sem sanitização granular por skill",
+      "kind": "bottleneck",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Traces podem conter prompts sensíveis de skills específicas que não deveriam persistir mesmo sanitizados",
+      "change": "Adicionar filtro de regex configurável por skill no ghostcli.py antes de salvar traces, permitindo exclusão de campos específicos",
+      "never": [
+        "desabilitar traces completamente",
+        "logar credenciais Bybit",
+        "expor ANTHROPIC_BASE_URL"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-portal-sem-prote-o-contra-brute-force-b-sico",
+      "key": "6b0619ab93151b94",
+      "canon": "f88f5310bed77b1e",
+      "title": "Portal sem proteção contra brute force básico",
+      "kind": "bottleneck",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "agentic-portal.service na porta 8767 sem rate limiting, vulnerável a ataques de força bruta contra credenciais Argon2id",
+      "change": "Adicionar middleware simples de rate limit por IP (ex: 5 tentativas por minuto) com bloqueio temporário",
+      "never": [
+        "gravar senhas em texto",
+        "alterar credenciais Argon2id existentes",
+        "expor lista de IPs bloqueados"
+      ],
+      "files_hint": [
+        "src/agentic/portal/middleware.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-wrapper-playwright-cli-com-screenshot-autom-tico",
+      "key": "1217950a9ca0bbc7",
+      "canon": "d0455cc4cfc70d8e",
+      "title": "Wrapper playwright-cli com screenshot automático em falhas",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Facilita debug de skills que usam browser headless sem depender de playwright-mcp desativado, capturando estado visual quando comandos falham",
+      "change": "Script helper em .claude/skills/ que intercepta retorno non-zero do playwright-cli e salva screenshot com timestamp no diretório de logs",
+      "never": [
+        "ativar playwright-mcp",
+        "expor screenshots publicamente",
+        "manter screenshots permanentemente"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-avalia-o-autom-tica-de-qualidade-de-traces-ghost",
+      "key": "c8a9e5541f8ff2de",
+      "canon": "e7a80340c6c86a46",
+      "title": "Avaliação automática de qualidade de traces GhostCLI",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "Identificar padrões de respostas ruins ou incompletas dos modelos para ajustar prompts de skills e melhorar eficácia do develop",
+      "change": "Skill que analisa traces sanitizados periodicamente e gera relatório de qualidade com métricas (completude, relevância, adherence a schema)",
+      "never": [
+        "enviar traces para API externa",
+        "modificar OWNER_SHARE_RATE",
+        "alterar GHOSTCLI_MODEL"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-validador-de-schema-json-para-outputs-de-agentes",
+      "key": "87a77702ec34fb44",
+      "canon": "3dcd3ba19f680147",
+      "title": "Validador de schema JSON para outputs de agentes",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Agentes frequentemente geram JSON malformado ou fora de schema que quebra pipelines downstream, exigindo validação antes de persistência",
+      "change": "Skill de validação com schemas JSON Schema draft-07 para cada tipo de output conhecido, retornando erros estruturados",
+      "never": [
+        "executar código não confiável",
+        "fazer network calls",
+        "modificar schemas em runtime"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sistema-de-feedback-estruturado-para-improve-py",
+      "key": "cbab01c7cf46588e",
+      "canon": "ca04e340132d40db",
+      "title": "Sistema de feedback estruturado para improve.py",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "review_feedback atual é texto livre, dificultando correção automática pelo develop seguinte e análise de padrões de falha",
+      "change": "Estruturar review_feedback como JSON com campos 'issue_type', 'severity' e 'suggested_fix' para processamento automatizado",
+      "never": [
+        "alterar lógica de filas",
+        "mudar branch de aplicação",
+        "expor feedback publicamente"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-timeout-configur-vel-para-chamadas-jq-em-skills",
+      "key": "b91421e54c9ef0e7",
+      "canon": "2bf469b79f47c7ee",
+      "title": "Timeout configurável para chamadas jq em skills",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "jq processando dados grandes ou malformados pode travar o worker indefinidamente, afetando disponibilidade do motor",
+      "change": "Wrapper com timeout default de 30s e parâmetro override por skill, retornando erro estruturado quando excedido",
+      "never": [
+        "instalar jq customizado",
+        "modificar PATH do sistema",
+        "matar processos do sistema"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T060243Z",
+      "history": [
+        {
+          "at": "2026-08-18T06:02:43+00:00",
+          "event": "mapped",
+          "detail": "20260818T060243Z"
         }
       ]
     }
