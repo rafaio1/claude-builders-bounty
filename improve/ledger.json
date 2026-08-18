@@ -2781,7 +2781,7 @@
       "title": "Restaurar git_clean: fatia improve e playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "A working tree suja inclui mudanças no playbook e na unit systemd do improve, que devem ser isoladas do motor.",
       "change": "Stage e commit cirúrgico dos arquivos de improve, documentação e serviço systemd, mantendo o escopo restrito a esta fatia.",
       "never": [
@@ -2800,7 +2800,7 @@
         "tests/test_improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-fatia-improve-e-playbook",
+      "branch": "",
       "map_id": "20260817T013627Z",
       "history": [
         {
@@ -2842,6 +2842,11 @@
           "at": "2026-08-18T04:20:13+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-improve-e-playbook"
+        },
+        {
+          "at": "2026-08-18T04:20:55+00:00",
+          "event": "blocked",
+          "detail": "arquivo grande demais: improve/ledger.json"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
