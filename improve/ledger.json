@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T04:01:59+00:00",
+  "updated_at": "2026-08-18T05:02:42+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T040159Z",
+      "map_id": "20260818T050242Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T040159Z",
+      "map_id": "20260818T050242Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T040159Z",
+      "map_id": "20260818T050242Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T040159Z",
+      "map_id": "20260818T050242Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -6616,6 +6616,153 @@
           "at": "2026-08-18T04:01:59+00:00",
           "event": "mapped",
           "detail": "20260818T040159Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-lat-ncia-na-detec-o-de-falhas-de-ferramentas",
+      "key": "fcdb8628d87955f2",
+      "canon": "46387e99a1a0af2f",
+      "title": "Latência na detecção de falhas de ferramentas",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O loop systemd roda com --interval 90. Se playwright ou ghostcli falharem, o sistema fica cego por até 1m30s, atrasando a recuperação automática.",
+      "change": "Reduzir o --interval para 60s na unit deploy/agentic-loop.service ou implementar um mecanismo de healthcheck reativo no loop.py para falhas críticas.",
+      "never": [
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service",
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T050242Z",
+      "history": [
+        {
+          "at": "2026-08-18T05:02:42+00:00",
+          "event": "mapped",
+          "detail": "20260818T050242Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-playwright-mcp-desativado-limita-extra-o-estrutu",
+      "key": "21eb62df645c9f9f",
+      "canon": "17d5d272df64f3ee",
+      "title": "Playwright MCP desativado limita extração estruturada",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O playwright-mcp está desativado para economizar tokens, mas impede que agentes obtenham snapshots estruturados (axtree/DOM) quando a extração via CLI puro é insuficiente.",
+      "change": "Implementar um toggle no loop.py que ativa o MCP temporariamente apenas quando uma skill específica de extração complexa é invocada, desativando-o logo em seguida.",
+      "never": [
+        "manter MCP ativo em todos os ticks",
+        "vazar tokens",
+        "fuzzing"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/tools/playwright.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T050242Z",
+      "history": [
+        {
+          "at": "2026-08-18T05:02:42+00:00",
+          "event": "mapped",
+          "detail": "20260818T050242Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-de-traces-do-ghostcli-theme-tools",
+      "key": "6c14307db9b80ab4",
+      "canon": "d5aa6f311d56cd8d",
+      "title": "Sanitização de traces do GhostCLI [theme=tools]",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Traces sanitizados da GhostCLI podem reter paths absolutos do sistema ou variáveis de ambiente sensíveis antes de serem persistidos no ledger.",
+      "change": "Adicionar um filtro em ghostcli.py que mascara paths locais (/root/...) e variáveis (ANTHROPIC_BASE_URL) dos traces antes de salvar no ledger.",
+      "never": [
+        "apagar traces",
+        "enviar traces para fora",
+        "modificar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T050242Z",
+      "history": [
+        {
+          "at": "2026-08-18T05:02:42+00:00",
+          "event": "mapped",
+          "detail": "20260818T050242Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-tricas-de-eval-para-patches-do-develop-theme-a",
+      "key": "3d7cf0f7382b8949",
+      "canon": "40b110a03036652f",
+      "title": "Métricas de eval para patches do develop [theme=ai]",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O improve.py depende apenas de pytest e reviewer. Falta uma métrica automática de eval (ex: cobertura, complexidade) para filtrar patches de baixa qualidade antes do review.",
+      "change": "Integrar uma etapa no improve.py que roda pytest --cov e rejeita patches que diminuam a cobertura ou aumentem a complexidade ciclomática além de um limiar seguro.",
+      "never": [
+        "bloquear patches de segurança críticos",
+        "alterar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T050242Z",
+      "history": [
+        {
+          "at": "2026-08-18T05:02:42+00:00",
+          "event": "mapped",
+          "detail": "20260818T050242Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-endpoint-de-healthcheck-detalhado-no-portal",
+      "key": "288218eb42bfbbb9",
+      "canon": "eef438693817b9da",
+      "title": "Endpoint de healthcheck detalhado no portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O agentic-portal.service não expõe um endpoint JSON com o status de cada ferramenta para monitoramento externo ou dashboards.",
+      "change": "Adicionar um endpoint /api/health no backend do portal que consome o último tick do loop.py e retorna o status de playwright, jq e ghostcli.",
+      "never": [
+        "expor credenciais Bybit",
+        "requerer autenticação para o healthcheck básico"
+      ],
+      "files_hint": [
+        "src/agentic/portal/routes.py",
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T050242Z",
+      "history": [
+        {
+          "at": "2026-08-18T05:02:42+00:00",
+          "event": "mapped",
+          "detail": "20260818T050242Z"
         }
       ]
     }
