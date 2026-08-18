@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -28,13 +28,18 @@
         "tests/test_loop.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
       "map_id": "20260817T120129Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
           "event": "mapped",
           "detail": "20260816T143343Z"
+        },
+        {
+          "at": "2026-08-18T00:14:43+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
         }
       ]
     },
