@@ -1,21 +1,20 @@
 {
-  "at": "2026-08-18T16:07:10+00:00",
+  "at": "2026-08-18T16:49:14+00:00",
   "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
   "proposal_id": "imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
-  "verdict": "reject",
-  "reason": "O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py.",
+  "verdict": "approve",
+  "reason": "O diff implementa corretamente a lógica de retry com backoff exponencial e timeout configurável na função de invocação do CLI, atendendo ao escopo da proposta. Inclui testes para a nova resiliência e não expõe segredos nem altera configurações proibidas.",
   "risks": [
-    "Implementação ausente da lógica de retry e timeout.",
-    "Arquivo improve.py não foi modificado conforme o escopo da proposta.",
-    "Falta de testes para validar a nova resiliência."
+    "O tempo total de processamento pode aumentar em caso de falhas persistentes, mas o limite de tentativas e o backoff_cap mitigam o impacto na fila."
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 144.07s (0:02:24)"
+    "output": "........................................................................ [ 71%]\n.............................                                            [100%]\n101 passed in 154.51s (0:02:34)"
   },
   "files": [
-    "src/agentic/claude_cli.py"
+    "src/agentic/claude_cli.py",
+    "tests/test_claude_cli_retry.py"
   ]
 }
