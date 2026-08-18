@@ -5957,7 +5957,7 @@
       "title": "Resiliência a falhas transitórias na fila de develop",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "O improve.py despeja prompts no Claude CLI sem retry estrutrado. Falhas temporárias na API GhostCLI travam o processamento da fila pending.",
       "change": "Adicionar timeout configurável e retry com backoff exponencial ao invocar claude_cli.py dentro do improve.py.",
       "never": [
@@ -5970,7 +5970,7 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
       "map_id": "20260817T234014Z",
       "history": [
         {
@@ -5987,6 +5987,11 @@
           "at": "2026-08-18T16:07:10+00:00",
           "event": "requeued",
           "detail": "reject: O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py. riscos=['Implementação ausente da lógica de retry e timeout.', 'Arquivo improve.py não foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resiliência.'] arquivos=src/agentic/claude_cli.py"
+        },
+        {
+          "at": "2026-08-18T16:34:12+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev"
         }
       ],
       "review_feedback": "reject: O diff não corresponde à proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configurável ou as alterações exigidas em improve.py. riscos=['Implementação ausente da lógica de retry e timeout.', 'Arquivo improve.py não foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resiliência.'] arquivos=src/agentic/claude_cli.py"
