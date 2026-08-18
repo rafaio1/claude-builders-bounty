@@ -2781,7 +2781,7 @@
       "title": "Restaurar git_clean: fatia improve e playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A working tree suja inclui mudanças no playbook e na unit systemd do improve, que devem ser isoladas do motor.",
       "change": "Stage e commit cirúrgico dos arquivos de improve, documentação e serviço systemd, mantendo o escopo restrito a esta fatia.",
       "never": [
@@ -2812,8 +2812,14 @@
           "at": "2026-08-18T03:19:04+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-improve-e-playbook"
+        },
+        {
+          "at": "2026-08-18T03:20:09+00:00",
+          "event": "requeued",
+          "detail": "All `files_hint` for this slice are already tracked and clean — no modifications exist on this branch. The dirty files (`aro/*`, `mail.py`, `cli.py`) belong to other slices and are outside this proposal's scope. The `.gitignore` already correctly excludes `improve/traces/`, locks, and `data/`. There is nothing to change on disk for this fatia.\n\nSUMMARY: Nenhum arquivo da fatia improve/playbook pre…"
         }
-      ]
+      ],
+      "review_feedback": "blocked: All `files_hint` for this slice are already tracked and clean — no modifications exist on this branch. The dirty files (`aro/*`, `mail.py`, `cli.py`) belong to other slices and are outside this proposal's scope. The `.gitignore` already correctly excludes `improve/traces/`, locks, and `data/`. There is nothing to change on disk for this fatia.\n\nSUMMARY: Nenhum arquivo da fatia improve/playbook pre…"
     },
     {
       "id": "imp-20260817-restaurar-git-clean-fatia-claude-cli",
