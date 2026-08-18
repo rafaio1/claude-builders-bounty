@@ -403,6 +403,7 @@ def tick(settings: Settings) -> dict[str, Any]:
         ghostcli=bool(tools.get("ghostcli")),
         bybit=bool(tools.get("bybit_key") and tools.get("bybit_secret")),
         live_trade=False,
+        operate=True,
     )
     payload = {
         "ok": True,
