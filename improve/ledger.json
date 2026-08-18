@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T01:04:55+00:00",
+  "updated_at": "2026-08-18T02:02:22+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -512,7 +512,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T010455Z",
+      "map_id": "20260818T020222Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -539,7 +539,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T010455Z",
+      "map_id": "20260818T020222Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -566,7 +566,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T010455Z",
+      "map_id": "20260818T020222Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -595,7 +595,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T010455Z",
+      "map_id": "20260818T020222Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5848,6 +5848,267 @@
           "at": "2026-08-18T01:04:55+00:00",
           "event": "mapped",
           "detail": "20260818T010455Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimiza-o-do-intervalo-de-tick-do-systemd",
+      "key": "f25ace8fd2017e95",
+      "canon": "be4f74c018f6c8f7",
+      "title": "Otimização do intervalo de tick do systemd",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O intervalo atual de 90s pode ser excessivo para healthchecks de ferramentas simples, gerando overhead desnecessário e atrasando a detecção de falhas.",
+      "change": "Ajustar o parâmetro --interval na unit deploy/agentic-loop.service para um valor otimizado (ex: 60s) após validação de carga.",
+      "never": [
+        "alterar a lógica do loop.py",
+        "ativar AGENTIC_LIVE_TRADE",
+        "mudar a constituição ARO"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-resili-ncia-do-healthcheck-do-playwright",
+      "key": "e09b8d9dc6413973",
+      "canon": "deeaca75bf798ef2",
+      "title": "Resiliência do healthcheck do Playwright",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Falhas intermitentes de navegadores headless em containers podem derrubar o tick do loop sem retentativa, gerando falsos positivos de indisponibilidade.",
+      "change": "Implementar um contador de retentativa simples no loop.py para a ferramenta playwright antes de reportar falha crítica no tick.",
+      "never": [
+        "ativar playwright-mcp",
+        "enviar ordens Bybit",
+        "alterar a constituição ARO"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-de-integridade-do-arquivo-de-credenciai",
+      "key": "6f7d21e0c640a5a7",
+      "canon": "6874bac96a1ae961",
+      "title": "Validação de integridade do arquivo de credenciais Bybit",
+      "kind": "bottleneck",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O sistema depende de /root/.automaton/bybit-murre.env. Se o arquivo sumir ou perder permissão, o env.py falhará silenciosamente ou quebrará o load-env.sh.",
+      "change": "Adicionar verificação de existência e permissões (chmod 600) do arquivo de credenciais no healthcheck do env.py.",
+      "never": [
+        "imprimir secrets no log",
+        "alterar o destino do payout",
+        "modificar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-limpeza-de-tarefas-pending-antigas-no-improve",
+      "key": "f8da8f7aeedf5fc0",
+      "canon": "649e090fec4abafb",
+      "title": "Limpeza de tarefas pending antigas no Improve",
+      "kind": "bottleneck",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "Tarefas que falharam no review e voltaram para pending podem acumular indefinidamente no ledger, poluindo a fila do improve.py e consumindo tokens do GhostCLI.",
+      "change": "Adicionar filtro de timestamp no improve.py para arquivar ou descartar tarefas pending com mais de X dias.",
+      "never": [
+        "apagar o ledger inteiro",
+        "forçar commit",
+        "mudar o destino de payout"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-wrapper-de-sanitiza-o-para-logs-do-playwright-cl",
+      "key": "b095bbf865ec613a",
+      "canon": "b515ee3f6a13bd75",
+      "title": "Wrapper de sanitização para logs do Playwright CLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O output do playwright-cli contém URLs e snapshots que podem vazar dados sensíveis se capturados por traces não sanitizados.",
+      "change": "Criar um filtro regex no loop.py ou num módulo auxiliar para limpar URLs e tokens dos logs do playwright antes de gravar no disco.",
+      "never": [
+        "desativar o playwright-cli",
+        "usar playwright-mcp",
+        "gravar senhas em texto"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-roteamento-de-traces-sanitizados-da-ghostcli-par",
+      "key": "9b7e5d5fb808459a",
+      "canon": "f6011721b6036c2c",
+      "title": "Roteamento de traces sanitizados da GhostCLI para avaliação",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Os traces das interações do claude_cli.py com a GhostCLI são gerados, mas não há um pipeline estruturado para usá-los em fine-tuning ou eval de prompts do develop.",
+      "change": "Implementar um exporter no claude_cli.py que envia os traces sanitizados para um diretório de eval ou endpoint de análise offline.",
+      "never": [
+        "enviar traces para endpoints externos não autorizados",
+        "incluir secrets da Bybit nos traces",
+        "alterar o modelo GHOSTCLI_MODEL"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-tricas-de-sucesso-do-reviewer-no-ledger",
+      "key": "a015c983d45c698e",
+      "canon": "40b38349796dc881",
+      "title": "Métricas de sucesso do reviewer no ledger",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O improve.py gerencia a fila, mas não registra métricas agregadas de quantas sugestões do develop foram aceitas ou rejeitadas pelo reviewer.",
+      "change": "Adicionar contadores no improve.py para registrar taxa de aceitação no ledger após o feedback do review.",
+      "never": [
+        "aplicar patches direto na main",
+        "ignorar o review_feedback",
+        "alterar ARO.md"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-cache-de-templates-est-ticos-no-portal",
+      "key": "378bd2746e24429e",
+      "canon": "6660a2cc00593334",
+      "title": "Cache de templates estáticos no portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O agentic-portal.service serve templates/CSS/JS a cada requisição, o que pode gerar latência sob carga.",
+      "change": "Configurar cabeçalhos de cache-control ou um cache em memória simples para assets estáticos no serviço do portal.",
+      "never": [
+        "gravar senhas em texto",
+        "usar Argon2id incorretamente",
+        "expor credenciais no frontend"
+      ],
+      "files_hint": [
+        "src/agentic/portal.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-de-schema-json-para-skills-do-claude",
+      "key": "0996a9bca40ff043",
+      "canon": "1ac0102d54135fed",
+      "title": "Validação de schema JSON para skills do Claude",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "As skills em .claude/skills/ podem sofrer alterações de formato que quebram a automação do claude_cli.py.",
+      "change": "Adicionar validação de schema (ex: pydantic ou jsonschema) ao carregar skills no motor para falhar rápido em caso de formato inválido.",
+      "never": [
+        "modificar a skill generate-changelog diretamente no patch",
+        "executar a skill em live trade",
+        "criar loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T020222Z",
+      "history": [
+        {
+          "at": "2026-08-18T02:02:22+00:00",
+          "event": "mapped",
+          "detail": "20260818T020222Z"
         }
       ]
     }
