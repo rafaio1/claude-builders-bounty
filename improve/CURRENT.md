@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-17T23:40:14+00:00
+Atualizado: 2026-08-18T01:04:55+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,20 +12,20 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-17T23:35:31+00:00
-- git_clean: ok
-- dirty_paths: []
+- last_tick: 2026-08-18T00:57:56+00:00
+- git_clean: FALHOU
+- dirty_paths: [".claude/skills/generate-changelog/"]
 
 ## Ghost
 
-Mapeamento de gargalos e melhorias focado em resiliência da fila de develop, avaliação de IA via traces e otimização de recursos headless.
+Foco em restaurar a integridade do repositório (git_clean) e otimizar ferramentas e eval de IA com patches cirúrgicos, sem alterar o core do loop ou a constituição ARO.
 
 ## Ledger
 
-{"pending": 136, "blocked": 8, "applied": 17, "developing": 1}
+{"developing": 2, "blocked": 9, "pending": 139, "applied": 17}
 
-- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
-- `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [pending/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
+- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [developing/p1] Restaurar git_clean: working tree limpa na main
+- `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [blocked/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
 - `imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui` [pending/p2] Tick de saúde não deixa estado legível por máquina
 - `imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er` [pending/p2] review_feedback não estruturado faz o develop errar o alvo
 - `imp-20260816-carga-de-credenciais-sem-valida-o-expl-cita-do-a` [pending/p3] Carga de credenciais sem validação explícita do arquivo canônico
