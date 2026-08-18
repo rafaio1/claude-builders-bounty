@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T09:46:20+00:00",
+  "updated_at": "2026-08-18T10:02:15+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T090226Z",
+      "map_id": "20260818T100215Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T090226Z",
+      "map_id": "20260818T100215Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T090226Z",
+      "map_id": "20260818T100215Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T090226Z",
+      "map_id": "20260818T100215Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4604,12 +4604,12 @@
       "id": "imp-20260817-rigidez-do-intervalo-do-loop-via-systemd",
       "key": "376be467c90a1452",
       "canon": "fabbd0e7cb3301c7",
-      "title": "Rigidez do intervalo do loop via systemd",
+      "title": "Rigidez do intervalo do loop systemd",
       "kind": "bottleneck",
       "priority": 2,
       "status": "pending",
-      "rationale": "O intervalo de 90s é ditado pelo argumento --interval da unit systemd, limitando ajustes dinâmicos de saúde sem reiniciar o serviço.",
-      "change": "Permitir que o loop leia um valor de intervalo de variável de ambiente como fallback, mantendo o default de 90s.",
+      "rationale": "O intervalo fixo de 90s (--interval 90) não se adapta à profundidade da fila no improve.py, gerando ociosidade ou atraso.",
+      "change": "Permitir que loop.py leia uma variável de ambiente (ex: AGENTIC_LOOP_INTERVAL) para ajuste dinâmico, respeitando o limite inferior da unit systemd.",
       "never": [
         "Modificar a unit systemd via código",
         "Ativar AGENTIC_LIVE_TRADE=1"
@@ -4619,7 +4619,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T090418Z",
+      "map_id": "20260818T100215Z",
       "history": [
         {
           "at": "2026-08-17T09:04:18+00:00",
@@ -5514,7 +5514,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "quarantine",
       "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
       "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
@@ -5595,9 +5595,14 @@
           "at": "2026-08-18T09:46:40+00:00",
           "event": "blocked",
           "detail": "The working tree is already clean (only untracked `.claude/skills/generate-changelog/`, which is outside the proposal scope), and `.gitignore` already covers `data/`, `improve/traces/`, locks, and env files. No ARO core files are dirty, so there is nothing to stage or restore. The improvement's intent (\"restaurar git_clean\") is already satisfied; the pipeline will snapshot this state when it runs.…"
+        },
+        {
+          "at": "2026-08-18T10:02:15+00:00",
+          "event": "quarantined",
+          "detail": "limite de 3 rejeições consecutivas atingido; requer intervenção manual"
         }
       ],
-      "review_feedback": ""
+      "review_feedback": "The working tree is already clean (only untracked `.claude/skills/generate-changelog/`, which is outside the proposal scope), and `.gitignore` already covers `data/`, `improve/traces/`, locks, and env files. No ARO core files are dirty, so there is nothing to stage or restore. The improvement's intent (\"restaurar git_clean\") is already satisfied; the pipeline will snapshot this state when it runs.…"
     },
     {
       "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
@@ -7534,6 +7539,95 @@
           "at": "2026-08-18T09:02:26+00:00",
           "event": "mapped",
           "detail": "20260818T090226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-estruturada-de-traces-da-ghostcli-the",
+      "key": "2e0bd61691be2b89",
+      "canon": "79d4d2d7d1807097",
+      "title": "Sanitização estruturada de traces da GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Traces são vitais para eval e debug, mas podem vazar paths absolutos ou contexto sensível do prompt se armazenados crus.",
+      "change": "Inserir middleware em claude_cli.py para anonimizar UUIDs, paths e tokens antes de persistir os traces no ledger.",
+      "never": [
+        "Desativar logs",
+        "Expor ANTHROPIC_BASE_URL ou GHOSTCLI_MODEL",
+        "Trading live"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T100215Z",
+      "history": [
+        {
+          "at": "2026-08-18T10:02:15+00:00",
+          "event": "mapped",
+          "detail": "20260818T100215Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-de-schema-de-skills-do-playwright-theme",
+      "key": "1192edf93d0f8ffe",
+      "canon": "36614fc8fe067ddc",
+      "title": "Validação de schema de skills do Playwright (theme=tools)",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O playwright-cli headless é a única ferramenta de navegador. Skills malformadas causam falhas silenciosas ou desperdício de tokens no motor.",
+      "change": "Adicionar validação JSON schema no carregamento de skills em aro/constitution.py para garantir que seletores e ações sejam válidos antes da execução.",
+      "never": [
+        "Ativar playwright-mcp",
+        "Executar fora do sandbox --no-sandbox",
+        "Ignorar erros de pid"
+      ],
+      "files_hint": [
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T100215Z",
+      "history": [
+        {
+          "at": "2026-08-18T10:02:15+00:00",
+          "event": "mapped",
+          "detail": "20260818T100215Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-feedback-loop-estruturado-no-reviewer",
+      "key": "e31bb8b49af80c9c",
+      "canon": "3b78b4fee9bad9ef",
+      "title": "Feedback loop estruturado no reviewer",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "O develop seguinte precisa corrigir exatamente o parecer do reviewer. O review_feedback atual pode ser pouco estruturado para consumo via prompt.",
+      "change": "Padronizar o review_feedback em JSON no ledger para que o prompt do develop consuma os campos de erro de forma programática.",
+      "never": [
+        "Bypass do reviewer",
+        "Commit direto na main",
+        "Ignorar pytest"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T100215Z",
+      "history": [
+        {
+          "at": "2026-08-18T10:02:15+00:00",
+          "event": "mapped",
+          "detail": "20260818T100215Z"
         }
       ]
     }
