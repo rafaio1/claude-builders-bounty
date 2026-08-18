@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T02:26:35+00:00",
+  "updated_at": "2026-08-18T03:02:13+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -414,8 +414,8 @@
       "kind": "bottleneck",
       "priority": 1,
       "status": "blocked",
-      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/commerce.py, src/agentic/aro/pursue.py.",
-      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/commerce.py, src/agentic/aro/pursue.py.",
+      "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/work.py.",
+      "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/work.py.",
       "never": [
         "git reset --hard",
         "commitar outras fatias neste patch",
@@ -424,12 +424,11 @@
         "ligar AGENTIC_LIVE_TRADE=1"
       ],
       "files_hint": [
-        "src/agentic/aro/commerce.py",
-        "src/agentic/aro/pursue.py"
+        "src/agentic/aro/work.py"
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T022635Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -507,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T022635Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -534,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T022635Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -561,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T022635Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -590,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T022635Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5389,12 +5388,12 @@
       "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
       "key": "dba7935c51373e16",
       "canon": "a3da6bfc747a6d5c",
-      "title": "Restaurar git_clean: working tree limpa na main (fatia motor/env/cli)",
+      "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
       "status": "pending",
-      "rationale": "O censo indica git_clean=false. A working tree suja impede o reviewer de aplicar mudanças na main. Esta fatia isola as alterações do motor e configuração de ambiente para versionamento seguro.",
-      "change": "Stagear e commitar exclusivamente os arquivos do motor e env (cli.py, env.py, aro.env.example) após validação de que não há secrets, restaurando a integridade parcial.",
+      "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
+      "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
         "commitar .env com secrets",
         "usar git reset --hard",
@@ -5403,12 +5402,11 @@
         "usar --no-verify"
       ],
       "files_hint": [
-        "src/agentic/cli.py",
-        "src/agentic/env.py"
+        "src/agentic/aro/work.py"
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260817T230624Z",
+      "map_id": "20260818T030213Z",
       "history": [
         {
           "at": "2026-08-17T23:06:24+00:00",
@@ -6310,6 +6308,119 @@
           "at": "2026-08-18T02:26:35+00:00",
           "event": "mapped",
           "detail": "20260818T022635Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "key": "965bc386fc7b51fe",
+      "canon": "b5301df79a5195e9",
+      "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
+      "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
+      "never": [
+        "reset --hard",
+        "clean -fd",
+        "commitar .env",
+        "juntar com a fatia do motor"
+      ],
+      "files_hint": [],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T030213Z",
+      "history": [
+        {
+          "at": "2026-08-18T03:02:13+00:00",
+          "event": "mapped",
+          "detail": "20260818T030213Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-gest-o-de-falhas-no-claude-cli",
+      "key": "e4254d23ec2cdaba",
+      "canon": "348636ff883f03fd",
+      "title": "Gestão de falhas no Claude CLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O develop apenas despacha prompts; falhas de API ou timeouts não retornam para a fila como pending com review_feedback.",
+      "change": "Capturar returncode e stderr no claude_cli.py e reinserir na fila com motivo estruturado.",
+      "never": [
+        "imprimir GHOSTCLI_MODEL",
+        "expor ANTHROPIC_BASE_URL"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T030213Z",
+      "history": [
+        {
+          "at": "2026-08-18T03:02:13+00:00",
+          "event": "mapped",
+          "detail": "20260818T030213Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-traces-sanitizados-para-eval-da-ghostcli",
+      "key": "b40d25009a6ebeb1",
+      "canon": "c38ad36514a80082",
+      "title": "Traces sanitizados para eval da GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Necessário avaliar a qualidade das IAs sem vazar dados sensíveis.",
+      "change": "Gravar JSON de traces das chamadas em ghostcli.py, omitindo headers de auth e secrets, num diretório de eval.",
+      "never": [
+        "salvar tokens em disco",
+        "enviar traces para endpoints externos"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T030213Z",
+      "history": [
+        {
+          "at": "2026-08-18T03:02:13+00:00",
+          "event": "mapped",
+          "detail": "20260818T030213Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-de-snapshot-no-playwright-cli",
+      "key": "85f284546d23bcee",
+      "canon": "259969e5a040af34",
+      "title": "Validação de snapshot no playwright-cli",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O tick de saúde valida o returncode, mas não inspeciona o stdout para erros de rede ou timeouts silenciosos.",
+      "change": "Adicionar parser no stdout do playwright-cli em loop.py para detectar falhas lógicas de navegação.",
+      "never": [
+        "ativar playwright-mcp",
+        "usar navegação interativa"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T030213Z",
+      "history": [
+        {
+          "at": "2026-08-18T03:02:13+00:00",
+          "event": "mapped",
+          "detail": "20260818T030213Z"
         }
       ]
     }
