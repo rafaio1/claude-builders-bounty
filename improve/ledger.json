@@ -5590,6 +5590,11 @@
           "at": "2026-08-18T09:27:03+00:00",
           "event": "blocked",
           "detail": "A working tree já está limpa (apenas `.claude/skills/generate-changelog/` como untracked, fora do escopo desta proposta) e os 11 testes de `tests/test_aro.py` passam. Não há arquivos modificados para stagear nem ajustes necessários em `.gitignore` ou `improve/`.\n\nSUMMARY: Working tree já estava limpa e testes do ARO passaram; nenhuma alteração foi necessária nesta fatia."
+        },
+        {
+          "at": "2026-08-18T09:46:40+00:00",
+          "event": "blocked",
+          "detail": "The working tree is already clean (only untracked `.claude/skills/generate-changelog/`, which is outside the proposal scope), and `.gitignore` already covers `data/`, `improve/traces/`, locks, and env files. No ARO core files are dirty, so there is nothing to stage or restore. The improvement's intent (\"restaurar git_clean\") is already satisfied; the pipeline will snapshot this state when it runs.…"
         }
       ],
       "review_feedback": ""
