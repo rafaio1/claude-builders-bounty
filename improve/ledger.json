@@ -3038,7 +3038,7 @@
       "title": "Restaurar git_clean (ARO constituição e ciclo interno): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "never": [
@@ -3054,7 +3054,7 @@
         "tests/test_aro.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte",
+      "branch": "",
       "map_id": "20260817T230624Z",
       "history": [
         {
@@ -3096,6 +3096,11 @@
           "at": "2026-08-18T01:37:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+        },
+        {
+          "at": "2026-08-18T01:37:25+00:00",
+          "event": "blocked",
+          "detail": "SUMMARY: Working tree limpa restaurada; improve/ledger.json revertido para HEAD (timestamps/map_id são gerados pelo pipeline e não pertencem a esta fatia). Arquivos da proposta (src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py) já estavam versionados e sem diff. Único item untracked restante (.claude/skills/generate-changelog/) está fora do escopo desta melhoria."
         }
       ],
       "review_feedback": "blocked: The working tree is now clean after restoring `improve/ledger.json` to HEAD. The target files for this proposal (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) were already confirmed to have no diff against HEAD in the previous requeue, and `.gitignore` already contains the needed entries. There are no remaining changes to make for this slice.\n\nSUMMARY: Restaurado im…"
