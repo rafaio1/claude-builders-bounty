@@ -5514,7 +5514,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
       "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
@@ -5545,6 +5545,11 @@
           "at": "2026-08-18T07:24:11+00:00",
           "event": "requeued",
           "detail": "The `.claude/skills/generate-changelog/` directory is untracked and not gitignored, but it's unrelated to this proposal. The proposal targets `src/agentic/aro/work.py`, which doesn't exist and never existed in git history. The working tree is already clean with respect to tracked files — there is nothing to restore.\n\nSince the rationale is stale and no action can be taken on a non-existent file, a…"
+        },
+        {
+          "at": "2026-08-18T07:43:30+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
         }
       ],
       "review_feedback": "blocked: The `.claude/skills/generate-changelog/` directory is untracked and not gitignored, but it's unrelated to this proposal. The proposal targets `src/agentic/aro/work.py`, which doesn't exist and never existed in git history. The working tree is already clean with respect to tracked files — there is nothing to restore.\n\nSince the rationale is stale and no action can be taken on a non-existent file, a…"
