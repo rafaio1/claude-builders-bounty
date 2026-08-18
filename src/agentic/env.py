@@ -79,6 +79,13 @@ def _load_into_environ() -> None:
     os.environ.setdefault("BYBIT_CATEGORY", "spot")
     os.environ.setdefault("BYBIT_ENV_FILE", str(BYBIT_ENV))
     os.environ.setdefault("AGENTIC_LIVE_TRADE", "0")
+    # Playwright MCP desativado por diretriz: o CLI headless cobre todos os
+    # casos de uso do motor com custo de tokens muito menor. Qualquer variável
+    # de ambiente que tente reativar o MCP é removida aqui para evitar dreno
+    # silencioso de tokens caso um agente ou script externo a injete.
+    for mcp_key in list(os.environ):
+        if mcp_key.upper() in {"PLAYWRIGHT_MCP", "PLAYWRIGHT_MCP_ENABLED", "MCP_PLAYWRIGHT"}:
+            os.environ.pop(mcp_key, None)
     ghost_key = os.environ.get("GHOSTCLI_API_KEY") or os.environ.get("GHOSTCLI_KEY") or ""
     if ghost_key:
         os.environ.setdefault("ANTHROPIC_API_KEY", ghost_key)
