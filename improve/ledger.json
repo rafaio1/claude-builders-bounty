@@ -3050,7 +3050,7 @@
       "title": "Restaurar git_clean (Playbook git_clean e integrity): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "never": [
@@ -3078,8 +3078,14 @@
           "at": "2026-08-18T06:02:43+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri"
+        },
+        {
+          "at": "2026-08-18T06:03:09+00:00",
+          "event": "requeued",
+          "detail": "The working tree is clean except for an untracked `.claude/skills/generate-changelog/` directory, which is outside the proposal scope. The files listed in `files_hint` (`improve/README.md`, `src/agentic/improve.py`, `tests/test_improve.py`, `.gitignore`) already contain the git_clean playbook and integrity content on disk — no edits are needed to restore git_clean for this slice.\n\nSUMMARY: Working…"
         }
-      ]
+      ],
+      "review_feedback": "blocked: The working tree is clean except for an untracked `.claude/skills/generate-changelog/` directory, which is outside the proposal scope. The files listed in `files_hint` (`improve/README.md`, `src/agentic/improve.py`, `tests/test_improve.py`, `.gitignore`) already contain the git_clean playbook and integrity content on disk — no edits are needed to restore git_clean for this slice.\n\nSUMMARY: Working…"
     },
     {
       "id": "imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env",
