@@ -1,20 +1,20 @@
 {
-  "at": "2026-08-17T18:21:53+00:00",
+  "at": "2026-08-18T14:45:09+00:00",
   "branch": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos",
   "proposal_id": "imp-20260817-health-check-do-playwright-n-o-detecta-processos",
-  "verdict": "approve",
-  "reason": "Aprovado. O diff corresponde exatamente à proposta, adicionando uma verificação defensiva e limpeza best-effort de processos zumbis do Playwright em loop.py. Não há riscos ofensivos, segredos expostos ou violação das restrições. Os testes unitários cobrem adequadamente os novos cenários.",
+  "verdict": "reject",
+  "reason": "O diff não corresponde à proposta. A proposta exigia a inclusão da verificação de processos no arquivo src/agentic/loop.py, mas o diff apresentado apenas atualiza a documentação no AGENTS.md, sem conter as alterações reais de código.",
   "risks": [
-    "O padrão de busca do pkill/pgrep é amplo e pode, em teoria, afetar outros processos Chromium legítimos no host, mas o limite configurado mitiga falsos positivos em condições normais."
+    "Código não implementado",
+    "Documentação descrevendo funcionalidade inexistente"
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": ".........................................................                [100%]\n57 passed in 14.47s"
+    "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 116.37s (0:01:56)"
   },
   "files": [
-    "src/agentic/loop.py",
-    "tests/test_loop.py"
+    "AGENTS.md"
   ]
 }
