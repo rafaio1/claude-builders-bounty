@@ -6486,7 +6486,7 @@
       "title": "Restaurar git_clean: Fatia Ferramentas",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O diretório de skills generate-changelog está untracked e polui a working tree, afetando a integridade do git_clean.",
       "change": "O pipeline stageia o diretório ou o adiciona ao .gitignore (se for lixo gerado), commitando apenas essa fatia de ferramentas.",
       "never": [
@@ -6519,6 +6519,11 @@
           "at": "2026-08-18T12:49:33+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-fatia-ferramentas"
+        },
+        {
+          "at": "2026-08-18T12:49:35+00:00",
+          "event": "requeued",
+          "detail": "API Error: 402 API access not purchased — add it at https://ghostcli.dev/checkout?item=api"
         }
       ],
       "review_feedback": "claude_failed: API Error: 402 API access not purchased — add it at https://ghostcli.dev/checkout?item=api"
