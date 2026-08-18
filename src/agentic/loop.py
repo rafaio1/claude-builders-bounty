@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import concurrent.futures
 import json
 import shutil
 import subprocess
@@ -274,6 +275,8 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "error": "ghost_key_not_configured",
             "binary": ghost_bin,
         }
+    # Timeout curto para evitar que um endpoint lento/pendurado bloqueie o tick.
+    _GHOSTCLI_CHECK_TIMEOUT_S = 10.0
     try:
         settings = load_settings()
         client = GhostCLI(
@@ -281,7 +284,9 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             base_url=settings.ghostcli_base_url,
             model=settings.ghostcli_model,
         )
-        result = client.check()
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as executor:
+            future = executor.submit(client.check)
+            result = future.result(timeout=_GHOSTCLI_CHECK_TIMEOUT_S)
         ok = bool(result.get("ok"))
         sample = str(result.get("sample") or "")[:80]
         return {
@@ -290,6 +295,14 @@ def _smoke_ghostcli(env: dict[str, Any]) -> dict[str, Any]:
             "stdout_snippet": sample,
             "error": "" if ok else "ghostcli_check_failed",
             "model": result.get("model", ""),
+            "binary": ghost_bin,
+        }
+    except concurrent.futures.TimeoutError:
+        return {
+            "ok": False,
+            "returncode": None,
+            "stdout_snippet": "",
+            "error": f"ghostcli_check_timeout_after_{_GHOSTCLI_CHECK_TIMEOUT_S}s",
             "binary": ghost_bin,
         }
     except HttpError as exc:
