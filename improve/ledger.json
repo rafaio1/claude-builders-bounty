@@ -2253,7 +2253,7 @@
       "title": "Saúde do tick é efêmera (sem histórico para flap/indisponibilidade)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O tick de loop.py verifica ferramentas a cada 90s, mas o resultado só vive em log; sem estado persistido não dá para detectar flap, nem saber há quanto tempo playwright/ghostcli estão degradados.",
       "change": "Persistir um snapshot compacto por tick em state/health.json (arquivo fora do git): status por ferramenta, timestamp e contador de falhas consecutivas; ler esse estado no início do tick.",
       "never": [
@@ -2278,6 +2278,11 @@
           "at": "2026-08-17T13:15:02+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in"
+        },
+        {
+          "at": "2026-08-18T16:25:45+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },

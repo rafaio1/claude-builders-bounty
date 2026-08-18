@@ -1,0 +1,17 @@
+{
+  "at": "2026-08-18T16:25:45+00:00",
+  "branch": "improve/dev/imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in",
+  "proposal_id": "imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in",
+  "verdict": "approve",
+  "reason": "A implementação adiciona o contador de falhas consecutivas e persiste o histórico de saúde de forma defensiva, lidando com arquivos ausentes ou corrompidos e mantendo retrocompatibilidade com o formato antigo. O caminho utilizado (data/health.json) já era o padrão do sistema, sendo uma extensão correta e segura da funcionalidade existente, sem expor segredos, sem acionar ordens e dentro do escopo permitido.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": ".......................................................                  [100%]\n55 passed in 83.13s (0:01:23)"
+  },
+  "files": [
+    "src/agentic/loop.py"
+  ]
+}
