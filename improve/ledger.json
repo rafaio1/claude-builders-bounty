@@ -3083,7 +3083,7 @@
       "title": "Restaurar git_clean (Ferramentas de agente e env interna): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: AGENTS.md.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: AGENTS.md.",
       "never": [
@@ -3097,13 +3097,18 @@
         "AGENTS.md"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env",
       "map_id": "20260817T013627Z",
       "history": [
         {
           "at": "2026-08-17T01:36:27+00:00",
           "event": "mapped",
           "detail": "20260817T013627Z"
+        },
+        {
+          "at": "2026-08-18T04:40:31+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
         }
       ]
     },
