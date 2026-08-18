@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T03:02:13+00:00",
+  "updated_at": "2026-08-18T04:01:59+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260818T040159Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260818T040159Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260818T040159Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260818T040159Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -6452,6 +6452,149 @@
           "at": "2026-08-18T03:02:13+00:00",
           "event": "mapped",
           "detail": "20260818T030213Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-tratamento-estrito-de-review-feedback-no-develop",
+      "key": "9b1954da5e4ed16d",
+      "canon": "8d66890ef00898f3",
+      "title": "Tratamento estrito de review_feedback no develop",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita ou o pytest falha, a proposta volta a pending. O ciclo de correção precisa ser estrito para não alargar o escopo da tarefa original.",
+      "change": "Garantir que claude_cli.py e improve.py processem o review_feedback exato no prompt do Claude CLI sem adicionar contexto extra ou mudar o objetivo.",
+      "never": [
+        "ignorar review_feedback",
+        "alterar escopo da proposta",
+        "resetar histórico",
+        "criar loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T040159Z",
+      "history": [
+        {
+          "at": "2026-08-18T04:01:59+00:00",
+          "event": "mapped",
+          "detail": "20260818T040159Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimiza-o-do-interval-de-tick-do-loop-systemd",
+      "key": "cc5f5435c938d0e1",
+      "canon": "56671ddc0940768b",
+      "title": "Otimização do interval de tick do loop systemd",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O loop atual tem --interval 90. Dependendo da carga de ferramentas, 90s pode gerar ociosidade ou sobrecarga de tokens no healthcheck sem métricas claras.",
+      "change": "Ajustar o parâmetro --interval na unit systemd (deploy/agentic-loop.service) para um valor mais adequado baseado em métricas reais de execução.",
+      "never": [
+        "alterar AGENTIC_LIVE_TRADE",
+        "enviar ordens Bybit",
+        "modificar env.py para imprimir secrets"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T040159Z",
+      "history": [
+        {
+          "at": "2026-08-18T04:01:59+00:00",
+          "event": "mapped",
+          "detail": "20260818T040159Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-refatora-o-de-skills-do-playwright-cli",
+      "key": "5efa15ef9a14536f",
+      "canon": "eda370450d77ec87",
+      "title": "Refatoração de skills do Playwright CLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-mcp está desativado para economizar tokens, então o playwright-cli headless precisa de wrappers/skills mais eficientes para interações complexas.",
+      "change": "Criar ou otimizar skills em .claude/skills/ que encapsulem lógicas recorrentes de scraping/navegação, reduzindo o tamanho dos prompts passados ao CLI.",
+      "never": [
+        "ativar playwright-mcp no motor",
+        "fazer fuzzing",
+        "criar PoC de exploit"
+      ],
+      "files_hint": [],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T040159Z",
+      "history": [
+        {
+          "at": "2026-08-18T04:01:59+00:00",
+          "event": "mapped",
+          "detail": "20260818T040159Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-sanitiza-o-e-estrutura-o-de-traces-da-ghostcli",
+      "key": "ed69782a00735fbc",
+      "canon": "34772cc44a5061de",
+      "title": "Sanitização e estruturação de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Para melhorar a avaliação (eval) das IAs, os traces da GhostCLI precisam ser consistentemente sanitizados e estruturados antes do armazenamento ou análise.",
+      "change": "Implementar um parser/sanitizador leve em ghostcli.py ou no pipeline de logs que extraia apenas métricas de uso e erros, descartando PII ou dados sensíveis.",
+      "never": [
+        "logar secrets Bybit",
+        "alterar OWNER_SHARE_RATE",
+        "expor prompts completos sem filtro"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260818T040159Z",
+      "history": [
+        {
+          "at": "2026-08-18T04:01:59+00:00",
+          "event": "mapped",
+          "detail": "20260818T040159Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-hardening-de-templates-do-portal",
+      "key": "4e2b95e232d05953",
+      "canon": "7c1e845c87580ec7",
+      "title": "Hardening de templates do Portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal autenticado (agentic-portal.service) usa templates/CSS/JS. Melhorias de segurança e performance no frontend previnem XSS e vazamentos.",
+      "change": "Revisar e aplicar escaping automático nos templates do portal e validar headers de segurança (CSP) nas respostas HTTP.",
+      "never": [
+        "gravar senhas em texto",
+        "alterar Argon2id",
+        "expor credenciais no JS"
+      ],
+      "files_hint": [],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260818T040159Z",
+      "history": [
+        {
+          "at": "2026-08-18T04:01:59+00:00",
+          "event": "mapped",
+          "detail": "20260818T040159Z"
         }
       ]
     }
