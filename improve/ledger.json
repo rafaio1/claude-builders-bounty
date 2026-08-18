@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T08:02:43+00:00",
+  "updated_at": "2026-08-18T09:02:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T080243Z",
+      "map_id": "20260818T090226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T080243Z",
+      "map_id": "20260818T090226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T080243Z",
+      "map_id": "20260818T090226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T080243Z",
+      "map_id": "20260818T090226Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3692,8 +3692,8 @@
       "kind": "improvement",
       "priority": 3,
       "status": "pending",
-      "rationale": "theme=ai. Traces salvos para avaliação de IA podem conter paths internos ou fragments de secrets se não forem limpos antes do eval.",
-      "change": "Adicionar um filtro regex em ghostcli.py para redactar paths /root/ e chaves antes de salvar o trace no disco.",
+      "rationale": "Os traces da GhostCLI precisam ser sanitizados para avaliação (eval) e armazenamento no ledger sem vazar dados sensíveis ou paths absolutos.",
+      "change": "Implementar filtro de regex em ghostcli.py para remover tokens, paths e secrets antes de salvar os traces sanitizados.",
       "never": [
         "Alterar a ANTHROPIC_BASE_URL",
         "Enviar traces para a GhostCLI sem sanitização"
@@ -3703,7 +3703,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T040232Z",
+      "map_id": "20260818T090226Z",
       "history": [
         {
           "at": "2026-08-17T04:02:32+00:00",
@@ -7399,6 +7399,96 @@
           "at": "2026-08-18T08:02:43+00:00",
           "event": "mapped",
           "detail": "20260818T080243Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-de-skills-no-playbook-improve-integrity",
+      "key": "5898a6fdbcc6837d",
+      "canon": "98b65f3f726be97b",
+      "title": "Validação de skills no playbook improve/integrity",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "A ausência de validação prévia de skills geradas permite que diretórios órfãos ou malformados sujem a working tree, quebrando a integridade git_clean na fatia de ferramentas.",
+      "change": "Adicionar hook ou validação estrutural em improve.py para checar a geração de skills antes de stagear no disco.",
+      "never": [
+        "Ligar AGENTIC_LIVE_TRADE=1",
+        "criar loop.sh",
+        "propor git clean -fd",
+        "reset --hard"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T090226Z",
+      "history": [
+        {
+          "at": "2026-08-18T09:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T090226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-otimiza-o-de-recursos-do-playwright-cli",
+      "key": "1742799ac493b65a",
+      "canon": "cf37538aec9e0e20",
+      "title": "Otimização de recursos do playwright-cli",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-cli headless é a única ferramenta de navegação ativa, mas sessões órfãs podem consumir memória e PIDs ao longo dos ticks.",
+      "change": "Adicionar rotina no loop de saúde para identificar e encerrar processos playwright-cli órfãos via CLI.",
+      "never": [
+        "Ativar playwright-mcp",
+        "vazar tokens em logs",
+        "alterar o intervalo do systemd"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T090226Z",
+      "history": [
+        {
+          "at": "2026-08-18T09:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T090226Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-estrutura-o-do-review-feedback-no-develop",
+      "key": "90391d2a601cdf6a",
+      "canon": "12dd673f5a9a79a8",
+      "title": "Estruturação do review_feedback no develop",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o review rejeita ou o pytest falha, o review_feedback atual pode dificultar a correção exata pelo develop seguinte, arriscando alargamento de escopo.",
+      "change": "Padronizar o review_feedback em JSON estruturado em improve.py para que o claude_cli.py consuma o erro exato e corrija apenas o parecer.",
+      "never": [
+        "Alargar o escopo da correção",
+        "usar git reset --hard",
+        "checkout --",
+        "ignorar o parecer do reviewer"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T090226Z",
+      "history": [
+        {
+          "at": "2026-08-18T09:02:26+00:00",
+          "event": "mapped",
+          "detail": "20260818T090226Z"
         }
       ]
     }
