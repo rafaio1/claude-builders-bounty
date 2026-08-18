@@ -4266,7 +4266,7 @@
       "title": "Health check do Playwright não detecta processos zumbis",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "O tick atual verifica a presença do binário, mas não detecta se processos headless anteriores ficaram zumbis ou vazaram memória, degradando o host gradualmente.",
       "change": "Incluir no loop.py uma verificação rápida de contagem de processos playwright e forçar limpeza se exceder um limite, antes de rodar o health check.",
       "never": [
@@ -4277,7 +4277,7 @@
         "src/agentic/loop.py"
       ],
       "theme": "tools",
-      "branch": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos",
+      "branch": "",
       "map_id": "20260817T070323Z",
       "history": [
         {
@@ -4329,6 +4329,11 @@
           "at": "2026-08-18T16:14:04+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+        },
+        {
+          "at": "2026-08-18T16:15:15+00:00",
+          "event": "blocked",
+          "detail": "A implementação da verificação e limpeza de processos zumbis já está completa em `src/agentic/loop.py` (funções `_count_playwright_processes`, `_cleanup_playwright_zombies` e integração em `_smoke_playwright`), com testes correspondentes em `tests/test_loop.py`. O AGENTS.md não menciona o health check de processos, mas a proposta exige alteração nos arquivos listados apenas se necessário para a fu…"
         }
       ],
       "review_feedback": "claude_failed: Execution error"
