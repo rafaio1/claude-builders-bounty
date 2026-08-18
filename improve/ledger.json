@@ -3083,7 +3083,7 @@
       "title": "Restaurar git_clean (Ferramentas de agente e env interna): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: AGENTS.md.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: AGENTS.md.",
       "never": [
@@ -3134,6 +3134,11 @@
           "at": "2026-08-18T05:21:38+00:00",
           "event": "requeued",
           "detail": "SUMMARY: Working tree restaurada para a fatia de ferramentas de agente e env interna — descartada modificação local em improve/ledger.json (174 linhas não relacionadas ao escopo) que causava rejeição por tamanho; AGENTS.md, .gitignore, improve/README.md, src/agentic/env.py e internal/load-env.sh já estavam limpos."
+        },
+        {
+          "at": "2026-08-18T05:41:53+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
         }
       ],
       "review_feedback": "blocked: SUMMARY: Working tree restaurada para a fatia de ferramentas de agente e env interna — descartada modificação local em improve/ledger.json (174 linhas não relacionadas ao escopo) que causava rejeição por tamanho; AGENTS.md, .gitignore, improve/README.md, src/agentic/env.py e internal/load-env.sh já estavam limpos."
