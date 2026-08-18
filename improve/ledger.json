@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T14:02:31+00:00",
+  "updated_at": "2026-08-18T16:02:31+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -522,7 +522,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T140231Z",
+      "map_id": "20260818T160231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -549,7 +549,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T140231Z",
+      "map_id": "20260818T160231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -576,7 +576,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T140231Z",
+      "map_id": "20260818T160231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -605,7 +605,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T140231Z",
+      "map_id": "20260818T160231Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -6804,8 +6804,8 @@
       "kind": "improvement",
       "priority": 2,
       "status": "pending",
-      "rationale": "Necessário avaliar a qualidade das IAs sem vazar dados sensíveis.",
-      "change": "Gravar JSON de traces das chamadas em ghostcli.py, omitindo headers de auth e secrets, num diretório de eval.",
+      "rationale": "Falta de logs estruturados e limpos das interações com a GhostCLI impede a criação de datasets locais para avaliação (eval) contínua do modelo.",
+      "change": "Inserir um wrapper em ghostcli.py que salva o par prompt/response em formato JSONL, omitindo headers de autenticação e secrets.",
       "never": [
         "salvar tokens em disco",
         "enviar traces para endpoints externos"
@@ -6815,7 +6815,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260818T160231Z",
       "history": [
         {
           "at": "2026-08-18T03:02:13+00:00",
@@ -8323,6 +8323,119 @@
           "at": "2026-08-18T14:02:31+00:00",
           "event": "mapped",
           "detail": "20260818T140231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-gest-o-de-contexto-no-playwright-cli",
+      "key": "c081b785bd0746b4",
+      "canon": "b1b357578280e3c2",
+      "title": "Gestão de contexto no Playwright CLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Snapshots do playwright-cli podem ser verbosos, estourando o limite de contexto do Claude CLI e gerando recusas ou respostas truncadas no desenvolvimento.",
+      "change": "Implementar um filtro de DOM ou resumo estruturado no retorno do playwright-cli antes de compor o prompt no claude_cli.py.",
+      "never": [
+        "Ativar playwright-mcp",
+        "Modificar o binário do playwright-cli"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T160231Z",
+      "history": [
+        {
+          "at": "2026-08-18T16:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T160231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-intervalo-est-tico-do-loop-systemd",
+      "key": "33c7a355495a773c",
+      "canon": "f859dba4c8f227da",
+      "title": "Intervalo estático do loop systemd",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O intervalo fixo de 90s não se adapta a picos de tarefas na fila do ledger ou períodos de ociosidade, gerando latência ou desperdício de chamadas.",
+      "change": "Adicionar lógica no loop.py para ler um parâmetro de sleep dinâmico baseado no tamanho da fila pending, respeitando o teto do systemd.",
+      "never": [
+        "Alterar a unit systemd via código",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T160231Z",
+      "history": [
+        {
+          "at": "2026-08-18T16:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T160231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-valida-o-e-cache-de-queries-jq",
+      "key": "628c724d125e8556",
+      "canon": "5521daead767919f",
+      "title": "Validação e cache de queries JQ",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O uso repetitivo de JQ em payloads grandes no tick de saúde pode causar gargalos de CPU e lentidão na validação de ferramentas.",
+      "change": "Criar um módulo utilitário para compilar e cachear expressões JQ frequentes, validando a sintaxe antes da execução.",
+      "never": [
+        "Executar comandos shell arbitrários via jq",
+        "Instalar dependências externas não aprovadas"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260818T160231Z",
+      "history": [
+        {
+          "at": "2026-08-18T16:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T160231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260818-m-tricas-de-fluxo-na-fila-de-melhorias",
+      "key": "86991634694f5e47",
+      "canon": "144e9fb07c8c6204",
+      "title": "Métricas de fluxo na fila de melhorias",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O improve.py gerencia a fila, mas não rastreia o tempo que cada tarefa leva entre pending, develop e review, dificultando a identificação de gargalos no ciclo de vida.",
+      "change": "Adicionar campos de timestamp no ledger e emitir logs de métricas de lead time ao mudar o estado da tarefa.",
+      "never": [
+        "Ignorar feedbacks de review",
+        "Alterar o destino do payout do ARO"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260818T160231Z",
+      "history": [
+        {
+          "at": "2026-08-18T16:02:31+00:00",
+          "event": "mapped",
+          "detail": "20260818T160231Z"
         }
       ]
     }
