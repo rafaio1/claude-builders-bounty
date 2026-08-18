@@ -45,6 +45,42 @@ _MASK_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
     (re.compile(r"\b[A-Za-z0-9_\-\.~+/]{32,}={0,2}\b"), "***TOKEN_REDACTED***"),
 )
 
+# Patterns for masking absolute filesystem paths that may leak internal layout.
+# Matches Unix-style paths starting with /home, /root, /opt, /var, /srv, /etc,
+# /usr/local, or /tmp when followed by at least one path segment. Windows-style
+# drive paths (C:\Users\...) are also covered.
+_PATH_MASK_PATTERNS: tuple[tuple[re.Pattern[str], str], ...] = (
+    (
+        re.compile(
+            r"(?:/root|/home/[^\s\"'/]+|/opt|/var|/srv|/etc|/usr/local|/tmp)"
+            r"(?:/[^\s\"',;)}\]]+)+"
+        ),
+        "***PATH_REDACTED***",
+    ),
+    (
+        re.compile(r"[A-Z]:\\(?:Users|ProgramData|Program Files)(?:\\[^\s\"',;)}\]]+)+"),
+        "***PATH_REDACTED***",
+    ),
+)
+
+
+def mask_paths(text: Any) -> str:
+    """Redact absolute filesystem paths from arbitrary text.
+
+    Complements :func:`mask_secrets` by removing internal directory layout
+    information that should not appear in traces or logs. Non-string inputs
+    are coerced safely.
+    """
+    if not isinstance(text, str):
+        try:
+            text = str(text)
+        except Exception:
+            return ""
+    out = text
+    for pattern, replacement in _PATH_MASK_PATTERNS:
+        out = pattern.sub(replacement, out)
+    return out
+
 
 def parse_env_file(path: Path) -> dict[str, str]:
     data: dict[str, str] = {}
