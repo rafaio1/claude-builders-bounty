@@ -1,0 +1,19 @@
+{
+  "at": "2026-08-18T18:11:54+00:00",
+  "branch": "improve/dev/imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp",
+  "proposal_id": "imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp",
+  "verdict": "approve",
+  "reason": "A alteração é uma otimização defensiva pequena e perfeitamente alinhada com a proposta. O diff remove variáveis de ambiente que ativariam o Playwright MCP e adiciona testes robustos para garantir que a ferramenta permaneça desativada no censo e no inventário. Não há modificação em AGENTIC_LIVE_TRADE, nem exposição de segredos, e nenhum arquivo proibido foi criado.",
+  "risks": [],
+  "illegal_paths": [],
+  "forbidden": null,
+  "tests": {
+    "ok": true,
+    "output": "........................................................................ [ 68%]\n.................................                                        [100%]\n105 passed in 289.19s (0:04:49)"
+  },
+  "files": [
+    "src/agentic/env.py",
+    "tests/test_loop.py",
+    "tests/test_playwright_mcp_disabled.py"
+  ]
+}

@@ -5479,7 +5479,7 @@
       "title": "Risco de dreno de tokens via Playwright MCP",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "applied",
       "rationale": "O censo indica playwright_mcp habilitado. Como a diretriz exige preferir playwright-cli para poupar tokens, a disponibilidade do MCP pode levar agentes a usá-lo inadvertidamente, gerando custos altos.",
       "change": "Adicionar lógica de roteamento ou desabilitar o registro do playwright-mcp no motor, forçando o uso do playwright-cli headless.",
       "never": [
@@ -5504,6 +5504,11 @@
           "at": "2026-08-18T17:15:23+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp"
+        },
+        {
+          "at": "2026-08-18T18:11:54+00:00",
+          "event": "applied",
+          "detail": "master"
         }
       ]
     },
