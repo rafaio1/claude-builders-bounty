@@ -1,20 +1,23 @@
 {
-  "at": "2026-08-18T14:45:09+00:00",
+  "at": "2026-08-18T15:25:20+00:00",
   "branch": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos",
   "proposal_id": "imp-20260817-health-check-do-playwright-n-o-detecta-processos",
   "verdict": "reject",
-  "reason": "O diff não corresponde à proposta. A proposta exigia a inclusão da verificação de processos no arquivo src/agentic/loop.py, mas o diff apresentado apenas atualiza a documentação no AGENTS.md, sem conter as alterações reais de código.",
+  "reason": "O diff não corresponde à proposta. A mudança exigida era implementar a verificação de contagem de processos zumbis e a rotina de limpeza no loop.py, mas o código apenas adiciona uma flag 'operate=True' não relacionada, atualiza a documentação e inclui um teste para uma função que não foi implementada no diff.",
   "risks": [
-    "Código não implementado",
-    "Documentação descrevendo funcionalidade inexistente"
+    "Funcionalidade de limpeza de zumbis não implementada no código",
+    "Adição de parâmetro 'operate=True' sem relação com a proposta",
+    "Teste incluído para lógica inexistente no diff atual"
   ],
   "illegal_paths": [],
   "forbidden": null,
   "tests": {
     "ok": true,
-    "output": "........................................................................ [ 75%]\n........................                                                 [100%]\n96 passed in 116.37s (0:01:56)"
+    "output": "........................................................................ [ 74%]\n.........................                                                [100%]\n97 passed in 123.29s (0:02:03)"
   },
   "files": [
-    "AGENTS.md"
+    "AGENTS.md",
+    "src/agentic/loop.py",
+    "tests/test_loop.py"
   ]
 }
