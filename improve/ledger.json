@@ -3038,7 +3038,7 @@
       "title": "Restaurar git_clean (ARO constituição e ciclo interno): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
       "never": [
@@ -3086,9 +3086,14 @@
           "at": "2026-08-18T01:16:25+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+        },
+        {
+          "at": "2026-08-18T01:16:50+00:00",
+          "event": "requeued",
+          "detail": "The working tree is now clean after restoring `improve/ledger.json` to HEAD. The target files for this proposal (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) were already confirmed to have no diff against HEAD in the previous requeue, and `.gitignore` already contains the needed entries. There are no remaining changes to make for this slice.\n\nSUMMARY: Restaurado im…"
         }
       ],
-      "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
+      "review_feedback": "blocked: The working tree is now clean after restoring `improve/ledger.json` to HEAD. The target files for this proposal (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) were already confirmed to have no diff against HEAD in the previous requeue, and `.gitignore` already contains the needed entries. There are no remaining changes to make for this slice.\n\nSUMMARY: Restaurado im…"
     },
     {
       "id": "imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
