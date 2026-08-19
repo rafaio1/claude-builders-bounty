@@ -1,0 +1,23 @@
+name: 'Claude PR Reviewer'
+description: 'Automatically reviews PRs and posts a structured comment'
+inputs:
+  pr_url:
+    description: 'The URL of the PR to review'
+    required: true
+  github_token:
+    description: 'GitHub Token for posting comments'
+    required: true
+runs:
+  using: 'composite'
+  steps:
+    - name: Install dependencies
+      shell: bash
+      run: |
+        sudo apt-get update && sudo apt-get install -y gh python3
+    - name: Run Review Agent
+      shell: bash
+      env:
+        GH_TOKEN: ${{ inputs.github_token }}
+      run: |
+        python3 ${{ github.action_path }}/claude-review.py --pr ${{ inputs.pr_url }} > review.md
+        gh pr comment ${{ inputs.pr_url }} --body-file review.md
