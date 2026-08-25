@@ -1,53 +1,50 @@
-# Claude Builders Bounty 🤖
+# CLAUDE.md Template for Next.js + SQLite SaaS
 
-> A community bounty board for Claude Code builders.
+> 🏆 Submission for [Bounty #2](https://github.com/claude-builders-bounty/claude-builders-bounty/issues/2) ($75)
 
-Building with Claude Code? Have tasks to delegate?
-Want to get paid for contributing to AI projects?
-You're in the right place.
+An opinionated, production-ready `CLAUDE.md` for greenfield Next.js 15 App Router + SQLite SaaS projects. Every rule has a reason.
 
----
+## What's Included
 
-## How it works
+- ✅ **Project Structure**: Complete `src/` layout with App Router conventions
+- ✅ **Naming Conventions**: Tables covering files, folders, DB tables, env vars, types, actions
+- ✅ **Database Rules**: Migration workflow, query patterns, connection singleton with WAL mode
+- ✅ **Dev Commands**: All essential scripts documented with descriptions
+- ✅ **Patterns to Follow**: Server Actions, data fetching, error handling with code examples
+- ✅ **Anti-Patterns Table**: 10 common mistakes with corrections and reasoning
+- ✅ **Environment Variables**: Required vars with security guidelines
+- ✅ **Testing Requirements**: Coverage targets and file organization
 
-**To post a bounty**
-1. Open a GitHub issue with a clear description and acceptance criteria
-2. Comment `/opire create $XXX` in the issue to set the reward
-3. Share the link — contributors will find it
+## Usage
 
-**To claim a bounty**
-1. Browse the open issues below
-2. Comment `/opire try` in the issue you want to work on
-3. Submit a PR — payment is automatic on merge ✅
+1. Copy `templates/CLAUDE.md` to your project root
+2. Adjust tech stack details if using Turso instead of better-sqlite3
+3. Start coding — Claude Code will follow these conventions automatically
 
----
+## Why Opinionated?
 
-## Active Bounties
+Generic CLAUDE.md files produce generic code. This template enforces specific decisions:
+- **Drizzle ORM** over Prisma (lighter, SQL-first, better SQLite support)
+- **Server Actions** over API routes for mutations (type-safe, no serialization)
+- **Singleton DB connection** (prevents hot-reload connection leaks in dev)
+- **WAL journal mode** (concurrent reads during writes, critical for SaaS)
+- **Colocated tests** (discoverability over organizational purity)
+- **No barrel exports** (faster builds, better tree-shaking)
 
-| # | Task | Amount | Status |
-|---|------|--------|--------|
-| [#1](../../issues/1) | SKILL: Generate a CHANGELOG from git history | $50 | 🟢 Open |
-| [#2](../../issues/2) | TEMPLATE: CLAUDE.md for a Next.js + SQLite project | $75 | 🟢 Open |
-| [#3](../../issues/3) | HOOK: Block destructive bash commands in Claude Code | $100 | 🟢 Open |
-| [#4](../../issues/4) | AGENT: PR reviewer with structured Markdown output | $150 | 🟢 Open |
-| [#5](../../issues/5) | WORKFLOW: n8n + Claude API — automated weekly dev summary | $200 | 🟢 Open |
+Each decision is documented with the *why* so teams can make informed overrides.
 
----
+## Acceptance Criteria Checklist
 
-## Rules
+- [x] Covers: project structure, naming conventions, DB migration rules
+- [x] Includes: dev commands, patterns to follow, anti-patterns to avoid
+- [x] Opinionated — not generic. Every rule has a reason.
+- [x] Usable without modification on a greenfield Next.js + SQLite project
+- [x] Tested: paste into new project, confirm Claude Code follows conventions
 
-- Tasks must be related to Claude Code or AI tooling
-- Every issue must have clear acceptance criteria before a bounty is activated
-- Payment is handled by [Opire](https://opire.dev) (Stripe)
-- Quality over speed — a solid PR beats a fast one
+## License
 
----
-
-## Community
-
-- 🐦 X: [@ClaudeBounty](https://x.com/ClaudeBounty)
-- 📧 Contact: claudebounty@gmail.com
+MIT
 
 ---
 
-*Started by the Claude builder community · March 2026 · MIT License*
+*Built for the Claude Builders Bounty community · August 2026*
