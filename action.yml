@@ -1,0 +1,42 @@
+name: 'Claude Code PR Reviewer'
+description: 'Automated structured PR review using Claude API'
+inputs:
+  pr-number:
+    description: 'Pull request number to review'
+    required: true
+  github-token:
+    description: 'GitHub token for API access'
+    required: true
+  anthropic-api-key:
+    description: 'Anthropic API key for Claude analysis'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+
+    - name: Install dependencies
+      shell: bash
+      run: pip install --quiet requests
+
+    - name: Run Claude PR Reviewer
+      shell: bash
+      env:
+        ANTHROPIC_API_KEY: ${{ inputs.anthropic-api-key }}
+        GH_TOKEN: ${{ inputs.github-token }}
+      run: |
+        python src/claude_review.py \
+          --pr "${{ github.repository }}#${{ inputs.pr-number }}" \
+          --post
+
+branding:
+  icon: 'eye'
+  color: 'purple'
