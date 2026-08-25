@@ -1,0 +1,192 @@
+{
+  "name": "Weekly Dev Summary (Claude Code)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": 5,
+              "triggerAtHour": 17
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Weekly Cron (Friday 5pm)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "resource": "repository",
+        "operation": "getCommits",
+        "owner": "={{ $json.owner }}",
+        "repository": "={{ $json.repo }}",
+        "since": "={{ new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() }}",
+        "returnAll": true
+      },
+      "id": "fetch-commits",
+      "name": "Fetch Commits (Last 7 Days)",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [480, 300],
+      "credentials": {
+        "githubApi": {
+          "id": "GITHUB_API_CREDENTIALS_ID",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "issue",
+        "operation": "getAll",
+        "owner": "={{ $json.owner }}",
+        "repository": "={{ $json.repo }}",
+        "state": "closed",
+        "filters": {
+          "since": "{{ new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString() }}"
+        },
+        "returnAll": true
+      },
+      "id": "fetch-issues",
+      "name": "Fetch Closed Issues",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [480, 500],
+      "credentials": {
+        "githubApi": {
+          "id": "GITHUB_API_CREDENTIALS_ID",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "pullRequest",
+        "operation": "getAll",
+        "owner": "={{ $json.owner }}",
+        "repository": "={{ $json.repo }}",
+        "state": "closed",
+        "filters": {
+          "merged": true
+        },
+        "returnAll": true
+      },
+      "id": "fetch-prs",
+      "name": "Fetch Merged PRs",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1,
+      "position": [480, 700],
+      "credentials": {
+        "githubApi": {
+          "id": "GITHUB_API_CREDENTIALS_ID",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "options": {}
+      },
+      "id": "merge-data",
+      "name": "Merge Activity Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [720, 500]
+    },
+    {
+      "parameters": {
+        "model": "claude-sonnet-4-20250514",
+        "messages": {
+          "values": [
+            {
+              "content": "You are a senior developer writing a weekly narrative summary for stakeholders. Analyze the following GitHub activity data and produce a concise, insightful weekly dev summary.\n\n## Activity Data\n{{ JSON.stringify($json) }}\n\n## Output Format\n### 📊 Weekly Dev Summary — {{ new Date().toLocaleDateString() }}\n\n**Highlights:** (2-3 key achievements)\n\n**Commits:** X commits by Y contributors\n- Notable: ...\n\n**Issues Resolved:** X closed\n- Key fixes: ...\n\n**PRs Merged:** X merged\n- Major changes: ...\n\n**Trends & Observations:** (velocity, focus areas, risks)\n\nKeep it under 500 words. Be specific with PR/issue numbers.",
+              "role": "user"
+            }
+          ]
+        },
+        "options": {
+          "maxTokens": 1024,
+          "temperature": 0.3
+        }
+      },
+      "id": "claude-summarize",
+      "name": "Claude API — Generate Summary",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.2,
+      "position": [960, 500],
+      "credentials": {
+        "anthropicApi": {
+          "id": "ANTHROPIC_API_CREDENTIALS_ID",
+          "name": "Anthropic API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "subject": "📋 Weekly Dev Summary — {{ new Date().toLocaleDateString() }}",
+        "text": "={{ $json.text }}",
+        "toEmail": "={{ $env.WEEKLY_SUMMARY_EMAIL || 'team@example.com' }}",
+        "fromEmail": "noreply@devsummary.bot"
+      },
+      "id": "send-email",
+      "name": "Send Email Summary",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1200, 500]
+    },
+    {
+      "parameters": {
+        "content": "={{ $json.text }}",
+        "title": "Weekly Dev Summary — {{ new Date().toLocaleDateString() }}"
+      },
+      "id": "save-to-file",
+      "name": "Save Summary to File",
+      "type": "n8n-nodes-base.writeBinaryFile",
+      "typeVersion": 1,
+      "position": [1200, 700]
+    }
+  ],
+  "connections": {
+    "Weekly Cron (Friday 5pm)": {
+      "main": [
+        [
+          { "node": "Fetch Commits (Last 7 Days)", "type": "main", "index": 0 },
+          { "node": "Fetch Closed Issues", "type": "main", "index": 0 },
+          { "node": "Fetch Merged PRs", "type": "main", "index": 0 }
+        ]
+      ]
+    },
+    "Fetch Commits (Last 7 Days)": {
+      "main": [[{ "node": "Merge Activity Data", "type": "main", "index": 0 }]]
+    },
+    "Fetch Closed Issues": {
+      "main": [[{ "node": "Merge Activity Data", "type": "main", "index": 1 }]]
+    },
+    "Fetch Merged PRs": {
+      "main": [[{ "node": "Merge Activity Data", "type": "main", "index": 2 }]]
+    },
+    "Merge Activity Data": {
+      "main": [[{ "node": "Claude API — Generate Summary", "type": "main", "index": 0 }]]
+    },
+    "Claude API — Generate Summary": {
+      "main": [
+        [
+          { "node": "Send Email Summary", "type": "main", "index": 0 },
+          { "node": "Save Summary to File", "type": "main", "index": 0 }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "tags": ["claude-code", "weekly-summary", "automation"]
+}
