@@ -24,4 +24,12 @@ python3 /Agentic/scripts/vul_report_autonomous.py >> "$LOG" 2>&1 || echo "[$TS] 
 echo "[$TS] Running revenue orchestrator..." >> "$LOG"
 python3 /Agentic/scripts/revenue_orchestrator.py >> "$LOG" 2>&1 || echo "[$TS] WARN: orchestrator failed" >> "$LOG"
 
+# Step 5: Autonomous trade scanner (signal-only, zero-capital)
+echo "[$TS] Running autonomous trade scanner..." >> "$LOG"
+python3 /Agentic/scripts/autonomous_trade_scanner.py >> "$LOG" 2>&1 || echo "[$TS] WARN: trade_scanner failed" >> "$LOG"
+
+# Step 6: Testnet airdrop executor (simulation-only, zero-capital)
+echo "[$TS] Running testnet airdrop executor..." >> "$LOG"
+python3 /Agentic/scripts/testnet_airdrop_executor.py >> "$LOG" 2>&1 || echo "[$TS] WARN: airdrop_executor failed" >> "$LOG"
+
 echo "[$TS] === CRON REVENUE SUITE COMPLETE ===" >> "$LOG"
