@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "VWAP_SHADOW_RESTARTED_BACKTEST_PASSED_AWAITING_24H",
+  "risk_status": "VWAP_SHADOW_ACTIVE_1_PAPER_TRADE_AWAITING_30",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -159,7 +159,7 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T22:47:38.114343+00:00",
+  "last_reconciliation": "2026-08-26T23:21:49.178550+00:00",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
@@ -261,7 +261,15 @@
     "shadow_24h_zero_errors": false,
     "shadow_24h_started": "2026-08-26T22:35:25Z",
     "min_30_paper_trades": false,
-    "paper_trades_count": 0,
-    "manual_approval": false
+    "paper_trades_count": 1,
+    "manual_approval": false,
+    "first_paper_trade": {
+      "symbol": "BTC/USDT",
+      "net_pnl_pct": 0.1495,
+      "entry_z": -2.2274,
+      "exit_z": -0.1911,
+      "hold_candles": 5,
+      "timestamp": "2026-08-26T23:18:08Z"
+    }
   }
 }
