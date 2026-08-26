@@ -3001,16 +3001,27 @@
       "pr": 228,
       "issue": 86,
       "title": "Visual regression tests",
-      "status": "review_fix_pushed",
+      "status": "new_review_received_p1",
       "tier": 1,
-      "next_action": "wait_ci_and_maintainer_review",
-      "evidence": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
-      "reviews": [],
+      "next_action": "Investigate Greptile P1: verify if visual/** pattern actually excludes firefox/mobile; reproduce locally with playwright --project=firefox --list",
+      "evidence": {
+        "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
+        "greptile_p1_email": "1a03feda98223c33"
+      },
+      "reviews": [
+        {
+          "author": "greptile-apps[bot]",
+          "type": "P1",
+          "summary": "Visual exclusions fail: e2e/visual/** does not match absolute path for firefox/mobile projects",
+          "email_id": "1a03feda98223c33",
+          "received_utc": "2026-08-26T21:15:34Z"
+        }
+      ],
       "ci_status": "pass",
       "mergeable": true,
       "payout_verified": true,
       "program": "Stellar Wave / Drips",
-      "last_action": "2026-08-26T21:19:27.131282+00:00"
+      "last_action": "2026-08-26T21:30:00Z"
     },
     {
       "repo": "OphirPay/OphirPay",
