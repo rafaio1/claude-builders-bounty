@@ -47,11 +47,18 @@ def log(msg):
 _last_trade_time = {}  # symbol -> timestamp
 _last_loss_time = {}   # symbol -> timestamp of last loss
 _consecutive_losses = {}  # symbol -> count
+_last_sell_time = {}   # symbol -> timestamp of ANY sell (wash-trade guard)
+_daily_pnl = {}        # symbol -> {date_str: float} cumulative realized PnL
+_wash_halted = set()   # symbols halted due to wash-trade detection
 
-COOLDOWN_AFTER_LOSS_SEC = 60    # 90s cooldown after loss - balance between safety and frequency
-MIN_TRADE_INTERVAL_SEC = 60     # Min 60s between trades on same symbol
+COOLDOWN_AFTER_LOSS_SEC = 300    # 90s cooldown after loss - balance between safety and frequency
+MIN_TRADE_INTERVAL_SEC = 300    # 5min min interval between trades on same symbol (was 60s)
 MAX_CONSECUTIVE_LOSSES = 3      # Stop trading symbol after 3 consecutive losses
 CONSECUTIVE_LOSS_COOLDOWN = 1800  # 30 min ban after max consecutive losses
+POST_SELL_COOLDOWN_SEC = 300    # Mandatory 5min cooldown after ANY sell before re-entry
+WASH_DETECT_WINDOW = 5          # Check last N trades for wash pattern
+WASH_MAX_INTERVAL_SEC = 30      # Trades <30s apart considered potential wash
+MAX_DAILY_LOSS_USDT = 1.0       # Halt symbol if daily loss exceeds this
 
 def update_state(data):
     try:
@@ -195,6 +202,11 @@ def sell_position(pos):
 def record_trade_result(symbol, pnl):
     """Record trade outcome for cooldown logic"""
     _last_trade_time[symbol] = time.time()
+    # Track daily PnL
+    today_key = time.strftime('%Y-%m-%d')
+    if not isinstance(_daily_pnl.get(symbol), dict):
+        _daily_pnl[symbol] = {}
+    _daily_pnl[symbol][today_key] = _daily_pnl[symbol].get(today_key, 0.0) + pnl
     if pnl < 0:
         _last_loss_time[symbol] = time.time()
         _consecutive_losses[symbol] = _consecutive_losses.get(symbol, 0) + 1
@@ -204,6 +216,38 @@ def record_trade_result(symbol, pnl):
         if _consecutive_losses.get(symbol, 0) > 0:
             log(f"  📈 Win on {symbol} resets loss streak (was {_consecutive_losses[symbol]})")
         _consecutive_losses[symbol] = 0
+
+def record_sell(symbol):
+    """Record that a sell occurred - triggers mandatory post-sell cooldown"""
+    _last_sell_time[symbol] = time.time()
+    log(f"  🔒 {symbol} sell recorded, {POST_SELL_COOLDOWN_SEC}s re-entry lock")
+
+def check_wash_pattern(symbol, ledger_path='/Agentic/ledger.jsonl'):
+    """Detect wash-trade pattern: N recent trades all <interval apart with net loss"""
+    try:
+        import json as _json
+        trades = []
+        with open(ledger_path, 'r') as f:
+            for line in f:
+                try:
+                    t = _json.loads(line.strip())
+                    if t.get('symbol') == symbol:
+                        trades.append(t)
+                except:
+                    pass
+        recent = trades[-WASH_DETECT_WINDOW:]
+        if len(recent) < WASH_DETECT_WINDOW:
+            return False
+        timestamps = sorted([t.get('timestamp', t.get('ts', 0)) for t in recent])
+        intervals = [timestamps[i+1] - timestamps[i] for i in range(len(timestamps)-1)]
+        net_pnl = sum(t.get('realizedPnl', t.get('pnl', 0)) or 0 for t in recent)
+        if all(iv < WASH_MAX_INTERVAL_SEC for iv in intervals) and net_pnl < 0:
+            log(f"  🚨 WASH DETECTED on {symbol}: {len(recent)} trades avg interval {sum(intervals)/len(intervals):.0f}s, net ${net_pnl:.4f}")
+            _wash_halted.add(symbol)
+            return True
+    except Exception as e:
+        log(f"  ⚠️ Wash check error: {str(e)[:80]}")
+    return False
 
 def get_balance():
     try:
@@ -793,7 +837,7 @@ while True:
                     # Prevents 30min lockout after server-side SL fill
                     asset_for_grace = sym.split('/')[0]
                     has_balance = float(direct_bal.get(asset_for_grace, {}).get('total', 0) or 0) > 0
-                    grace = max(60, PARAMS.get("max_hold_sec", 120)) if has_balance else min(60, PARAMS.get("max_hold_sec", 120))
+                    grace = max(180, PARAMS.get("max_hold_sec", 120)) if has_balance else min(60, PARAMS.get("max_hold_sec", 120))  # FIXED: 180s min when balance exists
                     
                     if age < grace:
                         log(f"  ⏳ Ghost check skipped for {sym}: age={age:.0f}s (<{grace}s grace)")
@@ -821,6 +865,9 @@ while True:
                                 entry_price = _active_positions.get(sym, {}).get('price', tick['last']) if isinstance(_active_positions, dict) else tick['last']
                                 pnl = sell_val - (qty * entry_price)
                                 log(f"  💰 RECOVERY SELL {sym}: {qty} @ ${tick['last']:.6f} | PnL: ${pnl:.4f}")
+                                record_sell(sym)
+                                record_trade_result(sym, pnl)
+                                check_wash_pattern(sym)
                             else:
                                 log(f"  ⚠️ {sym} recovery skipped: qty={qty} val=${est_value:.2f} < min_notional=${min_notional} - dust, clearing memory")
                         except Exception as e:
