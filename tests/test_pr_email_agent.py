@@ -249,7 +249,7 @@ def test_batch_limit_stops_processing():
 
 
 def test_dry_run_no_side_effects():
-    """Dry run does not call trash or append queue; ledger save is allowed (empty)."""
+    """Dry run must not call trash, append queue, save_ledger_atomic, or save_cursor."""
     from unittest.mock import patch, MagicMock
     import pr_email_agent as agent
     lines = ["[msg_dry] | github@github.com | [Test/repo] PR #1 (PR #1)"]
@@ -259,10 +259,16 @@ def test_dry_run_no_side_effects():
          patch.object(agent, "gmail_read", return_value={"body": "", "snippet": ""}), \
          patch.object(agent, "gmail_trash") as mock_trash, \
          patch.object(agent, "append_action_queue") as mock_queue, \
+         patch.object(agent, "save_ledger_atomic") as mock_save_ledger, \
+         patch.object(agent, "save_cursor") as mock_save_cursor, \
          patch.object(agent, "load_ledger", return_value=[]), \
          patch.object(agent, "load_cursor", return_value={"completed_windows": [], "current_window": None, "last_run": None}), \
-         patch.object(agent, "save_cursor"), \
          patch.object(agent, "SCAN_WINDOWS", single_window):
-        agent.classify_and_process(dry_run=True)
+        result = agent.classify_and_process(dry_run=True)
         mock_trash.assert_not_called()
         mock_queue.assert_not_called()
+        mock_save_ledger.assert_not_called()
+        mock_save_cursor.assert_not_called()
+        assert isinstance(result, list)
+        assert len(result) == 1
+        assert result[0]["message_id"] == "msg_dry"

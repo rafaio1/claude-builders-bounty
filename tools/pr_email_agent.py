@@ -224,6 +224,8 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
             print(f"Unknown window: {window_override}")
             return
 
+    global_processed = 0
+    dry_run_inventory = []
     processed = 0
     for win in windows:
         label = win["label"]
@@ -232,17 +234,27 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
             print(f"Skipping completed window: {label}")
             continue
 
+        if batch_size and global_processed >= batch_size:
+            print(f"Global batch limit reached: {batch_size}")
+            break
+
         print(f"Scanning window: {label} ({query})")
-        lines = gmail_search_paginated(query, max_results=batch_size or DEFAULT_BATCH_SIZE)
+        remaining = None
+        if batch_size:
+            remaining = max(0, batch_size - global_processed)
+        lines = gmail_search_paginated(query, max_results=remaining or DEFAULT_BATCH_SIZE)
         if not lines:
             print(f"No emails in window {label}")
-            if not window_override:
+            if not window_override and not dry_run:
                 cursor.setdefault("completed_windows", []).append(label)
                 save_cursor(cursor)
             continue
 
         window_processed = 0
         for line in lines:
+            if batch_size and global_processed >= batch_size:
+                print(f"Global batch limit reached: {batch_size}")
+                break
             m = re.match(r"\[([^\]]+)\].*?\|\s*(.+?)\s*\|\s*(.+)", line)
             if not m:
                 continue
@@ -271,7 +283,18 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
 
             if dry_run:
                 print(f"[DRY-RUN] {msg_id} | {repo_full}#{pr_num} | {state} | {action} | trash={trash_now}")
+                dry_run_inventory.append({
+                    "message_id": msg_id,
+                    "repo": repo_full,
+                    "pr": pr_num,
+                    "state": state,
+                    "action": action,
+                    "trash_now": trash_now,
+                    "github_url": url,
+                    "window": label,
+                })
                 window_processed += 1
+                global_processed += 1
                 continue
 
             if trash_now:
@@ -320,14 +343,16 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
 
             window_processed += 1
             processed += 1
+            global_processed += 1
 
-            if batch_size and window_processed >= batch_size:
-                print(f"Batch limit reached for window {label}: {batch_size}")
-                break
 
-        if not window_override and (not batch_size or window_processed < batch_size):
+        if not window_override and not dry_run and (not batch_size or global_processed < batch_size):
             cursor.setdefault("completed_windows", []).append(label)
             save_cursor(cursor)
+
+    if dry_run:
+        print(f"[DRY-RUN] Scanned {global_processed} emails across {len(windows)} window(s). No side effects.")
+        return dry_run_inventory
 
     cursor["last_run"] = datetime.now(timezone.utc).isoformat()
     save_cursor(cursor)
