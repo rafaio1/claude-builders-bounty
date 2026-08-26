@@ -1,0 +1,54 @@
+ # Inventário de Features Integradas
+ 
+ > Última atualização: 2026-08-26 (commit 4810d40)
+ 
+ ## Features Maduras e Versionadas
+ 
+ | Feature | Status | Commit | Descrição | Arquivos Principais |
+ |---------|--------|--------|-----------|-------------------|
+ | Bybit Futures Strategies | ✅ Integrado | 018f171 | Estratégias de liquidation squeeze, funding rate arb e momentum breakout | `bybit_futures/main.py`, `bybit_futures/strategies/*.py` |
+ | P2P Arbitrage Bot | ✅ Integrado | 018f171 | Arbitragem HodlHodl↔Wise com normalização FX multi-moeda | `p2p_arb_bot.py` |
+ | Credential Validators | ✅ Integrado | 018f171 | Validação de conexões HodlHodl e RoboSats | `validate_hodlhodl.py`, `validate_robosats.py` |
+ | Master Control Blueprint | ✅ Integrado | 018f171 | Script de ciclo de vida e documentação arquitetural | `master_control.sh` |
+ | Bounty Engine Hardening | ✅ Integrado | 018f171 | Sanitização JSON e validação de schema contra alucinação | `scripts/bounty_engine.py` |
+ | Triage Contract Tests | ✅ Integrado | 6b52f45 | Testes de regressão para contrato JSON de triagem | `tests/test_triage_contract.py` |
+ | BugBounty Templates | ✅ Integrado | 6b52f45 | Templates padronizados para relatórios de bug bounty | `templates/bugbounty/` |
+ | MT5 Bridge & Wise Liquidity | ✅ Integrado | fd9e864 | Ponte MetaTrader5 e monitoramento de liquidez Wise | `src/mt5_bridge/`, `src/wise_liquidity/` |
+ | PR Freelance Automation | ✅ Integrado | fd9e864 | Automação de propostas freelance via GitHub PRs | `src/pr_freelance/` |
+ | Revenue Streams Catalog | ✅ Integrado | fd9e864 | Catálogo estruturado de fluxos de receita | `revenue/catalog/` |
+ 
+ ## Documentação Operacional
+ 
+ | Documento | Status | Commit | Propósito |
+ |-----------|--------|--------|-----------|
+ | Integration Context | ✅ Ativo | 3dfb390 | Contexto completo para novos agentes |
+ | Integration Rules | ✅ Ativo | 4810d40 | Regras permanentes de operação e meta 20M USDT |
+ | Reconciliation Report | ✅ Ativo | 018f171 | Relatório de reconciliação entre chats Orca |
+ | ARO (Architecture Overview) | ✅ Ativo | 018f171 | Visão geral da arquitetura ORCA |
+ | GOAL Definition | ✅ Ativo | 018f171 | Definição formal dos objetivos do sistema |
+ 
+ ## Features em Progresso / Aguardando Integração
+ 
+ | Feature | Estado | Bloqueio / Dependência | Próxima Ação |
+ |---------|--------|----------------------|--------------|
+ | RoboSats Stack | ⏳ Parcial | TLS keys excluídas; código não versionado integralmente | Avaliar subset seguro para commit |
+ | Email Cleanup Pipeline | ⏳ WIP | `.venv` local; lógica de negócio não isolada | Extrair scripts limpos e testar |
+ | Affiliate Bot Content | ⏳ WIP | Output gerado dinamicamente; sem testes | Validar conteúdo e adicionar ao repo |
+ | Micro-SaaS Projects | ⏳ WIP | Múltiplos subprojetos; maturidade variável | Triagem individual por projeto |
+ 
+ ## Artefatos Excluídos por Segurança
+ 
+ - `.env`, `*.key`, `tls.*` — credenciais e certificados
+ - `data/`, `state/`, `logs/` — dados runtime e estado efêmero
+ - `orchestrator/*.pid`, `*.log`, `*state*.json` — processos ativos
+ - `bounties/immunefi/*/`, `bugbounty/oss/*/` — repositórios externos com `.git` próprio
+ - `improve/traces/` — traces de debug com paths locais
+ - `bybit_futures/data/`, `bybit_futures/logs/` — dados de trading ao vivo
+ 
+ ## Métricas de Integração
+ 
+ - **Commits no master:** 12 (incluindo merges)
+ - **Branches feature integradas:** 1 (`feat/config-gen-tests`)
+ - **Arquivos versionados seguros:** ~80+
+ - **Secrets detectados e bloqueados:** 1 (`p2p-stack/robosats/node/lnd/tls.key`)
+ - **Repositório remoto:** `rafaio1/agentic-integration` (PRIVATE ✅)
