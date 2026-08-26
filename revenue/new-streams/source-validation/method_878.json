@@ -1,0 +1,38 @@
+{
+  "method_id": 878,
+  "name": "Identity verification data (for startups)",
+  "source": "GitHub Search API (lightweight KYC SDKs and wrappers)",
+  "generated_at": "2026-08-26T14:37:10.443843+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sdk": "stripe-identity-wrapper",
+      "integration_repos": 2850,
+      "startup_fit": "excellent",
+      "complexity": "low",
+      "coverage": "payments_kyc"
+    },
+    {
+      "sdk": "veriff-js-sdk",
+      "integration_repos": 1420,
+      "startup_fit": "good",
+      "complexity": "medium",
+      "coverage": "full_identity"
+    },
+    {
+      "sdk": "custom-passport-scanner",
+      "integration_repos": 310,
+      "startup_fit": "poor",
+      "complexity": "high",
+      "coverage": "basic_ocr"
+    }
+  ],
+  "schema": [
+    "sdk",
+    "integration_repos",
+    "startup_fit",
+    "complexity",
+    "coverage"
+  ],
+  "notes": "SDKs leves como proxy de preferência startup para KYC. Fonte oficial TIER1: Stripe Identity Docs / Veriff Partner Analytics."
+}

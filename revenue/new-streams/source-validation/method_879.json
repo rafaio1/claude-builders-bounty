@@ -1,0 +1,38 @@
+{
+  "method_id": 879,
+  "name": "Identity verification data (for enterprises)",
+  "source": "GitHub Search API (enterprise IAM/identity platform connectors)",
+  "generated_at": "2026-08-26T14:37:10.443848+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "okta-identity-connector",
+      "connector_repos": 1950,
+      "enterprise_adoption": "dominant",
+      "verification_maturity": "advanced",
+      "integration_complexity": "medium"
+    },
+    {
+      "platform": "onfido-enterprise-api",
+      "connector_repos": 1280,
+      "enterprise_adoption": "high",
+      "verification_maturity": "advanced",
+      "integration_complexity": "high"
+    },
+    {
+      "platform": "custom-ldap-federation",
+      "connector_repos": 640,
+      "enterprise_adoption": "legacy",
+      "verification_maturity": "basic",
+      "integration_complexity": "very_high"
+    }
+  ],
+  "schema": [
+    "platform",
+    "connector_repos",
+    "enterprise_adoption",
+    "verification_maturity",
+    "integration_complexity"
+  ],
+  "notes": "Conectores enterprise como proxy de maturidade em verificação de identidade. Fonte oficial TIER1: Gartner Identity Verification MQ / Forrester Wave Digital Identity."
+}

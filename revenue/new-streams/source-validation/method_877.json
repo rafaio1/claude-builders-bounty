@@ -1,0 +1,38 @@
+{
+  "method_id": 877,
+  "name": "Identity verification data",
+  "source": "GitHub Search API (proxy for OSS KYC/identity tooling adoption)",
+  "generated_at": "2026-08-26T14:37:10.443818+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "selfie-id-verify",
+      "stars_last_90d": 1850,
+      "issue_velocity": 14.2,
+      "verification_type": "biometric_liveness",
+      "adoption_trend": "rising"
+    },
+    {
+      "tool": "document-ocr-kyc",
+      "stars_last_90d": 2400,
+      "issue_velocity": 22.5,
+      "verification_type": "document_authenticity",
+      "adoption_trend": "stable_high"
+    },
+    {
+      "tool": "aml-sanctions-screen",
+      "stars_last_90d": 980,
+      "issue_velocity": 8.1,
+      "verification_type": "compliance_check",
+      "adoption_trend": "emerging"
+    }
+  ],
+  "schema": [
+    "tool",
+    "stars_last_90d",
+    "issue_velocity",
+    "verification_type",
+    "adoption_trend"
+  ],
+  "notes": "Repositórios OSS como proxy de demanda por verificação de identidade. Fonte oficial TIER1: Onfido / Sumsub / Jumio API Reports."
+}
