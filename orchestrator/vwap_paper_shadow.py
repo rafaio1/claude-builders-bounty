@@ -17,7 +17,11 @@ from dotenv import load_dotenv
 
 load_dotenv('/root/.automaton/bybit-murre.env')
 
-SYMBOLS = ['XRP/USDT', 'AVAX/USDT', 'BCH/USDT']
+SYMBOLS = [
+    'BTC/USDT', 'ETH/USDT', 'SOL/USDT', 'XRP/USDT',
+    'DOGE/USDT', 'LINK/USDT', 'SUI/USDT', 'WLD/USDT',
+    'AAVE/USDT', 'AVAX/USDT', 'BCH/USDT'
+]
 TIMEFRAME = '5m'
 VWAP_PERIOD = 20
 ENTRY_BAND = 2.0

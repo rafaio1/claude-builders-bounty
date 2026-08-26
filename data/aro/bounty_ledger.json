@@ -5,7 +5,7 @@
       "repo": "OphirPay/OphirPay",
       "pr": 225,
       "status": "waiting_maintainer",
-      "last_action": "greptile_p2_rebutted_vercel_auth_pending",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
       "evidence": [
         {
           "type": "email",
@@ -20,9 +20,23 @@
         {
           "type": "gh_comment",
           "note": "Replied explaining intentional test isolation"
+        },
+        {
+          "type": "gmail_triage_greptile_p2_review",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03dcc01298cb75",
+          "detail": "Greptile P2 review on webhook-delivery.spec.ts: test duplicates signing/retry instead of calling deliverWebhook. Valid architectural concern but E2E intentionally tests integration behavior. No code fix required; acknowledged in PR comments previously.",
+          "action_taken": "logged_no_code_action_needed"
+        },
+        {
+          "type": "gmail_triage_vercel_auth_pending",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03dca6ce9683f4",
+          "detail": "Vercel CodingAngel1 team authorization pending. No contributor action possible.",
+          "action_taken": "human_action_required"
         }
       ],
-      "next_action": "monitor_vercel_auth_and_reviewer_response",
+      "next_action": "Monitor Vercel team authorization; no contributor action possible",
       "updated_at": "2026-08-26T22:12:09.184360+00:00"
     },
     {
@@ -30,7 +44,7 @@
       "repo": "ligate-io/ligate-chain",
       "pr": 567,
       "status": "human_action_required",
-      "last_action": "cla_signature_pending",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
       "evidence": [
         {
           "type": "email",
@@ -41,9 +55,23 @@
           "type": "email",
           "id": "1a03d5fae6f376c9",
           "note": "CLA bot requests signature via PR comment"
+        },
+        {
+          "type": "gmail_triage_cla_ci_failure",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03d5fbf26dfa9f",
+          "detail": "CLA Assistant workflow failed. CLA signature requires human action via GitHub account.",
+          "action_taken": "human_action_required"
+        },
+        {
+          "type": "gmail_triage_cla_bot_comment",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03d5fae6f376c9",
+          "detail": "CLA Assistant Lite bot requesting signature. Root user not linked to GitHub account. Human must sign CLA.",
+          "action_taken": "human_action_required"
         }
       ],
-      "next_action": "user_must_sign_cla_via_pr_comment",
+      "next_action": "Human must sign CLA via GitHub account before merge can proceed",
       "updated_at": "2026-08-26T22:12:09.184388+00:00"
     },
     {
@@ -51,15 +79,22 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": 150,
       "status": "waiting_maintainer",
-      "last_action": "vercel_heymide_auth_pending",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
       "evidence": [
         {
           "type": "email",
           "id": "1a03df0244231a91",
           "note": "Vercel Heymide team auth required"
+        },
+        {
+          "type": "gmail_triage_vercel_auth_pending",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03df0244231a91",
+          "detail": "Vercel Heymide team authorization pending. No contributor action possible.",
+          "action_taken": "human_action_required"
         }
       ],
-      "next_action": "monitor_vercel_team_authorization",
+      "next_action": "Monitor Vercel team authorization; no contributor action possible",
       "updated_at": "2026-08-26T22:12:09.184392+00:00"
     },
     {
@@ -120,9 +155,9 @@
       "repo": "OphirPay/OphirPay",
       "pr": "OphirPay/OphirPay#225",
       "url": "https://github.com/OphirPay/OphirPay#225",
-      "status": "waiting_review",
-      "last_action": "Triaged Greptile P2 review (1a03dcc01298cb75) and Vercel CodingAngel1 auth pending (1a03dca6ce9683f4). No contributor code change possible; E2E test design duplicates production logic per reviewer but fix requires architectural decision by maintainer.",
-      "next_action": "Monitor for maintainer response to Greptile P2 or Vercel team auth. Do not push code changes without explicit direction.",
+      "status": "waiting_maintainer",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
+      "next_action": "Monitor Vercel team authorization; no contributor action possible",
       "evidence": [
         {
           "type": "email",
@@ -143,6 +178,20 @@
           "type": "email",
           "id": "1a03dca6ce9683f4",
           "summary": "Vercel CodingAngel1 team auth required for rafaio1 deploy"
+        },
+        {
+          "type": "gmail_triage_greptile_p2_review",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03dcc01298cb75",
+          "detail": "Greptile P2 review on webhook-delivery.spec.ts: test duplicates signing/retry instead of calling deliverWebhook. Valid architectural concern but E2E intentionally tests integration behavior. No code fix required; acknowledged in PR comments previously.",
+          "action_taken": "logged_no_code_action_needed"
+        },
+        {
+          "type": "gmail_triage_vercel_auth_pending",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03dca6ce9683f4",
+          "detail": "Vercel CodingAngel1 team authorization pending. No contributor action possible.",
+          "action_taken": "human_action_required"
         }
       ],
       "email_decision": "PRESERVED - technical review + platform auth, no action taken",
@@ -154,9 +203,9 @@
       "repo": "ligate-io/ligate-chain",
       "pr": "ligate-io/ligate-chain#567",
       "url": "https://github.com/ligate-io/ligate-chain#567",
-      "status": "blocked_human_action",
-      "last_action": "CLA Assistant failed (1a03d5fbf26dfa9f, 1a03d5fae6f376c9). Bot requests PR comment signature but commits authored by root user not linked to GitHub account. Cannot auto-sign CLA per permanent rule.",
-      "next_action": "HUMAN ACTION REQUIRED: Sign CLA manually at https://github.com/ligate-io/ligate-chain/pull/567 or link commit email to GitHub account and retrigger with \"recheck\" comment.",
+      "status": "human_action_required",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
+      "next_action": "Human must sign CLA via GitHub account before merge can proceed",
       "evidence": [
         {
           "type": "email",
@@ -177,6 +226,20 @@
           "type": "email",
           "id": "1a03d5fae6f376c9",
           "summary": "CLA bot: root not a GitHub user, cannot sign via PR comment"
+        },
+        {
+          "type": "gmail_triage_cla_ci_failure",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03d5fbf26dfa9f",
+          "detail": "CLA Assistant workflow failed. CLA signature requires human action via GitHub account.",
+          "action_taken": "human_action_required"
+        },
+        {
+          "type": "gmail_triage_cla_bot_comment",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03d5fae6f376c9",
+          "detail": "CLA Assistant Lite bot requesting signature. Root user not linked to GitHub account. Human must sign CLA.",
+          "action_taken": "human_action_required"
         }
       ],
       "email_decision": "PRESERVED - CLA/legal, requires human signature",
@@ -188,9 +251,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": "Lilly-Protocol/lily-frontend#150",
       "url": "https://github.com/Lilly-Protocol/lily-frontend#150",
-      "status": "waiting_review",
-      "last_action": "Vercel Heymide team auth pending (1a03df0244231a91). No contributor action possible until team member authorizes deploy.",
-      "next_action": "Monitor for Heymide team auth or maintainer feedback on PR #150.",
+      "status": "waiting_maintainer",
+      "last_action": "2026-08-26T22:34:52.491414+00:00",
+      "next_action": "Monitor Vercel team authorization; no contributor action possible",
       "evidence": [
         {
           "type": "email",
@@ -201,6 +264,13 @@
           "type": "email",
           "id": "1a03df0244231a91",
           "summary": "Vercel Heymide team auth required for deploy"
+        },
+        {
+          "type": "gmail_triage_vercel_auth_pending",
+          "timestamp": "2026-08-26T22:34:52.491414+00:00",
+          "email_id": "1a03df0244231a91",
+          "detail": "Vercel Heymide team authorization pending. No contributor action possible.",
+          "action_taken": "human_action_required"
         }
       ],
       "email_decision": "PRESERVED - platform auth notification",
