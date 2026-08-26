@@ -1,25 +1,25 @@
- from __future__ import annotations
+from __future__ import annotations
  
- import hashlib
- import json
- import os
- import time
- from pathlib import Path
- from typing import Any, Dict, List
+import hashlib
+import json
+import os
+import time
+from pathlib import Path
+from typing import Any, Dict, List
  
  
- class PersistentQueue:
-     """Idempotent JSONL-backed queue with deduplication by payload hash."""
+class PersistentQueue:
+"""Idempotent JSONL-backed queue with deduplication by payload hash."""
  
-     def __init__(self, path: str) -> None:
+def __init__(self, path: str) -> None:
          self.path = Path(path)
          self.path.parent.mkdir(parents=True, exist_ok=True)
  
-     def _hash(self, item: Dict[str, Any]) -> str:
+def _hash(self, item: Dict[str, Any]) -> str:
          canonical = json.dumps(item.get("payload", {}), sort_keys=True, ensure_ascii=False)
          return hashlib.sha256(canonical.encode("utf-8")).hexdigest()
  
-     def enqueue(self, item: Dict[str, Any]) -> bool:
+def enqueue(self, item: Dict[str, Any]) -> bool:
          h = self._hash(item)
          if self._contains(h):
              return False
@@ -33,7 +33,7 @@
              fh.write(json.dumps(record, ensure_ascii=False) + "\n")
          return True
  
-     def _contains(self, h: str) -> bool:
+def _contains(self, h: str) -> bool:
          if not self.path.exists():
              return False
          with self.path.open("r", encoding="utf-8") as fh:
@@ -46,7 +46,7 @@
                      return True
          return False
  
-     def pending(self, limit: int = 10) -> List[Dict[str, Any]]:
+def pending(self, limit: int = 10) -> List[Dict[str, Any]]:
          if not self.path.exists():
              return []
          out: List[Dict[str, Any]] = []
@@ -62,7 +62,7 @@
                      out.append(rec)
          return out
  
-     def mark_done(self, item_id: str) -> None:
+def mark_done(self, item_id: str) -> None:
          if not self.path.exists():
              return
          tmp = self.path.with_suffix(".tmp")

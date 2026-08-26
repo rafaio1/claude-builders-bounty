@@ -1,13 +1,13 @@
- from __future__ import annotations
+from __future__ import annotations
  
- from typing import Any, Dict, Tuple
+from typing import Any, Dict, Tuple
  
  MAX_PDF_PAYLOAD_BYTES = 512_000
  MAX_IMAGE_PAYLOAD_BYTES = 2_097_152
  ALLOWED_IMAGE_FORMATS = {"png", "jpeg", "webp"}
  
  
- def validate_pdf_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
+def validate_pdf_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
      content = payload.get("content") or payload.get("html")
      if not isinstance(content, str) or not content.strip():
          return False, "missing_or_empty_content"
@@ -18,7 +18,7 @@
      return True, "ok"
  
  
- def validate_image_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
+def validate_image_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
      data = payload.get("data")
      fmt = (payload.get("format") or "").lower()
      if not isinstance(data, (str, bytes)):
@@ -33,7 +33,7 @@
      return True, "ok"
  
  
- def validate_cron_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
+def validate_cron_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
      schedule = payload.get("schedule")
      target = payload.get("target")
      if not isinstance(schedule, str) or not schedule.strip():

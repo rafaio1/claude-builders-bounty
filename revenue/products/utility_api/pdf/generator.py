@@ -1,14 +1,14 @@
- from __future__ import annotations
+from __future__ import annotations
  
- import html
- import re
- from typing import Any, Dict, Tuple
+import html
+import re
+from typing import Any, Dict, Tuple
  
- from ..common.validation import validate_pdf_payload
+from ..common.validation import validate_pdf_payload
  
  
- def _sanitize_html(content: str) -> str:
-     """Strip scripts, iframes, objects and external refs; keep safe tags only."""
+def _sanitize_html(content: str) -> str:
+"""Strip scripts, iframes, objects and external refs; keep safe tags only."""
      unsafe = re.compile(
          r"<\s*/?\s*(script|iframe|object|embed|form|input|button|link|meta|base)[^>]*>",
          re.IGNORECASE,
@@ -17,7 +17,7 @@
      return cleaned.strip()
  
  
- def generate_pdf(payload: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
+def generate_pdf(payload: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
      ok, reason = validate_pdf_payload(payload)
      if not ok:
          return False, {"error": reason}

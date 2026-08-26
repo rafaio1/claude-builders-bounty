@@ -1,11 +1,11 @@
- from __future__ import annotations
+from __future__ import annotations
  
- from typing import Any, Dict, Tuple
+from typing import Any, Dict, Tuple
  
- from ..common.validation import validate_image_payload
+from ..common.validation import validate_image_payload
  
  
- def optimize_image(payload: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
+def optimize_image(payload: Dict[str, Any]) -> Tuple[bool, Dict[str, Any]]:
      ok, reason = validate_image_payload(payload)
      if not ok:
          return False, {"error": reason}

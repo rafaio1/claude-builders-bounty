@@ -94,7 +94,6 @@ class Handler(BaseHTTPRequestHandler):
         self._json_response(404, {"error": "not_found"})
 
     def log_message(self, fmt: str, *args: Any) -> None:
-        # Quiet logs; systemd journal captures stdout/stderr separately.
         return
 
 

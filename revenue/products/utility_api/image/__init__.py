@@ -1,1 +1,1 @@
- """Image optimization product: resize/reformat within local-safe bounds."""
+"""Image optimization product: resize/reformat within local-safe bounds."""

@@ -1,1 +1,1 @@
- """Shared utilities for utility_api products."""
+"""Shared utilities for utility_api products."""

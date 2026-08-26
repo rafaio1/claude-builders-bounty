@@ -1,1 +1,1 @@
- """PDF generation product: local-safe HTML/text to PDF conversion."""
+"""PDF generation product: local-safe HTML/text to PDF conversion."""
