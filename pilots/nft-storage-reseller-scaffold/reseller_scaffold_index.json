@@ -1,0 +1,47 @@
+{
+  "pilot": "nft-storage-reseller",
+  "service": "NFT.Storage",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "NO_FREE_TIER_AND_NO_RESALE_RIGHTS",
+  "analysis_date": "2026-08-26T21:55:00+00:00",
+  "free_tier": {
+    "exists": false,
+    "notes": "Modelo atual é exclusivamente pago: $4.99/GB one-time fee. Não há free tier permanente mencionado no pricing page nem nos TOS. Serviço migrou de modelo gratuito (Classic) para endowment-based paid storage."
+  },
+  "paid_plan_baseline": {
+    "price_per_gb": 4.99,
+    "currency": "USD",
+    "billing_model": "one-time fee per GB",
+    "refund_policy": "nonrefundable",
+    "activation_deadline": "1 year from payment"
+  },
+  "tos_analysis": {
+    "sublicensing_allowed": false,
+    "resale_allowed": false,
+    "assignment_clause": "You may not assign or transfer this Agreement or your rights hereunder, in whole or in part, without our prior written consent.",
+    "commercial_use_restrictions": "No explicit commercial prohibition BUT no resale/sublicensing rights granted. Service is B2C/B2B direct only.",
+    "end_user_exception": false,
+    "key_risks": [
+      "Zero free tier eliminates zero-capital reselling model",
+      "Non-refundable payments create inventory risk for reseller",
+      "No assignment/transfer rights prevent white-label or managed service wrapper",
+      "Data immutability (cannot permanently delete from Filecoin/IPFS) creates liability exposure for reseller clients",
+      "Service pivoted from free Classic model — future pricing/model changes possible with 14-day notice"
+    ]
+  },
+  "reselling_model": {
+    "viable": false,
+    "model_type": null,
+    "notes": "Sem free tier e sem direitos de revenda/sublicenciamento, não há modelo zero-capital viável. Managed Setup Service também inviável pois cliente precisaria pagar $4.99/GB diretamente — sem margem para agente sem capital inicial."
+  },
+  "next_steps": [],
+  "alternatives_suggested": [
+    "Cloudflare R2 (free tier 10GB + egress-free)",
+    "Backblaze B2 (free tier 10GB — já rejeitado por TOS mas com exceção possível via partner program)",
+    "IPFS pinning services com free tier (Pinata, Infura IPFS)",
+    "Filecoin direct deals via Lotus/Estuary (self-hosted, zero platform cost)"
+  ],
+  "doc_verified": true,
+  "verification_method": "playwright-cli snapshot of /terms-conditions + curl pricing page HTML parse",
+  "timestamp": "2026-08-26T21:55:00+00:00"
+}
