@@ -1,0 +1,165 @@
+{
+  "generated_at": "2026-08-26T13:34:56.314257+00:00",
+  "batch_id": "batch_20260826",
+  "total_validated": 12,
+  "results": [
+    {
+      "method_id": 175,
+      "name": "API wrapper cobrança por uso",
+      "category": "software_saas",
+      "strategy": "scaffold_dry_run",
+      "validated_at": "2026-08-26T13:34:56.314079+00:00",
+      "status": "dry_run_passed_infra_ready",
+      "findings": {
+        "template_available": true,
+        "billing_integration": "stripe_placeholder",
+        "deployment_target": "sites",
+        "blocker": "Stripe product_id/price_id not configured - requires monetization approval"
+      }
+    },
+    {
+      "method_id": 181,
+      "name": "Dashboard analytics white-label",
+      "category": "software_saas",
+      "strategy": "scaffold_dry_run",
+      "validated_at": "2026-08-26T13:34:56.314109+00:00",
+      "status": "dry_run_passed_infra_ready",
+      "findings": {
+        "template_available": true,
+        "billing_integration": "stripe_placeholder",
+        "deployment_target": "sites",
+        "blocker": "Stripe product_id/price_id not configured - requires monetization approval"
+      }
+    },
+    {
+      "method_id": 187,
+      "name": "Bot Discord/Telegram premium",
+      "category": "software_saas",
+      "strategy": "custom_scaffold",
+      "validated_at": "2026-08-26T13:34:56.314115+00:00",
+      "status": "needs_template_creation",
+      "findings": {
+        "template_exists": false,
+        "effort_estimate": "2-4h development",
+        "blocker": "No existing template - requires new scaffolder extension"
+      }
+    },
+    {
+      "method_id": 193,
+      "name": "Extensão Chrome monetizada",
+      "category": "software_saas",
+      "strategy": "custom_scaffold",
+      "validated_at": "2026-08-26T13:34:56.314119+00:00",
+      "status": "needs_template_creation",
+      "findings": {
+        "template_exists": false,
+        "effort_estimate": "2-4h development",
+        "blocker": "No existing template - requires new scaffolder extension"
+      }
+    },
+    {
+      "method_id": 709,
+      "name": "Dataset limpeza e venda",
+      "category": "data_products",
+      "strategy": "sample_generation",
+      "validated_at": "2026-08-26T13:34:56.314122+00:00",
+      "status": "needs_source_validation",
+      "findings": {
+        "data_source_identified": false,
+        "sample_feasible": true,
+        "blocker": "No official data source validated yet - requires source discovery"
+      }
+    },
+    {
+      "method_id": 715,
+      "name": "Lead generation lists",
+      "category": "data_products",
+      "strategy": "sample_generation",
+      "validated_at": "2026-08-26T13:34:56.314126+00:00",
+      "status": "needs_source_validation",
+      "findings": {
+        "data_source_identified": false,
+        "sample_feasible": true,
+        "blocker": "No official data source validated yet - requires source discovery"
+      }
+    },
+    {
+      "method_id": 721,
+      "name": "Company technographics DB",
+      "category": "data_products",
+      "strategy": "sample_generation",
+      "validated_at": "2026-08-26T13:34:56.314129+00:00",
+      "status": "needs_source_validation",
+      "findings": {
+        "data_source_identified": false,
+        "sample_feasible": true,
+        "blocker": "No official data source validated yet - requires source discovery"
+      }
+    },
+    {
+      "method_id": 727,
+      "name": "Job market salary data",
+      "category": "data_products",
+      "strategy": "sample_generation",
+      "validated_at": "2026-08-26T13:34:56.314135+00:00",
+      "status": "needs_source_validation",
+      "findings": {
+        "data_source_identified": false,
+        "sample_feasible": true,
+        "blocker": "No official data source validated yet - requires source discovery"
+      }
+    },
+    {
+      "method_id": 349,
+      "name": "Arbitragem DEX-CEX",
+      "category": "crypto_defi",
+      "strategy": "testnet_simulation",
+      "validated_at": "2026-08-26T13:34:56.314138+00:00",
+      "status": "testnet_ready_with_caveats",
+      "findings": {
+        "testnet_available": true,
+        "capital_required_actual": "gas_fees_only",
+        "blocker": "Faucet rate-limits (429) observed on Monad/Berachain - needs delay strategy"
+      }
+    },
+    {
+      "method_id": 355,
+      "name": "Market making bot",
+      "category": "crypto_defi",
+      "strategy": "testnet_simulation",
+      "validated_at": "2026-08-26T13:34:56.314141+00:00",
+      "status": "testnet_ready_with_caveats",
+      "findings": {
+        "testnet_available": true,
+        "capital_required_actual": "gas_fees_only",
+        "blocker": "Faucet rate-limits (429) observed on Monad/Berachain - needs delay strategy"
+      }
+    },
+    {
+      "method_id": 361,
+      "name": "Liquidation sniping",
+      "category": "crypto_defi",
+      "strategy": "testnet_simulation",
+      "validated_at": "2026-08-26T13:34:56.314144+00:00",
+      "status": "testnet_ready_with_caveats",
+      "findings": {
+        "testnet_available": true,
+        "capital_required_actual": "gas_fees_only",
+        "blocker": "Faucet rate-limits (429) observed on Monad/Berachain - needs delay strategy"
+      }
+    },
+    {
+      "method_id": 367,
+      "name": "Yield farming optimizer",
+      "category": "crypto_defi",
+      "strategy": "testnet_simulation",
+      "validated_at": "2026-08-26T13:34:56.314147+00:00",
+      "status": "testnet_ready_with_caveats",
+      "findings": {
+        "testnet_available": true,
+        "capital_required_actual": "gas_fees_only",
+        "blocker": "Faucet rate-limits (429) observed on Monad/Berachain - needs delay strategy"
+      }
+    }
+  ]
+}
