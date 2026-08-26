@@ -1,0 +1,35 @@
+{
+  "method_id": "200",
+  "name": "Plugin WordPress pago (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:31.248572+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_feedback_volume",
+      "value": 142,
+      "unit": "reports",
+      "period": "14d"
+    },
+    {
+      "metric": "conversion_from_free",
+      "value": 5.8,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "mrr_growth",
+      "value": 22.1,
+      "unit": "%",
+      "period": "mom"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant focuses on rapid validation via freemium model. Proxy TIER0 targets open-source WP plugins with monetization gaps. Official integration: WordPress REST API + Stripe/Paddle webhooks. Zero-capital via free repo hosting + manual key delivery initially. Iterate based on user support tickets and feature requests.",
+  "_hash": "a971536298c15378880e67ce1d48f1e225fb8041ac9db2852df19e2336c2499f"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "201",
+  "name": "Plugin WordPress pago (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:31.248572+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_sites_managed",
+      "value": 120,
+      "unit": "installs",
+      "period": "current"
+    },
+    {
+      "metric": "sla_uptime",
+      "value": 99.95,
+      "unit": "%",
+      "period": "quarterly"
+    },
+    {
+      "metric": "contract_acv",
+      "value": 4500,
+      "unit": "USD",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant requires multisite support, SSO, audit logs, and priority SLA. Proxy TIER0 via GitHub Search for enterprise-grade WP frameworks. Official targets: WordPress VIP Partner Program + Custom License API. Monetization via volume site licensing. Zero-capital PoC uses local Docker multisite + mock auth; production needs verified vendor status.",
+  "_hash": "f746369e0d35fe0ec07bd75b5fc16c1c14050f3b6fd5a2003613fc0259a67452"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "199",
+  "name": "Plugin WordPress pago",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:31.248572+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "active_installs",
+      "value": 8500,
+      "unit": "sites",
+      "period": "30d"
+    },
+    {
+      "metric": "license_renewal_rate",
+      "value": 72.4,
+      "unit": "%",
+      "period": "annual"
+    },
+    {
+      "metric": "avg_ticket_value",
+      "value": 49.0,
+      "unit": "USD",
+      "period": "per_sale"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for premium WP plugin boilerplates (Freemius/EDD integrated). Official source: WordPress.org Plugin Directory + WooCommerce Product API. Zero-capital path uses free directory listing + self-hosted license server on free-tier VPS. Revenue via annual subscriptions or lifetime licenses.",
+  "_hash": "6c21bd2181b2179ac7ce415af43aea3cd1d4dd1037f8579982dcf17dd78aba23"
+}
