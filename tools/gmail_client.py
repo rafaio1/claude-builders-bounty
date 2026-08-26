@@ -148,10 +148,24 @@ class GmailClient:
         return self._api("GET", "messages", params=params)
 
     def search(self, query: str, max_results: int = 20) -> list[dict]:
-        """Busca mensagens por query Gmail. Retorna lista de {id, threadId}."""
-        params = {"q": query, "maxResults": max_results}
-        result = self._api("GET", "messages", params=params)
-        return result.get("messages", [])
+        """Busca mensagens por query Gmail com paginação automática.
+        Retorna lista de {id, threadId} até max_results ou esgotar."""
+        messages = []
+        page_token = None
+        while len(messages) < max_results:
+            batch_size = min(500, max_results - len(messages))
+            params = {"q": query, "maxResults": batch_size}
+            if page_token:
+                params["pageToken"] = page_token
+            result = self._api("GET", "messages", params=params)
+            batch = result.get("messages", [])
+            if not batch:
+                break
+            messages.extend(batch)
+            page_token = result.get("nextPageToken")
+            if not page_token:
+                break
+        return messages[:max_results]
 
     def list_threads(self, max_results: int = 20, page_token: Optional[str] = None) -> dict:
         """Lista threads recentes."""

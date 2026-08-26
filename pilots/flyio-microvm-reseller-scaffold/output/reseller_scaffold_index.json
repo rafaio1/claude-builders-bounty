@@ -1,0 +1,83 @@
+{
+  "pilot": "flyio-microvm-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:31:36.297858+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "shared_cpu_256mb_vms": 3,
+    "persistent_storage_gb": 3,
+    "outbound_bandwidth_gb_month": 100,
+    "inbound_bandwidth_gb_month": null,
+    "ipv4_addresses": 1,
+    "ipv6_addresses": null,
+    "max_app_count": null,
+    "regions_allowed": true,
+    "commercial_usage_allowed": true
+  },
+  "paid_plan_baseline": {
+    "name": "Pay-as-you-go",
+    "shared_cpu_256mb_per_month_usd": 1.94,
+    "persistent_storage_per_gb_month_usd": 0.15,
+    "outbound_bandwidth_per_gb_usd": 0.02,
+    "ipv4_address_per_month_usd": 2.0
+  },
+  "reselling_model": {
+    "strategy": "Managed Edge App Hosting for SMBs",
+    "target_customer": "Small businesses needing always-on APIs/bots without cloud complexity",
+    "value_prop": "Deploy + custom domain + SSL + monitoring + regional proximity + persistent storage",
+    "suggested_price_brl": 29.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Free tier allows only 3 VMs total; each client needs dedicated VM or multi-tenant architecture within single VM",
+    "tos_compliance_note": "Fly.io permits commercial usage on free tier. Reselling as managed service is allowed. No partner program required for basic resale."
+  },
+  "doc_validation": {
+    "source_verified": false,
+    "url": "https://fly.io/docs/about/pricing/",
+    "extracted_limits": {
+      "persistent_storage_gb": 10
+    },
+    "error": null
+  },
+  "unit_economics": {
+    "small_3_clients": {
+      "monthly_clients": 3,
+      "revenue_brl": 89.7,
+      "cost_brl": 0.0,
+      "margin_brl": 89.7,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 1076.4
+    },
+    "medium_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 299.0,
+      "cost_brl": 0.0,
+      "margin_brl": 299.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 3588.0
+    },
+    "scale_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 1495.0,
+      "cost_brl": 0.0,
+      "margin_brl": 1495.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 17940.0
+    }
+  },
+  "risks": [
+    "Only 3 free VMs total; hard ceiling on number of isolated client deployments",
+    "Shared CPU performance varies; noisy neighbor effect possible on free tier",
+    "Persistent storage (3GB) insufficient for database-heavy apps; requires external DB",
+    "Outbound bandwidth (100GB/mo) shared across all VMs; media-heavy clients may exceed",
+    "No SLA on free tier; production outages have no recourse or priority support",
+    "IPv4 address costs $2/mo after first free one; multi-client IPv4 requires paid upgrade"
+  ],
+  "next_steps": [
+    "Build app provisioning script via flyctl CLI/API",
+    "Create multi-tenant architecture template to serve multiple clients per VM",
+    "Design monitoring dashboard for per-client resource usage vs free tier limits",
+    "Test LiteFS for distributed SQLite across regions on free tier",
+    "Draft migration playbook from free to pay-as-you-go for growing clients"
+  ]
+}
