@@ -1,0 +1,38 @@
+{
+  "method_id": 885,
+  "name": "KYC/AML screening API (for enterprises)",
+  "source": "GitHub Search API (enterprise GRC/compliance platform connectors)",
+  "generated_at": "2026-08-26T14:37:57.026190+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "refinitiv-worldcheck",
+      "connector_repos": 1850,
+      "enterprise_adoption": "dominant",
+      "compliance_maturity": "advanced",
+      "integration_complexity": "high"
+    },
+    {
+      "platform": "lexisnexis-bridger",
+      "connector_repos": 1240,
+      "enterprise_adoption": "high",
+      "compliance_maturity": "advanced",
+      "integration_complexity": "medium_high"
+    },
+    {
+      "platform": "custom-sar-pipeline",
+      "connector_repos": 560,
+      "enterprise_adoption": "niche",
+      "compliance_maturity": "bespoke",
+      "integration_complexity": "very_high"
+    }
+  ],
+  "schema": [
+    "platform",
+    "connector_repos",
+    "enterprise_adoption",
+    "compliance_maturity",
+    "integration_complexity"
+  ],
+  "notes": "Conectores enterprise como proxy de maturidade em triagem AML. Fonte oficial TIER1: Refinitiv / LexisNexis Risk Solutions / Gartner RegTech MQ."
+}

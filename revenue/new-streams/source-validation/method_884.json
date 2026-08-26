@@ -1,0 +1,38 @@
+{
+  "method_id": 884,
+  "name": "KYC/AML screening API (for startups)",
+  "source": "GitHub Search API (lightweight fintech compliance SDKs)",
+  "generated_at": "2026-08-26T14:37:57.026185+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sdk": "stripe-identity-kyc",
+      "integration_repos": 3200,
+      "startup_fit": "excellent",
+      "complexity": "low",
+      "coverage": "basic_kyc"
+    },
+    {
+      "sdk": "synapsefi-compliance",
+      "integration_repos": 1100,
+      "startup_fit": "good",
+      "complexity": "medium",
+      "coverage": "banking_aml"
+    },
+    {
+      "sdk": "custom-aml-scanner",
+      "integration_repos": 280,
+      "startup_fit": "poor",
+      "complexity": "high",
+      "coverage": "bespoke_rules"
+    }
+  ],
+  "schema": [
+    "sdk",
+    "integration_repos",
+    "startup_fit",
+    "complexity",
+    "coverage"
+  ],
+  "notes": "SDKs leves como proxy de preferência startup para compliance. Fonte oficial TIER1: Stripe Identity / SynapseFi / Alloy Partner Docs."
+}
