@@ -213,3 +213,22 @@
 - `cadaf36` feat: integrate revenue streams, products, templates and p2p-stack init
 - `b02e883` docs: update FEATURES inventory with cadaf36 integrations
 - `0164d1d` docs: update INTEGRATION_CONTEXT with current state and integrated features
+
+## [Unreleased] - Cycle 3 Integration (2026-08-26)
+
+### Added
+- feat: integrate autonomous trade scanner (signal-only, zero-capital safe) (`507afd8`)
+- feat: add gitcoin grant drafter for autonomous DeFi/DAO infrastructure funding (`cf84e06`)
+- feat: add cron revenue suite for scheduled autonomous revenue cycles (`ad495cd`)
+- feat: integrate DeFi bounty scanner, vuln report pipeline and revenue orchestrator (`1fe7f19`)
+
+### Changed
+- chore: exclude runtime data files from version control (`425b2b4`)
+- docs: update FEATURES.md with cycle 3 revenue automation suite and refreshed metrics (`3b76538`)
+- docs: add cron revenue suite section to runbook (`82d9104`)
+- docs: append cycle 3 integration summary for DeFi scanner, vuln pipeline and revenue orchestrator (`ecceb48`)
+
+### Notes
+- All Cycle 3 features audited for secrets and capital safety before integration
+- Telegram gate enforced: only realized financial events with external evidence pass
+- Revenue status: $0 realized, $1265 pending (AgentLily PRs), all lanes in waiting_monitoring or pilot
