@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T12:55:11+00:00",
+  "updated_at": "2026-08-26T13:18:05+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -532,7 +532,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T125511Z",
+      "map_id": "20260826T131805Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -559,7 +559,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T125511Z",
+      "map_id": "20260826T131805Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -586,7 +586,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T125511Z",
+      "map_id": "20260826T131805Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -615,7 +615,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T125511Z",
+      "map_id": "20260826T131805Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -8789,6 +8789,179 @@
           "at": "2026-08-26T12:55:11+00:00",
           "event": "mapped",
           "detail": "20260826T125511Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-valida-o-de-expira-o-de-credenciais-bybit",
+      "key": "19f4bce2f0f21690",
+      "canon": "d1bb3a37aae75e7c",
+      "title": "Validação de expiração de credenciais Bybit",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O tick de saúde não verifica a validade temporal das chaves em /root/.automaton/bybit-murre.env, o que pode causar falhas silenciosas em ferramentas dependentes.",
+      "change": "Adicionar verificação de metadata/validade no env.py e expor alerta no loop.py se a expiração estiver próxima.",
+      "never": [
+        "imprimir secrets",
+        "alterar AGENTIC_LIVE_TRADE",
+        "fazer chamadas de rede para Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-ac-mulo-de-snapshots-do-playwright-cli",
+      "key": "ab56f88a9356181b",
+      "canon": "3910249132447077",
+      "title": "Acúmulo de snapshots do playwright-cli",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O playwright-cli headless gera snapshots em .playwright-cli/ que não são limpos automaticamente, arriscando esgotamento de disco a longo prazo.",
+      "change": "Adicionar rotina no loop.py para remover snapshots com mais de 24 horas durante o tick de saúde.",
+      "never": [
+        "deletar snapshots em uso",
+        "desativar o playwright"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-tratamento-de-review-feedback-no-develop",
+      "key": "3d6cd795e6b268f3",
+      "canon": "6d161d704fe4c236",
+      "title": "Tratamento de review_feedback no develop",
+      "kind": "bottleneck",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita uma mudança, o feedback volta ao ledger, mas o prompt do próximo develop pode não destacar o erro anterior de forma eficaz.",
+      "change": "Modificar improve.py para injetar o review_feedback no topo do prompt enviado ao Claude CLI, forçando correção exata.",
+      "never": [
+        "alargar o escopo da tarefa",
+        "ignorar o feedback",
+        "fazer git reset"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-sa-da-estruturada-para-ferramentas-cli-theme-too",
+      "key": "2d07875195f46b41",
+      "canon": "6970964f0550cff5",
+      "title": "Saída estruturada para ferramentas CLI (theme=tools)",
+      "kind": "improvement",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Agentes perdem tokens e cometem erros de parsing ao lidar com stdout bruto de ferramentas como jq e playwright-cli.",
+      "change": "Envolver a execução das ferramentas para retornar JSON padronizado antes de passar ao agente.",
+      "never": [
+        "alterar a lógica de negócio",
+        "adicionar dependências externas"
+      ],
+      "files_hint": [
+        "src/agentic/tools/jq.py",
+        "src/agentic/tools/playwright_cli.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-pipeline-de-traces-sanitizados-para-eval-theme-a",
+      "key": "0c6b4e704ba7284f",
+      "canon": "e39a534054d1a5c6",
+      "title": "Pipeline de traces sanitizados para eval (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O develop usa GhostCLI, mas não há pipeline local de eval para medir a qualidade e a segurança dos prompts gerados.",
+      "change": "Criar hook em claude_cli.py que salva prompts e respostas (sanitizados de secrets) em data/traces/ para futura análise.",
+      "never": [
+        "salvar secrets ou tokens",
+        "enviar traces para fora",
+        "ligar AGENTIC_LIVE_TRADE"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-m-tricas-de-lat-ncia-de-ia-no-tick",
+      "key": "5baed71a59db77ba",
+      "canon": "a183bd9d849978eb",
+      "title": "Métricas de latência de IA no tick",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O intervalo do loop é 90s, mas não há visibilidade se as chamadas de IA estão consumindo a maior parte desse tempo.",
+      "change": "Medir o tempo de execução das chamadas GhostCLI/Claude no loop.py e logar avisos se a latência exceder 60s.",
+      "never": [
+        "bloquear o loop",
+        "alterar o intervalo do systemd"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T131805Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:18:05+00:00",
+          "event": "mapped",
+          "detail": "20260826T131805Z"
         }
       ]
     }
