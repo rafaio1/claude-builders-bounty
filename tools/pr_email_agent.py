@@ -49,12 +49,25 @@ def load_ledger():
 
 
 def save_ledger_atomic(entries):
-    """Atomic write with file lock to prevent corruption."""
+    """Atomic write with pre-backup, lock timeout, and fsync."""
     WORKSPACE.mkdir(parents=True, exist_ok=True)
+    # Pre-write backup
+    if LEDGER_PATH.exists():
+        ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        bak = LEDGER_PATH.with_suffix(LEDGER_PATH.suffix + f".bak.{ts}")
+        shutil.copy2(LEDGER_PATH, bak)
     fd, tmp_path = tempfile.mkstemp(dir=WORKSPACE, suffix=".tmp")
     try:
         with os.fdopen(fd, "w") as f:
-            fcntl.flock(f, fcntl.LOCK_EX)
+            deadline = time.monotonic() + 5.0
+            while True:
+                try:
+                    fcntl.flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
+                    break
+                except (IOError, OSError):
+                    if time.monotonic() >= deadline:
+                        raise TimeoutError("Could not acquire ledger lock within 5s")
+                    time.sleep(0.05)
             json.dump(entries, f, indent=2)
             f.flush()
             os.fsync(f.fileno())

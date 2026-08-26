@@ -1,0 +1,67 @@
+{
+  "pilot": "upstash-redis-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:52:34.199754+00:00",
+  "free_tier_limits": {
+    "max_commands_per_day": 10000,
+    "max_storage_bytes": 268435456,
+    "max_databases": 1,
+    "eviction_policy": "noeviction (default) or configurable",
+    "tls_enabled": true,
+    "rest_api_included": true,
+    "serverless_cron_included": false,
+    "commercial_allowed": true,
+    "source_verified": "https://upstash.com/pricing (v25 validation pending)",
+    "validation_note": "Limits based on known free tier; requires playwright-cli confirmation before TIER1"
+  },
+  "paid_plan_baseline": {
+    "pay_as_you_go_start_usd": 0.0,
+    "pro_plan_usd_month": 10.0,
+    "included_commands_pro": 1000000,
+    "overage_usd_per_1k_commands": 0.0002,
+    "sla_uptime": "99.9%"
+  },
+  "reselling_model": {
+    "target_segment": "devs BR building serverless apps Next.js/Vercel que precisam de cache/queue sem gerenciar Redis",
+    "managed_service_price_brl": 39.9,
+    "included_commands_month": 50000,
+    "overage_brl_per_1k_commands": 1.5,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "Namespace isolation via key prefix; single DB shared com rate limiting por cliente; REST API proxy para evitar conexao direta",
+    "recommended_use_case": "Cache de sessao + fila leve para webhooks; nao usar como DB primario"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://upstash.com/pricing",
+    "notes": [
+      "Aguardando validacao via playwright-cli dos limites atuais"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 39.9,
+    "cost_per_client_usd": 0.0,
+    "gross_margin_brl": 39.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "free_tier_monthly_commands": 300000,
+    "max_clients_theoretical": 6,
+    "ceiling_warning": "Free tier permite ~6 clientes no plano base (50K cmds/mes cada); storage de 256MB limita datasets grandes"
+  },
+  "risks": [
+    "Storage limitado a 256MB no free tier - inadequado para caches grandes ou filas persistentes",
+    "10K comandos/dia pode ser insuficiente para apps com trafego moderado",
+    "Sem programa affiliate/reseller publico confirmado",
+    "Concorrencia com Vercel KV (mesma infra Upstash) e Cloudflare Workers KV",
+    "Single database no free exige namespace discipline rigorosa para multi-tenancy"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://upstash.com/pricing",
+    "Testar latencia REST API vs TCP direto para cenario serverless BR",
+    "Pesquisar programa partner Upstash",
+    "Comparar unit economics com Vercel KV e Cloudflare Workers KV",
+    "Implementar prototype de namespace proxy com rate limiting"
+  ]
+}
