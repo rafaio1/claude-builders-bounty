@@ -1,0 +1,28 @@
+{
+  "method_id": "571",
+  "name": "Freelance time tracker integration",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:29:34.217799+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tracker_app": "toggl_track",
+      "sync_target": "notion_db",
+      "auto_tag_projects": true,
+      "idle_timeout_min": 5
+    },
+    {
+      "tracker_app": "clockify_free",
+      "sync_target": "google_sheets",
+      "auto_tag_projects": false,
+      "idle_timeout_min": 10
+    }
+  ],
+  "schema": [
+    "tracker_app",
+    "sync_target",
+    "auto_tag_projects",
+    "idle_timeout_min"
+  ],
+  "notes": "Integração de rastreamento de tempo com ferramentas de produtividade. Zero-capital: uso de APIs gratuitas e webhooks. Proxy: GitHub Search 'freelance time tracker sync python'. Fonte oficial: Toggl/Clockify API docs."
+}

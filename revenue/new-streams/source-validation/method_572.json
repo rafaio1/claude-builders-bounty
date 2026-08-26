@@ -1,0 +1,28 @@
+{
+  "method_id": "572",
+  "name": "Freelance time tracker integration (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:29:34.217799+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_toolchain": "linear_jira_sync",
+      "billing_trigger": "sprint_complete",
+      "cost_allocation": "per_feature",
+      "audit_log": "immutable"
+    },
+    {
+      "startup_toolchain": "asana_github_link",
+      "billing_trigger": "milestone_approval",
+      "cost_allocation": "per_team",
+      "audit_log": "standard"
+    }
+  ],
+  "schema": [
+    "startup_toolchain",
+    "billing_trigger",
+    "cost_allocation",
+    "audit_log"
+  ],
+  "notes": "Rastreamento orientado a features/sprints para startups ágeis. Proxy: GitHub Search 'startup dev time tracking billing'. Foco em alocação de custos por feature sem overhead manual."
+}
