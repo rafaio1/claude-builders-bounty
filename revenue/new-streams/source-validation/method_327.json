@@ -1,0 +1,34 @@
+{
+  "method_id": "327",
+  "name": "Documentation generator (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:14:23.012318+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "self_hosted",
+      "sso_provider": "okta",
+      "audit_logging": true,
+      "multi_repo_sync": true,
+      "sla": "99.99%"
+    },
+    {
+      "deployment": "private_cloud",
+      "compliance": [
+        "SOC2",
+        "HIPAA"
+      ],
+      "versioning": "git_backed",
+      "api_playground": true,
+      "support": "dedicated"
+    }
+  ],
+  "schema": [
+    "deployment",
+    "sso_provider",
+    "audit_logging",
+    "multi_repo_sync",
+    "sla"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: GitBook Enterprise / SwaggerHub para empresas com SSO, compliance e documentação multi-repo sincronizada."
+}
