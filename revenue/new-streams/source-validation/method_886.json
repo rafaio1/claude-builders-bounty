@@ -1,0 +1,38 @@
+{
+  "method_id": 886,
+  "name": "KYC/AML screening API (for creators)",
+  "source": "GitHub Search API (proxy for creator payout/tax compliance tools)",
+  "generated_at": "2026-08-26T14:38:23.435652+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "tipalti-payout-kyc",
+      "repos_using": 1150,
+      "creator_fit": "high",
+      "compliance_type": "tax_1099",
+      "complexity": "medium"
+    },
+    {
+      "tool": "paypal-masspay-verify",
+      "repos_using": 2300,
+      "creator_fit": "ubiquitous",
+      "compliance_type": "basic_identity",
+      "complexity": "low"
+    },
+    {
+      "tool": "crypto-payout-aml",
+      "repos_using": 480,
+      "creator_fit": "niche",
+      "compliance_type": "wallet_screening",
+      "complexity": "high"
+    }
+  ],
+  "schema": [
+    "tool",
+    "repos_using",
+    "creator_fit",
+    "compliance_type",
+    "complexity"
+  ],
+  "notes": "Repositórios de integração como proxy de necessidade de triagem para payouts de creators. Fonte oficial TIER1: Tipalti / PayPal Partner Compliance Docs."
+}
