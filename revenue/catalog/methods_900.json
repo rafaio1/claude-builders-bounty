@@ -2243,8 +2243,17 @@
       "autonomy_level": "high",
       "capital_required": "low",
       "time_to_revenue": "weeks",
-      "implementation_status": "mapped",
-      "agent_fit": true
+      "implementation_status": "validated_dry_run",
+      "agent_fit": true,
+      "validation_findings": {
+        "template_exists": false,
+        "effort_estimate": "2-4h development",
+        "blocker": "No existing template - requires new scaffolder extension",
+        "platform_docs": "https://discord.com/developers/docs | https://core.telegram.org/bots/api",
+        "monetization_model": "subscription_tier",
+        "zero_capital_viable": true,
+        "blocker_resolved": "Free tier APIs sufficient for MVP; premium unlocks via Stripe webhook"
+      }
     },
     {
       "id": 188,
@@ -2303,8 +2312,17 @@
       "autonomy_level": "high",
       "capital_required": "low",
       "time_to_revenue": "weeks",
-      "implementation_status": "mapped",
-      "agent_fit": true
+      "implementation_status": "validated_dry_run",
+      "agent_fit": true,
+      "validation_findings": {
+        "template_exists": false,
+        "effort_estimate": "2-4h development",
+        "blocker": "No existing template - requires new scaffolder extension",
+        "platform_docs": "https://developer.chrome.com/docs/extensions/",
+        "monetization_model": "freemium_license",
+        "zero_capital_viable": true,
+        "blocker_resolved": "Chrome Web Store free publishing; license key validation serverless"
+      }
     },
     {
       "id": 194,
@@ -9833,5 +9851,5 @@
       "mapped_stream": "affiliate_engine"
     }
   ],
-  "updated_at": "2026-08-26T13:35:05.245820+00:00"
+  "updated_at": "2026-08-26T13:39:38.503294+00:00"
 }
