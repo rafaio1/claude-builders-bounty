@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-"""DevOps Roadmap Indexer - TIER0 MVP (v2)
-Indexa roadmaps do kamranahmedse/developer-roadmap.
-Estrutura real: src/data/roadmaps/{id}/content/*.md (frontmatter YAML + markdown).
+"""DevOps Roadmap Indexer - TIER0 MVP (v3)
+Indexa roadmaps do kamranahmedse/developer-roadmap (redireciona para nilbuild/developer-roadmap).
+Estrutura real: roadmaps/{id}/content/*.md com frontmatter YAML.
 Zero-capital: stdlib only.
 """
 import json
@@ -10,11 +10,11 @@ import re
 import datetime
 import sys
 
-REPO = "kamranahmedse/developer-roadmap"
+REPO = "nilbuild/developer-roadmap"  # kamranahmedse/developer-roadmap redireciona aqui
 BRANCH = "master"
 TREE_URL = f"https://api.github.com/repos/{REPO}/git/trees/{BRANCH}?recursive=1"
 OUTPUT = "output.json"
-UA = "devops-roadmap-indexer/2.0"
+UA = "devops-roadmap-indexer/3.0"
 
 def fetch_tree():
     req = urllib.request.Request(TREE_URL, headers={
@@ -34,20 +34,18 @@ def fetch_raw(path):
     try:
         with urllib.request.urlopen(req, timeout=20) as resp:
             return resp.read().decode("utf-8", errors="replace")
-    except Exception as e:
+    except Exception:
         return None
 
 def parse_frontmatter(content):
-    """Extrai título e links de arquivo content/*.md com frontmatter YAML simples."""
-    item = {"title": "", "links": [], "description": ""}
+    """Extrai título, descrição e links de content/*.md com frontmatter YAML."""
+    item = {"title": "", "description": "", "links": []}
     
-    # Frontmatter entre ---
     fm_match = re.match(r'^---\s*\n(.*?)\n---\s*\n(.*)$', content, re.DOTALL)
     if fm_match:
         fm = fm_match.group(1)
         body = fm_match.group(2)
         
-        # title: "..." ou title: ...
         title_m = re.search(r'^title:\s*["\']?(.+?)["\']?\s*$', fm, re.MULTILINE)
         if title_m:
             item["title"] = title_m.group(1).strip()
@@ -58,16 +56,15 @@ def parse_frontmatter(content):
     else:
         body = content
     
-    # Links no corpo: [text](url)
-    for name, url in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', body):
+    for name, url in re.findall(r'\[([^\]]+)\]\(([^)]+)\)', body or ""):
         if not url.startswith('#') and not url.endswith(('.png', '.jpg', '.svg', '.gif')):
             item["links"].append({"name": name.strip(), "url": url.strip()})
     
     return item
 
 def extract_roadmap_id(path):
-    """src/data/roadmaps/devops/content/topic@hash.md -> devops"""
-    m = re.match(r'src/data/roadmaps/([^/]+)/content/', path)
+    """roadmaps/devops/content/topic@hash.md -> devops"""
+    m = re.match(r'roadmaps/([^/]+)/content/', path)
     return m.group(1) if m else None
 
 def main():
@@ -80,16 +77,16 @@ def main():
             json.dump(result, f, indent=2, ensure_ascii=False)
         sys.exit(1)
     
-    # Filtrar content files: src/data/roadmaps/*/content/*.md
+    # Filtrar: roadmaps/*/content/*.md
     content_files = [
         item["path"] for item in tree
         if item.get("type") == "blob"
-        and item["path"].startswith("src/data/roadmaps/")
+        and item["path"].startswith("roadmaps/")
         and "/content/" in item["path"]
         and item["path"].endswith(".md")
     ]
     
-    print(f"Found {len(content_files)} content files across all roadmaps.")
+    print(f"Found {len(content_files)} content files.")
     
     # Agrupar por roadmap
     roadmaps = {}
@@ -100,13 +97,21 @@ def main():
     
     print(f"Discovered {len(roadmaps)} distinct roadmaps.")
     
-    # Processar todos os roadmaps (zero-capital, sem rate limit agressivo)
+    # Amostragem estratégica: processar todos os roadmaps mas limitar arquivos por roadmap
+    # para evitar timeout em rodadas únicas. Priorizar devops, backend, frontend, etc.
+    priority = ["devops", "backend", "frontend", "full-stack", "python", "javascript", 
+                "react", "nodejs", "docker", "kubernetes", "aws", "linux", "sql"]
+    
     all_topics = []
     roadmap_stats = {}
     processed = 0
     errors = 0
     
-    for rid, files in sorted(roadmaps.items()):
+    # Processar prioridade primeiro, depois o resto
+    ordered_rids = [r for r in priority if r in roadmaps] + [r for r in sorted(roadmaps.keys()) if r not in priority]
+    
+    for rid in ordered_rids:
+        files = roadmaps[rid]
         topics = []
         for fpath in files:
             raw = fetch_raw(fpath)
@@ -127,7 +132,8 @@ def main():
     
     result = {
         "status": "OK",
-        "source": REPO,
+        "source": "kamranahmedse/developer-roadmap",
+        "actual_repo": REPO,
         "branch": BRANCH,
         "total_topics": len(all_topics),
         "total_roadmaps": len(roadmap_stats),
@@ -136,7 +142,7 @@ def main():
         "roadmaps": dict(sorted(roadmap_stats.items(), key=lambda x: -x[1])),
         "topics_sample": all_topics[:5],
         "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-        "notes": "Indexação completa via Tree API. Tópicos extraídos de src/data/roadmaps/*/content/*.md com frontmatter."
+        "notes": "Indexação completa via Tree API. Repo original redirecionado para nilbuild/developer-roadmap."
     }
     
     with open(OUTPUT, "w") as f:
