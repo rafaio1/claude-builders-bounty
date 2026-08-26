@@ -1,0 +1,121 @@
+{
+  "platforms": {
+    "hackerone": {
+      "url": "https://hackerone.com/",
+      "api_available": true,
+      "api_docs": "https://docs.hackerone.com/",
+      "submission_method": "api",
+      "autonomous_submission": true,
+      "requires_human": [
+        "account_creation",
+        "id_verification"
+      ],
+      "payout_methods": [
+        "paypal",
+        "bank_transfer",
+        "crypto"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "source_code"
+      ],
+      "min_bounty_usd": 100,
+      "max_bounty_usd": 100000,
+      "registration_status": "pending_account_setup"
+    },
+    "bugcrowd": {
+      "url": "https://www.bugcrowd.com/",
+      "api_available": true,
+      "api_docs": "https://docs.bugcrowd.com/",
+      "submission_method": "api",
+      "autonomous_submission": true,
+      "requires_human": [
+        "account_creation"
+      ],
+      "payout_methods": [
+        "paypal",
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "iot"
+      ],
+      "min_bounty_usd": 50,
+      "max_bounty_usd": 50000,
+      "registration_status": "pending_account_setup"
+    },
+    "integrity": {
+      "url": "https://integrity.sh/",
+      "api_available": false,
+      "submission_method": "web_form",
+      "autonomous_submission": false,
+      "requires_human": [
+        "account_creation",
+        "manual_submission"
+      ],
+      "payout_methods": [
+        "paypal",
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api"
+      ],
+      "note": "Smaller platform, less competition",
+      "registration_status": "discovered"
+    },
+    "yeswehack": {
+      "url": "https://www.yeswehack.com/",
+      "api_available": true,
+      "api_docs": "https://docs.yeswehack.com/",
+      "submission_method": "api",
+      "autonomous_submission": true,
+      "requires_human": [
+        "account_creation",
+        "kyc"
+      ],
+      "payout_methods": [
+        "paypal",
+        "bank_transfer",
+        "crypto"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "smart_contract"
+      ],
+      "min_bounty_usd": 50,
+      "max_bounty_usd": 75000,
+      "registration_status": "pending_account_setup"
+    },
+    "synack": {
+      "url": "https://www.synack.com/",
+      "api_available": false,
+      "submission_method": "platform_ui",
+      "autonomous_submission": false,
+      "requires_human": [
+        "application",
+        "vetting",
+        "background_check"
+      ],
+      "payout_methods": [
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "network"
+      ],
+      "note": "Invite-only, requires vetting - high payouts but not autonomous-friendly",
+      "registration_status": "not_autonomous_friendly"
+    }
+  },
+  "registered": [],
+  "last_scan": "2026-08-26T12:05:12.220588+00:00"
+}
