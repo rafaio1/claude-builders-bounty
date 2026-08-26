@@ -1,0 +1,27 @@
+name: FrontendBR Vagas Daily Digest
+
+on:
+  schedule:
+    - cron: '0 9 * * 1-5' # Weekdays at 9am UTC (6am BRT)
+  workflow_dispatch:
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          
+      - name: Run Alert Bot
+        run: python main.py
+        
+      - name: Upload Digest Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: daily-digest
+          path: last_seen_ids.json
+          retention-days: 7
