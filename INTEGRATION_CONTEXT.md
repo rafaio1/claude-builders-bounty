@@ -5,10 +5,15 @@
  Este documento serve como ponto de entrada para qualquer nova IA ou agente
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
- ## Estado Atual (2026-08-26)
+## Estado Atual (2026-08-26T12:30Z)
  - **Remoto**: https://github.com/rafaio1/agentic-integration.git (PRIVATE)
  - **Branch principal**: master
- - **Último commit**: chore: remove cached bytecode, logs, pids and state files from tracking
+- **Último commit**: b02e883 docs: update FEATURES inventory with cadaf36 integrations
+- **Penúltimo commit**: cadaf36 feat: integrate revenue streams, products, templates and p2p-stack init
+- **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/, products/, revenue/, templates/, workspace/, p2p-stack/init_lnd_wallet.sh
+- **Features integradas neste ciclo**: bounty_automation_template, email-cleanup, content-monetization, micro-saas manifests, web3 bugbounty templates, V23D risk filters doc, p2p-stack LND init, workspace orchestrators
+- **Testes**: 35/35 passando (telegram_gate + triage_contract)
+- **Remoto validado**: rafaio1/agentic-integration (PRIVATE=true)
  - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/
  - **Arquivos NÃO rastreados (intencional)**: .env, data/, state/, logs/, *.pid, *.log, ledger.jsonl, .venv/, node_modules/, __pycache__/, .agentic*.lock, arb_dashboard.html, typescript/, build/, workspace/, bounties/, bugbounty/, revenue/, p2p-stack/, mt5_bridge/, wise_liquidity/, pr_freelance/, improve/, .agents/, .claude/, .codex/, .config/, .playwright*/
  
