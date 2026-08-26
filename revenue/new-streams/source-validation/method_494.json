@@ -1,0 +1,31 @@
+{
+  "method_id": "494",
+  "name": "Gas price prediction oracle (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:33.983296+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Fuel Network Ops",
+      "chain": "fuel",
+      "optimization_target": "batch_submission",
+      "avg_savings_pct": 18.5,
+      "integration_sdk": "fuel_ts"
+    },
+    {
+      "startup": "Aztec Protocol Dev",
+      "chain": "aztec",
+      "optimization_target": "proof_aggregation",
+      "avg_savings_pct": 22.3,
+      "integration_sdk": "aztec_nr"
+    }
+  ],
+  "schema": [
+    "startup",
+    "chain",
+    "optimization_target",
+    "avg_savings_pct",
+    "integration_sdk"
+  ],
+  "notes": "Variante para L2/ZK startups otimizando custos de prova ou batch. Proxy TIER0: GitHub Search (topics: l2-gas-optimizer, zk-rollup-gas). Fonte oficial alvo: L2Beat cost dashboards + Rollup economics papers. Foco em unit economics de proof submission zero-capital."
+}

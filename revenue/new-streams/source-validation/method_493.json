@@ -1,0 +1,31 @@
+{
+  "method_id": "493",
+  "name": "Gas price prediction oracle",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:33.983296+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "ethereum",
+      "model": "lstm_v2",
+      "prediction_horizon_min": 15,
+      "mae_gwei": 2.4,
+      "data_source": "etherscan_gas_tracker"
+    },
+    {
+      "chain": "polygon",
+      "model": "xgboost_base",
+      "prediction_horizon_min": 5,
+      "mae_gwei": 0.8,
+      "data_source": "polygonscan_gas_api"
+    }
+  ],
+  "schema": [
+    "chain",
+    "model",
+    "prediction_horizon_min",
+    "mae_gwei",
+    "data_source"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: gasnow/gas-price-oracle, ethgasstation/predictor). Fonte oficial alvo: Etherscan gas tracker + Blocknative mempool data. Zero-capital: backtesting de modelos preditivos sem execução on-chain."
+}

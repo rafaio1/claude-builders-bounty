@@ -1,0 +1,39 @@
+{
+  "method_id": "495",
+  "name": "Gas price prediction oracle (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:33.983296+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Coinbase Commerce Treasury",
+      "chains_optimized": [
+        "ethereum",
+        "base",
+        "arbitrum"
+      ],
+      "monthly_gas_spend_usd": 185000,
+      "savings_realized_pct": 14.2,
+      "compliance_log": "SOC2_ops"
+    },
+    {
+      "enterprise": "Binance Custody Ops",
+      "chains_optimized": [
+        "ethereum",
+        "bnb_chain",
+        "polygon"
+      ],
+      "monthly_gas_spend_usd": 420000,
+      "savings_realized_pct": 11.8,
+      "compliance_log": "MAS_TRM"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "chains_optimized",
+    "monthly_gas_spend_usd",
+    "savings_realized_pct",
+    "compliance_log"
+  ],
+  "notes": "Variante enterprise com alto volume transacional. Proxy TIER0: GitHub Search (orgs: coinbase-commerce, binance-custody gas-tooling). Fonte oficial alvo: SEC operational filings + Nansen institutional gas analytics. Ênfase em compliance-aware gas budgeting zero-capital."
+}
