@@ -132,9 +132,15 @@ def classify_pr(pr: dict, ledger_entry: dict | None, payment_entry: dict | None,
     key = f"{pr['repo']}#{pr['number']}"
     state = pr.get("state", "UNKNOWN")
     merged = pr.get("mergedAt") is not None
-    bounty_evidence = pr.get("bounty_evidence", "unknown")
-    claim_status = pr.get("claim_status", "unknown")
-    payout_status = pr.get("payout_status", "unknown")
+    # Prefer ledger fields over inventory fields (inventory often lacks these)
+    if ledger_entry:
+        bounty_evidence = ledger_entry.get("evidence_url") or ledger_entry.get("claim_url") or pr.get("bounty_evidence", "unknown")
+        claim_status = ledger_entry.get("claim_status", pr.get("claim_status", "unknown"))
+        payout_status = ledger_entry.get("payout_status", pr.get("payout_status", "unknown"))
+    else:
+        bounty_evidence = pr.get("bounty_evidence", "unknown")
+        claim_status = pr.get("claim_status", "unknown")
+        payout_status = pr.get("payout_status", "unknown")
     revenue_potential = pr.get("revenue_potential", "unknown")
     reviews_count = pr.get("reviews_count") or 0
     ci_state = pr.get("ci_state")

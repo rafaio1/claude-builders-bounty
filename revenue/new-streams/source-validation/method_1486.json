@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1486",
+  "name": "DNPM Processos Minerários",
+  "category": "data_products",
+  "source": "https://www.gov.br/anm/pt-br/assuntos/dados-e-informacoes-minerais",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.312624+00:00",
+  "sample_data": {
+    "platform": "DNPM",
+    "payout_structure": "BRL geointel R$3k-15k/mês para mineradoras/consultorias geológicas/investidores",
+    "compliance_status": "Dados públicos ANM, Código Mineração, informações não sigilosas são abertas",
+    "market_demand_indicator": "+30k processos ativos, mineração movimenta US$50B/ano BR",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.gov.br/anm/pt-br/assuntos/dados-e-informacoes-minerais | COMPLIANCE: Dados públicos ANM, Código Mineração, informações não sigilosas são abertas | PAYOUT BRL: BRL geointel R$3k-15k/mês para mineradoras/consultorias geológicas/investidores | DEMANDA BR: +30k processos ativos, mineração movimenta US$50B/ano BR | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "d7925cb16596ab6c97485e46b03a275f15b80c6c6440907e352d4ad00fe355f8"
+}

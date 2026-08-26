@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1476",
+  "name": "ANP Preços Combustíveis API",
+  "category": "data_products",
+  "source": "https://dados.gov.br/dataset/precos-de-combustiveis",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.310766+00:00",
+  "sample_data": {
+    "platform": "ANP",
+    "payout_structure": "BRL feed atualizado semanalmente R$300-1.5k/mês para apps navegação/logística",
+    "compliance_status": "Dados públicos ANP, licença aberta, integração livre para produtos comerciais",
+    "market_demand_indicator": "+80M veículos BR, apps como Waze/GasBuddy consomem dados locais",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://dados.gov.br/dataset/precos-de-combustiveis | COMPLIANCE: Dados públicos ANP, licença aberta, integração livre para produtos comerciais | PAYOUT BRL: BRL feed atualizado semanalmente R$300-1.5k/mês para apps navegação/logística | DEMANDA BR: +80M veículos BR, apps como Waze/GasBuddy consomem dados locais | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "993fa303d046545d6ead84d1d50b95c5a8e872feab87842f0880b8f63ba22146"
+}

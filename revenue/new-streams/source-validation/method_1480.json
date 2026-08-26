@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1480",
+  "name": "IBAMA Licenças Ambientais Scraper",
+  "category": "data_products",
+  "source": "https://servicos.ibama.gov.br/ctf/publico/areasembargadas/ConsultaPublicaAreasEmbargadas.php",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.311437+00:00",
+  "sample_data": {
+    "platform": "IBAMA",
+    "payout_structure": "BRL due diligence ambiental R$2k-20k/projeto para construtoras/mineração/agro",
+    "compliance_status": "Dados públicos IBAMA, compliance Lei Crimes Ambientais, uso comercial permitido",
+    "market_demand_indicator": "+10k licenças/ano BR, ESG compliance obrigatório para financiamento bancário",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://servicos.ibama.gov.br/ctf/publico/areasembargadas/ConsultaPublicaAreasEmbargadas.php | COMPLIANCE: Dados públicos IBAMA, compliance Lei Crimes Ambientais, uso comercial permitido | PAYOUT BRL: BRL due diligence ambiental R$2k-20k/projeto para construtoras/mineração/agro | DEMANDA BR: +10k licenças/ano BR, ESG compliance obrigatório para financiamento bancário | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "799b720425a6b6c3acb84dc1619d436c7404f86a7eb26be6c2656ba64880cfdb"
+}

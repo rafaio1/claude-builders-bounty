@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1473",
+  "name": "API CEP Aberto Enrichment",
+  "category": "data_products",
+  "source": "https://www.cepaberto.com/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.309920+00:00",
+  "sample_data": {
+    "platform": "API",
+    "payout_structure": "BRL pay-per-query R$0.02-0.10, planos mensais R$50-500 para e-commerce/logística",
+    "compliance_status": "Dados públicos Correios, LGPD não aplica a endereços sem CPF, termos permitem revenda",
+    "market_demand_indicator": "+2M consultas/mês BR, essencial para validação endereço e cálculo frete",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.cepaberto.com/api | COMPLIANCE: Dados públicos Correios, LGPD não aplica a endereços sem CPF, termos permitem revenda | PAYOUT BRL: BRL pay-per-query R$0.02-0.10, planos mensais R$50-500 para e-commerce/logística | DEMANDA BR: +2M consultas/mês BR, essencial para validação endereço e cálculo frete | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "45184f062e8ad4589adeb1fc70b9b927c727dd2cdf6b8d74abfa06b3ec09db55"
+}

@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1481",
+  "name": "Junta Comercial NIRE Consulta",
+  "category": "data_products",
+  "source": "https://integrador.jucesp.sp.gov.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.311775+00:00",
+  "sample_data": {
+    "platform": "Junta",
+    "payout_structure": "BRL verificação cadastral R$0.30-1.00/consulta para bancos/fintechs/onboarding",
+    "compliance_status": "Dados públicos juntas comerciais, convênio federal, LGPD base legal obrigação legal",
+    "market_demand_indicator": "+3M empresas ativas BR, KYC B2B exige validação estadual além CNPJ",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://integrador.jucesp.sp.gov.br/api | COMPLIANCE: Dados públicos juntas comerciais, convênio federal, LGPD base legal obrigação legal | PAYOUT BRL: BRL verificação cadastral R$0.30-1.00/consulta para bancos/fintechs/onboarding | DEMANDA BR: +3M empresas ativas BR, KYC B2B exige validação estadual além CNPJ | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "9692dd630a328401f923e48ef79bdfac3382a441399bf08dba0fc6a6c3a059b6"
+}

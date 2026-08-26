@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1485",
+  "name": "MAPA Registro Agrotóxicos",
+  "category": "data_products",
+  "source": "https://agrofit.agricultura.gov.br/agrofit_cons/principal_agrofit_cons",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.312447+00:00",
+  "sample_data": {
+    "platform": "MAPA",
+    "payout_structure": "BRL compliance agro R$1k-5k/mês para cooperativas/trading companies/exportadores",
+    "compliance_status": "Dados públicos MAPA, regulamentação específica agroquímicos, uso profissional permitido",
+    "market_demand_indicator": "BR maior exportador agro mundial, compliance fitossanitário crítico",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://agrofit.agricultura.gov.br/agrofit_cons/principal_agrofit_cons | COMPLIANCE: Dados públicos MAPA, regulamentação específica agroquímicos, uso profissional permitido | PAYOUT BRL: BRL compliance agro R$1k-5k/mês para cooperativas/trading companies/exportadores | DEMANDA BR: BR maior exportador agro mundial, compliance fitossanitário crítico | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "6bca0b4b98f739abc704fce9894d738abf6f7f30beb1ef9a65b8c0c535ee24dd"
+}

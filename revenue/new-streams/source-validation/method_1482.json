@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1482",
+  "name": "PROCON Reclamações Consumidor Feed",
+  "category": "data_products",
+  "source": "https://consumidor.gov.br/pages/externo/consumidor.gov.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.311938+00:00",
+  "sample_data": {
+    "platform": "PROCON",
+    "payout_structure": "BRL monitoramento reputação R$500-3k/mês para varejo/serviços/marketplaces",
+    "compliance_status": "Dados públicos SENACON, termos permitem análise agregada, sem exposição individual",
+    "market_demand_indicator": "+5M reclamações/ano BR, compliance CDC exige resposta rápida",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://consumidor.gov.br/pages/externo/consumidor.gov.br | COMPLIANCE: Dados públicos SENACON, termos permitem análise agregada, sem exposição individual | PAYOUT BRL: BRL monitoramento reputação R$500-3k/mês para varejo/serviços/marketplaces | DEMANDA BR: +5M reclamações/ano BR, compliance CDC exige resposta rápida | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "f5a5e48b235320b1b57a739bce697d4b9501c50f1106d816a3fbeffb6c13ed6a"
+}

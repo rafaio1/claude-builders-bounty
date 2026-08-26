@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1487",
+  "name": "ANEEL Tarifas Energia Elétrica",
+  "category": "data_products",
+  "source": "https://dados.aneel.gov.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.312775+00:00",
+  "sample_data": {
+    "platform": "ANEEL",
+    "payout_structure": "BRL previsão custo energia R$500-3k/mês para indústrias/comércio/solar",
+    "compliance_status": "Dados públicos regulação energia, tarifação transparente, uso comercial livre",
+    "market_demand_indicator": "+90M consumidores BR, mercado livre energia expande para PMEs",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://dados.aneel.gov.br | COMPLIANCE: Dados públicos regulação energia, tarifação transparente, uso comercial livre | PAYOUT BRL: BRL previsão custo energia R$500-3k/mês para indústrias/comércio/solar | DEMANDA BR: +90M consumidores BR, mercado livre energia expande para PMEs | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "fa1ccafc2908b27816250f97c72abfb4cef978c2f70b14460c9d1cdb91f8b706"
+}

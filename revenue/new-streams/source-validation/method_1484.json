@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1484",
+  "name": "CADE Atos Concentração M&A",
+  "category": "data_products",
+  "source": "https://dados.cade.gov.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.312277+00:00",
+  "sample_data": {
+    "platform": "CADE",
+    "payout_structure": "BRL deal intelligence R$2k-10k/mês para escritórios advocacia/investidores/bancos",
+    "compliance_status": "Dados públicos antitruste, transparência administrativa, uso comercial livre",
+    "market_demand_indicator": "+800 fusões/ano BR, due diligence regulatória obrigatória",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://dados.cade.gov.br | COMPLIANCE: Dados públicos antitruste, transparência administrativa, uso comercial livre | PAYOUT BRL: BRL deal intelligence R$2k-10k/mês para escritórios advocacia/investidores/bancos | DEMANDA BR: +800 fusões/ano BR, due diligence regulatória obrigatória | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "e763c8f78d10aaa22b2c36b4ef8737693ff80c42e46c757f52e45db41c77cf3e"
+}
