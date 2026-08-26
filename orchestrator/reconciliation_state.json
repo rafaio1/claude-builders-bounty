@@ -73,13 +73,16 @@
       "best_symbol": "XRP/USDT",
       "worst_symbol": "AVAX/USDT"
     },
-    "validation_status": "PAPER_SHADOW_REQUIRED",
+    "validation_status": "NO_VIABLE_STRATEGY",
     "blockers_for_real": [
       "Trades per day (4.57) far below user target of 100+/day",
       "Sample size (32 trades over 7 days) not statistically significant",
       "Walk-forward out-of-sample test not yet performed",
       "Capital constraint: 7.73 USDT limits position sizing and diversification",
-      "No live shadow reconciliation against current executor logic"
+      "No live shadow reconciliation against current executor logic",
+      "WALK-FORWARD FAILED: Momentum breakout edge degraded 96.7% OOS - NOT PROMOTABLE",
+      "Combined strategy frequency (4.57 trades/day) still far below 100/day target",
+      "No strategy has passed both in-sample AND out-of-sample validation with stable edge"
     ],
     "next_steps": [
       "Implement combined strategy in paper-shadow mode",
@@ -87,8 +90,29 @@
       "Monitor shadow PnL for 7+ days before real promotion consideration",
       "Research higher-frequency signals (1m scalping, orderbook imbalance) to increase trade count",
       "Evaluate if capital accumulation is prerequisite for viable multi-coin operation"
-    ]
+    ],
+    "walk_forward_oos": {
+      "timestamp": "2026-08-26T21:30:29.446983+00:00",
+      "strategy": "momentum_breakout_20h_vol1.5x",
+      "symbol": "XRP/USDT",
+      "period": "~30 days ago (out-of-sample)",
+      "total_trades": 3,
+      "win_rate_pct": 66.67,
+      "avg_net_pnl_pct": 0.1525,
+      "in_sample_avg_pct": 4.6273,
+      "edge_degradation_pct": -96.7,
+      "edge_stable": false,
+      "conclusion": "CRITICAL FAIL - Momentum strategy edge collapsed by 96.7% on out-of-sample data. Recent backtest performance was regime-dependent overfitting, not stable alpha."
+    }
   },
   "last_updated": "2026-08-26T21:29:32.276181+00:00",
-  "reason": "Backtest shows positive edge but insufficient frequency and sample size for real promotion. Paper-shadow validation required."
+  "reason": "All tested strategies failed walk-forward validation or lack sufficient frequency. Real trading remains BLOCKED until a strategy demonstrates stable edge across multiple market regimes with adequate sample size. Continuing research on alternative approaches (mean-reversion with adaptive thresholds, volatility breakout, cross-timeframe confirmation).",
+  "next_research_priorities": [
+    "Test adaptive RSI thresholds that adjust to rolling volatility regime",
+    "Evaluate VWAP mean-reversion on 1m/5m with maker-only execution",
+    "Research volume profile / order flow signals for higher frequency",
+    "Test multi-timeframe confirmation (1h trend + 5m entry) to reduce false signals",
+    "Analyze if current capital (7.73 USDT) is fundamentally insufficient for any viable strategy after fees",
+    "Consider whether accumulation phase is required before algorithmic trading is feasible"
+  ]
 }
