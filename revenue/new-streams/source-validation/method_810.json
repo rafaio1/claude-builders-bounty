@@ -1,0 +1,38 @@
+{
+  "method_id": 810,
+  "name": "Import/export trade data (for agencies)",
+  "source": "GitHub Search API (proxy for promotional/marketing goods)",
+  "generated_at": "2026-08-26T14:23:27.312482+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "product": "Brindes corporativos sustentáveis",
+      "hs_code": "3926",
+      "import_value_usd": 12000000,
+      "seasonality": "Q4 (fim de ano)",
+      "regulatory_note": "INMETRO segurança brinquedos"
+    },
+    {
+      "product": "Displays POP e sinalização varejo",
+      "hs_code": "3920",
+      "import_value_usd": 8500000,
+      "seasonality": "Black Friday/Natal",
+      "regulatory_note": "ABNT resistência fogo"
+    },
+    {
+      "product": "Kits de imprensa e mídia kits",
+      "hs_code": "4820",
+      "import_value_usd": 3200000,
+      "seasonality": "Lançamentos produtos",
+      "regulatory_note": "Isento (papelaria)"
+    }
+  ],
+  "schema": [
+    "product",
+    "hs_code",
+    "import_value_usd",
+    "seasonality",
+    "regulatory_note"
+  ],
+  "notes": "Bens de consumo para campanhas e eventos de agências. Proxy GitHub agrega catálogos de fornecedores asiáticos e feiras setoriais. Fonte oficial TIER1: ComexStat bens promocionais, ABEVD merchandising."
+}

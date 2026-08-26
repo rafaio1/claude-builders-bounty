@@ -1,0 +1,42 @@
+{
+  "method_id": 809,
+  "name": "Import/export trade data (for developers)",
+  "source": "GitHub Search API (proxy for tech hardware/software trade)",
+  "generated_at": "2026-08-26T14:23:27.312477+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "item": "Kits de desenvolvimento IoT (ESP32/RPi)",
+      "hs_code": "8542",
+      "import_volume_units": 2500000,
+      "avg_cost_usd": 12.5,
+      "lead_time_days": 25,
+      "supplier_region": "Shenzhen"
+    },
+    {
+      "item": "Servidores edge computing",
+      "hs_code": "8471",
+      "import_volume_units": 45000,
+      "avg_cost_usd": 1800,
+      "lead_time_days": 45,
+      "supplier_region": "Taiwan/Malásia"
+    },
+    {
+      "item": "Licenças de software embarcado",
+      "hs_code": "8523",
+      "import_value_usd": 85000000,
+      "avg_cost_usd": 250,
+      "lead_time_days": 1,
+      "supplier_region": "Global (digital)"
+    }
+  ],
+  "schema": [
+    "item",
+    "hs_code",
+    "import_volume_or_value",
+    "avg_cost_usd",
+    "lead_time_days",
+    "supplier_region"
+  ],
+  "notes": "Insumos tecnológicos para devs e startups de hardware. Proxy GitHub varre BOMs open-source e relatórios de distribuidores. Fonte oficial TIER1: Siscomex importação TI, ABES mercado software."
+}

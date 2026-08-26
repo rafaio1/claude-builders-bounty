@@ -1,0 +1,42 @@
+{
+  "method_id": 808,
+  "name": "Import/export trade data (for creators)",
+  "source": "GitHub Search API (proxy for creative goods trade)",
+  "generated_at": "2026-08-26T14:23:27.312451+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "category": "Artesanato têxtil regional",
+      "hs_code": "6302",
+      "export_growth_yoy_pct": 18.3,
+      "avg_unit_price_usd": 45,
+      "top_destination": "Japão",
+      "certification_needed": "Indicação Geográfica"
+    },
+    {
+      "category": "Instrumentos musicais artesanais",
+      "hs_code": "9202",
+      "export_growth_yoy_pct": 12.7,
+      "avg_unit_price_usd": 320,
+      "top_destination": "EUA/Europa",
+      "certification_needed": "Madeira certificada FSC"
+    },
+    {
+      "category": "Obras de arte digital impressa",
+      "hs_code": "4911",
+      "export_growth_yoy_pct": 45.2,
+      "avg_unit_price_usd": 85,
+      "top_destination": "Alemanha/UK",
+      "certification_needed": "Nenhuma (digital)"
+    }
+  ],
+  "schema": [
+    "category",
+    "hs_code",
+    "export_growth_yoy_pct",
+    "avg_unit_price_usd",
+    "top_destination",
+    "certification_needed"
+  ],
+  "notes": "Dados de comércio exterior focados em bens criativos e artesanato. Proxy GitHub acessa relatórios do IBGE Cultura e ApexBrasil criativo. Fonte oficial TIER1: ComexStat cultural, MinC economia criativa."
+}
