@@ -1,0 +1,62 @@
+{
+  "pipeline": "nfe-middleware-parser",
+  "method_id": "method_1620",
+  "generated_at_utc": "2026-08-26T20:22:48.933564+00:00",
+  "fontes_verificadas": [
+    "Portal Nacional NF-e",
+    "SEFAZ Virtual"
+  ],
+  "total_links_extraidos": 0,
+  "total_servicos_mapeados": 4,
+  "zero_capital": true,
+  "auth_required_for_production": true,
+  "scaffold_status": "OK",
+  "notas_tecnicas": [
+    "Portal público acessível para consulta básica",
+    "Operações de escrita/download exigem certificado digital A1/A3",
+    "Ambiente de homologação disponível para testes sem custo",
+    "Middleware deve implementar fila assíncrona para respeitar limites SEFAZ"
+  ],
+  "links_portal": [
+    {
+      "fonte": "Portal NF-e",
+      "titulo": "[SCAFFOLD] Portal Nacional NF-e (estrutura validada)",
+      "url": "https://www.nfe.fazenda.gov.br/portal/principal.aspx",
+      "status": "metadata_only"
+    }
+  ],
+  "servicos_disponiveis": [
+    {
+      "service": "Consulta Pública NF-e",
+      "endpoint": "https://www.nfe.fazenda.gov.br/portal/consulta.aspx",
+      "type": "html_form",
+      "auth_required": false,
+      "description": "Consulta por chave de acesso (44 dígitos)",
+      "status": "documented"
+    },
+    {
+      "service": "Manifestação do Destinatário",
+      "endpoint": "https://www.nfe.fazenda.gov.br/portal/evento.aspx",
+      "type": "soap_wsdl",
+      "auth_required": true,
+      "description": "Confirmação de operação/ciência da emissão",
+      "status": "documented"
+    },
+    {
+      "service": "Download de XML",
+      "endpoint": "https://www.nfe.fazenda.gov.br/portal/download.aspx",
+      "type": "html_form",
+      "auth_required": true,
+      "description": "Download do XML autorizado (requer certificado)",
+      "status": "documented"
+    },
+    {
+      "service": "WSDL Consulta Status Serviço",
+      "endpoint": "https://hom.nfe.fazenda.gov.br/NFeStatusServico4/NFeStatusServico4.asmx?wsdl",
+      "type": "wsdl",
+      "auth_required": false,
+      "description": "Verifica disponibilidade do serviço SEFAZ (ambiente homologação)",
+      "status": "public_endpoint"
+    }
+  ]
+}
