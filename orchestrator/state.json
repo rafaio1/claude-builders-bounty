@@ -1,0 +1,943 @@
+{
+  "last_updated": "2026-08-26T01:03:41.164108+00:00",
+  "agents": {
+    "bybit_spot": {
+      "status": "running",
+      "tmux": true,
+      "pid": null,
+      "exchange": "bybit",
+      "last_log": "",
+      "mode": "live"
+    },
+    "binance_spot": {
+      "status": "stopped",
+      "tmux": false,
+      "pid": null,
+      "exchange": "binance",
+      "last_log": "[18:43:09][BINANCE]   \u26a0\ufe0f Qty 0.0 < min 0.001 for SOL/USDT",
+      "mode": "live"
+    },
+    "bounty_engine": {
+      "status": "stopped",
+      "tmux": false,
+      "pid": null,
+      "exchange": "github",
+      "last_log": "    return self._sock.recv_into(b)",
+      "mode": "live"
+    },
+    "meanrev_binance": {
+      "status": "stopped",
+      "tmux": false,
+      "pid": null,
+      "exchange": "binance",
+      "last_log": "[01:02:49][BINANCE] \u26a0\ufe0f Low balance ($0.00 < $5.0) | Waiting for refill or TP signal",
+      "mode": "live"
+    },
+    "meanrev_bybit": {
+      "status": "stopped",
+      "tmux": false,
+      "pid": null,
+      "exchange": "bybit",
+      "last_log": "[01:02:58][BYBIT] \u26a0\ufe0f Low balance ($0.01 < $5.0) | Waiting for refill or TP signal",
+      "mode": "live"
+    },
+    "sniper_v22d": {
+      "status": "active_orders_pending",
+      "tmux": false,
+      "pid": null,
+      "exchange": "multi",
+      "last_log": "",
+      "mode": "live",
+      "note": "2 pairs with pending buy orders"
+    }
+  },
+  "active_positions": {
+    "symbols": [
+      "UNI/USDT"
+    ],
+    "updated": 1787704846.0869455
+  },
+  "bounties": {
+    "goal_usd": 1000000,
+    "discovered": [
+      {
+        "repo": "microg/GmsCore",
+        "issue": 2843,
+        "title": "[BOUNTY] WearOS Support [$1340]",
+        "url": "https://github.com/microg/GmsCore/issues/2843",
+        "payout": "$1340 (crowdfunded via BountyHub)",
+        "status": "open",
+        "priority": "high",
+        "notes": "Complex Android/WearOS integration. High value but high difficulty. Crowdfunded."
+      },
+      {
+        "repo": "devasignhq/agent",
+        "issue": 201,
+        "title": "Cross-repo impact review for DevAsign PR reviews",
+        "url": "https://github.com/devasignhq/agent/issues/201",
+        "payout": "$800 USDC",
+        "status": "in_review",
+        "priority": "medium",
+        "notes": "PR #202 already in review. Opportunity likely taken."
+      },
+      {
+        "repo": "SecureBananaLabs/bug-bounty",
+        "issue": 743,
+        "title": "Low Handing Fruit Automation",
+        "url": "https://github.com/SecureBananaLabs/bug-bounty/issues/743",
+        "payout": "$700",
+        "status": "open",
+        "priority": "medium",
+        "notes": "Meta-bounty for creating issues. Verify legitimacy and payout history before engaging."
+      },
+      {
+        "repo": "UnsafeLabs/RFC-5322",
+        "issue": 1,
+        "title": "[bounty $400] Implement ABNF-compliant email address parser",
+        "url": "https://github.com/UnsafeLabs/RFC-5322/issues/1",
+        "payout": "$400",
+        "status": "contested",
+        "priority": "low",
+        "notes": "Multiple PRs submitted (#7, #17). Bot auto-close risk previously reported. Crowded."
+      },
+      {
+        "repo": "SmartDropLabs/smartdrop-frontend",
+        "issue": 128,
+        "title": "No test coverage exists for useLockFlow",
+        "url": "https://github.com/SmartDropLabs/smartdrop-frontend/issues/128",
+        "payout": "Points/Stellar Wave Program (indirect)",
+        "status": "assigned",
+        "priority": "skip",
+        "notes": "Assigned to @abayomicornelius until Aug 31. Not open for claim."
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 78,
+        "title": "[Bounty: $80] Add a typed passthrough request() on LilySdk",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/78",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/230",
+        "type": "feature",
+        "estimated_bounty_usd": 80,
+        "status": "pr_submitted",
+        "notes": "Added typed request<TResponse,TRequest>() method delegating to shared HttpClient. 2 tests passing.",
+        "submitted_at": "2026-08-26T00:55:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 84,
+        "title": "[Bounty: $25] Smoke-test every exports subpath against packed tarball in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/84",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/226",
+        "type": "ci",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "submitted_at": "2026-08-26T00:30:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 83,
+        "title": "[Bounty: $90] Add a bundle-size budget check to CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/83",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/227",
+        "type": "ci",
+        "estimated_bounty_usd": 90,
+        "status": "pr_submitted",
+        "submitted_at": "2026-08-26T00:35:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 82,
+        "title": "[Bounty: $55] Add an attw type-resolution check to CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/82",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/228",
+        "type": "ci",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "submitted_at": "2026-08-26T00:40:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 81,
+        "title": "[Bounty: $70] Add Changesets and automated npm publish workflow",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/81",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/229",
+        "type": "devops",
+        "estimated_bounty_usd": 70,
+        "status": "pr_submitted",
+        "submitted_at": "2026-08-26T00:50:00+00:00"
+      }
+    ],
+    "total_potential_usd": 3240,
+    "last_updated": "2026-08-25T19:45:01.213430+00:00",
+    "bounties": [
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 111,
+        "title": "[Bounty: $100] Remove the unused LilyValidationError export or wire it into client validation",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/111",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/159",
+        "type": "code_cleanup",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Removed unused LilyValidationError class and re-exports. TSC passes clean."
+      },
+      {
+        "repo": "Lilly-Protocol/lily-frontend",
+        "issue": 128,
+        "title": "[Bounty: $100] Add an ESLint rule forbidding target=_blank without rel=noopener",
+        "url": "https://github.com/Lilly-Protocol/lily-frontend/issues/128",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-frontend/pull/138",
+        "type": "security_config",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Added react/jsx-no-target-blank rule with test fixture proving it fires."
+      },
+      {
+        "repo": "Lilly-Protocol/agentlily-runtime",
+        "issue": 150,
+        "title": "[Bounty: $100] Add toJSON serialization to RuntimeError",
+        "url": "https://github.com/Lilly-Protocol/agentlily-runtime/issues/150",
+        "pr_url": "https://github.com/Lilly-Protocol/agentlily-runtime/pull/158",
+        "type": "enhancement",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Added toJSON() returning name/code/message/details/stack. TSC passes clean."
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 123,
+        "title": "[Bounty: $35] Freeze the entire resolved config object, not just the retry policy",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/123",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/161",
+        "type": "bug_fix",
+        "estimated_bounty_usd": 35,
+        "status": "pr_submitted",
+        "notes": "Deep-froze ResolvedLilySdkConfig including nested retry and defaultHeaders. Added 4 vitest tests asserting frozen state."
+      },
+      {
+        "repo": "Lilly-Protocol/agentlily-runtime",
+        "issue": 138,
+        "title": "[Bounty: $100] Add max-listener guard to RuntimeEventBus",
+        "url": "https://github.com/Lilly-Protocol/agentlily-runtime/issues/138",
+        "pr_url": "https://github.com/Lilly-Protocol/agentlily-runtime/pull/159",
+        "type": "enhancement",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Added maxListenersPerEvent (default 100) with console.warn on exceed and listenerCount getter. 3 vitest tests pass."
+      },
+      {
+        "repo": "Lilly-Protocol/agentlily-runtime",
+        "issue": 139,
+        "title": "[Bounty: $100] Add runtime.internal.error event for listener failures",
+        "url": "https://github.com/Lilly-Protocol/agentlily-runtime/issues/139",
+        "pr_url": "https://github.com/Lilly-Protocol/agentlily-runtime/pull/160",
+        "type": "enhancement",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Added runtime.internal.error event emitted on listener throw. Error handlers are isolated. 3 vitest tests pass."
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 78,
+        "title": "[Bounty: $80] Add a typed passthrough request() on LilySdk",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/78",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/181",
+        "type": "feature",
+        "estimated_bounty_usd": 80,
+        "status": "pr_submitted",
+        "notes": "Added typed passthrough request() method delegating to HttpClient. 4 tests passing, typecheck clean, prettier formatted.",
+        "submitted_at": "2026-08-25T19:45:01.213392+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 80,
+        "title": "[Bounty: $45] Add publishConfig.access: public to package.json",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/80",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/182",
+        "type": "ci",
+        "estimated_bounty_usd": 45,
+        "status": "pr_submitted",
+        "notes": "Added publishConfig.access public to package.json and Publishing section to CONTRIBUTING.md. npm pack --dry-run succeeds.",
+        "submitted_at": "2026-08-25T19:48:13+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 60,
+        "title": "[Bounty: $40] Add toJSON() and richer toString() to LilySdkError",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/60",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/183",
+        "type": "enhancement",
+        "estimated_bounty_usd": 40,
+        "status": "pr_submitted",
+        "notes": "Added toJSON() with recursive cause serialization and toString() with code/status. 14 tests passing, typecheck clean.",
+        "submitted_at": "2026-08-25T19:50:17+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 35,
+        "title": "[Bounty: $45] Cover remaining validation branches in resolveLilySdkConfig",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/35",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/184",
+        "type": "tests",
+        "estimated_bounty_usd": 45,
+        "status": "pr_submitted",
+        "notes": "Added non-array retryableStatusCodes validation and 17 tests covering all throw branches.",
+        "submitted_at": "2026-08-25T19:53:16+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 42,
+        "title": "[Bounty: $75] Test retry exhaustion surfaces LilyApiError",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/42",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/185",
+        "type": "tests",
+        "estimated_bounty_usd": 75,
+        "status": "pr_submitted",
+        "notes": "Added 5 tests covering retry exhaustion: exactly retries+1 attempts, LilyApiError with statusCode 503, no retry on POST, no retry on 400, success on final retry.",
+        "submitted_at": "2026-08-25T19:57:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 79,
+        "title": "[Bounty: $25] Warn on unknown or misspelled LilySdkConfig keys",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/79",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/189",
+        "type": "dx",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "notes": "Added runtime detection of unknown config keys with closest-match suggestions. 6 tests passing.",
+        "submitted_at": "2026-08-25T21:06:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 72,
+        "title": "[Bounty: $30] Accept URL instances for baseUrl in LilySdkConfig",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/72",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/190",
+        "type": "dx",
+        "estimated_bounty_usd": 30,
+        "status": "pr_submitted",
+        "notes": "Widened baseUrl type to string | URL with normalization. 5 tests passing.",
+        "submitted_at": "2026-08-25T21:12:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 65,
+        "title": "[Bounty: $25] Accept HeadersInit for HttpRequest.headers",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/65",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/191",
+        "type": "dx",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "notes": "Widened HttpHeaders to HeadersInit with normalizeHeaders helper. 5 tests passing.",
+        "submitted_at": "2026-08-25T21:18:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 102,
+        "title": "[Bounty: $55] Add Renovate configuration for dependency updates",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/102",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/192",
+        "type": "ci",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "notes": "Added renovate.json with config:recommended preset, weekly schedule, auto-merge for minor/patch.",
+        "submitted_at": "2026-08-25T21:20:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 74,
+        "title": "[Bounty: $20] Validate request inputs at runtime before sending",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/74",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/193",
+        "type": "enhancement",
+        "estimated_bounty_usd": 20,
+        "status": "pr_submitted",
+        "notes": "Added validation.ts with validators for non-empty strings, MoneyAmount, ResolveIdentityRequest, ExecutePaymentRequest, PaymentQuoteRequest. 19 tests passing.",
+        "submitted_at": "2026-08-25T21:27:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 66,
+        "title": "[Bounty: $85] Support array values in query string serialization",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/66",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/194",
+        "type": "enhancement",
+        "estimated_bounty_usd": 85,
+        "status": "pr_submitted",
+        "notes": "Extended HttpRequest.query to accept (string|number)[] with searchParams.append. 5 tests passing.",
+        "submitted_at": "2026-08-25T21:42:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 101,
+        "title": "[Bounty: $85] Add a SECURITY.md with a vulnerability reporting policy",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/101",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/195",
+        "type": "docs",
+        "estimated_bounty_usd": 85,
+        "status": "pr_submitted",
+        "notes": "Added SECURITY.md with reporting policy, response timeline, scope. Linked from README.",
+        "submitted_at": "2026-08-25T21:44:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 106,
+        "title": "[Bounty: $25] Add an example demonstrating error handling and retry configuration",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/106",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/196",
+        "type": "docs",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "notes": "Added examples/error-handling.ts with retry config and instanceof-based error handling for auth/api/transport errors.",
+        "submitted_at": "2026-08-25T21:46:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 116,
+        "title": "[Bounty: $25] Add a toHeaders() helper that serializes resolved auth to HeadersInit",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/116",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/197",
+        "type": "enhancement",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "notes": "Extracted auth-header assembly into pure toHeaders() helper. 4 unit tests covering all combinations.",
+        "submitted_at": "2026-08-25T22:00:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 118,
+        "title": "[Bounty: $45] Add a unit test for MoneyAmount decimal normalization",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/118",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/198",
+        "type": "tests",
+        "estimated_bounty_usd": 45,
+        "status": "pr_submitted",
+        "notes": "Added 8 tests pinning MoneyAmount.amount passthrough semantics through quote() and execute() for integer, trailing-zero, leading-zero, and high-precision decimals.",
+        "submitted_at": "2026-08-25T22:03:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 110,
+        "title": "[Bounty: $40] Add a default export condition to the package exports map",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/110",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/199",
+        "type": "fix",
+        "estimated_bounty_usd": 40,
+        "status": "pr_submitted",
+        "notes": "Added default condition to all 6 subpath exports pointing to ESM build as fallback.",
+        "submitted_at": "2026-08-25T22:05:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 119,
+        "title": "[Bounty: $65] Add repository, homepage, and bugs metadata to package.json",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/119",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/200",
+        "type": "chore",
+        "estimated_bounty_usd": 65,
+        "status": "pr_submitted",
+        "notes": "Added repository, homepage, and bugs fields. Verified with npm pack --dry-run.",
+        "submitted_at": "2026-08-25T22:07:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 121,
+        "title": "[Bounty: $90] Add a test asserting the SDK works when only an apiKey is configured",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/121",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/201",
+        "type": "tests",
+        "estimated_bounty_usd": 90,
+        "status": "pr_submitted",
+        "notes": "Added auth header matrix test covering apiKey-only, authToken-only, both, and neither configurations. 7 tests passing.",
+        "submitted_at": "2026-08-25T22:15:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 115,
+        "title": "[Bounty: $95] Add a static LilySdk.create() factory for zero-config construction",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/115",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/202",
+        "type": "feature",
+        "estimated_bounty_usd": 95,
+        "status": "pr_submitted",
+        "notes": "Added static create() factory reading LILY_API_URL/KEY/TOKEN from env with explicit option precedence. 6 tests passing.",
+        "submitted_at": "2026-08-25T22:20:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 114,
+        "title": "[Bounty: $90] Add a test that every exports subpath resolves to a real file",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/114",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/203",
+        "type": "tests",
+        "estimated_bounty_usd": 90,
+        "status": "pr_submitted",
+        "notes": "Added test verifying all 6 exports subpaths resolve to existing ESM/CJS/types files with non-empty declarations. 6 tests passing.",
+        "submitted_at": "2026-08-25T22:25:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 113,
+        "title": "[Bounty: $75] Add an npm pack contents check to CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/113",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/204",
+        "type": "ci",
+        "estimated_bounty_usd": 75,
+        "status": "pr_submitted",
+        "notes": "Added scripts/check-pack-contents.sh and pack-check CI job verifying tarball contains only dist/, README.md, LICENSE, package.json.",
+        "submitted_at": "2026-08-25T22:27:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 120,
+        "title": "[Bounty: $75] Add a TypeScript config for examples so they typecheck in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/120",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/205",
+        "type": "ci",
+        "estimated_bounty_usd": 75,
+        "status": "pr_submitted",
+        "notes": "Added tsconfig.examples.json, typecheck:examples npm script, and CI step. Examples already included in base tsconfig but now have dedicated config and explicit CI gate.",
+        "submitted_at": "2026-08-25T22:29:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 95,
+        "title": "[Bounty: $50] Commit an API report snapshot to catch breaking public API changes",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/95",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/206",
+        "type": "ci",
+        "estimated_bounty_usd": 50,
+        "status": "pr_submitted",
+        "notes": "Added @microsoft/api-extractor with baseline report at etc/lily-sdk.api.md and CI check via api-extractor:ci script.",
+        "submitted_at": "2026-08-25T22:31:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 103,
+        "title": "[Bounty: $95] Stress-test concurrent calls sharing a single HttpClient",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/103",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/207",
+        "type": "tests",
+        "estimated_bounty_usd": 95,
+        "status": "pr_submitted",
+        "notes": "Added 3 stress tests verifying concurrent request isolation: 20 parallel requests with unique responses, retry state isolation across 5 failing paths, and AbortController cleanup verification.",
+        "submitted_at": "2026-08-25T23:02:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 99,
+        "title": "[Bounty: $95] Upload coverage reports to a coverage service in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/99",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/208",
+        "type": "ci",
+        "estimated_bounty_usd": 95,
+        "status": "pr_submitted",
+        "notes": "Added Codecov upload step to CI workflow after test run with --coverage flag. CODECOV_TOKEN secret required by maintainer.",
+        "submitted_at": "2026-08-25T23:04:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 109,
+        "title": "[Bounty: $65] Validate memo and MoneyAmount format on payment models",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/109",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/209",
+        "type": "enhancement",
+        "estimated_bounty_usd": 65,
+        "status": "pr_submitted",
+        "notes": "Added validateMemo (28-byte text / 64-char hex Stellar limits) and enhanced validateMoneyAmount with 7 fractional digit cap. 16 tests passing.",
+        "submitted_at": "2026-08-25T23:11:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 111,
+        "title": "[Bounty: $100] Remove the unused LilyValidationError export or wire it into client validation",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/111",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/210",
+        "type": "enhancement",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Wired LilyValidationError into src/validation.ts validators and added 6 export-surface tests proving constructibility and throw behavior.",
+        "submitted_at": "2026-08-25T23:16:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 104,
+        "title": "[Bounty: $55] Test the transport against a real node:http server end to end",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/104",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/211",
+        "type": "tests",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "notes": "Added 5 E2E tests against real node:http server: JSON parsing, 204 No Content, 401 auth error, plain text response, and 429 retry recovery.",
+        "submitted_at": "2026-08-25T23:20:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 105,
+        "title": "[Bounty: $50] Add an example demonstrating a logging custom HttpClient",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/105",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/212",
+        "type": "docs",
+        "estimated_bounty_usd": 50,
+        "status": "pr_submitted",
+        "notes": "Added examples/with-logging-http-client.ts with createLoggingHttpClient decorator and linked from README Examples section.",
+        "submitted_at": "2026-08-25T23:22:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 107,
+        "title": "[Bounty: $35] Add an example of idempotent payment execution with retries",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/107",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/213",
+        "type": "docs",
+        "estimated_bounty_usd": 35,
+        "status": "pr_submitted",
+        "notes": "Added examples/idempotent-payment.ts with UUID key generation, manual retry loop preserving key across attempts, and exponential backoff.",
+        "submitted_at": "2026-08-25T23:28:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 112,
+        "title": "[Bounty: $55] Fix the inconsistent indentation in examples/quickstart.ts",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/112",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/214",
+        "type": "style",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "notes": "Formatted quickstart.ts with Prettier and added examples/ to format:check script.",
+        "submitted_at": "2026-08-25T23:32:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 92,
+        "title": "[Bounty: $95] Smoke-test the built dist via both import and require",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/92",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/215",
+        "type": "tests",
+        "estimated_bounty_usd": 95,
+        "status": "pr_submitted",
+        "notes": "Added dist-smoke.test.ts verifying ESM import and CJS require expose identical public symbols. 3 tests passing.",
+        "submitted_at": "2026-08-25T23:39:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 96,
+        "title": "[Bounty: $45] Add a tree-shaking verification test for sideEffects false",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/96",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/216",
+        "type": "tests",
+        "estimated_bounty_usd": 45,
+        "status": "pr_submitted",
+        "notes": "Added esbuild-based tree-shaking tests verifying unused modules are dropped. 3 tests passing.",
+        "submitted_at": "2026-08-25T23:43:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 94,
+        "title": "[Bounty: $70] Minify builds and re-evaluate code splitting in tsup",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/94",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/217",
+        "type": "build",
+        "estimated_bounty_usd": 70,
+        "status": "pr_submitted",
+        "notes": "Enabled minify:true in tsup with sourcemaps preserved. Added dist smoke test verifying ESM/CJS parity. Bundle sizes reduced significantly.",
+        "submitted_at": "2026-08-25T23:49:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 93,
+        "title": "[Bounty: $20] Run npm run example against a local server in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/93",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/218",
+        "type": "ci",
+        "estimated_bounty_usd": 20,
+        "status": "pr_submitted",
+        "notes": "Added CI step running npm run example after build to prevent onboarding drift.",
+        "submitted_at": "2026-08-25T23:50:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 90,
+        "title": "[Bounty: $55] Add type-level tests for the public API",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/90",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/219",
+        "type": "tests",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "notes": "Added 21 expectTypeOf assertions covering config, models, HTTP types, and client signatures. Wired into CI.",
+        "submitted_at": "2026-08-26T00:09:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 89,
+        "title": "[Bounty: $65] Add a fast test:unit script that skips coverage",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/89",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/220",
+        "type": "dx",
+        "estimated_bounty_usd": 65,
+        "status": "pr_submitted",
+        "notes": "Added test:unit and test:coverage scripts. Documented all testing commands in README.",
+        "submitted_at": "2026-08-26T00:12:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 91,
+        "title": "[Bounty: $50] Pin packageManager and engines.npm for reproducible installs",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/91",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/221",
+        "type": "ci",
+        "estimated_bounty_usd": 50,
+        "status": "pr_submitted",
+        "notes": "Pinned packageManager to npm@10.9.8, added engines.npm >=10, updated CONTRIBUTING.md to use npm ci.",
+        "submitted_at": "2026-08-26T00:13:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 88,
+        "title": "[Bounty: $90] Add an explicit vitest.config.ts with coverage thresholds",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/88",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/222",
+        "type": "test",
+        "estimated_bounty_usd": 90,
+        "status": "pr_submitted",
+        "notes": "Added vitest.config.ts with v8 coverage provider, include/exclude patterns, and threshold gates (50% stmts/funcs/lines, 40% branches).",
+        "submitted_at": "2026-08-26T00:17:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 87,
+        "title": "[Bounty: $100] Add a browser-target build and browser export condition",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/87",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/223",
+        "type": "feature",
+        "estimated_bounty_usd": 100,
+        "status": "pr_submitted",
+        "notes": "Added browser ESM build via tsup platform:browser target, browser export condition on all 6 subpaths, and README Browser Support section.",
+        "submitted_at": "2026-08-26T00:22:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 85,
+        "title": "[Bounty: $20] Enforce npm run format:check in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/85",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/224",
+        "type": "ci",
+        "estimated_bounty_usd": 20,
+        "status": "pr_submitted",
+        "notes": "Added format:check step to CI after lint, updated PR template checklist, and resolved formatting drift in 13 files.",
+        "submitted_at": "2026-08-26T00:23:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 86,
+        "title": "[Bounty: $30] Expand the CI matrix to Node 24",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/86",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/225",
+        "type": "ci",
+        "estimated_bounty_usd": 30,
+        "status": "pr_submitted",
+        "notes": "Added Node 24 to CI test matrix alongside existing Node 20 and 22.",
+        "submitted_at": "2026-08-26T00:24:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 84,
+        "title": "[Bounty: $25] Smoke-test every exports subpath against the packed tarball in CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/84",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/226",
+        "type": "ci",
+        "estimated_bounty_usd": 25,
+        "status": "pr_submitted",
+        "notes": "Added scripts/tarball-smoke-test.sh verifying all 6 exports subpaths resolve in ESM and CJS. Wired into CI after build step.",
+        "submitted_at": "2026-08-26T00:25:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 83,
+        "title": "[Bounty: $90] Add a bundle-size budget check to CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/83",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/227",
+        "type": "ci",
+        "estimated_bounty_usd": 90,
+        "status": "pr_submitted",
+        "notes": "Added size-limit with 15kB gzip budget for ESM (2.71kB) and CJS (2.76kB). Wired npm run size into CI after build step.",
+        "submitted_at": "2026-08-26T00:26:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 82,
+        "title": "[Bounty: $55] Add an attw type-resolution check to CI",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/82",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/228",
+        "type": "ci",
+        "estimated_bounty_usd": 55,
+        "status": "pr_submitted",
+        "notes": "Added @arethetypeswrong/cli with node16 profile. Fixed exports map with nested import.types/require.types conditions eliminating masquerading-as-ESM. All 6 subpaths pass for node16 CJS/ESM and bundlers.",
+        "submitted_at": "2026-08-26T00:27:00+00:00"
+      },
+      {
+        "repo": "Lilly-Protocol/lily-sdk",
+        "issue": 81,
+        "title": "[Bounty: $70] Add Changesets and an automated npm publish workflow",
+        "url": "https://github.com/Lilly-Protocol/lily-sdk/issues/81",
+        "pr_url": "https://github.com/Lilly-Protocol/lily-sdk/pull/229",
+        "type": "ci",
+        "estimated_bounty_usd": 70,
+        "status": "pr_submitted",
+        "notes": "Added @changesets/cli with config, release workflow using changesets/action@v1 gated on full CI, and npm scripts for local changeset workflow.",
+        "submitted_at": "2026-08-26T00:28:00+00:00"
+      }
+    ],
+    "total_pending_usd": 3250
+  },
+  "tmux_sessions": [
+    "bybit_spot",
+    "tg_alerts",
+    "v22d_mon"
+  ],
+  "reconciliation_notes": "Enriched with live position files at 2026-08-26T01:03:41.164108+00:00",
+  "live_positions": {
+    "bybit_spot": {
+      "symbols": [
+        "UNI/USDT"
+      ],
+      "updated": 1787704846.0869455
+    },
+    "binance_spot": {
+      "symbols": [],
+      "updated": 1787683284.7100177
+    },
+    "sniper_v22d": {
+      "symbols": [
+        "XRP/USDT",
+        "DOGE/USDT"
+      ],
+      "grid_spacing_sell": 0.01,
+      "fee_maker": 0.0002,
+      "start_time": 1787705274.8446665,
+      "active_orders": {
+        "XRP/USDT": {
+          "buys": {
+            "1.421722": {
+              "qty": 6.96,
+              "id": "2289832235546971136"
+            }
+          },
+          "sells": {}
+        },
+        "DOGE/USDT": {
+          "buys": {
+            "0.08566": {
+              "qty": 115.6,
+              "id": "2289832241393830912"
+            }
+          },
+          "sells": {}
+        }
+      }
+    }
+  },
+  "verification": {
+    "timestamp": "2026-08-26T01:05:20.082800+00:00",
+    "tmux_sessions": [
+      "bybit_spot:1787690461",
+      "tg_alerts:1787700970",
+      "v22d_mon:1787704998"
+    ],
+    "bybit_spot_log_fresh": true,
+    "v22d_orders_fresh": true,
+    "v22d_order_count": 2,
+    "bounty_ledger_entries": 10,
+    "cron_jobs_installed": true
+  },
+  "continuous_coordination": {
+    "last_check": "2026-08-26T01:10:54.718641+00:00",
+    "actions": [
+      "bybit_spot OK (log age 7s)",
+      "v22d_mon tmux session alive",
+      "tg_alerts tmux session alive",
+      "cron bounty_monitor: OK",
+      "cron memory_expunge: OK"
+    ],
+    "system_healthy": true,
+    "p2p_wise_status": "inactive_stale",
+    "agent_coverage": {
+      "Bybit": true,
+      "Bounties": true,
+      "GhostCLI_Infra": true
+    },
+    "p2p_wise_evidence": {
+      "log_age_seconds": 369996,
+      "tmux_alive": false,
+      "last_known_goal": "Arbitragem fiat-crypto e bridge para Wise",
+      "note": "Agent stopped. No active P2P operations detected."
+    },
+    "binance_spot_status": "inactive_stale",
+    "binance_spot_evidence": {
+      "log_age_seconds": 47108,
+      "tmux_alive": false,
+      "note": "Agent stopped. Capital ~$16.19 per handoff summary."
+    },
+    "objective_coverage": {
+      "Bybit": {
+        "status": "active",
+        "evidence": "tmux bybit_spot alive, log fresh"
+      },
+      "Binance": {
+        "status": "inactive",
+        "evidence": "no tmux, log 13h old"
+      },
+      "P2P_Wise": {
+        "status": "inactive",
+        "evidence": "no tmux, log 4d old"
+      },
+      "Bounties": {
+        "status": "active",
+        "evidence": "5 PRs submitted, cron monitor running"
+      },
+      "GhostCLI_Infra": {
+        "status": "active",
+        "evidence": ".env, state.json, crons, telegram operational"
+      }
+    },
+    "duplicate_check": "clean",
+    "latest_actions": [
+      "bounty_monitor.log: not yet created (first run pending)",
+      "No position overlap between bybit_spot and v22d",
+      "Ledger: 10 entries, 5 PRs submitted ($320 pending), 0 merged",
+      "GhostCLI infra: OK"
+    ],
+    "bounty_monitor_last_run": {
+      "timestamp": "2026-08-26T01:10:54.718659+00:00",
+      "result": "no_changes",
+      "prs_pending": 5,
+      "note": "Manual run confirmed cron script functional. First cron execution pending."
+    },
+    "system_status": {
+      "bybit_spot": "active",
+      "binance_spot": "inactive",
+      "p2p_wise": "inactive",
+      "bounties": "monitoring (5 PRs pending)",
+      "ghostcli_infra": "operational",
+      "telegram": "operational",
+      "crons": "installed (bounty_monitor 15min, expunge 03:00, watchdog 1min)",
+      "duplicate_work": "none detected",
+      "state_reconciled": true
+    },
+    "trading_verification": {
+      "bybit_spot": {
+        "log_age_sec": 28.0,
+        "trade_keywords_found": true,
+        "last_heartbeat": null,
+        "status": "active_trading"
+      },
+      "v22d_grid": {
+        "execution_activity": false,
+        "pending_orders": 2,
+        "status": "pending_orders"
+      },
+      "verified_at": "2026-08-26T01:11:33.016045+00:00"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+[23:22:24] ============================================================
+[23:22:24] BACKTEST ENGINE - BYBIT SPOT HIGH FREQUENCY
+[23:22:24] Capital: 10.0 USDT | Fee: 0.1% per side
+[23:22:24] ============================================================
+[23:22:24] 
+--- Testing XRP/USDT ---
+[23:22:29] Downloading XRP/USDT 1m klines (3 days)...
+[23:22:32]   Saved 4320 candles to /Agentic/orchestrator/backtest_data/XRP_USDT_1m.csv
+[23:22:32]   Data: 4320 candles, 1787440980000 to 1787700120000
+[23:22:32]   MeanReversion_MicroScalp: 204 trades, WR=28.92%, PnL=-3.3741, TPD=69.3, PnL/day=-1.1457
+[23:22:32]   BB_Squeeze_Breakout: 89 trades, WR=21.35%, PnL=-1.8877, TPD=30.1, PnL/day=-0.6381
+[23:22:32]   Volume_Spike_Momentum: 72 trades, WR=47.22%, PnL=-1.3156, TPD=25.1, PnL/day=-0.4582
+[23:22:32] 
+--- Testing DOGE/USDT ---
+[23:22:37] Downloading DOGE/USDT 1m klines (3 days)...
+[23:22:40]   Saved 4320 candles to /Agentic/orchestrator/backtest_data/DOGE_USDT_1m.csv
+[23:22:40]   Data: 4320 candles, 1787440980000 to 1787700120000
+[23:22:40]   MeanReversion_MicroScalp: 171 trades, WR=21.64%, PnL=-3.6761, TPD=58.4, PnL/day=-1.2544
+[23:22:40]   BB_Squeeze_Breakout: 92 trades, WR=19.57%, PnL=-1.8449, TPD=31.0, PnL/day=-0.6211
+[23:22:40]   Volume_Spike_Momentum: 51 trades, WR=45.1%, PnL=-1.0818, TPD=17.6, PnL/day=-0.3729
+[23:22:40] 
+--- Testing BTC/USDT ---
+[23:22:49] Downloading BTC/USDT 1m klines (3 days)...
+[23:22:51]   Saved 4320 candles to /Agentic/orchestrator/backtest_data/BTC_USDT_1m.csv
+[23:22:51]   Data: 4320 candles, 1787440980000 to 1787700120000
+[23:22:51]   MeanReversion_MicroScalp: 41 trades, WR=7.32%, PnL=-0.7811, TPD=15.0, PnL/day=-0.2852
+[23:22:51]   BB_Squeeze_Breakout: 86 trades, WR=16.28%, PnL=-1.3538, TPD=29.0, PnL/day=-0.4558
+[23:22:51]   Volume_Spike_Momentum: 9 trades, WR=11.11%, PnL=-0.1750, TPD=3.7, PnL/day=-0.0727
+[23:22:51] 
+============================================================
+[23:22:51] BACKTEST SUMMARY
+[23:22:51] ============================================================
+[23:22:51] Strategy                       Symbol        Trades    WR%        PnL    TPD      PnL/d
+[23:22:51] -------------------------------------------------------------------------------------
+[23:22:51] MeanReversion_MicroScalp       XRP/USDT         204   28.9    -3.3741   69.3    -1.1457 <-- BEST
+[23:22:51] BB_Squeeze_Breakout            XRP/USDT          89   21.4    -1.8877   30.1    -0.6381 <-- BEST
+[23:22:51] Volume_Spike_Momentum          XRP/USDT          72   47.2    -1.3156   25.1    -0.4582
+[23:22:51] MeanReversion_MicroScalp       DOGE/USDT        171   21.6    -3.6761   58.4    -1.2544
+[23:22:51] BB_Squeeze_Breakout            DOGE/USDT         92   19.6    -1.8449   31.0    -0.6211 <-- BEST
+[23:22:51] Volume_Spike_Momentum          DOGE/USDT         51   45.1    -1.0818   17.6    -0.3729 <-- BEST
+[23:22:51] MeanReversion_MicroScalp       BTC/USDT          41    7.3    -0.7811   15.0    -0.2852 <-- BEST
+[23:22:51] BB_Squeeze_Breakout            BTC/USDT          86   16.3    -1.3538   29.0    -0.4558
+[23:22:51] Volume_Spike_Momentum          BTC/USDT           9   11.1    -0.1750    3.7    -0.0727 <-- BEST
+[23:22:51] 
+Results saved to: /Agentic/orchestrator/backtest_results/backtest_summary_1787700171.json
+[23:22:51] 
+BEST STRATEGY: Volume_Spike_Momentum on BTC/USDT
+[23:22:51]   Trades/day: 3.7 (target: >100)
+[23:22:51]   PnL/day: -0.0727 USDT (target: >50)
+[23:22:51]   Win rate: 11.1%
+[23:22:51]   Profit factor: 0.13
+[23:22:51] 
+  VIABILITY: FAIL ✗
+[23:22:51]   Gap: need 100 TPD (have 3.7), need $50/day (have $-0.0727)

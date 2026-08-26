@@ -1,0 +1,36 @@
+[21:09:46] === V14b MICRO SCALP TAKER (FIXED) INICIANDO ===
+[21:09:46] Estrategia: buy MARKET -> sell LIMIT @ ask+0.15% -> timeout 60s
+[21:09:46] Bybit fetchOrder fix aplicado. Max loss=2.5 Runtime=7200s
+[21:09:57] === RECONCILIACAO V14b ===
+[21:09:58]   bybit: USDT free=20.4434
+[21:09:59]   binance: USDT free=14.7012
+[21:10:00] === FIM RECONCILIACAO ===
+[21:10:01] Start: bybit_usdt=20.4434 binance_usdt=14.7012
+[21:10:01] --- bybit ciclo 1 (0s) DOGE/USDT ---
+[21:10:01]   bybit DOGE/USDT BUY MARKET qty=117.4 @ ~0.08514 (spread=0.012%)
+[21:10:02]   bybit DOGE/USDT BUY FILLED @ 0.08514 qty=117.4
+[21:10:03]   bybit DOGE/USDT SELL LIMIT @ 0.08527 qty=117.2
+[21:10:13]   bybit DOGE/USDT SELL FILLED @ 0.08527
+[21:10:13]   bybit DOGE/USDT TRADE CLOSED: entry=0.08514 exit=0.08527 LOSS pnl=-0.0047 reason=LIMIT_FILL
+[21:10:13]   Bybit cumulative: trades=1 wins=0 pnl=-0.0047
+[21:10:24] --- binance ciclo 1 (0s) DOGE/USDT ---
+[21:10:24]   binance DOGE/USDT BUY MARKET qty=82.0 @ ~0.08522 (spread=0.012%)
+[21:10:24]   binance DOGE/USDT BUY FILLED @ 0.08523 qty=82.0
+[21:10:26]   binance DOGE/USDT SELL LIMIT @ 0.08535 qty=82.0
+[21:10:39]   binance DOGE/USDT SELL FILLED @ 0.08535
+[21:10:39]   binance DOGE/USDT TRADE CLOSED: entry=0.08523 exit=0.08535 LOSS pnl=-0.0041 reason=LIMIT_FILL
+[21:10:39]   Binance cumulative: trades=1 wins=0 pnl=-0.0041
+[21:10:49] --- bybit ciclo 2 (48s) XRP/USDT ---
+[21:10:50]   bybit XRP/USDT BUY MARKET qty=7.0 @ ~1.4275 (spread=0.007%)
+[21:10:50]   bybit XRP/USDT BUY FILLED @ 1.4275 qty=7.0
+[21:10:51]   bybit XRP/USDT SELL LIMIT @ 1.429641 qty=6.99
+[21:11:15]   bybit XRP/USDT sell cancelled
+[21:11:17]   bybit XRP/USDT TIMEOUT market sell @ 1.4275
+[21:11:17]   bybit XRP/USDT TRADE CLOSED: entry=1.4275 exit=1.4275 LOSS pnl=-0.0200 reason=TIMEOUT_MARKET
+[21:11:17]   Bybit cumulative: trades=2 wins=0 pnl=-0.0247
+[21:11:27] --- binance ciclo 2 (48s) XRP/USDT ---
+[21:11:28]   binance XRP/USDT BUY MARKET qty=4.8 @ ~1.4303 (spread=0.007%)
+[21:11:28]   binance XRP/USDT BUY FILLED @ 1.43 qty=4.8
+[21:11:29]   binance XRP/USDT SELL LIMIT @ 1.432445 qty=4.8
+]   binance XRP/USDT BUY FILLED @ 1.43 qty=4.8
+[21:11:29]   binance XRP/USDT SELL LIMIT @ 1.432445 qty=4.8
