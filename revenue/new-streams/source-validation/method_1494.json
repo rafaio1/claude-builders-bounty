@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1494",
+  "name": "99Freelas Portfolio Builder API",
+  "category": "freelance_services",
+  "source": "https://www.99freelas.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.566834+00:00",
+  "sample_data": {
+    "platform": "99Freelas",
+    "payout_structure": "BRL revenue share 15% sobre projetos fechados via portfolio otimizado, ticket médio R$800",
+    "compliance_status": "Plataforma BR nativa, termos permitem automação para freelancers verificados",
+    "market_demand_indicator": "Top 3 plataforma freelance BR, +500k projetos/ano, diferenciação por portfolio é crítico",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.99freelas.com.br/api | COMPLIANCE: Plataforma BR nativa, termos permitem automação para freelancers verificados | PAYOUT BRL: BRL revenue share 15% sobre projetos fechados via portfolio otimizado, ticket médio R$800 | DEMANDA BR: Top 3 plataforma freelance BR, +500k projetos/ano, diferenciação por portfolio é crítico | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "fc7b533dba53e5d47b18d6300544b28720e01b0d3d9cc11c7bbb78a500afc206"
+}

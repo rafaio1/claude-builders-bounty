@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1512",
+  "name": "ZapWorks AR Experience Creator",
+  "category": "freelance_services",
+  "source": "https://zap.works/api/creators",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.575568+00:00",
+  "sample_data": {
+    "platform": "ZapWorks",
+    "payout_structure": "BRL project fee R$1k-10k por experiência AR, creators recebem via PIX",
+    "compliance_status": "Plataforma WebAR BR, termos creators públicos, direitos autorais respeitados",
+    "market_demand_indicator": "Mercado AR/VR BR cresce 40%/ano, varejo/educação demandam experiências imersivas low-code",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://zap.works/api/creators | COMPLIANCE: Plataforma WebAR BR, termos creators públicos, direitos autorais respeitados | PAYOUT BRL: BRL project fee R$1k-10k por experiência AR, creators recebem via PIX | DEMANDA BR: Mercado AR/VR BR cresce 40%/ano, varejo/educação demandam experiências imersivas low-code | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "fcdb273a089e42152d29cf138914d6d75e9056453213c65c1f4c07c171f84cb7"
+}

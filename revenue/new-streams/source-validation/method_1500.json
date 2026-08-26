@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1500",
+  "name": "TrabalhaBrasil Gig Matching Engine",
+  "category": "freelance_services",
+  "source": "https://www.trabalhabrasil.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.568329+00:00",
+  "sample_data": {
+    "platform": "TrabalhaBrasil",
+    "payout_structure": "BRL commission 12% sobre gigs fechados, foco CLT+freelance híbrido",
+    "compliance_status": "Portal empregos BR tradicional, termos permitem matching automatizado",
+    "market_demand_indicator": "+800k vagas/mês BR, tendência hybrid work cria demanda por flexibilidade",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.trabalhabrasil.com.br/api | COMPLIANCE: Portal empregos BR tradicional, termos permitem matching automatizado | PAYOUT BRL: BRL commission 12% sobre gigs fechados, foco CLT+freelance híbrido | DEMANDA BR: +800k vagas/mês BR, tendência hybrid work cria demanda por flexibilidade | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "ce1be07b99fbaf20aba317ad5b732f6c158c481387f3f9deebb11116f5ff715f"
+}

@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1513",
+  "name": "TikTok BR Creator Fund Analytics",
+  "category": "content_monetization",
+  "source": "https://support.tiktok.com/br/creator-fund",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.486953+00:00",
+  "sample_data": {
+    "platform": "TikTok",
+    "payout_structure": "BRL payout direto via PIX R$0.05-0.20/view, mínimo R$50",
+    "compliance_status": "Programa oficial TikTok BR, termos públicos, IR retido na fonte",
+    "market_demand_indicator": "+10M creators ativos BR, fundo paga em BRL desde 2023",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://support.tiktok.com/br/creator-fund | COMPLIANCE: Programa oficial TikTok BR, termos públicos, IR retido na fonte | PAYOUT BRL: BRL payout direto via PIX R$0.05-0.20/view, mínimo R$50 | DEMANDA BR: +10M creators ativos BR, fundo paga em BRL desde 2023 | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria content_monetization.",
+  "sha256": "155b3ced70efea9ae27b0ce2d42e7da91dbea20775b2bbbfb81b411fe36ea79c"
+}

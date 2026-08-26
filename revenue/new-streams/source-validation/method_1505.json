@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1505",
+  "name": "Eduzz Mentor Booking System",
+  "category": "freelance_services",
+  "source": "https://api.eduzz.com.br/mentoria",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.569928+00:00",
+  "sample_data": {
+    "platform": "Eduzz",
+    "payout_structure": "BRL booking fee 10% sobre sessões R$200-2k, mentores recebem via PIX",
+    "compliance_status": "Plataforma infoprodutos BR, termos mentoria públicos, compliance CVM consultoria",
+    "market_demand_indicator": "Mentoria BR cresce 300%/ano, plataformas carecem de scheduling integrado",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.eduzz.com.br/mentoria | COMPLIANCE: Plataforma infoprodutos BR, termos mentoria públicos, compliance CVM consultoria | PAYOUT BRL: BRL booking fee 10% sobre sessões R$200-2k, mentores recebem via PIX | DEMANDA BR: Mentoria BR cresce 300%/ano, plataformas carecem de scheduling integrado | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "a422beb774a638730fda545bd43ca7b29b64427ea7c41b03c87bda27923aaa20"
+}

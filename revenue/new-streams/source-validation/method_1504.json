@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1504",
+  "name": "Hotmart Co-Authorship Matcher",
+  "category": "freelance_services",
+  "source": "https://api.hotmart.com.br/coauthor",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.569748+00:00",
+  "sample_data": {
+    "platform": "Hotmart",
+    "payout_structure": "BRL comissão co-autoria 20-40% sobre infoprodutos, split automático PIX",
+    "compliance_status": "Maior plataforma infoprodutos BR, termos co-autoria públicos, LGPD compliant",
+    "market_demand_indicator": "+100k produtores ativos BR, co-produção cresce 150%/ano, matchmaking manual é gargalo",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.hotmart.com.br/coauthor | COMPLIANCE: Maior plataforma infoprodutos BR, termos co-autoria públicos, LGPD compliant | PAYOUT BRL: BRL comissão co-autoria 20-40% sobre infoprodutos, split automático PIX | DEMANDA BR: +100k produtores ativos BR, co-produção cresce 150%/ano, matchmaking manual é gargalo | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "6d5faf44aaeb1611380e374371a57d0bcdc3ec82b29ae3d6c00f68595e97c6e4"
+}

@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1511",
+  "name": "Fixando Service Pricing Engine",
+  "category": "freelance_services",
+  "source": "https://api.fixando.com.br/pricing",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.574869+00:00",
+  "sample_data": {
+    "platform": "Fixando",
+    "payout_structure": "BRL dynamic pricing fee 8% sobre serviços precificados, aumento receita média 25%",
+    "compliance_status": "Marketplace serviços gerais BR, termos pricing públicos, LGPD compliant",
+    "market_demand_indicator": "+300k pedidos/ano BR, subprecificação é causa #1 churn prestadores, engine aumenta margem",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.fixando.com.br/pricing | COMPLIANCE: Marketplace serviços gerais BR, termos pricing públicos, LGPD compliant | PAYOUT BRL: BRL dynamic pricing fee 8% sobre serviços precificados, aumento receita média 25% | DEMANDA BR: +300k pedidos/ano BR, subprecificação é causa #1 churn prestadores, engine aumenta margem | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "3bf8b7eed1d9bbc27212570e8eea3b4b9394bda9292070b8284819b506715aef"
+}

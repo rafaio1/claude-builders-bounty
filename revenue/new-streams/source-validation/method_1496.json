@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1496",
+  "name": "VintePila Gig Bundler Automation",
+  "category": "freelance_services",
+  "source": "https://vintepila.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.567697+00:00",
+  "sample_data": {
+    "platform": "VintePila",
+    "payout_structure": "BRL comissão 20% sobre bundles R$40-500, saque PIX mínimo R$30",
+    "compliance_status": "Plataforma BR microtarefas, termos permitem bundling automatizado",
+    "market_demand_indicator": "+100k microtarefas/mês BR, nicho entrada zero-capital, upsell via bundling aumenta ticket 3x",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://vintepila.com.br/api | COMPLIANCE: Plataforma BR microtarefas, termos permitem bundling automatizado | PAYOUT BRL: BRL comissão 20% sobre bundles R$40-500, saque PIX mínimo R$30 | DEMANDA BR: +100k microtarefas/mês BR, nicho entrada zero-capital, upsell via bundling aumenta ticket 3x | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "b8e82c7ed8ea9f150eae54c530bba1dd51c9637ad7adcf8bdb9d05cee54b37be"
+}

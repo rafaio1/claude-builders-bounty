@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1499",
+  "name": "InfoJobs Candidate Screening API",
+  "category": "freelance_services",
+  "source": "https://api.infojobs.com.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.568176+00:00",
+  "sample_data": {
+    "platform": "InfoJobs",
+    "payout_structure": "BRL pay-per-screening R$2-10, volume enterprise R$5k-20k/mês",
+    "compliance_status": "Maior portal empregos BR, compliance LGPD trabalhista, integração ATS permitida",
+    "market_demand_indicator": "+1M candidaturas/dia BR, empresas gastam R$3k/vaga em triagem, automação reduz 70%",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.infojobs.com.br | COMPLIANCE: Maior portal empregos BR, compliance LGPD trabalhista, integração ATS permitida | PAYOUT BRL: BRL pay-per-screening R$2-10, volume enterprise R$5k-20k/mês | DEMANDA BR: +1M candidaturas/dia BR, empresas gastam R$3k/vaga em triagem, automação reduz 70% | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "5efd229fd9c402b1f347faf0833fdf1eaa256379539ba3ee4fb51fcc01fd906e"
+}

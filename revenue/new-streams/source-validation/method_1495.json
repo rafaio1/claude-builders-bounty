@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1495",
+  "name": "GetNinjas Service Quote Optimizer",
+  "category": "freelance_services",
+  "source": "https://www.getninjas.com.br/para-profissionais",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.567040+00:00",
+  "sample_data": {
+    "platform": "GetNinjas",
+    "payout_structure": "BRL pay-per-lead R$15-80, conversão média 12%, saque PIX semanal",
+    "compliance_status": "Termos permitem automação para profissionais cadastrados, LGPD opt-in leads",
+    "market_demand_indicator": "+5M requests/mês BR, maior marketplace serviços locais, preço lead varia por categoria",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.getninjas.com.br/para-profissionais | COMPLIANCE: Termos permitem automação para profissionais cadastrados, LGPD opt-in leads | PAYOUT BRL: BRL pay-per-lead R$15-80, conversão média 12%, saque PIX semanal | DEMANDA BR: +5M requests/mês BR, maior marketplace serviços locais, preço lead varia por categoria | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "dd88264775473e2c81c4e8f2aacc86da33715b2a297db81371f50124d4344b18"
+}

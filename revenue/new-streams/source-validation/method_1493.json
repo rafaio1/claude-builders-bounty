@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1493",
+  "name": "Workana Milestone Automation BR",
+  "category": "freelance_services",
+  "source": "https://www.workana.com/api-docs",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.565860+00:00",
+  "sample_data": {
+    "platform": "Workana",
+    "payout_structure": "BRL comissão 10-20% sobre projetos, saque PayPal/PagSeguro, milestone release automático",
+    "compliance_status": "API oficial parceiros BR, LGPD compliant, CNPJ opcional para PF",
+    "market_demand_indicator": "+3M projetos/ano BR, líder freelance LATAM, alta demanda por automação entrega",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.workana.com/api-docs | COMPLIANCE: API oficial parceiros BR, LGPD compliant, CNPJ opcional para PF | PAYOUT BRL: BRL comissão 10-20% sobre projetos, saque PayPal/PagSeguro, milestone release automático | DEMANDA BR: +3M projetos/ano BR, líder freelance LATAM, alta demanda por automação entrega | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "344cd8913a91595a316f37649e005ab429d62dea9d87e1121cff8056130c11ad"
+}

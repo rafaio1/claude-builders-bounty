@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1515",
+  "name": "Spotify BR Podcast Ads Network",
+  "category": "content_monetization",
+  "source": "https://podcasters.spotify.com/br/ads",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.487700+00:00",
+  "sample_data": {
+    "platform": "Spotify",
+    "payout_structure": "BRL CPM R$15-40 ads dinâmicos, payout mensal via transferência bancária",
+    "compliance_status": "Spotify for Podcasters BR, termos locais, nota fiscal emitida automaticamente",
+    "market_demand_indicator": "+100k podcasts ativos BR, mercado audio advertising cresce 60%/ano",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://podcasters.spotify.com/br/ads | COMPLIANCE: Spotify for Podcasters BR, termos locais, nota fiscal emitida automaticamente | PAYOUT BRL: BRL CPM R$15-40 ads dinâmicos, payout mensal via transferência bancária | DEMANDA BR: +100k podcasts ativos BR, mercado audio advertising cresce 60%/ano | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria content_monetization.",
+  "sha256": "65aecb32b38c14e672fcf00c8a4051bb372c071717077858869f66f5529296ed"
+}

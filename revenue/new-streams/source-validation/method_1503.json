@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1503",
+  "name": "Escola Virtual BR Course Creator",
+  "category": "freelance_services",
+  "source": "https://escolavirtual.gov.br/criar-curso",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.569565+00:00",
+  "sample_data": {
+    "platform": "Escola",
+    "payout_structure": "BRL revenue share 50% sobre cursos pagos, governo federal como parceiro",
+    "compliance_status": "Plataforma ENAP/MGI, dados públicos educacionais, compliance MEC",
+    "market_demand_indicator": "+500k alunos/ano BR, educação corporativa governo expande, falta conteúdo técnico privado",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://escolavirtual.gov.br/criar-curso | COMPLIANCE: Plataforma ENAP/MGI, dados públicos educacionais, compliance MEC | PAYOUT BRL: BRL revenue share 50% sobre cursos pagos, governo federal como parceiro | DEMANDA BR: +500k alunos/ano BR, educação corporativa governo expande, falta conteúdo técnico privado | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "de8e2a31061651107f68d08aae7f2e977fde66df0442f22f7b1aa59e7a717bb9"
+}

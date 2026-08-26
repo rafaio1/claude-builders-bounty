@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1507",
+  "name": "Sympla Event Staffing API",
+  "category": "freelance_services",
+  "source": "https://api.sympla.com.br/staffing",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.570262+00:00",
+  "sample_data": {
+    "platform": "Sympla",
+    "payout_structure": "BRL placement fee 15% sobre contratos staff temporário, eventos corporativos",
+    "compliance_status": "Maior plataforma eventos BR, termos staffing públicos, CLT temporária regulada",
+    "market_demand_indicator": "+50k eventos/ano BR, mercado eventos recupera pós-pandemia, staffing manual é ineficiente",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.sympla.com.br/staffing | COMPLIANCE: Maior plataforma eventos BR, termos staffing públicos, CLT temporária regulada | PAYOUT BRL: BRL placement fee 15% sobre contratos staff temporário, eventos corporativos | DEMANDA BR: +50k eventos/ano BR, mercado eventos recupera pós-pandemia, staffing manual é ineficiente | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "083ca5ef07e22a553637c76fa3d13a3084a0c329901bf42c3f0c02e830e1a1b1"
+}

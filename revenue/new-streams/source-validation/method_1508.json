@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1508",
+  "name": "Eventbrite BR Vendor Connector",
+  "category": "freelance_services",
+  "source": "https://www.eventbrite.com.br/api/vendors",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.574206+00:00",
+  "sample_data": {
+    "platform": "Eventbrite",
+    "payout_structure": "BRL referral fee 10% sobre fornecedores contratados, catering/audiovisual/decoração",
+    "compliance_status": "Plataforma eventos global com operação BR, termos vendor públicos",
+    "market_demand_indicator": "Eventos corporativos BR movimentam R$15B/ano, fragmentação fornecedores é dor",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.eventbrite.com.br/api/vendors | COMPLIANCE: Plataforma eventos global com operação BR, termos vendor públicos | PAYOUT BRL: BRL referral fee 10% sobre fornecedores contratados, catering/audiovisual/decoração | DEMANDA BR: Eventos corporativos BR movimentam R$15B/ano, fragmentação fornecedores é dor | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "890b5bd335d97c4d293f9d89dfab6b58e95b089f201c33d870ba0af34f747c89"
+}

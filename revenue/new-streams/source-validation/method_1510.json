@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1510",
+  "name": "Parafuzo Cleaning Pro Scheduler",
+  "category": "freelance_services",
+  "source": "https://api.parafuzo.com.br/profissionais",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.574667+00:00",
+  "sample_data": {
+    "platform": "Parafuzo",
+    "payout_structure": "BRL scheduling fee 12% sobre limpezas agendadas, profissionais recebem semanal",
+    "compliance_status": "Plataforma limpeza residencial BR, termos profissionais públicos, seguro obrigatório",
+    "market_demand_indicator": "+1M limpezas/ano BR, mercado limpeza domiciliar cresce 20%/ano, agenda manual perde 30% receita",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.parafuzo.com.br/profissionais | COMPLIANCE: Plataforma limpeza residencial BR, termos profissionais públicos, seguro obrigatório | PAYOUT BRL: BRL scheduling fee 12% sobre limpezas agendadas, profissionais recebem semanal | DEMANDA BR: +1M limpezas/ano BR, mercado limpeza domiciliar cresce 20%/ano, agenda manual perde 30% receita | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "fded52bf14bb568b64b6cc6c913829a0138babeee4649ad4d464651458f985d1"
+}

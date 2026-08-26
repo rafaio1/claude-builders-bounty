@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1498",
+  "name": "Catho Freelance Resume Parser",
+  "category": "freelance_services",
+  "source": "https://www.catho.com.br/api-parceiros",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.568024+00:00",
+  "sample_data": {
+    "platform": "Catho",
+    "payout_structure": "BRL assinatura recrutador R$199-999/mês, parsing CV automatizado para matching",
+    "compliance_status": "Portal empregos BR consolidado, LGPD base legal execução contrato, dados anonimizados",
+    "market_demand_indicator": "+500k vagas/mês BR, mercado RH tech cresce 25%/ano, triagem manual custa 40h/semana",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.catho.com.br/api-parceiros | COMPLIANCE: Portal empregos BR consolidado, LGPD base legal execução contrato, dados anonimizados | PAYOUT BRL: BRL assinatura recrutador R$199-999/mês, parsing CV automatizado para matching | DEMANDA BR: +500k vagas/mês BR, mercado RH tech cresce 25%/ano, triagem manual custa 40h/semana | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "0e230923b03f3b86d271f78de90cd7ec1da4c09c8929904e2a63e572ee009644"
+}

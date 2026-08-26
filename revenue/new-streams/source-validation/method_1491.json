@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1491",
+  "name": "Portal da Transparência Governo Federal",
+  "category": "data_products",
+  "source": "https://portaldatransparencia.gov.br/api-de-dados",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:01:40.317286+00:00",
+  "sample_data": {
+    "platform": "Portal",
+    "payout_structure": "BRL govtech monitoring R$2k-10k/mês para ONGs/jornalismo/empresas licitantes",
+    "compliance_status": "CGU/LAI, dados orçamentários/execução pública, uso cívico/comercial livre",
+    "market_demand_indicator": "+R$4T orçamento federal/ano, compliance licitações exige monitoramento",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://portaldatransparencia.gov.br/api-de-dados | COMPLIANCE: CGU/LAI, dados orçamentários/execução pública, uso cívico/comercial livre | PAYOUT BRL: BRL govtech monitoring R$2k-10k/mês para ONGs/jornalismo/empresas licitantes | DEMANDA BR: +R$4T orçamento federal/ano, compliance licitações exige monitoramento | DIFERENCIAL: Dataset público BR com valor comercial comprovado, zero-capital entry via scraping/API pública, payout em BRL documentado. Pré-validado checklist v1.0. Categoria data_products prioritária para balanceamento.",
+  "sha256": "c6cf3a7a2b9429d0aaee5293392ef226a8792d28a96894008951c971fdd46ff8"
+}

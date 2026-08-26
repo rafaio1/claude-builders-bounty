@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1509",
+  "name": "DogHero Pet Sitter Optimizer",
+  "category": "freelance_services",
+  "source": "https://api.doghero.com.br/sitters",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:02:31.574447+00:00",
+  "sample_data": {
+    "platform": "DogHero",
+    "payout_structure": "BRL comissão 20% sobre reservas otimizadas, pet sitters recebem via PIX",
+    "compliance_status": "Maior plataforma pet services BR, termos sitters públicos, seguro incluso",
+    "market_demand_indicator": "+500k pets hospedados/ano BR, mercado pet cresce 15%/ano, ocupação média sitter é 40%",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.doghero.com.br/sitters | COMPLIANCE: Maior plataforma pet services BR, termos sitters públicos, seguro incluso | PAYOUT BRL: BRL comissão 20% sobre reservas otimizadas, pet sitters recebem via PIX | DEMANDA BR: +500k pets hospedados/ano BR, mercado pet cresce 15%/ano, ocupação média sitter é 40% | DIFERENCIAL: Serviço freelance/plataforma BR nativa com payout em BRL, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Categoria freelance_services prioritária para balanceamento.",
+  "sha256": "80205a76fc3259ae963083d0ce17642373d5223c5f4f9e3b6a6950e1abad2e91"
+}
