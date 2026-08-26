@@ -31707,9 +31707,9 @@
     "sha256": "7afe358763545ff23c308b55a187301531e88c6dadb624ce309621b1a21c5380"
   },
   "_meta": {
-    "updated_at": "2026-08-26T16:39:59.538397+00:00",
-    "total_samples": 1383,
-    "expansion_batch": "batch_1365_to_1382"
+    "updated_at": "2026-08-26T16:41:13.876604+00:00",
+    "total_samples": 1451,
+    "expansion_batch": "batch_1383_to_1450"
   },
   "method_913": {
     "method_id": "method_913",
@@ -38913,5 +38913,1108 @@
     "notes": "Proxy TIER0. Official: Honeycomb/Lightstep trace analysis.",
     "category": "software_saas",
     "sha256": "eee451ef28d2d1314e6a818ada2b0817092147e4b5cb711514d384e23d016abd"
+  },
+  "method_1383": {
+    "method_id": "method_1383",
+    "name": "GPU Cloud Spot Instance Broker",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "gpu_type": "A100",
+      "spot_discount_pct": 60,
+      "uptime_sla": "best-effort"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Lambda Labs/Vast.ai spot marketplace.",
+    "category": "infrastructure_reselling",
+    "sha256": "de8c43f51a359903bfaa16a8a9bdc7b958323f76c0f2a18566e6019a67dd162c"
+  },
+  "method_1384": {
+    "method_id": "method_1384",
+    "name": "Bare Metal Server Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "cpu_cores": 32,
+      "ram_gb": 128,
+      "margin_pct": 15
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Hetzner/OVH dedicated server partner program.",
+    "category": "infrastructure_reselling",
+    "sha256": "503851ed3f0251c4f636eb4ee58e084623e3baf2a2cbee3c6a6a2a85cc649529"
+  },
+  "method_1385": {
+    "method_id": "method_1385",
+    "name": "K8s Managed Cluster Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "nodes": 5,
+      "managed_control_plane": true,
+      "markup_pct": 20
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: DigitalOcean/Linode K8s partner tiers.",
+    "category": "infrastructure_reselling",
+    "sha256": "88433b391fdeb37073c303c7f5fb6722612d7b6c4034fd59271c0bdfa3b38c24"
+  },
+  "method_1386": {
+    "method_id": "method_1386",
+    "name": "Object Storage White-Label",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "storage_tb": 50,
+      "egress_free": true,
+      "margin_pct": 25
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Backblaze/Wasabi S3-compatible resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "ef52f5942ec4e815d1fb88a5988bbdc93ff7c8e9739caee18736033c1597a8b5"
+  },
+  "method_1387": {
+    "method_id": "method_1387",
+    "name": "Serverless Function Hosting Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "requests_month": 10000000,
+      "cpu_ms_included": 50000,
+      "overage_margin": 10
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Cloudflare Workers/Vercel enterprise resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "f24f7ac8c9a5dedb9c7802b70f0537c831538e91f5cedb3e66f0f22c2a305ee8"
+  },
+  "method_1388": {
+    "method_id": "method_1388",
+    "name": "Managed PostgreSQL Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "instances": 20,
+      "backup_retention_days": 30,
+      "commission_pct": 20
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Supabase/Neon database partner program.",
+    "category": "infrastructure_reselling",
+    "sha256": "dbb11eb53d147b76e93000ca7b03f3527881990ae1d92b2e4c128787ee2ad4ee"
+  },
+  "method_1389": {
+    "method_id": "method_1389",
+    "name": "Edge CDN Bandwidth Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "bandwidth_tb": 100,
+      "pops": 50,
+      "margin_pct": 30
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: BunnyCDN/Fastly volume discount resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "ba9c8d6bbbb63992e1e8c97e8318c27bd08f87a2e616c0faaea2167d516d1c7b"
+  },
+  "method_1390": {
+    "method_id": "method_1390",
+    "name": "Transactional Email API Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "emails_month": 500000,
+      "dedicated_ip": true,
+      "markup_pct": 15
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: SendGrid/Mailgun high-volume partner pricing.",
+    "category": "infrastructure_reselling",
+    "sha256": "050570b6e75f8cb2b64e2aba149b223457355dc8b1d25299dcb34ee04aae33ab"
+  },
+  "method_1391": {
+    "method_id": "method_1391",
+    "name": "DNS Premium Hosting Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "zones": 100,
+      "queries_month": 50000000,
+      "ddos_protection": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Cloudflare/DNSimple enterprise DNS resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "20a8ed35711d7253ee781e9f1969bd9b2cb99a1eba534ab78de534f40325990b"
+  },
+  "method_1392": {
+    "method_id": "method_1392",
+    "name": "SSL Certificate Bulk Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "certs_year": 500,
+      "wildcard": true,
+      "margin_pct": 40
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Sectigo/DigiCert wildcard certificate resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "96055cf1b3352eef00ecc5b2e338d13eacddecb7ce2de2e026f4a2fb99607144"
+  },
+  "method_1393": {
+    "method_id": "method_1393",
+    "name": "Container Registry Hosting",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "images_stored": 1000,
+      "pulls_month": 50000,
+      "vulnerability_scan": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Docker Hub/GHCR private registry resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "5b1fdd5b5f506e2cfc59afbe751d920e35b418dc710d21e8e248c728cc159927"
+  },
+  "method_1394": {
+    "method_id": "method_1394",
+    "name": "CI/CD Runner Hosting",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "runners": 20,
+      "concurrent_jobs": 50,
+      "os": [
+        "linux",
+        "macos"
+      ]
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: GitHub Actions/CircleCI self-hosted runner management.",
+    "category": "infrastructure_reselling",
+    "sha256": "dc30ff78ae935a11898dd84c2fdc8711a6f9cdf692d8d7323f133b60d601c64c"
+  },
+  "method_1395": {
+    "method_id": "method_1395",
+    "name": "Log Aggregation Service Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "gb_ingested_day": 100,
+      "retention_days": 90,
+      "margin_pct": 20
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Datadog/New Relic log ingestion partner.",
+    "category": "infrastructure_reselling",
+    "sha256": "b803557d766fba677674e0bfca3a47e82d0deeb658797fd68a42344e2c1c5958"
+  },
+  "method_1396": {
+    "method_id": "method_1396",
+    "name": "Secrets Manager Hosting",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "secrets": 5000,
+      "rotations_month": 1000,
+      "audit_log": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: HashiCorp Vault/AWS Secrets Manager managed service.",
+    "category": "infrastructure_reselling",
+    "sha256": "5ab68d78fc3434bbf4051bce97360bfef138119bbc673a0d1062e01657afa62f"
+  },
+  "method_1397": {
+    "method_id": "method_1397",
+    "name": "Feature Flag Hosting Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "flags": 500,
+      "environments": 10,
+      "sdk_calls_month": 10000000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: LaunchDarkly/Unleash enterprise flag hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "2426d8ae2b7242c97a9fca65a6c8961374565e2945652bce5d7cd1d251cb833e"
+  },
+  "method_1398": {
+    "method_id": "method_1398",
+    "name": "Realtime Database Hosting",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "connections_concurrent": 1000,
+      "sync_ops_month": 5000000,
+      "offline_support": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Firebase/Supabase realtime DB resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "8a06d45b7fffbe9f1d89c9a6e7798324873a05f506cd2a605634131650b3c9a7"
+  },
+  "method_1399": {
+    "method_id": "method_1399",
+    "name": "Webhook Relay Infrastructure",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "events_month": 2000000,
+      "retry_policy": "exponential",
+      "dlq_enabled": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Hookdeck/Svix webhook delivery guarantee resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "81064bb1f46d9e45ad60406aadadf8900fb17479c934fab893d1e17019b540e6"
+  },
+  "method_1400": {
+    "method_id": "method_1400",
+    "name": "PDF Generation Worker Pool",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "workers": 10,
+      "docs_hour": 500,
+      "chrome_headless": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: DocRaptor/PDFShift worker node resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "6be56fe1dc7cd95927fb95f71c6a5b2f2d3109d00eb2d6783c6e00eea2609266"
+  },
+  "method_1401": {
+    "method_id": "method_1401",
+    "name": "Video Transcoding Farm",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "minutes_transcoded_month": 50000,
+      "codecs": [
+        "h264",
+        "av1"
+      ],
+      "drm": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Mux/Bitmovin transcoding capacity resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "0ae0d630204b62408ed1e559d0ebe566ffeb182380cfac6d2e7bcd3782811ad9"
+  },
+  "method_1402": {
+    "method_id": "method_1402",
+    "name": "Search API Hosting",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "indices": 50,
+      "operations_month": 5000000,
+      "typo_tolerance": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Algolia/Elasticsearch managed search resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "4705ae9997c6e80b0f9f6b42beffcd308ddd0d360b09e8c0ef98fab4c4347939"
+  },
+  "method_1403": {
+    "method_id": "method_1403",
+    "name": "LST Analytics Pipeline",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "models_hosted": 10,
+      "predictions_sec": 1000,
+      "latency_ms": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Long Short-Term memory analytics infra for trading.",
+    "category": "infrastructure_reselling",
+    "sha256": "e0435c33f91c570b833248684b8aecd247f56a459af6a9528a2220513164cf90"
+  },
+  "method_1404": {
+    "method_id": "method_1404",
+    "name": "MEV Backtesting Infra",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "blocks_simulated": 100000,
+      "state_access": "archive",
+      "parallelism": 8
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Flashbots/Tenderly simulation node resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "7e158e189d919997e80c0662d20cf6c1055bf16a919a348ee568394e4df34f20"
+  },
+  "method_1405": {
+    "method_id": "method_1405",
+    "name": "Bridge Fee Aggregator Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "chains_supported": 10,
+      "messages_relayed_month": 50000,
+      "fee_share_pct": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: LayerZero/Wormhole validator node hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "374c88e7d4f3752156a26d78e2f1c9a962bbe61d2b11521a161a6a26b7a20aa8"
+  },
+  "method_1406": {
+    "method_id": "method_1406",
+    "name": "On-chain Reputation Oracle",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "verifications_month": 10000,
+      "sybil_resistance": true,
+      "api_latency_ms": 50
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Gitcoin/WorldID identity verification node.",
+    "category": "infrastructure_reselling",
+    "sha256": "3cc2b595ae384240d1340de2988575065b0845e7a91b42b6f0f90e6fabfbca56"
+  },
+  "method_1407": {
+    "method_id": "method_1407",
+    "name": "DeFi Risk Scoring Engine",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "protocols_monitored": 50,
+      "alerts_day": 100,
+      "historical_backtest": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Gauntlet/Chaos Labs risk model hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "baa6e94b56b3b3648c5e4bf51132c5418cf6fb68078e4573907debdd58d849df"
+  },
+  "method_1408": {
+    "method_id": "method_1408",
+    "name": "NFT Royalty Enforcement Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "collections_indexed": 5000,
+      "checks_sec": 500,
+      "marketplace_coverage": 95
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Operator/Blur royalty validation infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "5c192196b0fa2262d7371ce36116866bb92661b5dbbf2c5bbc7c00881870b389"
+  },
+  "method_1409": {
+    "method_id": "method_1409",
+    "name": "Gas Prediction API Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "predictions_min": 60,
+      "accuracy_pct": 92,
+      "chains": [
+        "eth",
+        "polygon"
+      ]
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: BlockNative/ETHGasStation prediction model hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "3ed0bb7e25bef9b0bd0da0b2083fa4656d198f4ea02921ce03f12db6ab3751df"
+  },
+  "method_1410": {
+    "method_id": "method_1410",
+    "name": "Airdrop Eligibility Checker Infra",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "wallets_checked_month": 1000000,
+      "snapshots_stored": 50,
+      "api_rate_limit": 1000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Galxe/Layer3 quest verification backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "ff0f1c0e9c306a0e4fc84c897e2bacb26c8a6c46610fb67e0fe07226999f1dc8"
+  },
+  "method_1411": {
+    "method_id": "method_1411",
+    "name": "DAO Governance Voting Infra",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "spaces_hosted": 100,
+      "votes_processed_month": 50000,
+      "ipfs_pinning": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Snapshot/Tally voting relay hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "56fba3ef179dfd9c28948f5c1837c888da33b821ea067c1ce7dc51b0f1e97bd3"
+  },
+  "method_1412": {
+    "method_id": "method_1412",
+    "name": "Stablecoin Peg Monitor Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "feeds_monitored": 20,
+      "deviation_alert_pct": 0.5,
+      "uptime_pct": 99.9
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Chainlink/Pyth stablecoin feed hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "3dd8dd4a57088eb5274f73f534e4cca14d0736b30bcf94f41d0178a306b0a665"
+  },
+  "method_1413": {
+    "method_id": "method_1413",
+    "name": "Yield Aggregator Backend",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "vaults_managed": 30,
+      "tvl_usd": 5000000,
+      "rebalance_frequency": "hourly"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Yearn/Beefy strategy vault hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "fb01de1cdfe0184b3a20eb3ece8587ba600fd3091f4db4b4e4cd4d120dce8ef9"
+  },
+  "method_1414": {
+    "method_id": "method_1414",
+    "name": "Token Unlock Tracker Infra",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "tokens_tracked": 500,
+      "schedules_indexed": 2000,
+      "alert_subscribers": 1000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: TokenUnlocks/VestLab vesting schedule indexer.",
+    "category": "infrastructure_reselling",
+    "sha256": "786fb5009f9b90860348d685b305844e50536f1f92797dffb0db6c7206592b51"
+  },
+  "method_1415": {
+    "method_id": "method_1415",
+    "name": "LP Position Analyzer Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "positions_tracked": 10000,
+      "il_calculated": true,
+      "refresh_interval_min": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: DeBank/Zapper LP analytics backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "f9356b03bf5cf527950b4660f2c815d26f5962d9d8b0916b9693a04f75d6119e"
+  },
+  "method_1416": {
+    "method_id": "method_1416",
+    "name": "ZK Proof Generator Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "proofs_generated_day": 100,
+      "circuit_size": "medium",
+      "gpu_required": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Polygon zkEVM/Scroll prover hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "12ea3a2a2e3941738710b689008ac7553a20aeaeae11097da3588255c0a5df51"
+  },
+  "method_1417": {
+    "method_id": "method_1417",
+    "name": "Intent Settlement Solver",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "orders_filled_month": 5000,
+      "avg_fill_time_sec": 2,
+      "slippage_bps": 10
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: UniswapX/CowSwap solver node hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "86388b7e67159969623dc5a0154e7791f3402e36549448298c59d485573762d2"
+  },
+  "method_1418": {
+    "method_id": "method_1418",
+    "name": "Account Abstraction Bundler",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "user_ops_month": 100000,
+      "paymaster_enabled": true,
+      "chains": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Biconomy/Alchemy AA bundler hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "c6d2c99b4e082fef3c0a4d72597b2be5b5e7671092455461ef81a08785ccdb06"
+  },
+  "method_1419": {
+    "method_id": "method_1419",
+    "name": "Restaking AVS Operator",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "avs_supported": 10,
+      "stake_delegated_eth": 1000,
+      "slashable": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: EigenLayer AVS node operation.",
+    "category": "infrastructure_reselling",
+    "sha256": "347362bf84ba4480a19d80d12d0177e5019517d7e9f89754e35f3303e1c029f3"
+  },
+  "method_1420": {
+    "method_id": "method_1420",
+    "name": "Compliance Screening API Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "addresses_screened_month": 500000,
+      "risk_labels": 100,
+      "false_positive_rate_pct": 1
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Chainalysis/TRM Labs screening node resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "ffb41ad99494af4f4c169b9f20720d1cfcda6c3c04ac95a413df354db582296b"
+  },
+  "method_1421": {
+    "method_id": "method_1421",
+    "name": "On-chain Credit Scoring",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "scores_generated_month": 10000,
+      "default_prediction_auc": 0.85,
+      "data_sources": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Credora/Spectral credit model hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "9a151cc8192b59690eb10abc3201b3d12963d6f71b3d1c1d8f2a6fb4de8855e8"
+  },
+  "method_1422": {
+    "method_id": "method_1422",
+    "name": "Bridge Liquidity Provider Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "liquidity_usd": 500000,
+      "routes_supported": 20,
+      "fees_earned_month_usd": 5000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Stargate/Hop Protocol LP node hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "37d924b352daf28f4735840f87a1b4fb37c27809ab6b617864811bd4e5a55eca"
+  },
+  "method_1423": {
+    "method_id": "method_1423",
+    "name": "RWA Compliance Validator",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "investors_verified": 1000,
+      "jurisdictions": 10,
+      "document_checks_month": 500
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Securitize/Ondo KYC/AML validation node.",
+    "category": "infrastructure_reselling",
+    "sha256": "dee62974aef29113e122f46e25d9ae4a9ab557894268bbf1591eb70cac215375"
+  },
+  "method_1424": {
+    "method_id": "method_1424",
+    "name": "DePIN Coverage Calculator",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "hotspots_mapped": 50000,
+      "coverage_score_updated": "hourly",
+      "geo_precision_m": 10
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Helium/Hivemapper coverage mapping infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "6a7798aa7b5e3371dbc9d475c21bf0030b2a5fcfe121ea4d8729ca11cf238e29"
+  },
+  "method_1425": {
+    "method_id": "method_1425",
+    "name": "Stablecoin Switcher Router",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "swaps_routed_month": 20000,
+      "slippage_saved_bps": 5,
+      "pools_connected": 10
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Curve/Balancer stableswap router hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "f8a17892518ad580a09bca6bafee9b5da021f93230748f00249dae3ecfc53116"
+  },
+  "method_1426": {
+    "method_id": "method_1426",
+    "name": "On-chain Arb Executor Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "opportunities_found_day": 1000,
+      "executed_pct": 5,
+      "profit_month_usd": 2000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Jito/Flashbots arb bot hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "7bd28bb861bd9fd18f997ee4bd7caffcba69be7d437137ef9cfc37ebae4f5cdc"
+  },
+  "method_1427": {
+    "method_id": "method_1427",
+    "name": "NFT Floor Price Predictor",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "collections_predicted": 500,
+      "mae_pct": 8,
+      "update_frequency": "hourly"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: NFTGo/DappRadar floor prediction model.",
+    "category": "infrastructure_reselling",
+    "sha256": "5c1d18777893faa729ae1f48b0f45b5068526f8b3ef299a59c3a9cdbe65156d1"
+  },
+  "method_1428": {
+    "method_id": "method_1428",
+    "name": "Token Sniping Bot Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "tokens_sniped_month": 100,
+      "avg_buy_delay_ms": 200,
+      "rug_check_enabled": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Maestro/Banana Gun sniper node hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "4d2b867bbaf717508eb192e3b19768fd534231b3b31eb532350c87196fbd8af7"
+  },
+  "method_1429": {
+    "method_id": "method_1429",
+    "name": "Governance Delegate Platform",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "delegates_hosted": 50,
+      "proposals_voted_month": 20,
+      "transparency_score": 95
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Karma/Tally delegate voting infrastructure.",
+    "category": "infrastructure_reselling",
+    "sha256": "35719536d435de95cea7d832c94f2b009b4c796c2225a879ea714bc935a37457"
+  },
+  "method_1430": {
+    "method_id": "method_1430",
+    "name": "Tax Loss Harvesting Engine",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "transactions_analyzed": 100000,
+      "losses_identified_usd": 5000,
+      "jurisdictions": 5
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Koinly/CoinTracker tax optimization backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "d0df0dbcdeec7e32fe8ce0bf30257849f02659bd650b4b65cff717941528267c"
+  },
+  "method_1431": {
+    "method_id": "method_1431",
+    "name": "Cross-chain Messaging Relay",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "messages_relayed_month": 50000,
+      "chains_connected": 15,
+      "finality_blocks": 2
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Axelar/LayerZero message relayer hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "0fba992ffdf205e66a1deb7a9bab2c56f22b26d94a6b36bfa45ce3b94ae1baac"
+  },
+  "method_1432": {
+    "method_id": "method_1432",
+    "name": "DeFi Insurance Pool Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "pools_managed": 10,
+      "cover_sold_usd": 100000,
+      "claims_processed": 0
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Nexus Mutual/InsurAce pool staking node.",
+    "category": "infrastructure_reselling",
+    "sha256": "04604a4aea2ca8f360e32a55eb282eeb4323a2a0a9803900190c50844c03d2c3"
+  },
+  "method_1433": {
+    "method_id": "method_1433",
+    "name": "MEV RPC Endpoint Resale",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "rpc_requests_month": 5000000,
+      "bundle_inclusion_rate_pct": 80,
+      "latency_ms": 20
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Flashbots Protect/private RPC resale.",
+    "category": "infrastructure_reselling",
+    "sha256": "ce903de4e80da3fe45dd5f044fb626be43e9beaa46865df8fb0e5f41c5f20bb7"
+  },
+  "method_1434": {
+    "method_id": "method_1434",
+    "name": "Points Farming Optimizer",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "campaigns_tracked": 100,
+      "points_earned_month": 50000,
+      "wallets_managed": 10
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Galxe/Zealy points automation backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "d995fc870691c0cab4d69defcc208738dcebb96b36b147be4f3210c7eae3c9fb"
+  },
+  "method_1435": {
+    "method_id": "method_1435",
+    "name": "Liquid Restaking LRT Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "lrt_minted_eth": 500,
+      "yield_apr_pct": 4.5,
+      "depeg_risk_low": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Ether.fi/Renzo LRT minting infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "f5a2c5318fbbf797291d1bc564237d94bf08a15774110df014881cd74a3c59c0"
+  },
+  "method_1436": {
+    "method_id": "method_1436",
+    "name": "Funding Rate Arb Bot",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "positions_open": 20,
+      "funding_collected_month_usd": 1000,
+      "hedged": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Drift/Hyperliquid funding arb hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "08ba0cc1a3161194983bc4186fa1613ae7f08d28bee135985049f3e07f1e757f"
+  },
+  "method_1437": {
+    "method_id": "method_1437",
+    "name": "Wallet Labeling Service",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "labels_stored": 1000000,
+      "entities_tagged": 50000,
+      "api_calls_month": 100000
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Arkham/Nansen wallet tag database hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "be27534c1cf6dfffd7b750123fa2a8b4453d70f45fa6e0f35f7647b610cbed18"
+  },
+  "method_1438": {
+    "method_id": "method_1438",
+    "name": "Bridge Aggregator Backend",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "routes_computed_month": 100000,
+      "bridges_integrated": 10,
+      "gas_optimized": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Socket/Li.Fi bridge route optimization host.",
+    "category": "infrastructure_reselling",
+    "sha256": "1c0529b2d64c000c19a90a954b15ff0b9579a4a04f61785c8d5c42ae5d2a0668"
+  },
+  "method_1439": {
+    "method_id": "method_1439",
+    "name": "On-chain Identity Resolver",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "resolutions_month": 500000,
+      "standards": [
+        "ens",
+        "did"
+      ],
+      "cache_hit_pct": 80
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: ENS/Spruce ID resolution node.",
+    "category": "infrastructure_reselling",
+    "sha256": "9f0321a91a7a3222325c3577f4cbb81c819e9434f9307542544d099e07fd7843"
+  },
+  "method_1440": {
+    "method_id": "method_1440",
+    "name": "Protocol Revenue Dashboard Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "protocols_indexed": 200,
+      "revenue_tracked_usd": 100000000,
+      "update_frequency": "daily"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: TokenTerminal/DefiLlama revenue indexer.",
+    "category": "infrastructure_reselling",
+    "sha256": "ac0680acfb4dcf091a23fa27beedbb6658f95f91f467338af1da2592697b88c2"
+  },
+  "method_1441": {
+    "method_id": "method_1441",
+    "name": "Gas Optimization Auditor",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "contracts_audited": 50,
+      "gas_saved_pct": 15,
+      "report_format": "pdf"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: GasNow/BlockNative gas profiler hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "c149555c0f96aeebcb9e253fd4829317865144066cca6fcf74cb0e09eda0b046"
+  },
+  "method_1442": {
+    "method_id": "method_1442",
+    "name": "Copy-Trading Signal Relay",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "traders_copied": 20,
+      "signals_relayed_month": 500,
+      "latency_ms": 100
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Bybit/OKX copy-trading signal infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "d0dbd274323b95e2bb553c5a65b0e3f2ace9a7658969fd839891fef40e146a5f"
+  },
+  "method_1443": {
+    "method_id": "method_1443",
+    "name": "AI Voiceover Rendering Farm",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "characters_rendered_month": 1000,
+      "audio_hours": 500,
+      "gpu_type": "T4"
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: ElevenLabs/PlayHT voice synthesis GPU cluster.",
+    "category": "infrastructure_reselling",
+    "sha256": "3d4bfb066ab1f877042e38a09626ce29dcdf6693f95a11488f80ba1ce7f52d43"
+  },
+  "method_1444": {
+    "method_id": "method_1444",
+    "name": "Podcast SEO Indexer",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "episodes_indexed": 100000,
+      "keywords_extracted": 500000,
+      "freshness_hours": 1
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Podchase/Listen Notes podcast metadata crawler.",
+    "category": "infrastructure_reselling",
+    "sha256": "b5743f35affc3aa674b5f685957ebfa29646184944c38c4e556f27f4d1be69a4"
+  },
+  "method_1445": {
+    "method_id": "method_1445",
+    "name": "Newsletter Sponsor Matchmaker",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "newsletters_matched": 500,
+      "deals_closed_month": 50,
+      "match_accuracy_pct": 85
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Paved/SparkLoop sponsor matching backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "633698c26edd5b2277c74290241de6f57f88edb55e6956c165bdd55cc124651b"
+  },
+  "method_1446": {
+    "method_id": "method_1446",
+    "name": "YT Thumbnail CTR Tester",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "thumbnails_tested_month": 1000,
+      "impressions_served": 1000000,
+      "winner_selected": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: TubeBuddy/VidIQ thumbnail A/B test infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "9c8eccdaa3d742d2fb7164406be9a39018b30a4ad0093198b279a518d7a954bc"
+  },
+  "method_1447": {
+    "method_id": "method_1447",
+    "name": "Twitch Clip Viral Predictor",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "clips_analyzed": 5000,
+      "viral_score_threshold": 0.8,
+      "platforms": [
+        "twitch",
+        "tiktok"
+      ]
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: StreamElements clip engagement prediction model.",
+    "category": "infrastructure_reselling",
+    "sha256": "28e3867c2011e07ad3d525e3bcaa567968af18a83259b87e4e4e0b3deb92b16b"
+  },
+  "method_1448": {
+    "method_id": "method_1448",
+    "name": "Substack Growth Analytics Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "publications_tracked": 1000,
+      "subscriber_growth_pct": 5,
+      "churn_predicted": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Substack internal growth dashboard backend.",
+    "category": "infrastructure_reselling",
+    "sha256": "d6869aca72f9819e4bc8455de758d77bca88299a0e0888accf34ec4bf98599da"
+  },
+  "method_1449": {
+    "method_id": "method_1449",
+    "name": "Course Cert Verification Node",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "certs_anchored_month": 500,
+      "chain": "polygon",
+      "verification_api": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Teachable/Kajabi certificate blockchain anchoring.",
+    "category": "infrastructure_reselling",
+    "sha256": "bb7aa12a5e295ad7fa82c2193523e77f2dd411ecd961a22b2cd230aeed764154"
+  },
+  "method_1450": {
+    "method_id": "method_1450",
+    "name": "Patreon Scheduler Backend",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:13.876604+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "posts_scheduled": 1000,
+      "patrons_notified": 50000,
+      "timezone_handling": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Patreon post scheduling & drip infra.",
+    "category": "infrastructure_reselling",
+    "sha256": "8a24d9282ebe0ef61a5fddcf84ec551cb66b5972c32f51123375640410cf2694"
   }
 }
