@@ -1811,56 +1811,61 @@
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "issue": 3869,
       "pr": 3869,
-      "status": "CLAIM_PENDING",
+      "status": "submitted_open",
       "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3869",
       "value": 200.0,
       "currency": "USD",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
-      "added_utc": "2026-08-26T19:24:02.460407Z"
+      "added_utc": "2026-08-26T19:24:02.460407Z",
+      "note": "PR confirmed OPEN via GitHub API 2026-08-27; awaiting review/merge"
     },
     {
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "issue": 3870,
       "pr": 3870,
-      "status": "CLAIM_PENDING",
+      "status": "submitted_open",
       "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3870",
       "value": 150.0,
       "currency": "USD",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
-      "added_utc": "2026-08-26T19:24:02.466537Z"
+      "added_utc": "2026-08-26T19:24:02.466537Z",
+      "note": "PR confirmed OPEN via GitHub API 2026-08-27; awaiting review/merge"
     },
     {
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "issue": 3871,
       "pr": 3871,
-      "status": "CLAIM_PENDING",
+      "status": "submitted_open",
       "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3871",
       "value": 100.0,
       "currency": "USD",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
-      "added_utc": "2026-08-26T19:24:02.466591Z"
+      "added_utc": "2026-08-26T19:24:02.466591Z",
+      "note": "PR confirmed OPEN via GitHub API 2026-08-27; awaiting review/merge"
     },
     {
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "issue": 3872,
       "pr": 3872,
-      "status": "CLAIM_PENDING",
+      "status": "submitted_open",
       "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3872",
       "value": 50.0,
       "currency": "USD",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
-      "added_utc": "2026-08-26T19:24:02.466601Z"
+      "added_utc": "2026-08-26T19:24:02.466601Z",
+      "note": "PR confirmed OPEN via GitHub API 2026-08-27; awaiting review/merge"
     },
     {
       "repo": "claude-builders-bounty/claude-builders-bounty",
       "issue": 3873,
       "pr": 3873,
-      "status": "CLAIM_PENDING",
+      "status": "submitted_open",
       "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3873",
       "value": 50.0,
       "currency": "USD",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
-      "added_utc": "2026-08-26T19:24:02.466617Z"
+      "added_utc": "2026-08-26T19:24:02.466617Z",
+      "note": "PR confirmed OPEN via GitHub API 2026-08-27; awaiting review/merge"
     }
   ],
   "metadata": {
@@ -3031,7 +3036,7 @@
       "title": "Visual regression tests",
       "status": "p1_rebuttal_posted_awaiting_reviewer_ack",
       "tier": 1,
-      "next_action": "monitor_for_reviewer_response_or_merge",
+      "next_action": "monitor_for_reviewer_ack_or_new_feedback",
       "evidence": [
         {
           "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
@@ -3067,6 +3072,17 @@
           "date": "2026-08-26T22:00:27.380244+00:00",
           "comment_url": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431615764",
           "summary": "Posted evidence-based rebuttal invalidating P1 claim about testIgnore glob mismatch using playwright --list output"
+        },
+        {
+          "type": "p1_review_reread",
+          "date": "2026-08-26T22:03:34.694600+00:00",
+          "email_id": "1a03feda98223c33",
+          "reviewer": "greptile-p1",
+          "claim": "e2e/visual/** does not match absolute path on Firefox/Mobile Chrome",
+          "status": "duplicate_of_previously_invalidated_claim",
+          "prior_rebuttal": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431615764",
+          "action": "no_new_code_change_needed; rebuttal already posted with playwright --list evidence",
+          "email_decision": "PRESERVED"
         }
       ],
       "reviews": [
@@ -3082,7 +3098,7 @@
       "mergeable": true,
       "payout_verified": true,
       "program": "Stellar Wave / Drips",
-      "last_action": "2026-08-26T22:00:27.380244+00:00",
+      "last_action": "2026-08-26T22:03:34.694600+00:00",
       "updated_at": "2026-08-26T21:51:15.850884+00:00",
       "pr_url": "https://github.com/OphirPay/OphirPay/pull/228",
       "branch": "feat/visual-regression-tests-86"
