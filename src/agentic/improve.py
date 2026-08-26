@@ -702,11 +702,15 @@ def _secret_value_is_placeholder(raw: str) -> bool:
 def scan_forbidden(text: str, *, path: str | None = None) -> str | None:
     blob = text or ""
     in_tests = bool(path and str(path).replace("\\", "/").startswith("tests/"))
+    # Exempt ledger JSON "never" arrays to avoid self-blocking on policy words.
+    is_ledger_json = bool(path and str(path).endswith("ledger.json"))
     for pattern in FORBIDDEN_RE:
         for match in pattern.finditer(blob):
             groups = match.groupdict() if match.re.groupindex else {}
             key = str(groups.get("key") or "")
             val = str(groups.get("val") or "")
+            if is_ledger_json and pattern.pattern == r"\bwordlist\b":
+                continue
             is_secret_assign = bool(
                 key.upper() in _SECRET_KEY_NAMES
                 or "API_KEY" in pattern.pattern
