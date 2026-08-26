@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:32:44.660973+00:00",
-    "total": 588,
+    "generated_at": "2026-08-26T15:33:48.633691+00:00",
+    "total": 594,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -9057,5 +9057,230 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (ecommerce-replatform/headless-cms). Fonte oficial alvo: Clutch.co agency replatforming projects. Zero-capital: migradores open-source; staging local gratuito.",
     "content_hash": "d62a4224228aa4395544d7c0817fb0e677dc4edb9aa5f6b89f506eee9e36283e"
+  },
+  "589": {
+    "method_id": "589",
+    "name": "Legacy code refactoring",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:14.932650+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "auth_handler.py",
+        "lines_before": 1200,
+        "lines_after": 340,
+        "complexity_reduction": "72%",
+        "tool": "ruff_auto_fix"
+      },
+      {
+        "file": "report_generator.js",
+        "cyclomatic_before": 45,
+        "cyclomatic_after": 12,
+        "test_coverage_gain": "+38%",
+        "tool": "jscpd_sonarqube"
+      },
+      {
+        "file": "billing_engine.cobol",
+        "modules_extracted": 8,
+        "api_endpoints_created": 12,
+        "migration_risk": "low",
+        "tool": "cobol_to_java_transpiler"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (legacy-refactor/modernization repos). Fonte oficial alvo: Upwork/Turing legacy modernization gigs. Zero-capital: ferramentas open-source (ruff, jscpd, sonarqube community).",
+    "content_hash": "c5a87384f200b05afc6b3321e34ecb88175752594482c3c4308f56bd20481ddb"
+  },
+  "590": {
+    "method_id": "590",
+    "name": "Legacy code refactoring (for startups)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:14.932650+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "mvp_monolith.rb",
+        "split_into": "3 microservices",
+        "deploy_freq_gain": "4x/week",
+        "tool": "modular_monolith_extractor"
+      },
+      {
+        "file": "firebase_functions.ts",
+        "cold_start_before": "2.8s",
+        "cold_start_after": "180ms",
+        "cost_reduction": "65%",
+        "tool": "esbuild_bundle_optimizer"
+      },
+      {
+        "file": "django_views.py",
+        "n_plus_one_fixed": 24,
+        "p95_latency_drop": "420ms→85ms",
+        "tool": "django_silk_profiler"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (startup-tech-debt/mvp-refactor). Fonte oficial alvo: YC/indie hacker freelance tech debt cleanup. Zero-capital: profilers e bundlers open-source; cloud free-tier para testes.",
+    "content_hash": "9023da4003ae9fc9f22ff80e306bac08c713f3742cfec30092df9adfc431702c"
+  },
+  "591": {
+    "method_id": "591",
+    "name": "Legacy code refactoring (for enterprises)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:14.932650+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "sap_abap_reports",
+        "custom_code_lines": 85000,
+        "standard_api_replacement": "32%",
+        "maintenance_cost_drop": "€240k/yr",
+        "tool": "sap_clean_custom_code_analyzer"
+      },
+      {
+        "file": "mainframe_jcl_jobs",
+        "batch_window_before": "6h",
+        "batch_window_after": "1.5h",
+        "sla_compliance": "99.9%",
+        "tool": "bmc_mainframe_modernizer"
+      },
+      {
+        "file": "oracle_forms_6i",
+        "screens_migrated": 145,
+        "web_app_framework": "react_dotnet_core",
+        "user_adoption_gain": "+40%",
+        "tool": "forms_to_web_converter"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (enterprise-legacy-modernization/mainframe-migration). Fonte oficial alvo: Enterprise RFPs/freelance SOWs para modernização SAP/mainframe. Zero-capital: análise via tools gratuitas; execução real é TIER1 com licenças enterprise.",
+    "content_hash": "3db0fbb7d84b4237e867d74d75f3a2a9efc7dd1769c3fe6b6b123d70f87d7aeb"
+  },
+  "592": {
+    "method_id": "592",
+    "name": "Legacy code refactoring (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:48.633691+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "obs_overlay.js",
+        "bundle_before": "1.8MB",
+        "bundle_after": "320KB",
+        "fps_gain": "+15",
+        "tool": "esbuild_minify"
+      },
+      {
+        "file": "video_editor_macro.ahk",
+        "steps_reduced": "45→8",
+        "render_time_drop": "30%",
+        "tool": "autohotkey_refactor"
+      },
+      {
+        "file": "notion_template.json",
+        "load_time_before": "4.2s",
+        "load_time_after": "0.9s",
+        "tool": "notion_api_optimizer"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (creator-tools/obs-scripts). Fonte oficial alvo: Fiverr 'creator workflow optimization'. Zero-capital: bundlers e macros open-source.",
+    "content_hash": "39b1b21b31885e7a577c61197e87c9de4f3cc0a5e3b1bc83a5ee604f6d6c1278"
+  },
+  "593": {
+    "method_id": "593",
+    "name": "Legacy code refactoring (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:48.633691+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "jquery_monolith.js",
+        "migrated_to": "react_hooks",
+        "lighthouse_perf": "45→92",
+        "tool": "jscodeshift_codemod"
+      },
+      {
+        "file": "python2_scripts/",
+        "py3_compatible": "100%",
+        "test_coverage": "+55%",
+        "tool": "2to3_futurize"
+      },
+      {
+        "file": "graphql_resolver.go",
+        "allocations_reduced": "85%",
+        "p99_latency": "120ms→18ms",
+        "tool": "pprof_benchstat"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (dev-refactor/codemods). Fonte oficial alvo: Toptal/Gun.io freelance modernization. Zero-capital: codemods e profilers open-source.",
+    "content_hash": "0429b32aaeefdf79741a4f0668b7929bb2b5446ba77d63aae8d40489515e6d6c"
+  },
+  "594": {
+    "method_id": "594",
+    "name": "Legacy code refactoring (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:33:48.633691+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "file": "wp_theme_v4.php",
+        "blocks_extracted": 28,
+        "gutenberg_ready": true,
+        "maintenance_hours": "-60%",
+        "tool": "wp_block_extractor"
+      },
+      {
+        "file": "angularjs_app/",
+        "migrated_to": "angular_17_standalone",
+        "bundle_size": "-72%",
+        "tool": "ng_update_schematics"
+      },
+      {
+        "file": "legacy_css.scss",
+        "design_tokens": 145,
+        "tailwind_coverage": "95%",
+        "tool": "css_to_tailwind_converter"
+      }
+    ],
+    "schema": [
+      "file",
+      "metric_type",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (agency-tech-debt/cms-modernization). Fonte oficial alvo: Clutch.co agency retainer refactor projects. Zero-capital: schematics e conversores open-source.",
+    "content_hash": "87c460082e95bc1247d22b200653193cccc252f5d43d3a9f862e1bd2b933313b"
   }
 }

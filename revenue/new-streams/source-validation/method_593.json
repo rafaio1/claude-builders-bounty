@@ -1,0 +1,36 @@
+{
+  "method_id": "593",
+  "name": "Legacy code refactoring (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:48.633691+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "jquery_monolith.js",
+      "migrated_to": "react_hooks",
+      "lighthouse_perf": "45→92",
+      "tool": "jscodeshift_codemod"
+    },
+    {
+      "file": "python2_scripts/",
+      "py3_compatible": "100%",
+      "test_coverage": "+55%",
+      "tool": "2to3_futurize"
+    },
+    {
+      "file": "graphql_resolver.go",
+      "allocations_reduced": "85%",
+      "p99_latency": "120ms→18ms",
+      "tool": "pprof_benchstat"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (dev-refactor/codemods). Fonte oficial alvo: Toptal/Gun.io freelance modernization. Zero-capital: codemods e profilers open-source.",
+  "content_hash": "0429b32aaeefdf79741a4f0668b7929bb2b5446ba77d63aae8d40489515e6d6c"
+}

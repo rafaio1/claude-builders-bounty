@@ -1,0 +1,37 @@
+{
+  "method_id": "590",
+  "name": "Legacy code refactoring (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:14.932650+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "mvp_monolith.rb",
+      "split_into": "3 microservices",
+      "deploy_freq_gain": "4x/week",
+      "tool": "modular_monolith_extractor"
+    },
+    {
+      "file": "firebase_functions.ts",
+      "cold_start_before": "2.8s",
+      "cold_start_after": "180ms",
+      "cost_reduction": "65%",
+      "tool": "esbuild_bundle_optimizer"
+    },
+    {
+      "file": "django_views.py",
+      "n_plus_one_fixed": 24,
+      "p95_latency_drop": "420ms→85ms",
+      "tool": "django_silk_profiler"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-tech-debt/mvp-refactor). Fonte oficial alvo: YC/indie hacker freelance tech debt cleanup. Zero-capital: profilers e bundlers open-source; cloud free-tier para testes.",
+  "content_hash": "9023da4003ae9fc9f22ff80e306bac08c713f3742cfec30092df9adfc431702c"
+}

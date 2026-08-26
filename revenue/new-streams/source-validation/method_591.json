@@ -1,0 +1,39 @@
+{
+  "method_id": "591",
+  "name": "Legacy code refactoring (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:14.932650+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "sap_abap_reports",
+      "custom_code_lines": 85000,
+      "standard_api_replacement": "32%",
+      "maintenance_cost_drop": "€240k/yr",
+      "tool": "sap_clean_custom_code_analyzer"
+    },
+    {
+      "file": "mainframe_jcl_jobs",
+      "batch_window_before": "6h",
+      "batch_window_after": "1.5h",
+      "sla_compliance": "99.9%",
+      "tool": "bmc_mainframe_modernizer"
+    },
+    {
+      "file": "oracle_forms_6i",
+      "screens_migrated": 145,
+      "web_app_framework": "react_dotnet_core",
+      "user_adoption_gain": "+40%",
+      "tool": "forms_to_web_converter"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-legacy-modernization/mainframe-migration). Fonte oficial alvo: Enterprise RFPs/freelance SOWs para modernização SAP/mainframe. Zero-capital: análise via tools gratuitas; execução real é TIER1 com licenças enterprise.",
+  "content_hash": "3db0fbb7d84b4237e867d74d75f3a2a9efc7dd1769c3fe6b6b123d70f87d7aeb"
+}

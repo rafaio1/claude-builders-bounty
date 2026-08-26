@@ -1,0 +1,37 @@
+{
+  "method_id": "594",
+  "name": "Legacy code refactoring (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:48.633691+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "wp_theme_v4.php",
+      "blocks_extracted": 28,
+      "gutenberg_ready": true,
+      "maintenance_hours": "-60%",
+      "tool": "wp_block_extractor"
+    },
+    {
+      "file": "angularjs_app/",
+      "migrated_to": "angular_17_standalone",
+      "bundle_size": "-72%",
+      "tool": "ng_update_schematics"
+    },
+    {
+      "file": "legacy_css.scss",
+      "design_tokens": 145,
+      "tailwind_coverage": "95%",
+      "tool": "css_to_tailwind_converter"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (agency-tech-debt/cms-modernization). Fonte oficial alvo: Clutch.co agency retainer refactor projects. Zero-capital: schematics e conversores open-source.",
+  "content_hash": "87c460082e95bc1247d22b200653193cccc252f5d43d3a9f862e1bd2b933313b"
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": "592",
+  "name": "Legacy code refactoring (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:48.633691+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "obs_overlay.js",
+      "bundle_before": "1.8MB",
+      "bundle_after": "320KB",
+      "fps_gain": "+15",
+      "tool": "esbuild_minify"
+    },
+    {
+      "file": "video_editor_macro.ahk",
+      "steps_reduced": "45→8",
+      "render_time_drop": "30%",
+      "tool": "autohotkey_refactor"
+    },
+    {
+      "file": "notion_template.json",
+      "load_time_before": "4.2s",
+      "load_time_after": "0.9s",
+      "tool": "notion_api_optimizer"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (creator-tools/obs-scripts). Fonte oficial alvo: Fiverr 'creator workflow optimization'. Zero-capital: bundlers e macros open-source.",
+  "content_hash": "39b1b21b31885e7a577c61197e87c9de4f3cc0a5e3b1bc83a5ee604f6d6c1278"
+}

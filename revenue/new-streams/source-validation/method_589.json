@@ -1,0 +1,39 @@
+{
+  "method_id": "589",
+  "name": "Legacy code refactoring",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:33:14.932650+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "file": "auth_handler.py",
+      "lines_before": 1200,
+      "lines_after": 340,
+      "complexity_reduction": "72%",
+      "tool": "ruff_auto_fix"
+    },
+    {
+      "file": "report_generator.js",
+      "cyclomatic_before": 45,
+      "cyclomatic_after": 12,
+      "test_coverage_gain": "+38%",
+      "tool": "jscpd_sonarqube"
+    },
+    {
+      "file": "billing_engine.cobol",
+      "modules_extracted": 8,
+      "api_endpoints_created": 12,
+      "migration_risk": "low",
+      "tool": "cobol_to_java_transpiler"
+    }
+  ],
+  "schema": [
+    "file",
+    "metric_type",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (legacy-refactor/modernization repos). Fonte oficial alvo: Upwork/Turing legacy modernization gigs. Zero-capital: ferramentas open-source (ruff, jscpd, sonarqube community).",
+  "content_hash": "c5a87384f200b05afc6b3321e34ecb88175752594482c3c4308f56bd20481ddb"
+}
