@@ -1,0 +1,49 @@
+{
+  "pilot": "vercel-free-tier-scaffold",
+  "provider": "Vercel Inc.",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reasons": [
+    "Hobby plan restrito a uso pessoal/não-comercial (Seção 4)",
+    "Resell/sublicense/transfer explicitamente proibidos (Seção 11.i)",
+    "Licença non-sublicensable, non-transferable, non-exclusive (Seção 2)",
+    "Uso para benefício de terceiros proibido (Seção 11.iv)",
+    "AI training forçado em Hobby/trial Pro sem opt-out (Seção 3)"
+  ],
+  "free_tier": {
+    "plan_name": "Hobby",
+    "permanent": true,
+    "commercial_use_allowed": false,
+    "notes": "Free tier permanente existe mas é estritamente non-commercial. Vercel pode descontinuar ou alterar limites a qualquer momento."
+  },
+  "license_terms": {
+    "type": "Limited License",
+    "sublicensable": false,
+    "transferable": false,
+    "exclusive": false,
+    "scope": "internal business or personal purposes only"
+  },
+  "reselling_model": {
+    "viable": false,
+    "blockers": [
+      "Seção 11(i): sublicense, resell, rent, lease, transfer, assign proibidos",
+      "Seção 11(iv): timesharing/service bureau/third-party benefit proibido",
+      "Seção 4: Hobby plan = personal or non-commercial use only",
+      "Seção 21: Assignment requer consentimento escrito prévio da Vercel"
+    ]
+  },
+  "risks": [
+    "Encerramento sumário de projetos Hobby sem aviso (Seção 4)",
+    "Conteúdo usado para treinamento de AI sem opt-out em Hobby (Seção 3)",
+    "Limites e features do Hobby alteráveis unilateralmente (Seção 4)",
+    "Arbitragem obrigatória em San Francisco, CA (Seção 22)"
+  ],
+  "next_steps": [
+    "Descartar como candidato a infrastructure reselling zero-capital",
+    "Avaliar Netlify como próximo candidato no pipeline",
+    "Manter Vercel apenas como referência de deploy pessoal não-comercial"
+  ],
+  "tos_source": "/tmp/vercel_terms_clean.txt",
+  "tos_last_updated": "2026-06-01",
+  "analyzed_at": "2026-08-26T00:00:00+00:00",
+  "doc_verified": true
+}

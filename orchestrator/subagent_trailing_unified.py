@@ -103,6 +103,46 @@ def _save_active_to_file():
     except Exception as e:
         log(f"  ⚠️ Save active pos file ERR: {str(e)[:60]}")
 
+def _save_cooldown_state():
+    """Persist cooldown timestamps to survive restarts"""
+    try:
+        data = {
+            'last_trade_time': _last_trade_time,
+            'last_loss_time': _last_loss_time,
+            'last_sell_time': _last_sell_time,
+            'consecutive_losses': _consecutive_losses,
+            'daily_pnl': _daily_pnl,
+            'wash_halted': list(_wash_halted),
+            'saved_at': time.time()
+        }
+        with open(COOLDOWN_STATE_FILE, 'w') as f:
+            json.dump(data, f)
+    except Exception as e:
+        log(f"  ⚠️ Failed to save cooldown state: {e}")
+
+def _load_cooldown_state():
+    """Restore cooldown timestamps from disk on startup"""
+    global _last_trade_time, _last_loss_time, _last_sell_time, _consecutive_losses, _daily_pnl, _wash_halted
+    try:
+        with open(COOLDOWN_STATE_FILE, 'r') as f:
+            data = json.load(f)
+        _last_trade_time.update(data.get('last_trade_time', {}))
+        _last_loss_time.update(data.get('last_loss_time', {}))
+        _last_sell_time.update(data.get('last_sell_time', {}))
+        _consecutive_losses.update(data.get('consecutive_losses', {}))
+        _daily_pnl.update(data.get('daily_pnl', {}))
+        _wash_halted = set(data.get('wash_halted', []))
+        saved_at = data.get('saved_at', 0)
+        age = time.time() - saved_at if saved_at > 0 else 9999
+        log(f"  📂 Cooldown state restored: {len(_last_trade_time)} symbols, wash_halted={_wash_halted}, age={age:.0f}s")
+    except FileNotFoundError:
+        log(f"  ℹ️ No cooldown state file found, starting fresh")
+    except Exception as e:
+        log(f"  ⚠️ Failed to load cooldown state: {e}")
+
+# Load persisted cooldown state on startup
+_load_cooldown_state()
+
 def can_trade_symbol(symbol):
     """Check if symbol is available for trading based on cooldowns and active positions"""
     now = time.time()
