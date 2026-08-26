@@ -1,0 +1,39 @@
+{
+  "method_id": "480",
+  "name": "Liquid staking arbitrage monitor (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:59.261032+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Deloitte Digital Assets",
+      "client_lst_exposure_usd": 12000000,
+      "pairs_tracked": [
+        "stETH",
+        "rETH",
+        "osETH"
+      ],
+      "reporting_frequency": "weekly_pdf",
+      "compliance_standard": "SOC2_Type2"
+    },
+    {
+      "agency": "PwC Blockchain Advisory",
+      "client_lst_exposure_usd": 8500000,
+      "pairs_tracked": [
+        "wstETH",
+        "mETH",
+        "swETH"
+      ],
+      "reporting_frequency": "monthly_deck",
+      "compliance_standard": "ISAE3402"
+    }
+  ],
+  "schema": [
+    "agency",
+    "client_lst_exposure_usd",
+    "pairs_tracked",
+    "reporting_frequency",
+    "compliance_standard"
+  ],
+  "notes": "Variante para consultorias Big4 e advisory firms com exposure a LSTs de clientes. Proxy TIER0: GitHub Search (topics: big4-lst-monitoring, crypto-advisory-treasury). Fonte oficial alvo: SEC EDGAR filings + Nansen Institutional labels. Foco em compliance reporting e client-facing dashboards zero-capital."
+}

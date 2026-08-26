@@ -1,0 +1,37 @@
+{
+  "method_id": "479",
+  "name": "Liquid staking arbitrage monitor (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:59.261032+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_group": "Ethereum Cat Herders",
+      "lst_portfolio": [
+        "stETH",
+        "rETH"
+      ],
+      "monitoring_stack": "grafana_custom",
+      "alert_threshold_pct": 0.5,
+      "documentation_link": "github.com/ethcatherders/lst-monitor"
+    },
+    {
+      "dev_group": "L2 Beat Research Fund",
+      "lst_portfolio": [
+        "wstETH",
+        "cbETH"
+      ],
+      "monitoring_stack": "dune_alerts",
+      "alert_threshold_pct": 0.8,
+      "documentation_link": "l2beat.com/treasury/lst-pegs"
+    }
+  ],
+  "schema": [
+    "dev_group",
+    "lst_portfolio",
+    "monitoring_stack",
+    "alert_threshold_pct",
+    "documentation_link"
+  ],
+  "notes": "Variante para research collectives e dev guilds. Proxy TIER0: GitHub Search (orgs: ethcatherders, l2beat treasury-tooling). Fonte oficial alvo: Ethereum Foundation grant reports + L2Beat dashboards. Ênfase em observabilidade open-source e documentação pública zero-capital."
+}

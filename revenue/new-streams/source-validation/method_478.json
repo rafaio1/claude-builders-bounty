@@ -1,0 +1,31 @@
+{
+  "method_id": "478",
+  "name": "Liquid staking arbitrage monitor (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:59.261032+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "ArtBlocks Treasury",
+      "lst_held": "stETH",
+      "peg_alert_pct": 1.0,
+      "notification_channel": "discord_webhook",
+      "est_annual_savings_usd": 450
+    },
+    {
+      "creator": "Sound.xyz Creator Fund",
+      "lst_held": "rETH",
+      "peg_alert_pct": 0.75,
+      "notification_channel": "telegram_bot",
+      "est_annual_savings_usd": 280
+    }
+  ],
+  "schema": [
+    "creator",
+    "lst_held",
+    "peg_alert_pct",
+    "notification_channel",
+    "est_annual_savings_usd"
+  ],
+  "notes": "Variante para artistas digitais e músicos com treasury em LSTs. Proxy TIER0: GitHub Search (topics: nft-creator-lst, art-treasury-staking). Fonte oficial alvo: ArtBlocks on-chain analytics + Sound.xyz payout reports. Foco em alertas simples via webhook sem execução automatizada."
+}
