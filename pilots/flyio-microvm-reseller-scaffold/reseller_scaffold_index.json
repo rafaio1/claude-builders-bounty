@@ -1,0 +1,34 @@
+{
+  "pilot_id": "flyio-microvm-reseller",
+  "method_ref": "method_918",
+  "provider": "Fly.io",
+  "status": "SCAFFOLD_REJECTED",
+  "decision_rationale": "TOS Section 1.1: non-sublicensable, non-transferable, solely for internal use. Section 1.3(d): explicitly prohibits sublicensing or using services for benefit of third party. Section 11.5: no assignment without prior written consent.",
+  "free_tier_limits": {
+    "note": "Free trial/credits only; no permanent free tier for production reselling"
+  },
+  "paid_plan_baseline": {
+    "name": "Pay-as-you-go",
+    "pricing_model": "usage-based",
+    "url": "https://fly.io/docs/about/pricing/"
+  },
+  "reselling_model": {
+    "feasible": false,
+    "license_type": "subscription (non-sublicensable)",
+    "sublicensable": false,
+    "transferable": false,
+    "commercial_use_allowed": "internal use only",
+    "operator_type": "corporation (Fly.io, Inc.)",
+    "sla_available": true
+  },
+  "risks": [
+    "Explicit prohibition on third-party benefit (Section 1.3d)",
+    "Non-sublicensable and non-transferable license (Section 1.1)",
+    "No assignment without written consent (Section 11.5)",
+    "Usage data ownership by Fly.io (Section 7)"
+  ],
+  "next_steps": [],
+  "tos_source": "/tmp/fly_tos_raw.txt",
+  "tos_url": "https://fly.io/legal/terms-of-service/",
+  "timestamp": "2026-08-27T00:15:00+00:00"
+}

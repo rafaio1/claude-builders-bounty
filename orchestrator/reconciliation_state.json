@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "VWAP_SHADOW_ACTIVE_BACKTEST_PASSED_AWAITING_VALIDATION",
+  "risk_status": "VWAP_SHADOW_RESTARTED_BACKTEST_PASSED_AWAITING_24H",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -159,19 +159,29 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T22:27:17Z",
+  "last_reconciliation": "2026-08-26T22:47:38.114343+00:00",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
   "ledger_duplicates": 0,
   "vwap_shadow_status": {
     "tmux_session": "vwap_shadow",
-    "started": "2026-08-26T22:26:55Z",
+    "restarted": "2026-08-26T22:47:02Z",
+    "restart_reason": "process_died_after_expansion",
     "symbols": [
+      "BTC/USDT",
+      "ETH/USDT",
+      "SOL/USDT",
       "XRP/USDT",
+      "DOGE/USDT",
+      "LINK/USDT",
+      "SUI/USDT",
+      "WLD/USDT",
+      "AAVE/USDT",
       "AVAX/USDT",
       "BCH/USDT"
     ],
+    "first_cycle_ok": true,
     "validation_required_hours": 24,
     "real_trading_blocked": true
   },
@@ -199,10 +209,9 @@
     "real_trading_blocked_until": "PENDING_SHADOW_VALIDATION_24H"
   },
   "account_snapshot": {
-    "usdt_free": 6.4877,
-    "inj_free": 0.5262,
+    "usdt_free": 6.62017872,
     "open_orders": 0,
-    "timestamp": "2026-08-26T22:19:03Z"
+    "dust_assets_note": "Multiple dust balances below min_notional - no programmatic action"
   },
   "trailing_backtest_result": {
     "timestamp": "2026-08-26T22:23:08Z",
