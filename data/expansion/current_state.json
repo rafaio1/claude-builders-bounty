@@ -1,14 +1,45 @@
 {
-  "last_audit": "2026-08-26T21:54:29.791975+00:00",
-  "prescreen_status": "REJECTED_V3",
+  "last_audit": "2026-08-26T21:56:48.594350+00:00",
+  "prescreen_status": "REJECTED_V3_CONFIRMED_ON_CLEAN_DATA",
   "pending_improvements": [
     "supersession_detector",
     "title_similarity_dedup",
-    "verdict_template_scanner",
     "semantic_proxy_tier0_triage"
   ],
   "data_quality_flags": {
-    "template_leaked_verdicts": 60,
-    "requires_cleaning": true
-  }
+    "template_leaked_verdicts": 89,
+    "requires_cleaning": false,
+    "clean_verdicts_path": "data/expansion/verdicts_clean.jsonl"
+  },
+  "proposal_counts": {
+    "REJEITAR": 0,
+    "APROVAR_IMPLEMENTACAO": 0,
+    "ADIAR": 1,
+    "PILOTAR": 1
+  },
+  "next_method": 688,
+  "last_verdict": {
+    "proposal_id": "method_687",
+    "verdict": "ADIAR",
+    "timestamp": "2026-08-26T21:55:49.951746+00:00",
+    "result": "SUCCESS"
+  },
+  "last_verdict_timestamp": "2026-08-26T21:55:49.951746+00:00",
+  "last_council_action": "2026-08-26T21:55:49.951746+00:00",
+  "last_updated": "2026-08-26T21:55:49.951746+00:00",
+  "total_verdicts": 2,
+  "implemented_proposals": [
+    "method_686"
+  ],
+  "deferred_proposals": [
+    "method_687"
+  ],
+  "completed_improvements": [
+    "verdict_template_scanner"
+  ],
+  "next_priorities": [
+    "supersession_detector (catches proposals replaced by newer versions)",
+    "title_similarity_dedup (catches duplicate/near-duplicate proposals)",
+    "semantic_proxy_tier0_triage (detect GitHub Search proxy without BR validation)"
+  ]
 }
