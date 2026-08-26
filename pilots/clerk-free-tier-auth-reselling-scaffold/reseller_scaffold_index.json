@@ -1,0 +1,28 @@
+{
+  "method_id": "925",
+  "name": "Clerk Free Tier Auth Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "decision_timestamp": "2026-08-26T23:45:00+00:00",
+  "rejection_reason": "TOS da Clerk (Seção Customer Restrictions) proíbe expressamente sublicenciamento, revenda, transferência ou uso do serviço para benefício de terceiros não autorizados ('sublicense, sell, rent, lease, transfer, distribute... except its own customers and its end users'). Licença é non-transferable e non-sublicensable. Modelo de 'instance sharing' ou 'auth service wrapper' sobre free tier viola termos de uso. Risco de banimento imediato e responsabilidade legal.",
+  "validation_evidence": {
+    "tos_url": "https://clerk.com/legal/terms",
+    "tos_date": "2026-07-02",
+    "key_clause": "Customer will not, directly or indirectly: (iv) sublicense, sell, rent, lease, transfer, distribute, or use the Service or any software for timesharing or service bureau purposes or otherwise for the benefit of a third party except its own customers and its end users",
+    "license_type": "limited, non-sublicensable, non-exclusive, non-transferable, revocable",
+    "free_tier_confirmed": true,
+    "resale_allowed": false
+  },
+  "risks": [
+    "Violação contratual explícita: TOS proíbe sublicenciamento e revenda",
+    "Risco de terminação imediata de conta sem recurso",
+    "Responsabilidade legal por uso não autorizado de serviço SaaS",
+    "Modelo de negócio depende de violação de termos — não é zero-capital legítimo"
+  ],
+  "next_steps": [
+    "REJECTED — não prosseguir para TIER1",
+    "Manter no audit como lição aprendida: SaaS free tiers com TOS restritivo não são viáveis para reselling",
+    "Continuar pipeline v29 com method_926"
+  ],
+  "source_validation_ref": "revenue/new-streams/source-validation/method_925.json",
+  "category": "infrastructure_reselling"
+}
