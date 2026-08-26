@@ -86,3 +86,18 @@
  improve/traces/
  .agents/skills/
  .claude/skills/
+
+ # Runtime logs, state files and operational artifacts
+ logs/
+ *.jsonl
+ orchestrator/state.json
+ orchestrator/v*_state.json
+ orchestrator/.active_positions_*.json
+ orchestrator/*.err
+ orchestrator/*.out
+ orchestrator/*.bak
+ orchestrator/backtest_results/
+ orchestrator/reconcile_output.txt
+ orchestrator/audit_report.txt
+ orchestrator/telegram_chats.txt
+ p2p-stack/robosats/node/bitcoin/testnet3/
