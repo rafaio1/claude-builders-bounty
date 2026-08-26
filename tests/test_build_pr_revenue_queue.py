@@ -114,36 +114,32 @@ def test_claim_pending_with_evidence_is_tier_a():
 # --- Tier B signals ---
 
 def test_tier_b_ci_actionable():
-    pr = _pr("org/repo#20", state="OPEN", ci_state="FAILURE",
-             bounty_evidence="official_program")
-    le = {"value": 100, "claim_url": "https://x.com/c"}
+    pr = _pr("org/repo#20", state="OPEN", ci_state="FAILURE")
+    le = {"value": 100}
     c = classify_pr(pr, le, None, set())
     assert c["tier"] == "B"
     assert "ci_actionable" in c["reason"]
 
 
 def test_tier_b_review_activity():
-    pr = _pr("org/repo#21", state="OPEN", reviews_count=2,
-             bounty_evidence="official_program")
-    le = {"value": 100, "claim_url": "https://x.com/c"}
+    pr = _pr("org/repo#21", state="OPEN", reviews_count=2)
+    le = {"value": 100}
     c = classify_pr(pr, le, None, set())
     assert c["tier"] == "B"
     assert "has_review_activity" in c["reason"]
 
 
 def test_tier_b_email_linked():
-    pr = _pr("org/repo#22", state="OPEN", related_email_id="msg-abc",
-             bounty_evidence="official_program")
-    le = {"value": 100, "claim_url": "https://x.com/c"}
+    pr = _pr("org/repo#22", state="OPEN", related_email_id="msg-abc")
+    le = {"value": 100}
     c = classify_pr(pr, le, None, set())
     assert c["tier"] == "B"
     assert "email_linked" in c["reason"]
 
 
 def test_tier_b_legal_gate():
-    pr = _pr("org/repo#23", state="OPEN", audit_note="CLA signature required",
-             bounty_evidence="official_program")
-    le = {"value": 100, "claim_url": "https://x.com/c"}
+    pr = _pr("org/repo#23", state="OPEN", audit_note="CLA signature required")
+    le = {"value": 100}
     c = classify_pr(pr, le, None, set())
     assert c["tier"] == "B"
     assert "legal_gate" in c["reason"]
