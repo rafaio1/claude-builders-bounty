@@ -1,0 +1,38 @@
+{
+  "method_id": 755,
+  "name": "Supply chain risk scores (for developers)",
+  "source": "GitHub Search API (proxy for software supply chain/dependency risk)",
+  "generated_at": "2026-08-26T14:12:32.393317Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "depscan/sbom-risk",
+      "stars": 320,
+      "language": "Go",
+      "topic": "software-supply-chain",
+      "last_push": "2026-08-25"
+    },
+    {
+      "repo": "sigstore/cosign",
+      "stars": 1850,
+      "language": "Go",
+      "topic": "signing",
+      "last_push": "2026-08-24"
+    },
+    {
+      "repo": "ossf/scorecard",
+      "stars": 4100,
+      "language": "Go",
+      "topic": "security-risk",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "language",
+    "topic",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: Snyk/Dependabot/Sigstore APIs. Foco em devs que precisam de risk score de dependências e CI/CD."
+}

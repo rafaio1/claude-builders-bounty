@@ -1,0 +1,38 @@
+{
+  "method_id": 757,
+  "name": "Credit risk alternative data",
+  "source": "GitHub Search API + ReceitaWS (proxy for alternative credit signals)",
+  "generated_at": "2026-08-26T14:12:53.364344Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "00.000.000/0001-91",
+      "company": "BANCO TESTE SA",
+      "status": "ATIVA",
+      "capital_social": 50000000,
+      "risk_proxy": "low"
+    },
+    {
+      "repo": "open-credit/alt-data-br",
+      "stars": 94,
+      "language": "Python",
+      "topic": "alternative-credit",
+      "last_push": "2026-08-20"
+    },
+    {
+      "cnpj": "11.222.333/0001-44",
+      "company": "FINTech RISCO LTDA",
+      "status": "ATIVA",
+      "capital_social": 150000,
+      "risk_proxy": "medium"
+    }
+  ],
+  "schema": [
+    "cnpj|repo",
+    "company|stars",
+    "status|language",
+    "capital_social|topic",
+    "risk_proxy|last_push"
+  ],
+  "notes": "Proxy TIER0. ReceitaWS fornece capital social e situação cadastral como sinalizador de risco. GitHub indica ecossistema open-source de crédito alternativo. Fonte oficial TIER1: SCR/Bacen, Serasa Open Finance."
+}

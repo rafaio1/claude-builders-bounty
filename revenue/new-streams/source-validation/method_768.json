@@ -1,0 +1,37 @@
+{
+  "method_id": 768,
+  "name": "Retail foot traffic analytics (for retailtech)",
+  "source": "GitHub Search API + IBGE Municípios (proxy for retail demand signals)",
+  "generated_at": "2026-08-26T14:13:54.416153Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "retailtech-br/foot-traffic-model",
+      "stars": 267,
+      "language": "Python",
+      "topic": "foot-traffic",
+      "last_push": "2026-08-24"
+    },
+    {
+      "ibge_code": 3106200,
+      "city": "Belo Horizonte",
+      "retail_density": "high",
+      "avg_income": 3200.0
+    },
+    {
+      "repo": "open-retail/br-demand-map",
+      "stars": 189,
+      "language": "R",
+      "topic": "retail-analytics",
+      "last_push": "2026-08-20"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|retail_density",
+    "topic|avg_income",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de analytics varejista; IBGE fornece densidade comercial e renda municipal. Fonte oficial TIER1: CNC, IBGE PMC, geolocation APIs (e.g., Placer.ai proxy)."
+}

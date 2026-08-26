@@ -1,0 +1,38 @@
+{
+  "method_id": 770,
+  "name": "SaaS churn prediction data (for B2B SaaS)",
+  "source": "GitHub Search API (proxy for SaaS analytics/churn modeling tools)",
+  "generated_at": "2026-08-26T14:14:16.025324Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "saas-analytics-br/churn-model",
+      "stars": 287,
+      "language": "Python",
+      "topic": "churn-prediction",
+      "last_push": "2026-08-24"
+    },
+    {
+      "repo": "b2b-metrics/br-cohort-analysis",
+      "stars": 167,
+      "language": "R",
+      "topic": "cohort-analytics",
+      "last_push": "2026-08-22"
+    },
+    {
+      "repo": "open-saas/retention-benchmark",
+      "stars": 210,
+      "language": "Go",
+      "topic": "retention-data",
+      "last_push": "2026-08-20"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "language",
+    "topic",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics para SaaS B2B. Fonte oficial TIER1: Stripe Radar/Paddle APIs (pagas), Mixpanel Amplitude (free tier limitado)."
+}

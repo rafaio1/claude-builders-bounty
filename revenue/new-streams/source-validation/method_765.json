@@ -1,0 +1,37 @@
+{
+  "method_id": 765,
+  "name": "Education enrollment forecasting (for edtech)",
+  "source": "GitHub Search API + IBGE Educação (proxy for enrollment/demand signals)",
+  "generated_at": "2026-08-26T14:13:32.186629Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "edtech-br/previsao-matriculas",
+      "stars": 145,
+      "language": "Python",
+      "topic": "enrollment-forecast",
+      "last_push": "2026-08-22"
+    },
+    {
+      "ibge_code": 3304557,
+      "city": "Rio de Janeiro",
+      "school_age_pop": 1250000,
+      "private_share": 0.32
+    },
+    {
+      "repo": "open-edu/br-censo-escolar",
+      "stars": 198,
+      "language": "R",
+      "topic": "education-census",
+      "last_push": "2026-08-18"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|school_age_pop",
+    "topic|private_share",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos preditivos educacionais; IBGE fornece base demográfica. Fonte oficial TIER1: INEP/Censo Escolar, MEC Dados Abertos."
+}

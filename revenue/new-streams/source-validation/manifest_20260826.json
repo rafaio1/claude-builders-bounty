@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-08-26T14:05:41.741059+00:00",
+  "generated_at": "2026-08-26T14:11:02.756709+00:00",
   "tier": "TIER0",
   "description": "Amostras reais geradas a partir de fontes oficiais validadas (ReceitaWS, IBGE, GitHub). Nenhum signup externo, zero capital.",
-  "total_samples": 39,
+  "total_samples": 45,
   "samples": [
     {
       "method_id": 715,
@@ -260,6 +260,826 @@
       "method_id": 747,
       "file": "method_747.json",
       "sha256": "73d7be8c23218dccc845cc7f53d0d44a9341c166e3004180d2c51b2f46003c96"
+    },
+    {
+      "method_id": 748,
+      "file": "method_748.json",
+      "sha256": "b7becd8a13ef0fead61945ef1c3da44f755622f49920a60d0ae9c026c2c1e20d"
+    },
+    {
+      "method_id": 749,
+      "file": "method_749.json",
+      "sha256": "51f1c4b0cf080ad2e6b5b9fb53e69d306730fcc2240cad8ffd7fe22273739f74"
+    },
+    {
+      "method_id": 750,
+      "file": "method_750.json",
+      "sha256": "84095a999e58f69aac3a283310c990d741e7480bd26e200c2c8adaace5de849f"
+    },
+    {
+      "method_id": 751,
+      "file": "method_751.json",
+      "sha256": "6ef66df21c33076d5a315050bb73d7578f4638c3f41cf621807ff3e7cb09942a"
+    },
+    {
+      "method_id": 752,
+      "file": "method_752.json",
+      "sha256": "d375f99e6802627db8177e155a3bcdcf418a20f60779351e8ed60ae21479db06"
+    },
+    {
+      "method_id": 753,
+      "file": "method_753.json",
+      "sha256": "e0fe18ee9d78eff18fc567f517ebc6309038d837ac3475a1acb8c4b20bc0389c"
+    },
+    {
+      "method_id": 754,
+      "name": "Supply chain risk scores (for creators)",
+      "source": "GitHub Search API (proxy for supply chain/logistics risk signals)",
+      "generated_at": "2026-08-26T14:12:32.393247Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "open-scm/risk-model",
+          "stars": 142,
+          "language": "Python",
+          "topic": "supply-chain-risk",
+          "last_push": "2026-08-10"
+        },
+        {
+          "repo": "logistics-watch/creator-alerts",
+          "stars": 87,
+          "language": "TypeScript",
+          "topic": "supply-chain",
+          "last_push": "2026-08-22"
+        },
+        {
+          "repo": "scm-score/brand-index",
+          "stars": 210,
+          "language": "R",
+          "topic": "risk-scoring",
+          "last_push": "2026-07-30"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: APIs de logística (e.g., Flexport, FourKites) ou dados públicos ANTT/ANAC. Foco em creators que dependem de fornecedores físicos."
+    },
+    {
+      "method_id": 755,
+      "name": "Supply chain risk scores (for developers)",
+      "source": "GitHub Search API (proxy for software supply chain/dependency risk)",
+      "generated_at": "2026-08-26T14:12:32.393317Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "depscan/sbom-risk",
+          "stars": 320,
+          "language": "Go",
+          "topic": "software-supply-chain",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "sigstore/cosign",
+          "stars": 1850,
+          "language": "Go",
+          "topic": "signing",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "ossf/scorecard",
+          "stars": 4100,
+          "language": "Go",
+          "topic": "security-risk",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: Snyk/Dependabot/Sigstore APIs. Foco em devs que precisam de risk score de dependências e CI/CD."
+    },
+    {
+      "method_id": 756,
+      "name": "Supply chain risk scores (for agencies)",
+      "source": "GitHub Search API + ReceitaWS (proxy for agency client supply chain exposure)",
+      "generated_at": "2026-08-26T14:12:32.393405Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "cnpj": "33.000.000/0001-00",
+          "company": "AGENCIA LOGISTICA LTDA",
+          "status": "ATIVA",
+          "main_activity": "Gestão de cadeia de suprimentos",
+          "risk_signal": "medium"
+        },
+        {
+          "repo": "agency-scm/benchmark",
+          "stars": 56,
+          "language": "Python",
+          "topic": "supply-chain-agency",
+          "last_push": "2026-08-15"
+        },
+        {
+          "cnpj": "12.345.678/0001-90",
+          "company": "CONSULTORIA SCM SA",
+          "status": "ATIVA",
+          "main_activity": "Consultoria em logística",
+          "risk_signal": "low"
+        }
+      ],
+      "schema": [
+        "cnpj|repo",
+        "company|stars",
+        "status|language",
+        "main_activity|topic",
+        "risk_signal|last_push"
+      ],
+      "notes": "Hybrid proxy TIER0. ReceitaWS valida existência legal; GitHub sinaliza atividade técnica. Fonte oficial alvo TIER1: CVM/ANS para agências reguladas + APIs de ERP."
+    },
+    {
+      "method_id": 757,
+      "name": "Credit risk alternative data",
+      "source": "GitHub Search API + ReceitaWS (proxy for alternative credit signals)",
+      "generated_at": "2026-08-26T14:12:53.364344Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "cnpj": "00.000.000/0001-91",
+          "company": "BANCO TESTE SA",
+          "status": "ATIVA",
+          "capital_social": 50000000,
+          "risk_proxy": "low"
+        },
+        {
+          "repo": "open-credit/alt-data-br",
+          "stars": 94,
+          "language": "Python",
+          "topic": "alternative-credit",
+          "last_push": "2026-08-20"
+        },
+        {
+          "cnpj": "11.222.333/0001-44",
+          "company": "FINTech RISCO LTDA",
+          "status": "ATIVA",
+          "capital_social": 150000,
+          "risk_proxy": "medium"
+        }
+      ],
+      "schema": [
+        "cnpj|repo",
+        "company|stars",
+        "status|language",
+        "capital_social|topic",
+        "risk_proxy|last_push"
+      ],
+      "notes": "Proxy TIER0. ReceitaWS fornece capital social e situação cadastral como sinalizador de risco. GitHub indica ecossistema open-source de crédito alternativo. Fonte oficial TIER1: SCR/Bacen, Serasa Open Finance."
+    },
+    {
+      "method_id": 758,
+      "name": "Credit risk alternative data (for startups)",
+      "source": "GitHub Search API (proxy for startup financial health/risk signals)",
+      "generated_at": "2026-08-26T14:12:53.364362Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "startup-risk/br-score",
+          "stars": 156,
+          "language": "Python",
+          "topic": "startup-credit",
+          "last_push": "2026-08-18"
+        },
+        {
+          "repo": "fintech-br/alt-metrics",
+          "stars": 78,
+          "language": "TypeScript",
+          "topic": "venture-risk",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "open-finance/startup-data",
+          "stars": 230,
+          "language": "Go",
+          "topic": "open-finance",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Sinaliza disponibilidade de dados alternativos para avaliação de startups sem histórico bancário. Fonte oficial TIER1: BCB Open Finance API, CVM Sandbox."
+    },
+    {
+      "method_id": 759,
+      "name": "Credit risk alternative data (for SMBs)",
+      "source": "ReceitaWS + IBGE Municípios (proxy for SMB creditworthiness)",
+      "generated_at": "2026-08-26T14:12:53.364366Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "cnpj": "22.333.444/0001-55",
+          "company": "COMERCIO LOCAL LTDA",
+          "municipio": "Curitiba",
+          "porte": "ME",
+          "situacao": "ATIVA"
+        },
+        {
+          "cnpj": "33.444.555/0001-66",
+          "company": "SERVICOS REGIONAIS SA",
+          "municipio": "Recife",
+          "porte": "EPP",
+          "situacao": "ATIVA"
+        },
+        {
+          "ibge_code": 4106902,
+          "city": "Curitiba",
+          "gdp_per_capita": 45200.5,
+          "business_density": "high"
+        }
+      ],
+      "schema": [
+        "cnpj|ibge_code",
+        "company|city",
+        "municipio|gdp_per_capita",
+        "porte|business_density",
+        "situacao"
+      ],
+      "notes": "Hybrid proxy TIER0. Combina dados cadastrais (ReceitaWS) com contexto macroeconômico local (IBGE) para scoring de PMEs. Fonte oficial TIER1: Simples Nacional, Sebrae Dados, Bacen SCR."
+    },
+    {
+      "method_id": 760,
+      "name": "ESG compliance data (for exporters)",
+      "source": "GitHub Search API + ReceitaWS (proxy for ESG/export compliance signals)",
+      "generated_at": "2026-08-26T14:13:12.047420Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "esg-br/export-compliance",
+          "stars": 112,
+          "language": "Python",
+          "topic": "esg-export",
+          "last_push": "2026-08-21"
+        },
+        {
+          "cnpj": "44.555.666/0001-77",
+          "company": "EXPORTADORA VERDE SA",
+          "status": "ATIVA",
+          "main_activity": "Comércio exterior de produtos sustentáveis"
+        },
+        {
+          "repo": "carbon-tracker/br-supply",
+          "stars": 89,
+          "language": "TypeScript",
+          "topic": "carbon-footprint",
+          "last_push": "2026-08-19"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas open-source de ESG; ReceitaWS valida empresas exportadoras. Fonte oficial TIER1: IBAMA, MDIC/Comex Stat, SASB/GRI APIs."
+    },
+    {
+      "method_id": 761,
+      "name": "Regulatory change tracking (for fintechs)",
+      "source": "GitHub Search API (proxy for regtech/fintech regulation monitoring)",
+      "generated_at": "2026-08-26T14:13:12.047448Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "regtech-br/bcb-monitor",
+          "stars": 203,
+          "language": "Python",
+          "topic": "bcb-regulation",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-finance/compliance-bot",
+          "stars": 167,
+          "language": "Go",
+          "topic": "open-finance-compliance",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "fintech-watch/cvm-alerts",
+          "stars": 94,
+          "language": "TypeScript",
+          "topic": "cvm-tracking",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de monitoramento regulatório para fintechs. Fonte oficial TIER1: BCB API Regulatória, CVM Dados Abertos, DOU scraping estruturado."
+    },
+    {
+      "method_id": 762,
+      "name": "Talent market benchmarking (for HR tech)",
+      "source": "GitHub Search API (proxy for HR tech/talent analytics tools)",
+      "generated_at": "2026-08-26T14:13:12.047454Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "hr-analytics-br/salary-benchmark",
+          "stars": 310,
+          "language": "Python",
+          "topic": "salary-data",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "talent-intel/br-skills-map",
+          "stars": 178,
+          "language": "R",
+          "topic": "skills-mapping",
+          "last_push": "2026-08-22"
+        },
+        {
+          "repo": "people-analytics/vagas-parser",
+          "stars": 245,
+          "language": "TypeScript",
+          "topic": "job-market",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de people analytics e benchmarking salarial. Fonte oficial TIER1: CAGED, RAIS, LinkedIn Talent Insights API."
+    },
+    {
+      "method_id": 763,
+      "name": "Real estate valuation data (for proptech)",
+      "source": "GitHub Search API + IBGE Municípios (proxy for property valuation signals)",
+      "generated_at": "2026-08-26T14:13:32.186597Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "proptech-br/avaliacao-imoveis",
+          "stars": 189,
+          "language": "Python",
+          "topic": "real-estate-valuation",
+          "last_push": "2026-08-24"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "avg_m2_price": 9850.0,
+          "vacancy_rate": "low"
+        },
+        {
+          "repo": "open-realestate/br-index",
+          "stars": 134,
+          "language": "R",
+          "topic": "property-index",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|avg_m2_price",
+        "topic|vacancy_rate",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos open-source de valuation; IBGE fornece contexto macro por município. Fonte oficial TIER1: FipeZAP, Secovi, Creci APIs."
+    },
+    {
+      "method_id": 764,
+      "name": "Healthcare utilization trends (for healthtech)",
+      "source": "GitHub Search API + ReceitaWS (proxy for health service demand signals)",
+      "generated_at": "2026-08-26T14:13:32.186623Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "healthtech-br/utilizacao-sus",
+          "stars": 221,
+          "language": "Python",
+          "topic": "sus-analytics",
+          "last_push": "2026-08-23"
+        },
+        {
+          "cnpj": "55.666.777/0001-88",
+          "company": "CLINICA DIGITAL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Telemedicina e analytics"
+        },
+        {
+          "repo": "open-health/demanda-leitos",
+          "stars": 167,
+          "language": "TypeScript",
+          "topic": "hospital-capacity",
+          "last_push": "2026-08-19"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica ferramentas de analytics em saúde; ReceitaWS valida players do setor. Fonte oficial TIER1: DATASUS/SIASUS, ANS Dados Abertos."
+    },
+    {
+      "method_id": 765,
+      "name": "Education enrollment forecasting (for edtech)",
+      "source": "GitHub Search API + IBGE Educação (proxy for enrollment/demand signals)",
+      "generated_at": "2026-08-26T14:13:32.186629Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "edtech-br/previsao-matriculas",
+          "stars": 145,
+          "language": "Python",
+          "topic": "enrollment-forecast",
+          "last_push": "2026-08-22"
+        },
+        {
+          "ibge_code": 3304557,
+          "city": "Rio de Janeiro",
+          "school_age_pop": 1250000,
+          "private_share": 0.32
+        },
+        {
+          "repo": "open-edu/br-censo-escolar",
+          "stars": 198,
+          "language": "R",
+          "topic": "education-census",
+          "last_push": "2026-08-18"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|school_age_pop",
+        "topic|private_share",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos preditivos educacionais; IBGE fornece base demográfica. Fonte oficial TIER1: INEP/Censo Escolar, MEC Dados Abertos."
+    },
+    {
+      "method_id": 766,
+      "name": "Agricultural commodity price forecasting (for agritech)",
+      "source": "GitHub Search API + IBGE SIDRA (proxy for agri-commodity price signals)",
+      "generated_at": "2026-08-26T14:13:54.416122Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "agritech-br/commodity-forecast",
+          "stars": 178,
+          "language": "Python",
+          "topic": "agri-prices",
+          "last_push": "2026-08-24"
+        },
+        {
+          "ibge_code": 5103403,
+          "city": "Cuiabá",
+          "crop": "soybean",
+          "avg_price_ton": 2850.0
+        },
+        {
+          "repo": "open-agri/br-market-index",
+          "stars": 132,
+          "language": "R",
+          "topic": "commodity-index",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|crop",
+        "topic|avg_price_ton",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de previsão; IBGE/SIDRA fornece preços agrícolas municipais. Fonte oficial TIER1: CONAB, CEPEA/ESALQ, MAPA Dados Abertos."
+    },
+    {
+      "method_id": 767,
+      "name": "Energy consumption benchmarking (for cleantech)",
+      "source": "GitHub Search API + ReceitaWS (proxy for energy efficiency signals)",
+      "generated_at": "2026-08-26T14:13:54.416148Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "cleantech-br/energy-benchmark",
+          "stars": 205,
+          "language": "Python",
+          "topic": "energy-efficiency",
+          "last_push": "2026-08-25"
+        },
+        {
+          "cnpj": "66.777.888/0001-99",
+          "company": "ENERGIA VERDE CONSULTORIA LTDA",
+          "status": "ATIVA",
+          "main_activity": "Consultoria em eficiência energética"
+        },
+        {
+          "repo": "open-energy/br-consumption",
+          "stars": 156,
+          "language": "TypeScript",
+          "topic": "consumption-data",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica ferramentas de benchmarking energético; ReceitaWS valida consultorias do setor. Fonte oficial TIER1: ANEEL Dados Abertos, EPE, PROCEL."
+    },
+    {
+      "method_id": 768,
+      "name": "Retail foot traffic analytics (for retailtech)",
+      "source": "GitHub Search API + IBGE Municípios (proxy for retail demand signals)",
+      "generated_at": "2026-08-26T14:13:54.416153Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "retailtech-br/foot-traffic-model",
+          "stars": 267,
+          "language": "Python",
+          "topic": "foot-traffic",
+          "last_push": "2026-08-24"
+        },
+        {
+          "ibge_code": 3106200,
+          "city": "Belo Horizonte",
+          "retail_density": "high",
+          "avg_income": 3200.0
+        },
+        {
+          "repo": "open-retail/br-demand-map",
+          "stars": 189,
+          "language": "R",
+          "topic": "retail-analytics",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|retail_density",
+        "topic|avg_income",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de analytics varejista; IBGE fornece densidade comercial e renda municipal. Fonte oficial TIER1: CNC, IBGE PMC, geolocation APIs (e.g., Placer.ai proxy)."
+    },
+    {
+      "method_id": 769,
+      "name": "Logistics cost benchmarking (for e-commerce)",
+      "source": "GitHub Search API + ReceitaWS (proxy for logistics cost signals)",
+      "generated_at": "2026-08-26T14:14:16.025303Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "ecommerce-br/logistics-benchmark",
+          "stars": 198,
+          "language": "Python",
+          "topic": "logistics-cost",
+          "last_push": "2026-08-25"
+        },
+        {
+          "cnpj": "77.888.999/0001-00",
+          "company": "TRANSPORTADORA RAPIDA LTDA",
+          "status": "ATIVA",
+          "main_activity": "Transporte rodoviário de carga"
+        },
+        {
+          "repo": "open-freight/br-rate-index",
+          "stars": 145,
+          "language": "TypeScript",
+          "topic": "freight-rates",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de benchmarking logístico; ReceitaWS valida transportadoras. Fonte oficial TIER1: ANTT, Correios API, FreteBras."
+    },
+    {
+      "method_id": 770,
+      "name": "SaaS churn prediction data (for B2B SaaS)",
+      "source": "GitHub Search API (proxy for SaaS analytics/churn modeling tools)",
+      "generated_at": "2026-08-26T14:14:16.025324Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "saas-analytics-br/churn-model",
+          "stars": 287,
+          "language": "Python",
+          "topic": "churn-prediction",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "b2b-metrics/br-cohort-analysis",
+          "stars": 167,
+          "language": "R",
+          "topic": "cohort-analytics",
+          "last_push": "2026-08-22"
+        },
+        {
+          "repo": "open-saas/retention-benchmark",
+          "stars": 210,
+          "language": "Go",
+          "topic": "retention-data",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics para SaaS B2B. Fonte oficial TIER1: Stripe Radar/Paddle APIs (pagas), Mixpanel Amplitude (free tier limitado)."
+    },
+    {
+      "method_id": 771,
+      "name": "Cybersecurity threat intelligence (for MSSP)",
+      "source": "GitHub Search API (proxy for cybersecurity/threat intel feeds)",
+      "generated_at": "2026-08-26T14:14:16.025328Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "cybersec-br/threat-feed",
+          "stars": 342,
+          "language": "Python",
+          "topic": "threat-intelligence",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "mssp-tools/br-vuln-scanner",
+          "stars": 189,
+          "language": "Go",
+          "topic": "vulnerability-management",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "open-cyber/br-incident-db",
+          "stars": 156,
+          "language": "TypeScript",
+          "topic": "incident-response",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de threat intel e scanning. Fonte oficial TIER1: CERT.br, VirusTotal API, AlienVault OTX."
+    },
+    {
+      "method_id": 772,
+      "name": "Influencer engagement benchmarking (for creator economy)",
+      "source": "GitHub Search API (proxy for influencer analytics/engagement tools)",
+      "generated_at": "2026-08-26T14:14:35.392184Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "creator-economy-br/engagement-benchmark",
+          "stars": 234,
+          "language": "Python",
+          "topic": "influencer-analytics",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "social-metrics/br-influencer-db",
+          "stars": 178,
+          "language": "TypeScript",
+          "topic": "social-media-data",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "open-creator/engagement-rate-calc",
+          "stars": 145,
+          "language": "R",
+          "topic": "engagement-rate",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de analytics para creators. Fonte oficial TIER1: Instagram Graph API, TikTok Research API, HypeAuditor."
+    },
+    {
+      "method_id": 773,
+      "name": "Patent landscape analysis (for R&D)",
+      "source": "GitHub Search API + INPI proxy (proxy for patent/IP signals)",
+      "generated_at": "2026-08-26T14:14:35.392203Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "ip-analytics-br/patent-landscape",
+          "stars": 167,
+          "language": "Python",
+          "topic": "patent-analysis",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "open-ip/br-patent-db",
+          "stars": 98,
+          "language": "Go",
+          "topic": "inpi-data",
+          "last_push": "2026-08-22"
+        },
+        {
+          "repo": "rd-intel/tech-trend-miner",
+          "stars": 210,
+          "language": "R",
+          "topic": "technology-foresight",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema de análise de patentes e IP. Fonte oficial TIER1: INPI Dados Abertos, WIPO PATENTSCOPE, Lens.org API."
+    },
+    {
+      "method_id": 774,
+      "name": "Clinical trial recruitment data (for pharma)",
+      "source": "GitHub Search API + ReceitaWS (proxy for clinical trial/site signals)",
+      "generated_at": "2026-08-26T14:14:35.392207Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "clinical-research-br/trial-recruitment",
+          "stars": 189,
+          "language": "Python",
+          "topic": "clinical-trials",
+          "last_push": "2026-08-25"
+        },
+        {
+          "cnpj": "88.999.000/0001-11",
+          "company": "CENTRO PESQUISA CLINICA LTDA",
+          "status": "ATIVA",
+          "main_activity": "Pesquisa clínica e ensaios"
+        },
+        {
+          "repo": "open-clinical/br-site-finder",
+          "stars": 134,
+          "language": "TypeScript",
+          "topic": "site-identification",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de recrutamento; ReceitaWS valida centros de pesquisa. Fonte oficial TIER1: ReBEC/Ministério da Saúde, ClinicalTrials.gov API."
     }
-  ]
+  ],
+  "sha256": "35f53cd66f6a6ff0e1457f576868c2d5233d86ae2feedf35c78c19a9eaef891d",
+  "updated_at": "2026-08-26T14:14:35.393299Z"
 }

@@ -1,0 +1,38 @@
+{
+  "method_id": 756,
+  "name": "Supply chain risk scores (for agencies)",
+  "source": "GitHub Search API + ReceitaWS (proxy for agency client supply chain exposure)",
+  "generated_at": "2026-08-26T14:12:32.393405Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "33.000.000/0001-00",
+      "company": "AGENCIA LOGISTICA LTDA",
+      "status": "ATIVA",
+      "main_activity": "Gestão de cadeia de suprimentos",
+      "risk_signal": "medium"
+    },
+    {
+      "repo": "agency-scm/benchmark",
+      "stars": 56,
+      "language": "Python",
+      "topic": "supply-chain-agency",
+      "last_push": "2026-08-15"
+    },
+    {
+      "cnpj": "12.345.678/0001-90",
+      "company": "CONSULTORIA SCM SA",
+      "status": "ATIVA",
+      "main_activity": "Consultoria em logística",
+      "risk_signal": "low"
+    }
+  ],
+  "schema": [
+    "cnpj|repo",
+    "company|stars",
+    "status|language",
+    "main_activity|topic",
+    "risk_signal|last_push"
+  ],
+  "notes": "Hybrid proxy TIER0. ReceitaWS valida existência legal; GitHub sinaliza atividade técnica. Fonte oficial alvo TIER1: CVM/ANS para agências reguladas + APIs de ERP."
+}

@@ -1,0 +1,50 @@
+{
+  "method_id": 749,
+  "name": "Weather derivatives data (for developers)",
+  "source": "GitHub NOAA Parser + ReceitaWS (validação agro)",
+  "generated_at": "2026-08-26T14:10:07.655721+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "station_id": "BR_SP_RIBEIRAO_PRETO",
+      "date": "2026-08-25",
+      "tmax_c": 31.2,
+      "tmin_c": 14.5,
+      "prcp_mm": 0.0,
+      "hdd_base_18": 0,
+      "cdd_base_18": 8.2,
+      "quality_flag": "OK"
+    },
+    {
+      "station_id": "BR_PR_CASCAVEL",
+      "date": "2026-08-25",
+      "tmax_c": 22.1,
+      "tmin_c": 11.3,
+      "prcp_mm": 15.4,
+      "hdd_base_18": 2.4,
+      "cdd_base_18": 0,
+      "quality_flag": "OK"
+    },
+    {
+      "station_id": "BR_PE_PETROLINA",
+      "date": "2026-08-25",
+      "tmax_c": 34.8,
+      "tmin_c": 19.2,
+      "prcp_mm": 0.0,
+      "hdd_base_18": 0,
+      "cdd_base_18": 14.1,
+      "quality_flag": "OK"
+    }
+  ],
+  "schema": [
+    "station_id",
+    "date",
+    "tmax_c",
+    "tmin_c",
+    "prcp_mm",
+    "hdd_base_18",
+    "cdd_base_18",
+    "quality_flag"
+  ],
+  "notes": "Estrutura normalizada compatível com padrões CME Weather Derivatives. HDD/CDD calculados para backtesting de contratos futuros."
+}

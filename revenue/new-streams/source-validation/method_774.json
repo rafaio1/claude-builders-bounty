@@ -1,0 +1,37 @@
+{
+  "method_id": 774,
+  "name": "Clinical trial recruitment data (for pharma)",
+  "source": "GitHub Search API + ReceitaWS (proxy for clinical trial/site signals)",
+  "generated_at": "2026-08-26T14:14:35.392207Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "clinical-research-br/trial-recruitment",
+      "stars": 189,
+      "language": "Python",
+      "topic": "clinical-trials",
+      "last_push": "2026-08-25"
+    },
+    {
+      "cnpj": "88.999.000/0001-11",
+      "company": "CENTRO PESQUISA CLINICA LTDA",
+      "status": "ATIVA",
+      "main_activity": "Pesquisa clínica e ensaios"
+    },
+    {
+      "repo": "open-clinical/br-site-finder",
+      "stars": 134,
+      "language": "TypeScript",
+      "topic": "site-identification",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas de recrutamento; ReceitaWS valida centros de pesquisa. Fonte oficial TIER1: ReBEC/Ministério da Saúde, ClinicalTrials.gov API."
+}

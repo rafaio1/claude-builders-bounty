@@ -1,0 +1,38 @@
+{
+  "method_id": 754,
+  "name": "Supply chain risk scores (for creators)",
+  "source": "GitHub Search API (proxy for supply chain/logistics risk signals)",
+  "generated_at": "2026-08-26T14:12:32.393247Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "open-scm/risk-model",
+      "stars": 142,
+      "language": "Python",
+      "topic": "supply-chain-risk",
+      "last_push": "2026-08-10"
+    },
+    {
+      "repo": "logistics-watch/creator-alerts",
+      "stars": 87,
+      "language": "TypeScript",
+      "topic": "supply-chain",
+      "last_push": "2026-08-22"
+    },
+    {
+      "repo": "scm-score/brand-index",
+      "stars": 210,
+      "language": "R",
+      "topic": "risk-scoring",
+      "last_push": "2026-07-30"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "language",
+    "topic",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: APIs de logística (e.g., Flexport, FourKites) ou dados públicos ANTT/ANAC. Foco em creators que dependem de fornecedores físicos."
+}

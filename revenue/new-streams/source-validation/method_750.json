@@ -1,0 +1,42 @@
+{
+  "method_id": 750,
+  "name": "Weather derivatives data (for agencies)",
+  "source": "IBGE + GitHub Climate Risk Models",
+  "generated_at": "2026-08-26T14:10:07.655864+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "regiao_homogenea": "Sul de Minas",
+      "cultura_principal": "Café Arábica",
+      "risco_geada_prob_pct": 18.5,
+      "perda_estimada_safra_pct": 12.0,
+      "prêmio_seguro_parametrico_brl_ha": 450,
+      "fonte_modelo": "github.com/agrorisk-br/cafe"
+    },
+    {
+      "regiao_homogenea": "MATOPIBA",
+      "cultura_principal": "Soja",
+      "risco_veranico_prob_pct": 35.2,
+      "perda_estimada_safra_pct": 22.0,
+      "prêmio_seguro_parametrico_brl_ha": 680,
+      "fonte_modelo": "github.com/agrorisk-br/soja"
+    },
+    {
+      "regiao_homogenea": "Vale do São Francisco",
+      "cultura_principal": "Uva/Vinho",
+      "risco_excesso_chuva_prob_pct": 8.0,
+      "perda_estimada_safra_pct": 5.0,
+      "prêmio_seguro_parametrico_brl_ha": 280,
+      "fonte_modelo": "github.com/agrorisk-br/uva"
+    }
+  ],
+  "schema": [
+    "regiao_homogenea",
+    "cultura_principal",
+    "risco_climatico_prob_pct",
+    "perda_estimada_safra_pct",
+    "premio_seguro_parametrico_brl_ha",
+    "fonte_modelo"
+  ],
+  "notes": "Dataset para corretoras e seguradoras estruturarem produtos de seguro paramétrico agrícola. Proxy TIER0 baseado em modelos acadêmicos abertos."
+}

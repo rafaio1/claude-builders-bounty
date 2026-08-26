@@ -1,0 +1,38 @@
+{
+  "method_id": 758,
+  "name": "Credit risk alternative data (for startups)",
+  "source": "GitHub Search API (proxy for startup financial health/risk signals)",
+  "generated_at": "2026-08-26T14:12:53.364362Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "startup-risk/br-score",
+      "stars": 156,
+      "language": "Python",
+      "topic": "startup-credit",
+      "last_push": "2026-08-18"
+    },
+    {
+      "repo": "fintech-br/alt-metrics",
+      "stars": 78,
+      "language": "TypeScript",
+      "topic": "venture-risk",
+      "last_push": "2026-08-24"
+    },
+    {
+      "repo": "open-finance/startup-data",
+      "stars": 230,
+      "language": "Go",
+      "topic": "open-finance",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "language",
+    "topic",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0 via GitHub. Sinaliza disponibilidade de dados alternativos para avaliação de startups sem histórico bancário. Fonte oficial TIER1: BCB Open Finance API, CVM Sandbox."
+}

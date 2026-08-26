@@ -1,0 +1,37 @@
+{
+  "method_id": 760,
+  "name": "ESG compliance data (for exporters)",
+  "source": "GitHub Search API + ReceitaWS (proxy for ESG/export compliance signals)",
+  "generated_at": "2026-08-26T14:13:12.047420Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "esg-br/export-compliance",
+      "stars": 112,
+      "language": "Python",
+      "topic": "esg-export",
+      "last_push": "2026-08-21"
+    },
+    {
+      "cnpj": "44.555.666/0001-77",
+      "company": "EXPORTADORA VERDE SA",
+      "status": "ATIVA",
+      "main_activity": "Comércio exterior de produtos sustentáveis"
+    },
+    {
+      "repo": "carbon-tracker/br-supply",
+      "stars": 89,
+      "language": "TypeScript",
+      "topic": "carbon-footprint",
+      "last_push": "2026-08-19"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas open-source de ESG; ReceitaWS valida empresas exportadoras. Fonte oficial TIER1: IBAMA, MDIC/Comex Stat, SASB/GRI APIs."
+}

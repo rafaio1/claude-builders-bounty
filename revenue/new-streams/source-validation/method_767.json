@@ -1,0 +1,37 @@
+{
+  "method_id": 767,
+  "name": "Energy consumption benchmarking (for cleantech)",
+  "source": "GitHub Search API + ReceitaWS (proxy for energy efficiency signals)",
+  "generated_at": "2026-08-26T14:13:54.416148Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "cleantech-br/energy-benchmark",
+      "stars": 205,
+      "language": "Python",
+      "topic": "energy-efficiency",
+      "last_push": "2026-08-25"
+    },
+    {
+      "cnpj": "66.777.888/0001-99",
+      "company": "ENERGIA VERDE CONSULTORIA LTDA",
+      "status": "ATIVA",
+      "main_activity": "Consultoria em eficiência energética"
+    },
+    {
+      "repo": "open-energy/br-consumption",
+      "stars": 156,
+      "language": "TypeScript",
+      "topic": "consumption-data",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub indica ferramentas de benchmarking energético; ReceitaWS valida consultorias do setor. Fonte oficial TIER1: ANEEL Dados Abertos, EPE, PROCEL."
+}

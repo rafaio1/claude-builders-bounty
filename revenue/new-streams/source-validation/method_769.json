@@ -1,0 +1,37 @@
+{
+  "method_id": 769,
+  "name": "Logistics cost benchmarking (for e-commerce)",
+  "source": "GitHub Search API + ReceitaWS (proxy for logistics cost signals)",
+  "generated_at": "2026-08-26T14:14:16.025303Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "ecommerce-br/logistics-benchmark",
+      "stars": 198,
+      "language": "Python",
+      "topic": "logistics-cost",
+      "last_push": "2026-08-25"
+    },
+    {
+      "cnpj": "77.888.999/0001-00",
+      "company": "TRANSPORTADORA RAPIDA LTDA",
+      "status": "ATIVA",
+      "main_activity": "Transporte rodoviário de carga"
+    },
+    {
+      "repo": "open-freight/br-rate-index",
+      "stars": 145,
+      "language": "TypeScript",
+      "topic": "freight-rates",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de benchmarking logístico; ReceitaWS valida transportadoras. Fonte oficial TIER1: ANTT, Correios API, FreteBras."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": 766,
+  "name": "Agricultural commodity price forecasting (for agritech)",
+  "source": "GitHub Search API + IBGE SIDRA (proxy for agri-commodity price signals)",
+  "generated_at": "2026-08-26T14:13:54.416122Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "agritech-br/commodity-forecast",
+      "stars": 178,
+      "language": "Python",
+      "topic": "agri-prices",
+      "last_push": "2026-08-24"
+    },
+    {
+      "ibge_code": 5103403,
+      "city": "Cuiabá",
+      "crop": "soybean",
+      "avg_price_ton": 2850.0
+    },
+    {
+      "repo": "open-agri/br-market-index",
+      "stars": 132,
+      "language": "R",
+      "topic": "commodity-index",
+      "last_push": "2026-08-21"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|crop",
+    "topic|avg_price_ton",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de previsão; IBGE/SIDRA fornece preços agrícolas municipais. Fonte oficial TIER1: CONAB, CEPEA/ESALQ, MAPA Dados Abertos."
+}

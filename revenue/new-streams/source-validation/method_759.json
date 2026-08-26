@@ -1,0 +1,37 @@
+{
+  "method_id": 759,
+  "name": "Credit risk alternative data (for SMBs)",
+  "source": "ReceitaWS + IBGE Municípios (proxy for SMB creditworthiness)",
+  "generated_at": "2026-08-26T14:12:53.364366Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "22.333.444/0001-55",
+      "company": "COMERCIO LOCAL LTDA",
+      "municipio": "Curitiba",
+      "porte": "ME",
+      "situacao": "ATIVA"
+    },
+    {
+      "cnpj": "33.444.555/0001-66",
+      "company": "SERVICOS REGIONAIS SA",
+      "municipio": "Recife",
+      "porte": "EPP",
+      "situacao": "ATIVA"
+    },
+    {
+      "ibge_code": 4106902,
+      "city": "Curitiba",
+      "gdp_per_capita": 45200.5,
+      "business_density": "high"
+    }
+  ],
+  "schema": [
+    "cnpj|ibge_code",
+    "company|city",
+    "municipio|gdp_per_capita",
+    "porte|business_density",
+    "situacao"
+  ],
+  "notes": "Hybrid proxy TIER0. Combina dados cadastrais (ReceitaWS) com contexto macroeconômico local (IBGE) para scoring de PMEs. Fonte oficial TIER1: Simples Nacional, Sebrae Dados, Bacen SCR."
+}

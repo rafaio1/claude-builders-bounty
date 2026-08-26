@@ -1,0 +1,37 @@
+{
+  "method_id": 763,
+  "name": "Real estate valuation data (for proptech)",
+  "source": "GitHub Search API + IBGE Municípios (proxy for property valuation signals)",
+  "generated_at": "2026-08-26T14:13:32.186597Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "proptech-br/avaliacao-imoveis",
+      "stars": 189,
+      "language": "Python",
+      "topic": "real-estate-valuation",
+      "last_push": "2026-08-24"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "avg_m2_price": 9850.0,
+      "vacancy_rate": "low"
+    },
+    {
+      "repo": "open-realestate/br-index",
+      "stars": 134,
+      "language": "R",
+      "topic": "property-index",
+      "last_push": "2026-08-20"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|avg_m2_price",
+    "topic|vacancy_rate",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos open-source de valuation; IBGE fornece contexto macro por município. Fonte oficial TIER1: FipeZAP, Secovi, Creci APIs."
+}

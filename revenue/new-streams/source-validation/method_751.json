@@ -1,0 +1,46 @@
+{
+  "method_id": 751,
+  "name": "Base farmácias e drogarias BR (for pharma_sales)",
+  "source": "ReceitaWS + IBGE",
+  "generated_at": "2026-08-26T14:11:02.755049+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "92.682.430/0001-70",
+      "nome": "RAIA DROGASIL S.A.",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "4771-7/01",
+      "porte": "SOCIEDADE ANONIMA ABERTA",
+      "filiais_proxy": 2800
+    },
+    {
+      "cnpj": "00.539.158/0001-00",
+      "nome": "DPSP COMERCIO DE PRODUTOS FARMACEUTICOS LTDA",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "4771-7/01",
+      "porte": "EMPRESA DE GRANDE PORTE",
+      "filiais_proxy": 450
+    },
+    {
+      "cnpj": "02.814.497/0001-07",
+      "nome": "PANVEL FARMACIAS S.A.",
+      "municipio": "ELDORADO DO SUL",
+      "uf": "RS",
+      "cnae": "4771-7/01",
+      "porte": "SOCIEDADE ANONIMA FECHADA",
+      "filiais_proxy": 380
+    }
+  ],
+  "schema": [
+    "cnpj",
+    "nome",
+    "municipio",
+    "uf",
+    "cnae",
+    "porte",
+    "filiais_proxy"
+  ],
+  "notes": "Dataset consolidado de redes farmacêuticas via CNPJ ativo. Ideal para indústria farmacêutica mapear pontos de venda e distribuição."
+}

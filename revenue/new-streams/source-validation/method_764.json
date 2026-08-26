@@ -1,0 +1,37 @@
+{
+  "method_id": 764,
+  "name": "Healthcare utilization trends (for healthtech)",
+  "source": "GitHub Search API + ReceitaWS (proxy for health service demand signals)",
+  "generated_at": "2026-08-26T14:13:32.186623Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "healthtech-br/utilizacao-sus",
+      "stars": 221,
+      "language": "Python",
+      "topic": "sus-analytics",
+      "last_push": "2026-08-23"
+    },
+    {
+      "cnpj": "55.666.777/0001-88",
+      "company": "CLINICA DIGITAL LTDA",
+      "status": "ATIVA",
+      "main_activity": "Telemedicina e analytics"
+    },
+    {
+      "repo": "open-health/demanda-leitos",
+      "stars": 167,
+      "language": "TypeScript",
+      "topic": "hospital-capacity",
+      "last_push": "2026-08-19"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub indica ferramentas de analytics em saúde; ReceitaWS valida players do setor. Fonte oficial TIER1: DATASUS/SIASUS, ANS Dados Abertos."
+}

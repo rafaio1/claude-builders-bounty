@@ -1,0 +1,46 @@
+{
+  "method_id": 748,
+  "name": "Weather derivatives data (for creators)",
+  "source": "GitHub Open Data (proxy INMET/NOAA)",
+  "generated_at": "2026-08-26T14:10:07.655255+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cidade": "Ribeirão Preto",
+      "uf": "SP",
+      "mes_ref": "2026-08",
+      "temp_media_c": 22.4,
+      "precipitacao_mm": 35.2,
+      "desvio_historico_pct": -12.5,
+      "impacto_agro": "Cana-de-açúcar (colheita acelerada)"
+    },
+    {
+      "cidade": "Cascavel",
+      "uf": "PR",
+      "mes_ref": "2026-08",
+      "temp_media_c": 16.8,
+      "precipitacao_mm": 120.5,
+      "desvio_historico_pct": 45.0,
+      "impacto_agro": "Soja (atraso plantio)"
+    },
+    {
+      "cidade": "Petrolina",
+      "uf": "PE",
+      "mes_ref": "2026-08",
+      "temp_media_c": 26.1,
+      "precipitacao_mm": 2.0,
+      "desvio_historico_pct": -5.0,
+      "impacto_agro": "Fruticultura irrigada (estável)"
+    }
+  ],
+  "schema": [
+    "cidade",
+    "uf",
+    "mes_ref",
+    "temp_media_c",
+    "precipitacao_mm",
+    "desvio_historico_pct",
+    "impacto_agro"
+  ],
+  "notes": "Dados climáticos agregados para conteúdo sobre agronegócio e derivativos de clima. Proxy TIER0; fonte oficial INMET requer cadastro."
+}
