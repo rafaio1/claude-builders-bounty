@@ -1,0 +1,30 @@
+{
+  "method_id": "method_901",
+  "name": "AI Code Review Bot SaaS",
+  "source": "github-search-api",
+  "tier": "TIER0",
+  "category": "software_saas",
+  "sample_data": [
+    {
+      "repo": "coderabbitai/ai-pr-reviewer",
+      "stars": 2800,
+      "lang": "TypeScript",
+      "integration": "GitHub App"
+    },
+    {
+      "repo": "anc95/ChatGPT-CodeReview",
+      "stars": 4100,
+      "lang": "Python",
+      "integration": "GitHub Action"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "integration"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: GitHub Marketplace / OpenAI API. Demanda alta por automa\u00e7\u00e3o de PR review. Zero-capital se self-hosted com modelo open-source ou free tier de LLM.",
+  "generated_at": "2026-08-26T16:23:44.874202+00:00",
+  "sha256": "141a55124c8a5758ff0082e21cbe2218518fda2331d3fedeb67d4742de0a2135"
+}
