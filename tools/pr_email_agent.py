@@ -14,6 +14,14 @@ WORKSPACE = Path("/Agentic/workspace/pr-email-actions")
 LEDGER_PATH = WORKSPACE / "ledger_final.json"
 ACTION_QUEUE_PATH = WORKSPACE / "action_queue.jsonl"
 GMAIL_CLIENT = Path("/Agentic/tools/gmail_client.py")
+GMAIL_CLIENT_PATH = str(GMAIL_CLIENT)
+CURSOR_PATH = str(WORKSPACE / "scan_cursor.json")
+DEFAULT_BATCH_SIZE = 500
+SCAN_WINDOWS = [
+    {"label": "30d", "query": "newer_than:30d"},
+    {"label": "30d-1y", "query": "older_than:30d newer_than:1y"},
+    {"label": "gt1y", "query": "older_than:1y"},
+]
 
 # Keywords that ALWAYS preserve the message (never trash)
 PROTECT_PATTERNS = re.compile(
@@ -155,27 +163,178 @@ def classify_message(state, body_text):
 
 
 def classify_and_process():
+
+def load_cursor():
+    if os.path.exists(CURSOR_PATH):
+        try:
+            with open(CURSOR_PATH, "r") as f:
+                return json.load(f)
+        except Exception:
+            pass
+    return {"completed_windows": [], "current_window": None, "last_run": None}
+
+
+def save_cursor(cursor):
+    tmp = CURSOR_PATH + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(cursor, f, indent=2)
+    os.replace(tmp, CURSOR_PATH)
+
+
+def gmail_search_paginated(query, max_results=500):
+    """Call gmail_client.py search with --max to fetch up to max_results."""
+    cmd = [
+        sys.executable, GMAIL_CLIENT_PATH, "search", query, "--max", str(max_results)
+    ]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
+        if r.returncode != 0:
+            print(f"gmail search failed: {r.stderr.strip()}")
+            return []
+        return [l for l in r.stdout.splitlines() if l.strip()]
+    except Exception as e:
+        print(f"gmail search error: {e}")
+        return []
+
+
+def classify_and_process(dry_run=False, batch_size=None, window_override=None):
     ledger = load_ledger()
     # Latest-entry-wins: build seen_ids respecting reprocess flags
-    seen_ids = set()
-    for entry in ledger:
+    seen_ids = {}
+    for idx, entry in enumerate(ledger):
         mid = entry.get("message_id")
         if not mid:
             continue
-        # If latest entry for this ID has reprocess=True, do NOT block it
-        if entry.get("reprocess"):
-            seen_ids.discard(mid)
-        else:
-            seen_ids.add(mid)
+        # Track index so latest entry wins
+        seen_ids[mid] = idx
 
-    lines = gmail_search("newer_than:30d from:github.com subject:PR")
-    if not lines:
-        print("No emails found or search failed")
-        return
+    # Determine which entries are eligible (latest entry has reprocess=True or no terminal action)
+    eligible_ids = set()
+    for mid, idx in seen_ids.items():
+        entry = ledger[idx]
+        if entry.get("reprocess"):
+            eligible_ids.add(mid)
+        elif entry.get("action") not in ("trash_closed", "trash_merged", "trash_bot_success"):
+            # Non-terminal actions remain eligible for re-evaluation
+            eligible_ids.add(mid)
+
+    cursor = load_cursor()
+    windows = SCAN_WINDOWS
+    if window_override:
+        windows = [w for w in windows if w["label"] == window_override]
+        if not windows:
+            print(f"Unknown window: {window_override}")
+            return
 
     processed = 0
+    for win in windows:
+        label = win["label"]
+        query = win["query"] + " from:github.com subject:PR"
+        if label in cursor.get("completed_windows", []) and not window_override:
+            print(f"Skipping completed window: {label}")
+            continue
 
-    for line in lines:
+        print(f"Scanning window: {label} ({query})")
+        lines = gmail_search_paginated(query, max_results=batch_size or DEFAULT_BATCH_SIZE)
+        if not lines:
+            print(f"No emails in window {label}")
+            if not window_override:
+                cursor.setdefault("completed_windows", []).append(label)
+                save_cursor(cursor)
+            continue
+
+        window_processed = 0
+        for line in lines:
+            m = re.match(r"\[([^\]]+)\].*?\|\s*(.+?)\s*\|\s*(.+)", line)
+            if not m:
+                continue
+            msg_id, sender, subject = m.groups()
+
+            # Skip if latest ledger entry is terminal and not reprocess
+            if msg_id in seen_ids and msg_id not in eligible_ids:
+                continue
+
+            pm = re.search(r"\[([^\]]+)\].*?\(PR #(\d+)\)", subject)
+            if not pm:
+                continue
+            repo_full, pr_str = pm.groups()
+            pr_num = int(pr_str)
+
+            state, url = gh_pr_state(repo_full, pr_num)
+            if not state:
+                continue
+
+            body_text = ""
+            bdata = gmail_read(msg_id)
+            if bdata:
+                body_text = bdata.get("body", "") + " " + bdata.get("snippet", "")
+
+            action, trash_now = classify_message(state, body_text)
+
+            if dry_run:
+                print(f"[DRY-RUN] {msg_id} | {repo_full}#{pr_num} | {state} | {action} | trash={trash_now}")
+                window_processed += 1
+                continue
+
+            if trash_now:
+                ok = gmail_trash(msg_id)
+                if ok:
+                    entry = {
+                        "message_id": msg_id,
+                        "repo": repo_full,
+                        "pr": pr_num,
+                        "action": action,
+                        "github_url": url,
+                        "commit": None,
+                        "trash_at": datetime.now(timezone.utc).isoformat(),
+                    }
+                    ledger.append(entry)
+                    seen_ids[msg_id] = len(ledger) - 1
+                    eligible_ids.discard(msg_id)
+                else:
+                    entry = {
+                        "message_id": msg_id,
+                        "repo": repo_full,
+                        "pr": pr_num,
+                        "action": "trash_failed",
+                        "github_url": url,
+                        "commit": None,
+                        "trash_at": None,
+                        "reprocess": True,
+                        "events": [{"type": "trash_failed", "ts": datetime.now(timezone.utc).isoformat()}],
+                    }
+                    ledger.append(entry)
+                    seen_ids[msg_id] = len(ledger) - 1
+                    eligible_ids.add(msg_id)
+            else:
+                entry = {
+                    "message_id": msg_id,
+                    "repo": repo_full,
+                    "pr": pr_num,
+                    "action": action,
+                    "github_url": url,
+                    "commit": None,
+                    "trash_at": None,
+                }
+                ledger.append(entry)
+                seen_ids[msg_id] = len(ledger) - 1
+                append_action_queue(entry)
+
+            window_processed += 1
+            processed += 1
+
+            if batch_size and window_processed >= batch_size:
+                print(f"Batch limit reached for window {label}: {batch_size}")
+                break
+
+        if not window_override and (not batch_size or window_processed < batch_size):
+            cursor.setdefault("completed_windows", []).append(label)
+            save_cursor(cursor)
+
+    cursor["last_run"] = datetime.now(timezone.utc).isoformat()
+    save_cursor(cursor)
+    save_ledger_atomic(ledger)
+    print(f"Processed {processed} new emails. Ledger size: {len(ledger)}")
         m = re.match(r"\[([^\]]+)\].*?\|\s*(.+?)\s*\|\s*(.+)", line)
         if not m:
             continue
@@ -251,4 +410,10 @@ def classify_and_process():
 
 
 if __name__ == "__main__":
-    classify_and_process()
+    import argparse
+    parser = argparse.ArgumentParser(description="PR Email Agent (paginated)")
+    parser.add_argument("--dry-run", action="store_true", help="Inventory only, no actions")
+    parser.add_argument("--batch", type=int, default=None, help="Max emails per window")
+    parser.add_argument("--window", type=str, default=None, choices=["30d", "30d-1y", "gt1y"], help="Scan specific window only")
+    args = parser.parse_args()
+    classify_and_process(dry_run=args.dry_run, batch_size=args.batch, window_override=args.window)
