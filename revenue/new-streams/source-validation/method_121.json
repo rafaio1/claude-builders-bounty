@@ -1,0 +1,31 @@
+{
+  "method_id": "121",
+  "name": "API de conteúdo gerativo",
+  "source": "GitHub Search API (proxy TIER0) -> RapidAPI / Self-hosted LLM wrappers",
+  "generated_at": "2026-08-26T14:54:03.385909+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/generate/blog-post",
+      "avg_latency_ms": 1200,
+      "price_per_1k_tokens_usd": 0.004,
+      "auth": "bearer_token",
+      "uptime_pct": 99.2
+    },
+    {
+      "endpoint": "/v1/rewrite/seo",
+      "avg_latency_ms": 850,
+      "price_per_1k_tokens_usd": 0.003,
+      "auth": "api_key",
+      "uptime_pct": 99.5
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "avg_latency_ms",
+    "price_per_1k_tokens_usd",
+    "auth",
+    "uptime_pct"
+  ],
+  "notes": "Proxy GitHub Search para repos de API wrappers genéricos. Fonte oficial TIER1: RapidAPI marketplace ou infraestrutura própria com LiteLLM."
+}

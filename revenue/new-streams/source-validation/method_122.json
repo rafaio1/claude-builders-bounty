@@ -1,0 +1,31 @@
+{
+  "method_id": "122",
+  "name": "API de conteúdo gerativo (for startups)",
+  "source": "GitHub Search API (proxy TIER0) -> Open-source inference servers",
+  "generated_at": "2026-08-26T14:54:03.385909+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/chat/completions",
+      "model": "llama-3-8b-instruct",
+      "concurrency": 50,
+      "pricing_model": "flat_monthly",
+      "monthly_usd": 299
+    },
+    {
+      "endpoint": "/v1/embeddings",
+      "model": "bge-m3",
+      "concurrency": 200,
+      "pricing_model": "pay_as_you_go",
+      "monthly_usd": 0.0001
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "model",
+    "concurrency",
+    "pricing_model",
+    "monthly_usd"
+  ],
+  "notes": "Foco em startups que precisam de previsibilidade de custo. Proxy GitHub. Fonte oficial TIER1: Together.ai / Groq / Modal self-hosted."
+}

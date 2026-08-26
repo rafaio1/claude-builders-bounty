@@ -1,0 +1,36 @@
+{
+  "method_id": "123",
+  "name": "API de conteúdo gerativo (for enterprises)",
+  "source": "GitHub Search API (proxy TIER0) -> Enterprise AI gateways",
+  "generated_at": "2026-08-26T14:54:03.385909+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/enterprise/generate",
+      "sla": "99.99%",
+      "compliance": [
+        "SOC2",
+        "HIPAA"
+      ],
+      "dedicated_throughput": true,
+      "contract_min_months": 12
+    },
+    {
+      "endpoint": "/v1/enterprise/fine-tune",
+      "sla": "99.9%",
+      "compliance": [
+        "SOC2"
+      ],
+      "dedicated_throughput": true,
+      "contract_min_months": 6
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "sla",
+    "compliance",
+    "dedicated_throughput",
+    "contract_min_months"
+  ],
+  "notes": "API enterprise-grade com SLA e compliance. Proxy GitHub para specs públicas. Fonte oficial TIER1: Azure OpenAI / AWS Bedrock / GCP Vertex AI."
+}
