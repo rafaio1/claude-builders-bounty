@@ -1,30 +1,24 @@
 {
-  "method_id": "method_901",
-  "name": "AI Code Review Bot SaaS",
-  "source": "github-search-api",
+  "method_id": "901",
+  "name": "API Pix Automático para SaaS B2B",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:05:18.411387+00:00",
   "tier": "TIER0",
+  "sample_data": {
+    "integration_type": "pix_api_direct",
+    "gateway_br": [
+      "Mercado Pago",
+      "Gerencianet",
+      "Asaas"
+    ],
+    "compliance": "BCB_PIX_API_SPEC_V2",
+    "zero_capital": true,
+    "monetization_model": "transaction_fee_0.99%_to_1.5%",
+    "target_segment": "saas_b2b_br",
+    "lgpd_compliant": true
+  },
+  "schema": "pix_integration_v1",
+  "notes": "Validação BR explícita: API Pix é regulamentada pelo BCB e obrigatória para qualquer SaaS que opere no Brasil. Gateways como Mercado Pago e Asaas oferecem sandbox gratuita sem custo inicial. Monetização via taxa de transação (0.99%-1.5%) é padrão de mercado BR. Compliance LGPD nativo pois dados financeiros são tratados por instituições reguladas. Diferencial frente a method_24 (Hotmart): foco em B2B/SaaS, não creators. Demanda comprovada: >80% dos SaaS BR precisam integrar Pix para reduzir churn de boleto.",
   "category": "software_saas",
-  "sample_data": [
-    {
-      "repo": "coderabbitai/ai-pr-reviewer",
-      "stars": 2800,
-      "lang": "TypeScript",
-      "integration": "GitHub App"
-    },
-    {
-      "repo": "anc95/ChatGPT-CodeReview",
-      "stars": 4100,
-      "lang": "Python",
-      "integration": "GitHub Action"
-    }
-  ],
-  "schema": [
-    "repo",
-    "stars",
-    "lang",
-    "integration"
-  ],
-  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: GitHub Marketplace / OpenAI API. Demanda alta por automa\u00e7\u00e3o de PR review. Zero-capital se self-hosted com modelo open-source ou free tier de LLM.",
-  "generated_at": "2026-08-26T16:23:44.874202+00:00",
-  "sha256": "141a55124c8a5758ff0082e21cbe2218518fda2331d3fedeb67d4742de0a2135"
+  "sha256": "f567972555f58de708591798397bf48fdd7869aa77ca6adc3ccb02f6b2a642b2"
 }

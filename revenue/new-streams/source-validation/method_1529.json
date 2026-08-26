@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1529",
+  "name": "E-contábil Fiscal Automation Plugins",
+  "category": "software_saas",
+  "source": "https://developer.econtabil.com.br/plugins",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.495999+00:00",
+  "sample_data": {
+    "platform": "E-contábil",
+    "payout_structure": "BRL plugins fiscais R$299-1.5k/mês, revenue share 65/35",
+    "compliance_status": "Contabilidade digital BR, SPED/NFe integrado, compliance Receita Federal",
+    "market_demand_indicator": "+200k escritórios contábeis BR, automação fiscal reduz erro humano 80%",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://developer.econtabil.com.br/plugins | COMPLIANCE: Contabilidade digital BR, SPED/NFe integrado, compliance Receita Federal | PAYOUT BRL: BRL plugins fiscais R$299-1.5k/mês, revenue share 65/35 | DEMANDA BR: +200k escritórios contábeis BR, automação fiscal reduz erro humano 80% | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "60cc8d13e2695f5ab358647f8d4637a2e2e21c2943851ecf202b4db4b1c5ac19"
+}

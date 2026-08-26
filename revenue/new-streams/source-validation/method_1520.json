@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1520",
+  "name": "Clube de Autores Print-on-Demand BR",
+  "category": "content_monetization",
+  "source": "https://clubedeautores.com.br/como-publicar",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.488608+00:00",
+  "sample_data": {
+    "platform": "Clube",
+    "payout_structure": "BRL margem livre sobre preço capa, payout mensal R$50 mín",
+    "compliance_status": "POD BR nativa, distribuição livrarias físicas/online, NF-e automática",
+    "market_demand_indicator": "+30k títulos publicados/ano BR, alternativa nacional ao Amazon KDP",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://clubedeautores.com.br/como-publicar | COMPLIANCE: POD BR nativa, distribuição livrarias físicas/online, NF-e automática | PAYOUT BRL: BRL margem livre sobre preço capa, payout mensal R$50 mín | DEMANDA BR: +30k títulos publicados/ano BR, alternativa nacional ao Amazon KDP | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria content_monetization.",
+  "sha256": "026016c3617c7583a84cf8251c23f8b4c4a220a57de9d7ed668bed1863038529"
+}

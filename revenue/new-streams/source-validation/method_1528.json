@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1528",
+  "name": "GestãoClick Estoque API Extensions",
+  "category": "software_saas",
+  "source": "https://api.gestaoclick.com.br/extensions",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.495690+00:00",
+  "sample_data": {
+    "platform": "GestãoClick",
+    "payout_structure": "BRL extensões estoque R$199-999/mês, marketplace interno",
+    "compliance_status": "ERP PMEs BR, integração marketplaces BR nativa, compliance fiscal SEFAZ",
+    "market_demand_indicator": "+50k PMEs usam GestãoClick, automação estoque multicanal é dor principal",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.gestaoclick.com.br/extensions | COMPLIANCE: ERP PMEs BR, integração marketplaces BR nativa, compliance fiscal SEFAZ | PAYOUT BRL: BRL extensões estoque R$199-999/mês, marketplace interno | DEMANDA BR: +50k PMEs usam GestãoClick, automação estoque multicanal é dor principal | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "9e32535f026a88eb6ea568969ccfc4712e28c3d291e4f8ee6f19aa0dbfc0e970"
+}

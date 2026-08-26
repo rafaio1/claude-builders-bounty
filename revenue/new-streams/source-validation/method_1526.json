@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1526",
+  "name": "Involves CRM Custom Modules",
+  "category": "software_saas",
+  "source": "https://developers.involves.com.br/modules",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.489602+00:00",
+  "sample_data": {
+    "platform": "Involves",
+    "payout_structure": "BRL módulos custom R$500-3k one-time, suporte opcional R$200/mês",
+    "compliance_status": "CRM BR nativo focado varejo, API aberta, compliance PCI-DSS pagamentos",
+    "market_demand_indicator": "+15k varejistas BR, personalização CRM é diferencial vs Salesforce genérico",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://developers.involves.com.br/modules | COMPLIANCE: CRM BR nativo focado varejo, API aberta, compliance PCI-DSS pagamentos | PAYOUT BRL: BRL módulos custom R$500-3k one-time, suporte opcional R$200/mês | DEMANDA BR: +15k varejistas BR, personalização CRM é diferencial vs Salesforce genérico | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "e6d58cc1e3e25ce744b7dbbb204a8df816d8dbc7f0f52da05b73bf20f987a30d"
+}

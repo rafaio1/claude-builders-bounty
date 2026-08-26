@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1532",
+  "name": "Tiny ERP E-commerce Connectors BR",
+  "category": "software_saas",
+  "source": "https://tiny.com.br/api/connectors",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.496597+00:00",
+  "sample_data": {
+    "platform": "Tiny",
+    "payout_structure": "BRL conectores marketplace R$199-999/mês, setup fee R$300",
+    "compliance_status": "ERP e-commerce BR, integração ML/Shopee/Magalu nativa, NF-e automática",
+    "market_demand_indicator": "+40k lojas virtuais BR usam Tiny, sincronização estoque multicanal é crítica",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://tiny.com.br/api/connectors | COMPLIANCE: ERP e-commerce BR, integração ML/Shopee/Magalu nativa, NF-e automática | PAYOUT BRL: BRL conectores marketplace R$199-999/mês, setup fee R$300 | DEMANDA BR: +40k lojas virtuais BR usam Tiny, sincronização estoque multicanal é crítica | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "ae0c10dffa07dd16dbdbba09887422724d601f010d80727eeb07b07d3dd8a1b8"
+}

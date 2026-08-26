@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1531",
+  "name": "Superlógica Condomínios Add-ons",
+  "category": "software_saas",
+  "source": "https://developers.superlogica.com/addons",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.496411+00:00",
+  "sample_data": {
+    "platform": "Superlógica",
+    "payout_structure": "BRL add-ons condomínio R$99-599/mês, integration fee única R$500",
+    "compliance_status": "SaaS condomínios líder BR, compliance Lei Condomínio, boletos registrados",
+    "market_demand_indicator": "+30k condomínios BR, síndicos buscam automação além billing básico",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://developers.superlogica.com/addons | COMPLIANCE: SaaS condomínios líder BR, compliance Lei Condomínio, boletos registrados | PAYOUT BRL: BRL add-ons condomínio R$99-599/mês, integration fee única R$500 | DEMANDA BR: +30k condomínios BR, síndicos buscam automação além billing básico | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "636438f6a26669252cc1fc80bfb22b20bb47ad43e151920adbda996c7e6a8a21"
+}

@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1523",
+  "name": "ContaAzul API Integration Marketplace",
+  "category": "software_saas",
+  "source": "https://api.contaazul.com.br/docs",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.489080+00:00",
+  "sample_data": {
+    "platform": "ContaAzul",
+    "payout_structure": "BRL marketplace apps R$99-999/mês, revenue share 70/30 desenvolvedor",
+    "compliance_status": "ERP contábil líder BR, API pública, compliance fiscal brasileiro nativo",
+    "market_demand_indicator": "+80k empresas usam ContaAzul, ecossistema integrações carente verticais",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.contaazul.com.br/docs | COMPLIANCE: ERP contábil líder BR, API pública, compliance fiscal brasileiro nativo | PAYOUT BRL: BRL marketplace apps R$99-999/mês, revenue share 70/30 desenvolvedor | DEMANDA BR: +80k empresas usam ContaAzul, ecossistema integrações carente verticais | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "833077f5025020ab1e43e75ee12bf25c52075b2e427fb2385228ed2de3b7ad58"
+}

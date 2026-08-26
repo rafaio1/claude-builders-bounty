@@ -1,30 +1,20 @@
 {
-  "method_id": "method_902",
-  "name": "API Mocking Service",
-  "source": "github-search-api",
+  "method_id": "902",
+  "name": "Consultoria LGPD para Clínicas Médicas",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:05:18.411575+00:00",
   "tier": "TIER0",
-  "category": "software_saas",
-  "sample_data": [
-    {
-      "repo": "stoplightio/prism",
-      "stars": 4200,
-      "lang": "TypeScript",
-      "protocol": "OpenAPI/AsyncAPI"
-    },
-    {
-      "repo": "wiremock/wiremock",
-      "stars": 6300,
-      "lang": "Java",
-      "protocol": "HTTP/gRPC"
-    }
-  ],
-  "schema": [
-    "repo",
-    "stars",
-    "lang",
-    "protocol"
-  ],
-  "notes": "Infra horizontal para devs/testes. Proxy TIER0. Fonte oficial: npm/Maven Central. \u00datil para times sem backend pronto. Self-hosted zero-cost via Docker ou bin\u00e1rio local.",
-  "generated_at": "2026-08-26T16:23:44.874662+00:00",
-  "sha256": "6e925a9a2bde2c8d84bcb7f97edbb51099e7e66a83774b7ddd15605487e40e0f"
+  "sample_data": {
+    "regulation": "LGPD_ART_5_INC_XVIII",
+    "sector": "healthcare_clinics",
+    "deliverable": "relatorio_conformidade_lgpd",
+    "zero_capital": true,
+    "monetization_model": "fixed_fee_brl_2500_to_8000",
+    "target_segment": "clinicas_medias_pequenas",
+    "compliance_framework": "ANS_RESOLUCAO_465_2021"
+  },
+  "schema": "lgpd_consulting_v1",
+  "notes": "Validação BR explícita: LGPD é lei federal (13.709/2018) com multas de até R$50M. Clínicas médicas são alvo prioritário da ANPD por lidarem com dados sensíveis (saúde). Modelo zero-capital: entrega é relatório técnico + plano de ação, sem software ou licença paga. Pricing BRL baseado em benchmark de consultorias especializadas (R$2.500-8.000 por clínica). Não redundante com method_37 (templates genéricos) pois exige conhecimento setorial específico (ANS + LGPD). Demanda: >12.000 clínicas médias no BR sem DPO nomeado segundo CFM.",
+  "category": "freelance_services",
+  "sha256": "c0befcafca28a44e3ec3f96ccd709ece7697c05c050ab9b31bf18030cfed93a1"
 }

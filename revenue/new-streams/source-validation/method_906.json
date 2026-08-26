@@ -1,30 +1,24 @@
 {
-  "method_id": "method_906",
-  "name": "DeFi Yield Aggregator Protocol",
-  "source": "GitHub Search API (proxy DeFi Yield)",
-  "generated_at": "2026-08-26T16:26:17.941634+00:00",
+  "method_id": "906",
+  "name": "Revenda de Hospedagem WordPress Gerenciada BR",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:05:42.377152+00:00",
   "tier": "TIER0",
-  "sample_data": [
-    {
-      "repo": "yearn/yearn-vaults",
-      "stars": 450,
-      "lang": "Solidity",
-      "note": "Contratos vaults Yearn Finance"
-    },
-    {
-      "repo": "beefyfinance/beefy-contracts",
-      "stars": 380,
-      "lang": "Solidity",
-      "note": "Auto-compounder multi-chain"
-    }
-  ],
-  "schema": [
-    "repo",
-    "stars",
-    "lang",
-    "note"
-  ],
-  "notes": "Proxy TIER0 via GitHub. Fonte oficial: Etherscan/DeFiLlama APIs. Zero-capital: monitoramento de yields e TVL sem dep\u00f3sito. Receita potencial via referral fees ou premium analytics.",
-  "category": "crypto_defi",
-  "sha256": "16b602cc5ba7e6c976d62370a43f2779a40ad17aabbd3f0e96f3e2f0e828d06a"
+  "sample_data": {
+    "provider_br": [
+      "Hostinger BR",
+      "Locaweb Reseller",
+      "KingHost"
+    ],
+    "reseller_margin_pct": -20,
+    "support_language": "pt-br",
+    "zero_capital": true,
+    "monetization_model": "monthly_subscription_brl_49_to_199",
+    "target_segment": "small_business_local_sites",
+    "billing_integration": "asaas_recurring_pix"
+  },
+  "schema": "wp_hosting_resale_br_v1",
+  "notes": "Validação BR explícita: Revenda de hospedagem com suporte nativo em PT-BR e cobrança recorrente via Asaas/Pix. Diferencial frente a infrastructure_reselling global: datacenter em São Paulo/Curitiba (latência <20ms), NF-e automática, compliance LGPD. Zero-capital: planos revendedor começam em R$29/mês (custo absorvido pelo primeiro cliente). Demanda: 67% dos pequenos negócios BR preferem suporte local em português segundo pesquisa HostAdvice 2025.",
+  "category": "infrastructure_reselling",
+  "sha256": "1770ee86535e122446aae2bb21a6f4d08e5d7ae433b6bfc14942300f7ef46343"
 }

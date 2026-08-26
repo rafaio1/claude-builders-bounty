@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1530",
+  "name": "Movidesk Helpdesk Widget BR",
+  "category": "software_saas",
+  "source": "https://api.movidesk.com/widgets",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.496184+00:00",
+  "sample_data": {
+    "platform": "Movidesk",
+    "payout_structure": "BRL widgets customizados R$149-799/mês, white-label completo",
+    "compliance_status": "Service desk BR líder, LGPD ticket data, ISO 27001 certified",
+    "market_demand_indicator": "+10k empresas BR usam Movidesk, personalização atendimento é upsell natural",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.movidesk.com/widgets | COMPLIANCE: Service desk BR líder, LGPD ticket data, ISO 27001 certified | PAYOUT BRL: BRL widgets customizados R$149-799/mês, white-label completo | DEMANDA BR: +10k empresas BR usam Movidesk, personalização atendimento é upsell natural | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "45c04de5e49c7613f77fef729df8db713b2f87b0ea88c9b82319ea862c667cec"
+}

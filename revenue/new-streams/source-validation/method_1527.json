@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1527",
+  "name": "Senhas Web Appointment SaaS BR",
+  "category": "software_saas",
+  "source": "https://senhasweb.com.br/api-parceiros",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.489822+00:00",
+  "sample_data": {
+    "platform": "Senhas",
+    "payout_structure": "BRL white-label agendamento R$99-499/mês por clínica/salão, revenda permitida",
+    "compliance_status": "SaaS filas/agendamento BR, LGPD health data, ANVISA compliant para saúde",
+    "market_demand_indicator": "+100k estabelecimentos serviços BR, agendamento online aumenta receita 30%",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://senhasweb.com.br/api-parceiros | COMPLIANCE: SaaS filas/agendamento BR, LGPD health data, ANVISA compliant para saúde | PAYOUT BRL: BRL white-label agendamento R$99-499/mês por clínica/salão, revenda permitida | DEMANDA BR: +100k estabelecimentos serviços BR, agendamento online aumenta receita 30% | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria software_saas.",
+  "sha256": "88267ee9a56074ba003b4fde62c2833bdc76054cc58cd859cca8eb846829bf72"
+}

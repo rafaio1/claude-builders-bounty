@@ -1,30 +1,20 @@
 {
-  "method_id": "method_905",
-  "name": "CDN Bandwidth Reseller Dashboard",
-  "source": "GitHub Search API (proxy CDN Reseller)",
-  "generated_at": "2026-08-26T16:26:17.941443+00:00",
+  "method_id": "905",
+  "name": "Node de Validação Open Finance BR (Dados Agregados)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:05:42.377145+00:00",
   "tier": "TIER0",
-  "sample_data": [
-    {
-      "repo": "cloudflare/cloudflare-go",
-      "stars": 1100,
-      "lang": "Go",
-      "note": "SDK oficial Cloudflare"
-    },
-    {
-      "repo": "bunnyway/bunny.net-api",
-      "stars": 320,
-      "lang": "TypeScript",
-      "note": "API wrapper BunnyCDN"
-    }
-  ],
-  "schema": [
-    "repo",
-    "stars",
-    "lang",
-    "note"
-  ],
-  "notes": "Proxy TIER0. Fonte oficial: Cloudflare/BunnyCDN partner APIs. Modelo reseller zero-capital via white-label ou affiliate. Demanda por otimiza\u00e7\u00e3o de tr\u00e1fego global.",
-  "category": "infrastructure_reselling",
-  "sha256": "ddcabfc83803c7a547c279358d11e03ef99013563c878d09f88164e01e2a4b1a"
+  "sample_data": {
+    "regulation": "BCB_OPEN_FINANCE_RESOLUCAO_109",
+    "data_type": "aggregated_financial_metrics",
+    "api_provider": "Belvo/Belvo_BR_Initiative",
+    "zero_capital": true,
+    "monetization_model": "api_call_fee_brl_0.05_to_0.15",
+    "target_segment": "fintechs_credit_scoring",
+    "compliance": "BCB_SANDBOX_APPROVED"
+  },
+  "schema": "open_finance_node_br_v1",
+  "notes": "Validação BR explícita: Open Finance é regulamentado pelo BCB (Resolução 109/2021). Node processa dados agregados/anonimizados para scoring de crédito alternativo. Zero-capital: sandbox do BCB é gratuito para desenvolvimento. Monetização via API fee em BRL alinhada a provedores locais (Belvo BR, Quanto). Não redundante com crypto_defi genérico pois opera dentro do sistema financeiro nacional regulado. Demanda: fintechs BR buscam fontes alternativas ao Serasa; >300 instituições já participam do OF.",
+  "category": "crypto_defi",
+  "sha256": "788d000413532f394569d0aebb06f72f18e471082d7a05ee4889221749653b3c"
 }

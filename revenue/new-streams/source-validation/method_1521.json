@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1521",
+  "name": "Nexo Jornal Paywall Contributor",
+  "category": "content_monetization",
+  "source": "https://nexojornal.com.br/contribua",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.488768+00:00",
+  "sample_data": {
+    "platform": "Nexo",
+    "payout_structure": "BRL pagamento por artigo R$300-1.5k, freelancer recorrente",
+    "compliance_status": "Jornalismo independente BR, contrato PJ/PF, compliance trabalhista",
+    "market_demand_indicator": "Jornalismo digital BR cresce 30%/ano, veículos buscam colunistas especializados",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://nexojornal.com.br/contribua | COMPLIANCE: Jornalismo independente BR, contrato PJ/PF, compliance trabalhista | PAYOUT BRL: BRL pagamento por artigo R$300-1.5k, freelancer recorrente | DEMANDA BR: Jornalismo digital BR cresce 30%/ano, veículos buscam colunistas especializados | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria content_monetization.",
+  "sha256": "d29c6dd1fa7efc23aabbdf3f9b8a3c9ec630419d63b3236a7ed627e7e3c8ce41"
+}

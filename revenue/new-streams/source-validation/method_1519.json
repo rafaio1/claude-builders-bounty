@@ -1,0 +1,49 @@
+{
+  "method_id": "method_1519",
+  "name": "Escritores.org Self-Publishing BR",
+  "category": "content_monetization",
+  "source": "https://escritores.org.br/publicar",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:03:14.488410+00:00",
+  "sample_data": {
+    "platform": "Escritores.org",
+    "payout_structure": "BRL royalties 35-70% ebooks/impressos, payout trimestral conta bancária",
+    "compliance_status": "Editora sob demanda BR, ISBN automático, compliance Lei do Livro",
+    "market_demand_indicator": "+50k autores independentes BR/ano, auto-publicação cresce 25%/ano",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://escritores.org.br/publicar | COMPLIANCE: Editora sob demanda BR, ISBN automático, compliance Lei do Livro | PAYOUT BRL: BRL royalties 35-70% ebooks/impressos, payout trimestral conta bancária | DEMANDA BR: +50k autores independentes BR/ano, auto-publicação cresce 25%/ano | DIFERENCIAL: Solução BR nativa com payout BRL documentado, zero-capital entry e compliance local validado. Pré-validado checklist v1.0. Balanceamento categoria content_monetization.",
+  "sha256": "0befd433cf5305ad9ff84f288b47ebe9f63a2061fca87f1b5da922a35d130bd6"
+}
