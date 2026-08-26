@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T13:30:26+00:00",
+  "updated_at": "2026-08-26T13:32:23+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -532,7 +532,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T133026Z",
+      "map_id": "20260826T133223Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -559,7 +559,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T133026Z",
+      "map_id": "20260826T133223Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -586,7 +586,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T133026Z",
+      "map_id": "20260826T133223Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -615,7 +615,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T133026Z",
+      "map_id": "20260826T133223Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -9362,6 +9362,179 @@
           "at": "2026-08-26T13:30:26+00:00",
           "event": "mapped",
           "detail": "20260826T133026Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-falta-de-contexto-estruturado-no-review-feedback",
+      "key": "068608b6dd04c7a0",
+      "canon": "4da799b37686d084",
+      "title": "Falta de contexto estruturado no review_feedback",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita uma mudança, o improve.py devolve o item para pending apenas com texto livre, dificultando a correção exata pelo claude_cli.py no ciclo seguinte e causando loops de erro.",
+      "change": "Padronizar o review_feedback em improve.py como um JSON com campos 'erro', 'arquivo' e 'sugestao', e adaptar claude_cli.py para injetar esse JSON estruturado no prompt do GhostCLI.",
+      "never": [
+        "Ignorar o parecer do reviewer",
+        "Fazer commit automático sem review",
+        "Usar git reset --hard"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-conten-o-no-uso-do-playwright-cli",
+      "key": "cb3fad280043b9c3",
+      "canon": "a06bd174b8ae008f",
+      "title": "Contenção no uso do playwright-cli",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Múltiplos agentes ou ticks podem tentar instanciar o navegador simultaneamente, gerando conflito de PIDs e snapshots corrompidos no diretório .playwright-cli.",
+      "change": "Implementar um file lock (ex: fcntl) no wrapper do playwright-cli antes de invocar o binário headless, garantindo execução serializada.",
+      "never": [
+        "Alterar a configuração --no-sandbox",
+        "Ativar playwright-mcp",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/tools/browser.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-lock-de-execu-o-para-o-playwright-cli-theme-tool",
+      "key": "063a2e705b9b98c9",
+      "canon": "ed15653fd269da9e",
+      "title": "Lock de execução para o playwright-cli (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Garante que apenas uma instância do navegador headless seja executada por vez no host, evitando estouro de memória e corrupção de snapshots, assegurando que a ferramenta de browser seja robusta.",
+      "change": "Adicionar um context manager de lock no módulo que encapsula as chamadas ao playwright-cli, liberando o lock apenas após o fechamento do PID.",
+      "never": [
+        "Usar playwright-mcp",
+        "Rodar navegadores em paralelo sem isolamento"
+      ],
+      "files_hint": [
+        "src/agentic/tools/browser.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-enriquecimento-de-traces-sanitizados-da-ghostcli",
+      "key": "486dc74561255ac4",
+      "canon": "f144d1ba39649589",
+      "title": "Enriquecimento de traces sanitizados da GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Os traces atuais da GhostCLI focam em métricas de uso, mas carecem de metadados sobre a intenção do develop e o resultado do pytest, limitando a capacidade da IA de aprender com erros passados.",
+      "change": "Injetar tags de 'tema', 'arquivo_alvo' e 'status_pytest' nos logs sanitizados enviados para a GhostCLI em ghostcli.py, sem expor o código-fonte.",
+      "never": [
+        "Enviar código-fonte completo ou secrets nos traces",
+        "Incluir credenciais Bybit ou env vars"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-cache-de-leitura-do-load-env-sh",
+      "key": "46881988867917c3",
+      "canon": "19f9f0b46dfd20fd",
+      "title": "Cache de leitura do load-env.sh",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O tick de saúde a cada 90s executa rotinas que podem recarregar variáveis de ambiente desnecessariamente, gerando overhead de I/O e subprocessos a cada ciclo.",
+      "change": "Implementar um cache com TTL em env.py para as variáveis carregadas via internal/load-env.sh, invalidando o cache apenas se o timestamp do arquivo for modificado.",
+      "never": [
+        "Imprimir secrets no log",
+        "Hardcodar credenciais Bybit no código",
+        "Commitar .env"
+      ],
+      "files_hint": [
+        "src/agentic/env.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-valida-o-proativa-de-git-clean-no-improve-py",
+      "key": "2a46452aaeeec4ee",
+      "canon": "23df2e9032d37221",
+      "title": "Validação proativa de git_clean no improve.py",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Embora o censo atual mostre git_clean=true, o loop de melhoria contínua pode iniciar um develop se houver arquivos sujos não rastreados gerados por outras ferramentas durante a execução.",
+      "change": "Adicionar uma verificação de 'git status --porcelain' no início do ciclo de map/develop no improve.py, abortando a fila e logando se a árvore não estiver limpa.",
+      "never": [
+        "Executar git reset --hard",
+        "Usar git clean -fd",
+        "Forçar commits com --no-verify"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T133223Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:32:23+00:00",
+          "event": "mapped",
+          "detail": "20260826T133223Z"
         }
       ]
     }
