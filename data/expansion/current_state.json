@@ -7,7 +7,15 @@
   "services": {
     "agentic-loop.service": "active",
     "agentic-portal.service": "active",
-    "tradingagents-portal.service": "active"
+    "tradingagents-portal.service": "active",
+    "improve_timers": "active",
+    "timers_reactivated_at": "2026-08-26T21:45:00Z",
+    "timers_note": "Unmasked and restored from deploy/ after mask discovered",
+    "timers_next_run": {
+      "map": "21:32:52 UTC",
+      "dev": "21:37:19 UTC",
+      "review": "21:42:58 UTC"
+    }
   },
   "git_branch": "master",
   "git_status_short": "",
@@ -19,36 +27,41 @@
   "proposal_counts": {
     "REJEITAR": 3,
     "APROVAR_IMPLEMENTACAO": 1,
-    "ADIAR": 14,
-    "PILOTAR": 9
+    "ADIAR": 15,
+    "PILOTAR": 13
   },
   "total_proposals": 8,
-  "total_verdicts": 95,
+  "total_verdicts": 100,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:21:47.754804Z",
+  "last_council_action": "2026-08-26T21:26:20.993590+00:00",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
   "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
   "last_verdicts": [
+    "method_647: PILOTAR",
+    "method_646: PILOTAR",
+    "method_645: ADIAR",
+    "method_644: PILOTAR",
+    "method_643: PILOTAR",
     "method_537: ADIAR",
     "method_536: REJEITAR",
     "method_535: REJEITAR",
     "method_534: ADIAR",
-    "method_533: REJEITAR",
-    "method_532: REJEITAR",
-    "method_531: ADIAR",
-    "method_530: REJEITAR",
-    "method_529: REJEITAR",
-    "method_528: ADIAR"
+    "method_533: REJEITAR"
   ],
   "improve_timers_status": "MASKED",
   "master_branch": "master",
   "working_tree_dirty": true,
-  "last_verdict": "method_642",
+  "last_verdict": {
+    "proposal_id": "method_647",
+    "verdict": "PILOTAR",
+    "timestamp": "2026-08-26T21:26:20.993590+00:00",
+    "result": "SUCCESS"
+  },
   "pending_proposals_count": 0,
-  "last_updated": "2026-08-26T21:21:47.754804Z",
+  "last_updated": "2026-08-26T21:25:01.146068+00:00",
   "integrity_status": "master_dirty_concurrent_writes_active",
   "implemented_proposals": [
     "exp-20260826-isolated-worktree-for-improve",
@@ -62,11 +75,12 @@
   "rejected_proposals": [
     "exp-20260826-data-products-batch-4-creators"
   ],
-  "next_method": 643,
-  "last_verdict_timestamp": "2026-08-26T21:21:47.754804Z",
+  "next_method": 648,
+  "last_verdict_timestamp": "2026-08-26T21:26:20.993590+00:00",
   "integrity": {
-    "git_clean": true,
-    "last_check_utc": "2026-08-26T21:20:31.851663+00:00",
-    "note": "Restored via exp-20260826-commit-legitimate-runtime-changes (db7a000)"
+    "git_clean": false,
+    "last_check_utc": "2026-08-26T21:25:01.232410+00:00",
+    "note": "Restored via exp-20260826-commit-legitimate-runtime-changes (db7a000)",
+    "services_active": true
   }
 }

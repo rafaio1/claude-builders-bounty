@@ -1,0 +1,31 @@
+{
+  "generated_at": "2026-08-26T21:25:00Z",
+  "tmux_sessions": ["bybit_spot", "central_watchdog"],
+  "codex_processes": [
+    {"pid": 782600, "started": "2026-08-26T16:23:10", "args": "codex -m claude-opus-5[1m]", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1576483, "started": "2026-08-26T19:34:40", "args": "codex --dangerously-bypass... xhigh", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1888921, "started": "2026-08-26T20:56:50", "resume_id": "01a03e15-1388-7732-aba2-d8b17b8c8239", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1889010, "started": "2026-08-26T20:56:50", "resume_id": "01a03a37-7bc4-7a13-9812-e5a409effe5f", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1889012, "started": "2026-08-26T20:56:50", "resume_id": "01a03a37-62d8-7c91-a165-599d675dbffd", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1889042, "started": "2026-08-26T20:56:50", "resume_id": "01a03bf5-788a-75a3-819e-745cafda084a", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1889058, "started": "2026-08-26T20:56:50", "resume_id": "01a03a37-64a3-7b83-88d2-5bba5f82f103", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1889223, "started": "2026-08-26T20:56:51", "resume_id": "01a03bfb-694f-79d0-9a90-f087b8efe947", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1928569, "started": "2026-08-26T21:04:29", "resume_id": "01a03a37-5be9-72b1-a6dc-a7c84ea6454d", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1931253, "started": "2026-08-26T21:04:57", "resume_id": "01a03bf1-cd29-7fe2-8e36-c43047b53a1a", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1931254, "started": "2026-08-26T21:04:57", "resume_id": "01a03bf4-2b9d-76d3-b24d-e0eb14fdef54", "tmux": null, "status": "orphan_ssh"},
+    {"pid": 1994652, "started": "2026-08-26T21:19:15", "args": "codex (current session)", "tmux": null, "status": "active_central"},
+    {"pid": 2024320, "started": "2026-08-26T21:24:43", "args": "claude triage judge (bughunter)", "tmux": null, "status": "transient_task"}
+  ],
+  "trading_processes": [
+    {"pid": 3793301, "tmux": "bybit_spot", "cmd": "subagent_trailing_unified.py bybit", "status": "active_tmux"},
+    {"pid": 4079732, "tmux": null, "cmd": "mean_reversion_strategy.py bybit", "status": "orphan_systemd"},
+    {"pid": 4079731, "tmux": null, "cmd": "mean_reversion_strategy.py binance", "status": "orphan_systemd"},
+    {"pid": 4141612, "tmux": "bybit_spot", "cmd": "subagent_trailing_unified.py bybit (nested)", "status": "active_tmux_nested"}
+  ],
+  "reconciliation_notes": {
+    "bybit_orphans": "PIDs 4079731 and 4079732 are mean_reversion processes outside tmux. Per TIER 2 capital risk rule, DO NOT restart autonomously. Awaiting human gate.",
+    "codex_orphans": "11 codex processes bound to SSH PTYs, not tmux. Migration to tmux required per durability directive. No action taken yet to avoid disrupting active sessions.",
+    "telegram_gate": "No liquidated revenue. Telegram silent per REGRA TELEGRAM IMEDIATA.",
+    "ledger": "Synced at 21:24:32Z. 25 pending PRs ($1265), $0 liquidated."
+  }
+}
