@@ -1345,6 +1345,58 @@
       "reason": "Validated all 7 featured bounties on Opire homepage. ALL REJECTED as stale/closed/merged on GitHub. Storybook #12641 (merged), Godot #107845 (merged), Prisma #15647 (merged), Deno #28054 (closed). Plus previously rejected Zed, AutoKey, TypeORM. Opire app shows 350 available bounties but top listings are outdated. Need to filter/search for actually open issues.",
       "evidence_url": "https://app.opire.dev/home",
       "action": "expand_search"
+    },
+    {
+      "repo": "tari-project/special_contributions",
+      "pr_number": null,
+      "issue": 19,
+      "program": "Tari Bounty Program",
+      "status": "discovered_verified_open",
+      "value": null,
+      "currency": "XTM",
+      "payout_method": "TBD",
+      "evidence": [
+        {
+          "type": "gh_issue_check",
+          "checked_at": "2026-08-26T22:59:29.303379+00:00",
+          "labels": [
+            "bounty-S"
+          ],
+          "state": "OPEN",
+          "active_claimant": "xaviderds3-tacna (PR #7970 ready for review)",
+          "note": "Bounty-S tier. Active claimant with PR ready for review as of 2026-08-25. Do NOT submit without verifying PR was rejected or abandoned."
+        }
+      ],
+      "last_action": "2026-08-26T22:59:29.303379+00:00",
+      "next_action": "Monitor PR #7970 status; only pursue if rejected/abandoned after 14d",
+      "discovered_at": "2026-08-26T22:59:29.303379+00:00"
+    },
+    {
+      "repo": "tari-project/wallet-benchmarks",
+      "pr_number": null,
+      "issue": 1,
+      "program": "Tari Bounty Program",
+      "status": "discovered_verified_open",
+      "value": 150000,
+      "currency": "XTM",
+      "payout_method": "TBD",
+      "evidence": [
+        {
+          "type": "gh_issue_check",
+          "checked_at": "2026-08-26T22:59:29.303379+00:00",
+          "labels": [
+            "bounty",
+            "bounty-L"
+          ],
+          "state": "OPEN",
+          "tier": "L (150,000 XTM)",
+          "active_claimants": "roadhero (ran suite 2026-07-22), JustAResearcher (full submission in progress as of 2026-07-30)",
+          "note": "Bounty-L tier. Multiple active claimants with recent activity. Do NOT submit without verifying no accepted submission exists."
+        }
+      ],
+      "last_action": "2026-08-26T22:59:29.303379+00:00",
+      "next_action": "Monitor for accepted submission or maintainer feedback rejecting existing claims; verify payout mechanism before any work",
+      "discovered_at": "2026-08-26T22:59:29.303379+00:00"
     }
   ],
   "bounties": [

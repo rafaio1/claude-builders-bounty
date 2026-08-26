@@ -1,0 +1,35 @@
+{
+  "method_id": "906",
+  "name": "Revenda de Hospedagem WordPress Gerenciada BR",
+  "original_proposal_title": "DeFi Yield Aggregator Protocol",
+  "status": "SCAFFOLD_OK",
+  "source_mismatch_note": "Proposal indicava DeFi Yield Aggregator, mas source-validation/method_906.json cont\u00e9m Revenda WP BR. Scaffold constru\u00eddo sobre a fonte real verificada.",
+  "free_tier_limits": {
+    "type": "reseller_plan_trial",
+    "notes": "Hostinger/Locaweb oferecem pain\u00e9is de revenda com trial ou custo inicial absorvido pelo primeiro cliente. Zero-capital efetivo via cobran\u00e7a antecipada."
+  },
+  "paid_plan_baseline": {
+    "model": "monthly_subscription_brl",
+    "range": "49-199/m\u00eas por site gerenciado",
+    "cost_base": "29-89/m\u00eas plano revendedor"
+  },
+  "reselling_model": {
+    "viable": true,
+    "mechanism": "white_label_hosting + managed_wp_service",
+    "margin_pct": 20,
+    "billing": "asaas_recurring_pix",
+    "compliance": "lgpd_compliant_nf_e"
+  },
+  "risks": [
+    "support_overhead_pt_br",
+    "churn_small_business",
+    "provider_dependency"
+  ],
+  "next_steps": [
+    "Validar TOS Hostinger/Locaweb para revenda white-label",
+    "Criar script de onboarding automatizado",
+    "Submeter ao Conselho como TIER1 candidate ap\u00f3s valida\u00e7\u00e3o TOS"
+  ],
+  "analyzed_at": "2026-08-26T22:59:25.973182+00:00",
+  "source_doc": "revenue/new-streams/source-validation/method_906.json"
+}
