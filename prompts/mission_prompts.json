@@ -1,0 +1,100 @@
+{
+  "mission": "Acumular 1.000.000 USD na conta Wise ou Bybit no menor tempo possível",
+  "owner_share_rate": 0.20,
+  "reinvest_rate": 0.80,
+  "milestone": 1000,
+  "aggression_level": "EXTREME",
+  "target_timeline": "6-9 meses",
+  "prompts": [
+    {
+      "id": "bounty_hunter_primary",
+      "priority": "CRITICAL",
+      "process": "bounty_engine.py",
+      "command": "cd /Agentic && .venv/bin/python scripts/bounty_engine.py --live --autonomous --aggressive",
+      "objective": "Identificar e submeter bounties críticos e urgentes com recompensas >$2.000 USD. Submeter múltiplos PRs simultaneamente em plataformas de pagamento rápido (Immunefi, Gitcoin, OnlyDust). Foco em vulnerabilidades high/critical e feature bounties de alto valor.",
+      "constraints": [
+        "Nunca usar empréstimos",
+        "Apenas atividades lícitas",
+        "Manter reputação das contas",
+        "Documentar todas as submissões no bounty_ledger.json",
+        "Priorizar bounties com deadline <7 dias"
+      ],
+      "target_monthly": "$20.000-$50.000 USD",
+      "aggression": "MAX"
+    },
+    {
+      "id": "perp_scalper_primary",
+      "priority": "CRITICAL",
+      "process": "scalper_daemon.py",
+      "command": "cd /Agentic && .venv/bin/python scripts/scalper_daemon.py --mode perp --leverage 10-50 --aggressive",
+      "objective": "Scalping agressivo em futuros/perpétuos Bybit com alavancagem 10x-50x. Foco em momentum, breakouts e notícias. Risco por trade aumentado para 10% do capital durante fases de crescimento acelerado. Operar 24/7 em pares líquidos (BTC, ETH, SOL, XRP).",
+      "constraints": [
+        "Risco máximo por trade: 10% do capital (fase agressiva)",
+        "Alavancagem máxima: 50x",
+        "Stop loss obrigatório em 1-2%",
+        "Trailing stop em trades vencedores",
+        "Monitorar funding rates e liquidar posições antes de funding negativo extremo"
+      ],
+      "target_monthly": "$30.000-$80.000 USD",
+      "aggression": "MAX",
+      "leverage_override": "10x-50x"
+    },
+    {
+      "id": "grid_trading_perp",
+      "priority": "HIGH",
+      "process": "volatility_grids_robust.py",
+      "command": "cd /Agentic && .venv/bin/python scripts/volatility_grids_robust.py --mode perp --pairs BTC,ETH,SOL,XRP --dense",
+      "objective": "Grid trading denso em perpétuos com grids mais apertados e maior alocação de capital (50%). Capturar micro-volatilidade 24/7. Rebalance automático a cada 2h. Hedge dinâmico baseado em tendência.",
+      "constraints": [
+        "Grid spacing: 0.3-0.5% (denso)",
+        "Rebalance automático a cada 2h",
+        "Alocação de capital: 50% do total",
+        "Hedge automático em momentos de alta volatilidade"
+      ],
+      "target_monthly": "$15.000-$40.000 USD",
+      "aggression": "HIGH"
+    },
+    {
+      "id": "arbitrage_p2p",
+      "priority": "HIGH",
+      "process": "p2p_arbitrage_executor.py",
+      "command": "cd /Agentic && .venv/bin/python scripts/p2p_arbitrage_executor.py --live --high-volume",
+      "objective": "Arbitragem P2P de alto volume entre múltiplas exchanges e plataformas. Expandir para moedas fiat exóticas e pares com spreads maiores (>3%). Execução instantânea automatizada. Volume alvo: $50k+/dia.",
+      "constraints": [
+        "Spread mínimo: 3%",
+        "Limite por operação: $2.000",
+        "Verificar reputação das contrapartes (rating >=4.3)",
+        "Diversificar entre 5+ plataformas"
+      ],
+      "target_monthly": "$10.000-$30.000 USD",
+      "aggression": "HIGH"
+    },
+    {
+      "id": "orchestrator_1m",
+      "priority": "CRITICAL",
+      "process": "orchestrator_1m.py",
+      "command": "cd /Agentic/workspace && python3 orchestrator_1m.py --aggressive",
+      "objective": "Coordenação geral agressiva. Monitorar progresso em tempo real. Rebalancear capital a cada 2h baseado em performance. Escalonamento exponencial de estratégias vencedoras. Cortar impiedosamente estratégias com ROI <10% mensal.",
+      "constraints": [
+        "Rebalance a cada 2h",
+        "Cortar estratégias com ROI <10% mensal",
+        "Duplicar alocação em estratégias com ROI >25% mensal",
+        "Garantir diversificação mínima de 3 fontes de receita",
+        "Compounding total até $100k, depois 80/20"
+      ],
+      "target": "Atingir 1M USD em 6-9 meses",
+      "aggression": "EXTREME",
+      "kill_switch_roi": 10
+    }
+  ],
+  "monitoring": {
+    "check_interval_seconds": 60,
+    "report_interval_hours": 12,
+    "stop_condition": "capital_total >= 1000000 USD OR owner_withdrawal_requested",
+    "payout_schedule": "A cada milestone de $1.000, pagar 20% ao proprietário"
+  },
+  "emergency_stop": {
+    "command": "STOP_ALL_OPERATIONS",
+    "action": "Fechar todas as posições, pausar todos os processos, notificar proprietário"
+  }
+}
