@@ -3001,16 +3001,17 @@
       "pr": 228,
       "issue": 86,
       "title": "Visual regression tests",
-      "status": "review_fix_pushed_p1_invalidated",
+      "status": "review_fix_pushed_p1_invalidated_comment_posted",
       "tier": 1,
-      "next_action": "Post evidence on PR#228 that Greptile P1 is invalid: local playwright --list confirms firefox excludes visual (0), chromium includes (8). Wait for maintainer re-review.",
+      "next_action": "Wait for maintainer re-review after P1 invalidation comment; no further contributor action needed unless new feedback arrives",
       "evidence": {
         "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
         "greptile_p1_email": "1a03feda98223c33",
         "p1_validation_firefox_visual_count": 0,
         "p1_validation_chromium_visual_count": 8,
         "p1_conclusion": "INVALID - testIgnore visual/** works correctly after ddbe468",
-        "last_checked_utc": "2026-08-26T21:45:00Z"
+        "last_checked_utc": "2026-08-26T21:50:00Z",
+        "p1_invalidation_comment_url": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431474669"
       },
       "reviews": [
         {
