@@ -9747,6 +9747,42 @@
           "detail": "20260826T133404Z"
         }
       ]
+    },
+    {
+      "title": "Unblock large-file edits: partial-edit markers for improve.py context budget",
+      "kind": "bottleneck",
+      "priority": 1,
+      "rationale": "Two proposals are permanently blocked because src/agentic/improve.py (83k bytes) exceeds the _file_context budget (13.5k chars). The DEVELOP_PROMPT requires returning COMPLETE file content, but the agent only receives a truncated view. This structural conflict prevents any safe edit to improve.py itself, creating a deadlock where the pipeline cannot fix its own limitations.",
+      "change": "Modify _file_context() in src/agentic/improve.py to emit explicit partial-edit markers when file size exceeds budget. Update DEVELOP_PROMPT to allow targeted hunk-based edits (with line anchors) instead of requiring full file return when markers are present. Add validation that hunks reference valid line ranges from the truncated context.",
+      "never": [
+        "reset --hard",
+        "checkout --",
+        "clean -fd",
+        "--no-verify",
+        "force",
+        "commitar .env/data/secrets",
+        "incluir ARO.md ou src/agentic/aro/ no mesmo commit",
+        "criar src/agentic/loop.sh",
+        "remove the complete-file rule entirely",
+        "increase MAX_FILE_BYTES without council approval"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "engine",
+      "id": "imp-20260826-unblock-large-file-edits-partial-edit-markers",
+      "key": "imp-20260826-unblock-large-file-edits-partial-edit-markers",
+      "status": "pending",
+      "branch": "improve/dev/imp-20260826-unblock-large-file-edits-partial-edit-markers",
+      "map_id": "20260826T141607Z",
+      "history": [
+        {
+          "at": "2026-08-26T14:16:07+00:00",
+          "event": "mapped",
+          "detail": "20260826T141607Z"
+        }
+      ]
     }
   ]
 }
