@@ -76,7 +76,7 @@
       "title": "Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "applied",
       "rationale": "ARO.md e src/agentic/aro/ estão untracked na main e impedem git_clean; precisam ser versionados em proposta separada da fatia do motor.",
       "change": "Segunda proposta git_clean, só da fatia playbook: o pipeline stageia ARO.md e src/agentic/aro/ do disco e versiona esses caminhos em commit próprio, após a fatia do motor.",
       "never": [
@@ -160,6 +160,11 @@
           "at": "2026-08-17T23:54:43+00:00",
           "event": "claude_failed",
           "detail": "Execution error"
+        },
+        {
+          "at": "2026-08-26T14:07:45.104524+00:00",
+          "event": "closed_obsolete",
+          "detail": "watchdog: ARO.md and src/agentic/aro/ already tracked on master (verified git log). Proposal rationale is stale; target already satisfied. No trace found for claude_failed. Closing as obsolete."
         }
       ],
       "review_feedback": "claude_failed: Execution error"
@@ -4358,7 +4363,7 @@
       "title": "Timeout ausente no Claude CLI durante develop",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Chamadas ao GhostCLI via claude_cli.py não possuem timeout estrito; se o modelo travar, o tick de 90s é consumido, atrasando o health check de outras ferramentas.",
       "change": "Adicionar parâmetro de timeout (ex: 60s) na invocação do subprocesso do Claude CLI em claude_cli.py e tratar TimeoutExpired como falha, devolvendo o item à fila com review_feedback.",
       "never": [
@@ -4370,7 +4375,7 @@
         "src/agentic/claude_cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-timeout-ausente-no-claude-cli-durante-develop",
+      "branch": "",
       "map_id": "20260817T070323Z",
       "history": [
         {
@@ -4382,6 +4387,11 @@
           "at": "2026-08-18T18:16:27+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-timeout-ausente-no-claude-cli-durante-develop"
+        },
+        {
+          "at": "2026-08-26T14:07:36.030034+00:00",
+          "event": "released_stale",
+          "detail": "watchdog: claimed >187h ago with no progress; force-released to pending for re-claim"
         }
       ]
     },
@@ -5850,7 +5860,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ARO core)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Segunda fatia para limpar a working tree. Isola as alterações do núcleo do ARO (config, cycle, store) e testes associados, evitando um commit monolítico e facilitando o review.",
       "change": "Stagear e commitar os arquivos do core do ARO e o agent prompt (.cursor), garantindo que os testes unitários (test_aro.py) passem antes do commit.",
       "never": [
@@ -5868,7 +5878,7 @@
         "tests/test_aro.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260817T230624Z",
       "history": [
         {
@@ -5960,6 +5970,11 @@
           "at": "2026-08-18T11:28:27+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-26T14:07:36.030070+00:00",
+          "event": "released_stale",
+          "detail": "watchdog: claimed >187h ago with no progress; force-released to pending for re-claim"
         }
       ]
     },
@@ -6638,7 +6653,7 @@
       "title": "Restaurar git_clean: Fatia CLI e Playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O arquivo cli.py está modificado e precisa ser isolado para manter o histórico limpo e focado no playbook/CLI.",
       "change": "O pipeline stageia e commita exclusivamente src/agentic/cli.py na main, garantindo que o develop corrija exatamente o feedback do review.",
       "never": [
@@ -6651,7 +6666,7 @@
         "src/agentic/cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook",
+      "branch": "",
       "map_id": "20260818T022635Z",
       "history": [
         {
@@ -6663,6 +6678,11 @@
           "at": "2026-08-18T12:08:53+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook"
+        },
+        {
+          "at": "2026-08-26T14:07:36.030078+00:00",
+          "event": "released_stale",
+          "detail": "watchdog: claimed >187h ago with no progress; force-released to pending for re-claim"
         }
       ]
     },
