@@ -1,0 +1,31 @@
+{
+  "method_id": "503",
+  "name": "On-chain credit scoring engine (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:33.401637+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_group": "Protocol Guild Treasury",
+      "multisig_tenure_days": 1825,
+      "grant_receipt_count": 42,
+      "governance_participation_pct": 78.5,
+      "risk_model": "reputation_weighted"
+    },
+    {
+      "dev_group": "Ethereum Cat Herders Fund",
+      "multisig_tenure_days": 1460,
+      "grant_receipt_count": 28,
+      "governance_participation_pct": 85.2,
+      "risk_model": "contribution_based"
+    }
+  ],
+  "schema": [
+    "dev_group",
+    "multisig_tenure_days",
+    "grant_receipt_count",
+    "governance_participation_pct",
+    "risk_model"
+  ],
+  "notes": "Variante para developer collectives e grant recipients. Proxy TIER0: GitHub Search (orgs: protocol-guild, ethcatherders credit-tooling). Fonte oficial alvo: Gitcoin Passport + Ethereum Foundation grant analytics. Ênfase em reputation-based underwriting zero-capital."
+}

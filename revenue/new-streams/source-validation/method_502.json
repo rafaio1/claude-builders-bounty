@@ -1,0 +1,31 @@
+{
+  "method_id": "502",
+  "name": "On-chain credit scoring engine (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:33.401637+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "NFT Artist Wallet",
+      "wallet_age_days": 1240,
+      "nft_collateral_value_usd": 45000,
+      "repayment_history_score": 0.92,
+      "lending_protocol_target": "bend_dao"
+    },
+    {
+      "creator": "Music Royalty DAO",
+      "wallet_age_days": 890,
+      "streaming_revenue_monthly_usd": 3200,
+      "repayment_history_score": 0.88,
+      "lending_protocol_target": "sound_xyz_lend"
+    }
+  ],
+  "schema": [
+    "creator",
+    "wallet_age_days",
+    "nft_collateral_value_usd",
+    "repayment_history_score",
+    "lending_protocol_target"
+  ],
+  "notes": "Variante para criadores buscando empréstimos lastreados em NFTs ou royalties futuros. Proxy TIER0: GitHub Search (topics: nft-lending-score, creator-credit-defi). Fonte oficial alvo: BendDAO risk params + Sound.xyz lending docs. Foco em avaliação de colateral não-fungível zero-capital."
+}

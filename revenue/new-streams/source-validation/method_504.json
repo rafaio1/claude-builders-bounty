@@ -1,0 +1,31 @@
+{
+  "method_id": "504",
+  "name": "On-chain credit scoring engine (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:33.401637+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Chainalysis Credit Advisory",
+      "client_type": "institutional_lenders",
+      "scoring_api_version": "v3.2",
+      "compliance_framework": "basel_iii_crypto",
+      "monthly_assessments": 1250
+    },
+    {
+      "agency": "Elliptic Risk Scoring",
+      "client_type": "defi_protocols",
+      "scoring_api_version": "v2.8",
+      "compliance_framework": "fatf_travel_rule",
+      "monthly_assessments": 890
+    }
+  ],
+  "schema": [
+    "agency",
+    "client_type",
+    "scoring_api_version",
+    "compliance_framework",
+    "monthly_assessments"
+  ],
+  "notes": "Variante para consultorias oferecendo credit scoring como serviço B2B. Proxy TIER0: GitHub Search (topics: crypto-credit-advisory, defi-risk-scoring). Fonte oficial alvo: Basel Committee crypto standards + FATF guidance. Foco em compliance-aware scoring APIs zero-capital."
+}
