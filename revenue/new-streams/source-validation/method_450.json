@@ -1,0 +1,31 @@
+{
+  "method_id": "450",
+  "name": "Impermanent loss calculator (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_campaign": "Liquidity_Mining_Q3",
+      "projected_il_usd": 12500,
+      "incentive_roi_ratio": 3.2,
+      "report_format": "pdf_dashboard"
+    },
+    {
+      "client_campaign": "Stablecoin_LP_Launch",
+      "projected_il_usd": 450,
+      "incentive_roi_ratio": 8.5,
+      "report_format": "csv_export"
+    }
+  ],
+  "schema": [
+    "client_campaign",
+    "projected_il_usd",
+    "incentive_roi_ratio",
+    "report_format"
+  ],
+  "notes": "Variante B2B para agências reportando IL projetado vs incentivos para clientes. Proxy via templates de LP performance reporters no GitHub. Fonte oficial: Arrakis Finance Analytics or Gamma.xyz Dashboard.",
+  "generated_at": "2026-08-26T15:11:21.939697+00:00",
+  "_meta": {
+    "hash": "6b72d98683661eb928a1acb58cc03ad05a77aaf894be05124e7e2de13c1d761e"
+  }
+}

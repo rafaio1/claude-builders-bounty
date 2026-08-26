@@ -7247,5 +7247,98 @@
     "_meta": {
       "hash": "fbfa966e9b70ab3167d03ad8d233067fddd0c77c38015ec6bef96a28099af52f"
     }
+  },
+  "448": {
+    "method_id": "448",
+    "name": "Impermanent loss calculator (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_pool": "ArtToken/ETH",
+        "volatility_30d": 0.45,
+        "il_risk_label": "high",
+        "recommended_strategy": "single_sided_staking"
+      },
+      {
+        "creator_pool": "MusicNFT/USDC",
+        "volatility_30d": 0.12,
+        "il_risk_label": "low",
+        "recommended_strategy": "concentrated_lp"
+      }
+    ],
+    "schema": [
+      "creator_pool",
+      "volatility_30d",
+      "il_risk_label",
+      "recommended_strategy"
+    ],
+    "notes": "Variante para criadores avaliando riscos de LP com tokens sociais/NFTs. Proxy TIER0 via repositórios de creator-token analytics. Fonte oficial: Uniswap V3 Position NFT subgraph.",
+    "generated_at": "2026-08-26T15:11:21.939697+00:00",
+    "_meta": {
+      "hash": "b3c91144f91aa5407e1ae3d0a24070a16c2361bf1cb08c7c6d2cfb41a8731818"
+    }
+  },
+  "449": {
+    "method_id": "449",
+    "name": "Impermanent loss calculator (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "amm_fork": "SolidlyV2",
+        "fee_tier_bps": 30,
+        "tick_spacing": 60,
+        "il_simulation_engine": "foundry"
+      },
+      {
+        "amm_fork": "TraderJoeV2",
+        "fee_tier_bps": 5,
+        "tick_spacing": 10,
+        "il_simulation_engine": "hardhat"
+      }
+    ],
+    "schema": [
+      "amm_fork",
+      "fee_tier_bps",
+      "tick_spacing",
+      "il_simulation_engine"
+    ],
+    "notes": "Variante técnica para devs comparando parâmetros de AMMs e engines de simulação. Proxy via benchmarks de IL em repositórios de DEX forks. Fonte oficial: Uniswap V3 Whitepaper ou Algebra Finance docs.",
+    "generated_at": "2026-08-26T15:11:21.939697+00:00",
+    "_meta": {
+      "hash": "e2d67ea1d371e3ac373e8abeff674a8d8e5f9db3e8e4c87e780b82e81c2ed5f8"
+    }
+  },
+  "450": {
+    "method_id": "450",
+    "name": "Impermanent loss calculator (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_campaign": "Liquidity_Mining_Q3",
+        "projected_il_usd": 12500,
+        "incentive_roi_ratio": 3.2,
+        "report_format": "pdf_dashboard"
+      },
+      {
+        "client_campaign": "Stablecoin_LP_Launch",
+        "projected_il_usd": 450,
+        "incentive_roi_ratio": 8.5,
+        "report_format": "csv_export"
+      }
+    ],
+    "schema": [
+      "client_campaign",
+      "projected_il_usd",
+      "incentive_roi_ratio",
+      "report_format"
+    ],
+    "notes": "Variante B2B para agências reportando IL projetado vs incentivos para clientes. Proxy via templates de LP performance reporters no GitHub. Fonte oficial: Arrakis Finance Analytics or Gamma.xyz Dashboard.",
+    "generated_at": "2026-08-26T15:11:21.939697+00:00",
+    "_meta": {
+      "hash": "6b72d98683661eb928a1acb58cc03ad05a77aaf894be05124e7e2de13c1d761e"
+    }
   }
 }

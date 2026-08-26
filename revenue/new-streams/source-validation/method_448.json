@@ -1,0 +1,31 @@
+{
+  "method_id": "448",
+  "name": "Impermanent loss calculator (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_pool": "ArtToken/ETH",
+      "volatility_30d": 0.45,
+      "il_risk_label": "high",
+      "recommended_strategy": "single_sided_staking"
+    },
+    {
+      "creator_pool": "MusicNFT/USDC",
+      "volatility_30d": 0.12,
+      "il_risk_label": "low",
+      "recommended_strategy": "concentrated_lp"
+    }
+  ],
+  "schema": [
+    "creator_pool",
+    "volatility_30d",
+    "il_risk_label",
+    "recommended_strategy"
+  ],
+  "notes": "Variante para criadores avaliando riscos de LP com tokens sociais/NFTs. Proxy TIER0 via repositórios de creator-token analytics. Fonte oficial: Uniswap V3 Position NFT subgraph.",
+  "generated_at": "2026-08-26T15:11:21.939697+00:00",
+  "_meta": {
+    "hash": "b3c91144f91aa5407e1ae3d0a24070a16c2361bf1cb08c7c6d2cfb41a8731818"
+  }
+}

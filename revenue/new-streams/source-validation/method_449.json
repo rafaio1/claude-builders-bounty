@@ -1,0 +1,31 @@
+{
+  "method_id": "449",
+  "name": "Impermanent loss calculator (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "amm_fork": "SolidlyV2",
+      "fee_tier_bps": 30,
+      "tick_spacing": 60,
+      "il_simulation_engine": "foundry"
+    },
+    {
+      "amm_fork": "TraderJoeV2",
+      "fee_tier_bps": 5,
+      "tick_spacing": 10,
+      "il_simulation_engine": "hardhat"
+    }
+  ],
+  "schema": [
+    "amm_fork",
+    "fee_tier_bps",
+    "tick_spacing",
+    "il_simulation_engine"
+  ],
+  "notes": "Variante técnica para devs comparando parâmetros de AMMs e engines de simulação. Proxy via benchmarks de IL em repositórios de DEX forks. Fonte oficial: Uniswap V3 Whitepaper ou Algebra Finance docs.",
+  "generated_at": "2026-08-26T15:11:21.939697+00:00",
+  "_meta": {
+    "hash": "e2d67ea1d371e3ac373e8abeff674a8d8e5f9db3e8e4c87e780b82e81c2ed5f8"
+  }
+}
