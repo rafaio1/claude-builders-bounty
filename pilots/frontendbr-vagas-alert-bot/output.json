@@ -1,0 +1,40 @@
+{
+  "status": "SCAFFOLD_OK",
+  "title": "FrontendBR Vagas Smart Alert & Matching Service",
+  "scaffolded_at": "2026-08-26T19:46:06.022077+00:00",
+  "demand_validation": {
+    "source_repo": "frontendbr/vagas",
+    "pain_point": "Manual discovery of relevant issues among high volume",
+    "avg_comments_per_post": 0.5,
+    "daily_posts_observed": true,
+    "demand_confirmed": true
+  },
+  "zero_capital_strategy": "GitHub Actions + Free Tier Email/Telegram Bot. Parse issues daily, match against user profiles, send alerts.",
+  "config": {
+    "keywords": [
+      "react",
+      "next.js",
+      "typescript",
+      "remoto",
+      "remote"
+    ],
+    "max_age_days": 2,
+    "max_results": 10
+  },
+  "state": {
+    "last_seen_count": 2,
+    "state_file": "last_seen_ids.json"
+  },
+  "monetization_path": {
+    "phase1": "Free alerts for devs (growth)",
+    "phase2": "Recruiter sponsorship / featured listings",
+    "phase3": "Premium matching AI / resume review"
+  },
+  "next_steps_tier1": [
+    "Implement GitHub Actions workflow for daily scan",
+    "Add Telegram bot integration (free tier)",
+    "User profile storage (JSONBin/Upstash KV free tier)",
+    "Keyword matching algorithm refinement",
+    "Unsubscribe/manage preferences flow"
+  ]
+}
