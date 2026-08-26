@@ -1,0 +1,38 @@
+{
+  "method_id": 876,
+  "name": "Fraud detection signals (for agencies)",
+  "source": "GitHub Search API (adtech/fraud analytics integrations)",
+  "generated_at": "2026-08-26T14:36:49.371301+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "doubleverify-integration",
+      "agency_repos": 1650,
+      "client_demand": "very_high",
+      "fraud_scope": "ad_impressions",
+      "trend": "stable"
+    },
+    {
+      "platform": "ias-brand-safety-sdk",
+      "agency_repos": 1320,
+      "client_demand": "high",
+      "fraud_scope": "content_adjacency",
+      "trend": "rising"
+    },
+    {
+      "platform": "custom-attribution-audit",
+      "agency_repos": 480,
+      "client_demand": "emerging",
+      "fraud_scope": "attribution_manipulation",
+      "trend": "experimental"
+    }
+  ],
+  "schema": [
+    "platform",
+    "agency_repos",
+    "client_demand",
+    "fraud_scope",
+    "trend"
+  ],
+  "notes": "Integrações adtech como proxy de demanda por auditoria de fraude em campanhas. Fonte oficial TIER1: DoubleVerify / Integral Ad Science Partner APIs."
+}

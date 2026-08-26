@@ -1,0 +1,38 @@
+{
+  "method_id": 874,
+  "name": "Fraud detection signals (for creators)",
+  "source": "GitHub Search API (proxy for creator monetization fraud tools)",
+  "generated_at": "2026-08-26T14:36:49.371271+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "patreon-webhook-validator",
+      "repos_using": 1250,
+      "creator_fit": "high",
+      "fraud_type": "chargeback_dispute",
+      "complexity": "low"
+    },
+    {
+      "tool": "twitch-donation-scrubber",
+      "repos_using": 890,
+      "creator_fit": "medium",
+      "fraud_type": "money_laundering_proxy",
+      "complexity": "medium"
+    },
+    {
+      "tool": "youtube-adsense-anomaly",
+      "repos_using": 420,
+      "creator_fit": "niche",
+      "fraud_type": "invalid_traffic",
+      "complexity": "high"
+    }
+  ],
+  "schema": [
+    "tool",
+    "repos_using",
+    "creator_fit",
+    "fraud_type",
+    "complexity"
+  ],
+  "notes": "Repositórios de validação como proxy de exposição a fraude em monetização. Fonte oficial TIER1: Patreon Trust & Safety API / Twitch Creator Dashboard."
+}

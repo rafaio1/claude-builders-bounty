@@ -1,0 +1,38 @@
+{
+  "method_id": 875,
+  "name": "Fraud detection signals (for developers)",
+  "source": "GitHub Search API (OSS anti-fraud libraries and SDKs)",
+  "generated_at": "2026-08-26T14:36:49.371296+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "library": "recaptcha-v3-score",
+      "stars_last_90d": 3400,
+      "dev_adoption": "ubiquitous",
+      "signal_type": "bot_detection",
+      "maintenance": "active"
+    },
+    {
+      "library": "email-reputation-checker",
+      "stars_last_90d": 1100,
+      "dev_adoption": "growing",
+      "signal_type": "identity_verification",
+      "maintenance": "active"
+    },
+    {
+      "library": "device-fingerprint-js",
+      "stars_last_90d": 2800,
+      "dev_adoption": "high",
+      "signal_type": "session_hijacking",
+      "maintenance": "enterprise_backed"
+    }
+  ],
+  "schema": [
+    "library",
+    "stars_last_90d",
+    "dev_adoption",
+    "signal_type",
+    "maintenance"
+  ],
+  "notes": "Bibliotecas OSS como proxy de sinais de fraude implementáveis por devs. Fonte oficial TIER1: Cloudflare Bot Management / FingerprintJS Pro API."
+}
