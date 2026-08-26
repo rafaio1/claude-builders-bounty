@@ -44,7 +44,7 @@ def main():
         sys.exit(1)
 
     data = json.loads(LEDGER_PATH.read_text())
-    entries = data.get("discovered", [])
+    entries = data.get("entries", [])
     updated = False
 
     for entry in entries:
@@ -108,7 +108,7 @@ def main():
                 print(f"CLOSED: {repo}#{pr_num} (nao notificado)")
 
     if updated:
-        data["discovered"] = entries
+        data["entries"] = entries
         LEDGER_PATH.write_text(json.dumps(data, indent=2))
         print("Ledger updated")
 
