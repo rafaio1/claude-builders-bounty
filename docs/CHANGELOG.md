@@ -159,3 +159,28 @@
  - Mandated financial reconciliation with CONTADOR before revenue registration
  - Repository verified PRIVATE at `rafaio1/agentic-integration`
  
+
+## [Unreleased] - Integration Era (2026-08-26)
+
+### Added
+- **Telegram Financial Gate** (`src/telegram_gate.py`): Fail-closed central gate for Telegram notifications. Only allows confirmed financial events (payout_received, trade_realized, transfer_confirmed) with mandatory schema validation, idempotent deduplication, and exponential backoff with jitter. 20/20 tests passing.
+- **Triage Contract Tests** (`tests/test_triage_contract.py`): Regression tests ensuring GhostCLI triage never falls back to silent heuristic selection. Structured error logging on contract failure.
+
+### Changed
+- **All 5 Telegram Emitters Migrated**: `orchestrator/telegram_alerts.py`, `tools/telegram_alert.py`, `orchestrator/sniper_v23d_xrp.py`, `scripts/telegram_alerts.py`, `scripts/bounty_monitor.py` now route exclusively through the central financial gate. Non-financial events (heartbeats, scans, paper trades, PR status, bounties without confirmed payout) are silently blocked.
+- **Bounty Engine Triage** (`scripts/bounty_engine.py`): Removed silent heuristic fallback. On GhostCLI schema/parse failure, returns empty list and logs structured `TRIAGE_ERROR` event instead of guessing.
+- **.gitignore**: Added `.env` and `.env.backup.*` patterns to prevent accidental secret commits.
+
+### Security
+- No secrets, tokens, credentials, or local state files are versioned.
+- All pushes validated against private remote `rafaio1/agentic-integration` with `isPrivate=true`.
+- Force push, history rewrite, and remote branch deletion remain prohibited.
+
+### Commits
+- `29986a5` feat: add fail-closed telegram financial gate with schema validation and dedup
+- `b07a501` feat: migrate telegram_alerts to financial-only gate
+- `845f8e8` feat: migrate tools/telegram_alert to financial-only gate
+- `4847336` feat: migrate sniper_v23d_xrp to financial-only gate
+- `eb2fede` feat: migrate scripts/telegram_alerts to financial-only gate
+- `3497c75` feat: migrate scripts/bounty_monitor to financial-only gate
+- `9f11731` feat: remove heuristic fallback in triage + update gitignore for .env
