@@ -1,0 +1,41 @@
+{
+  "pilot_id": "vercel-hobby-plan-scaffold",
+  "provider": "Vercel",
+  "plan": "Hobby (Free Tier)",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "Explicit prohibition of reselling, sublicensing, and commercial exploitation in Hobby plan TOS Section 11. License is personal, non-transferable, non-sublicensable (Section 2). AI training rights granted by Hobby users.",
+  "free_tier_limits": {
+    "usage": "Personal or non-commercial use only",
+    "projects": "Limited (subject to disablement without notice)",
+    "sla": "None",
+    "termination": "At sole discretion without notice"
+  },
+  "paid_plan_baseline": {
+    "name": "Pro",
+    "price_usd_monthly": 20,
+    "notes": "Required for commercial use; still subject to resell restrictions unless Enterprise/Partner agreement"
+  },
+  "reselling_model": {
+    "permitted": false,
+    "requires_partner_addendum": true,
+    "white_label_available": false,
+    "sublicense_rights": "None on Hobby tier",
+    "assignment": "Requires prior written consent"
+  },
+  "risks": [
+    "Account termination without notice for commercial use on Hobby plan",
+    "Content may be used for AI model training under Hobby/trial Pro plans",
+    "No SLA or uptime guarantee",
+    "Reselling requires separate Enterprise/Partner negotiation"
+  ],
+  "next_steps": [
+    "REJECTED — Do not proceed with Vercel Hobby as resell scaffold",
+    "Consider Vercel only if Partner/Enterprise addendum obtained (outside zero-capital scope)",
+    "Move to next TIER0 candidate: method_911 (DNS Subdomain) or method_913 (Netlify Edge)"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "source_docs": [
+    "/tmp/vercel_terms_clean.txt"
+  ]
+}

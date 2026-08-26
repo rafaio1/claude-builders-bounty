@@ -100,6 +100,10 @@ def check_supersession(proposal: dict) -> str | None:
         import json as _json
         scan = _json.loads(scan_file.read_text(encoding="utf-8"))
         for pair in scan.get("superseded", []):
+            # Defensive: skip malformed entries (string, null, etc.) to avoid
+            # "string indices must be integers" when scan file is corrupted.
+            if not isinstance(pair, dict):
+                continue
             if pair.get("older") == pid and pair.get("newer"):
                 return f"SUPERSEDED_BY:{pair['newer']}"
     except Exception:

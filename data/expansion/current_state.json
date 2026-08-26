@@ -13,12 +13,12 @@
     "ADIAR": 26,
     "PILOTAR": 1
   },
-  "next_method": 742,
-  "last_verdict": "2026-08-26T22:35:50.369049+00:00",
+  "next_method": 748,
+  "last_verdict": "2026-08-26T22:39:02.922326+00:00",
   "last_verdict_timestamp": "2026-08-26T22:19:17.667086+00:00",
   "last_council_action": "2026-08-26T22:19:17.667086+00:00",
-  "last_updated": "2026-08-26T22:19:17.667086+00:00",
-  "total_verdicts": 1120,
+  "last_updated": "2026-08-26T22:38:07.808568+00:00",
+  "total_verdicts": 1126,
   "implemented_proposals": [
     "method_686"
   ],
@@ -53,9 +53,68 @@
     "semantic_proxy_tier0_triage (detect GitHub Search proxy without BR validation)"
   ],
   "supersession_scan": {
-    "valid_pairs": 6,
-    "scan_file": "data/expansion/supersession_scan.json"
+    "status": "operational",
+    "pairs_detected": 6,
+    "bug_fixed": true,
+    "fix_timestamp": "2026-08-26T22:37:02.165170+00:00"
   },
   "verdicts_last_synced": "efe1315b96098e4fab531efc3defb838dd9305fe",
-  "last_verdict_count": 1117
+  "last_verdict_count": 1117,
+  "last_reconciliation": {
+    "timestamp": "2026-08-26T22:37:02.165170+00:00",
+    "supersession_bug": {
+      "status": "FIXED",
+      "fix": "Added isinstance(pair, dict) guard in prescreen_proposal.py:check_supersession",
+      "verified": true,
+      "test_passed": "corrupted scan with string/null entries handled without TypeError"
+    },
+    "queue_integrity": {
+      "total_entries": 869,
+      "malformed": 0,
+      "actionable": 0,
+      "blocked_source_unverified": 641,
+      "pilot": 137,
+      "failed": 89,
+      "revoked": 2
+    },
+    "top_bottleneck": {
+      "blocker": "proposal_not_found_in_source",
+      "count": 818,
+      "pct_of_queue": 94.1,
+      "diagnosis": "Proposals reference sources not yet verified or ingested; executor cannot act without source validation"
+    },
+    "governance_doc_status": "UP_TO_DATE",
+    "supersession_detector_status": "INTEGRATED_AND_TESTED",
+    "next_actions": [
+      "Reduce proposal_not_found_in_source backlog by running source verification batch",
+      "Audit 137 PILOT entries for abandonment criteria compliance",
+      "Process 29 APROVAR_IMPLEMENTACAO items through TIER0 checklist"
+    ]
+  },
+  "post_purge_metrics": {
+    "timestamp": "2026-08-26T22:38:07.808538+00:00",
+    "queue_size": 57,
+    "ghosts_removed": 823,
+    "valid_retained": 57,
+    "actionable_count": 37,
+    "states": {
+      "REVOKED": 1,
+      "FAILED": 4,
+      "BLOCKED_SOURCE_UNVERIFIED": 52
+    },
+    "verdicts": {
+      "REVOGADO_PILOTO_FALHOU": 1,
+      "REJEITAR": 4,
+      "ADIAR": 13,
+      "PILOTAR": 29,
+      "APROVAR_IMPLEMENTACAO": 10
+    },
+    "top_blockers": {
+      "terms_not_accepted": 51,
+      "account_dependency_pending": 51,
+      "authorization_missing": 51,
+      "source_not_verified": 51,
+      "proposal_not_found_in_source": 6
+    }
+  }
 }
