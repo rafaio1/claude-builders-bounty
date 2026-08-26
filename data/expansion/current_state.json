@@ -1,10 +1,10 @@
 {
-  "last_audit": "2026-08-26T21:56:48.594350+00:00",
+  "last_audit": "2026-08-26T21:59:35.401367+00:00",
   "prescreen_status": "REJECTED_V3_CONFIRMED_ON_CLEAN_DATA",
   "pending_improvements": [
-    "supersession_detector",
     "title_similarity_dedup",
-    "semantic_proxy_tier0_triage"
+    "semantic_proxy_tier0_triage",
+    "supersession_detector_integration"
   ],
   "data_quality_flags": {
     "template_leaked_verdicts": 89,
@@ -17,7 +17,7 @@
     "ADIAR": 1,
     "PILOTAR": 1
   },
-  "next_method": 688,
+  "next_method": 691,
   "last_verdict": {
     "proposal_id": "method_687",
     "verdict": "ADIAR",
@@ -26,7 +26,7 @@
   },
   "last_verdict_timestamp": "2026-08-26T21:55:49.951746+00:00",
   "last_council_action": "2026-08-26T21:55:49.951746+00:00",
-  "last_updated": "2026-08-26T21:55:49.951746+00:00",
+  "last_updated": "2026-08-26T21:59:43.103083+00:00",
   "total_verdicts": 2,
   "implemented_proposals": [
     "method_686"
@@ -35,11 +35,16 @@
     "method_687"
   ],
   "completed_improvements": [
-    "verdict_template_scanner"
+    "verdict_template_scanner",
+    "supersession_detector_scan"
   ],
   "next_priorities": [
     "supersession_detector (catches proposals replaced by newer versions)",
     "title_similarity_dedup (catches duplicate/near-duplicate proposals)",
     "semantic_proxy_tier0_triage (detect GitHub Search proxy without BR validation)"
-  ]
+  ],
+  "supersession_scan": {
+    "valid_pairs": 6,
+    "scan_file": "data/expansion/supersession_scan.json"
+  }
 }
