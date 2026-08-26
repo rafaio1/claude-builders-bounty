@@ -10,11 +10,11 @@
 ## Estado Atual (2026-08-26T16:45Z)
 - **Remoto**: https://github.com/rafaio1/agentic-integration.git (PRIVATE)
 - **Branch principal**: master
-- **Último commit**: 7c509cf feat(bounty): integrate Hats, Layer3 and RabbitHole scanners with tests and gitignore
+- **Último commit**: 8a7f914 feat(bounty): add Zealy campaign scanner with tests and gitignore
 - **Penúltimo commit**: 045cb1d feat(bounty): add Sherlock audit contest scanner with tests and gitignore
 - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/, products/, revenue/, templates/, workspace/, p2p-stack/init_lnd_wallet.sh
-- **Features integradas neste ciclo**: hats_protocol_scanner, layer3_quest_executor, rabbithole_campaign_scanner, immunefi_vault_scanner, code4rena_contest_scanner, sherlock_audit_scanner, telegram_gate
-- **Testes**: 63/63 passando (telegram_gate + triage_contract + immunefi + code4rena + sherlock + hats + layer3 + rabbithole)
+- **Features integradas neste ciclo**: zealy_campaign_scanner, hats_protocol_scanner, layer3_quest_executor, rabbithole_campaign_scanner, immunefi_vault_scanner, code4rena_contest_scanner, sherlock_audit_scanner, telegram_gate
+- **Testes**: 68/68 passando (telegram_gate + triage_contract + immunefi + code4rena + sherlock + hats + layer3 + rabbithole + zealy)
 - **Remoto validado**: rafaio1/agentic-integration (PRIVATE=true)
  - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/
  - **Arquivos NÃO rastreados (intencional)**: .env, data/, state/, logs/, *.pid, *.log, ledger.jsonl, .venv/, node_modules/, __pycache__/, .agentic*.lock, arb_dashboard.html, typescript/, build/, workspace/, bounties/, bugbounty/, revenue/, p2p-stack/, mt5_bridge/, wise_liquidity/, pr_freelance/, improve/, .agents/, .claude/, .codex/, .config/, .playwright*/

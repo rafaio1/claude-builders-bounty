@@ -25,6 +25,7 @@
 | P2P Stack LND Init | ✅ Integrado | cadaf36 | Script de inicialização de wallet LND testnet | `p2p-stack/init_lnd_wallet.sh` |
 | Workspace Orchestrators | ✅ Integrado | cadaf36 | Orquestrador 1M e loop de entrega de serviço | `workspace/` |
 | AgentLily Runtime Tests | ✅ Integrado | b1d214a | Testes de edge cases para guards e tool registry (Issues #152, #129) | `revenue/bounties/agentlily-runtime/tests/` |
+| Zealy Campaign Scanner | ✅ Integrado | 8a7f914 | Scanner de campanhas comunitárias Zealy (10 protocolos, zero-capital) | `scripts/zealy_campaign_scanner.py`, `tests/test_zealy_campaign_scanner.py` |
 
 ## Documentação Operacional
  
