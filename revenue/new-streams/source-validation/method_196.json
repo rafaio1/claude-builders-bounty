@@ -1,0 +1,35 @@
+{
+  "method_id": "196",
+  "name": "Extens\u00e3o Chrome monetizada (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:06.456559+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "content_clip_saves",
+      "value": 1850,
+      "unit": "saves",
+      "period": "7d"
+    },
+    {
+      "metric": "affiliate_link_clicks",
+      "value": 420,
+      "unit": "clicks",
+      "period": "30d"
+    },
+    {
+      "metric": "creator_tip_volume",
+      "value": 145.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant focuses on content curation, affiliate tagging, and fan tipping. Proxy TIER0 via GitHub Search for browser-based creator toolkits. Official targets: Chrome Extensions API + Patreon/Stripe integration. Zero-capital via free Web Store publishing + client-side storage.",
+  "_hash": "43f97cfca01e4b02b73fccc5daf32ffa2366beb51285286e93bb5a05da5b86b1"
+}
