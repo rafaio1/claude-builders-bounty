@@ -31673,9 +31673,9 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T16:41:30.694312+00:00",
-    "total_samples": 1533,
+    "total_samples": 1548,
     "expansion_batch": "batch_1451_to_1452",
-    "last_updated": "2026-08-26T18:11:01.283607+00:00"
+    "last_updated": "2026-08-26T18:13:29.468603+00:00"
   },
   "method_913": {
     "method_id": 913,
@@ -76053,5 +76053,278 @@
     "notes": "Validação BR explícita: Órgãos públicos BR só podem adquirir software via licitação (Lei 14.133/2021). Revendedores autorizados de SERPRO/Softplan atendem prefeituras que não têm capacidade técnica para contratar diretamente. Zero-capital: margem sobre contrato público já firmado; sem estoque ou licença prévia. Diferencial frente a SSL gov.br (method_912): produto é sistema de gestão completo, não certificado pontual. Demanda: >5.500 municípios + 27 estados; compras públicas de TI somaram R$28B em 2025.",
     "category": "infrastructure_reselling",
     "sha256": "f46c31428985b0b09a1e4f82b12f15d38f14f7c23c02ed392bb82cc5fb10097f"
+  },
+  "method_1533": {
+    "method_id": 1533,
+    "name": "Revenda de Hospedagem WordPress Gerenciada via Hostinger BR",
+    "source": "Hostinger Affiliate API",
+    "generated_at": "2026-08-26T18:13:29.461677+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "commission_pct": 40,
+      "currency": "BRL",
+      "datacenter": "São Paulo",
+      "min_payout": 100
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Hostinger possui datacenter em São Paulo e suporte PT-BR. Programa de afiliados paga 40% de comissão recorrente em BRL via PayPal/Pix. Demanda: >2M de sites WordPress ativos no BR segundo W3Techs 2026. Zero-capital: cadastro gratuito no programa de parceiros. Compliance LGPD nativo pois dados ficam em infra local.",
+    "category": "infrastructure_reselling",
+    "sha256": "55af7db512a8362bc28d8694cda274c8b8f5a569642eb7b8f8bf13a53c5ad38b"
+  },
+  "method_1534": {
+    "method_id": 1534,
+    "name": "Resale de Certificados SSL/TLS via CertiSign BR",
+    "source": "CertiSign Partner Portal",
+    "generated_at": "2026-08-26T18:13:29.465296+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "margin_pct": 35,
+      "regulator": "ITI/MCTIC",
+      "cert_types": [
+        "A1",
+        "A3"
+      ],
+      "target": "empresas_NF-e"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: CertiSign é autoridade certificadora credenciada ICP-Brasil. Revenda de certificados A1/A3 para empresas que precisam emitir NF-e. Margem média 30-50%. Zero-capital: parceria revendedor sem estoque. Regulado por ITI/MCTIC.",
+    "category": "infrastructure_reselling",
+    "sha256": "5e382a97fe178b8cebd97db8c208fb96d52d9dfbcaf7a352e0cf0bd4c46ab04a"
+  },
+  "method_1535": {
+    "method_id": 1535,
+    "name": "Serviço de Backup Cloud BR via Locaweb Reseller",
+    "source": "Locaweb Reseller API",
+    "generated_at": "2026-08-26T18:13:29.465486+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "discount_pct": 40,
+      "billing_currency": "BRL",
+      "nf_available": true,
+      "data_locations": [
+        "SP",
+        "RJ"
+      ]
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Locaweb oferece programa reseller com desconto de até 40% e billing em BRL com nota fiscal. Dados armazenados em datacenters nacionais (SP/RJ). Demanda: compliance LGPD exige dados pessoais em território nacional. Zero-capital: ativação gratuita do painel reseller.",
+    "category": "infrastructure_reselling",
+    "sha256": "bac15f25098511f7a8d1c6cc6d34a0f92566a86a99e9ce6ef743c0d7a5a22043"
+  },
+  "method_1536": {
+    "method_id": 1536,
+    "name": "Proxy CDN Nacional via UOL Cloud Edge",
+    "source": "UOL Cloud Partner API",
+    "generated_at": "2026-08-26T18:13:29.465639+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "pops_br": 8,
+      "latency_ms": 20,
+      "free_tier_gb": 10,
+      "currency": "BRL"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: UOL Cloud oferece edge computing com PoPs em 8 cidades brasileiras. Latência <20ms para 95% da população BR. Modelo pay-as-you-go em BRL. Diferencial vs Cloudflare: IP brasileiro nativo evita bloqueios de bancos/gov. Zero-capital: free tier de 10GB/mês para testes.",
+    "category": "infrastructure_reselling",
+    "sha256": "ff73dd8512e03a6e8f4c40a80409bf564bd58268cc9ef58c84e394497c275257"
+  },
+  "method_1537": {
+    "method_id": 1537,
+    "name": "White-label Email Marketing via RD Station Reseller",
+    "source": "RD Station Partner Program",
+    "generated_at": "2026-08-26T18:13:29.465735+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "recurring_commission_pct": 20,
+      "clients_base": 30000,
+      "lgpd_compliant": true,
+      "parent_company": "TOTVS"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: RD Station (TOTVS) é líder em automação marketing BR com >30k clientes. Programa parceiro oferece 20% recorrente + setup fee. Billing BRL com NF. Compliance LGPD: ferramenta já adaptada à lei brasileira. Zero-capital: onboarding gratuito como parceiro.",
+    "category": "infrastructure_reselling",
+    "sha256": "b518c4d93ead28ff1c0ae834ec715e91b310d96570eb2bb6e6c8494f85caf7d7"
+  },
+  "method_1538": {
+    "method_id": 1538,
+    "name": "API de Consulta CNPJ/CPF para Fintechs via ReceitaWS",
+    "source": "ReceitaWS Public API",
+    "generated_at": "2026-08-26T18:13:29.465840+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "base_api": "free",
+      "premium_price_brl": 0.05,
+      "regulator": "BCB/COAF",
+      "use_case": "KYC_AML"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: ReceitaWS é API pública da Receita Federal para consulta cadastral. Fintechs e bancos usam para KYC/AML obrigatório pelo COAF. Monetização: wrapper SaaS com cache/rate-limit premium (R$0.05/consulta). Zero-capital: API base é gratuita. Regulador: BCB/COAF.",
+    "category": "software_saas",
+    "sha256": "45af60eb4cc396378778be487ebca4696550107240d7a41e4f8d22f029c46635"
+  },
+  "method_1539": {
+    "method_id": 1539,
+    "name": "SaaS de Gestão Escolar conforme MEC/SISTEC",
+    "source": "MEC SISTEC Integration Docs",
+    "generated_at": "2026-08-26T18:13:29.465985+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 299,
+      "regulator": "MEC/SETEC",
+      "mandatory_integration": true,
+      "target": "escolas_tecnicas_ead"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Escolas técnicas e EAD precisam integrar ao SISTEC/MEC para validade de diplomas. SaaS que automatiza essa integração tem demanda cativa. Pricing: R$299/mês por instituição. Zero-capital: documentação pública do MEC. Regulador: MEC/SETEC.",
+    "category": "software_saas",
+    "sha256": "d44b6fcdf05663957298941e34661cdf7d1a85dfc4759a3e42c35e7cb64edc79"
+  },
+  "method_1540": {
+    "method_id": 1540,
+    "name": "Middleware NF-e 4.0 Multi-UF para ERPs",
+    "source": "SEFAZ Web Services Documentation",
+    "generated_at": "2026-08-26T18:13:29.466141+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_nf_brl": 0.1,
+      "flat_monthly_brl": 199,
+      "regulator": "SEFAZ/CONFAZ",
+      "daily_volume_br": 500000
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Cada UF tem webservice próprio da SEFAZ para emissão NF-e. Middleware unificado poupa meses de desenvolvimento. Monetização: R$0.10/NF ou R$199/mês flat. Zero-capital: webservices públicos. Regulador: SEFAZ/CONFAZ. Demanda: >500k empresas emitindo NF-e diária.",
+    "category": "software_saas",
+    "sha256": "e17a74f1ba09e221a9ba3c85f0b53adbb3c8df3c2ababb61dd8528e43e52a7db"
+  },
+  "method_1541": {
+    "method_id": 1541,
+    "name": "Bot de Atendimento WhatsApp Business API Oficial BR",
+    "source": "Meta Business API + Zenvia/Twilio BR",
+    "generated_at": "2026-08-26T18:13:29.466282+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 149,
+      "bsp_partners": [
+        "Zenvia",
+        "Twilio BR"
+      ],
+      "lgpd_compliant": true,
+      "sandbox_free": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: WhatsApp é canal oficial de atendimento bancário/gov no BR. BSPs como Zenvia oferecem API oficial com pricing BRL. SaaS wrapper para PMEs: R$149/mês. Compliance: LGPD + termos Meta. Zero-capital: sandbox gratuita da Meta.",
+    "category": "software_saas",
+    "sha256": "7da34ae4838fdc8c288c70d3e147fed693e11d1ba8fe680126f758f85fc767c4"
+  },
+  "method_1542": {
+    "method_id": 1542,
+    "name": "Plataforma de Telemedicina Conformidade CFM/ANS",
+    "source": "CFM Resolução 2.314/2022 + ANS RN 465",
+    "generated_at": "2026-08-26T18:13:29.466545+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "white_label_brl": 499,
+      "regulator": "CFM/ANS",
+      "prescription_digital": true,
+      "ans_coverage": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Telemedicina regulamentada pelo CFM e coberta pela ANS. Clínicas precisam de plataforma compliant para prescrição digital e prontuário eletrônico. White-label: R$499/mês. Zero-capital: specs públicas do CFM. Regulador: CFM/ANS.",
+    "category": "software_saas",
+    "sha256": "770bc700f4f5350c6c6c9c2358bc1b1c9a2bb0f6a38f1565abb018b79d744a3f"
+  },
+  "method_1543": {
+    "method_id": 1543,
+    "name": "Curso Online de Preparatório ENEM via Kiwify",
+    "source": "Kiwify Creator Platform",
+    "generated_at": "2026-08-26T18:13:29.466848+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "annual_students": 3000000,
+      "platform_fee_pct": 9.9,
+      "payout_method": "Pix",
+      "payout_days": 2,
+      "anchor": "MEC/INEP"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: ENEM tem >3M inscritos/ano. Kiwify é plataforma BR com payout em BRL via Pix (D+2). Comissão plataforma 9.9%. Zero-capital: upload gratuito. Demanda sazonal garantida. Ancoragem: MEC/INEP.",
+    "category": "content_monetization",
+    "sha256": "594faf63d2f4429aaf44139622c8ed9e6449f436c8be369ca63b7258dd1578d4"
+  },
+  "method_1544": {
+    "method_id": 1544,
+    "name": "Newsletter Paga sobre Licitações Públicas via Substack BR",
+    "source": "Portal de ComprasNet + Substack",
+    "generated_at": "2026-08-26T18:13:29.466980+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "market_size_brl_bn": 200,
+      "ticket_brl_monthly": 29,
+      "source": "ComprasNet/ME",
+      "payment_gateway": "Stripe BR"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: >R$200B em licitações/ano. Profissionais pagam por curadoria de editais. Substack suporta cobrança em BRL via Stripe BR. Ticket médio R$29/mês. Fonte oficial: ComprasNet/ME. Zero-capital: conteúdo derivado de dados públicos.",
+    "category": "content_monetization",
+    "sha256": "aeee3147c8bccb46a5266cb0f3b832da362b70220102f045f46f026425501ef9"
+  },
+  "method_1545": {
+    "method_id": 1545,
+    "name": "E-book de Compliance LGPD para Pequenas Empresas via Hotmart",
+    "source": "ANPD Guia Orientativo + Hotmart",
+    "generated_at": "2026-08-26T18:13:29.467196+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl": 47,
+      "net_royalty_pct": 92,
+      "compliance_gap_pct": 90,
+      "regulator": "ANPD",
+      "platform": "Hotmart"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: >90% das PMEs ainda não adequadas à LGPD segundo CNI 2025. E-book prático a R$47 na Hotmart (maior plataforma BR). Royalty líquido ~92%. Zero-capital: guia ANPD é público. Regulador: ANPD.",
+    "category": "content_monetization",
+    "sha256": "be1823fbb06c56cf3a5e8f4743cd8c59fe4b941822fecbfc8a923a00e1249acb"
+  },
+  "method_1546": {
+    "method_id": 1546,
+    "name": "Canal YouTube de Educação Financeira CVM/ANBIMA",
+    "source": "CVM Instrução 8 + ANBIMA CPA-10 Material",
+    "generated_at": "2026-08-26T18:13:29.467296+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "monetization": [
+        "AdSense BR",
+        "XP/BTG affiliates",
+        "own_courses"
+      ],
+      "regulator": "CVM/ANBIMA",
+      "certification": "CPA-10",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Educação financeira é nicho protegido/regulado. Conteúdo certificado ANBIMA tem autoridade. Monetização: AdSense BR + afiliados XP/BTG + cursos próprios. Zero-capital: material didático público. Regulador: CVM/ANBIMA.",
+    "category": "content_monetization",
+    "sha256": "6c46c386f636989ab0abc525c74b8e6f5e41b1fa3a3c17732fcfd47b35a69f14"
+  },
+  "method_1547": {
+    "method_id": 1547,
+    "name": "Podcast Patrocinado sobre Direito Tributário via Anchor BR",
+    "source": "Spotify Anchor + OAB/CFOAB",
+    "generated_at": "2026-08-26T18:13:29.467425+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "monetization": "Anchor BRL + sponsorship",
+      "anchor_institutions": [
+        "CFOAB",
+        "CRC"
+      ],
+      "demand_driver": "reforma_tributaria",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Reformas tributárias geram demanda contínua por conteúdo especializado. Anchor/Spotify monetiza em BRL. Patrocínio de escritórios contábeis/jurídicos. Zero-capital: gravação caseira. Ancoragem: CFOAB/CRC.",
+    "category": "content_monetization",
+    "sha256": "3bc17655bbe3759cb41dd5cf5ec2ea23c0fb18491deef63e27a45ac3fcf4cdf4"
   }
 }
