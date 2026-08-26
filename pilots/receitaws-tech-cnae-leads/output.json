@@ -1,0 +1,48 @@
+{
+  "proposal_id": "exp-20260826-data-products-method-716-leads",
+  "title": "Method 716: Lead Generation Lists for Startups (ReceitaWS Tech CNAE)",
+  "status": "SCAFFOLD_OK",
+  "scaffolded_at": "2026-08-26T19:49:37.093630+00:00",
+  "method_validated": {
+    "api_responds": true,
+    "has_cnae_fields": true,
+    "cnae_structure_sample": {
+      "primary": [
+        {
+          "code": "64.22-1-00",
+          "text": "Bancos múltiplos, com carteira comercial"
+        }
+      ],
+      "secondary_count": 1
+    },
+    "tech_cnaes_defined": 5,
+    "filter_viable": true
+  },
+  "tech_cnaes": [
+    "6201501",
+    "6202300",
+    "6203100",
+    "6204000",
+    "6311900"
+  ],
+  "compliance": {
+    "zero_capital": true,
+    "no_external_signup": true,
+    "no_public_publish": true,
+    "data_source": "ReceitaWS (public API)",
+    "kill_switch_active": true
+  },
+  "monetization_path": {
+    "product": "Lista de empresas tech por CNAE/região/porte",
+    "target_buyer": "Vendas B2B, recrutadores tech, investidores",
+    "pricing_model": "Por lista filtrada ou assinatura mensal",
+    "estimated_ticket": "R$200-2000/lista dependendo do filtro"
+  },
+  "next_steps_tier1": [
+    "Construir seed list de CNPJs via busca web/LinkedIn/diretórios públicos",
+    "Implementar batch fetch com rate limiting (ReceitaWS: ~3 req/min safe)",
+    "Normalizar e enriquecer dados (porte, capital social, endereço)",
+    "Criar filtros exportáveis (CSV/JSON) por CNAE+UF+porte",
+    "Validar ToS ReceitaWS para uso comercial de dados agregados"
+  ]
+}
