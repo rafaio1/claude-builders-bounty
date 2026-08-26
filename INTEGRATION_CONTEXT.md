@@ -50,3 +50,26 @@
  - Sem testes automatizados no repositório
  - Alguns scripts podem depender de variáveis de ambiente não documentadas
  - Histórico anterior do repo TentOfTrials-bounty-67 não foi migrado (era público)
+
+## Reconciliação do Integrador — 2026-08-26T13:45Z
+
+### AgentLily Runtime (Bounty)
+- Branch `bounty/issue-129-tool-registry-list-ordering` criada e pushed para `rafaio1/agentlily-runtime`
+- Testes adicionados: `tests/tools/tool-registry-list.test.ts` (Issue #129) e `tests/guards/runtime-guards-edge-cases.test.ts` (Issue #152)
+- Commit: `b1d214a`
+
+### OphirPay Pilot Status
+- PR #225 (webhook E2E tests): OPEN, Vercel check FAILURE (auth required), Greptile review COMMENTED
+- Issue #86 (visual regression tests): OPEN, labels `bounty` + `difficulty: medium` + `tests`, zero competition
+- Payout: Stellar Drips Wave program (USDC/XLM) — amount unconfirmed for feature bounties
+
+### Features Audit
+- `service_delivery_loop.py`: placeholder (5 linhas, print+sleep) — flagged em FEATURES.md
+- High-ticket workspaces: 15 dirs gitignored, utilidade financeira não verificada — flagged para auditoria
+- Workspace/bounty-exec: 47 subprojetos gitignored, todos com estrutura de bounty repo clone
+
+### Estado do Sistema
+- Working tree: clean
+- Último push: `40f147a` para `rafaio1/agentic-integration` (PRIVATE ✅)
+- Ledger ARO: `data/aro/ledger.jsonl` atualizado localmente (gitignored por segurança)
+- Próxima verificação agendada: 2026-08-27T03:00Z (PR merges + hackathon results)
