@@ -1,0 +1,88 @@
+{
+  "pilot": "backblaze-b2-storage-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:29:12.016384+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "storage_gb": 10,
+    "download_gb_month": 100,
+    "class_b_transactions_month": 1000000,
+    "class_c_transactions_month": 1000000,
+    "upload_bandwidth_gbps": null,
+    "cdn_enabled": true
+  },
+  "paid_plan_baseline": {
+    "name": "Pay-as-you-go",
+    "storage_per_tb_month_usd": 6.0,
+    "download_per_tb_usd": 1.0,
+    "class_b_per_10k_usd": 0.004,
+    "class_c_per_10k_usd": 0.004,
+    "minimum_monthly_spend_usd": 0.0
+  },
+  "reselling_model": {
+    "strategy": "Managed Backup & Archive Service for SMBs",
+    "target_customer": "Small businesses needing offsite backup without AWS complexity",
+    "value_prop": "Automated backup + retention policies + restore portal + monitoring",
+    "suggested_price_brl": 39.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Free tier is per-account; each client needs separate B2 account or bucket namespace under master account",
+    "tos_compliance_note": "Backblaze ToS permits managed services and resale via API. Partner program available for volume discounts. No minimum spend required.",
+    "affiliate_program": {
+      "exists": true,
+      "commission_pct": 15,
+      "cookie_days": 90,
+      "payout_method": "PayPal/Wire",
+      "min_payout_usd": 50
+    }
+  },
+  "doc_validation": {
+    "source_verified": true,
+    "url": "https://www.backblaze.com/cloud-storage/pricing",
+    "extracted_limits": {
+      "storage_gb": 10,
+      "paid_storage_per_tb_usd": 5.0
+    },
+    "error": null
+  },
+  "unit_economics": {
+    "small_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 399.0,
+      "cost_brl": 0.0,
+      "margin_brl": 399.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 4788.0
+    },
+    "medium_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 1995.0,
+      "cost_brl": 0.0,
+      "margin_brl": 1995.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 23940.0
+    },
+    "scale_200_clients": {
+      "monthly_clients": 200,
+      "revenue_brl": 7980.0,
+      "cost_brl": 0.0,
+      "margin_brl": 7980.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 95760.0
+    }
+  },
+  "risks": [
+    "Free tier download limit (100GB/mo) may be insufficient for restore-heavy clients",
+    "No native encryption at rest on free tier; client-side encryption recommended",
+    "Bucket lifecycle rules require manual configuration per client",
+    "Affiliate payout threshold ($50) requires ~4 referrals before first commission",
+    "CDN egress counts toward download quota; heavy media clients may exceed free tier quickly"
+  ],
+  "next_steps": [
+    "Validate affiliate program terms and sign up for tracking",
+    "Build bucket provisioning script via B2 API v2",
+    "Create automated backup agent for Windows/Linux/macOS",
+    "Design restore portal UI for non-technical clients",
+    "Test CDN integration with Cloudflare (free egress partnership)"
+  ]
+}

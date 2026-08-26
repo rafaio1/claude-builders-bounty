@@ -1,0 +1,83 @@
+{
+  "pilot": "vercel-edge-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:29:45.353752+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "bandwidth_gb_month": 100,
+    "serverless_function_executions_month": 100000,
+    "edge_function_invocations_month": null,
+    "build_minutes_month": 6000,
+    "max_execution_duration_seconds": 10,
+    "max_payload_size_mb": 4.5,
+    "commercial_usage_allowed": false,
+    "team_members": 1
+  },
+  "paid_plan_baseline": {
+    "name": "Pro ($20/mo per member)",
+    "bandwidth_gb_month": 1000,
+    "serverless_function_executions_month": 1000000,
+    "build_minutes_month": 24000,
+    "max_execution_duration_seconds": 60,
+    "commercial_usage_allowed": true,
+    "analytics_included": true
+  },
+  "reselling_model": {
+    "strategy": "Managed Frontend Hosting for SMBs",
+    "target_customer": "Small businesses needing static sites + serverless APIs without DevOps",
+    "value_prop": "Deploy + custom domain + SSL + monitoring + performance optimization",
+    "suggested_price_brl": 59.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Hobby plan prohibits commercial usage; managed service must use Pro plan or frame as personal projects under client accounts",
+    "tos_compliance_note": "Vercel Hobby plan explicitly forbids commercial usage (ToS Section 3). Reselling requires Pro plan upgrade or having clients sign up directly with reseller as consultant."
+  },
+  "doc_validation": {
+    "source_verified": false,
+    "url": "https://vercel.com/pricing",
+    "extracted_limits": {
+      "commercial_usage_allowed": false
+    },
+    "error": null
+  },
+  "unit_economics": {
+    "small_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 599.0,
+      "cost_brl": 0.0,
+      "margin_brl": 599.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 7188.0
+    },
+    "medium_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 2995.0,
+      "cost_brl": 0.0,
+      "margin_brl": 2995.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 35940.0
+    },
+    "scale_200_clients": {
+      "monthly_clients": 200,
+      "revenue_brl": 11980.0,
+      "cost_brl": 0.0,
+      "margin_brl": 11980.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 143760.0
+    }
+  },
+  "risks": [
+    "Hobby plan explicitly prohibits commercial usage; requires Pro plan ($20/mo) for legitimate resale",
+    "Margin collapses if Pro plan required: R$59.90 revenue - ~R$100 cost = negative margin at small scale",
+    "Execution duration limit (10s on Hobby) insufficient for complex APIs; Pro offers 60s",
+    "No SLA on Hobby plan; production outages have no recourse",
+    "Team collaboration limited to 1 member on Hobby; multi-developer projects need Pro"
+  ],
+  "next_steps": [
+    "Re-evaluate economics with Pro plan cost included; target price may need to be R$149+",
+    "Explore Vercel Partner Program for volume discounts on Pro plans",
+    "Build deployment automation via Vercel CLI/API for rapid client onboarding",
+    "Create migration path from Hobby to Pro as client usage grows",
+    "Consider alternative providers (Netlify, Cloudflare Pages) with more permissive free tiers"
+  ]
+}
