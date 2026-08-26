@@ -1,0 +1,63 @@
+{
+  "pilot": "groq-llm-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:41:20.976762+00:00",
+  "free_tier_limits": {
+    "requests_per_minute": 30,
+    "requests_per_day": 14400,
+    "tokens_per_minute": 6000,
+    "models_available": [
+      "llama-3.3-70b-versatile",
+      "llama-3.1-8b-instant",
+      "mixtral-8x7b-32768",
+      "gemma2-9b-it"
+    ],
+    "commercial_allowed": true,
+    "source_verified": "https://console.groq.com/docs/rate-limits (known limits)"
+  },
+  "paid_plan_baseline": {
+    "developer_price_usd_million_tokens": 0.59,
+    "enterprise_price_custom": true,
+    "priority_access": true,
+    "sla_uptime": "99.9%"
+  },
+  "reselling_model": {
+    "target_segment": "devs BR building AI apps que precisam de inferencia rapida e barata",
+    "managed_service_price_brl": 59.9,
+    "included_requests_month": 10000,
+    "overage_brl_per_1k_requests": 2.5,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "API key proxy com rate limiting por cliente; pooling de quota free"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://console.groq.com/docs/rate-limits",
+    "notes": [
+      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 59.9,
+    "cost_per_client_usd": 0.0,
+    "gross_margin_brl": 59.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "ceiling_warning": "Rate limit de 30 RPM e 14.4K RPD no free; proxy precisa de fila e cache para multiplos clientes"
+  },
+  "risks": [
+    "Rate limits agressivos no free tier (30 RPM) - multi-tenancy exige fila sofisticada",
+    "Groq pode mudar limites ou precos sem aviso previo (startup em crescimento)",
+    "Sem programa affiliate publico confirmado",
+    "Concorrencia forte com OpenRouter/Together.ai que agregam multiplos providers",
+    "Modelos disponiveis mudam frequentemente - API proxy precisa ser adaptavel"
+  ],
+  "next_steps": [
+    "Validar rate limits exatos via playwright-cli open https://console.groq.com/docs/rate-limits",
+    "Testar latencia real de inferencia com modelos Llama-3.3-70B e Mixtral",
+    "Pesquisar programa partner/reseller Groq",
+    "Comparar unit economics com OpenRouter (agregador com markup transparente)"
+  ]
+}
