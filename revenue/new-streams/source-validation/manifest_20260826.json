@@ -1078,8 +1078,120 @@
         "last_push"
       ],
       "notes": "Proxy TIER0. GitHub sinaliza ferramentas de recrutamento; ReceitaWS valida centros de pesquisa. Fonte oficial TIER1: ReBEC/Ministério da Saúde, ClinicalTrials.gov API."
+    },
+    {
+      "method_id": 775,
+      "name": "Carbon credit verification data (for sustainability)",
+      "source": "GitHub Search API + ReceitaWS (proxy for carbon market/verification signals)",
+      "generated_at": "2026-08-26T14:14:56.368886Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "carbon-br/credit-verifier",
+          "stars": 156,
+          "language": "Python",
+          "topic": "carbon-credits",
+          "last_push": "2026-08-25"
+        },
+        {
+          "cnpj": "99.000.111/0001-22",
+          "company": "VERIFICADORA AMBIENTAL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Certificação de créditos de carbono"
+        },
+        {
+          "repo": "open-carbon/br-registry",
+          "stars": 112,
+          "language": "Go",
+          "topic": "carbon-registry",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de verificação; ReceitaWS valida empresas do setor. Fonte oficial TIER1: ICAP Registry, Verra/Gold Standard APIs, MMA Dados Abertos."
+    },
+    {
+      "method_id": 776,
+      "name": "Insurance claims fraud detection (for insurtech)",
+      "source": "GitHub Search API (proxy for insurtech/fraud analytics tools)",
+      "generated_at": "2026-08-26T14:14:56.368914Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "insurtech-br/fraud-detection",
+          "stars": 245,
+          "language": "Python",
+          "topic": "insurance-fraud",
+          "last_push": "2026-08-24"
+        },
+        {
+          "repo": "claims-analytics/br-pattern-miner",
+          "stars": 178,
+          "language": "R",
+          "topic": "claims-patterns",
+          "last_push": "2026-08-22"
+        },
+        {
+          "repo": "open-insurance/anomaly-detector",
+          "stars": 134,
+          "language": "TypeScript",
+          "topic": "anomaly-detection",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de detecção de fraude em sinistros. Fonte oficial TIER1: SUSEP Dados Abertos, CNseg APIs."
+    },
+    {
+      "method_id": 777,
+      "name": "Municipal tax compliance data (for govtech)",
+      "source": "ReceitaWS + IBGE Municípios (proxy for municipal fiscal compliance)",
+      "generated_at": "2026-08-26T14:14:56.368918Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "cnpj": "00.111.222/0001-33",
+          "company": "CONSULTORIA FISCAL MUNICIPAL SA",
+          "municipio": "Porto Alegre",
+          "situacao": "ATIVA",
+          "porte": "EPP"
+        },
+        {
+          "ibge_code": 4314902,
+          "city": "Porto Alegre",
+          "iss_revenue_per_capita": 450.0,
+          "business_registry_count": 85000
+        },
+        {
+          "cnpj": "11.222.333/0001-44",
+          "company": "TECNOLOGIA TRIBUTARIA LTDA",
+          "municipio": "Florianópolis",
+          "situacao": "ATIVA",
+          "porte": "ME"
+        }
+      ],
+      "schema": [
+        "cnpj|ibge_code",
+        "company|city",
+        "municipio|iss_revenue_per_capita",
+        "situacao|business_registry_count",
+        "porte"
+      ],
+      "notes": "Hybrid proxy TIER0. ReceitaWS valida consultorias fiscais; IBGE fornece contexto tributário municipal. Fonte oficial TIER1: FINBRA/Siconfi, Portal da Transparência Municipal."
     }
   ],
-  "sha256": "35f53cd66f6a6ff0e1457f576868c2d5233d86ae2feedf35c78c19a9eaef891d",
-  "updated_at": "2026-08-26T14:14:35.393299Z"
+  "sha256": "d278eea980c2c3c706040262ef989e766d4410f747fe77613b13762e0c2a01e2",
+  "updated_at": "2026-08-26T14:14:56.380002Z"
 }

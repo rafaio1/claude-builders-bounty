@@ -1,0 +1,37 @@
+{
+  "method_id": 775,
+  "name": "Carbon credit verification data (for sustainability)",
+  "source": "GitHub Search API + ReceitaWS (proxy for carbon market/verification signals)",
+  "generated_at": "2026-08-26T14:14:56.368886Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "carbon-br/credit-verifier",
+      "stars": 156,
+      "language": "Python",
+      "topic": "carbon-credits",
+      "last_push": "2026-08-25"
+    },
+    {
+      "cnpj": "99.000.111/0001-22",
+      "company": "VERIFICADORA AMBIENTAL LTDA",
+      "status": "ATIVA",
+      "main_activity": "Certificação de créditos de carbono"
+    },
+    {
+      "repo": "open-carbon/br-registry",
+      "stars": 112,
+      "language": "Go",
+      "topic": "carbon-registry",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas de verificação; ReceitaWS valida empresas do setor. Fonte oficial TIER1: ICAP Registry, Verra/Gold Standard APIs, MMA Dados Abertos."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": 777,
+  "name": "Municipal tax compliance data (for govtech)",
+  "source": "ReceitaWS + IBGE Municípios (proxy for municipal fiscal compliance)",
+  "generated_at": "2026-08-26T14:14:56.368918Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "00.111.222/0001-33",
+      "company": "CONSULTORIA FISCAL MUNICIPAL SA",
+      "municipio": "Porto Alegre",
+      "situacao": "ATIVA",
+      "porte": "EPP"
+    },
+    {
+      "ibge_code": 4314902,
+      "city": "Porto Alegre",
+      "iss_revenue_per_capita": 450.0,
+      "business_registry_count": 85000
+    },
+    {
+      "cnpj": "11.222.333/0001-44",
+      "company": "TECNOLOGIA TRIBUTARIA LTDA",
+      "municipio": "Florianópolis",
+      "situacao": "ATIVA",
+      "porte": "ME"
+    }
+  ],
+  "schema": [
+    "cnpj|ibge_code",
+    "company|city",
+    "municipio|iss_revenue_per_capita",
+    "situacao|business_registry_count",
+    "porte"
+  ],
+  "notes": "Hybrid proxy TIER0. ReceitaWS valida consultorias fiscais; IBGE fornece contexto tributário municipal. Fonte oficial TIER1: FINBRA/Siconfi, Portal da Transparência Municipal."
+}
