@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-18T16:02:31+00:00
+Atualizado: 2026-08-26T12:46:53+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,19 +12,19 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-18T15:59:03+00:00
-- git_clean: ok
-- dirty_paths: []
+- last_tick: 2026-08-21T00:40:09+00:00
+- git_clean: FALHOU
+- dirty_paths: [".claude/settings.local.json", "config/hats_protocol_scanner.json", "config/layer3_scanner.json", "config/quest_execution_state.json", "config/rabbithole_scanner.json", "docs/EXPANSION_GOVERNANCE.md", "revenue/hats_opportunities/", "revenue/layer3_opportunities/", "revenue/rabbithole_opportunities/"]
 
 ## Ghost
 
-Mapeamento de gargalos de contexto no Playwright e latência do loop, com melhorias focadas em traces para eval e otimização de ferramentas.
+Mapeamento de gargalos de integridade git_clean fatiados e melhorias de ferramentas e IA para o motor Agentic.
 
 ## Ledger
 
-{"pending": 203, "blocked": 16, "applied": 17, "developing": 5}
+{"developing": 5, "blocked": 17, "pending": 201, "applied": 23}
 
-- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
+- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [developing/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [blocked/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
 - `imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui` [pending/p2] Tick de saúde não deixa estado legível por máquina
 - `imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er` [pending/p2] review_feedback não estruturado faz o develop errar o alvo

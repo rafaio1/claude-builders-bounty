@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-18T16:02:31+00:00",
+  "updated_at": "2026-08-26T12:46:53+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -527,7 +527,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T160231Z",
+      "map_id": "20260826T124653Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -554,7 +554,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T160231Z",
+      "map_id": "20260826T124653Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -581,7 +581,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T160231Z",
+      "map_id": "20260826T124653Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -610,7 +610,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T160231Z",
+      "map_id": "20260826T124653Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -4959,20 +4959,21 @@
       "canon": "97607c2a61fc32d0",
       "title": "Sanitização de traces da GhostCLI",
       "kind": "improvement",
-      "priority": 4,
+      "priority": 2,
       "status": "pending",
-      "rationale": "Traces de chamadas à API da GhostCLI podem conter metadados sensíveis ou excesso de ruído para análise posterior.",
-      "change": "Adicionar um filtro no logger do ghostcli.py para remover headers de autenticação e limitar o tamanho do payload no trace.",
+      "rationale": "Os traces da GhostCLI podem conter prompts longos ou dados sensíveis que poluem os logs e dificultam a avaliação (eval) do modelo.",
+      "change": "Adicionar um filtro no claude_cli.py para anonimizar URLs e chaves antes de salvar os traces no ledger de improve.py.",
       "never": [
         "Gravar secrets em texto plano",
         "Desativar o health check do loop"
       ],
       "files_hint": [
-        "src/agentic/ghostcli.py"
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260817T100206Z",
+      "map_id": "20260826T124653Z",
       "history": [
         {
           "at": "2026-08-17T10:02:06+00:00",
@@ -8528,6 +8529,154 @@
           "at": "2026-08-18T16:02:31+00:00",
           "event": "mapped",
           "detail": "20260818T160231Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-restaurar-git-clean-fatia-playbook-e-receita",
+      "key": "0505ec16ddd19ebd",
+      "canon": "b26ab57ad2c859f4",
+      "title": "Restaurar git_clean: fatia playbook e receita",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "A working tree continua suja devido a novos arquivos de documentação e diretórios de oportunidades gerados pelos scanners.",
+      "change": "O pipeline deve stagear docs/EXPANSION_GOVERNANCE.md e os diretórios revenue/* para manter o repositório limpo, garantindo que o playbook de integridade os trate como artefatos versionáveis.",
+      "never": [
+        "git reset --hard",
+        "git clean -fd",
+        "git push --force",
+        "apagar diretórios de receita",
+        "alterar ARO.md"
+      ],
+      "files_hint": [],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T124653Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:46:53+00:00",
+          "event": "mapped",
+          "detail": "20260826T124653Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-restaurar-git-clean-fatia-de-configura-es-locais",
+      "key": "7d583411984401ac",
+      "canon": "fc674a522d24deb7",
+      "title": "Restaurar git_clean: fatia de configurações locais",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Arquivos de configuração local da Claude CLI (.claude/settings.local.json) estão vazando para a working tree e sujam a branch main.",
+      "change": "Adicionar .claude/settings.local.json ao .gitignore do repositório para evitar que configurações locais de desenvolvimento sejam acidentalmente stageadas.",
+      "never": [
+        "commitar .claude/settings.local.json",
+        "git checkout --",
+        "git clean -fd",
+        "git reset --hard"
+      ],
+      "files_hint": [],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T124653Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:46:53+00:00",
+          "event": "mapped",
+          "detail": "20260826T124653Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-otimiza-o-de-snapshots-no-playwright-cli",
+      "key": "1ef69a3dd4e883bd",
+      "canon": "1060aa896923cdea",
+      "title": "Otimização de snapshots no playwright-cli",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-cli headless é usado para saúde, mas gerar snapshots a cada tick pode ser custoso. O playwright-mcp está desativado para economizar tokens.",
+      "change": "Ajustar a invocação do playwright-cli no motor para reutilizar o contexto do browser e salvar snapshots em disco com nomes baseados em hash, evitando reprocessamento.",
+      "never": [
+        "ativar playwright-mcp",
+        "desperdiçar tokens",
+        "ligar AGENTIC_LIVE_TRADE=1",
+        "criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T124653Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:46:53+00:00",
+          "event": "mapped",
+          "detail": "20260826T124653Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-contexto-estruturado-para-corre-o-de-review-feed",
+      "key": "f72ab0b26d4d8d6f",
+      "canon": "65ffbd22d258bd3a",
+      "title": "Contexto estruturado para correção de review_feedback",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita um patch, o develop precisa corrigir exatamente o parecer sem alargar o escopo.",
+      "change": "Melhorar o prompt injetado no Claude CLI em claude_cli.py para incluir o histórico do review_feedback de forma estruturada, forçando o modelo a focar apenas nas correções solicitadas.",
+      "never": [
+        "reset --hard",
+        "alterar OWNER_SHARE_RATE",
+        "criar novos scripts",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T124653Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:46:53+00:00",
+          "event": "mapped",
+          "detail": "20260826T124653Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-valida-o-de-schemas-json-nos-scanners",
+      "key": "163e92a1a41868d2",
+      "canon": "5427cddc3254cd0d",
+      "title": "Validação de schemas JSON nos scanners",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Os arquivos config/*_scanner.json são gerados dinamicamente e podem corromper o estado se o JSON for inválido.",
+      "change": "Adicionar validação de schema (ex: jsonschema) ao carregar os configs em loop.py antes de processar as filas de saúde.",
+      "never": [
+        "criar src/agentic/loop.sh",
+        "alterar interval do systemd",
+        "fuzzing",
+        "wordlist"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T124653Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:46:53+00:00",
+          "event": "mapped",
+          "detail": "20260826T124653Z"
         }
       ]
     }
