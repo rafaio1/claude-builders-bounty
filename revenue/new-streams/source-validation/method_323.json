@@ -1,0 +1,31 @@
+{
+  "method_id": "323",
+  "name": "Test generation service (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:52.779206+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "ide_plugin": "vscode_codium",
+      "language": "typescript",
+      "edge_cases_detected": 12,
+      "mutation_score_pct": 78,
+      "generation_time_sec": 8
+    },
+    {
+      "ide_plugin": "jetbrains_diffblue",
+      "language": "java",
+      "edge_cases_detected": 23,
+      "mutation_score_pct": 85,
+      "generation_time_sec": 15
+    }
+  ],
+  "schema": [
+    "ide_plugin",
+    "language",
+    "edge_cases_detected",
+    "mutation_score_pct",
+    "generation_time_sec"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Diffblue Cover / CodiumAI IDE plugins para devs gerarem testes unitários diretamente no editor com análise de edge cases."
+}

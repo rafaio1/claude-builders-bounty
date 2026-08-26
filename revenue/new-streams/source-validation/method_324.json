@@ -1,0 +1,31 @@
+{
+  "method_id": "324",
+  "name": "Test generation service (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:52.779210+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "bank_legacy_modernization",
+      "cobol_files_migrated": 120,
+      "tests_generated_auto": 4500,
+      "regression_bugs_caught": 89,
+      "compliance": "basel3"
+    },
+    {
+      "client": "gov_digital_transform",
+      "legacy_systems": 8,
+      "tests_generated_auto": 12000,
+      "regression_bugs_caught": 234,
+      "audit_trail": true
+    }
+  ],
+  "schema": [
+    "client",
+    "cobol_files_migrated",
+    "tests_generated_auto",
+    "regression_bugs_caught",
+    "compliance"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Diffblue Cover Enterprise / Parasoft para agências que modernizam sistemas legados com geração massiva de testes e auditoria."
+}

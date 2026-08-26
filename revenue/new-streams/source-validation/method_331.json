@@ -1,0 +1,35 @@
+{
+  "method_id": "331",
+  "name": "Changelog automation",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:15:56.209647+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "conventional-changelog/conventional-changelog",
+      "stars": 4800,
+      "lang": "JavaScript",
+      "tool": "conventional-changelog"
+    },
+    {
+      "repo": "release-please/release-please",
+      "stars": 3200,
+      "lang": "TypeScript",
+      "tool": "release-please"
+    },
+    {
+      "repo": "semantic-release/semantic-release",
+      "stars": 21500,
+      "lang": "JavaScript",
+      "tool": "semantic-release"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "tool"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: npm registry e GitHub Actions marketplace para changelog generators.",
+  "sha256": "51d1f6e19bfaab00239b1ae5fbaacab41978cd1fa89106eb1049c085a0db7757"
+}

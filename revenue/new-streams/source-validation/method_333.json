@@ -1,0 +1,35 @@
+{
+  "method_id": "333",
+  "name": "Changelog automation (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:15:56.209647+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "jreleaser/jreleaser",
+      "stars": 1800,
+      "lang": "Java",
+      "tool": "JReleaser"
+    },
+    {
+      "repo": "goreleaser/goreleaser",
+      "stars": 14200,
+      "lang": "Go",
+      "tool": "GoReleaser"
+    },
+    {
+      "repo": "microsoft/rush",
+      "stars": 6400,
+      "lang": "TypeScript",
+      "tool": "Rush"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "tool"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Foco em ferramentas multi-platform com suporte a signing, SBOM e compliance enterprise.",
+  "sha256": "5600ce4e039df8c6a754b61d89da4d40f54435b31ba1fe47f020ef6bd9ad8819"
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "322",
+  "name": "Test generation service (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:52.779186+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "content_type": "coding_tutorial",
+      "repo": "python-basics-course",
+      "tests_generated": 45,
+      "student_pass_rate_pct": 94,
+      "framework": "pytest"
+    },
+    {
+      "content_type": "interactive_workshop",
+      "repo": "react-hooks-lab",
+      "tests_generated": 32,
+      "student_pass_rate_pct": 89,
+      "framework": "vitest"
+    }
+  ],
+  "schema": [
+    "content_type",
+    "repo",
+    "tests_generated",
+    "student_pass_rate_pct",
+    "framework"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: CodiumAI / Exercism para criadores de cursos que geram testes automáticos para exercícios de alunos."
+}
