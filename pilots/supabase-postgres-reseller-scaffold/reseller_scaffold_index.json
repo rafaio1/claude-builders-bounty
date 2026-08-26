@@ -58,12 +58,28 @@
       "Only 2 active free projects per org — scaling requires Pro plan ($25/mo)",
       "500MB DB limit tight for production — upgrade path needed early",
       "No SLA or email support on free tier",
-      "TOS must be checked for commercial reselling compliance"
+      "TOS must be checked for commercial reselling compliance",
+      "TOS prohibits sublicensing — must use customer-owned accounts model"
     ],
     "compliance_check_required": true,
-    "tos_url": "https://supabase.com/terms-of-service"
+    "tos_url": "https://supabase.com/terms-of-service",
+    "tos_analysis": {
+      "verified": true,
+      "verification_timestamp": "2026-08-26T21:31:08.869077+00:00",
+      "key_restrictions": [
+        "License is non-sublicensable and non-transferable",
+        "Use limited to Customer internal business purposes only",
+        "Authorized Users = employees, consultants, contractors, agents of Customer",
+        "No explicit reselling/redistribution clause found in public terms"
+      ],
+      "commercial_viability": "CONDITIONAL",
+      "recommended_model": "Managed consulting/setup service using customer-owned Supabase account (not direct reselling)",
+      "risk_level": "HIGH for direct reselling, LOW for setup/consulting model",
+      "compliance_path": "Customer creates own Supabase org; we provide setup, schema design, monitoring as professional services"
+    }
   },
   "next_steps": [
+    "PIVOT: Redesign as managed setup service (customer owns account) instead of direct reselling",
     "Verify TOS for commercial reselling/hosting compliance",
     "Build PoC: pgvector AI demo app with pre-configured schema",
     "Create keepalive mechanism to prevent free project pausing",
