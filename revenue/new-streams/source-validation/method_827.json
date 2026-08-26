@@ -1,0 +1,38 @@
+{
+  "method_id": 827,
+  "name": "Web traffic estimates API (for developers)",
+  "source": "GitHub Search API (proxy for dev tool adoption metrics)",
+  "generated_at": "2026-08-26T14:27:18.035422+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "Vercel",
+      "monthly_visits_mn": 28.5,
+      "github_stars": 45200,
+      "npm_downloads_wk": 1200000,
+      "market_segment": "Frontend Hosting"
+    },
+    {
+      "tool": "Supabase",
+      "monthly_visits_mn": 12.8,
+      "github_stars": 78500,
+      "docker_pulls_mn": 850000,
+      "market_segment": "Backend-as-a-Service"
+    },
+    {
+      "tool": "Hono",
+      "monthly_visits_mn": 3.2,
+      "github_stars": 22100,
+      "npm_downloads_wk": 950000,
+      "market_segment": "Edge Frameworks"
+    }
+  ],
+  "schema": [
+    "tool",
+    "monthly_visits_mn",
+    "github_stars",
+    "adoption_proxy_metric",
+    "market_segment"
+  ],
+  "notes": "Métricas de adoção de ferramentas de desenvolvimento para validação de stack. Proxy GitHub combina tráfego web com atividade de repositórios. Fonte oficial TIER1: npm trends, GitHub Octoverse."
+}

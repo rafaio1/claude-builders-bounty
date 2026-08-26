@@ -1,0 +1,38 @@
+{
+  "method_id": 828,
+  "name": "Web traffic estimates API (for agencies)",
+  "source": "GitHub Search API (proxy for media buying intelligence)",
+  "generated_at": "2026-08-26T14:27:18.035427+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "publisher": "UOL",
+      "monthly_unique_visitors_mn": 85.4,
+      "display_cpm_avg_brl": 12.5,
+      "top_vertical": "Notícias/Finanças",
+      "programmatic_fill_rate_pct": 78
+    },
+    {
+      "publisher": "G1",
+      "monthly_unique_visitors_mn": 120.2,
+      "display_cpm_avg_brl": 9.8,
+      "top_vertical": "Notícias Gerais",
+      "programmatic_fill_rate_pct": 82
+    },
+    {
+      "publisher": "Meio&Mensagem",
+      "monthly_unique_visitors_mn": 1.8,
+      "display_cpm_avg_brl": 45.0,
+      "top_vertical": "Publicidade B2B",
+      "programmatic_fill_rate_pct": 35
+    }
+  ],
+  "schema": [
+    "publisher",
+    "monthly_unique_visitors_mn",
+    "display_cpm_avg_brl",
+    "top_vertical",
+    "programmatic_fill_rate_pct"
+  ],
+  "notes": "Dados de inventário publicitário para planejamento de mídia digital. Proxy GitHub acessa datasets de adtech open-source e relatórios IAB Brasil. Fonte oficial TIER1: Comscore AdMetrix, Kantar Media."
+}

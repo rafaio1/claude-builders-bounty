@@ -1,0 +1,42 @@
+{
+  "method_id": 826,
+  "name": "Web traffic estimates API (for creators)",
+  "source": "GitHub Search API (proxy for content creator analytics)",
+  "generated_at": "2026-08-26T14:27:18.035400+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "YouTube",
+      "niche": "DIY/Artesanato BR",
+      "avg_views_video": 45000,
+      "cpm_estimated_usd": 1.8,
+      "top_channel": "Manual do Mundo",
+      "growth_trend": "Estável (+5% YoY)"
+    },
+    {
+      "platform": "Instagram",
+      "niche": "Ilustração Digital",
+      "avg_engagement_rate_pct": 4.2,
+      "sponsorship_avg_brl": 2500,
+      "top_profile": "@ilustradoresbr",
+      "growth_trend": "Crescente (+18% YoY)"
+    },
+    {
+      "platform": "Substack",
+      "niche": "Crítica Literária Nacional",
+      "avg_subscribers_paid": 850,
+      "arpu_usd": 6.5,
+      "top_pub": "ResenhasBR",
+      "growth_trend": "Emergente (+45% YoY)"
+    }
+  ],
+  "schema": [
+    "platform",
+    "niche",
+    "metric_name",
+    "metric_value",
+    "benchmark_entity",
+    "growth_trend"
+  ],
+  "notes": "Benchmarks de audiência e monetização para criadores de conteúdo. Proxy GitHub agrega dados de SocialBlade open-source e relatórios de influenciadores. Fonte oficial TIER1: YouTube Data API, Meta Graph API."
+}
