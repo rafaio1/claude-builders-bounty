@@ -1,0 +1,56 @@
+{
+  "pilot": "clerk-auth-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:39:08.139805+00:00",
+  "free_tier_limits": {
+    "mau": 10000,
+    "social_providers": "all",
+    "custom_domains": 1,
+    "webhooks": true,
+    "commercial_allowed": true,
+    "source_verified": "https://clerk.com/pricing (known limits)"
+  },
+  "paid_plan_baseline": {
+    "pro_price_usd": 25.0,
+    "pro_mau": 100000,
+    "extra_per_1k_mau_usd": 1.0,
+    "sla_uptime": "99.9%"
+  },
+  "reselling_model": {
+    "target_segment": "startups BR que precisam de auth sem self-host",
+    "managed_service_price_brl": 69.9,
+    "included_mau": 10000,
+    "overage_brl_per_1k_mau": 8.0,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "1 Clerk instance por app; free tier cobre ate 10K MAU"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://clerk.com/pricing",
+    "notes": [
+      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 69.9,
+    "cost_per_client_brl": 0.0,
+    "gross_margin_brl": 69.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "ceiling_warning": "Free tier generoso (10K MAU); escala apos limite requer Pro ($25/mo)"
+  },
+  "risks": [
+    "10K MAU e teto alto para free tier mas apps virais podem atingir rapido",
+    "Sem programa affiliate publico confirmado",
+    "Concorrencia com Auth0/Supabase Auth/Firebase Auth que tambem tem free tiers",
+    "Clerk foca em Next.js/React - menos flexivel para stacks nao-JS"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://clerk.com/pricing",
+    "Testar criacao de instancia e integracao via API com credenciais free",
+    "Comparar unit economics com Supabase Auth (ja incluso no scaffold #38)"
+  ]
+}
