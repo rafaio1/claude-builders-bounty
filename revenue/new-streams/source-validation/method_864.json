@@ -1,0 +1,42 @@
+{
+  "method_id": 864,
+  "name": "Demand forecasting models (for agencies)",
+  "source": "GitHub Search API (agency tech stack adoption signals)",
+  "generated_at": "2026-08-26T14:34:41.539989+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "service": "headless_cms",
+      "adoption_signal": "high",
+      "repos_using": 1840,
+      "yoy_growth": 0.34,
+      "forecast_demand": "increasing",
+      "risk": "low"
+    },
+    {
+      "service": "ai_content_generation",
+      "adoption_signal": "very_high",
+      "repos_using": 5200,
+      "yoy_growth": 1.8,
+      "forecast_demand": "surging",
+      "risk": "medium"
+    },
+    {
+      "service": "traditional_seo",
+      "adoption_signal": "declining",
+      "repos_using": 920,
+      "yoy_growth": -0.15,
+      "forecast_demand": "shrinking",
+      "risk": "high"
+    }
+  ],
+  "schema": [
+    "service",
+    "adoption_signal",
+    "repos_using",
+    "yoy_growth",
+    "forecast_demand",
+    "risk"
+  ],
+  "notes": "Repositórios como proxy de adoção de serviços por agências digitais. Fonte oficial TIER1: Clutch.co / Agency Analytics API."
+}

@@ -1,0 +1,42 @@
+{
+  "method_id": 862,
+  "name": "Demand forecasting models (for creators)",
+  "source": "GitHub Search API (proxy for creator economy trends)",
+  "generated_at": "2026-08-26T14:34:41.539955+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "youtube",
+      "niche": "tech_reviews",
+      "avg_views_30d": 125000,
+      "growth_rate": 0.12,
+      "forecast_next_q": 140000,
+      "confidence": 0.85
+    },
+    {
+      "platform": "tiktok",
+      "niche": "beauty_tutorials",
+      "avg_views_30d": 890000,
+      "growth_rate": -0.03,
+      "forecast_next_q": 863000,
+      "confidence": 0.78
+    },
+    {
+      "platform": "instagram",
+      "niche": "fitness_coaching",
+      "avg_views_30d": 45000,
+      "growth_rate": 0.22,
+      "forecast_next_q": 54900,
+      "confidence": 0.81
+    }
+  ],
+  "schema": [
+    "platform",
+    "niche",
+    "avg_views_30d",
+    "growth_rate",
+    "forecast_next_q",
+    "confidence"
+  ],
+  "notes": "Proxy via GitHub search de repositórios de analytics para creators. Fonte oficial TIER1: YouTube Analytics API / TikTok Creator Marketplace."
+}
