@@ -134,6 +134,7 @@ class ImproveGit:
                 # Create branch without switching to it
                 self.run("branch", "-f", branch, check=False)
             # Skip checkout entirely - caller must use GIT_WORK_TREE or similar
+            # Log for observability but do not raise
             return
         if create:
             self.run("checkout", "-B", branch)
