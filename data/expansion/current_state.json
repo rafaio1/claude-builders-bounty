@@ -27,19 +27,21 @@
   "proposal_counts": {
     "REJEITAR": 3,
     "APROVAR_IMPLEMENTACAO": 1,
-    "ADIAR": 17,
-    "PILOTAR": 17
+    "ADIAR": 18,
+    "PILOTAR": 18
   },
   "total_proposals": 8,
-  "total_verdicts": 106,
+  "total_verdicts": 108,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:29:08.484137+00:00",
+  "last_council_action": "2026-08-26T21:30:26.819363+00:00",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
   "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
   "last_verdicts": [
+    "method_655: PILOTAR",
+    "method_654: ADIAR",
     "method_653: PILOTAR",
     "method_652: PILOTAR",
     "method_651: ADIAR",
@@ -47,17 +49,15 @@
     "method_649: PILOTAR",
     "method_648: ADIAR",
     "method_647: PILOTAR",
-    "method_646: PILOTAR",
-    "method_645: ADIAR",
-    "method_644: PILOTAR"
+    "method_646: PILOTAR"
   ],
   "improve_timers_status": "MASKED",
   "master_branch": "master",
   "working_tree_dirty": true,
   "last_verdict": {
-    "proposal_id": "method_653",
+    "proposal_id": "method_655",
     "verdict": "PILOTAR",
-    "timestamp": "2026-08-26T21:29:08.484137+00:00",
+    "timestamp": "2026-08-26T21:30:26.819363+00:00",
     "result": "SUCCESS"
   },
   "pending_proposals_count": 0,
@@ -75,8 +75,8 @@
   "rejected_proposals": [
     "exp-20260826-data-products-batch-4-creators"
   ],
-  "next_method": 654,
-  "last_verdict_timestamp": "2026-08-26T21:29:08.484137+00:00",
+  "next_method": 656,
+  "last_verdict_timestamp": "2026-08-26T21:30:26.819363+00:00",
   "integrity": {
     "git_clean": false,
     "last_check_utc": "2026-08-26T21:25:01.232410+00:00",
