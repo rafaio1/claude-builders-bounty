@@ -60,9 +60,6 @@ WASH_DETECT_WINDOW = 5          # Check last N trades for wash pattern
 WASH_MAX_INTERVAL_SEC = 30      # Trades <30s apart considered potential wash
 MAX_DAILY_LOSS_USDT = 1.0       # Halt symbol if daily loss exceeds this
 
-# Load persisted cooldown state on startup
-_load_cooldown_state()
-
 def update_state(data):
     try:
         with open(STATE_PATH, 'r') as f:
