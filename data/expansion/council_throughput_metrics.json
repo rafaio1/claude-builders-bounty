@@ -1,0 +1,55 @@
+{
+  "metric_type": "expansion_council_throughput",
+  "calculated_at": "2026-08-26T21:33:41.934992+00:00",
+  "total_verdicts": 1033,
+  "time_span": {
+    "first_verdict": "2026-08-26T00:00:00Z",
+    "last_verdict": "2026-08-27T01:35:00Z",
+    "duration_hours": 25.58
+  },
+  "throughput": {
+    "verdicts_per_hour": 40.38,
+    "avg_minutes_per_verdict": 1.5
+  },
+  "verdict_distribution": {
+    "ADIAR": 663,
+    "PILOTAR": 166,
+    "REJEITAR": 98,
+    "APROVAR_IMPLEMENTACAO": 36,
+    "REVOGADO_PARCIAL": 24,
+    "REVOGADO_PARCIAL_PILOTO_FALHOU": 28,
+    "REVOGADO_PILOTO_FALHOU": 2,
+    "IMPLEMENTADO_PARCIAL": 3,
+    "PILOTAR_CICLO2_OK": 1,
+    "PILOTAR_CICLO3_OK_COM_OBS": 1,
+    "PILOTAR_AUTOMATICO_INICIADO": 1,
+    "UNKNOWN": 8
+  },
+  "tier_distribution": {
+    "TIER0": 590,
+    "TIER1": 232,
+    "TIER2": 146,
+    "INFRA": 7,
+    "PILOTO_FALHOU": 18,
+    "TIER_0": 10,
+    "UNKNOWN": 10,
+    "null": 20
+  },
+  "rates": {
+    "promotion_pct": 19.6,
+    "rejection_pct": 9.5,
+    "deferral_pct": 64.2
+  },
+  "observations": [
+    "HIGH_DEFERRAL: 64.2% deferred indicates proposals frequently violate zero-capital or TIER gates",
+    "LOW_PROMOTION: Only 19.6% promoted; review proposal quality or gate strictness",
+    "TIER0_DOMINANT: 57% of proposals are TIER0, showing good autonomy alignment",
+    "THROUGHPUT_HEALTHY: 40 verdicts/hour is sustainable for automated council"
+  ],
+  "recommendations": [
+    "Implement pre-screening filter to reject TIER2/capital-dependent proposals before full judgment cycle",
+    "Add proposal template validation to catch missing KPI/rollback/evidence fields early",
+    "Track deferral reasons by category (zero-capital violation, TOS risk, capital required, etc.) to identify systemic proposal generation issues",
+    "Consider batching similar ADIAR proposals into single meta-verdict with shared rationale"
+  ]
+}
