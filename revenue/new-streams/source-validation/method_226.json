@@ -1,0 +1,28 @@
+{
+  "method_id": "226",
+  "name": "CLI tool com license key (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:00:44.328421+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "creator-cli-toolkit",
+      "stars": 142,
+      "license_key_pattern": "CRTR-XXXX-XXXX",
+      "monetization": "perpetual_license"
+    },
+    {
+      "repo": "content-batch-processor",
+      "stars": 89,
+      "license_key_pattern": "CBP-YYYY-YYYY",
+      "monetization": "subscription"
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "license_key_pattern",
+    "monetization_model"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: Gumroad/LemonSqueezy license API. Foco em ferramentas CLI para criadores de conte\u00fado."
+}
