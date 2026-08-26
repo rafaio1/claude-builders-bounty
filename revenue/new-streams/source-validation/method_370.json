@@ -1,0 +1,32 @@
+{
+  "method_id": "370",
+  "name": "Yield farming optimizer (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:09.632600+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "CREATOR-DAO",
+      "dex": "uniswap_v3",
+      "liquidity_usd": 12000,
+      "incentive_apy_pct": 85.0,
+      "community_bonus_pct": 15.0
+    },
+    {
+      "token": "SOCIAL-Fi",
+      "dex": "raydium",
+      "liquidity_usd": 8500,
+      "incentive_apy_pct": 120.0,
+      "community_bonus_pct": 25.0
+    }
+  ],
+  "schema": [
+    "token:str",
+    "dex:str",
+    "liquidity_usd:float",
+    "incentive_apy_pct:float",
+    "community_bonus_pct:float"
+  ],
+  "notes": "Focado em tokens de creator economy e SocialFi com incentivos altos para LPs. Proxy TIER0: GitHub repos de yield trackers para social tokens. Fonte oficial alvo: Uniswap/Raydium APIs + creator platform subgraphs. Zero capital: simulação apenas.",
+  "sha256": "788a605e2d8c5fd463d183803551424685700fd594b7e96bb8e0c0ed1144b6ae"
+}

@@ -1,0 +1,32 @@
+{
+  "method_id": "371",
+  "name": "Yield farming optimizer (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:09.632600+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "yield_optimizer_sdk",
+      "language": "typescript",
+      "protocols_supported": 12,
+      "backtest_roi_pct": 42.5,
+      "gas_efficiency_score": 91
+    },
+    {
+      "tool": "defi_yield_analyzer",
+      "language": "python",
+      "protocols_supported": 8,
+      "backtest_roi_pct": 38.2,
+      "gas_efficiency_score": 78
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "protocols_supported:int",
+    "backtest_roi_pct:float",
+    "gas_efficiency_score:int"
+  ],
+  "notes": "SDKs e ferramentas para devs integrarem otimização de yield em dApps. Proxy TIER0: GitHub search (yield optimization frameworks, DeFi SDKs). Fonte oficial alvo: Protocol docs + Dune Analytics. Métricas sintéticas de backtest.",
+  "sha256": "51a0ac5453586722c03fe19e0b87b5de35a5f99c7636e619d523571e36c8797f"
+}

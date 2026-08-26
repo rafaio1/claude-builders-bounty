@@ -1,0 +1,32 @@
+{
+  "method_id": "372",
+  "name": "Yield farming optimizer (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:09.632600+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "DEFI_FUND_X",
+      "strategies_managed": 6,
+      "tvl_managed_usd": 850000,
+      "avg_net_apy_pct": 18.5,
+      "performance_fee_pct": 15.0
+    },
+    {
+      "client": "NFT_PROJECT_Y",
+      "strategies_managed": 3,
+      "tvl_managed_usd": 320000,
+      "avg_net_apy_pct": 24.2,
+      "performance_fee_pct": 20.0
+    }
+  ],
+  "schema": [
+    "client:str",
+    "strategies_managed:int",
+    "tvl_managed_usd:float",
+    "avg_net_apy_pct:float",
+    "performance_fee_pct:float"
+  ],
+  "notes": "Serviço B2B de gestão de yield para fundos e projetos crypto. Proxy TIER0: GitHub repos de yield-as-a-service platforms. Fonte oficial alvo: Multi-protocol aggregation APIs. Dados de TVL e APY sintéticos baseados em benchmarks.",
+  "sha256": "0391e35bee0b40dc06b4909ac5bd0e3ecd242933b2321a7543c497659dc0064b"
+}
