@@ -108,3 +108,4 @@
 | Resend Email Reseller Scaffold | ✅ Integrado | a8fb5f4 | Piloto zero-capital v26 de revenda de API email (3000 emails/mo free) | `pilots/resend-email-reseller-scaffold/main.py` |
 | HuggingFace Spaces Reseller Scaffold | ✅ Integrado | a8fb5f4 | Piloto zero-capital v26 de revenda de GPU/compute spaces | `pilots/huggingface-spaces-reseller-scaffold/` |
 | Expansion Verdicts method_640/641 | ⏳ PILOTAR | pending | Compliance básico creators (GDPR/PCI) e security scanning devs (Grype/Trivy/Gitleaks) | `data/expansion/verdicts.jsonl` |
+| Render Free-Tier Scaffold | ❌ REJECTED | c387fa2 | TOS proíbe sublicenciamento; Postgres free tier temporário (30d); mantido como referência comparativa | `pilots/render-free-tier-scaffold/reseller_scaffold_index.json` |
