@@ -60,6 +60,9 @@ WASH_DETECT_WINDOW = 5          # Check last N trades for wash pattern
 WASH_MAX_INTERVAL_SEC = 30      # Trades <30s apart considered potential wash
 MAX_DAILY_LOSS_USDT = 1.0       # Halt symbol if daily loss exceeds this
 
+# Load persisted cooldown state on startup
+_load_cooldown_state()
+
 def update_state(data):
     try:
         with open(STATE_PATH, 'r') as f:
@@ -74,6 +77,7 @@ def update_state(data):
 # Track symbols with active open positions to prevent double-entry
 _active_positions = set()
 ACTIVE_POS_FILE = '/Agentic/orchestrator/.active_positions_' + EXCHANGE + '.json'
+COOLDOWN_STATE_FILE = '/Agentic/orchestrator/.cooldown_state_' + EXCHANGE + '.json'
 
 def _load_active_from_file():
     """Load persisted active positions from disk"""
@@ -192,7 +196,9 @@ def sell_position(pos):
         log(f"  📉 SELL {symbol}: {qty:.6f} @ ${exit_price:.6f} | ${proceeds:.2f} | {sell_ms:.0f}ms")
         log(f"  💰 PnL: ${pnl:+.4f} ({pnl_pct:+.2f}%)")
         
+        record_sell(symbol)
         record_trade_result(symbol, pnl)
+        check_wash_pattern(symbol)
         mark_position_closed(symbol)
         return True
     except Exception as e:
@@ -216,10 +222,12 @@ def record_trade_result(symbol, pnl):
         if _consecutive_losses.get(symbol, 0) > 0:
             log(f"  📈 Win on {symbol} resets loss streak (was {_consecutive_losses[symbol]})")
         _consecutive_losses[symbol] = 0
+    _save_cooldown_state()
 
 def record_sell(symbol):
     """Record that a sell occurred - triggers mandatory post-sell cooldown"""
     _last_sell_time[symbol] = time.time()
+    _save_cooldown_state()
     log(f"  🔒 {symbol} sell recorded, {POST_SELL_COOLDOWN_SEC}s re-entry lock")
 
 def check_wash_pattern(symbol, ledger_path='/Agentic/ledger.jsonl'):
@@ -797,6 +805,9 @@ def execute_client_side_monitor(symbol, filled, actual_entry, cost):
     log(f"  📉 SELL {symbol}: {filled} @ ${exit_price:.6f} | ${proceeds:.2f} | {sell_ms:.0f}ms")
     log(f"  💰 PnL: ${pnl:+.4f} ({pnl_pct:+.2f}%)")
     
+    record_sell(symbol)
+    record_trade_result(symbol, pnl)
+    check_wash_pattern(symbol)
     return {'pnl': pnl, 'pnl_pct': pnl_pct, 'entry': actual_entry, 'exit': exit_price}
 
 # === MAIN LOOP ===

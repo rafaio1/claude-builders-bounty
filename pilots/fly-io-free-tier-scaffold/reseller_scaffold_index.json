@@ -1,0 +1,38 @@
+{
+  "pilot": "fly-io-free-tier-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "provider": "Fly.io, Inc.",
+  "service_type": "PaaS / Cloud Infrastructure",
+  "free_tier_limits": {
+    "type": "FREE_TRIAL_CREDITS",
+    "permanent": false,
+    "notes": "Free trial mentioned in docs navigation but no permanent free tier documented in TOS. Trial credits are promotional and subject to expiration."
+  },
+  "paid_plan_baseline": {
+    "entry_plan": "Subscription (usage-based)",
+    "pricing_model": "subscription + usage",
+    "notes": "Post-trial requires paid subscription."
+  },
+  "reselling_model": null,
+  "tos_analysis": {
+    "license_scope": "Non-sublicensable, non-transferable, non-exclusive subscription for Customer's internal use only. Explicit prohibition on sublicensing or using Services for benefit of third party.",
+    "assignment": "Neither party may assign without prior written consent (except in merger/acquisition). Attempted assignment without consent is null and void.",
+    "third_party_benefit": "Expressly prohibited: cannot sublicense or use Fly.io Services for the benefit of a third party.",
+    "managed_services_note": "Managed Postgres appears in documentation as a product feature, not as a reseller/managed service wrapper permission for customers."
+  },
+  "risks": [
+    "No permanent free tier — trial-only model violates zero-capital sustainability requirement",
+    "Explicit prohibition on sublicensing and third-party benefit blocks any resale or managed service wrapper",
+    "License restricted to internal use only",
+    "Assignment requires written consent from Fly.io",
+    "No enterprise/reseller exception found in public TOS"
+  ],
+  "next_steps": [
+    "REJECTED — do not proceed to TIER1",
+    "Continue pipeline with Vercel, Netlify evaluation"
+  ],
+  "doc_verified": true,
+  "source_url": "https://fly.io/legal/terms-of-service/",
+  "source_date": "2026-08-27"
+}
