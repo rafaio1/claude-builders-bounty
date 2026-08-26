@@ -122,3 +122,18 @@
 - Realized: $0.00 USDT
 - All lanes: waiting_monitoring or pilot stage
 - Gmail monitor integrated but not yet triggered (requires .env credentials)
+
+### Agent Infrastructure Audit (Cycle 2)
+- **Manifest PIDs:** All 8 agents confirmed ALIVE via `ps aux` (central:3004285, analyst:3004316, integrator:3004590, bounties:3004814, revenue:3315725, contador:3320170, bug_bounty:3324365, binance_bybit:3341441)
+- **Tmux Sessions:** Named sessions (codex_central, etc.) NOT FOUND in `tmux list-sessions`; only `bybit_spot` active
+- **Diagnosis:** Agents running on detached PTS terminals without corresponding named tmux sessions. Manifest references stale tmux names. Processes are functional but not reattachable via standard tmux workflow.
+- **Risk:** Cannot safely reattach or monitor agent output; new terminal opens would spawn duplicate processes
+- **Action Required:** CENTRAL must reconcile manifest tmux_session fields with actual runtime state or migrate to durable tmux sessions per codex-durable spec
+- **Integrator Status:** waiting_monitoring — cannot fix agent infrastructure without CENTRAL coordination; no revenue impact from this gap
+
+### Cycle 2 Summary
+- ✅ Gmail revenue monitor integrated and pushed
+- ✅ High-ticket workspaces audit completed (all dead archive)
+- ✅ AgentLily #155 confirmed committed/pushed upstream
+- ⚠️ Agent tmux/manifest mismatch documented for CENTRAL
+- Revenue: $0.00 realized | All lanes: waiting_monitoring or pilot
