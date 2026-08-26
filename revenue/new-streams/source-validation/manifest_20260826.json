@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:05:44.439217+00:00",
-    "total": 516,
+    "generated_at": "2026-08-26T15:31:51.323568+00:00",
+    "total": 582,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -8718,5 +8718,110 @@
     "generated_at": "2026-08-26T15:30:54.244363+00:00",
     "sha256": "ca07b6a510c51742d53a997a5e89f3066719fdc0e7aa0b984e44e969a57fd4a1",
     "artifact": "method_579.json"
+  },
+  "580": {
+    "method_id": "580",
+    "name": "Performance optimization (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:31:51.323568+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "video_render_time",
+        "before": "45min",
+        "after": "12min",
+        "tool": "ffmpeg_gpu_accel"
+      },
+      {
+        "metric": "upload_throughput",
+        "before": "2MB/s",
+        "after": "8MB/s",
+        "tool": "rsync_parallel"
+      },
+      {
+        "metric": "thumbnail_gen",
+        "before": "30s",
+        "after": "4s",
+        "tool": "imagemagick_batch"
+      }
+    ],
+    "schema": [
+      "metric",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (ffmpeg/imagemagick scripts). Fonte oficial alvo: Upwork/Fiverr gig 'creator performance tuning'. Zero-capital: scripts open-source.",
+    "content_hash": "7ca1a84288e8b1517dc644fcb9a9ff0e4e299f295f78e9f9dcb71bdfe4fa6a5b"
+  },
+  "581": {
+    "method_id": "581",
+    "name": "Performance optimization (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:31:51.323568+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "ci_pipeline_duration",
+        "before": "18min",
+        "after": "6min",
+        "tool": "github_actions_cache"
+      },
+      {
+        "metric": "bundle_size",
+        "before": "2.4MB",
+        "after": "890KB",
+        "tool": "webpack_analyzer"
+      },
+      {
+        "metric": "db_query_p95",
+        "before": "320ms",
+        "after": "45ms",
+        "tool": "pg_stat_statements"
+      }
+    ],
+    "schema": [
+      "metric",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (devops/perf repos). Fonte oficial alvo: Toptal/Turing freelance perf eng. Zero-capital: ferramentas nativas/cloud free-tier.",
+    "content_hash": "7e5c9ba2137c6333fc1a99697c0f86baae81008029fb8243bb39ab70848b4a4e"
+  },
+  "582": {
+    "method_id": "582",
+    "name": "Performance optimization (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:31:51.323568+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "page_load_lcp",
+        "before": "3.8s",
+        "after": "1.2s",
+        "tool": "lighthouse_ci"
+      },
+      {
+        "metric": "ad_spend_roas",
+        "before": "2.1x",
+        "after": "3.4x",
+        "tool": "ga4_custom_attribution"
+      },
+      {
+        "metric": "email_delivery_rate",
+        "before": "88%",
+        "after": "97%",
+        "tool": "postfix_dkim_spf"
+      }
+    ],
+    "schema": [
+      "metric",
+      "before",
+      "after",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (agency-ops/seo-perf). Fonte oficial alvo: Clutch.co agency perf audits. Zero-capital: auditoria via Lighthouse + DNS TXT records gratuitos.",
+    "content_hash": "2fb409a7df9f7c161281207aeddbe3fbfff099305105323d5c7ee5d66d5f9710"
   }
 }

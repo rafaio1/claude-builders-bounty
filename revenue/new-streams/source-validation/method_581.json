@@ -1,0 +1,35 @@
+{
+  "method_id": "581",
+  "name": "Performance optimization (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:31:51.323568+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "ci_pipeline_duration",
+      "before": "18min",
+      "after": "6min",
+      "tool": "github_actions_cache"
+    },
+    {
+      "metric": "bundle_size",
+      "before": "2.4MB",
+      "after": "890KB",
+      "tool": "webpack_analyzer"
+    },
+    {
+      "metric": "db_query_p95",
+      "before": "320ms",
+      "after": "45ms",
+      "tool": "pg_stat_statements"
+    }
+  ],
+  "schema": [
+    "metric",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (devops/perf repos). Fonte oficial alvo: Toptal/Turing freelance perf eng. Zero-capital: ferramentas nativas/cloud free-tier.",
+  "content_hash": "7e5c9ba2137c6333fc1a99697c0f86baae81008029fb8243bb39ab70848b4a4e"
+}

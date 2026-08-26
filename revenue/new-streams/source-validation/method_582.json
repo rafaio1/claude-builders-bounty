@@ -1,0 +1,35 @@
+{
+  "method_id": "582",
+  "name": "Performance optimization (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:31:51.323568+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "page_load_lcp",
+      "before": "3.8s",
+      "after": "1.2s",
+      "tool": "lighthouse_ci"
+    },
+    {
+      "metric": "ad_spend_roas",
+      "before": "2.1x",
+      "after": "3.4x",
+      "tool": "ga4_custom_attribution"
+    },
+    {
+      "metric": "email_delivery_rate",
+      "before": "88%",
+      "after": "97%",
+      "tool": "postfix_dkim_spf"
+    }
+  ],
+  "schema": [
+    "metric",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (agency-ops/seo-perf). Fonte oficial alvo: Clutch.co agency perf audits. Zero-capital: auditoria via Lighthouse + DNS TXT records gratuitos.",
+  "content_hash": "2fb409a7df9f7c161281207aeddbe3fbfff099305105323d5c7ee5d66d5f9710"
+}

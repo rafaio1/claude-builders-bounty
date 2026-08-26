@@ -1,0 +1,35 @@
+{
+  "method_id": "580",
+  "name": "Performance optimization (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:31:51.323568+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "video_render_time",
+      "before": "45min",
+      "after": "12min",
+      "tool": "ffmpeg_gpu_accel"
+    },
+    {
+      "metric": "upload_throughput",
+      "before": "2MB/s",
+      "after": "8MB/s",
+      "tool": "rsync_parallel"
+    },
+    {
+      "metric": "thumbnail_gen",
+      "before": "30s",
+      "after": "4s",
+      "tool": "imagemagick_batch"
+    }
+  ],
+  "schema": [
+    "metric",
+    "before",
+    "after",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (ffmpeg/imagemagick scripts). Fonte oficial alvo: Upwork/Fiverr gig 'creator performance tuning'. Zero-capital: scripts open-source.",
+  "content_hash": "7ca1a84288e8b1517dc644fcb9a9ff0e4e299f295f78e9f9dcb71bdfe4fa6a5b"
+}
