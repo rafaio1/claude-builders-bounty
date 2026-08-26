@@ -1,16 +1,19 @@
 {
-  "method_id": "method_908",
-  "name": "Cloudflare Workers Free Tier Reselling (Edge Compute)",
-  "category": "infrastructure_reselling",
+  "method_id": "908",
+  "name": "Marketplace de Micro-SaaS para Contadores (CRC Compliance)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:06:36.470476+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for edge compute reselling. Official target: Cloudflare Workers Free Tier (100k req/day). Zero-capital via free plan aggregation. Demand validated via GitHub repos using workers as backend-for-frontend.",
   "sample_data": {
-    "platform": "cloudflare",
-    "free_quota": "100k_requests_day",
-    "monetization": "api_gateway_markup"
+    "platform_type": "vertical_marketplace_accounting",
+    "integration": "dominio_sistemas / contmatic_api",
+    "zero_capital": true,
+    "monetization_model": "commission_15%_on_subscription_brl",
+    "target_segment": "contadores_pj_br",
+    "regulation": "cfc_resolucao_1594_2020"
   },
-  "schema": "infrastructure_edge_compute",
-  "generated_at": "2026-08-26T16:27:09.505624+00:00",
-  "sha256": "82b013ae3b1ead3bf88e56f3367e78b017452025f668b27c13e28c9898451577"
+  "schema": "accounting_saas_marketplace_br_v1",
+  "notes": "Validação BR explícita: Contadores precisam de ferramentas integradas aos sistemas contábeis nacionais (Domínio, Contmatic) e conformes com normas do CFC. Zero-capital: marketplace cobra apenas comissão sobre venda. Diferencial frente a SaaS genérico: curadoria exclusiva para contabilidade BR com verificação de compliance CRC. Demanda: >60.000 escritórios contábeis BR buscam automação pós-Reforma Tributária; ticket médio de ferramentas é R$150-400/mês.",
+  "category": "freelance_services",
+  "sha256": "c86615aa429a34f1d480e143df643aee217b4f1f28c5b8392ef5ae8500c7890e"
 }

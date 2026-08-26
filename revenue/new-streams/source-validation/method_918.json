@@ -1,16 +1,24 @@
 {
-  "method_id": "method_918",
-  "name": "Fly.io Free Tier MicroVM Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "918",
+  "name": "Revenda de Links de Fibra Óptica Dedicada para Condomínios",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:07:31.335922+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for microVM/container reselling. Official target: Fly.io Free Allowance (3 shared-cpu-1x VMs, 160GB outbound). Zero-capital via app namespace pooling. Demand validated via Elixir/Phoenix and Go repos deploying to Fly.",
   "sample_data": {
-    "platform": "fly_io",
-    "free_quota": "3_vms_160gb_egress",
-    "monetization": "managed_microvm_proxy"
+    "provider_br": [
+      "vivo_fibra_dedicada",
+      "claro_net_empresas",
+      "isp_local"
+    ],
+    "resale_margin_pct": -15,
+    "contract_type": "sla_99.5%_anatel_homologado",
+    "zero_capital": true,
+    "monetization_model": "monthly_markup_brl_150_to_500_per_link",
+    "target_segment": "condominios_residenciais_verticais_br",
+    "compliance": "resolucao_anatel_614_2013_scm"
   },
-  "schema": "infrastructure_compute",
-  "generated_at": "2026-08-26T16:28:11.011449+00:00",
-  "sha256": "7b8b3a7c0272db299d631022a5df53003b5c7ead8dd68852baa0b64dfffb3631"
+  "schema": "fiber_resale_condo_br_v1",
+  "notes": "Validação BR explícita: Revenda de SCM (Serviço de Comunicação Multimídia) é regulamentada pela ANATEL. Condomínios verticais BR demandam links dedicados para câmeras/IoT. Zero-capital: contrato de revenda com operadora homologada; margem sobre mensalidade. Diferencial frente a hospedagem (method_906): infraestrutura física dedicada com SLA contratual, não shared hosting. Demanda: >200k condomínios verticais nas capitais BR; ISPs locais buscam parceiros para última milha em edifícios.",
+  "category": "infrastructure_reselling",
+  "sha256": "92a7fd548049e0bace8effa93c9a7b1b859a8345912f32f201f4f0ee1264a5de"
 }

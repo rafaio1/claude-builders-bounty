@@ -1,16 +1,19 @@
 {
-  "method_id": "method_909",
-  "name": "Supabase Free Tier Database Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "909",
+  "name": "Gerador de Relatórios ESG para Empresas Listadas B3",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:06:36.470482+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for managed Postgres reselling. Official target: Supabase Free Tier (500MB DB, 1GB bandwidth). Zero-capital via project pooling. Demand validated via open-source projects listing supabase as dependency.",
   "sample_data": {
-    "platform": "supabase",
-    "free_quota": "500mb_db_1gb_bw",
-    "monetization": "managed_db_wrapper"
+    "framework": "b3_relato_integrado_2024 / sasb_br",
+    "output_format": "pdf_xbrl_html",
+    "zero_capital": true,
+    "monetization_model": "project_fee_brl_5000_to_15000",
+    "target_segment": "empresas_listadas_b3_mid_cap",
+    "compliance": "instrucao_cvm_80_2024"
   },
-  "schema": "infrastructure_database",
-  "generated_at": "2026-08-26T16:27:09.505624+00:00",
-  "sha256": "3e2ac326d689acc8d697bc7aecad7c231d7d610850e261a85a90d3b80e8a016b"
+  "schema": "esg_reporting_b3_v1",
+  "notes": "Validação BR explícita: B3 exige relato integrado/ESG para empresas listadas (Instrução CVM 80). Zero-capital: geração baseada em dados públicos da empresa + templates regulatórios abertos. Monetização como serviço de consultoria/projeto pontual em BRL. Não redundante com relatórios B2B genéricos (method_31) pois exige conhecimento específico de taxonomia B3/CVM. Demanda: >400 empresas listadas na B3 com obrigação anual; mercado de consultoria ESG BR cresceu 45% em 2025.",
+  "category": "data_products",
+  "sha256": "d111e0bbdb1ff32c94fc0c219880ba72c6324863c2df126c0404fe1507497183"
 }

@@ -1,16 +1,19 @@
 {
-  "method_id": "method_910",
-  "name": "Backblaze B2 Affiliate Storage Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "910",
+  "name": "Plataforma de Cashback Pix para E-commerce Local",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:06:36.470493+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for object storage reselling. Official target: Backblaze B2 affiliate/referral program + free egress. Zero-capital via referral link aggregation. Demand validated via S3-compatible SDK usage in GitHub.",
   "sample_data": {
-    "platform": "backblaze_b2",
-    "free_quota": "10gb_storage_free_egress",
-    "monetization": "affiliate_commission_storage_markup"
+    "mechanism": "pix_cashback_instantaneo",
+    "gateway": "gerencianet / asaas_cashback_api",
+    "zero_capital": true,
+    "monetization_model": "spread_interchange_0.3%_to_0.7%",
+    "target_segment": "ecommerce_lojas_fisicas_br",
+    "compliance": "bcb_pix_regulamento_2024"
   },
-  "schema": "infrastructure_storage",
-  "generated_at": "2026-08-26T16:27:09.505624+00:00",
-  "sha256": "36380e26e0f17507a64912efb734c7f66fe32c4da2e2bb39412ccf9a605516c6"
+  "schema": "pix_cashback_platform_br_v1",
+  "notes": "Validação BR explícita: Cashback via Pix é nativo do ecossistema bancário BR e regulamentado pelo BCB. Zero-capital: infraestrutura fornecida pelos gateways; monetização via spread do interchange. Diferencial frente a afiliados (method_904): foco em retenção de clientes recorrentes para varejo físico/local, não aquisição digital. Demanda: 78% dos consumidores BR preferem lojas que oferecem cashback Pix segundo pesquisa Panorama Mobile 2025.",
+  "category": "content_monetization",
+  "sha256": "9fca93d44e6de2ecc0727173bcbbcfcc57c87a26860a06f303ef97aa2272c912"
 }

@@ -1,16 +1,24 @@
 {
-  "method_id": "method_917",
-  "name": "On-Chain Data Indexing Free Tier Reselling",
-  "category": "crypto_defi",
+  "method_id": "917",
+  "name": "Indexador de Fundos Imobiliários (FIIs) para Portais de Investimento",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:07:31.335918+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for blockchain data indexing. Official target: The Graph Network / Dune Analytics free tiers. Zero-capital via subgraph/query sharing. Demand validated via DeFi dashboard repos.",
   "sample_data": {
-    "platform": "thegraph_dune",
-    "free_quota": "limited_queries_subgraphs",
-    "monetization": "indexed_data_api_access"
+    "data_source": "b3_fii_diario_oficial_anbima",
+    "metrics": [
+      "dividend_yield_12m",
+      "p_vp",
+      "vacancia_fisica",
+      "cap_rate"
+    ],
+    "zero_capital": true,
+    "monetization_model": "api_license_brl_897_monthly",
+    "target_segment": "portais_investimento_assessoria_br",
+    "compliance": "instrucao_cvm_472_anbima_cod_fidc"
   },
-  "schema": "crypto_data_indexing",
-  "generated_at": "2026-08-26T16:27:50.487447+00:00",
-  "sha256": "5b3701adb8375804740e9166c9bde50eee2275e96e5ef4fda73730ad60650e36"
+  "schema": "fii_indexer_api_br_v1",
+  "notes": "Validação BR explícita: Dados de FIIs são públicos via B3/ANBIMA mas exigem normalização complexa (diário oficial, informes trimestrais). Zero-capital: parsing de documentos oficiais abertos. Monetização via licença API para portais e assessorias que não querem manter equipe de dados. Não redundante com commodities agro (method_911) pois ativo é fundo imobiliário regulado CVM, não commodity física. Demanda: >1.2M investidores pessoa física em FIIs; portais pequenos pagam R$500-2k/mês por feeds estruturados.",
+  "category": "crypto_defi",
+  "sha256": "6279f3f70f58d69613c3320cf9f9b72cf9fa7b2c5113bf4ce528193d5d44f7c5"
 }

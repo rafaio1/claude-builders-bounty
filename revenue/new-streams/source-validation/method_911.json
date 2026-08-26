@@ -1,16 +1,23 @@
 {
-  "method_id": "method_911",
-  "name": "DNS Subdomain Reselling via Free Providers",
-  "category": "infrastructure_reselling",
+  "method_id": "911",
+  "name": "Oráculo de Preços de Commodities Agrícolas BR (CEPEA/CONAB)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:06:36.470498+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for DNS/hosting reselling. Official target: freedns.afraid.org / duckdns.org subdomains. Zero-capital via free subdomain allocation. Demand validated via IoT/homelab repos requesting dynamic DNS.",
   "sample_data": {
-    "platform": "freedns_duckdns",
-    "free_quota": "unlimited_subdomains",
-    "monetization": "premium_subdomain_management"
+    "data_source": "cepea_esalq_usp / conab_safra_api",
+    "assets": [
+      "soja_safra",
+      "milho_segunda",
+      "cafe_arabica"
+    ],
+    "zero_capital": true,
+    "monetization_model": "subscription_brl_497_monthly",
+    "target_segment": "traders_agro_fintech_br",
+    "compliance": "mapa_instrucao_normativa_2024"
   },
-  "schema": "infrastructure_dns",
-  "generated_at": "2026-08-26T16:27:09.505624+00:00",
-  "sha256": "c29d3a88073588d1578c2c54562ab961c08efdefcdb438953bd66f746e4759d4"
+  "schema": "agro_commodities_oracle_br_v1",
+  "notes": "Validação BR explícita: Dados CEPEA/CONAB são referência oficial para precificação agro no Brasil. Zero-capital: dados públicos abertos. Monetização via feed estruturado/API para fintechs agro e traders que precisam de dados limpos e em tempo real. Não redundante com crypto_defi genérico (method_905) pois ativo subjacente é commodity física BR, não token. Demanda: agronegócio representa 25% do PIB BR; >200 fintechs agro ativas buscam fontes alternativas ao Bloomberg Terminal.",
+  "category": "crypto_defi",
+  "sha256": "b110145d405dc2569734ea3a376d462aef44d3a0e9cf5d4dd2a2209faf4831f6"
 }

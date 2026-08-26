@@ -1,19 +1,25 @@
 {
-  "method_id": "method_915",
-  "name": "DeFi Testnet Faucet Aggregation Service",
-  "category": "crypto_defi",
+  "method_id": "915",
+  "name": "Feed de Dados Cadastrais MEI para Fintechs de Microcrédito",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:07:31.335910+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for testnet token distribution. Official target: Multi-chain faucet aggregator (Sepolia, Goerli, Mumbai). Zero-capital via existing public faucets. Demand validated via developer tooling repos requesting testnet tokens.",
   "sample_data": {
-    "chains": [
-      "ethereum_sepolia",
-      "polygon_mumbai",
-      "arbitrum_goerli"
+    "data_source": "portal_empreendedor_gov_br_mei",
+    "fields": [
+      "cnpj_mei",
+      "atividade_principal",
+      "situacao",
+      "endereco_municipio"
     ],
-    "monetization": "faucet_api_access_premium"
+    "update_frequency": "weekly",
+    "zero_capital": true,
+    "monetization_model": "subscription_brl_397_monthly",
+    "target_segment": "fintechs_microcredito_scd",
+    "compliance": "lei_complementar_123_2006_art_18e"
   },
-  "schema": "crypto_testnet_infrastructure",
-  "generated_at": "2026-08-26T16:27:50.487447+00:00",
-  "sha256": "84fb3f0a5a2301799dd070a5b428451dd3af17ec52171d3ff0de009c9802274a"
+  "schema": "mei_data_feed_fintech_br_v1",
+  "notes": "Validação BR explícita: Dados MEI são públicos via Portal do Empreendedor. Fintechs de microcrédito (SCD/SEP) precisam validar formalização de tomadores PJ. Zero-capital: scraping ético de dados abertos + enriquecimento local. Monetização via assinatura BRL alinhada a bureaus alternativos (Quod, Serasa PME). Não redundante com method_903 (CNPJ geral) pois foco exclusivo em MEI com campos específicos para scoring de microcrédito. Demanda: >15M MEIs ativos; fintechs BR reportam 40% de rejeição em crédito por falta de validação cadastral rápida.",
+  "category": "data_products",
+  "sha256": "5c5e34e5daea52760db70407d12fc9ef381e1abdba4b8ce43087d27e8e933673"
 }

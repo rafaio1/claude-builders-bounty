@@ -75768,5 +75768,135 @@
     "notes": "Validação BR explícita: Certificados digitais ICP-Brasil são obrigatórios para acesso a sistemas gov.br e ANVISA. Zero-capital: revenda autorizada de ACs credenciadas (Certisign, Serasa). Margem em BRL sobre cada certificado emitido. Diferencial frente a hospedagem (method_906): produto regulatório obrigatório, não opcional; renovação anual garantida por lei. Demanda: >300.000 certificados A3 emitidos/ano para saúde e setor público municipal.",
     "category": "infrastructure_reselling",
     "sha256": "df0f0b206c6a441daf640e308c7b81dacd14c3d204dfbf93a9c92bb43f3437b2"
+  },
+  "913": {
+    "method_id": "913",
+    "name": "API de Emissão de NF-e para Marketplaces Verticais",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335865+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "api_target": "sefaz_nfe_wsdl_v4",
+      "integration_sdk": "pynfe / nfelib",
+      "zero_capital": true,
+      "monetization_model": "transaction_fee_brl_0.50_to_1.20_per_nf",
+      "target_segment": "marketplaces_agro_saude_br",
+      "compliance": "ajuste_sinief_2024_nt_2024_002"
+    },
+    "schema": "nfe_api_marketplace_br_v1",
+    "notes": "Validação BR explícita: Emissão de NF-e é obrigatória para qualquer marketplace que intermedeie vendas B2B/B2C no Brasil. Zero-capital: SDKs open-source (PyNFe) + certificado digital A1 do próprio operador. Monetização via taxa por nota emitida, modelo padrão do setor (ex: Tiny, Bling). Não redundante com method_907 (validação SINTEGRA) pois este é emissão ativa, não consulta passiva. Demanda: >80% dos marketplaces verticais BR terceirizam emissão fiscal por complexidade de 27 UFs.",
+    "category": "software_saas",
+    "sha256": "e99a469531ba64e964b101132c8fa8d62ab663d47ea1b41545c9167e7283276c"
+  },
+  "914": {
+    "method_id": "914",
+    "name": "Consultoria de Adequação à Reforma Tributária (EC 132/2023)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335905+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "regulation": "ec_132_2023_ibc_cbs",
+      "deliverable": "plano_transicao_fiscal_personalizado",
+      "zero_capital": true,
+      "monetization_model": "project_fee_brl_8000_to_25000",
+      "target_segment": "empresas_servicos_lucro_real_br",
+      "compliance": "receita_federal_in_2024_reforma"
+    },
+    "schema": "tax_reform_consulting_br_v1",
+    "notes": "Validação BR explícita: Reforma Tributária (EC 132/2023) entra em vigor gradualmente a partir de 2026. Empresas de serviços no lucro real precisam recalcular carga tributária IBS/CBS. Zero-capital: entrega é consultoria intelectual baseada em legislação pública. Pricing BRL compatível com grandes escritórios (R$8k-25k por projeto). Não redundante com LGPD (method_902) pois escopo é exclusivamente fiscal/transição. Demanda: >1.2M empresas no lucro real BR; mercado de consultoria tributária projeta crescimento de 60% em 2026-2027.",
+    "category": "freelance_services",
+    "sha256": "610e5d25dcad2ad09720bd7ea30a1d4419215bb91d9a0a3ab10e0c9ceb676bdf"
+  },
+  "915": {
+    "method_id": "915",
+    "name": "Feed de Dados Cadastrais MEI para Fintechs de Microcrédito",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335910+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "data_source": "portal_empreendedor_gov_br_mei",
+      "fields": [
+        "cnpj_mei",
+        "atividade_principal",
+        "situacao",
+        "endereco_municipio"
+      ],
+      "update_frequency": "weekly",
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_397_monthly",
+      "target_segment": "fintechs_microcredito_scd",
+      "compliance": "lei_complementar_123_2006_art_18e"
+    },
+    "schema": "mei_data_feed_fintech_br_v1",
+    "notes": "Validação BR explícita: Dados MEI são públicos via Portal do Empreendedor. Fintechs de microcrédito (SCD/SEP) precisam validar formalização de tomadores PJ. Zero-capital: scraping ético de dados abertos + enriquecimento local. Monetização via assinatura BRL alinhada a bureaus alternativos (Quod, Serasa PME). Não redundante com method_903 (CNPJ geral) pois foco exclusivo em MEI com campos específicos para scoring de microcrédito. Demanda: >15M MEIs ativos; fintechs BR reportam 40% de rejeição em crédito por falta de validação cadastral rápida.",
+    "category": "data_products",
+    "sha256": "5c5e34e5daea52760db70407d12fc9ef381e1abdba4b8ce43087d27e8e933673"
+  },
+  "916": {
+    "method_id": "916",
+    "name": "Plataforma de Mentoria Regulamentada para CVM/SUSEP",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335914+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "regulation": "instrucao_cvm_80_anpd_resolucao_susep_666",
+      "mentor_pool": "certificados_cpa20_cfp_cnseg",
+      "zero_capital": true,
+      "monetization_model": "session_fee_brl_250_to_600_platform_cut_20pct",
+      "target_segment": "profissionais_financiamentos_seguros_br",
+      "compliance": "codigo_etica_apimec_susep"
+    },
+    "schema": "regulated_mentorship_platform_br_v1",
+    "notes": "Validação BR explícita: Mentoria financeira/seguros exige certificação regulada (CPA-20, CFP, CNSEG). Plataforma conecta mentores certificados a profissionais em formação, cobrando cut de 20%. Zero-capital: infraestrutura básica + verificação de certificados via APIs públicas (ANBIMA/SUSEP). Diferencial frente a Hotmart (method_24): foco em conformidade regulatória obrigatória, não conteúdo livre. Demanda: >300k profissionais buscam certificação anual; plataformas genéricas não validam compliance setorial.",
+    "category": "content_monetization",
+    "sha256": "fdb0f0bffd6603f334b337331eaacaf275ec4315f54efe320941e5e58672b94a"
+  },
+  "917": {
+    "method_id": "917",
+    "name": "Indexador de Fundos Imobiliários (FIIs) para Portais de Investimento",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335918+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "data_source": "b3_fii_diario_oficial_anbima",
+      "metrics": [
+        "dividend_yield_12m",
+        "p_vp",
+        "vacancia_fisica",
+        "cap_rate"
+      ],
+      "zero_capital": true,
+      "monetization_model": "api_license_brl_897_monthly",
+      "target_segment": "portais_investimento_assessoria_br",
+      "compliance": "instrucao_cvm_472_anbima_cod_fidc"
+    },
+    "schema": "fii_indexer_api_br_v1",
+    "notes": "Validação BR explícita: Dados de FIIs são públicos via B3/ANBIMA mas exigem normalização complexa (diário oficial, informes trimestrais). Zero-capital: parsing de documentos oficiais abertos. Monetização via licença API para portais e assessorias que não querem manter equipe de dados. Não redundante com commodities agro (method_911) pois ativo é fundo imobiliário regulado CVM, não commodity física. Demanda: >1.2M investidores pessoa física em FIIs; portais pequenos pagam R$500-2k/mês por feeds estruturados.",
+    "category": "crypto_defi",
+    "sha256": "6279f3f70f58d69613c3320cf9f9b72cf9fa7b2c5113bf4ce528193d5d44f7c5"
+  },
+  "918": {
+    "method_id": "918",
+    "name": "Revenda de Links de Fibra Óptica Dedicada para Condomínios",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335922+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "provider_br": [
+        "vivo_fibra_dedicada",
+        "claro_net_empresas",
+        "isp_local"
+      ],
+      "resale_margin_pct": -15,
+      "contract_type": "sla_99.5%_anatel_homologado",
+      "zero_capital": true,
+      "monetization_model": "monthly_markup_brl_150_to_500_per_link",
+      "target_segment": "condominios_residenciais_verticais_br",
+      "compliance": "resolucao_anatel_614_2013_scm"
+    },
+    "schema": "fiber_resale_condo_br_v1",
+    "notes": "Validação BR explícita: Revenda de SCM (Serviço de Comunicação Multimídia) é regulamentada pela ANATEL. Condomínios verticais BR demandam links dedicados para câmeras/IoT. Zero-capital: contrato de revenda com operadora homologada; margem sobre mensalidade. Diferencial frente a hospedagem (method_906): infraestrutura física dedicada com SLA contratual, não shared hosting. Demanda: >200k condomínios verticais nas capitais BR; ISPs locais buscam parceiros para última milha em edifícios.",
+    "category": "infrastructure_reselling",
+    "sha256": "92a7fd548049e0bace8effa93c9a7b1b859a8345912f32f201f4f0ee1264a5de"
   }
 }

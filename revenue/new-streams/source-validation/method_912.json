@@ -1,16 +1,19 @@
 {
-  "method_id": "method_912",
-  "name": "Vercel Hobby Plan Edge Function Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "912",
+  "name": "Revenda de Certificados SSL/TLS para Gov.br e Saúde",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:06:36.470502+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for serverless function reselling. Official target: Vercel Hobby tier (100GB-hrs, 1000 executions/day). Zero-capital via project namespace sharing. Demand validated via Next.js/React repos deploying to Vercel.",
   "sample_data": {
-    "platform": "vercel",
-    "free_quota": "100gb_hrs_1k_exec_day",
-    "monetization": "serverless_function_proxy"
+    "cert_type": "ssl_a3_govbr / tls_saude_anvisa",
+    "accreditation": "iti_icp_brasil / anvisa_rdc_2024",
+    "zero_capital": true,
+    "monetization_model": "resale_margin_brl_150_to_400_per_cert",
+    "target_segment": "clinicas_laboratorios_prefeituras",
+    "compliance": "mp_2200_2_2001"
   },
-  "schema": "infrastructure_serverless",
-  "generated_at": "2026-08-26T16:27:09.505624+00:00",
-  "sha256": "7afe358763545ff23c308b55a187301531e88c6dadb624ce309621b1a21c5380"
+  "schema": "ssl_gov_health_resale_br_v1",
+  "notes": "Validação BR explícita: Certificados digitais ICP-Brasil são obrigatórios para acesso a sistemas gov.br e ANVISA. Zero-capital: revenda autorizada de ACs credenciadas (Certisign, Serasa). Margem em BRL sobre cada certificado emitido. Diferencial frente a hospedagem (method_906): produto regulatório obrigatório, não opcional; renovação anual garantida por lei. Demanda: >300.000 certificados A3 emitidos/ano para saúde e setor público municipal.",
+  "category": "infrastructure_reselling",
+  "sha256": "df0f0b206c6a441daf640e308c7b81dacd14c3d204dfbf93a9c92bb43f3437b2"
 }

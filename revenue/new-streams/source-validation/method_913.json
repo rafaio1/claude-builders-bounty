@@ -1,16 +1,19 @@
 {
-  "method_id": "method_913",
-  "name": "Netlify Edge Functions Free Tier Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "913",
+  "name": "API de Emissão de NF-e para Marketplaces Verticais",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:07:31.335865+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for edge function reselling. Official target: Netlify Free Tier (125K serverless function invocations/month). Zero-capital via site namespace pooling. Demand validated via Jamstack repos deploying to Netlify.",
   "sample_data": {
-    "platform": "netlify",
-    "free_quota": "125k_invocations_month",
-    "monetization": "edge_function_proxy_markup"
+    "api_target": "sefaz_nfe_wsdl_v4",
+    "integration_sdk": "pynfe / nfelib",
+    "zero_capital": true,
+    "monetization_model": "transaction_fee_brl_0.50_to_1.20_per_nf",
+    "target_segment": "marketplaces_agro_saude_br",
+    "compliance": "ajuste_sinief_2024_nt_2024_002"
   },
-  "schema": "infrastructure_serverless",
-  "generated_at": "2026-08-26T16:27:50.487447+00:00",
-  "sha256": "4b2e166f7950295ba8ea47431fc0b7902c9b05ec1ab4b2e8ba679c9e92208c5d"
+  "schema": "nfe_api_marketplace_br_v1",
+  "notes": "Validação BR explícita: Emissão de NF-e é obrigatória para qualquer marketplace que intermedeie vendas B2B/B2C no Brasil. Zero-capital: SDKs open-source (PyNFe) + certificado digital A1 do próprio operador. Monetização via taxa por nota emitida, modelo padrão do setor (ex: Tiny, Bling). Não redundante com method_907 (validação SINTEGRA) pois este é emissão ativa, não consulta passiva. Demanda: >80% dos marketplaces verticais BR terceirizam emissão fiscal por complexidade de 27 UFs.",
+  "category": "software_saas",
+  "sha256": "e99a469531ba64e964b101132c8fa8d62ab663d47ea1b41545c9167e7283276c"
 }
