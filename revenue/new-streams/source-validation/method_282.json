@@ -1,0 +1,34 @@
+{
+  "method_id": "282",
+  "name": "Data enrichment API (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:07:03.139775+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "agency-lead-intel-hub",
+      "stars": 198,
+      "pricing_model": "white_label",
+      "features": [
+        "client_branding",
+        "bulk_enrich"
+      ]
+    },
+    {
+      "repo": "multi-account-data-sync",
+      "stars": 267,
+      "pricing_model": "volume_based",
+      "features": [
+        "crm_push",
+        "dedup_merge"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: Demandbase / 6sense agency programs. Foco enriquecimento em lote white-label e sync CRM."
+}

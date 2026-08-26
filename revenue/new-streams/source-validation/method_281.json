@@ -1,0 +1,34 @@
+{
+  "method_id": "281",
+  "name": "Data enrichment API (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:07:03.139775+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "dev-user-context-api",
+      "stars": 312,
+      "pricing_model": "open_core",
+      "features": [
+        "ip_geolocation",
+        "device_fingerprint"
+      ]
+    },
+    {
+      "repo": "signup-data-append",
+      "stars": 223,
+      "pricing_model": "usage_based",
+      "features": [
+        "company_lookup",
+        "role_infer"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: Clearbit Reveal / IPinfo API. Foco em contexto de usu\u00e1rio em tempo real e infer\u00eancia de role."
+}
