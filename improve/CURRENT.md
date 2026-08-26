@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-26T13:22:47+00:00
+Atualizado: 2026-08-26T13:28:43+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -18,11 +18,11 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 
 ## Ghost
 
-Mapeamento de gargalos e melhorias para o sistema Agentic, focando em eficiência do loop, gestão de filas e telemetria de IA.
+Mapeamento de gargalos e melhorias para o sistema Agentic, focando em rastreamento de IA, otimização do loop e persistência de estado do navegador.
 
 ## Ledger
 
-{"pending": 215, "blocked": 18, "applied": 23, "developing": 4}
+{"pending": 219, "blocked": 18, "applied": 23, "developing": 4}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [blocked/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/

@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T13:22:47+00:00",
+  "updated_at": "2026-08-26T13:28:43+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -532,7 +532,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T132247Z",
+      "map_id": "20260826T132843Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -559,7 +559,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T132247Z",
+      "map_id": "20260826T132843Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -586,7 +586,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T132247Z",
+      "map_id": "20260826T132843Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -615,7 +615,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T132247Z",
+      "map_id": "20260826T132843Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -8974,18 +8974,19 @@
       "kind": "bottleneck",
       "priority": 1,
       "status": "pending",
-      "rationale": "O loop roda a cada 90s fixos. Se a fila estiver vazia, desperdiça recursos de saúde; se cheia, pode não ser ágil.",
-      "change": "Adicionar lógica no loop.py para detectar fila vazia e logar métrica de idle, otimizando ciclos futuros.",
+      "rationale": "O intervalo de 90s é hardcoded na unit systemd. Tarefas longas de develop/review podem ficar ociosas ou tarefas rápidas podem sofrer delay desnecessário, limitando a responsividade do motor.",
+      "change": "Implementar um mecanismo de enfileiramento imediato ou 'sleep adaptativo' no loop.py quando a fila do improve.py tiver itens urgentes, respeitando o limite mínimo do systemd.",
       "never": [
         "Alterar o --interval no systemd unit file diretamente",
         "Ligar AGENTIC_LIVE_TRADE=1"
       ],
       "files_hint": [
-        "src/agentic/loop.py"
+        "src/agentic/loop.py",
+        "src/agentic/improve.py"
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T132247Z",
+      "map_id": "20260826T132843Z",
       "history": [
         {
           "at": "2026-08-26T13:22:47+00:00",
@@ -9104,6 +9105,121 @@
           "at": "2026-08-26T13:22:47+00:00",
           "event": "mapped",
           "detail": "20260826T132247Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-aus-ncia-de-m-tricas-de-qualidade-de-prompt",
+      "key": "5fec18d04b4c35c7",
+      "canon": "1abaa59e58ee7fff",
+      "title": "Ausência de métricas de qualidade de prompt",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O develop despeja prompts no Claude CLI via GhostCLI, mas não há registro estruturado de sucesso/falha das sugestões de código, dificultando a iteração e melhoria contínua dos prompts.",
+      "change": "Adicionar logs estruturados (JSON) em claude_cli.py e improve.py para rastrear o hash do prompt, o modelo usado e o resultado do reviewer (aceito/rejeitado).",
+      "never": [
+        "Gravar secrets ou código fonte completo nos logs",
+        "Enviar traces para endpoints externos não autorizados"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T132843Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:28:43+00:00",
+          "event": "mapped",
+          "detail": "20260826T132843Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-avalia-o-offline-de-traces-da-ghostcli",
+      "key": "4a6b28e818571e28",
+      "canon": "8ac46d8469c1f653",
+      "title": "Avaliação offline de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Para melhorar as IAs (theme=ai), é necessário um dataset de traces sanitizados para avaliar regressões em prompts de desenvolvimento e revisão.",
+      "change": "Implementar um script de extração que lê os logs do claude_cli.py, remove paths absolutos e secrets, e salva em um diretório 'eval/traces/' ignorado pelo git.",
+      "never": [
+        "Commitar o diretório eval/traces/ no repositório",
+        "Incluir snippets de código proprietário da GhostCLI"
+      ],
+      "files_hint": [
+        "scripts/extract_traces.py",
+        "src/agentic/claude_cli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T132843Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:28:43+00:00",
+          "event": "mapped",
+          "detail": "20260826T132843Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-persist-ncia-de-estado-do-playwright-cli",
+      "key": "6ad97e92157aa528",
+      "canon": "aa1ade87648d4dbf",
+      "title": "Persistência de estado do Playwright CLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Como o playwright-mcp está desativado, cada uso do playwright-cli headless pode exigir reautenticação ou recarregamento de contexto, gastando tempo e tokens.",
+      "change": "Criar um wrapper ou diretório de estado para reutilizar cookies e storage state entre execuções do tick, quando aplicável.",
+      "never": [
+        "Ativar playwright-mcp no motor",
+        "Vazar cookies de sessão em logs ou git"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T132843Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:28:43+00:00",
+          "event": "mapped",
+          "detail": "20260826T132843Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-dashboard-de-fila-e-sa-de-no-portal",
+      "key": "c5e406539b25b55a",
+      "canon": "465f969b07d96e07",
+      "title": "Dashboard de fila e saúde no Portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal autenticado (porta 8767) existe, mas operadores não têm visibilidade rápida do estado da fila do improve.py ou do último tick de saúde sem acessar os logs do systemd.",
+      "change": "Adicionar uma rota API no portal para expor o tamanho da fila (pending/develop/review) e o timestamp do último tick, usando theme=portal.",
+      "never": [
+        "Expor credenciais do portal ou Bybit",
+        "Permitir ações de escrita (POST/DELETE) na fila via portal sem autenticação forte"
+      ],
+      "files_hint": [
+        "src/agentic/portal/routes.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260826T132843Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:28:43+00:00",
+          "event": "mapped",
+          "detail": "20260826T132843Z"
         }
       ]
     }
