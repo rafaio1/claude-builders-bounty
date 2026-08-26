@@ -1,226 +1,138 @@
 #!/usr/bin/env python3
-"""
-Telegram Alert Bot para notificações de ganho de dinheiro.
-Lê notificações do orquestrador de bounties e envia via Telegram.
+"""Telegram Alerts Script - Financial Events Only (Gate-Enforced)
 
-Configuração:
-  - Defina TELEGRAM_BOT_TOKEN e TELEGRAM_CHAT_ID no .env ou variáveis de ambiente
-  - Rode manualmente ou via cron após o bounty_orchestrator.py
+This script previously sent bounty merge/rejection notifications directly.
+Now ALL notifications route through src/telegram_gate.py.
 
-Uso:
-  python3 /Agentic/scripts/telegram_alerts.py [--test]
+ONLY confirmed payout events with external reconciliation are sent.
+Blocked: bounty_merged (without payout), bounty_rejected, summaries,
+test messages, heartbeats, opportunities, paper trades.
+
+Usage:
+  python3 scripts/telegram_alerts.py --dry-run  # Validate without sending
 """
 import json
-import os
 import sys
-import urllib.request
-import urllib.error
-from datetime import datetime, timezone
 from pathlib import Path
+from datetime import datetime, timezone
+
+# Add src to path for gate import
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+
+try:
+    from telegram_gate import notify_payout_received, _log as gate_log
+except ImportError as e:
+    print(f"[FATAL] Cannot import telegram_gate: {e}", flush=True)
+    sys.exit(1)
 
 NOTIFICATIONS_PATH = Path("/Agentic/logs/bounty/notifications.json")
 SENT_LOG_PATH = Path("/Agentic/logs/bounty/telegram_sent.json")
-ENV_PATH = Path("/Agentic/.env")
-
-
-def load_env():
-    """Carrega variáveis do .env sem sobrescrever env vars existentes."""
-    if ENV_PATH.exists():
-        for line in ENV_PATH.read_text().splitlines():
-            line = line.strip()
-            if not line or line.startswith("#") or "=" not in line:
-                continue
-            key, _, value = line.partition("=")
-            key = key.strip()
-            value = value.strip().strip('"').strip("'")
-            if key and key not in os.environ:
-                os.environ[key] = value
-
-
-def get_telegram_config():
-    """Retorna (bot_token, chat_id) ou (None, None) se não configurado."""
-    load_env()
-    token = os.environ.get("TELEGRAM_BOT_TOKEN", "")
-    chat_id = os.environ.get("TELEGRAM_CHAT_ID", "")
-    if not token or not chat_id:
-        return None, None
-    return token, chat_id
-
-
-def send_telegram_message(token: str, chat_id: str, text: str) -> bool:
-    """Envia mensagem via Telegram Bot API. Retorna True se sucesso."""
-    url = f"https://api.telegram.org/bot{token}/sendMessage"
-    payload = json.dumps({
-        "chat_id": chat_id,
-        "text": text,
-        "parse_mode": "Markdown",
-        "disable_web_page_preview": True,
-    }).encode("utf-8")
-
-    req = urllib.request.Request(
-        url,
-        data=payload,
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-
-    try:
-        with urllib.request.urlopen(req, timeout=15) as resp:
-            result = json.loads(resp.read())
-            if result.get("ok"):
-                return True
-            print(f"[WARN] Telegram API retornou ok=false: {result}")
-            return False
-    except urllib.error.HTTPError as e:
-        body = e.read().decode("utf-8", errors="replace")
-        print(f"[ERROR] Telegram HTTP {e.code}: {body}")
-        return False
-    except Exception as e:
-        print(f"[ERROR] Falha ao enviar Telegram: {e}")
-        return False
-
-
-def load_notifications():
-    """Carrega notificações pendentes."""
-    if not NOTIFICATIONS_PATH.exists():
-        return []
-    with open(NOTIFICATIONS_PATH, "r") as f:
-        return json.load(f)
 
 
 def load_sent_log():
-    """Carrega IDs de notificações já enviadas."""
+    """Load IDs of already-sent financial events."""
     if not SENT_LOG_PATH.exists():
         return set()
-    with open(SENT_LOG_PATH, "r") as f:
-        data = json.load(f)
-    return set(data.get("sent_keys", []))
+    try:
+        with open(SENT_LOG_PATH, "r") as f:
+            data = json.load(f)
+        return set(data.get("sent_keys", []))
+    except Exception:
+        return set()
 
 
 def save_sent_log(sent_keys: set):
-    """Persiste IDs de notificações enviadas."""
+    """Persist sent event IDs."""
     SENT_LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
+    trimmed = sorted(list(sent_keys))[-5000:]
     with open(SENT_LOG_PATH, "w") as f:
-        json.dump({"sent_keys": sorted(sent_keys)}, f, indent=2)
+        json.dump({"sent_keys": trimmed}, f, indent=2)
 
 
-def notification_key(n: dict) -> str:
-    """Gera chave única para deduplicação."""
-    return f"{n.get('type','')}:{n.get('repo','')}:{n.get('issue','')}:{n.get('timestamp','')}"
+def process_confirmed_payouts(dry_run: bool = False) -> int:
+    """Process only confirmed payout notifications through gate.
 
+    Returns count of successfully sent events.
+    """
+    if not NOTIFICATIONS_PATH.exists():
+        print("No notifications file found.")
+        return 0
 
-def format_bounty_merged(n: dict) -> str:
-    """Formata notificação de merge para Telegram."""
-    usd = n.get("estimated_bounty_usd", 0)
-    return (
-        f"✅ *BOUNTY MERGED!*\n\n"
-        f"📦 `{n.get('repo', '')}` #{n.get('issue', '')}\n"
-        f"💰 *${usd}* estimado\n"
-        f"🔗 [PR]({n.get('pr_url', '')})\n\n"
-        f"_Aguardando pagamento..._"
-    )
+    try:
+        with open(NOTIFICATIONS_PATH, "r") as f:
+            notifications = json.load(f)
+    except Exception as e:
+        print(f"[ERROR] Failed to load notifications: {e}")
+        return 0
 
+    sent_keys = load_sent_log()
+    sent_count = 0
 
-def format_bounty_rejected(n: dict) -> str:
-    """Formata notificação de rejeição para Telegram."""
-    return (
-        f"❌ *Bounty Rejeitado*\n\n"
-        f"📦 `{n.get('repo', '')}` #{n.get('issue', '')}\n"
-        f"🔗 [PR]({n.get('pr_url', '')})\n\n"
-        f"_PR fechado sem merge._"
-    )
+    for n in notifications:
+        ntype = n.get("type", "")
 
+        # ONLY process confirmed payouts — block everything else
+        if ntype != "payout_confirmed":
+            if ntype in ("bounty_merged", "bounty_rejected"):
+                gate_log(f"[BLOCKED] {ntype} notification skipped — not confirmed payout")
+            continue
 
-def format_summary(notifications: list) -> str:
-    """Formata resumo consolidado quando há múltiplas notificações."""
-    merged = [n for n in notifications if n.get("type") == "bounty_merged"]
-    rejected = [n for n in notifications if n.get("type") == "bounty_rejected"]
-    total_usd = sum(n.get("estimated_bounty_usd", 0) for n in merged)
+        # Generate deterministic event_id
+        source = n.get("source", "unknown")
+        ref = n.get("external_reference", n.get("tx_id", ""))
+        net = float(n.get("net_amount", n.get("amount", 0)))
+        ts = n.get("timestamp", "")
+        event_id = f"payout:{source}:{ref}:{net}"
 
-    lines = [f"📬 *Resumo de Bounties* ({len(notifications)} novas)\n"]
+        if event_id in sent_keys:
+            continue
 
-    if merged:
-        lines.append(f"✅ *{len(merged)} merge(s)* — ${total_usd} estimado:")
-        for n in merged[:5]:
-            lines.append(f"  • `{n['repo']}#{n['issue']}` — ${n.get('estimated_bounty_usd', 0)}")
-        if len(merged) > 5:
-            lines.append(f"  ... e mais {len(merged) - 5}")
-        lines.append("")
+        if not ref:
+            gate_log(f"[BLOCKED] payout missing external_reference: {n.get('repo', 'unknown')}")
+            continue
 
-    if rejected:
-        lines.append(f"❌ *{len(rejected)} rejeitado(s)*:")
-        for n in rejected[:3]:
-            lines.append(f"  • `{n['repo']}#{n['issue']}`")
-        if len(rejected) > 3:
-            lines.append(f"  ... e mais {len(rejected) - 3}")
+        if net <= 0:
+            gate_log(f"[BLOCKED] payout net<=0: {net}")
+            continue
 
-    return "\n".join(lines)
+        success = notify_payout_received(
+            process_id=f"bounty-{n.get('repo', 'unknown')}",
+            source=source,
+            external_reference=ref,
+            gross=float(n.get("gross_amount", net)),
+            fees=float(n.get("fees", 0)),
+            net=net,
+            currency=n.get("currency", "USD"),
+            event_id=event_id,
+            dry_run=dry_run,
+        )
+
+        if success:
+            sent_keys.add(event_id)
+            sent_count += 1
+            print(f"  ✅ Payout confirmed: {source} {ref} net={net:+.2f}")
+        else:
+            print(f"  ❌ Payout rejected by gate: {source} {ref}")
+
+    if sent_count > 0:
+        save_sent_log(sent_keys)
+
+    return sent_count
 
 
 def main():
-    test_mode = "--test" in sys.argv
+    dry_run = "--dry-run" in sys.argv
 
-    token, chat_id = get_telegram_config()
-    if not token or not chat_id:
-        print("[WARN] TELEGRAM_BOT_TOKEN ou TELEGRAM_CHAT_ID não configurados.")
-        print("       Adicione ao /Agentic/.env ou exporte como variáveis de ambiente.")
-        print("       Exemplo:")
-        print("         TELEGRAM_BOT_TOKEN=123456:ABC-DEF")
-        print("         TELEGRAM_CHAT_ID=-1001234567890")
-        if test_mode:
-            print("\n[TEST] Enviando mensagem de teste com config mock...")
-            print("[SKIP] Sem credenciais reais, pulando envio.")
+    if "--test" in sys.argv:
+        print("[BLOCKED] Test messages disabled under financial-only gate policy.")
+        print("Use --dry-run to validate confirmed payout processing.")
         return
 
-    if test_mode:
-        print("[TEST] Enviando mensagem de teste...")
-        ok = send_telegram_message(token, chat_id, "🤖 *Bot de Bounties Online*\n\n_Conectado e pronto para alertas._")
-        print(f"[TEST] Resultado: {'OK' if ok else 'FALHA'}")
-        return
+    mode = "DRY-RUN" if dry_run else "LIVE"
+    print(f"[{mode}] Processing confirmed payouts via financial gate...")
 
-    # Carregar notificações e log de enviados
-    notifications = load_notifications()
-    sent_keys = load_sent_log()
-
-    # Filtrar apenas não-enviadas
-    pending = [n for n in notifications if notification_key(n) not in sent_keys]
-
-    if not pending:
-        print("Nenhuma notificação pendente para enviar.")
-        return
-
-    print(f"Enviando {len(pending)} notificação(ões)...")
-
-    # Se muitas notificações, enviar resumo primeiro
-    if len(pending) >= 5:
-        summary = format_summary(pending)
-        if send_telegram_message(token, chat_id, summary):
-            print("  ✅ Resumo enviado")
-        else:
-            print("  ❌ Falha ao enviar resumo")
-
-    # Enviar individuais (limitar a 10 por execução para evitar rate limit)
-    sent_count = 0
-    for n in pending[:10]:
-        key = notification_key(n)
-        ntype = n.get("type", "")
-
-        if ntype == "bounty_merged":
-            msg = format_bounty_merged(n)
-        elif ntype == "bounty_rejected":
-            msg = format_bounty_rejected(n)
-        else:
-            msg = f"📢 {n.get('message', json.dumps(n, ensure_ascii=False))}"
-
-        if send_telegram_message(token, chat_id, msg):
-            sent_keys.add(key)
-            sent_count += 1
-            print(f"  ✅ {ntype}: {n.get('repo','')}#{n.get('issue','')}")
-        else:
-            print(f"  ❌ {ntype}: {n.get('repo','')}#{n.get('issue','')}")
-
-    save_sent_log(sent_keys)
-    print(f"\nEnviadas: {sent_count}/{len(pending)}")
+    sent = process_confirmed_payouts(dry_run=dry_run)
+    print(f"\nSent: {sent} confirmed payout(s)")
 
 
 if __name__ == "__main__":
