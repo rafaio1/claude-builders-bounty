@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import os
 import time
+import base64
 from http.server import BaseHTTPRequestHandler, HTTPServer
 from typing import Any, Dict
 
@@ -13,14 +14,33 @@ from .cron.scheduler import LocalScheduler
 QUEUE_PATH = os.environ.get("UTILITY_API_QUEUE", "/tmp/utility_api_queue.jsonl")
 HOST = "127.0.0.1"
 PORT = int(os.environ.get("UTILITY_API_PORT", "8769"))
+MAX_REQUEST_BYTES = 5 * 1024 * 1024  # 5 MB hard cap before read
 
 _scheduler = LocalScheduler(QUEUE_PATH)
 _started_at = time.time()
 
 
 def _health_status() -> Dict[str, Any]:
-    pdf_ok, _ = generate_pdf({"html": "<p>probe</p>"})
-    img_ok, _ = optimize_image({"data": b"", "format": "png"})
+    import base64 as _b64
+    from PIL import Image as _PILImage
+    import io as _io
+    pdf_ok = False
+    try:
+        ok, res = generate_pdf({"html": "<p>probe</p>"})
+        if ok and res.get("size_bytes", 0) > 100:
+            pdf_ok = True
+    except Exception:
+        pass
+    img_ok = False
+    try:
+        buf = _io.BytesIO()
+        _PILImage.new("RGB", (8, 8), color="red").save(buf, format="PNG")
+        probe_b64 = _b64.b64encode(buf.getvalue()).decode("ascii")
+        ok, res = optimize_image({"data": probe_b64, "format": "png", "max_width": 4, "max_height": 4})
+        if ok and res.get("output_bytes", 0) > 0 and res.get("final_size"):
+            img_ok = True
+    except Exception:
+        pass
     cron_ok = True
     try:
         _scheduler.pending(limit=1)
@@ -51,7 +71,11 @@ class Handler(BaseHTTPRequestHandler):
 
     def _read_json(self) -> Dict[str, Any]:
         length = int(self.headers.get("Content-Length", 0))
-        if length <= 0:
+        if length < 0:
+            raise ValueError("invalid_content_length")
+        if length > MAX_REQUEST_BYTES:
+            raise ValueError(f"content_length_exceeds_{MAX_REQUEST_BYTES}")
+        if length == 0:
             return {}
         raw = self.rfile.read(length)
         return json.loads(raw.decode("utf-8"))
@@ -78,13 +102,14 @@ class Handler(BaseHTTPRequestHandler):
         if self.path == "/pdf":
             ok, result = generate_pdf(body)
             code = 200 if ok else 400
-            safe = {k: v for k, v in result.items() if k != "data"}
+            safe = {k: v for k, v in result.items() if k not in ("data",)}
             self._json_response(code, safe)
             return
         if self.path == "/image":
             ok, result = optimize_image(body)
             code = 200 if ok else 400
-            self._json_response(code, result)
+            safe = {k: v for k, v in result.items() if k not in ("data", "data_base64")}
+            self._json_response(code, safe)
             return
         if self.path == "/cron":
             ok, result = _scheduler.schedule(body)
