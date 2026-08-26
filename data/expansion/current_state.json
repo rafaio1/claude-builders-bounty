@@ -1,119 +1,14 @@
 {
-  "timers": {
-    "bughunter-improve-dev.timer": "active",
-    "bughunter-improve-map.timer": "active",
-    "bughunter-improve-review.timer": "active"
-  },
-  "services": {
-    "agentic-loop.service": "active",
-    "agentic-portal.service": "active",
-    "tradingagents-portal.service": "active",
-    "improve_timers": "active",
-    "timers_reactivated_at": "2026-08-26T21:45:00Z",
-    "timers_note": "Unmasked and restored from deploy/ after mask discovered",
-    "timers_next_run": {
-      "map": "21:32:52 UTC",
-      "dev": "21:37:19 UTC",
-      "review": "21:42:58 UTC"
-    }
-  },
-  "git_branch": "master",
-  "git_status_short": "",
-  "git_clean": true,
-  "worktrees": [
-    "/Agentic                     715962e [master]",
-    "/Agentic/.worktrees/improve  6a1da1c [improve/dev/staging-recovery]"
+  "last_audit": "2026-08-26T21:54:29.791975+00:00",
+  "prescreen_status": "REJECTED_V3",
+  "pending_improvements": [
+    "supersession_detector",
+    "title_similarity_dedup",
+    "verdict_template_scanner",
+    "semantic_proxy_tier0_triage"
   ],
-  "proposal_counts": {
-    "REJEITAR": 3,
-    "APROVAR_IMPLEMENTACAO": 1,
-    "ADIAR": 36,
-    "PILOTAR": 29
-  },
-  "total_proposals": 8,
-  "total_verdicts": 137,
-  "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
-  "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:53:13.222834+00:00",
-  "pending_proposals": 0,
-  "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
-  "local_control_patched": true,
-  "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
-  "last_verdicts": [
-    "method_670: PILOTAR",
-    "method_669: ADIAR",
-    "method_668: PILOTAR",
-    "method_667: PILOTAR",
-    "method_666: ADIAR",
-    "method_665: PILOTAR",
-    "method_664: PILOTAR",
-    "method_663: ADIAR",
-    "method_662: PILOTAR",
-    "method_661: PILOTAR"
-  ],
-  "improve_timers_status": "MASKED",
-  "master_branch": "master",
-  "working_tree_dirty": true,
-  "last_verdict": {
-    "proposal_id": "method_684",
-    "verdict": "ADIAR",
-    "timestamp": "2026-08-26T21:53:13.222834+00:00",
-    "result": "SUCCESS"
-  },
-  "pending_proposals_count": 0,
-  "last_updated": "2026-08-26T21:53:13.222834+00:00",
-  "integrity_status": "clean_pilots_scaffolded",
-  "implemented_proposals": [
-    "exp-20260826-isolated-worktree-for-improve",
-    "exp-20260826-data-products-batch-3-enterprise",
-    "method_649",
-    "method_650",
-    "method_652",
-    "method_653",
-    "method_655",
-    "method_671"
-  ],
-  "deferred_proposals": [
-    "exp-20260826-data-products-sample-generation",
-    "exp-20260826-data-products-method-716-leads",
-    "exp-20260826-data-products-batch-5-developers",
-    "method_672",
-    "method_673",
-    "method_674",
-    "method_675",
-    "method_676",
-    "method_677",
-    "method_678",
-    "method_679",
-    "method_680",
-    "method_681",
-    "method_682",
-    "method_683",
-    "method_684"
-  ],
-  "rejected_proposals": [
-    "exp-20260826-data-products-batch-4-creators"
-  ],
-  "next_method": 685,
-  "last_verdict_timestamp": "2026-08-26T21:53:13.222834+00:00",
-  "integrity": {
-    "git_clean": false,
-    "last_check_utc": "2026-08-26T21:25:01.232410+00:00",
-    "note": "Restored via exp-20260826-commit-legitimate-runtime-changes (db7a000)",
-    "services_active": true
-  },
-  "last_reconciliation": "2026-08-26T21:38:37Z",
-  "revenue": {
-    "liquidated_usd": 0.0,
-    "pending_usd": 1265.0,
-    "pending_pr_count": 25,
-    "potential_usd": 0.0
-  },
-  "watchdog_status": "waiting_monitoring",
-  "next_check": "payout_reconciliation",
-  "telegram_gate": "SILENT_NO_LIQUIDATED_REVENUE",
-  "last_cycle": "2026-08-26T21:51:48.708690+00:00",
-  "tier0_remaining": 0,
-  "active_gates": 2,
-  "next_action": "tier1_discovery_or_fresh_zero_cap_scan"
+  "data_quality_flags": {
+    "template_leaked_verdicts": 60,
+    "requires_cleaning": true
+  }
 }
