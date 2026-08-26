@@ -1,0 +1,23 @@
+{
+  "method_id": "923",
+  "pilot_name": "carbon-credit-oracle-br-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "decided_at": "2026-08-26T23:55:00+00:00",
+  "source_validation_artifact": "revenue/new-streams/source-validation/method_923.json",
+  "rejection_reason": "ZERO_CAPITAL_DATA_ACCESS_BLOCKED",
+  "validation_attempts": {
+    "pages_checked": [
+      "https://www.gov.br/mma/pt-br/assuntos/mudancas-do-clima/mercado-de-carbono",
+      "https://www.gov.br/mma/pt-br/assuntos/mudancas-do-clima",
+      "https://www.gov.br/mma/pt-br",
+      "http://redd.mma.gov.br/pt/comissao-nacional-para-redd",
+      "http://redd.mma.gov.br/"
+    ],
+    "result": "Portal redd.mma.gov.br protegido por Cloudflare Challenge (JS rendering obrigatório). Páginas gov.br/mma retornam HTML válido mas sem links diretos para API, dataset ou registro de créditos de carbono. Decreto 11.075/2022 e 12.254/2024 encontrados (regulamentação), mas nenhum dado estruturado de projetos/credits acessível via curl.",
+    "zero_capital_blocker": "Dados de créditos de carbono florestal BR não disponíveis em formato aberto/baixável via curl. Portal REDD+ bloqueado por Cloudflare. Sem API pública documentada. Construção de 'oráculo' exigiria scraping com browser headless + parsing de PDFs não estruturados ou compra de dados de terceiros (Verra, BioCarbon), violando zero-capital."
+  },
+  "notes": "Artifact propõe API de créditos de carbono BR baseada em dados ICMBio/MMA. Regulamentação existe (Decretos 11.075/2022, 12.254/2024), mas infraestrutura de dados públicos ainda não exposta como feed/API acessível. Diferente de CMED (method_921) onde XLSX foi baixado diretamente. Mercado de carbono BR é real e crescente, mas dados são gatekept ou inexistentes em formato machine-readable público. Viável apenas com investimento em aquisição de dados ou parcerias oficiais.",
+  "non_duplication_check": {
+    "vs_method_911_agro_commodities": "Não redundante. Method 911 é commodity física (soja/milho). Method 923 é ativo ambiental regulado. Domínios distintos."
+  }
+}
