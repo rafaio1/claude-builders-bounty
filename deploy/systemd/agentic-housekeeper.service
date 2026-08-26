@@ -1,0 +1,20 @@
+[Unit]
+Description=Agentic Housekeeper (deterministic cleanup)
+After=docker.service
+RequiresMountsFor=/Agentic
+
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+ExecStart=/usr/bin/python3 /Agentic/tools/server_housekeeper.py --apply --max-age-days 14
+LockPersonality=yes
+ProtectSystem=strict
+ReadWritePaths=/Agentic/workspace /Agentic/var/housekeeper
+NoNewPrivileges=yes
+PrivateTmp=yes
+StandardOutput=journal
+StandardError=journal
+SyslogIdentifier=agentic-housekeeper
+
+[Install]
+WantedBy=multi-user.target

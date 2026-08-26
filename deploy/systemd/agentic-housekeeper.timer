@@ -1,0 +1,12 @@
+[Unit]
+Description=Daily Agentic Housekeeper + threshold trigger
+Requires=agentic-housekeeper.service
+
+[Timer]
+OnCalendar=*-*-* 03:00:00
+RandomizedDelaySec=300
+Persistent=true
+Unit=agentic-housekeeper.service
+
+[Install]
+WantedBy=timers.target
