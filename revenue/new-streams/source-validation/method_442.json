@@ -1,0 +1,31 @@
+{
+  "method_id": "442",
+  "name": "Lending rate aggregator (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_entity": "MusicRoyaltyDAO",
+      "collateral_type": "royalty_stream_nft",
+      "best_lend_apy_pct": 7.2,
+      "liquidation_risk": "low"
+    },
+    {
+      "creator_entity": "DigitalArtCollective",
+      "collateral_type": "blue_chip_nft",
+      "best_lend_apy_pct": 4.5,
+      "liquidation_risk": "medium"
+    }
+  ],
+  "schema": [
+    "creator_entity",
+    "collateral_type",
+    "best_lend_apy_pct",
+    "liquidation_risk"
+  ],
+  "notes": "Variante para criadores buscando liquidez contra ativos digitais (NFTs/royalties). Proxy TIER0 via repositórios de NFT lending protocols (BendDAO, Blur Lend). Fonte oficial: DeFiLlama Yields filtered by collateral type.",
+  "generated_at": "2026-08-26T15:10:42.856120+00:00",
+  "_meta": {
+    "hash": "c92d43b8d240b2b1e0542cdc6256a13bce08ff4393ff509308b7dc7975116408"
+  }
+}

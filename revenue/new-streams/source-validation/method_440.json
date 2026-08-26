@@ -1,0 +1,31 @@
+{
+  "method_id": "440",
+  "name": "Lending rate aggregator (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_treasury": "DeFiProjectDAO",
+      "optimal_yield_protocol": "Morpho Blue",
+      "est_annual_return_pct": 8.5,
+      "risk_adjusted_score": 0.72
+    },
+    {
+      "startup_treasury": "NFTStudioFund",
+      "optimal_yield_protocol": "Spark Protocol",
+      "est_annual_return_pct": 5.2,
+      "risk_adjusted_score": 0.88
+    }
+  ],
+  "schema": [
+    "startup_treasury",
+    "optimal_yield_protocol",
+    "est_annual_return_pct",
+    "risk_adjusted_score"
+  ],
+  "notes": "Variante para tesourarias de startups DeFi/NFT. Recomenda protocolos com base em retorno ajustado ao risco. Proxy via repositórios de treasury management bots. Fonte oficial: Yearn Vault API ou Beefy Finance.",
+  "generated_at": "2026-08-26T15:10:25.246091+00:00",
+  "_meta": {
+    "hash": "8ce878d54005895bcfc770c13ef7cb64e5e7df068a05e723aa9ee44b35e4ceed"
+  }
+}

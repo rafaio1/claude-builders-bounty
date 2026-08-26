@@ -1,0 +1,34 @@
+{
+  "method_id": "441",
+  "name": "Lending rate aggregator (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "institution": "Crypto Hedge Fund A",
+      "counterparty": "Maple Finance",
+      "credit_pool_apy_pct": 11.2,
+      "default_risk_flag": false,
+      "lockup_days": 90
+    },
+    {
+      "institution": "Family Office B",
+      "counterparty": "Centrifuge",
+      "credit_pool_apy_pct": 8.8,
+      "default_risk_flag": true,
+      "lockup_days": 180
+    }
+  ],
+  "schema": [
+    "institution",
+    "counterparty",
+    "credit_pool_apy_pct",
+    "default_risk_flag",
+    "lockup_days"
+  ],
+  "notes": "Variante enterprise/institucional focada em crédito privado on-chain. Proxy TIER0 via datasets públicos de RWA pools. Fonte oficial: Maple Finance Subgraph ou Centrifuge API.",
+  "generated_at": "2026-08-26T15:10:25.246091+00:00",
+  "_meta": {
+    "hash": "650f77aa3974953a79836d1801282c07663627dd7865877d8247591bb61d29da"
+  }
+}

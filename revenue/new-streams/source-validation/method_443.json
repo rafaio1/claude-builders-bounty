@@ -1,0 +1,31 @@
+{
+  "method_id": "443",
+  "name": "Lending rate aggregator (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_protocol": "Morpho Blue",
+      "integration_complexity": "high",
+      "customizable_risk_params": true,
+      "sdk_maturity_score": 0.85
+    },
+    {
+      "dev_protocol": "Compound V3",
+      "integration_complexity": "low",
+      "customizable_risk_params": false,
+      "sdk_maturity_score": 0.95
+    }
+  ],
+  "schema": [
+    "dev_protocol",
+    "integration_complexity",
+    "customizable_risk_params",
+    "sdk_maturity_score"
+  ],
+  "notes": "Variante técnica para devs integrando lending. Compara complexidade e flexibilidade de SDKs. Proxy via documentação e boilerplates no GitHub. Fonte oficial: Morpho Docs ou Compound Developer Portal.",
+  "generated_at": "2026-08-26T15:10:42.856120+00:00",
+  "_meta": {
+    "hash": "5ef182fe85d1d68f2d8804f4c6304e3813aa136985c824cdccd267f1fb4ddd27"
+  }
+}

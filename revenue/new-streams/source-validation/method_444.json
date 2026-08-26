@@ -1,0 +1,31 @@
+{
+  "method_id": "444",
+  "name": "Lending rate aggregator (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_fund": "Web3 Venture Capital",
+      "yield_enhancement_strategy": "looping_stablecoins",
+      "est_net_apy_pct": 12.5,
+      "audit_status": "verified"
+    },
+    {
+      "client_fund": "Gaming Guild Treasury",
+      "yield_enhancement_strategy": "lp_token_lending",
+      "est_net_apy_pct": 8.2,
+      "audit_status": "pending"
+    }
+  ],
+  "schema": [
+    "client_fund",
+    "yield_enhancement_strategy",
+    "est_net_apy_pct",
+    "audit_status"
+  ],
+  "notes": "Variante B2B para agências/gestores de fundos web3. Foca em estratégias de yield enhancement e status de auditoria. Proxy via repositórios de yield strategy simulators. Fonte oficial: Yearn Strategy Vault API ou Sommelier Finance.",
+  "generated_at": "2026-08-26T15:10:42.856120+00:00",
+  "_meta": {
+    "hash": "574dd48b799b84df2d918a8bbe3249802a6f28d2b7dc5168943ffadfe873c73f"
+  }
+}

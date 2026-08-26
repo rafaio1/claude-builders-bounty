@@ -1,0 +1,34 @@
+{
+  "method_id": "439",
+  "name": "Lending rate aggregator",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "Aave V3",
+      "asset": "USDC",
+      "supply_apy_pct": 4.82,
+      "borrow_apy_pct": 6.15,
+      "utilization_pct": 78.4
+    },
+    {
+      "protocol": "Compound V3",
+      "asset": "WETH",
+      "supply_apy_pct": 1.24,
+      "borrow_apy_pct": 3.88,
+      "utilization_pct": 45.2
+    }
+  ],
+  "schema": [
+    "protocol",
+    "asset",
+    "supply_apy_pct",
+    "borrow_apy_pct",
+    "utilization_pct"
+  ],
+  "notes": "Agregador genérico de taxas de empréstimo DeFi. Proxy TIER0 via repositórios de yield aggregators e subgraph parsers no GitHub. Fonte oficial: DefiLlama Yields API ou Aave Data Warehouse.",
+  "generated_at": "2026-08-26T15:10:25.246091+00:00",
+  "_meta": {
+    "hash": "2fa3aa421a68dc3e942871e8a008d46ece8ddebab1aeaf7de3db869400b08339"
+  }
+}

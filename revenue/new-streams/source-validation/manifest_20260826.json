@@ -6581,5 +6581,671 @@
     "_meta": {
       "hash": "511b54a0a3fe0a7e83205432cfbae6d70dc2c192c88305e7c2d1a2f0b2c9bba2"
     }
+  },
+  "427": {
+    "method_id": "427",
+    "name": "Gas price predictor",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "chain": "ethereum",
+        "predicted_gwei_1h": 18.5,
+        "confidence_pct": 82.0,
+        "model_source": "eth_gas_station"
+      },
+      {
+        "chain": "polygon",
+        "predicted_gwei_1h": 45.2,
+        "confidence_pct": 91.0,
+        "model_source": "polygonscan_gas"
+      }
+    ],
+    "schema": [
+      "chain",
+      "predicted_gwei_1h",
+      "confidence_pct",
+      "model_source"
+    ],
+    "notes": "Previsor genérico de gas fees. Proxy TIER0 via repositórios de gas prediction models no GitHub. Fonte oficial: Etherscan Gas Tracker API ou Blocknative Gas Platform.",
+    "generated_at": "2026-08-26T15:09:07.946976+00:00",
+    "_meta": {
+      "hash": "1362de6807a765979a756816a5c7ed351db01a412092754349a6388dcb49d97e"
+    }
+  },
+  "428": {
+    "method_id": "428",
+    "name": "Gas price predictor (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "DEX_Aggregator",
+        "optimal_tx_window_utc": "03:00-05:00",
+        "estimated_savings_pct": 35.0,
+        "batch_strategy": "cowswap"
+      },
+      {
+        "protocol": "NFT_Marketplace",
+        "optimal_tx_window_utc": "14:00-16:00",
+        "estimated_savings_pct": 12.0,
+        "batch_strategy": "standard"
+      }
+    ],
+    "schema": [
+      "protocol",
+      "optimal_tx_window_utc",
+      "estimated_savings_pct",
+      "batch_strategy"
+    ],
+    "notes": "Variante para startups DeFi focada em otimização de custos operacionais. Proxy via repositórios de MEV-protection e batch auction solvers. Fonte oficial: Flashbots Protect API ou EigenNetwork.",
+    "generated_at": "2026-08-26T15:09:07.946976+00:00",
+    "_meta": {
+      "hash": "4be7ba12d19f2c8ec33869780c41572a7f9b02df753781e056c63ed6f6ad00aa"
+    }
+  },
+  "429": {
+    "method_id": "429",
+    "name": "Gas price predictor (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Institutional Custodian",
+        "sla_compliance_prob": 0.99,
+        "priority_fee_budget_usd": 500,
+        "settlement_layer": "l1_mainnet"
+      },
+      {
+        "entity": "Payment Processor",
+        "sla_compliance_prob": 0.95,
+        "priority_fee_budget_usd": 50,
+        "settlement_layer": "l2_arbitrum"
+      }
+    ],
+    "schema": [
+      "entity",
+      "sla_compliance_prob",
+      "priority_fee_budget_usd",
+      "settlement_layer"
+    ],
+    "notes": "Variante enterprise focada em SLAs e budgeting de transações. Proxy TIER0 via simuladores de fee market. Fonte oficial: Alchemy Gas Manager API ou Infura Transactions API.",
+    "generated_at": "2026-08-26T15:09:07.946976+00:00",
+    "_meta": {
+      "hash": "f19160a1081b2f5c320a884bb855999e3cbf5812de5cd6507a38686b4a2200c1"
+    }
+  },
+  "430": {
+    "method_id": "430",
+    "name": "Gas price predictor (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_action": "nft_mint_batch",
+        "recommended_gwei": 12.5,
+        "est_cost_usd_per_mint": 0.85,
+        "network": "base"
+      },
+      {
+        "creator_action": "royalty_claim",
+        "recommended_gwei": 28.0,
+        "est_cost_usd_per_tx": 1.42,
+        "network": "ethereum"
+      }
+    ],
+    "schema": [
+      "creator_action",
+      "recommended_gwei",
+      "est_cost_usd_per_tx",
+      "network"
+    ],
+    "notes": "Variante para criadores NFT/música. Otimiza custos de mint e claims de royalties. Proxy TIER0 via repositórios de gas-efficient minting contracts. Fonte oficial: L2Beat Gas Dashboard ou BaseScan.",
+    "generated_at": "2026-08-26T15:09:22.748243+00:00",
+    "_meta": {
+      "hash": "f78c2134f53ee6738e8fe05a3e4d60d60b87763dc6db3d63ef6465e86fc95d3d"
+    }
+  },
+  "431": {
+    "method_id": "431",
+    "name": "Gas price predictor (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_task": "contract_deployment",
+        "simulated_gas_units": 2850000,
+        "optimal_priority_fee_gwei": 1.5,
+        "mev_protection": true
+      },
+      {
+        "dev_task": "multicall_aggregation",
+        "simulated_gas_units": 450000,
+        "optimal_priority_fee_gwei": 0.8,
+        "mev_protection": false
+      }
+    ],
+    "schema": [
+      "dev_task",
+      "simulated_gas_units",
+      "optimal_priority_fee_gwei",
+      "mev_protection"
+    ],
+    "notes": "Variante técnica para devs. Simula consumo de gas e sugere priority fees com proteção MEV opcional. Proxy via repositórios de foundry/hardhat gas reporters. Fonte oficial: Flashbots Gas API ou Tenderly Gas Estimator.",
+    "generated_at": "2026-08-26T15:09:22.748243+00:00",
+    "_meta": {
+      "hash": "55f268639962edb5dee6d939d7bccd8c7e5f8029447c04a054a76f2fdad2a782"
+    }
+  },
+  "432": {
+    "method_id": "432",
+    "name": "Gas price predictor (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "campaign_type": "airdrop_distribution",
+        "batch_size": 5000,
+        "total_est_gas_cost_usd": 1250.0,
+        "recommended_l2": "arbitrum"
+      },
+      {
+        "campaign_type": "loyalty_token_claim",
+        "batch_size": 800,
+        "total_est_gas_cost_usd": 95.0,
+        "recommended_l2": "optimism"
+      }
+    ],
+    "schema": [
+      "campaign_type",
+      "batch_size",
+      "total_est_gas_cost_usd",
+      "recommended_l2"
+    ],
+    "notes": "Variante B2B para agências de marketing web3. Estima custos totais de campanhas on-chain e recomenda L2s. Proxy via scripts de batch-cost calculators no GitHub. Fonte oficial: Rollup Costs API ou L2Fees.info.",
+    "generated_at": "2026-08-26T15:09:22.748243+00:00",
+    "_meta": {
+      "hash": "cbb7aec9dbe0f635d037f50f553bc54f1df7f5928915cc2ac9b71b8676f55681"
+    }
+  },
+  "433": {
+    "method_id": "433",
+    "name": "Bridge arbitrage",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "token": "USDC",
+        "chain_a": "ethereum",
+        "chain_b": "arbitrum",
+        "spread_pct": 0.18,
+        "bridge_protocol": "stargate"
+      },
+      {
+        "token": "WETH",
+        "chain_a": "optimism",
+        "chain_b": "base",
+        "spread_pct": -0.05,
+        "bridge_protocol": "across"
+      }
+    ],
+    "schema": [
+      "token",
+      "chain_a",
+      "chain_b",
+      "spread_pct",
+      "bridge_protocol"
+    ],
+    "notes": "Monitoramento genérico de spreads cross-chain. Proxy TIER0 via repositórios de bridge aggregators e price feeders no GitHub. Fonte oficial: Li.Fi API ou Socket Protocol.",
+    "generated_at": "2026-08-26T15:09:44.736058+00:00",
+    "_meta": {
+      "hash": "6252aee25f5b68e855f9714c4eaafd7335a929e7a95a7648301e55a56b7c530a"
+    }
+  },
+  "434": {
+    "method_id": "434",
+    "name": "Bridge arbitrage (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "NewL2DEX",
+        "liquidity_imbalance_usd": 450000,
+        "rebalancing_opportunity": true,
+        "est_profit_net_fees_usd": 120
+      },
+      {
+        "protocol": "StableMintDAO",
+        "liquidity_imbalance_usd": 12000,
+        "rebalancing_opportunity": false,
+        "est_profit_net_fees_usd": 0
+      }
+    ],
+    "schema": [
+      "protocol",
+      "liquidity_imbalance_usd",
+      "rebalancing_opportunity",
+      "est_profit_net_fees_usd"
+    ],
+    "notes": "Variante para startups DeFi/L2s. Foca em oportunidades de rebalancing de liquidez nativa. Proxy via repositórios de LP position managers. Fonte oficial: DefiLlama Yields + Bridge Volume API.",
+    "generated_at": "2026-08-26T15:09:44.736058+00:00",
+    "_meta": {
+      "hash": "1cb03a94ad72772f10882962fd07c7a7f9d508fdf894161da107a4695dfc9625"
+    }
+  },
+  "435": {
+    "method_id": "435",
+    "name": "Bridge arbitrage (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "CrossChain Treasury",
+        "route": "eth_to_solana",
+        "slippage_tolerance_pct": 0.05,
+        "compliance_cleared": true,
+        "settlement_time_min": 12
+      },
+      {
+        "entity": "OTC Desk Global",
+        "route": "arb_to_polygon",
+        "slippage_tolerance_pct": 0.2,
+        "compliance_cleared": false,
+        "settlement_time_min": 45
+      }
+    ],
+    "schema": [
+      "entity",
+      "route",
+      "slippage_tolerance_pct",
+      "compliance_cleared",
+      "settlement_time_min"
+    ],
+    "notes": "Variante enterprise focada em execução institucional e compliance. Proxy TIER0 via simuladores de rota cross-chain. Fonte oficial: Fireblocks Transfer API ou Circle CCTP.",
+    "generated_at": "2026-08-26T15:09:44.736058+00:00",
+    "_meta": {
+      "hash": "0e282c6e688c161fa62de35f65f9876e60e22d17281a741c6d0aafbc8b3e0d91"
+    }
+  },
+  "436": {
+    "method_id": "436",
+    "name": "Bridge arbitrage (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_asset": "MusicNFT_Collection",
+        "source_chain": "ethereum",
+        "target_chain": "base",
+        "bridge_fee_usd": 2.5,
+        "arbitrage_window_min": 15
+      },
+      {
+        "creator_asset": "ArtDrop_Token",
+        "source_chain": "polygon",
+        "target_chain": "optimism",
+        "bridge_fee_usd": 0.8,
+        "arbitrage_window_min": 45
+      }
+    ],
+    "schema": [
+      "creator_asset",
+      "source_chain",
+      "target_chain",
+      "bridge_fee_usd",
+      "arbitrage_window_min"
+    ],
+    "notes": "Variante para criadores movendo ativos NFT/tokens entre chains. Foca em custos de bridge e janelas de oportunidade. Proxy TIER0 via repositórios de cross-chain NFT bridges. Fonte oficial: LayerZero API ou Wormhole Connect.",
+    "generated_at": "2026-08-26T15:10:02.125192+00:00",
+    "_meta": {
+      "hash": "cdf45360f5820f43fe2bea40c873dab8e5a7d81426ec6a91a4f56f18a178f065"
+    }
+  },
+  "437": {
+    "method_id": "437",
+    "name": "Bridge arbitrage (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_tool": "CrossChainMessenger",
+        "latency_ms_avg": 1200,
+        "success_rate_pct": 99.2,
+        "supported_chains": 8
+      },
+      {
+        "dev_tool": "BridgeSDK_Lite",
+        "latency_ms_avg": 3500,
+        "success_rate_pct": 94.5,
+        "supported_chains": 4
+      }
+    ],
+    "schema": [
+      "dev_tool",
+      "latency_ms_avg",
+      "success_rate_pct",
+      "supported_chains"
+    ],
+    "notes": "Variante técnica para devs integrando bridges. Compara latência e confiabilidade de SDKs. Proxy via benchmarks open-source no GitHub. Fonte oficial: Connext Network Docs ou Axelar Developer Hub.",
+    "generated_at": "2026-08-26T15:10:02.125192+00:00",
+    "_meta": {
+      "hash": "dd02351e23425a05ad1afdd4890df219cf667d6aeba8654ae195ae55ea49ace3"
+    }
+  },
+  "438": {
+    "method_id": "438",
+    "name": "Bridge arbitrage (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_campaign": "MultiChain_Airdrop",
+        "total_bridged_usd": 125000,
+        "avg_slippage_pct": 0.12,
+        "cost_savings_vs_cex": 4200
+      },
+      {
+        "client_campaign": "L2_Migration_Incentive",
+        "total_bridged_usd": 85000,
+        "avg_slippage_pct": 0.35,
+        "cost_savings_vs_cex": 1800
+      }
+    ],
+    "schema": [
+      "client_campaign",
+      "total_bridged_usd",
+      "avg_slippage_pct",
+      "cost_savings_vs_cex"
+    ],
+    "notes": "Variante B2B para agências gerenciando migrações/airdrops multi-chain. Reporta savings vs CEX withdrawals. Proxy via scripts de bridge-cost analytics. Fonte oficial: Hop Protocol Analytics or Stargate Volume Dashboard.",
+    "generated_at": "2026-08-26T15:10:02.125192+00:00",
+    "_meta": {
+      "hash": "d91a162ccf067ec1050057ccbaa06bdd0c85c259457c36ccf881558998a524ef"
+    }
+  },
+  "439": {
+    "method_id": "439",
+    "name": "Lending rate aggregator",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "Aave V3",
+        "asset": "USDC",
+        "supply_apy_pct": 4.82,
+        "borrow_apy_pct": 6.15,
+        "utilization_pct": 78.4
+      },
+      {
+        "protocol": "Compound V3",
+        "asset": "WETH",
+        "supply_apy_pct": 1.24,
+        "borrow_apy_pct": 3.88,
+        "utilization_pct": 45.2
+      }
+    ],
+    "schema": [
+      "protocol",
+      "asset",
+      "supply_apy_pct",
+      "borrow_apy_pct",
+      "utilization_pct"
+    ],
+    "notes": "Agregador genérico de taxas de empréstimo DeFi. Proxy TIER0 via repositórios de yield aggregators e subgraph parsers no GitHub. Fonte oficial: DefiLlama Yields API ou Aave Data Warehouse.",
+    "generated_at": "2026-08-26T15:10:25.246091+00:00",
+    "_meta": {
+      "hash": "2fa3aa421a68dc3e942871e8a008d46ece8ddebab1aeaf7de3db869400b08339"
+    }
+  },
+  "440": {
+    "method_id": "440",
+    "name": "Lending rate aggregator (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "startup_treasury": "DeFiProjectDAO",
+        "optimal_yield_protocol": "Morpho Blue",
+        "est_annual_return_pct": 8.5,
+        "risk_adjusted_score": 0.72
+      },
+      {
+        "startup_treasury": "NFTStudioFund",
+        "optimal_yield_protocol": "Spark Protocol",
+        "est_annual_return_pct": 5.2,
+        "risk_adjusted_score": 0.88
+      }
+    ],
+    "schema": [
+      "startup_treasury",
+      "optimal_yield_protocol",
+      "est_annual_return_pct",
+      "risk_adjusted_score"
+    ],
+    "notes": "Variante para tesourarias de startups DeFi/NFT. Recomenda protocolos com base em retorno ajustado ao risco. Proxy via repositórios de treasury management bots. Fonte oficial: Yearn Vault API ou Beefy Finance.",
+    "generated_at": "2026-08-26T15:10:25.246091+00:00",
+    "_meta": {
+      "hash": "8ce878d54005895bcfc770c13ef7cb64e5e7df068a05e723aa9ee44b35e4ceed"
+    }
+  },
+  "441": {
+    "method_id": "441",
+    "name": "Lending rate aggregator (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "institution": "Crypto Hedge Fund A",
+        "counterparty": "Maple Finance",
+        "credit_pool_apy_pct": 11.2,
+        "default_risk_flag": false,
+        "lockup_days": 90
+      },
+      {
+        "institution": "Family Office B",
+        "counterparty": "Centrifuge",
+        "credit_pool_apy_pct": 8.8,
+        "default_risk_flag": true,
+        "lockup_days": 180
+      }
+    ],
+    "schema": [
+      "institution",
+      "counterparty",
+      "credit_pool_apy_pct",
+      "default_risk_flag",
+      "lockup_days"
+    ],
+    "notes": "Variante enterprise/institucional focada em crédito privado on-chain. Proxy TIER0 via datasets públicos de RWA pools. Fonte oficial: Maple Finance Subgraph ou Centrifuge API.",
+    "generated_at": "2026-08-26T15:10:25.246091+00:00",
+    "_meta": {
+      "hash": "650f77aa3974953a79836d1801282c07663627dd7865877d8247591bb61d29da"
+    }
+  },
+  "442": {
+    "method_id": "442",
+    "name": "Lending rate aggregator (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_entity": "MusicRoyaltyDAO",
+        "collateral_type": "royalty_stream_nft",
+        "best_lend_apy_pct": 7.2,
+        "liquidation_risk": "low"
+      },
+      {
+        "creator_entity": "DigitalArtCollective",
+        "collateral_type": "blue_chip_nft",
+        "best_lend_apy_pct": 4.5,
+        "liquidation_risk": "medium"
+      }
+    ],
+    "schema": [
+      "creator_entity",
+      "collateral_type",
+      "best_lend_apy_pct",
+      "liquidation_risk"
+    ],
+    "notes": "Variante para criadores buscando liquidez contra ativos digitais (NFTs/royalties). Proxy TIER0 via repositórios de NFT lending protocols (BendDAO, Blur Lend). Fonte oficial: DeFiLlama Yields filtered by collateral type.",
+    "generated_at": "2026-08-26T15:10:42.856120+00:00",
+    "_meta": {
+      "hash": "c92d43b8d240b2b1e0542cdc6256a13bce08ff4393ff509308b7dc7975116408"
+    }
+  },
+  "443": {
+    "method_id": "443",
+    "name": "Lending rate aggregator (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_protocol": "Morpho Blue",
+        "integration_complexity": "high",
+        "customizable_risk_params": true,
+        "sdk_maturity_score": 0.85
+      },
+      {
+        "dev_protocol": "Compound V3",
+        "integration_complexity": "low",
+        "customizable_risk_params": false,
+        "sdk_maturity_score": 0.95
+      }
+    ],
+    "schema": [
+      "dev_protocol",
+      "integration_complexity",
+      "customizable_risk_params",
+      "sdk_maturity_score"
+    ],
+    "notes": "Variante técnica para devs integrando lending. Compara complexidade e flexibilidade de SDKs. Proxy via documentação e boilerplates no GitHub. Fonte oficial: Morpho Docs ou Compound Developer Portal.",
+    "generated_at": "2026-08-26T15:10:42.856120+00:00",
+    "_meta": {
+      "hash": "5ef182fe85d1d68f2d8804f4c6304e3813aa136985c824cdccd267f1fb4ddd27"
+    }
+  },
+  "444": {
+    "method_id": "444",
+    "name": "Lending rate aggregator (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_fund": "Web3 Venture Capital",
+        "yield_enhancement_strategy": "looping_stablecoins",
+        "est_net_apy_pct": 12.5,
+        "audit_status": "verified"
+      },
+      {
+        "client_fund": "Gaming Guild Treasury",
+        "yield_enhancement_strategy": "lp_token_lending",
+        "est_net_apy_pct": 8.2,
+        "audit_status": "pending"
+      }
+    ],
+    "schema": [
+      "client_fund",
+      "yield_enhancement_strategy",
+      "est_net_apy_pct",
+      "audit_status"
+    ],
+    "notes": "Variante B2B para agências/gestores de fundos web3. Foca em estratégias de yield enhancement e status de auditoria. Proxy via repositórios de yield strategy simulators. Fonte oficial: Yearn Strategy Vault API ou Sommelier Finance.",
+    "generated_at": "2026-08-26T15:10:42.856120+00:00",
+    "_meta": {
+      "hash": "574dd48b799b84df2d918a8bbe3249802a6f28d2b7dc5168943ffadfe873c73f"
+    }
+  },
+  "445": {
+    "method_id": "445",
+    "name": "Impermanent loss calculator",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "pair": "ETH/USDC",
+        "price_change_pct": 25.0,
+        "il_pct": 1.8,
+        "pool_type": "uniswap_v3"
+      },
+      {
+        "pair": "WBTC/ETH",
+        "price_change_pct": -10.0,
+        "il_pct": 0.4,
+        "pool_type": "curve"
+      }
+    ],
+    "schema": [
+      "pair",
+      "price_change_pct",
+      "il_pct",
+      "pool_type"
+    ],
+    "notes": "Calculadora genérica de impermanent loss. Proxy TIER0 via repositórios de IL calculators e LP simulators no GitHub. Fonte oficial: DeFiLlama Pool API ou Uniswap V3 SDK.",
+    "generated_at": "2026-08-26T15:11:04.527275+00:00",
+    "_meta": {
+      "hash": "9c88024f8c746ca4764123b77b470fa8f6b377d0a83871b5c254f3f9b406cc79"
+    }
+  },
+  "446": {
+    "method_id": "446",
+    "name": "Impermanent loss calculator (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "NewDEX_Launch",
+        "token_pair": "NATIVE/USDC",
+        "projected_il_30d_pct": 5.2,
+        "fee_offset_break_even_days": 14
+      },
+      {
+        "protocol": "StableSwap_Init",
+        "token_pair": "USDT/DAI",
+        "projected_il_30d_pct": 0.1,
+        "fee_offset_break_even_days": 2
+      }
+    ],
+    "schema": [
+      "protocol",
+      "token_pair",
+      "projected_il_30d_pct",
+      "fee_offset_break_even_days"
+    ],
+    "notes": "Variante para startups DeFi lançando pools. Estima IL projetado e break-even de fees. Proxy via repositórios de LP incentive planners. Fonte oficial: Arrakis Finance or Gamma Strategies.",
+    "generated_at": "2026-08-26T15:11:04.527275+00:00",
+    "_meta": {
+      "hash": "0c0454684cc852a745f2b2e4b461d1e12b371d7ca104b60c47a074a9b277668b"
+    }
+  },
+  "447": {
+    "method_id": "447",
+    "name": "Impermanent loss calculator (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Institutional_MM_Fund",
+        "exposure_usd": 5000000,
+        "hedging_cost_annual_pct": 2.5,
+        "net_il_after_hedge_pct": 0.3
+      },
+      {
+        "entity": "Corporate_Treasury",
+        "exposure_usd": 1200000,
+        "hedging_cost_annual_pct": 0.0,
+        "net_il_after_hedge_pct": 4.1
+      }
+    ],
+    "schema": [
+      "entity",
+      "exposure_usd",
+      "hedging_cost_annual_pct",
+      "net_il_after_hedge_pct"
+    ],
+    "notes": "Variante enterprise focada em hedging de IL para tesourarias. Proxy TIER0 via modelos de risk management open-source. Fonte oficial: Gauntlet Risk Reports or Chaos Labs.",
+    "generated_at": "2026-08-26T15:11:04.527275+00:00",
+    "_meta": {
+      "hash": "fbfa966e9b70ab3167d03ad8d233067fddd0c77c38015ec6bef96a28099af52f"
+    }
   }
 }
