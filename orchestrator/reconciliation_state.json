@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "NO_ACTIVE_EDGE",
+  "risk_status": "WASH_TRADE_BUG_FIXED_PENDING_VALIDATION",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -159,7 +159,7 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T21:45:00Z",
+  "last_reconciliation": "2026-08-26T22:19:03Z",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
@@ -170,5 +170,28 @@
   "usdt_free": 9.73769772,
   "open_orders_count": 0,
   "vwap_shadow_cycles_completed": 2,
-  "vwap_shadow_trades": 0
+  "vwap_shadow_trades": 0,
+  "wash_trade_incident": {
+    "detected": "2026-08-26T22:00:00Z",
+    "loss_usdt": -7.72,
+    "pairs": 48,
+    "root_cause": "ghost_check_grace_60s_too_short_plus_no_post_sell_cooldown",
+    "fix_applied": true,
+    "fix_details": {
+      "post_sell_cooldown_sec": 300,
+      "min_trade_interval_sec": 300,
+      "cooldown_after_loss_sec": 300,
+      "ghost_grace_min_sec": 180,
+      "wash_detect_window": 5,
+      "max_daily_loss_usdt": 1.0,
+      "persistence": true
+    },
+    "real_trading_blocked_until": "PENDING_SHADOW_VALIDATION_24H"
+  },
+  "account_snapshot": {
+    "usdt_free": 6.4877,
+    "inj_free": 0.5262,
+    "open_orders": 0,
+    "timestamp": "2026-08-26T22:19:03Z"
+  }
 }

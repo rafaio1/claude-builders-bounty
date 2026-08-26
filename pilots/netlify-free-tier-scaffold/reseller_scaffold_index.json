@@ -1,0 +1,54 @@
+{
+  "pilot": "netlify-free-tier-scaffold",
+  "provider": "Netlify, Inc.",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reasons": [
+    "Licença non-sublicensable e non-transferable (SSA Seção 2)",
+    "Assignment proibido sem consentimento escrito prévio (SSA Seção 14)",
+    "Free Usage Tier oferecido a critério exclusivo da Netlify, pode ser descontinuado ou alterado unilateralmente (SSA Seção 6)",
+    "Projetos Free podem ser removidos sem aviso a qualquer momento (SSA Seção 6)",
+    "Ambiente compartilhado sem SLA para Free Tier (SSA Seção 6)",
+    "Termos de Uso proíbem uso para benefício de terceiros ou service bureau (Website Terms Seção 2 + AUP)"
+  ],
+  "free_tier": {
+    "plan_name": "Free Usage Tier",
+    "permanent": false,
+    "commercial_use_allowed": null,
+    "notes": "Free tier existe mas é discricionário, sem SLA, ambiente compartilhado, e pode ser encerrado sem aviso. Não há garantia de permanência."
+  },
+  "license_terms": {
+    "type": "Limited Subscription License",
+    "sublicensable": false,
+    "transferable": false,
+    "exclusive": false,
+    "scope": "internal use only, subject to SSA and Terms of Use"
+  },
+  "reselling_model": {
+    "viable": false,
+    "blockers": [
+      "SSA Seção 2: licença non-sublicensable e non-transferable",
+      "SSA Seção 14: assignment requer consentimento escrito prévio",
+      "SSA Seção 6: Free Tier discricionário, sem SLA, remoção sem aviso",
+      "Website Terms Seção 2: licença revogável, non-sublicensable",
+      "Sem cláusula explícita permitindo resell ou managed services em planos free"
+    ]
+  },
+  "risks": [
+    "Encerramento sumário de projetos Free sem aviso (SSA Seção 6)",
+    "Mudança unilateral de termos do Free Tier (SSA Seção 6)",
+    "Responsabilidade limitada a $100 ou fees do mês corrente (SSA Seção 10)",
+    "Dados do cliente podem ser usados para melhoria de produtos (SSA Seção 7)",
+    "Arbitragem/jurisdição exclusiva em San Francisco, CA (SSA Seção 12)"
+  ],
+  "next_steps": [
+    "Descartar como candidato a infrastructure reselling zero-capital",
+    "Avaliar próximo candidato no pipeline (Cloudflare Pages / Render / Supabase)",
+    "Manter Netlify apenas como referência de deploy pessoal/hobby"
+  ],
+  "tos_source": "/tmp/netlify_ssa_clean.txt",
+  "terms_of_use_source": "/tmp/netlify_terms_clean.txt",
+  "ssa_last_updated": "2020-09-08",
+  "terms_last_updated": "2026-03-26",
+  "analyzed_at": "2026-08-26T22:25:00+00:00",
+  "doc_verified": true
+}
