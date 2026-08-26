@@ -37,7 +37,7 @@ PARAMS = {
     'tp_pct': 1.2,
     'trail_pct': 0.5,
     'trail_activation': 0.8,
-    'max_hold_sec': 1800,
+    'max_hold_sec': 120,
 }
 
 def log(msg):
@@ -789,7 +789,11 @@ while True:
                 for sym in list(_active_positions):
                     entry_ts = _last_trade_time.get(sym, 0)
                     age = time.time() - entry_ts if entry_ts > 0 else 999
-                    grace = max(60, PARAMS.get("max_hold_sec", 120))
+                    # Dynamic grace: shorter when wallet shows zero balance for asset
+                    # Prevents 30min lockout after server-side SL fill
+                    asset_for_grace = sym.split('/')[0]
+                    has_balance = float(direct_bal.get(asset_for_grace, {}).get('total', 0) or 0) > 0
+                    grace = max(60, PARAMS.get("max_hold_sec", 120)) if has_balance else min(60, PARAMS.get("max_hold_sec", 120))
                     
                     if age < grace:
                         log(f"  ⏳ Ghost check skipped for {sym}: age={age:.0f}s (<{grace}s grace)")
