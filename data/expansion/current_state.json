@@ -1,8 +1,8 @@
 {
   "timers": {
-    "agentic-improve-map.timer": "inactive",
-    "agentic-improve-dev.timer": "inactive",
-    "agentic-improve-review.timer": "inactive"
+    "bughunter-improve-dev.timer": "active",
+    "bughunter-improve-map.timer": "active",
+    "bughunter-improve-review.timer": "active"
   },
   "services": {
     "agentic-loop.service": "active",
@@ -10,10 +10,10 @@
     "tradingagents-portal.service": "active"
   },
   "git_branch": "master",
-  "git_status_short": "M data/expansion/proposals.jsonl",
-  "git_clean": false,
+  "git_status_short": "",
+  "git_clean": true,
   "worktrees": [
-    "/Agentic                     331d492 [master]",
+    "/Agentic                     715962e [master]",
     "/Agentic/.worktrees/improve  6a1da1c [improve/dev/staging-recovery]"
   ],
   "proposal_counts": {
@@ -22,6 +22,12 @@
     "ADIAR": 4
   },
   "total_proposals": 8,
-  "total_verdicts": 45,
-  "updated_at": "2026-08-26T13:44:05Z"
+  "total_verdicts": 52,
+  "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
+  "updated_at": "2026-08-26T14:02:00Z",
+  "last_council_action": "Watchdog reconciled timer drift; code fixes deployed for prompt truncation and forbidden-pattern self-match. Pipeline eligible for retry on next dev cycle (~14:10 UTC).",
+  "pending_proposals": 0,
+  "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
+  "local_control_patched": true,
+  "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable"
 }
