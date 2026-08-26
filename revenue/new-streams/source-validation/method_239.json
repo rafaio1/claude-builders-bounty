@@ -1,0 +1,34 @@
+{
+  "method_id": "239",
+  "name": "Cron job as a service (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:02:06.057672+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "dev-cron-runner",
+      "stars": 276,
+      "pricing_model": "open_core",
+      "features": [
+        "log_streaming",
+        "env_injection"
+      ]
+    },
+    {
+      "repo": "lambda-scheduler-cli",
+      "stars": 189,
+      "pricing_model": "usage_based",
+      "features": [
+        "serverless_invoke",
+        "retry_backoff"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: AWS EventBridge / Cloudflare Cron Triggers. Foco em agendamento serverless e inje\u00e7\u00e3o de vari\u00e1veis de ambiente."
+}
