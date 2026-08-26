@@ -1,0 +1,43 @@
+{
+  "method_id": "913",
+  "pilot_name": "nfe-api-marketplace-br-scaffold",
+  "proposal_title": "API de Emissão de NF-e para Marketplaces Verticais",
+  "artifact_real_source": "API de Emissão de NF-e para Marketplaces Verticais",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é API/SaaS de emissão de NF-e para marketplaces verticais BR usando SDKs open-source.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "software_saas",
+  "free_tier_limits": {
+    "provider": "PyNFe/NFeLib (Open Source) + SEFAZ WSDL Público",
+    "permanent_free": true,
+    "limits": "SDKs e webservices da SEFAZ são gratuitos e abertos. Custo zero para desenvolvimento e integração. Certificado digital A1 do operador é único custo pré-existente (não do scaffold).",
+    "verification_method": "curl_sefaz_wsdl_status_check"
+  },
+  "paid_plan_baseline": {
+    "fee_per_nf_brl": "0.50-1.20",
+    "target_nfs_monthly": 3000,
+    "projected_mrr_brl": "1500-3600",
+    "cost_per_nf_brl": "0 (infraestrutura própria/free tier)"
+  },
+  "reselling_model": {
+    "type": "transactional_saas_api",
+    "mechanism": "API REST wrapper sobre PyNFe/SEFAZ para emissão de NF-e em marketplaces. Cobrança por transação (nota emitida). Modelo padrão de ERPs e hubs fiscais BR.",
+    "zero_capital_path": "Backend Python com PyNFe hospedado em Vercel/Cloudflare Workers free tier ou servidor próprio existente. Landing page estática. Billing via Asaas/Pix. Sem licença de software paga.",
+    "compliance": "Ajuste SINIEF 2024 NT 2024.002; Manual de Orientação do Contribuinte SEFAZ; LGPD para dados fiscais."
+  },
+  "risks": [
+    "Complexidade técnica alta: 27 UFs com regras diferentes exigem manutenção constante",
+    "Dependência de certificado digital A1 válido e custódia segura das chaves privadas",
+    "Concorrência de ERPs estabelecidos (Tiny, Bling, ContaAzul) que já incluem emissão",
+    "Responsabilidade fiscal: erro na emissão pode gerar multa para o cliente marketplace"
+  ],
+  "next_steps": [
+    "Validar disponibilidade dos WSDLs SEFAZ v4.00 via curl",
+    "Implementar MVP de emissão com PyNFe para uma UF piloto (SP ou MG)",
+    "Criar documentação API e exemplos de integração para devs de marketplace",
+    "Testar fluxo completo com certificado digital de teste/homologação",
+    "Preparar contrato de prestação de serviço com cláusula de limitação de responsabilidade fiscal"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:30:00+00:00"
+}

@@ -1,0 +1,43 @@
+{
+  "method_id": "914",
+  "pilot_name": "tax-reform-consulting-br-scaffold",
+  "proposal_title": "Consultoria de Adequação à Reforma Tributária (EC 132/2023)",
+  "artifact_real_source": "Consultoria de Adequação à Reforma Tributária (EC 132/2023)",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é consultoria especializada em transição fiscal EC 132/2023 para empresas de serviços no lucro real.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "freelance_services",
+  "free_tier_limits": {
+    "provider": "Legislação Pública (Planalto/Câmara) + LLM Free Tier + Python Stdlib",
+    "permanent_free": true,
+    "limits": "Acesso à legislação e normas regulamentadoras é gratuito. Ferramentas de análise e geração de relatórios via scripts locais ou LLM free tier. Zero custo de insumo intelectual.",
+    "verification_method": "curl_planalto_ec132_check"
+  },
+  "paid_plan_baseline": {
+    "project_fee_avg_brl": "8000-25000",
+    "target_clients_monthly": 2,
+    "projected_mrr_brl": "16000-50000",
+    "cost_per_delivery_brl": "0 (tempo próprio + pesquisa pública)"
+  },
+  "reselling_model": {
+    "type": "specialized_consulting_service",
+    "mechanism": "Diagnóstico e plano de transição fiscal personalizado para IBS/CBS. Entrega inclui simulação de carga tributária, impacto no fluxo de caixa e roadmap de adaptação sistêmica. Venda como projeto pontual ou acompanhamento trimestral.",
+    "zero_capital_path": "Pesquisa legislativa via sites oficiais. Modelagem financeira em planilhas abertas ou Python. Prospecção via LinkedIn/ABRACAM/Sindicatos. Sem necessidade de software proprietário ou certificação paga inicial.",
+    "compliance": "EC 132/2023; LC 214/2025; IN RFB vigentes; Código de Ética do Contador (se aplicável)."
+  },
+  "risks": [
+    "Regulamentação ainda em evolução: normas complementares podem alterar premissas do diagnóstico",
+    "Alta responsabilidade técnica: erro na projeção pode causar prejuízo fiscal ao cliente",
+    "Ciclo de vendas longo e dependente de autoridade/reputação no nicho tributário",
+    "Concorrência de grandes escritórios de advocacia tributária e Big 4"
+  ],
+  "next_steps": [
+    "Mapear todas as normas regulamentadoras publicadas até a data via curl no Planalto",
+    "Criar template de diagnóstico fiscal com campos obrigatórios da EC 132",
+    "Desenvolver script Python para simulação básica de carga IBS/CBS vs regime atual",
+    "Validar metodologia com contador tributarista parceiro (sem custo)",
+    "Preparar proposta comercial padrão focada em dor imediata de transição 2026"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:35:00+00:00"
+}
