@@ -1,6 +1,6 @@
 {
   "timestamp": "2026-08-26T13:00:00Z",
-  "status": "RECONCILIATION_COMPLETE",
+  "status": "waiting_monitoring",
   "findings": {
     "no_zombie_processes": true,
     "no_open_orders": true,
@@ -15,5 +15,80 @@
   "risk_status": "NO_ACTIVE_EDGE",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
-  "next_check": "backtest_fee_adjusted_strategy"
+  "next_check": "backtest_fee_adjusted_strategy",
+  "backtest_validation": {
+    "timestamp": "2026-08-26T21:29:32.276136+00:00",
+    "strategy": "combined_momentum_breakout_1h_taker + maker_rsi25_65_5m",
+    "symbols_tested": [
+      "XRP/USDT",
+      "AVAX/USDT",
+      "BCH/USDT"
+    ],
+    "fee_assumptions": {
+      "taker_per_side": 0.001,
+      "maker_per_side": 0.0002
+    },
+    "per_symbol": {
+      "XRP/USDT": {
+        "momentum_trades": 6,
+        "maker_rsi_trades": 4,
+        "total_trades": 10,
+        "trades_per_day": 1.43,
+        "win_rate_pct": 50.0,
+        "avg_net_pct": 2.8327,
+        "total_net_pct": 28.3267,
+        "max_win_pct": 13.7971,
+        "max_loss_pct": -0.8411,
+        "positive_edge": true
+      },
+      "AVAX/USDT": {
+        "momentum_trades": 8,
+        "maker_rsi_trades": 4,
+        "total_trades": 12,
+        "trades_per_day": 1.71,
+        "win_rate_pct": 58.33,
+        "avg_net_pct": 0.5899,
+        "total_net_pct": 7.0784,
+        "max_win_pct": 4.2705,
+        "max_loss_pct": -2.2302,
+        "positive_edge": true
+      },
+      "BCH/USDT": {
+        "momentum_trades": 7,
+        "maker_rsi_trades": 3,
+        "total_trades": 10,
+        "trades_per_day": 1.43,
+        "win_rate_pct": 50.0,
+        "avg_net_pct": 0.898,
+        "total_net_pct": 8.98,
+        "max_win_pct": 13.0186,
+        "max_loss_pct": -4.8208,
+        "positive_edge": true
+      }
+    },
+    "aggregate": {
+      "total_trades_7d": 32,
+      "trades_per_day_all_symbols": 4.57,
+      "all_positive_edge": true,
+      "best_symbol": "XRP/USDT",
+      "worst_symbol": "AVAX/USDT"
+    },
+    "validation_status": "PAPER_SHADOW_REQUIRED",
+    "blockers_for_real": [
+      "Trades per day (4.57) far below user target of 100+/day",
+      "Sample size (32 trades over 7 days) not statistically significant",
+      "Walk-forward out-of-sample test not yet performed",
+      "Capital constraint: 7.73 USDT limits position sizing and diversification",
+      "No live shadow reconciliation against current executor logic"
+    ],
+    "next_steps": [
+      "Implement combined strategy in paper-shadow mode",
+      "Run walk-forward validation on 3+ months historical data",
+      "Monitor shadow PnL for 7+ days before real promotion consideration",
+      "Research higher-frequency signals (1m scalping, orderbook imbalance) to increase trade count",
+      "Evaluate if capital accumulation is prerequisite for viable multi-coin operation"
+    ]
+  },
+  "last_updated": "2026-08-26T21:29:32.276181+00:00",
+  "reason": "Backtest shows positive edge but insufficient frequency and sample size for real promotion. Paper-shadow validation required."
 }
