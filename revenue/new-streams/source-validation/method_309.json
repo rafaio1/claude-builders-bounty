@@ -1,0 +1,37 @@
+{
+  "method_id": "309",
+  "name": "Translation memory API (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:54.178093+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "on_premise",
+      "tm_capacity_segments": 50000000,
+      "concurrent_users": 500,
+      "compliance": [
+        "ISO27001",
+        "SOC2"
+      ],
+      "custom_mt_engines": true
+    },
+    {
+      "deployment": "private_cloud",
+      "tm_capacity_segments": 20000000,
+      "concurrent_users": 200,
+      "compliance": [
+        "GDPR",
+        "HIPAA"
+      ],
+      "terminology_management": true
+    }
+  ],
+  "schema": [
+    "deployment",
+    "tm_capacity_segments",
+    "concurrent_users",
+    "compliance",
+    "custom_mt_engines"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Trados Enterprise / memoQ Server para grandes volumes, deploy privado e motores MT customizados."
+}

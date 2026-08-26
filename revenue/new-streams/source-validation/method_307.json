@@ -1,0 +1,34 @@
+{
+  "method_id": "307",
+  "name": "Translation memory API",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:54.178066+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_lang": "en",
+      "target_lang": "pt-BR",
+      "segment_count": 15000,
+      "match_rate_pct": 82.5,
+      "tm_size_mb": 45,
+      "format": "tmx"
+    },
+    {
+      "source_lang": "es",
+      "target_lang": "en",
+      "segment_count": 8200,
+      "match_rate_pct": 91.3,
+      "tm_size_mb": 22,
+      "format": "xliff"
+    }
+  ],
+  "schema": [
+    "source_lang",
+    "target_lang",
+    "segment_count",
+    "match_rate_pct",
+    "tm_size_mb",
+    "format"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos OmegaT/translate-toolkit). Fonte oficial alvo: Smartling / Phrase TMS API para gestão de memória de tradução com suporte a TMX/XLIFF."
+}
