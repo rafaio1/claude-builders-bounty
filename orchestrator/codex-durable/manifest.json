@@ -1,0 +1,109 @@
+{
+  "version": 1,
+  "generated_at": "2026-08-26T11:08:35Z",
+  "agents": {
+    "central": {
+      "session_id": "01a03a37-5be9-72b1-a6dc-a7c84ea6454d",
+      "tmux_session": "codex_central",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Coordenador geral e orquestra\u00e7\u00e3o de agentes",
+      "pts": "pts/51",
+      "pid": 3004285,
+      "health": "active"
+    },
+    "analyst": {
+      "session_id": "01a03a37-62d8-7c91-a165-599d675dbffd",
+      "tmux_session": "codex_analyst",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "An\u00e1lise de dados, m\u00e9tricas e relat\u00f3rios",
+      "pts": "pts/86",
+      "pid": 3004316,
+      "health": "active"
+    },
+    "integrator": {
+      "session_id": "01a03a37-7bc4-7a13-9812-e5a409effe5f",
+      "tmux_session": "codex_integrator",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Integra\u00e7\u00e3o de sistemas, APIs e pipelines",
+      "pts": "pts/87",
+      "pid": 3004590,
+      "health": "active"
+    },
+    "bounties": {
+      "session_id": "01a03a37-64a3-7b83-88d2-5bba5f82f103",
+      "tmux_session": "codex_bounties",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Descoberta e execu\u00e7\u00e3o de bounties open-source",
+      "pts": "pts/88",
+      "pid": 3004814,
+      "health": "active"
+    },
+    "revenue_generator": {
+      "session_id": "3314438",
+      "tmux_session": "codex_revenue_generator",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Gera\u00e7\u00e3o de receita aut\u00f4noma e oportunidades",
+      "pts": "pts/52",
+      "pid": 3315725,
+      "health": "active"
+    },
+    "contador": {
+      "session_id": "3320151",
+      "tmux_session": "codex_contador",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Contabilidade, reconcilia\u00e7\u00e3o e ledger financeiro",
+      "pts": "pts/89",
+      "pid": 3320170,
+      "health": "active"
+    },
+    "bug_bounty": {
+      "session_id": "3324343",
+      "tmux_session": "codex_bug_bounty",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Bug bounty hunting e security research",
+      "pts": "pts/93",
+      "pid": 3324365,
+      "health": "active"
+    },
+    "binance_bybit": {
+      "session_id": "3341422",
+      "tmux_session": "codex_binance_bybit",
+      "cwd": "/Agentic",
+      "model": "claude-opus-5[1m]",
+      "profile": "ghostcli-ultra",
+      "role": "Trading spot Binance e Bybit com gest\u00e3o de risco",
+      "pts": "pts/96",
+      "pid": 3341441,
+      "health": "active"
+    }
+  },
+  "migration_status": {
+    "phase": "audit_complete",
+    "migrated": [],
+    "pending": [
+      "central",
+      "analyst",
+      "integrator",
+      "bounties",
+      "revenue_generator",
+      "contador",
+      "bug_bounty",
+      "binance_bybit"
+    ],
+    "notes": "All 8 agents identified. 4 have known session IDs from resume commands. 4 need session ID discovery before migration can begin."
+  }
+}
