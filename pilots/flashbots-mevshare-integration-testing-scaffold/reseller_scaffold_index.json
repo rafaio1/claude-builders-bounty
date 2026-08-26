@@ -1,0 +1,26 @@
+{
+  "method_id": "method_927",
+  "name": "Flashbots MEV-Share Integration Testing Service",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "crypto_defi",
+  "tier": "TIER0",
+  "rejection_reason": "Monetização 'mev_integration_testing_service' não possui canal de aquisição zero-capital verificável. MEV-Share é mainnet-only (não há testnet dedicado). Repositórios ativos são client libraries para searchers/builder, não demanda por testing-as-a-service. Documentação acessível mas focada em integração direta via RPC/API, sem mercado intermediário de consultoria/teste. Serviço exige reputação estabelecida em comunidade Flashbots para aquisição orgânica.",
+  "validation": {
+    "docs_accessible": true,
+    "docs_url": "https://docs.flashbots.net/flashbots-mev-share/introduction",
+    "testnet_available": false,
+    "github_repos_active": true,
+    "github_latest_update": "2026-08-16",
+    "repo_focus": "client_libraries_not_testing_services",
+    "demand_signal": "none_for_testing_as_service",
+    "free_acquisition_channel": null
+  },
+  "risks": [
+    "Sem testnet dedicado - apenas mainnet com risco real de capital",
+    "Repos ativos são libs para searchers, não indica demanda por testing service",
+    "Aquisição de clientes requer reputação prévia na comunidade Flashbots",
+    "MEV-Share é protocolo permissionless - usuários integram diretamente via RPC"
+  ],
+  "next_steps": [],
+  "decided_at": "2026-08-27T00:00:00+00:00"
+}
