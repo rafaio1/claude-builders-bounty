@@ -1,0 +1,27 @@
+{
+  "method_id": "922",
+  "pilot_name": "enade-prep-platform-ies-br-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "decided_at": "2026-08-26T23:45:00+00:00",
+  "source_validation_artifact": "revenue/new-streams/source-validation/method_922.json",
+  "rejection_reason": "ZERO_CAPITAL_VIABILITY_NOT_CONFIRMED",
+  "validation_attempts": {
+    "pages_checked": [
+      "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade",
+      "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade/enade-aprovacao/",
+      "https://www.gov.br/inep/pt-br/areas-de-atuacao/avaliacao-e-exames-educacionais/enade/outros-documentos",
+      "http://enade.inep.gov.br/enade",
+      "http://arquivohistorico.inep.gov.br/"
+    ],
+    "download_urls_tried": [
+      "https://download.inep.gov.br/enade/matriz_de_referencia_enade.pdf",
+      "https://download.inep.gov.br/enade/matriz_referencia/2024/matriz_de_referencia_enade_2024.pdf"
+    ],
+    "result": "Nenhum link direto para matrizes de referência, provas anteriores ou gabaritos encontrado via curl. Páginas do INEP/gov.br usam renderização JavaScript dinâmica (Plone CMS) que não expõe links de download no HTML estático. Portal enade.inep.gov.br retornou HTML vazio (possível SPA ou bloqueio). Sem acesso a documentos oficiais sem navegador headless com JS rendering ou API específica.",
+    "zero_capital_blocker": "Conteúdo base (matrizes, provas) não acessível via curl/stdlib. Requer browser com JS ou autenticação gov.br. Criação de conteúdo original (simulados) demanda expertise docente por área - não é zero-capital."
+  },
+  "notes": "Artifact descreve plataforma B2B para IES privadas baseada em matrizes públicas do INEP. Porém, validação técnica falhou: documentos oficiais não são baixáveis via métodos zero-capital (curl + stdlib). Diferente do method_921 (CMED) onde XLSX foi confirmado e baixado diretamente. Conteúdo educacional de qualidade exige curadoria especializada, violando restrição zero-capital absoluto. Mercado existe (>2.200 IES), mas barreira de entrada é conteúdo, não tecnologia.",
+  "non_duplication_check": {
+    "vs_method_24_hotmart": "Artifact já diferencia: B2B institucional vs B2C consumidor. Não redundante em modelo, mas inviável em execução zero-capital."
+  }
+}
