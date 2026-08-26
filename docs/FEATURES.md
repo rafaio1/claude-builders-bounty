@@ -86,3 +86,10 @@
 - **Secrets detectados e bloqueados:** 1 (`p2p-stack/robosats/node/lnd/tls.key`)
 - **Repositório remoto:** `rafaio1/agentic-integration` (PRIVATE ✅)
 - **Receita realizada:** $0.00 USDT | Pendente: $1,265 (AgentLily PRs)
+| Immunefi Vault Scanner | ✅ Integrado | 4bed05f | Scanner zero-capital para 10 programas DeFi bug bounty | `scripts/immunefi_vault_scanner.py`, `tests/test_immunefi_vault_scanner.py` |
+| Code4rena Contest Scanner | ✅ Integrado | 556e768 | Scanner zero-capital para contests de auditoria com templates estáticos | `scripts/code4rena_contest_scanner.py`, `tests/test_code4rena_contest_scanner.py` |
+| Sherlock Audit Scanner | ✅ Integrado | 045cb1d | Scanner zero-capital para 10 sponsors com períodos de escalonamento | `scripts/sherlock_audit_scanner.py`, `tests/test_sherlock_audit_scanner.py` |
+| Hats Protocol & DAO Scanner | ✅ Integrado | 7c509cf | Scanner para 10 ecossistemas DAO (Gitcoin, Optimism, Arbitrum, ENS, Uniswap, Aave, MakerDAO, Compound, Lido, Gnosis) | `scripts/hats_protocol_scanner.py`, `tests/test_hats_protocol_scanner.py` |
+| Layer3 Quest Executor | ✅ Integrado | 7c509cf | Scanner para 10 quests com recompensas token (zkSync, StarkNet, Linea, Scroll, Base, Polygon zkEVM, Arbitrum Nova, Optimism Goerli, Avalanche Fuji, Fantom) | `scripts/layer3_quest_executor.py`, `tests/test_layer3_quest_executor.py` |
+| RabbitHole Campaign Scanner | ✅ Integrado | 7c509cf | Scanner para 10 campanhas RabbitHole (Arbitrum Odyssey, Optimism Quest, Uniswap V3 LP, Aave V3, Compound Gov, ENS, Gitcoin Passport, Zora, Base, Linea Voyage) | `scripts/rabbithole_campaign_scanner.py`, `tests/test_rabbithole_campaign_scanner.py` |
+| Telegram Financial Gate | ✅ Integrado | f85c963 | Gate fail-closed que permite SOMENTE eventos financeiros realizados e conciliados | `src/telegram_gate.py`, `tests/test_telegram_gate.py` |
