@@ -1,0 +1,31 @@
+{
+  "method_id": "453",
+  "name": "LP position manager (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "Market_Making_Desk",
+      "total_tvl_managed_usd": 15000000,
+      "risk_limit_drawdown_pct": 5.0,
+      "compliance_reporting": "daily"
+    },
+    {
+      "entity": "Corporate_Yield_Fund",
+      "total_tvl_managed_usd": 4500000,
+      "risk_limit_drawdown_pct": 12.0,
+      "compliance_reporting": "weekly"
+    }
+  ],
+  "schema": [
+    "entity",
+    "total_tvl_managed_usd",
+    "risk_limit_drawdown_pct",
+    "compliance_reporting"
+  ],
+  "notes": "Variante enterprise/institucional. Foca em gestão de risco e reporting. Proxy TIER0 via frameworks de portfolio management open-source. Fonte oficial: Enzyme Finance or Centrifuge Institutional.",
+  "generated_at": "2026-08-26T15:11:43.330193+00:00",
+  "_meta": {
+    "hash": "597acfe6c5eef88e2fd56dcd050687defc3852ed28858dd466b9702adec3f3fb"
+  }
+}

@@ -7340,5 +7340,98 @@
     "_meta": {
       "hash": "6b72d98683661eb928a1acb58cc03ad05a77aaf894be05124e7e2de13c1d761e"
     }
+  },
+  "451": {
+    "method_id": "451",
+    "name": "LP position manager",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "pool": "ETH/USDC 0.3%",
+        "current_tick": 2045,
+        "range_width_pct": 10.0,
+        "rebalance_trigger": "out_of_range"
+      },
+      {
+        "pool": "WBTC/ETH 0.05%",
+        "current_tick": -35200,
+        "range_width_pct": 5.0,
+        "rebalance_trigger": "volatility_spike"
+      }
+    ],
+    "schema": [
+      "pool",
+      "current_tick",
+      "range_width_pct",
+      "rebalance_trigger"
+    ],
+    "notes": "Gestor genérico de posições LP concentradas. Proxy TIER0 via repositórios de Uniswap V3 position managers e auto-rebalancers no GitHub. Fonte oficial: Uniswap V3 SDK ou Arrakis Finance API.",
+    "generated_at": "2026-08-26T15:11:43.330193+00:00",
+    "_meta": {
+      "hash": "7c678278f8210bfdf9002f08116a9a7dd715d285cc71a27cccaa183ddbc4be4c"
+    }
+  },
+  "452": {
+    "method_id": "452",
+    "name": "LP position manager (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "NewToken_Launch_Pool",
+        "liquidity_depth_usd": 250000,
+        "auto_compound_enabled": true,
+        "impermanent_loss_hedge": "options"
+      },
+      {
+        "protocol": "StablePair_Incentive",
+        "liquidity_depth_usd": 1200000,
+        "auto_compound_enabled": false,
+        "impermanent_loss_hedge": "none"
+      }
+    ],
+    "schema": [
+      "protocol",
+      "liquidity_depth_usd",
+      "auto_compound_enabled",
+      "impermanent_loss_hedge"
+    ],
+    "notes": "Variante para startups DeFi gerenciando liquidez inicial. Foca em profundidade e automação. Proxy via repositórios de liquidity bootstrapping tools. Fonte oficial: Gamma Strategies or Beefy CLM.",
+    "generated_at": "2026-08-26T15:11:43.330193+00:00",
+    "_meta": {
+      "hash": "8d29f651f704aafebd46dc7806a915fff136dbe144f8b6cc88a2f0199b3a5bf4"
+    }
+  },
+  "453": {
+    "method_id": "453",
+    "name": "LP position manager (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Market_Making_Desk",
+        "total_tvl_managed_usd": 15000000,
+        "risk_limit_drawdown_pct": 5.0,
+        "compliance_reporting": "daily"
+      },
+      {
+        "entity": "Corporate_Yield_Fund",
+        "total_tvl_managed_usd": 4500000,
+        "risk_limit_drawdown_pct": 12.0,
+        "compliance_reporting": "weekly"
+      }
+    ],
+    "schema": [
+      "entity",
+      "total_tvl_managed_usd",
+      "risk_limit_drawdown_pct",
+      "compliance_reporting"
+    ],
+    "notes": "Variante enterprise/institucional. Foca em gestão de risco e reporting. Proxy TIER0 via frameworks de portfolio management open-source. Fonte oficial: Enzyme Finance or Centrifuge Institutional.",
+    "generated_at": "2026-08-26T15:11:43.330193+00:00",
+    "_meta": {
+      "hash": "597acfe6c5eef88e2fd56dcd050687defc3852ed28858dd466b9702adec3f3fb"
+    }
   }
 }

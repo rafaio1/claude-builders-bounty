@@ -1,0 +1,31 @@
+{
+  "method_id": "452",
+  "name": "LP position manager (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "NewToken_Launch_Pool",
+      "liquidity_depth_usd": 250000,
+      "auto_compound_enabled": true,
+      "impermanent_loss_hedge": "options"
+    },
+    {
+      "protocol": "StablePair_Incentive",
+      "liquidity_depth_usd": 1200000,
+      "auto_compound_enabled": false,
+      "impermanent_loss_hedge": "none"
+    }
+  ],
+  "schema": [
+    "protocol",
+    "liquidity_depth_usd",
+    "auto_compound_enabled",
+    "impermanent_loss_hedge"
+  ],
+  "notes": "Variante para startups DeFi gerenciando liquidez inicial. Foca em profundidade e automação. Proxy via repositórios de liquidity bootstrapping tools. Fonte oficial: Gamma Strategies or Beefy CLM.",
+  "generated_at": "2026-08-26T15:11:43.330193+00:00",
+  "_meta": {
+    "hash": "8d29f651f704aafebd46dc7806a915fff136dbe144f8b6cc88a2f0199b3a5bf4"
+  }
+}

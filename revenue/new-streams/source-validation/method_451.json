@@ -1,0 +1,31 @@
+{
+  "method_id": "451",
+  "name": "LP position manager",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pool": "ETH/USDC 0.3%",
+      "current_tick": 2045,
+      "range_width_pct": 10.0,
+      "rebalance_trigger": "out_of_range"
+    },
+    {
+      "pool": "WBTC/ETH 0.05%",
+      "current_tick": -35200,
+      "range_width_pct": 5.0,
+      "rebalance_trigger": "volatility_spike"
+    }
+  ],
+  "schema": [
+    "pool",
+    "current_tick",
+    "range_width_pct",
+    "rebalance_trigger"
+  ],
+  "notes": "Gestor genérico de posições LP concentradas. Proxy TIER0 via repositórios de Uniswap V3 position managers e auto-rebalancers no GitHub. Fonte oficial: Uniswap V3 SDK ou Arrakis Finance API.",
+  "generated_at": "2026-08-26T15:11:43.330193+00:00",
+  "_meta": {
+    "hash": "7c678278f8210bfdf9002f08116a9a7dd715d285cc71a27cccaa183ddbc4be4c"
+  }
+}
