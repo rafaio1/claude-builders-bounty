@@ -1,0 +1,20 @@
+[Unit]
+Description=Agentic Utility API (PDF/Image/Cron local-safe)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/python3 -m utility_api.server
+WorkingDirectory=/Agentic/revenue/products
+Environment=PYTHONPATH=/Agentic/revenue/products
+Environment=UTILITY_API_PORT=8769
+Environment=UTILITY_API_QUEUE=/var/lib/agentic/utility_api_queue.jsonl
+Restart=on-failure
+RestartSec=5
+BindReadOnlyPaths=/etc/ssl/certs
+NoNewPrivileges=true
+ProtectSystem=strict
+ReadWritePaths=/var/lib/agentic
+
+[Install]
+WantedBy=multi-user.target
