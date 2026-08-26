@@ -73,3 +73,18 @@ Monitorar feedback de mantenedor; não fabricar merge/payout.
 - **Documentação**: FEATURES.md, RUNBOOK.md e INTEGRATION_CONTEXT.md reconciliados com estado atual
 - **Estado do loop**: waiting_monitoring
 - **Próxima verificação**: monitorar PRs claude-builders-bounty #3869-#3873, feedback mantenedor, novos commits Orca, implementação method_640/641
+
+## 2026-08-27T00:30Z — Integration Loop Status: WAITING_MONITORING
+
+**Repo state:** Local = Remote at `361b542` (PRIVATE ✅)
+**Expansion pipeline:** Methods 732-733 ADIAR (proxy data violations). Next method: 734. Total verdicts: 1115.
+**Bounty PRs (no state change since last sync):**
+- OphirPay/OphirPay#225: OPEN, waiting Vercel auth + maintainer review
+- OphirPay/OphirPay#228: OPEN, blocked on upstream playwright.config.ts glob fix
+- Lilly-Protocol/lily-frontend#150: OPEN, awaiting first review
+- ligate-io/ligate-chain#567: BLOCKED_HUMAN_ACTION
+- PesanteAnalytics/contoso-universe-gen#9: CLOSED_EXTERNAL (no payout)
+**Wash-trade shadow validation:** Pending. Real trading remains blocked per reconciliation_state.json.
+**Revenue:** $0.00 realized | $1,265 pending (AgentLily) | $550 potential (bounties)
+**Next check triggers:** PR merge/comment from maintainer, payout confirmation, expansion method 734 verdict, shadow validation completion.
+**Action:** No safe commits to make. Loop continues in monitoring mode.
