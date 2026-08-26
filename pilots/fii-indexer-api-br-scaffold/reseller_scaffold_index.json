@@ -1,0 +1,43 @@
+{
+  "method_id": "917",
+  "pilot_name": "fii-indexer-api-br-scaffold",
+  "proposal_title": "Indexador de Fundos Imobiliários (FIIs) para Portais de Investimento",
+  "artifact_real_source": "Indexador de Fundos Imobiliários (FIIs) para Portais de Investimento",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é API/licença de dados normalizados de FIIs (B3/ANBIMA) para portais e assessorias.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "crypto_defi",
+  "free_tier_limits": {
+    "provider": "B3/ANBIMA Public Data + Diário Oficial + Python Stdlib",
+    "permanent_free": true,
+    "limits": "Dados brutos de FIIs são públicos e abertos. Parsing e normalização local via scripts Python sem custo de licença ou API paga.",
+    "verification_method": "curl_b3_anbima_fii_public_check"
+  },
+  "paid_plan_baseline": {
+    "license_fee_brl": 897,
+    "target_clients_monthly": 5,
+    "projected_mrr_brl": 4485,
+    "cost_per_delivery_brl": "0 (dados públicos + hosting free tier)"
+  },
+  "reselling_model": {
+    "type": "data_api_license",
+    "mechanism": "API REST com métricas normalizadas de FIIs (DY, P/VP, vacância, cap rate) atualizada diariamente. Venda como licença mensal para portais de investimento e assessorias que não querem manter equipe de dados interna.",
+    "zero_capital_path": "Scripts Python para scraping/parsing de documentos oficiais B3/ANBIMA. Hospedagem da API em Vercel/Cloudflare Workers free tier. Billing via Asaas/Pix recorrente. Sem custo de dado ou infraestrutura paga.",
+    "compliance": "Instrução CVM 472; Código ANBIMA de Regulação e Melhores Práticas para Fundos de Investimento em Direitos Creditórios; LGPD não aplicável a dados agregados de fundos."
+  },
+  "risks": [
+    "Complexidade alta de parsing: informes trimestrais e diário oficial têm formatos variados e não estruturados",
+    "Dependência de disponibilidade dos sites B3/ANBIMA que podem bloquear scraping ou mudar layout",
+    "Concorrência de provedores estabelecidos (Economática, Quantum, Bloomberg) com dados mais completos",
+    "Responsabilidade sobre precisão dos dados: erro em métrica pode induzir decisão de investimento errada"
+  ],
+  "next_steps": [
+    "Validar endpoints e estrutura de documentos FII na B3/ANBIMA via curl",
+    "Criar script piloto de parsing para extrair DY, P/VP e vacância de informe trimestral PDF",
+    "Implementar MVP de API REST com autenticação básica e documentação OpenAPI",
+    "Preparar amostra de dados e caso de uso para prospecção em portais pequenos",
+    "Testar fluxo de billing Asaas recorrente com cliente piloto"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:50:00+00:00"
+}
