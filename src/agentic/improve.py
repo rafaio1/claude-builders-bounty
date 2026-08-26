@@ -1315,7 +1315,13 @@ class ImprovePipeline:
                 raise GitError("repositório git sem commit inicial em main")
             ledger = load_json(self.settings.root / LEDGER_PATH, empty_ledger())
             primary = self.git.primary_branch()
-            if self.git.current_branch() != primary:
+            import os as _os
+            if _os.environ.get("IMPROVE_NO_CHECKOUT") == "1":
+                # In worktree contexts the primary branch is checked out by the
+                # main repo; attempting to reuse it here triggers a fatal git
+                # error. Stay on the current worktree branch instead.
+                pass
+            elif self.git.current_branch() != primary:
                 self.git.checkout(primary)
             stale = release_stale_developing(ledger, self.git, primary)
             if stale:
