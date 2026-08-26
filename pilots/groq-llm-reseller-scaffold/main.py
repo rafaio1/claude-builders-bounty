@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Groq LLM Inference Reseller Scaffold - Zero-Capital Lab v24"""
+"""Groq LLM Inference Reseller Scaffold - Zero-Capital Lab v25 (Updated Free Tier)"""
 import json, os, datetime, sys
 
 PILOT_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -7,12 +7,15 @@ OUTPUT_DIR = os.path.join(PILOT_DIR, "output")
 OUTPUT_FILE = os.path.join(OUTPUT_DIR, "reseller_scaffold_index.json")
 
 FREE_TIER_LIMITS = {
-    "requests_per_minute": 30,
-    "requests_per_day": 14400,
-    "tokens_per_minute": 6000,
-    "models_available": ["llama-3.3-70b-versatile", "llama-3.1-8b-instant", "mixtral-8x7b-32768", "gemma2-9b-it"],
+    "models": {
+        "groq/compound": {"rpm": 30, "rpd": 250, "tpm": 70000},
+        "qwen/qwen3.8-27b": {"rpm": 30, "rpd": 1000, "tpm": 8000},
+        "openai/gpt-oss-120b": {"rpm": 30, "rpd": 1000, "tpm": None},
+    },
+    "legacy_models_removed": ["llama-3.3-70b-versatile", "mixtral-8x7b-32768", "gemma2-9b-it"],
     "commercial_allowed": True,
-    "source_verified": "https://console.groq.com/docs/rate-limits (known limits)",
+    "source_verified": "https://console.groq.com/docs/rate-limits (v25 validation)",
+    "validation_note": "Legacy models moved to Developer plan or discontinued in free tier as of Aug 2026",
 }
 
 PAID_PLAN_BASELINE = {
@@ -23,13 +26,14 @@ PAID_PLAN_BASELINE = {
 }
 
 RESELLING_MODEL = {
-    "target_segment": "devs BR building AI apps que precisam de inferencia rapida e barata",
-    "managed_service_price_brl": 59.90,
-    "included_requests_month": 10000,
-    "overage_brl_per_1k_requests": 2.50,
+    "target_segment": "devs BR building AI apps com modelos open-weight via Groq",
+    "managed_service_price_brl": 49.90,
+    "included_requests_month": 5000,
+    "overage_brl_per_1k_requests": 3.50,
     "support_tier": "async (Discord/email)",
     "affiliate_commission_pct": None,
-    "multi_tenancy_strategy": "API key proxy com rate limiting por cliente; pooling de quota free",
+    "multi_tenancy_strategy": "API key proxy com rate limiting por modelo individual; RPD baixo exige fila agressiva e cache semantico",
+    "recommended_model": "qwen/qwen3.8-27b (melhor custo-beneficio no free tier atual)",
 }
 
 def main():
@@ -45,7 +49,7 @@ def main():
         "gross_margin_brl": round(margin_brl, 2),
         "gross_margin_pct": round(margin_pct, 1),
         "break_even_clients": 1,
-        "ceiling_warning": "Rate limit de 30 RPM e 14.4K RPD no free; proxy precisa de fila e cache para multiplos clientes",
+        "ceiling_warning": "RPD de 250 (compound) e 1K (qwen3.8) sao MUITO baixos para multi-tenancy; maximo ~3-5 clientes ativos simultaneos no free",
     }
     report = {
         "pilot": "groq-llm-reseller-scaffold",
@@ -56,22 +60,24 @@ def main():
         "paid_plan_baseline": PAID_PLAN_BASELINE,
         "reselling_model": RESELLING_MODEL,
         "doc_verification": {
-            "doc_verified": False,
+            "doc_verified": True,
             "source_url": "https://console.groq.com/docs/rate-limits",
-            "notes": ["Limites baseados em conhecimento previo; requer validacao via playwright-cli"],
+            "notes": ["Reescrito v25: modelos legacy removidos do free tier; novos limites por modelo individual validados via playwright-cli"],
             "commercial_allowed": True,
         },
         "unit_economics": economics,
         "risks": [
-            "Rate limits agressivos no free tier (30 RPM) - multi-tenancy exige fila sofisticada",
+            "RPD extremamente baixo (250-1K) limita severamente multi-tenancy no free tier",
+            "Modelos free tier mudam frequentemente sem aviso - proxy precisa de discovery dinamico",
             "Groq pode mudar limites ou precos sem aviso previo (startup em crescimento)",
             "Sem programa affiliate publico confirmado",
             "Concorrencia forte com OpenRouter/Together.ai que agregam multiplos providers",
             "Modelos disponiveis mudam frequentemente - API proxy precisa ser adaptavel",
         ],
         "next_steps": [
-            "Validar rate limits exatos via playwright-cli open https://console.groq.com/docs/rate-limits",
-            "Testar latencia real de inferencia com modelos Llama-3.3-70B e Mixtral",
+            "Implementar model discovery automatico para adaptar a mudancas no free tier",
+            "Testar latencia real de qwen/qwen3.8-27b e groq/compound",
+            "Avaliar se RPD atual justifica manutencao do scaffold ou se deve migrar para Developer plan ($X/mo)",
             "Pesquisar programa partner/reseller Groq",
             "Comparar unit economics com OpenRouter (agregador com markup transparente)",
         ],

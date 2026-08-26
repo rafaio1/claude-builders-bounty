@@ -2,19 +2,33 @@
   "pilot": "groq-llm-reseller-scaffold",
   "category": "infrastructure_reselling",
   "status": "SCAFFOLD_OK",
-  "timestamp": "2026-08-26T20:41:20.976762+00:00",
+  "timestamp": "2026-08-26T20:51:15.309604+00:00",
   "free_tier_limits": {
-    "requests_per_minute": 30,
-    "requests_per_day": 14400,
-    "tokens_per_minute": 6000,
-    "models_available": [
+    "models": {
+      "groq/compound": {
+        "rpm": 30,
+        "rpd": 250,
+        "tpm": 70000
+      },
+      "qwen/qwen3.8-27b": {
+        "rpm": 30,
+        "rpd": 1000,
+        "tpm": 8000
+      },
+      "openai/gpt-oss-120b": {
+        "rpm": 30,
+        "rpd": 1000,
+        "tpm": null
+      }
+    },
+    "legacy_models_removed": [
       "llama-3.3-70b-versatile",
-      "llama-3.1-8b-instant",
       "mixtral-8x7b-32768",
       "gemma2-9b-it"
     ],
     "commercial_allowed": true,
-    "source_verified": "https://console.groq.com/docs/rate-limits (known limits)"
+    "source_verified": "https://console.groq.com/docs/rate-limits (v25 validation)",
+    "validation_note": "Legacy models moved to Developer plan or discontinued in free tier as of Aug 2026"
   },
   "paid_plan_baseline": {
     "developer_price_usd_million_tokens": 0.59,
@@ -23,40 +37,43 @@
     "sla_uptime": "99.9%"
   },
   "reselling_model": {
-    "target_segment": "devs BR building AI apps que precisam de inferencia rapida e barata",
-    "managed_service_price_brl": 59.9,
-    "included_requests_month": 10000,
-    "overage_brl_per_1k_requests": 2.5,
+    "target_segment": "devs BR building AI apps com modelos open-weight via Groq",
+    "managed_service_price_brl": 49.9,
+    "included_requests_month": 5000,
+    "overage_brl_per_1k_requests": 3.5,
     "support_tier": "async (Discord/email)",
     "affiliate_commission_pct": null,
-    "multi_tenancy_strategy": "API key proxy com rate limiting por cliente; pooling de quota free"
+    "multi_tenancy_strategy": "API key proxy com rate limiting por modelo individual; RPD baixo exige fila agressiva e cache semantico",
+    "recommended_model": "qwen/qwen3.8-27b (melhor custo-beneficio no free tier atual)"
   },
   "doc_verification": {
-    "doc_verified": false,
+    "doc_verified": true,
     "source_url": "https://console.groq.com/docs/rate-limits",
     "notes": [
-      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+      "Reescrito v25: modelos legacy removidos do free tier; novos limites por modelo individual validados via playwright-cli"
     ],
     "commercial_allowed": true
   },
   "unit_economics": {
-    "revenue_per_client_brl": 59.9,
+    "revenue_per_client_brl": 49.9,
     "cost_per_client_usd": 0.0,
-    "gross_margin_brl": 59.9,
+    "gross_margin_brl": 49.9,
     "gross_margin_pct": 100.0,
     "break_even_clients": 1,
-    "ceiling_warning": "Rate limit de 30 RPM e 14.4K RPD no free; proxy precisa de fila e cache para multiplos clientes"
+    "ceiling_warning": "RPD de 250 (compound) e 1K (qwen3.8) sao MUITO baixos para multi-tenancy; maximo ~3-5 clientes ativos simultaneos no free"
   },
   "risks": [
-    "Rate limits agressivos no free tier (30 RPM) - multi-tenancy exige fila sofisticada",
+    "RPD extremamente baixo (250-1K) limita severamente multi-tenancy no free tier",
+    "Modelos free tier mudam frequentemente sem aviso - proxy precisa de discovery dinamico",
     "Groq pode mudar limites ou precos sem aviso previo (startup em crescimento)",
     "Sem programa affiliate publico confirmado",
     "Concorrencia forte com OpenRouter/Together.ai que agregam multiplos providers",
     "Modelos disponiveis mudam frequentemente - API proxy precisa ser adaptavel"
   ],
   "next_steps": [
-    "Validar rate limits exatos via playwright-cli open https://console.groq.com/docs/rate-limits",
-    "Testar latencia real de inferencia com modelos Llama-3.3-70B e Mixtral",
+    "Implementar model discovery automatico para adaptar a mudancas no free tier",
+    "Testar latencia real de qwen/qwen3.8-27b e groq/compound",
+    "Avaliar se RPD atual justifica manutencao do scaffold ou se deve migrar para Developer plan ($X/mo)",
     "Pesquisar programa partner/reseller Groq",
     "Comparar unit economics com OpenRouter (agregador com markup transparente)"
   ]
