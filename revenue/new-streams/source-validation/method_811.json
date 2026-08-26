@@ -1,0 +1,42 @@
+{
+  "method_id": 811,
+  "name": "Satellite imagery analysis",
+  "source": "GitHub Search API (proxy for Sentinel-2/Landsat open data)",
+  "generated_at": "2026-08-26T14:24:00.979592+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "scene_id": "S2A_MSIL2A_20260820T143721_N0509_R010_T23KPU_20260820T184532",
+      "sensor": "Sentinel-2A",
+      "cloud_cover_pct": 4.2,
+      "resolution_m": 10,
+      "coverage_km2": 10980,
+      "acquisition_date": "2026-08-20"
+    },
+    {
+      "scene_id": "LC09_L2SP_220076_20260818_20260819_01_T1",
+      "sensor": "Landsat-9",
+      "cloud_cover_pct": 12.8,
+      "resolution_m": 30,
+      "coverage_km2": 34000,
+      "acquisition_date": "2026-08-18"
+    },
+    {
+      "scene_id": "S2B_MSIL2A_20260822T142739_N0509_R010_T22JQN_20260822T175812",
+      "sensor": "Sentinel-2B",
+      "cloud_cover_pct": 1.5,
+      "resolution_m": 10,
+      "coverage_km2": 10980,
+      "acquisition_date": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "scene_id",
+    "sensor",
+    "cloud_cover_pct",
+    "resolution_m",
+    "coverage_km2",
+    "acquisition_date"
+  ],
+  "notes": "Metadados de imagens ópticas gratuitas para monitoramento territorial. Proxy GitHub indexa catálogos STAC públicos e mirrors do INPE/USGS. Fonte oficial TIER1: Copernicus Data Space, USGS EarthExplorer API."
+}

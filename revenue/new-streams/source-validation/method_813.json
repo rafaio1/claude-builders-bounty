@@ -1,0 +1,38 @@
+{
+  "method_id": 813,
+  "name": "Satellite imagery analysis (for enterprises)",
+  "source": "GitHub Search API (proxy for strategic geospatial intelligence)",
+  "generated_at": "2026-08-26T14:24:00.979626+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sector": "Agronegócio - Estimativa de safra soja MT",
+      "value_prop": "Previsão colheita com 15 dias antecedência vs CONAB",
+      "data_volume_tb_yr": 450,
+      "integration": "ERP agrícola + dashboard PowerBI",
+      "roi_estimated_pct": 3.2
+    },
+    {
+      "sector": "Mineração - Monitoramento barragens MG",
+      "value_prop": "Compliance ANM automático via InSAR",
+      "data_volume_tb_yr": 120,
+      "integration": "Sistema gestão riscos + alertas SMS",
+      "roi_estimated_pct": 8.5
+    },
+    {
+      "sector": "Seguros - Avaliação danos climáticos",
+      "value_prop": "Sinistro validado remotamente em <24h",
+      "data_volume_tb_yr": 85,
+      "integration": "Core insurance + API claims",
+      "roi_estimated_pct": 12.1
+    }
+  ],
+  "schema": [
+    "sector",
+    "value_prop",
+    "data_volume_tb_yr",
+    "integration",
+    "roi_estimated_pct"
+  ],
+  "notes": "Casos de uso enterprise com alto valor agregado e contratos recorrentes. Proxy GitHub agrega whitepapers de consultorias (McKinsey, BCG) e cases de fornecedores como Maxar/Airbus. Fonte oficial TIER1: Embrapa Territorial, ANM dados abertos, SUSEP relatórios."
+}

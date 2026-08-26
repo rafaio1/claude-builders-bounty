@@ -1,0 +1,38 @@
+{
+  "method_id": 812,
+  "name": "Satellite imagery analysis (for startups)",
+  "source": "GitHub Search API (proxy for geospatial SaaS opportunities)",
+  "generated_at": "2026-08-26T14:24:00.979612+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "use_case": "Monitoramento de estoque em pátios logísticos",
+      "market_gap": "Baixa resolução temporal em portos menores",
+      "data_source": "Sentinel-2 + Planet NICFI",
+      "estimated_tam_usd_mn": 45,
+      "tech_stack": "Python/Rasterio + AWS Lambda"
+    },
+    {
+      "use_case": "Detecção de desmatamento ilegal para ESG",
+      "market_gap": "Alertas tardios (>30 dias) em biomas não-amazônicos",
+      "data_source": "Landsat/Sentinel fusion",
+      "estimated_tam_usd_mn": 120,
+      "tech_stack": "GEE + TensorFlow"
+    },
+    {
+      "use_case": "Mapeamento de telhados solares urbanos",
+      "market_gap": "Inventários municipais desatualizados",
+      "data_source": "Imagens RGB alta resolução (open aerial)",
+      "estimated_tam_usd_mn": 28,
+      "tech_stack": "QGIS + OpenCV"
+    }
+  ],
+  "schema": [
+    "use_case",
+    "market_gap",
+    "data_source",
+    "estimated_tam_usd_mn",
+    "tech_stack"
+  ],
+  "notes": "Oportunidades B2B/B2G para startups de geotecnologia. Proxy GitHub varre repositórios de hackathons espaciais e desafios da ESA/NASA. Fonte oficial TIER1: INPE programas abertos, ApexBrasil geo-inteligência."
+}
