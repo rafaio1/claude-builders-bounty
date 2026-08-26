@@ -1,0 +1,31 @@
+{
+  "method_id": "298",
+  "name": "Video processing API (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:53.940252+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "feature": "auto_shorts_clipping",
+      "input_duration_sec": 600,
+      "clips_generated": 5,
+      "avg_retention_pct": 78,
+      "platform_target": "tiktok"
+    },
+    {
+      "feature": "thumbnail_text_overlay",
+      "template": "viral_hook_01",
+      "render_time_ms": 320,
+      "output_format": "jpg",
+      "ab_test_variant": "B"
+    }
+  ],
+  "schema": [
+    "feature",
+    "input_duration_sec",
+    "clips_generated",
+    "avg_retention_pct",
+    "platform_target"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Opus Clip / Vizard.ai API para criadores que automatizam cortes virais e thumbnails a partir de vídeos longos."
+}

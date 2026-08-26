@@ -1,0 +1,35 @@
+{
+  "method_id": "299",
+  "name": "Video processing API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:53.940276+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/transcode/webhook",
+      "codec_support": [
+        "h264",
+        "h265",
+        "av1"
+      ],
+      "max_resolution": "8k",
+      "sdk_version": "3.2.1",
+      "docs_url": "https://docs.example.com/api"
+    },
+    {
+      "endpoint": "/v1/stream/adaptive",
+      "protocol": "hls_dash",
+      "drm_keys": true,
+      "latency_ms": 450,
+      "concurrent_streams": 10000
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "codec_support",
+    "max_resolution",
+    "sdk_version",
+    "docs_url"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Mux / Cloudflare Stream API com SDKs open-source, webhooks e documentação developer-first."
+}

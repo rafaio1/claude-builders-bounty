@@ -1,0 +1,34 @@
+{
+  "method_id": "296",
+  "name": "Video processing API (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:33.537559+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "feature": "auto_captioning",
+      "language": "pt-BR",
+      "accuracy": 0.92,
+      "cost_per_min_usd": 0.006,
+      "turnaround_min": 5
+    },
+    {
+      "feature": "content_moderation",
+      "categories_detected": [
+        "violence",
+        "nudity"
+      ],
+      "confidence_threshold": 0.85,
+      "cost_per_min_usd": 0.004,
+      "turnaround_min": 1
+    }
+  ],
+  "schema": [
+    "feature",
+    "language",
+    "accuracy",
+    "cost_per_min_usd",
+    "turnaround_min"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: AssemblyAI / Deepgram para startups que precisam de captioning e moderação de vídeo com pricing acessível e baixa latência."
+}

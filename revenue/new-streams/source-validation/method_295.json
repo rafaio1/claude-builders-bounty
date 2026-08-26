@@ -1,0 +1,34 @@
+{
+  "method_id": "295",
+  "name": "Video processing API",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:33.537533+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "operation": "transcode",
+      "input_format": "mp4_h264",
+      "output_format": "webm_vp9",
+      "duration_sec": 120,
+      "processing_time_sec": 45,
+      "resolution": "1080p"
+    },
+    {
+      "operation": "thumbnail_generation",
+      "input_format": "mov_prores",
+      "output_format": "jpg",
+      "duration_sec": 300,
+      "processing_time_sec": 8,
+      "resolution": "4k"
+    }
+  ],
+  "schema": [
+    "operation",
+    "input_format",
+    "output_format",
+    "duration_sec",
+    "processing_time_sec",
+    "resolution"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos FFmpeg/Zencoder wrappers). Fonte oficial alvo: Mux / Cloudinary Video API para transcodificação e processamento de vídeo sob demanda."
+}

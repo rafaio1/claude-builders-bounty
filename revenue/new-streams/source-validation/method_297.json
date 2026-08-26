@@ -1,0 +1,37 @@
+{
+  "method_id": "297",
+  "name": "Video processing API (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:33.537564+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "hybrid_cloud",
+      "throughput_gbps": 10,
+      "drm_support": [
+        "widevine",
+        "fairplay"
+      ],
+      "compliance": [
+        "SOC2",
+        "GDPR"
+      ],
+      "sla": "99.99%"
+    },
+    {
+      "deployment": "edge_network",
+      "cdn_nodes": 250,
+      "adaptive_bitrate": true,
+      "analytics_integration": "native",
+      "sla": "99.95%"
+    }
+  ],
+  "schema": [
+    "deployment",
+    "throughput_gbps",
+    "drm_support",
+    "compliance",
+    "sla"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: AWS MediaConvert / Bitmovin para empresas que exigem DRM, compliance global e infraestrutura híbrida de vídeo."
+}

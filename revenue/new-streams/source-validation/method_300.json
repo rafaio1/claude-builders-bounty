@@ -1,0 +1,31 @@
+{
+  "method_id": "300",
+  "name": "Video processing API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:53.940281+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "ecommerce_brand_z",
+      "campaign": "black_friday_2026",
+      "videos_processed": 450,
+      "avg_turnaround_min": 12,
+      "white_label": true
+    },
+    {
+      "client": "media_house_alpha",
+      "workflow": "news_clip_ingest",
+      "videos_processed": 2800,
+      "avg_turnaround_min": 3,
+      "metadata_enrichment": true
+    }
+  ],
+  "schema": [
+    "client",
+    "campaign",
+    "videos_processed",
+    "avg_turnaround_min",
+    "white_label"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Brightcove / Kaltura API para agências que precisam de processamento em lote, white-label e enriquecimento de metadados."
+}
