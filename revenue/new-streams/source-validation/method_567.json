@@ -1,0 +1,28 @@
+{
+  "method_id": "567",
+  "name": "Freelance portfolio site generator (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:28:58.813466+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_unit": "internal_talent_marketplace",
+      "auth_provider": "azure_ad_b2c",
+      "content_approval_workflow": true,
+      "brand_compliance_check": "automated"
+    },
+    {
+      "corp_unit": "vendor_showcase_portal",
+      "auth_provider": "okta_saml",
+      "content_approval_workflow": false,
+      "brand_compliance_check": "manual_review"
+    }
+  ],
+  "schema": [
+    "corp_unit",
+    "auth_provider",
+    "content_approval_workflow",
+    "brand_compliance_check"
+  ],
+  "notes": "Plataformas de portfólio corporativo para gestão de talentos internos ou vendors. Proxy: GitHub Search 'enterprise talent marketplace portal'. Fonte oficial: Azure AD / Okta developer docs."
+}
