@@ -1,0 +1,38 @@
+{
+  "method_id": 822,
+  "name": "Geospatial POI database (for agencies)",
+  "source": "GitHub Search API (proxy for retail/media planning geodata)",
+  "generated_at": "2026-08-26T14:25:45.402032+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "product": "Audience Heatmap - Densidade demográfica por setor censitário",
+      "client_type": "Agência mídia OOH",
+      "delivery": "API REST + KML",
+      "update_freq": "Mensal",
+      "price_model": "CPM dados"
+    },
+    {
+      "product": "Retail Gap Analysis - Vazios comerciais por bairro",
+      "client_type": "Franqueadora varejo",
+      "delivery": "Dashboard web",
+      "update_freq": "Trimestral",
+      "price_model": "Assinatura B2B"
+    },
+    {
+      "product": "Event Footfall Estimator - Fluxo pedestre em pontos turísticos",
+      "client_type": "Promotor eventos",
+      "delivery": "Relatório PDF + CSV",
+      "update_freq": "Sazonal",
+      "price_model": "Por evento"
+    }
+  ],
+  "schema": [
+    "product",
+    "client_type",
+    "delivery",
+    "update_freq",
+    "price_model"
+  ],
+  "notes": "Produtos de inteligência locacional para agências e varejo. Proxy GitHub agrega metodologias de geomarketing e datasets públicos consolidados. Fonte oficial TIER1: IBGE Censo, Geofusion (paid), Cuebiq (paid)."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": 821,
+  "name": "Geospatial POI database (for developers)",
+  "source": "GitHub Search API (proxy for dev-friendly location APIs)",
+  "generated_at": "2026-08-26T14:25:45.402027+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "api": "OpenRouteService-BR",
+      "endpoint": "routing/isochrone",
+      "rate_limit": "100 req/min free",
+      "data_source": "OSM + IBGE malhas",
+      "sdk": "Python/JS/Docker"
+    },
+    {
+      "api": "Nominatim-BR Mirror",
+      "endpoint": "search/reverse",
+      "rate_limit": "Unlimited self-hosted",
+      "data_source": "OSM Brasil extract",
+      "sdk": "REST + PostgreSQL"
+    },
+    {
+      "api": "MapLibre-Tiles-BR",
+      "endpoint": "vector tiles z0-z14",
+      "rate_limit": "CDN gratuito",
+      "data_source": "OSM + IBGE setores",
+      "sdk": "GL JS / Flutter"
+    }
+  ],
+  "schema": [
+    "api",
+    "endpoint",
+    "rate_limit",
+    "data_source",
+    "sdk"
+  ],
+  "notes": "Infraestrutura geoespacial open-source para devs. Proxy GitHub varre organizações como OSM Brasil, MapBiomas e INPE. Fonte oficial TIER1: OSM Foundation, Mapbox (paid tier)."
+}
