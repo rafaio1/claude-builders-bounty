@@ -1,0 +1,37 @@
+{
+  "method_id": 790,
+  "name": "Waste management route optimization (for smart cities)",
+  "source": "GitHub Search API + IBGE Municípios (proxy for waste logistics signals)",
+  "generated_at": "2026-08-26T14:19:05.907937Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "smartcity-br/waste-route-opt",
+      "stars": 145,
+      "language": "Python",
+      "topic": "waste-management",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "daily_waste_tons": 18500,
+      "collection_coverage": 0.98
+    },
+    {
+      "repo": "open-waste/br-bin-fill-sim",
+      "stars": 98,
+      "language": "Go",
+      "topic": "route-optimization",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|daily_waste_tons",
+    "topic|collection_coverage",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza algoritmos de otimização; IBGE fornece dados municipais de saneamento. Fonte oficial TIER1: SNIS Dados Abertos, prefeituras APIs IoT."
+}

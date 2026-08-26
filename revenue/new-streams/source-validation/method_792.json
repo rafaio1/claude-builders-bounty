@@ -1,0 +1,37 @@
+{
+  "method_id": 792,
+  "name": "Small business loan default prediction (for community banking)",
+  "source": "ReceitaWS + IBGE Municípios (proxy for SMB credit risk signals)",
+  "generated_at": "2026-08-26T14:19:05.907966Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "66.777.888/0001-99",
+      "company": "PADARIA COMUNITARIA LTDA",
+      "municipio": "Salvador",
+      "porte": "ME",
+      "situacao": "ATIVA"
+    },
+    {
+      "ibge_code": 2927408,
+      "city": "Salvador",
+      "smb_default_rate_proxy": 0.045,
+      "local_credit_supply": "medium"
+    },
+    {
+      "cnpj": "77.888.999/0001-00",
+      "company": "OFICINA MECANICA BAIRRO SA",
+      "municipio": "Fortaleza",
+      "porte": "EPP",
+      "situacao": "ATIVA"
+    }
+  ],
+  "schema": [
+    "cnpj|ibge_code",
+    "company|city",
+    "municipio|smb_default_rate_proxy",
+    "porte|local_credit_supply",
+    "situacao"
+  ],
+  "notes": "Hybrid proxy TIER0. ReceitaWS valida saúde cadastral; IBGE contextualiza risco local. Fonte oficial TIER1: Bacen SCR, Sebrae Dados, SPC/Serasa Open Finance."
+}

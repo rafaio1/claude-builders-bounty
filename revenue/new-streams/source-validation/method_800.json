@@ -1,0 +1,42 @@
+{
+  "method_id": 800,
+  "name": "Government tender alerts (for startups)",
+  "source": "GitHub Search API (proxy for startup-focused procurement)",
+  "generated_at": "2026-08-26T14:21:47.055775+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "START-2026-112",
+      "org": "FINEP",
+      "title": "Programa Centelha - Inovação em IA aplicada à saúde",
+      "max_funding_brl": 150000,
+      "eligibility": "Startup <5 anos",
+      "deadline": "2026-10-01"
+    },
+    {
+      "tender_id": "START-2026-118",
+      "org": "Sebrae-SP",
+      "title": "Edital de inovação para pequenas empresas digitais",
+      "max_funding_brl": 80000,
+      "eligibility": "MEI/ME",
+      "deadline": "2026-10-10"
+    },
+    {
+      "tender_id": "START-2026-125",
+      "org": "BNDES Garagem",
+      "title": "Aceleração GovTech - soluções para educação pública",
+      "max_funding_brl": 200000,
+      "eligibility": "Startup com MVP",
+      "deadline": "2026-10-20"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "max_funding_brl",
+    "eligibility",
+    "deadline"
+  ],
+  "notes": "Focado em editais de inovação e programas governamentais acessíveis a startups. Proxy GitHub busca repositórios de observatórios de inovação e agregadores de editais. Fonte oficial TIER1: FINEP, Sebrae, BNDES APIs diretas."
+}

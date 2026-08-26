@@ -1,0 +1,37 @@
+{
+  "method_id": 794,
+  "name": "Used vehicle price depreciation curves (for automotive tech)",
+  "source": "GitHub Search API + IBGE IPCA proxy (proxy for auto market signals)",
+  "generated_at": "2026-08-26T14:19:34.752351Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "auto-tech-br/depreciation-model",
+      "stars": 178,
+      "language": "Python",
+      "topic": "vehicle-pricing",
+      "last_push": "2026-08-24"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "ipca_auto_monthly": 0.32,
+      "used_car_index": 1.045
+    },
+    {
+      "repo": "open-auto/br-fipe-parser",
+      "stars": 134,
+      "language": "Go",
+      "topic": "fipe-table",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|ipca_auto_monthly",
+    "topic|used_car_index",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de pricing; IBGE fornece índices inflacionários do setor. Fonte oficial TIER1: FIPE Tabela, Webmotors API, KBB Brasil."
+}

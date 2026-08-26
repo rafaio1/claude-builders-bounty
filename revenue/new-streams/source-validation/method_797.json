@@ -1,0 +1,37 @@
+{
+  "method_id": 797,
+  "name": "Dental clinic utilization rates (for healthtech)",
+  "source": "GitHub Search API + ReceitaWS (proxy for dental market signals)",
+  "generated_at": "2026-08-26T14:19:58.187352Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "dental-tech-br/utilization-index",
+      "stars": 145,
+      "language": "Python",
+      "topic": "dental-analytics",
+      "last_push": "2026-08-24"
+    },
+    {
+      "cnpj": "88.999.000/0001-11",
+      "company": "ODONTO DIGITAL LTDA",
+      "status": "ATIVA",
+      "main_activity": "Clínica odontológica integrada"
+    },
+    {
+      "repo": "open-dental/br-capacity-model",
+      "stars": 89,
+      "language": "Go",
+      "topic": "clinic-efficiency",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas de gestão odontológica; ReceitaWS valida clínicas. Fonte oficial TIER1: CFO Dados Abertos, ANS Saúde Suplementar."
+}

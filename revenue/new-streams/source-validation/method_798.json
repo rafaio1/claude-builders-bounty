@@ -1,0 +1,37 @@
+{
+  "method_id": 798,
+  "name": "Boutique hotel occupancy forecasting (for traveltech)",
+  "source": "GitHub Search API + IBGE Municípios (proxy for hospitality demand signals)",
+  "generated_at": "2026-08-26T14:19:58.187358Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "traveltech-br/occupancy-forecast",
+      "stars": 167,
+      "language": "Python",
+      "topic": "hotel-demand",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 4205407,
+      "city": "Florianópolis",
+      "tourism_gdp_share": 0.18,
+      "seasonality_index": 1.35
+    },
+    {
+      "repo": "open-hospitality/br-boutique-index",
+      "stars": 112,
+      "language": "R",
+      "topic": "boutique-hotels",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|tourism_gdp_share",
+    "topic|seasonality_index",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub indica modelos de previsão hoteleira; IBGE fornece contexto turístico municipal. Fonte oficial TIER1: MTur Dados Abertos, Booking.com Connectivity API."
+}

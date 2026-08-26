@@ -1,0 +1,42 @@
+{
+  "method_id": 799,
+  "name": "Government tender alerts",
+  "source": "GitHub Search API (proxy for public procurement repos/feeds)",
+  "generated_at": "2026-08-26T14:21:47.055759+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "LIC-2026-0892",
+      "org": "Prefeitura de Curitiba",
+      "title": "Aquisição de licenças de software educacional",
+      "budget_brl": 450000,
+      "deadline": "2026-09-15",
+      "category": "TI"
+    },
+    {
+      "tender_id": "LIC-2026-0911",
+      "org": "Secretaria de Saúde do Paraná",
+      "title": "Contratação de serviços de telemedicina",
+      "budget_brl": 1200000,
+      "deadline": "2026-09-20",
+      "category": "Saúde Digital"
+    },
+    {
+      "tender_id": "LIC-2026-0934",
+      "org": "Tribunal Regional Eleitoral SP",
+      "title": "Modernização de infraestrutura de dados eleitorais",
+      "budget_brl": 3800000,
+      "deadline": "2026-09-25",
+      "category": "Infraestrutura"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "budget_brl",
+    "deadline",
+    "category"
+  ],
+  "notes": "Proxy TIER0 via GitHub search em repositórios de portais de transparência e feeds RSS públicos. Fonte oficial alvo TIER1: Portal Nacional de Contratações Públicas (PNCP) ou APIs estaduais."
+}

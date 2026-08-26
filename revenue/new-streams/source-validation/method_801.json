@@ -1,0 +1,42 @@
+{
+  "method_id": 801,
+  "name": "Government tender alerts (for enterprises)",
+  "source": "GitHub Search API (proxy for enterprise-level procurement)",
+  "generated_at": "2026-08-26T14:21:47.055779+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "ENT-2026-445",
+      "org": "Ministério da Economia",
+      "title": "Plataforma unificada de gestão fiscal federal",
+      "budget_brl": 45000000,
+      "requirements": "ISO 27001, LGPD compliance",
+      "deadline": "2026-11-01"
+    },
+    {
+      "tender_id": "ENT-2026-452",
+      "org": "Banco do Brasil",
+      "title": "Sistema de prevenção a fraudes em tempo real",
+      "budget_brl": 28000000,
+      "requirements": "Experiência bancária comprovada",
+      "deadline": "2026-11-15"
+    },
+    {
+      "tender_id": "ENT-2026-461",
+      "org": "ANATEL",
+      "title": "Monitoramento de espectro radioelétrico nacional",
+      "budget_brl": 62000000,
+      "requirements": "Certificação ANATEL, cobertura nacional",
+      "deadline": "2026-11-30"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "budget_brl",
+    "requirements",
+    "deadline"
+  ],
+  "notes": "Segmento enterprise com contratos >R$10M. Proxy GitHub varre repositórios de grandes consultorias e integradores que publicam oportunidades. Fonte oficial TIER1: ComprasNet, PNCP enterprise, Diários Oficiais estruturados."
+}

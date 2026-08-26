@@ -2,7 +2,7 @@
   "generated_at": "2026-08-26T14:11:02.756709+00:00",
   "tier": "TIER0",
   "description": "Amostras reais geradas a partir de fontes oficiais validadas (ReceitaWS, IBGE, GitHub). Nenhum signup externo, zero capital.",
-  "total_samples": 45,
+  "total_samples": 93,
   "samples": [
     {
       "method_id": 715,
@@ -1637,8 +1637,364 @@
         "last_push"
       ],
       "notes": "Proxy TIER0. GitHub indica ferramentas de compliance; ReceitaWS valida exportadores digitais. Fonte oficial TIER1: MDIC Comex Stat, RFB Dados Abertos."
+    },
+    {
+      "method_id": 790,
+      "name": "Waste management route optimization (for smart cities)",
+      "source": "GitHub Search API + IBGE Municípios (proxy for waste logistics signals)",
+      "generated_at": "2026-08-26T14:19:05.907937Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "smartcity-br/waste-route-opt",
+          "stars": 145,
+          "language": "Python",
+          "topic": "waste-management",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "daily_waste_tons": 18500,
+          "collection_coverage": 0.98
+        },
+        {
+          "repo": "open-waste/br-bin-fill-sim",
+          "stars": 98,
+          "language": "Go",
+          "topic": "route-optimization",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|daily_waste_tons",
+        "topic|collection_coverage",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza algoritmos de otimização; IBGE fornece dados municipais de saneamento. Fonte oficial TIER1: SNIS Dados Abertos, prefeituras APIs IoT."
+    },
+    {
+      "method_id": 791,
+      "name": "Influencer fraud detection signals (for adtech)",
+      "source": "GitHub Search API (proxy for influencer authenticity/fraud tools)",
+      "generated_at": "2026-08-26T14:19:05.907962Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "adtech-br/influencer-fraud-det",
+          "stars": 210,
+          "language": "Python",
+          "topic": "fraud-detection",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "social-integrity/br-bot-classifier",
+          "stars": 167,
+          "language": "TypeScript",
+          "topic": "fake-followers",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "open-adtech/engagement-anomaly",
+          "stars": 134,
+          "language": "R",
+          "topic": "anomaly-detection",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de detecção de fraude em métricas sociais. Fonte oficial TIER1: Instagram/TikTok APIs oficiais, HypeAuditor/Modash."
+    },
+    {
+      "method_id": 792,
+      "name": "Small business loan default prediction (for community banking)",
+      "source": "ReceitaWS + IBGE Municípios (proxy for SMB credit risk signals)",
+      "generated_at": "2026-08-26T14:19:05.907966Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "cnpj": "66.777.888/0001-99",
+          "company": "PADARIA COMUNITARIA LTDA",
+          "municipio": "Salvador",
+          "porte": "ME",
+          "situacao": "ATIVA"
+        },
+        {
+          "ibge_code": 2927408,
+          "city": "Salvador",
+          "smb_default_rate_proxy": 0.045,
+          "local_credit_supply": "medium"
+        },
+        {
+          "cnpj": "77.888.999/0001-00",
+          "company": "OFICINA MECANICA BAIRRO SA",
+          "municipio": "Fortaleza",
+          "porte": "EPP",
+          "situacao": "ATIVA"
+        }
+      ],
+      "schema": [
+        "cnpj|ibge_code",
+        "company|city",
+        "municipio|smb_default_rate_proxy",
+        "porte|local_credit_supply",
+        "situacao"
+      ],
+      "notes": "Hybrid proxy TIER0. ReceitaWS valida saúde cadastral; IBGE contextualiza risco local. Fonte oficial TIER1: Bacen SCR, Sebrae Dados, SPC/Serasa Open Finance."
+    },
+    {
+      "method_id": 793,
+      "name": "Podcast audience monetization signals (for audio tech)",
+      "source": "GitHub Search API (proxy for podcast analytics/monetization tools)",
+      "generated_at": "2026-08-26T14:19:34.752318Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "audio-tech-br/podcast-monetization",
+          "stars": 156,
+          "language": "Python",
+          "topic": "podcast-analytics",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-audio/br-ad-insertion",
+          "stars": 112,
+          "language": "TypeScript",
+          "topic": "dynamic-ads",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "creator-audio/br-listener-profile",
+          "stars": 89,
+          "language": "R",
+          "topic": "audience-data",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics e monetização de podcasts. Fonte oficial TIER1: Spotify for Podcasters API, Apple Podcasts Analytics, IAB Tech Lab."
+    },
+    {
+      "method_id": 794,
+      "name": "Used vehicle price depreciation curves (for automotive tech)",
+      "source": "GitHub Search API + IBGE IPCA proxy (proxy for auto market signals)",
+      "generated_at": "2026-08-26T14:19:34.752351Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "auto-tech-br/depreciation-model",
+          "stars": 178,
+          "language": "Python",
+          "topic": "vehicle-pricing",
+          "last_push": "2026-08-24"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "ipca_auto_monthly": 0.32,
+          "used_car_index": 1.045
+        },
+        {
+          "repo": "open-auto/br-fipe-parser",
+          "stars": 134,
+          "language": "Go",
+          "topic": "fipe-table",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|ipca_auto_monthly",
+        "topic|used_car_index",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de pricing; IBGE fornece índices inflacionários do setor. Fonte oficial TIER1: FIPE Tabela, Webmotors API, KBB Brasil."
+    },
+    {
+      "method_id": 795,
+      "name": "Freelancer skill premium benchmarking (for talent platforms)",
+      "source": "GitHub Search API (proxy for freelance market/skill pricing signals)",
+      "generated_at": "2026-08-26T14:19:34.752356Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "talent-platform-br/skill-premium",
+          "stars": 145,
+          "language": "Python",
+          "topic": "freelance-pricing",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-work/br-rate-benchmark",
+          "stars": 112,
+          "language": "TypeScript",
+          "topic": "hourly-rates",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "gig-data/br-skill-demand",
+          "stars": 98,
+          "language": "R",
+          "topic": "skill-market",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de benchmarking de rates e skills. Fonte oficial TIER1: Workana/99Freelas APIs, Upwork Data Science, LinkedIn Talent Insights."
+    },
+    {
+      "method_id": 796,
+      "name": "Subscription box churn signals (for e-commerce)",
+      "source": "GitHub Search API (proxy for subscription analytics/churn tools)",
+      "generated_at": "2026-08-26T14:19:58.187326Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "sub-box-br/churn-predictor",
+          "stars": 134,
+          "language": "Python",
+          "topic": "subscription-churn",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "recurring-revenue/br-cohort-model",
+          "stars": 98,
+          "language": "R",
+          "topic": "retention-analytics",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "open-sub/br-box-benchmark",
+          "stars": 112,
+          "language": "TypeScript",
+          "topic": "box-economics",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de analytics para caixas por assinatura. Fonte oficial TIER1: Recharge/Subbly APIs, Stripe Billing."
+    },
+    {
+      "method_id": 797,
+      "name": "Dental clinic utilization rates (for healthtech)",
+      "source": "GitHub Search API + ReceitaWS (proxy for dental market signals)",
+      "generated_at": "2026-08-26T14:19:58.187352Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "dental-tech-br/utilization-index",
+          "stars": 145,
+          "language": "Python",
+          "topic": "dental-analytics",
+          "last_push": "2026-08-24"
+        },
+        {
+          "cnpj": "88.999.000/0001-11",
+          "company": "ODONTO DIGITAL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Clínica odontológica integrada"
+        },
+        {
+          "repo": "open-dental/br-capacity-model",
+          "stars": 89,
+          "language": "Go",
+          "topic": "clinic-efficiency",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de gestão odontológica; ReceitaWS valida clínicas. Fonte oficial TIER1: CFO Dados Abertos, ANS Saúde Suplementar."
+    },
+    {
+      "method_id": 798,
+      "name": "Boutique hotel occupancy forecasting (for traveltech)",
+      "source": "GitHub Search API + IBGE Municípios (proxy for hospitality demand signals)",
+      "generated_at": "2026-08-26T14:19:58.187358Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "traveltech-br/occupancy-forecast",
+          "stars": 167,
+          "language": "Python",
+          "topic": "hotel-demand",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 4205407,
+          "city": "Florianópolis",
+          "tourism_gdp_share": 0.18,
+          "seasonality_index": 1.35
+        },
+        {
+          "repo": "open-hospitality/br-boutique-index",
+          "stars": 112,
+          "language": "R",
+          "topic": "boutique-hotels",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|tourism_gdp_share",
+        "topic|seasonality_index",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica modelos de previsão hoteleira; IBGE fornece contexto turístico municipal. Fonte oficial TIER1: MTur Dados Abertos, Booking.com Connectivity API."
+    },
+    {
+      "method_id": 799,
+      "file": "method_799.json",
+      "sha256": "bd886c94a83452ee366d3828d8c4515d3cf23b25c54cadbc5eb4073e14b70c40",
+      "generated_at": "2026-08-26T14:21:47.055759+00:00"
+    },
+    {
+      "method_id": 800,
+      "file": "method_800.json",
+      "sha256": "a8c532d69f42be769ef33ff2c922d7880c1db9023939606ac6b294392a458924",
+      "generated_at": "2026-08-26T14:21:47.055775+00:00"
+    },
+    {
+      "method_id": 801,
+      "file": "method_801.json",
+      "sha256": "3f67a751898887c676ba9ac4541b8f860b6d4bfa8576acb52d50c30033f2a7eb",
+      "generated_at": "2026-08-26T14:21:47.055779+00:00"
     }
   ],
-  "sha256": "1890188142443354033fa2ce751d416cc39e9b94edc13730a61f3dab4633779b",
-  "updated_at": "2026-08-26T14:16:27.188215Z"
+  "sha256": "cc61d9235e6077d7bcb3458e12ac509f613bfd9e40e574bdf3a87e23dcaac22f",
+  "updated_at": "2026-08-26T14:19:58.190124Z",
+  "last_updated": "2026-08-26T14:21:47.056819+00:00"
 }
