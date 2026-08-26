@@ -162,8 +162,6 @@ def classify_message(state, body_text):
     return "kept_ambiguous", False
 
 
-def classify_and_process():
-
 def load_cursor():
     if os.path.exists(CURSOR_PATH):
         try:
@@ -335,79 +333,6 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
     save_cursor(cursor)
     save_ledger_atomic(ledger)
     print(f"Processed {processed} new emails. Ledger size: {len(ledger)}")
-        m = re.match(r"\[([^\]]+)\].*?\|\s*(.+?)\s*\|\s*(.+)", line)
-        if not m:
-            continue
-        msg_id, sender, subject = m.groups()
-        if msg_id in seen_ids:
-            continue
-
-        pm = re.search(r"\[([^\]]+)\].*?\(PR #(\d+)\)", subject)
-        if not pm:
-            continue
-        repo_full, pr_str = pm.groups()
-        pr_num = int(pr_str)
-
-        state, url = gh_pr_state(repo_full, pr_num)
-        if not state:
-            continue
-
-        body_text = ""
-        bdata = gmail_read(msg_id)
-        if bdata:
-            body_text = bdata.get("body", "") + " " + bdata.get("snippet", "")
-
-        action, trash_now = classify_message(state, body_text)
-
-        if trash_now:
-            # Attempt trash FIRST; only record terminal action on success
-            ok = gmail_trash(msg_id)
-            if ok:
-                entry = {
-                    "message_id": msg_id,
-                    "repo": repo_full,
-                    "pr": pr_num,
-                    "action": action,
-                    "github_url": url,
-                    "commit": None,
-                    "trash_at": datetime.now(timezone.utc).isoformat(),
-                }
-                ledger.append(entry)
-                seen_ids.add(msg_id)
-            else:
-                # Trash failed: record failure, mark for reprocess, do NOT block
-                entry = {
-                    "message_id": msg_id,
-                    "repo": repo_full,
-                    "pr": pr_num,
-                    "action": "trash_failed",
-                    "github_url": url,
-                    "commit": None,
-                    "trash_at": None,
-                    "reprocess": True,
-                    "events": [{"type": "trash_failed", "ts": datetime.now(timezone.utc).isoformat()}],
-                }
-                ledger.append(entry)
-                # Do NOT add to seen_ids so next run retries
-        else:
-            entry = {
-                "message_id": msg_id,
-                "repo": repo_full,
-                "pr": pr_num,
-                "action": action,
-                "github_url": url,
-                "commit": None,
-                "trash_at": None,
-            }
-            ledger.append(entry)
-            seen_ids.add(msg_id)
-            append_action_queue(entry)
-
-        processed += 1
-
-    save_ledger_atomic(ledger)
-    print(f"Processed {processed} new emails. Ledger size: {len(ledger)}")
-
 
 if __name__ == "__main__":
     import argparse
