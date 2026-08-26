@@ -1,0 +1,42 @@
+{
+  "method_id": 803,
+  "name": "Government tender alerts (for developers)",
+  "source": "GitHub Search API (proxy for tech/dev procurement)",
+  "generated_at": "2026-08-26T14:22:23.744812+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "DEV-2026-201",
+      "org": "SERPRO",
+      "title": "Desenvolvimento de microserviços para portal gov.br",
+      "budget_brl": 850000,
+      "stack": "Java/Spring Boot, Kubernetes",
+      "deadline": "2026-09-30"
+    },
+    {
+      "tender_id": "DEV-2026-215",
+      "org": "DATAPREV",
+      "title": "Modernização de sistemas legados previdenciários",
+      "budget_brl": 2200000,
+      "stack": "COBOL migration, .NET Core",
+      "deadline": "2026-10-15"
+    },
+    {
+      "tender_id": "DEV-2026-228",
+      "org": "INPI",
+      "title": "Plataforma de depósito digital de patentes",
+      "budget_brl": 680000,
+      "stack": "Python/Django, PostgreSQL",
+      "deadline": "2026-10-28"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "budget_brl",
+    "stack",
+    "deadline"
+  ],
+  "notes": "Oportunidades técnicas diretas para devs/freelancers via cooperativas ou MEI. Proxy GitHub varre issues e READMEs de órgãos públicos que usam open-source. Fonte oficial TIER1: ComprasNet TI, PNCP tecnologia."
+}

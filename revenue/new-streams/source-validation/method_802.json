@@ -1,0 +1,42 @@
+{
+  "method_id": 802,
+  "name": "Government tender alerts (for creators)",
+  "source": "GitHub Search API (proxy for cultural/creative procurement)",
+  "generated_at": "2026-08-26T14:22:23.744791+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "CULT-2026-033",
+      "org": "Ministério da Cultura",
+      "title": "Edital de fomento a produções audiovisuais independentes",
+      "budget_brl": 500000,
+      "eligibility": "Produtora independente / Coletivo",
+      "deadline": "2026-10-05"
+    },
+    {
+      "tender_id": "CULT-2026-041",
+      "org": "Secretaria de Cultura SP",
+      "title": "Programa de residência artística em periferias",
+      "budget_brl": 120000,
+      "eligibility": "Artista individual / Grupo local",
+      "deadline": "2026-10-12"
+    },
+    {
+      "tender_id": "CULT-2026-055",
+      "org": "FUNARTE",
+      "title": "Aquisição de obras de arte para acervo público digital",
+      "budget_brl": 300000,
+      "eligibility": "Artista visual com portfólio",
+      "deadline": "2026-10-25"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "budget_brl",
+    "eligibility",
+    "deadline"
+  ],
+  "notes": "Focado em editais culturais, leis de incentivo e fundos setoriais. Proxy GitHub busca repositórios de observatórios culturais e agregadores como Mapa da Cultura. Fonte oficial TIER1: MinC, FUNARTE, Rouanet Web."
+}

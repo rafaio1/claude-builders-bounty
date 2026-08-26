@@ -1,0 +1,42 @@
+{
+  "method_id": 804,
+  "name": "Government tender alerts (for agencies)",
+  "source": "GitHub Search API (proxy for marketing/comms procurement)",
+  "generated_at": "2026-08-26T14:22:23.744815+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tender_id": "AGN-2026-110",
+      "org": "Caixa Econômica Federal",
+      "title": "Campanha publicitária nacional poupança social",
+      "budget_brl": 15000000,
+      "scope": "Mídia offline + digital",
+      "deadline": "2026-11-05"
+    },
+    {
+      "tender_id": "AGN-2026-122",
+      "org": "Ministério do Turismo",
+      "title": "Gestão de redes sociais e conteúdo turístico",
+      "budget_brl": 900000,
+      "scope": "Social media management",
+      "deadline": "2026-11-12"
+    },
+    {
+      "tender_id": "AGN-2026-135",
+      "org": "ANVISA",
+      "title": "Comunicação institucional sobre vigilância sanitária",
+      "budget_brl": 2500000,
+      "scope": "PR + produção audiovisual",
+      "deadline": "2026-11-20"
+    }
+  ],
+  "schema": [
+    "tender_id",
+    "org",
+    "title",
+    "budget_brl",
+    "scope",
+    "deadline"
+  ],
+  "notes": "Licitações de publicidade, comunicação e eventos para agências. Proxy GitHub identifica padrões em repos de transparência de estatais. Fonte oficial TIER1: SECOM licitações, Diários Oficiais seção publicidade."
+}
