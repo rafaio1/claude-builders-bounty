@@ -1196,7 +1196,7 @@
       "title": "Eval leve sobre traces sanitizados da GhostCLI",
       "kind": "improvement",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Com traces sanitizados persistidos, um eval mínimo consegue apontar falhas recorrentes e dar sinal objetivo ao improve, fechando o loop de aprendizagem.",
       "change": "Em improve.py, adicionar função de eval que lê os traces sanitizados da GhostCLI e resume sucesso/falha por comando, alimentando o próximo develop; sem gerar novo script.",
       "never": [
@@ -1210,7 +1210,7 @@
         "src/agentic/ghostcli.py"
       ],
       "theme": "ai",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli",
       "map_id": "20260816T180205Z",
       "history": [
         {
@@ -1262,6 +1262,11 @@
           "at": "2026-08-26T14:05:00+00:00",
           "event": "requeued",
           "detail": "watchdog: requeued after ledger.json validation fix; truncated context issue may resolve with current pipeline improvements"
+        },
+        {
+          "at": "2026-08-26T13:43:20+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
         }
       ],
       "review_feedback": "A mudança não coube de forma segura. O arquivo src/agentic/improve.py fornecido no prompt está truncado (interrompido na tupla GIT_CLEAN_CLUSTERS). Como a regra exige devolver o conteúdo COMPLETO de cada arquivo alterado, qualquer reescrita removeria funções críticas subsequentes não presentes no contexto, quebrando o módulo. Para implementar o eval de traces sanitizados, é necessário fornecer o conteúdo integral do arquivo."
