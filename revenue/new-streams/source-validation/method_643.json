@@ -1,0 +1,31 @@
+{
+  "method_id": "643",
+  "name": "Accessibility remediation",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:42:18.441198+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "site_id": "st_8821",
+      "standard": "wcag_2_2_aa",
+      "pages_audited": 120,
+      "critical_issues": 14,
+      "remediation_cost_usd": 4500
+    },
+    {
+      "site_id": "st_3390",
+      "standard": "section_508",
+      "pages_audited": 45,
+      "critical_issues": 6,
+      "remediation_cost_usd": 1800
+    }
+  ],
+  "schema": [
+    "site_id",
+    "standard",
+    "pages_audited",
+    "critical_issues",
+    "remediation_cost_usd"
+  ],
+  "notes": "Remediação geral de acessibilidade web. Fonte oficial alvo: W3C/WAI guidelines. Proxy TIER0: GitHub Search API para scripts de auditoria axe-core e pa11y."
+}
