@@ -1,122 +1,92 @@
- # Secrets and credentials
- .env
- .env.*
- *.pem
- *.key
- id_rsa*
- credentials.json
- secrets/
- 
- # Local data, caches, logs
- *.log
- logs/
- data/
- state/
- ledger.jsonl
- *.pid
- 
- # Python
- __pycache__/
- *.pyc
- .pytest_cache/
- .venv/
- 
- # Node / Build
- node_modules/
- dist/
- build/
- *.o
- *.d
- 
- # IDE / OS
- .vscode/
- .idea/
- .DS_Store
- Thumbs.db
- 
- # Lock files (agent state)
- .agentic.lock
- .agentic-improve.lock
- 
- # Generated artifacts
- arb_dashboard.html
- typescript/
- # Embedded git repositories (clones of external bounties/targets)
- bounties/immunefi/*/
- bugbounty/oss/*/
- revenue/bounties/*/
- p2p-stack/mostro/
- workspace/bounty-exec/*/
- workspace/high-ticket/*/
- workspace/sparepack/
- # RoboSats node secrets and runtime data
- p2p-stack/robosats/node/lnd/tls.key
- p2p-stack/robosats/node/lnd/*.key
- p2p-stack/robosats/node/cln/
- p2p-stack/robosats/node/db/
- # Bybit futures runtime data
- bybit_futures/data/
- bybit_futures/logs/
- # Improve traces (debug artifacts)
- improve/traces/
+# === SECRETS AND CREDENTIALS (NEVER VERSION) ===
 .env
-.env.backup.*
+.env.*
+*.pem
+*.key
+id_rsa*
+credentials.json
+secrets/
+.config/gmail_*
+.config/last_telegram*
+p2p-stack/robosats/node/lnd/tls.key
+p2p-stack/robosats/node/lnd/*.key
+p2p-stack/robosats/node/cln/
 
- # Runtime artifacts - never version
- .playwright-cli/
- .config/gmail_*
- .config/last_telegram*
- *.lock
+# === RUNTIME STATE, LOGS AND DATA ===
+*.log
+*.pid
+*.jsonl
+logs/
+data/
+state/
+improve/traces/
+orchestrator/state.json
+orchestrator/v*_state.json
+orchestrator/.active_positions_*.json
+orchestrator/*.err
+orchestrator/*.out
+orchestrator/*.bak
+orchestrator/backtest_results/
+orchestrator/backtest_recommendation.json
+orchestrator/backtest_results.json
+orchestrator/v22d_active.json
+orchestrator/reconcile_output.txt
+orchestrator/audit_report.txt
+orchestrator/telegram_chats.txt
+bybit_futures/data/
+bybit_futures/logs/
 
- # Python virtual environment - never version
- .venv/
- 
- # Playwright config and codex backup
- .playwright/
- .codex/config.toml.bak
+# === LOCK FILES ===
+*.lock
 
- # Build artifacts and runtime data
- build/
- data/
- *.pid
- arb_dashboard.html
- bugbounty/recon/results/
+# === PYTHON ===
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.venv/
+build/
+dist/
+*.egg-info/
 
- # Improve traces and skill duplicates
- improve/traces/
- .agents/skills/
- .claude/skills/
+# === NODE / FRONTEND ===
+node_modules/
+.playwright-cli/
+.playwright/
+arb_dashboard.html
+typescript/
 
- # Runtime logs, state files and operational artifacts
- logs/
- *.jsonl
- orchestrator/state.json
- orchestrator/v*_state.json
- orchestrator/.active_positions_*.json
- orchestrator/*.err
- orchestrator/*.out
- orchestrator/*.bak
- orchestrator/backtest_results/
- orchestrator/reconcile_output.txt
- orchestrator/audit_report.txt
- orchestrator/telegram_chats.txt
- p2p-stack/robosats/node/bitcoin/testnet3/
+# === IDE / OS ===
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+*.o
+*.d
 
- # P2P stack runtime data and database files
- p2p-stack/robosats/node/db/
- p2p-stack/robosats/node/bitcoin/bitcoin.conf
- 
- # Knowledge base (runtime-generated, not source)
- knowledge/
- 
- # Bug bounty recon scripts and targets (operational, not versioned)
- bugbounty/recon/
- 
- # Orchestrator generated artifacts
- orchestrator/backtest_recommendation.json
- orchestrator/backtest_results.json
- orchestrator/v22d_active.json
+# === CODEX / AGENT LOCAL CONFIG ===
+.codex/config.toml.bak
+.agents/skills/
+.claude/skills/
 
- # Playwright CLI logs (already have dir pattern but need explicit log glob)
- .playwright-cli/*.log
- .playwright-cli/*.yml
+# === EMBEDDED GIT REPOSITORIES (EXTERNAL CLONES) ===
+bounties/immunefi/*/
+bugbounty/oss/*/
+bugbounty/recon/
+revenue/bounties/*/
+p2p-stack/mostro/
+p2p-stack/robosats/node/db/
+p2p-stack/robosats/node/bitcoin/bitcoin.conf
+workspace/bounty-exec/*/
+workspace/high-ticket/*/
+workspace/sparepack/
+
+# === KNOWLEDGE BASE (RUNTIME-GENERATED) ===
+knowledge/
+ # === P2P STACK RUNTIME (TESTNET CHAIN DATA) ===
+p2p-stack/robosats/node/bitcoin/testnet3/
+p2p-stack/robosats/node/lnd/lnd.conf
+p2p-stack/robosats/node/lnd/tls.cert
+ # === NESTED VENV IN REVENUE SUBPROJECTS ===
+ revenue/*/.venv/
+ revenue/*/*/.venv/
