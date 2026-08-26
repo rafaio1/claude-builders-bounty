@@ -1,0 +1,31 @@
+{
+  "method_id": "629",
+  "name": "DevOps CI/CD setup (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:13.141275+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_8821",
+      "lang": "rust",
+      "test_framework": "cargo_test",
+      "deploy_target": "fly_io",
+      "cache_strategy": "sccache"
+    },
+    {
+      "dev_id": "dv_3390",
+      "lang": "go",
+      "test_framework": "gotest",
+      "deploy_target": "render",
+      "cache_strategy": "gomod_cache"
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "lang",
+    "test_framework",
+    "deploy_target",
+    "cache_strategy"
+  ],
+  "notes": "Configuração orientada a linguagem e cache. Fonte oficial alvo: Docs de provedores PaaS. Proxy TIER0: GitHub Search API para .github/workflows por linguagem."
+}

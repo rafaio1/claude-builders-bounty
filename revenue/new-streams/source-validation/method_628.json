@@ -1,0 +1,37 @@
+{
+  "method_id": "628",
+  "name": "DevOps CI/CD setup (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:13.141275+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_112",
+      "platform": "youtube",
+      "automation_goal": "auto_upload_transcode",
+      "tools": [
+        "ffmpeg",
+        "github_actions"
+      ],
+      "budget_usd": 50
+    },
+    {
+      "creator_id": "cr_445",
+      "platform": "twitch",
+      "automation_goal": "clip_highlight_pipeline",
+      "tools": [
+        "obs",
+        "docker"
+      ],
+      "budget_usd": 80
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "platform",
+    "automation_goal",
+    "tools",
+    "budget_usd"
+  ],
+  "notes": "Foco em automação de fluxo de conteúdo. Fonte oficial alvo: GitHub Actions for creators. Proxy TIER0: GitHub Search API para workflows de criadores."
+}

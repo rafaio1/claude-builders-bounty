@@ -1,0 +1,31 @@
+{
+  "method_id": "630",
+  "name": "DevOps CI/CD setup (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:13.141275+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_771",
+      "clients_count": 25,
+      "multi_repo": true,
+      "secret_mgmt": "vault",
+      "billing_model": "per_project"
+    },
+    {
+      "agency_id": "ag_220",
+      "clients_count": 12,
+      "multi_repo": false,
+      "secret_mgmt": "aws_secrets_manager",
+      "billing_model": "retainer"
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "clients_count",
+    "multi_repo",
+    "secret_mgmt",
+    "billing_model"
+  ],
+  "notes": "Gestão multi-cliente e secrets centralizados. Fonte oficial alvo: Enterprise CI docs. Proxy TIER0: GitHub Search API para templates de agência."
+}
