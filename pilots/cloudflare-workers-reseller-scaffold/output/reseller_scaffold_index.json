@@ -1,0 +1,80 @@
+{
+  "pilot": "cloudflare-workers-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:28:13.723605+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "requests_per_day": 100000,
+    "cpu_time_ms": 10,
+    "duration_wall_clock_ms": null,
+    "kv_reads_per_day": 100000,
+    "kv_writes_per_day": 1000,
+    "r2_reads_per_month": 10000000,
+    "r2_writes_per_month": 1000000,
+    "d1_rows_read_per_day": 5000000,
+    "d1_rows_written_per_day": 100000,
+    "queues_messages_per_day": 1000000,
+    "email_routing_forwarded_per_day": 3000
+  },
+  "paid_plan_baseline": {
+    "name": "Workers Paid ($5/mo)",
+    "included_requests": 10000000,
+    "overage_per_million": 0.3,
+    "kv_reads_included": 10000000,
+    "kv_overage_per_million": 0.36
+  },
+  "reselling_model": {
+    "strategy": "Managed Edge Deployment Service",
+    "target_customer": "Small businesses needing serverless APIs without DevOps",
+    "value_prop": "Deploy + monitor + custom domain + SSL for fixed monthly fee",
+    "suggested_price_brl": 49.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Free tier is per-account; each client needs separate CF account or sub-account via API",
+    "tos_compliance_note": "Reselling requires checking Cloudflare ToS Section 2.8 (Acceptable Use). Managed services are generally permitted; pure resale of raw compute may require partner agreement."
+  },
+  "doc_validation": {
+    "source_verified": false,
+    "url": "https://developers.cloudflare.com/workers/platform/limits/",
+    "extracted_limits": {},
+    "error": null
+  },
+  "unit_economics": {
+    "small_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 499.0,
+      "cost_brl": 0.0,
+      "margin_brl": 499.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 5988.0
+    },
+    "medium_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 2495.0,
+      "cost_brl": 0.0,
+      "margin_brl": 2495.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 29940.0
+    },
+    "scale_200_clients": {
+      "monthly_clients": 200,
+      "revenue_brl": 9980.0,
+      "cost_brl": 0.0,
+      "margin_brl": 9980.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 119760.0
+    }
+  },
+  "risks": [
+    "Free tier limits are per-account; multi-tenant requires account-per-client or Enterprise plan",
+    "Cloudflare ToS may restrict pure resale; managed service framing recommended",
+    "No SLA on free tier; production clients need paid plan fallback",
+    "Custom domains on free tier limited to workers.dev or proxied DNS"
+  ],
+  "next_steps": [
+    "Validate ToS Section 2.8 for managed service compliance",
+    "Build account provisioning script via Cloudflare API",
+    "Create monitoring dashboard for per-client usage vs free tier limits",
+    "Draft customer-facing pricing page and onboarding flow"
+  ]
+}
