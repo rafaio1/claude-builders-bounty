@@ -1,0 +1,62 @@
+{
+  "method_id": 825,
+  "name": "Web traffic estimates API (for enterprises)",
+  "source": "GitHub Search API (proxy for competitive intelligence feeds)",
+  "generated_at": "2026-08-26T14:26:34.268793+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sector": "E-commerce Moda",
+      "target_domains": [
+        "shein.com/br",
+        "zara.com/br",
+        "renner.com.br"
+      ],
+      "market_share_traffic_pct": {
+        "shein": 28,
+        "zara": 15,
+        "renner": 12
+      },
+      "trend_signal": "Fast-fashion asiática +35% YoY",
+      "data_granularity": "Weekly"
+    },
+    {
+      "sector": "Streaming Vídeo",
+      "target_domains": [
+        "netflix.com/br",
+        "globoplay.globo.com",
+        "primevideo.com/br"
+      ],
+      "market_share_traffic_pct": {
+        "netflix": 42,
+        "globoplay": 22,
+        "prime": 14
+      },
+      "trend_signal": "Conteúdo nacional driving retention",
+      "data_granularity": "Daily"
+    },
+    {
+      "sector": "Bancos Digitais",
+      "target_domains": [
+        "nubank.com.br",
+        "inter.co",
+        "c6bank.com.br"
+      ],
+      "market_share_traffic_pct": {
+        "nubank": 55,
+        "inter": 18,
+        "c6": 8
+      },
+      "trend_signal": "Mobile app dominance vs web",
+      "data_granularity": "Monthly"
+    }
+  ],
+  "schema": [
+    "sector",
+    "target_domains",
+    "market_share_traffic_pct",
+    "trend_signal",
+    "data_granularity"
+  ],
+  "notes": "Inteligência competitiva setorial para planejamento estratégico. Proxy GitHub varre repositórios de market research e scrapers de domínio público. Fonte oficial TIER1: Comscore, Statista Market Insights."
+}

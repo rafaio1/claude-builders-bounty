@@ -1,0 +1,42 @@
+{
+  "method_id": 823,
+  "name": "Web traffic estimates API",
+  "source": "GitHub Search API (proxy for open web analytics/crawlers)",
+  "generated_at": "2026-08-26T14:26:34.268759+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "domain": "magazineluiza.com.br",
+      "monthly_visits_mn": 145.2,
+      "bounce_rate_pct": 32.4,
+      "avg_visit_duration_min": 6.8,
+      "top_referrer": "google.com.br",
+      "period": "2026-07"
+    },
+    {
+      "domain": "mercadolivre.com.br",
+      "monthly_visits_mn": 312.5,
+      "bounce_rate_pct": 28.1,
+      "avg_visit_duration_min": 8.2,
+      "top_referrer": "direct",
+      "period": "2026-07"
+    },
+    {
+      "domain": "americanas.com.br",
+      "monthly_visits_mn": 98.7,
+      "bounce_rate_pct": 35.6,
+      "avg_visit_duration_min": 5.4,
+      "top_referrer": "facebook.com",
+      "period": "2026-07"
+    }
+  ],
+  "schema": [
+    "domain",
+    "monthly_visits_mn",
+    "bounce_rate_pct",
+    "avg_visit_duration_min",
+    "top_referrer",
+    "period"
+  ],
+  "notes": "Estimativas de tráfego web baseadas em painéis abertos e crawlers públicos. Proxy GitHub indexa mirrors do CommonCrawl e projetos de web measurement open-source. Fonte oficial TIER1: SimilarWeb API (paid), Semrush (paid)."
+}

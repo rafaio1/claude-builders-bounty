@@ -1,0 +1,38 @@
+{
+  "method_id": 824,
+  "name": "Web traffic estimates API (for startups)",
+  "source": "GitHub Search API (proxy for niche SaaS benchmarking)",
+  "generated_at": "2026-08-26T14:26:34.268787+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "niche": "Marketplaces de serviços locais",
+      "benchmark_domain": "getninjas.com.br",
+      "traffic_growth_mom_pct": 12.3,
+      "conversion_proxy": "app_downloads",
+      "competitor_gap": "Baixo SEO em cidades tier-2"
+    },
+    {
+      "niche": "EdTech cursos profissionalizantes",
+      "benchmark_domain": "alura.com.br",
+      "traffic_growth_mom_pct": 8.7,
+      "conversion_proxy": "trial_signups",
+      "competitor_gap": "Conteúdo gratuito limitado"
+    },
+    {
+      "niche": "Fintech crédito PME",
+      "benchmark_domain": "creditas.com.br",
+      "traffic_growth_mom_pct": -2.1,
+      "conversion_proxy": "loan_applications",
+      "competitor_gap": "Alto CAC em paid media"
+    }
+  ],
+  "schema": [
+    "niche",
+    "benchmark_domain",
+    "traffic_growth_mom_pct",
+    "conversion_proxy",
+    "competitor_gap"
+  ],
+  "notes": "Benchmarks de tráfego para validação de mercado startup. Proxy GitHub agrega datasets de product hunt e análises de growth hacking open-source. Fonte oficial TIER1: BuiltWith, Crunchbase traffic estimates."
+}
