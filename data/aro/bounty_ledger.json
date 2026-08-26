@@ -185,7 +185,7 @@
       "pr": 12147,
       "title": "fix(payouts): unblock payout for completed bounty #2885 (#7458)",
       "status": "waiting_review",
-      "last_action": "ledger_fix_pr_number_and_status",
+      "last_action": "2026-08-26T22:57:09.790841+00:00",
       "evidence": [
         {
           "type": "gh_comment",
@@ -198,9 +198,18 @@
           "name": "update-leaderboard",
           "conclusion": "SUCCESS",
           "note": "CI passed"
+        },
+        {
+          "type": "gh_pr_state",
+          "checked_at": "2026-08-26T22:57:09.790841+00:00",
+          "state": "OPEN",
+          "ci": "update-leaderboard SUCCESS",
+          "reviews": 0,
+          "payout_address_verified": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
+          "note": "PR open, CI green, no reviews yet. Payout address updated and verified."
         }
       ],
-      "next_action": "monitor_maintainer_review_and_payout_confirmation",
+      "next_action": "Monitor for maintainer review/payout; address TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex verified and posted",
       "mergeable": true,
       "updated_at": "2026-08-26T22:15:55.584804+00:00",
       "pr_number": 12147
@@ -297,9 +306,9 @@
       "repo": "mxx1111/sparepack",
       "pr_number": 6,
       "title": "test(remap): add comprehensive tests and fix error messages for remap feature",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -310,6 +319,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -428,9 +442,9 @@
       "repo": "mxx1111/sparepack",
       "pr_number": 5,
       "title": "feat: generalize stripPrefix with remap for flexible path mapping",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -441,6 +455,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -456,8 +475,8 @@
       "pr_number": "906",
       "title": "fix: answer for bounty 1549793",
       "status": "waiting_review",
-      "last_action": "2026-08-26T22:45:07.972376+00:00",
-      "next_action": "monitor_maintainer_review_and_merge",
+      "last_action": "2026-08-26T22:57:09.790841+00:00",
+      "next_action": "Monitor for maintainer review; payout address TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex verified",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -476,6 +495,15 @@
         {
           "type": "gh_pr_comment",
           "note": "Payout address verified and updated. PR open for bounty 1549793 (5000 sats). Awaiting maintainer review."
+        },
+        {
+          "type": "gh_pr_state",
+          "checked_at": "2026-08-26T22:57:09.790841+00:00",
+          "state": "OPEN",
+          "ci": "none",
+          "reviews": 0,
+          "payout_address_verified": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
+          "note": "PR open, no CI or reviews. Bounty SN 1549793 (5000 sats)."
         }
       ],
       "currency": "sats",
@@ -488,9 +516,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 157,
       "title": "feat: build /contribute contributor onboarding page (#117)",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -501,6 +529,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -515,9 +548,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 156,
       "title": "feat: add Playwright e2e smoke tests to CI (#101)",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -528,6 +561,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -542,9 +580,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 155,
       "title": "feat: add multi-stage Dockerfile for containerized deployment (#102)",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -555,6 +593,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -569,9 +612,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 154,
       "title": "feat: add root loading.tsx with accessible spinner (#127)",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -582,6 +625,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -596,9 +644,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 153,
       "title": "feat: add site footer with legal and support links (#130)",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -609,6 +657,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -623,9 +676,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 152,
       "title": "test: add smoke tests for route group layouts",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -636,6 +689,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -650,9 +708,9 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 151,
       "title": "feat: add Storybook 10 for scaffold component development",
-      "status": "discovered_verified_open",
-      "last_action": "audit_verified_pr_open_no_review_yet",
-      "next_action": "verify_bounty_or_maintainer_activity_before_any_submission",
+      "status": "waiting_monitoring",
+      "last_action": "2026-08-26T22:57:20.031187+00:00",
+      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -663,6 +721,11 @@
           "type": "gh_pr_audit",
           "state": "OPEN",
           "date": "2026-08-26T22:52:40.181004+00:00"
+        },
+        {
+          "type": "eligibility_check",
+          "checked_at": "2026-08-26T22:57:20.031187+00:00",
+          "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
         }
       ],
       "currency": "",
@@ -1270,6 +1333,18 @@
       "last_action": "2026-08-26T22:56:01.836728+00:00",
       "next_action": "Monitor HackerOne for triage/update; do not contact unless stale >14d",
       "discovered_at": "2026-08-26T22:56:01.836728+00:00"
+    },
+    {
+      "timestamp": "2026-08-26T22:56:22.164235+00:00",
+      "source": "opire",
+      "repo": "N/A",
+      "issue": 0,
+      "title": "Phase 2 Validation Sweep Complete - All Featured Bounties Stale",
+      "bounty_usd": 0,
+      "status": "info",
+      "reason": "Validated all 7 featured bounties on Opire homepage. ALL REJECTED as stale/closed/merged on GitHub. Storybook #12641 (merged), Godot #107845 (merged), Prisma #15647 (merged), Deno #28054 (closed). Plus previously rejected Zed, AutoKey, TypeORM. Opire app shows 350 available bounties but top listings are outdated. Need to filter/search for actually open issues.",
+      "evidence_url": "https://app.opire.dev/home",
+      "action": "expand_search"
     }
   ],
   "bounties": [

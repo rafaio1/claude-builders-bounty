@@ -1,0 +1,36 @@
+{
+  "method_id": "904",
+  "name": "GPU Spot Reseller Aggregator (zero-capital proxy)",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "TOS_CLAUSE_PROHIBITS_AGGREGATION_AND_RESSELLING",
+  "tos_evidence": [
+    "Company Content may not be aggregated, sold, licensed or exploited without prior written consent",
+    "Account and Agreement may not be assigned without express written consent",
+    "Export/transfer restrictions on Services and technical data"
+  ],
+  "free_tier_limits": {
+    "type": "marketplace_p2p",
+    "notes": "Vast.ai opera como marketplace bid-based. N\u00e3o h\u00e1 free tier permanente para consumo; apenas cr\u00e9ditos promocionais espor\u00e1dicos para novos usu\u00e1rios. Modelo zero-capital de revenda exige margem sobre spread que n\u00e3o \u00e9 garantida."
+  },
+  "paid_plan_baseline": {
+    "model": "spot_bid_hourly",
+    "currency": "USD",
+    "min_bid": "variable_per_gpu"
+  },
+  "reselling_model": {
+    "viable": false,
+    "blocker": "Cl\u00e1usula de n\u00e3o-agrega\u00e7\u00e3o e proibi\u00e7\u00e3o de explora\u00e7\u00e3o comercial do conte\u00fado/servi\u00e7o sem consentimento escrito pr\u00e9vio. Modelo de afiliado/hosting \u00e9 distinto de reseller aggregator."
+  },
+  "risks": [
+    "legal_tos_violation",
+    "no_permanent_free_tier",
+    "margin_uncertainty"
+  ],
+  "next_steps": [
+    "Descartar como reseller direto",
+    "Avaliar modelo de afiliado oficial se dispon\u00edvel",
+    "Mover para method_905 (CDN Bandwidth)"
+  ],
+  "analyzed_at": "2026-08-26T22:56:56.684665+00:00",
+  "source_doc": "/tmp/vast_tos_real.txt"
+}
