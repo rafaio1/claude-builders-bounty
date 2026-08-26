@@ -5,54 +5,96 @@
  Este documento serve como ponto de entrada para qualquer nova IA ou agente
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
-## Estado Atual (2026-08-26T12:30Z)
-## Estado Atual (2026-08-26T14:15Z)
-## Estado Atual (2026-08-26T16:45Z)
-- **Remoto**: https://github.com/rafaio1/agentic-integration.git (PRIVATE)
-- **Branch principal**: master
-- **Último commit**: 24d239a feat(bounty): add Intract campaign scanner with tests and gitignore
-- **Penúltimo commit**: 045cb1d feat(bounty): add Sherlock audit contest scanner with tests and gitignore
-- **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/, products/, revenue/, templates/, workspace/, p2p-stack/init_lnd_wallet.sh
-- **Features integradas neste ciclo**: intract_campaign_scanner, galxe_campaign_scanner, zealy_campaign_scanner, hats_protocol_scanner, layer3_quest_executor, rabbithole_campaign_scanner, immunefi_vault_scanner, code4rena_contest_scanner, sherlock_audit_scanner, telegram_gate
-- **Testes**: 78/78 passando (telegram_gate + triage_contract + immunefi + code4rena + sherlock + hats + layer3 + rabbithole + zealy + galxe + intract)
-- **Remoto validado**: rafaio1/agentic-integration (PRIVATE=true)
- - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/
- - **Arquivos NÃO rastreados (intencional)**: .env, data/, state/, logs/, *.pid, *.log, ledger.jsonl, .venv/, node_modules/, __pycache__/, .agentic*.lock, arb_dashboard.html, typescript/, build/, workspace/, bounties/, bugbounty/, revenue/, p2p-stack/, mt5_bridge/, wise_liquidity/, pr_freelance/, improve/, .agents/, .claude/, .codex/, .config/, .playwright*/
- 
- ## Decisões Técnicas
- 1. **Segurança primeiro**: Nenhum segredo, token, chave ou credencial é versionado.
-    O arquivo `scripts/recon_p2p.py` foi excluído do commit inicial por conter
-    referência a api_key em string concatenada (mesmo sendo placeholder).
- 2. **Artefatos efêmeros**: Logs, PIDs, estados JSON runtime e caches são ignorados.
- 3. **Dados locais**: Diretórios data/, state/, ledger.jsonl contêm dados operacionais
-    sensíveis ou voláteis — nunca versionar.
- 4. **Ambientes virtuais**: .venv/ e node_modules/ são regeneráveis; não versionar.
- 5. **Locks de agente**: .agentic.lock e .agentic-improve.lock são estado local de
-    outros agentes Orca; não devem ser compartilhados via git.
- 
- ## Estrutura Versionada
- - `src/`: Código-fonte principal (Python portal, plugins TypeScript)
- - `api/`: Definições de API e erros
- - `docs/`: Documentação de arquitetura, operações, segurança, changelog
- - `prompts/`: Prompts de missão e configuração de agentes
- - `skills/`: Skills Codex/Orca reutilizáveis
- - `orchestrator/`: Bots de trading, scalpers, snipers, backtests (código apenas)
- - `scripts/`: Scripts de automação, bounty, revenue, P2P (código apenas)
- - `tools/`: Ferramentas auxiliares (gmail, telegram, decision router)
- 
- ## Próximas Ações
- 1. Revisar arquivos untracked restantes (179) para identificar features maduras
- 2. Verificar se há testes automatizados para adicionar ao CI
- 3. Criar runbook de operação em docs/RUNBOOK.md
- 4. Estabelecer inventário de features em docs/FEATURES.md
- 5. Monitorar outros chats Orca com goals ativos para reconciliação
- 
- ## Limitações Conhecidas
- - Sem CI/CD configurado ainda
- - Sem testes automatizados no repositório
- - Alguns scripts podem depender de variáveis de ambiente não documentadas
- - Histórico anterior do repo TentOfTrials-bounty-67 não foi migrado (era público)
+## Estado Atual — Laboratório Receita Zero-Capital
+**Atualizado:** 2026-08-26 13:29 UTC
+**Receita Liquidada:** $0.00 (fase de validação infra)
+**Meta Aspiracional:** US$20M
 
+### Infraestrutura Operacional
+- ✅ Timer Revenue: `agentic-revenue-orchestrator.timer` ativo (6h cycle)
+- ✅ Timers Improve: map/dev/review ativos em worktree isolado
+- ✅ E2E Validado: newsletter_generator → generation → rendering → publication → URL pública
+- ✅ Catálogo: 372/900 métodos marcados como `validated_dry_run` (41%)
+
+### Streams Zero-Capital
+| Stream | Status | Métodos Catalogados | Evidência E2E |
+|--------|--------|---------------------|---------------|
+| newsletter_generator | validated_dry_run | 168 | logs/revenue/validation_e2e_20260826.json |
+| proposal_bot | validated_dry_run | 180 | orchestrator_20260826.json |
+| affiliate_engine | validated_dry_run | 12 | orchestrator_20260826.json |
+| saas_scaffolder | validated_dry_run | 12 | orchestrator_20260826.json |
+
+### Governança
+- Proposta `exp-20260826-reactivate-zero-capital-streams-v2`: pending_judgment
+- Condições satisfeitas: timer dedicado + e2e completo + catálogo atualizado
+- Aguardando veredito do conselho para ativação de monetização real
+
+### Próximos Marcos
+1. Aprovação da proposta v2 pelo conselho
+2. Integração Stripe/payment links nos CTAs publicados
+3. >=3 ciclos consecutivos sem erro do timer revenue
+4. Primeira proposta freelance submetida (<=7 dias pós-aprovação)
+5. Primeiro payout registrado (<=30 dias pós-aprovação)
+## Estado Atual — Laboratório Receita Zero-Capital
+**Atualizado:** 2026-08-26 13:29 UTC
+**Receita Liquidada:** $0.00 (fase de validação infra)
+**Meta Aspiracional:** US$20M
+
+### Infraestrutura Operacional
+- ✅ Timer Revenue: `agentic-revenue-orchestrator.timer` ativo (6h cycle)
+- ✅ Timers Improve: map/dev/review ativos em worktree isolado
+- ✅ E2E Validado: newsletter_generator → generation → rendering → publication → URL pública
+- ✅ Catálogo: 372/900 métodos marcados como `validated_dry_run` (41%)
+
+### Streams Zero-Capital
+| Stream | Status | Métodos Catalogados | Evidência E2E |
+|--------|--------|---------------------|---------------|
+| newsletter_generator | validated_dry_run | 168 | logs/revenue/validation_e2e_20260826.json |
+| proposal_bot | validated_dry_run | 180 | orchestrator_20260826.json |
+| affiliate_engine | validated_dry_run | 12 | orchestrator_20260826.json |
+| saas_scaffolder | validated_dry_run | 12 | orchestrator_20260826.json |
+
+### Governança
+- Proposta `exp-20260826-reactivate-zero-capital-streams-v2`: pending_judgment
+- Condições satisfeitas: timer dedicado + e2e completo + catálogo atualizado
+- Aguardando veredito do conselho para ativação de monetização real
+
+### Próximos Marcos
+1. Aprovação da proposta v2 pelo conselho
+2. Integração Stripe/payment links nos CTAs publicados
+3. >=3 ciclos consecutivos sem erro do timer revenue
+4. Primeira proposta freelance submetida (<=7 dias pós-aprovação)
+5. Primeiro payout registrado (<=30 dias pós-aprovação)
+## Estado Atual — Laboratório Receita Zero-Capital
+**Atualizado:** 2026-08-26 13:29 UTC
+**Receita Liquidada:** $0.00 (fase de validação infra)
+**Meta Aspiracional:** US$20M
+
+### Infraestrutura Operacional
+- ✅ Timer Revenue: `agentic-revenue-orchestrator.timer` ativo (6h cycle)
+- ✅ Timers Improve: map/dev/review ativos em worktree isolado
+- ✅ E2E Validado: newsletter_generator → generation → rendering → publication → URL pública
+- ✅ Catálogo: 372/900 métodos marcados como `validated_dry_run` (41%)
+
+### Streams Zero-Capital
+| Stream | Status | Métodos Catalogados | Evidência E2E |
+|--------|--------|---------------------|---------------|
+| newsletter_generator | validated_dry_run | 168 | logs/revenue/validation_e2e_20260826.json |
+| proposal_bot | validated_dry_run | 180 | orchestrator_20260826.json |
+| affiliate_engine | validated_dry_run | 12 | orchestrator_20260826.json |
+| saas_scaffolder | validated_dry_run | 12 | orchestrator_20260826.json |
+
+### Governança
+- Proposta `exp-20260826-reactivate-zero-capital-streams-v2`: pending_judgment
+- Condições satisfeitas: timer dedicado + e2e completo + catálogo atualizado
+- Aguardando veredito do conselho para ativação de monetização real
+
+### Próximos Marcos
+1. Aprovação da proposta v2 pelo conselho
+2. Integração Stripe/payment links nos CTAs publicados
+3. >=3 ciclos consecutivos sem erro do timer revenue
+4. Primeira proposta freelance submetida (<=7 dias pós-aprovação)
+5. Primeiro payout registrado (<=30 dias pós-aprovação)
 ## Reconciliação do Integrador — 2026-08-26T13:45Z
 
 ### AgentLily Runtime (Bounty)
