@@ -1,0 +1,28 @@
+{
+  "method_id": "531",
+  "name": "Upwork proposal automation (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:25:06.202544+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise_unit": "Staff Augmentation Div",
+      "compliance_review_required": true,
+      "multi_account_rotation": false,
+      "crm_sync_endpoint": "salesforce_rest"
+    },
+    {
+      "enterprise_unit": "Vendor Management Office",
+      "compliance_review_required": true,
+      "multi_account_rotation": true,
+      "crm_sync_endpoint": "sap_successfactors"
+    }
+  ],
+  "schema": [
+    "enterprise_unit",
+    "compliance_review_required",
+    "multi_account_rotation",
+    "crm_sync_endpoint"
+  ],
+  "notes": "Versão enterprise com compliance, integração CRM e rotação controlada de contas. Proxy: GitHub Search 'enterprise freelance management platform'. Fonte oficial: Upwork Enterprise API docs + Salesforce/SAP connectors."
+}

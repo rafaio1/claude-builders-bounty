@@ -1,0 +1,28 @@
+{
+  "method_id": "529",
+  "name": "Upwork proposal automation",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:25:06.202544+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "job_keyword": "python scraping",
+      "proposal_template_version": "v3.2",
+      "auto_submit_enabled": false,
+      "match_score_threshold": 85
+    },
+    {
+      "job_keyword": "shopify liquid dev",
+      "proposal_template_version": "v2.8",
+      "auto_submit_enabled": false,
+      "match_score_threshold": 90
+    }
+  ],
+  "schema": [
+    "job_keyword",
+    "proposal_template_version",
+    "auto_submit_enabled",
+    "match_score_threshold"
+  ],
+  "notes": "Automação de propostas no Upwork via scraping de feeds RSS/API não-oficial e templates dinâmicos. Zero-capital: geração local de propostas personalizadas sem envio real. Proxy: GitHub Search 'upwork proposal bot python'. Fonte oficial alvo: Upwork GraphQL API (requer auth TIER1)."
+}

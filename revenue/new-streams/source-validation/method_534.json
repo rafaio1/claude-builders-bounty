@@ -1,0 +1,28 @@
+{
+  "method_id": "534",
+  "name": "Upwork proposal automation (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:25:24.122051+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_model": "staff_augmentation",
+      "bench_size": 15,
+      "auto_bid_ceiling_usd": 2000,
+      "white_label_proposal": true
+    },
+    {
+      "agency_model": "project_outsourcing",
+      "bench_size": 8,
+      "auto_bid_ceiling_usd": 5000,
+      "white_label_proposal": false
+    }
+  ],
+  "schema": [
+    "agency_model",
+    "bench_size",
+    "auto_bid_ceiling_usd",
+    "white_label_proposal"
+  ],
+  "notes": "Gestão de propostas em escala para agências com múltiplos perfis. Proxy: GitHub Search 'upwork agency management tool'. Fonte oficial: Upwork Enterprise Partner API docs."
+}
