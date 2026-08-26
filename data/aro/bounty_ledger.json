@@ -308,7 +308,7 @@
       "title": "test(remap): add comprehensive tests and fix error messages for remap feature",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "No bounty/reward evidence found in repo issues. Do not submit further work until reward mechanism verified. Monitor for bounty program activation.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -324,6 +324,10 @@
           "type": "eligibility_check",
           "checked_at": "2026-08-26T22:57:20.031187+00:00",
           "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
+        },
+        {
+          "type": "audit",
+          "summary": "gh issue list returned 0 open issues; no bounty labels or reward mentions found"
         }
       ],
       "currency": "",
@@ -332,7 +336,9 @@
       "eligibility": "unknown",
       "probability": "unknown",
       "updated_at": "2026-08-26T22:52:40.181004+00:00",
-      "pr": 6
+      "pr": 6,
+      "bounty_verified": false,
+      "eligible": false
     },
     {
       "repo": "Lilly-Protocol/agentlily-runtime",
@@ -444,7 +450,7 @@
       "title": "feat: generalize stripPrefix with remap for flexible path mapping",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "No bounty/reward evidence found in repo issues. Do not submit further work until reward mechanism verified. Monitor for bounty program activation.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -460,6 +466,10 @@
           "type": "eligibility_check",
           "checked_at": "2026-08-26T22:57:20.031187+00:00",
           "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
+        },
+        {
+          "type": "audit",
+          "summary": "gh issue list returned 0 open issues; no bounty labels or reward mentions found"
         }
       ],
       "currency": "",
@@ -468,7 +478,9 @@
       "eligibility": "unknown",
       "probability": "unknown",
       "updated_at": "2026-08-26T22:52:40.181004+00:00",
-      "pr": 5
+      "pr": 5,
+      "bounty_verified": false,
+      "eligible": false
     },
     {
       "repo": "relayhop/ClaudeEarnSelf-runtime",
@@ -518,7 +530,7 @@
       "title": "feat: build /contribute contributor onboarding page (#117)",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty eligibility not yet confirmed for this specific PR. Cross-reference with open bounty issues before further work.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -550,7 +562,7 @@
       "title": "feat: add Playwright e2e smoke tests to CI (#101)",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty eligibility not yet confirmed for this specific PR. Cross-reference with open bounty issues before further work.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -582,7 +594,7 @@
       "title": "feat: add multi-stage Dockerfile for containerized deployment (#102)",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty eligibility not yet confirmed for this specific PR. Cross-reference with open bounty issues before further work.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -614,7 +626,7 @@
       "title": "feat: add root loading.tsx with accessible spinner (#127)",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty verified via issue #127 ($85). Monitor PR #150 Vercel auth; once unblocked, verify CI and request review.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -630,15 +642,22 @@
           "type": "eligibility_check",
           "checked_at": "2026-08-26T22:57:20.031187+00:00",
           "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
+        },
+        {
+          "type": "github_issue",
+          "issue": 127,
+          "summary": "Bounty $85 confirmed in issue title"
         }
       ],
-      "currency": "",
-      "value": 0,
+      "currency": "USD",
+      "value": 85,
       "program": "",
       "eligibility": "unknown",
       "probability": "unknown",
       "updated_at": "2026-08-26T22:52:40.181004+00:00",
-      "pr": 154
+      "pr": 154,
+      "bounty_verified": true,
+      "eligible": true
     },
     {
       "repo": "Lilly-Protocol/lily-frontend",
@@ -646,7 +665,7 @@
       "title": "feat: add site footer with legal and support links (#130)",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty verified via issue #130 ($95). Monitor PR #150 Vercel auth; once unblocked, verify CI and request review.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -662,15 +681,22 @@
           "type": "eligibility_check",
           "checked_at": "2026-08-26T22:57:20.031187+00:00",
           "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
+        },
+        {
+          "type": "github_issue",
+          "issue": 130,
+          "summary": "Bounty $95 confirmed in issue title"
         }
       ],
-      "currency": "",
-      "value": 0,
+      "currency": "USD",
+      "value": 95,
       "program": "",
       "eligibility": "unknown",
       "probability": "unknown",
       "updated_at": "2026-08-26T22:52:40.181004+00:00",
-      "pr": 153
+      "pr": 153,
+      "bounty_verified": true,
+      "eligible": true
     },
     {
       "repo": "Lilly-Protocol/lily-frontend",
@@ -678,7 +704,7 @@
       "title": "test: add smoke tests for route group layouts",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty verified via issue #129 ($95). Monitor PR #150 Vercel auth; once unblocked, verify CI and request review.",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -694,15 +720,22 @@
           "type": "eligibility_check",
           "checked_at": "2026-08-26T22:57:20.031187+00:00",
           "note": "PR open with CI but bounty eligibility not yet verified; no submission until reward confirmed"
+        },
+        {
+          "type": "github_issue",
+          "issue": 129,
+          "summary": "Bounty $95 confirmed in issue title"
         }
       ],
-      "currency": "",
-      "value": 0,
+      "currency": "USD",
+      "value": 95,
       "program": "",
       "eligibility": "unknown",
       "probability": "unknown",
       "updated_at": "2026-08-26T22:52:40.181004+00:00",
-      "pr": 152
+      "pr": 152,
+      "bounty_verified": true,
+      "eligible": true
     },
     {
       "repo": "Lilly-Protocol/lily-frontend",
@@ -710,7 +743,7 @@
       "title": "feat: add Storybook 10 for scaffold component development",
       "status": "waiting_monitoring",
       "last_action": "2026-08-26T22:57:20.031187+00:00",
-      "next_action": "Verify bounty/reward exists before any submission; check maintainer activity and payment history",
+      "next_action": "Bounty eligibility not yet confirmed for this specific PR. Cross-reference with open bounty issues before further work.",
       "evidence": [
         {
           "type": "gh_search_discovery",

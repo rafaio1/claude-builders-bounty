@@ -1,0 +1,44 @@
+{
+  "method_id": "908",
+  "pilot_name": "accounting-microsaas-marketplace-br-scaffold",
+  "proposal_title": "Cloudflare Workers Free Tier Reselling (Edge Compute)",
+  "artifact_real_source": "Marketplace de Micro-SaaS para Contadores (CRC Compliance)",
+  "divergence_note": "Proposal title é infrastructure_reselling genérico; artifact real é vertical_marketplace_accounting BR. Scaffold construído sobre artifact como fonte da verdade.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "freelance_services",
+  "free_tier_limits": {
+    "provider": "Domínio Sistemas / Contmatic API + Stripe/Asaas",
+    "permanent_free": true,
+    "limits": "APIs contábeis são pagas por licença mas marketplace não paga upfront; cobra comissão apenas na venda. Zero custo inicial para criar marketplace e listar ferramentas.",
+    "verification_method": "curl_domino_contmatic_pricing"
+  },
+  "paid_plan_baseline": {
+    "tool_ticket_avg_brl": "150-400/mês",
+    "commission_rate_pct": 15,
+    "revenue_per_sale_brl": "22.50-60.00",
+    "target_monthly_sales": 20,
+    "projected_mrr_brl": "450-1200"
+  },
+  "reselling_model": {
+    "type": "vertical_marketplace_commission",
+    "mechanism": "Curadoria de micro-SaaS contábil BR com verificação CRC/CFC. Marketplace lista ferramentas integradas a Domínio/Contmatic. Comissão 15% sobre assinatura recorrente via Asaas/Stripe.",
+    "zero_capital_path": "Marketplace web estático (GitHub Pages/Vercel free). Listing gratuito para devs. Cobrança via link Asaas/Pix sem mensalidade fixa. Primeiro revenue cobre qualquer custo futuro.",
+    "compliance": "CFC Resolução 1594/2020; LGPD para dados contábeis; termos de uso do marketplace isentam responsabilidade sobre ferramenta terceira."
+  },
+  "risks": [
+    "Dependência de APIs Domínio/Contmatic que podem mudar termos ou pricing",
+    "Baixo volume inicial: nicho específico exige marketing direcionado a escritórios contábeis",
+    "Concorrência de marketplaces genéricos (GetNinjas, Workana) sem curadoria CRC",
+    "Responsabilidade indireta se ferramenta listada causar erro fiscal em cliente final"
+  ],
+  "next_steps": [
+    "Validar integração real com Domínio/Contmatic sandbox via curl",
+    "Criar landing page MVP com 3-5 ferramentas curadas",
+    "Estabelecer contrato padrão de comissão com devs de micro-SaaS",
+    "Verificar conformidade CFC 1594/2020 para curadoria de ferramentas",
+    "Testar fluxo de pagamento Asaas split commission"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:00:00+00:00"
+}
