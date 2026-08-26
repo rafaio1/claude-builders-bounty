@@ -31673,9 +31673,9 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T16:41:30.694312+00:00",
-    "total_samples": 1558,
+    "total_samples": 1578,
     "expansion_batch": "batch_1451_to_1452",
-    "last_updated": "2026-08-26T18:14:30.115941+00:00"
+    "last_updated": "2026-08-26T18:16:26.286961+00:00"
   },
   "method_913": {
     "method_id": 913,
@@ -76499,5 +76499,345 @@
     "notes": "Validação BR: Empreendimentos precisam de laudo ambiental para licenciamento. Engenheiro ambiental cobra R$2k-20k dependendo porte. Demanda: infraestrutura PAC + agronegócio. Zero-capital: registro CREA/CRBio. Regulador: IBAMA/OEMA.",
     "category": "freelance_services",
     "sha256": "1af16b9813be5297747fb725360f03f8bff9175804ff487019ee3c640f5e4cac"
+  },
+  "method_1558": {
+    "method_id": 1558,
+    "name": "API de Validação de Prescrição Digital via CFM/Memori",
+    "source": "CFM Resolução 2.314/2022 + Memori API Docs",
+    "generated_at": "2026-08-26T18:15:31.988642+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_validation_brl": 0.08,
+      "regulator": "CFM/ANS",
+      "standard": "TISS",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Prescrição digital exige validador certificado pelo CFM para ter validade legal. API SaaS que valida assinatura ICP-Brasil e conformidade com padrão TISS. Monetização: R$0.08/validação. Regulador: CFM/ANS. Zero-capital: specs públicas do CFM.",
+    "category": "software_saas",
+    "sha256": "5a0ce98d5f2809fbf2d5b86812ba86252dc37b97c73995472e25ae76859b761a"
+  },
+  "method_1559": {
+    "method_id": 1559,
+    "name": "Middleware de Integração eSocial para Contadores",
+    "source": "Receita Federal eSocial Web Services + SERPRO",
+    "generated_at": "2026-08-26T18:15:31.989011+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 89,
+      "regulator": "Receita Federal/MTE",
+      "target_micro_empresas": 1500000,
+      "protocol": "XML/SOAP"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: eSocial é obrigatório para todas as empresas BR desde 2023. Middleware que simplifica integração XML/SOAP para escritórios contábeis menores. Pricing: R$89/mês por CNPJ. Regulador: Receita Federal/MTE. Demanda: >1.5M de microempresas ainda com dificuldade de adesão.",
+    "category": "software_saas",
+    "sha256": "688a12c1424dc05e90e9b63f40003aefb72fd7af00f3f997f2c48ac5c5c00555"
+  },
+  "method_1560": {
+    "method_id": 1560,
+    "name": "SaaS de Controle de Ponto Biométrico conforme Portaria 671/MTP",
+    "source": "Portaria MTP 671/2021 + REP-C API",
+    "generated_at": "2026-08-26T18:15:31.989146+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "license_brl_monthly": 199,
+      "regulator": "MTP/INMETRO",
+      "cert_required": "REP-C",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Novo controle de ponto eletrônico exige certificação INMETRO e homologação MTP. SaaS white-label para fabricantes de REP-C. License: R$199/mês por dispositivo. Regulador: MTP/INMETRO. Zero-capital: documentação pública da portaria.",
+    "category": "software_saas",
+    "sha256": "b3fbc12d7874b3ea4e372fa153b0f78d3a68d6aa3b451ddc9d0f22aac716a729"
+  },
+  "method_1561": {
+    "method_id": 1561,
+    "name": "Plataforma de Captação de Recursos via Lei Rouanet (SalicWeb)",
+    "source": "MinC SalicWeb API + Instrução Normativa 1/2023",
+    "generated_at": "2026-08-26T18:15:31.989239+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "pricing_model": "R$149/mês ou 2% captação",
+      "regulator": "MinC/SEFIC",
+      "annual_projects": 40000,
+      "api": "SalicWeb"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Proponentes culturais precisam submeter projetos via SalicWeb. SaaS que automatiza preenchimento, orçamento e prestação de contas. Pricing: R$149/mês ou 2% do valor captado. Regulador: MinC/SEFIC. Demanda: >40k projetos/ano submetidos.",
+    "category": "software_saas",
+    "sha256": "dddbffeccc1e9c33e8a4f3072b2c78f93f722178f4354aaa1f81e20ca2466a3c"
+  },
+  "method_1562": {
+    "method_id": 1562,
+    "name": "API de Consulta de Processos Judiciais via CNJ DataJud",
+    "source": "CNJ DataJud API Pública + Resolução CNJ 332/2020",
+    "generated_at": "2026-08-26T18:15:31.989315+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 299,
+      "regulator": "CNJ",
+      "active_processes": 100000000,
+      "base_api": "free_public"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: DataJud é base nacional unificada de processos judiciais. Wrapper SaaS com cache, alertas e analytics para escritórios de advocacia. Pricing: R$299/mês. Regulador: CNJ. Zero-capital: API pública gratuita. Demanda: >100M processos ativos.",
+    "category": "software_saas",
+    "sha256": "6afd9408d69e5bae8aa576a1467dd8d9175e8edae22c21e3851d72359997db60"
+  },
+  "method_1563": {
+    "method_id": 1563,
+    "name": "Sistema de Rastreabilidade Animal via SISBOV/GTA",
+    "source": "MAPA SISBOV + GTA Eletrônica API",
+    "generated_at": "2026-08-26T18:15:31.989395+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_head_brl": 2,
+      "regulator": "MAPA",
+      "herd_size_br": 220000000,
+      "export_compliance": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Rastreabilidade bovina é obrigatória para exportação e mercado interno premium. SaaS que integra brinco RFID + GTA eletrônica. Pricing: R$2/cabeça/mês. Regulador: MAPA. Demanda: >220M cabeças no rebanho BR. Exportação exige compliance.",
+    "category": "software_saas",
+    "sha256": "e6f191a89bd0f266b2874d392de58bece0e8c26b7c10c5e50772761702baea27"
+  },
+  "method_1564": {
+    "method_id": 1564,
+    "name": "Plataforma de Gestão de Benefícios Corporativos via PAT",
+    "source": "Lei 6.321/76 (PAT) + Receita Federal IN 1.925/2020",
+    "generated_at": "2026-08-26T18:15:31.989463+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_user_brl": 0.5,
+      "regulator": "MTE/RFB",
+      "beneficiaries_br": 20000000,
+      "tax_benefit": "IRPJ_deduction"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Programa de Alimentação do Trabalhador exige gestão de saldo e conformidade fiscal para dedução IRPJ. SaaS para operadoras de vale-refeição/alimentação. Pricing: R$0.50/beneficiário/mês. Regulador: MTE/RFB. Mercado: >20M trabalhadores beneficiários.",
+    "category": "software_saas",
+    "sha256": "3ff92f14fe8fdaf361da94c74992e932575db2359b942001d86b48fa5b2a714e"
+  },
+  "method_1565": {
+    "method_id": 1565,
+    "name": "API de Verificação de Antecedentes Criminais via PF/PC",
+    "source": "Polícia Federal API + PC Civil Estadual Convênios",
+    "generated_at": "2026-08-26T18:15:31.989562+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_check_brl": 3,
+      "regulator": "PF/SENAPPEN",
+      "annual_checks_private": 5000000,
+      "lgpd_consent": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Empresas de segurança, transporte e RH precisam verificar antecedentes para contratação. Wrapper SaaS unificado PF + PCs estaduais. Pricing: R$3/consulta. Regulador: PF/SENAPPEN. LGPD compliant com consentimento explícito. Demanda: >5M consultas/ano setor privado.",
+    "category": "software_saas",
+    "sha256": "0d4b893d781bca9302bfdae1ee0dded0c6c5196b7f7b94993a1482485bc5775a"
+  },
+  "method_1566": {
+    "method_id": 1566,
+    "name": "SaaS de Conformidade ANVISA para Farmácias de Manipulação",
+    "source": "ANVISA RDC 67/2007 + Portarias SVS/MS",
+    "generated_at": "2026-08-26T18:15:31.989652+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 399,
+      "regulator": "ANVISA/VISA",
+      "target_pharmacies": 8000,
+      "rdc_compliance": "RDC 67/2007"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Farmácias de manipulação exigem sistema de qualidade documentado conforme RDC 67. SaaS que gerencia POPs, registros de lote e rastreabilidade. Pricing: R$399/mês. Regulador: ANVISA/VISA Estadual. Demanda: >8k farmácias de manipulação ativas.",
+    "category": "software_saas",
+    "sha256": "1167fc66f01e85737692f3fa70b287aa19624bfa4133d5d8e1c0a3385618cbbb"
+  },
+  "method_1567": {
+    "method_id": 1567,
+    "name": "Middleware SPED Fiscal Multi-UF para ERPs Regionais",
+    "source": "Receita Federal SPED + CONFAZ Ajuste SINIEF",
+    "generated_at": "2026-08-26T18:15:31.989788+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "pricing": "R$149/mês ou R$0.05/registro",
+      "regulator": "RFB/CONFAZ",
+      "obligated_companies": 3000000,
+      "multi_uf": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: SPED Fiscal tem regras diferentes por UF. Middleware que normaliza geração de arquivos EFD para ERPs regionais sem cobertura nacional. Pricing: R$149/mês ou R$0.05/registro. Regulador: RFB/CONFAZ. Demanda: >3M empresas obrigadas ao SPED.",
+    "category": "software_saas",
+    "sha256": "bf578e87be41b4a4ed71cec551f23bd5604bedf3a74fd24848bcbc5dba13b7d7"
+  },
+  "method_1568": {
+    "method_id": 1568,
+    "name": "API de Dados Abertos do TSE para Análise Eleitoral",
+    "source": "TSE Dados Abertos API + Lei 12.527/2011",
+    "generated_at": "2026-08-26T18:16:26.283744+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 499,
+      "regulator": "TSE/LAI",
+      "data_type": "eleitoral_georreferenciado",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: TSE disponibiliza dados eleitorais via API REST. Produto de dados enriquecido com geolocalização e séries históricas para consultorias políticas e mídia. Pricing: R$499/mês acesso premium. Regulador: TSE/LAI. Zero-capital: dados públicos gratuitos.",
+    "category": "data_products",
+    "sha256": "e2ded69525505a4e109464f1fa908c97ac67ac5fbc63aea49ee568975f1f46a3"
+  },
+  "method_1569": {
+    "method_id": 1569,
+    "name": "Feed de Licitações Públicas Consolidado Multi-UF",
+    "source": "ComprasNet + Portais Estaduais APIs + PNCP",
+    "generated_at": "2026-08-26T18:16:26.284198+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 299,
+      "market_size_brl_bn": 200,
+      "source_official": "PNCP/ME",
+      "target_suppliers": 50000
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: >R$200B em licitações/ano dispersos em portais estaduais/federais. Feed consolidado com filtros por CNAE/região para empresas B2G. Pricing: R$299/mês. Fonte oficial: PNCP/ME. Demanda: >50k empresas fornecedoras ativas.",
+    "category": "data_products",
+    "sha256": "cec0aaac4fa52628cb32e5adc495fa02715eeeecf561c1fe0fe43eec558ca023"
+  },
+  "method_1570": {
+    "method_id": 1570,
+    "name": "Base de Patentes Brasileiras Estruturada via INPI",
+    "source": "INPI Busca Web API + LPI 9.279/96",
+    "generated_at": "2026-08-26T18:16:26.284625+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 199,
+      "regulator": "INPI/MCTIC",
+      "annual_filings": 30000,
+      "api_gap": "no_structured_api"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: INPI tem base de patentes pública mas sem API estruturada. Wrapper SaaS com busca semântica e alertas para escritórios de PI e P&D corporativo. Pricing: R$199/mês. Regulador: INPI/MCTIC. Demanda: >30k pedidos/ano.",
+    "category": "data_products",
+    "sha256": "bdb74d2b4b5002ec74ddd65fdba52a0e2549036a2d77e1533bf66c5095985fc4"
+  },
+  "method_1571": {
+    "method_id": 1571,
+    "name": "Dataset de Preços de Medicamentos CMED/ANVISA para Farmácias",
+    "source": "CMED Lista de Preços + ANVISA Consulta Remédios",
+    "generated_at": "2026-08-26T18:16:26.284862+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 599,
+      "regulator": "CMED/ANVISA",
+      "target_pharmacies": 100000,
+      "update_frequency": "monthly"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: CMED publica preços máximos mensalmente. Dataset estruturado para comparação competitiva e compliance de pricing em redes farmacêuticas. Pricing: R$599/mês. Regulador: CMED/ANVISA. Mercado: >100k farmácias.",
+    "category": "data_products",
+    "sha256": "508672980e24cf9082542dd2f7b1b5dba45a8b903efe59d5ec56f200acff6270"
+  },
+  "method_1572": {
+    "method_id": 1572,
+    "name": "API de Cadastro Rural CAR/SICAR para Agronegócio",
+    "source": "SICAR API Pública + Código Florestal 12.651/2012",
+    "generated_at": "2026-08-26T18:16:26.285107+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_car_brl": 2,
+      "regulator": "MMA/SFB",
+      "mandatory_for": "credito_rural_exportacao",
+      "herd_size_br": 220000000
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: CAR é obrigatório para crédito rural e exportação. API wrapper com validação automática de sobreposição e pendências para bancos e traders. Pricing: R$2/CAR consultado. Regulador: MMA/SFB. Rebanho: >220M cabeças.",
+    "category": "data_products",
+    "sha256": "c6fd0532cba2a47f3f8353074e830e2ffa4b3110542a0d4d40755a622747006f"
+  },
+  "method_1573": {
+    "method_id": 1573,
+    "name": "Custódia Qualificada de Criptoativos via CVM Instrução 8",
+    "source": "CVM Instrução 8/2024 + BCB Circular 3.978",
+    "generated_at": "2026-08-26T18:16:26.285262+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_pct_annual": 0.3,
+      "regulator": "CVM/BCB",
+      "model": "white_label_custody",
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: CVM regula custódia qualificada para fundos de investimento em cripto. Serviço white-label para administradores de carteira. Fee: 0.3% a.a. sobre AUC. Regulador: CVM/BCB. Zero-capital: infraestrutura existente de parceiros.",
+    "category": "crypto_defi",
+    "sha256": "51073f3623a79fb8f9758d7df9076533ae234eed169ed3470bb6dc8a4208a5a5"
+  },
+  "method_1574": {
+    "method_id": 1574,
+    "name": "Oracle de Precificação de Ativos Tokenizados via B3/BMF",
+    "source": "B3 Market Data API + CVM Resolução 193",
+    "generated_at": "2026-08-26T18:16:26.285423+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_call_brl": 0.01,
+      "regulator": "CVM/B3",
+      "rwa_market_projection_brl_bn": 50,
+      "proof_of_reserve": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Tokens lastreados em ativos B3 (ações, FIIs, CRIs) precisam de oracle confiável. Serviço de feed de preços on-chain com prova de reserva. Pricing: R$0.01/chamada. Regulador: CVM/B3. Demanda: mercado RWA projetado R$50B.",
+    "category": "crypto_defi",
+    "sha256": "6fe920a66bed2fb85334ed068e95a1797a5406293f272ffa57d4d1c284558b7d"
+  },
+  "method_1575": {
+    "method_id": 1575,
+    "name": "Gateway de Pagamento Pix para DeFi via Open Finance",
+    "source": "BCB Open Finance API + Pix Protocol",
+    "generated_at": "2026-08-26T18:16:26.285617+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_pct": 0.5,
+      "regulator": "BCB",
+      "protocol": "open_finance_pix",
+      "sandbox_free": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Open Finance permite iniciação de pagamento por terceiros. Gateway que conecta wallets DeFi a contas bancárias BR via Pix instantâneo. Fee: 0.5% por transação. Regulador: BCB. Sandbox gratuita disponível.",
+    "category": "crypto_defi",
+    "sha256": "13a38808e3f1dcb7df67d03119cd8d57543b0ea14a926fa5d9a7e9e782d2f33d"
+  },
+  "method_1576": {
+    "method_id": 1576,
+    "name": "Compliance KYT (Know Your Transaction) para Exchanges BR",
+    "source": "COAF Circular 1/2024 + Chainalysis/Elliptic Alternatives",
+    "generated_at": "2026-08-26T18:16:26.285761+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_brl_monthly": 999,
+      "regulator": "COAF/CVM",
+      "active_exchanges_br": 50,
+      "reporting_auto": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Exchanges registradas no COAF precisam de monitoramento transacional. SaaS nacional com integração a múltiplas chains e reporting automático. Pricing: R$999/mês. Regulador: COAF/CVM. Demanda: >50 exchanges ativas.",
+    "category": "crypto_defi",
+    "sha256": "7588d45b3bea8bc1393e78caa5a3c5d0b856fc1f41e483d528d1986aeb5dc1d9"
+  },
+  "method_1577": {
+    "method_id": 1577,
+    "name": "Plataforma de Emissão de Green Bonds Tokenizados via CVM",
+    "source": "CVM Instrução 8 + ICMA Green Bond Principles",
+    "generated_at": "2026-08-26T18:16:26.286370+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_pct_issuance": 0.2,
+      "regulator": "CVM/ANBIMA",
+      "market_growth_pct_yoy": 30,
+      "third_party_verification": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Mercado de títulos verdes BR cresce >30%/ano. Plataforma para emissão e tracking de green bonds tokenizados com verificação terceira parte. Fee: 0.2% sobre emissão. Regulador: CVM/ANBIMA. Zero-capital: parcerias com certificadores.",
+    "category": "crypto_defi",
+    "sha256": "e582ab6ab1bae371c7ebbb4e2e07f7ddabd2b37471e3c63f38d667d52dfd6dfb"
   }
 }

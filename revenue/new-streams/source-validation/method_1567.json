@@ -1,0 +1,16 @@
+{
+  "method_id": 1567,
+  "name": "Middleware SPED Fiscal Multi-UF para ERPs Regionais",
+  "source": "Receita Federal SPED + CONFAZ Ajuste SINIEF",
+  "generated_at": "2026-08-26T18:15:31.989788+00:00",
+  "tier": "TIER0",
+  "sample_data": {
+    "pricing": "R$149/mês ou R$0.05/registro",
+    "regulator": "RFB/CONFAZ",
+    "obligated_companies": 3000000,
+    "multi_uf": true
+  },
+  "schema": "revenue_stream_v1",
+  "notes": "Validação BR: SPED Fiscal tem regras diferentes por UF. Middleware que normaliza geração de arquivos EFD para ERPs regionais sem cobertura nacional. Pricing: R$149/mês ou R$0.05/registro. Regulador: RFB/CONFAZ. Demanda: >3M empresas obrigadas ao SPED.",
+  "category": "software_saas"
+}
