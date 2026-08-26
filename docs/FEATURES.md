@@ -45,7 +45,7 @@
  | Email Cleanup Pipeline | ⏳ WIP | `.venv` local; lógica de negócio não isolada | Extrair scripts limpos e testar |
  | Affiliate Bot Content | ⏳ WIP | Output gerado dinamicamente; sem testes | Validar conteúdo e adicionar ao repo |
  | Micro-SaaS Projects | ⏳ WIP | Múltiplos subprojetos; maturidade variável | Triagem individual por projeto |
-| High-Ticket Workspaces | ⚠️ Auditivo | 15 diretórios gitignored; utilidade financeira não verificada individualmente | Classificar cada workspace como ativo/arquivo-morto e documentar no ledger |
+| High-Ticket Workspaces | ✅ Audited | 13x ClaudeEarnSelf clones (gumroad_filter.py idêntico, sem valor financeiro direto); 1x Space Station 14 fork (ht_2500_1es6x22d, C# game engine, não relacionado a revenue); 1x service_delivery_loop.py placeholder (5 linhas, sleep 1h). Nenhum contém artefato de revenue acionável ou feature integrável. Documentado como arquivo-morto no INTEGRATION_CONTEXT.md. | Manter gitignored; reavaliar apenas se novo conteúdo for adicionado por outro agente |
 
 ## Artefatos Excluídos por Segurança
  
