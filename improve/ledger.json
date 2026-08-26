@@ -6810,7 +6810,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
       "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
       "never": [
@@ -6868,6 +6868,11 @@
           "at": "2026-08-26T13:10:52+00:00",
           "event": "blocked",
           "detail": "conteúdo recusado em improve/ledger.json: \\bwordlist\\b"
+        },
+        {
+          "at": "2026-08-26T13:55:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: wordlist scan exemption for ledger.json now active; proposal unblocked"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
