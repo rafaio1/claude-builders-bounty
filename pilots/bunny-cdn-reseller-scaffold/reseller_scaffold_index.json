@@ -1,0 +1,33 @@
+{
+  "pilot_name": "bunny-cdn-reseller-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "Não possui free tier permanente. Apenas trial de 14 dias sem cartão. Modelo zero-capital INVIÁVEL pois requer pagamento mínimo de $1/mês após trial.",
+  "free_tier_limits": {
+    "trial": "14 dias grátis (sem necessidade de cartão)",
+    "permanent_free": false,
+    "notes": "Após trial, custo mínimo é $1/mês. Não há plano gratuito permanente."
+  },
+  "paid_plan_baseline": {
+    "cdn_standard_eu_na_per_gb": 0.01,
+    "cdn_volume_first_500tb_per_gb": 0.005,
+    "storage_minimum_monthly": 1.00,
+    "request_fees": "Zero (apenas bandwidth)"
+  },
+  "tos_compliance": {
+    "resale_allowed": "Não verificado (rejeitado por falta de free tier antes da análise TOS)",
+    "source_url": "https://bunny.net/pricing/"
+  },
+  "reselling_model": null,
+  "risks": [
+    "Sem free tier permanente — viola restrição zero-capital absoluto",
+    "Trial de 14 dias não permite validação comercial sustentável",
+    "Custo mínimo de $1/mês impede operação sem capital inicial"
+  ],
+  "next_steps": [
+    "REJEITADO como scaffold zero-capital",
+    "Reavaliar apenas se bunny.net lançar plano gratuito permanente no futuro",
+    "Manter no radar para modelos com capital semente (fora do escopo atual)"
+  ],
+  "validated_at": "2026-08-27T00:00:00+00:00",
+  "validation_method": "curl + parsing HTML da página de pricing"
+}
