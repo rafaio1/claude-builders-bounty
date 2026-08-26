@@ -1,0 +1,32 @@
+{
+  "method_id": "362",
+  "name": "Liquidation sniping (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:15.132787+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "morpho_blue",
+      "market": "wstETH/USDC",
+      "ltv_current_pct": 78.5,
+      "liquidation_bonus_bps": 500,
+      "estimated_profit_usd": 225
+    },
+    {
+      "protocol": "euler_v2",
+      "market": "cbETH/DAI",
+      "ltv_current_pct": 82.1,
+      "liquidation_bonus_bps": 750,
+      "estimated_profit_usd": 410
+    }
+  ],
+  "schema": [
+    "protocol:str",
+    "market:str",
+    "ltv_current_pct:float",
+    "liquidation_bonus_bps:int",
+    "estimated_profit_usd:float"
+  ],
+  "notes": "Focado em protocolos emergentes com menor competição de liquidadores. Proxy TIER0: GitHub search (morpho/euler liquidation scripts). Fonte oficial alvo: Morpho/Euler APIs + Dune dashboards. Lucro estimado sintético.",
+  "sha256": "31cf42267ac0b444f484d2bbe262e4ff5c5b7af969f3e07818a950dbe20d3378"
+}

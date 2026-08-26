@@ -1,0 +1,32 @@
+{
+  "method_id": "363",
+  "name": "Liquidation sniping (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:15.132787+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "venue": "multi_protocol",
+      "protocols_monitored": 8,
+      "daily_liq_events": 142,
+      "monthly_revenue_usd": 89000,
+      "infra_cost_usd": 12000
+    },
+    {
+      "venue": "cross_chain",
+      "protocols_monitored": 5,
+      "daily_liq_events": 67,
+      "monthly_revenue_usd": 54000,
+      "infra_cost_usd": 18000
+    }
+  ],
+  "schema": [
+    "venue:str",
+    "protocols_monitored:int",
+    "daily_liq_events:int",
+    "monthly_revenue_usd:float",
+    "infra_cost_usd:float"
+  ],
+  "notes": "Operação enterprise multi-protocolo com infraestrutura dedicada. Proxy TIER0: GitHub institutional liquidation frameworks. Fonte oficial alvo: APIs agregadas + private RPC nodes. Receita/custo sintéticos baseados em benchmarks.",
+  "sha256": "3a22315acf3ee5b726e33fe60e4c0f15ca98ff972135a789c2b23c88c645dc79"
+}

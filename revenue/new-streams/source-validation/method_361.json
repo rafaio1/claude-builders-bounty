@@ -1,0 +1,32 @@
+{
+  "method_id": "361",
+  "name": "Liquidation sniping",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:15.132787+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "aave_v3",
+      "asset": "WETH",
+      "liq_threshold_pct": 80.0,
+      "avg_liq_size_usd": 45000,
+      "snipe_success_rate_pct": 12.4
+    },
+    {
+      "protocol": "compound_v3",
+      "asset": "USDC",
+      "liq_threshold_pct": 75.0,
+      "avg_liq_size_usd": 18000,
+      "snipe_success_rate_pct": 8.7
+    }
+  ],
+  "schema": [
+    "protocol:str",
+    "asset:str",
+    "liq_threshold_pct:float",
+    "avg_liq_size_usd:float",
+    "snipe_success_rate_pct:float"
+  ],
+  "notes": "Monitoramento de posições near-liquidation em protocolos DeFi. Proxy TIER0: GitHub repos (liquidation bots, aave-liquidator). Fonte oficial alvo: Aave/Compound subgraphs + mempool monitoring. Zero capital: dados sintéticos apenas.",
+  "sha256": "aa0db5eae24b2804e228729b75da85e516a8333c8109649990eed428c6bafbf0"
+}
