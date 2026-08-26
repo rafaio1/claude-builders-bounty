@@ -1,0 +1,37 @@
+{
+  "method_id": "631",
+  "name": "Cloud cost optimization",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:37.295894+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "account_id": "acc_9921",
+      "provider": "aws",
+      "monthly_spend_usd": 12500,
+      "optimization_potential_pct": 22,
+      "tools_used": [
+        "cost_explorer",
+        "trusted_advisor"
+      ]
+    },
+    {
+      "account_id": "acc_4410",
+      "provider": "gcp",
+      "monthly_spend_usd": 8200,
+      "optimization_potential_pct": 18,
+      "tools_used": [
+        "billing_export",
+        "active_assist"
+      ]
+    }
+  ],
+  "schema": [
+    "account_id",
+    "provider",
+    "monthly_spend_usd",
+    "optimization_potential_pct",
+    "tools_used"
+  ],
+  "notes": "Análise geral de custos cloud. Fonte oficial alvo: AWS/GCP/Azure billing APIs. Proxy TIER0: GitHub Search API para scripts de FinOps e análise de custos."
+}

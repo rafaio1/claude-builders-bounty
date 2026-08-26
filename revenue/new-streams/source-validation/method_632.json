@@ -1,0 +1,31 @@
+{
+  "method_id": "632",
+  "name": "Cloud cost optimization (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:37.295894+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_id": "st_331",
+      "burn_rate_monthly_usd": 4500,
+      "free_tier_utilization_pct": 65,
+      "credits_remaining_usd": 15000,
+      "priority": "extend_runway"
+    },
+    {
+      "startup_id": "st_882",
+      "burn_rate_monthly_usd": 9200,
+      "free_tier_utilization_pct": 40,
+      "credits_remaining_usd": 5000,
+      "priority": "unit_economics"
+    }
+  ],
+  "schema": [
+    "startup_id",
+    "burn_rate_monthly_usd",
+    "free_tier_utilization_pct",
+    "credits_remaining_usd",
+    "priority"
+  ],
+  "notes": "Foco em extensão de runway e créditos. Fonte oficial alvo: Startup programs docs. Proxy TIER0: GitHub Search API para configs de startup frugal."
+}

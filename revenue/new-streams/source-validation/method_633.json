@@ -1,0 +1,31 @@
+{
+  "method_id": "633",
+  "name": "Cloud cost optimization (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:40:37.295894+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_id": "ent_771",
+      "annual_contract_value_usd": 2400000,
+      "reserved_instance_coverage_pct": 78,
+      "showback_enabled": true,
+      "tagging_compliance_pct": 94
+    },
+    {
+      "corp_id": "ent_220",
+      "annual_contract_value_usd": 5100000,
+      "reserved_instance_coverage_pct": 85,
+      "showback_enabled": true,
+      "tagging_compliance_pct": 99
+    }
+  ],
+  "schema": [
+    "corp_id",
+    "annual_contract_value_usd",
+    "reserved_instance_coverage_pct",
+    "showback_enabled",
+    "tagging_compliance_pct"
+  ],
+  "notes": "Governança, RI coverage e showback. Fonte oficial alvo: Enterprise FinOps frameworks. Proxy TIER0: GitHub Search API para políticas de tagging e automação de RI."
+}
