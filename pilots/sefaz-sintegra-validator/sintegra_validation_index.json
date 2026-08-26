@@ -1,0 +1,59 @@
+{
+  "source": "SINTEGRA/SEFAZ Validation Scaffold (method_907)",
+  "generated_at": "2026-08-26T20:14:51.684993+00:00",
+  "portal_check": [
+    {
+      "source": "Portal Nacional SINTEGRA",
+      "url": "https://www.sintegra.gov.br/",
+      "status_code": 200,
+      "available": true,
+      "content_type": "text/html",
+      "note": "Portal informativo; consulta real exige certificado digital"
+    }
+  ],
+  "uf_wsdl_checks": [
+    {
+      "uf": "SP",
+      "url": "https://nfe.fazenda.sp.gov.br/ws/cadconsultacadastro4.asmx",
+      "reachable": false,
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+    },
+    {
+      "uf": "MG",
+      "url": "https://nfe.fazenda.mg.gov.br/nfe2/services2/CadConsultaCadastro2",
+      "reachable": false,
+      "error": "<urlopen error [SSL: SSLV3_ALERT_HANDSHAKE_FAILURE] sslv3 alert handshake failure (_ssl.c:1000)>"
+    },
+    {
+      "uf": "RS",
+      "url": "https://cad.sefazrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro4.asmx",
+      "reachable": false,
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+    },
+    {
+      "uf": "PR",
+      "url": "https://nfe.sefa.pr.gov.br/nfe/CadConsultaCadastro4?wsdl",
+      "reachable": false,
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: self-signed certificate in certificate chain (_ssl.c:1000)>"
+    },
+    {
+      "uf": "SC",
+      "url": "https://cad.svrs.rs.gov.br/ws/cadconsultacadastro/cadconsultacadastro4.asmx",
+      "reachable": false,
+      "error": "<urlopen error [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: unable to get local issuer certificate (_ssl.c:1000)>"
+    }
+  ],
+  "summary": {
+    "total_ufs_checked": 5,
+    "reachable_endpoints": 0,
+    "production_requirement": "Certificado Digital ICP-Brasil A1/A3",
+    "zero_capital_scaffold": true,
+    "monetization_path": "B2B API wrapper para ERPs/contadores (R$0.05-0.15/consulta)"
+  },
+  "compliance": {
+    "br_regulated_anchor": "SEFAZ/CONFAZ",
+    "lgpd_compliant": true,
+    "data_classification": "Dados fiscais públicos (CNPJ/IE)",
+    "auth_required_production": true
+  }
+}
