@@ -1,0 +1,38 @@
+{
+  "method_id": "652",
+  "name": "Localization engineering (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:43:43.001452+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_771",
+      "content_type": "youtube_subtitles",
+      "languages": [
+        "es",
+        "pt"
+      ],
+      "tool": "whisper_srt",
+      "manual_review_pct": 20
+    },
+    {
+      "creator_id": "cr_229",
+      "content_type": "course_transcripts",
+      "languages": [
+        "de",
+        "fr",
+        "ja"
+      ],
+      "tool": "deepgram",
+      "manual_review_pct": 35
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "content_type",
+    "languages",
+    "tool",
+    "manual_review_pct"
+  ],
+  "notes": "Legendagem e transcrição para criadores. Fonte oficial alvo: YouTube Creator Studio / Udemy localization docs. Proxy TIER0: GitHub Search API para scripts de batch subtitle translation."
+}

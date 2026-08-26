@@ -1,0 +1,31 @@
+{
+  "method_id": "654",
+  "name": "Localization engineering (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:43:43.001452+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_112",
+      "tms_platform": "phrase",
+      "api_integration": true,
+      "client_onboarding_days": 5,
+      "qa_automation": true
+    },
+    {
+      "agency_id": "ag_993",
+      "tms_platform": "memoq",
+      "api_integration": false,
+      "client_onboarding_days": 14,
+      "qa_automation": false
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "tms_platform",
+    "api_integration",
+    "client_onboarding_days",
+    "qa_automation"
+  ],
+  "notes": "Fluxo de agência com TMS profissional. Fonte oficial alvo: Phrase/MemoQ partner docs. Proxy TIER0: GitHub Search API para conectores customizados de TMS."
+}

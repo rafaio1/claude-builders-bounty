@@ -1,0 +1,31 @@
+{
+  "method_id": "653",
+  "name": "Localization engineering (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:43:43.001452+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_441",
+      "lib": "next-intl",
+      "extraction": "automatic",
+      "plurals_supported": true,
+      "fallback_strategy": "en_default"
+    },
+    {
+      "dev_id": "dv_882",
+      "lib": "vue-i18n",
+      "extraction": "cli_based",
+      "plurals_supported": true,
+      "fallback_strategy": "key_name"
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "lib",
+    "extraction",
+    "plurals_supported",
+    "fallback_strategy"
+  ],
+  "notes": "Configuração técnica de i18n em frameworks. Fonte oficial alvo: Docs oficiais next-intl/vue-i18n. Proxy TIER0: GitHub Search API para boilerplates de i18n por framework."
+}
