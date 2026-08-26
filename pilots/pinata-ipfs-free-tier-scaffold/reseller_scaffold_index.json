@@ -1,0 +1,48 @@
+{
+  "pilot_id": "pinata-ipfs-free-tier-scaffold",
+  "provider": "Pinata (IPFS Pinning)",
+  "plan": "Free Tier",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "Terms grant limited, personal, non-exclusive, non-transferable license for personal use only. AUP prohibits commercial advertising/solicitations. No resell/sublicense rights on free tier. Enterprise plan required for tailored/commercial solutions.",
+  "free_tier_limits": {
+    "storage": "1 GB",
+    "files": 500,
+    "bandwidth": "10 GB/month",
+    "requests": "10K/month",
+    "gateways": 1,
+    "agents": 0,
+    "sla": "None"
+  },
+  "paid_plan_baseline": {
+    "name": "Picnic",
+    "price_usd_monthly": 20,
+    "storage": "1 TB",
+    "notes": "Commercial use likely permitted but reselling still restricted without Enterprise agreement"
+  },
+  "reselling_model": {
+    "permitted": false,
+    "requires_partner_addendum": true,
+    "white_label_available": false,
+    "sublicense_rights": "None on free tier",
+    "assignment": "Pinata may assign freely; user cannot assign without consent"
+  },
+  "risks": [
+    "License restricted to personal use on free tier",
+    "AUP prohibits commercial communications and solicitations",
+    "Account termination at sole discretion without notice",
+    "No SLA or uptime guarantee on free tier",
+    "Enterprise plan explicitly positioned as separate commercial track"
+  ],
+  "next_steps": [
+    "REJECTED — Do not proceed with Pinata Free as resell scaffold",
+    "Consider Pinata only via Enterprise agreement (outside zero-capital scope)",
+    "Move to next TIER0 candidate: method_911 (DNS Subdomain Reselling) or method_918 (Fly.io)"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "source_docs": [
+    "/tmp/pinata_terms.txt",
+    "/tmp/pinata_pricing.txt",
+    "/tmp/ipfs_persistence.txt"
+  ]
+}

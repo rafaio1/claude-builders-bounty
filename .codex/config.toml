@@ -1,10 +1,4 @@
 model = "claude-fable-5[1m]"
-model_provider = "ghostcli"
-
-[model_providers.ghostcli]
-name = "GhostCLI"
-base_url = "https://ghostcli.dev/v1"
-env_key = "GHOSTCLI_API_KEY"
 
 [mcp_servers.playwright]
 command = "playwright-mcp"

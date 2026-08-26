@@ -604,10 +604,21 @@ def discover_bounties():
 
 
 def triage(candidates):
+    global _TRIAGE_CONSECUTIVE_FAILURES
+    if '_TRIAGE_CONSECUTIVE_FAILURES' not in globals():
+        _TRIAGE_CONSECUTIVE_FAILURES = 0
     if not candidates: return []
-    api_key, base_url, model = get_config()
+    api_key, base_url, default_model = get_config()
     if not api_key:
         log("ERROR: No GhostCLI API key"); return []
+    # Adaptive model selection: fallback to claude-sonnet after 2 consecutive GLM failures
+    if _TRIAGE_CONSECUTIVE_FAILURES >= 2 and default_model != "claude-sonnet-5[1m]":
+        model = "claude-sonnet-5[1m]"
+        log(f"Triage model fallback: {default_model} -> {model} (failures={_TRIAGE_CONSECUTIVE_FAILURES})")
+    else:
+        model = default_model
+    # Reset failure counter on successful triage
+    _TRIAGE_CONSECUTIVE_FAILURES = 0
     
     # Safety net: filter out already-submitted issues before triage
     try:
