@@ -31673,9 +31673,9 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T16:41:30.694312+00:00",
-    "total_samples": 1548,
+    "total_samples": 1558,
     "expansion_batch": "batch_1451_to_1452",
-    "last_updated": "2026-08-26T18:13:29.468603+00:00"
+    "last_updated": "2026-08-26T18:14:30.115941+00:00"
   },
   "method_913": {
     "method_id": 913,
@@ -76326,5 +76326,178 @@
     "notes": "Validação BR: Reformas tributárias geram demanda contínua por conteúdo especializado. Anchor/Spotify monetiza em BRL. Patrocínio de escritórios contábeis/jurídicos. Zero-capital: gravação caseira. Ancoragem: CFOAB/CRC.",
     "category": "content_monetization",
     "sha256": "3bc17655bbe3759cb41dd5cf5ec2ea23c0fb18491deef63e27a45ac3fcf4cdf4"
+  },
+  "method_1548": {
+    "method_id": 1548,
+    "name": "Gateway Pix para DAOs e Comunidades Web3 BR",
+    "source": "BCB Pix API + Smart Contract Bridge",
+    "generated_at": "2026-08-26T18:14:30.114218+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_pct": 0.5,
+      "regulator": "BCB/CVM",
+      "bridge_type": "pix_to_stablecoin",
+      "sandbox_free": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: DAOs brasileiras precisam de on-ramp/off-ramp em BRL via Pix para operar legalmente. Integração direta com BCB via PSP credenciado. Monetização: taxa de 0.5% por transação bridge. Regulador: BCB/CVM. Zero-capital: sandbox Pix gratuita.",
+    "category": "crypto_defi",
+    "sha256": "67fd56bc25d69f8bf48954fa6630236819cf71da55801d77d121a65a168cc34e"
+  },
+  "method_1549": {
+    "method_id": 1549,
+    "name": "Staking de CBDC BR (Real Digital) via Nó Validador",
+    "source": "BCB Real Digital Pilot Docs",
+    "generated_at": "2026-08-26T18:14:30.114556+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "asset": "DREX",
+      "regulator": "BCB",
+      "revenue_model": "network_fees_brl",
+      "phase": "pilot_testnet"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Real Digital (DREX) está em fase piloto com bancos selecionados. Operar nó validador ou provedor de liquidez para instituições financeiras menores. Receita via fees de rede em BRL. Regulador: BCB. Zero-capital: participação em testnet atual.",
+    "category": "crypto_defi",
+    "sha256": "d9c532ff8dfbbdad6140c5c4d01818ac9939a0cd86c7ff77c2c9e253024de901"
+  },
+  "method_1550": {
+    "method_id": 1550,
+    "name": "Compliance Oracle para Tokens de Ativos Reais (RWA) BR",
+    "source": "CVM Resolução 193 + ANBIMA",
+    "generated_at": "2026-08-26T18:14:30.114686+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_verify_brl": 0.2,
+      "regulator": "CVM/SUSEP",
+      "market_projection_brl_bn": 50,
+      "use_case": "rwa_tokenization"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Tokenização de ativos reais (CRIs, CRAs, precatórios) exige oracle de compliance que verifique lastro em cartório BR. SaaS oracle cobra R$0.20/verificação on-chain. Regulador: CVM/SUSEP. Demanda: mercado de RWA BR projetado em R$50B até 2028.",
+    "category": "crypto_defi",
+    "sha256": "e6769b2d98cfa3e7d728afd8c230213999d804f489c1b5a33b63e4010c57fecd"
+  },
+  "method_1551": {
+    "method_id": 1551,
+    "name": "DEX Aggregator com Pares BRL-Stablecoin via Mercado Bitcoin API",
+    "source": "Mercado Bitcoin Open API",
+    "generated_at": "2026-08-26T18:14:30.114811+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "spread_pct": 0.1,
+      "premium_brl_monthly": 49,
+      "regulator": "COAF",
+      "api_provider": "Mercado Bitcoin"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Maior exchange BR oferece API pública. Aggregator que encontra melhor rota BRL→USDT/USDC entre exchanges locais. Monetização: spread de 0.1% ou subscription premium R$49/mês. Compliance: registrado como VASP na COAF. Zero-capital: API free tier.",
+    "category": "crypto_defi",
+    "sha256": "704b60978880c67f33c40a7ca09c96ab6d2c283d4c0c826ac0efd6693f720d9f"
+  },
+  "method_1552": {
+    "method_id": 1552,
+    "name": "NFT Marketplace para Arte Brasileira com Royalty Automático CVM",
+    "source": "Lei de Direitos Autorais 9.610/98 + ERC-2981",
+    "generated_at": "2026-08-26T18:14:30.114948+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "platform_fee_pct": 5,
+      "royalty_standard": "ERC-2981",
+      "payment": "Pix",
+      "regulator": "MinC/CVM"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Marketplace focado em artistas BR com royalty automático on-chain conforme lei brasileira. Curadoria de obras com certificado de autenticidade digital. Taxa plataforma 5%. Pagamento via Pix. Regulador: MinC/CVM. Zero-capital: deploy em L2 brasileira.",
+    "category": "crypto_defi",
+    "sha256": "fdd6f57b0f7a2559c29cd30a1420bd249ceda02d0cc85201050a4560686ba6e1"
+  },
+  "method_1553": {
+    "method_id": 1553,
+    "name": "Consultoria de Adequação à NR-12 para Indústrias",
+    "source": "MTE Portaria 427/2023 + ABNT NBR ISO 12100",
+    "generated_at": "2026-08-26T18:14:30.115081+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_avg_brl": 6500,
+      "target_industries": 200000,
+      "regulator": "MTE/CREA",
+      "cert_required": "ART/CRT"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: NR-12 é obrigatória para segurança em máquinas industriais. Consultor freelancer cobra R$3k-10k por laudo técnico. Demanda: >200k indústrias sujeitas a fiscalização MTE. Zero-capital: conhecimento técnico + ART/CRT. Regulador: MTE/CREA.",
+    "category": "freelance_services",
+    "sha256": "8653eea7313e4304f975cf0e62f3ef20dba34f4182993701446e1be6e6aed346"
+  },
+  "method_1554": {
+    "method_id": 1554,
+    "name": "Perícia Judicial Digital para Advogados Trabalhistas",
+    "source": "TST Resolução 185/2023 + CPC Art. 473",
+    "generated_at": "2026-08-26T18:14:30.115183+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_range_brl": "1500-5000",
+      "regulator": "TJ/CNJ",
+      "registration": "CPTEC",
+      "demand_driver": "digital_evidence_growth"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Perito digital nomeado pelo juiz para analisar provas eletrônicas em processos trabalhistas. Honorários tabelados por TST (R$1.5k-5k). Cadastro no CPTEC/TJ obrigatório. Zero-capital: certificação pericial. Regulador: TJ/CNJ.",
+    "category": "freelance_services",
+    "sha256": "6684532a9d318a54e4c3bd2409bca4aa1b5279c8ccb24c574cf43c519d5ad552"
+  },
+  "method_1555": {
+    "method_id": 1555,
+    "name": "Tradução Juramentada EN↔PT-BR para Processos de Imigração",
+    "source": "Junta Comercial + Itamaraty Portaria 108/2023",
+    "generated_at": "2026-08-26T18:14:30.115293+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "price_per_page_brl": 80,
+      "regulator": "Junta Comercial",
+      "demand_driver": "digital_nomad_visa",
+      "zero_capital": false
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Tradutor juramentado é exigido para documentos estrangeiros em processos PF/Itamaraty. Preço tabela junta comercial (~R$80/página). Demanda crescente com vistos nômades digitais. Zero-capital: concurso público tradutor. Regulador: Junta Comercial.",
+    "category": "freelance_services",
+    "sha256": "e4719f3d164ce7c03278d13c3c04712fd561982d230402db0be63830cbc2f963"
+  },
+  "method_1556": {
+    "method_id": 1556,
+    "name": "Auditoria Contábil para OSCIPs e Terceiro Setor",
+    "source": "Lei 9.790/99 + NBC TA 700",
+    "generated_at": "2026-08-26T18:14:30.115387+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_avg_brl": 10000,
+      "target_osciips": 30000,
+      "regulator": "CRC/MJSP",
+      "mandatory": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: OSCIPs precisam de auditoria independente anual para manter qualificação MJSP. Auditor independente cobra R$5k-15k. >30k OSCIPs ativas. Zero-capital: registro CRC ativo. Regulador: CRC/MJSP.",
+    "category": "freelance_services",
+    "sha256": "458292b34ecfbb16f2bbf03fec45a21baa5d521767c4b9ace7a51c616ca355f1"
+  },
+  "method_1557": {
+    "method_id": 1557,
+    "name": "Laudo Ambiental para Licenciamento IBAMA/Órgãos Estaduais",
+    "source": "LC 140/2011 + CONAMA Resolução 237/97",
+    "generated_at": "2026-08-26T18:14:30.115488+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_range_brl": "2000-20000",
+      "regulator": "IBAMA/OEMA",
+      "demand_drivers": [
+        "PAC",
+        "agronegocio"
+      ],
+      "cert_required": "CREA/CRBio"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Empreendimentos precisam de laudo ambiental para licenciamento. Engenheiro ambiental cobra R$2k-20k dependendo porte. Demanda: infraestrutura PAC + agronegócio. Zero-capital: registro CREA/CRBio. Regulador: IBAMA/OEMA.",
+    "category": "freelance_services",
+    "sha256": "1af16b9813be5297747fb725360f03f8bff9175804ff487019ee3c640f5e4cac"
   }
 }
