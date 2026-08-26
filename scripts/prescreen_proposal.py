@@ -69,15 +69,10 @@ def log_rejection(proposal_id: str, reason: str, proposal_title: str):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) < 2:
-        print("Usage: prescreen_proposal.py <proposal_json_file_or_stdin>")
-        sys.exit(1)
-
-    source = sys.argv[1]
-    if source == "-":
+    if len(sys.argv) >= 2 and sys.argv[1] not in ("-", ""):
         raw = sys.stdin.read()
     else:
-        raw = Path(source).read_text()
+        raw = Path(sys.argv[1]).read_text(encoding="utf-8")
 
     try:
         proposal = json.loads(raw)
@@ -92,7 +87,7 @@ if __name__ == "__main__":
     if rejected:
         log_rejection(pid, reason, title)
         print(f"REJECTED: {pid} — {reason}")
-        sys.exit(0)
+        sys.exit(1)
     else:
         print(f"PASSED: {pid}")
         sys.exit(0)
