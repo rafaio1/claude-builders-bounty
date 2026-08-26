@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-26T12:55:12+00:00
+Atualizado: 2026-08-26T13:18:05+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,19 +12,19 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-26T12:51:33+00:00
-- git_clean: FALHOU
-- dirty_paths: ["INTEGRATION_CONTEXT.md", ".claude/settings.local.json"]
+- last_tick: 
+- git_clean: ok
+- dirty_paths: []
 
 ## Ghost
 
-Diagnóstico focado em restaurar a integridade do repositório (git_clean) e otimizar o ciclo de desenvolvimento e ferramentas.
+Mapeamento de gargalos de operação e melhorias de ferramentas e eval para o motor Agentic, focando em limpeza de disco, structured output e traces.
 
 ## Ledger
 
-{"developing": 5, "blocked": 17, "pending": 204, "applied": 23}
+{"pending": 210, "blocked": 18, "applied": 23, "developing": 4}
 
-- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [developing/p1] Restaurar git_clean: working tree limpa na main
+- `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [pending/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [blocked/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
 - `imp-20260816-tick-de-sa-de-n-o-deixa-estado-leg-vel-por-m-qui` [pending/p2] Tick de saúde não deixa estado legível por máquina
 - `imp-20260816-review-feedback-n-o-estruturado-faz-o-develop-er` [pending/p2] review_feedback não estruturado faz o develop errar o alvo
