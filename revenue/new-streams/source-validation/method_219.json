@@ -1,0 +1,35 @@
+{
+  "method_id": "219",
+  "name": "VS Code extension sponsor (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:34.151668+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_team_adoption",
+      "value": 18,
+      "unit": "teams",
+      "period": "90d"
+    },
+    {
+      "metric": "compliance_audit_pass_rate",
+      "value": 96.5,
+      "unit": "%",
+      "period": "quarterly"
+    },
+    {
+      "metric": "enterprise_sponsorship_acv",
+      "value": 7200,
+      "unit": "USD",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant emphasizes security scanning, internal policy enforcement, and audit logging. Proxy TIER0 via GitHub Search for enterprise-grade VS Code extensions. Official targets: Azure DevOps Extension API + Custom License Server. Monetization via enterprise sponsorship agreements or volume licensing. Zero-capital PoC uses local extension host + mock auth; production requires verified publisher status.",
+  "_hash": "e74c59665ebb0c3b8fdd1f2269284109a0970c840616843faad2798b29263bc3"
+}

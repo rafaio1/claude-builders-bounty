@@ -1,0 +1,35 @@
+{
+  "method_id": "218",
+  "name": "VS Code extension sponsor (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:34.151668+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_user_retention",
+      "value": 54.8,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "feature_request_volume",
+      "value": 67,
+      "unit": "requests",
+      "period": "14d"
+    },
+    {
+      "metric": "early_sponsor_count",
+      "value": 28,
+      "unit": "sponsors",
+      "period": "current"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant focuses on developer tool validation via sponsorship model. Proxy TIER0 targets emerging dev-tool extensions with monetization gaps. Official integration: VS Code Extension API + Stripe/Polar webhooks. Zero-capital via free marketplace listing + manual sponsor onboarding. Iterate based on user feedback and usage analytics.",
+  "_hash": "22d14a58af74225cbec40d6ad629bd3fb0bf54a44c9ea700128975fb2311dfc6"
+}

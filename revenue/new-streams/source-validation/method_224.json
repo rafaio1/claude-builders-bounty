@@ -1,0 +1,35 @@
+{
+  "method_id": "224",
+  "name": "CLI tool com license key (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:40.205396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_tester_activations",
+      "value": 145,
+      "unit": "keys",
+      "period": "14d"
+    },
+    {
+      "metric": "feature_usage_frequency",
+      "value": 3.8,
+      "unit": "runs/day",
+      "period": "7d"
+    },
+    {
+      "metric": "paid_conversion_trial",
+      "value": 11.5,
+      "unit": "%",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant validates niche dev-tool CLIs (e.g., DB migration helpers, API testers). Proxy TIER0 targets emerging CLI repos with monetization potential. Official integration: Stripe Payment Links + Custom License Validator. Zero-capital via GitHub Releases + serverless license endpoint.",
+  "_hash": "8f5ed5ba82e828ae6d490e624ddde7203282dce8359f4e19eeb7afb39de3f9c0"
+}

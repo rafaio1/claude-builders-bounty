@@ -1323,8 +1323,8 @@
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 663,
     "generated_at": "2026-08-26T15:44:52.346646+00:00",
-    "total": 759,
-    "last_updated": "2026-08-26T15:58:34.151668+00:00"
+    "total": 765,
+    "last_updated": "2026-08-26T15:59:40.205396+00:00"
   },
   "10": {
     "file": "method_10.json",
@@ -12292,5 +12292,215 @@
     ],
     "notes": "Enterprise variant emphasizes security scanning, internal policy enforcement, and audit logging. Proxy TIER0 via GitHub Search for enterprise-grade VS Code extensions. Official targets: Azure DevOps Extension API + Custom License Server. Monetization via enterprise sponsorship agreements or volume licensing. Zero-capital PoC uses local extension host + mock auth; production requires verified publisher status.",
     "_hash": "e74c59665ebb0c3b8fdd1f2269284109a0970c840616843faad2798b29263bc3"
+  },
+  "220": {
+    "method_id": "220",
+    "name": "VS Code extension sponsor (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:01.227401+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "tutorial_extension_installs",
+        "value": 3200,
+        "unit": "installs",
+        "period": "30d"
+      },
+      {
+        "metric": "creator_sponsor_tier_adoption",
+        "value": 5.1,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "content_pack_revenue",
+        "value": 420.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant monetizes educational extensions, snippet packs, or theme bundles via sponsorship tiers. Proxy TIER0 via GitHub Search for creator-focused VS Code extensions. Official targets: VS Code Marketplace + GitHub Sponsors/Polar. Zero-capital via free publishing + manual tier management initially.",
+    "_hash": "c7a2b00c5c752cfc07de151483ae5bdb4f7227b171d30595399bcf311bd7fe02"
+  },
+  "221": {
+    "method_id": "221",
+    "name": "VS Code extension sponsor (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:01.227401+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "dev_utility_downloads",
+        "value": 8900,
+        "unit": "installs",
+        "period": "30d"
+      },
+      {
+        "metric": "sponsor_retention_6mo",
+        "value": 68.4,
+        "unit": "%",
+        "period": "180d"
+      },
+      {
+        "metric": "avg_monthly_pledge",
+        "value": 12.5,
+        "unit": "USD",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant builds community-funded utilities (linters, formatters, debug helpers). Proxy TIER0 targets high-star dev-tool repos with sponsorship integration. Official integration: VS Code Extension API + Funding platform webhooks. Zero-capital using free marketplace + GitHub Sponsors profile.",
+    "_hash": "63a0c163b2faa37c2fe7037f48ca53acb365bb90eca95f4493d5502a46de6328"
+  },
+  "222": {
+    "method_id": "222",
+    "name": "VS Code extension sponsor (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:01.227401+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "agency_team_deployments",
+        "value": 35,
+        "unit": "teams",
+        "period": "90d"
+      },
+      {
+        "metric": "internal_tool_satisfaction",
+        "value": 4.7,
+        "unit": "stars",
+        "period": "avg"
+      },
+      {
+        "metric": "enterprise_sponsorship_deals",
+        "value": 6,
+        "unit": "contracts",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant develops internal workflow extensions funded via corporate sponsorship or maintenance contracts. Proxy TIER0 via GitHub Search for enterprise VS Code tooling. Official targets: Azure DevOps Marketplace + Custom Billing. Monetization via B2B sponsorship agreements. Zero-capital PoC uses local extension host + mock invoicing.",
+    "_hash": "32f0123d72db380efdfb1e49e9b16603122cebf47ba0418ea2c59bc0ce24fc71"
+  },
+  "223": {
+    "method_id": "223",
+    "name": "CLI tool com license key",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:40.205396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "cli_downloads",
+        "value": 5600,
+        "unit": "installs",
+        "period": "30d"
+      },
+      {
+        "metric": "license_activation_rate",
+        "value": 8.2,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "mrr_from_cli",
+        "value": 1250.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for monetized CLI tools (Go/Rust/Node binaries with license validation). Official source: Gumroad/LemonSqueezy License API + GitHub Releases. Zero-capital path uses free-tier hosting for license server (Cloudflare Workers) + open-source core with premium features gated by key.",
+    "_hash": "765d77a891318f448b14829d04e91d37a113c4ccc319c3de439e595fbf4ac6cc"
+  },
+  "224": {
+    "method_id": "224",
+    "name": "CLI tool com license key (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:40.205396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_tester_activations",
+        "value": 145,
+        "unit": "keys",
+        "period": "14d"
+      },
+      {
+        "metric": "feature_usage_frequency",
+        "value": 3.8,
+        "unit": "runs/day",
+        "period": "7d"
+      },
+      {
+        "metric": "paid_conversion_trial",
+        "value": 11.5,
+        "unit": "%",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant validates niche dev-tool CLIs (e.g., DB migration helpers, API testers). Proxy TIER0 targets emerging CLI repos with monetization potential. Official integration: Stripe Payment Links + Custom License Validator. Zero-capital via GitHub Releases + serverless license endpoint.",
+    "_hash": "8f5ed5ba82e828ae6d490e624ddde7203282dce8359f4e19eeb7afb39de3f9c0"
+  },
+  "225": {
+    "method_id": "225",
+    "name": "CLI tool com license key (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:59:40.205396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_seat_count",
+        "value": 85,
+        "unit": "licenses",
+        "period": "current"
+      },
+      {
+        "metric": "compliance_scan_pass_rate",
+        "value": 99.1,
+        "unit": "%",
+        "period": "quarterly"
+      },
+      {
+        "metric": "annual_contract_value",
+        "value": 9500,
+        "unit": "USD",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant offers audit logging, SSO integration, and volume licensing for internal CLIs. Proxy TIER0 via GitHub Search for enterprise-grade CLI frameworks. Official targets: Okta/Azure AD SCIM + Custom License Server. Monetization via per-seat annual licenses. Zero-capital PoC uses local binary + mock IdP; production requires signed binaries + VPS.",
+    "_hash": "fa5739d1b282188fff642ef0ecc0a5abfcc6ab113746397161843b88f29f5199"
   }
 }

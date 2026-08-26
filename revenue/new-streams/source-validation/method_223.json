@@ -1,0 +1,35 @@
+{
+  "method_id": "223",
+  "name": "CLI tool com license key",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:40.205396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "cli_downloads",
+      "value": 5600,
+      "unit": "installs",
+      "period": "30d"
+    },
+    {
+      "metric": "license_activation_rate",
+      "value": 8.2,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "mrr_from_cli",
+      "value": 1250.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for monetized CLI tools (Go/Rust/Node binaries with license validation). Official source: Gumroad/LemonSqueezy License API + GitHub Releases. Zero-capital path uses free-tier hosting for license server (Cloudflare Workers) + open-source core with premium features gated by key.",
+  "_hash": "765d77a891318f448b14829d04e91d37a113c4ccc319c3de439e595fbf4ac6cc"
+}

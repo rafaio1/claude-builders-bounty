@@ -1,0 +1,35 @@
+{
+  "method_id": "225",
+  "name": "CLI tool com license key (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:40.205396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_seat_count",
+      "value": 85,
+      "unit": "licenses",
+      "period": "current"
+    },
+    {
+      "metric": "compliance_scan_pass_rate",
+      "value": 99.1,
+      "unit": "%",
+      "period": "quarterly"
+    },
+    {
+      "metric": "annual_contract_value",
+      "value": 9500,
+      "unit": "USD",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant offers audit logging, SSO integration, and volume licensing for internal CLIs. Proxy TIER0 via GitHub Search for enterprise-grade CLI frameworks. Official targets: Okta/Azure AD SCIM + Custom License Server. Monetization via per-seat annual licenses. Zero-capital PoC uses local binary + mock IdP; production requires signed binaries + VPS.",
+  "_hash": "fa5739d1b282188fff642ef0ecc0a5abfcc6ab113746397161843b88f29f5199"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "217",
+  "name": "VS Code extension sponsor",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:34.151668+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "extension_downloads",
+      "value": 12500,
+      "unit": "installs",
+      "period": "30d"
+    },
+    {
+      "metric": "sponsor_conversion_rate",
+      "value": 2.4,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "monthly_sponsorship_revenue",
+      "value": 480.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for VS Code extensions with GitHub Sponsors/Polar integration. Official source: Visual Studio Marketplace Publisher API + Sponsorships API. Zero-capital path uses free marketplace publishing + GitHub Sponsors (no platform fee). Revenue via community sponsorship tiers or premium feature unlocks.",
+  "_hash": "dada650536604bb7a42c08351d0aa35933f5b0269880a5c4706e387b3a88d334"
+}
