@@ -7625,5 +7625,98 @@
     "_meta": {
       "hash": "6cb5adcff9e61d09baaa15d7f800dc85e53d79518a1c7c3a00b0761cbe3fdbe0"
     }
+  },
+  "460": {
+    "method_id": "460",
+    "name": "Governance voting proxy (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_dao": "ArtistCollectiveDAO",
+        "proposal_type": "grant_allocation",
+        "community_consensus_pct": 78.5,
+        "voter_turnout_pct": 42.0
+      },
+      {
+        "creator_dao": "MusicNFTGuild",
+        "proposal_type": "royalty_split_change",
+        "community_consensus_pct": 91.2,
+        "voter_turnout_pct": 68.5
+      }
+    ],
+    "schema": [
+      "creator_dao",
+      "proposal_type",
+      "community_consensus_pct",
+      "voter_turnout_pct"
+    ],
+    "notes": "Variante para DAOs de criadores. Foca em consenso comunitário e participação em propostas de grants/royalties. Proxy TIER0 via repositórios de creator-dao governance tools. Fonte oficial: Aragon App or DAOhaus Subgraph.",
+    "generated_at": "2026-08-26T15:15:53.859382+00:00",
+    "_meta": {
+      "hash": "a7ba99f3ece3ae1d351d29ad65ffaa8d06d25990f9baf7323989cc72f2b43689"
+    }
+  },
+  "461": {
+    "method_id": "461",
+    "name": "Governance voting proxy (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_governance": "ProtocolX_Gov",
+        "technical_proposal_ratio_pct": 65.0,
+        "avg_review_time_days": 4.2,
+        "code_quality_gate": true
+      },
+      {
+        "dev_governance": "OpenSourceDAO",
+        "technical_proposal_ratio_pct": 88.0,
+        "avg_review_time_days": 12.5,
+        "code_quality_gate": false
+      }
+    ],
+    "schema": [
+      "dev_governance",
+      "technical_proposal_ratio_pct",
+      "avg_review_time_days",
+      "code_quality_gate"
+    ],
+    "notes": "Variante técnica para governança de protocolos open-source. Analisa proporção de propostas técnicas e gates de qualidade. Proxy via parsers de Snapshot/Tally no GitHub. Fonte oficial: Governor Bravo subgraph ou OpenZeppelin Governance API.",
+    "generated_at": "2026-08-26T15:15:53.859382+00:00",
+    "_meta": {
+      "hash": "259020907b51673b3cda4a3af35066ada3a796a5f3a7ff618ddc47259bd5d8b1"
+    }
+  },
+  "462": {
+    "method_id": "462",
+    "name": "Governance voting proxy (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "agency_client": "DeFi_Project_Alpha",
+        "delegation_service_fee_bps": 50,
+        "voting_alignment_score": 0.92,
+        "report_delivery": "weekly_digest"
+      },
+      {
+        "agency_client": "Gaming_Guild_Beta",
+        "delegation_service_fee_bps": 100,
+        "voting_alignment_score": 0.75,
+        "report_delivery": "real_time_dashboard"
+      }
+    ],
+    "schema": [
+      "agency_client",
+      "delegation_service_fee_bps",
+      "voting_alignment_score",
+      "report_delivery"
+    ],
+    "notes": "Variante B2B para agências oferecendo serviços de delegação/governance-as-a-service. Reporta fees e alinhamento de voto. Proxy via templates de delegation analytics. Fonte oficial: Karma HQ API ou Boardroom Protocol.",
+    "generated_at": "2026-08-26T15:15:53.859382+00:00",
+    "_meta": {
+      "hash": "3efb259d4f1dceb1878ad791a417ebba94e9405735dba4d9cb0bdba81253ff52"
+    }
   }
 }

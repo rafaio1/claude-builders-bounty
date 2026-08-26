@@ -1,0 +1,31 @@
+{
+  "method_id": "460",
+  "name": "Governance voting proxy (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_dao": "ArtistCollectiveDAO",
+      "proposal_type": "grant_allocation",
+      "community_consensus_pct": 78.5,
+      "voter_turnout_pct": 42.0
+    },
+    {
+      "creator_dao": "MusicNFTGuild",
+      "proposal_type": "royalty_split_change",
+      "community_consensus_pct": 91.2,
+      "voter_turnout_pct": 68.5
+    }
+  ],
+  "schema": [
+    "creator_dao",
+    "proposal_type",
+    "community_consensus_pct",
+    "voter_turnout_pct"
+  ],
+  "notes": "Variante para DAOs de criadores. Foca em consenso comunitário e participação em propostas de grants/royalties. Proxy TIER0 via repositórios de creator-dao governance tools. Fonte oficial: Aragon App or DAOhaus Subgraph.",
+  "generated_at": "2026-08-26T15:15:53.859382+00:00",
+  "_meta": {
+    "hash": "a7ba99f3ece3ae1d351d29ad65ffaa8d06d25990f9baf7323989cc72f2b43689"
+  }
+}

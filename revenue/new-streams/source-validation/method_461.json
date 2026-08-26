@@ -1,0 +1,31 @@
+{
+  "method_id": "461",
+  "name": "Governance voting proxy (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_governance": "ProtocolX_Gov",
+      "technical_proposal_ratio_pct": 65.0,
+      "avg_review_time_days": 4.2,
+      "code_quality_gate": true
+    },
+    {
+      "dev_governance": "OpenSourceDAO",
+      "technical_proposal_ratio_pct": 88.0,
+      "avg_review_time_days": 12.5,
+      "code_quality_gate": false
+    }
+  ],
+  "schema": [
+    "dev_governance",
+    "technical_proposal_ratio_pct",
+    "avg_review_time_days",
+    "code_quality_gate"
+  ],
+  "notes": "Variante técnica para governança de protocolos open-source. Analisa proporção de propostas técnicas e gates de qualidade. Proxy via parsers de Snapshot/Tally no GitHub. Fonte oficial: Governor Bravo subgraph ou OpenZeppelin Governance API.",
+  "generated_at": "2026-08-26T15:15:53.859382+00:00",
+  "_meta": {
+    "hash": "259020907b51673b3cda4a3af35066ada3a796a5f3a7ff618ddc47259bd5d8b1"
+  }
+}
