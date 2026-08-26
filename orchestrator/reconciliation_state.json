@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "VWAP_SHADOW_ACTIVE_1_PAPER_TRADE_AWAITING_30",
+  "risk_status": "VWAP_SHADOW_ACTIVE_1_PAPER_TRADE_AWAITING_30_REAL_PNL_NEGATIVE",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -159,7 +159,7 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T23:27:39.792182+00:00",
+  "last_reconciliation": "2026-08-26T23:36:51.891332+00:00",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
@@ -185,7 +185,7 @@
     "validation_required_hours": 24,
     "real_trading_blocked": true,
     "cycles_since_restart": "continuous_zero_errors",
-    "last_health_check": "2026-08-26T23:27:39.792182+00:00"
+    "last_health_check": "2026-08-26T23:36:51.891328+00:00"
   },
   "last_live_audit": "2026-08-26T21:55:30Z",
   "inj_position_tokens": 0.46584,
@@ -211,12 +211,12 @@
     "real_trading_blocked_until": "PENDING_SHADOW_VALIDATION_24H"
   },
   "account_snapshot": {
-    "usdt_free": 4.43754261,
+    "usdt_free": 4.39947832,
     "open_orders": 0,
     "positions": 0,
     "dust_assets_count": 35,
     "dust_note": "Below min_notional - no programmatic action",
-    "verified_at": "2026-08-26T23:27:39.792182+00:00"
+    "verified_at": "2026-08-26T23:36:51.891296+00:00"
   },
   "trailing_backtest_result": {
     "timestamp": "2026-08-26T22:23:08Z",
@@ -276,6 +276,46 @@
       "hold_candles": 5,
       "timestamp": "2026-08-26T23:18:08Z"
     },
-    "last_verified": "2026-08-26T23:27:39.792182+00:00"
+    "last_verified": "2026-08-26T23:36:51.891330+00:00"
+  },
+  "realized_pnl_fifo": {
+    "grand_total_usdt": -0.5618,
+    "per_symbol": {
+      "ETH/USDT": {
+        "pnl": -0.001817,
+        "fees": 0.011177
+      },
+      "INJ/USDT": {
+        "pnl": -0.166273,
+        "fees": 0.142109
+      },
+      "SOL/USDT": {
+        "pnl": -0.248847,
+        "fees": 0.288577
+      },
+      "WIF/USDT": {
+        "pnl": -0.144863,
+        "fees": 0.121139
+      }
+    },
+    "open_inventory": {
+      "INJ/USDT": {
+        "amount": 0.09,
+        "avg_cost": 5.437
+      },
+      "WIF/USDT": {
+        "amount": 0.28,
+        "avg_cost": 0.2074
+      },
+      "ETH/USDT": {
+        "amount": 2e-05,
+        "avg_cost": 2506.95
+      },
+      "SOL/USDT": {
+        "amount": 0.0494,
+        "avg_cost": 100.8
+      }
+    },
+    "calculated_at": "2026-08-26T23:36:51.891324+00:00"
   }
 }

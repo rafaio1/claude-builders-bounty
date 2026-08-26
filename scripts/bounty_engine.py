@@ -688,12 +688,13 @@ CRITICAL CONSTRAINTS:
 - DO NOT include any text before or after the JSON array."""
     resp = ghostcli_complete(prompt, api_key, base_url, model)
     log(f"Triage GhostCLI response length: {len(resp) if resp else 0} chars")
-    # Debug: dump raw response for failure analysis (truncate to avoid log bloat)
-    if resp and len(resp) < 500:
-        log(f"TRIAGE_RAW_RESPONSE: {repr(resp)}")
-    elif resp:
-        log(f"TRIAGE_RAW_RESPONSE_TRUNCATED: {repr(resp[:300])}...")
+    # ALWAYS dump raw response for debugging (full if short, truncated if long)
+    if resp:
+        log(f"TRIAGE_RAW_FULL: {repr(resp[:1000])}")
+    else:
+        log("TRIAGE_RAW_FULL: None (empty response from GhostCLI)")
     selected = extract_json(resp) if resp else None
+    log(f"TRIAGE_EXTRACT_RESULT: type={type(selected).__name__}, value={repr(selected)[:500] if selected is not None else 'None'}")
     log(f"Triage parsed result type: {type(selected).__name__}, len={len(selected) if isinstance(selected, (list, dict)) else 'N/A'}")
     if isinstance(selected, list) and len(selected) > 0:
         log(f"Selected {len(selected)} targets from GhostCLI")
