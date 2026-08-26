@@ -1,0 +1,35 @@
+{
+  "method_id": "220",
+  "name": "VS Code extension sponsor (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:01.227401+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "tutorial_extension_installs",
+      "value": 3200,
+      "unit": "installs",
+      "period": "30d"
+    },
+    {
+      "metric": "creator_sponsor_tier_adoption",
+      "value": 5.1,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "content_pack_revenue",
+      "value": 420.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant monetizes educational extensions, snippet packs, or theme bundles via sponsorship tiers. Proxy TIER0 via GitHub Search for creator-focused VS Code extensions. Official targets: VS Code Marketplace + GitHub Sponsors/Polar. Zero-capital via free publishing + manual tier management initially.",
+  "_hash": "c7a2b00c5c752cfc07de151483ae5bdb4f7227b171d30595399bcf311bd7fe02"
+}

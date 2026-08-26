@@ -1,0 +1,35 @@
+{
+  "method_id": "221",
+  "name": "VS Code extension sponsor (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:01.227401+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "dev_utility_downloads",
+      "value": 8900,
+      "unit": "installs",
+      "period": "30d"
+    },
+    {
+      "metric": "sponsor_retention_6mo",
+      "value": 68.4,
+      "unit": "%",
+      "period": "180d"
+    },
+    {
+      "metric": "avg_monthly_pledge",
+      "value": 12.5,
+      "unit": "USD",
+      "period": "current"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Developer variant builds community-funded utilities (linters, formatters, debug helpers). Proxy TIER0 targets high-star dev-tool repos with sponsorship integration. Official integration: VS Code Extension API + Funding platform webhooks. Zero-capital using free marketplace + GitHub Sponsors profile.",
+  "_hash": "63a0c163b2faa37c2fe7037f48ca53acb365bb90eca95f4493d5502a46de6328"
+}

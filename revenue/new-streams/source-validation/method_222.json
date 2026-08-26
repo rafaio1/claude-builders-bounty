@@ -1,0 +1,35 @@
+{
+  "method_id": "222",
+  "name": "VS Code extension sponsor (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:59:01.227401+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "agency_team_deployments",
+      "value": 35,
+      "unit": "teams",
+      "period": "90d"
+    },
+    {
+      "metric": "internal_tool_satisfaction",
+      "value": 4.7,
+      "unit": "stars",
+      "period": "avg"
+    },
+    {
+      "metric": "enterprise_sponsorship_deals",
+      "value": 6,
+      "unit": "contracts",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Agency variant develops internal workflow extensions funded via corporate sponsorship or maintenance contracts. Proxy TIER0 via GitHub Search for enterprise VS Code tooling. Official targets: Azure DevOps Marketplace + Custom Billing. Monetization via B2B sponsorship agreements. Zero-capital PoC uses local extension host + mock invoicing.",
+  "_hash": "32f0123d72db380efdfb1e49e9b16603122cebf47ba0418ea2c59bc0ce24fc71"
+}
