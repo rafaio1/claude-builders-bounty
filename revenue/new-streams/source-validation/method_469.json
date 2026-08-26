@@ -1,0 +1,34 @@
+{
+  "method_id": "469",
+  "name": "Yield aggregator optimizer",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:03.643836+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "Yearn Finance v3",
+      "vault": "USDC-ETH LP",
+      "apy_current": 0.124,
+      "apy_optimized": 0.158,
+      "gas_cost_usd": 2.4,
+      "rebalance_trigger": "deviation_5pct"
+    },
+    {
+      "protocol": "Beefy Finance",
+      "vault": "GMX-GLP",
+      "apy_current": 0.089,
+      "apy_optimized": 0.112,
+      "gas_cost_usd": 0.15,
+      "rebalance_trigger": "epoch_weekly"
+    }
+  ],
+  "schema": [
+    "protocol",
+    "vault",
+    "apy_current",
+    "apy_optimized",
+    "gas_cost_usd",
+    "rebalance_trigger"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: yearn/yfi-vaults, beefyfinance/beefy-api). Fonte oficial alvo: DeFiLlama yields + Yearn vault analytics. Zero-capital: simulação de rebalancing e comparação de APY sem depósito real."
+}

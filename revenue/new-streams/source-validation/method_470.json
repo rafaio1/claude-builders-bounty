@@ -1,0 +1,34 @@
+{
+  "method_id": "470",
+  "name": "Yield aggregator optimizer (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:03.643836+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "DeFi Saver Early",
+      "treasury_pool": "DAI-USDC",
+      "apy_baseline": 0.045,
+      "apy_enhanced": 0.068,
+      "risk_score": "low",
+      "automation_tool": "gelato_network"
+    },
+    {
+      "startup": "Instadapp Treasury",
+      "treasury_pool": "WETH-STETH",
+      "apy_baseline": 0.032,
+      "apy_enhanced": 0.051,
+      "risk_score": "medium",
+      "automation_tool": "chainlink_keepers"
+    }
+  ],
+  "schema": [
+    "startup",
+    "treasury_pool",
+    "apy_baseline",
+    "apy_enhanced",
+    "risk_score",
+    "automation_tool"
+  ],
+  "notes": "Variante para startups Web3 com treasury ocioso. Proxy TIER0: GitHub Search (topics: startup-treasury-yield, defi-saver-automation). Fonte oficial alvo: Instadapp lite dashboards + Gelato automation logs. Foco em low-risk yield enhancement sem custódia."
+}

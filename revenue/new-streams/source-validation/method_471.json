@@ -1,0 +1,39 @@
+{
+  "method_id": "471",
+  "name": "Yield aggregator optimizer (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:03.643836+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Paradigm Treasury",
+      "pool_size_usd": 45000000,
+      "strategies": [
+        "curve_convex",
+        "aave_v3_lending",
+        "lido_staking"
+      ],
+      "blended_apy": 0.072,
+      "compliance_framework": "SOC2"
+    },
+    {
+      "enterprise": "a16z Crypto Fund",
+      "pool_size_usd": 120000000,
+      "strategies": [
+        "maker_dsr",
+        "rocketpool_node",
+        "eigenlayer_restaking"
+      ],
+      "blended_apy": 0.065,
+      "compliance_framework": "SEC_RIA"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "pool_size_usd",
+    "strategies",
+    "blended_apy",
+    "compliance_framework"
+  ],
+  "notes": "Variante enterprise com pools institucionais. Proxy TIER0: GitHub Search (orgs: paradigmxyz, a16z-crypto treasury tooling). Fonte oficial alvo: Nansen Institutional + SEC ADV filings. Ênfase em compliance-aware strategy stacking zero-capital."
+}
