@@ -3,7 +3,9 @@
 Zero-capital indexer using official IBGE Localidades API.
 Endpoint: https://servicodados.ibge.gov.br/api/v1/localidades/municipios
 No auth required. Returns all 5571 municipalities with hierarchy.
+Handles gzip-compressed responses from IBGE API.
 """
+import gzip
 import json
 import sys
 import urllib.request
@@ -14,14 +16,24 @@ API_BASE = "https://servicodados.ibge.gov.br/api/v1/localidades/municipios"
 OUTPUT_FILE = Path(__file__).parent / "municipios_index.json"
 
 def fetch_municipios() -> list[dict]:
-    """Fetch all municipalities from IBGE API."""
+    """Fetch all municipalities from IBGE API (handles gzip)."""
     url = f"{API_BASE}?orderBy=nome"
-    headers = {"Accept": "application/json", "User-Agent": "Agentic-Lab/1.0 (Zero-Capital Research)"}
+    headers = {
+        "Accept": "application/json",
+        "Accept-Encoding": "gzip, deflate",
+        "User-Agent": "Agentic-Lab/1.0 (Zero-Capital Research)"
+    }
     
     req = urllib.request.Request(url, headers=headers)
     try:
         with urllib.request.urlopen(req, timeout=60) as resp:
-            raw = resp.read().decode("utf-8")
+            raw_bytes = resp.read()
+            # Check if response is gzip-compressed
+            encoding = resp.headers.get("Content-Encoding", "")
+            if encoding == "gzip" or raw_bytes[:2] == b'\x1f\x8b':
+                raw_bytes = gzip.decompress(raw_bytes)
+            
+            raw = raw_bytes.decode("utf-8")
             lines = [l for l in raw.strip().split('\n') if l.strip()]
             if not lines:
                 return []
