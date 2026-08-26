@@ -124,6 +124,17 @@ class ImproveGit:
         return "\n".join(lines).strip()
 
     def checkout(self, branch: str, *, create: bool = False) -> None:
+        # Safety: never mutate shared worktree HEAD when running in isolated context
+        # IMPROVE_NO_CHECKOUT=1 disables all checkout operations to prevent
+        # concurrent agents from losing their working tree state.
+        import os as _os
+        if _os.environ.get("IMPROVE_NO_CHECKOUT") == "1":
+            # In no-checkout mode, branch creation uses git branch instead of checkout -B
+            if create:
+                # Create branch without switching to it
+                self.run("branch", "-f", branch, check=False)
+            # Skip checkout entirely - caller must use GIT_WORK_TREE or similar
+            return
         if create:
             self.run("checkout", "-B", branch)
             return
