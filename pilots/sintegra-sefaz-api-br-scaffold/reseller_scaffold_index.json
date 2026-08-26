@@ -1,0 +1,34 @@
+{
+  "method_id": "907",
+  "name": "API de Consulta SINTEGRA/SEFAZ para Valida\u00e7\u00e3o Fiscal B2B",
+  "original_proposal_title": "NFT Royalty Tracker SaaS",
+  "status": "SCAFFOLD_OK",
+  "source_mismatch_note": "Proposal indicava NFT Royalty Tracker SaaS, mas source-validation/method_907.json cont\u00e9m API SINTEGRA/SEFAZ BR. Scaffold constru\u00eddo sobre a fonte real verificada.",
+  "free_tier_limits": {
+    "type": "public_gov_api",
+    "notes": "APIs SEFAZ/SINTEGRA s\u00e3o infraestrutura p\u00fablica gratuita. Acesso direto via portal estadual ou WS. Zero-capital absoluto."
+  },
+  "paid_plan_baseline": {
+    "model": "api_call_brl",
+    "range": "0.08-0.12/call",
+    "target_monthly": "200-500/m\u00eas por ERP cliente"
+  },
+  "reselling_model": {
+    "viable": true,
+    "mechanism": "wrapper_api_simplificada + suporte_integracao",
+    "value_prop": "Abstrai complexidade de 27 UF diferentes e protocolos legados SINTEGRA",
+    "compliance": "ajuste_sinief_2024_lgpd"
+  },
+  "risks": [
+    "gov_api_stability",
+    "rate_limiting_per_state",
+    "regulatory_changes"
+  ],
+  "next_steps": [
+    "Validar disponibilidade atual das APIs SEFAZ estaduais",
+    "Criar prot\u00f3tipo wrapper com cache",
+    "Submeter ao Conselho como TIER1 candidate ap\u00f3s valida\u00e7\u00e3o t\u00e9cnica"
+  ],
+  "analyzed_at": "2026-08-26T23:00:48.389212+00:00",
+  "source_doc": "revenue/new-streams/source-validation/method_907.json"
+}
