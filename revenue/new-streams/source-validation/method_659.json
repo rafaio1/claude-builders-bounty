@@ -1,0 +1,31 @@
+{
+  "method_id": "659",
+  "name": "Technical writing docs (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:44:30.835958+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_771",
+      "repo_type": "open_source_lib",
+      "generator": "typedoc",
+      "hosting": "github_pages",
+      "changelog_auto": true
+    },
+    {
+      "dev_id": "dv_220",
+      "repo_type": "internal_tool",
+      "generator": "mkdocs_material",
+      "hosting": "netlify_internal",
+      "changelog_auto": false
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "repo_type",
+    "generator",
+    "hosting",
+    "changelog_auto"
+  ],
+  "notes": "Docs-as-code para projetos de software. Fonte oficial alvo: TypeDoc/MkDocs Material docs. Proxy TIER0: GitHub Search API para workflows de auto-doc generation em CI."
+}
