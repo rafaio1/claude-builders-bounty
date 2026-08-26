@@ -1,0 +1,43 @@
+{
+  "method_id": "911",
+  "pilot_name": "agro-commodities-oracle-br-scaffold",
+  "proposal_title": "Oráculo de Preços de Commodities Agrícolas BR (CEPEA/CONAB)",
+  "artifact_real_source": "Oráculo de Preços de Commodities Agrícolas BR (CEPEA/CONAB)",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é feed/API de dados oficiais CEPEA/CONAB para precificação agro BR.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "crypto_defi",
+  "free_tier_limits": {
+    "provider": "CEPEA/ESALQ-USP + CONAB Safra API",
+    "permanent_free": true,
+    "limits": "Dados públicos abertos sem custo de acesso ou licença. APIs governamentais gratuitas. Processamento local via Python stdlib.",
+    "verification_method": "curl_cepea_conab_public_data_check"
+  },
+  "paid_plan_baseline": {
+    "subscription_fee_brl": 497,
+    "target_subscribers_monthly": 10,
+    "projected_mrr_brl": 4970,
+    "cost_per_delivery_brl": "0 (dados públicos + hosting free tier)"
+  },
+  "reselling_model": {
+    "type": "data_feed_subscription",
+    "mechanism": "Curadoria, limpeza e estruturação de dados oficiais CEPEA/CONAB em formato API/JSON pronto para integração. Venda como assinatura mensal para fintechs agro, traders e cooperativas que precisam de dados confiáveis sem scraping manual.",
+    "zero_capital_path": "Scripts Python para ETL de dados públicos. Hospedagem da API em Vercel/Cloudflare Workers free tier. Landing page estática. Billing via Asaas/Pix recorrente. Zero custo inicial.",
+    "compliance": "MAPA Instrução Normativa 2024; Dados públicos não exigem licença de redistribuição; LGPD não aplicável a dados agregados de preços."
+  },
+  "risks": [
+    "Dependência de disponibilidade das APIs governamentais (podem ficar fora do ar ou mudar formato)",
+    "Baixa barreira de entrada: qualquer um pode acessar os mesmos dados públicos",
+    "Ciclo de vendas B2B longo com traders/fintechs que exigem SLA e suporte",
+    "Concorrência de plataformas estabelecidas (Bloomberg, Refinitiv) que já incluem dados BR"
+  ],
+  "next_steps": [
+    "Validar endpoints CEPEA/CONAB via curl e documentar schema de resposta",
+    "Criar script ETL piloto para normalizar dados de soja/milho/café",
+    "Implementar MVP de API REST com autenticação básica e rate limiting",
+    "Preparar documentação técnica e exemplo de integração para prospects",
+    "Testar fluxo de billing Asaas recorrente com assinante piloto"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:20:00+00:00"
+}

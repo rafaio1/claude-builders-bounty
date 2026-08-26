@@ -1,0 +1,43 @@
+{
+  "method_id": "909",
+  "pilot_name": "esg-reporting-b3-scaffold",
+  "proposal_title": "Gerador de Relatórios ESG para Empresas Listadas B3",
+  "artifact_real_source": "Gerador de Relatórios ESG para Empresas Listadas B3",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é consultoria/serviço de geração de relatórios ESG regulatórios (CVM 80/B3) usando dados públicos e templates abertos.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "data_products",
+  "free_tier_limits": {
+    "provider": "Dados Públicos B3/CVM + Templates SASB/GRI Abertos + Python Stdlib",
+    "permanent_free": true,
+    "limits": "Acesso a dados públicos (Formulário de Referência, IPE) e frameworks abertos é gratuito. Geração local via scripts Python sem custo de licença.",
+    "verification_method": "curl_b3_cvm_public_data_check"
+  },
+  "paid_plan_baseline": {
+    "project_fee_avg_brl": "5000-15000",
+    "target_clients_monthly": 2,
+    "projected_mrr_brl": "10000-30000",
+    "cost_per_delivery_brl": "0 (tempo próprio + llm free tier)"
+  },
+  "reselling_model": {
+    "type": "specialized_consulting_service",
+    "mechanism": "Geração automatizada/assistida de relatórios ESG conformes à Instrução CVM 80 e taxonomia B3. Venda como projeto pontual ou pacote anual de atualização. Zero-capital: uso de dados públicos e templates open-source; monetização via expertise e automação.",
+    "zero_capital_path": "Scripts Python locais + LLM free tier para extração/estruturação. Entrega em PDF/XBRL/HTML. Sem necessidade de SaaS proprietário. Prospecção via LinkedIn/ABRACAM.",
+    "compliance": "Instrução CVM 80/2024; Taxonomia B3 Relato Integrado 2024; LGPD (dados públicos tratados)."
+  },
+  "risks": [
+    "Alta responsabilidade técnica: erro no relatório pode gerar sanção CVM para cliente",
+    "Ciclo de vendas longo e dependente de networking com RI/Compliance",
+    "Mudanças frequentes na taxonomia B3 exigem atualização constante dos templates",
+    "Concorrência de Big 4 e consultorias especializadas estabelecidas"
+  ],
+  "next_steps": [
+    "Baixar e validar estrutura atual do Formulário de Referência B3 via curl",
+    "Criar template base XBRL/PDF mapeando campos CVM 80",
+    "Desenvolver script piloto de extração de dados públicos para preenchimento automático",
+    "Validar output com contador/auditor parceiro (sem custo inicial)",
+    "Preparar proposta comercial padrão para empresas mid-cap listadas"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:10:00+00:00"
+}

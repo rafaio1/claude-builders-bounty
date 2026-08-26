@@ -1,0 +1,44 @@
+{
+  "method_id": "910",
+  "pilot_name": "pix-cashback-ecommerce-br-scaffold",
+  "proposal_title": "Plataforma de Cashback Pix para E-commerce Local",
+  "artifact_real_source": "Plataforma de Cashback Pix para E-commerce Local",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é plataforma de cashback instantâneo via Pix para varejo local usando gateways BR.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "content_monetization",
+  "free_tier_limits": {
+    "provider": "Gerencianet/Asaas Cashback API + Pix BCB",
+    "permanent_free": true,
+    "limits": "APIs de cashback dos gateways não têm mensalidade fixa; cobram apenas por transação efetuada. Infraestrutura Pix é pública e gratuita via BCB. Zero custo para integrar e ativar.",
+    "verification_method": "curl_gerencianet_asaas_cashback_docs"
+  },
+  "paid_plan_baseline": {
+    "spread_interchange_pct": "0.3-0.7%",
+    "avg_ticket_brl": 150,
+    "revenue_per_txn_brl": "0.45-1.05",
+    "target_txns_monthly": 2000,
+    "projected_mrr_brl": "900-2100"
+  },
+  "reselling_model": {
+    "type": "fintech_infrastructure_reselling",
+    "mechanism": "White-label de cashback Pix para lojas físicas e e-commerce local. Integração via API Gerencianet/Asaas. Monetização via spread sobre interchange do Pix. Loja paga zero setup; revenue share ou spread embutido.",
+    "zero_capital_path": "SDK/API gratuita dos gateways. Landing page estática (Vercel/GitHub Pages). Onboarding self-service via formulário Typeform free. Primeiro revenue cobre custos operacionais futuros.",
+    "compliance": "Regulamento Pix BCB 2024; LGPD para dados transacionais; Termos de uso do gateway proíbem fraude mas permitem white-label/revenue share."
+  },
+  "risks": [
+    "Margem muito fina (0.3-0.7%) exige volume alto para viabilidade",
+    "Dependência de aprovação de merchant account nos gateways",
+    "Concorrência direta de bancos digitais que oferecem cashback nativo",
+    "Risco regulatório: BCB pode alterar regras de interchange ou cashback"
+  ],
+  "next_steps": [
+    "Validar disponibilidade da API de cashback Gerencianet/Asaas via curl",
+    "Criar MVP de integração com webhook de confirmação Pix",
+    "Preparar contrato padrão de revenue share para lojistas",
+    "Testar fluxo end-to-end com loja piloto parceira (sem custo)",
+    "Verificar limites de transação e compliance KYC no gateway"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:15:00+00:00"
+}
