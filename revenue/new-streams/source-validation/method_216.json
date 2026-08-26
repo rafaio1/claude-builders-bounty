@@ -1,0 +1,35 @@
+{
+  "method_id": "216",
+  "name": "Figma plugin marketplace (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:05.236748+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "design_system_syncs",
+      "value": 85,
+      "unit": "projects",
+      "period": "30d"
+    },
+    {
+      "metric": "client_approval_time_saved",
+      "value": 65.0,
+      "unit": "%",
+      "period": "vs_manual"
+    },
+    {
+      "metric": "agency_team_seats",
+      "value": 45,
+      "unit": "designers",
+      "period": "current"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Agency variant enables multi-client design system management, brand kit enforcement, and white-label handoffs. Proxy TIER0 via GitHub Search for agency-focused Figma workflow tools. Official targets: Figma Organization Admin API + Custom Plugin Backend. Monetization via per-team or per-project licensing. Zero-capital PoC uses single org + mock multi-tenancy; production requires verified publisher.",
+  "_hash": "4b4f1e50e2ad329dcfee1938e041c177c7a1f91733ec81e6d1478bda165c8896"
+}

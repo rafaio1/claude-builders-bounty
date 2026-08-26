@@ -1323,8 +1323,8 @@
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 663,
     "generated_at": "2026-08-26T15:44:52.346646+00:00",
-    "total": 753,
-    "last_updated": "2026-08-26T15:57:33.881597+00:00"
+    "total": 759,
+    "last_updated": "2026-08-26T15:58:34.151668+00:00"
   },
   "10": {
     "file": "method_10.json",
@@ -12082,5 +12082,215 @@
     ],
     "notes": "Enterprise variant emphasizes design system governance, SSO, and audit trails. Proxy TIER0 via GitHub Search for enterprise-grade Figma plugin frameworks. Official targets: Figma Organization Admin API + Custom License Server. Monetization via volume team licensing. Zero-capital PoC uses local Figma file + mock auth; production requires verified publisher status.",
     "_hash": "25c685df6357deb4da7266c47a0ffe1c854be0ff048cc7a6677fffd23859883b"
+  },
+  "214": {
+    "method_id": "214",
+    "name": "Figma plugin marketplace (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:05.236748+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "asset_pack_downloads",
+        "value": 1250,
+        "unit": "downloads",
+        "period": "30d"
+      },
+      {
+        "metric": "creator_tip_volume",
+        "value": 380.0,
+        "unit": "USD",
+        "period": "30d"
+      },
+      {
+        "metric": "community_followers",
+        "value": 4500,
+        "unit": "users",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant focuses on distributing design assets, UI kits, and icon packs via Figma Community. Proxy TIER0 via GitHub Search for Figma asset delivery plugins. Official targets: Figma Community API + Gumroad/Stripe integration. Zero-capital via free community publishing + manual file delivery initially.",
+    "_hash": "c9203a74146b63b0a995225bd209f8604edcaa3ace93565a064b3907971b7fe5"
+  },
+  "215": {
+    "method_id": "215",
+    "name": "Figma plugin marketplace (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:05.236748+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "code_export_usage",
+        "value": 3400,
+        "unit": "exports",
+        "period": "30d"
+      },
+      {
+        "metric": "dev_handoff_satisfaction",
+        "value": 4.6,
+        "unit": "stars",
+        "period": "avg"
+      },
+      {
+        "metric": "pro_license_sales",
+        "value": 112,
+        "unit": "licenses",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant bridges design-to-code workflows (token export, CSS gen, React snippet output). Proxy TIER0 targets open-source Figma-to-code plugins. Official integration: Figma Plugin API + Code Connect. Monetization via pro tier unlocking advanced export formats. Zero-capital using free community listing + serverless license validation.",
+    "_hash": "875267edb4a78658579beede46caf93c904f107cfa268a8d836db999ed6eeb18"
+  },
+  "216": {
+    "method_id": "216",
+    "name": "Figma plugin marketplace (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:05.236748+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "design_system_syncs",
+        "value": 85,
+        "unit": "projects",
+        "period": "30d"
+      },
+      {
+        "metric": "client_approval_time_saved",
+        "value": 65.0,
+        "unit": "%",
+        "period": "vs_manual"
+      },
+      {
+        "metric": "agency_team_seats",
+        "value": 45,
+        "unit": "designers",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant enables multi-client design system management, brand kit enforcement, and white-label handoffs. Proxy TIER0 via GitHub Search for agency-focused Figma workflow tools. Official targets: Figma Organization Admin API + Custom Plugin Backend. Monetization via per-team or per-project licensing. Zero-capital PoC uses single org + mock multi-tenancy; production requires verified publisher.",
+    "_hash": "4b4f1e50e2ad329dcfee1938e041c177c7a1f91733ec81e6d1478bda165c8896"
+  },
+  "217": {
+    "method_id": "217",
+    "name": "VS Code extension sponsor",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:34.151668+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "extension_downloads",
+        "value": 12500,
+        "unit": "installs",
+        "period": "30d"
+      },
+      {
+        "metric": "sponsor_conversion_rate",
+        "value": 2.4,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "monthly_sponsorship_revenue",
+        "value": 480.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for VS Code extensions with GitHub Sponsors/Polar integration. Official source: Visual Studio Marketplace Publisher API + Sponsorships API. Zero-capital path uses free marketplace publishing + GitHub Sponsors (no platform fee). Revenue via community sponsorship tiers or premium feature unlocks.",
+    "_hash": "dada650536604bb7a42c08351d0aa35933f5b0269880a5c4706e387b3a88d334"
+  },
+  "218": {
+    "method_id": "218",
+    "name": "VS Code extension sponsor (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:34.151668+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_user_retention",
+        "value": 54.8,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "feature_request_volume",
+        "value": 67,
+        "unit": "requests",
+        "period": "14d"
+      },
+      {
+        "metric": "early_sponsor_count",
+        "value": 28,
+        "unit": "sponsors",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant focuses on developer tool validation via sponsorship model. Proxy TIER0 targets emerging dev-tool extensions with monetization gaps. Official integration: VS Code Extension API + Stripe/Polar webhooks. Zero-capital via free marketplace listing + manual sponsor onboarding. Iterate based on user feedback and usage analytics.",
+    "_hash": "22d14a58af74225cbec40d6ad629bd3fb0bf54a44c9ea700128975fb2311dfc6"
+  },
+  "219": {
+    "method_id": "219",
+    "name": "VS Code extension sponsor (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:58:34.151668+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_team_adoption",
+        "value": 18,
+        "unit": "teams",
+        "period": "90d"
+      },
+      {
+        "metric": "compliance_audit_pass_rate",
+        "value": 96.5,
+        "unit": "%",
+        "period": "quarterly"
+      },
+      {
+        "metric": "enterprise_sponsorship_acv",
+        "value": 7200,
+        "unit": "USD",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant emphasizes security scanning, internal policy enforcement, and audit logging. Proxy TIER0 via GitHub Search for enterprise-grade VS Code extensions. Official targets: Azure DevOps Extension API + Custom License Server. Monetization via enterprise sponsorship agreements or volume licensing. Zero-capital PoC uses local extension host + mock auth; production requires verified publisher status.",
+    "_hash": "e74c59665ebb0c3b8fdd1f2269284109a0970c840616843faad2798b29263bc3"
   }
 }

@@ -1,0 +1,35 @@
+{
+  "method_id": "215",
+  "name": "Figma plugin marketplace (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:05.236748+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "code_export_usage",
+      "value": 3400,
+      "unit": "exports",
+      "period": "30d"
+    },
+    {
+      "metric": "dev_handoff_satisfaction",
+      "value": 4.6,
+      "unit": "stars",
+      "period": "avg"
+    },
+    {
+      "metric": "pro_license_sales",
+      "value": 112,
+      "unit": "licenses",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Developer variant bridges design-to-code workflows (token export, CSS gen, React snippet output). Proxy TIER0 targets open-source Figma-to-code plugins. Official integration: Figma Plugin API + Code Connect. Monetization via pro tier unlocking advanced export formats. Zero-capital using free community listing + serverless license validation.",
+  "_hash": "875267edb4a78658579beede46caf93c904f107cfa268a8d836db999ed6eeb18"
+}

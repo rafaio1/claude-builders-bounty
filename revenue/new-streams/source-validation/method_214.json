@@ -1,0 +1,35 @@
+{
+  "method_id": "214",
+  "name": "Figma plugin marketplace (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:58:05.236748+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "asset_pack_downloads",
+      "value": 1250,
+      "unit": "downloads",
+      "period": "30d"
+    },
+    {
+      "metric": "creator_tip_volume",
+      "value": 380.0,
+      "unit": "USD",
+      "period": "30d"
+    },
+    {
+      "metric": "community_followers",
+      "value": 4500,
+      "unit": "users",
+      "period": "current"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant focuses on distributing design assets, UI kits, and icon packs via Figma Community. Proxy TIER0 via GitHub Search for Figma asset delivery plugins. Official targets: Figma Community API + Gumroad/Stripe integration. Zero-capital via free community publishing + manual file delivery initially.",
+  "_hash": "c9203a74146b63b0a995225bd209f8604edcaa3ace93565a064b3907971b7fe5"
+}
