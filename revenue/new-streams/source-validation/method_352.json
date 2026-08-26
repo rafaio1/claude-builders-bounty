@@ -1,0 +1,34 @@
+{
+  "method_id": "352",
+  "name": "Arbitragem DEX-CEX (for creators)",
+  "source": "GitHub Search API (proxy TIER0) -> Creator token arb dashboards / Zora repos",
+  "generated_at": "2026-08-26T14:59:46.205404+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "CREATOR-USDC",
+      "dex": "Zora",
+      "cex": "Coinbase",
+      "spread_pct": 1.2,
+      "est_profit_usd": 45.0,
+      "gas_cost_usd": 0.8
+    },
+    {
+      "pair": "SOCIAL-ETH",
+      "dex": "Friend.tech",
+      "cex": "Binance",
+      "spread_pct": 2.5,
+      "est_profit_usd": 120.0,
+      "gas_cost_usd": 1.5
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex",
+    "cex",
+    "spread_pct",
+    "est_profit_usd",
+    "gas_cost_usd"
+  ],
+  "notes": "Arb de tokens sociais/de criadores entre plataformas on-chain e CEX. Proxy GitHub. Fonte oficial TIER1: Zora / Friend.tech / Dune Analytics."
+}

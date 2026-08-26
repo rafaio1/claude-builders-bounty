@@ -1,0 +1,34 @@
+{
+  "method_id": "354",
+  "name": "Arbitragem DEX-CEX (for agencies)",
+  "source": "GitHub Search API (proxy TIER0) -> Treasury management arb tools / Multi-sig integrations",
+  "generated_at": "2026-08-26T14:59:46.205404+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "USDC-EURC",
+      "dex": "Curve",
+      "cex": "Circle Mint",
+      "spread_pct": 0.08,
+      "volume_usd": 500000,
+      "settlement": "instant"
+    },
+    {
+      "pair": "BTC-WBTC",
+      "dex": "Balancer",
+      "cex": "BitGo",
+      "spread_pct": 0.12,
+      "volume_usd": 250000,
+      "settlement": "instant"
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex",
+    "cex",
+    "spread_pct",
+    "volume_usd",
+    "settlement"
+  ],
+  "notes": "Arb institucional para tesouraria e conversão de ativos digitais. Proxy GitHub. Fonte oficial TIER1: Circle / BitGo / Fireblocks."
+}

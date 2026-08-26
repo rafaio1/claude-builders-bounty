@@ -1,0 +1,34 @@
+{
+  "method_id": "353",
+  "name": "Arbitragem DEX-CEX (for developers)",
+  "source": "GitHub Search API (proxy TIER0) -> Rust/Python arb bot templates / Mempool watchers",
+  "generated_at": "2026-08-26T14:59:46.205404+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "WETH-USDC",
+      "dex": "UniswapV3",
+      "cex": "Bybit",
+      "spread_pct": 0.35,
+      "latency_ms": 120,
+      "mev_bribe_eth": 0.005
+    },
+    {
+      "pair": "ARB-USDT",
+      "dex": "Camelot",
+      "cex": "KuCoin",
+      "spread_pct": 0.48,
+      "latency_ms": 95,
+      "mev_bribe_eth": 0.002
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex",
+    "cex",
+    "spread_pct",
+    "latency_ms",
+    "mev_bribe_eth"
+  ],
+  "notes": "Arb técnico com foco em latência e MEV para devs. Proxy GitHub. Fonte oficial TIER1: Flashbots / BlockNative / EigenPhi."
+}
