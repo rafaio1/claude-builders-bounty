@@ -41,7 +41,11 @@ def classify_github_email(subject: str, snippet: str) -> dict:
     text = f"{subject} {snippet}".lower()
     for pattern in GITHUB_NOISE_PATTERNS:
         if re.search(pattern, text):
-            return {'category': 'noise', 'action': 'trash', 'reason': f'github_noise:{pattern}'}
+            # SAFETY: Never auto-trash during discovery/triage. Noise is enqueued
+            # as candidate_trash_post_action so a human or post-action step can
+            # confirm deletion after ledger evidence exists. This prevents loss
+            # of CLA, payout, KYC, contract, security or ambiguous messages.
+            return {'category': 'noise', 'action': 'candidate_trash_post_action', 'reason': f'github_noise:{pattern}'}
     for pattern in GITHUB_PERTINENT_PATTERNS:
         if re.search(pattern, text):
             return {'category': 'pertinent', 'action': 'keep_and_route', 'reason': f'github_signal:{pattern}'}
@@ -92,8 +96,19 @@ def process_github_emails():
         
         classification = classify_github_email(subject, snippet)
         
-        if classification['action'] == 'trash':
-            trash_ids.append(msg_meta['id'])
+        if classification['action'] == 'candidate_trash_post_action':
+            # Enqueue for post-action review; do NOT add to trash_ids here.
+            # Individual trash only after action completed and ledger recorded.
+            entry = {
+                'source': 'gmail_github',
+                'message_id': msg_meta['id'],
+                'subject': subject,
+                'classification': classification,
+                'status': 'pending_review',
+                'discovered_at': datetime.now(timezone.utc).isoformat(),
+            }
+            with open(PENDING_PATH, 'a') as pf:
+                pf.write(json.dumps(entry) + '\n')
         elif classification['action'] == 'keep_and_route':
             pertinent_count += 1
             entry = {
