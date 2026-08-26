@@ -693,21 +693,19 @@ CRITICAL CONSTRAINTS:
             validated.append(s)
         if validated:
             return validated
-        log("All GhostCLI selections were invalid/hallucinated, falling back to heuristic")
-    log(f"Triage failed (resp={'yes' if resp else 'no'}, parsed={type(selected).__name__}), using heuristic fallback with top 3 by value")
-    # Heuristic fallback with meta-target filter
-    scored = [(c, _parse_bounty_value(c.get("value_usd", 0))) for c in sorted_cands]
-    scored.sort(key=lambda x: x[1], reverse=True)
-    filtered = []
-    for c, val in scored:
-        title = c.get("title", "").lower()
-        META_KW_H = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
-                     "funding opportunity", "community update", "as a developer, i want",
-                     "push notifications: native mobile"]
-        if any(kw in title for kw in META_KW_H):
-            continue
-        filtered.append((c, val))
-    return [c for c, _ in filtered[:3]]
+        log("All GhostCLI selections were invalid/hallucinated; refusing heuristic fallback")
+    # Structured error event: no silent fallback
+    err_event = {
+        "event": "triage_contract_failure",
+        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "resp_present": bool(resp),
+        "parsed_type": type(selected).__name__,
+        "candidate_count": len(sorted_cands),
+        "reason": "schema_validation_failed" if isinstance(selected, list) else ("parse_failed" if resp else "no_response"),
+        "action": "return_empty_no_heuristic"
+    }
+    log(f"TRIAGE_ERROR: {json.dumps(err_event)}")
+    return []
 
 
 def _parse_bounty_value(val):

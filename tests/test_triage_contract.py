@@ -106,6 +106,54 @@ class TestTriageSchemaContract:
         with pytest.raises(AssertionError, match="confidence_score must be between 0 and 1"):
             self._validate_selection(item)
 
+class TestTriageNoHeuristicFallback:
+    """Regression tests ensuring silent heuristic fallback is removed."""
+
+    def test_returns_empty_on_schema_failure(self, monkeypatch):
+        """When GhostCLI returns valid JSON but all items fail schema, must return [] not heuristic."""
+        from bounty_engine import triage
+        candidates = [
+            {"url": "https://example.com/1", "title": "Fix bug", "value_usd": "100"},
+            {"url": "https://example.com/2", "title": "Fix crash", "value_usd": "200"},
+        ]
+        bad_json = json.dumps([{"url": "https://example.com/1", "estimated_hours": 1}])
+        monkeypatch.setattr("bounty_engine.ghostcli_complete", lambda *a, **kw: bad_json)
+        result = triage(candidates)
+        assert result == [], f"Expected empty list on schema failure, got {result}"
+
+    def test_returns_empty_on_parse_failure(self, monkeypatch):
+        """When GhostCLI returns non-JSON response, must return [] not heuristic."""
+        from bounty_engine import triage
+        candidates = [
+            {"url": "https://example.com/1", "title": "Fix bug", "value_usd": "100"},
+        ]
+        monkeypatch.setattr("bounty_engine.ghostcli_complete", lambda *a, **kw: "I cannot help with that request")
+        result = triage(candidates)
+        assert result == [], f"Expected empty list on parse failure, got {result}"
+
+    def test_structured_error_logged_on_failure(self, monkeypatch, caplog):
+        """Structured TRIAGE_ERROR event must be logged when contract fails."""
+        import io
+        import json
+        from contextlib import redirect_stdout
+        from bounty_engine import triage
+
+        candidates = [{"url": "https://example.com/1", "title": "Fix bug", "value_usd": "50"}]
+        monkeypatch.setattr("bounty_engine.ghostcli_complete", lambda *a, **kw: None)
+
+        f = io.StringIO()
+        with redirect_stdout(f):
+            result = triage(candidates)
+
+        assert result == [], f"Expected empty list on contract failure, got {result}"
+        output = f.getvalue()
+        assert "TRIAGE_ERROR" in output, f"Expected TRIAGE_ERROR in stdout, got: {output[:200]}"
+
+        err_line = [line for line in output.splitlines() if "TRIAGE_ERROR" in line][0]
+        err = json.loads(err_line.split("TRIAGE_ERROR: ")[1])
+        assert err["event"] == "triage_contract_failure"
+        assert err["action"] == "return_empty_no_heuristic"
+        assert err["resp_present"] is False
 
 if __name__ == "__main__":
     pytest.main([__file__, "-v"])
