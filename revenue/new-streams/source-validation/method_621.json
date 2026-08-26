@@ -1,0 +1,39 @@
+{
+  "method_id": "621",
+  "name": "ML model deployment (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:38:27.312991+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "model": "llama3_70b_finetuned",
+      "framework": "sagemaker_endpoint",
+      "sla_uptime": "99.95%",
+      "auto_scaling": true,
+      "tool": "aws_sagemaker"
+    },
+    {
+      "model": "document_ocr_custom",
+      "framework": "vertex_ai_prediction",
+      "compliance": "hipaa_soc2",
+      "throughput_ppm": 1200,
+      "tool": "gcp_vertex"
+    },
+    {
+      "model": "recommendation_engine",
+      "framework": "azure_ml_online",
+      "a_b_testing": true,
+      "feature_store": "feast",
+      "tool": "azure_kubeflow"
+    }
+  ],
+  "schema": [
+    "model",
+    "framework",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-mlops/sagemaker-vertex). Fonte oficial alvo: Enterprise RFPs/freelance SOWs ML platform. Zero-capital: sandboxes e dev credits; produção é TIER1 com custo cloud enterprise.",
+  "content_hash": "2efc1641d902abd19f307dc170bc3315da6c48d1caafacc3243b74498532c9bd"
+}

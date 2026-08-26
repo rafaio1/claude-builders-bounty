@@ -1,0 +1,39 @@
+{
+  "method_id": "619",
+  "name": "ML model deployment",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:38:27.312991+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "model": "xgboost_churn",
+      "framework": "fastapi_onnx",
+      "latency_p95_ms": 12,
+      "throughput_rps": 8500,
+      "tool": "bentoml_serve"
+    },
+    {
+      "model": "whisper_large_v3",
+      "framework": "triton_server",
+      "gpu_util_pct": 78,
+      "batch_size": 32,
+      "tool": "nvidia_triton"
+    },
+    {
+      "model": "sentence_transformers",
+      "framework": "litellm_proxy",
+      "cache_hit_rate": "92%",
+      "cost_reduction": "85%",
+      "tool": "redis_semantic_cache"
+    }
+  ],
+  "schema": [
+    "model",
+    "framework",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (ml-deployment/bentoml-triton). Fonte oficial alvo: Upwork MLOps freelance gigs. Zero-capital: frameworks open-source + GPU free-tier (Lambda/Colab).",
+  "content_hash": "d2de0adb37558d7a3b9bf47f700dc1e428367abeadce1da987b188d0a29e05bf"
+}

@@ -1,0 +1,39 @@
+{
+  "method_id": "620",
+  "name": "ML model deployment (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:38:27.312991+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "model": "llama3_8b_instruct",
+      "framework": "vllm_modal",
+      "tokens_sec": 450,
+      "cost_per_1m_tokens": "$0.08",
+      "tool": "modal_labs_free"
+    },
+    {
+      "model": "clip_image_search",
+      "framework": "cloudflare_workers_ai",
+      "latency_ms": 180,
+      "monthly_requests_free": 10000,
+      "tool": "cf_vectorize"
+    },
+    {
+      "model": "fraud_detection_rf",
+      "framework": "supabase_edge_fn",
+      "inference_time_ms": 45,
+      "setup_cost": "$0",
+      "tool": "onnxruntime_web"
+    }
+  ],
+  "schema": [
+    "model",
+    "framework",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-ml/vllm-modal). Fonte oficial alvo: YC/indie hacker freelance AI MVP. Zero-capital: Modal/CF Workers AI free tiers cobrem PoC e early traction.",
+  "content_hash": "16b2b4f0c3740670a861e1a77ef8b69f8bde5f64c6a06922d32ea49f1a67a5c1"
+}
