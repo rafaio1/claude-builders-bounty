@@ -1,0 +1,39 @@
+{
+  "method_id": "587",
+  "name": "Database migration scripts (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:44.660973+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "redis_cluster",
+      "target_db": "dragonfly_db",
+      "rows": 45000000,
+      "downtime": "90s",
+      "tool": "redis_dump_restore"
+    },
+    {
+      "source_db": "cassandra_3",
+      "target_db": "scylladb",
+      "rows": 120000000,
+      "downtime": "0min",
+      "tool": "sstable_loader"
+    },
+    {
+      "source_db": "elasticsearch_7",
+      "target_db": "opensearch_2",
+      "rows": 8500000,
+      "downtime": "5min",
+      "tool": "snapshot_restore_api"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (dev-db-modernization/scylla/opensearch). Fonte oficial alvo: Toptal freelance infra eng. Zero-capital: ferramentas nativas open-source; sem licenças pagas.",
+  "content_hash": "4b9ff23a78d514713d5a4fa277b372ec4df28b02b036f90a80d46e7e413b00c1"
+}

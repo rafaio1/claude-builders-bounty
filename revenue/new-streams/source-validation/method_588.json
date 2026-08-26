@@ -1,0 +1,39 @@
+{
+  "method_id": "588",
+  "name": "Database migration scripts (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:44.660973+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "wp_mysql",
+      "target_db": "headless_strapi_pg",
+      "rows": 320000,
+      "downtime": "12min",
+      "tool": "wp_to_strapi_migrator"
+    },
+    {
+      "source_db": "shopify_storefront",
+      "target_db": "medusa_pg",
+      "rows": 180000,
+      "downtime": "8min",
+      "tool": "shopify_to_medusa_sync"
+    },
+    {
+      "source_db": "magento_mysql",
+      "target_db": "vendure_pg",
+      "rows": 950000,
+      "downtime": "25min",
+      "tool": "magento_data_exporter"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (ecommerce-replatform/headless-cms). Fonte oficial alvo: Clutch.co agency replatforming projects. Zero-capital: migradores open-source; staging local gratuito.",
+  "content_hash": "d62a4224228aa4395544d7c0817fb0e677dc4edb9aa5f6b89f506eee9e36283e"
+}

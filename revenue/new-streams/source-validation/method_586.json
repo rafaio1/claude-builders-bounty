@@ -1,0 +1,39 @@
+{
+  "method_id": "586",
+  "name": "Database migration scripts (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:44.660973+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "airtable",
+      "target_db": "supabase_pg",
+      "rows": 85000,
+      "downtime": "3min",
+      "tool": "airtable_to_pg_sync"
+    },
+    {
+      "source_db": "notion_db",
+      "target_db": "sqlite_local",
+      "rows": 12000,
+      "downtime": "45s",
+      "tool": "notion_api_export"
+    },
+    {
+      "source_db": "google_sheets",
+      "target_db": "firebase_firestore",
+      "rows": 250000,
+      "downtime": "0min",
+      "tool": "sheets_to_firestore_etl"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (creator-db-sync/airtable-migrate). Fonte oficial alvo: Fiverr 'no-code db migration'. Zero-capital: APIs gratuitas de Notion/Airtable + Supabase free tier.",
+  "content_hash": "d4d3e486335e95be281419e93eba4dc67cbb0081a578785fc2b6b5119cb325bf"
+}

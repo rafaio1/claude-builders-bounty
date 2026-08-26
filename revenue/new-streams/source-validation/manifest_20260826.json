@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:32:18.523323+00:00",
-    "total": 585,
+    "generated_at": "2026-08-26T15:32:44.660973+00:00",
+    "total": 588,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -8940,5 +8940,122 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (enterprise-db-modernization/ora2pg/sct). Fonte oficial alvo: Enterprise DB modernization RFPs/freelance SOWs. Zero-capital: SCT/DMS gratuitos para assessment; execução real é TIER1 com custo cloud.",
     "content_hash": "b460413d6eac11082afd1fa35de17faf90e680c6900030031fd91e514502a98f"
+  },
+  "586": {
+    "method_id": "586",
+    "name": "Database migration scripts (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:44.660973+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "airtable",
+        "target_db": "supabase_pg",
+        "rows": 85000,
+        "downtime": "3min",
+        "tool": "airtable_to_pg_sync"
+      },
+      {
+        "source_db": "notion_db",
+        "target_db": "sqlite_local",
+        "rows": 12000,
+        "downtime": "45s",
+        "tool": "notion_api_export"
+      },
+      {
+        "source_db": "google_sheets",
+        "target_db": "firebase_firestore",
+        "rows": 250000,
+        "downtime": "0min",
+        "tool": "sheets_to_firestore_etl"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (creator-db-sync/airtable-migrate). Fonte oficial alvo: Fiverr 'no-code db migration'. Zero-capital: APIs gratuitas de Notion/Airtable + Supabase free tier.",
+    "content_hash": "d4d3e486335e95be281419e93eba4dc67cbb0081a578785fc2b6b5119cb325bf"
+  },
+  "587": {
+    "method_id": "587",
+    "name": "Database migration scripts (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:44.660973+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "redis_cluster",
+        "target_db": "dragonfly_db",
+        "rows": 45000000,
+        "downtime": "90s",
+        "tool": "redis_dump_restore"
+      },
+      {
+        "source_db": "cassandra_3",
+        "target_db": "scylladb",
+        "rows": 120000000,
+        "downtime": "0min",
+        "tool": "sstable_loader"
+      },
+      {
+        "source_db": "elasticsearch_7",
+        "target_db": "opensearch_2",
+        "rows": 8500000,
+        "downtime": "5min",
+        "tool": "snapshot_restore_api"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (dev-db-modernization/scylla/opensearch). Fonte oficial alvo: Toptal freelance infra eng. Zero-capital: ferramentas nativas open-source; sem licenças pagas.",
+    "content_hash": "4b9ff23a78d514713d5a4fa277b372ec4df28b02b036f90a80d46e7e413b00c1"
+  },
+  "588": {
+    "method_id": "588",
+    "name": "Database migration scripts (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:44.660973+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "wp_mysql",
+        "target_db": "headless_strapi_pg",
+        "rows": 320000,
+        "downtime": "12min",
+        "tool": "wp_to_strapi_migrator"
+      },
+      {
+        "source_db": "shopify_storefront",
+        "target_db": "medusa_pg",
+        "rows": 180000,
+        "downtime": "8min",
+        "tool": "shopify_to_medusa_sync"
+      },
+      {
+        "source_db": "magento_mysql",
+        "target_db": "vendure_pg",
+        "rows": 950000,
+        "downtime": "25min",
+        "tool": "magento_data_exporter"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (ecommerce-replatform/headless-cms). Fonte oficial alvo: Clutch.co agency replatforming projects. Zero-capital: migradores open-source; staging local gratuito.",
+    "content_hash": "d62a4224228aa4395544d7c0817fb0e677dc4edb9aa5f6b89f506eee9e36283e"
   }
 }
