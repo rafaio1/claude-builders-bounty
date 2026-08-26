@@ -1,0 +1,39 @@
+{
+  "pilot": "railway-free-tier-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "provider": "Railway Corporation",
+  "service_type": "PaaS / Cloud Infrastructure",
+  "free_tier_limits": {
+    "type": "USAGE_CREDITS_TRIAL",
+    "permanent": false,
+    "notes": "Free tier is a limited-time trial via Usage Credits. Credits are non-transferable, non-refundable, expire on account termination, and require upgrade to Paid Service once exhausted. No permanent free tier."
+  },
+  "paid_plan_baseline": {
+    "entry_plan": "Paid Service (post-trial)",
+    "pricing_model": "usage-based",
+    "notes": "Usage-based billing after credits exhausted."
+  },
+  "reselling_model": null,
+  "tos_analysis": {
+    "license_scope": "worldwide, non-exclusive, non-sublicensable, non-transferable license for Content only (download/display locally). No license granted for Service infrastructure reselling.",
+    "assignment": "Prohibited without prior written consent from Railway. Railway may assign freely.",
+    "enterprise_exception": "Enterprise Agreement exists but governs enterprise customer-affiliated workspaces under separate contract; not available via public free tier or self-service signup.",
+    "acceptable_use": "Use prohibited if violating applicable laws. No explicit managed service/reseller exception in public TOS.",
+    "credits_restrictions": "Usage Credits have no cash value, are non-transferrable, non-refundable, expire immediately on cancellation/termination."
+  },
+  "risks": [
+    "No permanent free tier — trial-only model violates zero-capital sustainability requirement",
+    "Non-sublicensable, non-transferable license blocks any resale or managed service wrapper",
+    "Assignment clause prohibits account/service transfer without written consent",
+    "Usage Credits are non-transferable and expire on termination — cannot be pooled or resold",
+    "Enterprise Agreement is gated (not self-service) and terms are opaque"
+  ],
+  "next_steps": [
+    "REJECTED — do not proceed to TIER1",
+    "Continue pipeline with Fly.io, Vercel, Netlify evaluation"
+  ],
+  "doc_verified": true,
+  "source_url": "https://railway.com/legal/terms",
+  "source_date": "2026-04-20"
+}
