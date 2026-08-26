@@ -31707,8 +31707,8 @@
     "sha256": "7afe358763545ff23c308b55a187301531e88c6dadb624ce309621b1a21c5380"
   },
   "_meta": {
-    "updated_at": "2026-08-26T16:30:00.504995+00:00",
-    "total_samples": 953
+    "updated_at": "2026-08-26T16:31:13.203143+00:00",
+    "total_samples": 968
   },
   "method_913": {
     "method_id": "method_913",
@@ -32356,5 +32356,245 @@
     "schema": "infrastructure_compliance",
     "generated_at": "2026-08-26T16:30:00.504995+00:00",
     "sha256": "f2b489947a2117d2a599eea7becd6532a8ccc9bdc36860a6a980919cd2081cfa"
+  },
+  "method_953": {
+    "method_id": "method_953",
+    "name": "Crowdin Free Tier Localization Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for i18n management reselling. Official target: Crowdin Free Tier (unlimited projects, 60K words/month). Zero-capital via project workspace pooling. Demand validated via OSS/multilingual app repos integrating Crowdin.",
+    "sample_data": {
+      "platform": "crowdin",
+      "free_quota": "60k_words_month",
+      "monetization": "localization_management_wrapper"
+    },
+    "schema": "infrastructure_localization",
+    "generated_at": "2026-08-26T16:30:18.965246+00:00",
+    "sha256": "32b1d330938735e660588c727fdd33d1ecda248c1a02f70977792890e6e8f287"
+  },
+  "method_954": {
+    "method_id": "method_954",
+    "name": "Stripe Payment Links Free Integration Service",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for no-code payment collection. Official target: Stripe Payment Links (no monthly fee, pay-per-transaction). Zero-capital via link generation aggregation. Demand validated via creator/freelancer repos needing simple checkout without backend.",
+    "sample_data": {
+      "platform": "stripe_payment_links",
+      "free_quota": "unlimited_links_pay_per_txn",
+      "monetization": "payment_link_setup_service"
+    },
+    "schema": "infrastructure_payments",
+    "generated_at": "2026-08-26T16:30:18.965246+00:00",
+    "sha256": "0e1c2e0e53cf8182d4a31d5591731aad0fd96691d355fd7e45c1bd05880aaa85"
+  },
+  "method_955": {
+    "method_id": "method_955",
+    "name": "Blockscout Free Tier Chain Explorer Reselling",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for blockchain explorer hosting. Official target: Blockscout open-source + free hosted tier. Zero-capital via self-hosted instance sharing. Demand validated via L2/sidechain repos needing custom explorers.",
+    "sample_data": {
+      "platform": "blockscout",
+      "environment": "self_hosted_free",
+      "monetization": "explorer_hosting_service"
+    },
+    "schema": "crypto_explorer_infrastructure",
+    "generated_at": "2026-08-26T16:30:18.965246+00:00",
+    "sha256": "d6428cd628fe196544cca9e5f40d21453fa8783ad57666e34db594553cface45"
+  },
+  "method_956": {
+    "method_id": "method_956",
+    "name": "Gitcoin Passport Free Tier Reputation Reselling",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for sybil-resistant identity scoring. Official target: Gitcoin Passport free stamps + scorer API. Zero-capital via stamp aggregation. Demand validated via airdrop/gating repos integrating Passport scores.",
+    "sample_data": {
+      "platform": "gitcoin_passport",
+      "free_quota": "unlimited_stamps_scorer_api",
+      "monetization": "reputation_score_api_wrapper"
+    },
+    "schema": "crypto_identity_reputation",
+    "generated_at": "2026-08-26T16:30:18.965246+00:00",
+    "sha256": "aaa12de0450a0c9b5bdb173a995057b95c7c5dac4a2ae935b5a2e4739bc5622f"
+  },
+  "method_957": {
+    "method_id": "method_957",
+    "name": "BunnyCDN Free Tier Edge Caching Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for CDN/performance reselling. Official target: BunnyCDN free trial + low-cost tier aggregation. Zero-capital via zone namespace pooling. Demand validated via media/site repos needing global edge caching without AWS CloudFront costs.",
+    "sample_data": {
+      "platform": "bunnycdn",
+      "free_quota": "trial_1tb_bandwidth",
+      "monetization": "cdn_zone_proxy_markup"
+    },
+    "schema": "infrastructure_cdn",
+    "generated_at": "2026-08-26T16:30:18.965246+00:00",
+    "sha256": "2e071342348332c822a72a76c3ab4133e123d43d9ca02f88e85160190d954c56"
+  },
+  "method_958": {
+    "method_id": "method_958",
+    "name": "Sanity.io Free Tier Headless CMS Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for content management reselling. Official target: Sanity.io Free Tier (unlimited projects, 500K API requests/month). Zero-capital via project dataset pooling. Demand validated via Next.js/Gatsby repos integrating Sanity.",
+    "sample_data": {
+      "platform": "sanity_io",
+      "free_quota": "500k_api_requests_month",
+      "monetization": "cms_backend_wrapper_markup"
+    },
+    "schema": "infrastructure_cms",
+    "generated_at": "2026-08-26T16:30:45.175836+00:00",
+    "sha256": "e0b860d203caa3192a0a1e30d3c86e6254b544886ba7bdf1f20c25860b6d2bfd"
+  },
+  "method_959": {
+    "method_id": "method_959",
+    "name": "Upstash Rate Limiting Free Tier Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for API protection/rate limiting reselling. Official target: Upstash Redis Free Tier (10K commands/day). Zero-capital via namespace sharing. Demand validated via SaaS/API repos needing distributed rate limiting without self-hosted Redis.",
+    "sample_data": {
+      "platform": "upstash_redis",
+      "free_quota": "10k_commands_day",
+      "monetization": "rate_limiting_proxy_service"
+    },
+    "schema": "infrastructure_rate_limiting",
+    "generated_at": "2026-08-26T16:30:45.175836+00:00",
+    "sha256": "bbffef5207ae595f6cfdf23fb3164ff6563de25a7b1a31f51279432a1850b279"
+  },
+  "method_960": {
+    "method_id": "method_960",
+    "name": "Safe{Wallet} Testnet Multisig Deployment Service",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for smart account/multisig testing. Official target: Safe Wallet testnet deployment + module integration. Zero-capital via testnet gas faucets. Demand validated via DAO/treasury repos implementing multisig governance.",
+    "sample_data": {
+      "protocol": "safe_wallet",
+      "environment": "testnet",
+      "monetization": "multisig_setup_consulting"
+    },
+    "schema": "crypto_multisig_infrastructure",
+    "generated_at": "2026-08-26T16:30:45.175836+00:00",
+    "sha256": "ac35662d886dda90c9cf858221e33063023cf762d99b006eb0b8981f1979b58e"
+  },
+  "method_961": {
+    "method_id": "method_961",
+    "name": "Yearn Finance Testnet Yield Aggregator Integration",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for automated yield strategy testing. Official target: Yearn V3 testnet vaults + strategy SDK. Zero-capital via testnet token provision. Demand validated via DeFi dashboard/wallet repos integrating yield optimization.",
+    "sample_data": {
+      "protocol": "yearn_v3",
+      "environment": "testnet",
+      "monetization": "yield_aggregator_integration_service"
+    },
+    "schema": "crypto_yield_aggregation",
+    "generated_at": "2026-08-26T16:30:45.175836+00:00",
+    "sha256": "36815af2622ed0de163564b3c215a5f7a731f6164ebe7476d4459cb05d5eb367"
+  },
+  "method_962": {
+    "method_id": "method_962",
+    "name": "Chainalysis KYT Free Tier Compliance Oracle Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for transaction monitoring/compliance reselling. Official target: Chainalysis KYT sandbox + limited free checks. Zero-capital via sandbox credential sharing. Demand validated via exchange/fintech repos needing AML screening integration.",
+    "sample_data": {
+      "platform": "chainalysis_kyt",
+      "free_quota": "sandbox_test_checks",
+      "monetization": "compliance_oracle_wrapper_markup"
+    },
+    "schema": "infrastructure_compliance_oracle",
+    "generated_at": "2026-08-26T16:30:45.175836+00:00",
+    "sha256": "ed2162a5732a482a85f7125300a5ded2282ef1cef293872e7f405b7802c79ada"
+  },
+  "method_963": {
+    "method_id": "method_963",
+    "name": "AbstractAPI Free Tier Email Validation Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for email verification reselling. Official target: AbstractAPI Free Tier (100 validations/month). Zero-capital via API key pooling. Demand validated via signup/onboarding repos needing email quality checks.",
+    "sample_data": {
+      "platform": "abstractapi",
+      "free_quota": "100_validations_month",
+      "monetization": "email_validation_proxy_markup"
+    },
+    "schema": "infrastructure_email_validation",
+    "generated_at": "2026-08-26T16:31:13.203143+00:00",
+    "sha256": "356051405a4c8f9d38508df42144afc6a8954db7e7b7f27bb7356dcf602f2594"
+  },
+  "method_964": {
+    "method_id": "method_964",
+    "name": "DocRaptor Free Tier PDF Generation Reselling",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for HTML-to-PDF conversion reselling. Official target: DocRaptor Free Tier (test documents only, watermark). Zero-capital via test document aggregation. Demand validated via invoicing/reporting repos needing PDF generation without headless browser.",
+    "sample_data": {
+      "platform": "docraptor",
+      "free_quota": "unlimited_test_docs_watermarked",
+      "monetization": "pdf_generation_wrapper"
+    },
+    "schema": "infrastructure_pdf_generation",
+    "generated_at": "2026-08-26T16:31:13.203143+00:00",
+    "sha256": "53c1c364408eb946bc94505d4965205167f9b0c377f4af76eaa61483d28cc86c"
+  },
+  "method_965": {
+    "method_id": "method_965",
+    "name": "Chainlink CCIP Token Transfer Testnet Service",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for cross-chain token transfer testing. Official target: Chainlink CCIP testnet + ERC20 faucets. Zero-capital via testnet token bridging. Demand validated via multi-chain DeFi repos implementing cross-chain liquidity.",
+    "sample_data": {
+      "protocol": "chainlink_ccip_tokens",
+      "environment": "testnet",
+      "monetization": "cross_chain_transfer_testing_service"
+    },
+    "schema": "crypto_cross_chain_tokens",
+    "generated_at": "2026-08-26T16:31:13.203143+00:00",
+    "sha256": "7cf8f040df170c85b476f764fc06737070ef958564170fa776ac34ede682cc43"
+  },
+  "method_966": {
+    "method_id": "method_966",
+    "name": "LayerZero OFT V2 Testnet Deployment Service",
+    "category": "crypto_defi",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for omnichain fungible token deployment. Official target: LayerZero V2 testnet + OFT SDK. Zero-capital via testnet gas sponsorship. Demand validated via token project repos needing cross-chain token standards.",
+    "sample_data": {
+      "protocol": "layerzero_oft_v2",
+      "environment": "testnet",
+      "monetization": "oft_deployment_consulting"
+    },
+    "schema": "crypto_omnichain_tokens",
+    "generated_at": "2026-08-26T16:31:13.203143+00:00",
+    "sha256": "cfdd21aa74496f69da9acbbdd5caf85f598f245c25b036c2f9ce15f309505e6a"
+  },
+  "method_967": {
+    "method_id": "method_967",
+    "name": "RapidAPI Free Tier Marketplace Listing Service",
+    "category": "infrastructure_reselling",
+    "tier": "TIER0",
+    "source": "GitHub Search API",
+    "notes": "Proxy for API marketplace distribution. Official target: RapidAPI free provider tier. Zero-capital via API listing aggregation. Demand validated via developer tool repos seeking API monetization channels.",
+    "sample_data": {
+      "platform": "rapidapi",
+      "free_quota": "free_provider_listing",
+      "monetization": "api_marketplace_distribution_fee"
+    },
+    "schema": "infrastructure_api_marketplace",
+    "generated_at": "2026-08-26T16:31:13.203143+00:00",
+    "sha256": "9d36ddd4d590b98d051db0164697538d559511a8f6fe2c30951c388ee5238e21"
   }
 }
