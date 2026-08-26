@@ -1,0 +1,44 @@
+{
+  "method_id": "916",
+  "pilot_name": "regulated-mentorship-platform-br-scaffold",
+  "proposal_title": "Plataforma de Mentoria Regulamentada para CVM/SUSEP",
+  "artifact_real_source": "Plataforma de Mentoria Regulamentada para CVM/SUSEP",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é marketplace de mentoria regulada para profissionais financeiros/seguros com verificação de certificações.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "content_monetization",
+  "free_tier_limits": {
+    "provider": "APIs Públicas ANBIMA/SUSEP + Calendly Free + Stripe/Asaas",
+    "permanent_free": true,
+    "limits": "Verificação de certificados via consultas públicas gratuitas. Agendamento via ferramentas free tier. Plataforma web estática sem custo inicial.",
+    "verification_method": "curl_anbima_susep_cert_check"
+  },
+  "paid_plan_baseline": {
+    "session_fee_avg_brl": "250-600",
+    "platform_cut_pct": 20,
+    "revenue_per_session_brl": "50-120",
+    "target_sessions_monthly": 30,
+    "projected_mrr_brl": "1500-3600"
+  },
+  "reselling_model": {
+    "type": "regulated_marketplace_commission",
+    "mechanism": "Conexão entre mentores certificados (CPA-20, CFP, CNSEG) e profissionais em formação. Plataforma valida certificações via APIs oficiais e cobra 20% sobre cada sessão agendada/paga.",
+    "zero_capital_path": "Landing page estática + formulário de cadastro. Validação manual ou semi-automática de certificados inicialmente. Pagamento via link Asaas/Pix com split automático. Sem infraestrutura paga.",
+    "compliance": "Instrução CVM 80; Resolução SUSEP 666; Código de Ética APIMEC/CNSEG; LGPD para dados profissionais."
+  },
+  "risks": [
+    "Responsabilidade solidária se mentor não certificado prestar consultoria regulatória indevida",
+    "Churn alto: mentoria é serviço pontual, não recorrente por natureza",
+    "Dificuldade de atrair mentores qualificados que já têm rede própria de clientes",
+    "Mudanças regulatórias podem alterar requisitos de certificação ou proibição de intermediação"
+  ],
+  "next_steps": [
+    "Validar endpoints de consulta de certificados ANBIMA/SUSEP via curl",
+    "Criar MVP de landing page com formulário de matching mentor-mentee",
+    "Recrutar 3-5 mentores pilotos certificados para validar proposta de valor",
+    "Implementar fluxo de pagamento com split de comissão via Asaas",
+    "Redigir termos de uso isentando plataforma de responsabilidade técnica sobre conteúdo da mentoria"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:45:00+00:00"
+}

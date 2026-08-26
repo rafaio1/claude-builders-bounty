@@ -1,0 +1,43 @@
+{
+  "method_id": "915",
+  "pilot_name": "mei-data-feed-fintech-br-scaffold",
+  "proposal_title": "Feed de Dados Cadastrais MEI para Fintechs de Microcrédito",
+  "artifact_real_source": "Feed de Dados Cadastrais MEI para Fintechs de Microcrédito",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é feed/API de dados públicos MEI para validação cadastral em fintechs de microcrédito.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "data_products",
+  "free_tier_limits": {
+    "provider": "Portal do Empreendedor (Gov.br) + Dados Abertos MEI",
+    "permanent_free": true,
+    "limits": "Dados MEI são públicos e abertos via Portal do Empreendedor e Dados.gov.br. Acesso gratuito sem limite oficial documentado para consulta individual. ETL local via Python stdlib.",
+    "verification_method": "curl_portal_empreendedor_mei_check"
+  },
+  "paid_plan_baseline": {
+    "subscription_fee_brl": 397,
+    "target_subscribers_monthly": 8,
+    "projected_mrr_brl": 3176,
+    "cost_per_delivery_brl": "0 (dados públicos + hosting free tier)"
+  },
+  "reselling_model": {
+    "type": "data_feed_subscription",
+    "mechanism": "API/Feed estruturado com dados cadastrais MEI atualizados semanalmente para fintechs de microcrédito (SCD/SEP). Campos: CNPJ, atividade, situação, endereço. Monetização via assinatura mensal BRL.",
+    "zero_capital_path": "Script Python para scraping ético/atualização semanal de dados públicos. Hospedagem da API em Vercel/Cloudflare Workers free tier. Billing via Asaas/Pix recorrente. Sem custo de dado ou licença.",
+    "compliance": "LC 123/2006 Art. 18-E; LGPD (dados públicos tratados para finalidade legítima de crédito); Termos de uso do Portal do Empreendedor permitem consulta mas proíbem comercialização direta do dado bruto — valor agregado está na estruturação/frequência."
+  },
+  "risks": [
+    "Portal do Empreendedor pode bloquear scraping automatizado ou alterar estrutura HTML",
+    "Dados públicos podem ter atraso de atualização vs necessidade real-time das fintechs",
+    "Concorrência de bureaus estabelecidos (Serasa, Quod) que já incluem MEI em scoring",
+    "Risco regulatório: uso de dados pessoais para crédito exige base legal LGPD clara"
+  ],
+  "next_steps": [
+    "Validar endpoint de consulta MEI via curl no Portal do Empreendedor",
+    "Criar script ETL piloto para extração e normalização de campos MEI",
+    "Implementar MVP de API REST com autenticação e rate limiting",
+    "Preparar documentação técnica e amostra de dados para prospects",
+    "Validar conformidade LGPD com especialista (sem custo inicial via parceria)"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:40:00+00:00"
+}

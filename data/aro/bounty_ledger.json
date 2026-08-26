@@ -5,7 +5,7 @@
       "repo": "OphirPay/OphirPay",
       "pr": 225,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T12:00:00Z",
+      "last_action": "2026-08-26T23:10:36.062886+00:00",
       "evidence": [
         {
           "type": "gh_comment",
@@ -52,9 +52,19 @@
           "type": "email",
           "id": "1a03dca6ce9683f4",
           "summary": "Vercel bot: CodingAngel1 team auth required for deploy"
+        },
+        {
+          "type": "email",
+          "id": "1a03dcc01298cb75",
+          "note": "greptile P2 review addressed in 43e9de7; CI green; Vercel CodingAngel1 auth pending"
+        },
+        {
+          "type": "email",
+          "id": "1a03dca6ce9683f4",
+          "note": "vercel bot confirms team auth required"
         }
       ],
-      "next_action": "Awaiting Vercel CodingAngel1 team auth + address Greptile P2 review (refactor to use deliverWebhook)",
+      "next_action": "monitor_vercel_auth_codingangel1",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 225
     },
@@ -63,7 +73,7 @@
       "repo": "ligate-io/ligate-chain",
       "pr": 567,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T12:00:00Z",
+      "last_action": "2026-08-26T23:10:36.062886+00:00",
       "evidence": [
         {
           "type": "gmail_triage_cla_ci_failure",
@@ -105,9 +115,19 @@
           "type": "email",
           "id": "1a03d5fbf26dfa9f",
           "summary": "CLA Assistant workflow failed"
+        },
+        {
+          "type": "email",
+          "id": "1a03d5fae6f376c9",
+          "note": "CLA bot rejects root user; signature comments posted but workflow still failing"
+        },
+        {
+          "type": "email",
+          "id": "1a03d5fbf26dfa9f",
+          "note": "CLA Assistant run failed 2026-08-26T09:20:57Z"
         }
       ],
-      "next_action": "User must sign CLA with GitHub-linked email; bot reports root is not a GitHub user. Email preserved.",
+      "next_action": "maintainer_cla_recheck_or_email_fix",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 567
     },
@@ -116,7 +136,7 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": 150,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T12:00:00Z",
+      "last_action": "2026-08-26T23:10:36.062886+00:00",
       "evidence": [
         {
           "type": "gmail_triage_vercel_auth_pending",
@@ -145,9 +165,14 @@
           "type": "email",
           "id": "1a03df0244231a91",
           "summary": "Vercel bot: Heymide team auth required for deploy"
+        },
+        {
+          "type": "email",
+          "id": "1a03df0244231a91",
+          "note": "Vercel Heymide team auth required for deploy preview"
         }
       ],
-      "next_action": "Awaiting Vercel Heymide team authorization for deploy preview",
+      "next_action": "monitor_vercel_auth_heymide",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 150
     },
@@ -1478,6 +1503,19 @@
       "source": "hackerone",
       "eligible": false,
       "notes": "Duplicate of earlier submission; no payout eligibility."
+    },
+    {
+      "id": 56,
+      "timestamp": "2026-08-26T23:11:39.696051+00:00",
+      "source": "opire",
+      "repo": "go-gitea/gitea",
+      "issue": "#29398",
+      "title": "Support configuring permissions of automatic tokens of Actions jobs",
+      "bounty_usd": 2080,
+      "status": "rejected",
+      "reason": "PR #39070 already open (Aug 24, 2026) by harkaibalazs addressing this exact issue. No reviews yet but active competition. Issue is type/proposal from Feb 2024 with complex scope. High risk of duplicate work.",
+      "phase": "validation_phase3",
+      "evidence_url": "https://github.com/go-gitea/gitea/pull/39070"
     }
   ],
   "bounties": [
