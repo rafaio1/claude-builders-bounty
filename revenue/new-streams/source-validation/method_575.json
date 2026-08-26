@@ -1,0 +1,28 @@
+{
+  "method_id": "575",
+  "name": "Freelance time tracker integration (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:28.804978+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_trigger": "git_commit_push",
+      "context_capture": "branch_name_issue_id",
+      "idle_pause": true,
+      "export_format": "json_timesheet"
+    },
+    {
+      "dev_trigger": "pr_open_close",
+      "context_capture": "repo_pr_number",
+      "idle_pause": false,
+      "export_format": "csv_invoice_ready"
+    }
+  ],
+  "schema": [
+    "dev_trigger",
+    "context_capture",
+    "idle_pause",
+    "export_format"
+  ],
+  "notes": "Time tracking vinculado a eventos Git para prova de trabalho automática. Proxy: GitHub Search 'git hook time tracker freelancer'. Fonte oficial: GitHub Webhooks / Git post-commit hooks docs."
+}

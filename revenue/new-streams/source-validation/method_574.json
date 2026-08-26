@@ -1,0 +1,28 @@
+{
+  "method_id": "574",
+  "name": "Freelance time tracker integration (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:28.804978+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_workflow": "stream_prep_edit",
+      "tracker_hook": "obs_scene_change",
+      "billing_unit": "per_video",
+      "sync_target": "airtable_base"
+    },
+    {
+      "creator_workflow": "podcast_batch_record",
+      "tracker_hook": "mic_mute_toggle",
+      "billing_unit": "per_episode",
+      "sync_target": "notion_db"
+    }
+  ],
+  "schema": [
+    "creator_workflow",
+    "tracker_hook",
+    "billing_unit",
+    "sync_target"
+  ],
+  "notes": "Rastreamento de tempo acionado por eventos de criação (OBS/mic) para billing preciso. Proxy: GitHub Search 'creator time tracking automation'. Zero-capital: webhooks locais + APIs gratuitas."
+}

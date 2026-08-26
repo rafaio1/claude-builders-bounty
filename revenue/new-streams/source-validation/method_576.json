@@ -1,0 +1,28 @@
+{
+  "method_id": "576",
+  "name": "Freelance time tracker integration (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:28.804978+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_tool": "harvest_enterprise",
+      "rollup_level": "client_project_task",
+      "margin_alert_threshold_pct": 30,
+      "api_rate_limit_handling": "exponential_backoff"
+    },
+    {
+      "agency_tool": "everhour_team",
+      "rollup_level": "team_member",
+      "margin_alert_threshold_pct": 20,
+      "api_rate_limit_handling": "queue_worker"
+    }
+  ],
+  "schema": [
+    "agency_tool",
+    "rollup_level",
+    "margin_alert_threshold_pct",
+    "api_rate_limit_handling"
+  ],
+  "notes": "Consolidação de tempo multi-agente com alertas de margem em tempo real. Proxy: GitHub Search 'agency time tracking margin alert'. Foco em prevenção de over-servicing sem capital inicial."
+}
