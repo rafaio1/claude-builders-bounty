@@ -1,16 +1,23 @@
 {
-  "method_id": "method_923",
-  "name": "Grafana Cloud Free Tier Monitoring Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "923",
+  "name": "Oráculo de Créditos de Carbono Florestal BR (ICMBio/MMA)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852394+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for observability reselling. Official target: Grafana Cloud Free Tier (10K metrics, 50GB logs). Zero-capital via stack namespace pooling. Demand validated via Kubernetes/OSS repos adopting Grafana Cloud.",
   "sample_data": {
-    "platform": "grafana_cloud",
-    "free_quota": "10k_metrics_50gb_logs",
-    "monetization": "managed_observability_wrapper"
+    "data_source": "icmbio_carbono_api / mma_redd_brasil",
+    "assets": [
+      "credito_floresta_amazonia",
+      "credito_cerrado",
+      "verra_vcs_br"
+    ],
+    "zero_capital": true,
+    "monetization_model": "api_license_brl_1297_monthly",
+    "target_segment": "empresas_net_zero_commodities_br",
+    "compliance": "decreto_11075_2022_mercado_carbono_br"
   },
-  "schema": "infrastructure_monitoring",
-  "generated_at": "2026-08-26T16:28:31.786729+00:00",
-  "sha256": "25a69ae80b05c9c41a6f28e22e4a909e1970b0b427722002235281ad6ab4e167"
+  "schema": "carbon_credit_oracle_br_v1",
+  "notes": "Validação BR explícita: Mercado de carbono regulado BR foi instituído pelo Decreto 11.075/2022. Créditos florestais nacionais têm premium sobre internacionais por compliance ambiental local. Zero-capital: dados públicos ICMBio/MMA + registros Verra. Monetização via API para empresas que precisam compensar emissões com créditos BR válidos. Não redundante com commodities agro (method_911) pois ativo é crédito ambiental regulado, não commodity física. Demanda: >500 empresas BR com metas net-zero; mercado voluntário BR movimentou R$800M em 2025.",
+  "category": "crypto_defi",
+  "sha256": "215381ea3a4d64675f9e147200ac9b66ce8639898799a4bd6197279ec229604d"
 }

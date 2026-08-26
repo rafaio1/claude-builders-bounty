@@ -1,16 +1,25 @@
 {
-  "method_id": "method_921",
-  "name": "Cloudflare R2 Free Egress Storage Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "921",
+  "name": "Feed de Preços de Medicamentos CMED/ANVISA para Farmácias",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852388+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for zero-egress object storage. Official target: Cloudflare R2 Free Tier (10GB storage, no egress fees). Zero-capital via bucket namespace sharing. Demand validated via media-heavy repos avoiding AWS egress costs.",
   "sample_data": {
-    "platform": "cloudflare_r2",
-    "free_quota": "10gb_no_egress_fee",
-    "monetization": "zero_egress_storage_proxy"
+    "data_source": "cmed_anvisa_gov_br_lista_precos_maximos",
+    "fields": [
+      "ean13",
+      "principio_ativo",
+      "preco_maximo_consumidor",
+      "ajuste_anual"
+    ],
+    "update_frequency": "monthly_official",
+    "zero_capital": true,
+    "monetization_model": "subscription_brl_197_monthly",
+    "target_segment": "farmacias_independentes_drogarias_br",
+    "compliance": "lei_10742_2003_cmed_regulamento"
   },
-  "schema": "infrastructure_storage",
-  "generated_at": "2026-08-26T16:28:11.011449+00:00",
-  "sha256": "ff1e4c13d3eabd8c9f35f04ec6e9a10944c7c04ac0fd7160418ee68039158413"
+  "schema": "cmed_drug_price_feed_br_v1",
+  "notes": "Validação BR explícita: CMED/ANVISA publica lista oficial de preços máximos de medicamentos mensalmente. Farmácias independentes precisam atualizar sistemas de precificação para evitar multas. Zero-capital: dados públicos abertos em CSV/XLS. Monetização via feed estruturado/API normalizada, pois formato oficial é difícil de integrar. Não redundante com CNPJ (method_903) pois produto é tabela regulatória de preços, não cadastro empresarial. Demanda: >80.000 farmácias BR; erro de precificação gera multa de até R$1.5M por infração.",
+  "category": "data_products",
+  "sha256": "1efe542682dfb2cdfe18fd8f834f908c2fc5570a0322e5fc81ae25b52b0f2699"
 }

@@ -1,16 +1,19 @@
 {
-  "method_id": "method_919",
-  "name": "Neon Postgres Free Tier Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "919",
+  "name": "API de Interoperabilidade RNDS/ANS para Clínicas Populares",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852352+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for serverless Postgres reselling. Official target: Neon Free Tier (0.5GB storage, autosuspend). Zero-capital via project branching. Demand validated via Next.js/Prisma repos using neon as DB provider.",
   "sample_data": {
-    "platform": "neon_tech",
-    "free_quota": "0.5gb_storage_autosuspend",
-    "monetization": "serverless_db_wrapper"
+    "regulation": "ans_rdc_472_2023_rnds_ms",
+    "integration_sdk": "rnods_sdk_python / opendatasus_api",
+    "zero_capital": true,
+    "monetization_model": "setup_fee_brl_1500_plus_monthly_brl_297",
+    "target_segment": "clinicas_populares_laboratorios_br",
+    "compliance": "lgpd_saude_art_7_inc_v"
   },
-  "schema": "infrastructure_database",
-  "generated_at": "2026-08-26T16:28:11.011449+00:00",
-  "sha256": "ad749f5480463a36b54da8d37d44f399e9d39f360c17fd20f69578890cbd05d9"
+  "schema": "rnds_interop_api_br_v1",
+  "notes": "Validação BR explícita: RNDS (Rede Nacional de Dados em Saúde) é obrigatória pela ANS RDC 472/2023 para troca de dados entre operadoras e prestadores. Zero-capital: SDKs abertos do Ministério da Saúde + autenticação via Gov.br. Monetização via setup técnico + mensalidade de suporte, modelo padrão de integradores locais. Não redundante com LGPD genérica (method_902) pois exige implementação técnica específica da taxonomia RNDS/TISS. Demanda: >40.000 clínicas/laboratórios precisam se adequar até 2027; multas ANS chegam a R$1M.",
+  "category": "software_saas",
+  "sha256": "4505582292aee1c0f87114fb2f553c1e890d6ee504765aaa26666373bacc8cdd"
 }

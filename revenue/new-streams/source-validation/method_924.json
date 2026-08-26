@@ -1,16 +1,24 @@
 {
-  "method_id": "method_924",
-  "name": "Resend Free Tier Email API Reselling",
-  "category": "infrastructure_reselling",
+  "method_id": "924",
+  "name": "Revenda de Licenças de Software Governamental (Gov.br/SIAFI)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852396+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for transactional email reselling. Official target: Resend Free Tier (3K emails/month). Zero-capital via domain/project aggregation. Demand validated via Next.js/SaaS starter repos using Resend.",
   "sample_data": {
-    "platform": "resend",
-    "free_quota": "3k_emails_month",
-    "monetization": "email_api_proxy_markup"
+    "provider_br": [
+      "serpro_licenciamento",
+      "softplan_gestao_publica",
+      "ipm_sistemas"
+    ],
+    "resale_margin_pct": -10,
+    "contract_type": "pregao_eletronico_comprasnet",
+    "zero_capital": true,
+    "monetization_model": "margin_on_license_brl_2000_to_15000",
+    "target_segment": "orgaos_publicos_municipais_estaduais_br",
+    "compliance": "lei_14133_2021_licitacoes_contratos"
   },
-  "schema": "infrastructure_email",
-  "generated_at": "2026-08-26T16:28:31.786729+00:00",
-  "sha256": "3a1cbb7145b52640e6160d0546117c06d68d53552b040423fc66921961f97669"
+  "schema": "gov_software_resale_br_v1",
+  "notes": "Validação BR explícita: Órgãos públicos BR só podem adquirir software via licitação (Lei 14.133/2021). Revendedores autorizados de SERPRO/Softplan atendem prefeituras que não têm capacidade técnica para contratar diretamente. Zero-capital: margem sobre contrato público já firmado; sem estoque ou licença prévia. Diferencial frente a SSL gov.br (method_912): produto é sistema de gestão completo, não certificado pontual. Demanda: >5.500 municípios + 27 estados; compras públicas de TI somaram R$28B em 2025.",
+  "category": "infrastructure_reselling",
+  "sha256": "f46c31428985b0b09a1e4f82b12f15d38f14f7c23c02ed392bb82cc5fb10097f"
 }

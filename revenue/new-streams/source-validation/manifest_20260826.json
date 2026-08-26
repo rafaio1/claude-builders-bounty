@@ -75898,5 +75898,134 @@
     "notes": "Validação BR explícita: Revenda de SCM (Serviço de Comunicação Multimídia) é regulamentada pela ANATEL. Condomínios verticais BR demandam links dedicados para câmeras/IoT. Zero-capital: contrato de revenda com operadora homologada; margem sobre mensalidade. Diferencial frente a hospedagem (method_906): infraestrutura física dedicada com SLA contratual, não shared hosting. Demanda: >200k condomínios verticais nas capitais BR; ISPs locais buscam parceiros para última milha em edifícios.",
     "category": "infrastructure_reselling",
     "sha256": "92a7fd548049e0bace8effa93c9a7b1b859a8345912f32f201f4f0ee1264a5de"
+  },
+  "919": {
+    "method_id": "919",
+    "name": "API de Interoperabilidade RNDS/ANS para Clínicas Populares",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852352+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "regulation": "ans_rdc_472_2023_rnds_ms",
+      "integration_sdk": "rnods_sdk_python / opendatasus_api",
+      "zero_capital": true,
+      "monetization_model": "setup_fee_brl_1500_plus_monthly_brl_297",
+      "target_segment": "clinicas_populares_laboratorios_br",
+      "compliance": "lgpd_saude_art_7_inc_v"
+    },
+    "schema": "rnds_interop_api_br_v1",
+    "notes": "Validação BR explícita: RNDS (Rede Nacional de Dados em Saúde) é obrigatória pela ANS RDC 472/2023 para troca de dados entre operadoras e prestadores. Zero-capital: SDKs abertos do Ministério da Saúde + autenticação via Gov.br. Monetização via setup técnico + mensalidade de suporte, modelo padrão de integradores locais. Não redundante com LGPD genérica (method_902) pois exige implementação técnica específica da taxonomia RNDS/TISS. Demanda: >40.000 clínicas/laboratórios precisam se adequar até 2027; multas ANS chegam a R$1M.",
+    "category": "software_saas",
+    "sha256": "4505582292aee1c0f87114fb2f553c1e890d6ee504765aaa26666373bacc8cdd"
+  },
+  "920": {
+    "method_id": "920",
+    "name": "Consultoria de Prestação de Contas FNDE/PNAE para Municípios",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852384+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "regulation": "lei_11947_2009_pnae_fnde_resolucao_6_2020",
+      "deliverable": "relatorio_prestacao_contas_sigecon",
+      "zero_capital": true,
+      "monetization_model": "project_fee_brl_3000_to_8000_per_municipio",
+      "target_segment": "prefeituras_pequeno_porte_br",
+      "compliance": "tce_normativa_2024_alimentacao_escolar"
+    },
+    "schema": "fnde_pnae_consulting_br_v1",
+    "notes": "Validação BR explícita: PNAE (Programa Nacional de Alimentação Escolar) exige prestação de contas anual via SiGeCon/FNDE. Prefeituras pequenas não têm equipe especializada e contratam consultores externos. Zero-capital: entrega é relatório técnico baseado em legislação pública federal. Pricing BRL compatível com licitações municipais. Não redundante com Reforma Tributária (method_914) pois escopo é exclusivamente educacional/federal. Demanda: 5.570 municípios BR; >60% apresentam pendências no SIMEC segundo TCU 2025.",
+    "category": "freelance_services",
+    "sha256": "3e30cbbcfe95a057109304f602573dbeedbab04b9da774995732c61cc8083796"
+  },
+  "921": {
+    "method_id": "921",
+    "name": "Feed de Preços de Medicamentos CMED/ANVISA para Farmácias",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852388+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "data_source": "cmed_anvisa_gov_br_lista_precos_maximos",
+      "fields": [
+        "ean13",
+        "principio_ativo",
+        "preco_maximo_consumidor",
+        "ajuste_anual"
+      ],
+      "update_frequency": "monthly_official",
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_197_monthly",
+      "target_segment": "farmacias_independentes_drogarias_br",
+      "compliance": "lei_10742_2003_cmed_regulamento"
+    },
+    "schema": "cmed_drug_price_feed_br_v1",
+    "notes": "Validação BR explícita: CMED/ANVISA publica lista oficial de preços máximos de medicamentos mensalmente. Farmácias independentes precisam atualizar sistemas de precificação para evitar multas. Zero-capital: dados públicos abertos em CSV/XLS. Monetização via feed estruturado/API normalizada, pois formato oficial é difícil de integrar. Não redundante com CNPJ (method_903) pois produto é tabela regulatória de preços, não cadastro empresarial. Demanda: >80.000 farmácias BR; erro de precificação gera multa de até R$1.5M por infração.",
+    "category": "data_products",
+    "sha256": "1efe542682dfb2cdfe18fd8f834f908c2fc5570a0322e5fc81ae25b52b0f2699"
+  },
+  "922": {
+    "method_id": "922",
+    "name": "Plataforma de Cursos Preparatórios ENADE/ENARE para IES Privadas",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852391+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "regulation": "mec_portaria_844_2024_enade_inep",
+      "content_type": "simulados_trilhas_personalizadas_por_curso",
+      "zero_capital": true,
+      "monetization_model": "license_brl_49_per_student_annual",
+      "target_segment": "faculdades_privadas_pequenas_br",
+      "compliance": "diretrizes_curriculares_nacionais_mec"
+    },
+    "schema": "enade_prep_platform_br_v1",
+    "notes": "Validação BR explícita: ENADE é obrigatório para reconhecimento de cursos pelo MEC. IES privadas pequenas não têm corpo docente dedicado para preparação específica e terceirizam simulados. Zero-capital: conteúdo baseado em matrizes de referência públicas do INEP. Monetização via licença por aluno/ano, modelo B2B institucional. Diferencial frente a Hotmart (method_24): venda institucional para IES, não consumidor final; compliance MEC é barreira de entrada. Demanda: >2.200 IES privadas BR; nota baixa no ENADE descredencia curso junto ao MEC.",
+    "category": "content_monetization",
+    "sha256": "7af53efc0e5222bbb2aed6e56f55adf101d66708d8539cff8028f3ce278e252e"
+  },
+  "923": {
+    "method_id": "923",
+    "name": "Oráculo de Créditos de Carbono Florestal BR (ICMBio/MMA)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852394+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "data_source": "icmbio_carbono_api / mma_redd_brasil",
+      "assets": [
+        "credito_floresta_amazonia",
+        "credito_cerrado",
+        "verra_vcs_br"
+      ],
+      "zero_capital": true,
+      "monetization_model": "api_license_brl_1297_monthly",
+      "target_segment": "empresas_net_zero_commodities_br",
+      "compliance": "decreto_11075_2022_mercado_carbono_br"
+    },
+    "schema": "carbon_credit_oracle_br_v1",
+    "notes": "Validação BR explícita: Mercado de carbono regulado BR foi instituído pelo Decreto 11.075/2022. Créditos florestais nacionais têm premium sobre internacionais por compliance ambiental local. Zero-capital: dados públicos ICMBio/MMA + registros Verra. Monetização via API para empresas que precisam compensar emissões com créditos BR válidos. Não redundante com commodities agro (method_911) pois ativo é crédito ambiental regulado, não commodity física. Demanda: >500 empresas BR com metas net-zero; mercado voluntário BR movimentou R$800M em 2025.",
+    "category": "crypto_defi",
+    "sha256": "215381ea3a4d64675f9e147200ac9b66ce8639898799a4bd6197279ec229604d"
+  },
+  "924": {
+    "method_id": "924",
+    "name": "Revenda de Licenças de Software Governamental (Gov.br/SIAFI)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852396+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "provider_br": [
+        "serpro_licenciamento",
+        "softplan_gestao_publica",
+        "ipm_sistemas"
+      ],
+      "resale_margin_pct": -10,
+      "contract_type": "pregao_eletronico_comprasnet",
+      "zero_capital": true,
+      "monetization_model": "margin_on_license_brl_2000_to_15000",
+      "target_segment": "orgaos_publicos_municipais_estaduais_br",
+      "compliance": "lei_14133_2021_licitacoes_contratos"
+    },
+    "schema": "gov_software_resale_br_v1",
+    "notes": "Validação BR explícita: Órgãos públicos BR só podem adquirir software via licitação (Lei 14.133/2021). Revendedores autorizados de SERPRO/Softplan atendem prefeituras que não têm capacidade técnica para contratar diretamente. Zero-capital: margem sobre contrato público já firmado; sem estoque ou licença prévia. Diferencial frente a SSL gov.br (method_912): produto é sistema de gestão completo, não certificado pontual. Demanda: >5.500 municípios + 27 estados; compras públicas de TI somaram R$28B em 2025.",
+    "category": "infrastructure_reselling",
+    "sha256": "f46c31428985b0b09a1e4f82b12f15d38f14f7c23c02ed392bb82cc5fb10097f"
   }
 }

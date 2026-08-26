@@ -1,16 +1,19 @@
 {
-  "method_id": "method_922",
-  "name": "Uniswap V4 Hooks Testnet Deployment Service",
-  "category": "crypto_defi",
+  "method_id": "922",
+  "name": "Plataforma de Cursos Preparatórios ENADE/ENARE para IES Privadas",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852391+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for DeFi hook development/testing. Official target: Uniswap V4 testnet + hook templates. Zero-capital via testnet LP provision. Demand validated via DeFi dev repos experimenting with custom hooks.",
   "sample_data": {
-    "protocol": "uniswap_v4_hooks",
-    "environment": "testnet",
-    "monetization": "hook_deployment_testing_service"
+    "regulation": "mec_portaria_844_2024_enade_inep",
+    "content_type": "simulados_trilhas_personalizadas_por_curso",
+    "zero_capital": true,
+    "monetization_model": "license_brl_49_per_student_annual",
+    "target_segment": "faculdades_privadas_pequenas_br",
+    "compliance": "diretrizes_curriculares_nacionais_mec"
   },
-  "schema": "crypto_defi_tooling",
-  "generated_at": "2026-08-26T16:28:11.011449+00:00",
-  "sha256": "7750fbc03e802dee94bfe46253feb542d700a2cdabb135cb5139dc6e094a8bea"
+  "schema": "enade_prep_platform_br_v1",
+  "notes": "Validação BR explícita: ENADE é obrigatório para reconhecimento de cursos pelo MEC. IES privadas pequenas não têm corpo docente dedicado para preparação específica e terceirizam simulados. Zero-capital: conteúdo baseado em matrizes de referência públicas do INEP. Monetização via licença por aluno/ano, modelo B2B institucional. Diferencial frente a Hotmart (method_24): venda institucional para IES, não consumidor final; compliance MEC é barreira de entrada. Demanda: >2.200 IES privadas BR; nota baixa no ENADE descredencia curso junto ao MEC.",
+  "category": "content_monetization",
+  "sha256": "7af53efc0e5222bbb2aed6e56f55adf101d66708d8539cff8028f3ce278e252e"
 }

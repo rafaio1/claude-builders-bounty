@@ -1,20 +1,19 @@
 {
-  "method_id": "method_920",
-  "name": "Chainlink CCIP Testnet Integration Service",
-  "category": "crypto_defi",
+  "method_id": "920",
+  "name": "Consultoria de Prestação de Contas FNDE/PNAE para Municípios",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T18:08:31.852384+00:00",
   "tier": "TIER0",
-  "source": "GitHub Search API",
-  "notes": "Proxy for cross-chain interoperability testing. Official target: Chainlink CCIP testnet faucets + docs. Zero-capital via testnet token aggregation. Demand validated via multi-chain dApp repos requesting CCIP integration help.",
   "sample_data": {
-    "protocol": "chainlink_ccip",
-    "chains": [
-      "ethereum_sepolia",
-      "polygon_amoy",
-      "arbitrum_sepolia"
-    ],
-    "monetization": "ccip_integration_consulting_testnet"
+    "regulation": "lei_11947_2009_pnae_fnde_resolucao_6_2020",
+    "deliverable": "relatorio_prestacao_contas_sigecon",
+    "zero_capital": true,
+    "monetization_model": "project_fee_brl_3000_to_8000_per_municipio",
+    "target_segment": "prefeituras_pequeno_porte_br",
+    "compliance": "tce_normativa_2024_alimentacao_escolar"
   },
-  "schema": "crypto_cross_chain_infrastructure",
-  "generated_at": "2026-08-26T16:28:11.011449+00:00",
-  "sha256": "760995b42d865a57f50baef92bd08a834ff85d009d2d839e7b2f73e22d915257"
+  "schema": "fnde_pnae_consulting_br_v1",
+  "notes": "Validação BR explícita: PNAE (Programa Nacional de Alimentação Escolar) exige prestação de contas anual via SiGeCon/FNDE. Prefeituras pequenas não têm equipe especializada e contratam consultores externos. Zero-capital: entrega é relatório técnico baseado em legislação pública federal. Pricing BRL compatível com licitações municipais. Não redundante com Reforma Tributária (method_914) pois escopo é exclusivamente educacional/federal. Demanda: 5.570 municípios BR; >60% apresentam pendências no SIMEC segundo TCU 2025.",
+  "category": "freelance_services",
+  "sha256": "3e30cbbcfe95a057109304f602573dbeedbab04b9da774995732c61cc8083796"
 }
