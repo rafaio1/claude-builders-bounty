@@ -1,7 +1,7 @@
 """
-Awesome-LangChain Indexer MVP (replaces rate-limited GitHub API approach)
+Awesome-LangChain Indexer MVP
 Zero-capital: parses curated list from kyrolabs/awesome-langchain.
-Produces structured JSON index of LangChain tools, agents, and resources.
+Handles mixed formats: '- [Name](url) - Desc', '- [Name](url): Desc', etc.
 """
 import json
 import re
@@ -19,22 +19,31 @@ def fetch_readme() -> str:
 
 
 def parse_entries(text: str) -> list[dict]:
-    """Extract entries matching '- [Name](url) - Description' pattern."""
-    pattern = r'^- \[([^\]]+)\]\(([^)]+)\)\s*-\s*(.+)$'
+    """Extract entries with flexible format matching."""
+    # Match: - [Name](url) followed by optional separator and description
+    pattern = r'^-\s+\[([^\]]+)\]\(([^)]+)\)\s*[:\-]?\s*(.*)$'
     entries = []
     current_category = "Uncategorized"
+    
     for line in text.splitlines():
+        line = line.strip()
+        # Detect category headers
         cat_match = re.match(r'^#{2,3}\s+(.+)', line)
         if cat_match:
             current_category = cat_match.group(1).strip()
             continue
+        
         m = re.match(pattern, line)
         if m:
             name, url, desc = m.groups()
+            # Clean description: remove badge images and trailing whitespace
+            desc = re.sub(r'!\[.*?\]\(.*?\)', '', desc).strip()
+            desc = desc.rstrip(':').strip()
+            
             entries.append({
                 "name": name.strip(),
                 "url": url.strip(),
-                "description": desc.strip(),
+                "description": desc if desc else "",
                 "category": current_category,
             })
     return entries
@@ -71,7 +80,7 @@ def main():
 
     print(f"\n[OK] Index saved to {OUTPUT_FILE}")
     print(f"    Top categories:")
-    for cat, count in list(categories.items())[:5]:
+    for cat, count in list(categories.items())[:8]:
         print(f"      • {cat}: {count}")
 
 
