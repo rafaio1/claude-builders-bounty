@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T13:18:05+00:00",
+  "updated_at": "2026-08-26T13:22:47+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -532,7 +532,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T131805Z",
+      "map_id": "20260826T132247Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -559,7 +559,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T131805Z",
+      "map_id": "20260826T132247Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -586,7 +586,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T131805Z",
+      "map_id": "20260826T132247Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -615,7 +615,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T131805Z",
+      "map_id": "20260826T132247Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3739,22 +3739,23 @@
       "id": "imp-20260817-sanitiza-o-de-traces-da-ghostcli-para-eval",
       "key": "158c672661f3ecc6",
       "canon": "c2ece402564faf80",
-      "title": "Sanitização de traces da GhostCLI para eval",
+      "title": "Sanitização e Eval de Traces GhostCLI",
       "kind": "improvement",
       "priority": 3,
       "status": "pending",
-      "rationale": "Os traces da GhostCLI precisam ser sanitizados para avaliação (eval) e armazenamento no ledger sem vazar dados sensíveis ou paths absolutos.",
-      "change": "Implementar filtro de regex em ghostcli.py para remover tokens, paths e secrets antes de salvar os traces sanitizados.",
+      "rationale": "theme=ai. Necessário avaliar a qualidade das respostas e garantir que traces não vazem dados sensíveis.",
+      "change": "Criar hook de pós-execução no claude_cli.py que salva traces sanitizados em diretório local de eval.",
       "never": [
         "Alterar a ANTHROPIC_BASE_URL",
         "Enviar traces para a GhostCLI sem sanitização"
       ],
       "files_hint": [
-        "src/agentic/ghostcli.py"
+        "src/agentic/claude_cli.py",
+        "src/agentic/env.py"
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T090226Z",
+      "map_id": "20260826T132247Z",
       "history": [
         {
           "at": "2026-08-17T04:02:32+00:00",
@@ -8962,6 +8963,147 @@
           "at": "2026-08-26T13:18:05+00:00",
           "event": "mapped",
           "detail": "20260826T131805Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-intervalo-fixo-do-loop-systemd",
+      "key": "41f021de06dbc275",
+      "canon": "9fc244d24545213f",
+      "title": "Intervalo fixo do loop systemd",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O loop roda a cada 90s fixos. Se a fila estiver vazia, desperdiça recursos de saúde; se cheia, pode não ser ágil.",
+      "change": "Adicionar lógica no loop.py para detectar fila vazia e logar métrica de idle, otimizando ciclos futuros.",
+      "never": [
+        "Alterar o --interval no systemd unit file diretamente",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T132247Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:22:47+00:00",
+          "event": "mapped",
+          "detail": "20260826T132247Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-contexto-excessivo-no-playwright-cli",
+      "key": "011870cad0ee3aec",
+      "canon": "79a1e4b0fc4188e4",
+      "title": "Contexto excessivo no Playwright CLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Com playwright-mcp desativado, o motor depende de snapshots brutos via CLI, o que consome muitos tokens no prompt.",
+      "change": "Implementar um filtro de árvore de acessibilidade no wrapper do playwright-cli antes de injetar no prompt.",
+      "never": [
+        "Reativar playwright-mcp no motor",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T132247Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:22:47+00:00",
+          "event": "mapped",
+          "detail": "20260826T132247Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-falta-de-limite-de-retentativas-no-develop",
+      "key": "0e946ea407614d6c",
+      "canon": "c407cebe09efbebe",
+      "title": "Falta de limite de retentativas no develop",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Se o reviewer rejeita e o develop corrige, um loop infinito pode ocorrer se o parecer for ambíguo, travando a fila.",
+      "change": "Adicionar contador de retentativas no ledger; após N falhas, mover para 'failed' e pausar o item.",
+      "never": [
+        "Fazer git reset --hard para limpar a fila",
+        "Ignorar o review_feedback"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T132247Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:22:47+00:00",
+          "event": "mapped",
+          "detail": "20260826T132247Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-pr-filtragem-de-ledger-com-jq",
+      "key": "342be2ae9c5fdb7e",
+      "canon": "1d27e327fcccc4e2",
+      "title": "Pré-filtragem de ledger com jq",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "theme=tools. Reduzir o tamanho do prompt enviado ao Claude CLI extraindo apenas campos essenciais.",
+      "change": "Usar a ferramenta jq no improve.py para formatar o payload do pending antes de montar o prompt.",
+      "never": [
+        "Modificar o schema original do ledger",
+        "Desativar a ferramenta jq"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T132247Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:22:47+00:00",
+          "event": "mapped",
+          "detail": "20260826T132247Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-dashboard-de-feedback-no-portal",
+      "key": "3a407638107233c4",
+      "canon": "339bec1a38aa2fdf",
+      "title": "Dashboard de feedback no Portal",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "theme=portal. Melhorar a visibilidade do ciclo de review para o operador humano autenticado.",
+      "change": "Adicionar endpoint no agentic-portal.service para listar itens com review_feedback pendente.",
+      "never": [
+        "Gravar senhas em texto plano",
+        "Alterar o OWNER_SHARE_RATE"
+      ],
+      "files_hint": [
+        "src/agentic/portal/routes.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260826T132247Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:22:47+00:00",
+          "event": "mapped",
+          "detail": "20260826T132247Z"
         }
       ]
     }
