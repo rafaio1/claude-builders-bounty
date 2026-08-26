@@ -629,13 +629,29 @@ def triage(candidates):
     candidates = filtered if filtered else candidates
     
     sorted_cands = sorted(candidates, key=lambda x: (str(x.get("value_usd","0")), x.get("discovered_at","")), reverse=True)[:10]
+    # Sanitize candidates to prevent JSON serialization issues or prompt injection
+    safe_cands = []
+    for c in sorted_cands:
+        safe = {
+            "url": str(c.get("url", ""))[:500],
+            "title": str(c.get("title", ""))[:300],
+            "value_usd": str(c.get("value_usd", "unknown"))[:20],
+            "labels": [str(l)[:50] for l in (c.get("labels") or [])[:10]],
+            "body_preview": str(c.get("body_preview", ""))[:200]
+        }
+        if safe["url"].startswith("http"):
+            safe_cands.append(safe)
+    if not safe_cands:
+        log("TRIAGE_ERROR: all candidates failed sanitization")
+        return []
+    log(f"Triage payload: {len(safe_cands)} sanitized candidates, {len(json.dumps(safe_cands))} chars")
     prompt = f"""Select TOP 3 bounties for an AI coding agent. MUST be:
 - Clear compilation/test/config fix (not feature requests)
 - Solvable in <2 hours with code changes only
 - Python/TS/Rust/Go/Solidity
 - Has explicit error message or failing test
 
-Candidates: {json.dumps(sorted_cands, indent=2)}
+Candidates: {json.dumps(safe_cands, indent=2)}
 
 CRITICAL CONSTRAINTS:
 - You MUST select URLs that exist EXACTLY in the Candidates list above
