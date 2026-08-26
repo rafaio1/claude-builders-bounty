@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "WASH_TRADE_BUG_FIXED_PENDING_VALIDATION",
+  "risk_status": "TRAILING_REJECTED_VWAP_SHADOW_ACTIVE",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -159,12 +159,22 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T22:19:03Z",
+  "last_reconciliation": "2026-08-26T22:27:17Z",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
   "ledger_duplicates": 0,
-  "vwap_shadow_status": "running_paper",
+  "vwap_shadow_status": {
+    "tmux_session": "vwap_shadow",
+    "started": "2026-08-26T22:26:55Z",
+    "symbols": [
+      "XRP/USDT",
+      "AVAX/USDT",
+      "BCH/USDT"
+    ],
+    "validation_required_hours": 24,
+    "real_trading_blocked": true
+  },
   "last_live_audit": "2026-08-26T21:55:30Z",
   "inj_position_tokens": 0.46584,
   "usdt_free": 9.73769772,
@@ -193,5 +203,20 @@
     "inj_free": 0.5262,
     "open_orders": 0,
     "timestamp": "2026-08-26T22:19:03Z"
+  },
+  "trailing_backtest_result": {
+    "timestamp": "2026-08-26T22:23:08Z",
+    "verdict": "REJECTED",
+    "best_strategy": "micro_scalp",
+    "best_win_rate": 16.0,
+    "best_avg_pnl_pct": -0.1395,
+    "total_trades": 150,
+    "pairs_tested": 10,
+    "reason": "All configs negative expectation after fees; fails promotion gate"
+  },
+  "next_verification": {
+    "action": "check_vwap_shadow_health_and_signals",
+    "deadline": "2026-08-27T22:27:00Z",
+    "criteria": "zero errors, signals generated, no wash patterns"
   }
 }

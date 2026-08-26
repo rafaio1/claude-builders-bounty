@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
 GitHub Email Filter & Auto-Archive Agent
-Fixed: Use batchModify to add TRASH label instead of batchDelete (avoids scope issues with some token states)
+SAFETY RULE (PERMANENT): This script NEVER moves messages to TRASH during
+discovery or triage. Noise is enqueued as `candidate_trash_post_action` in
+pending.jsonl; individual trash only after action completed and ledger recorded.
+CLA/payout/KYC/contract/legal/personal/ambiguous emails are always preserved.
 """
 import json
 import os
@@ -41,10 +44,10 @@ def classify_github_email(subject: str, snippet: str) -> dict:
     text = f"{subject} {snippet}".lower()
     for pattern in GITHUB_NOISE_PATTERNS:
         if re.search(pattern, text):
-            # SAFETY: Never auto-trash during discovery/triage. Noise is enqueued
-            # as candidate_trash_post_action so a human or post-action step can
-            # confirm deletion after ledger evidence exists. This prevents loss
-            # of CLA, payout, KYC, contract, security or ambiguous messages.
+            # SAFETY: Never auto-trash during discovery/triage.
+            # Enqueue as candidate_trash_post_action; deletion requires explicit
+            # post-action confirmation + ledger evidence. Prevents loss of CLA,
+            # payout, KYC, contract, security, legal or ambiguous messages.
             return {'category': 'noise', 'action': 'candidate_trash_post_action', 'reason': f'github_noise:{pattern}'}
     for pattern in GITHUB_PERTINENT_PATTERNS:
         if re.search(pattern, text):
@@ -97,8 +100,8 @@ def process_github_emails():
         classification = classify_github_email(subject, snippet)
         
         if classification['action'] == 'candidate_trash_post_action':
-            # Enqueue for post-action review; do NOT add to trash_ids here.
-            # Individual trash only after action completed and ledger recorded.
+            # Enqueue for post-action review; do NOT modify Gmail labels here.
+            # Trash only after action completed AND ledger recorded.
             entry = {
                 'source': 'gmail_github',
                 'message_id': msg_meta['id'],
@@ -122,9 +125,9 @@ def process_github_emails():
             with open(PENDING_PATH, 'a') as f:
                 f.write(json.dumps(entry, ensure_ascii=False) + '\n')
     
-    # SAFETY: Never auto-trash during discovery/triage.
-    # Noise classification is logged but messages stay in INBOX.
-    # Individual trash only after action completed and ledger recorded.
+    # SAFETY: No Gmail label modifications in this function.
+    # All noise stays in INBOX; trash decisions deferred to post-action step
+    # with ledger evidence. This block is retained only for audit logging.
     if trash_ids:
         for mid in trash_ids:
             entry = {

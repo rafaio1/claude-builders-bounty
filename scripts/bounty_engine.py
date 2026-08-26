@@ -1306,6 +1306,12 @@ def main():
             monitor_pr_status()
             candidates = discover_bounties()
             targets = triage(candidates)
+            # Safety: ensure targets is a flat list of dicts (guard against nested/malformed returns)
+            if isinstance(targets, list):
+                targets = [t for t in targets if isinstance(t, dict)]
+            else:
+                log(f"WARNING: triage returned non-list type {type(targets).__name__}, resetting to []")
+                targets = []
             # Debug: show value distribution before filtering
             val_dist = {}
             for t in targets:
