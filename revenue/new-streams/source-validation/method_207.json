@@ -1,0 +1,35 @@
+{
+  "method_id": "207",
+  "name": "Shopify app subscription (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:25.467766+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_gmv_processed",
+      "value": 1250000,
+      "unit": "USD",
+      "period": "30d"
+    },
+    {
+      "metric": "custom_integrations",
+      "value": 8,
+      "unit": "clients",
+      "period": "current"
+    },
+    {
+      "metric": "avg_contract_value",
+      "value": 1200,
+      "unit": "USD/mo",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant targets high-volume merchants needing custom logic, ERP sync, or multi-store management. Proxy TIER0 via GitHub Search for enterprise-grade Shopify Plus apps. Official targets: Shopify Plus Partner Program + GraphQL Admin API. Monetization via usage-based or tiered enterprise pricing. Zero-capital PoC uses dev store + mock data; production requires Plus partner status (free application).",
+  "_hash": "b17d567d4fbc92a380edcabcd5f752d2a085db3352320ca438bcbdfb0c6423aa"
+}

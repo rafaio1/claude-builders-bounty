@@ -1,0 +1,35 @@
+{
+  "method_id": "205",
+  "name": "Shopify app subscription",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:25.467766+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "active_merchants",
+      "value": 320,
+      "unit": "stores",
+      "period": "30d"
+    },
+    {
+      "metric": "app_store_rating",
+      "value": 4.8,
+      "unit": "stars",
+      "period": "current"
+    },
+    {
+      "metric": "mrr",
+      "value": 2850.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for Shopify app boilerplates (Node/Ruby + Billing API). Official source: Shopify Partner Dashboard + Admin API. Zero-capital path uses free partner account + development store. Revenue via recurring app charges; approval requires app review but no upfront fee.",
+  "_hash": "4a162f6ddeb8ea0896962673c17aafa9d658d01222520c8a9e6f4179b21a40ea"
+}

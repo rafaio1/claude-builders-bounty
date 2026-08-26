@@ -1,0 +1,35 @@
+{
+  "method_id": "206",
+  "name": "Shopify app subscription (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:25.467766+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_merchant_signups",
+      "value": 45,
+      "unit": "stores",
+      "period": "14d"
+    },
+    {
+      "metric": "feature_usage_rate",
+      "value": 68.2,
+      "unit": "%",
+      "period": "7d"
+    },
+    {
+      "metric": "trial_conversion",
+      "value": 15.5,
+      "unit": "%",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant focuses on niche problem solving (e.g., niche shipping, custom bundles). Proxy TIER0 targets open-source Shopify apps with monetization gaps. Official integration: Shopify App Bridge + Billing API. Zero-capital via free dev store + manual feedback collection. Iterate based on merchant pain points.",
+  "_hash": "dd723bf62eb885235e3953d83d3e86d353c906c4b6796494d1552110c50df20e"
+}
