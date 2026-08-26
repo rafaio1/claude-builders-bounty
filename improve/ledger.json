@@ -9783,6 +9783,42 @@
           "detail": "20260826T141607Z"
         }
       ]
+    },
+    {
+      "title": "Add monetary estimation fields to revenue catalog and stream schemas",
+      "kind": "bottleneck",
+      "priority": 1,
+      "rationale": "Revenue streams (trade_opportunities, vuln_reports, catalog methods) lack monetary value fields, making it impossible to reconcile potencial/pendente/liquidado or track progress toward the US$20M aspirational target. The watchdog cannot distinguish high-value from zero-value streams.",
+      "change": "Add estimated_value_usd (nullable float) to trade_opportunity schema, bounty_estimate_usd to vuln_report schema, and projected_annual_revenue_usd to catalog method schema. Update aggregation logic in revenue reconciliation to sum these fields. Backfill existing files with null/default values.",
+      "never": [
+        "reset --hard",
+        "checkout --",
+        "clean -fd",
+        "--no-verify",
+        "force",
+        "commitar .env/data/secrets",
+        "incluir ARO.md ou src/agentic/aro/ no mesmo commit",
+        "criar src/agentic/loop.sh",
+        "move capital or initiate payouts"
+      ],
+      "files_hint": [
+        "revenue/catalog/methods_900.json",
+        "src/agentic/revenue.py",
+        "revenue/trade_opportunities/AIRDROP-BERACHAIN_TESTNET.json"
+      ],
+      "theme": "revenue",
+      "id": "imp-20260826-add-monetary-fields-to-revenue-schemas",
+      "key": "imp-20260826-add-monetary-fields-to-revenue-schemas",
+      "status": "pending",
+      "branch": "improve/dev/imp-20260826-add-monetary-fields-to-revenue-schemas",
+      "map_id": "20260826T142044Z",
+      "history": [
+        {
+          "at": "2026-08-26T14:20:44+00:00",
+          "event": "mapped",
+          "detail": "20260826T142044Z"
+        }
+      ]
     }
   ]
 }
