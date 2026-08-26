@@ -663,6 +663,8 @@ def triage(candidates):
         log("TRIAGE_ERROR: all candidates failed sanitization")
         return []
     log(f"Triage payload: {len(safe_cands)} sanitized candidates, {len(json.dumps(safe_cands))} chars")
+    # DEBUG: dump full candidate list for analysis
+    log(f"TRIAGE_CANDIDATES_DUMP: {json.dumps(safe_cands, indent=2)[:3000]}")
     prompt = f"""SYSTEM: You are a JSON-only API. Return NOTHING except a valid JSON array. No explanation, no markdown, no prose.
 
 TASK: Select TOP 3 bounties for an AI coding agent. PREFER:
