@@ -1,0 +1,31 @@
+{
+  "method_id": "641",
+  "name": "Security compliance audit (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:53.256397+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_552",
+      "app_type": "open_source_lib",
+      "dependency_scan": true,
+      "secret_leak_check": true,
+      "sbom_generated": false
+    },
+    {
+      "dev_id": "dv_883",
+      "app_type": "saas_api",
+      "dependency_scan": true,
+      "secret_leak_check": true,
+      "sbom_generated": true
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "app_type",
+    "dependency_scan",
+    "secret_leak_check",
+    "sbom_generated"
+  ],
+  "notes": "Segurança em ciclo de vida de desenvolvimento. Fonte oficial alvo: OWASP/SLSA frameworks. Proxy TIER0: GitHub Search API para workflows de security scanning em CI."
+}

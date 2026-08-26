@@ -1,0 +1,37 @@
+{
+  "method_id": "642",
+  "name": "Security compliance audit (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:53.256397+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_331",
+      "client_verticals": [
+        "healthcare",
+        "fintech"
+      ],
+      "shared_responsibility_model": true,
+      "vendor_risk_assessment": true,
+      "audit_frequency": "quarterly"
+    },
+    {
+      "agency_id": "ag_992",
+      "client_verticals": [
+        "ecommerce",
+        "edtech"
+      ],
+      "shared_responsibility_model": true,
+      "vendor_risk_assessment": false,
+      "audit_frequency": "annual"
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "client_verticals",
+    "shared_responsibility_model",
+    "vendor_risk_assessment",
+    "audit_frequency"
+  ],
+  "notes": "Gestão de risco de terceiros e responsabilidade compartilhada. Fonte oficial alvo: CSA STAR / NIST SP 800-161. Proxy TIER0: GitHub Search API para questionários de vendor risk assessment."
+}

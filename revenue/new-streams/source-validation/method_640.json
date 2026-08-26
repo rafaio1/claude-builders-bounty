@@ -1,0 +1,37 @@
+{
+  "method_id": "640",
+  "name": "Security compliance audit (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:53.256397+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_882",
+      "platform": "youtube",
+      "data_type": "subscriber_pii",
+      "compliance_need": "gdpr_basic",
+      "tools_used": [
+        "cookie_consent_banner",
+        "privacy_policy_gen"
+      ]
+    },
+    {
+      "creator_id": "cr_119",
+      "platform": "patreon",
+      "data_type": "payment_info",
+      "compliance_need": "pci_sa_a",
+      "tools_used": [
+        "stripe_radar",
+        "tokenization"
+      ]
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "platform",
+    "data_type",
+    "compliance_need",
+    "tools_used"
+  ],
+  "notes": "Foco em privacidade de audiência e pagamentos. Fonte oficial alvo: GDPR/PCI docs for small biz. Proxy TIER0: GitHub Search API para templates de política de privacidade para criadores."
+}
