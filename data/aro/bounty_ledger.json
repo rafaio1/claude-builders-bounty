@@ -81,5 +81,30 @@
     ],
     "next_action": "monitor_reviewer_ack_or_merge",
     "updated_at": "2026-08-26T22:13:26.495348+00:00"
+  },
+  {
+    "program": "SecureBananaLabs",
+    "repo": "SecureBananaLabs/bug-bounty",
+    "pr": 12147,
+    "title": "fix(payouts): unblock payout for completed bounty #2885 (#7458)",
+    "status": "waiting_maintainer",
+    "last_action": "payout_address_updated_verified",
+    "evidence": [
+      {
+        "type": "gh_comment",
+        "id": "IC_kwDOSfPzA88AAAABQ4JRkg",
+        "note": "Verified USDT/TRC20 payout address updated to TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex; old address revoked",
+        "date": "2026-08-26T15:38:40Z"
+      },
+      {
+        "type": "gh_check",
+        "name": "update-leaderboard",
+        "conclusion": "SUCCESS",
+        "note": "CI passed"
+      }
+    ],
+    "next_action": "monitor_merge_and_payout_confirmation",
+    "mergeable": true,
+    "updated_at": "2026-08-26T22:15:55.584804+00:00"
   }
 ]
