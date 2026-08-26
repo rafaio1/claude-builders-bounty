@@ -98,8 +98,8 @@
 - **Action:** waiting_monitoring — bounties agent PID alive; do NOT integrate until upstream commit
 
 ### OphirPay PR #225
-- **State:** OPEN, Vercel FAILURE (auth), Greptile COMMENTED
-- **Action:** waiting_monitoring — requires maintainer response or auth fix
+- **State:** REPO_NOT_FOUND via gh (OphirPay/ophirpay-core); repo may have been renamed, transferred, or made private. Previous state was OPEN with Vercel auth failure.
+- **Action:** waiting_monitoring — next check: search GitHub for new OphirPay org/repo name; if not found in 48h, mark as stale and archive reference. Do NOT attempt push or interaction until repo resolves.
 
 ### Next Pending Actions
 1. Monitor AgentLily #155 for upstream commit
