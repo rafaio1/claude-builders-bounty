@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -60,9 +60,14 @@
           "at": "2026-08-18T18:57:17+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
+        },
+        {
+          "at": "2026-08-26T13:15:23+00:00",
+          "event": "requeued",
+          "detail": "reject: O diff não corresponde à proposta. A proposta pede apenas adicionar '.cursor/' ao '.gitignore' para restaurar git_clean nesta fatia, mas o diff adiciona '.venv/', altera 'src/agentic/improve_git.py' e modifica 'improve/ledger.json'. Para aprovar, reabra com o diff limitado a '.gitignore' incluindo '.cursor/'. Se a intenção for ignorar '.venv/', crie proposta própria com esse escopo e arquivos corr… riscos=[\"Mudança de escopo: o diff trata de '.venv/' em vez de '.cursor/'.\", \"Modificação de 'improve/ledger.json' fora da fatia proposta.\", \"Alteração de lógica em 'src/agentic/improve_git.py' sem correspon… arquivos=gitignore,src/agentic/improve_git.py"
         }
       ],
-      "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
+      "review_feedback": "reject: O diff não corresponde à proposta. A proposta pede apenas adicionar '.cursor/' ao '.gitignore' para restaurar git_clean nesta fatia, mas o diff adiciona '.venv/', altera 'src/agentic/improve_git.py' e modifica 'improve/ledger.json'. Para aprovar, reabra com o diff limitado a '.gitignore' incluindo '.cursor/'. Se a intenção for ignorar '.venv/', crie proposta própria com esse escopo e arquivos corr… riscos=[\"Mudança de escopo: o diff trata de '.venv/' em vez de '.cursor/'.\", \"Modificação de 'improve/ledger.json' fora da fatia proposta.\", \"Alteração de lógica em 'src/agentic/improve_git.py' sem correspon… arquivos=gitignore,src/agentic/improve_git.py"
     },
     {
       "id": "imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
@@ -6818,7 +6823,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "blocked",
       "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
       "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
       "never": [
@@ -6829,7 +6834,7 @@
       ],
       "files_hint": [],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260818T030213Z",
       "history": [
         {
@@ -6866,6 +6871,16 @@
           "at": "2026-08-26T12:58:13+00:00",
           "event": "requeued",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:08:58+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-26T13:10:52+00:00",
+          "event": "blocked",
+          "detail": "conteúdo recusado em improve/ledger.json: \\bwordlist\\b"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
