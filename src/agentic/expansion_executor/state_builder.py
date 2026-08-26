@@ -4,6 +4,7 @@ from typing import Dict, List, Optional
 
 from .loader import latest_verdict, load_proposals, load_verdicts
 from .models import Proposal, ProposalState, QueueItem
+from .catalog import check_implementation_status
 
 VERDICT_STATE_MAP = {
     "APROVAR_IMPLEMENTACAO": ProposalState.APPROVED,
@@ -73,9 +74,22 @@ def build_queue(proposals_path: str, verdicts_path: str) -> List[QueueItem]:
             verdict_ts=verdict.get("timestamp") or "",
             title=proposal.title if proposal else None,
             category=proposal.category if proposal else None,
-            implementation_status=verdict.get("implementation_status"),
+            implementation_status=_resolve_implementation_status(pid, verdict),
             blockers=blockers,
         )
         items.append(item)
     items.sort(key=lambda i: (i.state.value, i.verdict_ts), reverse=True)
     return items
+
+
+def _resolve_implementation_status(proposal_id: str, verdict: Dict) -> str:
+    """Resolve implementation status from catalog probes, not just verdict field."""
+    catalog_status = check_implementation_status(proposal_id)
+    if catalog_status == "IMPLEMENTED_LOCAL_VERIFIED":
+        return "IMPLEMENTED_LOCAL_VERIFIED"
+    if catalog_status == "DEGRADED":
+        return "DEGRADED"
+    if catalog_status == "FAILED":
+        return "FAILED"
+    # Fall back to verdict-provided status if not in catalog
+    return verdict.get("implementation_status") or "NOT_IN_CATALOG"

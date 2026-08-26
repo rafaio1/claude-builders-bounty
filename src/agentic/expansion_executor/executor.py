@@ -9,6 +9,7 @@ from typing import Dict, List, Optional
 
 from .models import ProposalState, QueueItem
 from .state_builder import build_queue
+from .catalog import CATALOG, check_implementation_status
 
 logger = logging.getLogger(__name__)
 
@@ -103,6 +104,9 @@ class ExpansionExecutor:
                 "executed_this_cycle": len(executed),
                 "max_per_cycle": self.max_per_cycle,
                 "dry_run": self.dry_run,
+                "build_implemented": sum(1 for i in queue if i.implementation_status == "IMPLEMENTED_LOCAL_VERIFIED"),
+                "monetization_actionable": 0,
+                "catalog_entries": len(CATALOG),
                 "results": executed,
             }
             Path(self.state_output).parent.mkdir(parents=True, exist_ok=True)
