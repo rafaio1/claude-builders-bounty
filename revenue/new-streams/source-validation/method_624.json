@@ -1,0 +1,31 @@
+{
+  "method_id": "624",
+  "name": "ML model deployment (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:22.713118+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_209",
+      "client_vertical": "ecommerce",
+      "models_managed": 14,
+      "sla_uptime_pct": 99.5,
+      "monthly_retainer_usd": 4500
+    },
+    {
+      "agency_id": "ag_558",
+      "client_vertical": "fintech",
+      "models_managed": 9,
+      "sla_uptime_pct": 99.9,
+      "monthly_retainer_usd": 7200
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "client_vertical",
+    "models_managed",
+    "sla_uptime_pct",
+    "monthly_retainer_usd"
+  ],
+  "notes": "Fonte oficial alvo: Upwork/Fiverr categorias de MLOps agency. Proxy TIER0: GitHub Search API para contratos e proposals de agências ML."
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "623",
+  "name": "ML model deployment (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:22.713118+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_4412",
+      "framework": "pytorch",
+      "hosting": "aws_sagemaker",
+      "avg_latency_ms": 120,
+      "gpu_type": "A10G"
+    },
+    {
+      "dev_id": "dv_7701",
+      "framework": "tensorflow",
+      "hosting": "gcp_vertex_ai",
+      "avg_latency_ms": 95,
+      "gpu_type": "T4"
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "framework",
+    "hosting",
+    "avg_latency_ms",
+    "gpu_type"
+  ],
+  "notes": "Fonte oficial alvo: AWS/GCP marketplace de modelos. Proxy TIER0: GitHub Search API para templates de deploy ML."
+}

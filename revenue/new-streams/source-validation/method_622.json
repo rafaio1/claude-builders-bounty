@@ -1,0 +1,31 @@
+{
+  "method_id": "622",
+  "name": "ML model deployment (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:22.713118+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_8821",
+      "model_type": "image_style_transfer",
+      "deployment_target": "replicate",
+      "estimated_monthly_calls": 12000,
+      "pricing_per_call_usd": 0.004
+    },
+    {
+      "creator_id": "cr_3390",
+      "model_type": "voice_clone_tts",
+      "deployment_target": "modal",
+      "estimated_monthly_calls": 8500,
+      "pricing_per_call_usd": 0.006
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "model_type",
+    "deployment_target",
+    "estimated_monthly_calls",
+    "pricing_per_call_usd"
+  ],
+  "notes": "Fonte oficial alvo: Replicate/Modal API. Proxy TIER0: GitHub Search API para repositórios de deploy de modelos para criadores."
+}
