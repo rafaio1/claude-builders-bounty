@@ -1,0 +1,35 @@
+{
+  "method_id": "343",
+  "name": "Dependency monitor SaaS",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:17:09.679013+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "renovatebot/renovate",
+      "stars": 18200,
+      "lang": "TypeScript",
+      "tool": "Renovate"
+    },
+    {
+      "repo": "dependabot/dependabot-core",
+      "stars": 4800,
+      "lang": "Ruby",
+      "tool": "Dependabot"
+    },
+    {
+      "repo": "snyk/snyk",
+      "stars": 5600,
+      "lang": "TypeScript",
+      "tool": "Snyk"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "tool"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: npm/GitHub Marketplace para dependency monitoring e security scanners.",
+  "sha256": "d2775f0f54bbd8a266d147601bbcf5d7e9b8c697b98d3a9d862ae0b9e9725884"
+}

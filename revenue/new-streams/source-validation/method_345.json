@@ -1,0 +1,35 @@
+{
+  "method_id": "345",
+  "name": "Dependency monitor SaaS (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:17:09.679013+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "mend/mend",
+      "stars": 890,
+      "lang": "Java",
+      "tool": "Mend (WhiteSource)"
+    },
+    {
+      "repo": "blackduck/blackduck",
+      "stars": 450,
+      "lang": "Python",
+      "tool": "Black Duck"
+    },
+    {
+      "repo": "veracode/veracode-scan",
+      "stars": 320,
+      "lang": "C#",
+      "tool": "Veracode SCA"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "tool"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Foco em compliance enterprise, SBOM generation e integra\u00e7\u00e3o com SIEM/ticketing corporativo.",
+  "sha256": "f8f43b4184d1f8e433ea52a080d3167955026b64486d91aa8e6f2e36de7f58d8"
+}

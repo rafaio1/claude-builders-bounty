@@ -1,0 +1,35 @@
+{
+  "method_id": "348",
+  "name": "Dependency monitor SaaS (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:17:30.727040+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "anchore/syft",
+      "stars": 5600,
+      "lang": "Go",
+      "tool": "Syft SBOM"
+    },
+    {
+      "repo": "cyclonedx/cyclonedx-cli",
+      "stars": 1200,
+      "lang": "Go",
+      "tool": "CycloneDX CLI"
+    },
+    {
+      "repo": "depscan/depscan",
+      "stars": 890,
+      "lang": "Python",
+      "tool": "depscan"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "tool"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Foco em SBOM generation, compliance multi-cliente e relat\u00f3rios consolidados para ag\u00eancias.",
+  "sha256": "26e83589a5cd6269452e4984f7124c1fb8e413c34a54d68d498097d0db99c8ad"
+}
