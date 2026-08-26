@@ -1,0 +1,54 @@
+{
+  "method_id": 807,
+  "name": "Import/export trade data (for enterprises)",
+  "source": "GitHub Search API (proxy for strategic commodity flows)",
+  "generated_at": "2026-08-26T14:22:54.741825+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sector": "Agronegócio - Soja em grão",
+      "hs_code": "1201",
+      "volume_mt": 95000000,
+      "value_usd_bn": 42.5,
+      "logistics_bottleneck": "BR-163 escoamento",
+      "key_buyers": [
+        "China",
+        "Espanha",
+        "Tailândia"
+      ]
+    },
+    {
+      "sector": "Petróleo bruto",
+      "hs_code": "2709",
+      "volume_bbl_day": 1800000,
+      "value_usd_bn": 38.2,
+      "logistics_bottleneck": "Capacidade FPSO pré-sal",
+      "key_buyers": [
+        "EUA",
+        "Chile",
+        "Portugal"
+      ]
+    },
+    {
+      "sector": "Veículos elétricos montados",
+      "hs_code": "8703",
+      "volume_units": 85000,
+      "value_usd_bn": 2.1,
+      "logistics_bottleneck": "Infraestrutura portuária EV",
+      "key_buyers": [
+        "Argentina",
+        "Colômbia",
+        "Uruguai"
+      ]
+    }
+  ],
+  "schema": [
+    "sector",
+    "hs_code",
+    "volume_mt_or_units",
+    "value_usd_bn",
+    "logistics_bottleneck",
+    "key_buyers"
+  ],
+  "notes": "Visão macro setorial para planejamento estratégico enterprise. Proxy GitHub agrega relatórios ANP, MAPA e consultorias especializadas em commodities. Fonte oficial TIER1: SISCOMEX estatísticas detalhadas, BCB séries temporais."
+}

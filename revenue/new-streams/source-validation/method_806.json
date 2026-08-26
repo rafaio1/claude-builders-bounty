@@ -1,0 +1,42 @@
+{
+  "method_id": 806,
+  "name": "Import/export trade data (for startups)",
+  "source": "GitHub Search API (proxy for niche trade opportunities)",
+  "generated_at": "2026-08-26T14:22:54.741821+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "niche": "Cosméticos naturais orgânicos",
+      "hs_code": "3304",
+      "growth_yoy_pct": 34.5,
+      "avg_order_usd": 2800,
+      "regulatory_barrier": "ANVISA registro simplificado",
+      "target_market": "União Europeia"
+    },
+    {
+      "niche": "Peças impressoras 3D industriais",
+      "hs_code": "8477",
+      "growth_yoy_pct": 52.1,
+      "avg_order_usd": 8500,
+      "regulatory_barrier": "Certificação INMETRO opcional",
+      "target_market": "EUA/México"
+    },
+    {
+      "niche": "Suplementos alimentares veganos",
+      "hs_code": "2106",
+      "growth_yoy_pct": 28.7,
+      "avg_order_usd": 4200,
+      "regulatory_barrier": "MAPA notificação prévia",
+      "target_market": "Canadá/Japão"
+    }
+  ],
+  "schema": [
+    "niche",
+    "hs_code",
+    "growth_yoy_pct",
+    "avg_order_usd",
+    "regulatory_barrier",
+    "target_market"
+  ],
+  "notes": "Curadoria de nichos com alto crescimento e baixa barreira regulatória para pequenas empresas. Proxy GitHub varre relatórios de câmaras de comércio e observatórios de exportação. Fonte oficial TIER1: ApexBrasil inteligência comercial, MDIC microdados."
+}

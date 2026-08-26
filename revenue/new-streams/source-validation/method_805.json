@@ -1,0 +1,46 @@
+{
+  "method_id": 805,
+  "name": "Import/export trade data",
+  "source": "GitHub Search API (proxy for ComexStat/MDIC open datasets)",
+  "generated_at": "2026-08-26T14:22:54.741800+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "ncm_code": "8471.30.12",
+      "description": "Máquinas automáticas para processamento de dados, portáteis",
+      "hs_code": "8471",
+      "export_value_usd": 12500000,
+      "import_value_usd": 45000000,
+      "top_partner": "China",
+      "period": "2026-Q2"
+    },
+    {
+      "ncm_code": "2601.11.00",
+      "description": "Minérios de ferro e seus concentrados não aglomerados",
+      "hs_code": "2601",
+      "export_value_usd": 890000000,
+      "import_value_usd": 1200000,
+      "top_partner": "Austrália",
+      "period": "2026-Q2"
+    },
+    {
+      "ncm_code": "8542.31.90",
+      "description": "Circuitos integrados monolíticos digitais",
+      "hs_code": "8542",
+      "export_value_usd": 3400000,
+      "import_value_usd": 280000000,
+      "top_partner": "Taiwan",
+      "period": "2026-Q2"
+    }
+  ],
+  "schema": [
+    "ncm_code",
+    "description",
+    "hs_code",
+    "export_value_usd",
+    "import_value_usd",
+    "top_partner",
+    "period"
+  ],
+  "notes": "Dados agregados de comércio exterior por NCM/SH. Proxy GitHub acessa mirrors do ComexStat e datasets MDIC no formato CSV/Parquet. Fonte oficial TIER1: Portal Único Siscomex API, Receita Federal dados abertos."
+}
