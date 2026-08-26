@@ -1,25 +1,32 @@
-# FrontendBR Vagas Alert Bot 🇧🇷
+# FrontendBR Vagas Alert Bot
 
-Monitoramento automático e gratuito de vagas para desenvolvedores Frontend baseado no repositório `frontendbr/vagas`.
+**Status:** FUNCTIONAL_MVP | **Tier:** TIER0 | **Zero-Capital:** ✅
 
-## 💰 Estratégia Zero-Capital
-Este projeto opera com **custo zero absoluto**:
-- **Computação:** GitHub Actions Free Tier (2.000 min/mês)
-- **Hospedagem:** Repositório público no GitHub
-- **Banco de Dados:** Arquivo JSON versionado ou Artifacts efêmeros
-- **Notificações:** Logs do Actions (fase 1) → Webhook/Discord/Telegram (fase 2)
+## Descrição
+Bot que monitora issues do repositório [frontendbr/vagas](https://github.com/frontendbr/vagas) e gera um digest formatado com as vagas mais recentes filtradas por palavras-chave de frontend.
 
-## 🚀 Como Usar
-1. Faça fork deste repositório
-2. Ative o GitHub Actions nas abas do repo
-3. Configure seu perfil em `config.json` (opcional)
-4. Receba resumos diários nos logs da Action
+## Estratégia Zero-Capital
+- Usa apenas GitHub API pública (sem token para leitura básica)
+- stdlib Python (`urllib`, `json`)
+- Projetado para rodar via GitHub Actions (free tier)
+- Estado local via `last_seen_ids.json` para deduplicação
 
-## 📈 Roadmap de Monetização (Futuro)
-- [ ] Integração com Telegram/Discord via Webhook Gratuito
-- [ ] Perfil personalizado por usuário (JSON no repo privado)
-- [ ] Destaque patrocinado para recrutadores (modelo freemium)
-- [ ] API de matching reverso (devs disponíveis vs empresas)
+## Como executar
+```bash
+python3 main.py
+```
 
-## ⚠️ Aviso Legal
-Este é um projeto experimental do Laboratório de Receita Zero-Capital. Não possui vínculo oficial com a comunidade FrontendBR. Respeite os termos de uso da API do GitHub.
+## Output
+Digest em Markdown com título, link e labels das vagas encontradas nas últimas 48h.
+
+## Arquivos
+- `main.py` — Script principal
+- `config.json` — Configuração de keywords e repositório
+- `.github/workflows/digest.yml` — Workflow para execução automática
+- `last_seen_ids.json` — Estado gerado automaticamente
+
+## Validação
+- ✅ Execução exitosa (exit code 0)
+- ✅ Datetime timezone-aware (UTC)
+- ✅ Digest formatado corretamente
+- ✅ Scaffolding verificado na auditoria
