@@ -1,0 +1,32 @@
+{
+  "method_id": "356",
+  "name": "Market making bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:33.907706+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "STARTUP-A",
+      "dex": "uniswap_v3",
+      "liquidity_usd": 45000,
+      "daily_volume_usd": 12000,
+      "spread_capture_pct": 34.5
+    },
+    {
+      "token": "STARTUP-B",
+      "dex": "raydium",
+      "liquidity_usd": 28000,
+      "daily_volume_usd": 8500,
+      "spread_capture_pct": 41.2
+    }
+  ],
+  "schema": [
+    "token:str",
+    "dex:str",
+    "liquidity_usd:float",
+    "daily_volume_usd:float",
+    "spread_capture_pct:float"
+  ],
+  "notes": "Focado em tokens early-stage com baixa liquidez. Proxy TIER0: GitHub repos de MM bots open-source. Fonte oficial alvo: Uniswap V3 Subgraph + Raydium API. Zero capital: simulação apenas.",
+  "sha256": "34ce8c45fd1325c1b7741371a6c5f6ed621e5e964b0d4185bf4c44cabed23b80"
+}

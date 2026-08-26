@@ -1,0 +1,32 @@
+{
+  "method_id": "357",
+  "name": "Market making bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:33.907706+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "asset": "BTC",
+      "venue_count": 5,
+      "avg_spread_bps": 3.2,
+      "monthly_rebate_usd": 18500,
+      "compliance_flag": false
+    },
+    {
+      "asset": "ETH",
+      "venue_count": 4,
+      "avg_spread_bps": 4.1,
+      "monthly_rebate_usd": 12300,
+      "compliance_flag": false
+    }
+  ],
+  "schema": [
+    "asset:str",
+    "venue_count:int",
+    "avg_spread_bps:float",
+    "monthly_rebate_usd:float",
+    "compliance_flag:bool"
+  ],
+  "notes": "Escala enterprise com multi-venue e rebate programs. Proxy TIER0: GitHub search (institutional MM frameworks). Fonte oficial alvo: Coinbase Prime / Binance Institutional API. Compliance flag sintético para estrutura.",
+  "sha256": "3fe9a779e4b10796fb5adbf9176c19fe4a9a0a90d7847972edec76d76b28b9bf"
+}

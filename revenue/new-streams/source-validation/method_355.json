@@ -1,0 +1,29 @@
+{
+  "method_id": "355",
+  "name": "Market making bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:33.907706+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "ETH/USDC",
+      "spread_bps": 12,
+      "inventory_skew": 0.05,
+      "uptime_pct": 99.2
+    },
+    {
+      "pair": "SOL/USDT",
+      "spread_bps": 18,
+      "inventory_skew": -0.03,
+      "uptime_pct": 98.7
+    }
+  ],
+  "schema": [
+    "pair:str",
+    "spread_bps:float",
+    "inventory_skew:float",
+    "uptime_pct:float"
+  ],
+  "notes": "Zero-capital TIER0 proxy via GitHub Search API (repos: hummbot, freqtrade market-making). Fonte oficial alvo: Binance/Bybit WebSocket API + CCXT. Requer chaves API para execução real (TIER1).",
+  "sha256": "5d4120e7e726b6e58336422b10abb0ef21492fd3cada4b9922c33c83cacb01c4"
+}
