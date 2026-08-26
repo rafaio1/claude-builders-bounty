@@ -640,13 +640,27 @@ def triage(candidates):
     # HARD META-FILTER: remove internal/meta targets that waste cycles
     META_KW = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
                "funding opportunity", "community update", "as a developer, i want",
-               "push notifications: native mobile"]
+               "push notifications: native mobile",
+               # Payout/admin/meta issues that are NOT code tasks
+               "payout blocked", "payment issue", "cannot receive payment",
+               "sensitive data leak", "security mailbox", "tracking purposes",
+               "stop-hook loop", "respawn bounty", "scientific bounty system",
+               "urgent – payout", "urgent – payment", "algora", "country is not supported",
+               "reward status", "bounty #", "pr #", "research marketplace",
+               "global research", "r&d challenges"]
     filtered = [c for c in candidates if not any(kw in c.get("title","").lower() for kw in META_KW)]
     if len(filtered) < len(candidates):
         log(f"Triage meta-filter: removed {len(candidates)-len(filtered)} internal/meta targets")
     candidates = filtered if filtered else candidates
     
-    sorted_cands = sorted(candidates, key=lambda x: (str(x.get("value_usd","0")), x.get("discovered_at","")), reverse=True)[:10]
+    def _sort_key(x):
+        v = x.get("value_usd", "0")
+        try:
+            val = float(str(v).replace(",","").replace("$","")) if str(v) not in ("unknown","None","") else 0.0
+        except (ValueError, TypeError):
+            val = 0.0
+        return (val, x.get("discovered_at",""))
+    sorted_cands = sorted(candidates, key=_sort_key, reverse=True)[:10]
     # Sanitize candidates to prevent JSON serialization issues or prompt injection
     safe_cands = []
     for c in sorted_cands:
