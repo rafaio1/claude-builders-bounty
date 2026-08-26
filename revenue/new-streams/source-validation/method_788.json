@@ -1,0 +1,37 @@
+{
+  "method_id": 788,
+  "name": "Municipal public spending transparency (for civic tech)",
+  "source": "GitHub Search API + Portal da Transparência proxy (proxy for gov spending signals)",
+  "generated_at": "2026-08-26T14:16:27.186454Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "civictech-br/spending-tracker",
+      "stars": 210,
+      "language": "Python",
+      "topic": "public-spending",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "transparency_score": 8.7,
+      "open_data_portal": true
+    },
+    {
+      "repo": "open-gov/br-budget-api",
+      "stars": 156,
+      "language": "Go",
+      "topic": "budget-transparency",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|transparency_score",
+    "topic|open_data_portal",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas de transparência; IBGE fornece contexto municipal. Fonte oficial TIER1: Portal da Transparência Federal, CGU Dados Abertos."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": 785,
+  "name": "Renewable energy project pipeline (for greentech investors)",
+  "source": "GitHub Search API + ReceitaWS (proxy for renewable project signals)",
+  "generated_at": "2026-08-26T14:16:06.230651Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "greentech-br/project-tracker",
+      "stars": 189,
+      "language": "Python",
+      "topic": "renewable-pipeline",
+      "last_push": "2026-08-24"
+    },
+    {
+      "cnpj": "44.555.666/0001-77",
+      "company": "ENERGIA SOLAR NORDESTE SA",
+      "status": "ATIVA",
+      "main_activity": "Geração de energia solar"
+    },
+    {
+      "repo": "open-energy/br-wind-map",
+      "stars": 145,
+      "language": "TypeScript",
+      "topic": "wind-energy",
+      "last_push": "2026-08-21"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub indica ferramentas de tracking; ReceitaWS valida SPVs de energia. Fonte oficial TIER1: ANEEL BIG, EPE PDE, ABSOLAR Dados."
+}

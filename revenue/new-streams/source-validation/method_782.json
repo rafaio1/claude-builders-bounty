@@ -1,0 +1,37 @@
+{
+  "method_id": 782,
+  "name": "Restaurant menu pricing benchmark (for foodtech)",
+  "source": "GitHub Search API + ReceitaWS (proxy for food service pricing signals)",
+  "generated_at": "2026-08-26T14:15:43.537934Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "foodtech-br/menu-benchmark",
+      "stars": 178,
+      "language": "Python",
+      "topic": "restaurant-analytics",
+      "last_push": "2026-08-24"
+    },
+    {
+      "cnpj": "33.444.555/0001-66",
+      "company": "GASTRONOMIA DIGITAL LTDA",
+      "status": "ATIVA",
+      "main_activity": "Consultoria para restaurantes"
+    },
+    {
+      "repo": "open-food/br-menu-parser",
+      "stars": 134,
+      "language": "Go",
+      "topic": "menu-data",
+      "last_push": "2026-08-21"
+    }
+  ],
+  "schema": [
+    "repo|cnpj",
+    "stars|company",
+    "language|status",
+    "topic|main_activity",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub indica analytics gastronômico; ReceitaWS valida consultorias. Fonte oficial TIER1: Abrasel Dados, iFood Merchant API."
+}

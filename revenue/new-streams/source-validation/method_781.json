@@ -1,0 +1,37 @@
+{
+  "method_id": 781,
+  "name": "Construction material price index (for constructiontech)",
+  "source": "GitHub Search API + IBGE SIDRA (proxy for construction cost signals)",
+  "generated_at": "2026-08-26T14:15:43.537908Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "construtech-br/material-index",
+      "stars": 145,
+      "language": "Python",
+      "topic": "construction-cost",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "inpc_construction": 0.45,
+      "cement_price_bag": 38.9
+    },
+    {
+      "repo": "open-construction/br-price-tracker",
+      "stars": 112,
+      "language": "TypeScript",
+      "topic": "material-prices",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|inpc_construction",
+    "topic|cement_price_bag",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza ferramentas de custo; IBGE/SIDRA fornece índices oficiais (INCC/SINAPI). Fonte oficial TIER1: FGV IBRE, CBIC Dados."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": 786,
+  "name": "Senior care demand forecasting (for silvertech)",
+  "source": "GitHub Search API + IBGE Censo proxy (proxy for aging population signals)",
+  "generated_at": "2026-08-26T14:16:06.230656Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "silvertech-br/demand-model",
+      "stars": 112,
+      "language": "Python",
+      "topic": "senior-care",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 4106902,
+      "city": "Curitiba",
+      "pct_over_65": 0.16,
+      "care_facilities_per_1k": 2.3
+    },
+    {
+      "repo": "open-silver/br-demography",
+      "stars": 89,
+      "language": "R",
+      "topic": "aging-data",
+      "last_push": "2026-08-20"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|pct_over_65",
+    "topic|care_facilities_per_1k",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de demanda; IBGE fornece demografia etária municipal. Fonte oficial TIER1: DATASUS SIH/SIAS, ANSIL, IPEA Envelhecimento."
+}

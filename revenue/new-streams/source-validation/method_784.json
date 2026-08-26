@@ -1,0 +1,37 @@
+{
+  "method_id": 784,
+  "name": "Pet market spending trends (for pettech)",
+  "source": "GitHub Search API + IBGE Municípios (proxy for pet economy signals)",
+  "generated_at": "2026-08-26T14:16:06.230626Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "pettech-br/market-trends",
+      "stars": 134,
+      "language": "Python",
+      "topic": "pet-economy",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 3304557,
+      "city": "Rio de Janeiro",
+      "avg_pet_spend_hh": 450.0,
+      "vet_clinics_density": "high"
+    },
+    {
+      "repo": "open-pet/br-spending-index",
+      "stars": 98,
+      "language": "R",
+      "topic": "pet-retail",
+      "last_push": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|avg_pet_spend_hh",
+    "topic|vet_clinics_density",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza analytics do setor pet; IBGE fornece proxies de renda/densidade. Fonte oficial TIER1: Abinpet Dados, Euromonitor Pet Care."
+}

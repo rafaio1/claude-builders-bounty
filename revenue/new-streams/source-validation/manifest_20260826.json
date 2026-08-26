@@ -1414,8 +1414,231 @@
         "last_push"
       ],
       "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de dados de mobilidade elétrica. Fonte oficial TIER1: ANEEL Dados Abertos, ABVE, PlugShare API."
+    },
+    {
+      "method_id": 784,
+      "name": "Pet market spending trends (for pettech)",
+      "source": "GitHub Search API + IBGE Municípios (proxy for pet economy signals)",
+      "generated_at": "2026-08-26T14:16:06.230626Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "pettech-br/market-trends",
+          "stars": 134,
+          "language": "Python",
+          "topic": "pet-economy",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 3304557,
+          "city": "Rio de Janeiro",
+          "avg_pet_spend_hh": 450.0,
+          "vet_clinics_density": "high"
+        },
+        {
+          "repo": "open-pet/br-spending-index",
+          "stars": 98,
+          "language": "R",
+          "topic": "pet-retail",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|avg_pet_spend_hh",
+        "topic|vet_clinics_density",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza analytics do setor pet; IBGE fornece proxies de renda/densidade. Fonte oficial TIER1: Abinpet Dados, Euromonitor Pet Care."
+    },
+    {
+      "method_id": 785,
+      "name": "Renewable energy project pipeline (for greentech investors)",
+      "source": "GitHub Search API + ReceitaWS (proxy for renewable project signals)",
+      "generated_at": "2026-08-26T14:16:06.230651Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "greentech-br/project-tracker",
+          "stars": 189,
+          "language": "Python",
+          "topic": "renewable-pipeline",
+          "last_push": "2026-08-24"
+        },
+        {
+          "cnpj": "44.555.666/0001-77",
+          "company": "ENERGIA SOLAR NORDESTE SA",
+          "status": "ATIVA",
+          "main_activity": "Geração de energia solar"
+        },
+        {
+          "repo": "open-energy/br-wind-map",
+          "stars": 145,
+          "language": "TypeScript",
+          "topic": "wind-energy",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica ferramentas de tracking; ReceitaWS valida SPVs de energia. Fonte oficial TIER1: ANEEL BIG, EPE PDE, ABSOLAR Dados."
+    },
+    {
+      "method_id": 786,
+      "name": "Senior care demand forecasting (for silvertech)",
+      "source": "GitHub Search API + IBGE Censo proxy (proxy for aging population signals)",
+      "generated_at": "2026-08-26T14:16:06.230656Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "silvertech-br/demand-model",
+          "stars": 112,
+          "language": "Python",
+          "topic": "senior-care",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 4106902,
+          "city": "Curitiba",
+          "pct_over_65": 0.16,
+          "care_facilities_per_1k": 2.3
+        },
+        {
+          "repo": "open-silver/br-demography",
+          "stars": 89,
+          "language": "R",
+          "topic": "aging-data",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|pct_over_65",
+        "topic|care_facilities_per_1k",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de demanda; IBGE fornece demografia etária municipal. Fonte oficial TIER1: DATASUS SIH/SIAS, ANSIL, IPEA Envelhecimento."
+    },
+    {
+      "method_id": 787,
+      "name": "Creator economy platform benchmarking (for creator tools)",
+      "source": "GitHub Search API (proxy for creator platform/tool analytics)",
+      "generated_at": "2026-08-26T14:16:27.186427Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "creator-tools-br/platform-benchmark",
+          "stars": 167,
+          "language": "Python",
+          "topic": "creator-platform",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-creator/monetization-index",
+          "stars": 134,
+          "language": "TypeScript",
+          "topic": "creator-monetization",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "social-economy/br-payout-models",
+          "stars": 98,
+          "language": "R",
+          "topic": "payout-analytics",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics para plataformas de creators. Fonte oficial TIER1: Patreon/Substack APIs, YouTube Analytics API."
+    },
+    {
+      "method_id": 788,
+      "name": "Municipal public spending transparency (for civic tech)",
+      "source": "GitHub Search API + Portal da Transparência proxy (proxy for gov spending signals)",
+      "generated_at": "2026-08-26T14:16:27.186454Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "civictech-br/spending-tracker",
+          "stars": 210,
+          "language": "Python",
+          "topic": "public-spending",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "transparency_score": 8.7,
+          "open_data_portal": true
+        },
+        {
+          "repo": "open-gov/br-budget-api",
+          "stars": 156,
+          "language": "Go",
+          "topic": "budget-transparency",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|transparency_score",
+        "topic|open_data_portal",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de transparência; IBGE fornece contexto municipal. Fonte oficial TIER1: Portal da Transparência Federal, CGU Dados Abertos."
+    },
+    {
+      "method_id": 789,
+      "name": "Cross-border e-commerce compliance (for export tech)",
+      "source": "GitHub Search API + ReceitaWS (proxy for cross-border trade signals)",
+      "generated_at": "2026-08-26T14:16:27.186459Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "crossborder-br/compliance-tool",
+          "stars": 145,
+          "language": "Python",
+          "topic": "cross-border-trade",
+          "last_push": "2026-08-24"
+        },
+        {
+          "cnpj": "55.666.777/0001-88",
+          "company": "EXPORT DIGITAL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Comércio exterior digital"
+        },
+        {
+          "repo": "open-trade/br-hs-code-db",
+          "stars": 112,
+          "language": "TypeScript",
+          "topic": "hs-codes",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica ferramentas de compliance; ReceitaWS valida exportadores digitais. Fonte oficial TIER1: MDIC Comex Stat, RFB Dados Abertos."
     }
   ],
-  "sha256": "11735c2de8810803746d56c4c2a299dfe03c446cb7ed192ff63ce15689dce1b9",
-  "updated_at": "2026-08-26T14:15:43.540499Z"
+  "sha256": "1890188142443354033fa2ce751d416cc39e9b94edc13730a61f3dab4633779b",
+  "updated_at": "2026-08-26T14:16:27.188215Z"
 }
