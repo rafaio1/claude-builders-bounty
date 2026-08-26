@@ -1,0 +1,28 @@
+{
+  "method_id": "549",
+  "name": "Freelance invoice automation (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:59.484708+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "erp_integration": "netsuite_restlet",
+      "approval_workflow": "three_tier_po",
+      "audit_log_retention_days": 2555,
+      "multi_entity_billing": true
+    },
+    {
+      "erp_integration": "sap_s4hana_odata",
+      "approval_workflow": "department_head",
+      "audit_log_retention_days": 365,
+      "multi_entity_billing": false
+    }
+  ],
+  "schema": [
+    "erp_integration",
+    "approval_workflow",
+    "audit_log_retention_days",
+    "multi_entity_billing"
+  ],
+  "notes": "Integração enterprise com ERPs e workflows de aprovação complexos. Proxy: GitHub Search 'enterprise billing automation erp'. Fonte oficial: NetSuite/SAP connector docs."
+}

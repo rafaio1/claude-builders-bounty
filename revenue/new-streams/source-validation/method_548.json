@@ -1,0 +1,28 @@
+{
+  "method_id": "548",
+  "name": "Freelance invoice automation (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:59.484708+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_entity": "delaware_c_corp",
+      "vat_handling": "reverse_charge_eu",
+      "payment_gateway": "mercury_wire",
+      "reconciliation_mode": "auto_xero"
+    },
+    {
+      "startup_entity": "uk_ltd",
+      "vat_handling": "standard_uk",
+      "payment_gateway": "wise_business",
+      "reconciliation_mode": "manual_csv"
+    }
+  ],
+  "schema": [
+    "startup_entity",
+    "vat_handling",
+    "payment_gateway",
+    "reconciliation_mode"
+  ],
+  "notes": "Foco em compliance fiscal internacional para startups remotas. Proxy: GitHub Search 'startup invoicing compliance'. Fonte oficial: Mercury/Wise API docs + HMRC VAT guidelines."
+}

@@ -1,0 +1,28 @@
+{
+  "method_id": "547",
+  "name": "Freelance invoice automation",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:59.484708+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "invoice_trigger": "milestone_complete",
+      "tax_engine": "stripe_tax_api",
+      "currency_default": "USD",
+      "late_fee_policy_pct": 1.5
+    },
+    {
+      "invoice_trigger": "weekly_retainer",
+      "tax_engine": "quaderno_calc",
+      "currency_default": "EUR",
+      "late_fee_policy_pct": 2.0
+    }
+  ],
+  "schema": [
+    "invoice_trigger",
+    "tax_engine",
+    "currency_default",
+    "late_fee_policy_pct"
+  ],
+  "notes": "Automação de geração e envio de invoices baseada em triggers de projeto. Zero-capital: templates locais + cálculos fiscais via APIs públicas/sandbox. Proxy: GitHub Search 'freelance invoice generator python'. Fonte oficial: Stripe Tax / Quaderno docs."
+}
