@@ -1,0 +1,38 @@
+{
+  "method_id": 870,
+  "name": "Inventory optimization (for agencies)",
+  "source": "GitHub Search API (client e-commerce stack signals)",
+  "generated_at": "2026-08-26T14:35:56.624672+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "magento_adobe_commerce",
+      "agency_repos": 2100,
+      "client_segment": "mid_market",
+      "inventory_complexity": "high",
+      "trend": "stable"
+    },
+    {
+      "platform": "bigcommerce_headless",
+      "agency_repos": 1450,
+      "client_segment": "growth_dtc",
+      "inventory_complexity": "medium",
+      "trend": "rising"
+    },
+    {
+      "platform": "woocommerce_legacy",
+      "agency_repos": 3800,
+      "client_segment": "smb",
+      "inventory_complexity": "low_medium",
+      "trend": "declining"
+    }
+  ],
+  "schema": [
+    "platform",
+    "agency_repos",
+    "client_segment",
+    "inventory_complexity",
+    "trend"
+  ],
+  "notes": "Stack de clientes como proxy de demanda por serviços de otimização de estoque. Fonte oficial TIER1: BuiltWith Agency Reports / Clutch.co E-commerce Leaders."
+}

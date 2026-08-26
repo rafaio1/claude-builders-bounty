@@ -1,0 +1,38 @@
+{
+  "method_id": 868,
+  "name": "Inventory optimization (for creators)",
+  "source": "GitHub Search API (proxy for merch/print-on-demand tooling)",
+  "generated_at": "2026-08-26T14:35:56.624645+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "printful_integration",
+      "repos_using": 3420,
+      "creator_adoption": "high",
+      "inventory_model": "dropship",
+      "optimization_need": "low"
+    },
+    {
+      "tool": "shopify_merch_app",
+      "repos_using": 1850,
+      "creator_adoption": "medium",
+      "inventory_model": "hybrid",
+      "optimization_need": "medium"
+    },
+    {
+      "tool": "custom_woocom_store",
+      "repos_using": 920,
+      "creator_adoption": "declining",
+      "inventory_model": "self_fulfilled",
+      "optimization_need": "high"
+    }
+  ],
+  "schema": [
+    "tool",
+    "repos_using",
+    "creator_adoption",
+    "inventory_model",
+    "optimization_need"
+  ],
+  "notes": "Repositórios de integração como proxy de maturidade de estoque para creators. Fonte oficial TIER1: Printful/Printify Partner APIs / Shopify App Store Analytics."
+}
