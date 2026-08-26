@@ -139,12 +139,16 @@ def test_trash_failed_entry_not_in_seen():
     from unittest.mock import patch
     import pr_email_agent as agent
     fake_search_lines = ["[msg_fail] | github@github.com | [Test/repo] PR #999 (PR #999)"]
-    with patch.object(agent, "gmail_search", return_value=fake_search_lines), \
+    single_window = [{"label": "30d", "query": "newer_than:30d"}]
+    with patch.object(agent, "gmail_search_paginated", return_value=fake_search_lines), \
          patch.object(agent, "gh_pr_state", return_value=("CLOSED", "https://example.com/999")), \
          patch.object(agent, "gmail_read", return_value={"body": "", "snippet": ""}), \
          patch.object(agent, "gmail_trash", return_value=False), \
          patch.object(agent, "save_ledger_atomic") as mock_save, \
-         patch.object(agent, "load_ledger", return_value=[]):
+         patch.object(agent, "load_ledger", return_value=[]), \
+         patch.object(agent, "load_cursor", return_value={"completed_windows": [], "current_window": None, "last_run": None}), \
+         patch.object(agent, "save_cursor"), \
+         patch.object(agent, "SCAN_WINDOWS", single_window):
         agent.classify_and_process()
         saved = mock_save.call_args[0][0]
         assert len(saved) == 1
