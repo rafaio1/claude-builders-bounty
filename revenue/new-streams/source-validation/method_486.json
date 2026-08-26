@@ -1,0 +1,31 @@
+{
+  "method_id": "486",
+  "name": "MEV bundle simulator (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:36.414442+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Chainalysis MEV Advisory",
+      "client_type": "institutional_traders",
+      "report_frequency": "weekly",
+      "compliance_standard": "FINRA_market_access",
+      "est_annual_savings_client_usd": 850000
+    },
+    {
+      "agency": "Elliptic DeFi Risk",
+      "client_type": "hedge_funds",
+      "report_frequency": "monthly",
+      "compliance_standard": "SEC_adviser_act",
+      "est_annual_savings_client_usd": 420000
+    }
+  ],
+  "schema": [
+    "agency",
+    "client_type",
+    "report_frequency",
+    "compliance_standard",
+    "est_annual_savings_client_usd"
+  ],
+  "notes": "Variante para consultorias de risco e advisory firms. Proxy TIER0: GitHub Search (topics: mev-advisory, defi-risk-analytics). Fonte oficial alvo: SEC enforcement actions + Nansen institutional reports. Foco em compliance reporting e client education zero-capital."
+}

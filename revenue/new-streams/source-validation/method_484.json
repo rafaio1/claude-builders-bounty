@@ -1,0 +1,31 @@
+{
+  "method_id": "484",
+  "name": "MEV bundle simulator (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:36.414442+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "NFT Artist Collective",
+      "focus_chain": "ethereum",
+      "bundle_category": "mint_snipe",
+      "avg_profit_per_mint_usd": 12.5,
+      "tool_used": "etherscan_mempool_viewer"
+    },
+    {
+      "creator": "Music DAO Treasury",
+      "focus_chain": "polygon",
+      "bundle_category": "royalty_arb",
+      "avg_profit_per_tx_usd": 3.2,
+      "tool_used": "polygonscan_trace"
+    }
+  ],
+  "schema": [
+    "creator",
+    "focus_chain",
+    "bundle_category",
+    "avg_profit_per_tx_usd",
+    "tool_used"
+  ],
+  "notes": "Variante para criadores NFT e artistas digitais explorando MEV passivo. Proxy TIER0: GitHub Search (topics: nft-mev, creator-mempool). Fonte oficial alvo: OpenSea mints analytics + Zora protocol stats. Foco em educação e simulação sem execução real."
+}
