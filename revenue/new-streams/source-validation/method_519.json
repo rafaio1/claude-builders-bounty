@@ -1,0 +1,31 @@
+{
+  "method_id": "519",
+  "name": "Token launch sniper (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:50.844986+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise_unit": "Digital Assets Desk",
+      "compliance_flag": true,
+      "latency_target_ms": 50,
+      "infra_type": "aws_lambda_mempool",
+      "audit_trail": "enabled"
+    },
+    {
+      "enterprise_unit": "Prop Trading Div",
+      "compliance_flag": false,
+      "latency_target_ms": 15,
+      "infra_type": "bare_metal_colocation",
+      "audit_trail": "disabled"
+    }
+  ],
+  "schema": [
+    "enterprise_unit",
+    "compliance_flag",
+    "latency_target_ms",
+    "infra_type",
+    "audit_trail"
+  ],
+  "notes": "Foco enterprise: compliance, audit trail e infraestrutura de baixa latência. Proxy: GitHub Search 'institutional crypto sniper infra'. Fonte oficial: AWS Blockchain Node Runners / Flashbots MEV-Share docs. Zero-capital mantido via análise de arquitetura apenas."
+}

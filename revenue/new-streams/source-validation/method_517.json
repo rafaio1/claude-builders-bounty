@@ -1,0 +1,31 @@
+{
+  "method_id": "517",
+  "name": "Token launch sniper",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:50.844986+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token_symbol": "NEWAI",
+      "chain": "solana",
+      "launch_platform": "pump.fun",
+      "snipe_delay_ms": 120,
+      "estimated_profit_pct": 45.2
+    },
+    {
+      "token_symbol": "MEME2",
+      "chain": "base",
+      "launch_platform": "uniswap_v3",
+      "snipe_delay_ms": 350,
+      "estimated_profit_pct": 18.7
+    }
+  ],
+  "schema": [
+    "token_symbol",
+    "chain",
+    "launch_platform",
+    "snipe_delay_ms",
+    "estimated_profit_pct"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: solana-sniper, pump-fun-bot). Fonte oficial alvo: Pump.fun WebSocket API / Uniswap V3 Factory events. Zero-capital: simulação de latência e lucro baseada em blocks históricos públicos."
+}

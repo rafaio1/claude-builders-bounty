@@ -1,0 +1,31 @@
+{
+  "method_id": "518",
+  "name": "Token launch sniper (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:50.844986+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "project_name": "DeFiStartX",
+      "target_chain": "ethereum",
+      "budget_usd": 0,
+      "automation_tool": "ethers.js_sniper_template",
+      "risk_level": "high"
+    },
+    {
+      "project_name": "NFTLaunchPad",
+      "target_chain": "polygon",
+      "budget_usd": 0,
+      "automation_tool": "hardhat_sniper_kit",
+      "risk_level": "medium"
+    }
+  ],
+  "schema": [
+    "project_name",
+    "target_chain",
+    "budget_usd",
+    "automation_tool",
+    "risk_level"
+  ],
+  "notes": "Variação para startups que buscam templates open-source de sniping sem capital inicial. Proxy: GitHub Search 'token sniper template startup'. Fonte oficial: Documentação Ethers.js / Hardhat + Mempool monitoring services (Flashbots Protect)."
+}
