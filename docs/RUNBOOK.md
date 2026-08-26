@@ -99,3 +99,25 @@ Executa em sequência: openbugbounty_register → defi_bounty_scanner → vul_re
 Cada passo é isolado com `|| echo WARN`; falha em um não interrompe os demais.
 Logs excluídos do versionamento via `.gitignore`.
 Orchestrator aplica gate Telegram: apenas receita realizada e reconciliada gera notificação.
+
+## 10. Autonomous Trade Scanner & Testnet Airdrop Executor
+
+### Trade Scanner
+Script: `scripts/autonomous_trade_scanner.py`
+Função: Descobre oportunidades zero-capital (testnet airdrops) e sinais yield/arb (human-only).
+Runtime: `config/trade_scanner.json`, `logs/trade_scanner.log`, `revenue/trade_opportunities/` — todos gitignored.
+Segurança: Nenhuma execução de trade ou deploy de capital; apenas descoberta e registro.
+
+### Testnet Airdrop Executor
+Script: `scripts/testnet_airdrop_executor.py`
+Função: Executa interações testnet (faucet, swap, LP, deploy, bridge, mint) em modo simulação.
+Runtime: `config/testnet_airdrop_state.json`, `logs/testnet_airdrop_executor.log` — gitignored.
+Segurança: Faucet tasks marcadas `pending_human` (browser/captcha); sem mainnet capital.
+Pré-requisito: Rodar `autonomous_trade_scanner.py` primeiro para gerar oportunidades.
+
+### Integração com Cron Revenue Suite
+Adicionar ao `scripts/cron_revenue_suite.sh` após `revenue_orchestrator`:
+```bash
+python3 /Agentic/scripts/autonomous_trade_scanner.py || echo WARN: trade_scanner failed
+python3 /Agentic/scripts/testnet_airdrop_executor.py || echo WARN: airdrop_executor failed
+```
