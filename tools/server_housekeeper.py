@@ -98,7 +98,7 @@ class HousekeeperReport:
 
 
 def now_iso() -> str:
-    return dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+    return dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z")
 
 
 def ensure_manifest_dir() -> None:
@@ -107,7 +107,7 @@ def ensure_manifest_dir() -> None:
 
 def write_manifest(report: HousekeeperReport, suffix: str) -> Path:
     ensure_manifest_dir()
-    ts = dt.datetime.utcnow().strftime("%Y%m%d-%H%M%S")
+    ts = dt.datetime.now(dt.timezone.utc).strftime("%Y%m%d-%H%M%S")
     path = MANIFEST_DIR / f"housekeeper-{suffix}-{ts}.jsonl"
     with path.open("w", encoding="utf-8") as fh:
         fh.write(json.dumps({
@@ -151,8 +151,15 @@ def is_protected(path: Path) -> bool:
     # Nunca remover raiz do repo ou workspace root
     if path == ROOT or path == WORKSPACE:
         return True
-    # Proteger qualquer .git em profundidade
-    if ".git" in {p.name for p in path.parents} or name == ".git":
+    # Proteger qualquer .git ou nome protegido em ancestors
+    try:
+        rel = path.resolve().relative_to(ROOT.resolve())
+        parts = set(rel.parts)
+    except ValueError:
+        parts = set()
+    if parts & PROTECTED_NAMES:
+        return True
+    if name == ".git" or ".git" in parts:
         return True
     return False
 
@@ -244,24 +251,26 @@ def analyze_high_ticket_duplicates() -> List[dict]:
     if not ht.exists():
         return duplicates
     seen: dict[str, list[str]] = {}
+    seen: dict[tuple, list[dict]] = {}
     for p in sorted(ht.rglob("*")):
         if not p.is_file():
             continue
         if is_protected(p):
             continue
         try:
-            key = f"{p.name}:{p.stat().st_size}:{p.stat().st_mtime_ns}"
+            st = p.stat()
+            key = (p.name, st.st_size)
         except OSError:
             continue
-        seen.setdefault(key, []).append(str(p))
+        seen.setdefault(key, []).append({"path": str(p), "mtime_ns": st.st_mtime_ns})
     for key, paths in seen.items():
         if len(paths) > 1:
-            name, size_str, _ = key.split(":")
+            name, size_bytes = key
             duplicates.append({
                 "name": name,
-                "size_bytes": int(size_str),
+                "size_bytes": size_bytes,
                 "count": len(paths),
-                "paths": paths[:10],
+                "paths": [p["path"] for p in paths[:10]],
                 "proposal": "definir_retencao_e_quota_antes_de_remover",
             })
     duplicates.sort(key=lambda d: d["size_bytes"] * d["count"], reverse=True)
@@ -331,13 +340,13 @@ def run_housekeeping(apply: bool, max_age_days: int, skip_docker: bool) -> House
 
     # Caches regeneraveis
     targets = find_cache_targets()
-    cutoff = dt.datetime.utcnow() - dt.timedelta(days=max_age_days)
+    cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=max_age_days)
     freed = 0
 
     for path, reason in targets:
         try:
             st = path.lstat()
-            mtime = dt.datetime.utcfromtimestamp(st.st_mtime)
+            mtime = dt.datetime.fromtimestamp(st.st_mtime, tz=dt.timezone.utc)
         except OSError as exc:
             report.entries.append(ManifestEntry(
                 timestamp=now_iso(), path=str(path), size_bytes=0,
