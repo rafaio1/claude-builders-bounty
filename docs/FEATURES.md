@@ -27,6 +27,7 @@
 | AgentLily Runtime Tests | ✅ Integrado | b1d214a | Testes de edge cases para guards e tool registry (Issues #152, #129) | `revenue/bounties/agentlily-runtime/tests/` |
 | Zealy Campaign Scanner | ✅ Integrado | 8a7f914 | Scanner de campanhas comunitárias Zealy (10 protocolos, zero-capital) | `scripts/zealy_campaign_scanner.py`, `tests/test_zealy_campaign_scanner.py` |
 | Galxe Campaign Scanner | ✅ Integrado | d1907b2 | Scanner de campanhas OAT Galxe (10 protocolos, gasless claims) | `scripts/galxe_campaign_scanner.py`, `tests/test_galxe_campaign_scanner.py` |
+| Intract Campaign Scanner | ✅ Integrado | 24d239a | Scanner de campanhas Intract (10 protocolos, zero-capital) | `scripts/intract_campaign_scanner.py`, `tests/test_intract_campaign_scanner.py` |
 
 ## Documentação Operacional
  
