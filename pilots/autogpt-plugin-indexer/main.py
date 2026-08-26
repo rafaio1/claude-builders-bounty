@@ -37,27 +37,38 @@ def fetch_path(url: str) -> list[dict]:
 
 
 def discover_plugins() -> tuple[str, list[dict]]:
-    """Try known plugin paths and return the first one that has content."""
+    """Search GitHub for AutoGPT plugins via topic/search API (zero-capital)."""
+    search_url = "https://api.github.com/search/repositories?q=autogpt+plugin&sort=stars&per_page=30"
+    req = urllib.request.Request(
+        search_url,
+        headers={"User-Agent": "AutoGPT-Plugin-Bot/1.0", "Accept": "application/vnd.github.v3+json"}
+    )
+    try:
+        with urllib.request.urlopen(req, timeout=20) as resp:
+            data = json.loads(resp.read().decode())
+            items = data.get("items", [])
+            if items:
+                return search_url, items
+    except Exception:
+        pass
+    # Fallback to legacy paths
     for path_url in PLUGIN_PATHS:
         items = fetch_path(path_url)
-        if items:
+        if items and any(i.get("name") != ".keep" for i in items):
             return path_url, items
     return "", []
 
 
 def build_plugin_index(source_url: str, items: list[dict]) -> list[dict]:
-    """Build structured index from plugin directory contents."""
     index = []
     for item in items:
-        name = item.get("name", "unknown")
-        item_type = item.get("type", "unknown")
         index.append({
-            "name": name,
-            "type": item_type,
-            "path": item.get("path", ""),
-            "url": item.get("html_url", ""),
-            "sha": item.get("sha", "")[:8],
-            "size_bytes": item.get("size", 0),
+            "name": item.get("full_name", item.get("name", "unknown")),
+            "type": "repository" if "full_name" in item else item.get("type", "unknown"),
+            "url": item.get("html_url", item.get("url", "")),
+            "stars": item.get("stargazers_count", 0),
+            "topics": item.get("topics", []),
+            "description": item.get("description", ""),
         })
     return index
 
