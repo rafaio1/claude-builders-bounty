@@ -51,25 +51,23 @@ def build_ledger_index(ledger: dict) -> dict:
     """
     index = {}
     
-    # Format 1: Flat dict keyed by repo#number (canonical)
+    # Always process flat dict entries first (canonical format)
+    for key, entry in ledger.items():
+        if isinstance(entry, dict) and "#" in str(key):
+            normalized = dict(entry)
+            if "bounty_value" in normalized and "value" not in normalized:
+                normalized["value"] = normalized["bounty_value"]
+            if "bounty_currency" in normalized and "currency" not in normalized:
+                normalized["currency"] = normalized["bounty_currency"]
+            if "bounty_evidence_url" in normalized and "evidence_url" not in normalized:
+                normalized["evidence_url"] = normalized["bounty_evidence_url"]
+            if "bounty_evidence_url" in normalized and "claim_url" not in normalized:
+                normalized["claim_url"] = normalized["bounty_evidence_url"]
+            index[str(key)] = normalized
+    
+    # Then merge legacy 'bounties' list entries (only if not already indexed)
     bounties_list = ledger.get("bounties", None)
-    if bounties_list is None or not isinstance(bounties_list, list):
-        # Treat as flat dict; skip non-dict values and metadata keys
-        for key, entry in ledger.items():
-            if isinstance(entry, dict) and "#" in str(key):
-                # Normalize field names for classify_pr compatibility
-                normalized = dict(entry)
-                if "bounty_value" in normalized and "value" not in normalized:
-                    normalized["value"] = normalized["bounty_value"]
-                if "bounty_currency" in normalized and "currency" not in normalized:
-                    normalized["currency"] = normalized["bounty_currency"]
-                if "bounty_evidence_url" in normalized and "evidence_url" not in normalized:
-                    normalized["evidence_url"] = normalized["bounty_evidence_url"]
-                if "bounty_evidence_url" in normalized and "claim_url" not in normalized:
-                    normalized["claim_url"] = normalized["bounty_evidence_url"]
-                index[str(key)] = normalized
-    else:
-        # Format 2: Dict with 'bounties' list
+    if isinstance(bounties_list, list):
         for entry in bounties_list:
             keys = []
             if entry.get("pr_url"):
@@ -89,7 +87,7 @@ def build_ledger_index(ledger: dict) -> dict:
             if "key" in entry:
                 keys.append(entry["key"])
             for k in keys:
-                if k:
+                if k and k not in index:
                     index[k] = entry
     return index
 
