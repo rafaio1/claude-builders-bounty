@@ -14,6 +14,9 @@ from pathlib import Path
 
 ENABLED = os.environ.get("PRESCREEN_ENABLED", "1") == "1"
 REJECTIONS_LOG = Path("data/expansion/prescreen_rejections.jsonl")
+SUPERSESSION_SCRIPT = Path(__file__).resolve().parent / "detect_supersession.py"
+SUPERSESSION_FLAGS_LOG = Path("data/expansion/supersession_flags.jsonl")
+SUPERSESSION_CHECK_ENABLED = os.environ.get("SUPERSESSION_CHECK_ENABLED", "1") == "1"
 
 # Keywords indicating likely ADIAR causes (from deferral_analysis.json)
 CAPITAL_KEYWORDS = [
@@ -69,6 +72,53 @@ def check_proposal(proposal: dict) -> tuple[bool, str | None]:
 
     return False, None
 
+def check_supersession(proposal: dict) -> str | None:
+    """Check if proposal is superseded by a newer one. Returns flag reason or None.
+    Non-blocking: never rejects, only flags for council review."""
+    if not SUPERSESSION_CHECK_ENABLED:
+        return None
+    if not SUPERSESSION_SCRIPT.exists():
+        return None
+
+    pid = proposal.get("proposal_id") or proposal.get("id")
+    if not pid:
+        return None
+
+    try:
+        import subprocess
+        result = subprocess.run(
+            [sys.executable, str(SUPERSESSION_SCRIPT)],
+            capture_output=True, text=True, timeout=30
+        )
+        if result.returncode != 0:
+            return None
+
+        scan_file = SUPERSESSION_SCRIPT.parent.parent / "data" / "expansion" / "supersession_scan.json"
+        if not scan_file.exists():
+            return None
+
+        import json as _json
+        scan = _json.loads(scan_file.read_text(encoding="utf-8"))
+        for pair in scan.get("superseded", []):
+            if pair.get("older") == pid and pair.get("newer"):
+                return f"SUPERSEDED_BY:{pair['newer']}"
+    except Exception:
+        return None
+    return None
+
+
+def log_supersession_flag(proposal_id: str, title: str, flag_reason: str):
+    SUPERSESSION_FLAGS_LOG.parent.mkdir(parents=True, exist_ok=True)
+    entry = {
+        "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+        "proposal_id": proposal_id,
+        "title": title,
+        "flag": flag_reason,
+        "action": "FLAGGED_FOR_COUNCIL_REVIEW",
+    }
+    with open(SUPERSESSION_FLAGS_LOG, "a") as f:
+        f.write(json.dumps(entry, ensure_ascii=False) + "\n")
+
 
 def log_rejection(proposal_id: str, reason: str, proposal_title: str):
     REJECTIONS_LOG.parent.mkdir(parents=True, exist_ok=True)
@@ -104,5 +154,10 @@ if __name__ == "__main__":
         print(f"REJECTED: {pid} — {reason}")
         sys.exit(1)
     else:
+        # Non-blocking supersession check
+        ss_flag = check_supersession(proposal)
+        if ss_flag:
+            log_supersession_flag(pid, title, ss_flag)
+            print(f"FLAGGED: {pid} — {ss_flag}")
         print(f"PASSED: {pid}")
         sys.exit(0)
