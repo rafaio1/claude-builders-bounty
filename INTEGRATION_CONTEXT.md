@@ -6,13 +6,15 @@
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
 ## Estado Atual (2026-08-26T12:30Z)
- - **Remoto**: https://github.com/rafaio1/agentic-integration.git (PRIVATE)
- - **Branch principal**: master
-- **Último commit**: b02e883 docs: update FEATURES inventory with cadaf36 integrations
-- **Penúltimo commit**: cadaf36 feat: integrate revenue streams, products, templates and p2p-stack init
+## Estado Atual (2026-08-26T14:15Z)
+- **Remoto**: https://github.com/rafaio1/agentic-integration.git (PRIVATE)
+- **Branch principal**: master
+- **Último commit**: 4bed05f feat(bounty): add Immunefi vault scanner with tests and gitignore
+- **Penúltimo commit**: b66d6c0 feat(bounty): add Algora bounty scanner and config + route smoke test
 - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/, products/, revenue/, templates/, workspace/, p2p-stack/init_lnd_wallet.sh
-- **Features integradas neste ciclo**: bounty_automation_template, email-cleanup, content-monetization, micro-saas manifests, web3 bugbounty templates, V23D risk filters doc, p2p-stack LND init, workspace orchestrators
+- **Features integradas neste ciclo**: immunefi_vault_scanner, algora_bounty_scanner, telegram_gate, payout_reconciliation_monitor, gmail_safety_fix, bug_bounty_platform_expander, v23d_multi_executor_gate, route_smoke_tests
 - **Testes**: 35/35 passando (telegram_gate + triage_contract)
+- **Testes**: 40/40 passando (telegram_gate + triage_contract + immunefi_vault_scanner)
 - **Remoto validado**: rafaio1/agentic-integration (PRIVATE=true)
  - **Arquivos rastreados**: src/, api/, docs/, prompts/, skills/, orchestrator/, scripts/, tools/
  - **Arquivos NÃO rastreados (intencional)**: .env, data/, state/, logs/, *.pid, *.log, ledger.jsonl, .venv/, node_modules/, __pycache__/, .agentic*.lock, arb_dashboard.html, typescript/, build/, workspace/, bounties/, bugbounty/, revenue/, p2p-stack/, mt5_bridge/, wise_liquidity/, pr_freelance/, improve/, .agents/, .claude/, .codex/, .config/, .playwright*/
