@@ -617,8 +617,6 @@ def triage(candidates):
         log(f"Triage model fallback: {default_model} -> {model} (failures={_TRIAGE_CONSECUTIVE_FAILURES})")
     else:
         model = default_model
-    # Reset failure counter on successful triage
-    _TRIAGE_CONSECUTIVE_FAILURES = 0
     
     # Safety net: filter out already-submitted issues before triage
     try:
