@@ -1170,7 +1170,15 @@ class ImprovePipeline:
                 "permitido na improve/dev. Não use git reset --hard nem commite .env/data."
             )
         primary = self.git.primary_branch()
-        if self.git.current_branch() != primary:
+        current = self.git.current_branch()
+        if current != primary:
+            # In worktree contexts (e.g. IMPROVE_NO_CHECKOUT=1), the primary
+            # branch may be checked out by the main repo and cannot be reused.
+            # Skip checkout when already on a valid branch to avoid fatal
+            # "already used by worktree" errors.
+            import os as _os
+            if _os.environ.get("IMPROVE_NO_CHECKOUT") == "1":
+                return current or primary
             self.git.checkout(primary)
         return primary
 

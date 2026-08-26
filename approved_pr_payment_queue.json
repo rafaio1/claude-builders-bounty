@@ -1,13 +1,37 @@
 {
   "generated_at": "2026-08-26T12:55:00Z",
   "policy": {
-    "priority_order": ["merged_with_bounty", "merged_approved_no_bounty", "open_claimable"],
+    "priority_order": [
+      "merged_with_bounty",
+      "merged_approved_no_bounty",
+      "open_claimable"
+    ],
     "payout_method": "wise",
     "payout_status": "awaiting_official_support",
     "bank_data_collection": "forbidden_until_confirmed",
     "cla_kyc_collection": "forbidden_until_confirmed"
   },
   "items": [
+    {
+      "id": "leapdao/leap-contracts#313",
+      "repo": "leapdao/leap-contracts",
+      "number": 313,
+      "author": "rafaio1",
+      "title": "docs: optimistic rollup exploration — bounty #272 deliverable",
+      "url": "https://github.com/leapdao/leap-contracts/pull/313",
+      "state": "OPEN",
+      "merged_at": null,
+      "review_state": "NONE",
+      "reviewer": null,
+      "linked_issue": 272,
+      "bounty_published": true,
+      "bounty_amount": null,
+      "bounty_currency": null,
+      "claim_status": "open_deliverable_submitted",
+      "payment_status": "blocked_not_merged",
+      "classification": "open_claimable",
+      "notes": "PR aberta com entregável da bounty #272 (label 'bounty' + 'Status: Abandoned' na issue). Issue tem label de bounty mas também 'Abandoned'. PR não merged, sem reviews. Classificado como open_claimable para monitoramento; pagamento bloqueado até merge e confirmação oficial de recompensa."
+    },
     {
       "id": "OthmaneBlial/pyffmpegcore#13",
       "repo": "OthmaneBlial/pyffmpegcore",
@@ -53,10 +77,25 @@
     "total_merged_prs_scanned": 2,
     "merged_with_bounty": 0,
     "merged_approved_no_bounty": 2,
-    "open_claimable": 0,
-    "identities_covered": ["rafaio1"],
-    "repos_covered": ["OthmaneBlial/pyffmpegcore", "ayelenleclerc/BizCode"],
-    "data_sources": ["gh pr view", "gh issue view", "gh search prs --merged"],
-    "exclusions": "PRs em repos próprios (rafaio1/*) ignorados para cobrança externa; foco em contribuições a terceiros."
+    "open_claimable": 1,
+    "identities_covered": [
+      "rafaio1"
+    ],
+    "repos_covered": [
+      "OthmaneBlial/pyffmpegcore",
+      "ayelenleclerc/BizCode",
+      "leapdao/leap-contracts"
+    ],
+    "data_sources": [
+      "gh pr view",
+      "gh issue view",
+      "gh search prs --merged",
+      "gh search prs --state open",
+      "gh search prs --state closed"
+    ],
+    "exclusions": "PRs em repos próprios (rafaio1/*) ignorados para cobrança externa; foco em contribuições a terceiros. Repos spam/bot (relayhop, SecureBananaLabs, claude-builders-bounty, eyeskull2220, dashtesting, ClankerNation) filtrados por não representarem bounties reais reivindicáveis.",
+    "total_open_prs_scanned": 500,
+    "total_closed_prs_scanned": 465,
+    "filter_notes": "500 open PRs filtrados por keywords bounty/reward/payout/grant; apenas leapdao/leap-contracts#313 sobreviveu após exclusão de spam e PRs de infraestrutura/tooling. 465 closed PRs verificados; connect-boiz/soroban-security-scanner#506 fechado sem merge nem labels de bounty. Nenhuma nova bounty merged descoberta além das 2 já registradas."
   }
 }
