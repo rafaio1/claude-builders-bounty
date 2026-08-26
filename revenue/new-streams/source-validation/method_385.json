@@ -1,0 +1,32 @@
+{
+  "method_id": "385",
+  "name": "Airdrop farming automation",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:52.469396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "layerzero_v2",
+      "chains_interacted": 8,
+      "tx_count": 145,
+      "estimated_allocation_usd": 1250,
+      "sybil_risk_score": 15
+    },
+    {
+      "protocol": "starknet",
+      "chains_interacted": 1,
+      "tx_count": 89,
+      "estimated_allocation_usd": 850,
+      "sybil_risk_score": 22
+    }
+  ],
+  "schema": [
+    "protocol:str",
+    "chains_interacted:int",
+    "tx_count:int",
+    "estimated_allocation_usd:float",
+    "sybil_risk_score:int"
+  ],
+  "notes": "Automação de interação com protocolos para elegibilidade em airdrops. Proxy TIER0: GitHub repos (airdrop farming scripts, layerzero/starknet interactors). Fonte oficial alvo: Protocol docs + Dune eligibility dashboards. Zero capital: simulação apenas.",
+  "sha256": "fa2758f9264bd707e61704da3d0692da151147cf488afd5ef12e923af44f5fc5"
+}

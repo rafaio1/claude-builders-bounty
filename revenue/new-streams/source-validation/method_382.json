@@ -1,0 +1,32 @@
+{
+  "method_id": "382",
+  "name": "MEV extraction bot (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:29.472071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "strategy": "nft_snipe_mev",
+      "chain": "ethereum",
+      "target_collection": "creator-pass",
+      "avg_profit_per_tx_usd": 8.5,
+      "daily_opportunities": 12
+    },
+    {
+      "strategy": "social_token_arb",
+      "chain": "base",
+      "target_protocol": "friend_tech",
+      "avg_profit_per_tx_usd": 3.2,
+      "daily_opportunities": 45
+    }
+  ],
+  "schema": [
+    "strategy:str",
+    "chain:str",
+    "target_collection:str",
+    "avg_profit_per_tx_usd:float",
+    "daily_opportunities:int"
+  ],
+  "notes": "MEV focado em ativos de creator economy (NFTs, social tokens). Proxy TIER0: GitHub repos de NFT snipers e social fi bots. Fonte oficial alvo: OpenSea/Blur APIs + Friend.tech subgraph. Zero capital: simulação apenas.",
+  "sha256": "45015466efd0309b81b05e20a31b2a63369dab721625923d054cc65a76ade2f1"
+}

@@ -1,0 +1,32 @@
+{
+  "method_id": "386",
+  "name": "Airdrop farming automation (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:52.469396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "ecosystem": "berachain_testnet",
+      "tasks_completed": 32,
+      "points_accumulated": 4500,
+      "estimated_tier": "gold",
+      "gas_spent_usd": 0
+    },
+    {
+      "ecosystem": "monad_devnet",
+      "tasks_completed": 18,
+      "points_accumulated": 2100,
+      "estimated_tier": "silver",
+      "gas_spent_usd": 0
+    }
+  ],
+  "schema": [
+    "ecosystem:str",
+    "tasks_completed:int",
+    "points_accumulated:int",
+    "estimated_tier:str",
+    "gas_spent_usd:float"
+  ],
+  "notes": "Focado em testnets e devnets de L1s emergentes (zero gas real). Proxy TIER0: GitHub search (testnet farming bots, berachain/monad scripts). Fonte oficial alvo: Ecosystem task boards + Galileo/Zealy APIs. Dados sintéticos de pontos.",
+  "sha256": "c6a96f156cbeccd4ec77ddb5fe5ee4c9af50cebef167b237b4843f9473143257"
+}

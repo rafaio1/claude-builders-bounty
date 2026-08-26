@@ -1,0 +1,32 @@
+{
+  "method_id": "383",
+  "name": "MEV extraction bot (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:29.472071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "mev_searcher_sdk",
+      "language": "rust",
+      "chains_supported": 5,
+      "bundle_success_rate_pct": 78.4,
+      "latency_ms": 12
+    },
+    {
+      "tool": "mempool_monitor_lib",
+      "language": "python",
+      "chains_supported": 8,
+      "bundle_success_rate_pct": 65.2,
+      "latency_ms": 45
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "chains_supported:int",
+    "bundle_success_rate_pct:float",
+    "latency_ms:int"
+  ],
+  "notes": "SDKs e bibliotecas para devs construírem searchers MEV customizados. Proxy TIER0: GitHub search (flashbots kits, mev-rs, searcher templates). Fonte oficial alvo: Flashbots docs + builder APIs. Métricas sintéticas de performance.",
+  "sha256": "d450c925d550c1f39d4c417c7a12f7ef1e1a92babf8d99e52e8ed977e7f2dcf8"
+}

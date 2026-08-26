@@ -1,0 +1,32 @@
+{
+  "method_id": "387",
+  "name": "Airdrop farming automation (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:52.469396+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "operation": "multi_ecosystem_farm",
+      "wallets_managed": 200,
+      "protocols_targeted": 15,
+      "monthly_estimated_value_usd": 85000,
+      "anti_sybil_compliance_pct": 98.5
+    },
+    {
+      "operation": "institutional_points",
+      "wallets_managed": 50,
+      "protocols_targeted": 8,
+      "monthly_estimated_value_usd": 42000,
+      "anti_sybil_compliance_pct": 99.2
+    }
+  ],
+  "schema": [
+    "operation:str",
+    "wallets_managed:int",
+    "protocols_targeted:int",
+    "monthly_estimated_value_usd:float",
+    "anti_sybil_compliance_pct:float"
+  ],
+  "notes": "Operação enterprise com gestão de múltiplas wallets e compliance anti-sybil. Proxy TIER0: GitHub institutional airdrop frameworks. Fonte oficial alvo: Private allocation APIs + on-chain analytics. Métricas sintéticas baseadas em benchmarks.",
+  "sha256": "039778a8108866765c0982462c11b644448733ea0d6bc4cadbf5b27225df5749"
+}

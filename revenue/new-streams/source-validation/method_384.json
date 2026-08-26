@@ -1,0 +1,32 @@
+{
+  "method_id": "384",
+  "name": "MEV extraction bot (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:29.472071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "DEFI_PROTOCOL_A",
+      "strategies_deployed": 4,
+      "monthly_mev_revenue_usd": 12500,
+      "sla_fill_rate_pct": 92.5,
+      "infra_cost_share_pct": 30.0
+    },
+    {
+      "client": "TRADING_DESK_B",
+      "strategies_deployed": 7,
+      "monthly_mev_revenue_usd": 28000,
+      "sla_fill_rate_pct": 88.3,
+      "infra_cost_share_pct": 25.0
+    }
+  ],
+  "schema": [
+    "client:str",
+    "strategies_deployed:int",
+    "monthly_mev_revenue_usd:float",
+    "sla_fill_rate_pct:float",
+    "infra_cost_share_pct:float"
+  ],
+  "notes": "Serviço B2B de MEV-as-a-service para protocolos e trading desks. Proxy TIER0: GitHub repos de institutional MEV platforms. Fonte oficial alvo: Private builder relationships + aggregation APIs. Dados sintéticos baseados em benchmarks.",
+  "sha256": "a6acc96c194caf99e65e52ae81213ccea628dd37886b4cf1b2c8778ef5e0ff93"
+}
