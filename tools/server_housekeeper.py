@@ -225,40 +225,56 @@ def safe_size(path: Path) -> int:
 
 
 def find_cache_targets() -> List[Tuple[Path, str]]:
-    """Encontra diretorios de cache regeneraveis dentro de /Agentic/workspace."""
+    """Encontra diretorios de cache regeneraveis dentro de /Agentic/workspace usando os.walk com poda."""
     targets: List[Tuple[Path, str]] = []
     if not WORKSPACE.exists():
         return targets
-    for allowed in CACHE_ALLOWLIST:
-        for match in WORKSPACE.rglob(allowed):
-            if not match.is_dir():
+    protected_names_lower = {n.lower() for n in PROTECTED_NAMES}
+    skip_dirs = {".git"} | set(CACHE_ALLOWLIST)
+    for dirpath, dirnames, filenames in os.walk(str(WORKSPACE), topdown=True):
+        # Poda imediata: remove dirs protegidos ou ja coletados como cache
+        pruned = []
+        for d in dirnames:
+            dl = d.lower()
+            full = Path(dirpath) / d
+            if dl in protected_names_lower or dl == ".git":
                 continue
-            if is_protected(match):
-                continue
-            if not is_within(WORKSPACE, match):
-                continue
-            if not check_mount_boundary(match):
-                continue
-            reason = f"cache_allowlist:{allowed}"
-            targets.append((match, reason))
+            if d in CACHE_ALLOWLIST:
+                # Este diretorio EH um cache allowlisted; avalia e nao desce nele
+                if is_protected(full):
+                    continue
+                if not is_within(WORKSPACE, full):
+                    continue
+                if not check_mount_boundary(full):
+                    continue
+                reason = f"cache_allowlist:{d}"
+                targets.append((full, reason))
+                continue  # nao entra no subdir
+            pruned.append(d)
+        dirnames[:] = pruned
     return targets
 
 
 def analyze_high_ticket_duplicates() -> List[dict]:
-    """Reporta top duplicados em workspace/high-ticket sem remover."""
+    """Reporta top duplicados em workspace/high-ticket (somente arquivos top-level)."""
     ht = WORKSPACE / "high-ticket"
     duplicates: List[dict] = []
-    if not ht.exists():
+    if not ht.exists() or not ht.is_dir():
         return duplicates
-    seen: dict[str, list[str]] = {}
     seen: dict[tuple, list[dict]] = {}
-    for p in sorted(ht.rglob("*")):
+    try:
+        entries = sorted(ht.iterdir())
+    except OSError:
+        return duplicates
+    for p in entries:
         if not p.is_file():
             continue
         if is_protected(p):
             continue
         try:
-            st = p.stat()
+            st = p.lstat()
+            if st.st_mode & 0o170000 != 0o100000:  # apenas regular files
+                continue
             key = (p.name, st.st_size)
         except OSError:
             continue
