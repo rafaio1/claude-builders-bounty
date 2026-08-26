@@ -73,3 +73,40 @@
 - Último push: `40f147a` para `rafaio1/agentic-integration` (PRIVATE ✅)
 - Ledger ARO: `data/aro/ledger.jsonl` atualizado localmente (gitignored por segurança)
 - Próxima verificação agendada: 2026-08-27T03:00Z (PR merges + hackathon results)
+
+## Reconciliation Report — 2026-08-26 (Cycle 2)
+
+### Gmail Revenue Monitor Integration
+- **Status:** ✅ Integrated and pushed (commit `2c80381`)
+- **File:** `scripts/gmail_revenue_monitor.py`
+- **Audit:** Syntax valid, no hardcoded secrets (uses load_dotenv), OAuth2 token refresh via .env
+- **Capabilities:** Payout email scanning, amount extraction, ledger update, send/draft verification
+- **Overlap Check:** Complements telegram_gate (email source vs event gate); no duplication
+- **Risk:** Read-only Gmail API + draft test; no autonomous financial action
+
+### High-Ticket Workspaces Audit
+- **Status:** ✅ Completed (commit `140a646`)
+- **Finding:** 13x ClaudeEarnSelf clones (identical gumroad_filter.py), 1x Space Station 14 fork, 1x placeholder service_delivery_loop.py
+- **Conclusion:** No actionable revenue artifacts or integrable features
+- **Action:** Documented as dead archive; remain gitignored
+
+### AgentLily Issue #155 Status
+- **Branch:** `bounty/issue-155-tojson-runtime-error`
+- **State:** WIP (modified but uncommitted `src/errors/runtime-errors.ts`)
+- **Action:** waiting_monitoring — bounties agent PID alive; do NOT integrate until upstream commit
+
+### OphirPay PR #225
+- **State:** OPEN, Vercel FAILURE (auth), Greptile COMMENTED
+- **Action:** waiting_monitoring — requires maintainer response or auth fix
+
+### Next Pending Actions
+1. Monitor AgentLily #155 for upstream commit
+2. Monitor OphirPay #225 for CI/maintainer update
+3. Scan for new uncommitted artifacts in /Agentic
+4. Validate gmail_revenue_monitor.py dry-run when .env credentials available
+5. Continue financial utility audit on any new workspace additions
+
+### Revenue Status
+- Realized: $0.00 USDT
+- All lanes: waiting_monitoring or pilot stage
+- No false positives in ledger
