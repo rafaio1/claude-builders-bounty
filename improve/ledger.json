@@ -5884,49 +5884,6 @@
       ]
     },
     {
-      "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
-      "key": "3c0bf7c2e716cf87",
-      "canon": "69393055305f3d75",
-      "title": "Restaurar git_clean: working tree limpa na main (fatia novos módulos ARO)",
-      "kind": "bottleneck",
-      "priority": 1,
-      "status": "developing",
-      "rationale": "Terceira fatia para os arquivos não rastreados (untracked). Isola a adição dos novos domínios (accounts, commerce, finance, opportunities, wise) e seus testes correspondentes.",
-      "change": "Adicionar (git add) e commitar os novos módulos e testes. O develop não reescreve, apenas versiona o que já está em disco.",
-      "never": [
-        "criar src/agentic/loop.sh",
-        "ligar AGENTIC_LIVE_TRADE=1",
-        "commitar dados sensíveis de contas",
-        "usar git reset --hard",
-        "usar git clean -fd"
-      ],
-      "files_hint": [
-        "src/agentic/aro/accounts.py",
-        "src/agentic/aro/commerce.py",
-        "src/agentic/aro/finance.py",
-        "src/agentic/aro/opportunities.py",
-        "src/agentic/aro/wise.py",
-        "tests/test_accounts.py",
-        "tests/test_opportunities.py",
-        "tests/test_wise.py"
-      ],
-      "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
-      "map_id": "20260817T230624Z",
-      "history": [
-        {
-          "at": "2026-08-17T23:06:24+00:00",
-          "event": "mapped",
-          "detail": "20260817T230624Z"
-        },
-        {
-          "at": "2026-08-18T11:48:30+00:00",
-          "event": "claimed",
-          "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
-        }
-      ]
-    },
-    {
       "id": "imp-20260817-reten-o-e-limpeza-de-snapshots-do-playwright-cli",
       "key": "86cff733e064f947",
       "canon": "eaf4e0b2684400a4",
