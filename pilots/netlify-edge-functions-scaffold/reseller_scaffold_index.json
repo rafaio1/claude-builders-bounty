@@ -1,0 +1,43 @@
+{
+  "pilot_id": "netlify-edge-functions-scaffold",
+  "provider": "Netlify",
+  "plan": "Free Tier (Starter)",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "Self-Serve Subscription Agreement Section 2 grants non-transferable, non-sublicensable license. AUP explicitly prohibits commercial exploitation of Services. Assignment requires prior written consent. No resell rights on self-serve free tier.",
+  "free_tier_limits": {
+    "usage": "Personal/non-commercial; commercial use permitted only under paid plans but still no resell/sublicense rights",
+    "edge_functions": "Limited invocations/month on free tier",
+    "sla": "None on free tier",
+    "termination": "At Netlify discretion for AUP violations"
+  },
+  "paid_plan_baseline": {
+    "name": "Pro",
+    "price_usd_monthly": 19,
+    "notes": "Commercial use allowed but reselling/sublicensing still prohibited without Enterprise/Partner agreement"
+  },
+  "reselling_model": {
+    "permitted": false,
+    "requires_partner_addendum": true,
+    "white_label_available": false,
+    "sublicense_rights": "None on self-serve tiers",
+    "assignment": "Requires prior written consent (SSA Section 14)"
+  },
+  "risks": [
+    "AUP explicitly prohibits commercial exploitation of Services",
+    "Non-sublicensable license blocks any resale model",
+    "Account termination for AUP violation without refund",
+    "No SLA or uptime guarantee on free tier"
+  ],
+  "next_steps": [
+    "REJECTED — Do not proceed with Netlify Free/Starter as resell scaffold",
+    "Consider Netlify only if Partner/Enterprise addendum obtained (outside zero-capital scope)",
+    "Move to next TIER0 candidate: method_911 (DNS Subdomain Reselling) or method_916 (IPFS Pinning)"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "source_docs": [
+    "/tmp/netlify_terms_full.txt",
+    "/tmp/netlify_ssa_full.txt",
+    "/tmp/netlify_aup_full.txt"
+  ]
+}

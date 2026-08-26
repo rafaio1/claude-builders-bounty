@@ -1,0 +1,41 @@
+{
+  "pilot_id": "cloudflare-free-tier-scaffold",
+  "provider": "Cloudflare",
+  "plan": "Free Tier",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "Self-Serve Subscription Agreement Section 2.1 grants non-transferable, non-sublicensable license (except to Affiliates). Explicitly prohibits selling access or signing up on behalf of third parties. Assignment requires prior written consent.",
+  "free_tier_limits": {
+    "usage": "Personal/internal use; no resale or third-party access permitted",
+    "services": "Limited CDN/DNS/Workers on free plan",
+    "sla": "None on free tier",
+    "termination": "At Cloudflare discretion for TOS violations"
+  },
+  "paid_plan_baseline": {
+    "name": "Pro",
+    "price_usd_monthly": 20,
+    "notes": "Commercial use allowed but reselling/sublicensing still prohibited without Partner/Enterprise agreement"
+  },
+  "reselling_model": {
+    "permitted": false,
+    "requires_partner_addendum": true,
+    "white_label_available": false,
+    "sublicense_rights": "None on self-serve tiers (Affiliates only)",
+    "assignment": "Requires prior written consent (Section 16)"
+  },
+  "risks": [
+    "Explicit prohibition on selling access or signing up for third parties",
+    "Non-sublicensable license blocks any resale model on self-serve",
+    "Account termination for TOS violation without refund",
+    "No SLA or uptime guarantee on free tier"
+  ],
+  "next_steps": [
+    "REJECTED — Do not proceed with Cloudflare Free as resell scaffold",
+    "Consider Cloudflare only via Partner Program or Enterprise agreement (outside zero-capital scope)",
+    "Move to next TIER0 candidate: method_911 (DNS Subdomain Reselling) or method_916 (IPFS Pinning)"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "source_docs": [
+    "/tmp/cloudflare_terms_full.txt"
+  ]
+}
