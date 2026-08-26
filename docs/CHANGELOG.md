@@ -184,3 +184,32 @@
 - `eb2fede` feat: migrate scripts/telegram_alerts to financial-only gate
 - `3497c75` feat: migrate scripts/bounty_monitor to financial-only gate
 - `9f11731` feat: remove heuristic fallback in triage + update gitignore for .env
+
+## 2026-08-26T12:30Z — Integration Cycle (cadaf36 → 0164d1d)
+
+### Added
+- **Bounty Automation Template** (`products/bounty_automation_template/`): Engine with triage contract tests and LICENSE/README.
+- **Email Cleanup Scripts** (`revenue/email-cleanup/`): GitHub/Gmail/IMAP automated cleanup with setup docs.
+- **Content Monetization Outputs** (`revenue/new-streams/`): Premium articles and affiliate bot reviews.
+- **Micro-SaaS Manifests** (`revenue/new-streams/micro-saas/`): AI newsletter subscriber project manifest.
+- **Web3 BugBounty Templates** (`templates/bugbounty/web3/`): Standardized templates for code4rena, immunefi, sherlock.
+- **V23D Risk Filters Documentation** (`orchestrator/V23D_V5_RISK_FILTERS.md`): Hourly risk filters and statistical unblock criteria.
+- **P2P Stack LND Init** (`p2p-stack/init_lnd_wallet.sh`): Interactive wallet creation script for RoboSats testnet.
+- **Workspace Orchestrators** (`workspace/`): 1M orchestrator and service delivery loop scripts.
+
+### Changed
+- **.gitignore**: Consolidated `p2p-stack/robosats/node/` into single entry, added `typescript` file pattern, fixed nested `.venv` in revenue subprojects.
+- **docs/FEATURES.md**: Updated inventory with 8 new integrated features (commit cadaf36).
+- **INTEGRATION_CONTEXT.md**: Updated state to reflect current commit, tracked files, and test status.
+
+### Verified
+- Sniper_v23d_xrp.py truncation reverted to HEAD (accidental WIP damage, not intentional).
+- Secret scan passed on all 27 newly versioned files.
+- Tests: 35/35 passing (telegram_gate + triage_contract).
+- Remote validated: rafaio1/agentic-integration (PRIVATE=true).
+- Working tree clean after push.
+
+### Commits
+- `cadaf36` feat: integrate revenue streams, products, templates and p2p-stack init
+- `b02e883` docs: update FEATURES inventory with cadaf36 integrations
+- `0164d1d` docs: update INTEGRATION_CONTEXT with current state and integrated features
