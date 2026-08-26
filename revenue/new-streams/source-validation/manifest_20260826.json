@@ -31673,9 +31673,9 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T16:41:30.694312+00:00",
-    "total_samples": 1578,
+    "total_samples": 1588,
     "expansion_batch": "batch_1451_to_1452",
-    "last_updated": "2026-08-26T18:16:26.286961+00:00"
+    "last_updated": "2026-08-26T18:17:25.181131+00:00"
   },
   "method_913": {
     "method_id": 913,
@@ -76839,5 +76839,178 @@
     "notes": "Validação BR: Mercado de títulos verdes BR cresce >30%/ano. Plataforma para emissão e tracking de green bonds tokenizados com verificação terceira parte. Fee: 0.2% sobre emissão. Regulador: CVM/ANBIMA. Zero-capital: parcerias com certificadores.",
     "category": "crypto_defi",
     "sha256": "e582ab6ab1bae371c7ebbb4e2e07f7ddabd2b37471e3c63f38d667d52dfd6dfb"
+  },
+  "method_1578": {
+    "method_id": 1578,
+    "name": "Consultoria de Acessibilidade Web conforme Lei Brasileira de Inclusão (LBI)",
+    "source": "Lei 13.146/2015 + WCAG 2.1 BR",
+    "generated_at": "2026-08-26T18:17:25.178728+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_avg_brl": 5500,
+      "regulator": "MPT/SEDPCD",
+      "target_companies": 5000,
+      "zero_capital": true
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: LBI exige acessibilidade digital para sites governamentais e empresas com faturamento >R$90M/ano. Consultor freelancer cobra R$3k-8k por auditoria + laudo. Demanda: >5k empresas sujeitas a fiscalização MPT. Zero-capital: conhecimento técnico WCAG. Regulador: MPT/SEDPCD.",
+    "category": "freelance_services",
+    "sha256": "3fa5ccd90af4d750232dbe05c4494c5acb3f5e692a7f38f4729a4ed50aea94e6"
+  },
+  "method_1579": {
+    "method_id": 1579,
+    "name": "Elaboração de PCA/PPRA para Condomínios conforme NR-9/NR-17",
+    "source": "MTE Portaria 427/2023 + ABNT NBR 16710",
+    "generated_at": "2026-08-26T18:17:25.179136+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_range_brl": "1500-4000",
+      "regulator": "MTE/SST",
+      "target_condos": 200000,
+      "cert_required": "CREA/CFT"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Condomínios comerciais precisam de programas de prevenção ambiental e ergonomia. Engenheiro segurança cobra R$1.5k-4k por programa. Demanda: >200k condomínios comerciais ativos. Zero-capital: registro CREA/CFT. Regulador: MTE/SST.",
+    "category": "freelance_services",
+    "sha256": "e20b0848a239e5455752cf897f2b825dc3ce764ab102ec63d37b54ee3d4e089c"
+  },
+  "method_1580": {
+    "method_id": 1580,
+    "name": "Assessoria para Registro de Marca no INPI via Protocolo de Madri",
+    "source": "INPI Instrução Normativa 103/2023 + OMPI",
+    "generated_at": "2026-08-26T18:17:25.179283+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_range_brl": "2000-6000",
+      "regulator": "INPI/MCTIC",
+      "demand_driver": "export_growth_15pct_yoy",
+      "credential": "INPI_credenciado"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Empresas BR que exportam precisam proteger marca internacionalmente. Assessor especializado cobra R$2k-6k + taxas oficiais. Demanda: crescimento exportações BR +15%/ano. Zero-capital: credenciamento INPI. Regulador: INPI/MCTIC.",
+    "category": "freelance_services",
+    "sha256": "d7ff91536c1de6dbf49b0ae26dcf367c42913576532859ef5521cdf4c03e20ef"
+  },
+  "method_1581": {
+    "method_id": 1581,
+    "name": "Perícia em Acidentes de Trabalho para Seguradoras via SUSEP",
+    "source": "SUSEP Circular 648/2021 + CLT Art. 195",
+    "generated_at": "2026-08-26T18:17:25.179398+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_range_brl": "800-3000",
+      "regulator": "SUSEP/MTP",
+      "annual_accidents_br": 600000,
+      "registration": "SUSEP_perito"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Seguradoras contratam peritos independentes para validar nexo causal em acidentes. Honorários R$800-3k por laudo. Cadastro SUSEP obrigatório. Demanda: >600k acidentes/ano notificados. Zero-capital: formação saúde/segurança. Regulador: SUSEP/MTP.",
+    "category": "freelance_services",
+    "sha256": "7ea9f7f0e4fa9c2d905062c8c4e2f1ff099e1515358c1faaea2a64c1a8908fc1"
+  },
+  "method_1582": {
+    "method_id": 1582,
+    "name": "Consultoria de Compliance Anticorrupção Lei 12.846/2013 para PMEs",
+    "source": "CGU Decreto 11.129/2022 + ISO 37001",
+    "generated_at": "2026-08-26T18:17:25.179523+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_avg_brl": 10000,
+      "regulator": "CGU/AGU",
+      "target_suppliers_gov": 100000,
+      "standard": "ISO_37001"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Lei anticorrupção aplica-se a todas empresas que contratam com poder público. Consultor implementa programa integridade por R$5k-15k. Demanda: >100k empresas fornecedoras gov. Zero-capital: certificação compliance. Regulador: CGU/AGU.",
+    "category": "freelance_services",
+    "sha256": "b4cbf6fe74576ef8cfa4554fc49ce8e75689e7124e3af5a8373782012b6c6aef"
+  },
+  "method_1583": {
+    "method_id": 1583,
+    "name": "Laudo Técnico de Avaliação Imobiliária para Financiamento Caixa",
+    "source": "Caixa Econômica Manual Avaliador + ABNT NBR 14653",
+    "generated_at": "2026-08-26T18:17:25.179635+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_range_brl": "600-2000",
+      "regulator": "CAIXA/COFECI",
+      "annual_financing_sfh": 1000000,
+      "credential": "avaliador_caixa"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Financiamentos habitacionais exigem laudo de avaliador credenciado Caixa. Honorários R$600-2k por imóvel. Demanda: >1M financiamentos/ano SFH. Zero-capital: credenciamento Caixa. Regulador: CAIXA/COFECI.",
+    "category": "freelance_services",
+    "sha256": "0b0e57a328afb0710a2d88286c9a1ef2e16505d5b78793841366ea52ee515716"
+  },
+  "method_1584": {
+    "method_id": 1584,
+    "name": "Assessoria para Certificação Orgânica MAPA para Produtores Rurais",
+    "source": "MAPA IN 17/2023 + Lei 10.831/2003",
+    "generated_at": "2026-08-26T18:17:25.179828+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "fee_range_brl": "2000-5000",
+      "regulator": "MAPA/CIORG",
+      "market_growth_pct_yoy": 20,
+      "credential": "OCS_MAPA"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Produtores orgânicos precisam de certificação para vender com selo SisOrg. Consultor cobra R$2k-5k por processo. Demanda: mercado orgânico BR cresce 20%/ano. Zero-capital: registro como OCS/MAPA. Regulador: MAPA/CIORG.",
+    "category": "freelance_services",
+    "sha256": "35235ed8de052fe325f7e25d188fa6f335d7aa7e9a567e46520605e6654e8321"
+  },
+  "method_1585": {
+    "method_id": 1585,
+    "name": "Parecer Técnico Ambiental para Licenciamento CETESB/OEMA",
+    "source": "CONAMA Resolução 237/97 + LC 140/2011",
+    "generated_at": "2026-08-26T18:17:25.180150+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_range_brl": "3000-12000",
+      "regulator": "CETESB/OEMA/IBAMA",
+      "demand_drivers": [
+        "PAC",
+        "licenca_renovacao"
+      ],
+      "cert_required": "CRBio/CREA"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Empreendimentos industriais precisam de parecer técnico para licença ambiental. Biólogo/Eng Ambiental cobra R$3k-12k. Demanda: PAC + renovação licenças. Zero-capital: registro CRBio/CREA. Regulador: CETESB/OEMA/IBAMA.",
+    "category": "freelance_services",
+    "sha256": "02b60d3cc9c05f918d048cf87e12d5dbc44c2b43263c536d329e5f70168846e7"
+  },
+  "method_1586": {
+    "method_id": 1586,
+    "name": "Consultoria de Proteção de Dados DPO Externo para Clínicas Médicas",
+    "source": "ANPD Guia LGPD Saúde + CFM Resolução 2.299/2021",
+    "generated_at": "2026-08-26T18:17:25.180432+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "monthly_fee_brl": "1500-4000",
+      "regulator": "ANPD/CFM",
+      "target_clinics": 200000,
+      "data_type": "sensivel_saude"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Clínicas médicas tratam dados sensíveis e precisam de DPO. Serviço externo custa R$1.5k-4k/mês. Demanda: >200k clínicas ativas. Zero-capital: certificação DPO/LGPD. Regulador: ANPD/CFM.",
+    "category": "freelance_services",
+    "sha256": "e9c4de7986d1d67679e7c3c9de79f69099bacf24a37c5066edcc7e90cf62980d"
+  },
+  "method_1587": {
+    "method_id": 1587,
+    "name": "Elaboração de PGRSS para Laboratórios de Análises Clínicas ANVISA",
+    "source": "ANVISA RDC 222/2018 + CONAMA 358/2005",
+    "generated_at": "2026-08-26T18:17:25.180578+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "ticket_range_brl": "2000-6000",
+      "regulator": "ANVISA/VISA",
+      "target_labs": 30000,
+      "rdc_compliance": "RDC_222/2018"
+    },
+    "schema": "revenue_stream_v1",
+    "notes": "Validação BR: Laboratórios clínicos obrigados a ter Plano de Gerenciamento de Resíduos. Consultor ambiental cobra R$2k-6k por plano. Demanda: >30k laboratórios ativos. Zero-capital: formação saúde/ambiental. Regulador: ANVISA/VISA.",
+    "category": "freelance_services",
+    "sha256": "e33926aedd52dba406909f444c761dc78acde6a31624cf497469c422e16bf00f"
   }
 }
