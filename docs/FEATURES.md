@@ -1,8 +1,8 @@
- # Inventário de Features Integradas
- 
- > Última atualização: 2026-08-26 (commit 4810d40)
- 
- ## Features Maduras e Versionadas
+# Inventário de Features Integradas
+
+> Última atualização: 2026-08-26 (commit cadaf36)
+
+## Features Maduras e Versionadas
  
  | Feature | Status | Commit | Descrição | Arquivos Principais |
  |---------|--------|--------|-----------|-------------------|
@@ -15,9 +15,17 @@
  | BugBounty Templates | ✅ Integrado | 6b52f45 | Templates padronizados para relatórios de bug bounty | `templates/bugbounty/` |
  | MT5 Bridge & Wise Liquidity | ✅ Integrado | fd9e864 | Ponte MetaTrader5 e monitoramento de liquidez Wise | `src/mt5_bridge/`, `src/wise_liquidity/` |
  | PR Freelance Automation | ✅ Integrado | fd9e864 | Automação de propostas freelance via GitHub PRs | `src/pr_freelance/` |
- | Revenue Streams Catalog | ✅ Integrado | fd9e864 | Catálogo estruturado de fluxos de receita | `revenue/catalog/` |
- 
- ## Documentação Operacional
+| Revenue Streams Catalog | ✅ Integrado | fd9e864 | Catálogo estruturado de fluxos de receita | `revenue/catalog/` |
+| Bounty Automation Template | ✅ Integrado | cadaf36 | Engine de automação de bounty com testes de triagem | `products/bounty_automation_template/` |
+| Email Cleanup Scripts | ✅ Integrado | cadaf36 | Limpeza automatizada GitHub/Gmail/IMAP | `revenue/email-cleanup/` |
+| Content Monetization Outputs | ✅ Integrado | cadaf36 | Artigos premium e reviews de afiliados | `revenue/new-streams/` |
+| Micro-SaaS Manifests | ✅ Integrado | cadaf36 | Manifestos de projetos micro-SaaS | `revenue/new-streams/micro-saas/` |
+| Web3 BugBounty Templates | ✅ Integrado | cadaf36 | Templates code4rena, immunefi, sherlock | `templates/bugbounty/web3/` |
+| V23D Risk Filters Doc | ✅ Integrado | cadaf36 | Documentação de filtros de risco e critérios de desbloqueio | `orchestrator/V23D_V5_RISK_FILTERS.md` |
+| P2P Stack LND Init | ✅ Integrado | cadaf36 | Script de inicialização de wallet LND testnet | `p2p-stack/init_lnd_wallet.sh` |
+| Workspace Orchestrators | ✅ Integrado | cadaf36 | Orquestrador 1M e loop de entrega de serviço | `workspace/` |
+
+## Documentação Operacional
  
  | Documento | Status | Commit | Propósito |
  |-----------|--------|--------|-----------|
