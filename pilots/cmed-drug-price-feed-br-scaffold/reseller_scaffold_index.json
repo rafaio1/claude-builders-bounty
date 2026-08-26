@@ -1,0 +1,73 @@
+{
+  "method_id": "921",
+  "pilot_name": "cmed-drug-price-feed-br-scaffold",
+  "status": "SCAFFOLD_OK",
+  "decided_at": "2026-08-26T23:25:00+00:00",
+  "source_validation_artifact": "revenue/new-streams/source-validation/method_921.json",
+  "real_source": {
+    "name": "CMED/ANVISA Lista de Preços de Medicamentos",
+    "url": "https://www.gov.br/anvisa/pt-br/assuntos/medicamentos/cmed/precos",
+    "format": "xlsx (Microsoft Excel 2007+)",
+    "update_frequency": "monthly_official",
+    "last_verified_file_date": "2026-08-11",
+    "file_size_bytes": 12542184,
+    "access_method": "curl with User-Agent header required (gov.br blocks empty UA)",
+    "license": "public_government_data_open_access",
+    "redistribution_allowed": true,
+    "notes": "Arquivo XLSX real confirmado via curl. Estrutura validada: colunas SUBSTÂNCIA, CNPJ, LABORATÓRIO, CÓDIGO GGREM, REGISTRO, EAN 1/2/3, PRODUTO, APRESENTAÇÃO, CLASSE TERAPÊUTICA, TIPO DE PRODUTO, REGIME DE PREÇO, PF (múltiplas alíquotas ICMS), RESTRIÇÃO HOSPITALAR, CAP, CONFAZ 87, ICMS 0%, ANÁLISE RECURSAL, TARJA. Dados completos e estruturados."
+  },
+  "FREE_TIER_LIMITS": {
+    "data_access": "unlimited_public_download",
+    "api_calls": "n/a_direct_file_download",
+    "storage": "user_managed_local_or_free_cloud",
+    "rate_limit": "no_explicit_limit_but_respectful_crawl_recommended",
+    "permanent_free_tier_confirmed": true
+  },
+  "PAID_PLAN_BASELINE": {
+    "model": "subscription_brl_197_monthly",
+    "value_proposition": "Feed estruturado e normalizado de preços CMED para integração direta em sistemas de farmácia. Formato oficial XLSX é difícil de parsear (12MB, headers complexos, múltiplas abas, notas de rodapé embutidas). Produto entrega JSON/CSV limpo com EAN13, princípio ativo, PF e PMC por alíquota, atualizado mensalmente.",
+    "target_segment": "farmacias_independentes_drogarias_br",
+    "market_size_estimate": ">80.000 farmácias BR",
+    "pain_point": "Erro de precificação gera multa de até R$1.5M por infração (Lei 10.742/2003). Farmácias independentes não têm equipe de compliance para monitorar lista oficial mensalmente.",
+    "differentiation_vs_free_raw_data": "Normalização de colunas, deduplicação por EAN13, histórico de variações mensais, alerta de ajustes anuais, API REST para integração ERP/PDV"
+  },
+  "RESELLING_MODEL": {
+    "type": "data_feed_subscription",
+    "price_brl_monthly": 197,
+    "cost_of_goods_sold": "near_zero_public_data",
+    "gross_margin_pct": 95,
+    "acquisition_channel": "direct_sales_farmacia_associations_sebrae_partnerships",
+    "churn_risk": "low_regulatory_compliance_driven",
+    "upsell_path": "historical_price_api_alerts_audit_trail_multi_branch_dashboard"
+  },
+  "risks": [
+    {
+      "risk": "Gov.br pode alterar estrutura do XLSX sem aviso",
+      "severity": "medium",
+      "mitigation": "Parser adaptativo com fallback; monitoramento mensal do schema; cache da última versão válida"
+    },
+    {
+      "risk": "Concorrência de grandes players (Close-Up, Abcfarma) que já fazem isso",
+      "severity": "high",
+      "mitigation": "Focar em farmácias independentes sem acesso a sistemas enterprise; preço acessível R$197 vs R$500+ dos concorrentes; API-first para integração customizada"
+    },
+    {
+      "risk": "Dados públicos não podem ser revendidos como 'proprietários'",
+      "severity": "low",
+      "mitigation": "Vender serviço de normalização/integração, não os dados brutos. TOS gov.br permite redistribuição de dados abertos. Valor está na transformação, não na matéria-prima."
+    }
+  ],
+  "next_steps": [
+    "Implementar parser Python stdlib (zipfile+xml.etree) para extrair dados do XLSX sem dependências externas",
+    "Criar schema de saída JSON normalizado com EAN13 como chave primária",
+    "Validar cobertura: quantos EANs únicos por mês, taxa de atualização",
+    "Prototipar endpoint REST simples (Flask/FastAPI free tier) para demonstração",
+    "Preparar material de vendas focado em compliance/multa avoidance",
+    "NÃO promover para TIER1 sem autorização explícita"
+  ],
+  "compliance_notes": "Lei 10.742/2003 (CMED) estabelece regulação de preços. Dados são públicos e abertos. Redistribuição permitida. Produto é serviço de valor agregado sobre dado público, não revenda de dado proprietário. Sem restrição TOS identificada para uso comercial de dados abertos gov.br.",
+  "non_duplication_check": {
+    "vs_method_903_cnpj": "Não redundante. Method 903 é cadastro empresarial CNPJ. Method 921 é tabela regulatória de preços de medicamentos. Domínios completamente distintos.",
+    "vs_other_health_pilots": "Verificado pilots/ dir. Nenhum piloto existente cobre feed de preços CMED/ANVISA."
+  }
+}
