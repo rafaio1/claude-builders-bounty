@@ -1811,7 +1811,13 @@ def collect_claude_changes(
     snapshot: list[str],
 ) -> list[str]:
     """Validate files Claude CLI left dirty; return paths safe to commit."""
-    dirty = [path for path in git.dirty_paths() if is_allowed_path(path)]
+    # Exclude ledger.json from dirty validation — it is managed internally
+    # by the pipeline and exceeds MAX_FILE_BYTES as proposals accumulate.
+    dirty = [
+        path
+        for path in git.dirty_paths()
+        if is_allowed_path(path) and path != str(LEDGER_PATH)
+    ]
     if repair:
         dirty = [path for path in dirty if path in hint_set or git_clean_ghost_path(path)]
         dirty = list(dict.fromkeys([*dirty, *snapshot]))
