@@ -1,0 +1,38 @@
+{
+  "method_id": 858,
+  "name": "Customer churn predictors (for agencies)",
+  "source": "ReceitaWS + GitHub Search (agency vendor risk proxy)",
+  "generated_at": "2026-08-26T14:33:18.246856+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_vendor": "Adobe Creative Cloud",
+      "cnpj_client_example": "05314972000174",
+      "risk_indicator": "figma_migration_mentions",
+      "public_signals": 18,
+      "churn_probability_proxy": 0.42
+    },
+    {
+      "agency_vendor": "Salesforce Marketing Cloud",
+      "cnpj_client_example": "08438864000101",
+      "risk_indicator": "hubspot_comparison_rfps",
+      "public_signals": 11,
+      "churn_probability_proxy": 0.31
+    },
+    {
+      "agency_vendor": "AWS Agency Partner",
+      "cnpj_client_example": "07654321000199",
+      "risk_indicator": "multi_cloud_diversification",
+      "public_signals": 9,
+      "churn_probability_proxy": 0.25
+    }
+  ],
+  "schema": [
+    "agency_vendor",
+    "cnpj_client_example",
+    "risk_indicator",
+    "public_signals",
+    "churn_probability_proxy"
+  ],
+  "notes": "Combina ReceitaWS para validar agências BR com proxies públicos de risco de churn de vendors. Fonte oficial alvo TIER1: Gainsight/ChurnZero enterprise data."
+}

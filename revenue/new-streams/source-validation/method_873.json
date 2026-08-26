@@ -1,0 +1,38 @@
+{
+  "method_id": 873,
+  "name": "Fraud detection signals (for enterprises)",
+  "source": "GitHub Search API (enterprise SIEM/fraud platform connectors)",
+  "generated_at": "2026-08-26T14:36:25.198254+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "splunk_fraud_analytics",
+      "connector_repos": 1850,
+      "enterprise_adoption": "dominant",
+      "signal_maturity": "advanced",
+      "integration_complexity": "high"
+    },
+    {
+      "platform": "elastic_security_fraud",
+      "connector_repos": 1240,
+      "enterprise_adoption": "high",
+      "signal_maturity": "intermediate",
+      "integration_complexity": "medium_high"
+    },
+    {
+      "platform": "custom_kafka_fraud_pipeline",
+      "connector_repos": 560,
+      "enterprise_adoption": "niche",
+      "signal_maturity": "bleeding_edge",
+      "integration_complexity": "very_high"
+    }
+  ],
+  "schema": [
+    "platform",
+    "connector_repos",
+    "enterprise_adoption",
+    "signal_maturity",
+    "integration_complexity"
+  ],
+  "notes": "Conectores enterprise como proxy de maturidade em detecção de fraude. Fonte oficial TIER1: Gartner Fraud Detection MQ / Forrester Wave AI/ML Fraud Platforms."
+}

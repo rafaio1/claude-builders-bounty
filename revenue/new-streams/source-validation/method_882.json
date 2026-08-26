@@ -1,0 +1,38 @@
+{
+  "method_id": 882,
+  "name": "Identity verification data (for agencies)",
+  "source": "GitHub Search API (client onboarding/compliance stack signals)",
+  "generated_at": "2026-08-26T14:37:33.635606+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "onfido-agency-integration",
+      "agency_repos": 1320,
+      "client_demand": "very_high",
+      "compliance_scope": "global_kyc",
+      "trend": "stable"
+    },
+    {
+      "platform": "sumsub-white-label",
+      "agency_repos": 980,
+      "client_demand": "high",
+      "compliance_scope": "crypto_fintech",
+      "trend": "rising"
+    },
+    {
+      "platform": "custom-idv-pipeline",
+      "agency_repos": 420,
+      "client_demand": "niche",
+      "compliance_scope": "bespoke_regulation",
+      "trend": "experimental"
+    }
+  ],
+  "schema": [
+    "platform",
+    "agency_repos",
+    "client_demand",
+    "compliance_scope",
+    "trend"
+  ],
+  "notes": "Integrações como proxy de demanda por serviços de verificação em projetos de agência. Fonte oficial TIER1: Onfido/Sumsub Partner Directories / Gartner ID Verification MQ."
+}

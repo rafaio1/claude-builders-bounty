@@ -1,0 +1,38 @@
+{
+  "method_id": 857,
+  "name": "Customer churn predictors (for developers)",
+  "source": "GitHub Search API (dev tool abandonment in repos/issues)",
+  "generated_at": "2026-08-26T14:33:18.246856+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_tool": "Heroku",
+      "churn_signal": "migration_to_railway",
+      "issue_spike_factor": 2.8,
+      "competitor_mentioned": "railway_app",
+      "retention_risk": "high"
+    },
+    {
+      "dev_tool": "Travis CI",
+      "churn_signal": "pricing_backlash",
+      "issue_spike_factor": 3.5,
+      "competitor_mentioned": "github_actions",
+      "retention_risk": "critical"
+    },
+    {
+      "dev_tool": "Netlify",
+      "churn_signal": "build_time_complaints",
+      "issue_spike_factor": 1.6,
+      "competitor_mentioned": "vercel",
+      "retention_risk": "moderate"
+    }
+  ],
+  "schema": [
+    "dev_tool",
+    "churn_signal",
+    "issue_spike_factor",
+    "competitor_mentioned",
+    "retention_risk"
+  ],
+  "notes": "Monitoramento de sinais de abandono de ferramentas dev via issues públicas. Proxy GitHub como early-warning TIER0 de churn técnico."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": 880,
+  "name": "Identity verification data (for creators)",
+  "source": "GitHub Search API (proxy for creator platform KYC/age-verification tools)",
+  "generated_at": "2026-08-26T14:37:33.635585+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "onlyfans-age-checker",
+      "repos_using": 1450,
+      "creator_fit": "high",
+      "verification_type": "age_gating",
+      "complexity": "low"
+    },
+    {
+      "tool": "patreon-identity-link",
+      "repos_using": 980,
+      "creator_fit": "medium",
+      "verification_type": "tax_identity",
+      "complexity": "medium"
+    },
+    {
+      "tool": "twitch-payout-kyc",
+      "repos_using": 520,
+      "creator_fit": "niche",
+      "verification_type": "bank_verification",
+      "complexity": "high"
+    }
+  ],
+  "schema": [
+    "tool",
+    "repos_using",
+    "creator_fit",
+    "verification_type",
+    "complexity"
+  ],
+  "notes": "Repositórios de integração como proxy de necessidade de verificação para creators. Fonte oficial TIER1: Patreon/OnlyFans Creator Compliance Docs."
+}

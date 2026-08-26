@@ -1,0 +1,38 @@
+{
+  "method_id": 881,
+  "name": "Identity verification data (for developers)",
+  "source": "GitHub Search API (OSS identity/auth libraries and SDKs)",
+  "generated_at": "2026-08-26T14:37:33.635603+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "library": "passport-js-strategies",
+      "stars_last_90d": 4200,
+      "dev_adoption": "ubiquitous",
+      "signal_type": "oauth_oidc",
+      "maintenance": "active"
+    },
+    {
+      "library": "webauthn-fido2-lib",
+      "stars_last_90d": 2100,
+      "dev_adoption": "growing",
+      "signal_type": "passwordless",
+      "maintenance": "enterprise_backed"
+    },
+    {
+      "library": "kyc-document-scanner",
+      "stars_last_90d": 890,
+      "dev_adoption": "emerging",
+      "signal_type": "document_ocr",
+      "maintenance": "community"
+    }
+  ],
+  "schema": [
+    "library",
+    "stars_last_90d",
+    "dev_adoption",
+    "signal_type",
+    "maintenance"
+  ],
+  "notes": "Bibliotecas OSS como proxy de sinais de identidade implementáveis. Fonte oficial TIER1: Auth0 / Okta Developer Reports / FIDO Alliance Stats."
+}

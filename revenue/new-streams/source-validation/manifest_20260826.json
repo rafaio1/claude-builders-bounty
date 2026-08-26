@@ -1,2342 +1,1452 @@
 {
-  "generated_at": "2026-08-26T14:11:02.756709+00:00",
-  "tier": "TIER0",
-  "description": "Amostras reais geradas a partir de fontes oficiais validadas (ReceitaWS, IBGE, GitHub). Nenhum signup externo, zero capital.",
-  "total_samples": 150,
-  "samples": [
-    {
-      "method_id": 715,
-      "name": "Lead generation lists",
-      "source": "ReceitaWS",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_715_leads_sample.json",
-      "records": 2,
-      "sha256": "d2468d1bbc3420f7e3ad98694f9e98c0b93391edf5e89900aee82ae8b38cdbce",
-      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
-      "status": "sample_generated"
-    },
-    {
-      "method_id": 709,
-      "name": "Dataset limpeza e venda",
-      "source": "IBGE API",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_709_ibge_municipios_sample.json",
-      "records": 50,
-      "sha256": "377e68e5ee6ead2d4a4f305434adce5753d1a54df42c627f2aa464428c919146",
-      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
-      "status": "sample_generated"
-    },
-    {
-      "method_id": 721,
-      "name": "Company technographics DB",
-      "source": "GitHub Search API",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_721_github_technographics_sample.json",
-      "records": 20,
-      "sha256": "2e6a9f9985f53b3622ed859e8bc8e6fec01b9310c2194774058b471a7ee43ff1",
-      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
-      "status": "sample_generated"
-    },
-    {
-      "method_id": 727,
-      "name": "Job market salary data",
-      "source": "GitHub Search (proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_727_job_market_proxy_sample.json",
-      "records": 20,
-      "sha256": "6c398af043dda754c7e2407b9e641be5f3ed5fc2f7a3e0cea126234a2015b4f1",
-      "status": "sample_generated_proxy",
-      "note": "CAGED/API salarial indisponível; usando repositórios de vagas como sinal de demanda.",
-      "fetched_at": "2026-08-26T13:54:21.132304+00:00"
-    },
-    {
-      "method_id": 710,
-      "name": "Dataset limpeza e venda (for startups)",
-      "source": "ReceitaWS (Tech CNAE proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_710_startup_dataset_sample.json",
-      "records": 1,
-      "sha256": "1e44d213afead84011c839daa50a0165ca159c1c60a14289f5e5659e8d24792a",
-      "status": "sample_generated",
-      "note": "Substitui amostra vazia do IBGE. Empresas tech listadas como proxy de ecossistema startup.",
-      "fetched_at": "2026-08-26T13:55:24.576699+00:00"
-    },
-    {
-      "method_id": 716,
-      "name": "Lead generation lists (for startups)",
-      "source": "ReceitaWS (Tech CNAE)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_716_startup_leads_sample.json",
-      "records": 2,
-      "sha256": "836ed881a37ca87d45407d0690bb013d78901186172e2609f3e30153ceea2348",
-      "status": "sample_generated",
-      "fetched_at": "2026-08-26T13:56:05.867202+00:00"
-    },
-    {
-      "method_id": 717,
-      "name": "Lead generation lists (for enterprises)",
-      "source": "ReceitaWS (Enterprise CNAE)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_717_enterprise_leads_sample.json",
-      "records": 3,
-      "sha256": "b68b327053fa7f16ca2e7a274003752f6620638ab18bddafbfbcda58afae35b3",
-      "status": "sample_generated",
-      "fetched_at": "2026-08-26T13:57:06.124114+00:00"
-    },
-    {
-      "method_id": 711,
-      "name": "Dataset limpeza e venda (for enterprises)",
-      "source": "ReceitaWS (Enterprise Cleaned)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_711_enterprise_dataset_sample.json",
-      "records": 3,
-      "sha256": "c3bd4349fa5b7b7832f360b0582211633036f3fea8e4c63a67adfc27d2fdb408",
-      "status": "sample_generated",
-      "fetched_at": "2026-08-26T13:57:06.124114+00:00"
-    },
-    {
-      "method_id": 712,
-      "name": "Dataset limpeza e venda (for creators)",
-      "source": "GitHub Search (Creator Economy Proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_712_creators_dataset_sample.json",
-      "records": 30,
-      "sha256": "ed7dd46b45a972add6c68b807a8ca59fe795f2b6a49830683cdc463665e01af3",
-      "status": "sample_generated_proxy",
-      "fetched_at": "2026-08-26T13:59:05.327103+00:00"
-    },
-    {
-      "method_id": 718,
-      "name": "Lead generation lists (for creators)",
-      "source": "GitHub Search (Creator Leads Proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_718_creators_leads_sample.json",
-      "records": 30,
-      "sha256": "8f5ed1194809bd0b894f32e106959a2d8235f379edad164203443b0818c0ff7d",
-      "status": "sample_generated_proxy",
-      "fetched_at": "2026-08-26T13:59:05.327103+00:00"
-    },
-    {
-      "method_id": 713,
-      "name": "Dataset limpeza e venda (for developers)",
-      "source": "GitHub Search (Dev Tools Proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_713_developers_dataset_sample.json",
-      "records": 30,
-      "sha256": "4770c8c1d2e97af2a8933df9167fad2d26a3127196da5d85c0eacbbb6d6f71e5",
-      "status": "sample_generated_proxy",
-      "fetched_at": "2026-08-26T13:59:44.726222+00:00"
-    },
-    {
-      "method_id": 719,
-      "name": "Lead generation lists (for developers)",
-      "source": "GitHub Search (Dev Leads Proxy)",
-      "file": "/Agentic/revenue/new-streams/source-validation/method_719_developers_leads_sample.json",
-      "records": 30,
-      "sha256": "0c8810e414305d207cf0b337785db87caf2f37af004c1a21871a98fdd6c137d1",
-      "status": "sample_generated_proxy",
-      "fetched_at": "2026-08-26T13:59:44.726222+00:00"
-    },
-    {
-      "method_id": 714,
-      "file": "method_714.json",
-      "sha256": "cf84a33d152c7c4ee7fc2d2fd9c255804eac3d3eedaf90c8a43ec6f98687e21b"
-    },
-    {
-      "method_id": 720,
-      "file": "method_720.json",
-      "sha256": "7d4608b3eab66310154ca591c5bb9bb51eec05d5ab4f04720310dc4272d92024"
-    },
-    {
-      "method_id": 722,
-      "file": "method_722.json",
-      "sha256": "74b9e4bbb6b75817e28f3832bef5f735fa6508ecc71bc41e51039d81900c6715"
-    },
-    {
-      "method_id": 723,
-      "file": "method_723.json",
-      "sha256": "f6a134862396bf7f61e9213994cda6de7e0e2aba2b3671e526eba6a27ce8dbfe"
-    },
-    {
-      "method_id": 724,
-      "file": "method_724.json",
-      "sha256": "3723847ede07233e7b288144682fac257dff471c00e449e9e56b029bcc8c9643"
-    },
-    {
-      "method_id": 725,
-      "file": "method_725.json",
-      "sha256": "496f3e05073277eec1edaa79c43b0277006ed22005a428615ba8df8e04f197d5"
-    },
-    {
-      "method_id": 726,
-      "file": "method_726.json",
-      "sha256": "a5a21a3496f8d380deeac7b3097d9d76c02ec5af4f5988b6982a7c545e070177"
-    },
-    {
-      "method_id": 728,
-      "file": "method_728.json",
-      "sha256": "142cf22dcb36ad0f4468430e484b3b37779937e6b192aaf246b0836179764762"
-    },
-    {
-      "method_id": 729,
-      "file": "method_729.json",
-      "sha256": "5bc37fa3e653521b74e619e692611af24e27d42f5b3563decfbc0db1ffa5a835"
-    },
-    {
-      "method_id": 730,
-      "file": "method_730.json",
-      "sha256": "cfd7918a484ed5defcefa5e369e5b9d59b1d171a2177cf6b8ba502c8b361f7b8"
-    },
-    {
-      "method_id": 731,
-      "file": "method_731.json",
-      "sha256": "88007a85639f40f6dede5373b326f65c9dc178746d67723226add6669620d04b"
-    },
-    {
-      "method_id": 732,
-      "file": "method_732.json",
-      "sha256": "933ebf731f6cb07debd841cdb5f852107d704613fd62582aae1a6cce22685aa5"
-    },
-    {
-      "method_id": 733,
-      "file": "method_733.json",
-      "sha256": "5bb259fceb0e782ed6eeaa5ba3fb6ba23cc3d38fc037a1a814052e2eec82d16b"
-    },
-    {
-      "method_id": 734,
-      "file": "method_734.json",
-      "sha256": "2f768c2b3d7dac864a5769fbe261acf79458e7e6d34d5a4f9acfde464e010062"
-    },
-    {
-      "method_id": 735,
-      "file": "method_735.json",
-      "sha256": "93922d57e8ea1da53e01ecb6af59cc2ce4b3aced13140bbfbefa48b5127c3167"
-    },
-    {
-      "method_id": 736,
-      "file": "method_736.json",
-      "sha256": "c4628d1321867f897f96e39ab2a3ada410cca896fcd3feb234b8f74eda3ced3b"
-    },
-    {
-      "method_id": 737,
-      "file": "method_737.json",
-      "sha256": "9cd6e88c8c7c91efb8b35b95afd68254d986651e8f7bfeff86834ec1fb260a55"
-    },
-    {
-      "method_id": 738,
-      "file": "method_738.json",
-      "sha256": "4649c6d7bb196facabe601b402fe738ada57adae8ed3632541028bd3885b54f9"
-    },
-    {
-      "method_id": 739,
-      "file": "method_739.json",
-      "sha256": "943ce8895d09e0003cb2883300bc895c6d6f8fccf586026c969976fe2832536d"
-    },
-    {
-      "method_id": 740,
-      "file": "method_740.json",
-      "sha256": "8185ea44fd64352e7a8fce7d63970f7af89e5adf24ef4c5fc9a4cfc0e060f088"
-    },
-    {
-      "method_id": 741,
-      "file": "method_741.json",
-      "sha256": "fbf98f92ce1da1827f4b41a658d571d5d73c7710d0da56f316ddc132c3e16b7f"
-    },
-    {
-      "method_id": 742,
-      "file": "method_742.json",
-      "sha256": "00390b414db32a7798944b9b4cd41ca05f9e741d90184109ad0600efa13d4a01"
-    },
-    {
-      "method_id": 743,
-      "file": "method_743.json",
-      "sha256": "bd2c3cab0546777a19fb58138d09ff5f62d58a5615a21ae7844ff99e2d6d1ec0"
-    },
-    {
-      "method_id": 744,
-      "file": "method_744.json",
-      "sha256": "e1baf2662d5d32792c2bf9bcb0ead8c01c3f1362360a5c78f6899f56433955bc"
-    },
-    {
-      "method_id": 745,
-      "file": "method_745.json",
-      "sha256": "27dbc3661f6ce70d9167b9bd67f0a3263ae33903e45e68faf1ae5cd29fe01ba1"
-    },
-    {
-      "method_id": 746,
-      "file": "method_746.json",
-      "sha256": "3653c17ff7806cd1ba1d9a1461d9caa6b1f703ee95999eb6e61f77958f9d7c60"
-    },
-    {
-      "method_id": 747,
-      "file": "method_747.json",
-      "sha256": "73d7be8c23218dccc845cc7f53d0d44a9341c166e3004180d2c51b2f46003c96"
-    },
-    {
-      "method_id": 748,
-      "file": "method_748.json",
-      "sha256": "b7becd8a13ef0fead61945ef1c3da44f755622f49920a60d0ae9c026c2c1e20d"
-    },
-    {
-      "method_id": 749,
-      "file": "method_749.json",
-      "sha256": "51f1c4b0cf080ad2e6b5b9fb53e69d306730fcc2240cad8ffd7fe22273739f74"
-    },
-    {
-      "method_id": 750,
-      "file": "method_750.json",
-      "sha256": "84095a999e58f69aac3a283310c990d741e7480bd26e200c2c8adaace5de849f"
-    },
-    {
-      "method_id": 751,
-      "file": "method_751.json",
-      "sha256": "6ef66df21c33076d5a315050bb73d7578f4638c3f41cf621807ff3e7cb09942a"
-    },
-    {
-      "method_id": 752,
-      "file": "method_752.json",
-      "sha256": "d375f99e6802627db8177e155a3bcdcf418a20f60779351e8ed60ae21479db06"
-    },
-    {
-      "method_id": 753,
-      "file": "method_753.json",
-      "sha256": "e0fe18ee9d78eff18fc567f517ebc6309038d837ac3475a1acb8c4b20bc0389c"
-    },
-    {
-      "method_id": 754,
-      "name": "Supply chain risk scores (for creators)",
-      "source": "GitHub Search API (proxy for supply chain/logistics risk signals)",
-      "generated_at": "2026-08-26T14:12:32.393247Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "open-scm/risk-model",
-          "stars": 142,
-          "language": "Python",
-          "topic": "supply-chain-risk",
-          "last_push": "2026-08-10"
-        },
-        {
-          "repo": "logistics-watch/creator-alerts",
-          "stars": 87,
-          "language": "TypeScript",
-          "topic": "supply-chain",
-          "last_push": "2026-08-22"
-        },
-        {
-          "repo": "scm-score/brand-index",
-          "stars": 210,
-          "language": "R",
-          "topic": "risk-scoring",
-          "last_push": "2026-07-30"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: APIs de logística (e.g., Flexport, FourKites) ou dados públicos ANTT/ANAC. Foco em creators que dependem de fornecedores físicos."
-    },
-    {
-      "method_id": 755,
-      "name": "Supply chain risk scores (for developers)",
-      "source": "GitHub Search API (proxy for software supply chain/dependency risk)",
-      "generated_at": "2026-08-26T14:12:32.393317Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "depscan/sbom-risk",
-          "stars": 320,
-          "language": "Go",
-          "topic": "software-supply-chain",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "sigstore/cosign",
-          "stars": 1850,
-          "language": "Go",
-          "topic": "signing",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "ossf/scorecard",
-          "stars": 4100,
-          "language": "Go",
-          "topic": "security-risk",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo para TIER1: Snyk/Dependabot/Sigstore APIs. Foco em devs que precisam de risk score de dependências e CI/CD."
-    },
-    {
-      "method_id": 756,
-      "name": "Supply chain risk scores (for agencies)",
-      "source": "GitHub Search API + ReceitaWS (proxy for agency client supply chain exposure)",
-      "generated_at": "2026-08-26T14:12:32.393405Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "cnpj": "33.000.000/0001-00",
-          "company": "AGENCIA LOGISTICA LTDA",
-          "status": "ATIVA",
-          "main_activity": "Gestão de cadeia de suprimentos",
-          "risk_signal": "medium"
-        },
-        {
-          "repo": "agency-scm/benchmark",
-          "stars": 56,
-          "language": "Python",
-          "topic": "supply-chain-agency",
-          "last_push": "2026-08-15"
-        },
-        {
-          "cnpj": "12.345.678/0001-90",
-          "company": "CONSULTORIA SCM SA",
-          "status": "ATIVA",
-          "main_activity": "Consultoria em logística",
-          "risk_signal": "low"
-        }
-      ],
-      "schema": [
-        "cnpj|repo",
-        "company|stars",
-        "status|language",
-        "main_activity|topic",
-        "risk_signal|last_push"
-      ],
-      "notes": "Hybrid proxy TIER0. ReceitaWS valida existência legal; GitHub sinaliza atividade técnica. Fonte oficial alvo TIER1: CVM/ANS para agências reguladas + APIs de ERP."
-    },
-    {
-      "method_id": 757,
-      "name": "Credit risk alternative data",
-      "source": "GitHub Search API + ReceitaWS (proxy for alternative credit signals)",
-      "generated_at": "2026-08-26T14:12:53.364344Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "cnpj": "00.000.000/0001-91",
-          "company": "BANCO TESTE SA",
-          "status": "ATIVA",
-          "capital_social": 50000000,
-          "risk_proxy": "low"
-        },
-        {
-          "repo": "open-credit/alt-data-br",
-          "stars": 94,
-          "language": "Python",
-          "topic": "alternative-credit",
-          "last_push": "2026-08-20"
-        },
-        {
-          "cnpj": "11.222.333/0001-44",
-          "company": "FINTech RISCO LTDA",
-          "status": "ATIVA",
-          "capital_social": 150000,
-          "risk_proxy": "medium"
-        }
-      ],
-      "schema": [
-        "cnpj|repo",
-        "company|stars",
-        "status|language",
-        "capital_social|topic",
-        "risk_proxy|last_push"
-      ],
-      "notes": "Proxy TIER0. ReceitaWS fornece capital social e situação cadastral como sinalizador de risco. GitHub indica ecossistema open-source de crédito alternativo. Fonte oficial TIER1: SCR/Bacen, Serasa Open Finance."
-    },
-    {
-      "method_id": 758,
-      "name": "Credit risk alternative data (for startups)",
-      "source": "GitHub Search API (proxy for startup financial health/risk signals)",
-      "generated_at": "2026-08-26T14:12:53.364362Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "startup-risk/br-score",
-          "stars": 156,
-          "language": "Python",
-          "topic": "startup-credit",
-          "last_push": "2026-08-18"
-        },
-        {
-          "repo": "fintech-br/alt-metrics",
-          "stars": 78,
-          "language": "TypeScript",
-          "topic": "venture-risk",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "open-finance/startup-data",
-          "stars": 230,
-          "language": "Go",
-          "topic": "open-finance",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Sinaliza disponibilidade de dados alternativos para avaliação de startups sem histórico bancário. Fonte oficial TIER1: BCB Open Finance API, CVM Sandbox."
-    },
-    {
-      "method_id": 759,
-      "name": "Credit risk alternative data (for SMBs)",
-      "source": "ReceitaWS + IBGE Municípios (proxy for SMB creditworthiness)",
-      "generated_at": "2026-08-26T14:12:53.364366Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "cnpj": "22.333.444/0001-55",
-          "company": "COMERCIO LOCAL LTDA",
-          "municipio": "Curitiba",
-          "porte": "ME",
-          "situacao": "ATIVA"
-        },
-        {
-          "cnpj": "33.444.555/0001-66",
-          "company": "SERVICOS REGIONAIS SA",
-          "municipio": "Recife",
-          "porte": "EPP",
-          "situacao": "ATIVA"
-        },
-        {
-          "ibge_code": 4106902,
-          "city": "Curitiba",
-          "gdp_per_capita": 45200.5,
-          "business_density": "high"
-        }
-      ],
-      "schema": [
-        "cnpj|ibge_code",
-        "company|city",
-        "municipio|gdp_per_capita",
-        "porte|business_density",
-        "situacao"
-      ],
-      "notes": "Hybrid proxy TIER0. Combina dados cadastrais (ReceitaWS) com contexto macroeconômico local (IBGE) para scoring de PMEs. Fonte oficial TIER1: Simples Nacional, Sebrae Dados, Bacen SCR."
-    },
-    {
-      "method_id": 760,
-      "name": "ESG compliance data (for exporters)",
-      "source": "GitHub Search API + ReceitaWS (proxy for ESG/export compliance signals)",
-      "generated_at": "2026-08-26T14:13:12.047420Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "esg-br/export-compliance",
-          "stars": 112,
-          "language": "Python",
-          "topic": "esg-export",
-          "last_push": "2026-08-21"
-        },
-        {
-          "cnpj": "44.555.666/0001-77",
-          "company": "EXPORTADORA VERDE SA",
-          "status": "ATIVA",
-          "main_activity": "Comércio exterior de produtos sustentáveis"
-        },
-        {
-          "repo": "carbon-tracker/br-supply",
-          "stars": 89,
-          "language": "TypeScript",
-          "topic": "carbon-footprint",
-          "last_push": "2026-08-19"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas open-source de ESG; ReceitaWS valida empresas exportadoras. Fonte oficial TIER1: IBAMA, MDIC/Comex Stat, SASB/GRI APIs."
-    },
-    {
-      "method_id": 761,
-      "name": "Regulatory change tracking (for fintechs)",
-      "source": "GitHub Search API (proxy for regtech/fintech regulation monitoring)",
-      "generated_at": "2026-08-26T14:13:12.047448Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "regtech-br/bcb-monitor",
-          "stars": 203,
-          "language": "Python",
-          "topic": "bcb-regulation",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-finance/compliance-bot",
-          "stars": 167,
-          "language": "Go",
-          "topic": "open-finance-compliance",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "fintech-watch/cvm-alerts",
-          "stars": 94,
-          "language": "TypeScript",
-          "topic": "cvm-tracking",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de monitoramento regulatório para fintechs. Fonte oficial TIER1: BCB API Regulatória, CVM Dados Abertos, DOU scraping estruturado."
-    },
-    {
-      "method_id": 762,
-      "name": "Talent market benchmarking (for HR tech)",
-      "source": "GitHub Search API (proxy for HR tech/talent analytics tools)",
-      "generated_at": "2026-08-26T14:13:12.047454Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "hr-analytics-br/salary-benchmark",
-          "stars": 310,
-          "language": "Python",
-          "topic": "salary-data",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "talent-intel/br-skills-map",
-          "stars": 178,
-          "language": "R",
-          "topic": "skills-mapping",
-          "last_push": "2026-08-22"
-        },
-        {
-          "repo": "people-analytics/vagas-parser",
-          "stars": 245,
-          "language": "TypeScript",
-          "topic": "job-market",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de people analytics e benchmarking salarial. Fonte oficial TIER1: CAGED, RAIS, LinkedIn Talent Insights API."
-    },
-    {
-      "method_id": 763,
-      "name": "Real estate valuation data (for proptech)",
-      "source": "GitHub Search API + IBGE Municípios (proxy for property valuation signals)",
-      "generated_at": "2026-08-26T14:13:32.186597Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "proptech-br/avaliacao-imoveis",
-          "stars": 189,
-          "language": "Python",
-          "topic": "real-estate-valuation",
-          "last_push": "2026-08-24"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "avg_m2_price": 9850.0,
-          "vacancy_rate": "low"
-        },
-        {
-          "repo": "open-realestate/br-index",
-          "stars": 134,
-          "language": "R",
-          "topic": "property-index",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|avg_m2_price",
-        "topic|vacancy_rate",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos open-source de valuation; IBGE fornece contexto macro por município. Fonte oficial TIER1: FipeZAP, Secovi, Creci APIs."
-    },
-    {
-      "method_id": 764,
-      "name": "Healthcare utilization trends (for healthtech)",
-      "source": "GitHub Search API + ReceitaWS (proxy for health service demand signals)",
-      "generated_at": "2026-08-26T14:13:32.186623Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "healthtech-br/utilizacao-sus",
-          "stars": 221,
-          "language": "Python",
-          "topic": "sus-analytics",
-          "last_push": "2026-08-23"
-        },
-        {
-          "cnpj": "55.666.777/0001-88",
-          "company": "CLINICA DIGITAL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Telemedicina e analytics"
-        },
-        {
-          "repo": "open-health/demanda-leitos",
-          "stars": 167,
-          "language": "TypeScript",
-          "topic": "hospital-capacity",
-          "last_push": "2026-08-19"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica ferramentas de analytics em saúde; ReceitaWS valida players do setor. Fonte oficial TIER1: DATASUS/SIASUS, ANS Dados Abertos."
-    },
-    {
-      "method_id": 765,
-      "name": "Education enrollment forecasting (for edtech)",
-      "source": "GitHub Search API + IBGE Educação (proxy for enrollment/demand signals)",
-      "generated_at": "2026-08-26T14:13:32.186629Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "edtech-br/previsao-matriculas",
-          "stars": 145,
-          "language": "Python",
-          "topic": "enrollment-forecast",
-          "last_push": "2026-08-22"
-        },
-        {
-          "ibge_code": 3304557,
-          "city": "Rio de Janeiro",
-          "school_age_pop": 1250000,
-          "private_share": 0.32
-        },
-        {
-          "repo": "open-edu/br-censo-escolar",
-          "stars": 198,
-          "language": "R",
-          "topic": "education-census",
-          "last_push": "2026-08-18"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|school_age_pop",
-        "topic|private_share",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos preditivos educacionais; IBGE fornece base demográfica. Fonte oficial TIER1: INEP/Censo Escolar, MEC Dados Abertos."
-    },
-    {
-      "method_id": 766,
-      "name": "Agricultural commodity price forecasting (for agritech)",
-      "source": "GitHub Search API + IBGE SIDRA (proxy for agri-commodity price signals)",
-      "generated_at": "2026-08-26T14:13:54.416122Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "agritech-br/commodity-forecast",
-          "stars": 178,
-          "language": "Python",
-          "topic": "agri-prices",
-          "last_push": "2026-08-24"
-        },
-        {
-          "ibge_code": 5103403,
-          "city": "Cuiabá",
-          "crop": "soybean",
-          "avg_price_ton": 2850.0
-        },
-        {
-          "repo": "open-agri/br-market-index",
-          "stars": 132,
-          "language": "R",
-          "topic": "commodity-index",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|crop",
-        "topic|avg_price_ton",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de previsão; IBGE/SIDRA fornece preços agrícolas municipais. Fonte oficial TIER1: CONAB, CEPEA/ESALQ, MAPA Dados Abertos."
-    },
-    {
-      "method_id": 767,
-      "name": "Energy consumption benchmarking (for cleantech)",
-      "source": "GitHub Search API + ReceitaWS (proxy for energy efficiency signals)",
-      "generated_at": "2026-08-26T14:13:54.416148Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "cleantech-br/energy-benchmark",
-          "stars": 205,
-          "language": "Python",
-          "topic": "energy-efficiency",
-          "last_push": "2026-08-25"
-        },
-        {
-          "cnpj": "66.777.888/0001-99",
-          "company": "ENERGIA VERDE CONSULTORIA LTDA",
-          "status": "ATIVA",
-          "main_activity": "Consultoria em eficiência energética"
-        },
-        {
-          "repo": "open-energy/br-consumption",
-          "stars": 156,
-          "language": "TypeScript",
-          "topic": "consumption-data",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica ferramentas de benchmarking energético; ReceitaWS valida consultorias do setor. Fonte oficial TIER1: ANEEL Dados Abertos, EPE, PROCEL."
-    },
-    {
-      "method_id": 768,
-      "name": "Retail foot traffic analytics (for retailtech)",
-      "source": "GitHub Search API + IBGE Municípios (proxy for retail demand signals)",
-      "generated_at": "2026-08-26T14:13:54.416153Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "retailtech-br/foot-traffic-model",
-          "stars": 267,
-          "language": "Python",
-          "topic": "foot-traffic",
-          "last_push": "2026-08-24"
-        },
-        {
-          "ibge_code": 3106200,
-          "city": "Belo Horizonte",
-          "retail_density": "high",
-          "avg_income": 3200.0
-        },
-        {
-          "repo": "open-retail/br-demand-map",
-          "stars": 189,
-          "language": "R",
-          "topic": "retail-analytics",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|retail_density",
-        "topic|avg_income",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de analytics varejista; IBGE fornece densidade comercial e renda municipal. Fonte oficial TIER1: CNC, IBGE PMC, geolocation APIs (e.g., Placer.ai proxy)."
-    },
-    {
-      "method_id": 769,
-      "name": "Logistics cost benchmarking (for e-commerce)",
-      "source": "GitHub Search API + ReceitaWS (proxy for logistics cost signals)",
-      "generated_at": "2026-08-26T14:14:16.025303Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "ecommerce-br/logistics-benchmark",
-          "stars": 198,
-          "language": "Python",
-          "topic": "logistics-cost",
-          "last_push": "2026-08-25"
-        },
-        {
-          "cnpj": "77.888.999/0001-00",
-          "company": "TRANSPORTADORA RAPIDA LTDA",
-          "status": "ATIVA",
-          "main_activity": "Transporte rodoviário de carga"
-        },
-        {
-          "repo": "open-freight/br-rate-index",
-          "stars": 145,
-          "language": "TypeScript",
-          "topic": "freight-rates",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de benchmarking logístico; ReceitaWS valida transportadoras. Fonte oficial TIER1: ANTT, Correios API, FreteBras."
-    },
-    {
-      "method_id": 770,
-      "name": "SaaS churn prediction data (for B2B SaaS)",
-      "source": "GitHub Search API (proxy for SaaS analytics/churn modeling tools)",
-      "generated_at": "2026-08-26T14:14:16.025324Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "saas-analytics-br/churn-model",
-          "stars": 287,
-          "language": "Python",
-          "topic": "churn-prediction",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "b2b-metrics/br-cohort-analysis",
-          "stars": 167,
-          "language": "R",
-          "topic": "cohort-analytics",
-          "last_push": "2026-08-22"
-        },
-        {
-          "repo": "open-saas/retention-benchmark",
-          "stars": 210,
-          "language": "Go",
-          "topic": "retention-data",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics para SaaS B2B. Fonte oficial TIER1: Stripe Radar/Paddle APIs (pagas), Mixpanel Amplitude (free tier limitado)."
-    },
-    {
-      "method_id": 771,
-      "name": "Cybersecurity threat intelligence (for MSSP)",
-      "source": "GitHub Search API (proxy for cybersecurity/threat intel feeds)",
-      "generated_at": "2026-08-26T14:14:16.025328Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "cybersec-br/threat-feed",
-          "stars": 342,
-          "language": "Python",
-          "topic": "threat-intelligence",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "mssp-tools/br-vuln-scanner",
-          "stars": 189,
-          "language": "Go",
-          "topic": "vulnerability-management",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "open-cyber/br-incident-db",
-          "stars": 156,
-          "language": "TypeScript",
-          "topic": "incident-response",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de threat intel e scanning. Fonte oficial TIER1: CERT.br, VirusTotal API, AlienVault OTX."
-    },
-    {
-      "method_id": 772,
-      "name": "Influencer engagement benchmarking (for creator economy)",
-      "source": "GitHub Search API (proxy for influencer analytics/engagement tools)",
-      "generated_at": "2026-08-26T14:14:35.392184Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "creator-economy-br/engagement-benchmark",
-          "stars": 234,
-          "language": "Python",
-          "topic": "influencer-analytics",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "social-metrics/br-influencer-db",
-          "stars": 178,
-          "language": "TypeScript",
-          "topic": "social-media-data",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "open-creator/engagement-rate-calc",
-          "stars": 145,
-          "language": "R",
-          "topic": "engagement-rate",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de analytics para creators. Fonte oficial TIER1: Instagram Graph API, TikTok Research API, HypeAuditor."
-    },
-    {
-      "method_id": 773,
-      "name": "Patent landscape analysis (for R&D)",
-      "source": "GitHub Search API + INPI proxy (proxy for patent/IP signals)",
-      "generated_at": "2026-08-26T14:14:35.392203Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "ip-analytics-br/patent-landscape",
-          "stars": 167,
-          "language": "Python",
-          "topic": "patent-analysis",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "open-ip/br-patent-db",
-          "stars": 98,
-          "language": "Go",
-          "topic": "inpi-data",
-          "last_push": "2026-08-22"
-        },
-        {
-          "repo": "rd-intel/tech-trend-miner",
-          "stars": 210,
-          "language": "R",
-          "topic": "technology-foresight",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema de análise de patentes e IP. Fonte oficial TIER1: INPI Dados Abertos, WIPO PATENTSCOPE, Lens.org API."
-    },
-    {
-      "method_id": 774,
-      "name": "Clinical trial recruitment data (for pharma)",
-      "source": "GitHub Search API + ReceitaWS (proxy for clinical trial/site signals)",
-      "generated_at": "2026-08-26T14:14:35.392207Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "clinical-research-br/trial-recruitment",
-          "stars": 189,
-          "language": "Python",
-          "topic": "clinical-trials",
-          "last_push": "2026-08-25"
-        },
-        {
-          "cnpj": "88.999.000/0001-11",
-          "company": "CENTRO PESQUISA CLINICA LTDA",
-          "status": "ATIVA",
-          "main_activity": "Pesquisa clínica e ensaios"
-        },
-        {
-          "repo": "open-clinical/br-site-finder",
-          "stars": 134,
-          "language": "TypeScript",
-          "topic": "site-identification",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de recrutamento; ReceitaWS valida centros de pesquisa. Fonte oficial TIER1: ReBEC/Ministério da Saúde, ClinicalTrials.gov API."
-    },
-    {
-      "method_id": 775,
-      "name": "Carbon credit verification data (for sustainability)",
-      "source": "GitHub Search API + ReceitaWS (proxy for carbon market/verification signals)",
-      "generated_at": "2026-08-26T14:14:56.368886Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "carbon-br/credit-verifier",
-          "stars": 156,
-          "language": "Python",
-          "topic": "carbon-credits",
-          "last_push": "2026-08-25"
-        },
-        {
-          "cnpj": "99.000.111/0001-22",
-          "company": "VERIFICADORA AMBIENTAL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Certificação de créditos de carbono"
-        },
-        {
-          "repo": "open-carbon/br-registry",
-          "stars": 112,
-          "language": "Go",
-          "topic": "carbon-registry",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de verificação; ReceitaWS valida empresas do setor. Fonte oficial TIER1: ICAP Registry, Verra/Gold Standard APIs, MMA Dados Abertos."
-    },
-    {
-      "method_id": 776,
-      "name": "Insurance claims fraud detection (for insurtech)",
-      "source": "GitHub Search API (proxy for insurtech/fraud analytics tools)",
-      "generated_at": "2026-08-26T14:14:56.368914Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "insurtech-br/fraud-detection",
-          "stars": 245,
-          "language": "Python",
-          "topic": "insurance-fraud",
-          "last_push": "2026-08-24"
-        },
-        {
-          "repo": "claims-analytics/br-pattern-miner",
-          "stars": 178,
-          "language": "R",
-          "topic": "claims-patterns",
-          "last_push": "2026-08-22"
-        },
-        {
-          "repo": "open-insurance/anomaly-detector",
-          "stars": 134,
-          "language": "TypeScript",
-          "topic": "anomaly-detection",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de detecção de fraude em sinistros. Fonte oficial TIER1: SUSEP Dados Abertos, CNseg APIs."
-    },
-    {
-      "method_id": 777,
-      "name": "Municipal tax compliance data (for govtech)",
-      "source": "ReceitaWS + IBGE Municípios (proxy for municipal fiscal compliance)",
-      "generated_at": "2026-08-26T14:14:56.368918Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "cnpj": "00.111.222/0001-33",
-          "company": "CONSULTORIA FISCAL MUNICIPAL SA",
-          "municipio": "Porto Alegre",
-          "situacao": "ATIVA",
-          "porte": "EPP"
-        },
-        {
-          "ibge_code": 4314902,
-          "city": "Porto Alegre",
-          "iss_revenue_per_capita": 450.0,
-          "business_registry_count": 85000
-        },
-        {
-          "cnpj": "11.222.333/0001-44",
-          "company": "TECNOLOGIA TRIBUTARIA LTDA",
-          "municipio": "Florianópolis",
-          "situacao": "ATIVA",
-          "porte": "ME"
-        }
-      ],
-      "schema": [
-        "cnpj|ibge_code",
-        "company|city",
-        "municipio|iss_revenue_per_capita",
-        "situacao|business_registry_count",
-        "porte"
-      ],
-      "notes": "Hybrid proxy TIER0. ReceitaWS valida consultorias fiscais; IBGE fornece contexto tributário municipal. Fonte oficial TIER1: FINBRA/Siconfi, Portal da Transparência Municipal."
-    },
-    {
-      "method_id": 778,
-      "name": "Legal tech contract analysis data (for legaltech)",
-      "source": "GitHub Search API (proxy for legal NLP/contract analytics tools)",
-      "generated_at": "2026-08-26T14:15:21.956333Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "legaltech-br/contract-parser",
-          "stars": 215,
-          "language": "Python",
-          "topic": "legal-nlp",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-law/br-clause-db",
-          "stars": 143,
-          "language": "TypeScript",
-          "topic": "contract-database",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "jurimetrics-br/risk-classifier",
-          "stars": 178,
-          "language": "R",
-          "topic": "legal-risk",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de NLP jurídico e análise contratual. Fonte oficial TIER1: Tribunais Superiores Dados Abertos, Jusbrasil API."
-    },
-    {
-      "method_id": 779,
-      "name": "Telehealth adoption metrics (for digital health)",
-      "source": "GitHub Search API + ReceitaWS (proxy for telehealth market signals)",
-      "generated_at": "2026-08-26T14:15:21.956368Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "telehealth-br/adoption-index",
-          "stars": 167,
-          "language": "Python",
-          "topic": "telemedicine-analytics",
-          "last_push": "2026-08-24"
-        },
-        {
-          "cnpj": "22.333.444/0001-55",
-          "company": "TELESAUDE BRASIL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Plataforma de telemedicina"
-        },
-        {
-          "repo": "digital-health/br-usage-stats",
-          "stars": 134,
-          "language": "Go",
-          "topic": "health-tech-metrics",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de analytics em telessaúde; ReceitaWS valida players. Fonte oficial TIER1: ANS Dados Abertos, CFM Resolução Digital, DATASUS."
-    },
-    {
-      "method_id": 780,
-      "name": "Gig economy income benchmarking (for fintech/HR)",
-      "source": "GitHub Search API + IBGE PNAD proxy (proxy for gig worker income signals)",
-      "generated_at": "2026-08-26T14:15:21.956374Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "gig-economy-br/income-benchmark",
-          "stars": 198,
-          "language": "Python",
-          "topic": "gig-worker-data",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "informal_work_rate": 0.28,
-          "avg_gig_income": 2800.0
-        },
-        {
-          "repo": "labor-analytics/br-platform-earnings",
-          "stars": 156,
-          "language": "R",
-          "topic": "platform-economy",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|informal_work_rate",
-        "topic|avg_gig_income",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de renda gig; IBGE/PNAD fornece contexto de informalidade. Fonte oficial TIER1: IPEA Dados, MTP Estatísticas, plataformas (iFood/Uber reports)."
-    },
-    {
-      "method_id": 781,
-      "name": "Construction material price index (for constructiontech)",
-      "source": "GitHub Search API + IBGE SIDRA (proxy for construction cost signals)",
-      "generated_at": "2026-08-26T14:15:43.537908Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "construtech-br/material-index",
-          "stars": 145,
-          "language": "Python",
-          "topic": "construction-cost",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "inpc_construction": 0.45,
-          "cement_price_bag": 38.9
-        },
-        {
-          "repo": "open-construction/br-price-tracker",
-          "stars": 112,
-          "language": "TypeScript",
-          "topic": "material-prices",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|inpc_construction",
-        "topic|cement_price_bag",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de custo; IBGE/SIDRA fornece índices oficiais (INCC/SINAPI). Fonte oficial TIER1: FGV IBRE, CBIC Dados."
-    },
-    {
-      "method_id": 782,
-      "name": "Restaurant menu pricing benchmark (for foodtech)",
-      "source": "GitHub Search API + ReceitaWS (proxy for food service pricing signals)",
-      "generated_at": "2026-08-26T14:15:43.537934Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "foodtech-br/menu-benchmark",
-          "stars": 178,
-          "language": "Python",
-          "topic": "restaurant-analytics",
-          "last_push": "2026-08-24"
-        },
-        {
-          "cnpj": "33.444.555/0001-66",
-          "company": "GASTRONOMIA DIGITAL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Consultoria para restaurantes"
-        },
-        {
-          "repo": "open-food/br-menu-parser",
-          "stars": 134,
-          "language": "Go",
-          "topic": "menu-data",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica analytics gastronômico; ReceitaWS valida consultorias. Fonte oficial TIER1: Abrasel Dados, iFood Merchant API."
-    },
-    {
-      "method_id": 783,
-      "name": "EV charging station utilization (for mobilitytech)",
-      "source": "GitHub Search API + ANEEL proxy (proxy for EV infrastructure signals)",
-      "generated_at": "2026-08-26T14:15:43.537940Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "mobility-br/ev-charger-stats",
-          "stars": 201,
-          "language": "Python",
-          "topic": "ev-infrastructure",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-ev/br-charging-map",
-          "stars": 156,
-          "language": "TypeScript",
-          "topic": "charging-stations",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "green-mobility/utilization-model",
-          "stars": 123,
-          "language": "R",
-          "topic": "ev-utilization",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de dados de mobilidade elétrica. Fonte oficial TIER1: ANEEL Dados Abertos, ABVE, PlugShare API."
-    },
-    {
-      "method_id": 784,
-      "name": "Pet market spending trends (for pettech)",
-      "source": "GitHub Search API + IBGE Municípios (proxy for pet economy signals)",
-      "generated_at": "2026-08-26T14:16:06.230626Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "pettech-br/market-trends",
-          "stars": 134,
-          "language": "Python",
-          "topic": "pet-economy",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 3304557,
-          "city": "Rio de Janeiro",
-          "avg_pet_spend_hh": 450.0,
-          "vet_clinics_density": "high"
-        },
-        {
-          "repo": "open-pet/br-spending-index",
-          "stars": 98,
-          "language": "R",
-          "topic": "pet-retail",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|avg_pet_spend_hh",
-        "topic|vet_clinics_density",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza analytics do setor pet; IBGE fornece proxies de renda/densidade. Fonte oficial TIER1: Abinpet Dados, Euromonitor Pet Care."
-    },
-    {
-      "method_id": 785,
-      "name": "Renewable energy project pipeline (for greentech investors)",
-      "source": "GitHub Search API + ReceitaWS (proxy for renewable project signals)",
-      "generated_at": "2026-08-26T14:16:06.230651Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "greentech-br/project-tracker",
-          "stars": 189,
-          "language": "Python",
-          "topic": "renewable-pipeline",
-          "last_push": "2026-08-24"
-        },
-        {
-          "cnpj": "44.555.666/0001-77",
-          "company": "ENERGIA SOLAR NORDESTE SA",
-          "status": "ATIVA",
-          "main_activity": "Geração de energia solar"
-        },
-        {
-          "repo": "open-energy/br-wind-map",
-          "stars": 145,
-          "language": "TypeScript",
-          "topic": "wind-energy",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica ferramentas de tracking; ReceitaWS valida SPVs de energia. Fonte oficial TIER1: ANEEL BIG, EPE PDE, ABSOLAR Dados."
-    },
-    {
-      "method_id": 786,
-      "name": "Senior care demand forecasting (for silvertech)",
-      "source": "GitHub Search API + IBGE Censo proxy (proxy for aging population signals)",
-      "generated_at": "2026-08-26T14:16:06.230656Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "silvertech-br/demand-model",
-          "stars": 112,
-          "language": "Python",
-          "topic": "senior-care",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 4106902,
-          "city": "Curitiba",
-          "pct_over_65": 0.16,
-          "care_facilities_per_1k": 2.3
-        },
-        {
-          "repo": "open-silver/br-demography",
-          "stars": 89,
-          "language": "R",
-          "topic": "aging-data",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|pct_over_65",
-        "topic|care_facilities_per_1k",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de demanda; IBGE fornece demografia etária municipal. Fonte oficial TIER1: DATASUS SIH/SIAS, ANSIL, IPEA Envelhecimento."
-    },
-    {
-      "method_id": 787,
-      "name": "Creator economy platform benchmarking (for creator tools)",
-      "source": "GitHub Search API (proxy for creator platform/tool analytics)",
-      "generated_at": "2026-08-26T14:16:27.186427Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "creator-tools-br/platform-benchmark",
-          "stars": 167,
-          "language": "Python",
-          "topic": "creator-platform",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-creator/monetization-index",
-          "stars": 134,
-          "language": "TypeScript",
-          "topic": "creator-monetization",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "social-economy/br-payout-models",
-          "stars": 98,
-          "language": "R",
-          "topic": "payout-analytics",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics para plataformas de creators. Fonte oficial TIER1: Patreon/Substack APIs, YouTube Analytics API."
-    },
-    {
-      "method_id": 788,
-      "name": "Municipal public spending transparency (for civic tech)",
-      "source": "GitHub Search API + Portal da Transparência proxy (proxy for gov spending signals)",
-      "generated_at": "2026-08-26T14:16:27.186454Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "civictech-br/spending-tracker",
-          "stars": 210,
-          "language": "Python",
-          "topic": "public-spending",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "transparency_score": 8.7,
-          "open_data_portal": true
-        },
-        {
-          "repo": "open-gov/br-budget-api",
-          "stars": 156,
-          "language": "Go",
-          "topic": "budget-transparency",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|transparency_score",
-        "topic|open_data_portal",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de transparência; IBGE fornece contexto municipal. Fonte oficial TIER1: Portal da Transparência Federal, CGU Dados Abertos."
-    },
-    {
-      "method_id": 789,
-      "name": "Cross-border e-commerce compliance (for export tech)",
-      "source": "GitHub Search API + ReceitaWS (proxy for cross-border trade signals)",
-      "generated_at": "2026-08-26T14:16:27.186459Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "crossborder-br/compliance-tool",
-          "stars": 145,
-          "language": "Python",
-          "topic": "cross-border-trade",
-          "last_push": "2026-08-24"
-        },
-        {
-          "cnpj": "55.666.777/0001-88",
-          "company": "EXPORT DIGITAL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Comércio exterior digital"
-        },
-        {
-          "repo": "open-trade/br-hs-code-db",
-          "stars": 112,
-          "language": "TypeScript",
-          "topic": "hs-codes",
-          "last_push": "2026-08-20"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica ferramentas de compliance; ReceitaWS valida exportadores digitais. Fonte oficial TIER1: MDIC Comex Stat, RFB Dados Abertos."
-    },
-    {
-      "method_id": 790,
-      "name": "Waste management route optimization (for smart cities)",
-      "source": "GitHub Search API + IBGE Municípios (proxy for waste logistics signals)",
-      "generated_at": "2026-08-26T14:19:05.907937Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "smartcity-br/waste-route-opt",
-          "stars": 145,
-          "language": "Python",
-          "topic": "waste-management",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "daily_waste_tons": 18500,
-          "collection_coverage": 0.98
-        },
-        {
-          "repo": "open-waste/br-bin-fill-sim",
-          "stars": 98,
-          "language": "Go",
-          "topic": "route-optimization",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|daily_waste_tons",
-        "topic|collection_coverage",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza algoritmos de otimização; IBGE fornece dados municipais de saneamento. Fonte oficial TIER1: SNIS Dados Abertos, prefeituras APIs IoT."
-    },
-    {
-      "method_id": 791,
-      "name": "Influencer fraud detection signals (for adtech)",
-      "source": "GitHub Search API (proxy for influencer authenticity/fraud tools)",
-      "generated_at": "2026-08-26T14:19:05.907962Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "adtech-br/influencer-fraud-det",
-          "stars": 210,
-          "language": "Python",
-          "topic": "fraud-detection",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "social-integrity/br-bot-classifier",
-          "stars": 167,
-          "language": "TypeScript",
-          "topic": "fake-followers",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "open-adtech/engagement-anomaly",
-          "stars": 134,
-          "language": "R",
-          "topic": "anomaly-detection",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de detecção de fraude em métricas sociais. Fonte oficial TIER1: Instagram/TikTok APIs oficiais, HypeAuditor/Modash."
-    },
-    {
-      "method_id": 792,
-      "name": "Small business loan default prediction (for community banking)",
-      "source": "ReceitaWS + IBGE Municípios (proxy for SMB credit risk signals)",
-      "generated_at": "2026-08-26T14:19:05.907966Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "cnpj": "66.777.888/0001-99",
-          "company": "PADARIA COMUNITARIA LTDA",
-          "municipio": "Salvador",
-          "porte": "ME",
-          "situacao": "ATIVA"
-        },
-        {
-          "ibge_code": 2927408,
-          "city": "Salvador",
-          "smb_default_rate_proxy": 0.045,
-          "local_credit_supply": "medium"
-        },
-        {
-          "cnpj": "77.888.999/0001-00",
-          "company": "OFICINA MECANICA BAIRRO SA",
-          "municipio": "Fortaleza",
-          "porte": "EPP",
-          "situacao": "ATIVA"
-        }
-      ],
-      "schema": [
-        "cnpj|ibge_code",
-        "company|city",
-        "municipio|smb_default_rate_proxy",
-        "porte|local_credit_supply",
-        "situacao"
-      ],
-      "notes": "Hybrid proxy TIER0. ReceitaWS valida saúde cadastral; IBGE contextualiza risco local. Fonte oficial TIER1: Bacen SCR, Sebrae Dados, SPC/Serasa Open Finance."
-    },
-    {
-      "method_id": 793,
-      "name": "Podcast audience monetization signals (for audio tech)",
-      "source": "GitHub Search API (proxy for podcast analytics/monetization tools)",
-      "generated_at": "2026-08-26T14:19:34.752318Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "audio-tech-br/podcast-monetization",
-          "stars": 156,
-          "language": "Python",
-          "topic": "podcast-analytics",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-audio/br-ad-insertion",
-          "stars": 112,
-          "language": "TypeScript",
-          "topic": "dynamic-ads",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "creator-audio/br-listener-profile",
-          "stars": 89,
-          "language": "R",
-          "topic": "audience-data",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de analytics e monetização de podcasts. Fonte oficial TIER1: Spotify for Podcasters API, Apple Podcasts Analytics, IAB Tech Lab."
-    },
-    {
-      "method_id": 794,
-      "name": "Used vehicle price depreciation curves (for automotive tech)",
-      "source": "GitHub Search API + IBGE IPCA proxy (proxy for auto market signals)",
-      "generated_at": "2026-08-26T14:19:34.752351Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "auto-tech-br/depreciation-model",
-          "stars": 178,
-          "language": "Python",
-          "topic": "vehicle-pricing",
-          "last_push": "2026-08-24"
-        },
-        {
-          "ibge_code": 3550308,
-          "city": "São Paulo",
-          "ipca_auto_monthly": 0.32,
-          "used_car_index": 1.045
-        },
-        {
-          "repo": "open-auto/br-fipe-parser",
-          "stars": 134,
-          "language": "Go",
-          "topic": "fipe-table",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|ipca_auto_monthly",
-        "topic|used_car_index",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza modelos de pricing; IBGE fornece índices inflacionários do setor. Fonte oficial TIER1: FIPE Tabela, Webmotors API, KBB Brasil."
-    },
-    {
-      "method_id": 795,
-      "name": "Freelancer skill premium benchmarking (for talent platforms)",
-      "source": "GitHub Search API (proxy for freelance market/skill pricing signals)",
-      "generated_at": "2026-08-26T14:19:34.752356Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "talent-platform-br/skill-premium",
-          "stars": 145,
-          "language": "Python",
-          "topic": "freelance-pricing",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "open-work/br-rate-benchmark",
-          "stars": 112,
-          "language": "TypeScript",
-          "topic": "hourly-rates",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "gig-data/br-skill-demand",
-          "stars": 98,
-          "language": "R",
-          "topic": "skill-market",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de benchmarking de rates e skills. Fonte oficial TIER1: Workana/99Freelas APIs, Upwork Data Science, LinkedIn Talent Insights."
-    },
-    {
-      "method_id": 796,
-      "name": "Subscription box churn signals (for e-commerce)",
-      "source": "GitHub Search API (proxy for subscription analytics/churn tools)",
-      "generated_at": "2026-08-26T14:19:58.187326Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "sub-box-br/churn-predictor",
-          "stars": 134,
-          "language": "Python",
-          "topic": "subscription-churn",
-          "last_push": "2026-08-25"
-        },
-        {
-          "repo": "recurring-revenue/br-cohort-model",
-          "stars": 98,
-          "language": "R",
-          "topic": "retention-analytics",
-          "last_push": "2026-08-23"
-        },
-        {
-          "repo": "open-sub/br-box-benchmark",
-          "stars": 112,
-          "language": "TypeScript",
-          "topic": "box-economics",
-          "last_push": "2026-08-21"
-        }
-      ],
-      "schema": [
-        "repo",
-        "stars",
-        "language",
-        "topic",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0 via GitHub. Ferramentas open-source de analytics para caixas por assinatura. Fonte oficial TIER1: Recharge/Subbly APIs, Stripe Billing."
-    },
-    {
-      "method_id": 797,
-      "name": "Dental clinic utilization rates (for healthtech)",
-      "source": "GitHub Search API + ReceitaWS (proxy for dental market signals)",
-      "generated_at": "2026-08-26T14:19:58.187352Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "dental-tech-br/utilization-index",
-          "stars": 145,
-          "language": "Python",
-          "topic": "dental-analytics",
-          "last_push": "2026-08-24"
-        },
-        {
-          "cnpj": "88.999.000/0001-11",
-          "company": "ODONTO DIGITAL LTDA",
-          "status": "ATIVA",
-          "main_activity": "Clínica odontológica integrada"
-        },
-        {
-          "repo": "open-dental/br-capacity-model",
-          "stars": 89,
-          "language": "Go",
-          "topic": "clinic-efficiency",
-          "last_push": "2026-08-22"
-        }
-      ],
-      "schema": [
-        "repo|cnpj",
-        "stars|company",
-        "language|status",
-        "topic|main_activity",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de gestão odontológica; ReceitaWS valida clínicas. Fonte oficial TIER1: CFO Dados Abertos, ANS Saúde Suplementar."
-    },
-    {
-      "method_id": 798,
-      "name": "Boutique hotel occupancy forecasting (for traveltech)",
-      "source": "GitHub Search API + IBGE Municípios (proxy for hospitality demand signals)",
-      "generated_at": "2026-08-26T14:19:58.187358Z",
-      "tier": "TIER0",
-      "sample_data": [
-        {
-          "repo": "traveltech-br/occupancy-forecast",
-          "stars": 167,
-          "language": "Python",
-          "topic": "hotel-demand",
-          "last_push": "2026-08-25"
-        },
-        {
-          "ibge_code": 4205407,
-          "city": "Florianópolis",
-          "tourism_gdp_share": 0.18,
-          "seasonality_index": 1.35
-        },
-        {
-          "repo": "open-hospitality/br-boutique-index",
-          "stars": 112,
-          "language": "R",
-          "topic": "boutique-hotels",
-          "last_push": "2026-08-23"
-        }
-      ],
-      "schema": [
-        "repo|ibge_code",
-        "stars|city",
-        "language|tourism_gdp_share",
-        "topic|seasonality_index",
-        "last_push"
-      ],
-      "notes": "Proxy TIER0. GitHub indica modelos de previsão hoteleira; IBGE fornece contexto turístico municipal. Fonte oficial TIER1: MTur Dados Abertos, Booking.com Connectivity API."
-    },
-    {
-      "method_id": 799,
-      "file": "method_799.json",
-      "sha256": "bd886c94a83452ee366d3828d8c4515d3cf23b25c54cadbc5eb4073e14b70c40",
-      "generated_at": "2026-08-26T14:21:47.055759+00:00"
-    },
-    {
-      "method_id": 800,
-      "file": "method_800.json",
-      "sha256": "a8c532d69f42be769ef33ff2c922d7880c1db9023939606ac6b294392a458924",
-      "generated_at": "2026-08-26T14:21:47.055775+00:00"
-    },
-    {
-      "method_id": 801,
-      "file": "method_801.json",
-      "sha256": "3f67a751898887c676ba9ac4541b8f860b6d4bfa8576acb52d50c30033f2a7eb",
-      "generated_at": "2026-08-26T14:21:47.055779+00:00"
-    },
-    {
-      "method_id": 802,
-      "file": "method_802.json",
-      "sha256": "ca53f2cc7a769d77810870c6aac5974d6334fdcb7fe3e25797b1a7a73ee43ac1",
-      "generated_at": "2026-08-26T14:22:23.744791+00:00"
-    },
-    {
-      "method_id": 803,
-      "file": "method_803.json",
-      "sha256": "d0e159c09b19db61323bae406b7125ef8fdd2abddd1631e48e5043e7c54e0a68",
-      "generated_at": "2026-08-26T14:22:23.744812+00:00"
-    },
-    {
-      "method_id": 804,
-      "file": "method_804.json",
-      "sha256": "b2b4c2af4a8f9d653887a1ea5ca2e3e574185b4353f36f6b60d1b7d3feef3f78",
-      "generated_at": "2026-08-26T14:22:23.744815+00:00"
-    },
-    {
-      "method_id": 805,
-      "file": "method_805.json",
-      "sha256": "c3d6708a374ad55f1b6fbebb32d8188894dd2f1ee93fd3bdd3a1fba8a8b2a63a",
-      "generated_at": "2026-08-26T14:22:54.741800+00:00"
-    },
-    {
-      "method_id": 806,
-      "file": "method_806.json",
-      "sha256": "8904cd4ffdc3f01cde748cc8948bbc9fcac1a15169c45bd09ebffbac3a106840",
-      "generated_at": "2026-08-26T14:22:54.741821+00:00"
-    },
-    {
-      "method_id": 807,
-      "file": "method_807.json",
-      "sha256": "250a9fe42fb432a271fc4669d1c260a0acae9686f2dc27dcc700bf007a362fc4",
-      "generated_at": "2026-08-26T14:22:54.741825+00:00"
-    },
-    {
-      "method_id": 808,
-      "file": "method_808.json",
-      "sha256": "d8958c2f0a31b8e5e0cdec50dd00a912b5471d88fc235334637f81e5e01368b0",
-      "generated_at": "2026-08-26T14:23:27.312451+00:00"
-    },
-    {
-      "method_id": 809,
-      "file": "method_809.json",
-      "sha256": "a93d377e9ebb205089c3cb1c148a036eb06f75ed882788d4be48747228e994fe",
-      "generated_at": "2026-08-26T14:23:27.312477+00:00"
-    },
-    {
-      "method_id": 810,
-      "file": "method_810.json",
-      "sha256": "c02c0a1038a7d98ce479c401fb23515928a7a969eb39f9bd104223f6e0a6f085",
-      "generated_at": "2026-08-26T14:23:27.312482+00:00"
-    },
-    {
-      "method_id": 811,
-      "file": "method_811.json",
-      "sha256": "b7db92ed8df358caf54de5ab0220e93803423edb45b37f6f17c5338e4d3e73a3",
-      "generated_at": "2026-08-26T14:24:00.979592+00:00"
-    },
-    {
-      "method_id": 812,
-      "file": "method_812.json",
-      "sha256": "457061c99d51d027f550927fc8b8021d9bd5d3664e0b0b446e1b3a718461b25a",
-      "generated_at": "2026-08-26T14:24:00.979612+00:00"
-    },
-    {
-      "method_id": 813,
-      "file": "method_813.json",
-      "sha256": "3cd22389f21b5d3907791d8d91d23dbfd7ed4d4f963cd1e3ce562065cf4473e5",
-      "generated_at": "2026-08-26T14:24:00.979626+00:00"
-    },
-    {
-      "method_id": 814,
-      "file": "method_814.json",
-      "sha256": "31441ea3ac785b29d57ef1cc2b2a254f54e49b5ac627d22980a1d67979cca4b3",
-      "generated_at": "2026-08-26T14:24:39.199333+00:00"
-    },
-    {
-      "method_id": 815,
-      "file": "method_815.json",
-      "sha256": "d49f20cbb5fd275596f6759120feaf8fd698a3abae5052870589d6fd5ea0318f",
-      "generated_at": "2026-08-26T14:24:39.199355+00:00"
-    },
-    {
-      "method_id": 816,
-      "file": "method_816.json",
-      "sha256": "09b31f1f8b15ae444faaa05e6fe2627b3161e9a2ca247e1e0dac7bc76ef281bf",
-      "generated_at": "2026-08-26T14:24:39.199360+00:00"
-    },
-    {
-      "method_id": 817,
-      "file": "method_817.json",
-      "sha256": "b29d44b3a9c13f012dc2977fa617e5ea923bee08428b8f4bc24b15dff8de60f9",
-      "generated_at": "2026-08-26T14:25:12.739218+00:00"
-    },
-    {
-      "method_id": 818,
-      "file": "method_818.json",
-      "sha256": "86635f2def433b3b561e000de50e00a0449a7994aa0ab2c779ef20a7232570c6",
-      "generated_at": "2026-08-26T14:25:12.739240+00:00"
-    },
-    {
-      "method_id": 819,
-      "file": "method_819.json",
-      "sha256": "5cc3b075ae8c329fef5dcf93e28c77ed07d6d582ca1d3481c8a39c007dc9031a",
-      "generated_at": "2026-08-26T14:25:12.739244+00:00"
-    },
-    {
-      "method_id": 820,
-      "file": "method_820.json",
-      "sha256": "d7e899589fd721dfd82cc6c42dda1c738c4f1100ad437d9e83e21f6bbd10174b",
-      "generated_at": "2026-08-26T14:25:45.402008+00:00"
-    },
-    {
-      "method_id": 821,
-      "file": "method_821.json",
-      "sha256": "4777b85cf9b835543a94a693c0344ef7d414721505061c8216522cfc27233257",
-      "generated_at": "2026-08-26T14:25:45.402027+00:00"
-    },
-    {
-      "method_id": 822,
-      "file": "method_822.json",
-      "sha256": "b6d63e5cf7ecc3456f0e194ba5b20951d4a8f0f25820c8a2975404428b329ce4",
-      "generated_at": "2026-08-26T14:25:45.402032+00:00"
-    },
-    {
-      "method_id": 823,
-      "file": "method_823.json",
-      "sha256": "209d8680b9f2fc0106620fc5054d35f12e218bdcafffd5e4f58dea15b4e348c2",
-      "generated_at": "2026-08-26T14:26:34.268759+00:00"
-    },
-    {
-      "method_id": 824,
-      "file": "method_824.json",
-      "sha256": "d231f2efce5b433afb89e496a59f74803444d0a997b21a6c12ba4d20da3a31ad",
-      "generated_at": "2026-08-26T14:26:34.268787+00:00"
-    },
-    {
-      "method_id": 825,
-      "file": "method_825.json",
-      "sha256": "dc257b02659e39c0763400cbbb5de4a67c08fae66b63b179013c429c213e9e46",
-      "generated_at": "2026-08-26T14:26:34.268793+00:00"
-    },
-    {
-      "method_id": 826,
-      "file": "method_826.json",
-      "sha256": "a1d32cd33142e2ff0151b46e0546199735f6ed393d9b0a80bb4e1164084dbaa3",
-      "generated_at": "2026-08-26T14:27:18.035400+00:00"
-    },
-    {
-      "method_id": 827,
-      "file": "method_827.json",
-      "sha256": "29b7015f444c231e143d0d33fb2d4af26b056da5befe1b747fe63693f0d56eae",
-      "generated_at": "2026-08-26T14:27:18.035422+00:00"
-    },
-    {
-      "method_id": 828,
-      "file": "method_828.json",
-      "sha256": "59951c9b3b8103cb559b52e776e6c17f1e1c9b3dc0fc1ea108c8aeb673b42cbc",
-      "generated_at": "2026-08-26T14:27:18.035427+00:00"
-    },
-    {
-      "method_id": 829,
-      "file": "method_829.json",
-      "sha256": "e3402f6936fb012a9903b11eb8a25fc41dadd925fd50db277d6c6f62deb5020f",
-      "generated_at": "2026-08-26T14:28:38.645719+00:00"
-    },
-    {
-      "method_id": 830,
-      "file": "method_830.json",
-      "sha256": "53c5178feab7b7f461db7a2202d4070565a9da231c333c3a2c219c5c3888c263",
-      "generated_at": "2026-08-26T14:28:38.645719+00:00"
-    },
-    {
-      "method_id": 831,
-      "file": "method_831.json",
-      "sha256": "6c0fae18600e7ec42123d3ca5fc62c66324d464df91389bc550fa03147915db4",
-      "generated_at": "2026-08-26T14:28:38.645719+00:00"
-    },
-    {
-      "method_id": 832,
-      "file": "method_832.json",
-      "sha256": "c2fb8f02e3f170227569935af4d564142729cef7086055a725069562c4617e00",
-      "generated_at": "2026-08-26T14:29:14.110831+00:00"
-    },
-    {
-      "method_id": 833,
-      "file": "method_833.json",
-      "sha256": "f496127d29cfbcb06a80dacc1347f49b0b1d7511325b3b3213b512300b1633c2",
-      "generated_at": "2026-08-26T14:29:14.110831+00:00"
-    },
-    {
-      "method_id": 834,
-      "file": "method_834.json",
-      "sha256": "8b27bc23944f9268ed873850f05fd5f5e3e722ecfdb5227aeb5e4a4fa20935dc",
-      "generated_at": "2026-08-26T14:29:14.110831+00:00"
-    },
-    {
-      "method_id": 835,
-      "file": "method_835.json",
-      "sha256": "f8a99f0f78fb47ea8883112f10cd0951ace280a2804ab2a90f07741df3115fe5",
-      "generated_at": "2026-08-26T14:29:38.893377+00:00"
-    },
-    {
-      "method_id": 836,
-      "file": "method_836.json",
-      "sha256": "179e670b17a4fdd0fda132bf2f651d53f0e51193e527d6c3546551073fa6851b",
-      "generated_at": "2026-08-26T14:29:38.893377+00:00"
-    },
-    {
-      "method_id": 837,
-      "file": "method_837.json",
-      "sha256": "b909da1c65cab1caade0666c80ba97dc5ba97b57485f1d52e7950af0ae67249d",
-      "generated_at": "2026-08-26T14:29:38.893377+00:00"
-    },
-    {
-      "method_id": 838,
-      "file": "method_838.json",
-      "sha256": "5baafa8eaa12480547f520149ea64aed1a600d2022201d3f8f6993442193d3a6",
-      "generated_at": "2026-08-26T14:30:05.334043+00:00"
-    },
-    {
-      "method_id": 839,
-      "file": "method_839.json",
-      "sha256": "68174132a50c79211af420411127d4826ad465500d4e1745e915b54ccfdf3856",
-      "generated_at": "2026-08-26T14:30:05.334043+00:00"
-    },
-    {
-      "method_id": 840,
-      "file": "method_840.json",
-      "sha256": "5f013c16c6c7f1d34fb00e82a78d031f861c97f32dc5ba1bd1281838a73e9af4",
-      "generated_at": "2026-08-26T14:30:05.334043+00:00"
-    },
-    {
-      "method_id": 841,
-      "file": "method_841.json",
-      "sha256": "54170ac502b3791c51812502e63ea5b23473d6264830780550fd1ed5b4572aaa",
-      "generated_at": "2026-08-26T14:30:50.262498+00:00"
-    },
-    {
-      "method_id": 842,
-      "file": "method_842.json",
-      "sha256": "552697169e82f08893cf8aecae88cdd578bd25c3946ef8eb574f7e3477354a67",
-      "generated_at": "2026-08-26T14:30:50.262498+00:00"
-    },
-    {
-      "method_id": 843,
-      "file": "method_843.json",
-      "sha256": "921b58845b2c3bfedb503638fbd3c8dabde9075584ddd1946a512d8d69a04a2d",
-      "generated_at": "2026-08-26T14:30:50.262498+00:00"
-    },
-    {
-      "method_id": 844,
-      "file": "method_844.json",
-      "sha256": "ef3b4194b0095a597f6c50f879e33a3594fef82036cc8ad7d61aebce0f03a72d",
-      "generated_at": "2026-08-26T14:31:16.731869+00:00"
-    },
-    {
-      "method_id": 845,
-      "file": "method_845.json",
-      "sha256": "bd466d253dd295f7d1f1fa0f974dcab7ef45584f0098302b15927e375ebb298e",
-      "generated_at": "2026-08-26T14:31:16.731869+00:00"
-    },
-    {
-      "method_id": 846,
-      "file": "method_846.json",
-      "sha256": "ae00811428ab2883be2f0c4332e34aebf2a5ded71998cbecb7c06a7d0a4b2b6e",
-      "generated_at": "2026-08-26T14:31:16.731869+00:00"
-    },
-    {
-      "method_id": 847,
-      "file": "method_847.json",
-      "sha256": "9b8c65209df75de2797ecdbad54ae8ca2ecb1eb74b2ab9e78d0afbc39560e293",
-      "generated_at": "2026-08-26T14:31:43.652924+00:00"
-    },
-    {
-      "method_id": 848,
-      "file": "method_848.json",
-      "sha256": "efbac3d405ccf8ee5035fcf50eb4dbbd8d69527b2c83a6561a3de2d3bccca75b",
-      "generated_at": "2026-08-26T14:31:43.652924+00:00"
-    },
-    {
-      "method_id": 849,
-      "file": "method_849.json",
-      "sha256": "04f2cd4548950d49b5c42226b5412a3db03be0a4152fa4dfba53fbe0f9fee335",
-      "generated_at": "2026-08-26T14:31:43.652924+00:00"
-    },
-    {
-      "method_id": 850,
-      "file": "method_850.json",
-      "sha256": "2a5223c292d691a607b28e3f8b3b3a526769432a7cbf7bf78641dd0d9a80f2ca",
-      "generated_at": "2026-08-26T14:32:14.749886+00:00"
-    },
-    {
-      "method_id": 851,
-      "file": "method_851.json",
-      "sha256": "88bd9b784f17b15837e9e05ef555df0d90808ed1366250600abc4ea63167efe6",
-      "generated_at": "2026-08-26T14:32:14.749886+00:00"
-    },
-    {
-      "method_id": 852,
-      "file": "method_852.json",
-      "sha256": "dd7fa8770b94f1314157be76eec037fc0782f6e3937982eaed074edec846c8f5",
-      "generated_at": "2026-08-26T14:32:14.749886+00:00"
-    },
-    {
-      "method_id": 853,
-      "file": "method_853.json",
-      "sha256": "77b7a4958d7ecb660b1d0845347a302d847d7092aae2876ed04b575072aa74d9",
-      "generated_at": "2026-08-26T14:32:43.967586+00:00"
-    },
-    {
-      "method_id": 854,
-      "file": "method_854.json",
-      "sha256": "98baaf097f81c9737c051e84f293bda01e8cce75cfcce6ecad78d6028cc211a0",
-      "generated_at": "2026-08-26T14:32:43.967586+00:00"
-    },
-    {
-      "method_id": 855,
-      "file": "method_855.json",
-      "sha256": "3b1ccfa71904ac57b2303b2d4ad8610ec37469db41e1436239a5a23effaf1e14",
-      "generated_at": "2026-08-26T14:32:43.967586+00:00"
-    },
-    {
-      "method_id": 856,
-      "file": "method_856.json",
-      "sha256": "dc723ec04701b8bcf44ecb068ba32b4148b57572dedd6c9143fabd1be3c2d071",
-      "generated_at": "2026-08-26T14:33:18.246856+00:00"
-    },
-    {
-      "method_id": 857,
-      "file": "method_857.json",
-      "sha256": "b15bceef47ddc1e8ed5d6200d83dad99cd6d974cbdf0e1eb642f1d62324cd219",
-      "generated_at": "2026-08-26T14:33:18.246856+00:00"
-    },
-    {
-      "method_id": 858,
-      "file": "method_858.json",
-      "sha256": "21f73e0af9af2eaae83a1896e495ed67c08de1ce3896c11b31e772ce49b29e72",
-      "generated_at": "2026-08-26T14:33:18.246856+00:00"
-    }
-  ],
-  "sha256": "cc61d9235e6077d7bcb3458e12ac509f613bfd9e40e574bdf3a87e23dcaac22f",
-  "updated_at": "2026-08-26T14:33:18.246856+00:00",
-  "last_updated": "2026-08-26T14:27:18.036870+00:00"
+  "709": {
+    "file": "method_709_ibge_municipios_sample.json",
+    "sha256": "377e68e5ee6ead2d4a4f305434adce5753d1a54df42c627f2aa464428c919146",
+    "generated_at": "",
+    "name": "method_709_ibge_municipios_sample.json",
+    "tier": "TIER0"
+  },
+  "710": {
+    "file": "method_710_startup_dataset_sample.json",
+    "sha256": "1e44d213afead84011c839daa50a0165ca159c1c60a14289f5e5659e8d24792a",
+    "generated_at": "",
+    "name": "method_710_startup_dataset_sample.json",
+    "tier": "TIER0"
+  },
+  "711": {
+    "file": "method_711_enterprise_dataset_sample.json",
+    "sha256": "c3bd4349fa5b7b7832f360b0582211633036f3fea8e4c63a67adfc27d2fdb408",
+    "generated_at": "",
+    "name": "method_711_enterprise_dataset_sample.json",
+    "tier": "TIER0"
+  },
+  "712": {
+    "file": "method_712_creators_dataset_sample.json",
+    "sha256": "ed7dd46b45a972add6c68b807a8ca59fe795f2b6a49830683cdc463665e01af3",
+    "generated_at": "",
+    "name": "method_712_creators_dataset_sample.json",
+    "tier": "TIER0"
+  },
+  "713": {
+    "file": "method_713_developers_dataset_sample.json",
+    "sha256": "4770c8c1d2e97af2a8933df9167fad2d26a3127196da5d85c0eacbbb6d6f71e5",
+    "generated_at": "",
+    "name": "method_713_developers_dataset_sample.json",
+    "tier": "TIER0"
+  },
+  "714": {
+    "file": "method_714.json",
+    "sha256": "3698d1bafebf24dff6a1cbe85a51c47abc01dcfa75bceb2efd93c64175bd6fc0",
+    "generated_at": "2026-08-26T14:01:09.490166+00:00",
+    "name": "Dataset limpeza e venda (for agencies)",
+    "tier": "TIER0"
+  },
+  "715": {
+    "file": "method_715_leads_sample.json",
+    "sha256": "d2468d1bbc3420f7e3ad98694f9e98c0b93391edf5e89900aee82ae8b38cdbce",
+    "generated_at": "",
+    "name": "method_715_leads_sample.json",
+    "tier": "TIER0"
+  },
+  "716": {
+    "file": "method_716_startup_leads_sample.json",
+    "sha256": "836ed881a37ca87d45407d0690bb013d78901186172e2609f3e30153ceea2348",
+    "generated_at": "",
+    "name": "method_716_startup_leads_sample.json",
+    "tier": "TIER0"
+  },
+  "717": {
+    "file": "method_717_enterprise_leads_sample.json",
+    "sha256": "b68b327053fa7f16ca2e7a274003752f6620638ab18bddafbfbcda58afae35b3",
+    "generated_at": "",
+    "name": "method_717_enterprise_leads_sample.json",
+    "tier": "TIER0"
+  },
+  "718": {
+    "file": "method_718_creators_leads_sample.json",
+    "sha256": "8f5ed1194809bd0b894f32e106959a2d8235f379edad164203443b0818c0ff7d",
+    "generated_at": "",
+    "name": "method_718_creators_leads_sample.json",
+    "tier": "TIER0"
+  },
+  "719": {
+    "file": "method_719_developers_leads_sample.json",
+    "sha256": "0c8810e414305d207cf0b337785db87caf2f37af004c1a21871a98fdd6c137d1",
+    "generated_at": "",
+    "name": "method_719_developers_leads_sample.json",
+    "tier": "TIER0"
+  },
+  "720": {
+    "file": "method_720.json",
+    "sha256": "b096912d1aa52884385481be187228ff7c98044b246764e8fee815a2df5e452f",
+    "generated_at": "2026-08-26T14:01:09.490488+00:00",
+    "name": "Lead generation lists (for agencies)",
+    "tier": "TIER0"
+  },
+  "721": {
+    "file": "method_721_github_technographics_sample.json",
+    "sha256": "2e6a9f9985f53b3622ed859e8bc8e6fec01b9310c2194774058b471a7ee43ff1",
+    "generated_at": "",
+    "name": "method_721_github_technographics_sample.json",
+    "tier": "TIER0"
+  },
+  "722": {
+    "file": "method_722.json",
+    "sha256": "bf0eb94a8b0db4812b76d8822cc436631669f7e65427364d1f685b173c676c80",
+    "generated_at": "2026-08-26T14:01:09.490671+00:00",
+    "name": "Company technographics DB (for startups)",
+    "tier": "TIER0"
+  },
+  "723": {
+    "file": "method_723.json",
+    "sha256": "76cdd69c63e3b412119ae82290f808cfb0191d1c86ab202ae2c75f2f2f2da0c9",
+    "generated_at": "2026-08-26T14:01:38.486338+00:00",
+    "name": "API enriquecimento CNPJ (for saas)",
+    "tier": "TIER0"
+  },
+  "724": {
+    "file": "method_724.json",
+    "sha256": "e0b937e861f540f2f7031497de6acfc695621ea26449e08e6f437f24a4ac62a0",
+    "generated_at": "2026-08-26T14:01:38.486695+00:00",
+    "name": "Relatório densidade CNAE regional (for consulting)",
+    "tier": "TIER0"
+  },
+  "725": {
+    "file": "method_725.json",
+    "sha256": "5f11d20ff15c9488cf3c8dfab8c13d20c8f0ca89f0aabd27439cb62200d545be",
+    "generated_at": "2026-08-26T14:01:38.486900+00:00",
+    "name": "Feed monitoramento licitações tech (for data_feed)",
+    "tier": "TIER0"
+  },
+  "726": {
+    "file": "method_726.json",
+    "sha256": "465514dc38c49685df3f13c3b282b8098170dbeba4d080349b9f7859a1177945",
+    "generated_at": "2026-08-26T14:02:06.182275+00:00",
+    "name": "Base contatos investidores LATAM (for startups)",
+    "tier": "TIER0"
+  },
+  "727": {
+    "file": "method_727_job_market_proxy_sample.json",
+    "sha256": "6c398af043dda754c7e2407b9e641be5f3ed5fc2f7a3e0cea126234a2015b4f1",
+    "generated_at": "",
+    "name": "method_727_job_market_proxy_sample.json",
+    "tier": "TIER0"
+  },
+  "728": {
+    "file": "method_728.json",
+    "sha256": "f6d0ef16e11ed3b9400e54f02123473f6c0598e4e90660bed47d7f74caa6938c",
+    "generated_at": "2026-08-26T14:02:06.182606+00:00",
+    "name": "Feed vagas tech remotas LATAM (for recruiting)",
+    "tier": "TIER0"
+  },
+  "729": {
+    "file": "method_729.json",
+    "sha256": "eefe68d63f74e5e006a660887a924ac354842a2dcbd66ac49c7c345e71ffd83b",
+    "generated_at": "2026-08-26T14:02:06.182799+00:00",
+    "name": "Benchmark salarial tech regional (for hr_consulting)",
+    "tier": "TIER0"
+  },
+  "730": {
+    "file": "method_730.json",
+    "sha256": "76d79b136280a75f49531638bef45dd1fca3d9e01343d3423c06a658fb0d3bff",
+    "generated_at": "2026-08-26T14:02:34.231116+00:00",
+    "name": "Mapa startups LATAM por vertical (for investors)",
+    "tier": "TIER0"
+  },
+  "731": {
+    "file": "method_731.json",
+    "sha256": "6d872500c290e63fed171f48340998725ef320d0c3ae01b5431a57e309e157cc",
+    "generated_at": "2026-08-26T14:02:34.231461+00:00",
+    "name": "Catálogo fornecedores tech municipais (for gov_procurement)",
+    "tier": "TIER0"
+  },
+  "732": {
+    "file": "method_732.json",
+    "sha256": "46f31e36e0ca49b04ccbdeab799a1bdb105099593aae70bd7ed191d7d6b91895",
+    "generated_at": "2026-08-26T14:02:34.231735+00:00",
+    "name": "Feed alterações societárias empresas tech (for legal_compliance)",
+    "tier": "TIER0"
+  },
+  "733": {
+    "file": "method_733.json",
+    "sha256": "167d6b869a8fcfadb2572bd55119cc5722e7b0b6694f9d9dc61536db8d820b17",
+    "generated_at": "2026-08-26T14:03:16.074370+00:00",
+    "name": "Real estate pricing models",
+    "tier": "TIER0"
+  },
+  "734": {
+    "file": "method_734.json",
+    "sha256": "36fb9447c5de265697a74a4098c67d3655e1c28bf4d5b277414bac33443a1892",
+    "generated_at": "2026-08-26T14:03:16.074729+00:00",
+    "name": "Real estate pricing models (for startups)",
+    "tier": "TIER0"
+  },
+  "735": {
+    "file": "method_735.json",
+    "sha256": "642da410b828d3414b4059ad9d6d9747221e24fa3fdc74772a1e6214d05a3736",
+    "generated_at": "2026-08-26T14:03:16.074938+00:00",
+    "name": "Real estate pricing models (for enterprises)",
+    "tier": "TIER0"
+  },
+  "736": {
+    "file": "method_736.json",
+    "sha256": "63541c4edad5a16eec7932c81f9259a45e0c715dff643cd1d466c43469737665",
+    "generated_at": "2026-08-26T14:03:50.502917+00:00",
+    "name": "Dataset métricas ESG empresas BR (for investors)",
+    "tier": "TIER0"
+  },
+  "737": {
+    "file": "method_737.json",
+    "sha256": "ffeb5a5b4cc21bdc8e67fdd7fe7e0513c71bbd9266084d4c437f83f7cd758bd3",
+    "generated_at": "2026-08-26T14:03:50.503212+00:00",
+    "name": "Base patentes software brasileiras (for tech_transfer)",
+    "tier": "TIER0"
+  },
+  "738": {
+    "file": "method_738.json",
+    "sha256": "9fbe20cd974a219ca749a400e2ba4cf48efe4f2435f26225f369b7f5d8fcbb1f",
+    "generated_at": "2026-08-26T14:03:50.503393+00:00",
+    "name": "Alertas regulatórios por setor/CNAE (for regtech)",
+    "tier": "TIER0"
+  },
+  "739": {
+    "file": "method_739.json",
+    "sha256": "fe96ed2b91b51487e1b24bf23ef1d70f454561de83a02775a0d478d447ac2163",
+    "generated_at": "2026-08-26T14:04:22.924602+00:00",
+    "name": "Base hospitais e clínicas privadas BR (for healthtech)",
+    "tier": "TIER0"
+  },
+  "740": {
+    "file": "method_740.json",
+    "sha256": "7abafdf496339d2c6e6d5dbf9e12c0859ff2ece457245790d11bf8c8298b34b1",
+    "generated_at": "2026-08-26T14:04:22.925037+00:00",
+    "name": "Calendário eventos tech LATAM (for marketing_b2b)",
+    "tier": "TIER0"
+  },
+  "741": {
+    "file": "method_741.json",
+    "sha256": "5c21c93b41feabf376a9de0f8b67e47405aa4afd0f58950b17a7ca2efa6c4def",
+    "generated_at": "2026-08-26T14:04:22.925171+00:00",
+    "name": "Diretório fundos VC LATAM ativos (for founders)",
+    "tier": "TIER0"
+  },
+  "742": {
+    "file": "method_742.json",
+    "sha256": "5584c74d303a8c378f8e5a3408e671d44b030f6d4585f30d73c98194b8f39401",
+    "generated_at": "2026-08-26T14:05:08.341398+00:00",
+    "name": "Sports betting odds API (for creators)",
+    "tier": "TIER0"
+  },
+  "743": {
+    "file": "method_743.json",
+    "sha256": "ae654205a62cd44b04e1c19d80e97481cf2bfd78c8328046f517bb5dd4ce0608",
+    "generated_at": "2026-08-26T14:05:08.341953+00:00",
+    "name": "Sports betting odds API (for developers)",
+    "tier": "TIER0"
+  },
+  "744": {
+    "file": "method_744.json",
+    "sha256": "e8c8a40e9a424b33f892c69c6df0f2d82b3323727e4d0d085d5c5e2398614cdd",
+    "generated_at": "2026-08-26T14:05:08.342231+00:00",
+    "name": "Sports betting odds API (for agencies)",
+    "tier": "TIER0"
+  },
+  "745": {
+    "file": "method_745.json",
+    "sha256": "e8e9f9472834b6e2c69ef7fe302c9ee64afdd55aaa6b46d10b77bc6d1034bb31",
+    "generated_at": "2026-08-26T14:05:41.739812+00:00",
+    "name": "Base escolas e cursos privados BR (for edtech)",
+    "tier": "TIER0"
+  },
+  "746": {
+    "file": "method_746.json",
+    "sha256": "f059a9d95f7e7889bd3f150b832b1852fbdf15193f426694840a9d0ea1572ba3",
+    "generated_at": "2026-08-26T14:05:41.740293+00:00",
+    "name": "Feed editais fomento tech ativos (for startups)",
+    "tier": "TIER0"
+  },
+  "747": {
+    "file": "method_747.json",
+    "sha256": "2afb4798ce3d470d9ac953552602cf350fd5898d45f3917b472ef06c749b753d",
+    "generated_at": "2026-08-26T14:05:41.740476+00:00",
+    "name": "Diretório podcasts tech BR ativos (for sponsors)",
+    "tier": "TIER0"
+  },
+  "748": {
+    "file": "method_748.json",
+    "sha256": "98450b504ba6c2a84d4d91a92feb5345e6b065e1e97f2f34daa3102015e8a541",
+    "generated_at": "2026-08-26T14:10:07.655255+00:00",
+    "name": "Weather derivatives data (for creators)",
+    "tier": "TIER0"
+  },
+  "749": {
+    "file": "method_749.json",
+    "sha256": "2bd2ff0964e96407dbc27cc67fb16c35d0e1e29cc51ccc52f0fb7d5d59ea6ea7",
+    "generated_at": "2026-08-26T14:10:07.655721+00:00",
+    "name": "Weather derivatives data (for developers)",
+    "tier": "TIER0"
+  },
+  "750": {
+    "file": "method_750.json",
+    "sha256": "3aa652f594d6e49f01c8b9d5853ae83e2f06582e94e4b9f36e99d381ba6b3004",
+    "generated_at": "2026-08-26T14:10:07.655864+00:00",
+    "name": "Weather derivatives data (for agencies)",
+    "tier": "TIER0"
+  },
+  "751": {
+    "file": "method_751.json",
+    "sha256": "7f0a62f8e15280d977e1bf53252466cf67abd1f107ceb32b540ed0be8c404bbe",
+    "generated_at": "2026-08-26T14:11:02.755049+00:00",
+    "name": "Base farmácias e drogarias BR (for pharma_sales)",
+    "tier": "TIER0"
+  },
+  "752": {
+    "file": "method_752.json",
+    "sha256": "6b788ef353eb24fefb1c821b07725027b4ce897b859b5e93cbd329f470556751",
+    "generated_at": "2026-08-26T14:11:02.755408+00:00",
+    "name": "Feed M&A tech LATAM recente (for investment_banking)",
+    "tier": "TIER0"
+  },
+  "753": {
+    "file": "method_753.json",
+    "sha256": "0ee10e4668fdda5073157c541c9c7521ecd1c8891c1ad7284d959fbf0a7bee38",
+    "generated_at": "2026-08-26T14:11:02.755895+00:00",
+    "name": "Diretório aceleradoras e incubadoras BR (for founders)",
+    "tier": "TIER0"
+  },
+  "754": {
+    "file": "method_754.json",
+    "sha256": "eb44aa0f4b37288a7a22d35cebc9436964d42274e42d2a80d4ed993eedfd45f4",
+    "generated_at": "2026-08-26T14:12:32.393247Z",
+    "name": "Supply chain risk scores (for creators)",
+    "tier": "TIER0"
+  },
+  "755": {
+    "file": "method_755.json",
+    "sha256": "94ee016fa96d4e111a0a2dd3bd9639b9d21d5ac40a8256f11893f2368faa481f",
+    "generated_at": "2026-08-26T14:12:32.393317Z",
+    "name": "Supply chain risk scores (for developers)",
+    "tier": "TIER0"
+  },
+  "756": {
+    "file": "method_756.json",
+    "sha256": "9e31715cc9bb902f218ed0a18706afd4b58d66495170d99a69f9934522bc979a",
+    "generated_at": "2026-08-26T14:12:32.393405Z",
+    "name": "Supply chain risk scores (for agencies)",
+    "tier": "TIER0"
+  },
+  "757": {
+    "file": "method_757.json",
+    "sha256": "e4dc1994dd49fa5a5313ffd847cfee8f5d8bb57f5664fad961f45faec4c55dde",
+    "generated_at": "2026-08-26T14:12:53.364344Z",
+    "name": "Credit risk alternative data",
+    "tier": "TIER0"
+  },
+  "758": {
+    "file": "method_758.json",
+    "sha256": "eb3ea571fc1a2144f9abb1cbd292043295c7ac6c4c219ae19454f8e4a270a783",
+    "generated_at": "2026-08-26T14:12:53.364362Z",
+    "name": "Credit risk alternative data (for startups)",
+    "tier": "TIER0"
+  },
+  "759": {
+    "file": "method_759.json",
+    "sha256": "5f03f42fc1dbafe52008b985ec2f274da5535efa41e4f31dd683fa11243c55a9",
+    "generated_at": "2026-08-26T14:12:53.364366Z",
+    "name": "Credit risk alternative data (for SMBs)",
+    "tier": "TIER0"
+  },
+  "760": {
+    "file": "method_760.json",
+    "sha256": "f3683a2c687c925d619069461edbac6ea7a1f5d759e8b782b8bf38e181f9aab2",
+    "generated_at": "2026-08-26T14:13:12.047420Z",
+    "name": "ESG compliance data (for exporters)",
+    "tier": "TIER0"
+  },
+  "761": {
+    "file": "method_761.json",
+    "sha256": "fe0bd615da838cf14dfdd3600d77283c2c355a1f8b060c3c7e79dffd145d1f97",
+    "generated_at": "2026-08-26T14:13:12.047448Z",
+    "name": "Regulatory change tracking (for fintechs)",
+    "tier": "TIER0"
+  },
+  "762": {
+    "file": "method_762.json",
+    "sha256": "ddb176f7174cf9911375539ce69e5c031804c5a8f3d93b65e8d59c9977e203b4",
+    "generated_at": "2026-08-26T14:13:12.047454Z",
+    "name": "Talent market benchmarking (for HR tech)",
+    "tier": "TIER0"
+  },
+  "763": {
+    "file": "method_763.json",
+    "sha256": "ca033901e98c970e7ca0859289abf025895e04f2065ebee831a1e8906a927afa",
+    "generated_at": "2026-08-26T14:13:32.186597Z",
+    "name": "Real estate valuation data (for proptech)",
+    "tier": "TIER0"
+  },
+  "764": {
+    "file": "method_764.json",
+    "sha256": "d58a45b8e08ce5ea1794d1ca8fdb839c2df26e944a266ca48a7a12f0d2ef8138",
+    "generated_at": "2026-08-26T14:13:32.186623Z",
+    "name": "Healthcare utilization trends (for healthtech)",
+    "tier": "TIER0"
+  },
+  "765": {
+    "file": "method_765.json",
+    "sha256": "dcf0ae99e8ca052425d7dc458e86bb0e2aa8af532e71d1be1e75862be38b75d7",
+    "generated_at": "2026-08-26T14:13:32.186629Z",
+    "name": "Education enrollment forecasting (for edtech)",
+    "tier": "TIER0"
+  },
+  "766": {
+    "file": "method_766.json",
+    "sha256": "7c0d1fca77e91231ef3ba8be70746d0cd55758be42b8211213e5f0e32a7b294c",
+    "generated_at": "2026-08-26T14:13:54.416122Z",
+    "name": "Agricultural commodity price forecasting (for agritech)",
+    "tier": "TIER0"
+  },
+  "767": {
+    "file": "method_767.json",
+    "sha256": "dbd98b7b3f47a68ba9ab498364acf95796c91d18b3f4b7d5064f5fe5b0f7fc2b",
+    "generated_at": "2026-08-26T14:13:54.416148Z",
+    "name": "Energy consumption benchmarking (for cleantech)",
+    "tier": "TIER0"
+  },
+  "768": {
+    "file": "method_768.json",
+    "sha256": "bb6778ad63284d3fc3f1c4b0ddb1dacaf04473d5c48b878e51784ba4624579aa",
+    "generated_at": "2026-08-26T14:13:54.416153Z",
+    "name": "Retail foot traffic analytics (for retailtech)",
+    "tier": "TIER0"
+  },
+  "769": {
+    "file": "method_769.json",
+    "sha256": "491e6abcad36327f0548667d45fb4da8efbfadb5175efef997ee7f555624c26a",
+    "generated_at": "2026-08-26T14:14:16.025303Z",
+    "name": "Logistics cost benchmarking (for e-commerce)",
+    "tier": "TIER0"
+  },
+  "770": {
+    "file": "method_770.json",
+    "sha256": "f2ed8118945c515b5f477c9298439a7f55277dc55b7c4541f42850c4af478907",
+    "generated_at": "2026-08-26T14:14:16.025324Z",
+    "name": "SaaS churn prediction data (for B2B SaaS)",
+    "tier": "TIER0"
+  },
+  "771": {
+    "file": "method_771.json",
+    "sha256": "b17a409b657f647f9ad76ceda9c97490d31a7f6e1f833ee8ebeb9e079fae2fe3",
+    "generated_at": "2026-08-26T14:14:16.025328Z",
+    "name": "Cybersecurity threat intelligence (for MSSP)",
+    "tier": "TIER0"
+  },
+  "772": {
+    "file": "method_772.json",
+    "sha256": "568c6feefe2be535ac23302ddf5d83ceb5cc315f3b93dc938d1a00b9b7d3cb05",
+    "generated_at": "2026-08-26T14:14:35.392184Z",
+    "name": "Influencer engagement benchmarking (for creator economy)",
+    "tier": "TIER0"
+  },
+  "773": {
+    "file": "method_773.json",
+    "sha256": "3ce8a31b2e32222775775a31117e0475fcabf2dcd8fa27bb377d963ff335a9cf",
+    "generated_at": "2026-08-26T14:14:35.392203Z",
+    "name": "Patent landscape analysis (for R&D)",
+    "tier": "TIER0"
+  },
+  "774": {
+    "file": "method_774.json",
+    "sha256": "9d3d5d42ce5b12108a6c39574763a2f8e712faacba9e75ff5912a6ef9e7e0c7b",
+    "generated_at": "2026-08-26T14:14:35.392207Z",
+    "name": "Clinical trial recruitment data (for pharma)",
+    "tier": "TIER0"
+  },
+  "775": {
+    "file": "method_775.json",
+    "sha256": "84d8e71d394dbac8e181980e294ce66f9d09adbadb6c64faf7f2979314975613",
+    "generated_at": "2026-08-26T14:14:56.368886Z",
+    "name": "Carbon credit verification data (for sustainability)",
+    "tier": "TIER0"
+  },
+  "776": {
+    "file": "method_776.json",
+    "sha256": "eb9dd4b5209c8eedab9384cf5be37d7ce29680a19df40b306bc16c7e1dc1ca27",
+    "generated_at": "2026-08-26T14:14:56.368914Z",
+    "name": "Insurance claims fraud detection (for insurtech)",
+    "tier": "TIER0"
+  },
+  "777": {
+    "file": "method_777.json",
+    "sha256": "8f7a510735dcf3d54df13465929077342085a5bf818545dbc9d38bf291d42f51",
+    "generated_at": "2026-08-26T14:14:56.368918Z",
+    "name": "Municipal tax compliance data (for govtech)",
+    "tier": "TIER0"
+  },
+  "778": {
+    "file": "method_778.json",
+    "sha256": "b35bb888df0b3f26914cdf21fdfbfa76bdf6830d103be16ec6a6774fa433beae",
+    "generated_at": "2026-08-26T14:15:21.956333Z",
+    "name": "Legal tech contract analysis data (for legaltech)",
+    "tier": "TIER0"
+  },
+  "779": {
+    "file": "method_779.json",
+    "sha256": "6d9b24702b65b2c91264b196842789d93f3f4fcca47817cac0e73c2c73c5f534",
+    "generated_at": "2026-08-26T14:15:21.956368Z",
+    "name": "Telehealth adoption metrics (for digital health)",
+    "tier": "TIER0"
+  },
+  "780": {
+    "file": "method_780.json",
+    "sha256": "7d81887950004d4e19779b781a865f27efa16ee3b3357833e2c92feb1aa44609",
+    "generated_at": "2026-08-26T14:15:21.956374Z",
+    "name": "Gig economy income benchmarking (for fintech/HR)",
+    "tier": "TIER0"
+  },
+  "781": {
+    "file": "method_781.json",
+    "sha256": "e6eecc25d959fb5ac8420e2643be0d6be724bb42d6b5e86287d22afce343629d",
+    "generated_at": "2026-08-26T14:15:43.537908Z",
+    "name": "Construction material price index (for constructiontech)",
+    "tier": "TIER0"
+  },
+  "782": {
+    "file": "method_782.json",
+    "sha256": "7e3840530bfbadd809aaf0d3d6d3241156c6a381e551c5ce66e879c37e65c7f9",
+    "generated_at": "2026-08-26T14:15:43.537934Z",
+    "name": "Restaurant menu pricing benchmark (for foodtech)",
+    "tier": "TIER0"
+  },
+  "783": {
+    "file": "method_783.json",
+    "sha256": "79c6535a16df47f8382a73eaffa0cef753eb2d21a0836fe3a217962696016acf",
+    "generated_at": "2026-08-26T14:15:43.537940Z",
+    "name": "EV charging station utilization (for mobilitytech)",
+    "tier": "TIER0"
+  },
+  "784": {
+    "file": "method_784.json",
+    "sha256": "6423245f6287aeed4f30bcfe2c79f1336b8584ceefa49087fba1d51b43b6142b",
+    "generated_at": "2026-08-26T14:16:06.230626Z",
+    "name": "Pet market spending trends (for pettech)",
+    "tier": "TIER0"
+  },
+  "785": {
+    "file": "method_785.json",
+    "sha256": "9dc1859b25f46b521a87255ff252e7dc08f8e5232ed07ea98529e21cb9ca1638",
+    "generated_at": "2026-08-26T14:16:06.230651Z",
+    "name": "Renewable energy project pipeline (for greentech investors)",
+    "tier": "TIER0"
+  },
+  "786": {
+    "file": "method_786.json",
+    "sha256": "8bc175c271edf67dd688de954aebec101dc007a313d170f11fd7b94be72c272f",
+    "generated_at": "2026-08-26T14:16:06.230656Z",
+    "name": "Senior care demand forecasting (for silvertech)",
+    "tier": "TIER0"
+  },
+  "787": {
+    "file": "method_787.json",
+    "sha256": "65a2f1fcf9a2bd67afdde27e0244a10be60341844f8c6ab66c14d5c855f71c42",
+    "generated_at": "2026-08-26T14:16:27.186427Z",
+    "name": "Creator economy platform benchmarking (for creator tools)",
+    "tier": "TIER0"
+  },
+  "788": {
+    "file": "method_788.json",
+    "sha256": "6aaa327388a3cd536d4ebb919c65ea252b50fe1e1d0a976da73b9c8c6ca3cdc5",
+    "generated_at": "2026-08-26T14:16:27.186454Z",
+    "name": "Municipal public spending transparency (for civic tech)",
+    "tier": "TIER0"
+  },
+  "789": {
+    "file": "method_789.json",
+    "sha256": "825cc230a593df7a80635b39c818447d429593b4ef21de1d52e9bcaa06593092",
+    "generated_at": "2026-08-26T14:16:27.186459Z",
+    "name": "Cross-border e-commerce compliance (for export tech)",
+    "tier": "TIER0"
+  },
+  "790": {
+    "file": "method_790.json",
+    "sha256": "96e1331d26ff018ca38b75ae00565aea6dbd199c9ebfe4b1148730b2930e9a48",
+    "generated_at": "2026-08-26T14:19:05.907937Z",
+    "name": "Waste management route optimization (for smart cities)",
+    "tier": "TIER0"
+  },
+  "791": {
+    "file": "method_791.json",
+    "sha256": "68484fdfc9a55c0ace0d332d9dbfb38cb639670e72145e42992d55c18de2a533",
+    "generated_at": "2026-08-26T14:19:05.907962Z",
+    "name": "Influencer fraud detection signals (for adtech)",
+    "tier": "TIER0"
+  },
+  "792": {
+    "file": "method_792.json",
+    "sha256": "8746b292fdd1874583829cae26cafcff3e5a060c7fbbdc353a5c3f2bfc35ba89",
+    "generated_at": "2026-08-26T14:19:05.907966Z",
+    "name": "Small business loan default prediction (for community banking)",
+    "tier": "TIER0"
+  },
+  "793": {
+    "file": "method_793.json",
+    "sha256": "609a2c192ee2e8fa463f3d62b8965ba2135e7caa436fb02f86deab1ff9eb7ace",
+    "generated_at": "2026-08-26T14:19:34.752318Z",
+    "name": "Podcast audience monetization signals (for audio tech)",
+    "tier": "TIER0"
+  },
+  "794": {
+    "file": "method_794.json",
+    "sha256": "5df815775a9fc632ec59369abb450f18d2a51db3a6f76cb99a76ecea839e5653",
+    "generated_at": "2026-08-26T14:19:34.752351Z",
+    "name": "Used vehicle price depreciation curves (for automotive tech)",
+    "tier": "TIER0"
+  },
+  "795": {
+    "file": "method_795.json",
+    "sha256": "65304fe560f6c49c9598d30c403129075c830aa88b51332c04c77f4d085890b2",
+    "generated_at": "2026-08-26T14:19:34.752356Z",
+    "name": "Freelancer skill premium benchmarking (for talent platforms)",
+    "tier": "TIER0"
+  },
+  "796": {
+    "file": "method_796.json",
+    "sha256": "0f5385386948a40029b79833ee18d7e32ea79eaccbbdc3b2163e3dffe8a3e637",
+    "generated_at": "2026-08-26T14:19:58.187326Z",
+    "name": "Subscription box churn signals (for e-commerce)",
+    "tier": "TIER0"
+  },
+  "797": {
+    "file": "method_797.json",
+    "sha256": "f345682baa1e05a00608b47d56d8228807f164f928188627b6f5c38889d05b06",
+    "generated_at": "2026-08-26T14:19:58.187352Z",
+    "name": "Dental clinic utilization rates (for healthtech)",
+    "tier": "TIER0"
+  },
+  "798": {
+    "file": "method_798.json",
+    "sha256": "19a6e3197801ae0a3b1fcec941c9f5f00bd81023ac36c4a329a21616e4889cbb",
+    "generated_at": "2026-08-26T14:19:58.187358Z",
+    "name": "Boutique hotel occupancy forecasting (for traveltech)",
+    "tier": "TIER0"
+  },
+  "799": {
+    "file": "method_799.json",
+    "sha256": "bd886c94a83452ee366d3828d8c4515d3cf23b25c54cadbc5eb4073e14b70c40",
+    "generated_at": "2026-08-26T14:21:47.055759+00:00",
+    "name": "Government tender alerts",
+    "tier": "TIER0"
+  },
+  "800": {
+    "file": "method_800.json",
+    "sha256": "a8c532d69f42be769ef33ff2c922d7880c1db9023939606ac6b294392a458924",
+    "generated_at": "2026-08-26T14:21:47.055775+00:00",
+    "name": "Government tender alerts (for startups)",
+    "tier": "TIER0"
+  },
+  "801": {
+    "file": "method_801.json",
+    "sha256": "3f67a751898887c676ba9ac4541b8f860b6d4bfa8576acb52d50c30033f2a7eb",
+    "generated_at": "2026-08-26T14:21:47.055779+00:00",
+    "name": "Government tender alerts (for enterprises)",
+    "tier": "TIER0"
+  },
+  "802": {
+    "file": "method_802.json",
+    "sha256": "ca53f2cc7a769d77810870c6aac5974d6334fdcb7fe3e25797b1a7a73ee43ac1",
+    "generated_at": "2026-08-26T14:22:23.744791+00:00",
+    "name": "Government tender alerts (for creators)",
+    "tier": "TIER0"
+  },
+  "803": {
+    "file": "method_803.json",
+    "sha256": "d0e159c09b19db61323bae406b7125ef8fdd2abddd1631e48e5043e7c54e0a68",
+    "generated_at": "2026-08-26T14:22:23.744812+00:00",
+    "name": "Government tender alerts (for developers)",
+    "tier": "TIER0"
+  },
+  "804": {
+    "file": "method_804.json",
+    "sha256": "b2b4c2af4a8f9d653887a1ea5ca2e3e574185b4353f36f6b60d1b7d3feef3f78",
+    "generated_at": "2026-08-26T14:22:23.744815+00:00",
+    "name": "Government tender alerts (for agencies)",
+    "tier": "TIER0"
+  },
+  "805": {
+    "file": "method_805.json",
+    "sha256": "c3d6708a374ad55f1b6fbebb32d8188894dd2f1ee93fd3bdd3a1fba8a8b2a63a",
+    "generated_at": "2026-08-26T14:22:54.741800+00:00",
+    "name": "Import/export trade data",
+    "tier": "TIER0"
+  },
+  "806": {
+    "file": "method_806.json",
+    "sha256": "8904cd4ffdc3f01cde748cc8948bbc9fcac1a15169c45bd09ebffbac3a106840",
+    "generated_at": "2026-08-26T14:22:54.741821+00:00",
+    "name": "Import/export trade data (for startups)",
+    "tier": "TIER0"
+  },
+  "807": {
+    "file": "method_807.json",
+    "sha256": "250a9fe42fb432a271fc4669d1c260a0acae9686f2dc27dcc700bf007a362fc4",
+    "generated_at": "2026-08-26T14:22:54.741825+00:00",
+    "name": "Import/export trade data (for enterprises)",
+    "tier": "TIER0"
+  },
+  "808": {
+    "file": "method_808.json",
+    "sha256": "d8958c2f0a31b8e5e0cdec50dd00a912b5471d88fc235334637f81e5e01368b0",
+    "generated_at": "2026-08-26T14:23:27.312451+00:00",
+    "name": "Import/export trade data (for creators)",
+    "tier": "TIER0"
+  },
+  "809": {
+    "file": "method_809.json",
+    "sha256": "a93d377e9ebb205089c3cb1c148a036eb06f75ed882788d4be48747228e994fe",
+    "generated_at": "2026-08-26T14:23:27.312477+00:00",
+    "name": "Import/export trade data (for developers)",
+    "tier": "TIER0"
+  },
+  "810": {
+    "file": "method_810.json",
+    "sha256": "c02c0a1038a7d98ce479c401fb23515928a7a969eb39f9bd104223f6e0a6f085",
+    "generated_at": "2026-08-26T14:23:27.312482+00:00",
+    "name": "Import/export trade data (for agencies)",
+    "tier": "TIER0"
+  },
+  "811": {
+    "file": "method_811.json",
+    "sha256": "b7db92ed8df358caf54de5ab0220e93803423edb45b37f6f17c5338e4d3e73a3",
+    "generated_at": "2026-08-26T14:24:00.979592+00:00",
+    "name": "Satellite imagery analysis",
+    "tier": "TIER0"
+  },
+  "812": {
+    "file": "method_812.json",
+    "sha256": "457061c99d51d027f550927fc8b8021d9bd5d3664e0b0b446e1b3a718461b25a",
+    "generated_at": "2026-08-26T14:24:00.979612+00:00",
+    "name": "Satellite imagery analysis (for startups)",
+    "tier": "TIER0"
+  },
+  "813": {
+    "file": "method_813.json",
+    "sha256": "3cd22389f21b5d3907791d8d91d23dbfd7ed4d4f963cd1e3ce562065cf4473e5",
+    "generated_at": "2026-08-26T14:24:00.979626+00:00",
+    "name": "Satellite imagery analysis (for enterprises)",
+    "tier": "TIER0"
+  },
+  "814": {
+    "file": "method_814.json",
+    "sha256": "31441ea3ac785b29d57ef1cc2b2a254f54e49b5ac627d22980a1d67979cca4b3",
+    "generated_at": "2026-08-26T14:24:39.199333+00:00",
+    "name": "Satellite imagery analysis (for creators)",
+    "tier": "TIER0"
+  },
+  "815": {
+    "file": "method_815.json",
+    "sha256": "d49f20cbb5fd275596f6759120feaf8fd698a3abae5052870589d6fd5ea0318f",
+    "generated_at": "2026-08-26T14:24:39.199355+00:00",
+    "name": "Satellite imagery analysis (for developers)",
+    "tier": "TIER0"
+  },
+  "816": {
+    "file": "method_816.json",
+    "sha256": "09b31f1f8b15ae444faaa05e6fe2627b3161e9a2ca247e1e0dac7bc76ef281bf",
+    "generated_at": "2026-08-26T14:24:39.199360+00:00",
+    "name": "Satellite imagery analysis (for agencies)",
+    "tier": "TIER0"
+  },
+  "817": {
+    "file": "method_817.json",
+    "sha256": "b29d44b3a9c13f012dc2977fa617e5ea923bee08428b8f4bc24b15dff8de60f9",
+    "generated_at": "2026-08-26T14:25:12.739218+00:00",
+    "name": "Geospatial POI database",
+    "tier": "TIER0"
+  },
+  "818": {
+    "file": "method_818.json",
+    "sha256": "86635f2def433b3b561e000de50e00a0449a7994aa0ab2c779ef20a7232570c6",
+    "generated_at": "2026-08-26T14:25:12.739240+00:00",
+    "name": "Geospatial POI database (for startups)",
+    "tier": "TIER0"
+  },
+  "819": {
+    "file": "method_819.json",
+    "sha256": "5cc3b075ae8c329fef5dcf93e28c77ed07d6d582ca1d3481c8a39c007dc9031a",
+    "generated_at": "2026-08-26T14:25:12.739244+00:00",
+    "name": "Geospatial POI database (for enterprises)",
+    "tier": "TIER0"
+  },
+  "820": {
+    "file": "method_820.json",
+    "sha256": "d7e899589fd721dfd82cc6c42dda1c738c4f1100ad437d9e83e21f6bbd10174b",
+    "generated_at": "2026-08-26T14:25:45.402008+00:00",
+    "name": "Geospatial POI database (for creators)",
+    "tier": "TIER0"
+  },
+  "821": {
+    "file": "method_821.json",
+    "sha256": "4777b85cf9b835543a94a693c0344ef7d414721505061c8216522cfc27233257",
+    "generated_at": "2026-08-26T14:25:45.402027+00:00",
+    "name": "Geospatial POI database (for developers)",
+    "tier": "TIER0"
+  },
+  "822": {
+    "file": "method_822.json",
+    "sha256": "b6d63e5cf7ecc3456f0e194ba5b20951d4a8f0f25820c8a2975404428b329ce4",
+    "generated_at": "2026-08-26T14:25:45.402032+00:00",
+    "name": "Geospatial POI database (for agencies)",
+    "tier": "TIER0"
+  },
+  "823": {
+    "file": "method_823.json",
+    "sha256": "209d8680b9f2fc0106620fc5054d35f12e218bdcafffd5e4f58dea15b4e348c2",
+    "generated_at": "2026-08-26T14:26:34.268759+00:00",
+    "name": "Web traffic estimates API",
+    "tier": "TIER0"
+  },
+  "824": {
+    "file": "method_824.json",
+    "sha256": "d231f2efce5b433afb89e496a59f74803444d0a997b21a6c12ba4d20da3a31ad",
+    "generated_at": "2026-08-26T14:26:34.268787+00:00",
+    "name": "Web traffic estimates API (for startups)",
+    "tier": "TIER0"
+  },
+  "825": {
+    "file": "method_825.json",
+    "sha256": "dc257b02659e39c0763400cbbb5de4a67c08fae66b63b179013c429c213e9e46",
+    "generated_at": "2026-08-26T14:26:34.268793+00:00",
+    "name": "Web traffic estimates API (for enterprises)",
+    "tier": "TIER0"
+  },
+  "826": {
+    "file": "method_826.json",
+    "sha256": "a1d32cd33142e2ff0151b46e0546199735f6ed393d9b0a80bb4e1164084dbaa3",
+    "generated_at": "2026-08-26T14:27:18.035400+00:00",
+    "name": "Web traffic estimates API (for creators)",
+    "tier": "TIER0"
+  },
+  "827": {
+    "file": "method_827.json",
+    "sha256": "29b7015f444c231e143d0d33fb2d4af26b056da5befe1b747fe63693f0d56eae",
+    "generated_at": "2026-08-26T14:27:18.035422+00:00",
+    "name": "Web traffic estimates API (for developers)",
+    "tier": "TIER0"
+  },
+  "828": {
+    "file": "method_828.json",
+    "sha256": "59951c9b3b8103cb559b52e776e6c17f1e1c9b3dc0fc1ea108c8aeb673b42cbc",
+    "generated_at": "2026-08-26T14:27:18.035427+00:00",
+    "name": "Web traffic estimates API (for agencies)",
+    "tier": "TIER0"
+  },
+  "829": {
+    "file": "method_829.json",
+    "sha256": "e3402f6936fb012a9903b11eb8a25fc41dadd925fd50db277d6c6f62deb5020f",
+    "generated_at": "2026-08-26T14:28:38.645719+00:00",
+    "name": "Domain valuation model",
+    "tier": "TIER0"
+  },
+  "830": {
+    "file": "method_830.json",
+    "sha256": "53c5178feab7b7f461db7a2202d4070565a9da231c333c3a2c219c5c3888c263",
+    "generated_at": "2026-08-26T14:28:38.645719+00:00",
+    "name": "Domain valuation model (for startups)",
+    "tier": "TIER0"
+  },
+  "831": {
+    "file": "method_831.json",
+    "sha256": "6c0fae18600e7ec42123d3ca5fc62c66324d464df91389bc550fa03147915db4",
+    "generated_at": "2026-08-26T14:28:38.645719+00:00",
+    "name": "Domain valuation model (for enterprises)",
+    "tier": "TIER0"
+  },
+  "832": {
+    "file": "method_832.json",
+    "sha256": "c2fb8f02e3f170227569935af4d564142729cef7086055a725069562c4617e00",
+    "generated_at": "2026-08-26T14:29:14.110831+00:00",
+    "name": "Domain valuation model (for creators)",
+    "tier": "TIER0"
+  },
+  "833": {
+    "file": "method_833.json",
+    "sha256": "f496127d29cfbcb06a80dacc1347f49b0b1d7511325b3b3213b512300b1633c2",
+    "generated_at": "2026-08-26T14:29:14.110831+00:00",
+    "name": "Domain valuation model (for developers)",
+    "tier": "TIER0"
+  },
+  "834": {
+    "file": "method_834.json",
+    "sha256": "8b27bc23944f9268ed873850f05fd5f5e3e722ecfdb5227aeb5e4a4fa20935dc",
+    "generated_at": "2026-08-26T14:29:14.110831+00:00",
+    "name": "Domain valuation model (for agencies)",
+    "tier": "TIER0"
+  },
+  "835": {
+    "file": "method_835.json",
+    "sha256": "f8a99f0f78fb47ea8883112f10cd0951ace280a2804ab2a90f07741df3115fe5",
+    "generated_at": "2026-08-26T14:29:38.893377+00:00",
+    "name": "Brand mention monitoring",
+    "tier": "TIER0"
+  },
+  "836": {
+    "file": "method_836.json",
+    "sha256": "179e670b17a4fdd0fda132bf2f651d53f0e51193e527d6c3546551073fa6851b",
+    "generated_at": "2026-08-26T14:29:38.893377+00:00",
+    "name": "Brand mention monitoring (for startups)",
+    "tier": "TIER0"
+  },
+  "837": {
+    "file": "method_837.json",
+    "sha256": "b909da1c65cab1caade0666c80ba97dc5ba97b57485f1d52e7950af0ae67249d",
+    "generated_at": "2026-08-26T14:29:38.893377+00:00",
+    "name": "Brand mention monitoring (for enterprises)",
+    "tier": "TIER0"
+  },
+  "838": {
+    "file": "method_838.json",
+    "sha256": "5baafa8eaa12480547f520149ea64aed1a600d2022201d3f8f6993442193d3a6",
+    "generated_at": "2026-08-26T14:30:05.334043+00:00",
+    "name": "Brand mention monitoring (for creators)",
+    "tier": "TIER0"
+  },
+  "839": {
+    "file": "method_839.json",
+    "sha256": "68174132a50c79211af420411127d4826ad465500d4e1745e915b54ccfdf3856",
+    "generated_at": "2026-08-26T14:30:05.334043+00:00",
+    "name": "Brand mention monitoring (for developers)",
+    "tier": "TIER0"
+  },
+  "840": {
+    "file": "method_840.json",
+    "sha256": "5f013c16c6c7f1d34fb00e82a78d031f861c97f32dc5ba1bd1281838a73e9af4",
+    "generated_at": "2026-08-26T14:30:05.334043+00:00",
+    "name": "Brand mention monitoring (for agencies)",
+    "tier": "TIER0"
+  },
+  "841": {
+    "file": "method_841.json",
+    "sha256": "54170ac502b3791c51812502e63ea5b23473d6264830780550fd1ed5b4572aaa",
+    "generated_at": "2026-08-26T14:30:50.262498+00:00",
+    "name": "Competitor pricing tracker",
+    "tier": "TIER0"
+  },
+  "842": {
+    "file": "method_842.json",
+    "sha256": "552697169e82f08893cf8aecae88cdd578bd25c3946ef8eb574f7e3477354a67",
+    "generated_at": "2026-08-26T14:30:50.262498+00:00",
+    "name": "Competitor pricing tracker (for startups)",
+    "tier": "TIER0"
+  },
+  "843": {
+    "file": "method_843.json",
+    "sha256": "921b58845b2c3bfedb503638fbd3c8dabde9075584ddd1946a512d8d69a04a2d",
+    "generated_at": "2026-08-26T14:30:50.262498+00:00",
+    "name": "Competitor pricing tracker (for enterprises)",
+    "tier": "TIER0"
+  },
+  "844": {
+    "file": "method_844.json",
+    "sha256": "ef3b4194b0095a597f6c50f879e33a3594fef82036cc8ad7d61aebce0f03a72d",
+    "generated_at": "2026-08-26T14:31:16.731869+00:00",
+    "name": "Competitor pricing tracker (for creators)",
+    "tier": "TIER0"
+  },
+  "845": {
+    "file": "method_845.json",
+    "sha256": "bd466d253dd295f7d1f1fa0f974dcab7ef45584f0098302b15927e375ebb298e",
+    "generated_at": "2026-08-26T14:31:16.731869+00:00",
+    "name": "Competitor pricing tracker (for developers)",
+    "tier": "TIER0"
+  },
+  "846": {
+    "file": "method_846.json",
+    "sha256": "ae00811428ab2883be2f0c4332e34aebf2a5ded71998cbecb7c06a7d0a4b2b6e",
+    "generated_at": "2026-08-26T14:31:16.731869+00:00",
+    "name": "Competitor pricing tracker (for agencies)",
+    "tier": "TIER0"
+  },
+  "847": {
+    "file": "method_847.json",
+    "sha256": "9b8c65209df75de2797ecdbad54ae8ca2ecb1eb74b2ab9e78d0afbc39560e293",
+    "generated_at": "2026-08-26T14:31:43.652924+00:00",
+    "name": "Review sentiment DB",
+    "tier": "TIER0"
+  },
+  "848": {
+    "file": "method_848.json",
+    "sha256": "efbac3d405ccf8ee5035fcf50eb4dbbd8d69527b2c83a6561a3de2d3bccca75b",
+    "generated_at": "2026-08-26T14:31:43.652924+00:00",
+    "name": "Review sentiment DB (for startups)",
+    "tier": "TIER0"
+  },
+  "849": {
+    "file": "method_849.json",
+    "sha256": "04f2cd4548950d49b5c42226b5412a3db03be0a4152fa4dfba53fbe0f9fee335",
+    "generated_at": "2026-08-26T14:31:43.652924+00:00",
+    "name": "Review sentiment DB (for enterprises)",
+    "tier": "TIER0"
+  },
+  "850": {
+    "file": "method_850.json",
+    "sha256": "2a5223c292d691a607b28e3f8b3b3a526769432a7cbf7bf78641dd0d9a80f2ca",
+    "generated_at": "2026-08-26T14:32:14.749886+00:00",
+    "name": "Review sentiment DB (for creators)",
+    "tier": "TIER0"
+  },
+  "851": {
+    "file": "method_851.json",
+    "sha256": "88bd9b784f17b15837e9e05ef555df0d90808ed1366250600abc4ea63167efe6",
+    "generated_at": "2026-08-26T14:32:14.749886+00:00",
+    "name": "Review sentiment DB (for developers)",
+    "tier": "TIER0"
+  },
+  "852": {
+    "file": "method_852.json",
+    "sha256": "dd7fa8770b94f1314157be76eec037fc0782f6e3937982eaed074edec846c8f5",
+    "generated_at": "2026-08-26T14:32:14.749886+00:00",
+    "name": "Review sentiment DB (for agencies)",
+    "tier": "TIER0"
+  },
+  "853": {
+    "file": "method_853.json",
+    "sha256": "77b7a4958d7ecb660b1d0845347a302d847d7092aae2876ed04b575072aa74d9",
+    "generated_at": "2026-08-26T14:32:43.967586+00:00",
+    "name": "Customer churn predictors",
+    "tier": "TIER0"
+  },
+  "854": {
+    "file": "method_854.json",
+    "sha256": "98baaf097f81c9737c051e84f293bda01e8cce75cfcce6ecad78d6028cc211a0",
+    "generated_at": "2026-08-26T14:32:43.967586+00:00",
+    "name": "Customer churn predictors (for startups)",
+    "tier": "TIER0"
+  },
+  "855": {
+    "file": "method_855.json",
+    "sha256": "3b1ccfa71904ac57b2303b2d4ad8610ec37469db41e1436239a5a23effaf1e14",
+    "generated_at": "2026-08-26T14:32:43.967586+00:00",
+    "name": "Customer churn predictors (for enterprises)",
+    "tier": "TIER0"
+  },
+  "856": {
+    "file": "method_856.json",
+    "sha256": "dc723ec04701b8bcf44ecb068ba32b4148b57572dedd6c9143fabd1be3c2d071",
+    "generated_at": "2026-08-26T14:33:18.246856+00:00",
+    "name": "Customer churn predictors (for creators)",
+    "tier": "TIER0"
+  },
+  "857": {
+    "file": "method_857.json",
+    "sha256": "b15bceef47ddc1e8ed5d6200d83dad99cd6d974cbdf0e1eb642f1d62324cd219",
+    "generated_at": "2026-08-26T14:33:18.246856+00:00",
+    "name": "Customer churn predictors (for developers)",
+    "tier": "TIER0"
+  },
+  "858": {
+    "file": "method_858.json",
+    "sha256": "21f73e0af9af2eaae83a1896e495ed67c08de1ce3896c11b31e772ce49b29e72",
+    "generated_at": "2026-08-26T14:33:18.246856+00:00",
+    "name": "Customer churn predictors (for agencies)",
+    "tier": "TIER0"
+  },
+  "859": {
+    "file": "method_859.json",
+    "sha256": "6aa4c1b0566a1b71d00030f7759ae50a579615103a3355cbcfc64f30a2837526",
+    "generated_at": "2026-08-26T14:33:50.202968+00:00",
+    "name": "Demand forecasting models",
+    "tier": "TIER0"
+  },
+  "860": {
+    "file": "method_860.json",
+    "sha256": "a7d7893f43ee7ed000518dea8fabdb2dd14a7de0b7b6503df6b9d1ee19bf9aad",
+    "generated_at": "2026-08-26T14:33:50.202968+00:00",
+    "name": "Demand forecasting models (for startups)",
+    "tier": "TIER0"
+  },
+  "861": {
+    "file": "method_861.json",
+    "sha256": "ac7f39553d1531ffe15f44307ce78fc09b9de788a860af35da316f804c59fc64",
+    "generated_at": "2026-08-26T14:33:50.202968+00:00",
+    "name": "Demand forecasting models (for enterprises)",
+    "tier": "TIER0"
+  },
+  "862": {
+    "file": "method_862.json",
+    "sha256": "70cc68f0e319a59655d655fc5a4284cb3d6c6d51c755bc99f945b30df7a448df",
+    "generated_at": "2026-08-26T14:34:41.539955+00:00",
+    "name": "Demand forecasting models (for creators)",
+    "tier": "TIER0"
+  },
+  "863": {
+    "file": "method_863.json",
+    "sha256": "124aaceb4e1b9a59e63e0cdfa97458f9ffc0177f9fc41d8a9a08ee4426e806f1",
+    "generated_at": "2026-08-26T14:34:41.539984+00:00",
+    "name": "Demand forecasting models (for developers)",
+    "tier": "TIER0"
+  },
+  "864": {
+    "file": "method_864.json",
+    "sha256": "8f92ce55dc5f7fe0d8c391b2d4acf8a2afe52d6d798779c500f3b1e9bec8f919",
+    "generated_at": "2026-08-26T14:34:41.539989+00:00",
+    "name": "Demand forecasting models (for agencies)",
+    "tier": "TIER0"
+  },
+  "865": {
+    "file": "method_865.json",
+    "sha256": "150a0067f05bf1c04b53249a816c171030f4a4177093624fb0bbb93f7c817ff4",
+    "generated_at": "2026-08-26T14:35:36.184625+00:00",
+    "name": "Inventory optimization",
+    "tier": "TIER0"
+  },
+  "866": {
+    "file": "method_866.json",
+    "sha256": "1b59c7742e3595a8c2265e229f4e0cc672e68c99811c334a8720f9ef791f294a",
+    "generated_at": "2026-08-26T14:35:36.184651+00:00",
+    "name": "Inventory optimization (for startups)",
+    "tier": "TIER0"
+  },
+  "867": {
+    "file": "method_867.json",
+    "sha256": "0f9ee344bab00775a132a1263633a526723014d0becaac9ed58e84c3c781e7ce",
+    "generated_at": "2026-08-26T14:35:36.184657+00:00",
+    "name": "Inventory optimization (for enterprises)",
+    "tier": "TIER0"
+  },
+  "868": {
+    "file": "method_868.json",
+    "sha256": "91f7598bbb2aa1e39a59eb2de2f483ee3f351692736214faba0cf208a9e1ac1b",
+    "generated_at": "2026-08-26T14:35:56.624645+00:00",
+    "name": "Inventory optimization (for creators)",
+    "tier": "TIER0"
+  },
+  "869": {
+    "file": "method_869.json",
+    "sha256": "625d6bf7d216c6d4cc5844977816443ea367b168f5337906e9c9bd2e8b28c3a4",
+    "generated_at": "2026-08-26T14:35:56.624668+00:00",
+    "name": "Inventory optimization (for developers)",
+    "tier": "TIER0"
+  },
+  "870": {
+    "file": "method_870.json",
+    "sha256": "271c1e06b98a847ed5d790476d78e2fa3a30f742047ca8fc2049d8e9c576c515",
+    "generated_at": "2026-08-26T14:35:56.624672+00:00",
+    "name": "Inventory optimization (for agencies)",
+    "tier": "TIER0"
+  },
+  "871": {
+    "file": "method_871.json",
+    "sha256": "d0635b5514af6a52783081d37abefe4462faf5247a0455675a06c10a60afba6a",
+    "generated_at": "2026-08-26T14:36:25.198226+00:00",
+    "name": "Fraud detection signals",
+    "tier": "TIER0"
+  },
+  "872": {
+    "file": "method_872.json",
+    "sha256": "2e1ae0b6b68d1b54d57251efdfdbd377adf54d0aa32c43ae40fbbab3fd5f13b7",
+    "generated_at": "2026-08-26T14:36:25.198249+00:00",
+    "name": "Fraud detection signals (for startups)",
+    "tier": "TIER0"
+  },
+  "873": {
+    "file": "method_873.json",
+    "sha256": "e944b0df9aabb0af04bbd45b65215c095d72049aed7fb2327fd5e8d31db4880c",
+    "generated_at": "2026-08-26T14:36:25.198254+00:00",
+    "name": "Fraud detection signals (for enterprises)",
+    "tier": "TIER0"
+  },
+  "874": {
+    "file": "method_874.json",
+    "sha256": "36f70d2f92c539b326876b92922fa71fd1c3e13b652fe234b9e2ace1c790b6f2",
+    "generated_at": "2026-08-26T14:36:49.371271+00:00",
+    "name": "Fraud detection signals (for creators)",
+    "tier": "TIER0"
+  },
+  "875": {
+    "file": "method_875.json",
+    "sha256": "6418466ccc4e0135a6ceac4658ba74bcafbd5fad64dda5f1035ef21968fb2504",
+    "generated_at": "2026-08-26T14:36:49.371296+00:00",
+    "name": "Fraud detection signals (for developers)",
+    "tier": "TIER0"
+  },
+  "876": {
+    "file": "method_876.json",
+    "sha256": "32b8d9d7bf0abe1593622c99ee2886e19e92ee6c1b8a8bb40115bd37e256630a",
+    "generated_at": "2026-08-26T14:36:49.371301+00:00",
+    "name": "Fraud detection signals (for agencies)",
+    "tier": "TIER0"
+  },
+  "877": {
+    "file": "method_877.json",
+    "sha256": "c723a52d1a00842f7c275b0feb1367987d6bdafb2790c69dc588dd582eddd03e",
+    "generated_at": "2026-08-26T14:37:10.443818+00:00",
+    "name": "Identity verification data",
+    "tier": "TIER0"
+  },
+  "878": {
+    "file": "method_878.json",
+    "sha256": "66d6bdefb513f202c5e57e0178da9708d690135c499e6c118c2834431689b5ad",
+    "generated_at": "2026-08-26T14:37:10.443843+00:00",
+    "name": "Identity verification data (for startups)",
+    "tier": "TIER0"
+  },
+  "879": {
+    "file": "method_879.json",
+    "sha256": "1206361e3372f8ea2765d58b58128cf3ec84b5cdb61ee857593c9c9a8bb4adb0",
+    "generated_at": "2026-08-26T14:37:10.443848+00:00",
+    "name": "Identity verification data (for enterprises)",
+    "tier": "TIER0"
+  },
+  "880": {
+    "file": "method_880.json",
+    "sha256": "ccd249edaadeb9477830f606b473ef4929f2e5fb641d4f19bb20f1edbf071c0a",
+    "generated_at": "2026-08-26T14:37:33.635585+00:00",
+    "name": "Identity verification data (for creators)",
+    "tier": "TIER0"
+  },
+  "881": {
+    "file": "method_881.json",
+    "sha256": "509b63a079926e42d23d3e88c1785ced4803af32dfdcf0b24d1c5c3b7d852d85",
+    "generated_at": "2026-08-26T14:37:33.635603+00:00",
+    "name": "Identity verification data (for developers)",
+    "tier": "TIER0"
+  },
+  "882": {
+    "file": "method_882.json",
+    "sha256": "c32f9eb6199e27637cfb0840654171c244aa99a861ab3ba81ab27be5f4512063",
+    "generated_at": "2026-08-26T14:37:33.635606+00:00",
+    "name": "Identity verification data (for agencies)",
+    "tier": "TIER0"
+  },
+  "883": {
+    "file": "method_883.json",
+    "sha256": "11746833146607507482ccd176f309121d42363e7a4bf2d113d165b39ae652a1",
+    "generated_at": "2026-08-26T14:37:57.026162+00:00",
+    "name": "KYC/AML screening API",
+    "tier": "TIER0"
+  },
+  "884": {
+    "file": "method_884.json",
+    "sha256": "9c403688819c4d14f5f8642bacaa03d06ef175bed3eb8bba6d506a54a6bce111",
+    "generated_at": "2026-08-26T14:37:57.026185+00:00",
+    "name": "KYC/AML screening API (for startups)",
+    "tier": "TIER0"
+  },
+  "885": {
+    "file": "method_885.json",
+    "sha256": "695c2d1d140bfb05187926412a36c335810bd6dd0cb286e383c13548b7b5e3b5",
+    "generated_at": "2026-08-26T14:37:57.026190+00:00",
+    "name": "KYC/AML screening API (for enterprises)",
+    "tier": "TIER0"
+  },
+  "886": {
+    "file": "method_886.json",
+    "sha256": "9a06379a406701655661ddb8e7cd87b366862150c1482b3fcd9cc8ba86ea7102",
+    "generated_at": "2026-08-26T14:38:23.435652+00:00",
+    "name": "KYC/AML screening API (for creators)",
+    "tier": "TIER0"
+  },
+  "887": {
+    "file": "method_887.json",
+    "sha256": "a53baf019fbb296f4986ac0a4b6e07e0d4c55ae553680289d1c473604daea05c",
+    "generated_at": "2026-08-26T14:38:23.435678+00:00",
+    "name": "KYC/AML screening API (for developers)",
+    "tier": "TIER0"
+  },
+  "888": {
+    "file": "method_888.json",
+    "sha256": "dd6a3e33d567a4def4c46709774fa32453b136da0f1a6b7b05664716d6464321",
+    "generated_at": "2026-08-26T14:38:23.435683+00:00",
+    "name": "KYC/AML screening API (for agencies)",
+    "tier": "TIER0"
+  },
+  "1": {
+    "file": "method_1.json",
+    "sha256": "cddd1d268fc3bd1237cc26e226610a788c13213d379b535a88d95f95022b9495",
+    "generated_at": "2026-08-26T14:39:30.153459+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv",
+    "tier": "TIER0"
+  },
+  "2": {
+    "file": "method_2.json",
+    "sha256": "e2529ef63a0d91ba5835db1f6f698af78975325dffa131d08eeb6f5722c396f4",
+    "generated_at": "2026-08-26T14:39:30.153482+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv (for startups)",
+    "tier": "TIER0"
+  },
+  "3": {
+    "file": "method_3.json",
+    "sha256": "96af9e0a692a3b9c1b6bf502a25edfd1f9918a3162213785a1f6fb4197c0b59b",
+    "generated_at": "2026-08-26T14:39:30.153488+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv (for enterprises)",
+    "tier": "TIER0"
+  },
+  "4": {
+    "file": "method_4.json",
+    "sha256": "27e624bdaff5cffeb556d13fd7fc2b70aaa834293570ae84b28c4e09df17e929",
+    "generated_at": "2026-08-26T14:39:53.581617+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv (for creators)",
+    "tier": "TIER0"
+  },
+  "5": {
+    "file": "method_5.json",
+    "sha256": "2e4545083b7d1bbbc133b5b30342c0f28917e49aa948441200c526612329b402",
+    "generated_at": "2026-08-26T14:39:53.581639+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv (for developers)",
+    "tier": "TIER0"
+  },
+  "6": {
+    "file": "method_6.json",
+    "sha256": "59b1507bd951c6ab52984408f48901987bb4c05e45daa79d1ef4f93dfc66ae6a",
+    "generated_at": "2026-08-26T14:39:53.581645+00:00",
+    "name": "Newsletter premium via Substack/Beehiiv (for agencies)",
+    "tier": "TIER0"
+  },
+  "7": {
+    "file": "method_7.json",
+    "generated_at": "2026-08-26T14:41:06.651257+00:00",
+    "sha256": "999dc577403a176a37a8f5bb35119b66fab48bd0d35aad5c67304281a811b5f6",
+    "tier": "TIER0"
+  },
+  "8": {
+    "file": "method_8.json",
+    "generated_at": "2026-08-26T14:41:06.651257+00:00",
+    "sha256": "fe5a9b6ec2a9c23f25513cb31de5a0f9b92ef42e107604a3a1016f71a37dd3a7",
+    "tier": "TIER0"
+  },
+  "9": {
+    "file": "method_9.json",
+    "generated_at": "2026-08-26T14:41:06.651257+00:00",
+    "sha256": "a0cc9a8b8d32c616de6c6cd42c5e4933819e662dce11cebf0fad298902f40257",
+    "tier": "TIER0"
+  },
+  "_meta": {
+    "updated_at": "2026-08-26T14:43:48.763279+00:00",
+    "total_samples": 210
+  },
+  "10": {
+    "file": "method_10.json",
+    "generated_at": "2026-08-26T14:41:28.415767+00:00",
+    "sha256": "c445892988ef1ca9dcb6d6ea1dfd8a89bcf168a5981b3f17bca52cd73b97d022",
+    "tier": "TIER0"
+  },
+  "11": {
+    "file": "method_11.json",
+    "generated_at": "2026-08-26T14:41:28.415767+00:00",
+    "sha256": "7eef775fd77a01e1da2b20aa7ccc15aa489740c724ff8e914fe57a6202e975f6",
+    "tier": "TIER0"
+  },
+  "12": {
+    "file": "method_12.json",
+    "generated_at": "2026-08-26T14:41:28.415767+00:00",
+    "sha256": "202f935d06953ef91f5d3917f59353fbbbe5596790727130fdef30a90789d32d",
+    "tier": "TIER0"
+  },
+  "13": {
+    "file": "method_13.json",
+    "generated_at": "2026-08-26T14:41:51.001610+00:00",
+    "sha256": "1bedec1b118875ea4ade76a3ff062839ffe5b937735655eab3664df235d6941a",
+    "tier": "TIER0"
+  },
+  "14": {
+    "file": "method_14.json",
+    "generated_at": "2026-08-26T14:41:51.001610+00:00",
+    "sha256": "ac9d4ee6c62230813e4a291504b20abdd0fa3bdb4c7a57244073a2bd60719d52",
+    "tier": "TIER0"
+  },
+  "15": {
+    "file": "method_15.json",
+    "generated_at": "2026-08-26T14:41:51.001610+00:00",
+    "sha256": "cbbf662deaf4e988af8a3ab7d9172c0994f62ab85f5c68f54a5e6c0d0cfed920",
+    "tier": "TIER0"
+  },
+  "16": {
+    "file": "method_16.json",
+    "generated_at": "2026-08-26T14:42:15.248553+00:00",
+    "sha256": "79efb1a861a8740bff9a9c1f22c4a6fc300be04561c79d37a5b02828f8c29eed",
+    "tier": "TIER0"
+  },
+  "17": {
+    "file": "method_17.json",
+    "generated_at": "2026-08-26T14:42:15.248553+00:00",
+    "sha256": "8385bf25d5b54abf2f95ddeb55b3578280748323b5b67aab0ab236f5ab1e0db8",
+    "tier": "TIER0"
+  },
+  "18": {
+    "file": "method_18.json",
+    "generated_at": "2026-08-26T14:42:15.248553+00:00",
+    "sha256": "2606057bb7e512e647f16e394e22b79100c420feda0e13a037db186c183da650",
+    "tier": "TIER0"
+  },
+  "19": {
+    "file": "method_19.json",
+    "generated_at": "2026-08-26T14:42:38.130916+00:00",
+    "sha256": "221aec72403c9dd24cef21c9114b029f788e7f68787f70387de0520c84421e6e",
+    "tier": "TIER0"
+  },
+  "20": {
+    "file": "method_20.json",
+    "generated_at": "2026-08-26T14:42:38.130916+00:00",
+    "sha256": "e569eeeb97d2693c60a656fc8f31a5c813b9f9fb99b59c5a0bedf81041e6248c",
+    "tier": "TIER0"
+  },
+  "21": {
+    "file": "method_21.json",
+    "generated_at": "2026-08-26T14:42:38.130916+00:00",
+    "sha256": "fbac22000a0f647fb1fed6944d1f699f1e26e0dfa17fc33f5a9c974b97504807",
+    "tier": "TIER0"
+  },
+  "22": {
+    "file": "method_22.json",
+    "generated_at": "2026-08-26T14:43:01.290170+00:00",
+    "sha256": "a5da6a3ec0b8ece150e2103893cedc2dd983258930810698493f59785ced7148",
+    "tier": "TIER0"
+  },
+  "23": {
+    "file": "method_23.json",
+    "generated_at": "2026-08-26T14:43:01.290170+00:00",
+    "sha256": "486aed0aabd104479ac0ed4d92d39ca44c340b6ecd87b741c828a5da39cb9b7c",
+    "tier": "TIER0"
+  },
+  "24": {
+    "file": "method_24.json",
+    "generated_at": "2026-08-26T14:43:01.290170+00:00",
+    "sha256": "d9645a95cbf27c665d673e9ffec2fa53c3d9af5df9b3c40e759df28ed2f16456",
+    "tier": "TIER0"
+  },
+  "25": {
+    "file": "method_25.json",
+    "generated_at": "2026-08-26T14:43:23.605558+00:00",
+    "sha256": "03eb2c5fcdabb8ff5092c4c8855cbd5c1232360c4bdad4ed397e3ba3ad04f093",
+    "tier": "TIER0"
+  },
+  "26": {
+    "file": "method_26.json",
+    "generated_at": "2026-08-26T14:43:23.605558+00:00",
+    "sha256": "b68d9953900450143dc6d992de4e1f9437402d55a855a21a41e1ad3350929791",
+    "tier": "TIER0"
+  },
+  "27": {
+    "file": "method_27.json",
+    "generated_at": "2026-08-26T14:43:23.605558+00:00",
+    "sha256": "49976c6eb5a4e59bc22a633b7ae59521aff959d400f34bfb7b3ddc7cb205c21c",
+    "tier": "TIER0"
+  },
+  "28": {
+    "file": "method_28.json",
+    "generated_at": "2026-08-26T14:43:48.763279+00:00",
+    "sha256": "0768750df603b522845412e25f8b4fac466685cb9bb40ba436c108c5e0ca1afa",
+    "tier": "TIER0"
+  },
+  "29": {
+    "file": "method_29.json",
+    "generated_at": "2026-08-26T14:43:48.763279+00:00",
+    "sha256": "9d90fa6b4752bdaba9dc062318ae00f67053760536882b5d341849771493fed8",
+    "tier": "TIER0"
+  },
+  "30": {
+    "file": "method_30.json",
+    "generated_at": "2026-08-26T14:43:48.763279+00:00",
+    "sha256": "dbf7c586cb14c31de36345afd1b054a57b984026d9884f5a5fca1925735d3486",
+    "tier": "TIER0"
+  }
 }

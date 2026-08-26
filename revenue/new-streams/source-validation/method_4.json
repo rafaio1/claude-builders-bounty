@@ -1,0 +1,38 @@
+{
+  "method_id": 4,
+  "name": "Newsletter premium via Substack/Beehiiv (for creators)",
+  "source": "GitHub Search API (proxy for individual creator newsletter tooling)",
+  "generated_at": "2026-08-26T14:39:53.581617+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "substack-to-ghost-migrator",
+      "repos_using": 1850,
+      "creator_segment": "mid_tier",
+      "monetization_stage": "scaling",
+      "churn_signal": "low"
+    },
+    {
+      "tool": "beehiiv-referral-widget",
+      "repos_using": 2400,
+      "creator_segment": "growth",
+      "monetization_stage": "launch",
+      "churn_signal": "medium"
+    },
+    {
+      "tool": "newsletter-analytics-dashboard",
+      "repos_using": 980,
+      "creator_segment": "pro",
+      "monetization_stage": "optimization",
+      "churn_signal": "very_low"
+    }
+  ],
+  "schema": [
+    "tool",
+    "repos_using",
+    "creator_segment",
+    "monetization_stage",
+    "churn_signal"
+  ],
+  "notes": "Ferramentas OSS como proxy de maturidade de monetização para creators individuais. Fonte oficial TIER1: Substack Creator Dashboard / Beehiiv Network Stats."
+}

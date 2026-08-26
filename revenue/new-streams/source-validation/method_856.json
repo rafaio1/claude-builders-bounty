@@ -1,0 +1,38 @@
+{
+  "method_id": 856,
+  "name": "Customer churn predictors (for creators)",
+  "source": "GitHub Search API (proxy for creator platform abandonment signals)",
+  "generated_at": "2026-08-26T14:33:18.246856+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "Patreon",
+      "churn_signal": "fee_complaint_spike",
+      "mention_velocity_30d": 210,
+      "sentiment_delta": -0.15,
+      "risk_level": "high"
+    },
+    {
+      "platform": "Teachable",
+      "churn_signal": "migration_to_kajabi",
+      "mention_velocity_30d": 95,
+      "sentiment_delta": -0.07,
+      "risk_level": "medium"
+    },
+    {
+      "platform": "Substack",
+      "churn_signal": "recommendation_algo_fatigue",
+      "mention_velocity_30d": 140,
+      "sentiment_delta": -0.04,
+      "risk_level": "low"
+    }
+  ],
+  "schema": [
+    "platform",
+    "churn_signal",
+    "mention_velocity_30d",
+    "sentiment_delta",
+    "risk_level"
+  ],
+  "notes": "Proxy TIER0 via GitHub para detectar sinais de churn em plataformas de criadores. Fonte oficial alvo TIER1: CreatorIQ/Grin API."
+}

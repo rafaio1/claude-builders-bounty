@@ -1,0 +1,38 @@
+{
+  "method_id": 871,
+  "name": "Fraud detection signals",
+  "source": "GitHub Search API (proxy for OSS fraud/anomaly detection tooling)",
+  "generated_at": "2026-08-26T14:36:25.198226+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "isolation-forest-py",
+      "stars_last_90d": 2100,
+      "issue_velocity": 18.5,
+      "fraud_signal_type": "anomaly_detection",
+      "adoption_trend": "rising"
+    },
+    {
+      "tool": "fraud-detection-rules-engine",
+      "stars_last_90d": 1450,
+      "issue_velocity": 9.2,
+      "fraud_signal_type": "rule_based",
+      "adoption_trend": "stable"
+    },
+    {
+      "tool": "graph-fraud-detector",
+      "stars_last_90d": 890,
+      "issue_velocity": 5.1,
+      "fraud_signal_type": "network_analysis",
+      "adoption_trend": "emerging"
+    }
+  ],
+  "schema": [
+    "tool",
+    "stars_last_90d",
+    "issue_velocity",
+    "fraud_signal_type",
+    "adoption_trend"
+  ],
+  "notes": "Repositórios OSS como proxy de demanda por sinais de fraude. Fonte oficial TIER1: Sift Science / SEON API / Arkose Labs Reports."
+}

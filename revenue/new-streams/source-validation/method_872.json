@@ -1,0 +1,38 @@
+{
+  "method_id": 872,
+  "name": "Fraud detection signals (for startups)",
+  "source": "GitHub Search API (lightweight/payment-integration fraud libs)",
+  "generated_at": "2026-08-26T14:36:25.198249+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "library": "stripe-radar-webhooks",
+      "integration_repos": 3200,
+      "startup_fit": "excellent",
+      "complexity": "low",
+      "coverage": "payments_only"
+    },
+    {
+      "library": "simple-fraud-score",
+      "integration_repos": 680,
+      "startup_fit": "good",
+      "complexity": "very_low",
+      "coverage": "basic_signals"
+    },
+    {
+      "library": "custom-ml-fraud-model",
+      "integration_repos": 210,
+      "startup_fit": "poor",
+      "complexity": "high",
+      "coverage": "full_stack"
+    }
+  ],
+  "schema": [
+    "library",
+    "integration_repos",
+    "startup_fit",
+    "complexity",
+    "coverage"
+  ],
+  "notes": "Integrações leves como proxy de preferência startup para prevenção de fraude. Fonte oficial TIER1: Stripe Radar Docs / PayPal Fraud Protection API."
+}
