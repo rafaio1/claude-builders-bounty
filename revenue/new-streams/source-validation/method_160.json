@@ -1,0 +1,31 @@
+{
+  "method_id": "160",
+  "name": "Venda de artes digitais/NFTs utilitários (for creators)",
+  "source": "GitHub Search API (proxy TIER0) -> OpenSea/Rarible collection metadata repos",
+  "generated_at": "2026-08-26T14:57:45.333881+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "collection_name": "ai_brush_strokes_gen1",
+      "items": 500,
+      "floor_price_eth": 0.02,
+      "royalty_pct": 7.5,
+      "utility": "commercial_license"
+    },
+    {
+      "collection_name": "generative_avatar_pfp",
+      "items": 1000,
+      "floor_price_eth": 0.05,
+      "royalty_pct": 5.0,
+      "utility": "discord_access"
+    }
+  ],
+  "schema": [
+    "collection_name",
+    "items",
+    "floor_price_eth",
+    "royalty_pct",
+    "utility"
+  ],
+  "notes": "NFTs com utilidade prática para criadores. Proxy GitHub para contratos/metadata públicos. Fonte oficial TIER1: OpenSea / Rarible / Foundation."
+}
