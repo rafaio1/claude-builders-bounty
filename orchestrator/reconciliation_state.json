@@ -159,7 +159,7 @@
     "Research 1m VWAP scalping to increase frequency toward 100/day target",
     "Repair ledger.jsonl gap (11 unreconciled trades)"
   ],
-  "last_reconciliation": "2026-08-26T23:21:49.178550+00:00",
+  "last_reconciliation": "2026-08-26T23:27:39.792182+00:00",
   "xrp_trades_imported": 100,
   "xrp_net_flow_usdt": 45.5574,
   "ledger_total_entries": 212,
@@ -183,7 +183,9 @@
     ],
     "first_cycle_ok": true,
     "validation_required_hours": 24,
-    "real_trading_blocked": true
+    "real_trading_blocked": true,
+    "cycles_since_restart": "continuous_zero_errors",
+    "last_health_check": "2026-08-26T23:27:39.792182+00:00"
   },
   "last_live_audit": "2026-08-26T21:55:30Z",
   "inj_position_tokens": 0.46584,
@@ -209,9 +211,12 @@
     "real_trading_blocked_until": "PENDING_SHADOW_VALIDATION_24H"
   },
   "account_snapshot": {
-    "usdt_free": 6.62017872,
+    "usdt_free": 4.43754261,
     "open_orders": 0,
-    "dust_assets_note": "Multiple dust balances below min_notional - no programmatic action"
+    "positions": 0,
+    "dust_assets_count": 35,
+    "dust_note": "Below min_notional - no programmatic action",
+    "verified_at": "2026-08-26T23:27:39.792182+00:00"
   },
   "trailing_backtest_result": {
     "timestamp": "2026-08-26T22:23:08Z",
@@ -270,6 +275,7 @@
       "exit_z": -0.1911,
       "hold_candles": 5,
       "timestamp": "2026-08-26T23:18:08Z"
-    }
+    },
+    "last_verified": "2026-08-26T23:27:39.792182+00:00"
   }
 }
