@@ -1,0 +1,28 @@
+{
+  "method_id": "564",
+  "name": "Freelance client lead scraper (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:28:39.372298+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_vertical": "b2b_saas_marketing",
+      "lead_signal": "crunchbase_funding_round",
+      "volume_daily": 100,
+      "crm_integration": "hubspot_api"
+    },
+    {
+      "agency_vertical": "ecommerce_retention",
+      "lead_signal": "builtwith_shopify_plus",
+      "volume_daily": 200,
+      "crm_integration": "salesforce_flow"
+    }
+  ],
+  "schema": [
+    "agency_vertical",
+    "lead_signal",
+    "volume_daily",
+    "crm_integration"
+  ],
+  "notes": "Scraping de alta volumetria para agências com integração CRM nativa. Proxy: GitHub Search 'agency lead gen automation crm'. Fonte oficial: BuiltWith API / Crunchbase API (free tier)."
+}

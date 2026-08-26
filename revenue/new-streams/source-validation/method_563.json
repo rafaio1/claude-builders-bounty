@@ -1,0 +1,28 @@
+{
+  "method_id": "563",
+  "name": "Freelance client lead scraper (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:28:39.372298+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_focus": "rust_blockchain",
+      "signal_source": "github_sponsors_page",
+      "enrichment": "repo_contributor_graph",
+      "outreach_channel": "twitter_dm"
+    },
+    {
+      "dev_focus": "ai_ml_research",
+      "signal_source": "arxiv_author_email",
+      "enrichment": "semantic_scholar_api",
+      "outreach_channel": "cold_email_academic"
+    }
+  ],
+  "schema": [
+    "dev_focus",
+    "signal_source",
+    "enrichment",
+    "outreach_channel"
+  ],
+  "notes": "Lead gen técnico baseado em sinais de código aberto e publicações acadêmicas. Proxy: GitHub Search 'open source bounty lead gen'. Fonte oficial: GitHub GraphQL API / Semantic Scholar API."
+}
