@@ -1323,8 +1323,8 @@
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 663,
     "generated_at": "2026-08-26T15:44:52.346646+00:00",
-    "total": 750,
-    "last_updated": "2026-08-26T15:56:52.597071+00:00"
+    "total": 753,
+    "last_updated": "2026-08-26T15:57:33.881597+00:00"
   },
   "10": {
     "file": "method_10.json",
@@ -11977,5 +11977,110 @@
     ],
     "notes": "Agency variant provides multi-store management, white-label reporting, and client onboarding automation. Proxy TIER0 via GitHub Search for agency dashboard Shopify apps. Official targets: Shopify Partner API + Organization Admin. Monetization via per-store agency licensing. Zero-capital PoC uses single dev store + mock multi-tenancy.",
     "_hash": "ab91e2aed13b055e5dcbdcf963bd0bd6afac6dbff13a2136bf6bf7bae9da74aa"
+  },
+  "211": {
+    "method_id": "211",
+    "name": "Figma plugin marketplace",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:57:33.881597+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "plugin_installs",
+        "value": 4500,
+        "unit": "users",
+        "period": "30d"
+      },
+      {
+        "metric": "paid_license_conversion",
+        "value": 3.8,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "avg_revenue_per_install",
+        "value": 1.85,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for Figma plugin boilerplates with monetization (Stripe/LemonSqueezy gated features). Official source: Figma Community API + Plugin Manifest. Zero-capital path uses free community publishing + serverless license validation. Revenue via one-time or subscription licenses for premium features.",
+    "_hash": "2f89301c0bd00b277ea637b4a1d3b8ae084ddb356eb8286a8134e98182893fea"
+  },
+  "212": {
+    "method_id": "212",
+    "name": "Figma plugin marketplace (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:57:33.881597+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_designer_feedback",
+        "value": 89,
+        "unit": "responses",
+        "period": "14d"
+      },
+      {
+        "metric": "feature_request_volume",
+        "value": 34,
+        "unit": "requests",
+        "period": "7d"
+      },
+      {
+        "metric": "early_adopter_retention",
+        "value": 58.2,
+        "unit": "%",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant focuses on niche design workflow automation (e.g., token sync, accessibility checks). Proxy TIER0 targets open-source Figma plugins with monetization gaps. Official integration: Figma Plugin API + Webhooks. Zero-capital via free community listing + manual key delivery initially. Iterate based on designer feedback loops.",
+    "_hash": "1b3028d3d81f26fbecc1b8eff11118f80e1f245c4af7e737a35b1df43ab8c328"
+  },
+  "213": {
+    "method_id": "213",
+    "name": "Figma plugin marketplace (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:57:33.881597+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_team_seats",
+        "value": 250,
+        "unit": "designers",
+        "period": "current"
+      },
+      {
+        "metric": "design_system_compliance",
+        "value": 94.5,
+        "unit": "%",
+        "period": "audit"
+      },
+      {
+        "metric": "annual_contract_value",
+        "value": 8500,
+        "unit": "USD",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant emphasizes design system governance, SSO, and audit trails. Proxy TIER0 via GitHub Search for enterprise-grade Figma plugin frameworks. Official targets: Figma Organization Admin API + Custom License Server. Monetization via volume team licensing. Zero-capital PoC uses local Figma file + mock auth; production requires verified publisher status.",
+    "_hash": "25c685df6357deb4da7266c47a0ffe1c854be0ff048cc7a6677fffd23859883b"
   }
 }

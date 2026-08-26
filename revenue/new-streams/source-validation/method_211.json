@@ -1,0 +1,35 @@
+{
+  "method_id": "211",
+  "name": "Figma plugin marketplace",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:57:33.881597+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "plugin_installs",
+      "value": 4500,
+      "unit": "users",
+      "period": "30d"
+    },
+    {
+      "metric": "paid_license_conversion",
+      "value": 3.8,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "avg_revenue_per_install",
+      "value": 1.85,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for Figma plugin boilerplates with monetization (Stripe/LemonSqueezy gated features). Official source: Figma Community API + Plugin Manifest. Zero-capital path uses free community publishing + serverless license validation. Revenue via one-time or subscription licenses for premium features.",
+  "_hash": "2f89301c0bd00b277ea637b4a1d3b8ae084ddb356eb8286a8134e98182893fea"
+}

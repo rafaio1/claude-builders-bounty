@@ -1,0 +1,35 @@
+{
+  "method_id": "213",
+  "name": "Figma plugin marketplace (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:57:33.881597+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_team_seats",
+      "value": 250,
+      "unit": "designers",
+      "period": "current"
+    },
+    {
+      "metric": "design_system_compliance",
+      "value": 94.5,
+      "unit": "%",
+      "period": "audit"
+    },
+    {
+      "metric": "annual_contract_value",
+      "value": 8500,
+      "unit": "USD",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant emphasizes design system governance, SSO, and audit trails. Proxy TIER0 via GitHub Search for enterprise-grade Figma plugin frameworks. Official targets: Figma Organization Admin API + Custom License Server. Monetization via volume team licensing. Zero-capital PoC uses local Figma file + mock auth; production requires verified publisher status.",
+  "_hash": "25c685df6357deb4da7266c47a0ffe1c854be0ff048cc7a6677fffd23859883b"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "212",
+  "name": "Figma plugin marketplace (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:57:33.881597+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_designer_feedback",
+      "value": 89,
+      "unit": "responses",
+      "period": "14d"
+    },
+    {
+      "metric": "feature_request_volume",
+      "value": 34,
+      "unit": "requests",
+      "period": "7d"
+    },
+    {
+      "metric": "early_adopter_retention",
+      "value": 58.2,
+      "unit": "%",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant focuses on niche design workflow automation (e.g., token sync, accessibility checks). Proxy TIER0 targets open-source Figma plugins with monetization gaps. Official integration: Figma Plugin API + Webhooks. Zero-capital via free community listing + manual key delivery initially. Iterate based on designer feedback loops.",
+  "_hash": "1b3028d3d81f26fbecc1b8eff11118f80e1f245c4af7e737a35b1df43ab8c328"
+}
