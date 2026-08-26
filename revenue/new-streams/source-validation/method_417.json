@@ -1,0 +1,31 @@
+{
+  "method_id": "417",
+  "name": "Wallet tracking alerts (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "Custodian X Cold Storage",
+      "compliance_status": "cleared",
+      "risk_score": 0.05,
+      "last_audit_days_ago": 14
+    },
+    {
+      "entity": "OTC Desk Y",
+      "compliance_status": "flagged",
+      "risk_score": 0.78,
+      "last_audit_days_ago": 92
+    }
+  ],
+  "schema": [
+    "entity",
+    "compliance_status",
+    "risk_score",
+    "last_audit_days_ago"
+  ],
+  "notes": "Variante enterprise/compliance. Foca em risco de contraparte e status de auditoria. Proxy TIER0 via datasets públicos de wallet labeling. Fonte oficial: Chainalysis KYT ou Scorechain.",
+  "generated_at": "2026-08-26T15:07:49.671610+00:00",
+  "_meta": {
+    "hash": "17e1c12a30d1b7b75004da053e6a0645a3859b6e2fd1e463d74aca54b91f9dd0"
+  }
+}

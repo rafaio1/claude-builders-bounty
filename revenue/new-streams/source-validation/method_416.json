@@ -1,0 +1,31 @@
+{
+  "method_id": "416",
+  "name": "Wallet tracking alerts (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "project_wallet": "Uniswap Treasury",
+      "event": "grant_disbursement",
+      "recipient_count": 12,
+      "total_usd": 450000
+    },
+    {
+      "project_wallet": "Aave DAO Multisig",
+      "event": "protocol_fee_collection",
+      "recipient_count": 1,
+      "total_usd": 128000
+    }
+  ],
+  "schema": [
+    "project_wallet",
+    "event",
+    "recipient_count",
+    "total_usd"
+  ],
+  "notes": "Variante para startups/DAOs. Rastreia eventos de tesouraria e grants. Proxy via repositórios de DAO treasury trackers. Fonte oficial: DeepDAO API ou Tally governance data.",
+  "generated_at": "2026-08-26T15:07:49.671610+00:00",
+  "_meta": {
+    "hash": "64cc2e5a3e11d62b9d24b34973b542f4ed1420ba78e3f3ed6b2ef9bc6439af6d"
+  }
+}

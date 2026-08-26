@@ -1,0 +1,31 @@
+{
+  "method_id": "415",
+  "name": "Wallet tracking alerts",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "wallet_label": "Binance Hot 14",
+      "tx_type": "outflow",
+      "amount_usd": 42500000,
+      "alert_trigger": "whale_movement"
+    },
+    {
+      "wallet_label": "Unknown EOA",
+      "tx_type": "inflow",
+      "amount_usd": 890000,
+      "alert_trigger": "exchange_deposit"
+    }
+  ],
+  "schema": [
+    "wallet_label",
+    "tx_type",
+    "amount_usd",
+    "alert_trigger"
+  ],
+  "notes": "Alertas genéricos de movimentação de carteiras. Proxy TIER0 via repositórios de whale-alert bots e Etherscan stream parsers no GitHub. Fonte oficial: Whale Alert API ou Arkham Intelligence.",
+  "generated_at": "2026-08-26T15:07:49.671610+00:00",
+  "_meta": {
+    "hash": "c7c11cc9fa60a83370d7de43b22bb4161bca1eb2c80c1643be88a80cedafe582"
+  }
+}
