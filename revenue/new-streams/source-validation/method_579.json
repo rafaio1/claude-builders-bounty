@@ -1,0 +1,28 @@
+{
+  "method_id": "579",
+  "name": "Freelance tax estimator bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:54.244363+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_structure": "multi_entity_consolidated",
+      "transfer_pricing_policy": "arm_length",
+      "withholding_agent": true,
+      "audit_defense_ready": true
+    },
+    {
+      "corp_structure": "branch_office_foreign",
+      "transfer_pricing_policy": "cost_plus",
+      "withholding_agent": false,
+      "audit_defense_ready": false
+    }
+  ],
+  "schema": [
+    "corp_structure",
+    "transfer_pricing_policy",
+    "withholding_agent",
+    "audit_defense_ready"
+  ],
+  "notes": "Engine de estimativa fiscal corporativa com transfer pricing e withholding. Proxy: GitHub Search 'enterprise tax provision calculator'. Fonte oficial: OECD BEPS guidelines / Big 4 public frameworks."
+}

@@ -1,0 +1,28 @@
+{
+  "method_id": "577",
+  "name": "Freelance tax estimator bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:54.244363+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "jurisdiction": "us_federal",
+      "income_bracket_usd": 85000,
+      "deduction_model": "standard",
+      "estimated_quarterly_usd": 4200
+    },
+    {
+      "jurisdiction": "uk_self_assessment",
+      "income_bracket_gbp": 65000,
+      "deduction_model": "allowable_expenses",
+      "estimated_quarterly_gbp": 3100
+    }
+  ],
+  "schema": [
+    "jurisdiction",
+    "income_bracket_usd",
+    "deduction_model",
+    "estimated_quarterly_usd"
+  ],
+  "notes": "Estimativa de impostos para freelancers baseada em tabelas públicas. Zero-capital: cálculo local sem submissão real. Proxy: GitHub Search 'freelance tax calculator python'. Fonte oficial: IRS/HRMC public tax tables."
+}

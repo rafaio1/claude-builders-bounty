@@ -1,0 +1,34 @@
+{
+  "method_id": "578",
+  "name": "Freelance tax estimator bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:30:54.244363+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity_type": "llc_single_member",
+      "revenue_run_rate_usd": 120000,
+      "nexus_states": [
+        "ca",
+        "ny"
+      ],
+      "sales_tax_engine": "avalara_free_tier"
+    },
+    {
+      "entity_type": "ltd_vat_registered",
+      "revenue_run_rate_gbp": 95000,
+      "nexus_countries": [
+        "uk",
+        "de"
+      ],
+      "sales_tax_engine": "quaderno_sandbox"
+    }
+  ],
+  "schema": [
+    "entity_type",
+    "revenue_run_rate_usd",
+    "nexus_states",
+    "sales_tax_engine"
+  ],
+  "notes": "Compliance fiscal para startups digitais com nexus multi-jurisdição. Proxy: GitHub Search 'startup sales tax automation free'. Fonte oficial: Avalara/Quaderno sandbox docs."
+}
