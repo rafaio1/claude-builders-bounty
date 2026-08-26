@@ -1,0 +1,38 @@
+{
+  "method_id": "639",
+  "name": "Security compliance audit (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:28.743979+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_id": "ent_771",
+      "frameworks": [
+        "soc2",
+        "hipaa",
+        "pci_dss"
+      ],
+      "systems_in_scope": 45,
+      "continuous_monitoring": true,
+      "annual_cost_usd": 180000
+    },
+    {
+      "corp_id": "ent_220",
+      "frameworks": [
+        "iso27001",
+        "nist_800_53"
+      ],
+      "systems_in_scope": 120,
+      "continuous_monitoring": true,
+      "annual_cost_usd": 350000
+    }
+  ],
+  "schema": [
+    "corp_id",
+    "frameworks",
+    "systems_in_scope",
+    "continuous_monitoring",
+    "annual_cost_usd"
+  ],
+  "notes": "Multi-framework e monitoramento contínuo. Fonte oficial alvo: NIST CSF / Enterprise GRC platforms. Proxy TIER0: GitHub Search API para automação de evidence collection e policy-as-code."
+}

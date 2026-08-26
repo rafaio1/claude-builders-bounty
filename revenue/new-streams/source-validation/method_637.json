@@ -1,0 +1,34 @@
+{
+  "method_id": "637",
+  "name": "Security compliance audit",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:28.743979+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "org_id": "org_8821",
+      "framework": "soc2_type2",
+      "scope": "saas_platform",
+      "findings_critical": 2,
+      "findings_high": 8,
+      "audit_duration_days": 14
+    },
+    {
+      "org_id": "org_3390",
+      "framework": "iso27001",
+      "scope": "data_processing",
+      "findings_critical": 0,
+      "findings_high": 5,
+      "audit_duration_days": 21
+    }
+  ],
+  "schema": [
+    "org_id",
+    "framework",
+    "scope",
+    "findings_critical",
+    "findings_high",
+    "audit_duration_days"
+  ],
+  "notes": "Auditoria geral de segurança. Fonte oficial alvo: AICPA/ISO documentation. Proxy TIER0: GitHub Search API para checklists e scripts de auditoria automatizada."
+}

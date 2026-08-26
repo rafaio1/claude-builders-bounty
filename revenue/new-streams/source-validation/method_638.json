@@ -1,0 +1,31 @@
+{
+  "method_id": "638",
+  "name": "Security compliance audit (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:28.743979+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_id": "st_441",
+      "target_framework": "soc2_type1",
+      "budget_usd": 5000,
+      "readiness_pct": 65,
+      "priority": "enterprise_sales_unblock"
+    },
+    {
+      "startup_id": "st_992",
+      "target_framework": "gdpr_lite",
+      "budget_usd": 2000,
+      "readiness_pct": 40,
+      "priority": "eu_market_entry"
+    }
+  ],
+  "schema": [
+    "startup_id",
+    "target_framework",
+    "budget_usd",
+    "readiness_pct",
+    "priority"
+  ],
+  "notes": "Foco em desbloquear vendas enterprise com orçamento limitado. Fonte oficial alvo: Vanta/Drata startup guides. Proxy TIER0: GitHub Search API para políticas de segurança open-source para startups."
+}
