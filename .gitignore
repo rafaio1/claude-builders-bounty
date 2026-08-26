@@ -1,136 +1,125 @@
-# === SECRETS AND CREDENTIALS (NEVER VERSION) ===
-.env
-.env.*
-*.pem
-*.key
-id_rsa*
-credentials.json
-secrets/
-.config/gmail_*
-.config/last_telegram*
-p2p-stack/robosats/node/
 
-# === RUNTIME STATE, LOGS AND DATA ===
-*.log
-*.pid
-*.jsonl
-logs/
-data/
-state/
-improve/traces/
-orchestrator/state.json
-orchestrator/v*_state.json
-orchestrator/.active_positions_*.json
-orchestrator/*.err
-orchestrator/*.out
-orchestrator/*.bak
-orchestrator/backtest_results/
-orchestrator/backtest_recommendation.json
-orchestrator/backtest_results.json
-orchestrator/v22d_active.json
-orchestrator/reconcile_output.txt
-orchestrator/audit_report.txt
-orchestrator/telegram_chats.txt
-bybit_futures/data/
-bybit_futures/logs/
-
+ # === NESTED VENV IN REVENUE SUBPROJECTS ===
+ # === P2P STACK RUNTIME (TESTNET CHAIN DATA) ===
+ config/hats_protocol_scanner.json
+ config/layer3_scanner.json
+ config/rabbithole_scanner.json
+ revenue/*/*/.venv/
+ revenue/*/.venv/
+ revenue/hats_opportunities/
+ revenue/layer3_opportunities/
+ revenue/rabbithole_opportunities/
+# === CODEX / AGENT LOCAL CONFIG ===
+# === EMBEDDED GIT REPOSITORIES (EXTERNAL CLONES) ===
+# === IDE / OS ===
+# === KNOWLEDGE BASE (RUNTIME-GENERATED) ===
 # === LOCK FILES ===
-*.lock
-
+# === NODE / FRONTEND ===
 # === PYTHON ===
-__pycache__/
+# === RUNTIME STATE, LOGS AND DATA ===
+# === SECRETS AND CREDENTIALS (NEVER VERSION) ===
+# Virtual environment
+*.d
+*.egg-info/
+*.jsonl
+*.key
+*.lock
+*.log
+*.o
+*.pem
+*.pid
 *.pyc
 *.pyo
-.pytest_cache/
-.venv/
-build/
-dist/
-*.egg-info/
-
-# === NODE / FRONTEND ===
-node_modules/
+.DS_Store
+.agents/skills/
+.claude/settings.local.json
+.claude/skills/
+.codex/config.toml.bak
+.config/gmail_*
+.config/last_telegram*
+.env
+.env.*
+.idea/
 .playwright-cli/
 .playwright/
-arb_dashboard.html
-typescript/
-
-# === IDE / OS ===
+.pytest_cache/
+.venv/
 .vscode/
-.idea/
-.DS_Store
+.worktrees/
 Thumbs.db
-*.o
-*.d
-
-# === CODEX / AGENT LOCAL CONFIG ===
-.codex/config.toml.bak
-.agents/skills/
-.claude/skills/
-
-# === EMBEDDED GIT REPOSITORIES (EXTERNAL CLONES) ===
+__pycache__/
+arb_dashboard.html
 bounties/immunefi/*/
 bugbounty/oss/*/
 bugbounty/recon/
-revenue/bounties/*/
+build/
+bybit_futures/data/
+bybit_futures/logs/
+config/code4rena_scanner.json
+config/defi_platforms.json
+config/galxe_scanner.json
+config/gitcoin_grants.json
+config/immunefi_scanner.json
+config/intract_scanner.json
+config/sherlock_scanner.json
+config/testnet_airdrop_state.json
+config/trade_scanner.json
+config/vuln_report_config.json
+config/zealy_scanner.json
+credentials.json
+data/
+data/aro/bounty_ledger.json
+data/orca_codex_terminals.json
+dist/
+id_rsa*
+improve/ledger.json
+improve/traces/
+knowledge/
+local_data/
+logs/
+logs/cron_revenue.log
+logs/defi_bounty_scanner.log
+logs/gitcoin_grant_drafter.log
+logs/revenue_orchestrator.log
+logs/testnet_airdrop_executor.log
+logs/trade_scanner.log
+logs/vuln_report_pipeline.log
+node_modules/
+orchestrator/*.bak
+orchestrator/*.err
+orchestrator/*.out
+orchestrator/.active_positions_*.json
+orchestrator/audit_report.txt
+orchestrator/backtest_recommendation.json
+orchestrator/backtest_results.json
+orchestrator/backtest_results/
+orchestrator/bybit_spot_live.log
+orchestrator/meanrev_binance.log
+orchestrator/meanrev_bybit.log
+orchestrator/reconcile_output.txt
+orchestrator/state.json
+orchestrator/telegram_chats.txt
+orchestrator/v*_state.json
+orchestrator/v22d_active.json
+p2p-stack/
 p2p-stack/mostro/
+p2p-stack/robosats/node/
+revenue/bounties/*/
+revenue/code4rena_opportunities/
+revenue/email-cleanup/.venv/
+revenue/galxe_opportunities/
+revenue/grants/
+revenue/immunefi_opportunities/
+revenue/intract_opportunities/
+revenue/sherlock_opportunities/
+revenue/trade_opportunities/
+revenue/vuln_reports/
+revenue/zealy_opportunities/
+secrets/
+state/
+typescript
+typescript/
+workspace/
 workspace/bounty-exec/*/
 workspace/high-ticket/*/
 workspace/sparepack/
-
-# === KNOWLEDGE BASE (RUNTIME-GENERATED) ===
-knowledge/
- # === P2P STACK RUNTIME (TESTNET CHAIN DATA) ===
- # === NESTED VENV IN REVENUE SUBPROJECTS ===
- revenue/*/.venv/
- revenue/*/*/.venv/
-typescript
-revenue/email-cleanup/.venv/
-revenue/vuln_reports/
-config/defi_platforms.json
-config/vuln_report_config.json
-logs/defi_bounty_scanner.log
-logs/vuln_report_pipeline.log
-logs/revenue_orchestrator.log
-logs/cron_revenue.log
-revenue/grants/
-config/gitcoin_grants.json
-logs/gitcoin_grant_drafter.log
-data/orca_codex_terminals.json
-data/aro/bounty_ledger.json
-config/trade_scanner.json
-logs/trade_scanner.log
-revenue/trade_opportunities/
-orchestrator/meanrev_binance.log
-orchestrator/bybit_spot_live.log
-orchestrator/meanrev_bybit.log
-logs/testnet_airdrop_executor.log
-config/testnet_airdrop_state.json
-p2p-stack/
-workspace/
-.pytest_cache/
-revenue/immunefi_opportunities/
-config/immunefi_scanner.json
-revenue/code4rena_opportunities/
-config/code4rena_scanner.json
-revenue/sherlock_opportunities/
-config/sherlock_scanner.json
- revenue/hats_opportunities/
- revenue/layer3_opportunities/
- config/hats_protocol_scanner.json
- config/layer3_scanner.json
- revenue/rabbithole_opportunities/
- config/rabbithole_scanner.json
-config/zealy_scanner.json
-revenue/zealy_opportunities/
-config/galxe_scanner.json
-revenue/galxe_opportunities/
-config/intract_scanner.json
-revenue/intract_opportunities/
-.worktrees/
-local_data/
-
-# Virtual environment
-.venv/
-.claude/settings.local.json
-.venv/
-improve/ledger.json
