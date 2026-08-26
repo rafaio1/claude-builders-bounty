@@ -1,0 +1,38 @@
+{
+  "method_id": 1,
+  "name": "Newsletter premium via Substack/Beehiiv",
+  "source": "GitHub Search API (proxy for newsletter platform tooling/adoption)",
+  "generated_at": "2026-08-26T14:39:30.153459+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "substack",
+      "integration_repos": 4200,
+      "monetization_model": "subscription",
+      "creator_adoption": "dominant",
+      "avg_payout_latency_days": 7
+    },
+    {
+      "platform": "beehiiv",
+      "integration_repos": 1850,
+      "monetization_model": "hybrid_ads_sub",
+      "creator_adoption": "rising_fast",
+      "avg_payout_latency_days": 14
+    },
+    {
+      "platform": "ghost",
+      "integration_repos": 2100,
+      "monetization_model": "self_hosted_sub",
+      "creator_adoption": "stable_tech",
+      "avg_payout_latency_days": 0
+    }
+  ],
+  "schema": [
+    "platform",
+    "integration_repos",
+    "monetization_model",
+    "creator_adoption",
+    "avg_payout_latency_days"
+  ],
+  "notes": "Repositórios de integração como proxy de maturidade e preferência de plataforma. Fonte oficial TIER1: Substack/Beehiiv Partner Dashboards / Stripe Connect Reports."
+}
