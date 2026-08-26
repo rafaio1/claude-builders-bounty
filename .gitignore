@@ -1,21 +1,61 @@
-.playwright/
-.playwright-cli/
-*.png
-*.webm
-node_modules/
-.env
-.claude/settings.local.json
-.venv/
-__pycache__/
-*.pyc
-.agentic.lock
-.agentic-improve.lock
-.agentic-loop.stop
-.agentic-aro.stop
-data/
-workspaces/
-.pytest_cache/
-*.egg-info/
-build/
-improve/traces/
-.claude/skills/generate-changelog/
+ # Secrets and credentials
+ .env
+ .env.*
+ *.pem
+ *.key
+ id_rsa*
+ credentials.json
+ secrets/
+ 
+ # Local data, caches, logs
+ *.log
+ logs/
+ data/
+ state/
+ ledger.jsonl
+ *.pid
+ 
+ # Python
+ __pycache__/
+ *.pyc
+ .pytest_cache/
+ .venv/
+ 
+ # Node / Build
+ node_modules/
+ dist/
+ build/
+ *.o
+ *.d
+ 
+ # IDE / OS
+ .vscode/
+ .idea/
+ .DS_Store
+ Thumbs.db
+ 
+ # Lock files (agent state)
+ .agentic.lock
+ .agentic-improve.lock
+ 
+ # Generated artifacts
+ arb_dashboard.html
+ typescript/
+ # Embedded git repositories (clones of external bounties/targets)
+ bounties/immunefi/*/
+ bugbounty/oss/*/
+ revenue/bounties/*/
+ p2p-stack/mostro/
+ workspace/bounty-exec/*/
+ workspace/high-ticket/*/
+ workspace/sparepack/
+ # RoboSats node secrets and runtime data
+ p2p-stack/robosats/node/lnd/tls.key
+ p2p-stack/robosats/node/lnd/*.key
+ p2p-stack/robosats/node/cln/
+ p2p-stack/robosats/node/db/
+ # Bybit futures runtime data
+ bybit_futures/data/
+ bybit_futures/logs/
+ # Improve traces (debug artifacts)
+ improve/traces/

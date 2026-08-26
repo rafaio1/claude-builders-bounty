@@ -1,0 +1,29 @@
+{
+  "exchange": "bybit",
+  "market_type": "usdt_perpetual",
+  "leverage": {
+    "default": 10,
+    "max": 50,
+    "dynamic_adjustment": true
+  },
+  "risk_management": {
+    "max_position_size_pct": 15,
+    "stop_loss_pct": 2.5,
+    "take_profit_pct": 5.0,
+    "max_drawdown_pct": 20
+  },
+  "strategies_enabled": [
+    "momentum_breakout",
+    "funding_rate_arb",
+    "liquidation_squeeze"
+  ],
+  "api": {
+    "testnet": false,
+    "rate_limit_ms": 100,
+    "recv_window_ms": 5000
+  },
+  "logging": {
+    "level": "INFO",
+    "path": "/Agentic/bybit_futures/logs/bybit_agent.log"
+  }
+}

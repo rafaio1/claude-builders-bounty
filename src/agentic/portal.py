@@ -526,6 +526,8 @@ def _sanitize_stats(value: Any) -> dict[str, Any]:
         "cash_brl": _integer(source.get("cash_brl")),
         "offers_total": _integer(source.get("offers_total") or source.get("programs_total")),
         "paused": _text(source.get("paused") or "não", 20),
+        "fiscal_destination": _text(source.get("fiscal_destination"), 40),
+        "fiscal_government_payment": False,
     }
 
 
@@ -931,6 +933,44 @@ def _sanitize_messages(value: Any) -> list[dict[str, str]]:
     return [row for row in rows if row["body"]]
 
 
+def _sanitize_codex_terminals(value: Any) -> dict[str, Any]:
+    source = value if isinstance(value, dict) else {}
+    terminals: list[dict[str, Any]] = []
+    raw_terminals = source.get("terminals")
+    if isinstance(raw_terminals, list):
+        for item in raw_terminals[:20]:
+            if not isinstance(item, dict):
+                continue
+            status = _text(item.get("status") or "waiting", 20).lower()
+            if status not in {"running", "waiting", "stopped", "failed"}:
+                status = "waiting"
+            provider = _text(item.get("provider") or "ghostcli", 40).lower()
+            if provider not in {"ghostcli", "ghostcli2"}:
+                provider = "ghostcli"
+            logs = []
+            for line in item.get("logs") or []:
+                logs.append(_text(line, 500))
+                if len(logs) >= 5:
+                    break
+            terminals.append(
+                {
+                    "name": _text(item.get("name") or "Terminal Codex", 100),
+                    "handle": _text(item.get("handle"), 100),
+                    "worktree": _text(item.get("worktree") or "/Agentic", 200),
+                    "provider": provider,
+                    "status": status,
+                    "logs": logs,
+                }
+            )
+    return {
+        "generated_at": _text(source.get("generated_at"), 80),
+        "host": _text(source.get("host"), 100),
+        "gateway": _text(source.get("gateway"), 100),
+        "model": _text(source.get("model"), 100),
+        "terminals": terminals,
+    }
+
+
 def sanitize_state(value: Any) -> dict[str, Any]:
     source = value if isinstance(value, dict) else {}
     schema_version = _integer(source.get("schema_version"), maximum=10)
@@ -957,6 +997,7 @@ def sanitize_state(value: Any) -> dict[str, Any]:
         "integrity": _sanitize_integrity(source.get("integrity")),
         "ai_eval": _sanitize_ai_eval(source.get("ai_eval")),
         "messages": _sanitize_messages(source.get("messages")),
+        "codex_terminals": _sanitize_codex_terminals(source.get("codex_terminals")),
     }
 
 
@@ -976,6 +1017,7 @@ def empty_state() -> dict[str, Any]:
             "integrity": {},
             "ai_eval": {},
             "messages": [],
+            "codex_terminals": {},
         }
     )
 
@@ -1355,6 +1397,7 @@ class PortalApp:
                 integrity=state.get("integrity") or {},
                 ai_eval=state.get("ai_eval") or {},
                 messages=state.get("messages") or [],
+                codex_terminals=state.get("codex_terminals") or {},
                 last_activity=state["heartbeat"].get("last_activity", ""),
                 flash_message=flash,
             ),
@@ -1373,6 +1416,7 @@ class PortalApp:
             "integrity": {},
             "ai_eval": {},
             "messages": [],
+            "codex_terminals": {},
             "login_url": "/login",
             "logout_url": "/logout",
             "dashboard_url": "/",

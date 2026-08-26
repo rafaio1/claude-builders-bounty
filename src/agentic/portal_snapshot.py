@@ -126,6 +126,9 @@ def build_snapshot(
     ledger = _load_json(root / "improve" / "ledger.json")
     ledger = ledger if isinstance(ledger, dict) else {}
     aro = _latest_aro(root)
+    codex_terminals = _load_json(root / "data" / "orca_codex_terminals.json")
+    if not isinstance(codex_terminals, dict):
+        codex_terminals = {"generated_at": "", "terminals": []}
     tools = status.get("tools") if isinstance(status.get("tools"), dict) else {}
     aro_status = status.get("aro") if isinstance(status.get("aro"), dict) else {}
     offers = aro.get("offers") if isinstance(aro.get("offers"), list) else []
@@ -262,6 +265,10 @@ def build_snapshot(
             "cash_brl": 0,
             "offers_total": len(offers) or len(findings),
             "paused": "sim" if aro_status.get("paused") else "não",
+            "fiscal_destination": (aro.get("fiscal") or {}).get("destination")
+            or aro_status.get("fiscal_destination")
+            or "",
+            "fiscal_government_payment": False,
         },
         "findings": findings,
         "activity": activity,
@@ -302,7 +309,7 @@ def build_snapshot(
             "ok": bool(tools.get("ghostcli") and tools.get("playwright")),
             "status": "ok" if tools.get("ghostcli") else "missing",
             "generated_at": generated,
-            "summary": "Playwright e GhostCLI reportados só como booleanos; Bybit não opera o caixa ARO.",
+            "summary": "Playwright e GhostCLI reportados só como booleanos; Bybit só como carteira de reserva fiscal, sem trading.",
             "passed": sum(1 for key in ("playwright", "ghostcli") if tools.get(key)),
             "failed": sum(1 for key in ("playwright", "ghostcli") if not tools.get(key)),
             "total": 2,
@@ -320,6 +327,7 @@ def build_snapshot(
             ],
         },
         "messages": _messages(inbox, root),
+        "codex_terminals": codex_terminals,
     }
     return sanitize_state(snapshot)
 
