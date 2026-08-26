@@ -89,3 +89,13 @@
  2. Confirme `docs/INTEGRATION_RULES.md` existe e não foi alterado indevidamente
  3. Valide que nenhum arquivo sensível escapou no último push
  4. Atualize métricas de integração (commits, features, secrets bloqueados)
+
+## 9. Cron Revenue Suite
+
+Script: `scripts/cron_revenue_suite.sh`
+Agenda recomendada: `*/15 * * * * /Agentic/scripts/cron_revenue_suite.sh >> /Agentic/logs/cron_revenue.log 2>&1`
+
+Executa em sequência: openbugbounty_register → defi_bounty_scanner → vul_report_autonomous → revenue_orchestrator
+Cada passo é isolado com `|| echo WARN`; falha em um não interrompe os demais.
+Logs excluídos do versionamento via `.gitignore`.
+Orchestrator aplica gate Telegram: apenas receita realizada e reconciliada gera notificação.
