@@ -1619,14 +1619,21 @@
       "payout_method": null,
       "eligibility": "unknown",
       "deadline": null,
-      "last_action": "2026-08-26T23:17:38.674201+00:00",
-      "next_action": "Verify bounty amount and maintainer activity before submission; competitor Stanley-Owoh applied via Stellar Wave",
+      "last_action": "2026-08-26T23:18:37.401069+00:00",
+      "next_action": "Monitor PR #285 merge; if merged before our submission, mark rejected_duplicate; do NOT submit competing PR",
       "evidence": [
         {
           "type": "email",
           "id": "1a0405ca3ba557c9",
           "summary": "Stanley-Owoh applied via Stellar Wave Program 8th wave",
           "date": "2026-08-26T23:17:38.674201+00:00"
+        },
+        {
+          "type": "pr_competitor",
+          "pr": 285,
+          "author": "tomasbogado203-bit",
+          "summary": "Competitor PR #285 opened for issue #210; CI green, Vercel auth pending",
+          "date": "2026-08-26T23:18:37.401069+00:00"
         }
       ],
       "probability": "low",

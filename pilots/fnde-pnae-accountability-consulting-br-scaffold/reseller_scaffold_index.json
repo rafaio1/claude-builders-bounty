@@ -1,0 +1,31 @@
+{
+  "method_id": "920",
+  "pilot_name": "fnde-pnae-accountability-consulting-br-scaffold",
+  "source_artifact": "revenue/new-streams/source-validation/method_920.json",
+  "real_source": "FNDE/PNAE SiGeCon + Lei 11.947/2009 + Resolução CD/FNDE 6/2020",
+  "status": "SCAFFOLD_OK",
+  "doc_verified": true,
+  "free_tier_confirmed": true,
+  "free_tier_evidence": "SiGeCon (https://www.fnde.gov.br/sigecon/) é sistema público federal gratuito para prestação de contas PNAE. Dados abertos FNDE disponíveis em https://www.gov.br/fnde/pt-br/acesso-a-informacao/dados-abertos. Zero custo: entrega é relatório técnico baseado em legislação pública + uso do sistema oficial.",
+  "reselling_allowed": true,
+  "reselling_model": {
+    "type": "project_fee_per_municipio",
+    "fee_range_brl": [3000, 8000],
+    "target_segment": "prefeituras_pequeno_porte_br",
+    "value_prop": "Elaboração e revisão técnica de prestação de contas PNAE/SiGeCon; regularização pendências TCE; treinamento equipe municipal"
+  },
+  "risks": [
+    "Sazonalidade forte: demanda concentra-se em fev-mar e out-nov (prazos FNDE)",
+    "Dependência de acesso a dados municipais internos (notas fiscais, extratos bancários) que podem estar desorganizados",
+    "Concorrência de escritórios contábeis locais já estabelecidos; diferencial é especialização PNAE/TCE",
+    "Mudanças normativas anuais exigem atualização constante; risco de obsolescência se não acompanhar resoluções FNDE"
+  ],
+  "next_steps": [
+    "Validar fluxo completo SiGeCon via ambiente treinamento FNDE (credenciais gov.br gratuitas)",
+    "Mapear municípios com pendências PNAE via portal SIMEC/TCU para prospecção ativa",
+    "Draft proposta padrão com escopo: diagnóstico + regularização + treinamento + acompanhamento 12 meses",
+    "Verificar requisitos habilitação licitação/dispença para serviços técnicos especializados em municípios <50k hab"
+  ],
+  "divergence_note": "Proposal title genérico 'Consultoria Prestação Contas FNDE'; artifact confirma foco BR prefeituras pequeno porte + monetização por projeto R$3k-8k. SiGeCon público valida infraestrutura zero-capital; valor está na expertise normativa PNAE/TCE não no software.",
+  "timestamp": "2026-08-26T23:52:00+00:00"
+}
