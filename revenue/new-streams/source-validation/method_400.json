@@ -1,0 +1,37 @@
+{
+  "method_id": "400",
+  "name": "Rug pull detector API (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:44.439217+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "CREATOR-LAUNCH",
+      "chain": "base",
+      "risk_score": 28,
+      "flags": [
+        "low_liquidity"
+      ],
+      "creator_verified": true
+    },
+    {
+      "token": "COMMUNITY-MEME",
+      "chain": "solana",
+      "risk_score": 45,
+      "flags": [
+        "unlocked_lp",
+        "high_tax"
+      ],
+      "creator_verified": false
+    }
+  ],
+  "schema": [
+    "token:str",
+    "chain:str",
+    "risk_score:int",
+    "flags:list",
+    "creator_verified:bool"
+  ],
+  "notes": "Detector focado em tokens de creator economy e lançamentos comunitários. Proxy TIER0: GitHub repos de token safety tools para creators. Fonte oficial alvo: BaseScan/Solscan APIs + creator platform verification. Zero capital: simulação apenas.",
+  "sha256": "2789892be629e3d9cc2395e869e86d707fd0ddeac9f4fa78ca77a67f59b81660"
+}

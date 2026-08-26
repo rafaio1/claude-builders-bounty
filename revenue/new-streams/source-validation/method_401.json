@@ -1,0 +1,32 @@
+{
+  "method_id": "401",
+  "name": "Rug pull detector API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:44.439217+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "contract_auditor_sdk",
+      "language": "solidity",
+      "checks_supported": 45,
+      "scan_time_ms": 320,
+      "false_positive_rate_pct": 2.8
+    },
+    {
+      "tool": "liquidity_analyzer_lib",
+      "language": "python",
+      "checks_supported": 32,
+      "scan_time_ms": 180,
+      "false_positive_rate_pct": 3.5
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "checks_supported:int",
+    "scan_time_ms:int",
+    "false_positive_rate_pct:float"
+  ],
+  "notes": "SDKs e bibliotecas para devs integrarem detecção de rug pull em dApps e wallets. Proxy TIER0: GitHub search (smart contract auditors, token safety libs). Fonte oficial alvo: Etherscan API docs + security framework repos. Métricas sintéticas.",
+  "sha256": "be7c8b25c8278d60f2c3c2063b634d4b4ed2b79d13d269242d1afe34a72be8aa"
+}

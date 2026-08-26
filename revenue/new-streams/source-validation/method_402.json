@@ -1,0 +1,32 @@
+{
+  "method_id": "402",
+  "name": "Rug pull detector API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:44.439217+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "LAUNCHPAD_A",
+      "tokens_screened_monthly": 850,
+      "blocked_rugs": 42,
+      "api_uptime_pct": 99.9,
+      "integration_type": "webhook"
+    },
+    {
+      "client": "WALLET_PROVIDER_B",
+      "tokens_screened_monthly": 12500,
+      "blocked_rugs": 380,
+      "api_uptime_pct": 99.95,
+      "integration_type": "realtime_api"
+    }
+  ],
+  "schema": [
+    "client:str",
+    "tokens_screened_monthly:int",
+    "blocked_rugs:int",
+    "api_uptime_pct:float",
+    "integration_type:str"
+  ],
+  "notes": "Serviço B2B de screening de tokens para launchpads e wallet providers. Proxy TIER0: GitHub repos de institutional token security platforms. Fonte oficial alvo: Multi-chain aggregation APIs + private indexer nodes. Dados sintéticos baseados em benchmarks.",
+  "sha256": "737c1169a39d7a5c0be375c0983fa76ed4489160db265350487af907436ce2a3"
+}
