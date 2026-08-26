@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:35:31.477063+00:00",
-    "total": 603,
+    "generated_at": "2026-08-26T15:35:58.457344+00:00",
+    "total": 606,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -9631,5 +9631,122 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (enterprise-chatbot/bot-framework-sap). Fonte oficial alvo: Enterprise RFPs/freelance SOWs Teams/Salesforce bots. Zero-capital: sandboxes e dev tenants gratuitas; produção é TIER1 com licenças enterprise.",
     "content_hash": "d98f1ae7b991cf7102281d535dc23f32699a71bf158e16321b776fd95560ed0c"
+  },
+  "604": {
+    "method_id": "604",
+    "name": "Chatbot development (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:58.457344+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "twitch_chat",
+        "framework": "tmi_js",
+        "mod_actions_auto": true,
+        "response_latency": "<500ms",
+        "tool": "node_streamlabs_bot"
+      },
+      {
+        "platform": "instagram_dm",
+        "framework": "instagrapi",
+        "faq_deflection_pct": "65%",
+        "setup_cost": "$0",
+        "tool": "manyfree_tier"
+      },
+      {
+        "platform": "tiktok_live",
+        "framework": "tiktok_live_connector",
+        "gift_alerts": true,
+        "viewer_engagement_gain": "+22%",
+        "tool": "obs_websocket"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (creator-chatbot/twitch-tiktok). Fonte oficial alvo: Fiverr 'streamer bot setup'. Zero-capital: libs open-source + free tier automation.",
+    "content_hash": "fd75873ce729dd91704b4cdd2f905b2968e4da7b4668d92f14a4a2ba2aa53f63"
+  },
+  "605": {
+    "method_id": "605",
+    "name": "Chatbot development (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:58.457344+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "cli_assistant",
+        "framework": "langchain_local",
+        "model": "llama3_8b_q4",
+        "offline_capable": true,
+        "tool": "ollama_python"
+      },
+      {
+        "platform": "vscode_extension",
+        "framework": "vscode_api",
+        "context_window": "128k",
+        "completion_latency": "280ms",
+        "tool": "continue_dev"
+      },
+      {
+        "platform": "git_ops_bot",
+        "framework": "probot_node",
+        "pr_reviews_auto": true,
+        "ci_trigger": "comment",
+        "tool": "github_app_manifest"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (dev-chatbot/langchain-probot). Fonte oficial alvo: Toptal freelance AI tooling. Zero-capital: modelos locais + GitHub Apps gratuitas.",
+    "content_hash": "ecdeb6e4adfc0b88e082170a139e77a5f455350e8c8cc469067f795e9dd5a98f"
+  },
+  "606": {
+    "method_id": "606",
+    "name": "Chatbot development (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:58.457344+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "website_widget",
+        "framework": "chatwoot_selfhosted",
+        "concurrent_chats": 50,
+        "avg_resolution_time": "4min",
+        "tool": "docker_compose"
+      },
+      {
+        "platform": "whatsapp_business_api",
+        "framework": "wppconnect",
+        "messages_month": 15000,
+        "cost_per_msg": "$0",
+        "tool": "baileys_multidevice"
+      },
+      {
+        "platform": "internal_helpdesk",
+        "framework": "mattermost_bot",
+        "ticket_creation": true,
+        "sso_saml": true,
+        "tool": "mattermost_api"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (agency-chatbot/chatwoot-wppconnect). Fonte oficial alvo: Clutch.co agency support automation. Zero-capital: self-hosted open-source; sem licenças por agente.",
+    "content_hash": "af06987b11fcde776a2a276464aa234003bfeeb0e455536de51ecee634ae31f2"
   }
 }
