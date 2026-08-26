@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T13:32:23+00:00",
+  "updated_at": "2026-08-26T13:34:04+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -537,7 +537,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T133223Z",
+      "map_id": "20260826T133404Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -564,7 +564,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T133223Z",
+      "map_id": "20260826T133404Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -591,7 +591,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T133223Z",
+      "map_id": "20260826T133404Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -620,7 +620,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T133223Z",
+      "map_id": "20260826T133404Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -9522,6 +9522,149 @@
           "at": "2026-08-26T13:32:23+00:00",
           "event": "mapped",
           "detail": "20260826T133223Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-aus-ncia-de-backoff-adaptativo-no-loop-de-90s",
+      "key": "2ca64f3fedf8adb1",
+      "canon": "35b2e33db744cbab",
+      "title": "Ausência de backoff adaptativo no loop de 90s",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O loop roda a cada 90s fixos. Se a fila estiver vazia ou as APIs externas (GhostCLI) estiverem lentas, o sistema desperdiça recursos e pode gerar erros em cascata.",
+      "change": "Implementar sleep dinâmico ou backoff exponencial no src/agentic/loop.py quando não houver tarefas pending ou quando as APIs retornarem timeouts.",
+      "never": [
+        "Alterar o --interval da unit systemd",
+        "Ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T133404Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:34:04+00:00",
+          "event": "mapped",
+          "detail": "20260826T133404Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-falta-de-timeout-expl-cito-no-playwright-cli",
+      "key": "b499113f769a7f15",
+      "canon": "79f42a34e1517107",
+      "title": "Falta de timeout explícito no playwright-cli",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Chamadas ao playwright-cli sem timeout podem travar o tick de saúde se uma página demorar para carregar ou houver lentidão de rede.",
+      "change": "Adicionar parâmetros de timeout nas chamadas subprocess do playwright-cli no motor.",
+      "never": [
+        "Ativar playwright-mcp",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/env.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133404Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:34:04+00:00",
+          "event": "mapped",
+          "detail": "20260826T133404Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-telemetria-de-uso-de-tokens-e-lat-ncia-da-ghostc",
+      "key": "98d27c1116f5a629",
+      "canon": "85e4ece09d7b6830",
+      "title": "Telemetria de uso de tokens e latência da GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "theme=ai. Atualmente os traces são sanitizados, mas não capturam métricas de custo e latência das chamadas ao Claude CLI via GhostCLI.",
+      "change": "Extrair e logar latência e estimativa de tokens dos responses da GhostCLI no claude_cli.py e ghostcli.py.",
+      "never": [
+        "Imprimir secrets da Bybit",
+        "Alterar ANTHROPIC_BASE_URL"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T133404Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:34:04+00:00",
+          "event": "mapped",
+          "detail": "20260826T133404Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-tratamento-de-erros-estruturado-para-ferramentas",
+      "key": "376f89f338b878b9",
+      "canon": "d0629a0e337ec7c3",
+      "title": "Tratamento de erros estruturado para ferramentas (jq/playwright)",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "theme=tools. Falhas de parsing no jq ou snapshots vazios no playwright geram erros genéricos, dificultando o feedback do reviewer.",
+      "change": "Criar wrappers com tratamento de erro específico (ex: JSONDecodeError, TimeoutExpired) para retornar feedback estruturado à fila do improve.py.",
+      "never": [
+        "Executar fuzzing ou wordlists",
+        "Enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133404Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:34:04+00:00",
+          "event": "mapped",
+          "detail": "20260826T133404Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-valida-o-de-integridade-do-aro-md",
+      "key": "523389de7f9294d9",
+      "canon": "b68b4c0b0dfab80d",
+      "title": "Validação de integridade do ARO.md",
+      "kind": "improvement",
+      "priority": 5,
+      "status": "pending",
+      "rationale": "theme=ai. Garantir que a constituição (OWNER_SHARE_RATE=0.20) não foi alterada acidentalmente por prompts malformados.",
+      "change": "Adicionar hash check de ARO.md e constitution.py no tick de saúde.",
+      "never": [
+        "Alterar OWNER_SHARE_RATE",
+        "Pausar operações sem STOP_ALL_OPERATIONS"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T133404Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:34:04+00:00",
+          "event": "mapped",
+          "detail": "20260826T133404Z"
         }
       ]
     }
