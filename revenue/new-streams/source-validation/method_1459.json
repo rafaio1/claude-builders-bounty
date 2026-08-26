@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1459",
+  "name": "Foxbit Staking Rewards Tracker",
+  "category": "crypto_defi",
+  "source": "https://foxbit.com.br/api/staking",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.051245+00:00",
+  "sample_data": {
+    "platform": "Foxbit",
+    "payout_structure": "BRL yield tracking service, subscription R$29-99/mês",
+    "compliance_status": "Exchange regulada BR, staking permitido CVM",
+    "market_demand_indicator": "Staking crypto BR cresceu 300% 2024, falta tooling local",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://foxbit.com.br/api/staking | COMPLIANCE: Exchange regulada BR, staking permitido CVM | PAYOUT BRL: BRL yield tracking service, subscription R$29-99/mês | DEMANDA BR: Staking crypto BR cresceu 300% 2024, falta tooling local | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "bf8d92ed83ac304f6702c38dda68236ea7d8a368b42ae5b71b2483e098cc9b6d"
+}

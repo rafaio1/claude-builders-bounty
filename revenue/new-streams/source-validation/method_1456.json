@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1456",
+  "name": "Dados Públicos Gov.br Scraper",
+  "category": "data_products",
+  "source": "https://dados.gov.br/dados/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.050586+00:00",
+  "sample_data": {
+    "platform": "Dados",
+    "payout_structure": "Venda de datasets enriquecidos BRL, preço por registro/licença",
+    "compliance_status": "Lei Acesso Informação 12.527/2011, dados abertos por lei",
+    "market_demand_indicator": "Empresas BR pagam R$500-5k/mês por dados governamentais estruturados",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://dados.gov.br/dados/api | COMPLIANCE: Lei Acesso Informação 12.527/2011, dados abertos por lei | PAYOUT BRL: Venda de datasets enriquecidos BRL, preço por registro/licença | DEMANDA BR: Empresas BR pagam R$500-5k/mês por dados governamentais estruturados | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "b135f438ebf407315f896c77d6ced9d5dc5f695cc2e3c847a8f329071e42902c"
+}

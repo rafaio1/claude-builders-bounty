@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1458",
+  "name": "Mercado Bitcoin Affiliate Node",
+  "category": "crypto_defi",
+  "source": "https://api.mercadobitcoin.net/docs",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.050914+00:00",
+  "sample_data": {
+    "platform": "Mercado",
+    "payout_structure": "BRL comissão 30% trading fees, saque PIX instantâneo",
+    "compliance_status": "Registrado CVM/Bacen, KYC obrigatório, LGPD compliant",
+    "market_demand_indicator": "Maior exchange BR volume, +2M usuários ativos",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.mercadobitcoin.net/docs | COMPLIANCE: Registrado CVM/Bacen, KYC obrigatório, LGPD compliant | PAYOUT BRL: BRL comissão 30% trading fees, saque PIX instantâneo | DEMANDA BR: Maior exchange BR volume, +2M usuários ativos | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "0b1fb433263020874fd39c580225c00b4416465245bd7cb362fc60ade98116d7"
+}

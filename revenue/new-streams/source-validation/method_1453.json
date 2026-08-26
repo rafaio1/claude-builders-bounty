@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1453",
+  "name": "Kiwify Afiliados API",
+  "category": "content_monetization",
+  "source": "https://docs.kiwify.com.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.045943+00:00",
+  "sample_data": {
+    "platform": "Kiwify",
+    "payout_structure": "BRL via PIX/TED, comissão 30-70%, saque mínimo R$50",
+    "compliance_status": "LGPD compliant, termos públicos",
+    "market_demand_indicator": "Top 3 plataforma infoprodutos BR 2024-2025, +200k produtores ativos",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://docs.kiwify.com.br | COMPLIANCE: LGPD compliant, termos públicos | PAYOUT BRL: BRL via PIX/TED, comissão 30-70%, saque mínimo R$50 | DEMANDA BR: Top 3 plataforma infoprodutos BR 2024-2025, +200k produtores ativos | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "e825d84a5e32b9a862cb800e23c2080f3c97f362f113349781910096c264d823"
+}

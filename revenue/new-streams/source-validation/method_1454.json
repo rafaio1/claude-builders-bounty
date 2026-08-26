@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1454",
+  "name": "Eduzz Marketplace Afiliados",
+  "category": "content_monetization",
+  "source": "https://api.eduzz.com/docs",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.049884+00:00",
+  "sample_data": {
+    "platform": "Eduzz",
+    "payout_structure": "BRL via PIX, comissão até 80%, saque R$30",
+    "compliance_status": "LGPD, CNPJ opcional para PF",
+    "market_demand_indicator": "Forte em nichos saúde/beleza BR, integração Hotmart-like",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://api.eduzz.com/docs | COMPLIANCE: LGPD, CNPJ opcional para PF | PAYOUT BRL: BRL via PIX, comissão até 80%, saque R$30 | DEMANDA BR: Forte em nichos saúde/beleza BR, integração Hotmart-like | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "e5d3371eebb00480dc4e3edd6c80ce4a734db430b05a5a71dd0ec6c0864d8af0"
+}

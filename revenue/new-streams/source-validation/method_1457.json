@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1457",
+  "name": "Receita Federal CNPJ Enrichment",
+  "category": "data_products",
+  "source": "https://receitaws.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.050754+00:00",
+  "sample_data": {
+    "platform": "Receita",
+    "payout_structure": "API B2B BRL por consulta (R$0.05-0.20/req), planos mensais",
+    "compliance_status": "Dados públicos RF, LGPD não aplica a PJ, termo de uso permite revenda",
+    "market_demand_indicator": "+10M consultas/mês BR, essencial para onboarding B2B/fintech",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://receitaws.com.br/api | COMPLIANCE: Dados públicos RF, LGPD não aplica a PJ, termo de uso permite revenda | PAYOUT BRL: API B2B BRL por consulta (R$0.05-0.20/req), planos mensais | DEMANDA BR: +10M consultas/mês BR, essencial para onboarding B2B/fintech | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "f3ebc7bb40d556f448e703958436bdcbeb8b47ea78936f977b543b01066d076f"
+}

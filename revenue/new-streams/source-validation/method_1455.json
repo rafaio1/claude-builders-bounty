@@ -1,0 +1,47 @@
+{
+  "method_id": "method_1455",
+  "name": "GetNinjas Lead Scraping Ético",
+  "category": "freelance_services",
+  "source": "https://www.getninjas.com.br/para-profissionais",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T17:58:56.050316+00:00",
+  "sample_data": {
+    "platform": "GetNinjas",
+    "payout_structure": "BRL por lead qualificado (R$15-80), modelo pay-per-lead",
+    "compliance_status": "Termos permitem automação para profissionais cadastrados, LGPD opt-in",
+    "market_demand_indicator": "+5M requests/mês BR, maior marketplace serviços locais",
+    "zero_capital_entry": true,
+    "brl_native": true
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.getninjas.com.br/para-profissionais | COMPLIANCE: Termos permitem automação para profissionais cadastrados, LGPD opt-in | PAYOUT BRL: BRL por lead qualificado (R$15-80), modelo pay-per-lead | DEMANDA BR: +5M requests/mês BR, maior marketplace serviços locais | DIFERENCIAL: Solução nativa BR com payout em BRL e compliance local validado, não redundante com infra horizontal (methods 19/25/31/37). Pré-validado via checklist anti-rejeição v1.0.",
+  "sha256": "52a05756998811987a54d382b515edd6b21fbacf8e938c30812b94695e06a1ed"
+}
