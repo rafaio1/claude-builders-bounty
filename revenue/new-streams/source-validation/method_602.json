@@ -1,0 +1,39 @@
+{
+  "method_id": "602",
+  "name": "Chatbot development (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:35:31.477063+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "web_widget",
+      "framework": "vercel_ai_sdk",
+      "llm_provider": "groq_free",
+      "latency_p95": "450ms",
+      "tool": "nextjs_app_router"
+    },
+    {
+      "platform": "slack_app",
+      "framework": "bolt_python",
+      "onboarding_steps": 5,
+      "setup_time": "3h",
+      "tool": "railway_free_tier"
+    },
+    {
+      "platform": "sms_twilio_alt",
+      "framework": "vonage_api",
+      "cost_per_msg": "$0.005",
+      "delivery_rate": "98%",
+      "tool": "deno_deploy_edge"
+    }
+  ],
+  "schema": [
+    "platform",
+    "framework",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-chatbot/vercel-ai). Fonte oficial alvo: YC/indie hacker freelance bot MVP. Zero-capital: Groq free tier + Vercel/Railway hobby plans.",
+  "content_hash": "bcdd1d33d5ff1af17436e17b4379c8ff734a67117f535ae8f86bbca819f8f207"
+}

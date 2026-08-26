@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:35:03.990348+00:00",
-    "total": 600,
+    "generated_at": "2026-08-26T15:35:31.477063+00:00",
+    "total": 603,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -9515,5 +9515,121 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (agency-reporting/meta-looker). Fonte oficial alvo: Clutch.co agency data pipeline retainers. Zero-capital: trials e planos starter gratuitos cobrem setup inicial.",
     "content_hash": "0cb05357bd180818c11c8741b5bfb8ee8b86cd1b53a9dda7034ad0f376f06312"
+  },
+  "601": {
+    "method_id": "601",
+    "name": "Chatbot development",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:31.477063+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "whatsapp_business",
+        "framework": "baileys_node",
+        "avg_response_time": "1.2s",
+        "monthly_cost": "$0",
+        "tool": "n8n_chatbot_flow"
+      },
+      {
+        "platform": "telegram_mini_app",
+        "framework": "grammy_deno",
+        "users_active": 4500,
+        "uptime": "99.9%",
+        "tool": "cf_workers_kv"
+      },
+      {
+        "platform": "discord_support",
+        "framework": "discord_js_v14",
+        "tickets_resolved_pct": "78%",
+        "tool": "supabase_pg_backend"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (chatbot-frameworks/baileys-grammy). Fonte oficial alvo: Upwork/Fiverr chatbot dev gigs. Zero-capital: frameworks open-source + free-tier hosting.",
+    "content_hash": "983c23bbd9f90c472eef884d9e8630caf022c40d3d152522f56ddca857a57ed0"
+  },
+  "602": {
+    "method_id": "602",
+    "name": "Chatbot development (for startups)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:31.477063+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "web_widget",
+        "framework": "vercel_ai_sdk",
+        "llm_provider": "groq_free",
+        "latency_p95": "450ms",
+        "tool": "nextjs_app_router"
+      },
+      {
+        "platform": "slack_app",
+        "framework": "bolt_python",
+        "onboarding_steps": 5,
+        "setup_time": "3h",
+        "tool": "railway_free_tier"
+      },
+      {
+        "platform": "sms_twilio_alt",
+        "framework": "vonage_api",
+        "cost_per_msg": "$0.005",
+        "delivery_rate": "98%",
+        "tool": "deno_deploy_edge"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (startup-chatbot/vercel-ai). Fonte oficial alvo: YC/indie hacker freelance bot MVP. Zero-capital: Groq free tier + Vercel/Railway hobby plans.",
+    "content_hash": "bcdd1d33d5ff1af17436e17b4379c8ff734a67117f535ae8f86bbca819f8f207"
+  },
+  "603": {
+    "method_id": "603",
+    "name": "Chatbot development (for enterprises)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:31.477063+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "platform": "teams_bot",
+        "framework": "bot_framework_v4",
+        "compliance": "iso27001_soc2",
+        "sla": "99.95%",
+        "tool": "azure_bot_service"
+      },
+      {
+        "platform": "salesforce_einstein",
+        "framework": "apex_lwc",
+        "cases_deflected_pct": "42%",
+        "csat_gain": "+18pts",
+        "tool": "sf_platform_events"
+      },
+      {
+        "platform": "sap_joule_ext",
+        "framework": "cap_nodejs",
+        "erp_transactions": 12000,
+        "audit_trail": "immutable",
+        "tool": "btp_kyma_runtime"
+      }
+    ],
+    "schema": [
+      "platform",
+      "framework",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (enterprise-chatbot/bot-framework-sap). Fonte oficial alvo: Enterprise RFPs/freelance SOWs Teams/Salesforce bots. Zero-capital: sandboxes e dev tenants gratuitas; produção é TIER1 com licenças enterprise.",
+    "content_hash": "d98f1ae7b991cf7102281d535dc23f32699a71bf158e16321b776fd95560ed0c"
   }
 }
