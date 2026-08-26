@@ -167,7 +167,7 @@ class CodeAnalyzer:
             "coverage", ".nyc_output",
         ]
         self.results: Dict[str, Any] = {
-            "analyzed_at": datetime.utcnow().isoformat(),
+            "analyzed_at": datetime.now(timezone.utc).isoformat(),
             "repo_dir": str(self.repo_dir),
             "total_files": 0,
             "total_lines": 0,

@@ -697,7 +697,7 @@ CRITICAL CONSTRAINTS:
     # Structured error event: no silent fallback
     err_event = {
         "event": "triage_contract_failure",
-        "timestamp": datetime.utcnow().isoformat() + "Z",
+        "timestamp": datetime.now(timezone.utc).isoformat(),
         "resp_present": bool(resp),
         "parsed_type": type(selected).__name__,
         "candidate_count": len(sorted_cands),

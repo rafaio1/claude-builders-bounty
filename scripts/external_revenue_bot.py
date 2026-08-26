@@ -8,7 +8,7 @@ ROOT = Path("/Agentic")
 LOG = ROOT / "logs" / "external_rev.log"
 
 def log(msg):
-    ts = datetime.utcnow().isoformat()
+    ts = datetime.now(timezone.utc).isoformat()
     line = f"[{ts}] {msg}"
     print(line, flush=True)
     with open(LOG, "a") as f:

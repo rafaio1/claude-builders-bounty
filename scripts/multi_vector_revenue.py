@@ -9,7 +9,7 @@ LOG = ROOT / "logs" / "multi_vector.log"
 STATE_FILE = ROOT / "data" / "aro" / "multi_vector_state.json"
 
 def log(msg):
-    ts = datetime.utcnow().isoformat()
+    ts = datetime.now(timezone.utc).isoformat()
     line = f"[{ts}] {msg}"
     print(line, flush=True)
     with open(LOG, "a") as f:
