@@ -1,0 +1,31 @@
+{
+  "method_id": "492",
+  "name": "Cross-chain bridge liquidity monitor (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:12.577619+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Chainalysis Bridge Advisory",
+      "clients_monitored": 12,
+      "total_volume_30d_usd": 45000000,
+      "reporting_standard": "SOC2_cross_chain",
+      "compliance_tool": "chainalysis_kyt"
+    },
+    {
+      "agency": "Elliptic Multi-Chain Risk",
+      "clients_monitored": 8,
+      "total_volume_30d_usd": 28000000,
+      "reporting_standard": "FINRA_bridge_audit",
+      "compliance_tool": "elliptic_lens"
+    }
+  ],
+  "schema": [
+    "agency",
+    "clients_monitored",
+    "total_volume_30d_usd",
+    "reporting_standard",
+    "compliance_tool"
+  ],
+  "notes": "Variante para consultorias de compliance e risco cross-chain. Proxy TIER0: GitHub Search (topics: bridge-compliance, cross-chain-risk-advisory). Fonte oficial alvo: SEC enforcement actions + Nansen bridge flow analytics. Foco em client reporting e AML/KYT integration zero-capital."
+}

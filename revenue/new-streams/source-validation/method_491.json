@@ -1,0 +1,35 @@
+{
+  "method_id": "491",
+  "name": "Cross-chain bridge liquidity monitor (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:12.577619+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_group": "L2Beat Research",
+      "routes_tracked": [
+        "ARB-ETH",
+        "OP-ETH",
+        "ZKS-ETH"
+      ],
+      "monitoring_stack": "grafana_prometheus",
+      "open_source_dashboard": "l2beat/bridges-dashboard"
+    },
+    {
+      "dev_group": "Ethereum Cat Herders",
+      "routes_tracked": [
+        "GNOSIS-MAINNET",
+        "POLYGON-MAINNET"
+      ],
+      "monitoring_stack": "dune_alerts",
+      "open_source_dashboard": "ethcatherders/bridge-health"
+    }
+  ],
+  "schema": [
+    "dev_group",
+    "routes_tracked",
+    "monitoring_stack",
+    "open_source_dashboard"
+  ],
+  "notes": "Variante para research collectives e dev guilds focados em L2/bridge safety. Proxy TIER0: GitHub Search (orgs: l2beat, ethcatherders bridge-tooling). Fonte oficial alvo: L2Beat bridge risk assessments + Ethereum Foundation grants. Ênfase em observabilidade pública e documentação zero-capital."
+}

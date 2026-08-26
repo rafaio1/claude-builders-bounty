@@ -1,0 +1,31 @@
+{
+  "method_id": "490",
+  "name": "Cross-chain bridge liquidity monitor (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:12.577619+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "ArtBlocks Bridge Fund",
+      "route": "ETH-TEZOS-WETH",
+      "liquidity_threshold_usd": 150000,
+      "alert_tool": "discord_webhook",
+      "purpose": "nft_mint_funding"
+    },
+    {
+      "creator": "Sound.xyz Multi-Chain Pool",
+      "route": "BASE-OP-USDC",
+      "liquidity_threshold_usd": 85000,
+      "alert_tool": "telegram_bot",
+      "purpose": "royalty_payout"
+    }
+  ],
+  "schema": [
+    "creator",
+    "route",
+    "liquidity_threshold_usd",
+    "alert_tool",
+    "purpose"
+  ],
+  "notes": "Variante para artistas e músicos operando em múltiplas chains. Proxy TIER0: GitHub Search (topics: creator-cross-chain, nft-bridge-monitor). Fonte oficial alvo: ArtBlocks bridge analytics + Sound.xyz payout logs. Foco em garantir liquidez para mint/payout sem execução direta."
+}
