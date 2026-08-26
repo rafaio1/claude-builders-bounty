@@ -1,11 +1,13 @@
 [Unit]
-Description=Agentic Expansion Executor (dry-run queue builder)
-After=network.target
+Description=Agentic Expansion Executor (causal queue builder + utility-api health check)
+After=network.target agentic-utility-api.service
+Requires=agentic-utility-api.service
 
 [Service]
 Type=oneshot
 WorkingDirectory=/Agentic
-Environment=PYTHONPATH=/Agentic/src
+Environment=PYTHONPATH=/Agentic/src:/Agentic/revenue/products
+ExecStartPre=/usr/bin/curl -sf http://127.0.0.1:8769/health
 ExecStart=/usr/bin/python3 -m agentic.expansion_executor.cli --proposals data/expansion/proposals.jsonl --verdicts data/expansion/verdicts.jsonl --state-output data/expansion/executor_state.json --queue-output data/expansion/executor_queue.jsonl --dry-run --max-per-cycle 3
 LockPersonality=true
 ProtectSystem=strict
