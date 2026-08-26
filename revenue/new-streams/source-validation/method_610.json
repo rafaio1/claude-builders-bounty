@@ -1,0 +1,35 @@
+{
+  "method_id": "610",
+  "name": "RPA workflow automation (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:51.069977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "youtube_metadata_tagging",
+      "videos_processed_day": 45,
+      "manual_time_saved_hr": 3.5,
+      "tool": "yt_dlp_pipedream"
+    },
+    {
+      "process": "podcast_show_notes_gen",
+      "transcription_source": "whisper_local",
+      "publish_latency_min": 12,
+      "tool": "obsidian_templater"
+    },
+    {
+      "process": "sponsor_invoice_chase",
+      "overdue_triggers": true,
+      "follow_up_emails_sent": 8,
+      "tool": "gmail_apps_script"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (creator-automation/ytdlp-pipedream). Fonte oficial alvo: Fiverr 'creator ops automation'. Zero-capital: ferramentas open-source + free-tier SaaS.",
+  "content_hash": "ce456f1bd9f16f0d5a979a303804156896a79bf28d5c175b2b63914d9b2dfcc7"
+}

@@ -1,0 +1,39 @@
+{
+  "method_id": "598",
+  "name": "API integration specialist (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:35:03.990348+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "youtube_data_v3",
+      "target_system": "notion_content_db",
+      "sync_freq": "hourly",
+      "metric": "views_subs_synced",
+      "tool": "make_com_free"
+    },
+    {
+      "source_api": "spotify_for_artists",
+      "target_system": "google_sheets_finance",
+      "trigger": "monthly_payout",
+      "cost": "$0",
+      "tool": "apps_script_webhook"
+    },
+    {
+      "source_api": "patreon_api",
+      "target_system": "discord_bot_roles",
+      "event": "pledge_created",
+      "latency": "<2s",
+      "tool": "n8n_selfhosted"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (creator-automation/youtube-notion). Fonte oficial alvo: Fiverr 'creator workflow automation'. Zero-capital: Make free tier + n8n self-hosted.",
+  "content_hash": "196cf13012995e1ea4e17131af05e186930b763614eaecc9f649fb0ab016eebb"
+}

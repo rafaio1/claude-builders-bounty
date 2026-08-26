@@ -1,0 +1,39 @@
+{
+  "method_id": "617",
+  "name": "Data pipeline construction (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:48.413484+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "github_audit_log",
+      "destination": "clickhouse_local",
+      "retention_days": 90,
+      "format": "json_each_row",
+      "tool": "vector_dev"
+    },
+    {
+      "source": "vercel_analytics",
+      "destination": "tinybird_stream",
+      "latency_ms": "<500",
+      "schema_evolution": true,
+      "tool": "tinybird_ingest_api"
+    },
+    {
+      "source": "cloudflare_r2_logs",
+      "destination": "duckdb_motherduck",
+      "partition": "hourly",
+      "compression": "zstd",
+      "tool": "r2_duckdb_connector"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (dev-observability/vector-tinybird). Fonte oficial alvo: Toptal freelance observability eng. Zero-capital: OSS collectors + free-tier analytics.",
+  "content_hash": "7719e42f1cd4d385e9dccb31308c6ac9ae853d9a200a61ff868581620b2acd34"
+}

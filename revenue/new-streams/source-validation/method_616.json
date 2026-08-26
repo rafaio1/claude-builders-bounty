@@ -1,0 +1,39 @@
+{
+  "method_id": "616",
+  "name": "Data pipeline construction (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:48.413484+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "youtube_analytics_csv",
+      "destination": "notion_dashboard_db",
+      "refresh": "daily_8am",
+      "transform": "flatten_metrics",
+      "tool": "make_com_free"
+    },
+    {
+      "source": "spotify_for_artists_api",
+      "destination": "google_sheets_finance",
+      "metric": "monthly_streams_revenue",
+      "cost": "$0",
+      "tool": "apps_script_trigger"
+    },
+    {
+      "source": "patreon_webhooks",
+      "destination": "airtable_supporters",
+      "event": "pledge_created",
+      "dedup": true,
+      "tool": "n8n_selfhosted"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (creator-data/youtube-notion-sync). Fonte oficial alvo: Fiverr 'creator analytics setup'. Zero-capital: free-tier iPaaS + self-hosted n8n.",
+  "content_hash": "2037958bdcaa99b3f143b9ca5afeceeaa25d81a34647771a46bed906098e630e"
+}

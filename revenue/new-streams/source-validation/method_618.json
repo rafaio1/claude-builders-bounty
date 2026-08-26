@@ -1,0 +1,39 @@
+{
+  "method_id": "618",
+  "name": "Data pipeline construction (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:48.413484+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "meta_marketing_insights",
+      "destination": "looker_studio_pro",
+      "accounts": 45,
+      "refresh_schedule": "daily_6am",
+      "tool": "supermetrics_trial"
+    },
+    {
+      "source": "ga4_export_bigquery",
+      "destination": "powerbi_workspace",
+      "dataset_size_gb": 850,
+      "incremental": true,
+      "tool": "fabric_pipeline"
+    },
+    {
+      "source": "hubspot_deals_api",
+      "destination": "salesforce_custom_object",
+      "sync_direction": "bidirectional",
+      "conflict_resolution": "latest_wins",
+      "tool": "workato_oem"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (agency-reporting/meta-ga4-pipeline). Fonte oficial alvo: Clutch.co agency data retainers. Zero-capital: trials e connectors free cobrem PoC; produção escala é TIER1.",
+  "content_hash": "3671d8cea7103e3e69411529cb5e11428db3f01efbd93e466b6f8f1be391a2ed"
+}

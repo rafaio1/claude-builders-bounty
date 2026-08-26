@@ -1,0 +1,35 @@
+{
+  "method_id": "612",
+  "name": "RPA workflow automation (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:51.069977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "client_report_distribution",
+      "clients_served": 85,
+      "delivery_sla_compliance": "99.8%",
+      "tool": "airtable_automations"
+    },
+    {
+      "process": "ad_campaign_pause_alerts",
+      "budget_threshold_trigger": true,
+      "response_time_avg_min": 4,
+      "tool": "meta_marketing_webhook"
+    },
+    {
+      "process": "new_lead_crm_entry",
+      "forms_parsed_day": 200,
+      "duplicate_detection": true,
+      "tool": "make_com_agency_plan"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (agency-rpa/airtable-make). Fonte oficial alvo: Clutch.co agency ops retainers. Zero-capital: planos starter/trial cobrem volume inicial; escala é TIER1.",
+  "content_hash": "58d0b469cce86241662d0dccb01ef209bda12f61bdd54f8ae49dd9475eed2520"
+}

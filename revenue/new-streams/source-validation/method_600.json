@@ -1,0 +1,39 @@
+{
+  "method_id": "600",
+  "name": "API integration specialist (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:35:03.990348+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "meta_marketing_api",
+      "target_system": "looker_studio_report",
+      "refresh": "daily_6am",
+      "accounts_managed": 45,
+      "tool": "supermetrics_trial"
+    },
+    {
+      "source_api": "woocommerce_rest",
+      "target_system": "quickbooks_online",
+      "sync_scope": "orders_products_tax",
+      "compliance": "gaap_ready",
+      "tool": "myob_connect"
+    },
+    {
+      "source_api": "typeform_responses",
+      "target_system": "airtable_crm",
+      "transform": "flatten_nested",
+      "volume": "2k/day",
+      "tool": "integromat_legacy"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (agency-reporting/meta-looker). Fonte oficial alvo: Clutch.co agency data pipeline retainers. Zero-capital: trials e planos starter gratuitos cobrem setup inicial.",
+  "content_hash": "0cb05357bd180818c11c8741b5bfb8ee8b86cd1b53a9dda7034ad0f376f06312"
+}

@@ -1,0 +1,39 @@
+{
+  "method_id": "599",
+  "name": "API integration specialist (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:35:03.990348+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "github_rest_v3",
+      "target_system": "linear_issues",
+      "sync_type": "bidirectional",
+      "rate_limit_safe": true,
+      "tool": "hono_cloudflare_worker"
+    },
+    {
+      "source_api": "sentry_webhooks",
+      "target_system": "pagerduty_incidents",
+      "filter": "error_level_critical",
+      "sla": "99.9%",
+      "tool": "deno_deploy_relay"
+    },
+    {
+      "source_api": "vercel_deployment",
+      "target_system": "slack_channel",
+      "event": "preview_ready",
+      "auth": "bot_token",
+      "tool": "netlify_functions"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (devops-glue/github-linear-sync). Fonte oficial alvo: Toptal/Gun.io freelance devops integration. Zero-capital: Cloudflare/Deno/Netlify free tiers.",
+  "content_hash": "8c866f576f4a555277b3620c186532b193b2e2df88e798a484f19f746546f6c4"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "611",
+  "name": "RPA workflow automation (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:51.069977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "dependency_vuln_scan",
+      "repos_monitored": 35,
+      "alert_to_pr_time_min": 8,
+      "tool": "grype_github_action"
+    },
+    {
+      "process": "stale_issue_triage",
+      "issues_closed_auto": 120,
+      "false_positive_rate": "<2%",
+      "tool": "probot_stale"
+    },
+    {
+      "process": "db_backup_verify",
+      "restore_tests_weekly": true,
+      "corruption_detected": 0,
+      "tool": "restic_cronjob"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (devops-rpa/grype-probot). Fonte oficial alvo: Toptal freelance devops automation. Zero-capital: GitHub Actions free minutes + self-hosted runners.",
+  "content_hash": "b8a15b88611be4e9376e2799c4b5ac7761e89a4c06e6c4e4691edbd5e21f1e0c"
+}
