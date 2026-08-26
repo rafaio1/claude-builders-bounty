@@ -1,0 +1,41 @@
+{
+  "method_id": "625",
+  "name": "DevOps CI/CD setup",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:49.628964+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "project_id": "prj_9921",
+      "stack": "nodejs_docker",
+      "ci_provider": "github_actions",
+      "stages": [
+        "lint",
+        "test",
+        "build",
+        "deploy_staging"
+      ],
+      "avg_build_time_min": 12
+    },
+    {
+      "project_id": "prj_4410",
+      "stack": "python_k8s",
+      "ci_provider": "gitlab_ci",
+      "stages": [
+        "security_scan",
+        "unit_test",
+        "integration_test",
+        "deploy_prod"
+      ],
+      "avg_build_time_min": 28
+    }
+  ],
+  "schema": [
+    "project_id",
+    "stack",
+    "ci_provider",
+    "stages",
+    "avg_build_time_min"
+  ],
+  "notes": "Fonte oficial alvo: GitHub Actions Marketplace / GitLab Templates. Proxy TIER0: GitHub Search API para workflows .yml públicos."
+}

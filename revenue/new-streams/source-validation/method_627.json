@@ -1,0 +1,31 @@
+{
+  "method_id": "627",
+  "name": "DevOps CI/CD setup (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:49.628964+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_id": "ent_771",
+      "regulatory": "soc2_hipaa",
+      "self_hosted_runners": true,
+      "audit_logging": true,
+      "sso_integration": "okta"
+    },
+    {
+      "corp_id": "ent_220",
+      "regulatory": "iso27001",
+      "self_hosted_runners": true,
+      "audit_logging": true,
+      "sso_integration": "azure_ad"
+    }
+  ],
+  "schema": [
+    "corp_id",
+    "regulatory",
+    "self_hosted_runners",
+    "audit_logging",
+    "sso_integration"
+  ],
+  "notes": "Foco em compliance, self-hosted runners e SSO. Fonte oficial alvo: Enterprise docs de provedores CI. Proxy TIER0: GitHub Search API para enterprise configs públicas."
+}

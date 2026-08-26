@@ -1,0 +1,31 @@
+{
+  "method_id": "626",
+  "name": "DevOps CI/CD setup (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:39:49.628964+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_id": "st_331",
+      "budget_monthly_usd": 150,
+      "team_size": 4,
+      "preferred_tool": "circleci",
+      "compliance_needed": false
+    },
+    {
+      "startup_id": "st_882",
+      "budget_monthly_usd": 300,
+      "team_size": 9,
+      "preferred_tool": "github_actions",
+      "compliance_needed": true
+    }
+  ],
+  "schema": [
+    "startup_id",
+    "budget_monthly_usd",
+    "team_size",
+    "preferred_tool",
+    "compliance_needed"
+  ],
+  "notes": "Foco em configuração low-cost e rápida iteração. Fonte oficial alvo: CircleCI/GHA pricing pages. Proxy TIER0: GitHub Search API para configs de startup."
+}
