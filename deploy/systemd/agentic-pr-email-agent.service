@@ -3,10 +3,10 @@
  After=network-online.target
  Wants=network-online.target
  
- [Service]
- Type=oneshot
- WorkingDirectory=/Agentic
- ExecStart=/usr/bin/python3 /Agentic/tools/pr_email_agent.py
- StandardOutput=append:/var/log/agentic-pr-email-agent.log
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+ExecStart=/usr/bin/python3 /Agentic/tools/pr_email_agent.py --batch 20
+StandardOutput=append:/var/log/agentic-pr-email-agent.log
  StandardError=append:/var/log/agentic-pr-email-agent.log
  EnvironmentFile=/Agentic/.env
