@@ -1321,8 +1321,8 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
-    "total_samples": 375,
-    "generated_at": "2026-08-26T15:02:31.349443+00:00",
+    "total_samples": 390,
+    "generated_at": "2026-08-26T15:04:10.662836+00:00",
     "total": 354
   },
   "10": {
@@ -4956,5 +4956,485 @@
     ],
     "notes": "Infraestrutura enterprise multi-chain com SLAs rigorosos. Proxy TIER0: GitHub institutional validator frameworks. Fonte oficial alvo: Multi-chain aggregation APIs. Métricas sintéticas baseadas em benchmarks institucionais.",
     "sha256": "1b1a63456c56e2f25be592cb86426f31b931de0679f8e25a57cea1312da47093"
+  },
+  "376": {
+    "method_id": "376",
+    "name": "Staking validator node (for creators)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:02:49.269447+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "chain": "akash_network",
+        "commission_pct": 12.0,
+        "delegators_count": 18,
+        "monthly_reward_usd": 95,
+        "community_engagement_score": 82
+      },
+      {
+        "chain": "juno",
+        "commission_pct": 15.0,
+        "delegators_count": 12,
+        "monthly_reward_usd": 68,
+        "community_engagement_score": 91
+      }
+    ],
+    "schema": [
+      "chain:str",
+      "commission_pct:float",
+      "delegators_count:int",
+      "monthly_reward_usd:float",
+      "community_engagement_score:int"
+    ],
+    "notes": "Validadores focados em community building e creator economy chains. Proxy TIER0: GitHub repos de social validators. Fonte oficial alvo: Chain-specific staking APIs + community dashboards. Zero capital: simulação apenas.",
+    "sha256": "c812775aa1de5635de88af58cbb9ccb818268e5412778e649bcd25f5e32d8efe"
+  },
+  "377": {
+    "method_id": "377",
+    "name": "Staking validator node (for developers)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:02:49.269447+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "tool": "validator_setup_kit",
+        "language": "go",
+        "chains_supported": 6,
+        "setup_time_min": 45,
+        "automation_level_pct": 85
+      },
+      {
+        "tool": "monitoring_dashboard",
+        "language": "typescript",
+        "chains_supported": 10,
+        "alert_latency_ms": 250,
+        "uptime_tracking_pct": 99.9
+      }
+    ],
+    "schema": [
+      "tool:str",
+      "language:str",
+      "chains_supported:int",
+      "setup_time_min:int",
+      "automation_level_pct:float"
+    ],
+    "notes": "Ferramentas e SDKs para devs configurarem e monitorarem validadores. Proxy TIER0: GitHub search (validator automation tools). Fonte oficial alvo: Cosmos SDK docs + Tendermint RPC. Métricas sintéticas de performance.",
+    "sha256": "447095ad4f4d23205f551dc023f6812193ad52c5fcb79e659f78ad087ce8a921"
+  },
+  "378": {
+    "method_id": "378",
+    "name": "Staking validator node (for agencies)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:02:49.269447+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "STAKING_FUND_A",
+        "nodes_managed": 24,
+        "total_delegated_usd": 1200000,
+        "monthly_commission_usd": 8500,
+        "sla_uptime_pct": 99.95
+      },
+      {
+        "client": "DAO_COLLECTIVE_B",
+        "nodes_managed": 8,
+        "total_delegated_usd": 450000,
+        "monthly_commission_usd": 3200,
+        "sla_uptime_pct": 99.8
+      }
+    ],
+    "schema": [
+      "client:str",
+      "nodes_managed:int",
+      "total_delegated_usd:float",
+      "monthly_commission_usd:float",
+      "sla_uptime_pct:float"
+    ],
+    "notes": "Serviço B2B de gestão de infraestrutura de validação. Proxy TIER0: GitHub repos de validator-as-a-service. Fonte oficial alvo: Multi-chain aggregation APIs. Dados de receita e SLA sintéticos baseados em benchmarks.",
+    "sha256": "a8987f8a5c8dc57461cbf2e049c222f05ff54642748d7c2180674422a9efc5c5"
+  },
+  "379": {
+    "method_id": "379",
+    "name": "MEV extraction bot",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:12.458956+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "strategy": "sandwich",
+        "chain": "ethereum",
+        "avg_profit_per_tx_usd": 45.2,
+        "daily_tx_count": 18,
+        "gas_spent_usd": 120
+      },
+      {
+        "strategy": "backrun_arb",
+        "chain": "arbitrum",
+        "avg_profit_per_tx_usd": 12.8,
+        "daily_tx_count": 85,
+        "gas_spent_usd": 45
+      }
+    ],
+    "schema": [
+      "strategy:str",
+      "chain:str",
+      "avg_profit_per_tx_usd:float",
+      "daily_tx_count:int",
+      "gas_spent_usd:float"
+    ],
+    "notes": "Extração de MEV via monitoramento de mempool e bundling. Proxy TIER0: GitHub repos (flashbots, mev-share, jito-solana). Fonte oficial alvo: Flashbots Protect + Jito Block Engine. Zero capital: simulação apenas.",
+    "sha256": "1c26083daa72ef063a8fadd245b9d591edffd030d1d31c09b6d0b83a17b94199"
+  },
+  "380": {
+    "method_id": "380",
+    "name": "MEV extraction bot (for startups)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:12.458956+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "strategy": "liquidation_mev",
+        "chain": "base",
+        "target_protocol": "aave_v3",
+        "monthly_opportunity_usd": 2800,
+        "competition_score": 35
+      },
+      {
+        "strategy": "dex_arb_mev",
+        "chain": "optimism",
+        "target_protocol": "uniswap_v3",
+        "monthly_opportunity_usd": 4200,
+        "competition_score": 42
+      }
+    ],
+    "schema": [
+      "strategy:str",
+      "chain:str",
+      "target_protocol:str",
+      "monthly_opportunity_usd:float",
+      "competition_score:int"
+    ],
+    "notes": "Focado em L2s emergentes com menor competição de searchers. Proxy TIER0: GitHub search (L2 MEV bots, base/optimism searchers). Fonte oficial alvo: Chain-specific block builders + Dune dashboards. Dados sintéticos de oportunidade.",
+    "sha256": "a970c58a23e7e336f176987abe9c3fc18e911721e841549ab170fbb1c8a00ff7"
+  },
+  "381": {
+    "method_id": "381",
+    "name": "MEV extraction bot (for enterprises)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:12.458956+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "operation": "multi_chain_mev",
+        "chains_active": 6,
+        "monthly_revenue_usd": 185000,
+        "infra_cost_usd": 42000,
+        "builder_relationships": 8
+      },
+      {
+        "operation": "institutional_flow",
+        "chains_active": 4,
+        "monthly_revenue_usd": 125000,
+        "infra_cost_usd": 35000,
+        "builder_relationships": 5
+      }
+    ],
+    "schema": [
+      "operation:str",
+      "chains_active:int",
+      "monthly_revenue_usd:float",
+      "infra_cost_usd:float",
+      "builder_relationships:int"
+    ],
+    "notes": "Operação enterprise com infraestrutura dedicada e relacionamentos diretos com block builders. Proxy TIER0: GitHub institutional MEV frameworks. Fonte oficial alvo: Private RPC + builder APIs diretas. Métricas sintéticas baseadas em benchmarks.",
+    "sha256": "443c958c63ffe2d966d4f7bddb7bacd1e222b15755155a5ebba6c8b471d4b69c"
+  },
+  "382": {
+    "method_id": "382",
+    "name": "MEV extraction bot (for creators)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:29.472071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "strategy": "nft_snipe_mev",
+        "chain": "ethereum",
+        "target_collection": "creator-pass",
+        "avg_profit_per_tx_usd": 8.5,
+        "daily_opportunities": 12
+      },
+      {
+        "strategy": "social_token_arb",
+        "chain": "base",
+        "target_protocol": "friend_tech",
+        "avg_profit_per_tx_usd": 3.2,
+        "daily_opportunities": 45
+      }
+    ],
+    "schema": [
+      "strategy:str",
+      "chain:str",
+      "target_collection:str",
+      "avg_profit_per_tx_usd:float",
+      "daily_opportunities:int"
+    ],
+    "notes": "MEV focado em ativos de creator economy (NFTs, social tokens). Proxy TIER0: GitHub repos de NFT snipers e social fi bots. Fonte oficial alvo: OpenSea/Blur APIs + Friend.tech subgraph. Zero capital: simulação apenas.",
+    "sha256": "45015466efd0309b81b05e20a31b2a63369dab721625923d054cc65a76ade2f1"
+  },
+  "383": {
+    "method_id": "383",
+    "name": "MEV extraction bot (for developers)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:29.472071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "tool": "mev_searcher_sdk",
+        "language": "rust",
+        "chains_supported": 5,
+        "bundle_success_rate_pct": 78.4,
+        "latency_ms": 12
+      },
+      {
+        "tool": "mempool_monitor_lib",
+        "language": "python",
+        "chains_supported": 8,
+        "bundle_success_rate_pct": 65.2,
+        "latency_ms": 45
+      }
+    ],
+    "schema": [
+      "tool:str",
+      "language:str",
+      "chains_supported:int",
+      "bundle_success_rate_pct:float",
+      "latency_ms:int"
+    ],
+    "notes": "SDKs e bibliotecas para devs construírem searchers MEV customizados. Proxy TIER0: GitHub search (flashbots kits, mev-rs, searcher templates). Fonte oficial alvo: Flashbots docs + builder APIs. Métricas sintéticas de performance.",
+    "sha256": "d450c925d550c1f39d4c417c7a12f7ef1e1a92babf8d99e52e8ed977e7f2dcf8"
+  },
+  "384": {
+    "method_id": "384",
+    "name": "MEV extraction bot (for agencies)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:29.472071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "DEFI_PROTOCOL_A",
+        "strategies_deployed": 4,
+        "monthly_mev_revenue_usd": 12500,
+        "sla_fill_rate_pct": 92.5,
+        "infra_cost_share_pct": 30.0
+      },
+      {
+        "client": "TRADING_DESK_B",
+        "strategies_deployed": 7,
+        "monthly_mev_revenue_usd": 28000,
+        "sla_fill_rate_pct": 88.3,
+        "infra_cost_share_pct": 25.0
+      }
+    ],
+    "schema": [
+      "client:str",
+      "strategies_deployed:int",
+      "monthly_mev_revenue_usd:float",
+      "sla_fill_rate_pct:float",
+      "infra_cost_share_pct:float"
+    ],
+    "notes": "Serviço B2B de MEV-as-a-service para protocolos e trading desks. Proxy TIER0: GitHub repos de institutional MEV platforms. Fonte oficial alvo: Private builder relationships + aggregation APIs. Dados sintéticos baseados em benchmarks.",
+    "sha256": "a6acc96c194caf99e65e52ae81213ccea628dd37886b4cf1b2c8778ef5e0ff93"
+  },
+  "385": {
+    "method_id": "385",
+    "name": "Airdrop farming automation",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:52.469396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "layerzero_v2",
+        "chains_interacted": 8,
+        "tx_count": 145,
+        "estimated_allocation_usd": 1250,
+        "sybil_risk_score": 15
+      },
+      {
+        "protocol": "starknet",
+        "chains_interacted": 1,
+        "tx_count": 89,
+        "estimated_allocation_usd": 850,
+        "sybil_risk_score": 22
+      }
+    ],
+    "schema": [
+      "protocol:str",
+      "chains_interacted:int",
+      "tx_count:int",
+      "estimated_allocation_usd:float",
+      "sybil_risk_score:int"
+    ],
+    "notes": "Automação de interação com protocolos para elegibilidade em airdrops. Proxy TIER0: GitHub repos (airdrop farming scripts, layerzero/starknet interactors). Fonte oficial alvo: Protocol docs + Dune eligibility dashboards. Zero capital: simulação apenas.",
+    "sha256": "fa2758f9264bd707e61704da3d0692da151147cf488afd5ef12e923af44f5fc5"
+  },
+  "386": {
+    "method_id": "386",
+    "name": "Airdrop farming automation (for startups)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:52.469396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "ecosystem": "berachain_testnet",
+        "tasks_completed": 32,
+        "points_accumulated": 4500,
+        "estimated_tier": "gold",
+        "gas_spent_usd": 0
+      },
+      {
+        "ecosystem": "monad_devnet",
+        "tasks_completed": 18,
+        "points_accumulated": 2100,
+        "estimated_tier": "silver",
+        "gas_spent_usd": 0
+      }
+    ],
+    "schema": [
+      "ecosystem:str",
+      "tasks_completed:int",
+      "points_accumulated:int",
+      "estimated_tier:str",
+      "gas_spent_usd:float"
+    ],
+    "notes": "Focado em testnets e devnets de L1s emergentes (zero gas real). Proxy TIER0: GitHub search (testnet farming bots, berachain/monad scripts). Fonte oficial alvo: Ecosystem task boards + Galileo/Zealy APIs. Dados sintéticos de pontos.",
+    "sha256": "c6a96f156cbeccd4ec77ddb5fe5ee4c9af50cebef167b237b4843f9473143257"
+  },
+  "387": {
+    "method_id": "387",
+    "name": "Airdrop farming automation (for enterprises)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:03:52.469396+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "operation": "multi_ecosystem_farm",
+        "wallets_managed": 200,
+        "protocols_targeted": 15,
+        "monthly_estimated_value_usd": 85000,
+        "anti_sybil_compliance_pct": 98.5
+      },
+      {
+        "operation": "institutional_points",
+        "wallets_managed": 50,
+        "protocols_targeted": 8,
+        "monthly_estimated_value_usd": 42000,
+        "anti_sybil_compliance_pct": 99.2
+      }
+    ],
+    "schema": [
+      "operation:str",
+      "wallets_managed:int",
+      "protocols_targeted:int",
+      "monthly_estimated_value_usd:float",
+      "anti_sybil_compliance_pct:float"
+    ],
+    "notes": "Operação enterprise com gestão de múltiplas wallets e compliance anti-sybil. Proxy TIER0: GitHub institutional airdrop frameworks. Fonte oficial alvo: Private allocation APIs + on-chain analytics. Métricas sintéticas baseadas em benchmarks.",
+    "sha256": "039778a8108866765c0982462c11b644448733ea0d6bc4cadbf5b27225df5749"
+  },
+  "388": {
+    "method_id": "388",
+    "name": "Airdrop farming automation (for creators)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:10.662836+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "ecosystem": "friend_tech_v2",
+        "tasks_completed": 45,
+        "social_score": 820,
+        "estimated_allocation_usd": 320,
+        "sybil_risk_score": 8
+      },
+      {
+        "ecosystem": "farcaster_frames",
+        "tasks_completed": 28,
+        "social_score": 650,
+        "estimated_allocation_usd": 180,
+        "sybil_risk_score": 5
+      }
+    ],
+    "schema": [
+      "ecosystem:str",
+      "tasks_completed:int",
+      "social_score:int",
+      "estimated_allocation_usd:float",
+      "sybil_risk_score:int"
+    ],
+    "notes": "Focado em airdrops de SocialFi e creator platforms onde identidade social é critério de elegibilidade. Proxy TIER0: GitHub repos de social farming bots. Fonte oficial alvo: Farcaster/Friend.tech APIs + Galileo quests. Zero capital: simulação apenas.",
+    "sha256": "34125d9478d02c3fc0eb70bf4db41538b86e48c3dfd650ca75584be2e20d1580"
+  },
+  "389": {
+    "method_id": "389",
+    "name": "Airdrop farming automation (for developers)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:10.662836+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "tool": "airdrop_hunter_cli",
+        "language": "rust",
+        "protocols_supported": 25,
+        "auto_claim_enabled": true,
+        "gas_optimization_score": 94
+      },
+      {
+        "tool": "sybil_guard_sdk",
+        "language": "python",
+        "protocols_supported": 18,
+        "auto_claim_enabled": false,
+        "gas_optimization_score": 82
+      }
+    ],
+    "schema": [
+      "tool:str",
+      "language:str",
+      "protocols_supported:int",
+      "auto_claim_enabled:bool",
+      "gas_optimization_score:int"
+    ],
+    "notes": "Ferramentas para devs automatizarem tracking e claim de airdrops com proteção anti-sybil. Proxy TIER0: GitHub search (airdrop claimers, eligibility checkers). Fonte oficial alvo: Protocol docs + Dune eligibility queries. Métricas sintéticas.",
+    "sha256": "6c593dc87f898de306915574ae59fa33dedce2f9917c73b267684cf69ea957ff"
+  },
+  "390": {
+    "method_id": "390",
+    "name": "Airdrop farming automation (for agencies)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:10.662836+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "VC_FUND_A",
+        "wallets_managed": 150,
+        "ecosystems_targeted": 12,
+        "monthly_estimated_value_usd": 65000,
+        "compliance_audit_passed": true
+      },
+      {
+        "client": "MARKETING_DAO_B",
+        "wallets_managed": 80,
+        "ecosystems_targeted": 8,
+        "monthly_estimated_value_usd": 28000,
+        "compliance_audit_passed": true
+      }
+    ],
+    "schema": [
+      "client:str",
+      "wallets_managed:int",
+      "ecosystems_targeted:int",
+      "monthly_estimated_value_usd:float",
+      "compliance_audit_passed:bool"
+    ],
+    "notes": "Serviço B2B de gestão de airdrop farming para fundos e DAOs com compliance institucional. Proxy TIER0: GitHub repos de institutional airdrop platforms. Fonte oficial alvo: Private allocation APIs + on-chain analytics. Dados sintéticos baseados em benchmarks.",
+    "sha256": "1641a7aaf1453b1dea66522a9a79c5d29bf7bcce799ab5e10b4856938e580590"
   }
 }

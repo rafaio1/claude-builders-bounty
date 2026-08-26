@@ -1,0 +1,32 @@
+{
+  "method_id": "389",
+  "name": "Airdrop farming automation (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:10.662836+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "airdrop_hunter_cli",
+      "language": "rust",
+      "protocols_supported": 25,
+      "auto_claim_enabled": true,
+      "gas_optimization_score": 94
+    },
+    {
+      "tool": "sybil_guard_sdk",
+      "language": "python",
+      "protocols_supported": 18,
+      "auto_claim_enabled": false,
+      "gas_optimization_score": 82
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "protocols_supported:int",
+    "auto_claim_enabled:bool",
+    "gas_optimization_score:int"
+  ],
+  "notes": "Ferramentas para devs automatizarem tracking e claim de airdrops com proteção anti-sybil. Proxy TIER0: GitHub search (airdrop claimers, eligibility checkers). Fonte oficial alvo: Protocol docs + Dune eligibility queries. Métricas sintéticas.",
+  "sha256": "6c593dc87f898de306915574ae59fa33dedce2f9917c73b267684cf69ea957ff"
+}

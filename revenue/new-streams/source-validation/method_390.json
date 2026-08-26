@@ -1,0 +1,32 @@
+{
+  "method_id": "390",
+  "name": "Airdrop farming automation (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:10.662836+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "VC_FUND_A",
+      "wallets_managed": 150,
+      "ecosystems_targeted": 12,
+      "monthly_estimated_value_usd": 65000,
+      "compliance_audit_passed": true
+    },
+    {
+      "client": "MARKETING_DAO_B",
+      "wallets_managed": 80,
+      "ecosystems_targeted": 8,
+      "monthly_estimated_value_usd": 28000,
+      "compliance_audit_passed": true
+    }
+  ],
+  "schema": [
+    "client:str",
+    "wallets_managed:int",
+    "ecosystems_targeted:int",
+    "monthly_estimated_value_usd:float",
+    "compliance_audit_passed:bool"
+  ],
+  "notes": "Serviço B2B de gestão de airdrop farming para fundos e DAOs com compliance institucional. Proxy TIER0: GitHub repos de institutional airdrop platforms. Fonte oficial alvo: Private allocation APIs + on-chain analytics. Dados sintéticos baseados em benchmarks.",
+  "sha256": "1641a7aaf1453b1dea66522a9a79c5d29bf7bcce799ab5e10b4856938e580590"
+}
