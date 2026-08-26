@@ -1,0 +1,45 @@
+{
+  "pipeline": "receitaws-cnpj-batch-validation",
+  "method_id": "method_1457",
+  "generated_at_utc": "2026-08-26T20:20:26.450799+00:00",
+  "total_consultados": 3,
+  "validos": 3,
+  "inativos": 0,
+  "erros": 0,
+  "rate_limit_delay_sec": 20,
+  "zero_capital": true,
+  "auth_required": false,
+  "scaffold_status": "OK",
+  "resultados": [
+    {
+      "cnpj": "00000000000191",
+      "status": "valid",
+      "razao_social": "BANCO DO BRASIL SA",
+      "situacao": "ATIVA",
+      "cnae_principal": "64.22-1-00",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "source": "receitaws"
+    },
+    {
+      "cnpj": "19131243000197",
+      "status": "valid",
+      "razao_social": "OPEN KNOWLEDGE BRASIL",
+      "situacao": "ATIVA",
+      "cnae_principal": "94.30-8-00",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "source": "receitaws"
+    },
+    {
+      "cnpj": "33683111000107",
+      "status": "valid",
+      "razao_social": "SERVICO FEDERAL DE PROCESSAMENTO DE DADOS (SERPRO)",
+      "situacao": "ATIVA",
+      "cnae_principal": "62.04-0-00",
+      "municipio": "BRASILIA",
+      "uf": "DF",
+      "source": "receitaws"
+    }
+  ]
+}
