@@ -1,0 +1,28 @@
+{
+  "method_id": "543",
+  "name": "Freelance rate calculator bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:22.104878+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_policy": "global_rate_card",
+      "currency_hedging": true,
+      "compliance_surcharge_pct": 8,
+      "preferred_vendor_list": true
+    },
+    {
+      "corp_policy": "department_budget",
+      "currency_hedging": false,
+      "compliance_surcharge_pct": 12,
+      "preferred_vendor_list": false
+    }
+  ],
+  "schema": [
+    "corp_policy",
+    "currency_hedging",
+    "compliance_surcharge_pct",
+    "preferred_vendor_list"
+  ],
+  "notes": "Engine de pricing corporativo com suporte a multi-moeda e surcharges de compliance/vendor management. Proxy: GitHub Search 'enterprise vendor rate management'. Fonte oficial: SAP Fieldglass / Coupa services procurement docs."
+}

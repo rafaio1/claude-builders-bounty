@@ -1,0 +1,28 @@
+{
+  "method_id": "541",
+  "name": "Freelance rate calculator bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:22.104878+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "skill_cluster": "full_stack_web",
+      "geo_multiplier": 1.2,
+      "experience_years": 5,
+      "platform_fee_pct": 20
+    },
+    {
+      "skill_cluster": "data_science_ml",
+      "geo_multiplier": 1.5,
+      "experience_years": 3,
+      "platform_fee_pct": 15
+    }
+  ],
+  "schema": [
+    "skill_cluster",
+    "geo_multiplier",
+    "experience_years",
+    "platform_fee_pct"
+  ],
+  "notes": "Calculadora dinâmica de taxas horárias baseada em benchmarks públicos e localização. Zero-capital: scraping de tabelas salariais públicas (Glassdoor/Levels.fyi anonimizadas). Proxy: GitHub Search 'freelance rate calculator api'. Fonte oficial: Upwork/Fiverr public earnings reports."
+}

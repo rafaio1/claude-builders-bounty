@@ -1,0 +1,28 @@
+{
+  "method_id": "542",
+  "name": "Freelance rate calculator bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:22.104878+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_stage": "pre_seed",
+      "burn_rate_constraint_usd": 2000,
+      "equity_component_pct": 5,
+      "vendor_type": "individual"
+    },
+    {
+      "startup_stage": "series_a",
+      "burn_rate_constraint_usd": 15000,
+      "equity_component_pct": 0,
+      "vendor_type": "agency"
+    }
+  ],
+  "schema": [
+    "startup_stage",
+    "burn_rate_constraint_usd",
+    "equity_component_pct",
+    "vendor_type"
+  ],
+  "notes": "Modelo de precificação adaptado para restrições de caixa de startups, incluindo componentes de equity. Proxy: GitHub Search 'startup freelance budget planner'. Fonte oficial: YC salary/equity database + AngelList trends."
+}
