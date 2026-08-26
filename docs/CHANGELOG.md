@@ -254,3 +254,22 @@
 - Telegram gate enforced: only realized financial events with external evidence pass
 - Revenue status: $0.00 realized | $1,265 pending (AgentLily) | All lanes: waiting_monitoring or pilot
 - Next cycle trigger: new uncommitted artifacts, upstream PR merge/update, human registration completion, platform payout confirmation, CENTRAL directive, or agent infrastructure reconciliation
+
+## [Unreleased] - Cycle 6 Integration (2026-08-26)
+
+### Added
+- docs: integrate Expansion Governance Framework (`pending`)
+  - Mandatory 5-step judgment process for autonomous expansion proposals
+  - Tier 0/1/2 autonomy levels with absolute prohibitions
+  - Baseline state documented as of 2026-08-26
+  - Zero secrets, zero Telegram calls, pure governance documentation
+
+### Verified
+- Secret scan passed on EXPANSION_GOVERNANCE.md
+- No runtime dependencies or external API calls
+- Remote validated: rafaio1/agentic-integration (PRIVATE=true)
+
+### Notes
+- Governance framework establishes mandatory review before any autonomous expansion
+- Aligns with existing integration rules and capital safety constraints
+- Revenue status: $0.00 realized | $1,265 pending (AgentLily) | All lanes: waiting_monitoring or pilot
