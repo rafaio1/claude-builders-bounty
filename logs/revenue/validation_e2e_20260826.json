@@ -1,0 +1,34 @@
+{
+  "timestamp": "2026-08-26T13:26:13.055213+00:00",
+  "stream": "newsletter_generator",
+  "e2e_status": "validated",
+  "pipeline_steps": {
+    "generation": {
+      "status": "success",
+      "artifacts": 6,
+      "source": "revenue/new-streams/content-monetization/output/"
+    },
+    "rendering": {
+      "status": "success",
+      "pages": 7,
+      "target": "site/newsletters/"
+    },
+    "publication": {
+      "status": "success",
+      "method": "git_push",
+      "commit": "5d69ce5",
+      "branch": "master"
+    },
+    "public_url": {
+      "status": "success",
+      "url": "https://raw.githubusercontent.com/rafaio1/agentic-integration/master/site/newsletters/index.html"
+    }
+  },
+  "revenue_status": "dry_run_complete_awaiting_monetization_integration",
+  "next_actions": [
+    "Integrate Stripe/payment links into newsletter CTA",
+    "Configure GitHub Pages for proper HTML rendering (currently raw)",
+    "Add analytics tracking to measure conversion",
+    "Submit exp-20260826-reactivate-zero-capital-streams-v2 to council with this evidence"
+  ]
+}
