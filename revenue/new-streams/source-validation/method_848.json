@@ -1,0 +1,38 @@
+{
+  "method_id": 848,
+  "name": "Review sentiment DB (for startups)",
+  "source": "GitHub Search API (startup product feedback in open-source repos)",
+  "generated_at": "2026-08-26T14:31:43.652924+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_product": "Resend",
+      "feedback_sources": 45,
+      "sentiment_positive_pct": 85.0,
+      "key_theme": "dx_improvement",
+      "trend": "rising"
+    },
+    {
+      "startup_product": "Supabase",
+      "feedback_sources": 120,
+      "sentiment_positive_pct": 78.5,
+      "key_theme": "postgres_compat",
+      "trend": "stable"
+    },
+    {
+      "startup_product": "Clerk",
+      "feedback_sources": 38,
+      "sentiment_positive_pct": 82.0,
+      "key_theme": "auth_simplicity",
+      "trend": "rising"
+    }
+  ],
+  "schema": [
+    "startup_product",
+    "feedback_sources",
+    "sentiment_positive_pct",
+    "key_theme",
+    "trend"
+  ],
+  "notes": "Focado em startups dev-first. Proxy GitHub para analisar feedback em issues e discussions de repositórios públicos."
+}

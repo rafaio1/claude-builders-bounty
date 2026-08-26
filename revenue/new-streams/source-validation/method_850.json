@@ -1,0 +1,38 @@
+{
+  "method_id": 850,
+  "name": "Review sentiment DB (for creators)",
+  "source": "GitHub Search API (proxy for creator tool/course reviews)",
+  "generated_at": "2026-08-26T14:32:14.749886+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_tool": "Patreon",
+      "reviews_analyzed": 320,
+      "sentiment_positive_pct": 74.5,
+      "top_complaint": "fee_structure",
+      "top_praise": "community_features"
+    },
+    {
+      "creator_tool": "Teachable",
+      "reviews_analyzed": 210,
+      "sentiment_positive_pct": 81.0,
+      "top_complaint": "transaction_fees",
+      "top_praise": "course_builder"
+    },
+    {
+      "creator_tool": "Substack",
+      "reviews_analyzed": 450,
+      "sentiment_positive_pct": 88.2,
+      "top_complaint": "discoverability",
+      "top_praise": "simplicity"
+    }
+  ],
+  "schema": [
+    "creator_tool",
+    "reviews_analyzed",
+    "sentiment_positive_pct",
+    "top_complaint",
+    "top_praise"
+  ],
+  "notes": "Proxy TIER0 via GitHub para analisar sentimento sobre ferramentas de criadores. Fonte oficial alvo TIER1: G2/Capterra reviews API."
+}

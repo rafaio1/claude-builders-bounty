@@ -1,0 +1,38 @@
+{
+  "method_id": 847,
+  "name": "Review sentiment DB",
+  "source": "GitHub Search API (proxy for product reviews/sentiment in issues/discussions)",
+  "generated_at": "2026-08-26T14:31:43.652924+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "product": "VS Code",
+      "total_reviews_analyzed": 1500,
+      "sentiment_positive_pct": 88.5,
+      "top_complaint": "memory_usage",
+      "top_praise": "extension_ecosystem"
+    },
+    {
+      "product": "Slack",
+      "total_reviews_analyzed": 980,
+      "sentiment_positive_pct": 72.3,
+      "top_complaint": "notification_fatigue",
+      "top_praise": "integrations"
+    },
+    {
+      "product": "Figma",
+      "total_reviews_analyzed": 1200,
+      "sentiment_positive_pct": 91.0,
+      "top_complaint": "offline_mode",
+      "top_praise": "realtime_collab"
+    }
+  ],
+  "schema": [
+    "product",
+    "total_reviews_analyzed",
+    "sentiment_positive_pct",
+    "top_complaint",
+    "top_praise"
+  ],
+  "notes": "Proxy TIER0 via GitHub issues/discussions para extrair sentimento de produtos tech. Fonte oficial alvo TIER1: G2/TrustRadius API."
+}

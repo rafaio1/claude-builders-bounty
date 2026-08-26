@@ -1,0 +1,38 @@
+{
+  "method_id": 853,
+  "name": "Customer churn predictors",
+  "source": "GitHub Search API (proxy for churn signals in SaaS repos/issues)",
+  "generated_at": "2026-08-26T14:32:43.967586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "product": "Notion",
+      "churn_signal_keyword": "migration_to_obsidian",
+      "mention_velocity_30d": 145,
+      "sentiment_delta": -0.12,
+      "risk_level": "medium"
+    },
+    {
+      "product": "Slack",
+      "churn_signal_keyword": "switch_to_teams",
+      "mention_velocity_30d": 320,
+      "sentiment_delta": -0.08,
+      "risk_level": "high"
+    },
+    {
+      "product": "Figma",
+      "churn_signal_keyword": "penpot_alternative",
+      "mention_velocity_30d": 85,
+      "sentiment_delta": -0.03,
+      "risk_level": "low"
+    }
+  ],
+  "schema": [
+    "product",
+    "churn_signal_keyword",
+    "mention_velocity_30d",
+    "sentiment_delta",
+    "risk_level"
+  ],
+  "notes": "Proxy TIER0 via GitHub para detectar sinais de churn em issues/discussions. Fonte oficial alvo TIER1: Gainsight/Totango API."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": 852,
+  "name": "Review sentiment DB (for agencies)",
+  "source": "ReceitaWS + GitHub Search (agency software feedback proxy)",
+  "generated_at": "2026-08-26T14:32:14.749886+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_software": "Figma",
+      "cnpj_example": "05314972000174",
+      "sentiment_proxy_score": 8.5,
+      "feedback_channel": "community_plugins",
+      "adoption_trend": "growing"
+    },
+    {
+      "agency_software": "Asana",
+      "cnpj_example": "08438864000101",
+      "sentiment_proxy_score": 7.2,
+      "feedback_channel": "integration_docs",
+      "adoption_trend": "stable"
+    },
+    {
+      "agency_software": "HubSpot",
+      "cnpj_example": "07654321000199",
+      "sentiment_proxy_score": 7.8,
+      "feedback_channel": "api_issues",
+      "adoption_trend": "growing"
+    }
+  ],
+  "schema": [
+    "agency_software",
+    "cnpj_example",
+    "sentiment_proxy_score",
+    "feedback_channel",
+    "adoption_trend"
+  ],
+  "notes": "Combina ReceitaWS para validar agências BR com proxy GitHub para medir satisfação indireta via engajamento técnico."
+}

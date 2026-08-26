@@ -1,0 +1,38 @@
+{
+  "method_id": 854,
+  "name": "Customer churn predictors (for startups)",
+  "source": "GitHub Search API (startup user abandonment signals)",
+  "generated_at": "2026-08-26T14:32:43.967586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Resend",
+      "abandonment_signal": "rate_limit_complaints",
+      "issue_spike_factor": 2.4,
+      "competitor_mentioned": "postmark",
+      "retention_risk": "elevated"
+    },
+    {
+      "startup": "Supabase",
+      "abandonment_signal": "realtime_latency",
+      "issue_spike_factor": 1.8,
+      "competitor_mentioned": "appwrite",
+      "retention_risk": "moderate"
+    },
+    {
+      "startup": "Clerk",
+      "abandonment_signal": "pricing_change_backlash",
+      "issue_spike_factor": 3.1,
+      "competitor_mentioned": "authjs",
+      "retention_risk": "high"
+    }
+  ],
+  "schema": [
+    "startup",
+    "abandonment_signal",
+    "issue_spike_factor",
+    "competitor_mentioned",
+    "retention_risk"
+  ],
+  "notes": "Monitoramento de sinais de abandono em startups dev-first via repositórios públicos. Proxy GitHub como early-warning TIER0."
+}

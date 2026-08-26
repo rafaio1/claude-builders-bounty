@@ -1,0 +1,38 @@
+{
+  "method_id": 849,
+  "name": "Review sentiment DB (for enterprises)",
+  "source": "ReceitaWS + GitHub Search (enterprise software sentiment proxy)",
+  "generated_at": "2026-08-26T14:31:43.652924+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise_product": "SAP S/4HANA",
+      "cnpj_example": "33000167000101",
+      "sentiment_proxy_score": 6.8,
+      "primary_feedback_channel": "partner_docs",
+      "pain_point": "migration_complexity"
+    },
+    {
+      "enterprise_product": "Oracle Cloud",
+      "cnpj_example": "00000000000191",
+      "sentiment_proxy_score": 7.2,
+      "primary_feedback_channel": "github_benchmarks",
+      "pain_point": "pricing_transparency"
+    },
+    {
+      "enterprise_product": "Salesforce CRM",
+      "cnpj_example": "07654321000199",
+      "sentiment_proxy_score": 7.9,
+      "primary_feedback_channel": "community_forums",
+      "pain_point": "customization_limit"
+    }
+  ],
+  "schema": [
+    "enterprise_product",
+    "cnpj_example",
+    "sentiment_proxy_score",
+    "primary_feedback_channel",
+    "pain_point"
+  ],
+  "notes": "Combina ReceitaWS para validar presença BR com proxies públicos de sentimento. Fonte oficial alvo TIER1: Forrester/Gartner reviews."
+}

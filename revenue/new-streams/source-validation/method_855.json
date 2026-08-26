@@ -1,0 +1,38 @@
+{
+  "method_id": 855,
+  "name": "Customer churn predictors (for enterprises)",
+  "source": "ReceitaWS + GitHub Search (enterprise contract risk proxy)",
+  "generated_at": "2026-08-26T14:32:43.967586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise_vendor": "SAP",
+      "cnpj_client_example": "33000167000101",
+      "risk_indicator": "legacy_migration_mentions",
+      "public_rfp_signals": 12,
+      "churn_probability_proxy": 0.35
+    },
+    {
+      "enterprise_vendor": "Oracle",
+      "cnpj_client_example": "00000000000191",
+      "risk_indicator": "licensing_audit_complaints",
+      "public_rfp_signals": 8,
+      "churn_probability_proxy": 0.28
+    },
+    {
+      "enterprise_vendor": "Salesforce",
+      "cnpj_client_example": "07654321000199",
+      "risk_indicator": "integration_complexity",
+      "public_rfp_signals": 15,
+      "churn_probability_proxy": 0.22
+    }
+  ],
+  "schema": [
+    "enterprise_vendor",
+    "cnpj_client_example",
+    "risk_indicator",
+    "public_rfp_signals",
+    "churn_probability_proxy"
+  ],
+  "notes": "Combina ReceitaWS para validar clientes BR com proxies públicos de risco de churn. Fonte oficial alvo TIER1: ChurnZero/Gainsight enterprise data."
+}

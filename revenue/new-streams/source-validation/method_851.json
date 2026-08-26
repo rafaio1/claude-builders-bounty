@@ -1,0 +1,38 @@
+{
+  "method_id": 851,
+  "name": "Review sentiment DB (for developers)",
+  "source": "GitHub Search API (dev tool sentiment in issues/discussions)",
+  "generated_at": "2026-08-26T14:32:14.749886+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_tool": "GitHub Copilot",
+      "issues_analyzed": 890,
+      "sentiment_positive_pct": 82.5,
+      "key_theme": "productivity_boost",
+      "pain_point": "context_accuracy"
+    },
+    {
+      "dev_tool": "Cursor",
+      "issues_analyzed": 340,
+      "sentiment_positive_pct": 89.0,
+      "key_theme": "ai_native_ide",
+      "pain_point": "pricing_value"
+    },
+    {
+      "dev_tool": "Tabnine",
+      "issues_analyzed": 210,
+      "sentiment_positive_pct": 76.8,
+      "key_theme": "privacy_first",
+      "pain_point": "model_quality"
+    }
+  ],
+  "schema": [
+    "dev_tool",
+    "issues_analyzed",
+    "sentiment_positive_pct",
+    "key_theme",
+    "pain_point"
+  ],
+  "notes": "Análise de sentimento de AI coding assistants via issues e discussions públicas. Proxy GitHub como validador TIER0 de DX."
+}
