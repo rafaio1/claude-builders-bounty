@@ -66,8 +66,8 @@
       "program": "OphirPay",
       "repo": "OphirPay/OphirPay",
       "pr": 228,
-      "status": "waiting_maintainer",
-      "last_action": "greptile_p1_duplicate_rebutted_evidence_posted",
+      "status": "waiting_reviewer_ack",
+      "last_action": "2026-08-26T22:34:03.309375+00:00",
       "evidence": [
         {
           "type": "email",
@@ -78,9 +78,16 @@
         {
           "type": "gh_comment",
           "note": "Rebuttal posted with playwright --list evidence proving testIgnore works"
+        },
+        {
+          "type": "push_verified_and_review_rebutted",
+          "timestamp": "2026-08-26T22:34:03.309375+00:00",
+          "detail": "Branch feat/visual-regression-tests-86 confirmed up-to-date on rafaio1/OphirPay fork (commit a6fec48). testIgnore glob fix validated locally: firefox/mobile-chrome show 0 visual tests, chromium shows 8. Push to upstream denied (403) but PR head already points to fork. Greptile P1 review fully addressed with evidence in PR comments. Vercel CodingAngel1 team auth still pending human action.",
+          "commit": "a6fec48",
+          "validation": "playwright --list confirms correct exclusion pattern"
         }
       ],
-      "next_action": "monitor_reviewer_ack_or_merge",
+      "next_action": "Monitor CI re-run and Vercel team auth; no further code changes needed unless maintainer requests",
       "updated_at": "2026-08-26T22:13:26.495348+00:00"
     },
     {
@@ -206,13 +213,20 @@
       "pr": "OphirPay/OphirPay#228",
       "url": "https://github.com/OphirPay/OphirPay/pull/228",
       "status": "waiting_reviewer_ack",
-      "last_action": "Triaged duplicate Greptile P1 review on PR#228; all findings already addressed and rebutted",
-      "next_action": "Monitor for maintainer acknowledgment or merge; no further contributor action unless new feedback arrives",
+      "last_action": "2026-08-26T22:34:03.309375+00:00",
+      "next_action": "Monitor CI re-run and Vercel team auth; no further code changes needed unless maintainer requests",
       "evidence": [
         {
           "type": "email",
           "id": "1a03feda98223c33",
           "summary": "Greptile P1 review (duplicate): testIgnore glob claim already rebutted with evidence in 6 prior comments; no new code change needed"
+        },
+        {
+          "type": "push_verified_and_review_rebutted",
+          "timestamp": "2026-08-26T22:34:03.309375+00:00",
+          "detail": "Branch feat/visual-regression-tests-86 confirmed up-to-date on rafaio1/OphirPay fork (commit a6fec48). testIgnore glob fix validated locally: firefox/mobile-chrome show 0 visual tests, chromium shows 8. Push to upstream denied (403) but PR head already points to fork. Greptile P1 review fully addressed with evidence in PR comments. Vercel CodingAngel1 team auth still pending human action.",
+          "commit": "a6fec48",
+          "validation": "playwright --list confirms correct exclusion pattern"
         }
       ],
       "email_decision": "PRESERVED - duplicate review evidence logged",
@@ -299,6 +313,366 @@
       "email_decision": "PRESERVED - third-party activity on tracked issue",
       "updated_at": "2026-08-26T22:30:15.924460+00:00",
       "created_at": "2026-08-26T22:30:15.924460+00:00"
+    }
+  ],
+  "bounties": [
+    {
+      "url": "https://github.com/OphirPay/OphirPay/pull/225",
+      "pr_url": "https://github.com/OphirPay/OphirPay/pull/225",
+      "repo": "OphirPay/OphirPay",
+      "issue": 225,
+      "title": "",
+      "status": "waiting_maintainer",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:12:09.184360+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "OphirPay",
+        "repo": "OphirPay/OphirPay",
+        "pr": 225,
+        "status": "waiting_maintainer",
+        "last_action": "greptile_p2_rebutted_vercel_auth_pending",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03dcc01298cb75",
+            "note": "Greptile P2 review on webhook E2E"
+          },
+          {
+            "type": "email",
+            "id": "1a03dca6ce9683f4",
+            "note": "Vercel CodingAngel1 team auth pending"
+          },
+          {
+            "type": "gh_comment",
+            "note": "Replied explaining intentional test isolation"
+          }
+        ],
+        "next_action": "monitor_vercel_auth_and_reviewer_response",
+        "updated_at": "2026-08-26T22:12:09.184360+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/ligate-io/ligate-chain/pull/567",
+      "pr_url": "https://github.com/ligate-io/ligate-chain/pull/567",
+      "repo": "ligate-io/ligate-chain",
+      "issue": 567,
+      "title": "",
+      "status": "human_action_required",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:12:09.184388+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "Ligate",
+        "repo": "ligate-io/ligate-chain",
+        "pr": 567,
+        "status": "human_action_required",
+        "last_action": "cla_signature_pending",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03d5fbf26dfa9f",
+            "note": "CLA Assistant CI failed"
+          },
+          {
+            "type": "email",
+            "id": "1a03d5fae6f376c9",
+            "note": "CLA bot requests signature via PR comment"
+          }
+        ],
+        "next_action": "user_must_sign_cla_via_pr_comment",
+        "updated_at": "2026-08-26T22:12:09.184388+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/Lilly-Protocol/lily-frontend/pull/150",
+      "pr_url": "https://github.com/Lilly-Protocol/lily-frontend/pull/150",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue": 150,
+      "title": "",
+      "status": "waiting_maintainer",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:12:09.184392+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "Lilly",
+        "repo": "Lilly-Protocol/lily-frontend",
+        "pr": 150,
+        "status": "waiting_maintainer",
+        "last_action": "vercel_heymide_auth_pending",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03df0244231a91",
+            "note": "Vercel Heymide team auth required"
+          }
+        ],
+        "next_action": "monitor_vercel_team_authorization",
+        "updated_at": "2026-08-26T22:12:09.184392+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/OphirPay/OphirPay/pull/228",
+      "pr_url": "https://github.com/OphirPay/OphirPay/pull/228",
+      "repo": "OphirPay/OphirPay",
+      "issue": 228,
+      "title": "",
+      "status": "waiting_maintainer",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:13:26.495348+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "OphirPay",
+        "repo": "OphirPay/OphirPay",
+        "pr": 228,
+        "status": "waiting_maintainer",
+        "last_action": "greptile_p1_duplicate_rebutted_evidence_posted",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03feda98223c33",
+            "note": "Greptile P1 re-review on testIgnore glob (duplicate claim)",
+            "date": "2026-08-26T21:15:34Z"
+          },
+          {
+            "type": "gh_comment",
+            "note": "Rebuttal posted with playwright --list evidence proving testIgnore works"
+          }
+        ],
+        "next_action": "monitor_reviewer_ack_or_merge",
+        "updated_at": "2026-08-26T22:13:26.495348+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/SecureBananaLabs/bug-bounty/pull/12147",
+      "pr_url": "https://github.com/SecureBananaLabs/bug-bounty/pull/12147",
+      "repo": "SecureBananaLabs/bug-bounty",
+      "issue": 12147,
+      "title": "fix(payouts): unblock payout for completed bounty #2885 (#7458)",
+      "status": "waiting_maintainer",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:15:55.584804+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "SecureBananaLabs",
+        "repo": "SecureBananaLabs/bug-bounty",
+        "pr": 12147,
+        "title": "fix(payouts): unblock payout for completed bounty #2885 (#7458)",
+        "status": "waiting_maintainer",
+        "last_action": "payout_address_updated_verified",
+        "evidence": [
+          {
+            "type": "gh_comment",
+            "id": "IC_kwDOSfPzA88AAAABQ4JRkg",
+            "note": "Verified USDT/TRC20 payout address updated to TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex; old address revoked",
+            "date": "2026-08-26T15:38:40Z"
+          },
+          {
+            "type": "gh_check",
+            "name": "update-leaderboard",
+            "conclusion": "SUCCESS",
+            "note": "CI passed"
+          }
+        ],
+        "next_action": "monitor_merge_and_payout_confirmation",
+        "mergeable": true,
+        "updated_at": "2026-08-26T22:15:55.584804+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/OphirPay/OphirPay/pull/OphirPay/OphirPay#225",
+      "pr_url": "https://github.com/OphirPay/OphirPay/pull/OphirPay/OphirPay#225",
+      "repo": "OphirPay/OphirPay",
+      "issue": "OphirPay/OphirPay#225",
+      "title": "",
+      "status": "waiting_review",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:28:35.069397+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "OphirPay",
+        "repo": "OphirPay/OphirPay",
+        "pr": "OphirPay/OphirPay#225",
+        "url": "https://github.com/OphirPay/OphirPay#225",
+        "status": "waiting_review",
+        "last_action": "Triaged Greptile P2 review (1a03dcc01298cb75) and Vercel CodingAngel1 auth pending (1a03dca6ce9683f4). No contributor code change possible; E2E test design duplicates production logic per reviewer but fix requires architectural decision by maintainer.",
+        "next_action": "Monitor for maintainer response to Greptile P2 or Vercel team auth. Do not push code changes without explicit direction.",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03dcc01298cb75",
+            "summary": "Greptile P2: production delivery untested (duplicate signing/retry loop)"
+          },
+          {
+            "type": "email",
+            "id": "1a03dca6ce9683f4",
+            "summary": "Vercel bot: CodingAngel1 team auth required for deploy"
+          },
+          {
+            "type": "email",
+            "id": "1a03dcc01298cb75",
+            "summary": "Greptile P2: E2E retry loop duplicates deliverWebhook signing/retry instead of invoking it"
+          },
+          {
+            "type": "email",
+            "id": "1a03dca6ce9683f4",
+            "summary": "Vercel CodingAngel1 team auth required for rafaio1 deploy"
+          }
+        ],
+        "email_decision": "PRESERVED - technical review + platform auth, no action taken",
+        "updated_at": "2026-08-26T22:28:35.069397+00:00",
+        "created_at": "2026-08-26T22:18:01.041185+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/ligate-io/ligate-chain/pull/ligate-io/ligate-chain#567",
+      "pr_url": "https://github.com/ligate-io/ligate-chain/pull/ligate-io/ligate-chain#567",
+      "repo": "ligate-io/ligate-chain",
+      "issue": "ligate-io/ligate-chain#567",
+      "title": "",
+      "status": "blocked_human_action",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:28:35.069397+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "ligate-io",
+        "repo": "ligate-io/ligate-chain",
+        "pr": "ligate-io/ligate-chain#567",
+        "url": "https://github.com/ligate-io/ligate-chain#567",
+        "status": "blocked_human_action",
+        "last_action": "CLA Assistant failed (1a03d5fbf26dfa9f, 1a03d5fae6f376c9). Bot requests PR comment signature but commits authored by root user not linked to GitHub account. Cannot auto-sign CLA per permanent rule.",
+        "next_action": "HUMAN ACTION REQUIRED: Sign CLA manually at https://github.com/ligate-io/ligate-chain/pull/567 or link commit email to GitHub account and retrigger with \"recheck\" comment.",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03d5fbf26dfa9f",
+            "summary": "CLA Assistant workflow failed (8s)"
+          },
+          {
+            "type": "email",
+            "id": "1a03d5fae6f376c9",
+            "summary": "github-actions bot: CLA signature required; root not linked to GitHub user"
+          },
+          {
+            "type": "email",
+            "id": "1a03d5fbf26dfa9f",
+            "summary": "CLA Assistant workflow failed"
+          },
+          {
+            "type": "email",
+            "id": "1a03d5fae6f376c9",
+            "summary": "CLA bot: root not a GitHub user, cannot sign via PR comment"
+          }
+        ],
+        "email_decision": "PRESERVED - CLA/legal, requires human signature",
+        "updated_at": "2026-08-26T22:28:35.069397+00:00",
+        "created_at": "2026-08-26T22:18:01.041185+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/Lilly-Protocol/lily-frontend/pull/Lilly-Protocol/lily-frontend#150",
+      "pr_url": "https://github.com/Lilly-Protocol/lily-frontend/pull/Lilly-Protocol/lily-frontend#150",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue": "Lilly-Protocol/lily-frontend#150",
+      "title": "",
+      "status": "waiting_review",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:28:35.069397+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "Lilly-Protocol",
+        "repo": "Lilly-Protocol/lily-frontend",
+        "pr": "Lilly-Protocol/lily-frontend#150",
+        "url": "https://github.com/Lilly-Protocol/lily-frontend#150",
+        "status": "waiting_review",
+        "last_action": "Vercel Heymide team auth pending (1a03df0244231a91). No contributor action possible until team member authorizes deploy.",
+        "next_action": "Monitor for Heymide team auth or maintainer feedback on PR #150.",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03df0244231a91",
+            "summary": "Vercel bot: Heymide team auth required for deploy"
+          },
+          {
+            "type": "email",
+            "id": "1a03df0244231a91",
+            "summary": "Vercel Heymide team auth required for deploy"
+          }
+        ],
+        "email_decision": "PRESERVED - platform auth notification",
+        "updated_at": "2026-08-26T22:28:35.069397+00:00",
+        "created_at": "2026-08-26T22:18:01.041185+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/OphirPay/OphirPay/pull/OphirPay/OphirPay#228",
+      "pr_url": "https://github.com/OphirPay/OphirPay/pull/OphirPay/OphirPay#228",
+      "repo": "OphirPay/OphirPay",
+      "issue": "OphirPay/OphirPay#228",
+      "title": "",
+      "status": "waiting_reviewer_ack",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:19:41.911690+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "OphirPay",
+        "repo": "OphirPay/OphirPay",
+        "pr": "OphirPay/OphirPay#228",
+        "url": "https://github.com/OphirPay/OphirPay/pull/228",
+        "status": "waiting_reviewer_ack",
+        "last_action": "Triaged duplicate Greptile P1 review on PR#228; all findings already addressed and rebutted",
+        "next_action": "Monitor for maintainer acknowledgment or merge; no further contributor action unless new feedback arrives",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03feda98223c33",
+            "summary": "Greptile P1 review (duplicate): testIgnore glob claim already rebutted with evidence in 6 prior comments; no new code change needed"
+          }
+        ],
+        "email_decision": "PRESERVED - duplicate review evidence logged",
+        "created_at": "2026-08-26T22:19:41.911690+00:00",
+        "updated_at": "2026-08-26T22:19:41.911690+00:00"
+      }
+    },
+    {
+      "url": "https://github.com/PesanteAnalytics/contoso-universe-gen/pull/PesanteAnalytics/contoso-universe-gen#9",
+      "pr_url": "https://github.com/PesanteAnalytics/contoso-universe-gen/pull/PesanteAnalytics/contoso-universe-gen#9",
+      "repo": "PesanteAnalytics/contoso-universe-gen",
+      "issue": "PesanteAnalytics/contoso-universe-gen#9",
+      "title": "",
+      "status": "closed_external",
+      "bounty_usd": 0,
+      "bounty_value": 0,
+      "date_submitted": "2026-08-26T22:22:11.297705+00:00",
+      "branch": "",
+      "_original_entry": {
+        "program": "PesanteAnalytics",
+        "repo": "PesanteAnalytics/contoso-universe-gen",
+        "pr": "PesanteAnalytics/contoso-universe-gen#9",
+        "url": "https://github.com/PesanteAnalytics/contoso-universe-gen/issues/9",
+        "status": "closed_external",
+        "last_action": "Triaged closure notification for Issue #9; resolved by maintainer without contributor PR",
+        "next_action": "No further action unless payout or follow-up requested",
+        "evidence": [
+          {
+            "type": "email",
+            "id": "1a03fc49a30a32d2",
+            "summary": "Issue #9 closed as completed via ca5c004 by maintainer Pesante Analytics LLC"
+          }
+        ],
+        "email_decision": "PRESERVED - closure evidence logged",
+        "created_at": "2026-08-26T22:22:11.297705+00:00",
+        "updated_at": "2026-08-26T22:22:11.297705+00:00"
+      }
     }
   ]
 }

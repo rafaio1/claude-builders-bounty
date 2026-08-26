@@ -1,0 +1,39 @@
+{
+  "pilot_id": "supabase-free-tier-scaffold",
+  "provider": "Supabase",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "TOS explicitly prohibits reselling, sublicensing, assignment and distribution of Services. License is non-transferable, non-sublicensable and limited to internal business purposes only. Free tier projects paused after 1 week inactivity.",
+  "tos_analysis": {
+    "license_type": "Non-exclusive, non-transferable (except per Section 14(g)), non-sublicensable, internal business purposes only",
+    "reselling_allowed": false,
+    "sublicensing_allowed": false,
+    "assignment_allowed": false,
+    "free_tier_permanent": false,
+    "sla_on_free": false,
+    "key_clauses": [
+      "Section 2(a): Access on non-exclusive, non-transferable, non-sublicensable basis solely for Authorized Users and internal business purposes",
+      "Section 2(c)(ii): Prohibits rent, lease, lend, sell, license, sublicense, assign, distribute, publish, transfer or make available Services to any third party",
+      "Section 14(g): Customer may not assign rights or delegate obligations without prior written consent; purported assignment null and void",
+      "Free tier: Projects paused after 1 week of inactivity; limit of 2 active projects; no SLA"
+    ]
+  },
+  "free_tier_limits": {
+    "api_requests": "unlimited",
+    "monthly_active_users": 50000,
+    "database_size": "500 MB",
+    "compute": "Shared CPU, 500 MB RAM",
+    "egress": "5 GB",
+    "file_storage": "1 GB",
+    "projects": "2 active max, paused after 1 week inactivity",
+    "support": "Community only"
+  },
+  "paid_plan_baseline": {
+    "name": "Pro",
+    "price_usd_month": 25,
+    "first_project_included": true,
+    "additional_project_usd_month": 10
+  },
+  "created_at": "2026-08-26T22:31:01.490481+00:00",
+  "updated_at": "2026-08-26T22:31:01.490481+00:00",
+  "notes": "Analyzed from supabase.com/terms and supabase.com/pricing. AUP page returned 404 but restrictions are comprehensive in main TOS. Scaffold rejected due to explicit anti-reselling clauses."
+}

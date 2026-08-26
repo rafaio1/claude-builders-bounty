@@ -66,8 +66,15 @@ def log(msg):
 
 def load_json(path):
     if path.exists():
-        try: return json.loads(path.read_text())
-        except: return {}
+        try:
+            data = json.loads(path.read_text())
+            # Defensive guard: ledger.json was observed as bare list instead of dict.
+            # Normalize to expected {"entries": [...]} or {"bounties": [...]} shape.
+            if isinstance(data, list):
+                return {"entries": data, "bounties": data}
+            return data if isinstance(data, dict) else {}
+        except Exception:
+            return {}
     return {}
 
 def save_json(path, data):
