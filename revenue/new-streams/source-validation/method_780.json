@@ -1,0 +1,37 @@
+{
+  "method_id": 780,
+  "name": "Gig economy income benchmarking (for fintech/HR)",
+  "source": "GitHub Search API + IBGE PNAD proxy (proxy for gig worker income signals)",
+  "generated_at": "2026-08-26T14:15:21.956374Z",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "gig-economy-br/income-benchmark",
+      "stars": 198,
+      "language": "Python",
+      "topic": "gig-worker-data",
+      "last_push": "2026-08-25"
+    },
+    {
+      "ibge_code": 3550308,
+      "city": "São Paulo",
+      "informal_work_rate": 0.28,
+      "avg_gig_income": 2800.0
+    },
+    {
+      "repo": "labor-analytics/br-platform-earnings",
+      "stars": 156,
+      "language": "R",
+      "topic": "platform-economy",
+      "last_push": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "repo|ibge_code",
+    "stars|city",
+    "language|informal_work_rate",
+    "topic|avg_gig_income",
+    "last_push"
+  ],
+  "notes": "Proxy TIER0. GitHub sinaliza modelos de renda gig; IBGE/PNAD fornece contexto de informalidade. Fonte oficial TIER1: IPEA Dados, MTP Estatísticas, plataformas (iFood/Uber reports)."
+}

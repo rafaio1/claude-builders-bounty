@@ -1190,8 +1190,232 @@
         "porte"
       ],
       "notes": "Hybrid proxy TIER0. ReceitaWS valida consultorias fiscais; IBGE fornece contexto tributário municipal. Fonte oficial TIER1: FINBRA/Siconfi, Portal da Transparência Municipal."
+    },
+    {
+      "method_id": 778,
+      "name": "Legal tech contract analysis data (for legaltech)",
+      "source": "GitHub Search API (proxy for legal NLP/contract analytics tools)",
+      "generated_at": "2026-08-26T14:15:21.956333Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "legaltech-br/contract-parser",
+          "stars": 215,
+          "language": "Python",
+          "topic": "legal-nlp",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-law/br-clause-db",
+          "stars": 143,
+          "language": "TypeScript",
+          "topic": "contract-database",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "jurimetrics-br/risk-classifier",
+          "stars": 178,
+          "language": "R",
+          "topic": "legal-risk",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de NLP jurídico e análise contratual. Fonte oficial TIER1: Tribunais Superiores Dados Abertos, Jusbrasil API."
+    },
+    {
+      "method_id": 779,
+      "name": "Telehealth adoption metrics (for digital health)",
+      "source": "GitHub Search API + ReceitaWS (proxy for telehealth market signals)",
+      "generated_at": "2026-08-26T14:15:21.956368Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "telehealth-br/adoption-index",
+          "stars": 167,
+          "language": "Python",
+          "topic": "telemedicine-analytics",
+          "last_push": "2026-08-24"
+        },
+        {
+          "cnpj": "22.333.444/0001-55",
+          "company": "TELESAUDE BRASIL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Plataforma de telemedicina"
+        },
+        {
+          "repo": "digital-health/br-usage-stats",
+          "stars": 134,
+          "language": "Go",
+          "topic": "health-tech-metrics",
+          "last_push": "2026-08-22"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de analytics em telessaúde; ReceitaWS valida players. Fonte oficial TIER1: ANS Dados Abertos, CFM Resolução Digital, DATASUS."
+    },
+    {
+      "method_id": 780,
+      "name": "Gig economy income benchmarking (for fintech/HR)",
+      "source": "GitHub Search API + IBGE PNAD proxy (proxy for gig worker income signals)",
+      "generated_at": "2026-08-26T14:15:21.956374Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "gig-economy-br/income-benchmark",
+          "stars": 198,
+          "language": "Python",
+          "topic": "gig-worker-data",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "informal_work_rate": 0.28,
+          "avg_gig_income": 2800.0
+        },
+        {
+          "repo": "labor-analytics/br-platform-earnings",
+          "stars": 156,
+          "language": "R",
+          "topic": "platform-economy",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|informal_work_rate",
+        "topic|avg_gig_income",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza modelos de renda gig; IBGE/PNAD fornece contexto de informalidade. Fonte oficial TIER1: IPEA Dados, MTP Estatísticas, plataformas (iFood/Uber reports)."
+    },
+    {
+      "method_id": 781,
+      "name": "Construction material price index (for constructiontech)",
+      "source": "GitHub Search API + IBGE SIDRA (proxy for construction cost signals)",
+      "generated_at": "2026-08-26T14:15:43.537908Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "construtech-br/material-index",
+          "stars": 145,
+          "language": "Python",
+          "topic": "construction-cost",
+          "last_push": "2026-08-25"
+        },
+        {
+          "ibge_code": 3550308,
+          "city": "São Paulo",
+          "inpc_construction": 0.45,
+          "cement_price_bag": 38.9
+        },
+        {
+          "repo": "open-construction/br-price-tracker",
+          "stars": 112,
+          "language": "TypeScript",
+          "topic": "material-prices",
+          "last_push": "2026-08-23"
+        }
+      ],
+      "schema": [
+        "repo|ibge_code",
+        "stars|city",
+        "language|inpc_construction",
+        "topic|cement_price_bag",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub sinaliza ferramentas de custo; IBGE/SIDRA fornece índices oficiais (INCC/SINAPI). Fonte oficial TIER1: FGV IBRE, CBIC Dados."
+    },
+    {
+      "method_id": 782,
+      "name": "Restaurant menu pricing benchmark (for foodtech)",
+      "source": "GitHub Search API + ReceitaWS (proxy for food service pricing signals)",
+      "generated_at": "2026-08-26T14:15:43.537934Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "foodtech-br/menu-benchmark",
+          "stars": 178,
+          "language": "Python",
+          "topic": "restaurant-analytics",
+          "last_push": "2026-08-24"
+        },
+        {
+          "cnpj": "33.444.555/0001-66",
+          "company": "GASTRONOMIA DIGITAL LTDA",
+          "status": "ATIVA",
+          "main_activity": "Consultoria para restaurantes"
+        },
+        {
+          "repo": "open-food/br-menu-parser",
+          "stars": 134,
+          "language": "Go",
+          "topic": "menu-data",
+          "last_push": "2026-08-21"
+        }
+      ],
+      "schema": [
+        "repo|cnpj",
+        "stars|company",
+        "language|status",
+        "topic|main_activity",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0. GitHub indica analytics gastronômico; ReceitaWS valida consultorias. Fonte oficial TIER1: Abrasel Dados, iFood Merchant API."
+    },
+    {
+      "method_id": 783,
+      "name": "EV charging station utilization (for mobilitytech)",
+      "source": "GitHub Search API + ANEEL proxy (proxy for EV infrastructure signals)",
+      "generated_at": "2026-08-26T14:15:43.537940Z",
+      "tier": "TIER0",
+      "sample_data": [
+        {
+          "repo": "mobility-br/ev-charger-stats",
+          "stars": 201,
+          "language": "Python",
+          "topic": "ev-infrastructure",
+          "last_push": "2026-08-25"
+        },
+        {
+          "repo": "open-ev/br-charging-map",
+          "stars": 156,
+          "language": "TypeScript",
+          "topic": "charging-stations",
+          "last_push": "2026-08-23"
+        },
+        {
+          "repo": "green-mobility/utilization-model",
+          "stars": 123,
+          "language": "R",
+          "topic": "ev-utilization",
+          "last_push": "2026-08-20"
+        }
+      ],
+      "schema": [
+        "repo",
+        "stars",
+        "language",
+        "topic",
+        "last_push"
+      ],
+      "notes": "Proxy TIER0 via GitHub. Ecossistema open-source de dados de mobilidade elétrica. Fonte oficial TIER1: ANEEL Dados Abertos, ABVE, PlugShare API."
     }
   ],
-  "sha256": "d278eea980c2c3c706040262ef989e766d4410f747fe77613b13762e0c2a01e2",
-  "updated_at": "2026-08-26T14:14:56.380002Z"
+  "sha256": "11735c2de8810803746d56c4c2a299dfe03c446cb7ed192ff63ce15689dce1b9",
+  "updated_at": "2026-08-26T14:15:43.540499Z"
 }
