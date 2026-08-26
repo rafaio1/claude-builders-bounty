@@ -1,0 +1,32 @@
+{
+  "method_id": "366",
+  "name": "Liquidation sniping (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:35.199995+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "DEFI_FUND_A",
+      "protocols_monitored": 5,
+      "monthly_liq_events_captured": 342,
+      "avg_profit_per_liq_usd": 185,
+      "sla_compliance_pct": 99.8
+    },
+    {
+      "client": "NFT_PROJECT_B",
+      "protocols_monitored": 3,
+      "monthly_liq_events_captured": 128,
+      "avg_profit_per_liq_usd": 95,
+      "sla_compliance_pct": 98.5
+    }
+  ],
+  "schema": [
+    "client:str",
+    "protocols_monitored:int",
+    "monthly_liq_events_captured:int",
+    "avg_profit_per_liq_usd:float",
+    "sla_compliance_pct:float"
+  ],
+  "notes": "Serviço gerenciado de liquidation sniping como B2B para fundos e projetos. Proxy TIER0: GitHub repos de liquidation-as-a-service. Fonte oficial alvo: Multi-protocol aggregation APIs. Dados de receita e SLA sintéticos baseados em benchmarks.",
+  "sha256": "82f8a7f3a8d7c055d0e9cc966b344892a3fd5dff99da2d907d45ecba863cddd9"
+}

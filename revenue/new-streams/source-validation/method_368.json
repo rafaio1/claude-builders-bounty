@@ -1,0 +1,32 @@
+{
+  "method_id": "368",
+  "name": "Yield farming optimizer (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:54.985922+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "STARTUP-TOKEN",
+      "dex": "uniswap_v3",
+      "liquidity_usd": 35000,
+      "incentive_apy_pct": 45.0,
+      "lock_period_days": 30
+    },
+    {
+      "token": "EARLY-PROJ",
+      "dex": "raydium",
+      "liquidity_usd": 18000,
+      "incentive_apy_pct": 62.0,
+      "lock_period_days": 14
+    }
+  ],
+  "schema": [
+    "token:str",
+    "dex:str",
+    "liquidity_usd:float",
+    "incentive_apy_pct:float",
+    "lock_period_days:int"
+  ],
+  "notes": "Focado em tokens early-stage com incentivos altos e liquidez baixa. Proxy TIER0: GitHub search (LP incentive trackers). Fonte oficial alvo: Uniswap/Raydium APIs + Dune dashboards. Dados sintéticos de APY.",
+  "sha256": "a84b23276aa14a560696bfaf900cdea0bcc742c015b0c839fed419b5a735b0a6"
+}

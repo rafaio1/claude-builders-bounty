@@ -1,0 +1,32 @@
+{
+  "method_id": "369",
+  "name": "Yield farming optimizer (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:54.985922+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "strategy": "multi_chain_yield",
+      "chains": 4,
+      "tvl_managed_usd": 2500000,
+      "net_apy_pct": 12.8,
+      "risk_adjusted_sharpe": 2.4
+    },
+    {
+      "strategy": "stablecoin_carry",
+      "chains": 3,
+      "tvl_managed_usd": 5000000,
+      "net_apy_pct": 8.5,
+      "risk_adjusted_sharpe": 3.1
+    }
+  ],
+  "schema": [
+    "strategy:str",
+    "chains:int",
+    "tvl_managed_usd:float",
+    "net_apy_pct:float",
+    "risk_adjusted_sharpe:float"
+  ],
+  "notes": "Escala enterprise com gestão multi-chain e métricas de risco ajustado. Proxy TIER0: GitHub institutional yield frameworks. Fonte oficial alvo: APIs agregadas + private RPC. Métricas sintéticas baseadas em benchmarks.",
+  "sha256": "c3f5c05eabc06054e8fe07cbbba2e0e422bb5f2f6030ed6242872a28d41ea642"
+}

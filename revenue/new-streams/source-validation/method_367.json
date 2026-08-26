@@ -1,0 +1,32 @@
+{
+  "method_id": "367",
+  "name": "Yield farming optimizer",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:54.985922+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "aave_v3",
+      "asset": "USDC",
+      "base_apy_pct": 4.2,
+      "reward_apy_pct": 8.5,
+      "il_risk_score": 12
+    },
+    {
+      "protocol": "curve",
+      "pool": "3CRV",
+      "base_apy_pct": 2.8,
+      "reward_apy_pct": 5.1,
+      "il_risk_score": 3
+    }
+  ],
+  "schema": [
+    "protocol:str",
+    "asset:str",
+    "base_apy_pct:float",
+    "reward_apy_pct:float",
+    "il_risk_score:int"
+  ],
+  "notes": "Otimização de yield em protocolos DeFi com análise de risco de IL. Proxy TIER0: GitHub repos (yield aggregators, auto-compounders). Fonte oficial alvo: DeFiLlama API + protocol subgraphs. Zero capital: simulação apenas.",
+  "sha256": "fd285bce293176414bd6f2a76dcbfc03ada2ee2405b51d71360ffc9b9c113879"
+}

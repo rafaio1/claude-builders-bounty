@@ -1,0 +1,32 @@
+{
+  "method_id": "365",
+  "name": "Liquidation sniping (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:01:35.199995+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "foundry_liquidator",
+      "language": "solidity",
+      "protocols_supported": 4,
+      "backtest_roi_pct": 34.2,
+      "gas_optimization_score": 88
+    },
+    {
+      "tool": "py_liquidation_monitor",
+      "language": "python",
+      "protocols_supported": 6,
+      "backtest_roi_pct": 28.7,
+      "gas_optimization_score": 72
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "protocols_supported:int",
+    "backtest_roi_pct:float",
+    "gas_optimization_score:int"
+  ],
+  "notes": "Kits e frameworks de desenvolvimento para construir liquidation bots customizados. Proxy TIER0: GitHub search (liquidation bot templates, DeFi dev tools). Fonte oficial alvo: Protocol docs + Dune Analytics queries. Métricas de backtest sintéticas.",
+  "sha256": "d5f1c7b77183d287e81ff92a17784917e2d4ad5379b38947b2a0885b8852e944"
+}
