@@ -1,0 +1,35 @@
+{
+  "method_id": "194",
+  "name": "Extens\u00e3o Chrome monetizada (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:54:42.350101+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "beta_tester_retention",
+      "value": 62.3,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "feature_adoption_rate",
+      "value": 41.7,
+      "unit": "%",
+      "period": "14d"
+    },
+    {
+      "metric": "early_revenue_mrr",
+      "value": 185.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant targets early-stage product validation via browser extension. Proxy TIER0 searches GitHub for MVP extension boilerplates with Stripe/LemonSqueezy integration. Official docs: Chrome Extensions Samples + Payments API. Zero-capital via free-tier hosting for backend + manual key issuance initially. Focus on rapid iteration based on user feedback loops.",
+  "_hash": "fd1564e6571d0e0c8a28f3ae17bc01cca129610ace270b3c5fa87324218e9265"
+}

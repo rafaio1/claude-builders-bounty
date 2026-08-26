@@ -1,0 +1,35 @@
+{
+  "method_id": "193",
+  "name": "Extens\u00e3o Chrome monetizada",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:54:42.350101+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "weekly_active_users",
+      "value": 3200,
+      "unit": "users",
+      "period": "7d"
+    },
+    {
+      "metric": "premium_conversion_rate",
+      "value": 4.8,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "avg_revenue_per_user",
+      "value": 2.15,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for monetized Chrome extension templates (license-key gated, freemium). Official source: Chrome Web Store Developer Dashboard + Extension Monetization API. Zero-capital path uses free publishing tier + serverless license validation (Cloudflare Workers free tier). Revenue via one-time or subscription license keys.",
+  "_hash": "3e8b918ffe07ba22ba6b675aeea318e7ae20b08b2643799d17b53159f925d7a0"
+}

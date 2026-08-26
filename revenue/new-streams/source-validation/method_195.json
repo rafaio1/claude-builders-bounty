@@ -1,0 +1,35 @@
+{
+  "method_id": "195",
+  "name": "Extens\u00e3o Chrome monetizada (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:54:42.350101+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "enterprise_seats_deployed",
+      "value": 450,
+      "unit": "seats",
+      "period": "90d"
+    },
+    {
+      "metric": "compliance_audit_pass_rate",
+      "value": 98.2,
+      "unit": "%",
+      "period": "quarterly"
+    },
+    {
+      "metric": "contract_value_avg",
+      "value": 12500,
+      "unit": "USD",
+      "period": "annual"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Enterprise variant emphasizes security, SSO/SAML, and admin console. Proxy TIER0 via GitHub Search for enterprise browser management extensions. Official targets: Chrome Enterprise Policy API + Google Workspace Marketplace. Monetization via volume licensing agreements. Zero-capital PoC uses self-signed policies + mock IdP; production requires verified publisher status (free but time-gated).",
+  "_hash": "e9df8a8c9f690695258dcc29b98739bcef2a5daf6b23dadddd104a4179e8a7c8"
+}
