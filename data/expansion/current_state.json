@@ -27,14 +27,14 @@
   "proposal_counts": {
     "REJEITAR": 3,
     "APROVAR_IMPLEMENTACAO": 1,
-    "ADIAR": 32,
+    "ADIAR": 36,
     "PILOTAR": 29
   },
   "total_proposals": 8,
-  "total_verdicts": 133,
+  "total_verdicts": 137,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:50:24.510660+00:00",
+  "last_council_action": "2026-08-26T21:53:13.222834+00:00",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
@@ -55,13 +55,13 @@
   "master_branch": "master",
   "working_tree_dirty": true,
   "last_verdict": {
-    "proposal_id": "method_680",
+    "proposal_id": "method_684",
     "verdict": "ADIAR",
-    "timestamp": "2026-08-26T21:50:24.510660+00:00",
+    "timestamp": "2026-08-26T21:53:13.222834+00:00",
     "result": "SUCCESS"
   },
   "pending_proposals_count": 0,
-  "last_updated": "2026-08-26T21:50:24.510660+00:00",
+  "last_updated": "2026-08-26T21:53:13.222834+00:00",
   "integrity_status": "clean_pilots_scaffolded",
   "implemented_proposals": [
     "exp-20260826-isolated-worktree-for-improve",
@@ -85,13 +85,17 @@
     "method_677",
     "method_678",
     "method_679",
-    "method_680"
+    "method_680",
+    "method_681",
+    "method_682",
+    "method_683",
+    "method_684"
   ],
   "rejected_proposals": [
     "exp-20260826-data-products-batch-4-creators"
   ],
-  "next_method": 681,
-  "last_verdict_timestamp": "2026-08-26T21:50:24.510660+00:00",
+  "next_method": 685,
+  "last_verdict_timestamp": "2026-08-26T21:53:13.222834+00:00",
   "integrity": {
     "git_clean": false,
     "last_check_utc": "2026-08-26T21:25:01.232410+00:00",
@@ -107,5 +111,9 @@
   },
   "watchdog_status": "waiting_monitoring",
   "next_check": "payout_reconciliation",
-  "telegram_gate": "SILENT_NO_LIQUIDATED_REVENUE"
+  "telegram_gate": "SILENT_NO_LIQUIDATED_REVENUE",
+  "last_cycle": "2026-08-26T21:51:48.708690+00:00",
+  "tier0_remaining": 0,
+  "active_gates": 2,
+  "next_action": "tier1_discovery_or_fresh_zero_cap_scan"
 }

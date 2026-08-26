@@ -3001,18 +3001,26 @@
       "pr": 228,
       "issue": 86,
       "title": "Visual regression tests",
-      "status": "review_fix_pushed_p1_invalidated_comment_posted",
+      "status": "new_review_p1_visual_exclusion_glob_mismatch",
       "tier": 1,
-      "next_action": "Wait for maintainer re-review after P1 invalidation comment; no further contributor action needed unless new feedback arrives",
-      "evidence": {
-        "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
-        "greptile_p1_email": "1a03feda98223c33",
-        "p1_validation_firefox_visual_count": 0,
-        "p1_validation_chromium_visual_count": 8,
-        "p1_conclusion": "INVALID - testIgnore visual/** works correctly after ddbe468",
-        "last_checked_utc": "2026-08-26T21:50:00Z",
-        "p1_invalidation_comment_url": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431474669"
-      },
+      "next_action": "Fix playwright.config.ts testIgnore pattern to match absolute visual spec paths or use project-level exclude; test locally with --project=firefox; push to feat/visual-regression-tests-86",
+      "evidence": [
+        {
+          "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
+          "greptile_p1_email": "1a03feda98223c33",
+          "p1_validation_firefox_visual_count": 0,
+          "p1_validation_chromium_visual_count": 8,
+          "p1_conclusion": "INVALID - testIgnore visual/** works correctly after ddbe468",
+          "last_checked_utc": "2026-08-26T21:50:00Z",
+          "p1_invalidation_comment_url": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431474669"
+        },
+        {
+          "type": "greptile_p1_review",
+          "url": "https://github.com/OphirPay/OphirPay/pull/228#pullrequestreview-5035137285",
+          "date": "2026-08-26T21:15:34Z",
+          "summary": "testIgnore e2e/visual/** does not match absolute path; Firefox/Mobile Chrome run 8 visual tests and fail"
+        }
+      ],
       "reviews": [
         {
           "author": "greptile-apps[bot]",
@@ -3026,7 +3034,10 @@
       "mergeable": true,
       "payout_verified": true,
       "program": "Stellar Wave / Drips",
-      "last_action": "2026-08-26T21:30:00Z"
+      "last_action": "Greptile P1 review 2026-08-26: testIgnore glob e2e/visual/** fails on Firefox/Mobile Chrome absolute paths; requires config fix",
+      "updated_at": "2026-08-26T21:51:15.850884+00:00",
+      "pr_url": "https://github.com/OphirPay/OphirPay/pull/228",
+      "branch": "feat/visual-regression-tests-86"
     },
     {
       "repo": "OphirPay/OphirPay",
