@@ -1,0 +1,42 @@
+{
+  "pilot_name": "render-free-tier-scaffold",
+  "provider": "Render",
+  "status": "SCAFFOLD_REJECTED",
+  "doc_verified": true,
+  "rejection_reason": "TOS proíbe sublicenciamento e transferência; licença restrita a 'own use only' sem exceção para managed service/end-users",
+  "free_tier_limits": {
+    "web_services": "512MB RAM, 0.1 CPU, free (spins down after inactivity)",
+    "static_sites": "unlimited, 5GB bandwidth/month on Hobby plan",
+    "postgres": "free for 30 days only (NOT permanent)",
+    "redis": "25MB permanent free tier",
+    "notes": "Postgres free tier é temporário (30 dias), inviabilizando uso permanente zero-capital"
+  },
+  "tos_analysis": {
+    "license_type": "non-exclusive, limited, non-transferable, non-sublicensable, freely revocable",
+    "usage_scope": "own use only",
+    "assignment": "prohibited without Render consent; Render may assign without restriction",
+    "end_user_exception": false,
+    "managed_service_viable": false,
+    "source_url": "https://render.com/terms (via web.archive.org/web/2025/)",
+    "key_clauses": [
+      "Limited License: non-transferable, non-sublicensable, freely revocable license to use the Service for own use only",
+      "Assignment: This Agreement and any rights/licenses may not be transferred or assigned by you",
+      "Render may terminate this license at any time for any reason or no reason"
+    ]
+  },
+  "reselling_model": null,
+  "risks": [
+    "TOS explicitamente proíbe sublicenciamento — sem exceção para customers of customer",
+    "Licença 'own use only' impede provisionamento em nome de terceiros",
+    "Postgres free tier expira em 30 dias — não é permanente",
+    "Web services free fazem spin-down após inatividade — inadequado para produção",
+    "Render pode revogar licença a qualquer momento sem motivo"
+  ],
+  "next_steps": [
+    "REJECTED — não prosseguir para TIER1",
+    "Manter no backlog como referência comparativa para Railway/Fly.io/Vercel/Netlify",
+    "Se Render alterar TOS para permitir managed service, reavaliar"
+  ],
+  "timestamp": "2026-08-27T00:00:00+00:00",
+  "analysis_session": "v29_render_analysis"
+}
