@@ -121,3 +121,31 @@ Adicionar ao `scripts/cron_revenue_suite.sh` após `revenue_orchestrator`:
 python3 /Agentic/scripts/autonomous_trade_scanner.py || echo WARN: trade_scanner failed
 python3 /Agentic/scripts/testnet_airdrop_executor.py || echo WARN: airdrop_executor failed
 ```
+
+## 8. Validações Específicas de Features
+
+### Telegram Financial Gate (fail-closed)
+- [ ] `python3 -m pytest tests/test_telegram_gate.py -v` → todos passam
+- [ ] Dry-run local confirma: somente eventos com `reconciliation_status=confirmed` e `net != 0` são enviados
+- [ ] Eventos rejeitados silenciosamente: scan, heartbeat, waiting, paper/trade simulado, PR aberto, commit, saldo não realizado
+- [ ] `event_id` idempotente verificado contra duplicatas persistentes
+- [ ] Nenhum segredo vazado em payloads ou logs
+
+### GitHub Email Filter Safety
+- [ ] `python3 -m pytest tests/test_github_email_filter.py -v` → 5/5 passam
+- [ ] Batch size limitado conforme patch 562fadc
+- [ ] Arquivo `tools/github_email_filter.py` não contém credenciais hardcoded
+
+### Expansion Verdicts (method_640/641)
+- [ ] Verificar `data/expansion/verdicts.jsonl` para status PILOTAR
+- [ ] Confirmar zero-capital antes de qualquer implementação
+- [ ] Documentar progresso em FEATURES.md sob "Features em Progresso"
+
+## 9. Monitoramento Contínuo
+
+| Item | Frequência | Ação se Mudança |
+|------|-----------|-----------------|
+| PRs claude-builders-bounty #3869-#3873 | A cada ciclo | Responder feedback; atualizar ledger se merged+payout confirmado |
+| Commits Orca em /Agentic | A cada ciclo | Reconciliar, testar, integrar sem duplicar |
+| Timer revenue orchestrator | 6h | Verificar logs; waiting_monitoring se erro persistente |
+| method_640/641 pilotos | Diário | Implementar scaffold se acionável; documentar bloqueio se não |
