@@ -1,0 +1,39 @@
+{
+  "method_id": "613",
+  "name": "Data pipeline construction",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:17.841095+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "postgres_cdc",
+      "destination": "clickhouse_analytics",
+      "throughput_rps": 15000,
+      "latency_p99_ms": 450,
+      "tool": "debezium_kafka"
+    },
+    {
+      "source": "shopify_webhooks",
+      "destination": "bigquery_warehouse",
+      "daily_volume_gb": 12,
+      "schema_evolution": true,
+      "tool": "airbyte_oss"
+    },
+    {
+      "source": "s3_event_logs",
+      "destination": "duckdb_lakehouse",
+      "partition_strategy": "hourly",
+      "compression": "zstd",
+      "tool": "dagster_pipes"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (data-pipeline/debezium-airbyte). Fonte oficial alvo: Upwork data engineering gigs. Zero-capital: stacks open-source + self-hosted.",
+  "content_hash": "d1ba13d70f641fb60460ceb836a9c9a9bf6919e2aa59bb762363d6a14ab06d82"
+}

@@ -1,0 +1,39 @@
+{
+  "method_id": "615",
+  "name": "Data pipeline construction (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:17.841095+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "sap_hana_cdc",
+      "destination": "snowflake_share",
+      "compliance": "gdpr_soc2",
+      "sla_uptime": "99.99%",
+      "tool": "fivetran_enterprise"
+    },
+    {
+      "source": "mainframe_vsam",
+      "destination": "azure_synapse",
+      "records_day_m": 85,
+      "encoding_conversion": "ebcdic_utf8",
+      "tool": "aws_glue_custom"
+    },
+    {
+      "source": "oracle_goldengate",
+      "destination": "kafka_confluent",
+      "replication_lag_s": "<1",
+      "topology": "multi_region",
+      "tool": "confluent_replicator"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-etl/snowflake-glue). Fonte oficial alvo: Enterprise RFPs/freelance SOWs data platform. Zero-capital: documentação e sandboxes; runtime enterprise é TIER1.",
+  "content_hash": "98c35448f0a7a6c2fbccce6c89f7f5260c3382b53f28dafa6f68e2aeae648dd4"
+}

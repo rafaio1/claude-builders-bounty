@@ -1,0 +1,39 @@
+{
+  "method_id": "614",
+  "name": "Data pipeline construction (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:37:17.841095+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source": "supabase_realtime",
+      "destination": "tinybird_analytics",
+      "sync_mode": "streaming",
+      "cost_month": "$0",
+      "tool": "supabase_webhooks"
+    },
+    {
+      "source": "stripe_events",
+      "destination": "motherduck_shared",
+      "refresh": "incremental",
+      "setup_time_hr": 2,
+      "tool": "dlt_hub"
+    },
+    {
+      "source": "posthog_export",
+      "destination": "neon_tech_pg",
+      "backfill_days": 90,
+      "idempotency": true,
+      "tool": "prefect_local"
+    }
+  ],
+  "schema": [
+    "source",
+    "destination",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-data-stack/dlt-tinybird). Fonte oficial alvo: YC/indie hacker freelance analytics setup. Zero-capital: todos free-tier ou OSS.",
+  "content_hash": "554a6ebc514c6a96bb76a35723be83488c613772ec50314795141810e546c38f"
+}
