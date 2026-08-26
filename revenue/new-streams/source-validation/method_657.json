@@ -1,0 +1,31 @@
+{
+  "method_id": "657",
+  "name": "Technical writing docs (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:44:03.403610+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_id": "ent_771",
+      "compliance_standard": "diataxis",
+      "single_sourcing": true,
+      "translation_workflow": "automated",
+      "review_cycle_days": 90
+    },
+    {
+      "corp_id": "ent_220",
+      "compliance_standard": "google_style",
+      "single_sourcing": false,
+      "translation_workflow": "vendor_managed",
+      "review_cycle_days": 180
+    }
+  ],
+  "schema": [
+    "corp_id",
+    "compliance_standard",
+    "single_sourcing",
+    "translation_workflow",
+    "review_cycle_days"
+  ],
+  "notes": "Governança de conteúdo, single-sourcing e ciclos de revisão. Fonte oficial alvo: Diátaxis framework / Enterprise content strategy guides. Proxy TIER0: GitHub Search API para style guides e linters de documentação corporativa."
+}
