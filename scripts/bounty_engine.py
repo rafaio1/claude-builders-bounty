@@ -665,11 +665,15 @@ def triage(candidates):
     log(f"Triage payload: {len(safe_cands)} sanitized candidates, {len(json.dumps(safe_cands))} chars")
     prompt = f"""SYSTEM: You are a JSON-only API. Return NOTHING except a valid JSON array. No explanation, no markdown, no prose.
 
-TASK: Select TOP 3 bounties for an AI coding agent. MUST be:
-- Clear compilation/test/config fix (not feature requests)
-- Solvable in <2 hours with code changes only
-- Python/TS/Rust/Go/Solidity
-- Has explicit error message or failing test
+TASK: Select TOP 3 bounties for an AI coding agent. PREFER:
+- Bug fixes, config issues, test failures, or clear implementation tasks
+- Solvable with code changes (no design/architecture discussions)
+- Python/TS/Rust/Go/Solidity/Java/C++
+- Has reproducible steps or clear acceptance criteria
+
+ACCEPTABLE if no perfect matches: documentation fixes, dependency updates,
+refactoring with clear scope, or well-specified feature additions.
+REJECT ONLY: vague requests, meta/self-improve tasks, spam, or non-code work.
 
 Candidates: {json.dumps(safe_cands, indent=2)}
 
@@ -677,7 +681,7 @@ CRITICAL CONSTRAINTS:
 - You MUST select URLs that exist EXACTLY in the Candidates list above
 - Do NOT invent, modify, or hallucinate URLs or titles
 - Do NOT select items with "self-improve", "model-flagged", "bounty cadence", or "bounty gate" in the title
-- If fewer than 3 valid candidates exist, return only the valid ones
+- Select up to 3 best candidates even if imperfect; prefer action over empty result
 - OUTPUT FORMAT: Return ONLY this exact JSON structure, nothing else:
 [{{"url":"...","title":"...","estimated_hours":N,"confidence_score":0.X,"reason":"..."}}]
 - If NO valid candidates exist, return exactly: []
