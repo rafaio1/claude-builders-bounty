@@ -1,0 +1,34 @@
+{
+  "method_id": "235",
+  "name": "Cron job as a service",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:01:41.258720+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "cron-scheduler-oss",
+      "stars": 345,
+      "pricing_model": "per_execution",
+      "features": [
+        "retry_policy",
+        "timezone_support"
+      ]
+    },
+    {
+      "repo": "task-runner-lite",
+      "stars": 198,
+      "pricing_model": "subscription",
+      "features": [
+        "log_retention",
+        "alerting"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: Cronitor / EasyCron API. Foco em agendamento confi\u00e1vel e monitoramento."
+}

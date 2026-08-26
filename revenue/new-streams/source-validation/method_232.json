@@ -1,0 +1,34 @@
+{
+  "method_id": "232",
+  "name": "Webhook relay service (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:01:23.789050+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "creator-event-notifier",
+      "stars": 112,
+      "pricing_model": "freemium",
+      "features": [
+        "discord_alerts",
+        "patron_sync"
+      ]
+    },
+    {
+      "repo": "content-drop-webhooks",
+      "stars": 78,
+      "pricing_model": "per_event",
+      "features": [
+        "schedule_trigger",
+        "cms_hook"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: ConvertKit / Patreon webhook APIs. Foco em notifica\u00e7\u00f5es de lan\u00e7amento e sincronia de apoiadores."
+}

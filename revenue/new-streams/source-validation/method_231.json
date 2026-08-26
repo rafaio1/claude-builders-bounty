@@ -1,0 +1,34 @@
+{
+  "method_id": "231",
+  "name": "Webhook relay service (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:01:01.340534+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "enterprise-event-bus",
+      "stars": 512,
+      "pricing_model": "volume_license",
+      "features": [
+        "soc2_compliance",
+        "dedicated_infra"
+      ]
+    },
+    {
+      "repo": "corp-webhook-gateway",
+      "stars": 330,
+      "pricing_model": "sla_based",
+      "features": [
+        "guaranteed_delivery",
+        "encryption_at_rest"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: MuleSoft / Azure Event Grid enterprise plans. Foco em compliance, SLA e infraestrutura dedicada."
+}
