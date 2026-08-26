@@ -44,6 +44,8 @@ def validate_cron_payload(payload: Dict[str, Any]) -> Tuple[bool, str]:
     for key in ("webhook_url", "callback_url", "notify_url"):
         if payload.get(key):
             return False, f"external_{key}_forbidden_in_local_safe_mode"
-    if payload.get("webhook_url"):
-        return False, "external_webhook_forbidden_in_local_safe_mode"
+    # Block any external webhook or callback URL
+    for key in ("webhook_url", "callback_url", "notify_url"):
+        if payload.get(key):
+            return False, f"external_{key}_forbidden_in_local_safe_mode"
     return True, "ok"
