@@ -1,0 +1,25 @@
+{
+  "subagent": "wise_liquidity",
+  "api_keys_env": [
+    "WISE_API_KEY",
+    "WISE_API_SECRET"
+  ],
+  "supported_pairs": [
+    "USD/EUR",
+    "EUR/BRL",
+    "GBP/USD",
+    "USD/USDT",
+    "EUR/USDT"
+  ],
+  "arb_threshold_pct": 0.35,
+  "max_position_usd": 250000,
+  "bridge_targets": [
+    "bybit_futures",
+    "okx_futures"
+  ],
+  "monitor_interval_sec": 60,
+  "risk_limits": {
+    "daily_max_loss_usd": 5000,
+    "max_open_exposure_usd": 500000
+  }
+}

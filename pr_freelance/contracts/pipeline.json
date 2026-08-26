@@ -1,0 +1,75 @@
+{
+  "leads": [
+    {
+      "source": "github-bounty",
+      "repo": "MergeFi/contracts",
+      "title": "MAX_SPONSORS (20) is a hardcoded constant with no per-deployment configurability",
+      "url": "https://github.com/MergeFi/contracts/issues/96",
+      "value_usd": 50000,
+      "status": "pr_submitted",
+      "priority": "high",
+      "tech_stack": [
+        "rust",
+        "soroban",
+        "smart-contracts"
+      ],
+      "discovered_at": "2026-08-21T00:10:00Z",
+      "notes": "PR #138 open, no reviewers assigned yet. High-ticket $50k bounty. Requires follow-up or patience.",
+      "next_action": "Monitor PR for review feedback, CI status, and merge",
+      "pr_url": "https://github.com/MergeFi/contracts/pull/138",
+      "pr_number": 138,
+      "submitted_at": "2026-08-21T00:45:00Z",
+      "last_status_check": "2026-08-24T03:14:25.086883+00:00",
+      "github_state": "open",
+      "merged": false,
+      "reviewers_assigned": false
+    },
+    {
+      "source": "algora-bounty",
+      "repo": "algora-io/algora",
+      "title": "[UI Bug] Unauthorized Edit and Delete buttons visible on /bounties page",
+      "url": "https://github.com/algora-io/algora/issues/238",
+      "value_usd": 2500,
+      "status": "rejected",
+      "priority": "skip",
+      "tech_stack": [
+        "typescript",
+        "nextjs",
+        "react"
+      ],
+      "discovered_at": "2026-08-21T00:25:00Z",
+      "notes": "Mid-ticket. Quick win. Permission check before rendering action buttons. Good for velocity.",
+      "rejection_reason": "Saturated: 16+ open PRs already submitted for this issue. Low merge probability."
+    }
+  ],
+  "last_scan": "2026-08-24T03:14:25.086900+00:00",
+  "filters": {
+    "min_value_usd": 5000,
+    "tags": [
+      "automation",
+      "api",
+      "backend",
+      "devops",
+      "ai",
+      "bot",
+      "scraping",
+      "integration"
+    ],
+    "exclude_competitors": [
+      "okx_futures",
+      "bugbounty"
+    ]
+  },
+  "sources": [
+    "bounty-hunter-skill",
+    "manual_injection",
+    "freelance_platforms"
+  ],
+  "scan_stats": {
+    "total_discovered": 49,
+    "qualified_high_ticket": 1,
+    "algora_checked": true,
+    "algora_238_saturated": true,
+    "primary_target": "MergeFi/contracts#96"
+  }
+}
