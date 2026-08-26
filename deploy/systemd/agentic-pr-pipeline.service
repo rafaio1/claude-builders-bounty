@@ -1,0 +1,19 @@
+ [Unit]
+ Description=Agentic PR Inventory Sync and Revenue Queue Builder
+ After=network-online.target
+ Wants=network-online.target
+ 
+ [Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+EnvironmentFile=-/root/.automaton/.env
+Environment=HOME=/root
+Environment=XDG_CONFIG_HOME=/root/.config
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/bin/bash -c 'flock -n /tmp/agentic-pr-pipeline.lock -c "/Agentic/.venv/bin/python scripts/sync_pr_inventory.py && /Agentic/.venv/bin/python scripts/build_pr_revenue_queue.py"'
+StandardOutput=append:/Agentic/logs/pr-pipeline.log
+StandardError=append:/Agentic/logs/pr-pipeline.log
+TimeoutStartSec=900
+ 
+ [Install]
+ WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+ [Unit]
+ Description=Run Agentic PR Pipeline Hourly
+ Requires=agentic-pr-pipeline.service
+ 
+ [Timer]
+ OnBootSec=10min
+ OnUnitActiveSec=1h
+ RandomizedDelaySec=300
+ Persistent=true
+ AccuracySec=1min
+ 
+ [Install]
+ WantedBy=timers.target
