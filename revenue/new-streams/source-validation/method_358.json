@@ -1,0 +1,32 @@
+{
+  "method_id": "358",
+  "name": "Market making bot (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:50.655106+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "CREATOR-A",
+      "dex": "pump_fun",
+      "liquidity_usd": 8500,
+      "daily_volume_usd": 3200,
+      "spread_capture_pct": 28.4
+    },
+    {
+      "token": "MEME-B",
+      "dex": "raydium",
+      "liquidity_usd": 12000,
+      "daily_volume_usd": 5800,
+      "spread_capture_pct": 35.1
+    }
+  ],
+  "schema": [
+    "token:str",
+    "dex:str",
+    "liquidity_usd:float",
+    "daily_volume_usd:float",
+    "spread_capture_pct:float"
+  ],
+  "notes": "Focado em tokens de creators/memes com liquidez baixa e volatilidade alta. Proxy TIER0: GitHub repos de MM bots para memecoins. Fonte oficial alvo: Pump.fun API + Raydium/Subgraph. Zero capital: simulação apenas.",
+  "sha256": "71c4bb08b2403a4f9445ddd7702da99f78ec1600607bed8837eea2f9ad26e3a9"
+}

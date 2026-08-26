@@ -1,0 +1,32 @@
+{
+  "method_id": "360",
+  "name": "Market making bot (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:50.655106+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "AGENCY-X",
+      "tokens_managed": 8,
+      "avg_monthly_revenue_usd": 4200,
+      "sla_uptime_pct": 99.5,
+      "multi_dex": true
+    },
+    {
+      "client": "AGENCY-Y",
+      "tokens_managed": 12,
+      "avg_monthly_revenue_usd": 6800,
+      "sla_uptime_pct": 99.0,
+      "multi_dex": true
+    }
+  ],
+  "schema": [
+    "client:str",
+    "tokens_managed:int",
+    "avg_monthly_revenue_usd:float",
+    "sla_uptime_pct:float",
+    "multi_dex:bool"
+  ],
+  "notes": "Modelo B2B para agências que gerenciam MM para múltiplos projetos crypto. Proxy TIER0: GitHub repos de MM-as-a-service. Fonte oficial alvo: APIs multi-DEX agregadas. Receita sintética baseada em benchmarks de mercado.",
+  "sha256": "cd0a67b9e1c7ae54e18704d43f5dcf75b64e64b0adc82d1b69d03fb8323037a5"
+}

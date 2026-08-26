@@ -1,0 +1,32 @@
+{
+  "method_id": "359",
+  "name": "Market making bot (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:00:50.655106+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "aave_v3",
+      "asset": "wstETH",
+      "strategy": "delta_neutral_mm",
+      "backtest_sharpe": 2.14,
+      "max_drawdown_pct": 4.3
+    },
+    {
+      "protocol": "curve",
+      "asset": "3CRV",
+      "strategy": "stable_mm",
+      "backtest_sharpe": 3.87,
+      "max_drawdown_pct": 1.2
+    }
+  ],
+  "schema": [
+    "protocol:str",
+    "asset:str",
+    "strategy:str",
+    "backtest_sharpe:float",
+    "max_drawdown_pct:float"
+  ],
+  "notes": "Orientado a devs que integram MM em protocolos DeFi. Proxy TIER0: GitHub search (DeFi MM strategies, backtest frameworks). Fonte oficial alvo: Aave/Curve subgraphs + Dune Analytics. Dados sintéticos de backtest.",
+  "sha256": "971adcb808021e321eb9b0a9f321ff436600b2fcd0c422430b100047f59eb76a"
+}
