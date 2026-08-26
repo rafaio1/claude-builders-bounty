@@ -31707,9 +31707,9 @@
     "sha256": "7afe358763545ff23c308b55a187301531e88c6dadb624ce309621b1a21c5380"
   },
   "_meta": {
-    "updated_at": "2026-08-26T16:41:13.876604+00:00",
-    "total_samples": 1451,
-    "expansion_batch": "batch_1383_to_1450"
+    "updated_at": "2026-08-26T16:41:30.694312+00:00",
+    "total_samples": 1453,
+    "expansion_batch": "batch_1451_to_1452"
   },
   "method_913": {
     "method_id": "method_913",
@@ -40016,5 +40016,37 @@
     "notes": "Proxy TIER0. Official: Patreon post scheduling & drip infra.",
     "category": "infrastructure_reselling",
     "sha256": "8a24d9282ebe0ef61a5fddcf84ec551cb66b5972c32f51123375640410cf2694"
+  },
+  "method_1451": {
+    "method_id": "method_1451",
+    "name": "Decentralized Storage Pinning Service",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:30.694312+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "pinned_gb": 5000,
+      "replication_factor": 3,
+      "retrieval_sla_pct": 99
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: Pinata/Filecoin storage provider node hosting.",
+    "category": "infrastructure_reselling",
+    "sha256": "ef585b0e781a9033e285e93cdeca8e603908610ef1ef07b205b2155397dcd58c"
+  },
+  "method_1452": {
+    "method_id": "method_1452",
+    "name": "RPC Node Load Balancer Host",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T16:41:30.694312+00:00",
+    "tier": "TIER0",
+    "sample_data": {
+      "nodes_pooled": 20,
+      "requests_sec": 5000,
+      "failover_enabled": true
+    },
+    "schema": "zero_capital_revenue_v1",
+    "notes": "Proxy TIER0. Official: QuickNode/Infura multi-region RPC routing.",
+    "category": "infrastructure_reselling",
+    "sha256": "c9c9e63a77923d0d5755b63df35b2a20c7aa892ccd4856ba3c52c33bd0adf751"
   }
 }
