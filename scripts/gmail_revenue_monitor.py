@@ -105,7 +105,7 @@ def check_emails(token):
             log(f"Query error ({q[:30]}...): {e}")
     
     return found_payouts
-
+    """Search for payout/payment confirmation emails."""
 def update_ledger(payouts):
     if not payouts:
         return
@@ -145,7 +145,7 @@ def update_ledger(payouts):
     ledger["total_value"] = sum(b.get("value", 0) for b in ledger["bounties"])
     LEDGER.write_text(json.dumps(ledger, indent=2, default=str))
     log(f"Ledger updated: {updated} entries marked as paid")
-
+    """Search for payout/payment confirmation emails."""
 if __name__ == "__main__":
     log("=== Gmail Revenue Monitor Starting ===")
     token = get_access_token()
@@ -160,3 +160,57 @@ if __name__ == "__main__":
         log("No confirmed payouts detected this cycle")
     
     log("=== Cycle Complete ===")
+def send_email(token, to_addr, subject, body_text):
+    """Send email via Gmail API using existing OAuth token. Requires gmail.send or gmail.modify scope."""
+    import base64
+    from email.mime.text import MIMEText
+    
+    msg = MIMEText(body_text)
+    msg['to'] = to_addr
+    msg['from'] = 'me'
+    msg['subject'] = subject
+    raw = base64.urlsafe_b64encode(msg.as_bytes()).decode('utf-8')
+    
+    headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
+    api = 'https://gmail.googleapis.com/gmail/v1/users/me/messages/send'
+    r = requests.post(api, headers=headers, json={'raw': raw}, timeout=20)
+    if r.status_code in (200, 201):
+        log(f"Email sent to {to_addr}: {subject}")
+        return {'sent': True, 'message_id': r.json().get('id')}
+    else:
+        log(f"Send failed ({r.status_code}): {r.text[:200]}")
+        return {'sent': False, 'error': r.text[:200]}
+
+def create_draft(token, to_addr, subject, body_text):
+    """Create draft via Gmail API. Non-destructive write test for gmail.modify scope."""
+    import base64
+    from email.mime.text import MIMEText
+    
+    msg = MIMEText(body_text)
+    msg['to'] = to_addr
+    msg['from'] = 'me'
+    msg['subject'] = subject
+    raw = base64.urlsafe_b64encode(msg.as_bytes()).decode('utf-8')
+    
+    headers = {'Authorization': f'Bearer {token}', 'Content-Type': 'application/json'}
+    api = 'https://gmail.googleapis.com/gmail/v1/users/me/drafts'
+    r = requests.post(api, headers=headers, json={'message': {'raw': raw}}, timeout=20)
+    if r.status_code in (200, 201):
+        draft_id = r.json().get('id')
+        log(f"Draft created: {subject} (id={draft_id})")
+        # Clean up test draft immediately
+        try:
+            requests.delete(f'{api}/{draft_id}', headers=headers, timeout=10)
+            log(f"Test draft {draft_id} cleaned up")
+        except Exception as e:
+            log(f"Draft cleanup warning: {e}")
+        return {'created': True, 'draft_id': draft_id}
+    else:
+        log(f"Draft creation failed ({r.status_code}): {r.text[:200]}")
+        return {'created': False, 'error': r.text[:200]}
+
+def verify_send_capability(token):
+    """Verify send capability by creating and deleting a test draft. Returns dict with capability status."""
+    result = create_draft(token, 'test@example.com', '[AUTOMATED] Capability Test', 'This is an automated capability verification draft. Safe to ignore.')
+    result['capability_verified'] = result.get('created', False)
+    return result
