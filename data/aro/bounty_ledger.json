@@ -3001,12 +3001,16 @@
       "pr": 228,
       "issue": 86,
       "title": "Visual regression tests",
-      "status": "new_review_received_p1",
+      "status": "review_fix_pushed_p1_invalidated",
       "tier": 1,
-      "next_action": "Investigate Greptile P1: verify if visual/** pattern actually excludes firefox/mobile; reproduce locally with playwright --project=firefox --list",
+      "next_action": "Post evidence on PR#228 that Greptile P1 is invalid: local playwright --list confirms firefox excludes visual (0), chromium includes (8). Wait for maintainer re-review.",
       "evidence": {
         "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
-        "greptile_p1_email": "1a03feda98223c33"
+        "greptile_p1_email": "1a03feda98223c33",
+        "p1_validation_firefox_visual_count": 0,
+        "p1_validation_chromium_visual_count": 8,
+        "p1_conclusion": "INVALID - testIgnore visual/** works correctly after ddbe468",
+        "last_checked_utc": "2026-08-26T21:45:00Z"
       },
       "reviews": [
         {
@@ -7447,9 +7451,10 @@
     {
       "message_id": "1a03feda98223c33",
       "pr": 228,
-      "action": "review_valid_fix_pushed_ddbe468",
-      "decision": "kept",
-      "ts": "2026-08-26T21:19:27.131282+00:00"
+      "action": "p1_validated_locally_invalid",
+      "decision": "keep",
+      "ts": "2026-08-26T21:19:27.131282+00:00",
+      "reason": "p1_evidence_collected_for_pr_response"
     },
     {
       "message_id": "1a03fd063018a873",
