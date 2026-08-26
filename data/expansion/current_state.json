@@ -28,18 +28,19 @@
     "REJEITAR": 3,
     "APROVAR_IMPLEMENTACAO": 1,
     "ADIAR": 23,
-    "PILOTAR": 27
+    "PILOTAR": 28
   },
   "total_proposals": 8,
-  "total_verdicts": 122,
+  "total_verdicts": 123,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:40:16.407925+00:00",
+  "last_council_action": "2026-08-26T21:41:27.755119+00:00",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
   "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
   "last_verdicts": [
+    "method_670: PILOTAR",
     "method_669: ADIAR",
     "method_668: PILOTAR",
     "method_667: PILOTAR",
@@ -48,20 +49,19 @@
     "method_664: PILOTAR",
     "method_663: ADIAR",
     "method_662: PILOTAR",
-    "method_661: PILOTAR",
-    "method_660: ADIAR"
+    "method_661: PILOTAR"
   ],
   "improve_timers_status": "MASKED",
   "master_branch": "master",
   "working_tree_dirty": true,
   "last_verdict": {
-    "proposal_id": "method_669",
-    "verdict": "ADIAR",
-    "timestamp": "2026-08-26T21:40:16.407925+00:00",
+    "proposal_id": "method_670",
+    "verdict": "PILOTAR",
+    "timestamp": "2026-08-26T21:41:27.755119+00:00",
     "result": "SUCCESS"
   },
   "pending_proposals_count": 0,
-  "last_updated": "2026-08-26T21:40:16.407925+00:00",
+  "last_updated": "2026-08-26T21:41:27.755119+00:00",
   "integrity_status": "clean_pilots_scaffolded",
   "implemented_proposals": [
     "exp-20260826-isolated-worktree-for-improve",
@@ -80,8 +80,8 @@
   "rejected_proposals": [
     "exp-20260826-data-products-batch-4-creators"
   ],
-  "next_method": 670,
-  "last_verdict_timestamp": "2026-08-26T21:40:16.407925+00:00",
+  "next_method": 671,
+  "last_verdict_timestamp": "2026-08-26T21:41:27.755119+00:00",
   "integrity": {
     "git_clean": false,
     "last_check_utc": "2026-08-26T21:25:01.232410+00:00",

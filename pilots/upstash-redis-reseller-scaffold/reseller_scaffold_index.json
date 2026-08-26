@@ -1,0 +1,39 @@
+{
+  "pilot_name": "upstash-redis-reseller-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "TOS (Seção 4) proíbe explicitamente revenda, sublicenciamento ou exploração do serviço sem permissão escrita expressa da Upstash. Free tier (256MB/500K cmds) não isenta desta restrição. Modelo de revenda direta INVIÁVEL.",
+  "free_tier_limits": {
+    "storage": "256 MB",
+    "bandwidth": "10 GB/mês",
+    "commands": "500K comandos/mês",
+    "max_request_size": "10 MB",
+    "notes": "Ideal para protótipos e hobby. Pay-as-you-go disponível após adicionar cartão."
+  },
+  "paid_plan_baseline": {
+    "payg_per_100k_commands": 0.20,
+    "storage_per_gb_month": 0.25,
+    "fixed_plans_from": "$10/mês (250MB)",
+    "prod_pack": "+$200/mês por DB (SLA, Multi-Zone HA, Encryption at Rest)"
+  },
+  "tos_compliance": {
+    "resale_allowed": false,
+    "sublicensing_allowed": false,
+    "commercial_use_restricted": true,
+    "requires_written_authorization": true,
+    "source_url": "https://upstash.com/trust/terms.pdf",
+    "key_clause": "You agree not to reproduce, duplicate, copy, reverse engineer, sell, resell or exploit any portion of the Service, use of the Service, or access to the Service without Upstash's express written permission."
+  },
+  "reselling_model": null,
+  "risks": [
+    "Revenda direta viola TOS Seção 4 — risco de suspensão imediata",
+    "Free tier muito limitado (256MB) para uso comercial mesmo se permitido",
+    "Fair Use Policy permite throttle/suspensão por uso excessivo de recursos"
+  ],
+  "next_steps": [
+    "REJEITADO como scaffold de revenda direta",
+    "Possível pivot futuro para 'Redis Setup Consulting' onde o cliente cria própria conta Upstash",
+    "Monitorar programa oficial de parceiros Upstash"
+  ],
+  "validated_at": "2026-08-27T00:00:00+00:00",
+  "validation_method": "curl + pdftotext parsing do PDF de termos"
+}

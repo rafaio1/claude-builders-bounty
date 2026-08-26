@@ -164,10 +164,29 @@ def run_shadow_cycle():
     return cycle_results
 
 if __name__ == '__main__':
-    results = run_shadow_cycle()
-    print(json.dumps({
-        'cycle_time': datetime.now(timezone.utc).isoformat(),
-        'results': results,
-        'state_file': STATE_FILE,
-        'ledger_file': LEDGER_FILE
-    }, indent=2))
+    print(f"[VWAP_SHADOW] Starting continuous loop | Symbols: {SYMBOLS} | TF: {TIMEFRAME}")
+    print(f"[VWAP_SHADOW] Entry band: {ENTRY_BAND}σ | Exit band: {EXIT_BAND}σ | Max hold: {MAX_HOLD_CANDLES} candles")
+    
+    while True:
+        try:
+            results = run_shadow_cycle()
+            output = {
+                'cycle_time': datetime.now(timezone.utc).isoformat(),
+                'results': results,
+                'state_file': STATE_FILE,
+                'ledger_file': LEDGER_FILE
+            }
+            print(json.dumps(output, indent=2), flush=True)
+            
+            # Log summary line for easy monitoring
+            entries = sum(1 for r in results if r.get('action') == 'ENTRY_SIGNAL')
+            exits = sum(1 for r in results if r.get('action') == 'EXIT')
+            holds = sum(1 for r in results if r.get('action') == 'HOLD')
+            errors = sum(1 for r in results if 'error' in r)
+            print(f"[CYCLE_SUMMARY] Entries:{entries} Exits:{exits} Holds:{holds} Errors:{errors}", flush=True)
+            
+        except Exception as e:
+            print(f"[ERROR] Cycle failed: {e}", flush=True)
+        
+        # Sleep 5 minutes between cycles (aligned to candle timeframe)
+        time.sleep(300)
