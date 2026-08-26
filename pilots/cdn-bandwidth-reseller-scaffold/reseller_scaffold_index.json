@@ -1,0 +1,29 @@
+{
+  "method_id": "905",
+  "name": "CDN Bandwidth Reseller Dashboard (zero-capital proxy)",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "SOURCE_ARTIFACT_MISMATCH_NO_CDN_SOURCE",
+  "details": "Proposal indica CDN Bandwidth Reseller (infrastructure_reselling), mas source-validation/method_905.json cont\u00e9m Open Finance BR Node (crypto_defi). Inconsist\u00eancia de metadados impede valida\u00e7\u00e3o de TOS e free tier para CDN reselling.",
+  "free_tier_limits": {
+    "type": "unknown",
+    "notes": "Sem fonte oficial CDN identificada"
+  },
+  "paid_plan_baseline": {
+    "model": "unknown"
+  },
+  "reselling_model": {
+    "viable": false,
+    "blocker": "Fonte oficial ausente/divergente"
+  },
+  "risks": [
+    "metadata_inconsistency",
+    "no_verified_source",
+    "category_mismatch"
+  ],
+  "next_steps": [
+    "Descartar como CDN reseller",
+    "Avaliar method_905-BR (Open Finance) separadamente se houver demanda",
+    "Mover para method_906 (DeFi Yield Aggregator)"
+  ],
+  "analyzed_at": "2026-08-26T22:58:24.482948+00:00"
+}
