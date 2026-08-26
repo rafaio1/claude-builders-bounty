@@ -1,0 +1,31 @@
+{
+  "method_id": "292",
+  "name": "OCR specialized API (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:12.234791+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "content_type": "thumbnail_text",
+      "platform": "youtube",
+      "text_extracted": "10K/MÊS EM 30 DIAS",
+      "confidence": 0.94,
+      "use_case": "clickbait_detection"
+    },
+    {
+      "content_type": "instagram_story",
+      "platform": "instagram",
+      "text_extracted": "LINK NA BIO 🔥",
+      "confidence": 0.91,
+      "use_case": "brand_safety_check"
+    }
+  ],
+  "schema": [
+    "content_type",
+    "platform",
+    "text_extracted",
+    "confidence",
+    "use_case"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Google Vision API / Amazon Rekognition Text para extração de texto em thumbnails e stories de criadores de conteúdo."
+}

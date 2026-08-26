@@ -1,0 +1,31 @@
+{
+  "method_id": "294",
+  "name": "OCR specialized API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:12.234818+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_vertical": "legal",
+      "doc_volume_monthly": 50000,
+      "accuracy_target": 0.995,
+      "human_in_loop": true,
+      "pricing_model": "per_page"
+    },
+    {
+      "client_vertical": "insurance",
+      "doc_volume_monthly": 120000,
+      "accuracy_target": 0.99,
+      "human_in_loop": false,
+      "pricing_model": "enterprise_flat"
+    }
+  ],
+  "schema": [
+    "client_vertical",
+    "doc_volume_monthly",
+    "accuracy_target",
+    "human_in_loop",
+    "pricing_model"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: ABBYY FlexiCapture / Kofax Transformation para agências que processam documentos em escala com SLAs de precisão e modelos de pricing B2B."
+}

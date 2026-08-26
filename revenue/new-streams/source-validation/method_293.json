@@ -1,0 +1,31 @@
+{
+  "method_id": "293",
+  "name": "OCR specialized API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:10:12.234814+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "input_format": "base64_png",
+      "output_format": "structured_json",
+      "sdk_language": "python",
+      "latency_ms": 180,
+      "open_source_alternative": "paddleocr"
+    },
+    {
+      "input_format": "pdf_url",
+      "output_format": "markdown",
+      "sdk_language": "node",
+      "latency_ms": 450,
+      "open_source_alternative": "marker-pdf"
+    }
+  ],
+  "schema": [
+    "input_format",
+    "output_format",
+    "sdk_language",
+    "latency_ms",
+    "open_source_alternative"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: OCR.space API / Mindee docTR para integração developer-friendly com SDKs e alternativas open-source documentadas."
+}
