@@ -1,0 +1,38 @@
+{
+  "pilot_name": "formspree-forms-reseller-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "TOS proíbe transferência/cessão de conta ('You may not assign or otherwise transfer your account to any other person or entity'). Licença é non-transferable e revocável. Pricing page é SPA sem dados acessíveis via curl para validar limites exatos do free tier. Modelo de revenda direta INVIÁVEL.",
+  "free_tier_limits": {
+    "submissions": "Não verificado (pricing page renderizada client-side, sem dados estáticos)",
+    "forms": "Não verificado",
+    "notes": "Pricing page retorna HTML vazio via curl; docs/help retornam 404 ou página genérica. Limites históricos (50 submissions/mês) não confirmados em 2026."
+  },
+  "paid_plan_baseline": {
+    "starter": "Não verificado",
+    "gold": "Não verificado",
+    "notes": "Dados de pricing inacessíveis sem navegador headless"
+  },
+  "tos_compliance": {
+    "resale_allowed": false,
+    "sublicensing_allowed": false,
+    "commercial_use_restricted": true,
+    "account_transfer_prohibited": true,
+    "requires_written_authorization": true,
+    "source_url": "https://formspree.io/legal/terms-of-service",
+    "key_clause": "You may not assign or otherwise transfer your account to any other person or entity. License is limited, non-exclusive, non-transferable, revocable."
+  },
+  "reselling_model": null,
+  "risks": [
+    "Transferência de conta explicitamente proibida — revenda direta viola TOS",
+    "Licença non-transferable e revocável impede multi-tenant ou white-label",
+    "Pricing não verificável via curl (SPA) — não foi possível confirmar limites atuais do free tier",
+    "Formspree reserva direito discricionário de cancelar contas a qualquer momento"
+  ],
+  "next_steps": [
+    "REJEITADO como scaffold de revenda direta",
+    "Possível pivot futuro para 'Form Setup Consulting' onde cliente cria própria conta Formspree",
+    "Reavaliar se pricing page passar a ter conteúdo estático ou API pública de planos"
+  ],
+  "validated_at": "2026-08-27T00:00:00+00:00",
+  "validation_method": "curl + parsing HTML do TOS; pricing page SPA não parseável via curl"
+}

@@ -23,8 +23,17 @@ CAPITAL_KEYWORDS = [
     r"\bretainer\b", r"\blicen[cç]a\b", r"\blicense\b",
     r"\binvestimento\b", r"\binvestment\b", r"\bcapital\s+necess",
     r"\bfee\s+mensal", r"\bmensalidade\b", r"\bplano\s+pago\b",
-    r"\benterprise\b", r"\bag[eê]ncia\b", r"\bagency\b", r"\bb2b\b",
-    r"\bsla\b", r"\bmulti[- ]?tenant\b", r"\bwhite[- ]?label\b",
+    r"\bag[eê]ncia\b", r"\bagency\b", r"\bb2b\b",
+    r"\bmulti[- ]?tenant\b", r"\bwhite[- ]?label\b",
+]
+# Keywords that indicate a proposal is actually zero-capital despite cost mentions
+ZERO_CAPITAL_SIGNALS = [
+    r"\boss\b", r"\bopen[- ]?source\b", r"\bfree[- ]?tier\b", r"\bgratis\b",
+    r"\bzero[- ]?capital\b", r"\bloca[ll]\b", r"\bself[- ]?hosted\b",
+    r"\bwhisper\.cpp\b", r"\bfaster[- ]?whisper\b", r"\bollama\b",
+    r"\bllama\.cpp\b", r"\bdocusaurus\b", r"\bmkdocs\b", r"\bpandoc\b",
+    r"\bplaywright\b", r"\bgithub\s+actions\b", r"\bcrowdin\s+free\b",
+    r"\bi18n[- ]?ally\b", r"\bformatjs[- ]?cli\b",
 ]
 
 TOS_LEGAL_KEYWORDS = [
@@ -42,15 +51,19 @@ def check_proposal(proposal: dict) -> tuple[bool, str | None]:
 
     text = json.dumps(proposal, ensure_ascii=False).lower()
 
+    # Check for zero-capital/OSS signals (but don't skip if strong capital barriers exist)
+    zero_cap_hits = [kw for kw in ZERO_CAPITAL_SIGNALS if re.search(kw, text)]
+    has_zero_cap_signals = len(zero_cap_hits) >= 2
+
     capital_hits = [kw for kw in CAPITAL_KEYWORDS if re.search(kw, text)]
     tos_hits = [kw for kw in TOS_LEGAL_KEYWORDS if re.search(kw, text)]
 
-    # Reject if BOTH capital AND tos signals present
-    # OR if capital signal is strong (>=3 matches, covers pure cost barriers)
+    # Reject if BOTH capital AND tos signals present (unless zero-cap signals override)
+    # OR if capital signal is very strong (>=5 matches, even with zero-cap mentions)
     # OR if explicit TOS blockers found
-    if len(capital_hits) >= 2 and len(tos_hits) >= 1:
+    if len(capital_hits) >= 3 and len(tos_hits) >= 1 and not has_zero_cap_signals:
         return True, f"CAPITAL+TOS: capital_keywords={len(capital_hits)}, tos_keywords={len(tos_hits)}"
-    if len(capital_hits) >= 3:
+    if len(capital_hits) >= 5:
         return True, f"CAPITAL_STRONG: {len(capital_hits)} capital keyword matches"
     if tos_hits and any(kw in text for kw in ["sublicens", "proibid", "resell direct"]):
         return True, f"TOS_EXPLICIT: restricted terms found"
