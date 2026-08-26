@@ -5,7 +5,7 @@
       "repo": "OphirPay/OphirPay",
       "pr": 225,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:42:06.087613+00:00",
+      "last_action": "email_triage_greptile_p2_rebuttal_vercel_auth_pending",
       "evidence": [
         {
           "type": "email",
@@ -34,10 +34,21 @@
           "email_id": "1a03dca6ce9683f4",
           "detail": "Vercel CodingAngel1 team authorization pending. No contributor action possible.",
           "action_taken": "human_action_required"
+        },
+        {
+          "type": "email_triage",
+          "message_ids": [
+            "1a03dcc01298cb75",
+            "1a03dca6ce9683f4",
+            "1a03d5fbf26dfa9f",
+            "1a03d5fae6f376c9",
+            "1a03df0244231a91"
+          ],
+          "date": "2026-08-26T22:48:30.772316Z"
         }
       ],
-      "next_action": "awaiting_vercel_auth_and_greptile_rebuttal",
-      "updated_at": "2026-08-26T22:12:09.184360+00:00",
+      "next_action": "await_vercel_codingangel1_team_auth_then_respond_to_greptile_review",
+      "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 225
     },
     {
@@ -45,7 +56,7 @@
       "repo": "ligate-io/ligate-chain",
       "pr": 567,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:42:06.087613+00:00",
+      "last_action": "email_triage_cla_assistant_failed_human_signature_required",
       "evidence": [
         {
           "type": "email",
@@ -70,10 +81,21 @@
           "email_id": "1a03d5fae6f376c9",
           "detail": "CLA Assistant Lite bot requesting signature. Root user not linked to GitHub account. Human must sign CLA.",
           "action_taken": "human_action_required"
+        },
+        {
+          "type": "email_triage",
+          "message_ids": [
+            "1a03dcc01298cb75",
+            "1a03dca6ce9683f4",
+            "1a03d5fbf26dfa9f",
+            "1a03d5fae6f376c9",
+            "1a03df0244231a91"
+          ],
+          "date": "2026-08-26T22:48:30.772316Z"
         }
       ],
-      "next_action": "cla_signature_required",
-      "updated_at": "2026-08-26T22:12:09.184388+00:00",
+      "next_action": "await_human_cla_signature_then_retrigger_ci",
+      "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 567
     },
     {
@@ -81,7 +103,7 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": 150,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:42:06.087613+00:00",
+      "last_action": "email_triage_vercel_heymide_team_auth_pending",
       "evidence": [
         {
           "type": "email",
@@ -94,10 +116,21 @@
           "email_id": "1a03df0244231a91",
           "detail": "Vercel Heymide team authorization pending. No contributor action possible.",
           "action_taken": "human_action_required"
+        },
+        {
+          "type": "email_triage",
+          "message_ids": [
+            "1a03dcc01298cb75",
+            "1a03dca6ce9683f4",
+            "1a03d5fbf26dfa9f",
+            "1a03d5fae6f376c9",
+            "1a03df0244231a91"
+          ],
+          "date": "2026-08-26T22:48:30.772316Z"
         }
       ],
-      "next_action": "awaiting_vercel_heymide_auth",
-      "updated_at": "2026-08-26T22:12:09.184392+00:00",
+      "next_action": "await_vercel_heymide_team_auth",
+      "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 150
     },
     {
@@ -1061,6 +1094,54 @@
       "currency": "",
       "value": 0,
       "payout_verified": false
+    },
+    {
+      "program": "Opire",
+      "repo": "zed-industries/zed",
+      "issue": 4642,
+      "bounty_amount": 395,
+      "status": "rejected_closed_issue",
+      "last_action": "2026-08-26T22:48:49.062902+00:00",
+      "evidence": [
+        {
+          "type": "github_check",
+          "note": "Issue #4642 is Closed/Merged via PR #19175. Bounty still listed as Open on Opire but underlying work is done."
+        }
+      ],
+      "next_action": "Skip. Bounty is stale/zombie.",
+      "updated_at": "2026-08-26T22:48:49.062902+00:00"
+    },
+    {
+      "program": "Opire",
+      "repo": "autokey/autokey",
+      "issue": 87,
+      "bounty_amount": 590,
+      "status": "rejected_closed_issue",
+      "last_action": "2026-08-26T22:48:49.062902+00:00",
+      "evidence": [
+        {
+          "type": "github_check",
+          "note": "Issue #87 is Closed/Merged via PR #1076. Bounty lists Status: Closed on Opire too."
+        }
+      ],
+      "next_action": "Skip. Work completed.",
+      "updated_at": "2026-08-26T22:48:49.062902+00:00"
+    },
+    {
+      "program": "Opire",
+      "repo": "typeorm/typeorm",
+      "issue": 3357,
+      "bounty_amount": 590,
+      "status": "rejected_maintainer_block",
+      "last_action": "2026-08-26T22:48:49.062902+00:00",
+      "evidence": [
+        {
+          "type": "github_check",
+          "note": "Issue Open but pinned maintainer comment explicitly states: \"we are not accepting any PRs from the community for this issue... All of them will be closed.\""
+        }
+      ],
+      "next_action": "Skip. Explicit maintainer block on community PRs.",
+      "updated_at": "2026-08-26T22:48:49.062902+00:00"
     }
   ],
   "bounties": [
