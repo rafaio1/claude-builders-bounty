@@ -12,7 +12,7 @@
     "available_usdt": 7.72794039,
     "fee_drag_note": "fees exceed gross profit on small moves"
   },
-  "risk_status": "TRAILING_REJECTED_VWAP_SHADOW_ACTIVE",
+  "risk_status": "VWAP_SHADOW_ACTIVE_BACKTEST_PASSED_AWAITING_VALIDATION",
   "action_required": "STRATEGY_REVIEW_NEEDED_BEFORE_RESUMING",
   "supervision_state": "waiting_monitoring",
   "next_check": "backtest_fee_adjusted_strategy",
@@ -218,5 +218,41 @@
     "action": "check_vwap_shadow_health_and_signals",
     "deadline": "2026-08-27T22:27:00Z",
     "criteria": "zero errors, signals generated, no wash patterns"
+  },
+  "vwap_multicoin_backtest": {
+    "timestamp": "2026-08-26T22:44:41.823502+00:00",
+    "verdict": "PASS",
+    "symbols_tested": 11,
+    "symbols_positive": 11,
+    "total_trades": 284,
+    "aggregate_net_pnl_pct": 34.3002,
+    "avg_per_symbol_pct": 3.1182,
+    "best_symbol": {
+      "symbol": "WLD/USDT",
+      "net_pnl_pct": 7.4288,
+      "win_rate": 80.0
+    },
+    "worst_symbol": {
+      "symbol": "XRP/USDT",
+      "net_pnl_pct": 0.6567,
+      "win_rate": 62.5
+    },
+    "params": {
+      "vwap_period": 20,
+      "entry_band": 2.0,
+      "exit_band": 0.5,
+      "max_hold_candles": 48,
+      "maker_fee": 0.0002,
+      "timeframe": "5m",
+      "candle_limit": 2000
+    }
+  },
+  "promotion_gates": {
+    "backtest_positive": true,
+    "shadow_24h_zero_errors": false,
+    "shadow_24h_started": "2026-08-26T22:35:25Z",
+    "min_30_paper_trades": false,
+    "paper_trades_count": 0,
+    "manual_approval": false
   }
 }

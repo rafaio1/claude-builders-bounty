@@ -736,6 +736,8 @@ CRITICAL CONSTRAINTS:
             s["labels"] = cand.get("labels", [])
             validated.append(s)
         if validated:
+            global _TRIAGE_CONSECUTIVE_FAILURES
+            _TRIAGE_CONSECUTIVE_FAILURES = 0
             return validated
         log("All GhostCLI selections were invalid/hallucinated; refusing heuristic fallback")
     # Structured error event: no silent fallback
@@ -749,6 +751,8 @@ CRITICAL CONSTRAINTS:
         "action": "return_empty_no_heuristic"
     }
     log(f"TRIAGE_ERROR: {json.dumps(err_event)}")
+    global _TRIAGE_CONSECUTIVE_FAILURES
+    _TRIAGE_CONSECUTIVE_FAILURES = _TRIAGE_CONSECUTIVE_FAILURES + 1
     return []
 
 

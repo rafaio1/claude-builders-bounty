@@ -527,8 +527,8 @@
       "pr_number": "906",
       "title": "fix: answer for bounty 1549793",
       "status": "waiting_review",
-      "last_action": "2026-08-26T22:38:33.277879+00:00",
-      "next_action": "Monitor for maintainer review/merge; payout to verified TRC20 address upon acceptance",
+      "last_action": "2026-08-26T22:45:07.972376+00:00",
+      "next_action": "monitor_maintainer_review_and_merge",
       "evidence": [
         {
           "type": "gh_search_discovery",
@@ -543,6 +543,10 @@
           "amount": 5000,
           "currency": "sats",
           "issue": "#730"
+        },
+        {
+          "type": "gh_pr_comment",
+          "note": "Payout address verified and updated. PR open for bounty 1549793 (5000 sats). Awaiting maintainer review."
         }
       ],
       "currency": "sats",
@@ -750,6 +754,312 @@
       "program": "",
       "eligibility": "unknown",
       "probability": "unknown"
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 204,
+      "title": "test: add edge case tests for assertNonEmptyValue guard (Issue #152)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 203,
+      "title": "test: add unit tests for RuntimeError construction and code values (Issue #110)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 202,
+      "title": "test: add unit tests for ActionExecutor tool dispatch and payload passthrough (Issue #115)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 201,
+      "title": "test: add unit tests for AgentInstanceManager getOrCreate identity semantics (Issue #113)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 200,
+      "title": "test: add unit tests for createRuntimeDependencies default wiring (Issue #114)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 199,
+      "title": "test: add unit tests for InMemoryRuntimeStateStore put/get round trips (Issue #109)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 198,
+      "title": "test: add unit tests for ConsoleRuntimeLogger and InMemoryRuntimeLogger (Issue #111)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 197,
+      "title": "test: assert runtime.task.failed emission with taskId and reason (Issue #117)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 196,
+      "title": "test: assert DUPLICATE_TOOL error code and details.toolName (Issue #124)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 195,
+      "title": "test: cover double-start RUNTIME_ALREADY_STARTED error (Issue #126)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 194,
+      "title": "test: validate public export surface of src/index.ts (Issue #125)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 193,
+      "title": "test: assert memory append failures propagate as typed EXECUTION_FAILED errors (Issue #122)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 192,
+      "title": "test: add concurrency test for parallel executeTask calls (Issue #123)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 191,
+      "title": "test: add integration test for custom memory store round trip through executeTask (Issue #120)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 190,
+      "title": "test: cover INVALID_TASK rejection paths for blank task fields (Issue #118)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 189,
+      "title": "test: add integration test for fully injected dependencies via RuntimeOptions (Issue #119)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
+    },
+    {
+      "program": "",
+      "repo": "Lilly-Protocol/agentlily-runtime",
+      "pr_number": 188,
+      "title": "test: add event bus listener removal mid-emit tests (Issue #131)",
+      "status": "discovered_untracked",
+      "last_action": "2026-08-26T22:43:59.571896+00:00",
+      "next_action": "verify_eligibility_and_bounty",
+      "evidence": [
+        {
+          "type": "gh_search",
+          "note": "Discovered via gh search prs --author rafaio1 on 2026-08-26"
+        }
+      ],
+      "currency": "",
+      "value": 0,
+      "payout_verified": false
     }
   ],
   "bounties": [
