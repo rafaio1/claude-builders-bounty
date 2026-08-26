@@ -1,0 +1,31 @@
+{
+  "method_id": "437",
+  "name": "Bridge arbitrage (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_tool": "CrossChainMessenger",
+      "latency_ms_avg": 1200,
+      "success_rate_pct": 99.2,
+      "supported_chains": 8
+    },
+    {
+      "dev_tool": "BridgeSDK_Lite",
+      "latency_ms_avg": 3500,
+      "success_rate_pct": 94.5,
+      "supported_chains": 4
+    }
+  ],
+  "schema": [
+    "dev_tool",
+    "latency_ms_avg",
+    "success_rate_pct",
+    "supported_chains"
+  ],
+  "notes": "Variante técnica para devs integrando bridges. Compara latência e confiabilidade de SDKs. Proxy via benchmarks open-source no GitHub. Fonte oficial: Connext Network Docs ou Axelar Developer Hub.",
+  "generated_at": "2026-08-26T15:10:02.125192+00:00",
+  "_meta": {
+    "hash": "dd02351e23425a05ad1afdd4890df219cf667d6aeba8654ae195ae55ea49ace3"
+  }
+}

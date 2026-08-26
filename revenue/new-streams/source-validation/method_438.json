@@ -1,0 +1,31 @@
+{
+  "method_id": "438",
+  "name": "Bridge arbitrage (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_campaign": "MultiChain_Airdrop",
+      "total_bridged_usd": 125000,
+      "avg_slippage_pct": 0.12,
+      "cost_savings_vs_cex": 4200
+    },
+    {
+      "client_campaign": "L2_Migration_Incentive",
+      "total_bridged_usd": 85000,
+      "avg_slippage_pct": 0.35,
+      "cost_savings_vs_cex": 1800
+    }
+  ],
+  "schema": [
+    "client_campaign",
+    "total_bridged_usd",
+    "avg_slippage_pct",
+    "cost_savings_vs_cex"
+  ],
+  "notes": "Variante B2B para agências gerenciando migrações/airdrops multi-chain. Reporta savings vs CEX withdrawals. Proxy via scripts de bridge-cost analytics. Fonte oficial: Hop Protocol Analytics or Stargate Volume Dashboard.",
+  "generated_at": "2026-08-26T15:10:02.125192+00:00",
+  "_meta": {
+    "hash": "d91a162ccf067ec1050057ccbaa06bdd0c85c259457c36ccf881558998a524ef"
+  }
+}

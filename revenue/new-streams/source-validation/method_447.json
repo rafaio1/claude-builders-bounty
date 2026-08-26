@@ -1,0 +1,31 @@
+{
+  "method_id": "447",
+  "name": "Impermanent loss calculator (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "Institutional_MM_Fund",
+      "exposure_usd": 5000000,
+      "hedging_cost_annual_pct": 2.5,
+      "net_il_after_hedge_pct": 0.3
+    },
+    {
+      "entity": "Corporate_Treasury",
+      "exposure_usd": 1200000,
+      "hedging_cost_annual_pct": 0.0,
+      "net_il_after_hedge_pct": 4.1
+    }
+  ],
+  "schema": [
+    "entity",
+    "exposure_usd",
+    "hedging_cost_annual_pct",
+    "net_il_after_hedge_pct"
+  ],
+  "notes": "Variante enterprise focada em hedging de IL para tesourarias. Proxy TIER0 via modelos de risk management open-source. Fonte oficial: Gauntlet Risk Reports or Chaos Labs.",
+  "generated_at": "2026-08-26T15:11:04.527275+00:00",
+  "_meta": {
+    "hash": "fbfa966e9b70ab3167d03ad8d233067fddd0c77c38015ec6bef96a28099af52f"
+  }
+}

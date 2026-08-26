@@ -1,0 +1,31 @@
+{
+  "method_id": "445",
+  "name": "Impermanent loss calculator",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "ETH/USDC",
+      "price_change_pct": 25.0,
+      "il_pct": 1.8,
+      "pool_type": "uniswap_v3"
+    },
+    {
+      "pair": "WBTC/ETH",
+      "price_change_pct": -10.0,
+      "il_pct": 0.4,
+      "pool_type": "curve"
+    }
+  ],
+  "schema": [
+    "pair",
+    "price_change_pct",
+    "il_pct",
+    "pool_type"
+  ],
+  "notes": "Calculadora genérica de impermanent loss. Proxy TIER0 via repositórios de IL calculators e LP simulators no GitHub. Fonte oficial: DeFiLlama Pool API ou Uniswap V3 SDK.",
+  "generated_at": "2026-08-26T15:11:04.527275+00:00",
+  "_meta": {
+    "hash": "9c88024f8c746ca4764123b77b470fa8f6b377d0a83871b5c254f3f9b406cc79"
+  }
+}

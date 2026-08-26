@@ -1,0 +1,34 @@
+{
+  "method_id": "436",
+  "name": "Bridge arbitrage (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_asset": "MusicNFT_Collection",
+      "source_chain": "ethereum",
+      "target_chain": "base",
+      "bridge_fee_usd": 2.5,
+      "arbitrage_window_min": 15
+    },
+    {
+      "creator_asset": "ArtDrop_Token",
+      "source_chain": "polygon",
+      "target_chain": "optimism",
+      "bridge_fee_usd": 0.8,
+      "arbitrage_window_min": 45
+    }
+  ],
+  "schema": [
+    "creator_asset",
+    "source_chain",
+    "target_chain",
+    "bridge_fee_usd",
+    "arbitrage_window_min"
+  ],
+  "notes": "Variante para criadores movendo ativos NFT/tokens entre chains. Foca em custos de bridge e janelas de oportunidade. Proxy TIER0 via repositórios de cross-chain NFT bridges. Fonte oficial: LayerZero API ou Wormhole Connect.",
+  "generated_at": "2026-08-26T15:10:02.125192+00:00",
+  "_meta": {
+    "hash": "cdf45360f5820f43fe2bea40c873dab8e5a7d81426ec6a91a4f56f18a178f065"
+  }
+}

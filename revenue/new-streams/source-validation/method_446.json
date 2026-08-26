@@ -1,0 +1,31 @@
+{
+  "method_id": "446",
+  "name": "Impermanent loss calculator (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "NewDEX_Launch",
+      "token_pair": "NATIVE/USDC",
+      "projected_il_30d_pct": 5.2,
+      "fee_offset_break_even_days": 14
+    },
+    {
+      "protocol": "StableSwap_Init",
+      "token_pair": "USDT/DAI",
+      "projected_il_30d_pct": 0.1,
+      "fee_offset_break_even_days": 2
+    }
+  ],
+  "schema": [
+    "protocol",
+    "token_pair",
+    "projected_il_30d_pct",
+    "fee_offset_break_even_days"
+  ],
+  "notes": "Variante para startups DeFi lançando pools. Estima IL projetado e break-even de fees. Proxy via repositórios de LP incentive planners. Fonte oficial: Arrakis Finance or Gamma Strategies.",
+  "generated_at": "2026-08-26T15:11:04.527275+00:00",
+  "_meta": {
+    "hash": "0c0454684cc852a745f2b2e4b461d1e12b371d7ca104b60c47a074a9b277668b"
+  }
+}
