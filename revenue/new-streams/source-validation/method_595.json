@@ -1,0 +1,39 @@
+{
+  "method_id": "595",
+  "name": "API integration specialist",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:34:30.861943+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "stripe_v1",
+      "target_system": "netsuite_erp",
+      "sync_freq": "5min",
+      "error_rate": "0.02%",
+      "tool": "n8n_webhook"
+    },
+    {
+      "source_api": "shopify_admin",
+      "target_system": "xero_accounting",
+      "records_day": 1200,
+      "latency_p95": "340ms",
+      "tool": "make_com_scenario"
+    },
+    {
+      "source_api": "hubspot_crm",
+      "target_system": "slack_workspace",
+      "events_hour": 450,
+      "auth_method": "oauth2_pkce",
+      "tool": "zapier_transfer"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (api-integration/n8n/make repos). Fonte oficial alvo: Upwork API integration gigs. Zero-capital: n8n self-hosted + free-tier iPaaS.",
+  "content_hash": "1e04d9fc4c7424e02a7ce0e10eea04d6af866c89b4f00f89fe9c666247ac24c0"
+}

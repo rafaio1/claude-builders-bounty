@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:33:48.633691+00:00",
-    "total": 594,
+    "generated_at": "2026-08-26T15:35:03.990348+00:00",
+    "total": 600,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -9282,5 +9282,238 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (agency-tech-debt/cms-modernization). Fonte oficial alvo: Clutch.co agency retainer refactor projects. Zero-capital: schematics e conversores open-source.",
     "content_hash": "87c460082e95bc1247d22b200653193cccc252f5d43d3a9f862e1bd2b933313b"
+  },
+  "595": {
+    "method_id": "595",
+    "name": "API integration specialist",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:34:30.861943+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "stripe_v1",
+        "target_system": "netsuite_erp",
+        "sync_freq": "5min",
+        "error_rate": "0.02%",
+        "tool": "n8n_webhook"
+      },
+      {
+        "source_api": "shopify_admin",
+        "target_system": "xero_accounting",
+        "records_day": 1200,
+        "latency_p95": "340ms",
+        "tool": "make_com_scenario"
+      },
+      {
+        "source_api": "hubspot_crm",
+        "target_system": "slack_workspace",
+        "events_hour": 450,
+        "auth_method": "oauth2_pkce",
+        "tool": "zapier_transfer"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (api-integration/n8n/make repos). Fonte oficial alvo: Upwork API integration gigs. Zero-capital: n8n self-hosted + free-tier iPaaS.",
+    "content_hash": "1e04d9fc4c7424e02a7ce0e10eea04d6af866c89b4f00f89fe9c666247ac24c0"
+  },
+  "596": {
+    "method_id": "596",
+    "name": "API integration specialist (for startups)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:34:30.861943+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "resend_email",
+        "target_system": "supabase_edge_fn",
+        "trigger": "signup_event",
+        "cost_per_1k": "$0.00",
+        "tool": "supabase_webhooks"
+      },
+      {
+        "source_api": "clerk_auth",
+        "target_system": "convex_backend",
+        "sync_type": "realtime",
+        "setup_time": "2h",
+        "tool": "convex_clerk_integration"
+      },
+      {
+        "source_api": "lemonsqueezy",
+        "target_system": "discord_role_bot",
+        "event": "subscription_created",
+        "tool": "deno_deploy_webhook"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (startup-api-glue/supabase-convex). Fonte oficial alvo: YC/indie hacker freelance integration. Zero-capital: todos free-tier ou open-source.",
+    "content_hash": "e3d36da996c7f2dd3b5118425f6ec13a4f295a648810f87f6a1700af6fa46057"
+  },
+  "597": {
+    "method_id": "597",
+    "name": "API integration specialist (for enterprises)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:34:30.861943+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "sap_s4hana",
+        "target_system": "salesforce_einstein",
+        "throughput": "50k_rec/hour",
+        "compliance": "soc2_hipaa",
+        "tool": "mulesoft_anypoint"
+      },
+      {
+        "source_api": "workday_hcm",
+        "target_system": "azure_ad_entra",
+        "provisioning": "scim_v2",
+        "sla": "99.95%",
+        "tool": "okta_integration_network"
+      },
+      {
+        "source_api": "oracle_fusion_erp",
+        "target_system": "coupa_procurement",
+        "protocol": "rest_oauth2_mtls",
+        "audit_trail": "immutable",
+        "tool": "tibco_cloud_integrate"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (enterprise-api-gateway/mulesoft-scim). Fonte oficial alvo: Enterprise RFPs/freelance SOWs integração SAP/Salesforce. Zero-capital: documentação e sandboxes gratuitas; runtime enterprise é TIER1.",
+    "content_hash": "a4211266ab2abf83943381b5c5aaf5c076976adccfd07a5c66acc96ed1023cce"
+  },
+  "598": {
+    "method_id": "598",
+    "name": "API integration specialist (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:03.990348+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "youtube_data_v3",
+        "target_system": "notion_content_db",
+        "sync_freq": "hourly",
+        "metric": "views_subs_synced",
+        "tool": "make_com_free"
+      },
+      {
+        "source_api": "spotify_for_artists",
+        "target_system": "google_sheets_finance",
+        "trigger": "monthly_payout",
+        "cost": "$0",
+        "tool": "apps_script_webhook"
+      },
+      {
+        "source_api": "patreon_api",
+        "target_system": "discord_bot_roles",
+        "event": "pledge_created",
+        "latency": "<2s",
+        "tool": "n8n_selfhosted"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (creator-automation/youtube-notion). Fonte oficial alvo: Fiverr 'creator workflow automation'. Zero-capital: Make free tier + n8n self-hosted.",
+    "content_hash": "196cf13012995e1ea4e17131af05e186930b763614eaecc9f649fb0ab016eebb"
+  },
+  "599": {
+    "method_id": "599",
+    "name": "API integration specialist (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:03.990348+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "github_rest_v3",
+        "target_system": "linear_issues",
+        "sync_type": "bidirectional",
+        "rate_limit_safe": true,
+        "tool": "hono_cloudflare_worker"
+      },
+      {
+        "source_api": "sentry_webhooks",
+        "target_system": "pagerduty_incidents",
+        "filter": "error_level_critical",
+        "sla": "99.9%",
+        "tool": "deno_deploy_relay"
+      },
+      {
+        "source_api": "vercel_deployment",
+        "target_system": "slack_channel",
+        "event": "preview_ready",
+        "auth": "bot_token",
+        "tool": "netlify_functions"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (devops-glue/github-linear-sync). Fonte oficial alvo: Toptal/Gun.io freelance devops integration. Zero-capital: Cloudflare/Deno/Netlify free tiers.",
+    "content_hash": "8c866f576f4a555277b3620c186532b193b2e2df88e798a484f19f746546f6c4"
+  },
+  "600": {
+    "method_id": "600",
+    "name": "API integration specialist (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:35:03.990348+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_api": "meta_marketing_api",
+        "target_system": "looker_studio_report",
+        "refresh": "daily_6am",
+        "accounts_managed": 45,
+        "tool": "supermetrics_trial"
+      },
+      {
+        "source_api": "woocommerce_rest",
+        "target_system": "quickbooks_online",
+        "sync_scope": "orders_products_tax",
+        "compliance": "gaap_ready",
+        "tool": "myob_connect"
+      },
+      {
+        "source_api": "typeform_responses",
+        "target_system": "airtable_crm",
+        "transform": "flatten_nested",
+        "volume": "2k/day",
+        "tool": "integromat_legacy"
+      }
+    ],
+    "schema": [
+      "source_api",
+      "target_system",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (agency-reporting/meta-looker). Fonte oficial alvo: Clutch.co agency data pipeline retainers. Zero-capital: trials e planos starter gratuitos cobrem setup inicial.",
+    "content_hash": "0cb05357bd180818c11c8741b5bfb8ee8b86cd1b53a9dda7034ad0f376f06312"
   }
 }

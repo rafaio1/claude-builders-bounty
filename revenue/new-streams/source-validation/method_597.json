@@ -1,0 +1,39 @@
+{
+  "method_id": "597",
+  "name": "API integration specialist (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:34:30.861943+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "sap_s4hana",
+      "target_system": "salesforce_einstein",
+      "throughput": "50k_rec/hour",
+      "compliance": "soc2_hipaa",
+      "tool": "mulesoft_anypoint"
+    },
+    {
+      "source_api": "workday_hcm",
+      "target_system": "azure_ad_entra",
+      "provisioning": "scim_v2",
+      "sla": "99.95%",
+      "tool": "okta_integration_network"
+    },
+    {
+      "source_api": "oracle_fusion_erp",
+      "target_system": "coupa_procurement",
+      "protocol": "rest_oauth2_mtls",
+      "audit_trail": "immutable",
+      "tool": "tibco_cloud_integrate"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-api-gateway/mulesoft-scim). Fonte oficial alvo: Enterprise RFPs/freelance SOWs integração SAP/Salesforce. Zero-capital: documentação e sandboxes gratuitas; runtime enterprise é TIER1.",
+  "content_hash": "a4211266ab2abf83943381b5c5aaf5c076976adccfd07a5c66acc96ed1023cce"
+}

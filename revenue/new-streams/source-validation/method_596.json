@@ -1,0 +1,38 @@
+{
+  "method_id": "596",
+  "name": "API integration specialist (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:34:30.861943+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_api": "resend_email",
+      "target_system": "supabase_edge_fn",
+      "trigger": "signup_event",
+      "cost_per_1k": "$0.00",
+      "tool": "supabase_webhooks"
+    },
+    {
+      "source_api": "clerk_auth",
+      "target_system": "convex_backend",
+      "sync_type": "realtime",
+      "setup_time": "2h",
+      "tool": "convex_clerk_integration"
+    },
+    {
+      "source_api": "lemonsqueezy",
+      "target_system": "discord_role_bot",
+      "event": "subscription_created",
+      "tool": "deno_deploy_webhook"
+    }
+  ],
+  "schema": [
+    "source_api",
+    "target_system",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-api-glue/supabase-convex). Fonte oficial alvo: YC/indie hacker freelance integration. Zero-capital: todos free-tier ou open-source.",
+  "content_hash": "e3d36da996c7f2dd3b5118425f6ec13a4f295a648810f87f6a1700af6fa46057"
+}
