@@ -188,165 +188,12 @@
       "pr_number": 12147
     },
     {
-      "program": "OphirPay",
-      "repo": "OphirPay/OphirPay",
-      "pr": "OphirPay/OphirPay#225",
-      "url": "https://github.com/OphirPay/OphirPay#225",
-      "status": "waiting_maintainer",
-      "last_action": "2026-08-26T22:34:52.491414+00:00",
-      "next_action": "Monitor Vercel team authorization; no contributor action possible",
-      "evidence": [
-        {
-          "type": "email",
-          "id": "1a03dcc01298cb75",
-          "summary": "Greptile P2: production delivery untested (duplicate signing/retry loop)"
-        },
-        {
-          "type": "email",
-          "id": "1a03dca6ce9683f4",
-          "summary": "Vercel bot: CodingAngel1 team auth required for deploy"
-        },
-        {
-          "type": "email",
-          "id": "1a03dcc01298cb75",
-          "summary": "Greptile P2: E2E retry loop duplicates deliverWebhook signing/retry instead of invoking it"
-        },
-        {
-          "type": "email",
-          "id": "1a03dca6ce9683f4",
-          "summary": "Vercel CodingAngel1 team auth required for rafaio1 deploy"
-        },
-        {
-          "type": "gmail_triage_greptile_p2_review",
-          "timestamp": "2026-08-26T22:34:52.491414+00:00",
-          "email_id": "1a03dcc01298cb75",
-          "detail": "Greptile P2 review on webhook-delivery.spec.ts: test duplicates signing/retry instead of calling deliverWebhook. Valid architectural concern but E2E intentionally tests integration behavior. No code fix required; acknowledged in PR comments previously.",
-          "action_taken": "logged_no_code_action_needed"
-        },
-        {
-          "type": "gmail_triage_vercel_auth_pending",
-          "timestamp": "2026-08-26T22:34:52.491414+00:00",
-          "email_id": "1a03dca6ce9683f4",
-          "detail": "Vercel CodingAngel1 team authorization pending. No contributor action possible.",
-          "action_taken": "human_action_required"
-        }
-      ],
-      "email_decision": "PRESERVED - technical review + platform auth, no action taken",
-      "updated_at": "2026-08-26T22:28:35.069397+00:00",
-      "created_at": "2026-08-26T22:18:01.041185+00:00"
-    },
-    {
-      "program": "ligate-io",
-      "repo": "ligate-io/ligate-chain",
-      "pr": "ligate-io/ligate-chain#567",
-      "url": "https://github.com/ligate-io/ligate-chain#567",
-      "status": "human_action_required",
-      "last_action": "2026-08-26T22:34:52.491414+00:00",
-      "next_action": "Human must sign CLA via GitHub account before merge can proceed",
-      "evidence": [
-        {
-          "type": "email",
-          "id": "1a03d5fbf26dfa9f",
-          "summary": "CLA Assistant workflow failed (8s)"
-        },
-        {
-          "type": "email",
-          "id": "1a03d5fae6f376c9",
-          "summary": "github-actions bot: CLA signature required; root not linked to GitHub user"
-        },
-        {
-          "type": "email",
-          "id": "1a03d5fbf26dfa9f",
-          "summary": "CLA Assistant workflow failed"
-        },
-        {
-          "type": "email",
-          "id": "1a03d5fae6f376c9",
-          "summary": "CLA bot: root not a GitHub user, cannot sign via PR comment"
-        },
-        {
-          "type": "gmail_triage_cla_ci_failure",
-          "timestamp": "2026-08-26T22:34:52.491414+00:00",
-          "email_id": "1a03d5fbf26dfa9f",
-          "detail": "CLA Assistant workflow failed. CLA signature requires human action via GitHub account.",
-          "action_taken": "human_action_required"
-        },
-        {
-          "type": "gmail_triage_cla_bot_comment",
-          "timestamp": "2026-08-26T22:34:52.491414+00:00",
-          "email_id": "1a03d5fae6f376c9",
-          "detail": "CLA Assistant Lite bot requesting signature. Root user not linked to GitHub account. Human must sign CLA.",
-          "action_taken": "human_action_required"
-        }
-      ],
-      "email_decision": "PRESERVED - CLA/legal, requires human signature",
-      "updated_at": "2026-08-26T22:28:35.069397+00:00",
-      "created_at": "2026-08-26T22:18:01.041185+00:00"
-    },
-    {
-      "program": "Lilly-Protocol",
-      "repo": "Lilly-Protocol/lily-frontend",
-      "pr": "Lilly-Protocol/lily-frontend#150",
-      "url": "https://github.com/Lilly-Protocol/lily-frontend#150",
-      "status": "waiting_maintainer",
-      "last_action": "2026-08-26T22:34:52.491414+00:00",
-      "next_action": "Monitor Vercel team authorization; no contributor action possible",
-      "evidence": [
-        {
-          "type": "email",
-          "id": "1a03df0244231a91",
-          "summary": "Vercel bot: Heymide team auth required for deploy"
-        },
-        {
-          "type": "email",
-          "id": "1a03df0244231a91",
-          "summary": "Vercel Heymide team auth required for deploy"
-        },
-        {
-          "type": "gmail_triage_vercel_auth_pending",
-          "timestamp": "2026-08-26T22:34:52.491414+00:00",
-          "email_id": "1a03df0244231a91",
-          "detail": "Vercel Heymide team authorization pending. No contributor action possible.",
-          "action_taken": "human_action_required"
-        }
-      ],
-      "email_decision": "PRESERVED - platform auth notification",
-      "updated_at": "2026-08-26T22:28:35.069397+00:00",
-      "created_at": "2026-08-26T22:18:01.041185+00:00"
-    },
-    {
-      "program": "OphirPay",
-      "repo": "OphirPay/OphirPay",
-      "pr": "OphirPay/OphirPay#228",
-      "url": "https://github.com/OphirPay/OphirPay/pull/228",
-      "status": "waiting_reviewer_ack",
-      "last_action": "2026-08-26T22:34:03.309375+00:00",
-      "next_action": "Monitor CI re-run and Vercel team auth; no further code changes needed unless maintainer requests",
-      "evidence": [
-        {
-          "type": "email",
-          "id": "1a03feda98223c33",
-          "summary": "Greptile P1 review (duplicate): testIgnore glob claim already rebutted with evidence in 6 prior comments; no new code change needed"
-        },
-        {
-          "type": "push_verified_and_review_rebutted",
-          "timestamp": "2026-08-26T22:34:03.309375+00:00",
-          "detail": "Branch feat/visual-regression-tests-86 confirmed up-to-date on rafaio1/OphirPay fork (commit a6fec48). testIgnore glob fix validated locally: firefox/mobile-chrome show 0 visual tests, chromium shows 8. Push to upstream denied (403) but PR head already points to fork. Greptile P1 review fully addressed with evidence in PR comments. Vercel CodingAngel1 team auth still pending human action.",
-          "commit": "a6fec48",
-          "validation": "playwright --list confirms correct exclusion pattern"
-        }
-      ],
-      "email_decision": "PRESERVED - duplicate review evidence logged",
-      "created_at": "2026-08-26T22:19:41.911690+00:00",
-      "updated_at": "2026-08-26T22:19:41.911690+00:00"
-    },
-    {
       "program": "PesanteAnalytics",
       "repo": "PesanteAnalytics/contoso-universe-gen",
-      "pr": "PesanteAnalytics/contoso-universe-gen#9",
+      "pr": 9,
       "url": "https://github.com/PesanteAnalytics/contoso-universe-gen/issues/9",
       "status": "closed_external",
-      "last_action": "Triaged closure notification for Issue #9; resolved by maintainer without contributor PR",
+      "last_action": "dedup_fix_pr_field",
       "next_action": "No further action unless payout or follow-up requested",
       "evidence": [
         {
@@ -357,7 +204,7 @@
       ],
       "email_decision": "PRESERVED - closure evidence logged",
       "created_at": "2026-08-26T22:22:11.297705+00:00",
-      "updated_at": "2026-08-26T22:22:11.297705+00:00"
+      "updated_at": "2026-08-26T22:50:51.373149+00:00"
     },
     {
       "timestamp": "2026-08-26T22:26:48.628060+00:00",
@@ -377,48 +224,40 @@
         "gmail_bounty_signals": 0,
         "note": "PesanteAnalytics/contoso-universe-gen#16 merged but maintainer explicitly confirmed NO bounty program exists. All other merged PRs have no bounty signal. Discovery lane remains saturated; expansion to adjacent licit process required per goal rules."
       },
-      "next_action": "expand_discovery_lane",
-      "next_check_utc": "2026-08-27T08:00:00Z"
+      "next_action": "remove_or_remap_if_source_identified",
+      "next_check_utc": "2026-08-27T08:00:00Z",
+      "status": "invalid_entry_missing_repo_pr",
+      "last_action": "audit_fix_none_repo_none_pr",
+      "updated_at": "2026-08-26T22:51:06.697435+00:00",
+      "evidence": [
+        {
+          "type": "audit",
+          "note": "Entry had None repo and None pr; marked invalid",
+          "date": "2026-08-26T22:51:06.697435+00:00"
+        }
+      ]
     },
     {
-      "timestamp": "2026-08-26T22:28:04.636265+00:00",
-      "type": "discovery_lane_exhaustion",
-      "summary": "GitHub global search for bounty/reward/algora/drips/opire/good-first-issue returned 0 results across all queries. Discovery lane is saturated at platform level.",
-      "details": {
-        "searches_performed": [
-          "label:bounty state:open -> 0",
-          "bounty OR reward OR paid state:open -> 0",
-          "label:good first issue state:open -> 0",
-          "algora OR drips OR opire OR reward state:open -> 0"
-        ],
-        "conclusion": "No publicly indexed bounty issues found via GitHub search API. Either bounties are listed on external platforms (Algora.io, Drips, Opire.dev websites) or the label taxonomy has shifted.",
-        "expansion_required": true,
-        "next_lane_candidates": [
-          "Scrape Algora.io/explore for open bounties with verified payout",
-          "Check Opire.dev open issues feed",
-          "Search Replit Bounties / Gitcoin for new listings",
-          "Review SecureBananaLabs bug-bounty program page directly"
-        ]
-      },
-      "next_action": "expand_to_external_platform_discovery",
-      "next_check_utc": "2026-08-27T06:00:00Z"
-    },
-    {
-      "pr": "OphirPay/OphirPay#210",
+      "pr": 210,
       "program": "OphirPay",
       "type": "issue_monitor",
-      "status": "monitoring_third_party",
-      "last_action": "Third-party user tomasbogado203-bit commented claiming implementation of Axe accessibility scan in PR #285. Not our submission; monitoring for maintainer response or bounty eligibility.",
-      "next_action": "Monitor for maintainer validation of PR #285. Do not engage unless explicitly mentioned or bounty rules change.",
+      "status": "invalid_entry_missing_repo",
+      "last_action": "audit_fix_none_repo_pr210",
+      "next_action": "identify_correct_repo_for_pr210_or_remove",
       "evidence": [
         {
           "type": "email",
           "id": "1a0402529603459c",
           "summary": "tomasbogado203-bit claims Axe scan impl in PR #285 for issue #210"
+        },
+        {
+          "type": "audit",
+          "note": "Entry had None repo but pr=210; cannot verify without repo name",
+          "date": "2026-08-26T22:51:06.697435+00:00"
         }
       ],
       "email_decision": "PRESERVED - third-party activity on tracked issue",
-      "updated_at": "2026-08-26T22:30:15.924460+00:00",
+      "updated_at": "2026-08-26T22:51:06.697435+00:00",
       "created_at": "2026-08-26T22:30:15.924460+00:00"
     },
     {
