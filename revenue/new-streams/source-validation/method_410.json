@@ -1,0 +1,31 @@
+{
+  "method_id": "410",
+  "name": "On-chain analytics dashboard (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "Uniswap V3",
+      "tvl_growth_7d": 0.12,
+      "unique_users_30d": 84200,
+      "revenue_fees_usd": 3200000
+    },
+    {
+      "protocol": "GMX",
+      "tvl_growth_7d": -0.05,
+      "unique_users_30d": 12400,
+      "revenue_fees_usd": 890000
+    }
+  ],
+  "schema": [
+    "protocol",
+    "tvl_growth_7d",
+    "unique_users_30d",
+    "revenue_fees_usd"
+  ],
+  "notes": "Variante para startups DeFi focada em crescimento de protocolo e receita de fees. Proxy via DefiLlama adapters no GitHub. Fonte oficial: DefiLlama API pública + protocol subgraphs.",
+  "generated_at": "2026-08-26T15:07:15.229152+00:00",
+  "_meta": {
+    "hash": "e900d74aef9b642e7e121a89fd3828fbece9d0b385d8b6442f3f4eb341294c2e"
+  }
+}

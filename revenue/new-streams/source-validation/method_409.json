@@ -1,0 +1,31 @@
+{
+  "method_id": "409",
+  "name": "On-chain analytics dashboard",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "ethereum",
+      "metric": "active_addresses_24h",
+      "value": 482103,
+      "change_pct": 5.2
+    },
+    {
+      "chain": "arbitrum",
+      "metric": "tx_volume_usd_24h",
+      "value": 184200000,
+      "change_pct": -2.1
+    }
+  ],
+  "schema": [
+    "chain",
+    "metric",
+    "value",
+    "change_pct"
+  ],
+  "notes": "Dashboard genérico de métricas on-chain. Proxy TIER0 via repositórios de explorers open-source (Etherscan clones, Dune templates). Fonte oficial alvo: Flipside Crypto ou Token Terminal API. Zero-capital: dados públicos agregados.",
+  "generated_at": "2026-08-26T15:07:15.229152+00:00",
+  "_meta": {
+    "hash": "3a5d78bc227775ccab6c8df2c83ffdf440cd869ba222161933774a01b0810fc7"
+  }
+}

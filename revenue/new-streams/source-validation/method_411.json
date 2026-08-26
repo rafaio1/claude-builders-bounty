@@ -1,0 +1,31 @@
+{
+  "method_id": "411",
+  "name": "On-chain analytics dashboard (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "Binance Hot Wallet",
+      "net_flow_btc_24h": -1240.5,
+      "counterparty_risk_score": 0.22,
+      "compliance_flag": false
+    },
+    {
+      "entity": "Grayscale GBTC",
+      "net_flow_btc_24h": 890.2,
+      "counterparty_risk_score": 0.08,
+      "compliance_flag": false
+    }
+  ],
+  "schema": [
+    "entity",
+    "net_flow_btc_24h",
+    "counterparty_risk_score",
+    "compliance_flag"
+  ],
+  "notes": "Variante enterprise/institucional. Rastreia fluxos de carteiras conhecidas e risco de contraparte. Proxy TIER0 via repositórios de wallet labeling (e.g., Etherscan labels dataset). Fonte oficial: Chainalysis KYT API ou Elliptic Lens.",
+  "generated_at": "2026-08-26T15:07:15.229152+00:00",
+  "_meta": {
+    "hash": "f066296888ba20282a9ddf50a398ad2d812309e665bdf22dad51ec89a5b5ec54"
+  }
+}
