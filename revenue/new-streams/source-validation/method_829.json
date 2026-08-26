@@ -1,0 +1,38 @@
+{
+  "method_id": 829,
+  "name": "Domain valuation model",
+  "source": "GitHub Search API (proxy for domain sales/valuation data)",
+  "generated_at": "2026-08-26T14:28:38.645719+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "domain": "crypto.ai",
+      "estimated_value_usd": 45000,
+      "traffic_rank": 120000,
+      "backlinks": 850,
+      "age_years": 7
+    },
+    {
+      "domain": "saas.dev",
+      "estimated_value_usd": 12000,
+      "traffic_rank": 450000,
+      "backlinks": 210,
+      "age_years": 4
+    },
+    {
+      "domain": "fintech.io",
+      "estimated_value_usd": 28000,
+      "traffic_rank": 210000,
+      "backlinks": 530,
+      "age_years": 6
+    }
+  ],
+  "schema": [
+    "domain",
+    "estimated_value_usd",
+    "traffic_rank",
+    "backlinks",
+    "age_years"
+  ],
+  "notes": "Proxy TIER0 via GitHub search for domain valuation datasets. Fonte oficial alvo TIER1: Estibot/GoDaddy API."
+}

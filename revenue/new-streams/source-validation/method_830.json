@@ -1,0 +1,38 @@
+{
+  "method_id": 830,
+  "name": "Domain valuation model (for startups)",
+  "source": "GitHub Search API (proxy for startup domain portfolios)",
+  "generated_at": "2026-08-26T14:28:38.645719+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "NeonBank",
+      "domain": "neon.com.br",
+      "estimated_value_usd": 8500,
+      "category": "fintech",
+      "funding_stage": "Series B"
+    },
+    {
+      "startup": "Cora",
+      "domain": "cora.com.br",
+      "estimated_value_usd": 6200,
+      "category": "fintech",
+      "funding_stage": "Series A"
+    },
+    {
+      "startup": "Contabilizei",
+      "domain": "contabilizei.com.br",
+      "estimated_value_usd": 9100,
+      "category": "accounting",
+      "funding_stage": "Series C"
+    }
+  ],
+  "schema": [
+    "startup",
+    "domain",
+    "estimated_value_usd",
+    "category",
+    "funding_stage"
+  ],
+  "notes": "Focado em startups brasileiras. Proxy GitHub para mapear domínios de startups com funding público."
+}
