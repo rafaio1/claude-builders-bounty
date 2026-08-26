@@ -7451,11 +7451,19 @@
     },
     {
       "message_id": "1a03feda98223c33",
-      "pr": 228,
+      "pr": "OphirPay/OphirPay#228",
       "action": "p1_validated_locally_invalid",
       "decision": "keep",
       "ts": "2026-08-26T21:19:27.131282+00:00",
-      "reason": "p1_evidence_collected_for_pr_response"
+      "reason": "Technical P1 review on active PR requiring code fix",
+      "subject": "Re: [OphirPay/OphirPay] test(e2e): add visual regression tests for critical pages (PR #228)",
+      "program": "OphirPay",
+      "actionable_content": "Greptile P1: testIgnore pattern e2e/visual/** does not match absolute path; Firefox/Mobile Chrome run visual tests and fail",
+      "action_taken": "New review received after P1 invalidation comment; requires investigation of playwright.config.ts glob matching and potential fix on branch feat/visual-regression-tests-86",
+      "evidence": "https://github.com/OphirPay/OphirPay/pull/228#pullrequestreview-5035137285",
+      "status": "new_review_p1_visual_exclusion_glob_mismatch",
+      "email_decision": "kept",
+      "processed_at": "2026-08-26T21:49:50.306537+00:00"
     },
     {
       "message_id": "1a03fd063018a873",
@@ -7690,56 +7698,66 @@
       "message_id": "1a03dcc01298cb75",
       "subject": "Re: [OphirPay/OphirPay] test(e2e): add webhook delivery + retry flow E2E tests (PR #225)",
       "pr": "OphirPay/OphirPay#225",
-      "action_taken": "Reviewed Greptile P2 comment. Valid concern: E2E duplicates signing/retry instead of calling deliverWebhook. Requires refactor to invoke production code path or accept as integration-test limitation. No code change yet; flagged for maintainer discussion.",
+      "action_taken": "Review already addressed per checkpoint; Vercel auth pending for CodingAngel1 team",
       "evidence": "https://github.com/OphirPay/OphirPay/pull/225#pullrequestreview-5029761276",
-      "status": "review_addressed_comment_posted",
-      "email_decision": "KEEP",
-      "reason": "Technical review feedback on active PR; required for audit trail",
-      "processed_at": "2026-08-26T21:29:52.811833+00:00"
+      "status": "review_addressed_waiting_vercel_auth",
+      "email_decision": "kept",
+      "reason": "Technical review feedback on active PR",
+      "processed_at": "2026-08-26T21:48:33.090123+00:00",
+      "program": "OphirPay",
+      "actionable_content": "Greptile P2 review: production delivery untested, loop duplicates signing/retry instead of calling deliverWebhook"
     },
     {
       "message_id": "1a03dca6ce9683f4",
       "subject": "Re: [OphirPay/OphirPay] test(e2e): add webhook delivery + retry flow E2E tests (PR #225)",
       "pr": "OphirPay/OphirPay#225",
-      "action_taken": "Vercel deployment authorization pending for CodingAngel1 team. No agent action possible; requires team member approval.",
+      "action_taken": "Restored from TRASH; no automated action possible - requires team member authorization",
       "evidence": "https://github.com/OphirPay/OphirPay/pull/225#issuecomment-5424510761",
       "status": "waiting_vercel_auth",
-      "email_decision": "KEEP",
-      "reason": "Deployment gate; may unblock merge",
-      "processed_at": "2026-08-26T21:29:52.811833+00:00"
+      "email_decision": "kept",
+      "reason": "CI/deploy gate requiring external action",
+      "processed_at": "2026-08-26T21:48:33.090150+00:00",
+      "program": "OphirPay",
+      "actionable_content": "Vercel bot: CodingAngel1 team authorization required for deploy"
     },
     {
       "message_id": "1a03d5fbf26dfa9f",
       "subject": "[ligate-io/ligate-chain] Run failed: CLA Assistant - fix/542-cite-time-locked-attestations-in-contract-docs-1787736034 (522aadb)",
       "pr": "ligate-io/ligate-chain#567",
-      "action_taken": "CLA Assistant CI failed again. Cannot be fixed by agent; requires human CLA signature via GitHub account linked to commit email.",
+      "action_taken": "No automated fix; flagged as human_action for CLA signature",
       "evidence": "https://github.com/ligate-io/ligate-chain/actions/runs/32952497487",
       "status": "blocked_human_action_cla_failed",
-      "email_decision": "KEEP",
-      "reason": "CLA/legal requirement; never auto-delete",
-      "processed_at": "2026-08-26T21:29:52.811833+00:00"
+      "email_decision": "kept",
+      "reason": "CLA/legal requirement - never auto-delete",
+      "processed_at": "2026-08-26T21:48:33.090154+00:00",
+      "program": "Ligate",
+      "actionable_content": "CLA Assistant workflow failed; human signature required"
     },
     {
       "message_id": "1a03d5fae6f376c9",
       "subject": "Re: [ligate-io/ligate-chain] docs(contract): cite time-locked-attestations paper for the commit-reveal primitive (fixes #542) (PR #567)",
       "pr": "ligate-io/ligate-chain#567",
-      "action_taken": "CLA bot requests signature. Commit author root not linked to GitHub account. Human must link email or sign with valid account. No agent action.",
+      "action_taken": "No automated action; requires human to link email or sign CLA manually",
       "evidence": "https://github.com/ligate-io/ligate-chain/pull/567#issuecomment-5423225693",
-      "status": "blocked_human_action_cla_signature_needed",
-      "email_decision": "KEEP",
-      "reason": "CLA/legal; preserve indefinitely",
-      "processed_at": "2026-08-26T21:29:52.811833+00:00"
+      "status": "blocked_human_action_cla_signature_required",
+      "email_decision": "kept",
+      "reason": "CLA/legal requirement - never auto-delete",
+      "processed_at": "2026-08-26T21:48:33.090156+00:00",
+      "program": "Ligate",
+      "actionable_content": "CLA Assistant Lite bot: root user not linked to GitHub account; must add commit email to GitHub profile or sign CLA with valid account"
     },
     {
       "message_id": "1a03df0244231a91",
       "subject": "Re: [Lilly-Protocol/lily-frontend] feat: add global-error.tsx with design tokens and reset button (PR #150)",
       "pr": "Lilly-Protocol/lily-frontend#150",
-      "action_taken": "Vercel deployment authorization pending for Heymide team. No agent action possible; requires team member approval.",
+      "action_taken": "No automated action possible; requires Heymide team member to authorize",
       "evidence": "https://github.com/Lilly-Protocol/lily-frontend/pull/150#issuecomment-5424931283",
       "status": "waiting_vercel_auth",
-      "email_decision": "KEEP",
-      "reason": "Deployment gate; may unblock merge",
-      "processed_at": "2026-08-26T21:29:52.811833+00:00"
+      "email_decision": "kept",
+      "reason": "CI/deploy gate requiring external action",
+      "processed_at": "2026-08-26T21:48:33.090158+00:00",
+      "program": "Lilly",
+      "actionable_content": "Vercel bot: Heymide team authorization required for deploy"
     }
   ]
 }
