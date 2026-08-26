@@ -1,0 +1,1904 @@
+[
+  {
+    "id": "imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli",
+    "key": "233983c49d3d642f",
+    "canon": "1201cca5a943d5f4",
+    "title": "Eval leve sobre traces sanitizados da GhostCLI",
+    "kind": "improvement",
+    "priority": 1,
+    "status": "blocked",
+    "rationale": "Com traces sanitizados persistidos, um eval m\u00ednimo consegue apontar falhas recorrentes e dar sinal objetivo ao improve, fechando o loop de aprendizagem.",
+    "change": "Em improve.py, adicionar fun\u00e7\u00e3o de eval que l\u00ea os traces sanitizados da GhostCLI e resume sucesso/falha por comando, alimentando o pr\u00f3ximo develop; sem gerar novo script.",
+    "never": [
+      "incluir segredos nos traces",
+      "executar PoC/fuzz/lista_de_termos",
+      "acionar trade live",
+      "commitar data/traces"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py",
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "",
+    "map_id": "20260816T180205Z",
+    "history": [
+      {
+        "at": "2026-08-16T18:02:05+00:00",
+        "event": "mapped",
+        "detail": "20260816T180205Z"
+      },
+      {
+        "at": "2026-08-16T19:43:49+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+      },
+      {
+        "at": "2026-08-16T19:48:52+00:00",
+        "event": "requeued",
+        "detail": "conte\u00fado recusado em src/agentic/improve.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+      },
+      {
+        "at": "2026-08-16T20:24:55+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+      },
+      {
+        "at": "2026-08-16T20:31:44+00:00",
+        "event": "requeued",
+        "detail": "A proposta exige a adi\u00e7\u00e3o de uma fun\u00e7\u00e3o de eval em src/agentic/improve.py. No entanto, o conte\u00fado do arquivo fornecido no prompt foi truncado (interrompido em GIT_CLEAN_CLUSTERS). Como a regra exige devolver o 'arquivo inteiro' e n\u00e3o possuo o restante do c\u00f3digo-fonte, qualquer tentativa de reescrita removeria fun\u00e7\u00f5es cr\u00edticas existentes, quebrando o m\u00f3dulo improve. Adicionalmente, o review_feedbac\u2026"
+      },
+      {
+        "at": "2026-08-16T20:45:25+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+      },
+      {
+        "at": "2026-08-16T20:47:03+00:00",
+        "event": "requeued",
+        "detail": "A mudan\u00e7a n\u00e3o coube de forma segura. O arquivo src/agentic/improve.py fornecido no prompt est\u00e1 truncado (interrompido na tupla GIT_CLEAN_CLUSTERS). Como a regra exige devolver o conte\u00fado COMPLETO de cada arquivo alterado, qualquer reescrita removeria fun\u00e7\u00f5es cr\u00edticas subsequentes n\u00e3o presentes no contexto, quebrando o m\u00f3dulo. Para implementar o eval de traces sanitizados, \u00e9 necess\u00e1rio fornecer o c\u2026"
+      },
+      {
+        "at": "2026-08-16T21:05:30+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+      },
+      {
+        "at": "2026-08-16T21:06:09+00:00",
+        "event": "blocked",
+        "detail": "A mudan\u00e7a n\u00e3o coube de forma segura. O arquivo src/agentic/improve.py fornecido no contexto est\u00e1 truncado (interrompido na tupla GIT_CLEAN_CLUSTERS). Reescrever o arquivo para adicionar a fun\u00e7\u00e3o de eval removeria fun\u00e7\u00f5es cr\u00edticas subsequentes n\u00e3o presentes no prompt, o que quebraria o m\u00f3dulo improve. Conforme a instru\u00e7\u00e3o de seguran\u00e7a para mudan\u00e7as que n\u00e3o cabem de forma segura, devolvo 'files' vaz\u2026"
+      },
+      {
+        "at": "2026-08-26T14:05:00+00:00",
+        "event": "requeued",
+        "detail": "watchdog: requeued after ledger.json validation fix; truncated context issue may resolve with current pipeline improvements"
+      },
+      {
+        "at": "2026-08-26T13:43:20+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-eval-leve-sobre-traces-sanitizados-da-ghostcli"
+      },
+      {
+        "at": "2026-08-26T13:43:39+00:00",
+        "event": "blocked",
+        "detail": "The `eval_traces` function and its wiring in `run_action` already exist in `src/agentic/improve.py` (lines 2005\u20132087). The proposal has been implemented: the function reads sanitized traces from `improve/traces/`, crosses them with ledger review feedback, and returns metrics without creating new modules or touching forbidden paths. No further edits are needed.\n\nSUMMARY: eval_traces j\u00e1 est\u00e1 impleme\u2026"
+      }
+    ],
+    "review_feedback": "A mudan\u00e7a n\u00e3o coube de forma segura. O arquivo src/agentic/improve.py fornecido no prompt est\u00e1 truncado (interrompido na tupla GIT_CLEAN_CLUSTERS). Como a regra exige devolver o conte\u00fado COMPLETO de cada arquivo alterado, qualquer reescrita removeria fun\u00e7\u00f5es cr\u00edticas subsequentes n\u00e3o presentes no contexto, quebrando o m\u00f3dulo. Para implementar o eval de traces sanitizados, \u00e9 necess\u00e1rio fornecer o conte\u00fado integral do arquivo."
+  },
+  {
+    "id": "imp-20260816-retry-de-develop-n-o-incorpora-review-feedback",
+    "key": "a67e083a555188c9",
+    "canon": "11ba7db4e223955b",
+    "title": "Retry de develop n\u00e3o incorpora review_feedback",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "blocked",
+    "rationale": "Quando o review rejeita ou o pytest falha, a proposta volta a pending com review_feedback; sem injetar esse parecer no pr\u00f3ximo develop, o agente tende a repetir o mesmo erro e alargar escopo.",
+    "change": "Em improve.py, ao reprocessar proposta pending, incluir o review_feedback literal no contexto do develop e restringir a edi\u00e7\u00e3o aos files_hint originais da fatia.",
+    "never": [
+      "alargar o escopo al\u00e9m dos files_hint da proposta",
+      "contornar o reviewer ou aplicar fora de main/master",
+      "usar git reset --hard, checkout --, clean -fd, --no-verify ou force"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260816T210508Z",
+    "history": [
+      {
+        "at": "2026-08-16T21:05:08+00:00",
+        "event": "mapped",
+        "detail": "20260816T210508Z"
+      },
+      {
+        "at": "2026-08-16T21:25:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+      },
+      {
+        "at": "2026-08-16T21:26:35+00:00",
+        "event": "requeued",
+        "detail": "Nenhuma altera\u00e7\u00e3o aplicada: o conte\u00fado atual de src/agentic/improve.py foi fornecido truncado, ent\u00e3o n\u00e3o \u00e9 poss\u00edvel devolver o arquivo completo com seguran\u00e7a. A melhoria exige injetar review_feedback literal no contexto do develop e restringir a edi\u00e7\u00e3o aos files_hint originais; para implementar sem corromper o m\u00f3dulo, \u00e9 necess\u00e1rio receber o conte\u00fado integral do arquivo."
+      },
+      {
+        "at": "2026-08-16T21:46:16+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+      },
+      {
+        "at": "2026-08-16T21:46:42+00:00",
+        "event": "requeued",
+        "detail": "Nenhuma altera\u00e7\u00e3o aplicada. O review_feedback anterior afirma que src/agentic/improve.py foi fornecido truncado e que \u00e9 necess\u00e1rio receber o conte\u00fado integral do arquivo para devolver o arquivo completo com seguran\u00e7a. Nesta nova tentativa, o conte\u00fado atual de src/agentic/improve.py continua truncado nos dados externos, ent\u00e3o n\u00e3o \u00e9 poss\u00edvel implementar com seguran\u00e7a a inje\u00e7\u00e3o literal de review_feed\u2026"
+      },
+      {
+        "at": "2026-08-16T22:00:58+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+      },
+      {
+        "at": "2026-08-16T22:02:29+00:00",
+        "event": "requeued",
+        "detail": "Nenhuma altera\u00e7\u00e3o aplicada: o conte\u00fado atual de src/agentic/improve.py continua truncado nos dados externos, ent\u00e3o n\u00e3o \u00e9 poss\u00edvel devolver o arquivo completo com seguran\u00e7a. A melhoria exige injetar o review_feedback literal no contexto do develop e restringir a edi\u00e7\u00e3o aos files_hint originais; sem o conte\u00fado integral do m\u00f3dulo, qualquer edi\u00e7\u00e3o arriscaria corromper l\u00f3gica existente ou alterar limit\u2026"
+      },
+      {
+        "at": "2026-08-16T22:21:43+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-retry-de-develop-n-o-incorpora-review-feedback"
+      },
+      {
+        "at": "2026-08-17T02:02:56+00:00",
+        "event": "blocked",
+        "detail": "conte\u00fado recusado em src/agentic/improve.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+      }
+    ],
+    "review_feedback": "Nenhuma altera\u00e7\u00e3o aplicada: o conte\u00fado atual de src/agentic/improve.py continua truncado nos dados externos, ent\u00e3o n\u00e3o \u00e9 poss\u00edvel devolver o arquivo completo com seguran\u00e7a. A melhoria exige injetar o review_feedback literal no contexto do develop e restringir a edi\u00e7\u00e3o aos files_hint originais; sem o conte\u00fado integral do m\u00f3dulo, qualquer edi\u00e7\u00e3o arriscaria corromper l\u00f3gica existente ou alterar limites al\u00e9m do pedido. O patch deve ser retomado apenas quando o arquivo completo for fornecido."
+  },
+  {
+    "id": "imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
+    "key": "a83a3407be95b0f9",
+    "canon": "2671c216c93ed359",
+    "title": "Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "ARO.md e src/agentic/aro/ est\u00e3o untracked na main e impedem git_clean; precisam ser versionados em proposta separada da fatia do motor.",
+    "change": "Segunda proposta git_clean, s\u00f3 da fatia playbook: o pipeline stageia ARO.md e src/agentic/aro/ do disco e versiona esses caminhos em commit pr\u00f3prio, ap\u00f3s a fatia do motor.",
+    "never": [
+      "reset --hard",
+      "checkout --",
+      "clean -fd",
+      "--no-verify",
+      "force",
+      "misturar com cli.py/loop.py no mesmo commit",
+      "commitar .env/data/secrets",
+      "reescrever o conte\u00fado desses arquivos no develop"
+    ],
+    "files_hint": [
+      "src/agentic/aro/"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260816T143343Z",
+    "history": [
+      {
+        "at": "2026-08-16T14:33:43+00:00",
+        "event": "mapped",
+        "detail": "20260816T143343Z"
+      },
+      {
+        "at": "2026-08-16T15:17:03+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T12:11:17+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T12:13:03+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: Adicionado `.cursor/` ao .gitignore para restaurar git_clean na fatia playbook; ARO.md e src/agentic/aro/ j\u00e1 estavam versionados nesta branch."
+      },
+      {
+        "at": "2026-08-17T22:53:44+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T23:13:50+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T23:13:50+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T23:14:54+00:00",
+        "event": "requeued",
+        "detail": "The review feedback rejected the previous attempt because `.cursor/` was added to `.gitignore`, but the target files (`ARO.md` and `src/agentic/aro/`) were already tracked. The current state confirms:\n1.  `ARO.md` and core `src/agentic/aro/` files are already tracked.\n2.  `.cursor/` is NOT currently in `.gitignore` (the previous stale change was likely reverted or not persisted).\n3.  There are unt\u2026"
+      },
+      {
+        "at": "2026-08-17T23:34:13+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T23:37:02+00:00",
+        "event": "requeued",
+        "detail": "Execution error"
+      },
+      {
+        "at": "2026-08-17T23:54:19+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro"
+      },
+      {
+        "at": "2026-08-17T23:54:43+00:00",
+        "event": "claude_failed",
+        "detail": "Execution error"
+      },
+      {
+        "at": "2026-08-26T14:07:45.104524+00:00",
+        "event": "closed_obsolete",
+        "detail": "watchdog: ARO.md and src/agentic/aro/ already tracked on master (verified git log). Proposal rationale is stale; target already satisfied. No trace found for claude_failed. Closing as obsolete."
+      }
+    ],
+    "review_feedback": "claude_failed: Execution error"
+  },
+  {
+    "id": "imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+    "key": "4faadeb1e5101c22",
+    "canon": "5903002f663cf886",
+    "title": "Restaurar git_clean (Motor: loop, env, cli, ghostcli): working tree limpa na main",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Integridade git_clean falhou. Fatia \u00fanica \u2014 n\u00e3o misturar com outras \u00e1reas. Paths: src/agentic/cli.py, src/agentic/loop.py.",
+    "change": "N\u00e3o reset --hard. S\u00f3 versionar esta fatia (files_hint) com o conte\u00fado j\u00e1 no disco. Ghost n\u00e3o reescreve esses arquivos; no m\u00e1ximo .gitignore ou improve/*. Paths: src/agentic/cli.py, src/agentic/loop.py.",
+    "never": [
+      "git reset --hard",
+      "commitar outras fatias neste patch",
+      "commit de .env, data/ ou secrets",
+      "criar loop.sh",
+      "ligar AGENTIC_LIVE_TRADE=1"
+    ],
+    "files_hint": [
+      "src/agentic/cli.py",
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli",
+    "map_id": "20260816T143343Z",
+    "history": [
+      {
+        "at": "2026-08-16T14:33:43+00:00",
+        "event": "mapped",
+        "detail": "20260816T143343Z"
+      },
+      {
+        "at": "2026-08-16T15:37:43+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-restaurar-git-clean-motor-loop-env-cli-ghostcli"
+      },
+      {
+        "at": "2026-08-16T16:06:29+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s",
+    "key": "4e276cdafdff787d",
+    "canon": "b106ffdc061a6511",
+    "title": "Tick de sa\u00fade reexecuta probes caras a cada 90s",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "loop.py verifica playwright/ghostcli em todo tick; sem TTL, cada ciclo repete spawns e chamadas lentas, desperdi\u00e7ando CPU e tokens e atrasando o loop.",
+    "change": "Adicionar cache em mem\u00f3ria com TTL curto por ferramenta em loop.py: reusar resultado saud\u00e1vel recente e s\u00f3 re-probrar ferramenta degradada ou expirada.",
+    "never": [
+      "alterar --interval da unit systemd",
+      "enviar ordens Bybit",
+      "ligar AGENTIC_LIVE_TRADE=1",
+      "criar src/agentic/loop.sh ou scripts novos"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260816T160320Z",
+    "history": [
+      {
+        "at": "2026-08-16T16:03:20+00:00",
+        "event": "mapped",
+        "detail": "20260816T160320Z"
+      },
+      {
+        "at": "2026-08-16T17:00:23+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T05:23:08+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+      },
+      {
+        "at": "2026-08-17T05:23:37+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: Cache de census com TTL de 90s j\u00e1 implementado em loop.py (_CensusCache + _cached_check); 12 testes passam confirmando que probes caras s\u00e3o reusadas dentro do TTL e falhas s\u00e3o sempre reavaliadas."
+      },
+      {
+        "at": "2026-08-17T05:43:26+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+      },
+      {
+        "at": "2026-08-17T05:44:01+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: Cache de census com TTL de 90s j\u00e1 implementado em loop.py (_CensusCache + _cached_check); 9 testes passam confirmando que probes caras s\u00e3o reusadas dentro do TTL e falhas s\u00e3o sempre reavaliadas."
+      },
+      {
+        "at": "2026-08-17T06:03:40+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+      },
+      {
+        "at": "2026-08-17T06:04:13+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: Cache de census com TTL de 90s j\u00e1 implementado em loop.py (_CensusCache + _cached_check); 12 testes passam confirmando que probes caras s\u00e3o reusadas dentro do TTL e falhas s\u00e3o sempre reavaliadas."
+      },
+      {
+        "at": "2026-08-17T06:24:07+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-probes-caras-a-cada-90s"
+      },
+      {
+        "at": "2026-08-17T06:24:30+00:00",
+        "event": "blocked",
+        "detail": "SUMMARY: Cache de census com TTL de 90s j\u00e1 implementado em loop.py (_CensusCache + _cached_check); 9 testes passam confirmando que probes caras s\u00e3o reusadas dentro do TTL e falhas s\u00e3o sempre reavaliadas."
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: functionality already implemented and tested per review feedback"
+      }
+    ],
+    "review_feedback": "SUMMARY: Cache de census com TTL de 90s j\u00e1 implementado em loop.py (_CensusCache + _cached_check); 12 testes passam confirmando que probes caras s\u00e3o reusadas dentro do TTL e falhas s\u00e3o sempre reavaliadas."
+  },
+  {
+    "id": "imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
+    "key": "0c3964a5d04710f1",
+    "canon": "de19845521bdd3c6",
+    "title": "Carregamento de credenciais sem cache e risco de vazamento em logs",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "env.py rel\u00ea GhostCLI/Bybit a cada chamada; al\u00e9m de redundante, qualquer log acidental de repr/exception pode expor material sens\u00edvel.",
+    "change": "Cachear env carregado em m\u00f3dulo e adicionar fun\u00e7\u00e3o \u00fanica de m\u00e1scara aplicada a todo log/trace originado de env.py; nunca serializar valores de chaves.",
+    "never": [
+      "imprimir ou logar bybit_key/bybit_secret",
+      "commitar .env ou /root/.automaton/bybit-murre.env",
+      "alterar destino de payout ou OWNER_SHARE_RATE"
+    ],
+    "files_hint": [
+      "src/agentic/env.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de",
+    "map_id": "20260816T160320Z",
+    "history": [
+      {
+        "at": "2026-08-16T16:03:20+00:00",
+        "event": "mapped",
+        "detail": "20260816T160320Z"
+      },
+      {
+        "at": "2026-08-16T16:19:21+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T04:02:32+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-carregamento-de-credenciais-sem-cache-e-risco-de"
+      },
+      {
+        "at": "2026-08-17T04:05:13+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado",
+    "key": "8f779bcb710124ec",
+    "canon": "d322c7f92e2c90c2",
+    "title": "Tick de sa\u00fade n\u00e3o persiste um snapshot de estado leg\u00edvel por m\u00e1quina",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Sem um snapshot sanitizado por tick, o improve/review re-descobre o mesmo estado a cada ciclo, gastando tokens e podendo gerar propostas repetidas.",
+    "change": "Em loop.py, ao fim do tick, escrever um JSON de sa\u00fade sanitizado em caminho runtime gitignorado (ex.: data/health.json) com status por ferramenta e timestamp; sem segredos.",
+    "never": [
+      "imprimir ou gravar secrets Bybit/GhostCLI",
+      "enviar ordens Bybit",
+      "criar loop.sh ou scripts novos",
+      "ligar AGENTIC_LIVE_TRADE=1",
+      "commitar data/"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado",
+    "map_id": "20260816T180205Z",
+    "history": [
+      {
+        "at": "2026-08-16T18:02:05+00:00",
+        "event": "mapped",
+        "detail": "20260816T180205Z"
+      },
+      {
+        "at": "2026-08-17T01:06:26+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado"
+      },
+      {
+        "at": "2026-08-17T01:09:32+00:00",
+        "event": "requeued",
+        "detail": "conte\u00fado recusado em src/agentic/loop.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+      },
+      {
+        "at": "2026-08-17T01:53:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado"
+      },
+      {
+        "at": "2026-08-17T01:55:46+00:00",
+        "event": "requeued",
+        "detail": "conte\u00fado recusado em src/agentic/loop.py: AGENTIC_LIVE_TRADE\\s*=\\s*1"
+      },
+      {
+        "at": "2026-08-17T04:42:16+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-n-o-persiste-um-snapshot-de-estado"
+      },
+      {
+        "at": "2026-08-17T04:44:58+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": ""
+  },
+  {
+    "id": "imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad",
+    "key": "afdf102a443bfaea",
+    "canon": "9329bc343a7008c4",
+    "title": "Chamadas da GhostCLI n\u00e3o deixam rastro sanitizado para review/eval",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Sem traces persistidos, o reviewer fica sem evid\u00eancia do que rodou e o eval n\u00e3o consegue detectar falhas recorrentes; isso trava o ciclo de melhoria.",
+    "change": "Em ghostcli.py, adicionar log de trace sanitizado (reda\u00e7\u00e3o de credenciais) gravado em diret\u00f3rio runtime gitignorado, com comando normalizado e resultado.",
+    "never": [
+      "vazar chaves ou tokens no trace",
+      "executar PoC/fuzz",
+      "acionar trade live",
+      "alterar destino de payout"
+    ],
+    "files_hint": [
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad",
+    "map_id": "20260816T180205Z",
+    "history": [
+      {
+        "at": "2026-08-16T18:02:05+00:00",
+        "event": "mapped",
+        "detail": "20260816T180205Z"
+      },
+      {
+        "at": "2026-08-16T19:23:07+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T04:22:13+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-chamadas-da-ghostcli-n-o-deixam-rastro-sanitizad"
+      },
+      {
+        "at": "2026-08-17T04:25:37+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260816-tick-de-sa-de-sem-rastro-persistente-de-frescor",
+    "key": "a3518dea39845ea3",
+    "canon": "3edef65887c5dea8",
+    "title": "Tick de sa\u00fade sem rastro persistente de frescor",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O loop roda a cada 90s, mas se um tick falhar silenciosamente s\u00f3 o pr\u00f3ximo censo revela; sem um arquivo de estado datado, portal e reviewer ficam cegos entre censos.",
+    "change": "Em loop.py, ao fim de cada tick, escrever last_tick ISO-8601 e contagem de ferramentas ok em arquivo de estado local (fora do git) j\u00e1 consumido pelo censo; n\u00e3o alterar o interval da unit.",
+    "never": [
+      "enviar ordens Bybit",
+      "alterar --interval da unit systemd",
+      "imprimir secrets"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260816-tick-de-sa-de-sem-rastro-persistente-de-frescor",
+    "map_id": "20260816T200957Z",
+    "history": [
+      {
+        "at": "2026-08-16T20:09:57+00:00",
+        "event": "mapped",
+        "detail": "20260816T200957Z"
+      },
+      {
+        "at": "2026-08-17T06:44:43+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-sem-rastro-persistente-de-frescor"
+      },
+      {
+        "at": "2026-08-17T06:47:21+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca",
+    "key": "5b9604c7a41583da",
+    "canon": "8092193b49083a14",
+    "title": "Tick de sa\u00fade reexecuta checagens completas a cada 90s",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Com --interval 90, cada tick reverifica todas as ferramentas mesmo quando nada mudou, gastando ciclos e chamadas (GhostCLI/playwright) sem ganho de sinal.",
+    "change": "Adicionar cache com TTL curto em loop.py para checagens est\u00e1veis (presen\u00e7a de bin\u00e1rios/credenciais), reexecutando apenas itens que falharam ou cujo TTL expirou.",
+    "never": [
+      "alterar o --interval da unit systemd",
+      "enviar ordens Bybit ou ligar AGENTIC_LIVE_TRADE=1",
+      "remover o tick de sa\u00fade"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca",
+    "map_id": "20260816T210508Z",
+    "history": [
+      {
+        "at": "2026-08-16T21:05:08+00:00",
+        "event": "mapped",
+        "detail": "20260816T210508Z"
+      },
+      {
+        "at": "2026-08-17T05:02:27+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-reexecuta-checagens-completas-a-ca"
+      },
+      {
+        "at": "2026-08-17T05:05:10+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
+    "key": "4ed7c4dc8e2e4ac3",
+    "canon": "1191c60260447ed8",
+    "title": "Tick de sa\u00fade verifica presen\u00e7a mas n\u00e3o funcionamento real",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O health tick em loop.py confirma que playwright/jq/ghostcli est\u00e3o instalados, mas n\u00e3o testa se respondem corretamente, permitindo falhas silenciosas que s\u00f3 aparecem em produ\u00e7\u00e3o.",
+    "change": "Adicionar smoke test leve no tick: playwright --version + carregamento de p\u00e1gina about:blank, jq --version, ghostcli status b\u00e1sico. Registrar resultado estruturado por ferramenta.",
+    "never": [
+      "enviar ordens Bybit",
+      "aumentar intervalo do loop",
+      "logar secrets"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "tools",
+    "branch": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona",
+    "map_id": "20260816T230333Z",
+    "history": [
+      {
+        "at": "2026-08-16T23:03:33+00:00",
+        "event": "mapped",
+        "detail": "20260816T230333Z"
+      },
+      {
+        "at": "2026-08-17T07:04:50+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona"
+      },
+      {
+        "at": "2026-08-17T07:07:14+00:00",
+        "event": "requeued",
+        "detail": "reject: O diff altera apenas src/agentic/loop.py, mas n\u00e3o corresponde integralmente \u00e0 proposta: n\u00e3o adiciona registro estruturado por ferramenta e substitui o 'ghostcli status b\u00e1sico' por mera presen\u00e7a de 'ghost_key', mantendo checagem de presen\u00e7a para o GhostCLI. O smoke do Playwright tamb\u00e9m pode abrir navegador no tick e aceita falhas sem 'error' no stderr como OK, o que pode mascarar problema funcional\u2026 riscos=[\"Executar 'playwright-cli open about:blank' pode iniciar navegador ou processos filhos no health tick.\", 'Timeout pode encerrar o comando principal, mas deixar processos filhos \u00f3rf\u00e3os.', \"Falha funci\u2026"
+      },
+      {
+        "at": "2026-08-17T07:25:29+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-tick-de-sa-de-verifica-presen-a-mas-n-o-funciona"
+      },
+      {
+        "at": "2026-08-17T08:16:21+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "reject: O diff altera apenas src/agentic/loop.py, mas n\u00e3o corresponde integralmente \u00e0 proposta: n\u00e3o adiciona registro estruturado por ferramenta e substitui o 'ghostcli status b\u00e1sico' por mera presen\u00e7a de 'ghost_key', mantendo checagem de presen\u00e7a para o GhostCLI. O smoke do Playwright tamb\u00e9m pode abrir navegador no tick e aceita falhas sem 'error' no stderr como OK, o que pode mascarar problema funcional\u2026 riscos=[\"Executar 'playwright-cli open about:blank' pode iniciar navegador ou processos filhos no health tick.\", 'Timeout pode encerrar o comando principal, mas deixar processos filhos \u00f3rf\u00e3os.', \"Falha funci\u2026"
+  },
+  {
+    "id": "imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+    "key": "d893029393c53c49",
+    "canon": "6e5aa25aa12fa503",
+    "title": "Sanitizador de traces GhostCLI para an\u00e1lise segura",
+    "kind": "improvement",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Traces da GhostCLI cont\u00eam tokens, cookies e headers de autentica\u00e7\u00e3o; sem sanitiza\u00e7\u00e3o n\u00e3o podem ser persistidos para eval ou debugging sem risco de vazamento.",
+    "change": "sanitize_trace em ghostcli.py + testes; sem traces.py",
+    "never": [
+      "logar secrets Bybit ou GhostCLI",
+      "persistir traces n\u00e3o sanitizados",
+      "alterar fluxo de trade ou payout"
+    ],
+    "files_hint": [
+      "src/agentic/ghostcli.py",
+      "tests/test_ghostcli_sanitize.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu",
+    "map_id": "20260816T230333Z",
+    "history": [
+      {
+        "at": "2026-08-16T23:03:33+00:00",
+        "event": "mapped",
+        "detail": "20260816T230333Z"
+      },
+      {
+        "at": "2026-08-17T00:04:37+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T00:11:13+00:00",
+        "event": "requeued",
+        "detail": "Nenhuma altera\u00e7\u00e3o foi gerada. A proposta pede implementa\u00e7\u00e3o em src/agentic/traces.py, mas esse arquivo n\u00e3o consta entre os arquivos existentes fornecidos e a pol\u00edtica permite apenas paths j\u00e1 existentes, exceto testes novos. Al\u00e9m disso, ghostcli.py e improve.py foram fornecidos truncados; reescrev\u00ea-los por completo exigiria inventar c\u00f3digo ausente, com risco de quebrar o pipeline ou o servi\u00e7o em ex\u2026"
+      },
+      {
+        "at": "2026-08-17T00:24:00+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T00:25:28+00:00",
+        "event": "requeued",
+        "detail": "Nenhuma altera\u00e7\u00e3o gerada (files vazio), em conformidade com o parecer do review anterior. A proposta pede o sanitizador em src/agentic/traces.py, mas esse arquivo n\u00e3o existe entre os arquivos fornecidos e a pol\u00edtica s\u00f3 permite paths j\u00e1 existentes, salvo testes novos. Os files_hint (src/agentic/ghostcli.py e src/agentic/improve.py) foram fornecidos truncados (terminam em '\u2026'); como o esquema exige \u2026"
+      },
+      {
+        "at": "2026-08-17T00:44:41+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T01:59:18+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T02:04:22+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T02:06:39+00:00",
+        "event": "requeued",
+        "detail": "n\u00e3o cria arquivo morto/novo fora de tests/improve: src/agentic/traces.py"
+      },
+      {
+        "at": "2026-08-17T02:07:15+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T02:13:22+00:00",
+        "event": "blocked",
+        "detail": "conte\u00fado recusado em tests/test_ghostcli_sanitize.py: GHOSTCLI_API_KEY\\s*=\\s*\\S+"
+      },
+      {
+        "at": "2026-08-17T02:14:40+00:00",
+        "event": "reopened",
+        "detail": "gate placeholder secrets"
+      },
+      {
+        "at": "2026-08-17T02:14:41+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T02:29:05+00:00",
+        "event": "blocked",
+        "detail": "conte\u00fado recusado em tests/test_sanitize_trace.py: (?P<key>GHOSTCLI_API_KEY)\\s*=\\s*(?P<val>\\S+)"
+      },
+      {
+        "at": "2026-08-17T02:30:17+00:00",
+        "event": "reopened",
+        "detail": "tests/ skip API key fixtures"
+      },
+      {
+        "at": "2026-08-17T02:30:18+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T02:36:44+00:00",
+        "event": "review",
+        "detail": "reject: O diff n\u00e3o corresponde \u00e0 proposta: a proposta e o files_hint indicam implementa\u00e7\u00e3o em src/agentic/traces.py, mas o patch implementa o sanitizador em src/agentic/ghostcli.py. O conte\u00fado \u00e9 defensivo (mascara tokens/cookies/headers) e os testes novos s\u00e3o permitidos e adequados, mas o hist\u00f3rico j\u00e1 registra duas requeues porque traces.py n\u00e3o existe e a pol\u00edtica s\u00f3 permite paths j\u00e1 existentes, exceto te\u2026 riscos=['Diverg\u00eancia de escopo: proposta/files_hint apontam para src/agentic/traces.py, mas o diff altera src/agentic/ghostcli.py.', 'O regex gen\u00e9rico de 32+ caracteres pode mascarar hashes/IDs longos leg\u00edti\u2026"
+      },
+      {
+        "at": "2026-08-17T02:37:29+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260816-sanitizador-de-traces-ghostcli-para-an-lise-segu"
+      },
+      {
+        "at": "2026-08-17T02:41:31+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "Reimplemente sanitize_trace em src/agentic/ghostcli.py e testes; files_hint j\u00e1 aponta ghostcli.py (n\u00e3o traces.py)."
+  },
+  {
+    "id": "imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in",
+    "key": "7041e8b9eae21877",
+    "canon": "a1c5ceed9c5eb0ef",
+    "title": "Sa\u00fade do tick \u00e9 ef\u00eamera (sem hist\u00f3rico para flap/indisponibilidade)",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O tick de loop.py verifica ferramentas a cada 90s, mas o resultado s\u00f3 vive em log; sem estado persistido n\u00e3o d\u00e1 para detectar flap, nem saber h\u00e1 quanto tempo playwright/ghostcli est\u00e3o degradados.",
+    "change": "Persistir um snapshot compacto por tick em state/health.json (arquivo fora do git): status por ferramenta, timestamp e contador de falhas consecutivas; ler esse estado no in\u00edcio do tick.",
+    "never": [
+      "enviar ordens Bybit",
+      "ligar AGENTIC_LIVE_TRADE=1",
+      "criar src/agentic/loop.sh",
+      "commitar state/"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in",
+    "map_id": "20260817T000436Z",
+    "history": [
+      {
+        "at": "2026-08-17T00:04:36+00:00",
+        "event": "mapped",
+        "detail": "20260817T000436Z"
+      },
+      {
+        "at": "2026-08-17T13:15:02+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-sa-de-do-tick-ef-mera-sem-hist-rico-para-flap-in"
+      },
+      {
+        "at": "2026-08-18T16:25:45+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-review-feedback-sem-contrato-estruturado-permite",
+    "key": "35373bcf68740a31",
+    "canon": "28827cd691314131",
+    "title": "review_feedback sem contrato estruturado permite ao develop alargar escopo",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Quando o reviewer rejeita ou o pytest falha, a proposta volta a pending com review_feedback; se o parecer for texto livre, o develop seguinte pode corrigir al\u00e9m do pedido e sujar a working tree de novo.",
+    "change": "Em improve.py, tratar review_feedback como estrutura m\u00ednima (verdict, motivo, arquivos citados) e restringir o develop seguinte a corrigir exatamente o parecer, sem tocar em arquivos fora dele.",
+    "never": [
+      "git reset --hard",
+      "checkout --",
+      "clean -fd",
+      "--no-verify",
+      "force",
+      "ampliar arquivos al\u00e9m do parecer"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260817-review-feedback-sem-contrato-estruturado-permite",
+    "map_id": "20260817T000436Z",
+    "history": [
+      {
+        "at": "2026-08-17T00:04:36+00:00",
+        "event": "mapped",
+        "detail": "20260817T000436Z"
+      },
+      {
+        "at": "2026-08-17T10:29:03+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-review-feedback-sem-contrato-estruturado-permite"
+      },
+      {
+        "at": "2026-08-17T19:49:31+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-18T16:54:54+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-review-feedback-sem-contrato-estruturado-permite"
+      },
+      {
+        "at": "2026-08-18T17:48:34+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout",
+    "key": "f5e451ed38773bd6",
+    "canon": "6cfce45540912c56",
+    "title": "Tick de sa\u00fade pode travar por falta de timeout",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Verifica\u00e7\u00f5es de playwright/ghostcli sem limite de tempo podem bloquear o tick de 90s e atrasar a detec\u00e7\u00e3o de falhas.",
+    "change": "Envolver cada checagem de ferramenta em timeout curto e registrar status de erro sanitizado em loop.py, sem alterar a unit systemd.",
+    "never": [
+      "criar src/agentic/loop.sh",
+      "alterar --interval da unit systemd",
+      "enviar ordens Bybit",
+      "imprimir credenciais"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout",
+    "map_id": "20260817T010626Z",
+    "history": [
+      {
+        "at": "2026-08-17T01:06:26+00:00",
+        "event": "mapped",
+        "detail": "20260817T010626Z"
+      },
+      {
+        "at": "2026-08-18T17:56:14+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-tick-de-sa-de-pode-travar-por-falta-de-timeout"
+      },
+      {
+        "at": "2026-08-18T18:50:26+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-restaurar-git-clean-fatia-claude-cli",
+    "key": "982ea4f073374ee7",
+    "canon": "d81a035b8f0c2115",
+    "title": "Restaurar git_clean: fatia claude_cli",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Arquivos n\u00e3o rastreados do claude_cli est\u00e3o sujando a main e precisam ser versionados isoladamente.",
+    "change": "Adicionar e commitar apenas os novos arquivos do claude_cli e seus testes unit\u00e1rios correspondentes.",
+    "never": [
+      "git reset --hard",
+      "git checkout --",
+      "git clean -fd",
+      "git commit --no-verify",
+      "vazar ANTHROPIC_BASE_URL ou GHOSTCLI_MODEL"
+    ],
+    "files_hint": [
+      "src/agentic/claude_cli.py",
+      "tests/test_claude_cli.py"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260817T013627Z",
+    "history": [
+      {
+        "at": "2026-08-17T01:36:27+00:00",
+        "event": "mapped",
+        "detail": "20260817T013627Z"
+      },
+      {
+        "at": "2026-08-18T01:57:31+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+      },
+      {
+        "at": "2026-08-18T01:59:59+00:00",
+        "event": "requeued",
+        "detail": "Os arquivos da fatia `claude_cli` (`src/agentic/claude_cli.py` e `tests/test_claude_cli.py`) j\u00e1 est\u00e3o rastreados e sem modifica\u00e7\u00f5es pendentes. `.gitignore` e `improve/README.md` tamb\u00e9m n\u00e3o apresentam diffs em rela\u00e7\u00e3o ao HEAD. N\u00e3o h\u00e1 altera\u00e7\u00f5es a aplicar nesta fatia \u2014 o estado `git_clean` para esses caminhos j\u00e1 est\u00e1 restaurado no branch atual.\n\nSUMMARY: Fatia claude_cli j\u00e1 estava versionada e limpa\u2026"
+      },
+      {
+        "at": "2026-08-18T02:17:31+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+      },
+      {
+        "at": "2026-08-18T02:17:50+00:00",
+        "event": "requeued",
+        "detail": "arquivo grande demais: improve/ledger.json"
+      },
+      {
+        "at": "2026-08-18T02:37:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+      },
+      {
+        "at": "2026-08-18T02:39:35+00:00",
+        "event": "requeued",
+        "detail": "arquivo grande demais: improve/ledger.json"
+      },
+      {
+        "at": "2026-08-18T02:58:19+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-fatia-claude-cli"
+      },
+      {
+        "at": "2026-08-18T02:59:01+00:00",
+        "event": "blocked",
+        "detail": "The `improve/ledger.json` dirty state has been resolved by restoring it to HEAD. The claude_cli slice files (`src/agentic/claude_cli.py`, `tests/test_claude_cli.py`) are already tracked and clean \u2014 no changes needed for this proposal. The remaining dirty files belong to other slices and are outside this executor's scope.\n\nSUMMARY: Restaurado improve/ledger.json ao HEAD; fatia claude_cli j\u00e1 estava \u2026"
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: working tree already clean for this slice; no further action needed"
+      }
+    ],
+    "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
+  },
+  {
+    "id": "imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env",
+    "key": "16517818bb4bbf60",
+    "canon": "f821aeed1d398f8a",
+    "title": "Restaurar git_clean (Ferramentas de agente e env interna): working tree limpa na main",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Integridade git_clean falhou. Fatia \u00fanica \u2014 n\u00e3o misturar com outras \u00e1reas. Paths: AGENTS.md.",
+    "change": "N\u00e3o reset --hard. S\u00f3 versionar esta fatia (files_hint) com o conte\u00fado j\u00e1 no disco. Ghost n\u00e3o reescreve esses arquivos; no m\u00e1ximo .gitignore ou improve/*. Paths: AGENTS.md.",
+    "never": [
+      "git reset --hard",
+      "commitar outras fatias neste patch",
+      "commit de .env, data/ ou secrets",
+      "criar loop.sh",
+      "ligar AGENTIC_LIVE_TRADE=1"
+    ],
+    "files_hint": [
+      "AGENTS.md"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260817T013627Z",
+    "history": [
+      {
+        "at": "2026-08-17T01:36:27+00:00",
+        "event": "mapped",
+        "detail": "20260817T013627Z"
+      },
+      {
+        "at": "2026-08-18T04:40:31+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
+      },
+      {
+        "at": "2026-08-18T04:40:51+00:00",
+        "event": "requeued",
+        "detail": "All five hinted files are tracked and the working tree is clean for this slice. The only untracked item (`.claude/skills/generate-changelog/`) is outside scope and already covered by the existing `.gitignore` pattern for `.claude/` local config. No edits are needed \u2014 the proposal's goal of restoring `git_clean` for agent tools and internal env is already satisfied on disk.\n\nSUMMARY: Working tree j\u2026"
+      },
+      {
+        "at": "2026-08-18T05:02:43+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
+      },
+      {
+        "at": "2026-08-18T05:03:00+00:00",
+        "event": "requeued",
+        "detail": "arquivo grande demais: improve/ledger.json"
+      },
+      {
+        "at": "2026-08-18T05:21:02+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
+      },
+      {
+        "at": "2026-08-18T05:21:38+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: Working tree restaurada para a fatia de ferramentas de agente e env interna \u2014 descartada modifica\u00e7\u00e3o local em improve/ledger.json (174 linhas n\u00e3o relacionadas ao escopo) que causava rejei\u00e7\u00e3o por tamanho; AGENTS.md, .gitignore, improve/README.md, src/agentic/env.py e internal/load-env.sh j\u00e1 estavam limpos."
+      },
+      {
+        "at": "2026-08-18T05:41:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-ferramentas-de-agente-e-env"
+      },
+      {
+        "at": "2026-08-18T05:42:16+00:00",
+        "event": "blocked",
+        "detail": "O working tree est\u00e1 limpo para a fatia de ferramentas de agente e env interna. O \u00fanico item n\u00e3o rastreado (`.claude/skills/generate-changelog/`) \u00e9 configura\u00e7\u00e3o local do Claude Code, j\u00e1 coberta pelo padr\u00e3o `.claude/` no `.gitignore`, e n\u00e3o faz parte dos `files_hint` desta proposta.\n\nSUMMARY: Working tree restaurada para a fatia de ferramentas de agente e env interna \u2014 descartada modifica\u00e7\u00e3o local e\u2026"
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: working tree already clean for this slice; no further action needed"
+      }
+    ],
+    "review_feedback": "blocked: SUMMARY: Working tree restaurada para a fatia de ferramentas de agente e env interna \u2014 descartada modifica\u00e7\u00e3o local em improve/ledger.json (174 linhas n\u00e3o relacionadas ao escopo) que causava rejei\u00e7\u00e3o por tamanho; AGENTS.md, .gitignore, improve/README.md, src/agentic/env.py e internal/load-env.sh j\u00e1 estavam limpos."
+  },
+  {
+    "id": "imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte",
+    "key": "4808d801f01a616a",
+    "canon": "2fe3fdd1f03e026a",
+    "title": "Restaurar git_clean (ARO constitui\u00e7\u00e3o e ciclo interno): working tree limpa na main",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Integridade git_clean falhou. Fatia \u00fanica \u2014 n\u00e3o misturar com outras \u00e1reas. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
+    "change": "N\u00e3o reset --hard. S\u00f3 versionar esta fatia (files_hint) com o conte\u00fado j\u00e1 no disco. Ghost n\u00e3o reescreve esses arquivos; no m\u00e1ximo .gitignore ou improve/*. Paths: src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py.",
+    "never": [
+      "git reset --hard",
+      "commitar outras fatias neste patch",
+      "commit de .env, data/ ou secrets",
+      "criar loop.sh",
+      "ligar AGENTIC_LIVE_TRADE=1"
+    ],
+    "files_hint": [
+      "src/agentic/aro/config.py",
+      "src/agentic/aro/cycle.py",
+      "tests/test_aro.py"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260817T230624Z",
+    "history": [
+      {
+        "at": "2026-08-17T01:36:27+00:00",
+        "event": "mapped",
+        "detail": "20260817T013627Z"
+      },
+      {
+        "at": "2026-08-18T00:35:23+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+      },
+      {
+        "at": "2026-08-18T00:35:47+00:00",
+        "event": "requeued",
+        "detail": "The target files (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) have no diff against HEAD \u2014 they are already clean and versioned. The only in-scope change is the `.gitignore` addition of `.cursor/`, which is already on disk and correct. No other files in this slice need modification, and per the rules I must not touch the dirty product files outside this proposal's \u2026"
+      },
+      {
+        "at": "2026-08-18T00:55:40+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+      },
+      {
+        "at": "2026-08-18T00:56:08+00:00",
+        "event": "requeued",
+        "detail": "arquivo grande demais: improve/ledger.json"
+      },
+      {
+        "at": "2026-08-18T01:16:25+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+      },
+      {
+        "at": "2026-08-18T01:16:50+00:00",
+        "event": "requeued",
+        "detail": "The working tree is now clean after restoring `improve/ledger.json` to HEAD. The target files for this proposal (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) were already confirmed to have no diff against HEAD in the previous requeue, and `.gitignore` already contains the needed entries. There are no remaining changes to make for this slice.\n\nSUMMARY: Restaurado im\u2026"
+      },
+      {
+        "at": "2026-08-18T01:37:03+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-restaurar-git-clean-aro-constitui-o-e-ciclo-inte"
+      },
+      {
+        "at": "2026-08-18T01:37:25+00:00",
+        "event": "blocked",
+        "detail": "SUMMARY: Working tree limpa restaurada; improve/ledger.json revertido para HEAD (timestamps/map_id s\u00e3o gerados pelo pipeline e n\u00e3o pertencem a esta fatia). Arquivos da proposta (src/agentic/aro/config.py, src/agentic/aro/cycle.py, tests/test_aro.py) j\u00e1 estavam versionados e sem diff. \u00danico item untracked restante (.claude/skills/generate-changelog/) est\u00e1 fora do escopo desta melhoria."
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: working tree already clean for this slice; no further action needed"
+      }
+    ],
+    "review_feedback": "blocked: The working tree is now clean after restoring `improve/ledger.json` to HEAD. The target files for this proposal (`src/agentic/aro/config.py`, `src/agentic/aro/cycle.py`, `tests/test_aro.py`) were already confirmed to have no diff against HEAD in the previous requeue, and `.gitignore` already contains the needed entries. There are no remaining changes to make for this slice.\n\nSUMMARY: Restaurado im\u2026"
+  },
+  {
+    "id": "imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
+    "key": "d088c957721a2864",
+    "canon": "cb884c7c8ec4cced",
+    "title": "Documentar Claude CLI + GhostCLI no improve README",
+    "kind": "improvement",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Operador precisa ver que develop despeja no Claude CLI",
+    "change": "Uma frase em improve/README.md sobre Claude CLI via GhostCLI",
+    "never": [
+      "secrets",
+      "trade live",
+      "novo m\u00f3dulo"
+    ],
+    "files_hint": [
+      "improve/README.md"
+    ],
+    "theme": "tools",
+    "branch": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme",
+    "map_id": "operator-20260817",
+    "history": [
+      {
+        "at": "2026-08-17T02:30:17+00:00",
+        "event": "mapped",
+        "detail": "operator-20260817"
+      },
+      {
+        "at": "2026-08-17T02:37:10+00:00",
+        "event": "prioritized",
+        "detail": "first green cycle"
+      },
+      {
+        "at": "2026-08-17T02:41:50+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme"
+      },
+      {
+        "at": "2026-08-17T02:42:03+00:00",
+        "event": "requeued",
+        "detail": "The `improve/README.md` already contains the required documentation about Claude CLI and GhostCLI in both the overview (line 3) and the develop executor description (line 14). The review_feedback asks for exactly this, and it is already present. No edit is needed.\n\nSUMMARY: improve/README.md j\u00e1 documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma altera\u00e7\u00e3o necess\u00e1ria."
+      },
+      {
+        "at": "2026-08-17T03:00:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme"
+      },
+      {
+        "at": "2026-08-17T03:01:06+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: improve/README.md j\u00e1 documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma altera\u00e7\u00e3o necess\u00e1ria."
+      },
+      {
+        "at": "2026-08-17T03:21:33+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme"
+      },
+      {
+        "at": "2026-08-17T03:21:51+00:00",
+        "event": "requeued",
+        "detail": "SUMMARY: improve/README.md j\u00e1 documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma altera\u00e7\u00e3o necess\u00e1ria."
+      },
+      {
+        "at": "2026-08-17T03:41:38+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-documentar-claude-cli-ghostcli-no-improve-readme"
+      },
+      {
+        "at": "2026-08-17T03:43:14+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "SUMMARY: improve/README.md j\u00e1 documenta que develop despeja no Claude CLI com modelos GhostCLI; nenhuma altera\u00e7\u00e3o necess\u00e1ria."
+  },
+  {
+    "id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp",
+    "key": "f2534420f53cd34e",
+    "canon": "25bff71703431229",
+    "title": "Desperd\u00edcio de tokens com Playwright MCP",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Agentes ainda podem invocar playwright-mcp em vez de playwright-cli para tarefas simples, consumindo tokens desnecess\u00e1rios e aumentando a lat\u00eancia do tick.",
+    "change": "Adicionar wrapper ou regra estrita no seletor de ferramentas que force playwright-cli para navega\u00e7\u00e3o headless b\u00e1sica, reservando MCP apenas para inspe\u00e7\u00e3o de DOM complexa.",
+    "never": [
+      "Desativar playwright-mcp completamente",
+      "Alterar AGENTIC_LIVE_TRADE"
+    ],
+    "files_hint": [
+      "src/agentic/tools/playwright.py"
+    ],
+    "theme": "tools",
+    "branch": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp",
+    "map_id": "20260817T030226Z",
+    "history": [
+      {
+        "at": "2026-08-17T03:02:26+00:00",
+        "event": "mapped",
+        "detail": "20260817T030226Z"
+      },
+      {
+        "at": "2026-08-17T08:06:13+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp"
+      },
+      {
+        "at": "2026-08-17T09:11:33+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+    "key": "f8d10e46cc34ffcf",
+    "canon": "6db2d2c9311a1f2f",
+    "title": "Falta de limite de tokens no prompt do Claude CLI",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O develop despeja prompts inteiros no Claude CLI sem validar o tamanho, podendo estourar contextos e gastar tokens \u00e0 toa em loops de improve.",
+    "change": "Adicionar truncamento ou sumariza\u00e7\u00e3o pr\u00e9via no prompt antes de chamar o Claude CLI.",
+    "never": [
+      "Alterar o modelo GhostCLI",
+      "Ligar AGENTIC_LIVE_TRADE=1"
+    ],
+    "files_hint": [
+      "src/agentic/claude_cli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl",
+    "map_id": "20260817T040232Z",
+    "history": [
+      {
+        "at": "2026-08-17T04:02:32+00:00",
+        "event": "mapped",
+        "detail": "20260817T040232Z"
+      },
+      {
+        "at": "2026-08-17T08:47:03+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl"
+      },
+      {
+        "at": "2026-08-17T20:43:00+00:00",
+        "event": "merge_failed",
+        "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
+      },
+      {
+        "at": "2026-08-17T21:02:27+00:00",
+        "event": "requeued",
+        "detail": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
+      },
+      {
+        "at": "2026-08-17T21:32:02+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl"
+      },
+      {
+        "at": "2026-08-17T21:46:17+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "git merge --no-ff --no-edit -m apply imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl em master improve/dev/imp-20260817-falta-de-limite-de-tokens-no-prompt-do-claude-cl falhou: Auto-merg"
+  },
+  {
+    "id": "imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+    "key": "8945665b2e2b222b",
+    "canon": "1d6fa5c5a0b94e0b",
+    "title": "Fila de improve presa em loops de review rejeitado",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Se o pytest falhar repetidamente, o develop tenta corrigir o parecer sem limite de tentativas, travando a fila de pending.",
+    "change": "Adicionar contador de tentativas; se > 3, mover para estado 'blocked' com log de erro e review_feedback.",
+    "never": [
+      "Fazer git reset --hard",
+      "Ignorar o review_feedback",
+      "Usar git clean -fd"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita",
+    "map_id": "20260817T040232Z",
+    "history": [
+      {
+        "at": "2026-08-17T04:02:32+00:00",
+        "event": "mapped",
+        "detail": "20260817T040232Z"
+      },
+      {
+        "at": "2026-08-17T09:28:23+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita"
+      },
+      {
+        "at": "2026-08-17T21:06:56+00:00",
+        "event": "merge_failed",
+        "detail": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
+      },
+      {
+        "at": "2026-08-17T22:02:45+00:00",
+        "event": "requeued",
+        "detail": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
+      },
+      {
+        "at": "2026-08-17T22:12:19+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita"
+      },
+      {
+        "at": "2026-08-17T22:47:50+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "git merge --no-ff --no-edit -m apply imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita em master improve/dev/imp-20260817-fila-de-improve-presa-em-loops-de-review-rejeita falhou: Auto-merg"
+  },
+  {
+    "id": "imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli",
+    "key": "c6a957b3f9f2426c",
+    "canon": "ec5060b933bd7841",
+    "title": "Sanitiza\u00e7\u00e3o estrita de traces da GhostCLI",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Traces de develop podem vazar paths internos ou vari\u00e1veis de ambiente se a sanitiza\u00e7\u00e3o n\u00e3o for validada antes de salvar no ledger, comprometendo a seguran\u00e7a.",
+    "change": "Adicionar filtro de regex estrito em ghostcli.py e env.py para mascarar paths absolutos e vari\u00e1veis de .env antes de persistir os traces.",
+    "never": [
+      "Imprimir secrets Bybit",
+      "Modificar internal/load-env.sh",
+      "Alterar ARO.md"
+    ],
+    "files_hint": [
+      "src/agentic/ghostcli.py",
+      "src/agentic/env.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli",
+    "map_id": "20260817T050221Z",
+    "history": [
+      {
+        "at": "2026-08-17T05:02:21+00:00",
+        "event": "mapped",
+        "detail": "20260817T050221Z"
+      },
+      {
+        "at": "2026-08-18T17:35:54+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-sanitiza-o-estrita-de-traces-da-ghostcli"
+      },
+      {
+        "at": "2026-08-18T18:30:37+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces",
+    "key": "c45f82754d7f4291",
+    "canon": "c795fe95790408e6",
+    "title": "Avalia\u00e7\u00e3o autom\u00e1tica de prompts (Eval Traces)",
+    "kind": "improvement",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "N\u00e3o h\u00e1 feedback loop estruturado (theme=ai) para medir se os prompts enviados ao Claude CLI est\u00e3o gerando c\u00f3digo limpo ou causando rejei\u00e7\u00e3o no reviewer.",
+    "change": "Implementar m\u00f3dulo de 'eval' em improve.py que cruza review_feedback do ledger com traces da GhostCLI, gerando m\u00e9tricas de efic\u00e1cia de prompts.",
+    "never": [
+      "Alterar a constitui\u00e7\u00e3o ARO",
+      "Ligar AGENTIC_LIVE_TRADE=1",
+      "Modificar o ARO.md"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py",
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces",
+    "map_id": "20260817T050221Z",
+    "history": [
+      {
+        "at": "2026-08-17T05:02:21+00:00",
+        "event": "mapped",
+        "detail": "20260817T050221Z"
+      },
+      {
+        "at": "2026-08-17T07:45:37+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-avalia-o-autom-tica-de-prompts-eval-traces"
+      },
+      {
+        "at": "2026-08-17T08:31:10+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-health-check-do-playwright-n-o-detecta-processos",
+    "key": "b8fa42a7cd635442",
+    "canon": "d303f5b80e0f9c20",
+    "title": "Health check do Playwright n\u00e3o detecta processos zumbis",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O tick atual verifica a presen\u00e7a do bin\u00e1rio, mas n\u00e3o detecta se processos headless anteriores ficaram zumbis ou vazaram mem\u00f3ria, degradando o host gradualmente.",
+    "change": "Incluir no loop.py uma verifica\u00e7\u00e3o r\u00e1pida de contagem de processos playwright e for\u00e7ar limpeza se exceder um limite, antes de rodar o health check.",
+    "never": [
+      "instalar novas depend\u00eancias de monitoramento",
+      "enviar ordens Bybit"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py"
+    ],
+    "theme": "tools",
+    "branch": "",
+    "map_id": "20260817T070323Z",
+    "history": [
+      {
+        "at": "2026-08-17T07:03:23+00:00",
+        "event": "mapped",
+        "detail": "20260817T070323Z"
+      },
+      {
+        "at": "2026-08-17T09:48:32+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+      },
+      {
+        "at": "2026-08-17T19:49:31+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-18T14:31:40+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+      },
+      {
+        "at": "2026-08-18T14:45:09+00:00",
+        "event": "requeued",
+        "detail": "reject: O diff n\u00e3o corresponde \u00e0 proposta. A proposta exigia a inclus\u00e3o da verifica\u00e7\u00e3o de processos no arquivo src/agentic/loop.py, mas o diff apresentado apenas atualiza a documenta\u00e7\u00e3o no AGENTS.md, sem conter as altera\u00e7\u00f5es reais de c\u00f3digo. riscos=['C\u00f3digo n\u00e3o implementado', 'Documenta\u00e7\u00e3o descrevendo funcionalidade inexistente'] arquivos=AGENTS.md"
+      },
+      {
+        "at": "2026-08-18T14:51:49+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+      },
+      {
+        "at": "2026-08-18T15:25:20+00:00",
+        "event": "requeued",
+        "detail": "reject: O diff n\u00e3o corresponde \u00e0 proposta. A mudan\u00e7a exigida era implementar a verifica\u00e7\u00e3o de contagem de processos zumbis e a rotina de limpeza no loop.py, mas o c\u00f3digo apenas adiciona uma flag 'operate=True' n\u00e3o relacionada, atualiza a documenta\u00e7\u00e3o e inclui um teste para uma fun\u00e7\u00e3o que n\u00e3o foi implementada no diff. riscos=['Funcionalidade de limpeza de zumbis n\u00e3o implementada no c\u00f3digo', \"Adi\u00e7\u00e3o de par\u00e2metro 'operate=True' sem rela\u00e7\u00e3o com a proposta\", 'Teste inclu\u00eddo para l\u00f3gica inexistente no diff atual'] arquivos=AGENTS.md,src/agentic/loop.py,tests/test_loop.py"
+      },
+      {
+        "at": "2026-08-18T15:53:49+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+      },
+      {
+        "at": "2026-08-18T15:54:55+00:00",
+        "event": "requeued",
+        "detail": "Execution error"
+      },
+      {
+        "at": "2026-08-18T16:14:04+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-health-check-do-playwright-n-o-detecta-processos"
+      },
+      {
+        "at": "2026-08-18T16:15:15+00:00",
+        "event": "blocked",
+        "detail": "A implementa\u00e7\u00e3o da verifica\u00e7\u00e3o e limpeza de processos zumbis j\u00e1 est\u00e1 completa em `src/agentic/loop.py` (fun\u00e7\u00f5es `_count_playwright_processes`, `_cleanup_playwright_zombies` e integra\u00e7\u00e3o em `_smoke_playwright`), com testes correspondentes em `tests/test_loop.py`. O AGENTS.md n\u00e3o menciona o health check de processos, mas a proposta exige altera\u00e7\u00e3o nos arquivos listados apenas se necess\u00e1rio para a fu\u2026"
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: functionality already implemented and tested per review feedback"
+      }
+    ],
+    "review_feedback": "claude_failed: Execution error"
+  },
+  {
+    "id": "imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
+    "key": "33be5aec321d1ef4",
+    "canon": "47dd2d36ab52e497",
+    "title": "Exporta\u00e7\u00e3o de traces sanitizados para eval",
+    "kind": "improvement",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "N\u00e3o h\u00e1 hist\u00f3rico estruturado dos prompts e respostas do GhostCLI, impedindo a cria\u00e7\u00e3o de datasets para eval e ajuste fino de prompts de review.",
+    "change": "Gravar entradas e sa\u00eddas do claude_cli.py e ghostcli.py em arquivos JSON datados em 'traces/', omitindo chaves API e secrets Bybit via regex de mascaramento.",
+    "never": [
+      "commitar traces no git",
+      "vazar bybit_secret",
+      "imprimir secrets no stdout"
+    ],
+    "files_hint": [
+      "src/agentic/claude_cli.py",
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-exporta-o-de-traces-sanitizados-para-eval",
+    "map_id": "20260817T070323Z",
+    "history": [
+      {
+        "at": "2026-08-17T07:03:23+00:00",
+        "event": "mapped",
+        "detail": "20260817T070323Z"
+      },
+      {
+        "at": "2026-08-17T08:26:50+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-exporta-o-de-traces-sanitizados-para-eval"
+      },
+      {
+        "at": "2026-08-17T09:52:40+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
+    "key": "eb9927560ea57836",
+    "canon": "dee566e4b4a43ed3",
+    "title": "Falha cr\u00edtica no smoke test do GhostCLI",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O census aponta 'os_error:FileNotFoundError' para o ghostcli, quebrando a fila de develop/review que depende dos modelos GhostCLI.",
+    "change": "Ajustar a resolu\u00e7\u00e3o de caminhos ou instala\u00e7\u00e3o do bin\u00e1rio/wrapper do GhostCLI no environment do .venv.",
+    "never": [
+      "Hardcodar caminhos absolutos de bin\u00e1rios externos",
+      "Commitar chaves API ou tokens no git"
+    ],
+    "files_hint": [
+      "src/agentic/env.py",
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli",
+    "map_id": "20260817T090418Z",
+    "history": [
+      {
+        "at": "2026-08-17T09:04:18+00:00",
+        "event": "mapped",
+        "detail": "20260817T090418Z"
+      },
+      {
+        "at": "2026-08-17T09:07:51+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli"
+      },
+      {
+        "at": "2026-08-17T19:49:31+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T19:49:31+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falha-cr-tica-no-smoke-test-do-ghostcli"
+      },
+      {
+        "at": "2026-08-17T20:07:51+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-falha-cr-tica-na-ferramenta-ghostcli",
+    "key": "39f47bb429af9a45",
+    "canon": "0bcd3a0ea43e3b83",
+    "title": "Falha cr\u00edtica na ferramenta ghostcli",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O smoke test retorna FileNotFoundError, bloqueando a fila de develop e review que dependem da API GhostCLI.",
+    "change": "Corrigir a resolu\u00e7\u00e3o do caminho do bin\u00e1rio/wrapper do ghostcli no ambiente de execu\u00e7\u00e3o para que o health check passe.",
+    "never": [
+      "Expor credenciais da API no log",
+      "Alterar o ANTHROPIC_BASE_URL para endpoints n\u00e3o oficiais",
+      "Criar src/agentic/loop.sh"
+    ],
+    "files_hint": [
+      "src/agentic/env.py",
+      "src/agentic/ghostcli.py"
+    ],
+    "theme": "ai",
+    "branch": "improve/dev/imp-20260817-falha-cr-tica-na-ferramenta-ghostcli",
+    "map_id": "20260817T100206Z",
+    "history": [
+      {
+        "at": "2026-08-17T10:02:06+00:00",
+        "event": "mapped",
+        "detail": "20260817T100206Z"
+      },
+      {
+        "at": "2026-08-17T10:08:39+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falha-cr-tica-na-ferramenta-ghostcli"
+      },
+      {
+        "at": "2026-08-17T10:53:11+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro",
+    "key": "8bade91804109145",
+    "canon": "e4eb3bb140b503e6",
+    "title": "Falta de limite de retentativas na fila de improve",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "Se o review rejeitar sistematicamente uma tarefa, ela volta para pending infinitamente, travando a fila de develop e consumindo recursos da GhostCLI.",
+    "change": "Adicionar um contador de retries no ledger e mover a tarefa para um estado de quarantine ap\u00f3s 3 rejei\u00e7\u00f5es consecutivas em improve.py.",
+    "never": [
+      "Fazer git reset --hard",
+      "Limpar a fila manualmente sem log"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py",
+      "src/agentic/ledger.py"
+    ],
+    "theme": "engine",
+    "branch": "",
+    "map_id": "20260817T110137Z",
+    "history": [
+      {
+        "at": "2026-08-17T11:01:37+00:00",
+        "event": "mapped",
+        "detail": "20260817T110137Z"
+      },
+      {
+        "at": "2026-08-17T12:52:01+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+      },
+      {
+        "at": "2026-08-17T19:49:31+00:00",
+        "event": "released_stale",
+        "detail": "developing sem diff \u00fatil; devolve \u00e0 fila"
+      },
+      {
+        "at": "2026-08-17T20:10:02+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+      },
+      {
+        "at": "2026-08-17T20:24:19+00:00",
+        "event": "requeued",
+        "detail": "reject: O diff n\u00e3o corresponde integralmente \u00e0 proposta: ele apenas chama requeue_failed_proposals() e commita o ledger, sem mostrar a cria\u00e7\u00e3o do contador de retries no ledger, o limite de 3 rejei\u00e7\u00f5es consecutivas, a transi\u00e7\u00e3o expl\u00edcita para quarantine ou testes. Como testes_ok_required \u00e9 verdadeiro e n\u00e3o h\u00e1 evid\u00eancia de testes passando, n\u00e3o \u00e9 poss\u00edvel aprovar. Para reabrir, implemente em src/agentic/impr\u2026 riscos=['Sem evid\u00eancia de testes, o comportamento defensivo n\u00e3o foi validado.', 'O contador de retries e o limite de 3 rejei\u00e7\u00f5es n\u00e3o aparecem no diff.', 'A exclus\u00e3o for\u00e7ada de branches pode descartar trabalh\u2026 arquivos=src/agentic/improve.py"
+      },
+      {
+        "at": "2026-08-17T20:30:39+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+      },
+      {
+        "at": "2026-08-17T20:34:39+00:00",
+        "event": "requeued",
+        "detail": "All 16 tests in `tests/test_improve.py` pass, including the 4 tests that validate the retry limit and quarantine behavior. The implementation already satisfies the proposal requirements:\n\n- **Contador de retries no ledger**: `consecutive_rejections()` counts consecutive rejection/requeue events at the tail of the proposal's history.\n- **Limite de 3 rejei\u00e7\u00f5es consecutivas**: `MAX_REQUEUES = 3` is e\u2026"
+      },
+      {
+        "at": "2026-08-17T20:50:53+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+      },
+      {
+        "at": "2026-08-17T20:51:22+00:00",
+        "event": "requeued",
+        "detail": "Execution error"
+      },
+      {
+        "at": "2026-08-17T21:11:37+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-falta-de-limite-de-retentativas-na-fila-de-impro"
+      },
+      {
+        "at": "2026-08-17T21:12:49+00:00",
+        "event": "blocked",
+        "detail": "The implementation and tests for the retry limit and quarantine behavior are already in place. Let me verify the tests pass to confirm everything is working correctly."
+      },
+      {
+        "at": "2026-08-26T14:00:00+00:00",
+        "event": "reconciled",
+        "detail": "watchdog: functionality already implemented and tested per review feedback"
+      }
+    ],
+    "review_feedback": "claude_failed: Execution error"
+  },
+  {
+    "id": "imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+    "key": "d8f2e5048c47c664",
+    "canon": "9f5391180516b1eb",
+    "title": "Desperd\u00edcio de tokens com Playwright MCP ativo",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O censo mostra playwright_mcp ativo, mas as diretrizes exigem prefer\u00eancia pelo playwright-cli headless para poupar tokens e evitar sobrecarga do contexto da IA.",
+    "change": "Desativar a inicializa\u00e7\u00e3o e rotas do playwright-mcp no motor, for\u00e7ando o uso exclusivo do playwright-cli.",
+    "never": [
+      "Criar src/agentic/loop.sh",
+      "Alterar o --interval 90 do systemd",
+      "Ligar AGENTIC_LIVE_TRADE=1"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py",
+      "src/agentic/tools/playwright.py"
+    ],
+    "theme": "tools",
+    "branch": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo",
+    "map_id": "20260817T210227Z",
+    "history": [
+      {
+        "at": "2026-08-17T21:02:27+00:00",
+        "event": "mapped",
+        "detail": "20260817T210227Z"
+      },
+      {
+        "at": "2026-08-17T21:52:13+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-desperd-cio-de-tokens-com-playwright-mcp-ativo"
+      },
+      {
+        "at": "2026-08-17T22:06:40+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp",
+    "key": "630f57982dba5fb0",
+    "canon": "f2d9e482af83a8d3",
+    "title": "Risco de dreno de tokens via Playwright MCP",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O censo indica playwright_mcp habilitado. Como a diretriz exige preferir playwright-cli para poupar tokens, a disponibilidade do MCP pode levar agentes a us\u00e1-lo inadvertidamente, gerando custos altos.",
+    "change": "Adicionar l\u00f3gica de roteamento ou desabilitar o registro do playwright-mcp no motor, for\u00e7ando o uso do playwright-cli headless.",
+    "never": [
+      "Desativar playwright-cli",
+      "Modificar AGENTIC_LIVE_TRADE",
+      "Criar src/agentic/loop.sh"
+    ],
+    "files_hint": [
+      "src/agentic/loop.py",
+      "src/agentic/env.py"
+    ],
+    "theme": "tools",
+    "branch": "improve/dev/imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp",
+    "map_id": "20260817T220245Z",
+    "history": [
+      {
+        "at": "2026-08-17T22:02:45+00:00",
+        "event": "mapped",
+        "detail": "20260817T220245Z"
+      },
+      {
+        "at": "2026-08-18T17:15:23+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-risco-de-dreno-de-tokens-via-playwright-mcp"
+      },
+      {
+        "at": "2026-08-18T18:11:54+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ]
+  },
+  {
+    "id": "imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+    "key": "41b5e1296a3536bb",
+    "canon": "95b7baece2abd7f3",
+    "title": "Resili\u00eancia a falhas transit\u00f3rias na fila de develop",
+    "kind": "bottleneck",
+    "priority": 1,
+    "status": "applied",
+    "rationale": "O improve.py despeja prompts no Claude CLI sem retry estrutrado. Falhas tempor\u00e1rias na API GhostCLI travam o processamento da fila pending.",
+    "change": "Adicionar timeout configur\u00e1vel e retry com backoff exponencial ao invocar claude_cli.py dentro do improve.py.",
+    "never": [
+      "Alterar o modelo GhostCLI",
+      "Ligar AGENTIC_LIVE_TRADE=1",
+      "Imprimir secrets da API"
+    ],
+    "files_hint": [
+      "src/agentic/improve.py",
+      "src/agentic/claude_cli.py"
+    ],
+    "theme": "engine",
+    "branch": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev",
+    "map_id": "20260817T234014Z",
+    "history": [
+      {
+        "at": "2026-08-17T23:40:14+00:00",
+        "event": "mapped",
+        "detail": "20260817T234014Z"
+      },
+      {
+        "at": "2026-08-18T15:12:33+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev"
+      },
+      {
+        "at": "2026-08-18T16:07:10+00:00",
+        "event": "requeued",
+        "detail": "reject: O diff n\u00e3o corresponde \u00e0 proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configur\u00e1vel ou as altera\u00e7\u00f5es exigidas em improve.py. riscos=['Implementa\u00e7\u00e3o ausente da l\u00f3gica de retry e timeout.', 'Arquivo improve.py n\u00e3o foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resili\u00eancia.'] arquivos=src/agentic/claude_cli.py"
+      },
+      {
+        "at": "2026-08-18T16:34:12+00:00",
+        "event": "claimed",
+        "detail": "improve/dev/imp-20260817-resili-ncia-a-falhas-transit-rias-na-fila-de-dev"
+      },
+      {
+        "at": "2026-08-18T16:49:14+00:00",
+        "event": "applied",
+        "detail": "master"
+      }
+    ],
+    "review_feedback": "reject: O diff n\u00e3o corresponde \u00e0 proposta. Apenas adiciona imports (random, time) em claude_cli.py, sem implementar o retry com backoff exponencial, timeout configur\u00e1vel ou as altera\u00e7\u00f5es exigidas em improve.py. riscos=['Implementa\u00e7\u00e3o ausente da l\u00f3gica de retry e timeout.', 'Arquivo improve.py n\u00e3o foi modificado conforme o escopo da proposta.', 'Falta de testes para validar a nova resili\u00eancia.'] arquivos=src/agentic/claude_cli.py"
+  }
+]

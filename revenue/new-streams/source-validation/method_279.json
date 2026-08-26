@@ -1,0 +1,34 @@
+{
+  "method_id": "279",
+  "name": "Data enrichment API (for enterprises)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:06:24.384199+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "enterprise-data-hub",
+      "stars": 523,
+      "pricing_model": "volume_license",
+      "features": [
+        "gdpr_compliant",
+        "on_prem_option"
+      ]
+    },
+    {
+      "repo": "corp-intel-engine",
+      "stars": 378,
+      "pricing_model": "sla_based",
+      "features": [
+        "custom_fields",
+        "dedicated_support"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: ZoomInfo Enterprise / Dun & Bradstreet Direct. Foco em compliance GDPR e campos customizados."
+}
