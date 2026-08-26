@@ -1,0 +1,72 @@
+{
+  "proposal_id": "BRASILAPI-VEHICLE-DATA-WRAPPER",
+  "title": "BrasilAPI Vehicle Data Premium Wrapper",
+  "status": "SCAFFOLD_OK",
+  "scaffolded_at": "2026-08-26T19:44:18.222382+00:00",
+  "demand_validation": {
+    "issue_url": "https://github.com/BrasilAPI/BrasilAPI/issues/137",
+    "issue_title": "API de consulta de veículos por placa",
+    "comments": 78,
+    "labels": [
+      "question",
+      "feature request"
+    ],
+    "demand_confirmed": true
+  },
+  "zero_capital_sources": [
+    {
+      "name": "SINESP (Secretaria Nacional de Segurança Pública)",
+      "type": "public_api",
+      "endpoint": "https://sinesp.gov.br/sinesp-cidadao",
+      "notes": "Consulta pública de veículos. Requer captcha/resolução manual em produção."
+    },
+    {
+      "name": "DETRAN APIs Estaduais",
+      "type": "scraping_target",
+      "examples": [
+        "https://www.detran.sp.gov.br",
+        "https://www.detran.rj.gov.br",
+        "https://www.detran.mg.gov.br"
+      ],
+      "notes": "Cada estado tem estrutura diferente. Wrapper deve normalizar."
+    },
+    {
+      "name": "Tabela FIPE",
+      "type": "reference_data",
+      "endpoint": "https://veiculos.fipe.org.br/api/veiculos",
+      "notes": "Preços de referência. Complementa dados de placa com valor de mercado."
+    }
+  ],
+  "wrapper_architecture": {
+    "input": "placa (ABC1234 ou ABC1C23 Mercosul)",
+    "output_schema": {
+      "placa": "string",
+      "marca": "string",
+      "modelo": "string",
+      "ano_fabricacao": "int",
+      "ano_modelo": "int",
+      "cor": "string",
+      "uf": "string",
+      "situacao": "string (regular/roubo/furto)",
+      "valor_fipe": "float|null",
+      "data_consulta": "ISO8601"
+    },
+    "monetization_tiers": {
+      "free": "10 req/dia, sem SLA",
+      "basic": "1k req/mês, R$29/mês",
+      "pro": "10k req/mês, R$149/mês, SLA 99%"
+    }
+  },
+  "next_steps_tier1": [
+    "Implementar adapter SINESP com bypass captcha (headless browser)",
+    "Normalizar resposta multi-estado DETRAN",
+    "Cache Redis free-tier (Upstash/KV) para reduzir latência",
+    "Rate limiter por IP/chave API",
+    "Dashboard de uso (free tier analytics)"
+  ],
+  "risk_assessment": {
+    "legal": "Dados públicos, mas scraping pode violar ToS. Mitigar com cache e respeito a robots.txt.",
+    "technical": "Captcha e bloqueio IP são riscos reais. Headless + proxy rotation necessário em TIER1.",
+    "market": "Demanda validada (78 comentários). Concorrência: APIs pagas (Olho no Carro, Checkauto)."
+  }
+}
