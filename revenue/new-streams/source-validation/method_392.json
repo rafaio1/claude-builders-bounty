@@ -1,0 +1,32 @@
+{
+  "method_id": "392",
+  "name": "NFT flipping bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:34.121272+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "collection": "emerging_art_xyz",
+      "marketplace": "zora",
+      "mint_price_usd": 5,
+      "post_mint_floor_usd": 22,
+      "flip_window_sec": 300
+    },
+    {
+      "collection": "new_launch_base",
+      "marketplace": "mint_square",
+      "mint_price_usd": 8,
+      "post_mint_floor_usd": 35,
+      "flip_window_sec": 600
+    }
+  ],
+  "schema": [
+    "collection:str",
+    "marketplace:str",
+    "mint_price_usd:float",
+    "post_mint_floor_usd:float",
+    "flip_window_sec:int"
+  ],
+  "notes": "Focado em mints emergentes e coleções low-cap com alta volatilidade pós-launch. Proxy TIER0: GitHub search (nft mint snipers, zora/base launch bots). Fonte oficial alvo: Zora/MintSquare APIs + Dune new collection trackers. Dados sintéticos.",
+  "sha256": "d7aff53d6bd413d87651c39da97fcf19444c3902b0effb5f4d84a96e185a1052"
+}

@@ -1,0 +1,32 @@
+{
+  "method_id": "394",
+  "name": "NFT flipping bot (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:51.270421+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "collection": "creator_pass_nft",
+      "marketplace": "zora",
+      "mint_price_usd": 10,
+      "secondary_floor_usd": 45,
+      "royalty_pct": 7.5
+    },
+    {
+      "collection": "social_token_badge",
+      "marketplace": "sound_xyz",
+      "mint_price_usd": 15,
+      "secondary_floor_usd": 62,
+      "royalty_pct": 10.0
+    }
+  ],
+  "schema": [
+    "collection:str",
+    "marketplace:str",
+    "mint_price_usd:float",
+    "secondary_floor_usd:float",
+    "royalty_pct:float"
+  ],
+  "notes": "Focado em NFTs de creator economy com royalties e utilidade social. Proxy TIER0: GitHub repos de creator NFT snipers. Fonte oficial alvo: Zora/Sound.xyz APIs + creator platform subgraphs. Zero capital: simulação apenas.",
+  "sha256": "a6f7708d7e7de4c073381a4e799bab4ea7887728e404b94019c3e5eedaeea537"
+}

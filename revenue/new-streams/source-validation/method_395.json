@@ -1,0 +1,32 @@
+{
+  "method_id": "395",
+  "name": "NFT flipping bot (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:51.270421+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "nft_sniper_sdk",
+      "language": "typescript",
+      "marketplaces_supported": 8,
+      "avg_latency_ms": 180,
+      "success_rate_pct": 72.5
+    },
+    {
+      "tool": "floor_tracker_lib",
+      "language": "python",
+      "marketplaces_supported": 12,
+      "avg_latency_ms": 320,
+      "success_rate_pct": 68.3
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "marketplaces_supported:int",
+    "avg_latency_ms:int",
+    "success_rate_pct:float"
+  ],
+  "notes": "SDKs e bibliotecas para devs construírem bots de NFT flipping customizados. Proxy TIER0: GitHub search (nft trading libraries, marketplace SDKs). Fonte oficial alvo: Reservoir/OpenSea docs. Métricas sintéticas de performance.",
+  "sha256": "f2edb78c5c5ac929b3b9becd5491cb6b55daf171f157e827672f415f8ea6a454"
+}

@@ -1,0 +1,32 @@
+{
+  "method_id": "393",
+  "name": "NFT flipping bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:34.121272+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "operation": "multi_market_arb",
+      "marketplaces_monitored": 6,
+      "monthly_volume_usd": 850000,
+      "net_margin_pct": 4.2,
+      "infra_cost_usd": 18000
+    },
+    {
+      "operation": "institutional_collection",
+      "marketplaces_monitored": 4,
+      "monthly_volume_usd": 420000,
+      "net_margin_pct": 5.8,
+      "infra_cost_usd": 12000
+    }
+  ],
+  "schema": [
+    "operation:str",
+    "marketplaces_monitored:int",
+    "monthly_volume_usd:float",
+    "net_margin_pct:float",
+    "infra_cost_usd:float"
+  ],
+  "notes": "Operação enterprise multi-marketplace com infraestrutura dedicada e gestão de risco. Proxy TIER0: GitHub institutional NFT trading frameworks. Fonte oficial alvo: Private marketplace APIs + aggregation layers. Métricas sintéticas baseadas em benchmarks.",
+  "sha256": "182ac904b6fe08b4fff3be555c6dea0aa2f2471766b97b3e5aa9ac21d1f24615"
+}

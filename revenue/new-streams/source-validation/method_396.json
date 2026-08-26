@@ -1,0 +1,32 @@
+{
+  "method_id": "396",
+  "name": "NFT flipping bot (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:51.270421+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "ART_FUND_A",
+      "collections_tracked": 45,
+      "monthly_volume_usd": 125000,
+      "net_margin_pct": 8.5,
+      "royalty_income_usd": 4200
+    },
+    {
+      "client": "BRAND_DAO_B",
+      "collections_tracked": 28,
+      "monthly_volume_usd": 85000,
+      "net_margin_pct": 6.2,
+      "royalty_income_usd": 2800
+    }
+  ],
+  "schema": [
+    "client:str",
+    "collections_tracked:int",
+    "monthly_volume_usd:float",
+    "net_margin_pct:float",
+    "royalty_income_usd:float"
+  ],
+  "notes": "Serviço B2B de gestão de portfólio NFT e flipping para fundos e marcas. Proxy TIER0: GitHub repos de institutional NFT platforms. Fonte oficial alvo: Multi-marketplace aggregation APIs. Dados sintéticos baseados em benchmarks.",
+  "sha256": "3188f73fa9c6f2f09b5af51bd71039a68c05538ebd3fcb17c2369648550985e0"
+}

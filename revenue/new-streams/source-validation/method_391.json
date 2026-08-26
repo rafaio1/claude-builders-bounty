@@ -1,0 +1,32 @@
+{
+  "method_id": "391",
+  "name": "NFT flipping bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:04:34.121272+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "collection": "pudgy_penguins",
+      "marketplace": "opensea",
+      "avg_flip_profit_usd": 45.2,
+      "daily_flips": 8,
+      "success_rate_pct": 62.5
+    },
+    {
+      "collection": "milady_maker",
+      "marketplace": "blur",
+      "avg_flip_profit_usd": 28.7,
+      "daily_flips": 15,
+      "success_rate_pct": 58.3
+    }
+  ],
+  "schema": [
+    "collection:str",
+    "marketplace:str",
+    "avg_flip_profit_usd:float",
+    "daily_flips:int",
+    "success_rate_pct:float"
+  ],
+  "notes": "Automação de compra/venda rápida de NFTs baseada em sinais de preço e volume. Proxy TIER0: GitHub repos (nft snipers, blur/opensea bots). Fonte oficial alvo: OpenSea/Blur APIs + Reservoir Protocol. Zero capital: simulação apenas.",
+  "sha256": "be4cccdbdd37295115d5dddc43749a26964fc2003da7e9030f76f890189ac7ff"
+}
