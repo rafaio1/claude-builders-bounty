@@ -51,6 +51,51 @@ def build_ledger_index(ledger: dict) -> dict:
     """
     index = {}
     
+    # Process reconciled_bounties list (canonical location for active bounties)
+    reconciled = ledger.get("reconciled_bounties", None)
+    if isinstance(reconciled, list):
+        for entry in reconciled:
+            if not isinstance(entry, dict):
+                continue
+            keys = []
+            # Build key from issue/pr fields
+            repo = entry.get("repo", "")
+            issue_num = entry.get("issue")
+            pr_num = entry.get("pr")
+            if repo and issue_num is not None:
+                keys.append(f"{repo}#{issue_num}")
+            if repo and pr_num is not None:
+                keys.append(f"{repo}#{pr_num}")
+            # Also extract from URLs
+            for url_field in ("issue_url", "pr_url"):
+                url = entry.get(url_field, "")
+                if url:
+                    parts = str(url).rstrip("/").split("/")
+                    if len(parts) >= 5:
+                        url_repo = f"{parts[3]}/{parts[4]}"
+                        num = parts[-1]
+                        keys.append(f"{url_repo}#{num}")
+            # Normalize field names for classify_pr compatibility
+            normalized = dict(entry)
+            if "bounty_value" in normalized and "value" not in normalized:
+                normalized["value"] = normalized["bounty_value"]
+            if "bounty_currency" in normalized and "currency" not in normalized:
+                normalized["currency"] = normalized["bounty_currency"]
+            if "evidence_url" not in normalized and "claim_url" not in normalized:
+                # Use pr_url or issue_url as evidence if status indicates claim exists
+                status = str(normalized.get("status", "")).upper()
+                if status in ("CLAIM_PENDING", "PAYMENT_PENDING", "PAID", "PR_SUBMITTED"):
+                    normalized["evidence_url"] = normalized.get("pr_url") or normalized.get("issue_url")
+            # Map status to claim_status/payout_status for classify_pr
+            status = str(normalized.get("status", "")).upper()
+            if "claim_status" not in normalized:
+                normalized["claim_status"] = status
+            if "payout_status" not in normalized:
+                normalized["payout_status"] = status
+            for k in keys:
+                if k and k not in index:
+                    index[k] = normalized
+
     # Always process flat dict entries first (canonical format)
     for key, entry in ledger.items():
         if isinstance(entry, dict) and "#" in str(key):
