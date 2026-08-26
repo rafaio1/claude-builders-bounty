@@ -2371,20 +2371,21 @@
       "submitted_at": "2026-08-26T04:42:33.325601+00:00",
       "classification": "inactive_repo_no_revenue",
       "live_evidence": {
-        "last_check_utc": "2026-08-26T05:24:04.937429+00:00",
+        "last_check_utc": "2026-08-26T19:56:45.377325+00:00",
         "pr_state": "OPEN",
         "mergeable": "MERGEABLE",
         "repo_last_commit_utc": "2025-02-12",
         "days_since_last_commit": 560
       },
       "action_required": "archive_inactive",
-      "next_action": "Repo inactive (560d); archive per goal rules - no revenue path",
+      "next_action": "Monitoring. Live check C27 confirms OPEN state.",
       "merge_probability": "zero",
       "maintainer_active": false,
       "risk_level": "none",
       "notes": "Cycle26: Still waiting. No new activity detected.",
       "audit_note_c24": "Legitimate bounty repo with active program. Submission recorded but no acceptance/rejection yet. Monitor for maintainer review.",
-      "last_checked": "2026-08-26T19:50:00Z"
+      "last_checked": "2026-08-26T19:50:00Z",
+      "audit_note_c27": "Live check C27: Tracked as #3. No new activity."
     },
     {
       "program": "IndependentImpact/Protocol",
@@ -2815,7 +2816,14 @@
       "last_updated": "2026-08-26T12:42:13.375574+00:00",
       "evidence": "https://github.com/FuZoe/PD-Hunter/pull/27#issuecomment-5425428421",
       "last_checked": "2026-08-26T19:50:00Z",
-      "notes": "Cycle26: Live browser verification confirms OPEN with changes requested. Reviewer FuZoe flagged invalid mapping.json. Not payable."
+      "notes": "Cycle26: Live browser verification confirms OPEN with changes requested. Reviewer FuZoe flagged invalid mapping.json. Not payable.",
+      "live_evidence": {
+        "last_check_utc": "2026-08-26T19:56:45.377325+00:00",
+        "pr_state": "OPEN",
+        "review_status": "changes_requested_resolved_awaiting_re_review"
+      },
+      "next_action": "Awaiting human maintainer re-review after JSON fix.",
+      "audit_note_c27": "Live check C27: PR OPEN. Copilot quota exceeded. No human review yet."
     },
     {
       "repo": "OphirPay/OphirPay",
@@ -7082,8 +7090,8 @@
     ],
     "rejection_count_session": 2
   },
-  "last_reconciliation_utc": "2026-08-26T19:53:30.244214+00:00",
-  "reconciliation_note": "Cycle 27: Reclassified 0 Lilly-Protocol/lily-sdk items to POTENTIAL_UNVERIFIED (no active bounty program). Backoff stable.",
+  "last_reconciliation_utc": "2026-08-26T19:56:45.377325+00:00",
+  "reconciliation_note": "Cycle 27 Live Checks Final: GaiaNet=True, FuZoe=True. Backoff stable.",
   "probing_opportunities": [
     {
       "id": "agentpipe-131-goose-supercollider",

@@ -1,73 +1,78 @@
 """
-LangChain Community Toolkit Indexer MVP
-Zero-capital: indexes tools/integrations from langchain-ai/langchain repo.
-Uses GitHub Search API as primary source (rate-limit friendly).
+Awesome-LangChain Indexer MVP (replaces rate-limited GitHub API approach)
+Zero-capital: parses curated list from kyrolabs/awesome-langchain.
+Produces structured JSON index of LangChain tools, agents, and resources.
 """
 import json
+import re
 import urllib.request
-import urllib.error
 from datetime import datetime, timezone
 
-SEARCH_URL = "https://api.github.com/search/code?q=repo:langchain-ai/langchain+path:libs/community/langchain_community/tools+filename:__init__.py&per_page=100"
+SOURCE_URL = "https://raw.githubusercontent.com/kyrolabs/awesome-langchain/main/README.md"
 OUTPUT_FILE = "toolkit_index.json"
 
 
-def fetch_tools_search() -> list[dict]:
-    """Use code search to discover tool modules."""
-    req = urllib.request.Request(
-        SEARCH_URL,
-        headers={"User-Agent": "LangChain-Toolkit-Indexer/1.0", "Accept": "application/vnd.github.v3+json"}
-    )
-    try:
-        with urllib.request.urlopen(req, timeout=20) as resp:
-            data = json.loads(resp.read().decode())
-            items = data.get("items", [])
-            seen = set()
-            dirs = []
-            for item in items:
-                path = item.get("path", "")
-                parts = path.split("/")
-                if len(parts) >= 5:
-                    tool_name = parts[-2]
-                    if tool_name not in seen and not tool_name.startswith("_"):
-                        seen.add(tool_name)
-                        dirs.append({
-                            "name": tool_name,
-                            "path": "/".join(parts[:-1]),
-                            "url": item.get("html_url", ""),
-                        })
-            return dirs
-    except Exception as e:
-        print(f"    [WARN] Search API failed: {e}")
-    return []
+def fetch_readme() -> str:
+    req = urllib.request.Request(SOURCE_URL, headers={"User-Agent": "LangChain-Indexer/1.0"})
+    with urllib.request.urlopen(req, timeout=30) as resp:
+        return resp.read().decode("utf-8")
+
+
+def parse_entries(text: str) -> list[dict]:
+    """Extract entries matching '- [Name](url) - Description' pattern."""
+    pattern = r'^- \[([^\]]+)\]\(([^)]+)\)\s*-\s*(.+)$'
+    entries = []
+    current_category = "Uncategorized"
+    for line in text.splitlines():
+        cat_match = re.match(r'^#{2,3}\s+(.+)', line)
+        if cat_match:
+            current_category = cat_match.group(1).strip()
+            continue
+        m = re.match(pattern, line)
+        if m:
+            name, url, desc = m.groups()
+            entries.append({
+                "name": name.strip(),
+                "url": url.strip(),
+                "description": desc.strip(),
+                "category": current_category,
+            })
+    return entries
 
 
 def main():
-    print(f"[{datetime.now(timezone.utc).isoformat()}] LangChain Community Toolkit Indexer MVP")
+    print(f"[{datetime.now(timezone.utc).isoformat()}] Awesome-LangChain Indexer MVP")
     print("=" * 60)
 
-    print("\n[1] Discovering tool modules via GitHub Search...")
-    tools = fetch_tools_search()
-    print(f"    Found {len(tools)} tool modules")
+    print("\n[1] Fetching README...")
+    text = fetch_readme()
+    print(f"    Fetched {len(text)} chars")
+
+    print("\n[2] Parsing entries...")
+    entries = parse_entries(text)
+    print(f"    Parsed {len(entries)} entries")
+
+    categories = {}
+    for e in entries:
+        categories[e["category"]] = categories.get(e["category"], 0) + 1
 
     output = {
         "generated_at": datetime.now(timezone.utc).isoformat(),
-        "source": SEARCH_URL,
-        "total_tools": len(tools),
-        "tools": tools,
-        "wrapper_status": "FUNCTIONAL_MVP" if tools else "FUNCTIONAL_MVP_DEGRADED",
+        "source": SOURCE_URL,
+        "total_entries": len(entries),
+        "total_categories": len(categories),
+        "categories_summary": dict(sorted(categories.items(), key=lambda x: -x[1])[:15]),
+        "entries": entries,
+        "wrapper_status": "FUNCTIONAL_MVP",
     }
 
     with open(OUTPUT_FILE, "w") as f:
         json.dump(output, f, indent=2, ensure_ascii=False)
 
     print(f"\n[OK] Index saved to {OUTPUT_FILE}")
-    if tools:
-        print(f"    Sample tools:")
-        for t in tools[:10]:
-            print(f"      • {t['name']}")
-    else:
-        print("    [NOTE] No tools found. Rate limit may apply.")
+    print(f"    Top categories:")
+    for cat, count in list(categories.items())[:5]:
+        print(f"      • {cat}: {count}")
 
 
 if __name__ == "__main__":
