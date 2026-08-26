@@ -1,0 +1,37 @@
+{
+  "pilot_name": "backblaze-b2-reseller-scaffold",
+  "status": "SCAFFOLD_REJECTED",
+  "rejection_reason": "TOS/AUP proíbe explicitamente revenda, sublicenciamento ou redistribuição sem autorização prévia por escrito. Free tier (10GB) não é isento desta restrição. Modelo de revenda direta INVIÁVEL.",
+  "free_tier_limits": {
+    "storage": "10 GB (primeiros 10GB sempre gratuitos)",
+    "egress": "3x armazenamento mensal gratuito + ilimitado via parceiros CDN (Cloudflare, Fastly, bunny.net etc.)",
+    "transactions": "Class A/B/C gratuitas para pay-as-you-go; Class D: $0.004/10k chamadas (primeiras 2500/dia grátis)",
+    "notes": "Sem taxa mínima de arquivo, sem duração mínima de retenção"
+  },
+  "paid_plan_baseline": {
+    "storage_per_tb_month": 6.95,
+    "egress_overage_per_gb": 0.01,
+    "class_d_transactions_per_10k": 0.004
+  },
+  "tos_compliance": {
+    "resale_allowed": false,
+    "sublicensing_allowed": false,
+    "commercial_use_restricted": true,
+    "requires_written_authorization": true,
+    "source_url": "https://www.backblaze.com/company/policy/acceptable-use-policy",
+    "key_clause": "Sell, resell, license, sublicense, distribute, rent, or lease any Service, without prior written authorization from Backblaze."
+  },
+  "reselling_model": null,
+  "risks": [
+    "Revenda direta viola AUP — risco de suspensão imediata",
+    "Modelo managed-service possível apenas se cliente possuir conta própria (mesmo padrão do Supabase)",
+    "Free tier de 10GB é generoso mas não contorna proibição de revenda"
+  ],
+  "next_steps": [
+    "REJEITADO como scaffold de revenda direta",
+    "Possível pivot futuro para 'B2 Setup Consulting' onde o cliente contrata e paga a própria conta Backblaze",
+    "Manter no radar caso Backblaze lance programa oficial de parceiros/resellers com free tier dedicado"
+  ],
+  "validated_at": "2026-08-27T00:00:00+00:00",
+  "validation_method": "curl + parsing HTML da página de pricing e AUP"
+}

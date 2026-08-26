@@ -17,12 +17,14 @@ REJECTIONS_LOG = Path("data/expansion/prescreen_rejections.jsonl")
 
 # Keywords indicating likely ADIAR causes (from deferral_analysis.json)
 CAPITAL_KEYWORDS = [
-    r"\busd\s*\d+", r"\bbrl\s*\d+", r"\$\s*\d+", r"r\$\s*\d+",
+    r"\busd\s*\d+", r"\bbrl\s*\d+", r"\$\s*\d+[kmb]?", r"r\$\s*\d+",
     r"\bpago\b", r"\bpaid\b", r"\bcusto\b", r"\bcost\b",
     r"\bpre[cç]o\b", r"\bprice\b", r"\bassinatura\b", r"\bsubscription\b",
     r"\bretainer\b", r"\blicen[cç]a\b", r"\blicense\b",
     r"\binvestimento\b", r"\binvestment\b", r"\bcapital\s+necess",
     r"\bfee\s+mensal", r"\bmensalidade\b", r"\bplano\s+pago\b",
+    r"\benterprise\b", r"\bag[eê]ncia\b", r"\bagency\b", r"\bb2b\b",
+    r"\bsla\b", r"\bmulti[- ]?tenant\b", r"\bwhite[- ]?label\b",
 ]
 
 TOS_LEGAL_KEYWORDS = [
@@ -43,9 +45,10 @@ def check_proposal(proposal: dict) -> tuple[bool, str | None]:
     capital_hits = [kw for kw in CAPITAL_KEYWORDS if re.search(kw, text)]
     tos_hits = [kw for kw in TOS_LEGAL_KEYWORDS if re.search(kw, text)]
 
-    # Only reject if BOTH capital AND tos signals present (reduces false positives)
-    # OR if capital signal is very strong (multiple matches)
-    if len(capital_hits) >= 2 and tos_hits:
+    # Reject if BOTH capital AND tos signals present
+    # OR if capital signal is strong (>=3 matches, covers pure cost barriers)
+    # OR if explicit TOS blockers found
+    if len(capital_hits) >= 2 and len(tos_hits) >= 1:
         return True, f"CAPITAL+TOS: capital_keywords={len(capital_hits)}, tos_keywords={len(tos_hits)}"
     if len(capital_hits) >= 3:
         return True, f"CAPITAL_STRONG: {len(capital_hits)} capital keyword matches"
