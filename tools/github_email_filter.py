@@ -107,13 +107,23 @@ def process_github_emails():
             with open(PENDING_PATH, 'a') as f:
                 f.write(json.dumps(entry, ensure_ascii=False) + '\n')
     
+    # SAFETY: Never auto-trash during discovery/triage.
+    # Noise classification is logged but messages stay in INBOX.
+    # Individual trash only after action completed and ledger recorded.
     if trash_ids:
-        # Use batchModify to move to TRASH instead of permanent delete
-        service.users().messages().batchModify(
-            userId='me',
-            body={'ids': trash_ids, 'addLabelIds': ['TRASH'], 'removeLabelIds': ['INBOX']}
-        ).execute()
-        print(f"AUTO-TRASHED {len(trash_ids)} GitHub noise emails.")
+        for mid in trash_ids:
+            entry = {
+                'source': 'gmail_github',
+                'message_id': mid,
+                'subject': '',
+                'classification': {'category': 'noise', 'action': 'candidate_trash_post_action', 'reason': 'github_noise_deferred'},
+                'parsed_at': datetime.now(timezone.utc).isoformat(),
+                'note': 'Deferred trash: requires explicit post-action confirmation'
+            }
+            os.makedirs(os.path.dirname(PENDING_PATH), exist_ok=True)
+            with open(PENDING_PATH, 'a') as f:
+                f.write(json.dumps(entry, ensure_ascii=False) + '\n')
+        print(f"DEFERRED TRASH {len(trash_ids)} GitHub noise emails → enqueued for post-action review (NOT deleted).")
     
     print(f"KEPT {pertinent_count} pertinent GitHub emails → routed to {PENDING_PATH}")
     print(f"REVIEW {len(messages) - len(trash_ids) - pertinent_count} unclassified GitHub emails.")
