@@ -1,0 +1,28 @@
+{
+  "method_id": "558",
+  "name": "Freelance contract generator (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:27:58.186746+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_role": "staff_augmentation",
+      "non_solicit_months": 12,
+      "liability_cap_usd": 50000,
+      "subcontracting_allowed": false
+    },
+    {
+      "agency_role": "managed_service",
+      "sla_uptime_pct": 99.9,
+      "penalty_rate_pct": 5,
+      "subcontracting_allowed": true
+    }
+  ],
+  "schema": [
+    "agency_role",
+    "non_solicit_months",
+    "liability_cap_usd",
+    "subcontracting_allowed"
+  ],
+  "notes": "MSA e SOWs para agências B2B com cláusulas de não-solicitação e SLAs. Proxy: GitHub Search 'agency msa template saas'. Foco em proteção de margem e retenção de talentos."
+}

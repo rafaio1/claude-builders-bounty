@@ -1,0 +1,28 @@
+{
+  "method_id": "560",
+  "name": "Freelance client lead scraper (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:28:18.496905+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_vertical": "ai_dev_tools",
+      "lead_source": "product_hunt_launches",
+      "enrichment_api": "clearbit_mock",
+      "outreach_channel": "cold_email"
+    },
+    {
+      "startup_vertical": "climate_tech",
+      "lead_source": "grant_recipients_db",
+      "enrichment_api": "apollo_free_tier",
+      "outreach_channel": "twitter_dm"
+    }
+  ],
+  "schema": [
+    "startup_vertical",
+    "lead_source",
+    "enrichment_api",
+    "outreach_channel"
+  ],
+  "notes": "Geração de leads para startups que vendem serviços técnicos. Proxy: GitHub Search 'startup lead gen scraper free'. Foco em fontes alternativas ao LinkedIn."
+}

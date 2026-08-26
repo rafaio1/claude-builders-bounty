@@ -1,0 +1,28 @@
+{
+  "method_id": "559",
+  "name": "Freelance client lead scraper",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:28:18.496905+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_platform": "linkedin_public",
+      "niche_filter": "saas_cto",
+      "daily_scrape_limit": 50,
+      "dedup_strategy": "email_hash"
+    },
+    {
+      "source_platform": "crunchbase_funding",
+      "niche_filter": "series_a_fintech",
+      "daily_scrape_limit": 30,
+      "dedup_strategy": "domain_normalized"
+    }
+  ],
+  "schema": [
+    "source_platform",
+    "niche_filter",
+    "daily_scrape_limit",
+    "dedup_strategy"
+  ],
+  "notes": "Scraping de leads B2B para freelancers usando fontes públicas. Zero-capital: sem API paga do LinkedIn/Salesforce. Proxy: GitHub Search 'linkedin scraper python public'. Fonte oficial alvo: LinkedIn Sales Navigator API (TIER1)."
+}
