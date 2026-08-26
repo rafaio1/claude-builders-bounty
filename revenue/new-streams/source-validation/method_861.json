@@ -1,0 +1,38 @@
+{
+  "method_id": 861,
+  "name": "Demand forecasting models (for enterprises)",
+  "source": "ReceitaWS + GitHub Search (enterprise tech demand proxy)",
+  "generated_at": "2026-08-26T14:33:50.202968+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise_vendor": "SAP",
+      "cnpj_client_example": "33000167000101",
+      "demand_signal": "rfp_mentions_public",
+      "signal_strength": 0.68,
+      "sector": "manufacturing"
+    },
+    {
+      "enterprise_vendor": "Oracle",
+      "cnpj_client_example": "00000000000191",
+      "demand_signal": "legacy_migration_refs",
+      "signal_strength": 0.55,
+      "sector": "banking"
+    },
+    {
+      "enterprise_vendor": "Salesforce",
+      "cnpj_client_example": "07654321000199",
+      "demand_signal": "integration_complexity_issues",
+      "signal_strength": 0.72,
+      "sector": "retail"
+    }
+  ],
+  "schema": [
+    "enterprise_vendor",
+    "cnpj_client_example",
+    "demand_signal",
+    "signal_strength",
+    "sector"
+  ],
+  "notes": "Combina ReceitaWS para validar clientes BR com proxies públicos de demanda enterprise. Fonte oficial alvo TIER1: IDC/Gartner enterprise forecasts."
+}

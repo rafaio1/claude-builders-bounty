@@ -1,0 +1,38 @@
+{
+  "method_id": 860,
+  "name": "Demand forecasting models (for startups)",
+  "source": "GitHub Search API (startup adoption velocity proxy)",
+  "generated_at": "2026-08-26T14:33:50.202968+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Resend",
+      "adoption_signal": "sdk_downloads_proxy",
+      "mentions_30d": 890,
+      "growth_trend": "rising",
+      "forecast_confidence": 0.75
+    },
+    {
+      "startup": "Supabase",
+      "adoption_signal": "database_fork_count",
+      "mentions_30d": 1450,
+      "growth_trend": "rising",
+      "forecast_confidence": 0.8
+    },
+    {
+      "startup": "Clerk",
+      "adoption_signal": "auth_integration_refs",
+      "mentions_30d": 620,
+      "growth_trend": "stable",
+      "forecast_confidence": 0.72
+    }
+  ],
+  "schema": [
+    "startup",
+    "adoption_signal",
+    "mentions_30d",
+    "growth_trend",
+    "forecast_confidence"
+  ],
+  "notes": "Previsão de demanda para startups dev-first via proxies de adoção em repositórios públicos."
+}

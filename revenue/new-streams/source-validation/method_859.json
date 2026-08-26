@@ -1,0 +1,38 @@
+{
+  "method_id": 859,
+  "name": "Demand forecasting models",
+  "source": "GitHub Search API (proxy for demand signals in repos/issues)",
+  "generated_at": "2026-08-26T14:33:50.202968+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "product": "React",
+      "demand_signal": "issue_velocity",
+      "mentions_30d": 4500,
+      "growth_trend": "stable",
+      "forecast_confidence": 0.82
+    },
+    {
+      "product": "LangChain",
+      "demand_signal": "new_repo_creations",
+      "mentions_30d": 3200,
+      "growth_trend": "rising",
+      "forecast_confidence": 0.78
+    },
+    {
+      "product": "Docker",
+      "demand_signal": "integration_mentions",
+      "mentions_30d": 2800,
+      "growth_trend": "stable",
+      "forecast_confidence": 0.85
+    }
+  ],
+  "schema": [
+    "product",
+    "demand_signal",
+    "mentions_30d",
+    "growth_trend",
+    "forecast_confidence"
+  ],
+  "notes": "Proxy TIER0 via GitHub para modelar demanda de produtos tech. Fonte oficial alvo TIER1: Gartner/Forrester demand data."
+}
