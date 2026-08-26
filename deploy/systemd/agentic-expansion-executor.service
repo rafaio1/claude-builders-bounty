@@ -1,0 +1,16 @@
+[Unit]
+Description=Agentic Expansion Executor (dry-run queue builder)
+After=network.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+Environment=PYTHONPATH=/Agentic/src
+ExecStart=/usr/bin/python3 -m agentic.expansion_executor.cli --proposals data/expansion/proposals.jsonl --verdicts data/expansion/verdicts.jsonl --state-output data/expansion/executor_state.json --queue-output data/expansion/executor_queue.jsonl --dry-run --max-per-cycle 3
+LockPersonality=true
+ProtectSystem=strict
+ReadWritePaths=/Agentic/data/expansion /tmp
+NoNewPrivileges=true
+
+[Install]
+WantedBy=multi-user.target
