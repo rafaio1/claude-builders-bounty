@@ -1,0 +1,31 @@
+{
+  "method_id": "407",
+  "name": "Token sentiment tracker (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_token": "GTC",
+      "repo_fork_velocity": 12.5,
+      "contributor_sentiment_index": 0.78,
+      "ecosystem_health": "growing"
+    },
+    {
+      "dev_token": "RAD",
+      "repo_fork_velocity": 2.1,
+      "contributor_sentiment_index": 0.42,
+      "ecosystem_health": "stagnant"
+    }
+  ],
+  "schema": [
+    "dev_token",
+    "repo_fork_velocity",
+    "contributor_sentiment_index",
+    "ecosystem_health"
+  ],
+  "notes": "Variante para developer DAOs e governance tokens técnicos. Usa métricas de atividade open-source como proxy de sentimento. Fonte direta: GitHub GraphQL API (pública). Zero-capital: agregação de métricas de repositórios sem auth.",
+  "generated_at": "2026-08-26T15:06:55.245168+00:00",
+  "_meta": {
+    "hash": "818815fc982576bf036f5cfad3d6363c075664f5c04f682c267c60088b48cc7a"
+  }
+}

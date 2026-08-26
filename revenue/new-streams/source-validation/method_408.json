@@ -1,0 +1,31 @@
+{
+  "method_id": "408",
+  "name": "Token sentiment tracker (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_client_token": "ARB",
+      "multi_platform_sentiment_avg": 0.61,
+      "campaign_correlation_score": 0.83,
+      "report_readiness": true
+    },
+    {
+      "agency_client_token": "OP",
+      "multi_platform_sentiment_avg": 0.29,
+      "campaign_correlation_score": 0.41,
+      "report_readiness": false
+    }
+  ],
+  "schema": [
+    "agency_client_token",
+    "multi_platform_sentiment_avg",
+    "campaign_correlation_score",
+    "report_readiness"
+  ],
+  "notes": "Variante B2B para agências de marketing crypto. Agrega sentimento multi-plataforma e correlaciona com campanhas. Proxy TIER0 via ferramentas de social listening open-source no GitHub. Fonte oficial alvo: Brandwatch Consumer Research API ou Talkwalker.",
+  "generated_at": "2026-08-26T15:06:55.245168+00:00",
+  "_meta": {
+    "hash": "c96229755a0c895fdf3bab7ac40953f7fc6b66a455522989ab4172d0ab3a5a50"
+  }
+}

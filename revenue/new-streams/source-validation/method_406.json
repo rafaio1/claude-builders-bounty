@@ -1,0 +1,31 @@
+{
+  "method_id": "406",
+  "name": "Token sentiment tracker (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_token": "FRIENDS",
+      "social_engagement_delta": 0.34,
+      "holder_retention_7d": 0.88,
+      "sentiment_label": "positive"
+    },
+    {
+      "creator_token": "KOLX",
+      "social_engagement_delta": -0.12,
+      "holder_retention_7d": 0.45,
+      "sentiment_label": "negative"
+    }
+  ],
+  "schema": [
+    "creator_token",
+    "social_engagement_delta",
+    "holder_retention_7d",
+    "sentiment_label"
+  ],
+  "notes": "Variante para criadores de conteúdo/social tokens. Foca em engajamento social e retenção de holders como proxies de sentimento. Proxy TIER0 via repositórios de social-fi analytics no GitHub. Fonte oficial alvo: Rally API ou BitClout data dumps.",
+  "generated_at": "2026-08-26T15:06:55.245168+00:00",
+  "_meta": {
+    "hash": "fee77274025c2b2f094fa679ad5cc66ad410c8a77246e02768fae66c4ccab93f"
+  }
+}
