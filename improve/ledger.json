@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T12:46:53+00:00",
+  "updated_at": "2026-08-26T12:55:11+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -527,7 +527,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T124653Z",
+      "map_id": "20260826T125511Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -554,7 +554,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T124653Z",
+      "map_id": "20260826T125511Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -581,7 +581,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T124653Z",
+      "map_id": "20260826T125511Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -610,7 +610,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T124653Z",
+      "map_id": "20260826T125511Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -8677,6 +8677,93 @@
           "at": "2026-08-26T12:46:53+00:00",
           "event": "mapped",
           "detail": "20260826T124653Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-sanitiza-o-e-persist-ncia-de-traces-da-ghostcli",
+      "key": "e9a71cc68109df3a",
+      "canon": "13fce2ce6ac65d3d",
+      "title": "Sanitização e persistência de traces da GhostCLI",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Avaliar a qualidade e o comportamento das IAs (theme=ai) exige histórico de prompts e respostas do develop, garantindo que nenhuma secret vaze nos logs.",
+      "change": "Adicionar interceptor em claude_cli.py e ghostcli.py para salvar traces sanitizados (redigindo chaves) em um diretório de auditoria local, ignorado pelo git.",
+      "never": [
+        "logar ANTHROPIC_BASE_URL",
+        "logar chaves da Bybit",
+        "versionar traces no git"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T125511Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:55:11+00:00",
+          "event": "mapped",
+          "detail": "20260826T125511Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-parser-estruturado-para-playwright-cli",
+      "key": "6404ed88ea4aef65",
+      "canon": "e42cc628aa169f7e",
+      "title": "Parser estruturado para playwright-cli",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Com o playwright-mcp desativado no motor para economizar tokens, a interação via CLI (theme=tools) gera saídas em texto/markdown difíceis de consumir programaticamente pelos agentes.",
+      "change": "Criar um helper que invoque o playwright-cli headless e converta o snapshot de saída para um dicionário Python estruturado via regex ou parser de markdown.",
+      "never": [
+        "reativar playwright-mcp no motor",
+        "remover a flag --no-sandbox"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright_helper.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T125511Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:55:11+00:00",
+          "event": "mapped",
+          "detail": "20260826T125511Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-m-trica-de-consumo-de-tokens-no-develop",
+      "key": "bc740357bd8b19f9",
+      "canon": "27e11ac3fc450b8d",
+      "title": "Métrica de consumo de tokens no develop",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "A fila de develop processa prompts extensos via Claude CLI. Monitorar o uso de tokens (theme=ai) ajuda a refatorar o contexto e otimizar o custo das iterações.",
+      "change": "Extrair metadados de uso de tokens da resposta da API GhostCLI e anexá-los ao registro da tarefa no ledger do improve.py.",
+      "never": [
+        "alterar o OWNER_SHARE_RATE",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T125511Z",
+      "history": [
+        {
+          "at": "2026-08-26T12:55:11+00:00",
+          "event": "mapped",
+          "detail": "20260826T125511Z"
         }
       ]
     }
