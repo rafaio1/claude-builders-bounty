@@ -1323,8 +1323,8 @@
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 663,
     "generated_at": "2026-08-26T15:44:52.346646+00:00",
-    "total": 744,
-    "last_updated": "2026-08-26T15:55:57.678903+00:00"
+    "total": 750,
+    "last_updated": "2026-08-26T15:56:52.597071+00:00"
   },
   "10": {
     "file": "method_10.json",
@@ -11767,5 +11767,215 @@
     ],
     "notes": "Agency variant provides white-label client management, bulk updates, and reporting dashboards. Proxy TIER0 via GitHub Search for MainWP/ManageWP OSS clones. Official targets: WordPress Multisite API + Custom License Server. Monetization via per-site agency pricing. Zero-capital PoC uses local multisite + mock license validation; production requires VPS but starts on free tier.",
     "_hash": "6e731bd269bc2e7b25d2d31cc603cd89a387bbe16a509d0b6b9f3ce590e180f4"
+  },
+  "205": {
+    "method_id": "205",
+    "name": "Shopify app subscription",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:25.467766+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "active_merchants",
+        "value": 320,
+        "unit": "stores",
+        "period": "30d"
+      },
+      {
+        "metric": "app_store_rating",
+        "value": 4.8,
+        "unit": "stars",
+        "period": "current"
+      },
+      {
+        "metric": "mrr",
+        "value": 2850.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for Shopify app boilerplates (Node/Ruby + Billing API). Official source: Shopify Partner Dashboard + Admin API. Zero-capital path uses free partner account + development store. Revenue via recurring app charges; approval requires app review but no upfront fee.",
+    "_hash": "4a162f6ddeb8ea0896962673c17aafa9d658d01222520c8a9e6f4179b21a40ea"
+  },
+  "206": {
+    "method_id": "206",
+    "name": "Shopify app subscription (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:25.467766+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_merchant_signups",
+        "value": 45,
+        "unit": "stores",
+        "period": "14d"
+      },
+      {
+        "metric": "feature_usage_rate",
+        "value": 68.2,
+        "unit": "%",
+        "period": "7d"
+      },
+      {
+        "metric": "trial_conversion",
+        "value": 15.5,
+        "unit": "%",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant focuses on niche problem solving (e.g., niche shipping, custom bundles). Proxy TIER0 targets open-source Shopify apps with monetization gaps. Official integration: Shopify App Bridge + Billing API. Zero-capital via free dev store + manual feedback collection. Iterate based on merchant pain points.",
+    "_hash": "dd723bf62eb885235e3953d83d3e86d353c906c4b6796494d1552110c50df20e"
+  },
+  "207": {
+    "method_id": "207",
+    "name": "Shopify app subscription (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:25.467766+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_gmv_processed",
+        "value": 1250000,
+        "unit": "USD",
+        "period": "30d"
+      },
+      {
+        "metric": "custom_integrations",
+        "value": 8,
+        "unit": "clients",
+        "period": "current"
+      },
+      {
+        "metric": "avg_contract_value",
+        "value": 1200,
+        "unit": "USD/mo",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant targets high-volume merchants needing custom logic, ERP sync, or multi-store management. Proxy TIER0 via GitHub Search for enterprise-grade Shopify Plus apps. Official targets: Shopify Plus Partner Program + GraphQL Admin API. Monetization via usage-based or tiered enterprise pricing. Zero-capital PoC uses dev store + mock data; production requires Plus partner status (free application).",
+    "_hash": "b17d567d4fbc92a380edcabcd5f752d2a085db3352320ca438bcbdfb0c6423aa"
+  },
+  "208": {
+    "method_id": "208",
+    "name": "Shopify app subscription (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:52.597071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "creator_store_count",
+        "value": 185,
+        "unit": "stores",
+        "period": "30d"
+      },
+      {
+        "metric": "digital_product_sales",
+        "value": 4200,
+        "unit": "units",
+        "period": "30d"
+      },
+      {
+        "metric": "app_revenue_share",
+        "value": 70.0,
+        "unit": "%",
+        "period": "net"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant enables digital downloads, exclusive content gating, or tip jars on Shopify. Proxy TIER0 via GitHub Search for digital product delivery apps. Official targets: Shopify Admin API + Files API. Zero-capital via free partner account + manual file hosting initially.",
+    "_hash": "d851f747fc175dd5026c04d5c7be9b5d3ae0d13c679744d0e6610b9552ce6975"
+  },
+  "209": {
+    "method_id": "209",
+    "name": "Shopify app subscription (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:52.597071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "dev_tool_installs",
+        "value": 890,
+        "unit": "stores",
+        "period": "30d"
+      },
+      {
+        "metric": "api_call_volume",
+        "value": 125000,
+        "unit": "calls",
+        "period": "30d"
+      },
+      {
+        "metric": "pro_tier_adoption",
+        "value": 12.4,
+        "unit": "%",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant offers store analytics, SEO auditing, or bulk editing tools. Proxy TIER0 targets open-source Shopify CLI extensions. Official integration: Shopify GraphQL Admin API + App Bridge. Monetization via usage-based or tiered developer pricing. Zero-capital using free dev store + local tunneling.",
+    "_hash": "bbff66dc0a98e2b9cde8ec84247812b390b0553066298821046e8e023578e3ef"
+  },
+  "210": {
+    "method_id": "210",
+    "name": "Shopify app subscription (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:56:52.597071+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "managed_stores",
+        "value": 45,
+        "unit": "clients",
+        "period": "current"
+      },
+      {
+        "metric": "setup_time_reduction",
+        "value": 75.0,
+        "unit": "%",
+        "period": "vs_manual"
+      },
+      {
+        "metric": "agency_mrr",
+        "value": 4500.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant provides multi-store management, white-label reporting, and client onboarding automation. Proxy TIER0 via GitHub Search for agency dashboard Shopify apps. Official targets: Shopify Partner API + Organization Admin. Monetization via per-store agency licensing. Zero-capital PoC uses single dev store + mock multi-tenancy.",
+    "_hash": "ab91e2aed13b055e5dcbdcf963bd0bd6afac6dbff13a2136bf6bf7bae9da74aa"
   }
 }
