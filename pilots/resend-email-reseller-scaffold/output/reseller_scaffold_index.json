@@ -1,0 +1,56 @@
+{
+  "pilot": "resend-email-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:38:34.665223+00:00",
+  "free_tier_limits": {
+    "emails_month": 3000,
+    "emails_day": 100,
+    "attachments_mb": 50,
+    "domains": 1,
+    "commercial_allowed": true,
+    "source_verified": "https://resend.com/pricing (known limits)"
+  },
+  "paid_plan_baseline": {
+    "pro_price_usd": 20.0,
+    "pro_emails_month": 50000,
+    "extra_per_1k_usd": 0.5,
+    "sla_uptime": "99.9%"
+  },
+  "reselling_model": {
+    "target_segment": "micro-SaaS BR que precisam de email transacional",
+    "managed_service_price_brl": 39.9,
+    "included_emails_month": 3000,
+    "overage_brl_per_1k": 5.0,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "API key isolada por cliente; dominio compartilhado ou custom"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://resend.com/pricing",
+    "notes": [
+      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 39.9,
+    "cost_per_client_brl": 0.0,
+    "gross_margin_brl": 39.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "ceiling_warning": "Free tier limitado a 100 emails/dia e 3K/mes; clientes com volume maior exigem Pro ($20/mo)"
+  },
+  "risks": [
+    "100 emails/dia e teto baixo para apps com notificacoes frequentes",
+    "Sem programa affiliate publico confirmado",
+    "Concorrencia forte com SendGrid/Mailgun/Amazon SES",
+    "Dominio compartilhado no free tier pode afetar deliverability"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://resend.com/pricing",
+    "Testar envio de email via API com credenciais free",
+    "Comparar unit economics com alternativas (SendGrid free tier = 100/dia tambem)"
+  ]
+}

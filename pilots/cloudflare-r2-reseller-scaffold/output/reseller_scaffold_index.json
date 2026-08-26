@@ -1,0 +1,55 @@
+{
+  "pilot": "cloudflare-r2-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:37:47.770918+00:00",
+  "free_tier_limits": {
+    "storage_gb": 10,
+    "class_a_operations_million": 1,
+    "class_b_operations_million": 10,
+    "egress_gb": 0,
+    "commercial_allowed": true,
+    "source_verified": "https://developers.cloudflare.com/r2/pricing/ (known limits)"
+  },
+  "paid_plan_baseline": {
+    "storage_per_gb_usd": 0.015,
+    "class_a_per_million_usd": 3.6,
+    "class_b_per_million_usd": 0.36,
+    "egress_free": true
+  },
+  "reselling_model": {
+    "target_segment": "devs BR que precisam de S3-compativel sem egress fee",
+    "managed_service_price_brl": 49.9,
+    "included_storage_gb": 10,
+    "overage_brl_per_gb": 0.15,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "1 bucket por cliente com prefix isolation ou buckets separados"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://developers.cloudflare.com/r2/pricing/",
+    "notes": [
+      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 49.9,
+    "cost_per_client_brl": 0.0,
+    "gross_margin_brl": 49.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "ceiling_warning": "Free tier generoso (10GB + zero egress); escala linear apos limite"
+  },
+  "risks": [
+    "Zero egress fee e diferencial mas Cloudflare pode mudar politica",
+    "Class A operations limitadas a 1M/mes no free; uploads pesados consomem rapido",
+    "Sem programa affiliate publico confirmado para R2 especificamente"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://developers.cloudflare.com/r2/pricing/",
+    "Testar criacao de bucket e upload via API com credenciais free",
+    "Comparar com Backblaze B2 scaffold (#39) - B2 tem affiliate 15%"
+  ]
+}

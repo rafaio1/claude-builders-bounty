@@ -1,0 +1,60 @@
+{
+  "pilot": "grafana-cloud-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:38:15.274812+00:00",
+  "free_tier_limits": {
+    "metrics_series": 10000,
+    "logs_gb_month": 50,
+    "traces_gb_month": 50,
+    "profiles_cpu_hours": 100,
+    "users": 3,
+    "retention_days": 30,
+    "commercial_allowed": true,
+    "source_verified": "https://grafana.com/pricing/ (known limits)"
+  },
+  "paid_plan_baseline": {
+    "pro_price_usd_per_user": 8.0,
+    "advanced_price_usd_per_user": 29.0,
+    "extra_metrics_per_1k_usd": 0.5,
+    "extra_logs_per_gb_usd": 0.3,
+    "sla_uptime": "99.5%"
+  },
+  "reselling_model": {
+    "target_segment": "startups BR que precisam de observabilidade sem self-host",
+    "managed_service_price_brl": 79.9,
+    "included_users": 3,
+    "overage_brl_per_user": 35.0,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "1 org Grafana por cliente; free tier cobre ate 3 usuarios"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://grafana.com/pricing/",
+    "notes": [
+      "Limites baseados em conhecimento previo; requer validacao via playwright-cli"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 79.9,
+    "cost_per_client_brl": 0.0,
+    "gross_margin_brl": 79.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "ceiling_warning": "Free tier limitado a 3 usuarios e 10K series; crescimento exige Pro ($8/user/mo)"
+  },
+  "risks": [
+    "Free tier limitado a 3 usuarios - teto baixo para revenda B2B",
+    "10K metric series pode ser insuficiente para apps com muitas instancias",
+    "Sem programa affiliate publico confirmado para Grafana Cloud",
+    "Concorrencia forte com Datadog/New Relic que tem free tiers tambem"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://grafana.com/pricing/",
+    "Testar criacao de org e convite de usuarios via API",
+    "Pesquisar programa partner Grafana Labs",
+    "Comparar com alternativas open-source self-hosted (Prometheus/Loki)"
+  ]
+}
