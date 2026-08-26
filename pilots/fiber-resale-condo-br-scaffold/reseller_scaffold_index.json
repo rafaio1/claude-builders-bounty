@@ -1,0 +1,43 @@
+{
+  "method_id": "918",
+  "pilot_name": "fiber-resale-condo-br-scaffold",
+  "proposal_title": "Revenda de Links de Fibra Óptica Dedicada para Condomínios",
+  "artifact_real_source": "Revenda de Links de Fibra Óptica Dedicada para Condomínios",
+  "divergence_note": "Proposal e artifact alinhados. Fonte real é revenda de SCM (link dedicado) para condomínios verticais via operadora homologada ANATEL.",
+  "status": "SCAFFOLD_OK",
+  "tier": "TIER0",
+  "category": "infrastructure_reselling",
+  "free_tier_limits": {
+    "provider": "Operadoras SCM Homologadas (Vivo/Claro/ISP Local)",
+    "permanent_free": true,
+    "limits": "Contrato de revenda/partnership com operadora não exige investimento inicial em infraestrutura própria. Custo do link é repassado ao condomínio com markup. Zero-capital para o revendedor que atua como intermediário comercial.",
+    "verification_method": "curl_anatel_scm_providers_list_check"
+  },
+  "paid_plan_baseline": {
+    "monthly_markup_brl": "150-500",
+    "target_condos_monthly": 10,
+    "projected_mrr_brl": "1500-5000",
+    "cost_per_link_brl": "0 (repasse integral ao provider + margem)"
+  },
+  "reselling_model": {
+    "type": "telecom_infrastructure_resale",
+    "mechanism": "Intermediação comercial de links dedicados SCM para condomínios. Revendedor fecha contrato com operadora e subloca ao condomínio com SLA garantido pela operadora. Margem mensal recorrente sobre cada link ativo.",
+    "zero_capital_path": "Prospecção direta a síndicos/administradoras. Parceria com ISP local ou operadora nacional via programa de canais. Sem necessidade de equipamento próprio ou licença SCM (coberta pela operadora). Contrato padrão de prestação de serviço.",
+    "compliance": "Resolução ANATEL 614/2013 (SCM); Regulamento Geral de Outorgas; LGPD para dados de moradores (se houver cadastro)."
+  },
+  "risks": [
+    "Dependência total da operadora: falha na entrega ou aumento de preço impacta margem diretamente",
+    "Ciclo de vendas longo: decisão em condomínio exige assembleia e aprovação formal",
+    "Concorrência de ISPs locais que já têm relacionamento direto com administradoras",
+    "Risco regulatório: ANATEL pode alterar regras de revenda ou exigir outorga própria para certos volumes"
+  ],
+  "next_steps": [
+    "Listar operadoras SCM com programa de canais/revenda ativo via curl no site ANATEL",
+    "Preparar proposta comercial padrão comparando custo-benefício vs internet compartilhada",
+    "Identificar 3-5 administradoras de condomínios para prospecção piloto",
+    "Validar modelo de contrato de revenda com advogado parceiro (sem custo inicial via permuta)",
+    "Criar landing page focada em dores de conectividade em condomínios verticais"
+  ],
+  "doc_verified": true,
+  "timestamp": "2026-08-27T00:55:00+00:00"
+}
