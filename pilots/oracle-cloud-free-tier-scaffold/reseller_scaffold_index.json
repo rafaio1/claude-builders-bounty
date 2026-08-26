@@ -1,0 +1,65 @@
+{
+  "pilot": "oracle-cloud-free-tier",
+  "service": "Oracle Cloud Infrastructure (OCI) Always Free",
+  "status": "SCAFFOLD_OK",
+  "analysis_date": "2026-08-26T21:59:00+00:00",
+  "free_tier": {
+    "exists": true,
+    "permanent": true,
+    "limits": {
+      "compute_arm": "4 OCPUs + 24 GB RAM (VM.Standard.A1.Flex, 3000 OCPU-hrs/mo)",
+      "compute_amd": "2x VM.Standard.E2.1.Micro (1 OCPU + 1 GB each)",
+      "block_storage": "200 GB boot volumes",
+      "object_storage": "20 GB combined tiers + 50K requests/mo",
+      "egress": "10 TB/month outbound data transfer",
+      "load_balancer": "1 Flexible LB (10 Mbps) + 1 Network LB",
+      "database": "2 Autonomous Databases (20 GB each)",
+      "email_delivery": "3000 emails/month",
+      "certificates": "5 CAs + 150 certificates"
+    },
+    "notes": "Always Free resources are permanent for the life of the account in home region. No credit card required for free-only accounts."
+  },
+  "paid_plan_baseline": {
+    "model": "Pay-as-you-go after free tier exhaustion",
+    "notes": "Upgrade optional; free-only accounts never charged automatically"
+  },
+  "tos_analysis": {
+    "sublicensing_allowed": false,
+    "resale_allowed": false,
+    "assignment_clause": "Standard enterprise TOS — no resale/sublicensing without Oracle partner agreement",
+    "commercial_use_restrictions": "Direct resale of raw OCI capacity prohibited. However, building and selling managed applications/services ON TOP of free tier is standard practice (SaaS model).",
+    "end_user_exception": true,
+    "key_risks": [
+      "Cannot resell raw compute/storage as-is (no white-label IaaS rights)",
+      "Home region lock-in for Always Free resources",
+      "Capacity availability not guaranteed ('out of host capacity' errors possible)",
+      "Account suspension risk if usage patterns trigger fraud detection on free-only accounts"
+    ],
+    "viability_notes": "Managed Setup Service model viable: agent provisions and manages OCI infrastructure for client's own application deployment. Client owns tenancy; agent charges for setup, configuration, monitoring, and maintenance. Similar to Clerk Auth pattern."
+  },
+  "reselling_model": {
+    "viable": true,
+    "model_type": "MANAGED_INFRASTRUCTURE_SETUP",
+    "description": "Agent creates/manages OCI Always Free tenancy for client. Deploys client apps on free ARM/AMD instances. Charges one-time setup fee + optional monthly management retainer. Client pays $0 to Oracle directly.",
+    "revenue_streams": [
+      "Setup fee: $50-200 per tenancy provisioning + app deployment",
+      "Monthly management: $20-50/mo for monitoring, updates, backups",
+      "Migration services: $100-500 for moving existing workloads to OCI free tier"
+    ],
+    "zero_capital_viability": true
+  },
+  "next_steps": [
+    "Create PoC: automated OCI tenancy setup script using OCI CLI/API",
+    "Document standard deployment templates (Node.js, Python, static sites)",
+    "Build monitoring/alerting stack within free tier limits",
+    "Validate TOS for managed service wrapper via Oracle Partner Network docs"
+  ],
+  "alternatives_compared": [
+    "AWS Free Tier (12-month trial only, not permanent)",
+    "GCP Free Tier ($300 credits + limited always-free, less generous than OCI)",
+    "Azure Free (12-month credits + limited always-free)"
+  ],
+  "doc_verified": true,
+  "verification_method": "web.archive.org snapshot of OCI Always Free Resources documentation (live site returned 403)",
+  "timestamp": "2026-08-26T21:59:00+00:00"
+}

@@ -10,7 +10,7 @@
       "owner": "rafaio1",
       "value": 4700,
       "currency": "USD",
-      "status": "submitted",
+      "status": "closed_not_merged",
       "last_action": "2026-08-26T03:23:50.959667+00:00",
       "evidence": "PR #6131 OPEN/MERGEABLE. Reviews=0 (API confirmed). Issue #3 last comment 2026-08-05. No maintainer engagement since submission.",
       "next_action": "monitor_for_review",
@@ -51,7 +51,8 @@
       "value_source": "issue_bot_comment_2026-05-16",
       "pr_state": "OPEN",
       "pr_merged": false,
-      "last_checked": "2026-08-26T05:02:47.090766+00:00"
+      "last_checked": "2026-08-26T05:02:47.090766+00:00",
+      "note": "PR closed without merge per GitHub API check 2026-08-27"
     },
     {
       "program": "Opire/LillyProtocol",
@@ -1795,14 +1796,16 @@
       "owner": "rafaio1",
       "value": null,
       "currency": "USDT",
-      "status": "CLAIM_PENDING",
+      "status": "closed_not_merged",
       "tier": "A",
       "payout_address": "TXfFL2bQsVnnsDQm3KYSZxx2pwWMhGSiex",
       "payout_network": "TRC20",
       "evidence_url": "https://github.com/OphirPay/OphirPay/pull/254",
       "notes": "Axe accessibility scan wired into CI. Labeler pass, Vercel external auth gate (non-blocking), Greptile pending.",
       "created_at": "2026-08-26T19:17:14.742978+00:00",
-      "updated_at": "2026-08-26T19:17:14.742978+00:00"
+      "updated_at": "2026-08-26T19:17:14.742978+00:00",
+      "closed_at": "2026-08-26T19:33:44Z",
+      "note": "PR closed without merge per GitHub API check 2026-08-27"
     },
     {
       "repo": "claude-builders-bounty/claude-builders-bounty",
@@ -3026,9 +3029,9 @@
       "pr": 228,
       "issue": 86,
       "title": "Visual regression tests",
-      "status": "p1_claim_invalidated_awaiting_rebuttal_post",
+      "status": "p1_rebuttal_posted_awaiting_reviewer_ack",
       "tier": 1,
-      "next_action": "post_rebuttal_comment_with_playwright_list_evidence",
+      "next_action": "monitor_for_reviewer_response_or_merge",
       "evidence": [
         {
           "note": "Greptile testIgnore fix pushed ddbe468; firefox excludes visual, chromium includes 8. Comment posted.",
@@ -3058,6 +3061,12 @@
           "total_tests_all_projects": 335,
           "action_taken": "no_code_change_needed",
           "next_step": "post_evidence_based_rebuttal_comment_on_pr"
+        },
+        {
+          "type": "rebuttal_posted",
+          "date": "2026-08-26T22:00:27.380244+00:00",
+          "comment_url": "https://github.com/OphirPay/OphirPay/pull/228#issuecomment-5431615764",
+          "summary": "Posted evidence-based rebuttal invalidating P1 claim about testIgnore glob mismatch using playwright --list output"
         }
       ],
       "reviews": [
@@ -3073,7 +3082,7 @@
       "mergeable": true,
       "payout_verified": true,
       "program": "Stellar Wave / Drips",
-      "last_action": "2026-08-26T21:56:49.098932+00:00",
+      "last_action": "2026-08-26T22:00:27.380244+00:00",
       "updated_at": "2026-08-26T21:51:15.850884+00:00",
       "pr_url": "https://github.com/OphirPay/OphirPay/pull/228",
       "branch": "feat/visual-regression-tests-86"
