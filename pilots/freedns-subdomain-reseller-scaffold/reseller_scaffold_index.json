@@ -1,0 +1,37 @@
+{
+  "pilot_id": "freedns-subdomain-reseller",
+  "method_ref": "method_911",
+  "provider": "FreeDNS (afraid.org)",
+  "status": "SCAFFOLD_REJECTED",
+  "decision_rationale": "Operador individual sem entidade corporativa; ausência de licença explícita de revenda/sublicenciamento; termos vagos sobre uso comercial; risco alto de violação por 'fraudulent/abusive activity' em modelo de reselling não autorizado.",
+  "free_tier_limits": {
+    "subdomains": "unlimited (reasonable use)",
+    "dns_records": "dynamic DNS included",
+    "premium_features": "wildcard, stealth flags, +50 subdomains only on paid plan"
+  },
+  "paid_plan_baseline": {
+    "name": "Premium",
+    "price_usd_monthly": 5.00,
+    "features": ["50+ subdomains", "wildcard DNS", "stealth flags"]
+  },
+  "reselling_model": {
+    "feasible": false,
+    "license_type": "personal use (implied)",
+    "sublicensable": false,
+    "transferable": false,
+    "commercial_use_allowed": "unclear / not explicitly permitted",
+    "operator_type": "individual (Joshua Anderson)",
+    "sla_available": false
+  },
+  "risks": [
+    "No explicit resell or sublicense permission in AUP",
+    "Operator is individual with no corporate entity or SLA",
+    "Commercial use terms are vague; reselling could be deemed abusive",
+    "Unilateral modification of terms without notice",
+    "Password sharing prohibited; account-level access cannot be delegated"
+  ],
+  "next_steps": [],
+  "tos_source": "/tmp/afraid_aup_real.txt",
+  "tos_url": "https://freedns.afraid.org/signup/aup/",
+  "timestamp": "2026-08-27T00:00:00+00:00"
+}
