@@ -2830,15 +2830,17 @@
       "pr": 225,
       "issue": 209,
       "title": "test(e2e): add webhook delivery + retry flow E2E tests",
-      "status": "OPEN_AWAITING_REVIEW",
+      "status": "review_addressed_waiting_vercel_auth",
       "tier": 1,
-      "next_action": "Address Greptile P2 review: refactor retry loop to invoke deliverWebhook or add explicit production-path coverage test",
+      "next_action": "Wait for CodingAngel1 team Vercel authorization; then monitor CI and maintainer re-review after Greptile P2 response",
       "evidence": {
         "pr_url": "https://github.com/OphirPay/OphirPay/pull/225",
         "branch": "feat/e2e-webhook-delivery-retry-209",
         "greptile_review_email": "1a03dcc01298cb75",
         "vercel_auth_email": "1a03dca6ce9683f4",
-        "last_checked_utc": "2026-08-26T20:50:00Z"
+        "last_checked_utc": "2026-08-26T21:15:00Z",
+        "vercel_auth_pending_email": "1a03dca6ce9683f4",
+        "greptile_p2_response_comment": "posted_via_previous_session"
       },
       "reviews": [
         {
@@ -2855,10 +2857,10 @@
     {
       "repo": "Lilly-Protocol/lily-frontend",
       "pr_number": 151,
-      "status": "OPEN_VERCEL_AUTH_PENDING",
+      "status": "waiting_vercel_auth",
       "mergeable": "MERGEABLE",
       "payment_eligibility_risk": "MODERATE",
-      "next_action": "Vercel auth pending for Heymide team. Does not block merge eligibility. Non-bounty goodwill contribution.",
+      "next_action": "Wait for Heymide team member to authorize Vercel deployment; no contributor action needed",
       "last_check": "2026-08-26T12:49:12Z",
       "discovery_method": "gmail_triage_1241Z_lilly_batch",
       "linked_issue": 59,
@@ -2877,7 +2879,8 @@
       "evidence": {
         "pr_url": "https://github.com/Lilly-Protocol/lily-frontend/pull/150",
         "vercel_email": "1a03df0244231a91",
-        "last_checked_utc": "2026-08-26T20:50:00Z"
+        "last_checked_utc": "2026-08-26T21:15:00Z",
+        "vercel_auth_email": "1a03df0244231a91"
       }
     },
     {
