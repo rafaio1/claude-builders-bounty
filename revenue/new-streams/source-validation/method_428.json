@@ -1,0 +1,31 @@
+{
+  "method_id": "428",
+  "name": "Gas price predictor (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "DEX_Aggregator",
+      "optimal_tx_window_utc": "03:00-05:00",
+      "estimated_savings_pct": 35.0,
+      "batch_strategy": "cowswap"
+    },
+    {
+      "protocol": "NFT_Marketplace",
+      "optimal_tx_window_utc": "14:00-16:00",
+      "estimated_savings_pct": 12.0,
+      "batch_strategy": "standard"
+    }
+  ],
+  "schema": [
+    "protocol",
+    "optimal_tx_window_utc",
+    "estimated_savings_pct",
+    "batch_strategy"
+  ],
+  "notes": "Variante para startups DeFi focada em otimização de custos operacionais. Proxy via repositórios de MEV-protection e batch auction solvers. Fonte oficial: Flashbots Protect API ou EigenNetwork.",
+  "generated_at": "2026-08-26T15:09:07.946976+00:00",
+  "_meta": {
+    "hash": "4be7ba12d19f2c8ec33869780c41572a7f9b02df753781e056c63ed6f6ad00aa"
+  }
+}

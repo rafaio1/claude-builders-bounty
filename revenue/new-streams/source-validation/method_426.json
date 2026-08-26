@@ -1,0 +1,37 @@
+{
+  "method_id": "426",
+  "name": "Smart contract auditor (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_project": "BrandLoyaltyToken",
+      "audit_readiness_pct": 85.0,
+      "regulatory_exposure_flag": false,
+      "recommended_auditors": [
+        "certik",
+        "hacken"
+      ]
+    },
+    {
+      "client_project": "GamingGuildDAO",
+      "audit_readiness_pct": 32.0,
+      "regulatory_exposure_flag": true,
+      "recommended_auditors": [
+        "trail_of_bits",
+        "openzeppelin"
+      ]
+    }
+  ],
+  "schema": [
+    "client_project",
+    "audit_readiness_pct",
+    "regulatory_exposure_flag",
+    "recommended_auditors"
+  ],
+  "notes": "Variante B2B para agências web3. Gera relatórios de prontidão de auditoria e exposição regulatória para clientes. Proxy via templates de audit-report generators no GitHub. Fonte oficial: De.Fi REKT Leaderboard ou Solodit aggregated reports.",
+  "generated_at": "2026-08-26T15:08:45.608690+00:00",
+  "_meta": {
+    "hash": "511b54a0a3fe0a7e83205432cfbae6d70dc2c192c88305e7c2d1a2f0b2c9bba2"
+  }
+}

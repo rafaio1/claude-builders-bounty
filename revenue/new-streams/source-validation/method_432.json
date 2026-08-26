@@ -1,0 +1,31 @@
+{
+  "method_id": "432",
+  "name": "Gas price predictor (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "campaign_type": "airdrop_distribution",
+      "batch_size": 5000,
+      "total_est_gas_cost_usd": 1250.0,
+      "recommended_l2": "arbitrum"
+    },
+    {
+      "campaign_type": "loyalty_token_claim",
+      "batch_size": 800,
+      "total_est_gas_cost_usd": 95.0,
+      "recommended_l2": "optimism"
+    }
+  ],
+  "schema": [
+    "campaign_type",
+    "batch_size",
+    "total_est_gas_cost_usd",
+    "recommended_l2"
+  ],
+  "notes": "Variante B2B para agências de marketing web3. Estima custos totais de campanhas on-chain e recomenda L2s. Proxy via scripts de batch-cost calculators no GitHub. Fonte oficial: Rollup Costs API ou L2Fees.info.",
+  "generated_at": "2026-08-26T15:09:22.748243+00:00",
+  "_meta": {
+    "hash": "cbb7aec9dbe0f635d037f50f553bc54f1df7f5928915cc2ac9b71b8676f55681"
+  }
+}

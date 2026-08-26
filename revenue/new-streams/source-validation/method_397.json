@@ -1,0 +1,36 @@
+{
+  "method_id": "397",
+  "name": "Rug pull detector API",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:17.402309+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "SCAM-A",
+      "chain": "ethereum",
+      "risk_score": 92,
+      "flags": [
+        "honeypot",
+        "mintable",
+        "no_renounce"
+      ],
+      "liquidity_locked_pct": 0
+    },
+    {
+      "token": "SAFE-B",
+      "chain": "base",
+      "risk_score": 15,
+      "flags": [],
+      "liquidity_locked_pct": 100
+    }
+  ],
+  "schema": [
+    "token:str",
+    "chain:str",
+    "risk_score:int",
+    "flags:list",
+    "liquidity_locked_pct:float"
+  ],
+  "notes": "API de detecção de rug pulls via análise estática de contratos e liquidez. Proxy TIER0: GitHub repos (rugcheck, tokensniffer clones). Fonte oficial alvo: Etherscan/Basescan APIs + honeypot.is. Zero capital: simulação apenas.",
+  "sha256": "3edddbb5cc8a30b96bac23b104909587ca5c3dc53ec229ecca4194e435ec7696"
+}

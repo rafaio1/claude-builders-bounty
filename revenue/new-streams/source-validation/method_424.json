@@ -1,0 +1,36 @@
+{
+  "method_id": "424",
+  "name": "Smart contract auditor (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_contract": "NFTDropCollectionA",
+      "royalty_enforcement": true,
+      "metadata_mutability_risk": "low",
+      "marketplace_compatibility": [
+        "opensea",
+        "blur"
+      ]
+    },
+    {
+      "creator_contract": "MusicRoyaltyVaultB",
+      "royalty_enforcement": false,
+      "metadata_mutability_risk": "high",
+      "marketplace_compatibility": [
+        "sound_xyz"
+      ]
+    }
+  ],
+  "schema": [
+    "creator_contract",
+    "royalty_enforcement",
+    "metadata_mutability_risk",
+    "marketplace_compatibility"
+  ],
+  "notes": "Variante para criadores NFT/música. Foca em enforcement de royalties e compatibilidade com marketplaces. Proxy TIER0 via repositórios de ERC-721/ERC-2981 checkers no GitHub. Fonte oficial: Manifold Studio docs ou Zora smart contracts.",
+  "generated_at": "2026-08-26T15:08:45.608690+00:00",
+  "_meta": {
+    "hash": "602feceb1c8318f600989bde31c9b389094b7e4162080855ffda7f24663d9cec"
+  }
+}

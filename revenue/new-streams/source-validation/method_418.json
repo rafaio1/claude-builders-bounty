@@ -1,0 +1,31 @@
+{
+  "method_id": "418",
+  "name": "Wallet tracking alerts (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_wallet": "0xArtistVault",
+      "event_type": "nft_mint_revenue",
+      "amount_eth": 12.5,
+      "fan_wallet_count": 342
+    },
+    {
+      "creator_wallet": "0xMusicDAO",
+      "event_type": "royalty_payout",
+      "amount_eth": 2.8,
+      "fan_wallet_count": 89
+    }
+  ],
+  "schema": [
+    "creator_wallet",
+    "event_type",
+    "amount_eth",
+    "fan_wallet_count"
+  ],
+  "notes": "Variante para criadores. Rastreia receita de mints e royalties diretamente na wallet do artista. Proxy TIER0 via repositórios de creator-economy on-chain trackers. Fonte oficial: Zora Network API ou Sound.xyz subgraph.",
+  "generated_at": "2026-08-26T15:08:05.890189+00:00",
+  "_meta": {
+    "hash": "b5bcc3f8434d847732e97b98dcdd15f970852b0965619e10479817b82f04f3c6"
+  }
+}

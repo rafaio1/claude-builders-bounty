@@ -1,0 +1,34 @@
+{
+  "method_id": "435",
+  "name": "Bridge arbitrage (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "CrossChain Treasury",
+      "route": "eth_to_solana",
+      "slippage_tolerance_pct": 0.05,
+      "compliance_cleared": true,
+      "settlement_time_min": 12
+    },
+    {
+      "entity": "OTC Desk Global",
+      "route": "arb_to_polygon",
+      "slippage_tolerance_pct": 0.2,
+      "compliance_cleared": false,
+      "settlement_time_min": 45
+    }
+  ],
+  "schema": [
+    "entity",
+    "route",
+    "slippage_tolerance_pct",
+    "compliance_cleared",
+    "settlement_time_min"
+  ],
+  "notes": "Variante enterprise focada em execução institucional e compliance. Proxy TIER0 via simuladores de rota cross-chain. Fonte oficial: Fireblocks Transfer API ou Circle CCTP.",
+  "generated_at": "2026-08-26T15:09:44.736058+00:00",
+  "_meta": {
+    "hash": "0e282c6e688c161fa62de35f65f9876e60e22d17281a741c6d0aafbc8b3e0d91"
+  }
+}

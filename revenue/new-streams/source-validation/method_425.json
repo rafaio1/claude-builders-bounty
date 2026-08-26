@@ -1,0 +1,31 @@
+{
+  "method_id": "425",
+  "name": "Smart contract auditor (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_project": "DeFiYieldAggregator",
+      "gas_optimization_score": 0.72,
+      "upgradeability_pattern": "UUPS",
+      "test_suite_framework": "foundry"
+    },
+    {
+      "dev_project": "CrossChainBridgeModule",
+      "gas_optimization_score": 0.45,
+      "upgradeability_pattern": "transparent_proxy",
+      "test_suite_framework": "hardhat"
+    }
+  ],
+  "schema": [
+    "dev_project",
+    "gas_optimization_score",
+    "upgradeability_pattern",
+    "test_suite_framework"
+  ],
+  "notes": "Variante técnica para devs. Avalia otimização de gas, padrões de upgrade e frameworks de teste. Proxy via repositórios de gas-snapshots e proxy-admin analyzers. Fonte oficial: OpenZeppelin Defender ou Tenderly Simulations.",
+  "generated_at": "2026-08-26T15:08:45.608690+00:00",
+  "_meta": {
+    "hash": "50e02ba8c7983430b95b452d5d3cc4f04c4d0ea1fb1f479776eaaf6105540226"
+  }
+}

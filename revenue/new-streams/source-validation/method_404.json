@@ -1,0 +1,31 @@
+{
+  "method_id": "404",
+  "name": "Token sentiment tracker (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_token": "AERO",
+      "community_growth_rate": 0.18,
+      "dev_activity_score": 0.65,
+      "sentiment_trend": "bullish"
+    },
+    {
+      "startup_token": "ZRO",
+      "community_growth_rate": -0.04,
+      "dev_activity_score": 0.31,
+      "sentiment_trend": "neutral"
+    }
+  ],
+  "schema": [
+    "startup_token",
+    "community_growth_rate",
+    "dev_activity_score",
+    "sentiment_trend"
+  ],
+  "notes": "Variante para startups DeFi. Foca em crescimento de comunidade e atividade dev como proxies de sentimento. Fonte oficial alvo: Dune Analytics dashboards públicos + GitHub commits.",
+  "generated_at": "2026-08-26T15:06:41.227472+00:00",
+  "_meta": {
+    "hash": "10a982e0032a2aed71e55b9881a4e153670a753ad64661abb81e2108bf39c4fc"
+  }
+}

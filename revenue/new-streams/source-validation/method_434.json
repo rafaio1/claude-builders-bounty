@@ -1,0 +1,31 @@
+{
+  "method_id": "434",
+  "name": "Bridge arbitrage (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "NewL2DEX",
+      "liquidity_imbalance_usd": 450000,
+      "rebalancing_opportunity": true,
+      "est_profit_net_fees_usd": 120
+    },
+    {
+      "protocol": "StableMintDAO",
+      "liquidity_imbalance_usd": 12000,
+      "rebalancing_opportunity": false,
+      "est_profit_net_fees_usd": 0
+    }
+  ],
+  "schema": [
+    "protocol",
+    "liquidity_imbalance_usd",
+    "rebalancing_opportunity",
+    "est_profit_net_fees_usd"
+  ],
+  "notes": "Variante para startups DeFi/L2s. Foca em oportunidades de rebalancing de liquidez nativa. Proxy via repositórios de LP position managers. Fonte oficial: DefiLlama Yields + Bridge Volume API.",
+  "generated_at": "2026-08-26T15:09:44.736058+00:00",
+  "_meta": {
+    "hash": "1cb03a94ad72772f10882962fd07c7a7f9d508fdf894161da107a4695dfc9625"
+  }
+}

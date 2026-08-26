@@ -1,0 +1,31 @@
+{
+  "method_id": "429",
+  "name": "Gas price predictor (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "entity": "Institutional Custodian",
+      "sla_compliance_prob": 0.99,
+      "priority_fee_budget_usd": 500,
+      "settlement_layer": "l1_mainnet"
+    },
+    {
+      "entity": "Payment Processor",
+      "sla_compliance_prob": 0.95,
+      "priority_fee_budget_usd": 50,
+      "settlement_layer": "l2_arbitrum"
+    }
+  ],
+  "schema": [
+    "entity",
+    "sla_compliance_prob",
+    "priority_fee_budget_usd",
+    "settlement_layer"
+  ],
+  "notes": "Variante enterprise focada em SLAs e budgeting de transações. Proxy TIER0 via simuladores de fee market. Fonte oficial: Alchemy Gas Manager API ou Infura Transactions API.",
+  "generated_at": "2026-08-26T15:09:07.946976+00:00",
+  "_meta": {
+    "hash": "f19160a1081b2f5c320a884bb855999e3cbf5812de5cd6507a38686b4a2200c1"
+  }
+}

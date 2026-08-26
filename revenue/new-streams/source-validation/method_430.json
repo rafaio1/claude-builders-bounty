@@ -1,0 +1,31 @@
+{
+  "method_id": "430",
+  "name": "Gas price predictor (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_action": "nft_mint_batch",
+      "recommended_gwei": 12.5,
+      "est_cost_usd_per_mint": 0.85,
+      "network": "base"
+    },
+    {
+      "creator_action": "royalty_claim",
+      "recommended_gwei": 28.0,
+      "est_cost_usd_per_tx": 1.42,
+      "network": "ethereum"
+    }
+  ],
+  "schema": [
+    "creator_action",
+    "recommended_gwei",
+    "est_cost_usd_per_tx",
+    "network"
+  ],
+  "notes": "Variante para criadores NFT/música. Otimiza custos de mint e claims de royalties. Proxy TIER0 via repositórios de gas-efficient minting contracts. Fonte oficial: L2Beat Gas Dashboard ou BaseScan.",
+  "generated_at": "2026-08-26T15:09:22.748243+00:00",
+  "_meta": {
+    "hash": "f78c2134f53ee6738e8fe05a3e4d60d60b87763dc6db3d63ef6465e86fc95d3d"
+  }
+}

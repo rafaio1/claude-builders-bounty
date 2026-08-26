@@ -1,0 +1,32 @@
+{
+  "method_id": "373",
+  "name": "Staking validator node",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:31.349443+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "cosmos_hub",
+      "commission_pct": 5.0,
+      "uptime_pct": 99.9,
+      "monthly_reward_usd": 1250,
+      "self_stake_usd": 5000
+    },
+    {
+      "chain": "osmosis",
+      "commission_pct": 7.5,
+      "uptime_pct": 99.8,
+      "monthly_reward_usd": 890,
+      "self_stake_usd": 3000
+    }
+  ],
+  "schema": [
+    "chain:str",
+    "commission_pct:float",
+    "uptime_pct:float",
+    "monthly_reward_usd:float",
+    "self_stake_usd:float"
+  ],
+  "notes": "Operação de nó validador em redes PoS. Proxy TIER0: GitHub repos (cosmos-sdk validators, tendermint nodes). Fonte oficial alvo: Chain-specific RPC + staking APIs. Zero capital: simulação de métricas apenas.",
+  "sha256": "ec365d9413db61ab8856acd023b5f81fe99d47f8c71b6a1e73871b19dfb45a1f"
+}

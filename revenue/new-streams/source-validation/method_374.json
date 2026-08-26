@@ -1,0 +1,32 @@
+{
+  "method_id": "374",
+  "name": "Staking validator node (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:31.349443+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "sei_network",
+      "commission_pct": 10.0,
+      "delegators_count": 45,
+      "monthly_revenue_usd": 420,
+      "infra_cost_usd": 85
+    },
+    {
+      "chain": "celestia",
+      "commission_pct": 8.0,
+      "delegators_count": 28,
+      "monthly_revenue_usd": 310,
+      "infra_cost_usd": 65
+    }
+  ],
+  "schema": [
+    "chain:str",
+    "commission_pct:float",
+    "delegators_count:int",
+    "monthly_revenue_usd:float",
+    "infra_cost_usd:float"
+  ],
+  "notes": "Validadores em chains emergentes com menor barreira de entrada. Proxy TIER0: GitHub search (new chain validator setups). Fonte oficial alvo: Testnet docs + community staking dashboards. Dados sintéticos de receita.",
+  "sha256": "7fd350c4ad96b6c7e84f96f286607df3dedd0148ce2a5abda70f93459c7c940c"
+}

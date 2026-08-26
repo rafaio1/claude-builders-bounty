@@ -1,0 +1,31 @@
+{
+  "method_id": "431",
+  "name": "Gas price predictor (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_task": "contract_deployment",
+      "simulated_gas_units": 2850000,
+      "optimal_priority_fee_gwei": 1.5,
+      "mev_protection": true
+    },
+    {
+      "dev_task": "multicall_aggregation",
+      "simulated_gas_units": 450000,
+      "optimal_priority_fee_gwei": 0.8,
+      "mev_protection": false
+    }
+  ],
+  "schema": [
+    "dev_task",
+    "simulated_gas_units",
+    "optimal_priority_fee_gwei",
+    "mev_protection"
+  ],
+  "notes": "Variante técnica para devs. Simula consumo de gas e sugere priority fees com proteção MEV opcional. Proxy via repositórios de foundry/hardhat gas reporters. Fonte oficial: Flashbots Gas API ou Tenderly Gas Estimator.",
+  "generated_at": "2026-08-26T15:09:22.748243+00:00",
+  "_meta": {
+    "hash": "55f268639962edb5dee6d939d7bccd8c7e5f8029447c04a054a76f2fdad2a782"
+  }
+}

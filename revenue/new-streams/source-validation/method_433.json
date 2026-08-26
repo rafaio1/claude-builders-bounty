@@ -1,0 +1,34 @@
+{
+  "method_id": "433",
+  "name": "Bridge arbitrage",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "USDC",
+      "chain_a": "ethereum",
+      "chain_b": "arbitrum",
+      "spread_pct": 0.18,
+      "bridge_protocol": "stargate"
+    },
+    {
+      "token": "WETH",
+      "chain_a": "optimism",
+      "chain_b": "base",
+      "spread_pct": -0.05,
+      "bridge_protocol": "across"
+    }
+  ],
+  "schema": [
+    "token",
+    "chain_a",
+    "chain_b",
+    "spread_pct",
+    "bridge_protocol"
+  ],
+  "notes": "Monitoramento genérico de spreads cross-chain. Proxy TIER0 via repositórios de bridge aggregators e price feeders no GitHub. Fonte oficial: Li.Fi API ou Socket Protocol.",
+  "generated_at": "2026-08-26T15:09:44.736058+00:00",
+  "_meta": {
+    "hash": "6252aee25f5b68e855f9714c4eaafd7335a929e7a95a7648301e55a56b7c530a"
+  }
+}

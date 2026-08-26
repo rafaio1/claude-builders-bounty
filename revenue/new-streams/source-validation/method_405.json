@@ -1,0 +1,31 @@
+{
+  "method_id": "405",
+  "name": "Token sentiment tracker (for enterprises)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Coinbase",
+      "token": "COIN",
+      "institutional_sentiment": 0.81,
+      "regulatory_risk_flag": false
+    },
+    {
+      "enterprise": "MicroStrategy",
+      "token": "MSTR",
+      "institutional_sentiment": 0.69,
+      "regulatory_risk_flag": true
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "token",
+    "institutional_sentiment",
+    "regulatory_risk_flag"
+  ],
+  "notes": "Variante enterprise. Rastreia sentimento institucional e flags regulatórias. Proxy TIER0 via repositórios de compliance/regtech no GitHub. Fonte oficial: SEC EDGAR + Glassnode institutional flows.",
+  "generated_at": "2026-08-26T15:06:41.227472+00:00",
+  "_meta": {
+    "hash": "824d2fe0bf043d7804e9de3a49d1dc1eab20bd28b0d0e824f68dcbfa17e1ca6c"
+  }
+}

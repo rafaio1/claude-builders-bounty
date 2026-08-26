@@ -1,0 +1,31 @@
+{
+  "method_id": "420",
+  "name": "Wallet tracking alerts (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_campaign_wallet": "0xBrandLaunchQ3",
+      "kpi_event": "airdrop_completion",
+      "unique_recipients": 15420,
+      "cost_per_acquisition_usd": 1.2
+    },
+    {
+      "client_campaign_wallet": "0xTokenGenEvent",
+      "kpi_event": "liquidity_incentive_claim",
+      "unique_recipients": 4200,
+      "cost_per_acquisition_usd": 3.8
+    }
+  ],
+  "schema": [
+    "client_campaign_wallet",
+    "kpi_event",
+    "unique_recipients",
+    "cost_per_acquisition_usd"
+  ],
+  "notes": "Variante B2B para agências de marketing web3. Correlaciona eventos on-chain com KPIs de campanha (CPA, alcance). Proxy via scrapers de airdrop claim pages no GitHub. Fonte oficial: Galxe API or Zealy data exports.",
+  "generated_at": "2026-08-26T15:08:05.890189+00:00",
+  "_meta": {
+    "hash": "e7fec3c6bc3b76c8a29c13f1cc58b1e8352f567429ab8f2145679f6410fc2df9"
+  }
+}

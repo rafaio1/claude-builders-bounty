@@ -1,0 +1,31 @@
+{
+  "method_id": "419",
+  "name": "Wallet tracking alerts (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_multisig": "GnosisSafe-ProtocolX",
+      "action": "bounty_payout",
+      "recipient_dev": "0xContributorA",
+      "amount_usdc": 1500
+    },
+    {
+      "dev_multisig": "Gitcoin-Grants-Msig",
+      "action": "grant_disbursement",
+      "recipient_dev": "0xBuilderB",
+      "amount_usdc": 5000
+    }
+  ],
+  "schema": [
+    "dev_multisig",
+    "action",
+    "recipient_dev",
+    "amount_usdc"
+  ],
+  "notes": "Variante para devs/ecossistemas open-source. Monitora pagamentos de bounties e grants via multisigs. Proxy via repositórios de gitcoin/bounty bot parsers. Fonte oficial: Gitcoin Passport API ou Layer3 XYZ data.",
+  "generated_at": "2026-08-26T15:08:05.890189+00:00",
+  "_meta": {
+    "hash": "12b2b7856776471a8727a50991fabd2351f7364623d5644d930821a648fca74b"
+  }
+}

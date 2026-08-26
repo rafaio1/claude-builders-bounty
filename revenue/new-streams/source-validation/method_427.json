@@ -1,0 +1,31 @@
+{
+  "method_id": "427",
+  "name": "Gas price predictor",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "ethereum",
+      "predicted_gwei_1h": 18.5,
+      "confidence_pct": 82.0,
+      "model_source": "eth_gas_station"
+    },
+    {
+      "chain": "polygon",
+      "predicted_gwei_1h": 45.2,
+      "confidence_pct": 91.0,
+      "model_source": "polygonscan_gas"
+    }
+  ],
+  "schema": [
+    "chain",
+    "predicted_gwei_1h",
+    "confidence_pct",
+    "model_source"
+  ],
+  "notes": "Previsor genérico de gas fees. Proxy TIER0 via repositórios de gas prediction models no GitHub. Fonte oficial: Etherscan Gas Tracker API ou Blocknative Gas Platform.",
+  "generated_at": "2026-08-26T15:09:07.946976+00:00",
+  "_meta": {
+    "hash": "1362de6807a765979a756816a5c7ed351db01a412092754349a6388dcb49d97e"
+  }
+}

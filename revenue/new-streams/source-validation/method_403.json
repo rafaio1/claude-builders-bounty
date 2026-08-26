@@ -1,0 +1,31 @@
+{
+  "method_id": "403",
+  "name": "Token sentiment tracker",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "PEPE",
+      "sentiment_score": 0.72,
+      "mentions_24h": 1843,
+      "source_platform": "twitter+reddit"
+    },
+    {
+      "token": "WIF",
+      "sentiment_score": -0.15,
+      "mentions_24h": 932,
+      "source_platform": "twitter+telegram"
+    }
+  ],
+  "schema": [
+    "token",
+    "sentiment_score",
+    "mentions_24h",
+    "source_platform"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repositórios de análise de sentimento crypto). Fonte oficial alvo: LunarCrush API ou Santiment. Zero-capital: agregação de métricas públicas sem signup.",
+  "generated_at": "2026-08-26T15:06:41.227472+00:00",
+  "_meta": {
+    "hash": "3e62b112a8ca808eb4f4917fc570d5c258f350c98baa97311c8343040d331abe"
+  }
+}

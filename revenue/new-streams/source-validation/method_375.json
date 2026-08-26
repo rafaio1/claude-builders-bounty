@@ -1,0 +1,32 @@
+{
+  "method_id": "375",
+  "name": "Staking validator node (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:31.349443+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "operator": "ENTERPRISE-V1",
+      "chains_validated": 12,
+      "total_delegated_usd": 8500000,
+      "monthly_commission_usd": 42000,
+      "sla_uptime_pct": 99.99
+    },
+    {
+      "operator": "INFRA-CORP",
+      "chains_validated": 8,
+      "total_delegated_usd": 5200000,
+      "monthly_commission_usd": 28500,
+      "sla_uptime_pct": 99.95
+    }
+  ],
+  "schema": [
+    "operator:str",
+    "chains_validated:int",
+    "total_delegated_usd:float",
+    "monthly_commission_usd:float",
+    "sla_uptime_pct:float"
+  ],
+  "notes": "Infraestrutura enterprise multi-chain com SLAs rigorosos. Proxy TIER0: GitHub institutional validator frameworks. Fonte oficial alvo: Multi-chain aggregation APIs. Métricas sintéticas baseadas em benchmarks institucionais.",
+  "sha256": "1b1a63456c56e2f25be592cb86426f31b931de0679f8e25a57cea1312da47093"
+}

@@ -1,0 +1,32 @@
+{
+  "method_id": "399",
+  "name": "Rug pull detector API (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:17.402309+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "service": "institutional_risk_api",
+      "chains_supported": 12,
+      "monthly_queries": 2500000,
+      "sla_uptime_pct": 99.99,
+      "compliance_certified": true
+    },
+    {
+      "service": "exchange_listing_guard",
+      "chains_supported": 8,
+      "monthly_queries": 1800000,
+      "sla_uptime_pct": 99.95,
+      "compliance_certified": true
+    }
+  ],
+  "schema": [
+    "service:str",
+    "chains_supported:int",
+    "monthly_queries:int",
+    "sla_uptime_pct:float",
+    "compliance_certified:bool"
+  ],
+  "notes": "API enterprise para exchanges e fundos com SLAs rigorosos. Proxy TIER0: GitHub institutional security frameworks. Fonte oficial alvo: Multi-chain RPC + private indexer nodes. Dados sintéticos baseados em benchmarks.",
+  "sha256": "1be8a455dcb0293ea1f416b5163df5b680f957e33f8d6a6a1faa7b48c19db146"
+}

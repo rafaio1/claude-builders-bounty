@@ -1,0 +1,29 @@
+{
+  "method_id": "398",
+  "name": "Rug pull detector API (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:05:17.402309+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "ecosystem": "solana_memecoins",
+      "tokens_scanned_daily": 4500,
+      "false_positive_rate_pct": 3.2,
+      "api_latency_ms": 120
+    },
+    {
+      "ecosystem": "base_new_launches",
+      "tokens_scanned_daily": 2800,
+      "false_positive_rate_pct": 4.1,
+      "api_latency_ms": 95
+    }
+  ],
+  "schema": [
+    "ecosystem:str",
+    "tokens_scanned_daily:int",
+    "false_positive_rate_pct:float",
+    "api_latency_ms:int"
+  ],
+  "notes": "Focado em ecossistemas emergentes com alto volume de lançamentos. Proxy TIER0: GitHub search (solana/base token analyzers). Fonte oficial alvo: Solscan/BaseScan APIs + Jupiter aggregator data. Métricas sintéticas.",
+  "sha256": "8c9e6f632c072b659c65cef9791be95d2d1b17c96cf7876a57e9e704bc7e0c33"
+}
