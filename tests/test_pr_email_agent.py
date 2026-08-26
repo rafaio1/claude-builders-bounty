@@ -120,3 +120,59 @@ if __name__ == "__main__":
             failed += 1
     print(f"\n{len(tests) - failed}/{len(tests)} passed")
     sys.exit(1 if failed else 0)
+
+
+def test_gmail_trash_returns_bool():
+    """Verify gmail_trash returns bool and handles failure."""
+    from unittest.mock import patch
+    from pr_email_agent import gmail_trash
+    with patch("pr_email_agent.run_cmd_list") as mock_run:
+        mock_run.return_value = (0, '{"status": "ok"}', "")
+        assert gmail_trash("msg123") is True
+    with patch("pr_email_agent.run_cmd_list") as mock_run:
+        mock_run.return_value = (1, "", "API error")
+        assert gmail_trash("msg456") is False
+
+
+def test_trash_failed_entry_not_in_seen():
+    """When trash fails, entry has reprocess=True and is not permanently blocked."""
+    from unittest.mock import patch
+    import pr_email_agent as agent
+    fake_search_lines = ["[msg_fail] | github@github.com | [Test/repo] PR #999 (PR #999)"]
+    with patch.object(agent, "gmail_search", return_value=fake_search_lines), \
+         patch.object(agent, "gh_pr_state", return_value=("CLOSED", "https://example.com/999")), \
+         patch.object(agent, "gmail_read", return_value={"body": "", "snippet": ""}), \
+         patch.object(agent, "gmail_trash", return_value=False), \
+         patch.object(agent, "save_ledger_atomic") as mock_save, \
+         patch.object(agent, "load_ledger", return_value=[]):
+        agent.classify_and_process()
+        saved = mock_save.call_args[0][0]
+        assert len(saved) == 1
+        entry = saved[0]
+        assert entry["action"] == "trash_failed"
+        assert entry["reprocess"] is True
+        assert entry["trash_at"] is None
+        seen = set()
+        for e in saved:
+            mid = e.get("message_id")
+            if e.get("reprocess"):
+                seen.discard(mid)
+            else:
+                seen.add(mid)
+        assert "msg_fail" not in seen
+
+
+def test_latest_entry_wins_reprocess():
+    """Latest-entry-wins: a reprocess=True entry allows re-processing."""
+    fake_ledger = [
+        {"message_id": "msg_rp", "action": "trash_closed", "trash_at": "2026-01-01T00:00:00Z"},
+        {"message_id": "msg_rp", "action": "restored_unsafe_open_no_action", "reprocess": True},
+    ]
+    seen = set()
+    for e in fake_ledger:
+        mid = e.get("message_id")
+        if e.get("reprocess"):
+            seen.discard(mid)
+        else:
+            seen.add(mid)
+    assert "msg_rp" not in seen

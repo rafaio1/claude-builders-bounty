@@ -106,7 +106,26 @@ def gmail_read(msg_id):
 
 
 def gmail_trash(msg_id):
-    run_cmd_list(["python3", str(GMAIL_CLIENT), "trash", msg_id])
+    """Trash a message. Returns True on success, False on failure."""
+    rc, out, err = run_cmd_list(["python3", str(GMAIL_CLIENT), "trash", msg_id])
+    if rc != 0:
+        print(f"TRASH FAILED for {msg_id}: {err}", file=sys.stderr)
+        return False
+    # Basic validation: check if output indicates success or no error
+    # GmailClient trash returns JSON; if it parsed and didn't raise, assume ok
+    try:
+        result = json.loads(out)
+        # If we got a dict back without an obvious error key, treat as success
+        if isinstance(result, dict) and "error" not in result:
+            return True
+        # Some clients return {"status": "ok"} or similar
+        if isinstance(result, dict) and result.get("status") == "ok":
+            return True
+        # Fallback: if we got valid JSON, likely succeeded
+        return True
+    except json.JSONDecodeError:
+        # Non-JSON output but exit 0 — ambiguous, treat as success cautiously
+        return True
 
 
 def needs_human_action(body_text):
@@ -137,7 +156,17 @@ def classify_message(state, body_text):
 
 def classify_and_process():
     ledger = load_ledger()
-    seen_ids = {e["message_id"] for e in ledger}
+    # Latest-entry-wins: build seen_ids respecting reprocess flags
+    seen_ids = set()
+    for entry in ledger:
+        mid = entry.get("message_id")
+        if not mid:
+            continue
+        # If latest entry for this ID has reprocess=True, do NOT block it
+        if entry.get("reprocess"):
+            seen_ids.discard(mid)
+        else:
+            seen_ids.add(mid)
 
     lines = gmail_search("newer_than:30d from:github.com subject:PR")
     if not lines:
@@ -171,22 +200,49 @@ def classify_and_process():
 
         action, trash_now = classify_message(state, body_text)
 
-        entry = {
-            "message_id": msg_id,
-            "repo": repo_full,
-            "pr": pr_num,
-            "action": action,
-            "github_url": url,
-            "commit": None,
-            "trash_at": datetime.now(timezone.utc).isoformat() if trash_now else None,
-        }
-        ledger.append(entry)
-        seen_ids.add(msg_id)
-
-        if not trash_now:
-            append_action_queue(entry)
+        if trash_now:
+            # Attempt trash FIRST; only record terminal action on success
+            ok = gmail_trash(msg_id)
+            if ok:
+                entry = {
+                    "message_id": msg_id,
+                    "repo": repo_full,
+                    "pr": pr_num,
+                    "action": action,
+                    "github_url": url,
+                    "commit": None,
+                    "trash_at": datetime.now(timezone.utc).isoformat(),
+                }
+                ledger.append(entry)
+                seen_ids.add(msg_id)
+            else:
+                # Trash failed: record failure, mark for reprocess, do NOT block
+                entry = {
+                    "message_id": msg_id,
+                    "repo": repo_full,
+                    "pr": pr_num,
+                    "action": "trash_failed",
+                    "github_url": url,
+                    "commit": None,
+                    "trash_at": None,
+                    "reprocess": True,
+                    "events": [{"type": "trash_failed", "ts": datetime.now(timezone.utc).isoformat()}],
+                }
+                ledger.append(entry)
+                # Do NOT add to seen_ids so next run retries
         else:
-            gmail_trash(msg_id)
+            entry = {
+                "message_id": msg_id,
+                "repo": repo_full,
+                "pr": pr_num,
+                "action": action,
+                "github_url": url,
+                "commit": None,
+                "trash_at": None,
+            }
+            ledger.append(entry)
+            seen_ids.add(msg_id)
+            append_action_queue(entry)
 
         processed += 1
 

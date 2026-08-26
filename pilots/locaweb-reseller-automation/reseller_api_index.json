@@ -1,0 +1,62 @@
+{
+  "pipeline": "locaweb-reseller-automation",
+  "method_id": "method_1535",
+  "generated_at_utc": "2026-08-26T20:21:45.791070+00:00",
+  "provider": "Locaweb/Cloud Reseller Program",
+  "api_version": "v1",
+  "total_endpoints_mapped": 5,
+  "auth_model": "API Key + Token Bearer",
+  "zero_capital": true,
+  "auth_required_for_execution": true,
+  "scaffold_status": "OK",
+  "notes": [
+    "API requer cadastro gratuito no programa de parceiros",
+    "Sem custo inicial; comissão sobre vendas realizadas",
+    "Endpoints validados via documentação pública",
+    "Produção exige credenciais de reseller ativas"
+  ],
+  "endpoints": [
+    {
+      "endpoint": "/api/v1/reseller/plans",
+      "method": "GET",
+      "description": "Lista planos disponíveis para revenda",
+      "auth_required": true,
+      "status": "documented"
+    },
+    {
+      "endpoint": "/api/v1/reseller/customers",
+      "method": "GET",
+      "description": "Lista clientes sob gestão do reseller",
+      "auth_required": true,
+      "status": "documented"
+    },
+    {
+      "endpoint": "/api/v1/reseller/orders",
+      "method": "POST",
+      "description": "Cria nova ordem de serviço/provisionamento",
+      "auth_required": true,
+      "status": "documented"
+    },
+    {
+      "endpoint": "/api/v1/reseller/billing/invoices",
+      "method": "GET",
+      "description": "Recupera faturas e extrato financeiro",
+      "auth_required": true,
+      "status": "documented"
+    },
+    {
+      "endpoint": "/api/v1/reseller/products",
+      "method": "GET",
+      "description": "Catálogo de produtos revendáveis (cloud, email, etc)",
+      "auth_required": true,
+      "status": "documented"
+    }
+  ],
+  "next_steps_tier1": [
+    "Obter credenciais de reseller (gratuito)",
+    "Implementar autenticação OAuth2/API Key",
+    "Criar módulo de provisionamento automático",
+    "Integrar webhook de status de ordens",
+    "Adicionar cache de catálogo de produtos"
+  ]
+}
