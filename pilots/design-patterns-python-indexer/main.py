@@ -10,13 +10,12 @@ import datetime
 import sys
 
 REPO = "refactoringguru/design-patterns-python"
-BRANCH = "main"
-TREE_URL = f"https://api.github.com/repos/{REPO}/git/trees/{BRANCH}?recursive=1"
 OUTPUT = "output.json"
 UA = "design-patterns-python-indexer/1.0"
 
-def fetch_tree():
-    req = urllib.request.Request(TREE_URL, headers={
+def fetch_tree(branch):
+    url = f"https://api.github.com/repos/{REPO}/git/trees/{branch}?recursive=1"
+    req = urllib.request.Request(url, headers={
         "Accept": "application/vnd.github.v3+json",
         "User-Agent": UA
     })
@@ -24,7 +23,7 @@ def fetch_tree():
         with urllib.request.urlopen(req, timeout=60) as resp:
             return json.loads(resp.read().decode("utf-8")).get("tree", [])
     except Exception as e:
-        print(f"ERROR fetching tree: {e}", file=sys.stderr)
+        print(f"  WARN: branch {branch} failed: {e}", file=sys.stderr)
         return None
 
 def extract_pattern_info(path):
@@ -43,21 +42,23 @@ def format_name(name):
     return name.replace("_", " ").title()
 
 def main():
-    print(f"Fetching tree for {REPO}@{BRANCH}...")
-    tree = fetch_tree()
+    # Tentar main primeiro, fallback para master
+    tree = None
+    branch = "main"
+    print(f"Fetching tree for {REPO}@{branch}...")
+    tree = fetch_tree(branch)
+    
     if tree is None:
-        # Fallback para master se main falhar
-        global BRANCH, TREE_URL
-        BRANCH = "master"
-        TREE_URL = f"https://api.github.com/repos/{REPO}/git/trees/{BRANCH}?recursive=1"
-        print(f"Retrying with branch {BRANCH}...")
-        tree = fetch_tree()
-        if tree is None:
-            result = {"status": "ERROR", "message": "Failed to fetch tree",
-                      "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()}
-            with open(OUTPUT, "w") as f:
-                json.dump(result, f, indent=2, ensure_ascii=False)
-            sys.exit(1)
+        branch = "master"
+        print(f"Retrying with branch {branch}...")
+        tree = fetch_tree(branch)
+    
+    if tree is None:
+        result = {"status": "ERROR", "message": "Failed to fetch tree (tried main and master)",
+                  "timestamp": datetime.datetime.now(datetime.timezone.utc).isoformat()}
+        with open(OUTPUT, "w") as f:
+            json.dump(result, f, indent=2, ensure_ascii=False)
+        sys.exit(1)
 
     # Filtrar arquivos Python no diretório src/
     py_files = [
@@ -84,7 +85,7 @@ def main():
                 "name": format_name(pattern),
                 "category": category,
                 "files": [],
-                "url": f"https://github.com/{REPO}/tree/{BRANCH}/src/{category}/{pattern}"
+                "url": f"https://github.com/{REPO}/tree/{branch}/src/{category}/{pattern}"
             }
         patterns[key]["files"].append(fpath)
 
@@ -106,7 +107,7 @@ def main():
     result = {
         "status": "OK",
         "source": REPO,
-        "branch": BRANCH,
+        "branch": branch,
         "total_patterns": len(patterns),
         "total_categories": len(categories),
         "total_files": len(py_files),
