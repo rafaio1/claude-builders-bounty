@@ -100,7 +100,7 @@ class ImproveGit:
             return True
         if "__pycache__" in path.split("/") or name.endswith((".pyc", ".pyo")):
             return True
-        if path == ".env" or path.startswith(".env.") or path.startswith(".venv/"):
+        if path == ".env" or path.startswith(".env.") or path == ".venv" or path.startswith(".venv/"):
             return True
         if path == "data" or path.startswith("data/"):
             return True
