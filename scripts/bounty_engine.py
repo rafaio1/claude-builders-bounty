@@ -645,7 +645,9 @@ def triage(candidates):
         log("TRIAGE_ERROR: all candidates failed sanitization")
         return []
     log(f"Triage payload: {len(safe_cands)} sanitized candidates, {len(json.dumps(safe_cands))} chars")
-    prompt = f"""Select TOP 3 bounties for an AI coding agent. MUST be:
+    prompt = f"""SYSTEM: You are a JSON-only API. Return NOTHING except a valid JSON array. No explanation, no markdown, no prose.
+
+TASK: Select TOP 3 bounties for an AI coding agent. MUST be:
 - Clear compilation/test/config fix (not feature requests)
 - Solvable in <2 hours with code changes only
 - Python/TS/Rust/Go/Solidity
@@ -658,7 +660,10 @@ CRITICAL CONSTRAINTS:
 - Do NOT invent, modify, or hallucinate URLs or titles
 - Do NOT select items with "self-improve", "model-flagged", "bounty cadence", or "bounty gate" in the title
 - If fewer than 3 valid candidates exist, return only the valid ones
-- Return ONLY valid JSON array: [{{"url":"...","title":"...","estimated_hours":N,"confidence_score":0.X,"reason":"..."}}]"""
+- OUTPUT FORMAT: Return ONLY this exact JSON structure, nothing else:
+[{{"url":"...","title":"...","estimated_hours":N,"confidence_score":0.X,"reason":"..."}}]
+- If NO valid candidates exist, return exactly: []
+- DO NOT include any text before or after the JSON array."""
     resp = ghostcli_complete(prompt, api_key, base_url, model)
     log(f"Triage GhostCLI response length: {len(resp) if resp else 0} chars")
     # Debug: dump raw response for failure analysis (truncate to avoid log bloat)

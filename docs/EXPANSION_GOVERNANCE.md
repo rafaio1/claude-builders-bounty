@@ -28,3 +28,13 @@ Do not deploy keyword filter. Invest in structural checks: (1) supersession dete
   - Dados operacionais validos mas sem relevancia BR
   - Proxy global via GitHub Search API focado em agências/enterprises
 
+
+## Supersession Detector V1
+- **Status:** INTEGRATED (2026-08-26)
+- **Proposal:** exp-20260827-supersession-detector-integration
+- **Verdict:** APROVAR_IMPLEMENTACAO (confidence 0.92)
+- **Script:** scripts/detect_supersession.py
+- **Integration:** Non-blocking flag in scripts/prescreen_proposal.py
+- **Output:** data/expansion/supersession_flags.jsonl
+- **Valid pairs detected:** 6 (4 catchable before judgment)
+- **Rollback:** SUPERSESSION_CHECK_ENABLED=0
