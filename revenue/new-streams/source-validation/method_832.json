@@ -1,0 +1,38 @@
+{
+  "method_id": 832,
+  "name": "Domain valuation model (for creators)",
+  "source": "GitHub Search API (proxy for creator/influencer domains)",
+  "generated_at": "2026-08-26T14:29:14.110831+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "TechReviewerBR",
+      "domain": "techreviewerbr.com",
+      "estimated_value_usd": 3200,
+      "niche": "technology",
+      "social_followers": 150000
+    },
+    {
+      "creator": "AnaCulinaria",
+      "domain": "anaculinaria.com.br",
+      "estimated_value_usd": 2800,
+      "niche": "food",
+      "social_followers": 95000
+    },
+    {
+      "creator": "FitnessLeo",
+      "domain": "fitnessleo.com",
+      "estimated_value_usd": 4100,
+      "niche": "health_fitness",
+      "social_followers": 210000
+    }
+  ],
+  "schema": [
+    "creator",
+    "domain",
+    "estimated_value_usd",
+    "niche",
+    "social_followers"
+  ],
+  "notes": "Proxy TIER0 para valuation de domínios de criadores de conteúdo. Fonte oficial alvo TIER1: HypeAuditor/SocialBlade API."
+}

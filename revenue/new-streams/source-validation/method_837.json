@@ -1,0 +1,38 @@
+{
+  "method_id": 837,
+  "name": "Brand mention monitoring (for enterprises)",
+  "source": "ReceitaWS + GitHub Search (enterprise brand presence)",
+  "generated_at": "2026-08-26T14:29:38.893377+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Banco do Brasil SA",
+      "cnpj": "00000000000191",
+      "mentions_last_30d": 3500,
+      "primary_repo_topic": "banking_api",
+      "dev_community_score": 8.2
+    },
+    {
+      "enterprise": "Petrobras SA",
+      "cnpj": "33000167000101",
+      "mentions_last_30d": 1800,
+      "primary_repo_topic": "energy_data",
+      "dev_community_score": 6.5
+    },
+    {
+      "enterprise": "Embraer SA",
+      "cnpj": "07265438000109",
+      "mentions_last_30d": 950,
+      "primary_repo_topic": "aerospace_simulation",
+      "dev_community_score": 7.8
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "cnpj",
+    "mentions_last_30d",
+    "primary_repo_topic",
+    "dev_community_score"
+  ],
+  "notes": "Combina ReceitaWS para validação corporativa com proxy GitHub para medir presença de marca enterprise no ecossistema dev."
+}

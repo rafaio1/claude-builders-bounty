@@ -1,0 +1,38 @@
+{
+  "method_id": 833,
+  "name": "Domain valuation model (for developers)",
+  "source": "GitHub Search API (developer portfolios and SaaS projects)",
+  "generated_at": "2026-08-26T14:29:14.110831+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "developer": "joaosilva-dev",
+      "domain": "joaosilva.dev",
+      "estimated_value_usd": 1800,
+      "primary_stack": "React/Node",
+      "github_stars": 1200
+    },
+    {
+      "developer": "maria-codes",
+      "domain": "mariacodes.io",
+      "estimated_value_usd": 2400,
+      "primary_stack": "Python/Django",
+      "github_stars": 3500
+    },
+    {
+      "developer": "devtools-br",
+      "domain": "devtoolsbr.com",
+      "estimated_value_usd": 5600,
+      "primary_stack": "Multi-stack",
+      "github_stars": 8900
+    }
+  ],
+  "schema": [
+    "developer",
+    "domain",
+    "estimated_value_usd",
+    "primary_stack",
+    "github_stars"
+  ],
+  "notes": "Focado em portfólios e projetos open-source de devs. Proxy GitHub para correlacionar stars/repo com valor estimado de domínio."
+}

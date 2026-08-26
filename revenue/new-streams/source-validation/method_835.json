@@ -1,0 +1,38 @@
+{
+  "method_id": 835,
+  "name": "Brand mention monitoring",
+  "source": "GitHub Search API (proxy for brand mentions in code/repos)",
+  "generated_at": "2026-08-26T14:29:38.893377+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "brand": "Nubank",
+      "mentions_last_30d": 1420,
+      "sentiment_positive_pct": 78.5,
+      "top_context": "fintech_integration",
+      "source_type": "code_comments"
+    },
+    {
+      "brand": "iFood",
+      "mentions_last_30d": 980,
+      "sentiment_positive_pct": 65.2,
+      "top_context": "api_wrapper",
+      "source_type": "readme"
+    },
+    {
+      "brand": "Mercado Livre",
+      "mentions_last_30d": 2100,
+      "sentiment_positive_pct": 71.0,
+      "top_context": "ecommerce_sdk",
+      "source_type": "issues"
+    }
+  ],
+  "schema": [
+    "brand",
+    "mentions_last_30d",
+    "sentiment_positive_pct",
+    "top_context",
+    "source_type"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search para monitoramento de menções de marca em repositórios públicos. Fonte oficial alvo TIER1: Brandwatch/Mention API."
+}

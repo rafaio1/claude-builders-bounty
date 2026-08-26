@@ -1,0 +1,38 @@
+{
+  "method_id": 834,
+  "name": "Domain valuation model (for agencies)",
+  "source": "ReceitaWS + GitHub Search (agency digital presence)",
+  "generated_at": "2026-08-26T14:29:14.110831+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Agência Mkt Digital LTDA",
+      "cnpj": "12345678000199",
+      "domain": "agenciamktdigital.com.br",
+      "estimated_value_usd": 7500,
+      "service_focus": "performance_marketing"
+    },
+    {
+      "agency": "Studio Criativo SP",
+      "cnpj": "98765432000188",
+      "domain": "studiocriativosp.com",
+      "estimated_value_usd": 6200,
+      "service_focus": "branding_design"
+    },
+    {
+      "agency": "DevHouse Solutions",
+      "cnpj": "45678912000177",
+      "domain": "devhouse.com.br",
+      "estimated_value_usd": 9800,
+      "service_focus": "software_outsourcing"
+    }
+  ],
+  "schema": [
+    "agency",
+    "cnpj",
+    "domain",
+    "estimated_value_usd",
+    "service_focus"
+  ],
+  "notes": "Combina ReceitaWS para validação legal com proxy GitHub/web para estimativa de valor baseada em presença digital de agências."
+}
