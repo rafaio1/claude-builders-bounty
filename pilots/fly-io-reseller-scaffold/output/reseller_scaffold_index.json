@@ -1,0 +1,71 @@
+{
+  "pilot": "fly-io-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:54:18.564331+00:00",
+  "free_tier_limits": {
+    "shared_cpu_vms": 3,
+    "ram_per_vm_mb": 256,
+    "persistent_storage_gb": 3,
+    "outbound_bandwidth_gb_month": 100,
+    "inbound_bandwidth_gb_month": null,
+    "ipv4_shared": true,
+    "ipv6_dedicated": true,
+    "regions_available": "global (30+ regions)",
+    "commercial_allowed": true,
+    "source_verified": "https://fly.io/docs/about/pricing/ (v25 validation pending)",
+    "validation_note": "Free tier limits based on known allowances; requires playwright-cli confirmation"
+  },
+  "paid_plan_baseline": {
+    "shared_cpu_1x_usd_month": 1.94,
+    "shared_cpu_2x_usd_month": 3.88,
+    "performance_cpu_1x_usd_month": 7.0,
+    "persistent_storage_usd_gb_month": 0.15,
+    "outbound_bandwidth_usd_gb": 0.02,
+    "sla_uptime": "99.9% (paid plans)"
+  },
+  "reselling_model": {
+    "target_segment": "devs BR deployando apps globais com baixa latencia sem gerenciar k8s/VPS",
+    "managed_service_price_brl": 29.9,
+    "included_vms": 1,
+    "included_storage_gb": 1,
+    "overage_brl_per_vm": 15.0,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "Cada cliente em VM isolada no free tier (ate 3 clientes); storage compartilhado via volumes nomeados",
+    "recommended_use_case": "APIs leves, workers background, bots Discord/Telegram com persistencia minima"
+  },
+  "doc_verification": {
+    "doc_verified": false,
+    "source_url": "https://fly.io/docs/about/pricing/",
+    "notes": [
+      "Aguardando validacao via playwright-cli dos limites atuais"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 29.9,
+    "cost_per_client_usd": 0.0,
+    "gross_margin_brl": 29.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients": 1,
+    "max_clients_free_tier": 3,
+    "storage_per_client_gb": 1,
+    "ceiling_warning": "Free tier permite exatamente 3 VMs; storage de 3GB total limita a 1GB/cliente"
+  },
+  "risks": [
+    "Apenas 3 VMs no free tier - teto absoluto de 3 clientes simultaneos",
+    "256MB RAM por VM limita severamente apps Node.js/Python pesados",
+    "Storage persistente de 3GB total inadequado para DBs ou uploads",
+    "Fly.io removeu free trial credits em 2024 - free tier agora e permanente mas limitado",
+    "Sem programa reseller oficial; multi-tenancy depende de organizacao unica",
+    "Concorrencia direta com Railway, Render e Render free tiers similares"
+  ],
+  "next_steps": [
+    "Validar limites exatos via playwright-cli open https://fly.io/docs/about/pricing/",
+    "Testar deploy real de app Docker minimo para confirmar 256MB RAM funcional",
+    "Verificar se organizacoes separadas podem ser criadas no free (isolamento real)",
+    "Comparar unit economics com Railway ($5 trial credit) e Render (free static + paid dynos)",
+    "Pesquisar demanda BR por edge computing/global deployment vs VPS tradicional"
+  ]
+}
