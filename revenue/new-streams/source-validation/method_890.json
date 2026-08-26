@@ -1,0 +1,35 @@
+{
+  "method_id": "890",
+  "name": "GPU compute spot reselling (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:18:26.963300+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "modal-labs/modal-client",
+      "stars": 1800,
+      "lang": "Python",
+      "platform": "Modal"
+    },
+    {
+      "repo": "replicate/replicate-python",
+      "stars": 950,
+      "lang": "Python",
+      "platform": "Replicate"
+    },
+    {
+      "repo": "baseten/baseten-sdk",
+      "stars": 420,
+      "lang": "Python",
+      "platform": "Baseten"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "platform"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Foco em plataformas serverless GPU com billing por segundo e sem commitment para startups.",
+  "sha256": "f2578dcf7016cafcfa4ec8163a8b8bffbc80873311ecf8b977ff01e44b1de926"
+}
