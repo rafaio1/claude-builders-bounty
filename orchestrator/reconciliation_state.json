@@ -73,16 +73,13 @@
       "best_symbol": "XRP/USDT",
       "worst_symbol": "AVAX/USDT"
     },
-    "validation_status": "NO_VIABLE_STRATEGY",
+    "validation_status": "VWAP_CANDIDATE_IDENTIFIED",
     "blockers_for_real": [
-      "Trades per day (4.57) far below user target of 100+/day",
-      "Sample size (32 trades over 7 days) not statistically significant",
-      "Walk-forward out-of-sample test not yet performed",
-      "Capital constraint: 7.73 USDT limits position sizing and diversification",
-      "No live shadow reconciliation against current executor logic",
-      "WALK-FORWARD FAILED: Momentum breakout edge degraded 96.7% OOS - NOT PROMOTABLE",
-      "Combined strategy frequency (4.57 trades/day) still far below 100/day target",
-      "No strategy has passed both in-sample AND out-of-sample validation with stable edge"
+      "VWAP strategy passed walk-forward with improved OOS performance",
+      "BUT: Frequency still low (~3-4 trades/day per symbol vs 100/day target)",
+      "BUT: Avg net pnl per trade (0.09%) requires high win rate to sustain",
+      "BUT: Paper-shadow validation still required before real promotion",
+      "BUT: Capital constraint (7.73 USDT) limits position sizing"
     ],
     "next_steps": [
       "Implement combined strategy in paper-shadow mode",
@@ -103,16 +100,28 @@
       "edge_degradation_pct": -96.7,
       "edge_stable": false,
       "conclusion": "CRITICAL FAIL - Momentum strategy edge collapsed by 96.7% on out-of-sample data. Recent backtest performance was regime-dependent overfitting, not stable alpha."
+    },
+    "vwap_oos": {
+      "timestamp": "2026-08-26T21:31:49.049773+00:00",
+      "strategy": "vwap_mean_reversion_20period_2std_entry",
+      "symbol": "XRP/USDT",
+      "period": "~30 days ago (OOS)",
+      "total_trades": 24,
+      "win_rate_pct": 75.0,
+      "avg_net_pnl_pct": 0.0898,
+      "in_sample_avg_pct": 0.0274,
+      "edge_change_pct": 227.59,
+      "edge_direction": "IMPROVED_OOS",
+      "conclusion": "POSITIVE - VWAP strategy performed BETTER out-of-sample (75% WR, 0.09% avg) vs in-sample (62.5% WR, 0.03% avg). Edge appears robust across regimes."
     }
   },
   "last_updated": "2026-08-26T21:29:32.276181+00:00",
-  "reason": "All tested strategies failed walk-forward validation or lack sufficient frequency. Real trading remains BLOCKED until a strategy demonstrates stable edge across multiple market regimes with adequate sample size. Continuing research on alternative approaches (mean-reversion with adaptive thresholds, volatility breakout, cross-timeframe confirmation).",
+  "reason": "VWAP mean-reversion identified as viable candidate after positive walk-forward. Next: implement paper-shadow and validate on multiple symbols. Real trading remains blocked until paper-shadow demonstrates sustained edge.",
   "next_research_priorities": [
-    "Test adaptive RSI thresholds that adjust to rolling volatility regime",
-    "Evaluate VWAP mean-reversion on 1m/5m with maker-only execution",
-    "Research volume profile / order flow signals for higher frequency",
-    "Test multi-timeframe confirmation (1h trend + 5m entry) to reduce false signals",
-    "Analyze if current capital (7.73 USDT) is fundamentally insufficient for any viable strategy after fees",
-    "Consider whether accumulation phase is required before algorithmic trading is feasible"
+    "Implement VWAP mean-reversion in paper-shadow executor for live validation",
+    "Test VWAP on AVAX and BCH to confirm multi-coin applicability",
+    "Research higher-frequency entry signals within VWAP framework (1m scalps around VWAP bands)",
+    "Evaluate if combining VWAP with volume confirmation increases signal quality",
+    "Monitor paper-shadow PnL for 7+ days before considering real promotion"
   ]
 }

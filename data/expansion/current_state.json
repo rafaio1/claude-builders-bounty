@@ -27,19 +27,20 @@
   "proposal_counts": {
     "REJEITAR": 3,
     "APROVAR_IMPLEMENTACAO": 1,
-    "ADIAR": 18,
+    "ADIAR": 19,
     "PILOTAR": 19
   },
   "total_proposals": 8,
-  "total_verdicts": 109,
+  "total_verdicts": 110,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T20:54:41.623215+00:00",
-  "last_council_action": "2026-08-26T21:31:09.290736+00:00",
+  "last_council_action": "2026-08-26T21:31:48.591381+00:00",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
   "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
   "last_verdicts": [
+    "method_657: ADIAR",
     "method_656: PILOTAR",
     "method_655: PILOTAR",
     "method_654: ADIAR",
@@ -48,16 +49,15 @@
     "method_651: ADIAR",
     "method_650: PILOTAR",
     "method_649: PILOTAR",
-    "method_648: ADIAR",
-    "method_647: PILOTAR"
+    "method_648: ADIAR"
   ],
   "improve_timers_status": "MASKED",
   "master_branch": "master",
   "working_tree_dirty": true,
   "last_verdict": {
-    "proposal_id": "method_656",
-    "verdict": "PILOTAR",
-    "timestamp": "2026-08-26T21:31:09.290736+00:00",
+    "proposal_id": "method_657",
+    "verdict": "ADIAR",
+    "timestamp": "2026-08-26T21:31:48.591381+00:00",
     "result": "SUCCESS"
   },
   "pending_proposals_count": 0,
@@ -75,8 +75,8 @@
   "rejected_proposals": [
     "exp-20260826-data-products-batch-4-creators"
   ],
-  "next_method": 657,
-  "last_verdict_timestamp": "2026-08-26T21:31:09.290736+00:00",
+  "next_method": 658,
+  "last_verdict_timestamp": "2026-08-26T21:31:48.591381+00:00",
   "integrity": {
     "git_clean": false,
     "last_check_utc": "2026-08-26T21:25:01.232410+00:00",
