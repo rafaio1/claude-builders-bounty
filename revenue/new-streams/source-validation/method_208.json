@@ -1,0 +1,35 @@
+{
+  "method_id": "208",
+  "name": "Shopify app subscription (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:52.597071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "creator_store_count",
+      "value": 185,
+      "unit": "stores",
+      "period": "30d"
+    },
+    {
+      "metric": "digital_product_sales",
+      "value": 4200,
+      "unit": "units",
+      "period": "30d"
+    },
+    {
+      "metric": "app_revenue_share",
+      "value": 70.0,
+      "unit": "%",
+      "period": "net"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant enables digital downloads, exclusive content gating, or tip jars on Shopify. Proxy TIER0 via GitHub Search for digital product delivery apps. Official targets: Shopify Admin API + Files API. Zero-capital via free partner account + manual file hosting initially.",
+  "_hash": "d851f747fc175dd5026c04d5c7be9b5d3ae0d13c679744d0e6610b9552ce6975"
+}

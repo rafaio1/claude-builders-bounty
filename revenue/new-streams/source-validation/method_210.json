@@ -1,0 +1,35 @@
+{
+  "method_id": "210",
+  "name": "Shopify app subscription (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:52.597071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "managed_stores",
+      "value": 45,
+      "unit": "clients",
+      "period": "current"
+    },
+    {
+      "metric": "setup_time_reduction",
+      "value": 75.0,
+      "unit": "%",
+      "period": "vs_manual"
+    },
+    {
+      "metric": "agency_mrr",
+      "value": 4500.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Agency variant provides multi-store management, white-label reporting, and client onboarding automation. Proxy TIER0 via GitHub Search for agency dashboard Shopify apps. Official targets: Shopify Partner API + Organization Admin. Monetization via per-store agency licensing. Zero-capital PoC uses single dev store + mock multi-tenancy.",
+  "_hash": "ab91e2aed13b055e5dcbdcf963bd0bd6afac6dbff13a2136bf6bf7bae9da74aa"
+}

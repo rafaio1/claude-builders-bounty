@@ -1,0 +1,35 @@
+{
+  "method_id": "209",
+  "name": "Shopify app subscription (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:56:52.597071+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "dev_tool_installs",
+      "value": 890,
+      "unit": "stores",
+      "period": "30d"
+    },
+    {
+      "metric": "api_call_volume",
+      "value": 125000,
+      "unit": "calls",
+      "period": "30d"
+    },
+    {
+      "metric": "pro_tier_adoption",
+      "value": 12.4,
+      "unit": "%",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Developer variant offers store analytics, SEO auditing, or bulk editing tools. Proxy TIER0 targets open-source Shopify CLI extensions. Official integration: Shopify GraphQL Admin API + App Bridge. Monetization via usage-based or tiered developer pricing. Zero-capital using free dev store + local tunneling.",
+  "_hash": "bbff66dc0a98e2b9cde8ec84247812b390b0553066298821046e8e023578e3ef"
+}
