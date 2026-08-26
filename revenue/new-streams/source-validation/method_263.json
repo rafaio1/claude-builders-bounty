@@ -1,0 +1,34 @@
+{
+  "method_id": "263",
+  "name": "SMS gateway reseller (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:04:42.997545+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "dev-otp-gateway",
+      "stars": 312,
+      "pricing_model": "open_core",
+      "features": [
+        "totp_fallback",
+        "rate_limit"
+      ]
+    },
+    {
+      "repo": "api-sms-mock",
+      "stars": 198,
+      "pricing_model": "usage_based",
+      "features": [
+        "test_mode",
+        "webhook_sim"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: Twilio Verify / Authy API. Foco em OTP, fallback TOTP e ambientes de teste."
+}
