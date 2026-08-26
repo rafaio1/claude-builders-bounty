@@ -1,0 +1,84 @@
+{
+  "pipeline": "sped-fiscal-validator",
+  "method_id": "method_1621",
+  "generated_at_utc": "2026-08-26T20:23:45.905234+00:00",
+  "layout_versao": "Guia Prático EFD ICMS/IPI v3.x",
+  "zero_capital": true,
+  "auth_required": false,
+  "scaffold_status": "OK",
+  "validacoes_suportadas": [
+    "Estrutura de blocos obrigatórios",
+    "Registro 0000 (abertura)",
+    "Contagem de registros por bloco",
+    "Validação sintática de campos"
+  ],
+  "validacao_exemplo": {
+    "estrutura": {
+      "total_linhas": 16,
+      "total_registros": 16,
+      "blocos_encontrados": [
+        "0",
+        "9",
+        "C",
+        "D",
+        "E"
+      ],
+      "blocos_obrigatorios_ausentes": [],
+      "estrutura_valida": true
+    },
+    "registro_0000": {
+      "registro": "0000",
+      "valido": false,
+      "erros": [
+        "Registro não é 0000 ou formato inválido"
+      ],
+      "campos_encontrados": 18
+    }
+  },
+  "blocos_obrigatorios": {
+    "0": {
+      "nome": "Abertura, Identificação e Referências",
+      "registros_min": 3
+    },
+    "C": {
+      "nome": "Documentos Fiscais I - Mercadorias",
+      "registros_min": 0
+    },
+    "D": {
+      "nome": "Documentos Fiscais II - Serviços",
+      "registros_min": 0
+    },
+    "E": {
+      "nome": "Apuração do ICMS e do IPI",
+      "registros_min": 1
+    },
+    "G": {
+      "nome": "Controle do Crédito de ICMS do Ativo Permanente",
+      "registros_min": 0
+    },
+    "H": {
+      "nome": "Inventário Físico",
+      "registros_min": 0
+    },
+    "K": {
+      "nome": "Controle da Produção e do Estoque",
+      "registros_min": 0
+    },
+    "9": {
+      "nome": "Controle e Encerramento do Arquivo Digital",
+      "registros_min": 2
+    }
+  },
+  "notas_tecnicas": [
+    "Validação puramente sintática; não substitui PVA/SEFAZ",
+    "Produção requer validação completa via PVA oficial",
+    "Assinatura digital e transmissão exigem certificado A1/A3",
+    "Layout completo possui ~80 tipos de registro diferentes"
+  ],
+  "proximo_passo_tier1": [
+    "Implementar validação de todos os registros C/D/E",
+    "Integrar com PVA para validação oficial",
+    "Adicionar correção automática de erros comuns",
+    "Suporte a EFD-Contribuições (PIS/COFINS)"
+  ]
+}
