@@ -1,0 +1,31 @@
+{
+  "method_id": "145",
+  "name": "Newsletters pagas (Substack/Beehiiv) (for developers)",
+  "source": "GitHub Search API (proxy TIER0) -> Tech newsletter repos / RSS aggregators",
+  "generated_at": "2026-08-26T14:56:16.400705+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "newsletter_name": "Systems Design Deep Dive",
+      "platform": "substack",
+      "monthly_usd": 12.99,
+      "subscribers_paid": 2100,
+      "open_rate_pct": 48
+    },
+    {
+      "newsletter_name": "Rust & Performance Weekly",
+      "platform": "beehiiv",
+      "monthly_usd": 9.99,
+      "subscribers_paid": 1350,
+      "open_rate_pct": 52
+    }
+  ],
+  "schema": [
+    "newsletter_name",
+    "platform",
+    "monthly_usd",
+    "subscribers_paid",
+    "open_rate_pct"
+  ],
+  "notes": "Newsletters técnicas premium para devs. Proxy GitHub para templates de newsletters open-source. Fonte oficial TIER1: Substack / Beehiiv / Ghost."
+}
