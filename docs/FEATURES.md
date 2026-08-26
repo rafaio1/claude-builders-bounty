@@ -24,6 +24,7 @@
 | V23D Risk Filters Doc | ✅ Integrado | cadaf36 | Documentação de filtros de risco e critérios de desbloqueio | `orchestrator/V23D_V5_RISK_FILTERS.md` |
 | P2P Stack LND Init | ✅ Integrado | cadaf36 | Script de inicialização de wallet LND testnet | `p2p-stack/init_lnd_wallet.sh` |
 | Workspace Orchestrators | ✅ Integrado | cadaf36 | Orquestrador 1M e loop de entrega de serviço | `workspace/` |
+| AgentLily Runtime Tests | ✅ Integrado | b1d214a | Testes de edge cases para guards e tool registry (Issues #152, #129) | `revenue/bounties/agentlily-runtime/tests/` |
 
 ## Documentação Operacional
  
@@ -38,13 +39,15 @@
  ## Features em Progresso / Aguardando Integração
  
  | Feature | Estado | Bloqueio / Dependência | Próxima Ação |
- |---------|--------|----------------------|--------------|
- | RoboSats Stack | ⏳ Parcial | TLS keys excluídas; código não versionado integralmente | Avaliar subset seguro para commit |
+|---------|--------|----------------------|--------------|
+| Service Delivery Loop | ⚠️ Placeholder | Script com 5 linhas (apenas print + sleep 1h); sem lógica real de scan/entrega | Implementar integração com AgentMail ou substituir por orquestrador funcional |
+| RoboSats Stack | ⏳ Parcial | TLS keys excluídas; código não versionado integralmente | Avaliar subset seguro para commit |
  | Email Cleanup Pipeline | ⏳ WIP | `.venv` local; lógica de negócio não isolada | Extrair scripts limpos e testar |
  | Affiliate Bot Content | ⏳ WIP | Output gerado dinamicamente; sem testes | Validar conteúdo e adicionar ao repo |
  | Micro-SaaS Projects | ⏳ WIP | Múltiplos subprojetos; maturidade variável | Triagem individual por projeto |
- 
- ## Artefatos Excluídos por Segurança
+| High-Ticket Workspaces | ⚠️ Auditivo | 15 diretórios gitignored; utilidade financeira não verificada individualmente | Classificar cada workspace como ativo/arquivo-morto e documentar no ledger |
+
+## Artefatos Excluídos por Segurança
  
  - `.env`, `*.key`, `tls.*` — credenciais e certificados
  - `data/`, `state/`, `logs/` — dados runtime e estado efêmero
