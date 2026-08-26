@@ -1,0 +1,31 @@
+{
+  "method_id": "120",
+  "name": "Fine-tuning datasets vendidos (for agencies)",
+  "source": "GitHub Search API (proxy TIER0) -> Enterprise data marketplaces",
+  "generated_at": "2026-08-26T14:53:45.687706+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dataset_name": "brand_voice_corpus_multi",
+      "records": 52000,
+      "format": "jsonl",
+      "price_usd": 199.99,
+      "license": "Commercial"
+    },
+    {
+      "dataset_name": "customer_support_sft",
+      "records": 41000,
+      "format": "parquet",
+      "price_usd": 149.99,
+      "license": "Commercial"
+    }
+  ],
+  "schema": [
+    "dataset_name",
+    "records",
+    "format",
+    "price_usd",
+    "license"
+  ],
+  "notes": "Datasets enterprise-grade para agências de marketing/IA. Proxy GitHub Search. Fonte oficial TIER1: AWS Data Exchange ou Snowflake Marketplace."
+}

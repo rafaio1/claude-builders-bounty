@@ -1,0 +1,41 @@
+{
+  "method_id": "127",
+  "name": "API de conteúdo gerativo (for educators)",
+  "source": "GitHub Search API (proxy TIER0) -> EdTech LLM integrations",
+  "generated_at": "2026-08-26T14:54:36.533532+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/edu/quiz/generate",
+      "model": "llama-3-8b-instruct",
+      "price_per_call_usd": 0.003,
+      "compliance": [
+        "FERPA"
+      ],
+      "formats": [
+        "json",
+        "qti"
+      ]
+    },
+    {
+      "endpoint": "/v1/edu/summary/lecture",
+      "model": "mistral-7b",
+      "price_per_call_usd": 0.002,
+      "compliance": [
+        "FERPA"
+      ],
+      "formats": [
+        "text",
+        "markdown"
+      ]
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "model",
+    "price_per_call_usd",
+    "compliance",
+    "formats"
+  ],
+  "notes": "API para geração de material didático e quizzes. Proxy GitHub Search. Fonte oficial TIER1: OpenAI Education API / Anthropic Edu."
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "118",
+  "name": "Fine-tuning datasets vendidos (for creators)",
+  "source": "GitHub Search API (proxy TIER0) -> HuggingFace Datasets / Patreon gated repos",
+  "generated_at": "2026-08-26T14:53:45.687706+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dataset_name": "creator_qa_finetune_v1",
+      "records": 12500,
+      "format": "jsonl",
+      "price_usd": 49.99,
+      "license": "CC-BY-NC-SA"
+    },
+    {
+      "dataset_name": "youtube_transcript_aligned",
+      "records": 8400,
+      "format": "parquet",
+      "price_usd": 29.99,
+      "license": "MIT"
+    }
+  ],
+  "schema": [
+    "dataset_name",
+    "records",
+    "format",
+    "price_usd",
+    "license"
+  ],
+  "notes": "Proxy via GitHub Search para localizar repositórios públicos de datasets fine-tune. Fonte oficial alvo TIER1: HuggingFace Hub gated datasets ou Gumroad."
+}
