@@ -439,7 +439,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/work.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/work.py.",
       "never": [
@@ -510,6 +510,11 @@
           "at": "2026-08-17T11:54:31+00:00",
           "event": "blocked",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:50:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
         }
       ],
       "review_feedback": "The working tree now shows only the intended `.gitignore` modification; `.cursor/agents/` is no longer reported as untracked. The slice files (`deploy/agentic-improve-dev.service`, `src/agentic/claude_cli.py`, `tests/test_claude_cli.py`) were already clean and required no changes.\n\nSUMMARY: Adicionei `.cursor/` ao .gitignore para restaurar git_clean desta fatia, sem alterar arquivos de produto nem…"
@@ -2303,7 +2308,7 @@
       "title": "Risco de secret vazar em traceback/trace da GhostCLI",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "env.py carrega GhostCLI+Bybit sem imprimir secrets, mas se ghostcli.py propagar erro com saída bruta (stderr/traceback), valores de /root/.automaton/bybit-murre.env podem chegar a log ou trace.",
       "change": "Centralizar um redact() em env.py que substitui qualquer valor carregado de .env/bybit-murre.env e aplicar a toda mensagem de erro/trace emitida por ghostcli.py antes de logar.",
       "never": [
@@ -2368,6 +2373,11 @@
           "at": "2026-08-17T22:34:07+00:00",
           "event": "blocked",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:50:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
         }
       ],
       "review_feedback": "reject: O diff não corresponde à proposta. A proposta pede centralizar redact() em env.py e aplicar a toda mensagem de erro/trace emitida por ghostcli.py (files_hint: src/agentic/env.py, src/agentic/ghostcli.py). O patch, porém, modifica apenas src/agentic/loop.py (função _smoke_ghostcli), sem tocar em ghostcli.py nem mostrar a definição/centralização de mask_secrets em env.py. Mesmo problema já apontado … riscos=['Escopo incorreto: loop.py não está em files_hint; ghostcli.py (alvo principal da proposta) permanece sem tratamento de redact', 'Definição de mask_secrets não visível no diff — pode não existir em e… arquivos=src/agentic/loop.py"
@@ -2832,7 +2842,7 @@
       "title": "Restaurar git_clean: fatia improve e playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "A working tree suja inclui mudanças no playbook e na unit systemd do improve, que devem ser isoladas do motor.",
       "change": "Stage e commit cirúrgico dos arquivos de improve, documentação e serviço systemd, mantendo o escopo restrito a esta fatia.",
       "never": [
@@ -2898,6 +2908,11 @@
           "at": "2026-08-18T04:20:55+00:00",
           "event": "blocked",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:50:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
@@ -3100,7 +3115,7 @@
       "title": "Restaurar git_clean (Playbook git_clean e integrity): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "never": [
@@ -3163,6 +3178,11 @@
           "at": "2026-08-18T07:07:28+00:00",
           "event": "blocked",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:50:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
@@ -6598,7 +6618,7 @@
       "title": "Restaurar git_clean: Fatia Ferramentas",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "blocked",
+      "status": "pending",
       "rationale": "O diretório de skills generate-changelog está untracked e polui a working tree, afetando a integridade do git_clean.",
       "change": "O pipeline stageia o diretório ou o adiciona ao .gitignore (se for lixo gerado), commitando apenas essa fatia de ferramentas.",
       "never": [
@@ -6656,6 +6676,11 @@
           "at": "2026-08-18T13:31:18+00:00",
           "event": "blocked",
           "detail": "arquivo grande demais: improve/ledger.json"
+        },
+        {
+          "at": "2026-08-26T13:50:00+00:00",
+          "event": "requeued",
+          "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
         }
       ],
       "review_feedback": "claude_failed: API Error: 402 API access not purchased — add it at https://ghostcli.dev/checkout?item=api"
