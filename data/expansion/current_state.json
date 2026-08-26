@@ -1,11 +1,7 @@
 {
   "last_audit": "2026-08-26T21:59:35.401367+00:00",
   "prescreen_status": "REJECTED_V3_CONFIRMED_ON_CLEAN_DATA",
-  "pending_improvements": [
-    "title_similarity_dedup",
-    "semantic_proxy_tier0_triage",
-    "supersession_detector_integration"
-  ],
+  "pending_improvements": [],
   "data_quality_flags": {
     "template_leaked_verdicts": 89,
     "requires_cleaning": false,
@@ -14,20 +10,20 @@
   "proposal_counts": {
     "REJEITAR": 0,
     "APROVAR_IMPLEMENTACAO": 0,
-    "ADIAR": 22,
+    "ADIAR": 23,
     "PILOTAR": 1
   },
-  "next_method": 734,
+  "next_method": 736,
   "last_verdict": {
-    "proposal_id": "method_734_real_estate_pricing_startups",
+    "proposal_id": "method_735_real_estate_pricing_enterprises",
     "verdict": "ADIAR",
-    "timestamp": "2026-08-26T22:27:16.578915+00:00",
+    "timestamp": "2026-08-26T22:28:13.220157+00:00",
     "result": "SUCCESS"
   },
   "last_verdict_timestamp": "2026-08-26T22:19:17.667086+00:00",
   "last_council_action": "2026-08-26T22:19:17.667086+00:00",
   "last_updated": "2026-08-26T22:19:17.667086+00:00",
-  "total_verdicts": 1113,
+  "total_verdicts": 1114,
   "implemented_proposals": [
     "method_686"
   ],
@@ -48,8 +44,13 @@
     "method_726"
   ],
   "completed_improvements": [
-    "verdict_template_scanner",
-    "supersession_detector_scan"
+    {
+      "id": "exp-20260827-supersession-detector-integration",
+      "title": "Integrar detector de supersess\u00e3o no pipeline de triagem",
+      "completed_at": "2026-08-26T22:28:34.314921+00:00",
+      "tier": "TIER0",
+      "outcome": "6 pairs detected, non-blocking flag integrated"
+    }
   ],
   "next_priorities": [
     "supersession_detector (catches proposals replaced by newer versions)",
@@ -61,5 +62,5 @@
     "scan_file": "data/expansion/supersession_scan.json"
   },
   "verdicts_last_synced": "efe1315b96098e4fab531efc3defb838dd9305fe",
-  "last_verdict_count": 1115
+  "last_verdict_count": 1117
 }
