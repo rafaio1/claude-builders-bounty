@@ -9,7 +9,7 @@ from typing import Any, Dict, List, Tuple
 from ..common.queue import PersistentQueue
 from ..common.validation import validate_cron_payload
 
-_CRON_TOKEN_RE = re.compile(r"^(\*|[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*)$")
+_CRON_TOKEN_RE = re.compile(r"^(\*(/[0-9]+)?|[0-9]+(-[0-9]+)?(,[0-9]+(-[0-9]+)?)*)$")
 
 
 class LocalScheduler:

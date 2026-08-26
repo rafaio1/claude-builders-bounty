@@ -96,7 +96,7 @@ def test_cron_validation_blocks_external_webhook():
         {"schedule": "* * * * *", "target": "local.echo", "webhook_url": "https://x"}
     )
     assert ok is False
-    assert "external_webhook_forbidden" in reason
+    assert "external_webhook_url_forbidden" in reason
 
 
 def test_scheduler_enqueue_and_pending(tmp_path):
