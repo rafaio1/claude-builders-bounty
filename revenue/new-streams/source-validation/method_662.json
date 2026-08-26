@@ -1,0 +1,34 @@
+{
+  "method_id": "662",
+  "name": "QA test automation (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:44:52.346646+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_id": "st_441",
+      "stage": "seed",
+      "budget_usd": 300,
+      "tool": "playwright_oss",
+      "coverage_target_pct": 60,
+      "manual_qa_hours_week": 10
+    },
+    {
+      "startup_id": "st_992",
+      "stage": "series_a",
+      "budget_usd": 1200,
+      "tool": "browserstack_live",
+      "coverage_target_pct": 80,
+      "manual_qa_hours_week": 5
+    }
+  ],
+  "schema": [
+    "startup_id",
+    "stage",
+    "budget_usd",
+    "tool",
+    "coverage_target_pct",
+    "manual_qa_hours_week"
+  ],
+  "notes": "Foco em ROI rápido e redução de QA manual. Fonte oficial alvo: Startup QA guides. Proxy TIER0: GitHub Search API para templates de teste minimalistas."
+}

@@ -1,0 +1,34 @@
+{
+  "method_id": "661",
+  "name": "QA test automation",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:44:52.346646+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "project_id": "qa_8821",
+      "framework": "playwright",
+      "language": "typescript",
+      "test_count": 450,
+      "ci_integration": true,
+      "flakiness_rate_pct": 2.1
+    },
+    {
+      "project_id": "qa_3390",
+      "framework": "cypress",
+      "language": "javascript",
+      "test_count": 280,
+      "ci_integration": true,
+      "flakiness_rate_pct": 4.5
+    }
+  ],
+  "schema": [
+    "project_id",
+    "framework",
+    "language",
+    "test_count",
+    "ci_integration",
+    "flakiness_rate_pct"
+  ],
+  "notes": "Automação de testes E2E geral. Fonte oficial alvo: Playwright/Cypress docs. Proxy TIER0: GitHub Search API para configs de teste e workflows de QA."
+}
