@@ -1,0 +1,30 @@
+{
+  "method_id": "method_930",
+  "name": "Groq Free Tier LLM Inference Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "tier": "TIER0",
+  "decision_timestamp": "2026-08-26T23:48:16.366246+00:00",
+  "rejection_reason": "Groq ToS grants 'non-transferable, non-commercial' license for personal use only. Explicitly prohibits 'sell, resell, sublicense, transfer, or distribute'. Prohibits commercial solicitation and proxy usage. API key pooling/inference proxy markup constitutes reselling and service bureau violation.",
+  "tos_verified": true,
+  "tos_url": "https://groq.com/terms-of-service",
+  "free_tier_limits": {
+    "rpm": 30,
+    "rpd": 14400,
+    "tpm": "limited"
+  },
+  "paid_plan_baseline": {
+    "payg_usd_mtok": "varies_by_model"
+  },
+  "reselling_model": "BLOCKED_BY_TOS",
+  "risks": [
+    "ToS non-transferable/non-commercial only",
+    "Explicit prohibition of sell/resell/sublicense/distribute",
+    "Proxy/commercial solicitation banned",
+    "Account termination + legal liability risk"
+  ],
+  "next_steps": [
+    "REJECTED - do not proceed to TIER1",
+    "Continue pipeline to method_931"
+  ]
+}

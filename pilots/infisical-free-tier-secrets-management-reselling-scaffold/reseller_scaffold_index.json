@@ -1,0 +1,30 @@
+{
+  "method_id": "method_929",
+  "name": "Infisical Free Tier Secrets Management Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "tier": "TIER0",
+  "decision_timestamp": "2026-08-26T23:46:35.983853+00:00",
+  "rejection_reason": "Infisical Cloud ToS §6.1 grants 'non-transferable, non-sublicensable' license for internal business/personal purposes only. §6.3 explicitly prohibits 'renting, leasing, distributing, sublicensing, or otherwise providing access to the Services to a third party'. Free tier is not a resellable asset; managed secrets wrapper constitutes service bureau/sublicensing violation.",
+  "tos_verified": true,
+  "tos_url": "https://infisical.com/terms/cloud",
+  "free_tier_limits": {
+    "users": 5,
+    "secrets": "unlimited",
+    "projects": "limited"
+  },
+  "paid_plan_baseline": {
+    "starter_usd_month": 49,
+    "pro_usd_month": 199
+  },
+  "reselling_model": "BLOCKED_BY_TOS",
+  "risks": [
+    "ToS §6.1 non-sublicensable/non-transferable",
+    "ToS §6.3 explicit prohibition of renting/leasing/distributing/providing access to third party",
+    "Account termination risk upon detection of multi-tenant usage"
+  ],
+  "next_steps": [
+    "REJECTED - do not proceed to TIER1",
+    "Continue pipeline to method_930"
+  ]
+}
