@@ -1,0 +1,40 @@
+{
+  "method_id": "289",
+  "name": "OCR specialized API",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:50.655329+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "document_type": "invoice",
+      "language": "pt-BR",
+      "confidence": 0.98,
+      "fields_extracted": [
+        "vendor",
+        "total",
+        "date",
+        "tax_id"
+      ],
+      "processing_time_ms": 420
+    },
+    {
+      "document_type": "handwritten_form",
+      "language": "en",
+      "confidence": 0.87,
+      "fields_extracted": [
+        "name",
+        "address",
+        "signature_present"
+      ],
+      "processing_time_ms": 680
+    }
+  ],
+  "schema": [
+    "document_type",
+    "language",
+    "confidence",
+    "fields_extracted",
+    "processing_time_ms"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos OCR open-source como Tesseract/PaddleOCR). Fonte oficial alvo: Google Document AI / AWS Textract para OCR especializado em documentos estruturados."
+}

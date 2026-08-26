@@ -1,0 +1,38 @@
+{
+  "method_id": "291",
+  "name": "OCR specialized API (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:50.655365+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "on_premise",
+      "throughput_ppm": 1200,
+      "compliance": [
+        "SOC2",
+        "HIPAA",
+        "GDPR"
+      ],
+      "custom_models": true,
+      "support_tier": "dedicated"
+    },
+    {
+      "deployment": "private_cloud",
+      "throughput_ppm": 3500,
+      "compliance": [
+        "ISO27001",
+        "PCI-DSS"
+      ],
+      "custom_models": true,
+      "support_tier": "24x7_enterprise"
+    }
+  ],
+  "schema": [
+    "deployment",
+    "throughput_ppm",
+    "compliance",
+    "custom_models",
+    "support_tier"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: ABBYY Cloud / Kofax RPA para OCR enterprise com deploy on-premise, modelos customizados e compliance regulatório."
+}

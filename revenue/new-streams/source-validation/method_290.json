@@ -1,0 +1,31 @@
+{
+  "method_id": "290",
+  "name": "OCR specialized API (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:50.655360+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "use_case": "receipt_scanning",
+      "monthly_volume": 5000,
+      "cost_per_scan_usd": 0.002,
+      "integration": "rest_api",
+      "sla_uptime": "99.5%"
+    },
+    {
+      "use_case": "id_verification",
+      "monthly_volume": 1200,
+      "cost_per_scan_usd": 0.005,
+      "integration": "sdk_mobile",
+      "sla_uptime": "99.9%"
+    }
+  ],
+  "schema": [
+    "use_case",
+    "monthly_volume",
+    "cost_per_scan_usd",
+    "integration",
+    "sla_uptime"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Veryfi / Mindee API para OCR de baixo custo voltado a startups com pricing por uso e SDKs leves."
+}
