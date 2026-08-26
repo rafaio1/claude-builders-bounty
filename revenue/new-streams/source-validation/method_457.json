@@ -1,0 +1,31 @@
+{
+  "method_id": "457",
+  "name": "Governance voting proxy",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dao": "Compound",
+      "proposal_id": 142,
+      "voting_power_delegated_pct": 12.5,
+      "quorum_reached": true
+    },
+    {
+      "dao": "Uniswap",
+      "proposal_id": 38,
+      "voting_power_delegated_pct": 8.2,
+      "quorum_reached": false
+    }
+  ],
+  "schema": [
+    "dao",
+    "proposal_id",
+    "voting_power_delegated_pct",
+    "quorum_reached"
+  ],
+  "notes": "Proxy genérico de delegação de voto em DAOs. Proxy TIER0 via repositórios de governance subgraphs e delegation dashboards no GitHub. Fonte oficial: Tally API ou Karma HQ.",
+  "generated_at": "2026-08-26T15:12:56.281747+00:00",
+  "_meta": {
+    "hash": "b4d57633f5acbe453f217283f04c35b214ab3a7dce028cc71450508f26542f02"
+  }
+}

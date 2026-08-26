@@ -1,0 +1,31 @@
+{
+  "method_id": "458",
+  "name": "Governance voting proxy (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_dao": "NewProtocolDAO",
+      "active_delegates_count": 14,
+      "avg_participation_rate_pct": 65.0,
+      "delegate_incentive_program": true
+    },
+    {
+      "startup_dao": "EarlyStageFundDAO",
+      "active_delegates_count": 5,
+      "avg_participation_rate_pct": 92.0,
+      "delegate_incentive_program": false
+    }
+  ],
+  "schema": [
+    "startup_dao",
+    "active_delegates_count",
+    "avg_participation_rate_pct",
+    "delegate_incentive_program"
+  ],
+  "notes": "Variante para DAOs/startups em fase inicial. Foca em métricas de engajamento de delegados. Proxy via templates de governance bootstrapping no GitHub. Fonte oficial: Aragon OSx ou DAOhaus data.",
+  "generated_at": "2026-08-26T15:12:56.281747+00:00",
+  "_meta": {
+    "hash": "0d824d2c7b6cb4873ed61d0fde7b14f1bf662a5f76bad9f484ed455480aea883"
+  }
+}

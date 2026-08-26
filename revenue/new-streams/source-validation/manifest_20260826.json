@@ -7433,5 +7433,197 @@
     "_meta": {
       "hash": "597acfe6c5eef88e2fd56dcd050687defc3852ed28858dd466b9702adec3f3fb"
     }
+  },
+  "454": {
+    "method_id": "454",
+    "name": "LP position manager (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_token": "ARTIST_V1",
+        "pool_type": "uniswap_v3",
+        "auto_rebalance_enabled": true,
+        "fee_tier_bps": 30
+      },
+      {
+        "creator_token": "MUSIC_NFT_LP",
+        "pool_type": "aerodrome",
+        "auto_rebalance_enabled": false,
+        "fee_tier_bps": 5
+      }
+    ],
+    "schema": [
+      "creator_token",
+      "pool_type",
+      "auto_rebalance_enabled",
+      "fee_tier_bps"
+    ],
+    "notes": "Variante para criadores gerenciando liquidez de social tokens/NFTs. Foca em automação e escolha de fee tiers. Proxy TIER0 via repositórios de creator-economy LP bots. Fonte oficial: Uniswap V3 Position Manager docs ou Aerodrome Finance.",
+    "generated_at": "2026-08-26T15:12:09.980001+00:00",
+    "_meta": {
+      "hash": "24e3fe539d0bd4aab3b4e49dba91403b92ed8ab2ec24abd273471f3f20ef6774"
+    }
+  },
+  "455": {
+    "method_id": "455",
+    "name": "LP position manager (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_module": "CLM_Strategy_Core",
+        "supported_amms": [
+          "uniswap_v3",
+          "pancake_v3"
+        ],
+        "rebalance_logic": "tick_based",
+        "test_coverage_pct": 94.0
+      },
+      {
+        "dev_module": "Auto_Compound_Bot",
+        "supported_amms": [
+          "curve",
+          "balancer"
+        ],
+        "rebalance_logic": "time_based",
+        "test_coverage_pct": 78.5
+      }
+    ],
+    "schema": [
+      "dev_module",
+      "supported_amms",
+      "rebalance_logic",
+      "test_coverage_pct"
+    ],
+    "notes": "Variante técnica para devs integrando gestores de posição. Compara suporte a AMMs e lógica de rebalanceamento. Proxy via repositórios de CLM frameworks no GitHub. Fonte oficial: Arrakis Finance SDK ou Gamma.xyz API.",
+    "generated_at": "2026-08-26T15:12:09.980001+00:00",
+    "_meta": {
+      "hash": "d286a1a5e9312534aa21432aeceaf4cfdba52cc351e1b88e0d4f40e979f6ebb6"
+    }
+  },
+  "456": {
+    "method_id": "456",
+    "name": "LP position manager (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_campaign": "Token_Launch_Q3",
+        "managed_tvl_usd": 850000,
+        "performance_fee_bps": 1500,
+        "reporting_frequency": "daily"
+      },
+      {
+        "client_campaign": "Stablecoin_Yield_Fund",
+        "managed_tvl_usd": 2400000,
+        "performance_fee_bps": 1000,
+        "reporting_frequency": "weekly"
+      }
+    ],
+    "schema": [
+      "client_campaign",
+      "managed_tvl_usd",
+      "performance_fee_bps",
+      "reporting_frequency"
+    ],
+    "notes": "Variante B2B para agências oferecendo gestão de liquidez como serviço. Reporta TVL gerido e estrutura de fees. Proxy via templates de LP management dashboards. Fonte oficial: Enzyme Finance Vault API ou Yearn Partner Dashboard.",
+    "generated_at": "2026-08-26T15:12:09.980001+00:00",
+    "_meta": {
+      "hash": "3036a3d41538d92993f6feef070bf499a7e382ea8c70a2c072f1b20ef96f1927"
+    }
+  },
+  "457": {
+    "method_id": "457",
+    "name": "Governance voting proxy",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dao": "Compound",
+        "proposal_id": 142,
+        "voting_power_delegated_pct": 12.5,
+        "quorum_reached": true
+      },
+      {
+        "dao": "Uniswap",
+        "proposal_id": 38,
+        "voting_power_delegated_pct": 8.2,
+        "quorum_reached": false
+      }
+    ],
+    "schema": [
+      "dao",
+      "proposal_id",
+      "voting_power_delegated_pct",
+      "quorum_reached"
+    ],
+    "notes": "Proxy genérico de delegação de voto em DAOs. Proxy TIER0 via repositórios de governance subgraphs e delegation dashboards no GitHub. Fonte oficial: Tally API ou Karma HQ.",
+    "generated_at": "2026-08-26T15:12:56.281747+00:00",
+    "_meta": {
+      "hash": "b4d57633f5acbe453f217283f04c35b214ab3a7dce028cc71450508f26542f02"
+    }
+  },
+  "458": {
+    "method_id": "458",
+    "name": "Governance voting proxy (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "startup_dao": "NewProtocolDAO",
+        "active_delegates_count": 14,
+        "avg_participation_rate_pct": 65.0,
+        "delegate_incentive_program": true
+      },
+      {
+        "startup_dao": "EarlyStageFundDAO",
+        "active_delegates_count": 5,
+        "avg_participation_rate_pct": 92.0,
+        "delegate_incentive_program": false
+      }
+    ],
+    "schema": [
+      "startup_dao",
+      "active_delegates_count",
+      "avg_participation_rate_pct",
+      "delegate_incentive_program"
+    ],
+    "notes": "Variante para DAOs/startups em fase inicial. Foca em métricas de engajamento de delegados. Proxy via templates de governance bootstrapping no GitHub. Fonte oficial: Aragon OSx ou DAOhaus data.",
+    "generated_at": "2026-08-26T15:12:56.281747+00:00",
+    "_meta": {
+      "hash": "0d824d2c7b6cb4873ed61d0fde7b14f1bf662a5f76bad9f484ed455480aea883"
+    }
+  },
+  "459": {
+    "method_id": "459",
+    "name": "Governance voting proxy (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Institutional Staking Provider",
+        "governance_compliance_framework": "SOC2",
+        "automated_voting_policy": "proxy_advisory",
+        "audit_trail": true
+      },
+      {
+        "entity": "Corporate Treasury DAO",
+        "governance_compliance_framework": "internal",
+        "automated_voting_policy": "manual_review",
+        "audit_trail": false
+      }
+    ],
+    "schema": [
+      "entity",
+      "governance_compliance_framework",
+      "automated_voting_policy",
+      "audit_trail"
+    ],
+    "notes": "Variante enterprise focada em compliance e políticas de voto automatizado. Proxy TIER0 via frameworks de regtech/govtech no GitHub. Fonte oficial: Zeppelin Governance or Boardroom Protocol.",
+    "generated_at": "2026-08-26T15:12:56.281747+00:00",
+    "_meta": {
+      "hash": "6cb5adcff9e61d09baaa15d7f800dc85e53d79518a1c7c3a00b0761cbe3fdbe0"
+    }
   }
 }
