@@ -1,0 +1,46 @@
+{
+  "method_id": 745,
+  "name": "Base escolas e cursos privados BR (for edtech)",
+  "source": "ReceitaWS + GitHub Open Data (proxy INEP)",
+  "generated_at": "2026-08-26T14:05:41.739812+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "01.687.938/0001-09",
+      "nome": "COLEGIO BANDEIRANTES",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "8541-4/00",
+      "nivel_ensino": "Medio/Fundamental II",
+      "alunos_proxy": 2800
+    },
+    {
+      "cnpj": "60.500.139/0001-26",
+      "nome": "FUNDACAO GETULIO VARGAS",
+      "municipio": "RIO DE JANEIRO",
+      "uf": "RJ",
+      "cnae": "8531-7/00",
+      "nivel_ensino": "Superior/Pos",
+      "alunos_proxy": 8500
+    },
+    {
+      "cnpj": "02.437.888/0001-06",
+      "nome": "CURSINHO DA POLI",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "8599-6/04",
+      "nivel_ensino": "Pre-Vestibular",
+      "alunos_proxy": 4200
+    }
+  ],
+  "schema": [
+    "cnpj",
+    "nome",
+    "municipio",
+    "uf",
+    "cnae",
+    "nivel_ensino",
+    "alunos_proxy"
+  ],
+  "notes": "Dataset de instituições de ensino privadas cruzando CNPJ ativo com dados abertos educacionais. Proxy TIER0 para API INEP."
+}

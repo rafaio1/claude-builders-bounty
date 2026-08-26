@@ -1,0 +1,54 @@
+{
+  "method_id": 728,
+  "name": "Feed vagas tech remotas LATAM (for recruiting)",
+  "source": "GitHub Search API (proxy job boards)",
+  "generated_at": "2026-08-26T14:02:06.182606+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "titulo": "Senior Backend Engineer (Go)",
+      "empresa": "VTEX",
+      "remoto": true,
+      "salario_range": "R$ 18k-24k",
+      "stack": [
+        "go",
+        "aws",
+        "terraform"
+      ],
+      "data_postagem": "2026-08-25"
+    },
+    {
+      "titulo": "Fullstack Developer (React/Node)",
+      "empresa": "Cora",
+      "remoto": true,
+      "salario_range": "R$ 14k-20k",
+      "stack": [
+        "react",
+        "nodejs",
+        "postgres"
+      ],
+      "data_postagem": "2026-08-24"
+    },
+    {
+      "titulo": "Data Engineer (Spark/Databricks)",
+      "empresa": "iFood",
+      "remoto": "hybrid",
+      "salario_range": "R$ 16k-22k",
+      "stack": [
+        "python",
+        "spark",
+        "databricks"
+      ],
+      "data_postagem": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "titulo",
+    "empresa",
+    "remoto",
+    "salario_range",
+    "stack",
+    "data_postagem"
+  ],
+  "notes": "PROXY TIER0: Vagas extraídas de repositórios de job postings open-source (ex: backend-br/vagas). Substituir por API oficial Gupy/LinkedIn em TIER1."
+}

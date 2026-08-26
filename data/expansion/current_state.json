@@ -22,12 +22,33 @@
     "ADIAR": 4
   },
   "total_proposals": 8,
-  "total_verdicts": 52,
+  "total_verdicts": 57,
   "timers_root_cause_note": "Resolved: bughunter-improve-* timers re-enabled and scheduled. agentic-improve-* remain masked per council decision. Code fixes committed (9c9739e): budget-aware _file_context + scan_forbidden self-exemption unblock 2/3 blocked proposals.",
   "updated_at": "2026-08-26T14:02:00Z",
-  "last_council_action": "Watchdog reconciled timer drift; code fixes deployed for prompt truncation and forbidden-pattern self-match. Pipeline eligible for retry on next dev cycle (~14:10 UTC).",
+  "last_council_action": "2026-08-26T14:25:00Z",
   "pending_proposals": 0,
   "next_council_priority": "Aguardar master quiescente para auditar alteracoes em improve.py e validar worktree isolado",
   "local_control_patched": true,
-  "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable"
+  "improve_timers_gate": "AGENTIC_IMPROVE_TIMERS_ENABLED=1 required for unmask+enable",
+  "last_verdicts": [
+    "exp-20260826-data-products-sample-generation: APROVAR_IMPLEMENTACAO",
+    "exp-20260826-data-products-method-727-proxy: ADIAR",
+    "exp-20260826-data-products-batch-2-proxy: ADIAR",
+    "exp-20260826-data-products-method-716-leads: APROVAR_IMPLEMENTACAO",
+    "exp-20260826-data-products-batch-3-enterprise: APROVAR_IMPLEMENTACAO"
+  ],
+  "improve_timers_status": "MASKED",
+  "master_branch": "master",
+  "working_tree_dirty": true,
+  "last_verdict": {
+    "proposal_id": "exp-20260826-isolated-worktree-for-improve",
+    "verdict": "APROVAR_IMPLEMENTACAO",
+    "timestamp": "2026-08-26T14:15:00Z"
+  },
+  "pending_proposals_count": 0,
+  "last_updated": "2026-08-26T14:05:25Z",
+  "integrity_status": "master_dirty_concurrent_writes_active",
+  "implemented_proposals": [
+    "exp-20260826-isolated-worktree-for-improve"
+  ]
 }

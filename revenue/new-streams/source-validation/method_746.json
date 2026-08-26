@@ -1,0 +1,38 @@
+{
+  "method_id": 746,
+  "name": "Feed editais fomento tech ativos (for startups)",
+  "source": "GitHub Grant Parsers + ReceitaWS",
+  "generated_at": "2026-08-26T14:05:41.740293+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "edital": "FAPESP Pesquisa Inovativa em Pequenas Empresas (PIPE)",
+      "valor_max": "R$ 200.000",
+      "deadline": "2026-10-15",
+      "area_foco": "IA/Aplicada",
+      "beneficiarios_recentes_proxy": 45
+    },
+    {
+      "edital": "FINEP Startup Inovadora",
+      "valor_max": "R$ 150.000",
+      "deadline": "2026-09-30",
+      "area_foco": "Deep Tech/Green",
+      "beneficiarios_recentes_proxy": 32
+    },
+    {
+      "edital": "CNPq Universal 2026",
+      "valor_max": "R$ 80.000",
+      "deadline": "2026-11-01",
+      "area_foco": "Pesquisa Básica/Todas",
+      "beneficiarios_recentes_proxy": 120
+    }
+  ],
+  "schema": [
+    "edital",
+    "valor_max",
+    "deadline",
+    "area_foco",
+    "beneficiarios_recentes_proxy"
+  ],
+  "notes": "PROXY TIER0: Editais estruturados a partir de parsers open-source de portais de fomento. Para TIER1, integrar APIs oficiais FAPESP/FINEP."
+}

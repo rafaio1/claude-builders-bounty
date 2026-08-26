@@ -1,0 +1,38 @@
+{
+  "method_id": 724,
+  "name": "Relatório densidade CNAE regional (for consulting)",
+  "source": "ReceitaWS + IBGE",
+  "generated_at": "2026-08-26T14:01:38.486695+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnae": "6201-5/01",
+      "descricao": "Desenvolvimento de programas de computador sob encomenda",
+      "regiao": "SUDESTE",
+      "total_empresas_ativas": 14520,
+      "variacao_anual_pct": 12.4
+    },
+    {
+      "cnae": "6202-3/00",
+      "descricao": "Desenvolvimento e licenciamento de programas de computador customizáveis",
+      "regiao": "SUL",
+      "total_empresas_ativas": 3890,
+      "variacao_anual_pct": 8.7
+    },
+    {
+      "cnae": "6311-9/00",
+      "descricao": "Tratamento de dados, provedores de serviços de aplicação e serviços de hospedagem",
+      "regiao": "NORDESTE",
+      "total_empresas_ativas": 1240,
+      "variacao_anual_pct": 22.1
+    }
+  ],
+  "schema": [
+    "cnae",
+    "descricao",
+    "regiao",
+    "total_empresas_ativas",
+    "variacao_anual_pct"
+  ],
+  "notes": "Amostra agregada cruzando CNAEs de tecnologia com regiões IBGE. Base para relatórios de consultoria estratégica e market sizing."
+}

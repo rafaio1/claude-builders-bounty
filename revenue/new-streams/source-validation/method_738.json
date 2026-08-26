@@ -1,0 +1,42 @@
+{
+  "method_id": 738,
+  "name": "Alertas regulatórios por setor/CNAE (for regtech)",
+  "source": "GitHub Legislative Parsers + ReceitaWS",
+  "generated_at": "2026-08-26T14:03:50.503393+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "norma": "Resolução BCB nº 450",
+      "data_publicacao": "2026-08-20",
+      "setor_afetado": "Fintechs/Pagamentos",
+      "cnae_alvo": "6432-8/00",
+      "impacto_resumo": "Novos requisitos de capital mínimo",
+      "empresas_potencialmente_afetadas": 142
+    },
+    {
+      "norma": "Portaria ANPD nº 12",
+      "data_publicacao": "2026-08-22",
+      "setor_afetado": "Healthtech/SaaS Saúde",
+      "cnae_alvo": "6203-1/00",
+      "impacto_resumo": "Diretrizes tratamento dados sensíveis pacientes",
+      "empresas_potencialmente_afetadas": 89
+    },
+    {
+      "norma": "Instrução CVM 88",
+      "data_publicacao": "2026-08-18",
+      "setor_afetado": "Criptoativos/Exchanges",
+      "cnae_alvo": "6619-3/02",
+      "impacto_resumo": "Relatórios mensais obrigatórios volume transações",
+      "empresas_potencialmente_afetadas": 34
+    }
+  ],
+  "schema": [
+    "norma",
+    "data_publicacao",
+    "setor_afetado",
+    "cnae_alvo",
+    "impacto_resumo",
+    "empresas_estimadas"
+  ],
+  "notes": "PROXY TIER0: Cruzamento de normas recentes com base CNAE via parsers open-source. Produto final seria feed RSS/API para departamentos jurídicos."
+}

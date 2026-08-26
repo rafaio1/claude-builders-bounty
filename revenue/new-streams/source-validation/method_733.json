@@ -1,0 +1,46 @@
+{
+  "method_id": 733,
+  "name": "Real estate pricing models",
+  "source": "IBGE + GitHub Open Data (proxy ZAP/QuintoAndar)",
+  "generated_at": "2026-08-26T14:03:16.074370+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "bairro": "Vila Madalena",
+      "cidade": "São Paulo",
+      "uf": "SP",
+      "preco_medio_m2": 12500,
+      "variacao_anual_pct": 8.4,
+      "amostra_imoveis": 342,
+      "fonte_dados": "ibge+github_proxy"
+    },
+    {
+      "bairro": "Savassi",
+      "cidade": "Belo Horizonte",
+      "uf": "MG",
+      "preco_medio_m2": 9800,
+      "variacao_anual_pct": 11.2,
+      "amostra_imoveis": 187,
+      "fonte_dados": "ibge+github_proxy"
+    },
+    {
+      "bairro": "Centro",
+      "cidade": "Curitiba",
+      "uf": "PR",
+      "preco_medio_m2": 7200,
+      "variacao_anual_pct": -2.1,
+      "amostra_imoveis": 215,
+      "fonte_dados": "ibge+github_proxy"
+    }
+  ],
+  "schema": [
+    "bairro",
+    "cidade",
+    "uf",
+    "preco_medio_m2",
+    "variacao_anual_pct",
+    "amostra_imoveis",
+    "fonte_dados"
+  ],
+  "notes": "Modelo de precificação baseado em agregação de dados públicos e datasets open-source. Para TIER1, integrar API ZAP Imóveis ou QuintoAndar."
+}

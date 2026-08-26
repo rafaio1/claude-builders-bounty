@@ -255,9 +255,15 @@ case "${1:-status}" in
     provision_portal_runtime
     install_units
     systemctl enable "${UNIT_LOOP}" \
-      "${UNIT_IMPROVE_MAP_TIMER}" "${UNIT_IMPROVE_DEV_TIMER}" \
-      "${UNIT_IMPROVE_REVIEW_TIMER}" "${UNIT_INTEGRITY_TIMER}" \
+      "${UNIT_INTEGRITY_TIMER}" \
       "${UNIT_PORTAL}" "${UNIT_PORTAL_SNAPSHOT_TIMER}"
+    # Improve timers condicionais: só habilitar se AGENTIC_IMPROVE_TIMERS_ENABLED=1
+    # e worktree isolado validado. Por padrão, permanecem masked para evitar
+    # reativação acidental durante concorrência com agentes Codex.
+    if [[ "${AGENTIC_IMPROVE_TIMERS_ENABLED:-0}" == "1" ]]; then
+      systemctl unmask "${UNIT_IMPROVE_MAP_TIMER}" "${UNIT_IMPROVE_DEV_TIMER}" "${UNIT_IMPROVE_REVIEW_TIMER}" 2>/dev/null || true
+      systemctl enable "${UNIT_IMPROVE_MAP_TIMER}" "${UNIT_IMPROVE_DEV_TIMER}" "${UNIT_IMPROVE_REVIEW_TIMER}"
+    fi
     stop_managed
     start_managed
     echo "instalação concluída; AGENTIC_LIVE_TRADE permanece 0"

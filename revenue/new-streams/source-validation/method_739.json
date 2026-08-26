@@ -1,0 +1,46 @@
+{
+  "method_id": 739,
+  "name": "Base hospitais e clínicas privadas BR (for healthtech)",
+  "source": "ReceitaWS + GitHub Open Data (proxy ANS)",
+  "generated_at": "2026-08-26T14:04:22.924602+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "60.558.579/0001-34",
+      "nome": "HOSPITAL ISRAELITA ALBERT EINSTEIN",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "8610-1/01",
+      "leitos_proxy": 650,
+      "acreditacao_ona": "Nivel 3"
+    },
+    {
+      "cnpj": "33.459.987/0001-70",
+      "nome": "HOSPITAL SÍRIO-LIBANÊS",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "8610-1/01",
+      "leitos_proxy": 480,
+      "acreditacao_ona": "Nivel 3"
+    },
+    {
+      "cnpj": "92.827.880/0001-08",
+      "nome": "HOSPITAL MAE DE DEUS",
+      "municipio": "PORTO ALEGRE",
+      "uf": "RS",
+      "cnae": "8610-1/01",
+      "leitos_proxy": 320,
+      "acreditacao_ona": "Nivel 2"
+    }
+  ],
+  "schema": [
+    "cnpj",
+    "nome",
+    "municipio",
+    "uf",
+    "cnae",
+    "leitos_proxy",
+    "acreditacao_ona"
+  ],
+  "notes": "Dataset de instituições de saúde privadas cruzando CNPJ ativo com dados abertos de acreditação. Proxy TIER0 para API ANS/CNES."
+}

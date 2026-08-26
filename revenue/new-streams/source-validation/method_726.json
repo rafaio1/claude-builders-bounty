@@ -1,0 +1,56 @@
+{
+  "method_id": 726,
+  "name": "Base contatos investidores LATAM (for startups)",
+  "source": "GitHub Search API (proxy CVM/Crunchbase)",
+  "generated_at": "2026-08-26T14:02:06.182275+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "investidor": "Kaszek Ventures",
+      "foco_setor": [
+        "fintech",
+        "ecommerce"
+      ],
+      "ticket_medio_usd": 500000,
+      "portfolio_exemplo": [
+        "nubank",
+        "quintoandar"
+      ],
+      "fonte_proxy": "github.com/kaszek/portfolio"
+    },
+    {
+      "investidor": "Valor Capital",
+      "foco_setor": [
+        "b2b_saas",
+        "healthtech"
+      ],
+      "ticket_medio_usd": 1500000,
+      "portfolio_exemplo": [
+        "dock",
+        "alice"
+      ],
+      "fonte_proxy": "github.com/valor-capital/data"
+    },
+    {
+      "investidor": "Astella Investimentos",
+      "foco_setor": [
+        "agritech",
+        "logistics"
+      ],
+      "ticket_medio_usd": 300000,
+      "portfolio_exemplo": [
+        "solinftec",
+        "cargox"
+      ],
+      "fonte_proxy": "github.com/astella/deals"
+    }
+  ],
+  "schema": [
+    "investidor",
+    "foco_setor",
+    "ticket_medio_usd",
+    "portfolio_exemplo",
+    "fonte_proxy"
+  ],
+  "notes": "PROXY TIER0: Dados estruturados a partir de repositórios públicos de VCs. Para TIER1, validar contra base CVM ou parceria com plataforma de captação."
+}

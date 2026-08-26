@@ -1,0 +1,42 @@
+{
+  "method_id": 734,
+  "name": "Real estate pricing models (for startups)",
+  "source": "IBGE + ReceitaWS (construtoras) + GitHub",
+  "generated_at": "2026-08-26T14:03:16.074729+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "construtora": "Cyrela Brazil Realty",
+      "cnpj": "06.493.270/0001-32",
+      "lancamentos_2026": 14,
+      "preco_medio_unidade": 850000,
+      "regiao_foco": "SP/RJ",
+      "tech_adoption_score": 78
+    },
+    {
+      "construtora": "MRV Engenharia",
+      "cnpj": "08.338.643/0001-10",
+      "lancamentos_2026": 22,
+      "preco_medio_unidade": 320000,
+      "regiao_foco": "Nacional",
+      "tech_adoption_score": 65
+    },
+    {
+      "construtora": "Tenda Atacado",
+      "cnpj": "05.553.773/0001-09",
+      "lancamentos_2026": 8,
+      "preco_medio_unidade": 180000,
+      "regiao_foco": "Nordeste",
+      "tech_adoption_score": 42
+    }
+  ],
+  "schema": [
+    "construtora",
+    "cnpj",
+    "lancamentos_2026",
+    "preco_medio_unidade",
+    "regiao_foco",
+    "tech_adoption_score"
+  ],
+  "notes": "Dataset cruzando dados societários (ReceitaWS) com métricas de mercado e adoção tecnológica. Útil para B2B SaaS focado em construção civil."
+}

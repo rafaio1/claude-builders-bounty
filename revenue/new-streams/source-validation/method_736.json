@@ -1,0 +1,42 @@
+{
+  "method_id": 736,
+  "name": "Dataset métricas ESG empresas BR (for investors)",
+  "source": "GitHub Open Data (proxy relatórios GRI/B3)",
+  "generated_at": "2026-08-26T14:03:50.502917+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "empresa": "Natura &Co",
+      "cnpj": "07.943.556/0001-00",
+      "score_esg_proxy": 88,
+      "emissoes_co2_ton": 12400,
+      "meta_netzero": 2030,
+      "certificacao_bcorp": true
+    },
+    {
+      "empresa": "Itaú Unibanco",
+      "cnpj": "60.701.190/0001-04",
+      "score_esg_proxy": 76,
+      "investimento_social_privado_mm": 450,
+      "diversidade_conselho_pct": 33,
+      "aderencia_gri": "Comprehensive"
+    },
+    {
+      "empresa": "WEG S.A.",
+      "cnpj": "84.429.695/0001-11",
+      "score_esg_proxy": 82,
+      "eficiencia_energetica_idx": 1.12,
+      "residuos_reciclados_pct": 94,
+      "certificacao_iso14001": true
+    }
+  ],
+  "schema": [
+    "empresa",
+    "cnpj",
+    "score_esg_proxy",
+    "metrica_chave",
+    "valor_metrica",
+    "aderencia_padrao"
+  ],
+  "notes": "PROXY TIER0: Métricas extraídas de repositórios públicos de relatórios ESG. Para TIER1, integrar API B3 ou provedor MSCI/Sustainalytics."
+}

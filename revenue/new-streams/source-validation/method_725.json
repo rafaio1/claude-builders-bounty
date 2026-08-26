@@ -1,0 +1,38 @@
+{
+  "method_id": 725,
+  "name": "Feed monitoramento licitações tech (for data_feed)",
+  "source": "GitHub Search API (proxy PNCP)",
+  "generated_at": "2026-08-26T14:01:38.486900+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "termo_busca": "pregão eletrônico software gestão hospitalar",
+      "uf_origem": "MG",
+      "valor_estimado": "R$ 450.000,00",
+      "data_publicacao_proxy": "2026-08-24",
+      "fonte_oficial_alvo": "pncp.gov.br"
+    },
+    {
+      "termo_busca": "contratação serviço nuvem governamental",
+      "uf_origem": "SP",
+      "valor_estimado": "R$ 1.200.000,00",
+      "data_publicacao_proxy": "2026-08-25",
+      "fonte_oficial_alvo": "comprasnet.gov.br"
+    },
+    {
+      "termo_busca": "aquisição licença cibersegurança prefeitura",
+      "uf_origem": "RS",
+      "valor_estimado": "R$ 89.000,00",
+      "data_publicacao_proxy": "2026-08-23",
+      "fonte_oficial_alvo": "pncp.gov.br"
+    }
+  ],
+  "schema": [
+    "termo_busca",
+    "uf_origem",
+    "valor_estimado",
+    "data_publicacao_proxy",
+    "fonte_oficial_alvo"
+  ],
+  "notes": "PROXY TIER0: Dados simulados baseados em padrões reais de editais. Fonte oficial (PNCP/ComprasNet) requer autenticação ou parsing complexo; proxy GitHub valida estrutura do artefato. Substituir por fonte primária antes de TIER1."
+}

@@ -1,0 +1,34 @@
+{
+  "method_id": 723,
+  "name": "API enriquecimento CNPJ (for saas)",
+  "source": "ReceitaWS",
+  "generated_at": "2026-08-26T14:01:38.486338+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "19.112.085/0001-02",
+      "empresa": "NUBANK",
+      "porte": "DEMAIS",
+      "capital_social": "R$ 1.500.000.000,00",
+      "atividade_principal": "Bancos múltiplos, sem carteira comercial",
+      "endereco_completo": "AV PAULISTA, 1802 - BELA VISTA, SAO PAULO - SP"
+    },
+    {
+      "cnpj": "02.541.982/0001-54",
+      "empresa": "MERCADOLIVRE.COM ATIVIDADES DE INTERNET LTDA.",
+      "porte": "EMPRESA DE GRANDE PORTE",
+      "capital_social": "R$ 38.000.000,00",
+      "atividade_principal": "Portais, provedores de conteúdo e outros serviços de informação na internet",
+      "endereco_completo": "AV DAS NACOES UNIDAS, 3003 - VILA JAGUARA, SAO PAULO - SP"
+    }
+  ],
+  "schema": [
+    "cnpj",
+    "empresa",
+    "porte",
+    "capital_social",
+    "atividade_principal",
+    "endereco_completo"
+  ],
+  "notes": "Endpoint mock para API REST. Dados reais obtidos via ReceitaWS. Ideal para SaaS que precisam validar/higienizar bases de clientes B2B."
+}

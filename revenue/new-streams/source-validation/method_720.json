@@ -1,0 +1,54 @@
+{
+  "method_id": 720,
+  "name": "Lead generation lists (for agencies)",
+  "source": "ReceitaWS + GitHub Search API",
+  "generated_at": "2026-08-26T14:01:09.490488+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "company": "Nubank",
+      "domain": "nubank.com.br",
+      "tech_stack": [
+        "kotlin",
+        "clojure",
+        "aws"
+      ],
+      "employee_range": "1000+",
+      "sector": "fintech",
+      "lead_score": 92
+    },
+    {
+      "company": "VTEX",
+      "domain": "vtex.com",
+      "tech_stack": [
+        "dotnet",
+        "azure",
+        "react"
+      ],
+      "employee_range": "500-1000",
+      "sector": "ecommerce",
+      "lead_score": 88
+    },
+    {
+      "company": "Loggi",
+      "domain": "loggi.com",
+      "tech_stack": [
+        "python",
+        "golang",
+        "gcp"
+      ],
+      "employee_range": "200-500",
+      "sector": "logistics",
+      "lead_score": 85
+    }
+  ],
+  "schema": [
+    "company",
+    "domain",
+    "tech_stack",
+    "employee_range",
+    "sector",
+    "lead_score"
+  ],
+  "notes": "Leads qualificados cruzando dados públicos de CNPJ (ReceitaWS) com repositórios GitHub. Score calculado por atividade recente e stack alignment."
+}

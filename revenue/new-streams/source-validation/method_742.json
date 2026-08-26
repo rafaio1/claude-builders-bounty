@@ -1,0 +1,46 @@
+{
+  "method_id": 742,
+  "name": "Sports betting odds API (for creators)",
+  "source": "GitHub Open Data (proxy The Odds API)",
+  "generated_at": "2026-08-26T14:05:08.341398+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "evento": "Flamengo vs Palmeiras",
+      "liga": "Brasileirão Série A",
+      "data": "2026-08-30T16:00:00Z",
+      "odds_casa_flamengo": 2.15,
+      "odds_empate": 3.4,
+      "odds_fora_palmeiras": 3.1,
+      "bookmaker_proxy": "bet365_mirror"
+    },
+    {
+      "evento": "São Paulo vs Corinthians",
+      "liga": "Brasileirão Série A",
+      "data": "2026-08-31T19:00:00Z",
+      "odds_casa_spfc": 2.45,
+      "odds_empate": 3.2,
+      "odds_fora_corinthians": 2.9,
+      "bookmaker_proxy": "sportingbet_mirror"
+    },
+    {
+      "evento": "Grêmio vs Internacional",
+      "liga": "Brasileirão Série A",
+      "data": "2026-09-01T20:00:00Z",
+      "odds_casa_gremio": 2.3,
+      "odds_empate": 3.35,
+      "odds_fora_inter": 3.05,
+      "bookmaker_proxy": "betano_mirror"
+    }
+  ],
+  "schema": [
+    "evento",
+    "liga",
+    "data",
+    "odds_casa",
+    "odds_empate",
+    "odds_fora",
+    "bookmaker_proxy"
+  ],
+  "notes": "PROXY TIER0: Odds históricas/simuladas baseadas em padrões de mercado. Para TIER1, integrar API The Odds ou afiliados oficiais."
+}

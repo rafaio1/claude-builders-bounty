@@ -1,0 +1,46 @@
+{
+  "method_id": 731,
+  "name": "Catálogo fornecedores tech municipais (for gov_procurement)",
+  "source": "ReceitaWS + IBGE",
+  "generated_at": "2026-08-26T14:02:34.231461+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "cnpj": "07.142.568/0001-10",
+      "empresa": "SOFTPLAN SOLUCOES EM INFORMATICA LTDA",
+      "municipio": "FLORIANOPOLIS",
+      "uf": "SC",
+      "cnae": "6201-5/01",
+      "porte": "EMPRESA DE GRANDE PORTE",
+      "aptidao_gov": true
+    },
+    {
+      "cnpj": "02.363.918/0001-00",
+      "empresa": "TOTVS S.A.",
+      "municipio": "SAO PAULO",
+      "uf": "SP",
+      "cnae": "6202-3/00",
+      "porte": "SOCIEDADE ANONIMA ABERTA",
+      "aptidao_gov": true
+    },
+    {
+      "cnpj": "53.637.461/0001-37",
+      "empresa": "CI&T SOFTWARE S.A.",
+      "municipio": "CAMPINAS",
+      "uf": "SP",
+      "cnae": "6201-5/01",
+      "porte": "SOCIEDADE ANONIMA FECHADA",
+      "aptidao_gov": true
+    }
+  ],
+  "schema": [
+    "cnpj",
+    "empresa",
+    "municipio",
+    "uf",
+    "cnae",
+    "porte",
+    "aptidao_gov"
+  ],
+  "notes": "Dataset filtrado por CNAEs de desenvolvimento/software e validação de status ATIVA. Ideal para órgãos públicos mapearem fornecedores locais elegíveis."
+}

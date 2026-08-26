@@ -1,0 +1,38 @@
+{
+  "method_id": 735,
+  "name": "Real estate pricing models (for enterprises)",
+  "source": "IBGE SIDRA + GitHub Macro Data",
+  "generated_at": "2026-08-26T14:03:16.074938+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "indice": "INCC-M",
+      "mes_ref": "2026-07",
+      "variacao_mensal_pct": 0.45,
+      "acumulado_12m_pct": 4.82,
+      "impacto_setor": "Construção Residencial"
+    },
+    {
+      "indice": "IGP-M",
+      "mes_ref": "2026-07",
+      "variacao_mensal_pct": 0.32,
+      "acumulado_12m_pct": 3.95,
+      "impacto_setor": "Aluguéis Comerciais"
+    },
+    {
+      "indice": "IPCA-Habitação",
+      "mes_ref": "2026-07",
+      "variacao_mensal_pct": 0.68,
+      "acumulado_12m_pct": 5.12,
+      "impacto_setor": "Custo Manutenção"
+    }
+  ],
+  "schema": [
+    "indice",
+    "mes_ref",
+    "variacao_mensal_pct",
+    "acumulado_12m_pct",
+    "impacto_setor"
+  ],
+  "notes": "Série temporal de índices oficiais correlacionados ao setor imobiliário. Base para modelos preditivos de fundos de investimento e REITs."
+}

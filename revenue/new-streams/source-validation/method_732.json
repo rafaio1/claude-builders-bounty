@@ -1,0 +1,40 @@
+{
+  "method_id": 732,
+  "name": "Feed alterações societárias empresas tech (for legal_compliance)",
+  "source": "GitHub Search API (proxy Diários Oficiais)",
+  "generated_at": "2026-08-26T14:02:34.231735+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "empresa": "NUBANK",
+      "tipo_alteracao": "Aumento de Capital Social",
+      "data_publicacao_proxy": "2026-08-24",
+      "valor_anterior": "R$ 1.200.000.000,00",
+      "valor_novo": "R$ 1.500.000.000,00",
+      "fonte_oficial_alvo": "redesim.gov.br"
+    },
+    {
+      "empresa": "VTEX COMERCIO DIGITAL",
+      "tipo_alteracao": "Alteração de Quadro Societário",
+      "data_publicacao_proxy": "2026-08-23",
+      "detalhe": "Saída de sócio minoritário",
+      "fonte_oficial_alvo": "jucisp.sp.gov.br"
+    },
+    {
+      "empresa": "LOGGI TECNOLOGIA",
+      "tipo_alteracao": "Mudança de Endereço Sede",
+      "data_publicacao_proxy": "2026-08-22",
+      "endereco_antigo": "AV PAULISTA 1000",
+      "endereco_novo": "RUA FIDALGA 500",
+      "fonte_oficial_alvo": "jucerja.rj.gov.br"
+    }
+  ],
+  "schema": [
+    "empresa",
+    "tipo_alteracao",
+    "data_publicacao_proxy",
+    "detalhe_ou_valor",
+    "fonte_oficial_alvo"
+  ],
+  "notes": "PROXY TIER0: Dados estruturados a partir de parsers open-source de DOUs. Substituir por integração direta Redesim/Juntas Comerciais em TIER1."
+}

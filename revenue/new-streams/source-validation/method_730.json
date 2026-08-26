@@ -1,0 +1,55 @@
+{
+  "method_id": 730,
+  "name": "Mapa startups LATAM por vertical (for investors)",
+  "source": "GitHub Search API (proxy Crunchbase)",
+  "generated_at": "2026-08-26T14:02:34.231116+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Cora",
+      "vertical": "fintech_b2b",
+      "pais": "BR",
+      "ano_fundacao": 2019,
+      "repositorios_publicos": 12,
+      "linguagens_principais": [
+        "kotlin",
+        "typescript"
+      ],
+      "proxy_source": "github.com/cora"
+    },
+    {
+      "startup": "Kovi",
+      "vertical": "mobility",
+      "pais": "BR",
+      "ano_fundacao": 2018,
+      "repositorios_publicos": 8,
+      "linguagens_principais": [
+        "python",
+        "react"
+      ],
+      "proxy_source": "github.com/kovi"
+    },
+    {
+      "startup": "Ualá",
+      "vertical": "fintech_consumer",
+      "pais": "AR",
+      "ano_fundacao": 2017,
+      "repositorios_publicos": 5,
+      "linguagens_principais": [
+        "swift",
+        "kotlin"
+      ],
+      "proxy_source": "github.com/uala"
+    }
+  ],
+  "schema": [
+    "startup",
+    "vertical",
+    "pais",
+    "ano_fundacao",
+    "repositorios_publicos",
+    "linguagens_principais",
+    "proxy_source"
+  ],
+  "notes": "PROXY TIER0: Mapeamento via presença open-source. Para TIER1, cruzar com base CVM ou API paga de venture intelligence."
+}

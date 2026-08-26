@@ -1,0 +1,265 @@
+{
+  "generated_at": "2026-08-26T14:05:41.741059+00:00",
+  "tier": "TIER0",
+  "description": "Amostras reais geradas a partir de fontes oficiais validadas (ReceitaWS, IBGE, GitHub). Nenhum signup externo, zero capital.",
+  "total_samples": 39,
+  "samples": [
+    {
+      "method_id": 715,
+      "name": "Lead generation lists",
+      "source": "ReceitaWS",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_715_leads_sample.json",
+      "records": 2,
+      "sha256": "d2468d1bbc3420f7e3ad98694f9e98c0b93391edf5e89900aee82ae8b38cdbce",
+      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
+      "status": "sample_generated"
+    },
+    {
+      "method_id": 709,
+      "name": "Dataset limpeza e venda",
+      "source": "IBGE API",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_709_ibge_municipios_sample.json",
+      "records": 50,
+      "sha256": "377e68e5ee6ead2d4a4f305434adce5753d1a54df42c627f2aa464428c919146",
+      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
+      "status": "sample_generated"
+    },
+    {
+      "method_id": 721,
+      "name": "Company technographics DB",
+      "source": "GitHub Search API",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_721_github_technographics_sample.json",
+      "records": 20,
+      "sha256": "2e6a9f9985f53b3622ed859e8bc8e6fec01b9310c2194774058b471a7ee43ff1",
+      "fetched_at": "2026-08-26T13:52:39.156736+00:00",
+      "status": "sample_generated"
+    },
+    {
+      "method_id": 727,
+      "name": "Job market salary data",
+      "source": "GitHub Search (proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_727_job_market_proxy_sample.json",
+      "records": 20,
+      "sha256": "6c398af043dda754c7e2407b9e641be5f3ed5fc2f7a3e0cea126234a2015b4f1",
+      "status": "sample_generated_proxy",
+      "note": "CAGED/API salarial indisponível; usando repositórios de vagas como sinal de demanda.",
+      "fetched_at": "2026-08-26T13:54:21.132304+00:00"
+    },
+    {
+      "method_id": 710,
+      "name": "Dataset limpeza e venda (for startups)",
+      "source": "ReceitaWS (Tech CNAE proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_710_startup_dataset_sample.json",
+      "records": 1,
+      "sha256": "1e44d213afead84011c839daa50a0165ca159c1c60a14289f5e5659e8d24792a",
+      "status": "sample_generated",
+      "note": "Substitui amostra vazia do IBGE. Empresas tech listadas como proxy de ecossistema startup.",
+      "fetched_at": "2026-08-26T13:55:24.576699+00:00"
+    },
+    {
+      "method_id": 716,
+      "name": "Lead generation lists (for startups)",
+      "source": "ReceitaWS (Tech CNAE)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_716_startup_leads_sample.json",
+      "records": 2,
+      "sha256": "836ed881a37ca87d45407d0690bb013d78901186172e2609f3e30153ceea2348",
+      "status": "sample_generated",
+      "fetched_at": "2026-08-26T13:56:05.867202+00:00"
+    },
+    {
+      "method_id": 717,
+      "name": "Lead generation lists (for enterprises)",
+      "source": "ReceitaWS (Enterprise CNAE)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_717_enterprise_leads_sample.json",
+      "records": 3,
+      "sha256": "b68b327053fa7f16ca2e7a274003752f6620638ab18bddafbfbcda58afae35b3",
+      "status": "sample_generated",
+      "fetched_at": "2026-08-26T13:57:06.124114+00:00"
+    },
+    {
+      "method_id": 711,
+      "name": "Dataset limpeza e venda (for enterprises)",
+      "source": "ReceitaWS (Enterprise Cleaned)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_711_enterprise_dataset_sample.json",
+      "records": 3,
+      "sha256": "c3bd4349fa5b7b7832f360b0582211633036f3fea8e4c63a67adfc27d2fdb408",
+      "status": "sample_generated",
+      "fetched_at": "2026-08-26T13:57:06.124114+00:00"
+    },
+    {
+      "method_id": 712,
+      "name": "Dataset limpeza e venda (for creators)",
+      "source": "GitHub Search (Creator Economy Proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_712_creators_dataset_sample.json",
+      "records": 30,
+      "sha256": "ed7dd46b45a972add6c68b807a8ca59fe795f2b6a49830683cdc463665e01af3",
+      "status": "sample_generated_proxy",
+      "fetched_at": "2026-08-26T13:59:05.327103+00:00"
+    },
+    {
+      "method_id": 718,
+      "name": "Lead generation lists (for creators)",
+      "source": "GitHub Search (Creator Leads Proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_718_creators_leads_sample.json",
+      "records": 30,
+      "sha256": "8f5ed1194809bd0b894f32e106959a2d8235f379edad164203443b0818c0ff7d",
+      "status": "sample_generated_proxy",
+      "fetched_at": "2026-08-26T13:59:05.327103+00:00"
+    },
+    {
+      "method_id": 713,
+      "name": "Dataset limpeza e venda (for developers)",
+      "source": "GitHub Search (Dev Tools Proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_713_developers_dataset_sample.json",
+      "records": 30,
+      "sha256": "4770c8c1d2e97af2a8933df9167fad2d26a3127196da5d85c0eacbbb6d6f71e5",
+      "status": "sample_generated_proxy",
+      "fetched_at": "2026-08-26T13:59:44.726222+00:00"
+    },
+    {
+      "method_id": 719,
+      "name": "Lead generation lists (for developers)",
+      "source": "GitHub Search (Dev Leads Proxy)",
+      "file": "/Agentic/revenue/new-streams/source-validation/method_719_developers_leads_sample.json",
+      "records": 30,
+      "sha256": "0c8810e414305d207cf0b337785db87caf2f37af004c1a21871a98fdd6c137d1",
+      "status": "sample_generated_proxy",
+      "fetched_at": "2026-08-26T13:59:44.726222+00:00"
+    },
+    {
+      "method_id": 714,
+      "file": "method_714.json",
+      "sha256": "cf84a33d152c7c4ee7fc2d2fd9c255804eac3d3eedaf90c8a43ec6f98687e21b"
+    },
+    {
+      "method_id": 720,
+      "file": "method_720.json",
+      "sha256": "7d4608b3eab66310154ca591c5bb9bb51eec05d5ab4f04720310dc4272d92024"
+    },
+    {
+      "method_id": 722,
+      "file": "method_722.json",
+      "sha256": "74b9e4bbb6b75817e28f3832bef5f735fa6508ecc71bc41e51039d81900c6715"
+    },
+    {
+      "method_id": 723,
+      "file": "method_723.json",
+      "sha256": "f6a134862396bf7f61e9213994cda6de7e0e2aba2b3671e526eba6a27ce8dbfe"
+    },
+    {
+      "method_id": 724,
+      "file": "method_724.json",
+      "sha256": "3723847ede07233e7b288144682fac257dff471c00e449e9e56b029bcc8c9643"
+    },
+    {
+      "method_id": 725,
+      "file": "method_725.json",
+      "sha256": "496f3e05073277eec1edaa79c43b0277006ed22005a428615ba8df8e04f197d5"
+    },
+    {
+      "method_id": 726,
+      "file": "method_726.json",
+      "sha256": "a5a21a3496f8d380deeac7b3097d9d76c02ec5af4f5988b6982a7c545e070177"
+    },
+    {
+      "method_id": 728,
+      "file": "method_728.json",
+      "sha256": "142cf22dcb36ad0f4468430e484b3b37779937e6b192aaf246b0836179764762"
+    },
+    {
+      "method_id": 729,
+      "file": "method_729.json",
+      "sha256": "5bc37fa3e653521b74e619e692611af24e27d42f5b3563decfbc0db1ffa5a835"
+    },
+    {
+      "method_id": 730,
+      "file": "method_730.json",
+      "sha256": "cfd7918a484ed5defcefa5e369e5b9d59b1d171a2177cf6b8ba502c8b361f7b8"
+    },
+    {
+      "method_id": 731,
+      "file": "method_731.json",
+      "sha256": "88007a85639f40f6dede5373b326f65c9dc178746d67723226add6669620d04b"
+    },
+    {
+      "method_id": 732,
+      "file": "method_732.json",
+      "sha256": "933ebf731f6cb07debd841cdb5f852107d704613fd62582aae1a6cce22685aa5"
+    },
+    {
+      "method_id": 733,
+      "file": "method_733.json",
+      "sha256": "5bb259fceb0e782ed6eeaa5ba3fb6ba23cc3d38fc037a1a814052e2eec82d16b"
+    },
+    {
+      "method_id": 734,
+      "file": "method_734.json",
+      "sha256": "2f768c2b3d7dac864a5769fbe261acf79458e7e6d34d5a4f9acfde464e010062"
+    },
+    {
+      "method_id": 735,
+      "file": "method_735.json",
+      "sha256": "93922d57e8ea1da53e01ecb6af59cc2ce4b3aced13140bbfbefa48b5127c3167"
+    },
+    {
+      "method_id": 736,
+      "file": "method_736.json",
+      "sha256": "c4628d1321867f897f96e39ab2a3ada410cca896fcd3feb234b8f74eda3ced3b"
+    },
+    {
+      "method_id": 737,
+      "file": "method_737.json",
+      "sha256": "9cd6e88c8c7c91efb8b35b95afd68254d986651e8f7bfeff86834ec1fb260a55"
+    },
+    {
+      "method_id": 738,
+      "file": "method_738.json",
+      "sha256": "4649c6d7bb196facabe601b402fe738ada57adae8ed3632541028bd3885b54f9"
+    },
+    {
+      "method_id": 739,
+      "file": "method_739.json",
+      "sha256": "943ce8895d09e0003cb2883300bc895c6d6f8fccf586026c969976fe2832536d"
+    },
+    {
+      "method_id": 740,
+      "file": "method_740.json",
+      "sha256": "8185ea44fd64352e7a8fce7d63970f7af89e5adf24ef4c5fc9a4cfc0e060f088"
+    },
+    {
+      "method_id": 741,
+      "file": "method_741.json",
+      "sha256": "fbf98f92ce1da1827f4b41a658d571d5d73c7710d0da56f316ddc132c3e16b7f"
+    },
+    {
+      "method_id": 742,
+      "file": "method_742.json",
+      "sha256": "00390b414db32a7798944b9b4cd41ca05f9e741d90184109ad0600efa13d4a01"
+    },
+    {
+      "method_id": 743,
+      "file": "method_743.json",
+      "sha256": "bd2c3cab0546777a19fb58138d09ff5f62d58a5615a21ae7844ff99e2d6d1ec0"
+    },
+    {
+      "method_id": 744,
+      "file": "method_744.json",
+      "sha256": "e1baf2662d5d32792c2bf9bcb0ead8c01c3f1362360a5c78f6899f56433955bc"
+    },
+    {
+      "method_id": 745,
+      "file": "method_745.json",
+      "sha256": "27dbc3661f6ce70d9167b9bd67f0a3263ae33903e45e68faf1ae5cd29fe01ba1"
+    },
+    {
+      "method_id": 746,
+      "file": "method_746.json",
+      "sha256": "3653c17ff7806cd1ba1d9a1461d9caa6b1f703ee95999eb6e61f77958f9d7c60"
+    },
+    {
+      "method_id": 747,
+      "file": "method_747.json",
+      "sha256": "73d7be8c23218dccc845cc7f53d0d44a9341c166e3004180d2c51b2f46003c96"
+    }
+  ]
+}
