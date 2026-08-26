@@ -1,0 +1,36 @@
+{
+  "method_id": "463",
+  "name": "DAO treasury manager",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:26.811945+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dao": "GitcoinDAO",
+      "treasury_usd": 12500000,
+      "allocations": {
+        "grants": 0.45,
+        "ops": 0.25,
+        "reserve": 0.3
+      },
+      "rebalancing_frequency": "monthly"
+    },
+    {
+      "dao": "ENS DAO",
+      "treasury_usd": 8700000,
+      "allocations": {
+        "dev_funding": 0.5,
+        "marketing": 0.2,
+        "liquidity": 0.3
+      },
+      "rebalancing_frequency": "quarterly"
+    }
+  ],
+  "schema": [
+    "dao",
+    "treasury_usd",
+    "allocations",
+    "rebalancing_frequency"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: dune-analytics/dao-treasury-dashboards, aragon/treasury-manager). Fonte oficial alvo: Dune Analytics DAO dashboards + Snapshot governance proposals. Zero-capital: análise de alocação e relatórios automatizados sem custódia de ativos."
+}

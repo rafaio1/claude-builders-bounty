@@ -1,0 +1,36 @@
+{
+  "method_id": "465",
+  "name": "DAO treasury manager (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:26.811945+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Coinbase Ventures DAO",
+      "treasury_usd": 85000000,
+      "allocations": {
+        "strategic_investments": 0.55,
+        "ecosystem_grants": 0.3,
+        "compliance_reserve": 0.15
+      },
+      "audit_frequency": "weekly"
+    },
+    {
+      "enterprise": "Binance Labs Treasury",
+      "treasury_usd": 120000000,
+      "allocations": {
+        "portfolio_mgmt": 0.5,
+        "r_and_d": 0.35,
+        "risk_hedge": 0.15
+      },
+      "audit_frequency": "daily"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "treasury_usd",
+    "allocations",
+    "audit_frequency"
+  ],
+  "notes": "Variante enterprise com volumes institucionais. Proxy TIER0: GitHub Search (orgs: coinbase-ventures, binance-labs treasury tooling). Fonte oficial alvo: SEC filings + on-chain analytics (Nansen Institutional). Ênfase em compliance reporting e multi-sig orchestration sem custódia direta."
+}

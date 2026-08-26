@@ -1,0 +1,36 @@
+{
+  "method_id": "464",
+  "name": "DAO treasury manager (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:26.811945+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_dao": "SeedClub",
+      "treasury_usd": 950000,
+      "allocations": {
+        "incubation": 0.6,
+        "community": 0.25,
+        "admin": 0.15
+      },
+      "runway_months": 18
+    },
+    {
+      "startup_dao": "KlimaDAO Early",
+      "treasury_usd": 420000,
+      "allocations": {
+        "carbon_purchases": 0.7,
+        "tech": 0.2,
+        "legal": 0.1
+      },
+      "runway_months": 12
+    }
+  ],
+  "schema": [
+    "startup_dao",
+    "treasury_usd",
+    "allocations",
+    "runway_months"
+  ],
+  "notes": "Variante para startups Web3 em fase inicial. Proxy TIER0: GitHub Search (topics: dao-startup-treasury, early-stage-dao-finance). Fonte oficial alvo: DeepDAO startup rankings + AngelList Web3 syndicates. Foco em runway tracking e burn rate optimization sem capital próprio."
+}
