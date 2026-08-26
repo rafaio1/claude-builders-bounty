@@ -1,0 +1,82 @@
+{
+  "pilot": "render-static-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:30:46.399232+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "static_sites": "unlimited",
+    "bandwidth_gb_month": 100,
+    "build_minutes_month": null,
+    "custom_domains": true,
+    "ssl_certificates": true,
+    "auto_deploy_from_git": true,
+    "preview_environments": false,
+    "commercial_usage_allowed": true
+  },
+  "paid_plan_baseline": {
+    "name": "Pro ($19/mo per user)",
+    "bandwidth_gb_month": 1000,
+    "preview_environments": true,
+    "priority_support": true,
+    "sso_saml": true
+  },
+  "reselling_model": {
+    "strategy": "Managed Static Site Hosting for SMBs",
+    "target_customer": "Small businesses needing landing pages + blogs without WordPress complexity",
+    "value_prop": "Deploy + custom domain + SSL + CDN + form integration + analytics setup",
+    "suggested_price_brl": 39.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Free tier is generous for static sites; main limit is bandwidth (100GB/mo). Heavy media sites may exceed.",
+    "tos_compliance_note": "Render permits commercial usage on free tier. Managed hosting services are allowed. No partner program required."
+  },
+  "doc_validation": {
+    "source_verified": true,
+    "url": "https://render.com/pricing",
+    "extracted_limits": {
+      "bandwidth_gb_month": 5,
+      "static_sites": "unlimited"
+    },
+    "error": null
+  },
+  "unit_economics": {
+    "small_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 399.0,
+      "cost_brl": 0.0,
+      "margin_brl": 399.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 4788.0
+    },
+    "medium_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 1995.0,
+      "cost_brl": 0.0,
+      "margin_brl": 1995.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 23940.0
+    },
+    "scale_200_clients": {
+      "monthly_clients": 200,
+      "revenue_brl": 7980.0,
+      "cost_brl": 0.0,
+      "margin_brl": 7980.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 95760.0
+    }
+  },
+  "risks": [
+    "Bandwidth limit (100GB/mo) shared across all sites on free account; heavy traffic clients may exceed",
+    "No preview environments on free tier; client approval workflow requires manual staging",
+    "Build times may be slower on free tier during peak hours; no priority queue",
+    "Custom domains require DNS configuration per client; no bulk provisioning API",
+    "No native form handling; requires external service (Formspree, Netlify Forms alternative)"
+  ],
+  "next_steps": [
+    "Build site provisioning script via Render API",
+    "Create automated deploy pipeline for client repos (GitHub/GitLab integration)",
+    "Design form handling integration with free-tier compatible services",
+    "Test bandwidth monitoring and alerting for multi-client accounts",
+    "Draft migration playbook from free to Pro for growing clients"
+  ]
+}

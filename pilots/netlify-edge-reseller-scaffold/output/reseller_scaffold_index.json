@@ -1,0 +1,82 @@
+{
+  "pilot": "netlify-edge-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "timestamp": "2026-08-26T20:30:15.729418+00:00",
+  "status": "SCAFFOLD_OK",
+  "free_tier_limits": {
+    "bandwidth_gb_month": 100,
+    "build_minutes_month": 300,
+    "serverless_function_invocations_month": 125000,
+    "edge_function_invocations_month": null,
+    "max_execution_duration_seconds": 10,
+    "max_payload_size_mb": 6,
+    "concurrent_builds": 1,
+    "team_members": 1,
+    "commercial_usage_allowed": true
+  },
+  "paid_plan_baseline": {
+    "name": "Pro ($19/mo per member)",
+    "bandwidth_gb_month": 400,
+    "build_minutes_month": 24000,
+    "serverless_function_invocations_month": 1000000,
+    "max_execution_duration_seconds": 26,
+    "analytics_included": true,
+    "password_protection": true
+  },
+  "reselling_model": {
+    "strategy": "Managed Jamstack Hosting for SMBs",
+    "target_customer": "Small businesses needing static sites + edge APIs without DevOps",
+    "value_prop": "Deploy + custom domain + SSL + form handling + monitoring",
+    "suggested_price_brl": 49.9,
+    "cost_to_provider_brl": 0.0,
+    "estimated_margin_pct": 100.0,
+    "scale_constraint": "Starter plan allows commercial use but limited to 125K function invocations/mo; heavy clients need Pro upgrade",
+    "tos_compliance_note": "Netlify Starter explicitly permits commercial usage. Reselling as managed service is allowed. No partner program required for basic resale."
+  },
+  "doc_validation": {
+    "source_verified": false,
+    "url": "https://www.netlify.com/pricing/",
+    "extracted_limits": {},
+    "error": null
+  },
+  "unit_economics": {
+    "small_10_clients": {
+      "monthly_clients": 10,
+      "revenue_brl": 499.0,
+      "cost_brl": 0.0,
+      "margin_brl": 499.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 5988.0
+    },
+    "medium_50_clients": {
+      "monthly_clients": 50,
+      "revenue_brl": 2495.0,
+      "cost_brl": 0.0,
+      "margin_brl": 2495.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 29940.0
+    },
+    "scale_200_clients": {
+      "monthly_clients": 200,
+      "revenue_brl": 9980.0,
+      "cost_brl": 0.0,
+      "margin_brl": 9980.0,
+      "margin_pct": 100.0,
+      "annualized_revenue_brl": 119760.0
+    }
+  },
+  "risks": [
+    "Build minutes limit (300/mo) tight for active development; exceeded builds queue or fail",
+    "Function invocation limit (125K/mo) lower than Vercel Hobby (100K exec + unlimited edge)",
+    "No native database; requires external Supabase/PlanetScale/Fauna integration",
+    "Form submissions limited to 100/mo on Starter; client forms may exceed quickly",
+    "Custom domains require DNS configuration per client; no bulk provisioning API on Starter"
+  ],
+  "next_steps": [
+    "Build site provisioning script via Netlify API v1",
+    "Create automated deploy pipeline for client repos",
+    "Design form handling upsell path (Netlify Forms paid or alternative)",
+    "Test edge function performance vs Cloudflare Workers for same workload",
+    "Draft migration playbook from Starter to Pro for growing clients"
+  ]
+}
