@@ -1,0 +1,34 @@
+{
+  "method_id": "283",
+  "name": "Sentiment analysis API",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:08:29.657760+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "sentiment-oss",
+      "stars": 478,
+      "pricing_model": "per_request",
+      "features": [
+        "multilingual",
+        "aspect_based"
+      ]
+    },
+    {
+      "repo": "opinion-mine-lite",
+      "stars": 312,
+      "pricing_model": "subscription",
+      "features": [
+        "batch_process",
+        "custom_taxonomy"
+      ]
+    }
+  ],
+  "schema": [
+    "repo_name",
+    "stars",
+    "pricing_model",
+    "core_features"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search. Fonte oficial alvo: AWS Comprehend / Google NLP API. Foco em an\u00e1lise multil\u00edngue e baseada em aspectos."
+}
