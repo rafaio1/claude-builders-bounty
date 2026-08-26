@@ -1,0 +1,35 @@
+{
+  "method_id": "187",
+  "name": "Bot Discord/Telegram premium",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:53:48.337261+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "active_users",
+      "value": 1450,
+      "unit": "users",
+      "period": "30d"
+    },
+    {
+      "metric": "premium_conversion",
+      "value": 3.2,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "mrr_per_bot",
+      "value": 89.5,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for premium bot templates (discord.js/telegraf monetized forks). Official sources: Discord Developer Portal, Telegram Bot API + Stripe/Paddle webhooks. Zero-capital MVP uses free-tier hosting (Railway/Fly.io) and platform-native slash commands. Premium unlocks gated features or removes rate limits.",
+  "_hash": "9e90140c5bc8ff8fc27d6ec0fbd34ec003f80a77fab0361abfd86b44cb12838d"
+}

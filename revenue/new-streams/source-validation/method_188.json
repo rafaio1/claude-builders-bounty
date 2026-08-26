@@ -1,0 +1,35 @@
+{
+  "method_id": "188",
+  "name": "Bot Discord/Telegram premium (for startups)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:53:48.337261+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "onboarding_completion",
+      "value": 78.4,
+      "unit": "%",
+      "period": "7d"
+    },
+    {
+      "metric": "support_tickets_deflected",
+      "value": 342,
+      "unit": "tickets",
+      "period": "30d"
+    },
+    {
+      "metric": "trial_to_paid",
+      "value": 12.1,
+      "unit": "%",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Startup variant focuses on customer success/onboarding automation. Proxy TIER0 targets Intercom/Drift OSS alternatives on GitHub. Official integration: Slack/Discord OAuth + CRM webhooks. Monetization via per-seat SaaS subscription. Zero-capital path uses serverless functions + free DB tier (Supabase/Neon).",
+  "_hash": "c2a0f5e2c17932e4b12844f220eb4c0d1529a8dec20795c6423f74290875a17c"
+}
