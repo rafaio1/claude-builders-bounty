@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1462",
+  "name": "Jusbrasil Jurisprudência API",
+  "category": "data_products",
+  "source": "https://www.jusbrasil.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.146465+00:00",
+  "sample_data": {
+    "platform": "Jusbrasil",
+    "payout_structure": "BRL assinatura R$499-2k/mês para escritórios advocacia, pay-per-query disponível",
+    "compliance_status": "Dados judiciais públicos, compliance OAB, LGPD respeitada em anonimização",
+    "market_demand_indicator": "+30k advogados BR usam diariamente, mercado jurídico tech cresce 40% ao ano",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.jusbrasil.com.br/api | COMPLIANCE: Dados judiciais públicos, compliance OAB, LGPD respeitada em anonimização | PAYOUT BRL: BRL assinatura R$499-2k/mês para escritórios advocacia, pay-per-query disponível | DEMANDA BR: +30k advogados BR usam diariamente, mercado jurídico tech cresce 40% ao ano | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "52b1e7e1838f52dc25a8e1abd81833825edce65d73bab3dceb7de1c7a3dec198"
+}

@@ -43,30 +43,54 @@ def load_json(path: Path, default=None):
 
 
 def build_ledger_index(ledger: dict) -> dict:
-    """Index ledger entries by repo#number for fast lookup."""
+    """Index ledger entries by repo#number for fast lookup.
+    
+    Supports both formats:
+    - Flat dict keyed by 'repo#number' (current canonical format)
+    - Dict with 'bounties' list containing entries with pr_url/issue_url/key
+    """
     index = {}
-    for entry in ledger.get("bounties", []):
-        # Try multiple key formats
-        keys = []
-        if entry.get("pr_url"):
-            url = entry["pr_url"]
-            parts = url.rstrip("/").split("/")
-            if len(parts) >= 5:
-                repo = f"{parts[3]}/{parts[4]}"
-                num = parts[-1]
-                keys.append(f"{repo}#{num}")
-        if entry.get("issue_url"):
-            url = entry["issue_url"]
-            parts = url.rstrip("/").split("/")
-            if len(parts) >= 5:
-                repo = f"{parts[3]}/{parts[4]}"
-                num = parts[-1]
-                keys.append(f"{repo}#{num}")
-        if "key" in entry:
-            keys.append(entry["key"])
-        for k in keys:
-            if k:
-                index[k] = entry
+    
+    # Format 1: Flat dict keyed by repo#number (canonical)
+    bounties_list = ledger.get("bounties", None)
+    if bounties_list is None or not isinstance(bounties_list, list):
+        # Treat as flat dict; skip non-dict values and metadata keys
+        for key, entry in ledger.items():
+            if isinstance(entry, dict) and "#" in str(key):
+                # Normalize field names for classify_pr compatibility
+                normalized = dict(entry)
+                if "bounty_value" in normalized and "value" not in normalized:
+                    normalized["value"] = normalized["bounty_value"]
+                if "bounty_currency" in normalized and "currency" not in normalized:
+                    normalized["currency"] = normalized["bounty_currency"]
+                if "bounty_evidence_url" in normalized and "evidence_url" not in normalized:
+                    normalized["evidence_url"] = normalized["bounty_evidence_url"]
+                if "bounty_evidence_url" in normalized and "claim_url" not in normalized:
+                    normalized["claim_url"] = normalized["bounty_evidence_url"]
+                index[str(key)] = normalized
+    else:
+        # Format 2: Dict with 'bounties' list
+        for entry in bounties_list:
+            keys = []
+            if entry.get("pr_url"):
+                url = entry["pr_url"]
+                parts = url.rstrip("/").split("/")
+                if len(parts) >= 5:
+                    repo = f"{parts[3]}/{parts[4]}"
+                    num = parts[-1]
+                    keys.append(f"{repo}#{num}")
+            if entry.get("issue_url"):
+                url = entry["issue_url"]
+                parts = url.rstrip("/").split("/")
+                if len(parts) >= 5:
+                    repo = f"{parts[3]}/{parts[4]}"
+                    num = parts[-1]
+                    keys.append(f"{repo}#{num}")
+            if "key" in entry:
+                keys.append(entry["key"])
+            for k in keys:
+                if k:
+                    index[k] = entry
     return index
 
 

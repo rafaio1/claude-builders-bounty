@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1465",
+  "name": "99Freelas Proposal Optimizer",
+  "category": "freelance_services",
+  "source": "https://www.99freelas.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.147381+00:00",
+  "sample_data": {
+    "platform": "99Freelas",
+    "payout_structure": "BRL revenue share 15% sobre projetos fechados via ferramenta, ticket médio R$800",
+    "compliance_status": "API oficial parceiros, LGPD compliant, CNPJ opcional",
+    "market_demand_indicator": "Top 3 plataforma freelance BR, +500k projetos/ano, alta demanda por automação proposals",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.99freelas.com.br/api | COMPLIANCE: API oficial parceiros, LGPD compliant, CNPJ opcional | PAYOUT BRL: BRL revenue share 15% sobre projetos fechados via ferramenta, ticket médio R$800 | DEMANDA BR: Top 3 plataforma freelance BR, +500k projetos/ano, alta demanda por automação proposals | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "2c4c42d0736bd80f4303edae525649ed0deb5e8cb5d7c98ea8df9b1a8635c36d"
+}

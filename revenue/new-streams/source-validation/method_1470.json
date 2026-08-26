@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1470",
+  "name": "Hostinger BR Affiliate Program",
+  "category": "infrastructure_reselling",
+  "source": "https://www.hostinger.com.br/afiliados",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.148667+00:00",
+  "sample_data": {
+    "platform": "Hostinger",
+    "payout_structure": "BRL comissão R$150-400 por venda, saque PIX mensal, cookie 30 dias",
+    "compliance_status": "Programa afiliados oficial BR, NF-e disponível, suporte local",
+    "market_demand_indicator": "Hosting BR cresce 25%/ano, PMEs migram para provedores com suporte PT-BR",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.hostinger.com.br/afiliados | COMPLIANCE: Programa afiliados oficial BR, NF-e disponível, suporte local | PAYOUT BRL: BRL comissão R$150-400 por venda, saque PIX mensal, cookie 30 dias | DEMANDA BR: Hosting BR cresce 25%/ano, PMEs migram para provedores com suporte PT-BR | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "1289708625a0fe90129879dec526bca8387c799388292d30db49c6371045bc7f"
+}

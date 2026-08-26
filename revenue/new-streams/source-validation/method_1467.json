@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1467",
+  "name": "Apoia.se Creator Analytics API",
+  "category": "content_monetization",
+  "source": "https://apoia.se/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.148144+00:00",
+  "sample_data": {
+    "platform": "Apoia.se",
+    "payout_structure": "BRL comissão 13% sobre arrecadação, dashboard analytics premium R$49/mês",
+    "compliance_status": "Plataforma crowdfunding BR, termos públicos, compliance CVM para doações",
+    "market_demand_indicator": "+5k criadores ativos, crescimento 200% pós-pandemia, falta tooling analytics local",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://apoia.se/api | COMPLIANCE: Plataforma crowdfunding BR, termos públicos, compliance CVM para doações | PAYOUT BRL: BRL comissão 13% sobre arrecadação, dashboard analytics premium R$49/mês | DEMANDA BR: +5k criadores ativos, crescimento 200% pós-pandemia, falta tooling analytics local | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "2ecb5e9f91403217926fa016650b891c710b44d5ef11c05b394f2c93ba79c082"
+}

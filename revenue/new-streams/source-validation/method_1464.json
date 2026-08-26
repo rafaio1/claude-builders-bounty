@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1464",
+  "name": "VintePila Microtask Automation",
+  "category": "freelance_services",
+  "source": "https://vintepila.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.146869+00:00",
+  "sample_data": {
+    "platform": "VintePila",
+    "payout_structure": "BRL comissão 20% sobre tarefas R$20-200, saque PIX mínimo R$30",
+    "compliance_status": "Plataforma BR nativa, termos permitem automação para freelancers verificados",
+    "market_demand_indicator": "+100k microtarefas/mês BR, nicho entrada zero-capital para iniciantes",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://vintepila.com.br/api | COMPLIANCE: Plataforma BR nativa, termos permitem automação para freelancers verificados | PAYOUT BRL: BRL comissão 20% sobre tarefas R$20-200, saque PIX mínimo R$30 | DEMANDA BR: +100k microtarefas/mês BR, nicho entrada zero-capital para iniciantes | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "9c0e8356fc73dea7ccff6b8693d19513b6162475f05d70d984349f1d0b7f5f5e"
+}

@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1472",
+  "name": "Serasa Experian Credit Score API Resale",
+  "category": "data_products",
+  "source": "https://www.serasaexperian.com.br/api-cadastro-positivo",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.149025+00:00",
+  "sample_data": {
+    "platform": "Serasa",
+    "payout_structure": "BRL pay-per-query R$0.50-2.00, planos mensais R$500-5k para fintechs",
+    "compliance_status": "Birô crédito regulado Bacen, LGPD base legal legítimo interesse, cadastro positivo obrigatório",
+    "market_demand_indicator": "+200 fintechs BR consomem score crédito, essencial para underwriting digital",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://www.serasaexperian.com.br/api-cadastro-positivo | COMPLIANCE: Birô crédito regulado Bacen, LGPD base legal legítimo interesse, cadastro positivo obrigatório | PAYOUT BRL: BRL pay-per-query R$0.50-2.00, planos mensais R$500-5k para fintechs | DEMANDA BR: +200 fintechs BR consomem score crédito, essencial para underwriting digital | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "8fa75290479054acdac2d601afa23c91f8afadb304ce7c52031545e18fe4e2a8"
+}

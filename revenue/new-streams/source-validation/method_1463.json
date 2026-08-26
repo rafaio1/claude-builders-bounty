@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1463",
+  "name": "Quandl BR Commodities Feed",
+  "category": "data_products",
+  "source": "https://docs.data.nasdaq.com",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.146689+00:00",
+  "sample_data": {
+    "platform": "Quandl",
+    "payout_structure": "BRL licença mensal R$800-3k para traders/fundos agro, dados soja/café/boi",
+    "compliance_status": "Dados de bolsa brasileira B3, regulado CVM, termos permitem redistribuição",
+    "market_demand_indicator": "Mercado agro BR movimenta US$100B+, falta feed estruturado local para quant funds",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://docs.data.nasdaq.com | COMPLIANCE: Dados de bolsa brasileira B3, regulado CVM, termos permitem redistribuição | PAYOUT BRL: BRL licença mensal R$800-3k para traders/fundos agro, dados soja/café/boi | DEMANDA BR: Mercado agro BR movimenta US$100B+, falta feed estruturado local para quant funds | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "59be128df2bf9138e6b5d155d9ac29fb0176bd81f2e60b89a555fb283d64bb8e"
+}

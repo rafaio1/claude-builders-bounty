@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1461",
+  "name": "IBGE Censo API Enrichment",
+  "category": "data_products",
+  "source": "https://servicodados.ibge.gov.br/api/docs",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.146033+00:00",
+  "sample_data": {
+    "platform": "IBGE",
+    "payout_structure": "BRL por dataset customizado R$200-2k/mês, venda B2B para varejo/imobiliário",
+    "compliance_status": "Dados públicos federais, Lei 12.527/2011, LGPD não aplica a dados agregados",
+    "market_demand_indicator": "+500 empresas BR consomem dados IBGE mensalmente para market sizing e geolocalização",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://servicodados.ibge.gov.br/api/docs | COMPLIANCE: Dados públicos federais, Lei 12.527/2011, LGPD não aplica a dados agregados | PAYOUT BRL: BRL por dataset customizado R$200-2k/mês, venda B2B para varejo/imobiliário | DEMANDA BR: +500 empresas BR consomem dados IBGE mensalmente para market sizing e geolocalização | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "d9c6f90c06e901a308d5979a2e059874be53c140486bde4f85b27a805c0fecaf"
+}

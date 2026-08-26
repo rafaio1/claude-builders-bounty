@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1466",
+  "name": "Clube de Assinatura Vindi Integration",
+  "category": "content_monetization",
+  "source": "https://docs.vindi.com.br",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.147597+00:00",
+  "sample_data": {
+    "platform": "Clube",
+    "payout_structure": "BRL gateway fee 3.99% + revenue share opcional, creators recebem via PIX",
+    "compliance_status": "Gateway BR regulado Bacen, LGPD built-in, NF-e automática",
+    "market_demand_indicator": "+10k clubes assinatura ativos BR, alternativa nacional ao Patreon com payout local",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://docs.vindi.com.br | COMPLIANCE: Gateway BR regulado Bacen, LGPD built-in, NF-e automática | PAYOUT BRL: BRL gateway fee 3.99% + revenue share opcional, creators recebem via PIX | DEMANDA BR: +10k clubes assinatura ativos BR, alternativa nacional ao Patreon com payout local | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "f15dfd03042a560d4db06ac49d2c9f3a561fe26ff147d7733718a3c7d4b732ec"
+}

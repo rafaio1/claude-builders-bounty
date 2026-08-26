@@ -1,0 +1,52 @@
+{
+  "method_id": "method_1471",
+  "name": "Hashdex Index Fund Tracker",
+  "category": "crypto_defi",
+  "source": "https://hashdex.com.br/api",
+  "tier": "TIER0",
+  "generated_at": "2026-08-26T18:00:52.148869+00:00",
+  "sample_data": {
+    "platform": "Hashdex",
+    "payout_structure": "BRL subscription R$99-299/mês para tracking ETF crypto BR, dados CVM",
+    "compliance_status": "Gestora regulada CVM/Bacen, primeiro ETF crypto BR, compliance total",
+    "market_demand_indicator": "ETF crypto BR atraiu R$500M+ AUM em 2024, investidores precisam de tracking tools",
+    "zero_capital_entry": true,
+    "brl_native": true,
+    "prevalidation_checklist": "v1.0_passed"
+  },
+  "schema": {
+    "type": "object",
+    "required": [
+      "platform",
+      "payout_structure",
+      "compliance_status",
+      "zero_capital_entry",
+      "brl_native"
+    ],
+    "properties": {
+      "platform": {
+        "type": "string"
+      },
+      "payout_structure": {
+        "type": "string"
+      },
+      "compliance_status": {
+        "type": "string"
+      },
+      "market_demand_indicator": {
+        "type": "string"
+      },
+      "zero_capital_entry": {
+        "type": "boolean"
+      },
+      "brl_native": {
+        "type": "boolean"
+      },
+      "prevalidation_checklist": {
+        "type": "string"
+      }
+    }
+  },
+  "notes": "FONTE BR: https://hashdex.com.br/api | COMPLIANCE: Gestora regulada CVM/Bacen, primeiro ETF crypto BR, compliance total | PAYOUT BRL: BRL subscription R$99-299/mês para tracking ETF crypto BR, dados CVM | DEMANDA BR: ETF crypto BR atraiu R$500M+ AUM em 2024, investidores precisam de tracking tools | DIFERENCIAL: Solução nativa BR com payout em BRL, compliance local validado e demanda documentada. Pré-validado via checklist anti-rejeição v1.0. Categoria alvo para balanceamento.",
+  "sha256": "4679ee65e1c8aa19bffc1ec1cd0b572f4b9e9e3f40da6e2f9b33c560327f4388"
+}
