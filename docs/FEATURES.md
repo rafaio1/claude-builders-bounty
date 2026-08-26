@@ -98,3 +98,4 @@
 | Telegram Financial Gate | ✅ Integrado | f85c963 | Gate fail-closed que permite SOMENTE eventos financeiros realizados e conciliados | `src/telegram_gate.py`, `tests/test_telegram_gate.py` |
 | Universal Quest Auto-Executor | ✅ Integrado | pending | Executor simulado zero-capital para quests testnet (Layer3, RabbitHole, Zealy, Galxe, Intract); mainnet requer aprovação humana | `scripts/quest_auto_executor.py`, `tests/test_quest_auto_executor.py` |
 | Expansion Governance Framework | ✅ Integrado | pending | Processo obrigatório de julgamento em 5 etapas para expansão autônoma; Tiers 0/1/2 de autonomia; proibições absolutas e baseline 2026-08-26 | `docs/EXPANSION_GOVERNANCE.md` |
+| Neon Postgres Reseller Scaffold | ✅ Integrado | 12ba039 | Piloto zero-capital de revenda de infra DBaaS (free tier 100 projetos); economics BRL 89.9/cliente/mês; output gitignored | `pilots/neon-postgres-reseller-scaffold/main.py` |
