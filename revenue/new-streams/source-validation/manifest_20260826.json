@@ -1323,8 +1323,8 @@
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 663,
     "generated_at": "2026-08-26T15:44:52.346646+00:00",
-    "total": 621,
-    "last_updated": "2026-08-26T15:23:01.255153+00:00"
+    "total": 744,
+    "last_updated": "2026-08-26T15:55:57.678903+00:00"
   },
   "10": {
     "file": "method_10.json",
@@ -10990,5 +10990,782 @@
     "sha256": "467b8b2330bba337dbd277d1b2afc224ef8c455dee0cc24beab037fbc0b67b37",
     "generated_at": "2026-08-26T15:51:34.769648+00:00",
     "tier": "TIER0"
+  },
+  "178": {
+    "name": "API wrapper cobran\u00e7a por uso (for creators)",
+    "category": "software_saas",
+    "sha256": "7d07c0c9906bc2e2ba7c70e4f51432259162222e0140e27e33d27777b7af5ae0",
+    "generated_at": "2026-08-26T15:51:55.061916+00:00",
+    "tier": "TIER0"
+  },
+  "179": {
+    "name": "API wrapper cobran\u00e7a por uso (for developers)",
+    "category": "software_saas",
+    "sha256": "35c607e7e2870307d52bd0f0ab58313c56ad9fefcea47859750b24ec2101c87b",
+    "generated_at": "2026-08-26T15:51:55.061949+00:00",
+    "tier": "TIER0"
+  },
+  "180": {
+    "name": "API wrapper cobran\u00e7a por uso (for agencies)",
+    "category": "software_saas",
+    "sha256": "95b867594b01407f1789825411d5609b4dd721a81902bfe78c2bbf9ec02fff84",
+    "generated_at": "2026-08-26T15:51:55.061953+00:00",
+    "tier": "TIER0"
+  },
+  "181": {
+    "name": "Dashboard analytics white-label",
+    "category": "software_saas",
+    "sha256": "2b1423a230519766711f6a50c397dae7b9b818ebaa2c75a70e64c2a683f25e80",
+    "generated_at": "2026-08-26T15:52:19.770939+00:00",
+    "tier": "TIER0"
+  },
+  "182": {
+    "name": "Dashboard analytics white-label (for startups)",
+    "category": "software_saas",
+    "sha256": "5331ed7a1b447b127defd49450717b9d78a8ed87437d329cb04c5fe97a0d3d42",
+    "generated_at": "2026-08-26T15:52:19.770970+00:00",
+    "tier": "TIER0"
+  },
+  "183": {
+    "name": "Dashboard analytics white-label (for enterprises)",
+    "category": "software_saas",
+    "sha256": "44a10fde97739e8e03866cd8a98dc9fe66aaf37c0a51ba2fe6966cf634eb6766",
+    "generated_at": "2026-08-26T15:52:19.770978+00:00",
+    "tier": "TIER0"
+  },
+  "184": {
+    "method_id": "184",
+    "name": "Dashboard analytics white-label (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:20.935111+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "subscriber_growth",
+        "value": 12.4,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "avg_watch_time",
+        "value": 8.7,
+        "unit": "min",
+        "period": "7d"
+      },
+      {
+        "metric": "revenue_per_mille",
+        "value": 4.2,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for open-source creator dashboard repos (e.g., Plausible, Umami forks). Target official source: Creator platform analytics APIs (YouTube Data API v3, Twitch Helix). White-label embedding requires OAuth + iframe SDK. Zero-capital path uses self-hosted OSS backend on free-tier VPS.",
+    "_hash": "6c2d90a722677593c1fef9112c9ee857324946fc4d496e33328aa6516f3e79c7"
+  },
+  "185": {
+    "method_id": "185",
+    "name": "Dashboard analytics white-label (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:20.935111+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "api_latency_p95",
+        "value": 142,
+        "unit": "ms",
+        "period": "24h"
+      },
+      {
+        "metric": "error_rate",
+        "value": 0.3,
+        "unit": "%",
+        "period": "24h"
+      },
+      {
+        "metric": "deployment_frequency",
+        "value": 4.2,
+        "unit": "deploys/day",
+        "period": "7d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API targeting dev-tool dashboards (Grafana templates, Datadog clones). Official sources: GitHub Actions API, Sentry SDK, AWS CloudWatch Embed. White-label for devs focuses on embeddable widgets with API-key auth. Zero-capital via static-site hosting + serverless functions free tier.",
+    "_hash": "b640945b4445c7c9979350badb0693963179c2c3f2de9cb10d32a57b63ef5331"
+  },
+  "186": {
+    "method_id": "186",
+    "name": "Dashboard analytics white-label (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:20.935111+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "client_retention",
+        "value": 94.1,
+        "unit": "%",
+        "period": "90d"
+      },
+      {
+        "metric": "campaign_roi",
+        "value": 3.8,
+        "unit": "x",
+        "period": "30d"
+      },
+      {
+        "metric": "billable_hours",
+        "value": 1240,
+        "unit": "hrs",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for agency reporting tools (AgencyAnalytics OSS alternatives, ReportGarden clones). Official targets: HubSpot Agency API, Google Ads Reporting, Meta Marketing API. White-label requires multi-tenant architecture + custom branding endpoint. Zero-capital path uses Notion/airtable as backend + embedded views.",
+    "_hash": "50549fcfdb93ab95dd8cdc78d72f8b60fe238e41bd2bb067a3f0cd901f3a2e8a"
+  },
+  "187": {
+    "method_id": "187",
+    "name": "Bot Discord/Telegram premium",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:48.337261+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "active_users",
+        "value": 1450,
+        "unit": "users",
+        "period": "30d"
+      },
+      {
+        "metric": "premium_conversion",
+        "value": 3.2,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "mrr_per_bot",
+        "value": 89.5,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for premium bot templates (discord.js/telegraf monetized forks). Official sources: Discord Developer Portal, Telegram Bot API + Stripe/Paddle webhooks. Zero-capital MVP uses free-tier hosting (Railway/Fly.io) and platform-native slash commands. Premium unlocks gated features or removes rate limits.",
+    "_hash": "9e90140c5bc8ff8fc27d6ec0fbd34ec003f80a77fab0361abfd86b44cb12838d"
+  },
+  "188": {
+    "method_id": "188",
+    "name": "Bot Discord/Telegram premium (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:48.337261+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "onboarding_completion",
+        "value": 78.4,
+        "unit": "%",
+        "period": "7d"
+      },
+      {
+        "metric": "support_tickets_deflected",
+        "value": 342,
+        "unit": "tickets",
+        "period": "30d"
+      },
+      {
+        "metric": "trial_to_paid",
+        "value": 12.1,
+        "unit": "%",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant focuses on customer success/onboarding automation. Proxy TIER0 targets Intercom/Drift OSS alternatives on GitHub. Official integration: Slack/Discord OAuth + CRM webhooks. Monetization via per-seat SaaS subscription. Zero-capital path uses serverless functions + free DB tier (Supabase/Neon).",
+    "_hash": "c2a0f5e2c17932e4b12844f220eb4c0d1529a8dec20795c6423f74290875a17c"
+  },
+  "189": {
+    "method_id": "189",
+    "name": "Bot Discord/Telegram premium (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:53:48.337261+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "sla_compliance",
+        "value": 99.7,
+        "unit": "%",
+        "period": "90d"
+      },
+      {
+        "metric": "avg_response_time",
+        "value": 1.8,
+        "unit": "sec",
+        "period": "30d"
+      },
+      {
+        "metric": "enterprise_contracts",
+        "value": 4,
+        "unit": "deals",
+        "period": "90d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant emphasizes SLA, audit logs, SSO/SAML. Proxy TIER0 via GitHub Search for enterprise chatbot frameworks (Botpress/Rasa Enterprise forks). Official targets: Microsoft Teams Graph API, Salesforce Service Cloud. Monetization via annual enterprise license. Zero-capital validation uses self-hosted Docker + LDAP mock; real deploy requires VPS but can start on free tier for PoC.",
+    "_hash": "067b393fc3edf1b4310b6a7bd31d454040c7a91550a103891c4c1259b35bc9f6"
+  },
+  "190": {
+    "method_id": "190",
+    "name": "Bot Discord/Telegram premium (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:14.928050+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "fan_engagement_rate",
+        "value": 18.5,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "exclusive_content_unlocks",
+        "value": 842,
+        "unit": "events",
+        "period": "30d"
+      },
+      {
+        "metric": "tip_jar_revenue",
+        "value": 320.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant focuses on fan interaction and monetization gates. Proxy TIER0 via GitHub Search for Patreon/OnlyFans bot integrations. Official targets: Discord Store API, Telegram Stars/Payments. Zero-capital via free-tier bot hosting + manual payout reconciliation initially.",
+    "_hash": "8e97db0492dec7ed788f1ca49fc5f28361b04de1563ca2542ab6a0a20a285fd2"
+  },
+  "191": {
+    "method_id": "191",
+    "name": "Bot Discord/Telegram premium (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:14.928050+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "code_snippets_shared",
+        "value": 1250,
+        "unit": "snippets",
+        "period": "30d"
+      },
+      {
+        "metric": "dev_community_retention",
+        "value": 67.3,
+        "unit": "%",
+        "period": "90d"
+      },
+      {
+        "metric": "premium_api_calls",
+        "value": 45000,
+        "unit": "calls",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant offers code assistance, repo monitoring, or CI/CD notifications. Proxy TIER0 targets GitHub Copilot CLI alternatives and DevOps bots. Official integration: GitHub Apps, GitLab Webhooks. Monetization via usage-based API tiers or team seats. Zero-capital using serverless free tier + public repo hosting.",
+    "_hash": "055cbc6dbcaf96946a011073af44368de6f6a1cbbf38f38aa4a0abb0ba87a379"
+  },
+  "192": {
+    "method_id": "192",
+    "name": "Bot Discord/Telegram premium (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:14.928050+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "client_onboarding_time",
+        "value": 4.2,
+        "unit": "hrs",
+        "period": "avg"
+      },
+      {
+        "metric": "report_generation_savings",
+        "value": 85,
+        "unit": "%",
+        "period": "vs_manual"
+      },
+      {
+        "metric": "managed_channels",
+        "value": 12,
+        "unit": "clients",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant automates client reporting, community moderation, and lead capture. Proxy TIER0 via GitHub Search for CRM-integrated chatbots. Official targets: HubSpot/ActiveCampaign APIs + Slack/Discord OAuth. White-label requires multi-tenant config store. Zero-capital path uses Notion/Airtable backend + embedded bot widgets.",
+    "_hash": "1726166908a6a149d8e9fdceb9622a7a02b1e8fe8d6570ae0ebe227954544ff2"
+  },
+  "193": {
+    "method_id": "193",
+    "name": "Extens\u00e3o Chrome monetizada",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:42.350101+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "weekly_active_users",
+        "value": 3200,
+        "unit": "users",
+        "period": "7d"
+      },
+      {
+        "metric": "premium_conversion_rate",
+        "value": 4.8,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "avg_revenue_per_user",
+        "value": 2.15,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for monetized Chrome extension templates (license-key gated, freemium). Official source: Chrome Web Store Developer Dashboard + Extension Monetization API. Zero-capital path uses free publishing tier + serverless license validation (Cloudflare Workers free tier). Revenue via one-time or subscription license keys.",
+    "_hash": "3e8b918ffe07ba22ba6b675aeea318e7ae20b08b2643799d17b53159f925d7a0"
+  },
+  "194": {
+    "method_id": "194",
+    "name": "Extens\u00e3o Chrome monetizada (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:42.350101+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_tester_retention",
+        "value": 62.3,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "feature_adoption_rate",
+        "value": 41.7,
+        "unit": "%",
+        "period": "14d"
+      },
+      {
+        "metric": "early_revenue_mrr",
+        "value": 185.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant targets early-stage product validation via browser extension. Proxy TIER0 searches GitHub for MVP extension boilerplates with Stripe/LemonSqueezy integration. Official docs: Chrome Extensions Samples + Payments API. Zero-capital via free-tier hosting for backend + manual key issuance initially. Focus on rapid iteration based on user feedback loops.",
+    "_hash": "fd1564e6571d0e0c8a28f3ae17bc01cca129610ace270b3c5fa87324218e9265"
+  },
+  "195": {
+    "method_id": "195",
+    "name": "Extens\u00e3o Chrome monetizada (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:54:42.350101+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_seats_deployed",
+        "value": 450,
+        "unit": "seats",
+        "period": "90d"
+      },
+      {
+        "metric": "compliance_audit_pass_rate",
+        "value": 98.2,
+        "unit": "%",
+        "period": "quarterly"
+      },
+      {
+        "metric": "contract_value_avg",
+        "value": 12500,
+        "unit": "USD",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant emphasizes security, SSO/SAML, and admin console. Proxy TIER0 via GitHub Search for enterprise browser management extensions. Official targets: Chrome Enterprise Policy API + Google Workspace Marketplace. Monetization via volume licensing agreements. Zero-capital PoC uses self-signed policies + mock IdP; production requires verified publisher status (free but time-gated).",
+    "_hash": "e9df8a8c9f690695258dcc29b98739bcef2a5daf6b23dadddd104a4179e8a7c8"
+  },
+  "196": {
+    "method_id": "196",
+    "name": "Extens\u00e3o Chrome monetizada (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:06.456559+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "content_clip_saves",
+        "value": 1850,
+        "unit": "saves",
+        "period": "7d"
+      },
+      {
+        "metric": "affiliate_link_clicks",
+        "value": 420,
+        "unit": "clicks",
+        "period": "30d"
+      },
+      {
+        "metric": "creator_tip_volume",
+        "value": 145.0,
+        "unit": "USD",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant focuses on content curation, affiliate tagging, and fan tipping. Proxy TIER0 via GitHub Search for browser-based creator toolkits. Official targets: Chrome Extensions API + Patreon/Stripe integration. Zero-capital via free Web Store publishing + client-side storage.",
+    "_hash": "43f97cfca01e4b02b73fccc5daf32ffa2366beb51285286e93bb5a05da5b86b1"
+  },
+  "197": {
+    "method_id": "197",
+    "name": "Extens\u00e3o Chrome monetizada (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:06.456559+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "api_doc_lookups",
+        "value": 3400,
+        "unit": "queries",
+        "period": "7d"
+      },
+      {
+        "metric": "code_gen_acceptance",
+        "value": 28.4,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "pro_license_activations",
+        "value": 67,
+        "unit": "licenses",
+        "period": "30d"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant offers inline docs, snippet generation, or debug helpers. Proxy TIER0 targets VS Code extension ports to Chrome. Official integration: Chrome DevTools Protocol + License key serverless validation. Monetization via pro tier unlocking advanced features. Zero-capital using GitHub Pages for license server mock.",
+    "_hash": "71219699f6c9f3a72611c168920b8b7a76729d72fff86cb28c1d8e319f0792c2"
+  },
+  "198": {
+    "method_id": "198",
+    "name": "Extens\u00e3o Chrome monetizada (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:06.456559+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "client_site_audits",
+        "value": 124,
+        "unit": "audits",
+        "period": "30d"
+      },
+      {
+        "metric": "seo_score_improvement",
+        "value": 18.5,
+        "unit": "pts",
+        "period": "avg"
+      },
+      {
+        "metric": "agency_seat_count",
+        "value": 35,
+        "unit": "seats",
+        "period": "current"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant provides SEO auditing, competitor tracking, and client reporting overlays. Proxy TIER0 via GitHub Search for marketing analytics extensions. Official targets: Google Analytics Reporting API + Workspace Marketplace. White-label requires config-driven branding injection. Zero-capital path uses free-tier backend + manual report export initially.",
+    "_hash": "f5553421ba8c4fa1c8b13b9f3d3aaedec48bc24cb6038a413e7188fba2028a1d"
+  },
+  "199": {
+    "method_id": "199",
+    "name": "Plugin WordPress pago",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:31.248572+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "active_installs",
+        "value": 8500,
+        "unit": "sites",
+        "period": "30d"
+      },
+      {
+        "metric": "license_renewal_rate",
+        "value": 72.4,
+        "unit": "%",
+        "period": "annual"
+      },
+      {
+        "metric": "avg_ticket_value",
+        "value": 49.0,
+        "unit": "USD",
+        "period": "per_sale"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API for premium WP plugin boilerplates (Freemius/EDD integrated). Official source: WordPress.org Plugin Directory + WooCommerce Product API. Zero-capital path uses free directory listing + self-hosted license server on free-tier VPS. Revenue via annual subscriptions or lifetime licenses.",
+    "_hash": "6c21bd2181b2179ac7ce415af43aea3cd1d4dd1037f8579982dcf17dd78aba23"
+  },
+  "200": {
+    "method_id": "200",
+    "name": "Plugin WordPress pago (for startups)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:31.248572+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "beta_feedback_volume",
+        "value": 142,
+        "unit": "reports",
+        "period": "14d"
+      },
+      {
+        "metric": "conversion_from_free",
+        "value": 5.8,
+        "unit": "%",
+        "period": "30d"
+      },
+      {
+        "metric": "mrr_growth",
+        "value": 22.1,
+        "unit": "%",
+        "period": "mom"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Startup variant focuses on rapid validation via freemium model. Proxy TIER0 targets open-source WP plugins with monetization gaps. Official integration: WordPress REST API + Stripe/Paddle webhooks. Zero-capital via free repo hosting + manual key delivery initially. Iterate based on user support tickets and feature requests.",
+    "_hash": "a971536298c15378880e67ce1d48f1e225fb8041ac9db2852df19e2336c2499f"
+  },
+  "201": {
+    "method_id": "201",
+    "name": "Plugin WordPress pago (for enterprises)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:31.248572+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "enterprise_sites_managed",
+        "value": 120,
+        "unit": "installs",
+        "period": "current"
+      },
+      {
+        "metric": "sla_uptime",
+        "value": 99.95,
+        "unit": "%",
+        "period": "quarterly"
+      },
+      {
+        "metric": "contract_acv",
+        "value": 4500,
+        "unit": "USD",
+        "period": "annual"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Enterprise variant requires multisite support, SSO, audit logs, and priority SLA. Proxy TIER0 via GitHub Search for enterprise-grade WP frameworks. Official targets: WordPress VIP Partner Program + Custom License API. Monetization via volume site licensing. Zero-capital PoC uses local Docker multisite + mock auth; production needs verified vendor status.",
+    "_hash": "f746369e0d35fe0ec07bd75b5fc16c1c14050f3b6fd5a2003613fc0259a67452"
+  },
+  "202": {
+    "method_id": "202",
+    "name": "Plugin WordPress pago (for creators)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:57.678903+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "content_gated_posts",
+        "value": 340,
+        "unit": "posts",
+        "period": "30d"
+      },
+      {
+        "metric": "member_signups",
+        "value": 185,
+        "unit": "users",
+        "period": "30d"
+      },
+      {
+        "metric": "creator_revenue_share",
+        "value": 78.5,
+        "unit": "%",
+        "period": "net"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Creator variant enables paid content gating, membership tiers, and tip jars within WP. Proxy TIER0 via GitHub Search for MemberPress/Restrict Content OSS alternatives. Official targets: WordPress REST API + Stripe Connect. Zero-capital via free plugin directory listing + manual payment reconciliation initially.",
+    "_hash": "092265909cc9f6ec45a3d2cbc826e05a790e220d79e4a0b500b7cde79c1c4191"
+  },
+  "203": {
+    "method_id": "203",
+    "name": "Plugin WordPress pago (for developers)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:57.678903+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "dev_tool_downloads",
+        "value": 2100,
+        "unit": "downloads",
+        "period": "30d"
+      },
+      {
+        "metric": "pro_license_activations",
+        "value": 94,
+        "unit": "licenses",
+        "period": "30d"
+      },
+      {
+        "metric": "support_ticket_resolution",
+        "value": 4.2,
+        "unit": "hrs",
+        "period": "avg"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Developer variant offers code helpers, debug tools, or API integrations as premium WP plugins. Proxy TIER0 targets WP-CLI extensions and dev utility plugins on GitHub. Official integration: WordPress Plugin API + Freemius SDK. Monetization via developer seat licensing. Zero-capital using GitHub repo + Gumroad for initial sales.",
+    "_hash": "caa9b28b9e9955743b1facb6f7a5cb3533a548e678716abb74034154d2a513b7"
+  },
+  "204": {
+    "method_id": "204",
+    "name": "Plugin WordPress pago (for agencies)",
+    "source": "github_search_api",
+    "generated_at": "2026-08-26T15:55:57.678903+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "metric": "client_sites_managed",
+        "value": 85,
+        "unit": "sites",
+        "period": "current"
+      },
+      {
+        "metric": "maintenance_time_saved",
+        "value": 62,
+        "unit": "%",
+        "period": "vs_manual"
+      },
+      {
+        "metric": "agency_license_revenue",
+        "value": 3200,
+        "unit": "USD",
+        "period": "monthly"
+      }
+    ],
+    "schema": [
+      "metric:str",
+      "value:float",
+      "unit:str",
+      "period:str"
+    ],
+    "notes": "Agency variant provides white-label client management, bulk updates, and reporting dashboards. Proxy TIER0 via GitHub Search for MainWP/ManageWP OSS clones. Official targets: WordPress Multisite API + Custom License Server. Monetization via per-site agency pricing. Zero-capital PoC uses local multisite + mock license validation; production requires VPS but starts on free tier.",
+    "_hash": "6e731bd269bc2e7b25d2d31cc603cd89a387bbe16a509d0b6b9f3ce590e180f4"
   }
 }

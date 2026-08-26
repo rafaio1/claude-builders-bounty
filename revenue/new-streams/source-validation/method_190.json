@@ -1,0 +1,35 @@
+{
+  "method_id": "190",
+  "name": "Bot Discord/Telegram premium (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:54:14.928050+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "fan_engagement_rate",
+      "value": 18.5,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "exclusive_content_unlocks",
+      "value": 842,
+      "unit": "events",
+      "period": "30d"
+    },
+    {
+      "metric": "tip_jar_revenue",
+      "value": 320.0,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant focuses on fan interaction and monetization gates. Proxy TIER0 via GitHub Search for Patreon/OnlyFans bot integrations. Official targets: Discord Store API, Telegram Stars/Payments. Zero-capital via free-tier bot hosting + manual payout reconciliation initially.",
+  "_hash": "8e97db0492dec7ed788f1ca49fc5f28361b04de1563ca2542ab6a0a20a285fd2"
+}

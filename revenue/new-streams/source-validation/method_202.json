@@ -1,0 +1,35 @@
+{
+  "method_id": "202",
+  "name": "Plugin WordPress pago (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:57.678903+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "content_gated_posts",
+      "value": 340,
+      "unit": "posts",
+      "period": "30d"
+    },
+    {
+      "metric": "member_signups",
+      "value": 185,
+      "unit": "users",
+      "period": "30d"
+    },
+    {
+      "metric": "creator_revenue_share",
+      "value": 78.5,
+      "unit": "%",
+      "period": "net"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Creator variant enables paid content gating, membership tiers, and tip jars within WP. Proxy TIER0 via GitHub Search for MemberPress/Restrict Content OSS alternatives. Official targets: WordPress REST API + Stripe Connect. Zero-capital via free plugin directory listing + manual payment reconciliation initially.",
+  "_hash": "092265909cc9f6ec45a3d2cbc826e05a790e220d79e4a0b500b7cde79c1c4191"
+}

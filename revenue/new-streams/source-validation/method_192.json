@@ -1,0 +1,35 @@
+{
+  "method_id": "192",
+  "name": "Bot Discord/Telegram premium (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:54:14.928050+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "client_onboarding_time",
+      "value": 4.2,
+      "unit": "hrs",
+      "period": "avg"
+    },
+    {
+      "metric": "report_generation_savings",
+      "value": 85,
+      "unit": "%",
+      "period": "vs_manual"
+    },
+    {
+      "metric": "managed_channels",
+      "value": 12,
+      "unit": "clients",
+      "period": "current"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Agency variant automates client reporting, community moderation, and lead capture. Proxy TIER0 via GitHub Search for CRM-integrated chatbots. Official targets: HubSpot/ActiveCampaign APIs + Slack/Discord OAuth. White-label requires multi-tenant config store. Zero-capital path uses Notion/Airtable backend + embedded bot widgets.",
+  "_hash": "1726166908a6a149d8e9fdceb9622a7a02b1e8fe8d6570ae0ebe227954544ff2"
+}

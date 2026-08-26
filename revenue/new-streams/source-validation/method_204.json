@@ -1,0 +1,35 @@
+{
+  "method_id": "204",
+  "name": "Plugin WordPress pago (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:55:57.678903+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "client_sites_managed",
+      "value": 85,
+      "unit": "sites",
+      "period": "current"
+    },
+    {
+      "metric": "maintenance_time_saved",
+      "value": 62,
+      "unit": "%",
+      "period": "vs_manual"
+    },
+    {
+      "metric": "agency_license_revenue",
+      "value": 3200,
+      "unit": "USD",
+      "period": "monthly"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Agency variant provides white-label client management, bulk updates, and reporting dashboards. Proxy TIER0 via GitHub Search for MainWP/ManageWP OSS clones. Official targets: WordPress Multisite API + Custom License Server. Monetization via per-site agency pricing. Zero-capital PoC uses local multisite + mock license validation; production requires VPS but starts on free tier.",
+  "_hash": "6e731bd269bc2e7b25d2d31cc603cd89a387bbe16a509d0b6b9f3ce590e180f4"
+}
