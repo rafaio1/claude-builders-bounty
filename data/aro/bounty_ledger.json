@@ -5,7 +5,7 @@
       "repo": "OphirPay/OphirPay",
       "pr": 225,
       "status": "waiting_human_action",
-      "last_action": "email_triage_greptile_p2_rebuttal_vercel_auth_pending",
+      "last_action": "2026-08-26T22:54:50.482347+00:00",
       "evidence": [
         {
           "type": "email",
@@ -45,9 +45,16 @@
             "1a03df0244231a91"
           ],
           "date": "2026-08-26T22:48:30.772316Z"
+        },
+        {
+          "greptile_review_msg_id": "1a03dcc01298cb75",
+          "vercel_auth_msg_id": "1a03dca6ce9683f4",
+          "greptile_summary": "P2 review: E2E duplicates signing/retry instead of calling deliverWebhook; rebuttal prepared (intentional isolation)",
+          "vercel_blocker": "CodingAngel1 team authorization pending for rafaio1",
+          "action_taken": "Logged review and Vercel blocker; no code change possible until team auth or maintainer response"
         }
       ],
-      "next_action": "await_vercel_codingangel1_team_auth_then_respond_to_greptile_review",
+      "next_action": "Monitor Vercel auth and maintainer reply to Greptile rebuttal; do not push code changes",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 225
     },
@@ -56,7 +63,7 @@
       "repo": "ligate-io/ligate-chain",
       "pr": 567,
       "status": "waiting_human_action",
-      "last_action": "email_triage_cla_assistant_failed_human_signature_required",
+      "last_action": "2026-08-26T22:54:50.482347+00:00",
       "evidence": [
         {
           "type": "email",
@@ -92,9 +99,15 @@
             "1a03df0244231a91"
           ],
           "date": "2026-08-26T22:48:30.772316Z"
+        },
+        {
+          "cla_fail_msg_id": "1a03d5fbf26dfa9f",
+          "cla_bot_msg_id": "1a03d5fae6f376c9",
+          "blocker": "CLA signature required; bot reports root is not a GitHub user",
+          "action_taken": "Identified CLA blocker; human must sign CLA via PR comment or link email to GitHub account"
         }
       ],
-      "next_action": "await_human_cla_signature_then_retrigger_ci",
+      "next_action": "Human action: sign CLA or associate commit email with GitHub account; preserve emails",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 567
     },
@@ -103,7 +116,7 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": 150,
       "status": "waiting_human_action",
-      "last_action": "email_triage_vercel_heymide_team_auth_pending",
+      "last_action": "2026-08-26T22:54:50.482347+00:00",
       "evidence": [
         {
           "type": "email",
@@ -127,9 +140,14 @@
             "1a03df0244231a91"
           ],
           "date": "2026-08-26T22:48:30.772316Z"
+        },
+        {
+          "vercel_auth_msg_id": "1a03df0244231a91",
+          "vercel_blocker": "Heymide team authorization pending for deployment",
+          "action_taken": "Logged Vercel auth requirement; no contributor action possible"
         }
       ],
-      "next_action": "await_vercel_heymide_team_auth",
+      "next_action": "Wait for Heymide team member to authorize Vercel deploy",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 150
     },
@@ -1193,6 +1211,30 @@
       "status": "rejected",
       "reason": "GitHub issue CLOSED and MERGED via PR #33289. Bounty stale on Opire.",
       "evidence_url": "https://github.com/storybookjs/storybook/issues/12641",
+      "action": "none"
+    },
+    {
+      "timestamp": "2026-08-26T22:54:06.873083+00:00",
+      "source": "opire",
+      "repo": "godotengine/godot",
+      "issue": 107845,
+      "title": "GDExtension: Store source of gdextension_interface.h in JSON (Web Exports C#)",
+      "bounty_usd": 3280,
+      "status": "rejected",
+      "reason": "GitHub PR #107845 is MERGED. Bounty on Opire is stale. Note: URL was issue/107845 but redirected to pull/107845 which is merged.",
+      "evidence_url": "https://github.com/godotengine/godot/pull/107845",
+      "action": "none"
+    },
+    {
+      "timestamp": "2026-08-26T22:54:53.118896+00:00",
+      "source": "opire",
+      "repo": "prisma/prisma",
+      "issue": 15647,
+      "title": "[V4] QueryEngine - DeleteMany not working when filter by nested entity",
+      "bounty_usd": 70,
+      "status": "rejected",
+      "reason": "GitHub PR #15647 is MERGED. Bounty on Opire is stale.",
+      "evidence_url": "https://github.com/prisma/orm/pull/15647",
       "action": "none"
     }
   ],
