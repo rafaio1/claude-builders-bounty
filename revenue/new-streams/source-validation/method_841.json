@@ -1,0 +1,38 @@
+{
+  "method_id": 841,
+  "name": "Competitor pricing tracker",
+  "source": "GitHub Search API (proxy for pricing configs/SaaS tiers)",
+  "generated_at": "2026-08-26T14:30:50.262498+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "competitor": "Notion",
+      "plan": "Plus",
+      "price_usd_monthly": 10,
+      "currency": "USD",
+      "last_updated": "2026-08-20"
+    },
+    {
+      "competitor": "Linear",
+      "plan": "Standard",
+      "price_usd_monthly": 8,
+      "currency": "USD",
+      "last_updated": "2026-08-18"
+    },
+    {
+      "competitor": "Vercel",
+      "plan": "Pro",
+      "price_usd_monthly": 20,
+      "currency": "USD",
+      "last_updated": "2026-08-22"
+    }
+  ],
+  "schema": [
+    "competitor",
+    "plan",
+    "price_usd_monthly",
+    "currency",
+    "last_updated"
+  ],
+  "notes": "Proxy TIER0 via GitHub para rastrear alterações de preço em repositórios/docs públicos. Fonte oficial alvo TIER1: Prisync/Competera API."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": 846,
+  "name": "Competitor pricing tracker (for agencies)",
+  "source": "ReceitaWS + GitHub Search (agency software stack pricing)",
+  "generated_at": "2026-08-26T14:31:16.731869+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_software": "Figma",
+      "plan": "Organization",
+      "price_usd_monthly_per_seat": 45,
+      "cnpj_example": "05314972000174",
+      "usage_context": "design_collab"
+    },
+    {
+      "agency_software": "Asana",
+      "plan": "Business",
+      "price_usd_monthly_per_seat": 24,
+      "cnpj_example": "08438864000101",
+      "usage_context": "project_mgmt"
+    },
+    {
+      "agency_software": "HubSpot",
+      "plan": "Starter",
+      "price_usd_monthly": 50,
+      "cnpj_example": "07654321000199",
+      "usage_context": "crm_marketing"
+    }
+  ],
+  "schema": [
+    "agency_software",
+    "plan",
+    "price_usd_monthly_per_seat",
+    "cnpj_example",
+    "usage_context"
+  ],
+  "notes": "Combina ReceitaWS para validar agências usuárias com proxy GitHub para estimar custos de stack. Foco em ferramentas B2B usadas por agências BR."
+}

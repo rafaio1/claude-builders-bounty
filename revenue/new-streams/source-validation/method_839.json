@@ -1,0 +1,38 @@
+{
+  "method_id": 839,
+  "name": "Brand mention monitoring (for developers)",
+  "source": "GitHub Search API (developer personal brand tracking)",
+  "generated_at": "2026-08-26T14:30:05.334043+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "developer": "filipedeschamps",
+      "mentions_last_30d": 310,
+      "primary_repo": "tabnews.com.br",
+      "community_score": 9.2,
+      "topic": "web_dev"
+    },
+    {
+      "developer": "rocketseat",
+      "mentions_last_30d": 890,
+      "primary_repo": "unform",
+      "community_score": 8.8,
+      "topic": "react_ecosystem"
+    },
+    {
+      "developer": "diego3g",
+      "mentions_last_30d": 420,
+      "primary_repo": "ecoleta",
+      "community_score": 8.5,
+      "topic": "nodejs"
+    }
+  ],
+  "schema": [
+    "developer",
+    "mentions_last_30d",
+    "primary_repo",
+    "community_score",
+    "topic"
+  ],
+  "notes": "Monitoramento de marca pessoal de devs via repositórios e issues. Proxy GitHub como validador TIER0 de relevância técnica."
+}

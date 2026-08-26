@@ -1,0 +1,38 @@
+{
+  "method_id": 844,
+  "name": "Competitor pricing tracker (for creators)",
+  "source": "GitHub Search API (proxy for creator tool/course pricing)",
+  "generated_at": "2026-08-26T14:31:16.731869+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_tool": "Patreon",
+      "tier": "Pro",
+      "price_usd_monthly": 12,
+      "category": "membership_platform",
+      "change_detected": false
+    },
+    {
+      "creator_tool": "Teachable",
+      "tier": "Basic",
+      "price_usd_monthly": 39,
+      "category": "course_platform",
+      "change_detected": true
+    },
+    {
+      "creator_tool": "Substack",
+      "tier": "Free",
+      "price_usd_monthly": 0,
+      "category": "newsletter",
+      "change_detected": false
+    }
+  ],
+  "schema": [
+    "creator_tool",
+    "tier",
+    "price_usd_monthly",
+    "category",
+    "change_detected"
+  ],
+  "notes": "Proxy TIER0 via GitHub para rastrear preços de ferramentas para criadores. Fonte oficial alvo TIER1: G2/Capterra pricing API."
+}

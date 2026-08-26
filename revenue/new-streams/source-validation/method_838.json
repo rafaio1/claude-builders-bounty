@@ -1,0 +1,38 @@
+{
+  "method_id": 838,
+  "name": "Brand mention monitoring (for creators)",
+  "source": "GitHub Search API (proxy for creator brand mentions)",
+  "generated_at": "2026-08-26T14:30:05.334043+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "Gaveta",
+      "mentions_last_30d": 450,
+      "platform_primary": "youtube",
+      "sentiment_positive_pct": 82.0,
+      "niche": "entertainment"
+    },
+    {
+      "creator": "Alura",
+      "mentions_last_30d": 680,
+      "platform_primary": "education",
+      "sentiment_positive_pct": 76.5,
+      "niche": "tech_education"
+    },
+    {
+      "creator": "JovemNerd",
+      "mentions_last_30d": 520,
+      "platform_primary": "podcast",
+      "sentiment_positive_pct": 79.0,
+      "niche": "pop_culture"
+    }
+  ],
+  "schema": [
+    "creator",
+    "mentions_last_30d",
+    "platform_primary",
+    "sentiment_positive_pct",
+    "niche"
+  ],
+  "notes": "Proxy TIER0 via GitHub para rastrear menções a marcas de criadores em projetos e docs. Fonte oficial alvo TIER1: Talkwalker/Brand24."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": 845,
+  "name": "Competitor pricing tracker (for developers)",
+  "source": "GitHub Search API (dev tool SaaS pricing configs)",
+  "generated_at": "2026-08-26T14:31:16.731869+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_tool": "GitHub Copilot",
+      "plan": "Individual",
+      "price_usd_monthly": 10,
+      "integration": "vscode",
+      "last_verified": "2026-08-25"
+    },
+    {
+      "dev_tool": "Cursor",
+      "plan": "Pro",
+      "price_usd_monthly": 20,
+      "integration": "standalone",
+      "last_verified": "2026-08-24"
+    },
+    {
+      "dev_tool": "Tabnine",
+      "plan": "Pro",
+      "price_usd_monthly": 12,
+      "integration": "multi_ide",
+      "last_verified": "2026-08-23"
+    }
+  ],
+  "schema": [
+    "dev_tool",
+    "plan",
+    "price_usd_monthly",
+    "integration",
+    "last_verified"
+  ],
+  "notes": "Monitoramento de preços de AI coding assistants via repositórios e docs públicos. Proxy GitHub como validador TIER0."
+}

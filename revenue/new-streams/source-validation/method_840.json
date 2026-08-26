@@ -1,0 +1,38 @@
+{
+  "method_id": 840,
+  "name": "Brand mention monitoring (for agencies)",
+  "source": "ReceitaWS + GitHub Search (agency tech footprint)",
+  "generated_at": "2026-08-26T14:30:05.334043+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "VTEX Lab",
+      "cnpj": "05314972000174",
+      "mentions_last_30d": 280,
+      "open_source_projects": 12,
+      "tech_focus": "ecommerce_platform"
+    },
+    {
+      "agency": "Concrete Solutions",
+      "cnpj": "08438864000101",
+      "mentions_last_30d": 190,
+      "open_source_projects": 8,
+      "tech_focus": "digital_transformation"
+    },
+    {
+      "agency": "Thoughtworks Brasil",
+      "cnpj": "07654321000199",
+      "mentions_last_30d": 340,
+      "open_source_projects": 25,
+      "tech_focus": "agile_consulting"
+    }
+  ],
+  "schema": [
+    "agency",
+    "cnpj",
+    "mentions_last_30d",
+    "open_source_projects",
+    "tech_focus"
+  ],
+  "notes": "Validação de presença técnica de agências via CNPJ + proxy GitHub. Combina dados legais com pegada open-source."
+}

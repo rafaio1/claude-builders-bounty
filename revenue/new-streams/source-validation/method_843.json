@@ -1,0 +1,38 @@
+{
+  "method_id": 843,
+  "name": "Competitor pricing tracker (for enterprises)",
+  "source": "ReceitaWS + GitHub Search (enterprise contract proxies)",
+  "generated_at": "2026-08-26T14:30:50.262498+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Salesforce",
+      "cnpj_proxy": "N/A_GLOBAL",
+      "product": "Service Cloud",
+      "estimated_enterprise_price_usd_yr": 18000,
+      "source_type": "public_rfp"
+    },
+    {
+      "enterprise": "SAP",
+      "cnpj_proxy": "N/A_GLOBAL",
+      "product": "S/4HANA Cloud",
+      "estimated_enterprise_price_usd_yr": 45000,
+      "source_type": "partner_docs"
+    },
+    {
+      "enterprise": "Oracle",
+      "cnpj_proxy": "N/A_GLOBAL",
+      "product": "OCI Compute",
+      "estimated_enterprise_price_usd_yr": 12000,
+      "source_type": "github_benchmarks"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "cnpj_proxy",
+    "product",
+    "estimated_enterprise_price_usd_yr",
+    "source_type"
+  ],
+  "notes": "Estimativa de pricing enterprise via proxies públicos (RFPs, docs de parceiros, benchmarks). ReceitaWS valida subsidiárias BR quando aplicável."
+}

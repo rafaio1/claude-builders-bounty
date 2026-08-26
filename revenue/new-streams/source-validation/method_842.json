@@ -1,0 +1,38 @@
+{
+  "method_id": 842,
+  "name": "Competitor pricing tracker (for startups)",
+  "source": "GitHub Search API (startup SaaS pricing pages)",
+  "generated_at": "2026-08-26T14:30:50.262498+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Resend",
+      "plan": "Pro",
+      "price_usd_monthly": 20,
+      "feature_highlight": "email_api",
+      "change_detected": false
+    },
+    {
+      "startup": "Supabase",
+      "plan": "Pro",
+      "price_usd_monthly": 25,
+      "feature_highlight": "postgres_baas",
+      "change_detected": true
+    },
+    {
+      "startup": "Clerk",
+      "plan": "Pro",
+      "price_usd_monthly": 25,
+      "feature_highlight": "auth_service",
+      "change_detected": false
+    }
+  ],
+  "schema": [
+    "startup",
+    "plan",
+    "price_usd_monthly",
+    "feature_highlight",
+    "change_detected"
+  ],
+  "notes": "Monitoramento de preços de startups dev-first. Proxy GitHub detecta mudanças em docs/configs versionados."
+}
