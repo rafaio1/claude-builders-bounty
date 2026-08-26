@@ -4,8 +4,10 @@ import fcntl
 import json
 import os
 import re
+import shutil
 import subprocess
 import sys
+import time
 import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
@@ -53,7 +55,7 @@ def save_ledger_atomic(entries):
     WORKSPACE.mkdir(parents=True, exist_ok=True)
     # Pre-write backup
     if LEDGER_PATH.exists():
-        ts = datetime.datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
+        ts = datetime.utcnow().strftime("%Y%m%dT%H%M%SZ")
         bak = LEDGER_PATH.with_suffix(LEDGER_PATH.suffix + f".bak.{ts}")
         shutil.copy2(LEDGER_PATH, bak)
     fd, tmp_path = tempfile.mkstemp(dir=WORKSPACE, suffix=".tmp")

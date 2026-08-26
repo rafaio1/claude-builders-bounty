@@ -2,41 +2,43 @@
   "pilot": "upstash-redis-reseller-scaffold",
   "category": "infrastructure_reselling",
   "status": "SCAFFOLD_OK",
-  "timestamp": "2026-08-26T20:52:34.199754+00:00",
+  "timestamp": "2026-08-26T20:53:41.563577+00:00",
   "free_tier_limits": {
-    "max_commands_per_day": 10000,
+    "monthly_commands": 500000,
     "max_storage_bytes": 268435456,
+    "monthly_bandwidth_gb": 10,
     "max_databases": 1,
     "eviction_policy": "noeviction (default) or configurable",
     "tls_enabled": true,
     "rest_api_included": true,
     "serverless_cron_included": false,
     "commercial_allowed": true,
-    "source_verified": "https://upstash.com/pricing (v25 validation pending)",
-    "validation_note": "Limits based on known free tier; requires playwright-cli confirmation before TIER1"
+    "source_verified": "https://upstash.com/pricing/redis (v25 validated via playwright-cli)",
+    "validation_note": "Free tier is 500K commands/month (NOT 10K/day), 256MB storage, 10GB bandwidth. Validated Aug 2026."
   },
   "paid_plan_baseline": {
-    "pay_as_you_go_start_usd": 0.0,
-    "pro_plan_usd_month": 10.0,
-    "included_commands_pro": 1000000,
-    "overage_usd_per_1k_commands": 0.0002,
-    "sla_uptime": "99.9%"
+    "pay_as_you_go_usd_per_100k_commands": 0.2,
+    "fixed_250mb_usd_month": 10.0,
+    "fixed_unlimited_commands": true,
+    "prod_pack_addon_usd_month": 200.0,
+    "sla_uptime": "99.9% (Prod Pack only)"
   },
   "reselling_model": {
     "target_segment": "devs BR building serverless apps Next.js/Vercel que precisam de cache/queue sem gerenciar Redis",
     "managed_service_price_brl": 39.9,
-    "included_commands_month": 50000,
-    "overage_brl_per_1k_commands": 1.5,
+    "included_commands_month": 100000,
+    "overage_brl_per_1k_commands": 1.2,
     "support_tier": "async (Discord/email)",
     "affiliate_commission_pct": null,
     "multi_tenancy_strategy": "Namespace isolation via key prefix; single DB shared com rate limiting por cliente; REST API proxy para evitar conexao direta",
-    "recommended_use_case": "Cache de sessao + fila leve para webhooks; nao usar como DB primario"
+    "recommended_use_case": "Cache de sessao + fila leve para webhooks; nao usar como DB primario",
+    "free_tier_advantage": "500K cmds/mes permite ate 5 clientes no plano base (100K cada) com margem total"
   },
   "doc_verification": {
-    "doc_verified": false,
-    "source_url": "https://upstash.com/pricing",
+    "doc_verified": true,
+    "source_url": "https://upstash.com/pricing/redis",
     "notes": [
-      "Aguardando validacao via playwright-cli dos limites atuais"
+      "Validado v25 via playwright-cli: 500K cmds/mes, 256MB storage, 10GB bandwidth, 1 DB free"
     ],
     "commercial_allowed": true
   },
@@ -46,20 +48,21 @@
     "gross_margin_brl": 39.9,
     "gross_margin_pct": 100.0,
     "break_even_clients": 1,
-    "free_tier_monthly_commands": 300000,
-    "max_clients_theoretical": 6,
-    "ceiling_warning": "Free tier permite ~6 clientes no plano base (50K cmds/mes cada); storage de 256MB limita datasets grandes"
+    "free_tier_monthly_commands": 500000,
+    "free_tier_bandwidth_gb": 10,
+    "max_clients_theoretical": 5,
+    "ceiling_warning": "Free tier permite ~5 clientes no plano base (100K cmds/mes cada); storage 256MB e bandwidth 10GB limitam datasets grandes"
   },
   "risks": [
     "Storage limitado a 256MB no free tier - inadequado para caches grandes ou filas persistentes",
-    "10K comandos/dia pode ser insuficiente para apps com trafego moderado",
+    "Bandwidth de 10GB/mes pode ser gargalo para apps com payloads grandes",
     "Sem programa affiliate/reseller publico confirmado",
     "Concorrencia com Vercel KV (mesma infra Upstash) e Cloudflare Workers KV",
     "Single database no free exige namespace discipline rigorosa para multi-tenancy"
   ],
   "next_steps": [
-    "Validar limites exatos via playwright-cli open https://upstash.com/pricing",
     "Testar latencia REST API vs TCP direto para cenario serverless BR",
+    "Implementar namespace proxy com rate limiting por cliente (100K cmds/mes cada)",
     "Pesquisar programa partner Upstash",
     "Comparar unit economics com Vercel KV e Cloudflare Workers KV",
     "Implementar prototype de namespace proxy com rate limiting"
