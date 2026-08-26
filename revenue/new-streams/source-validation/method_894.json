@@ -1,0 +1,35 @@
+{
+  "method_id": "894",
+  "name": "GPU compute spot reselling (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T16:18:42.618604+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "paperspace/paperspace-python",
+      "stars": 280,
+      "lang": "Python",
+      "platform": "Paperspace/DigitalOcean"
+    },
+    {
+      "repo": "jarvislabs/jarvislabs-sdk",
+      "stars": 120,
+      "lang": "Python",
+      "platform": "JarvisLabs"
+    },
+    {
+      "repo": "ori-cloud/ori-multi-tenant",
+      "stars": 85,
+      "lang": "Go",
+      "platform": "Ori Cloud Multi-Tenant"
+    }
+  ],
+  "schema": [
+    "repo",
+    "stars",
+    "lang",
+    "platform"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Foco em multi-tenancy, billing consolidado e SLAs para ag\u00eancias que gerenciam m\u00faltiplos clientes GPU.",
+  "sha256": "de531b95ce381e8bca8fac7995d2b7f24ce0c35784b2379f0f980565f7d7b7ad"
+}
