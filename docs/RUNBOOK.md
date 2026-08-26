@@ -149,3 +149,34 @@ python3 /Agentic/scripts/testnet_airdrop_executor.py || echo WARN: airdrop_execu
 | Commits Orca em /Agentic | A cada ciclo | Reconciliar, testar, integrar sem duplicar |
 | Timer revenue orchestrator | 6h | Verificar logs; waiting_monitoring se erro persistente |
 | method_640/641 pilotos | Diário | Implementar scaffold se acionável; documentar bloqueio se não |
+
+## 10. Watchdog Health Check
+
+### Script: `scripts/watchdog_health_check.sh`
+
+**Propósito:** Verificação idempotente de saúde do ambiente de execução (tmux, Bybit spot, payout reconciliation, ledger consistency, Telegram gate).
+
+**Execução:**
+```bash
+bash /Agentic/scripts/watchdog_health_check.sh
+```
+
+**Output:** Log append-only em `/Agentic/logs/payout_reconciliation.log`.
+
+**Checks realizados:**
+1. Contagem de sessões tmux ativas.
+2. PID do pane `bybit_spot` (se ausente, loga warning).
+3. Timestamp da última entrada no log de payout reconciliation.
+4. Consistência do ledger (`logs/bounty/ledger.json`): contagem de entradas pending vs liquidated.
+5. Elegibilidade do gate Telegram: silencioso se liquidated=0 ou erro; trigger eligible caso contrário.
+
+**Integração:** Não é chamado por cron nem por outro módulo atualmente. Pode ser executado manualmente ou integrado ao `cron_revenue_suite.sh` após validação de concorrência com outros agentes.
+
+**Segurança:** Não lê `.env`, não imprime secrets, não faz push. Seguro para execução automática.
+
+**Limitações conhecidas:**
+- Depende de `logs/bounty/ledger.json` existir; se ausente, reporta ERROR sem falhar.
+- Não valida autenticação GitHub/Bybit, apenas presença de processos e arquivos.
+- Não reinicia serviços; apenas diagnostica.
+
+**Próxima ação recomendada:** Decidir se integra ao loop automático ou mantém como ferramenta manual de diagnóstico. Se integrar, adicionar lock file para evitar execução concorrente.
