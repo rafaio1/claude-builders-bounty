@@ -69,10 +69,10 @@ def log_rejection(proposal_id: str, reason: str, proposal_title: str):
 
 
 if __name__ == "__main__":
-    if len(sys.argv) >= 2 and sys.argv[1] not in ("-", ""):
-        raw = sys.stdin.read()
-    else:
+    if len(sys.argv) >= 2 and sys.argv[1] != "-":
         raw = Path(sys.argv[1]).read_text(encoding="utf-8")
+    else:
+        raw = sys.stdin.read()
 
     try:
         proposal = json.loads(raw)
