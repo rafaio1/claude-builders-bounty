@@ -1,0 +1,38 @@
+{
+  "pilot": "cloudflare-pages-free-tier-scaffold",
+  "provider": "Cloudflare",
+  "product": "Pages (Free Tier)",
+  "status": "SCAFFOLD_REJECTED",
+  "doc_verified": true,
+  "source_doc": "https://www.cloudflare.com/en-gb/terms/ (Self-Serve Subscription Agreement, Last Updated Sept 12, 2025)",
+  "analysis_timestamp": "2026-08-26T22:23:29.622139+00:00",
+  "free_tier_limits": {
+    "plan_name": "Free Services",
+    "cost": "0 USD",
+    "duration": "Indefinido, mas terminável a qualquer momento pela Cloudflare (Seção 2.6 e 8)",
+    "sla": "Nenhum. AS IS / AS AVAILABLE (Seção 11)",
+    "restrictions": "Não pode processar cartões de crédito em Free Services (Seção 2.2.1(h))"
+  },
+  "reselling_model": {
+    "viable": false,
+    "license_grant": "limited, revocable, non-exclusive, non-transferable, non-sublicensable (except to Affiliates) - Seção 2.1",
+    "explicit_prohibitions": [
+      "Seção 2.2.1(a): rent, lease, loan, export, or sell access to the Services to any third party, or sign up for the Services on behalf of a third party",
+      "Seção 16: You may not assign or transfer this Agreement or your rights hereunder, in whole or in part, by operation of law or otherwise, without our prior written consent"
+    ],
+    "third_party_benefit": "Proibido via 2.2.1(a) - não pode signup on behalf of third party",
+    "commercial_use": "Permitido para uso próprio, mas PROIBIDO como objeto de revenda/serviço gerenciado para terceiros sob plano Self-Serve Free"
+  },
+  "risks": [
+    "Revenda explícita proibida (2.2.1(a))",
+    "Licença não sublicenciável exceto para Afiliados corporativos diretos (2.1)",
+    "Free Services termináveis sem aviso a critério exclusivo da Cloudflare (2.6)",
+    "Sem SLA ou garantia para Free Services (11)",
+    "Assignment requer consentimento escrito prévio (16)"
+  ],
+  "next_steps": [
+    "REJEITAR para reselling direto sob Self-Serve Free Tier",
+    "Alternativa: Investigar Cloudflare Partner Program / PowerUP para reselling autorizado (fora do escopo zero-capital self-serve)",
+    "Próximo candidato no pipeline: Render ou Supabase"
+  ]
+}
