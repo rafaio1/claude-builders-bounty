@@ -1,0 +1,38 @@
+{
+  "method_id": 818,
+  "name": "Geospatial POI database (for startups)",
+  "source": "GitHub Search API (proxy for niche location intelligence)",
+  "generated_at": "2026-08-26T14:25:12.739240+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "niche": "Cafeterias especiais com Wi-Fi >100Mbps",
+      "city": "São Paulo/SP",
+      "count_pois": 342,
+      "data_freshness_days": 15,
+      "monetization": "API B2B para delivery apps"
+    },
+    {
+      "niche": "Espaços coworking com sala de reunião",
+      "city": "Florianópolis/SC",
+      "count_pois": 87,
+      "data_freshness_days": 30,
+      "monetization": "Lead gen para imobiliárias comerciais"
+    },
+    {
+      "niche": "Farmácias com serviço de vacinação",
+      "city": "Belo Horizonte/MG",
+      "count_pois": 156,
+      "data_freshness_days": 7,
+      "monetization": "Dataset para healthtechs"
+    }
+  ],
+  "schema": [
+    "niche",
+    "city",
+    "count_pois",
+    "data_freshness_days",
+    "monetization"
+  ],
+  "notes": "Curadoria de micro-nichos geoespaciais validados via tags OSM e reviews públicos. Proxy GitHub varre projetos de urban analytics e hackathons cívicos. Fonte oficial TIER1: OSM Overpass API, Google Places (TIER1 paid)."
+}

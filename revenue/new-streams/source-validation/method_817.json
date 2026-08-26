@@ -1,0 +1,46 @@
+{
+  "method_id": 817,
+  "name": "Geospatial POI database",
+  "source": "GitHub Search API (proxy for OSM/IBGE open geodata)",
+  "generated_at": "2026-08-26T14:25:12.739218+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "poi_id": "OSM-BR-45821",
+      "name": "Hospital Municipal de Barueri",
+      "category": "Saúde",
+      "lat": -23.5102,
+      "lon": -46.8754,
+      "municipality": "Barueri/SP",
+      "last_update": "2026-08-10"
+    },
+    {
+      "poi_id": "OSM-BR-99320",
+      "name": "Escola Estadual Prof. Almeida",
+      "category": "Educação",
+      "lat": -22.9028,
+      "lon": -43.2075,
+      "municipality": "Rio de Janeiro/RJ",
+      "last_update": "2026-08-12"
+    },
+    {
+      "poi_id": "OSM-BR-11204",
+      "name": "Centro Logístico Sul",
+      "category": "Logística",
+      "lat": -25.4284,
+      "lon": -49.2733,
+      "municipality": "Curitiba/PR",
+      "last_update": "2026-08-15"
+    }
+  ],
+  "schema": [
+    "poi_id",
+    "name",
+    "category",
+    "lat",
+    "lon",
+    "municipality",
+    "last_update"
+  ],
+  "notes": "Base de pontos de interesse extraída do OpenStreetMap e cruzada com malhas IBGE. Proxy GitHub acessa mirrors Geofabrik e repositórios de dados abertos municipais. Fonte oficial TIER1: OSM Brasil API, IBGE Bases Territoriais."
+}

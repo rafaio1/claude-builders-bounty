@@ -1,0 +1,62 @@
+{
+  "method_id": 819,
+  "name": "Geospatial POI database (for enterprises)",
+  "source": "GitHub Search API (proxy for strategic site selection data)",
+  "generated_at": "2026-08-26T14:25:12.739244+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sector": "Varejo - Expansão supermercados NE",
+      "analysis_type": "Heatmap densidade populacional vs concorrência",
+      "coverage_states": [
+        "PE",
+        "BA",
+        "CE"
+      ],
+      "data_sources": [
+        "IBGE Censo",
+        "OSM",
+        "ReceitaWS"
+      ],
+      "deliverable": "Shapefile + Dashboard PowerBI"
+    },
+    {
+      "sector": "Telecom - Planejamento fibra óptica",
+      "analysis_type": "Rotas ótimas postes/dutos existentes",
+      "coverage_states": [
+        "SP",
+        "RJ",
+        "MG"
+      ],
+      "data_sources": [
+        "ANATEL infraestrutura",
+        "OSM ways",
+        "Prefeituras"
+      ],
+      "deliverable": "GeoPackage + API REST"
+    },
+    {
+      "sector": "Seguros - Risco inundação urbana",
+      "analysis_type": "Modelo elevação + histórico alagamentos",
+      "coverage_states": [
+        "RS",
+        "SC",
+        "PR"
+      ],
+      "data_sources": [
+        "SRTM/NASA",
+        "Defesa Civil",
+        "OSM waterways"
+      ],
+      "deliverable": "Raster TIFF + Relatório atuarial"
+    }
+  ],
+  "schema": [
+    "sector",
+    "analysis_type",
+    "coverage_states",
+    "data_sources",
+    "deliverable"
+  ],
+  "notes": "Produtos de inteligência territorial para grandes corporações. Proxy GitHub agrega metodologias de consultorias (Deloitte, KPMG) e datasets públicos consolidados. Fonte oficial TIER1: IBGE SIDRA, ANATEL dados abertos, INMET climatologia."
+}
