@@ -133,3 +133,29 @@
 - Basic order management and matching
 - Simple web interface with AngularJS
 - PostgreSQL database with raw SQL queries
+ ## [Unreleased] - Integration Era (2026-08-25 onwards)
+ 
+ ### Added
+ - Docs: add operational runbook with pre-push checklist and security protocols (d37ea09)
+ - Docs: add feature inventory with status, commits and security exclusions (301dab4)
+ - Docs: add permanent integration rules for 20M USDT goal and monitoring protocol (4810d40)
+ - Test: add triage contract regression tests and bugbounty templates (6b52f45)
+ - Feat: add bybit_futures strategies, p2p arb bot, validators and core docs (018f171)
+ - Feat: add mt5_bridge, wise_liquidity, pr_freelance, revenue streams and .gitignore updates (fd9e864)
+ - Docs: add integration context for new agents and maintainers (3dfb390)
+ - Chore: remove cached bytecode, logs, pids and state files from tracking (1afe0e9)
+ - Feat: add orchestrator, scripts and tools (sanitized, no secrets) (1497ea5)
+ - Feat: add core source, docs, prompts and skills (safe subset) (2e1332f)
+ - Chore: add comprehensive .gitignore for secrets and artifacts (6f04e8c)
+ 
+ ### Security
+ - Blocked `p2p-stack/robosats/node/lnd/tls.key` from version control
+ - Excluded all `.env`, runtime state, PIDs, logs and embedded git repos
+ - Hardened `bounty_engine.py` JSON parsing against unicode injection and schema violations
+ 
+ ### Operational
+ - Established `waiting_monitoring` state for external dependencies
+ - Defined `blocked` criteria: 3+ cycles of zero useful action only
+ - Mandated financial reconciliation with CONTADOR before revenue registration
+ - Repository verified PRIVATE at `rafaio1/agentic-integration`
+ 
