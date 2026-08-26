@@ -7,6 +7,8 @@ import sys
 import time
 import urllib.request
 import urllib.error
+import base64
+import io
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
 sys.path.insert(0, os.path.join(ROOT, "revenue", "products"))
@@ -21,6 +23,8 @@ from utility_api.pdf.generator import generate_pdf
 from utility_api.image.optimizer import optimize_image
 from utility_api.cron.scheduler import LocalScheduler
 
+
+from PIL import Image
 
 def test_queue_idempotency(tmp_path):
     q = PersistentQueue(str(tmp_path / "q.jsonl"))
@@ -45,6 +49,23 @@ def test_pdf_generation_sanitizes_and_stays_local_safe():
     assert result["local_safe"] is True
     assert "<script>" not in result["preview_head"]
     assert result["size_bytes"] > 0
+    pdf_bytes = result["data"]
+    assert pdf_bytes.startswith(b"%PDF-1.4")
+    assert b"%%EOF" in pdf_bytes
+    # Validate with pdfinfo and extract text with pdftotext
+    import tempfile
+    with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
+        tmp.write(pdf_bytes)
+        tmp_path = tmp.name
+    try:
+        info = subprocess.run(["/usr/bin/pdfinfo", tmp_path], capture_output=True, timeout=10)
+        assert info.returncode == 0, f"pdfinfo failed: {info.stderr.decode()}"
+        txt = subprocess.run(["/usr/bin/pdftotext", tmp_path, "-"], capture_output=True, timeout=10)
+        assert txt.returncode == 0, f"pdftotext failed: {txt.stderr.decode()}"
+        extracted = txt.stdout.decode("utf-8", errors="replace")
+        assert "hi" in extracted.lower(), f"text 'hi' not found in extracted: {extracted!r}"
+    finally:
+        os.unlink(tmp_path)
 
 
 def test_image_validation_blocks_remote_url():
@@ -53,11 +74,21 @@ def test_image_validation_blocks_remote_url():
     assert "remote_fetch_forbidden" in reason
 
 
-def test_image_optimizer_stub_returns_metadata():
-    ok, result = optimize_image({"data": b"abc", "format": "png"})
+def test_image_optimizer_real_resize_and_metrics():
+    buf = io.BytesIO()
+    Image.new("RGB", (200, 100), color="blue").save(buf, format="PNG")
+    b64_in = base64.b64encode(buf.getvalue()).decode("ascii")
+    ok, result = optimize_image({"data": b64_in, "format": "png", "max_width": 50, "max_height": 50})
     assert ok is True
     assert result["local_safe"] is True
-    assert result["input_bytes"] == 3
+    assert result["input_bytes"] > 0
+    assert result["output_bytes"] > 0
+    assert result["original_size"] == [200, 100]
+    assert result["final_size"][0] <= 50 and result["final_size"][1] <= 50
+    assert result["resized"] is True
+    out_img = Image.open(io.BytesIO(result["data"]))
+    assert out_img.size[0] <= 50 and out_img.size[1] <= 50
+    assert out_img.format == "PNG"
 
 
 def test_cron_validation_blocks_external_webhook():
@@ -77,6 +108,13 @@ def test_scheduler_enqueue_and_pending(tmp_path):
     assert len(jobs) == 1
     s.complete(jobs[0]["id"])
     assert s.pending(limit=5) == []
+
+
+def test_scheduler_rejects_invalid_cron_expression(tmp_path):
+    s = LocalScheduler(str(tmp_path / "cron_bad.jsonl"))
+    ok, res = s.schedule({"schedule": "not a cron", "target": "local.noop"})
+    assert ok is False
+    assert "invalid_cron_expression" in res.get("error", "")
 
 
 def _wait_for_http(url: str, timeout: float = 5.0) -> bool:
