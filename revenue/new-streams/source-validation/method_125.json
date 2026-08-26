@@ -1,0 +1,38 @@
+{
+  "method_id": "125",
+  "name": "API de conteúdo gerativo (for developers)",
+  "source": "GitHub Search API (proxy TIER0) -> Dev tooling inference APIs",
+  "generated_at": "2026-08-26T14:54:18.484276+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/code/explain",
+      "model": "starcoder2-15b",
+      "pricing": "free_tier_available",
+      "sdk_languages": [
+        "python",
+        "js",
+        "go"
+      ],
+      "docs_url": "https://example.com/docs"
+    },
+    {
+      "endpoint": "/v1/test/generate",
+      "model": "codellama-34b",
+      "pricing": "pay_per_token",
+      "sdk_languages": [
+        "python",
+        "java"
+      ],
+      "docs_url": "https://example.com/docs"
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "model",
+    "pricing",
+    "sdk_languages",
+    "docs_url"
+  ],
+  "notes": "API para devs integrarem geração de código/testes. Proxy GitHub. Fonte oficial TIER1: DeepInfra / Fireworks.ai / Groq."
+}

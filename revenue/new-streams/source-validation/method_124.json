@@ -1,0 +1,36 @@
+{
+  "method_id": "124",
+  "name": "API de conteúdo gerativo (for creators)",
+  "source": "GitHub Search API (proxy TIER0) -> Creator economy API wrappers",
+  "generated_at": "2026-08-26T14:54:18.484276+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "endpoint": "/v1/caption/generate",
+      "platforms": [
+        "instagram",
+        "tiktok"
+      ],
+      "price_per_call_usd": 0.002,
+      "auth": "oauth2",
+      "rate_limit_rpm": 60
+    },
+    {
+      "endpoint": "/v1/thumbnail/suggest",
+      "platforms": [
+        "youtube"
+      ],
+      "price_per_call_usd": 0.005,
+      "auth": "api_key",
+      "rate_limit_rpm": 30
+    }
+  ],
+  "schema": [
+    "endpoint",
+    "platforms",
+    "price_per_call_usd",
+    "auth",
+    "rate_limit_rpm"
+  ],
+  "notes": "API focada em criadores de conteúdo social. Proxy GitHub Search. Fonte oficial TIER1: Replicate / Cloudflare Workers AI."
+}
