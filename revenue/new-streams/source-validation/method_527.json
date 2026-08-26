@@ -1,0 +1,28 @@
+{
+  "method_id": "527",
+  "name": "Presale bot (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:41.302726+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_framework": "foundry_presale_kit",
+      "test_coverage_pct": 98,
+      "simulation_fork_block": 18500000,
+      "gas_snapshot_enabled": true
+    },
+    {
+      "dev_framework": "hardhat_ido_plugin",
+      "test_coverage_pct": 95,
+      "simulation_fork_block": 18500000,
+      "gas_snapshot_enabled": true
+    }
+  ],
+  "schema": [
+    "dev_framework",
+    "test_coverage_pct",
+    "simulation_fork_block",
+    "gas_snapshot_enabled"
+  ],
+  "notes": "Toolkit para devs testarem e auditarem contratos de presale antes do deploy real. Zero-capital via fork local da mainnet. Proxy: GitHub Search 'presale contract simulator foundry'."
+}

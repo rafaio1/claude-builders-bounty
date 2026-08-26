@@ -1,0 +1,28 @@
+{
+  "method_id": "526",
+  "name": "Presale bot (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:41.302726+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_project": "GenerativeArtDrop",
+      "platform": "fair_launch_xyz",
+      "sybil_defense": "gitcoin_passport",
+      "mint_limit_per_wallet": 3
+    },
+    {
+      "creator_project": "MusicRoyaltyNFT",
+      "platform": "sound_xyz_presale",
+      "sybil_defense": "twitter_account_age",
+      "mint_limit_per_wallet": 1
+    }
+  ],
+  "schema": [
+    "creator_project",
+    "platform",
+    "sybil_defense",
+    "mint_limit_per_wallet"
+  ],
+  "notes": "Foco em criadores que usam bots para garantir alocação justa aos fãs reais e evitar scalpers. Proxy: GitHub Search 'fair launch bot creator'. Fonte oficial: Fair Launch XYZ / Sound.xyz docs."
+}
