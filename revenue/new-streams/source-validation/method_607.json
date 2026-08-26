@@ -1,0 +1,38 @@
+{
+  "method_id": "607",
+  "name": "RPA workflow automation",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:26.455304+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "invoice_processing",
+      "steps_automated": 14,
+      "time_saved_hr_week": 32,
+      "error_rate_drop": "98%→0.5%",
+      "tool": "robot_framework"
+    },
+    {
+      "process": "employee_onboarding",
+      "systems_integrated": 6,
+      "manual_touchpoints": "23→2",
+      "compliance_audit": true,
+      "tool": "prefect_orchestration"
+    },
+    {
+      "process": "vendor_reconciliation",
+      "records_matched_auto": "94%",
+      "exception_handling": "email_alert",
+      "roi_months": 1.8,
+      "tool": "airflow_dag"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (rpa-automation/robot-framework). Fonte oficial alvo: Upwork RPA specialist gigs. Zero-capital: frameworks open-source + self-hosted orchestration.",
+  "content_hash": "aece830d2fb653f82c144af9b9915c83a9c27846e2a49efc40e7fef7b3f7583f"
+}

@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:35:58.457344+00:00",
-    "total": 606,
+    "generated_at": "2026-08-26T15:36:51.069977+00:00",
+    "total": 612,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -9748,5 +9748,224 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (agency-chatbot/chatwoot-wppconnect). Fonte oficial alvo: Clutch.co agency support automation. Zero-capital: self-hosted open-source; sem licenças por agente.",
     "content_hash": "af06987b11fcde776a2a276464aa234003bfeeb0e455536de51ecee634ae31f2"
+  },
+  "607": {
+    "method_id": "607",
+    "name": "RPA workflow automation",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:26.455304+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "invoice_processing",
+        "steps_automated": 14,
+        "time_saved_hr_week": 32,
+        "error_rate_drop": "98%→0.5%",
+        "tool": "robot_framework"
+      },
+      {
+        "process": "employee_onboarding",
+        "systems_integrated": 6,
+        "manual_touchpoints": "23→2",
+        "compliance_audit": true,
+        "tool": "prefect_orchestration"
+      },
+      {
+        "process": "vendor_reconciliation",
+        "records_matched_auto": "94%",
+        "exception_handling": "email_alert",
+        "roi_months": 1.8,
+        "tool": "airflow_dag"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (rpa-automation/robot-framework). Fonte oficial alvo: Upwork RPA specialist gigs. Zero-capital: frameworks open-source + self-hosted orchestration.",
+    "content_hash": "aece830d2fb653f82c144af9b9915c83a9c27846e2a49efc40e7fef7b3f7583f"
+  },
+  "608": {
+    "method_id": "608",
+    "name": "RPA workflow automation (for startups)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:26.455304+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "stripe_payout_reconcile",
+        "trigger": "daily_cron",
+        "notion_db_update": true,
+        "cost": "$0",
+        "tool": "github_actions_runner"
+      },
+      {
+        "process": "lead_enrichment",
+        "apis_chained": 3,
+        "enrichment_time": "4min→12s",
+        "monthly_volume": 2500,
+        "tool": "n8n_workflow"
+      },
+      {
+        "process": "churn_prediction_etl",
+        "source": "mixpanel_export",
+        "destination": "supabase_pg",
+        "refresh": "hourly",
+        "tool": "dagster_local"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (startup-rpa/n8n-dagster). Fonte oficial alvo: YC ops freelance automation. Zero-capital: runners e orquestradores free/self-hosted.",
+    "content_hash": "de0e4964dcb31b1ba31e89304b718d2d48cd80a539a868bd32b67c764d260111"
+  },
+  "609": {
+    "method_id": "609",
+    "name": "RPA workflow automation (for enterprises)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:26.455304+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "sap_idoc_processing",
+        "transactions_day": 45000,
+        "manual_override_pct": "<1%",
+        "audit_log": "immutable_s3",
+        "tool": "uipath_orchestrator_trial"
+      },
+      {
+        "process": "regulatory_reporting",
+        "jurisdictions": 12,
+        "report_gen_time": "3days→4h",
+        "validation_rules": 850,
+        "tool": "camunda_bpmn"
+      },
+      {
+        "process": "legacy_screen_scraping",
+        "mainframe_sessions": 200,
+        "data_extracted_gb_day": 45,
+        "error_recovery": "auto_retry_3x",
+        "tool": "playwright_enterprise"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (enterprise-rpa/camunda-uipath). Fonte oficial alvo: Enterprise RFPs/freelance SOWs automação SAP/mainframe. Zero-capital: trials e community editions; produção é TIER1 com licenças enterprise.",
+    "content_hash": "1aec26aba64bbf85ad5e1624749f14481992ca22b12c88ff330e367f4b852b7e"
+  },
+  "610": {
+    "method_id": "610",
+    "name": "RPA workflow automation (for creators)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:51.069977+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "youtube_metadata_tagging",
+        "videos_processed_day": 45,
+        "manual_time_saved_hr": 3.5,
+        "tool": "yt_dlp_pipedream"
+      },
+      {
+        "process": "podcast_show_notes_gen",
+        "transcription_source": "whisper_local",
+        "publish_latency_min": 12,
+        "tool": "obsidian_templater"
+      },
+      {
+        "process": "sponsor_invoice_chase",
+        "overdue_triggers": true,
+        "follow_up_emails_sent": 8,
+        "tool": "gmail_apps_script"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (creator-automation/ytdlp-pipedream). Fonte oficial alvo: Fiverr 'creator ops automation'. Zero-capital: ferramentas open-source + free-tier SaaS.",
+    "content_hash": "ce456f1bd9f16f0d5a979a303804156896a79bf28d5c175b2b63914d9b2dfcc7"
+  },
+  "611": {
+    "method_id": "611",
+    "name": "RPA workflow automation (for developers)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:51.069977+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "dependency_vuln_scan",
+        "repos_monitored": 35,
+        "alert_to_pr_time_min": 8,
+        "tool": "grype_github_action"
+      },
+      {
+        "process": "stale_issue_triage",
+        "issues_closed_auto": 120,
+        "false_positive_rate": "<2%",
+        "tool": "probot_stale"
+      },
+      {
+        "process": "db_backup_verify",
+        "restore_tests_weekly": true,
+        "corruption_detected": 0,
+        "tool": "restic_cronjob"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (devops-rpa/grype-probot). Fonte oficial alvo: Toptal freelance devops automation. Zero-capital: GitHub Actions free minutes + self-hosted runners.",
+    "content_hash": "b8a15b88611be4e9376e2799c4b5ac7761e89a4c06e6c4e4691edbd5e21f1e0c"
+  },
+  "612": {
+    "method_id": "612",
+    "name": "RPA workflow automation (for agencies)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:36:51.069977+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "process": "client_report_distribution",
+        "clients_served": 85,
+        "delivery_sla_compliance": "99.8%",
+        "tool": "airtable_automations"
+      },
+      {
+        "process": "ad_campaign_pause_alerts",
+        "budget_threshold_trigger": true,
+        "response_time_avg_min": 4,
+        "tool": "meta_marketing_webhook"
+      },
+      {
+        "process": "new_lead_crm_entry",
+        "forms_parsed_day": 200,
+        "duplicate_detection": true,
+        "tool": "make_com_agency_plan"
+      }
+    ],
+    "schema": [
+      "process",
+      "metric",
+      "value",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (agency-rpa/airtable-make). Fonte oficial alvo: Clutch.co agency ops retainers. Zero-capital: planos starter/trial cobrem volume inicial; escala é TIER1.",
+    "content_hash": "58d0b469cce86241662d0dccb01ef209bda12f61bdd54f8ae49dd9475eed2520"
   }
 }

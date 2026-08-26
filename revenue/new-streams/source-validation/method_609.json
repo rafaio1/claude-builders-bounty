@@ -1,0 +1,38 @@
+{
+  "method_id": "609",
+  "name": "RPA workflow automation (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:26.455304+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "sap_idoc_processing",
+      "transactions_day": 45000,
+      "manual_override_pct": "<1%",
+      "audit_log": "immutable_s3",
+      "tool": "uipath_orchestrator_trial"
+    },
+    {
+      "process": "regulatory_reporting",
+      "jurisdictions": 12,
+      "report_gen_time": "3days→4h",
+      "validation_rules": 850,
+      "tool": "camunda_bpmn"
+    },
+    {
+      "process": "legacy_screen_scraping",
+      "mainframe_sessions": 200,
+      "data_extracted_gb_day": 45,
+      "error_recovery": "auto_retry_3x",
+      "tool": "playwright_enterprise"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-rpa/camunda-uipath). Fonte oficial alvo: Enterprise RFPs/freelance SOWs automação SAP/mainframe. Zero-capital: trials e community editions; produção é TIER1 com licenças enterprise.",
+  "content_hash": "1aec26aba64bbf85ad5e1624749f14481992ca22b12c88ff330e367f4b852b7e"
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": "608",
+  "name": "RPA workflow automation (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:36:26.455304+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "process": "stripe_payout_reconcile",
+      "trigger": "daily_cron",
+      "notion_db_update": true,
+      "cost": "$0",
+      "tool": "github_actions_runner"
+    },
+    {
+      "process": "lead_enrichment",
+      "apis_chained": 3,
+      "enrichment_time": "4min→12s",
+      "monthly_volume": 2500,
+      "tool": "n8n_workflow"
+    },
+    {
+      "process": "churn_prediction_etl",
+      "source": "mixpanel_export",
+      "destination": "supabase_pg",
+      "refresh": "hourly",
+      "tool": "dagster_local"
+    }
+  ],
+  "schema": [
+    "process",
+    "metric",
+    "value",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-rpa/n8n-dagster). Fonte oficial alvo: YC ops freelance automation. Zero-capital: runners e orquestradores free/self-hosted.",
+  "content_hash": "de0e4964dcb31b1ba31e89304b718d2d48cd80a539a868bd32b67c764d260111"
+}
