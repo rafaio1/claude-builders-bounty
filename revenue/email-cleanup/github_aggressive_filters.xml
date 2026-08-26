@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:apps="http://schemas.google.com/apps/2006">
+  <entry>
+    <title>GitHub Flood - ClankerNation Auto-Delete</title>
+    <apps:property name="hasTheWord" value="ClankerNation OR OpenAgents OR PR #5871 OR feat(api): add WebSocket"/>
+    <apps:property name="from" value="github.com"/>
+    <apps:property name="shouldTrash" value="true"/>
+    <apps:property name="shouldNeverSpam" value="false"/>
+  </entry>
+  <entry>
+    <title>GitHub PR Notifications - Auto Archive</title>
+    <apps:property name="subject" value="Re: ["/>
+    <apps:property name="from" value="notifications@github.com"/>
+    <apps:property name="shouldArchive" value="true"/>
+    <apps:property name="shouldMarkAsRead" value="true"/>
+    <apps:property name="label" value="GitHub/Archived"/>
+  </entry>
+  <entry>
+    <title>GitHub All Notifications - Skip Inbox</title>
+    <apps:property name="from" value="noreply@github.com"/>
+    <apps:property name="shouldNeverSendSpam" value="true"/>
+    <apps:property name="shouldAlwaysMarkAsImportant" value="false"/>
+    <apps:property name="label" value="GitHub/Bulk"/>
+  </entry>
+</feed>

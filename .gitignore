@@ -8,9 +8,7 @@ credentials.json
 secrets/
 .config/gmail_*
 .config/last_telegram*
-p2p-stack/robosats/node/lnd/tls.key
-p2p-stack/robosats/node/lnd/*.key
-p2p-stack/robosats/node/cln/
+p2p-stack/robosats/node/
 
 # === RUNTIME STATE, LOGS AND DATA ===
 *.log
@@ -75,8 +73,6 @@ bugbounty/oss/*/
 bugbounty/recon/
 revenue/bounties/*/
 p2p-stack/mostro/
-p2p-stack/robosats/node/db/
-p2p-stack/robosats/node/bitcoin/bitcoin.conf
 workspace/bounty-exec/*/
 workspace/high-ticket/*/
 workspace/sparepack/
@@ -84,9 +80,8 @@ workspace/sparepack/
 # === KNOWLEDGE BASE (RUNTIME-GENERATED) ===
 knowledge/
  # === P2P STACK RUNTIME (TESTNET CHAIN DATA) ===
-p2p-stack/robosats/node/bitcoin/testnet3/
-p2p-stack/robosats/node/lnd/lnd.conf
-p2p-stack/robosats/node/lnd/tls.cert
  # === NESTED VENV IN REVENUE SUBPROJECTS ===
  revenue/*/.venv/
  revenue/*/*/.venv/
+typescript
+revenue/email-cleanup/.venv/

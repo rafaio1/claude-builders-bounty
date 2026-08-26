@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:apps="http://schemas.google.com/apps/2006">
+  <entry>
+    <title>GitHub Spam - Auto Archive</title>
+    <apps:property name="hasTheWord" value="[GitHub] Your personal access token OR [GitHub] Security alert OR Dependabot"/>
+    <apps:property name="from" value="noreply@github.com"/>
+    <apps:property name="shouldArchive" value="true"/>
+    <apps:property name="shouldMarkAsRead" value="true"/>
+    <apps:property name="label" value="GitHub/Spam"/>
+  </entry>
+  <entry>
+    <title>GitHub Notifications - Low Priority</title>
+    <apps:property name="hasTheWord" value="Re: [ OR Issue comment OR Pull request review"/>
+    <apps:property name="from" value="notifications@github.com"/>
+    <apps:property name="shouldNeverSpam" value="true"/>
+    <apps:property name="label" value="GitHub/LowPriority"/>
+  </entry>
+  <entry>
+    <title>GitHub Security Alerts - Keep</title>
+    <apps:property name="hasTheWord" value="Security vulnerability OR Critical security"/>
+    <apps:property name="from" value="noreply@github.com"/>
+    <apps:property name="label" value="GitHub/Important"/>
+  </entry>
+</feed>
