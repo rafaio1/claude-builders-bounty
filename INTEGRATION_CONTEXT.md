@@ -6,7 +6,7 @@
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
 ## Estado Atual — Laboratório Receita Zero-Capital
-**Atualizado:** 2026-08-26 13:29 UTC
+**Atualizado:** 2026-08-26 21:15 UTC
 **Receita Liquidada:** $0.00 (fase de validação infra)
 **Meta Aspiracional:** US$20M
 
@@ -15,6 +15,9 @@
 - ✅ Timers Improve: map/dev/review ativos em worktree isolado
 - ✅ E2E Validado: newsletter_generator → generation → rendering → publication → URL pública
 - ✅ Catálogo: 372/900 métodos marcados como `validated_dry_run` (41%)
+- ✅ Push seguro: repo privado validado, __pycache__ removido do tracking, pilots/output gitignored
+- ✅ Testes: 277/277 passando (exclui portal tests por argon2 ausente)
+- ✅ Features documentadas: Neon Postgres Reseller Scaffold adicionado ao FEATURES.md
 
 ### Streams Zero-Capital
 | Stream | Status | Métodos Catalogados | Evidência E2E |
@@ -23,6 +26,7 @@
 | proposal_bot | validated_dry_run | 180 | orchestrator_20260826.json |
 | affiliate_engine | validated_dry_run | 12 | orchestrator_20260826.json |
 | saas_scaffolder | validated_dry_run | 12 | orchestrator_20260826.json |
+| neon-postgres-reseller | scaffold_ok | 1 | pilots/neon-postgres-reseller-scaffold/output/reseller_scaffold_index.json |
 
 ### Governança
 - Proposta `exp-20260826-reactivate-zero-capital-streams-v2`: pending_judgment
@@ -35,6 +39,14 @@
 3. >=3 ciclos consecutivos sem erro do timer revenue
 4. Primeira proposta freelance submetida (<=7 dias pós-aprovação)
 5. Primeiro payout registrado (<=30 dias pós-aprovação)
+
+### Reconciliação do Integrador — 2026-08-26T21:15Z
+- **Push realizado**: c374cd7..de90669 (3 commits: gitignore pilots, remove __pycache__, docs features)
+- **Remoto**: rafaio1/agentic-integration (PRIVATE=true ✅)
+- **Working tree**: apenas arquivos gitignored modificados (config/, data/, __pycache__)
+- **Novos artefatos integráveis**: nenhum detectado desde último scan
+- **Estado do loop**: waiting_monitoring
+- **Próxima verificação**: monitorar PRs Lily-SDK #207-#236, OphirPay repo, novos commits Orca
 ## Estado Atual — Laboratório Receita Zero-Capital
 **Atualizado:** 2026-08-26 13:29 UTC
 **Receita Liquidada:** $0.00 (fase de validação infra)
