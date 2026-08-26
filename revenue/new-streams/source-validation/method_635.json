@@ -1,0 +1,31 @@
+{
+  "method_id": "635",
+  "name": "Cloud cost optimization (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:03.085077+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_552",
+      "env": "dev_staging",
+      "idle_resources_pct": 60,
+      "action": "auto_shutdown",
+      "monthly_saving_usd": 120
+    },
+    {
+      "dev_id": "dv_883",
+      "env": "ci_runners",
+      "idle_resources_pct": 40,
+      "action": "right_sizing",
+      "monthly_saving_usd": 85
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "env",
+    "idle_resources_pct",
+    "action",
+    "monthly_saving_usd"
+  ],
+  "notes": "Foco em ambientes de dev e CI. Fonte oficial alvo: Cloud provider cost anomaly detection. Proxy TIER0: GitHub Search API para actions de cleanup automático."
+}

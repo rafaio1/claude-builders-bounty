@@ -1,0 +1,31 @@
+{
+  "method_id": "636",
+  "name": "Cloud cost optimization (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:03.085077+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_331",
+      "client_count": 18,
+      "multi_account_strategy": "aws_organizations",
+      "chargeback_model": "tag_based",
+      "overhead_reduction_pct": 15
+    },
+    {
+      "agency_id": "ag_992",
+      "client_count": 42,
+      "multi_account_strategy": "gcp_folders",
+      "chargeback_model": "project_based",
+      "overhead_reduction_pct": 22
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "client_count",
+    "multi_account_strategy",
+    "chargeback_model",
+    "overhead_reduction_pct"
+  ],
+  "notes": "Gestão multi-conta e chargeback para agências. Fonte oficial alvo: Enterprise multi-account best practices. Proxy TIER0: GitHub Search API para terraform modules de agency landing zone."
+}

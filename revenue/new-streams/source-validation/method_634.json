@@ -1,0 +1,31 @@
+{
+  "method_id": "634",
+  "name": "Cloud cost optimization (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:41:03.085077+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_772",
+      "service": "video_rendering",
+      "monthly_spend_usd": 320,
+      "optimization_strategy": "spot_instances",
+      "savings_pct": 45
+    },
+    {
+      "creator_id": "cr_119",
+      "service": "ai_image_gen",
+      "monthly_spend_usd": 180,
+      "optimization_strategy": "gpu_sharing",
+      "savings_pct": 30
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "service",
+    "monthly_spend_usd",
+    "optimization_strategy",
+    "savings_pct"
+  ],
+  "notes": "Otimização para workloads de criação intermitentes. Fonte oficial alvo: AWS/GCP spot pricing. Proxy TIER0: GitHub Search API para scripts de render farm low-cost."
+}
