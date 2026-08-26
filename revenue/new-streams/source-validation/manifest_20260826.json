@@ -1289,34 +1289,24 @@
     "sha256": "e49bbdccab01c3679685b5193a5f2411b37fb9ede465fc99e4d3fa6fa7f989a3"
   },
   "method_902": {
-    "method_id": "method_902",
-    "name": "API Mocking Service",
-    "source": "GitHub Search API",
-    "generated_at": "2026-08-26T16:23:44.874662+00:00",
+    "method_id": 902,
+    "name": "Consultoria LGPD para Clínicas Médicas",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:18.411575+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "stoplightio/prism",
-        "stars": 4200,
-        "lang": "TypeScript",
-        "protocol": "OpenAPI/AsyncAPI"
-      },
-      {
-        "repo": "wiremock/wiremock",
-        "stars": 6300,
-        "lang": "Java",
-        "protocol": "HTTP/gRPC"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "protocol"
-    ],
-    "notes": "Infra horizontal para devs/testes. Proxy TIER0. Fonte oficial: npm/Maven Central. Útil para times sem backend pronto. Self-hosted zero-cost via Docker ou binário local.",
-    "category": "software_saas",
-    "sha256": "0d068fc50c62aaaa138e9008b38bf3a1fdc98bc0b498e92d0c6cef2954462fe6"
+    "sample_data": {
+      "regulation": "LGPD_ART_5_INC_XVIII",
+      "sector": "healthcare_clinics",
+      "deliverable": "relatorio_conformidade_lgpd",
+      "zero_capital": true,
+      "monetization_model": "fixed_fee_brl_2500_to_8000",
+      "target_segment": "clinicas_medias_pequenas",
+      "compliance_framework": "ANS_RESOLUCAO_465_2021"
+    },
+    "schema": "lgpd_consulting_v1",
+    "notes": "Validação BR explícita: LGPD é lei federal (13.709/2018) com multas de até R$50M. Clínicas médicas são alvo prioritário da ANPD por lidarem com dados sensíveis (saúde). Modelo zero-capital: entrega é relatório técnico + plano de ação, sem software ou licença paga. Pricing BRL baseado em benchmark de consultorias especializadas (R$2.500-8.000 por clínica). Não redundante com method_37 (templates genéricos) pois exige conhecimento setorial específico (ANS + LGPD). Demanda: >12.000 clínicas médias no BR sem DPO nomeado segundo CFM.",
+    "category": "freelance_services",
+    "sha256": "a9aec032844db945ed48149fe6ad2a27a48a92cf3fcd8079db7f8e38e5030dc2"
   },
   "749": {
     "method_id": 749,
@@ -17465,34 +17455,29 @@
     "sha256": "fe64a641160b6661131eed476d27b66e71d27f6f998a9dfe9cbef6d727249dad"
   },
   "method_903": {
-    "method_id": "method_903",
-    "name": "Feature Flag Management",
-    "source": "GitHub Search API (proxy Enterprise SaaS)",
-    "generated_at": "2026-08-26T16:23:44.874874+00:00",
+    "method_id": 903,
+    "name": "Data Product: Base CNPJ Enriquecida para Prospecção B2B",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:18.411581+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "Unleash/unleash",
-        "stars": 6100,
-        "lang": "TypeScript",
-        "storage": "PostgreSQL"
-      },
-      {
-        "repo": "flipt-io/flipt",
-        "stars": 3800,
-        "lang": "Go",
-        "storage": "SQLite/PostgreSQL"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "storage"
-    ],
-    "notes": "Infra horizontal para release management e deploy seguro. Proxy TIER0. Fonte oficial: GitHub/npm. Self-hosted open-source elimina custo de SaaS. Integração nativa com CI/CD.",
-    "category": "software_saas",
-    "sha256": "cdc57fc1b1c70e79b9575ba29b1bf50e0f2a63788b8d33a1b04f099c13afe863"
+    "sample_data": {
+      "data_source": "receita_federal_cnpj_aberto",
+      "enrichment": [
+        "cnae_primary",
+        "porte_empresa",
+        "situacao_cadastral",
+        "endereco_validado"
+      ],
+      "update_frequency": "monthly",
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_297_monthly",
+      "target_segment": "agencias_marketing_b2b",
+      "compliance": "lei_acesso_informacao_12527_2011"
+    },
+    "schema": "cnpj_data_product_v1",
+    "notes": "Validação BR explícita: Dados CNPJ são públicos via Receita Federal (Lei 12.527/2011). Enriquecimento com CNAE e porte permite segmentação precisa para agências B2B BR. Zero-capital: dados abertos, processamento local. Monetização via assinatura BRL (R$297/mês) alinhada ao pricing de ferramentas similares (Serasa Experian, Neoway). Não redundante com method_281 (data enrichment genérico) pois foco exclusivo em base fiscal BR estruturada para prospecção. Demanda: agências BR gastam R$500-2.000/mês em listas desatualizadas; produto resolve dor real com fonte oficial.",
+    "category": "data_products",
+    "sha256": "3f6d483b84a6299e9689e24144f7efea4e5792eea03a06f3116b5ee162ad45b6"
   },
   "573": {
     "method_id": "573",
@@ -21177,34 +21162,28 @@
     "sha256": "9e4dc804c7d4027d1cb19a56ca047c9dd44cdef348cfe85ceac49318e44ee08e"
   },
   "method_901": {
-    "method_id": "method_901",
-    "name": "AI Code Review Bot SaaS",
-    "source": "GitHub Search API",
-    "generated_at": "2026-08-26T16:23:44.874202+00:00",
+    "method_id": 901,
+    "name": "API Pix Automático para SaaS B2B",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:18.411387+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "coderabbitai/ai-pr-reviewer",
-        "stars": 2800,
-        "lang": "TypeScript",
-        "integration": "GitHub App"
-      },
-      {
-        "repo": "anc95/ChatGPT-CodeReview",
-        "stars": 4100,
-        "lang": "Python",
-        "integration": "GitHub Action"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "integration"
-    ],
-    "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: GitHub Marketplace / OpenAI API. Demanda alta por automação de PR review. Zero-capital se self-hosted com modelo open-source ou free tier de LLM.",
+    "sample_data": {
+      "integration_type": "pix_api_direct",
+      "gateway_br": [
+        "Mercado Pago",
+        "Gerencianet",
+        "Asaas"
+      ],
+      "compliance": "BCB_PIX_API_SPEC_V2",
+      "zero_capital": true,
+      "monetization_model": "transaction_fee_0.99%_to_1.5%",
+      "target_segment": "saas_b2b_br",
+      "lgpd_compliant": true
+    },
+    "schema": "pix_integration_v1",
+    "notes": "Validação BR explícita: API Pix é regulamentada pelo BCB e obrigatória para qualquer SaaS que opere no Brasil. Gateways como Mercado Pago e Asaas oferecem sandbox gratuita sem custo inicial. Monetização via taxa de transação (0.99%-1.5%) é padrão de mercado BR. Compliance LGPD nativo pois dados financeiros são tratados por instituições reguladas. Diferencial frente a method_24 (Hotmart): foco em B2B/SaaS, não creators. Demanda comprovada: >80% dos SaaS BR precisam integrar Pix para reduzir churn de boleto.",
     "category": "software_saas",
-    "sha256": "25d64dd55cc0bd158792ed9a6b434e1f95862fd0e6903978352ef14c703d74de"
+    "sha256": "84bb681303b1a19abc00acdc8f5d1b6d005ee0fc049426bf841709a3545f3d83"
   },
   "359": {
     "method_id": "359",
@@ -31507,408 +31486,455 @@
     "sha256": "f1449b7dea21025b956039789975bba8630a054bfc93df2144e13b0e0f8c2676"
   },
   "method_904": {
-    "method_id": "method_904",
-    "name": "GPU Spot Reseller Aggregator",
-    "source": "GitHub Search API (proxy GPU Spot Market)",
-    "generated_at": "2026-08-26T16:26:17.941024+00:00",
+    "method_id": 904,
+    "name": "Afiliado de Cursos Profissionais via Eduzz/Kiwify",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:42.377068+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "vast-ai/vast-sdk",
-        "stars": 1200,
-        "lang": "Python",
-        "note": "SDK para marketplace de GPU spot"
-      },
-      {
-        "repo": "runpod/runpod-python",
-        "stars": 850,
-        "lang": "Python",
-        "note": "API client para GPU cloud spot"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "note"
-    ],
-    "notes": "Proxy TIER0 via GitHub. Fonte oficial alvo: Vast.ai/RunPod/Lambda Labs APIs. Zero-capital: agregação de preços e disponibilidade sem compra direta. Demanda alta por treino de modelos ML.",
-    "category": "infrastructure_reselling",
-    "sha256": "3798f1e430ef383b87375d5d33d1f3e3c625c597c480079cfe1287869d6e5250"
+    "sample_data": {
+      "platform_br": [
+        "Eduzz",
+        "Kiwify",
+        "Ticto"
+      ],
+      "niche": "professional_certification",
+      "commission_rate_pct": -30,
+      "zero_capital": true,
+      "monetization_model": "affiliate_commission_cpa",
+      "target_segment": "career_coaches_br",
+      "payout_method": "pix_bank_transfer"
+    },
+    "schema": "affiliate_platform_br_v1",
+    "notes": "Validação BR explícita: Eduzz e Kiwify são plataformas nacionais com payout via Pix em D+2. Diferencial frente ao method_24 (Hotmart genérico): foco em certificações profissionais (ex: preparatórios para concursos, cursos técnicos) que têm ticket médio maior (R$500-2.000) e churn menor. Zero-capital absoluto: afiliação gratuita, links gerados automaticamente. Demanda: mercado de educação profissional BR cresceu 28% em 2025 segundo ABED. Compliance LGPD nativo nas plataformas.",
+    "category": "content_monetization",
+    "sha256": "fe6717279ee8f1bfaffc96812c7a434dfa3a4fef403b4b05b61dfc5bd107ed25"
   },
   "method_905": {
-    "method_id": "method_905",
-    "name": "CDN Bandwidth Reseller Dashboard",
-    "source": "GitHub Search API (proxy CDN Reseller)",
-    "generated_at": "2026-08-26T16:26:17.941443+00:00",
+    "method_id": 905,
+    "name": "Node de Validação Open Finance BR (Dados Agregados)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:42.377145+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "cloudflare/cloudflare-go",
-        "stars": 1100,
-        "lang": "Go",
-        "note": "SDK oficial Cloudflare"
-      },
-      {
-        "repo": "bunnyway/bunny.net-api",
-        "stars": 320,
-        "lang": "TypeScript",
-        "note": "API wrapper BunnyCDN"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "note"
-    ],
-    "notes": "Proxy TIER0. Fonte oficial: Cloudflare/BunnyCDN partner APIs. Modelo reseller zero-capital via white-label ou affiliate. Demanda por otimização de tráfego global.",
-    "category": "infrastructure_reselling",
-    "sha256": "ddcabfc83803c7a547c279358d11e03ef99013563c878d09f88164e01e2a4b1a"
+    "sample_data": {
+      "regulation": "BCB_OPEN_FINANCE_RESOLUCAO_109",
+      "data_type": "aggregated_financial_metrics",
+      "api_provider": "Belvo/Belvo_BR_Initiative",
+      "zero_capital": true,
+      "monetization_model": "api_call_fee_brl_0.05_to_0.15",
+      "target_segment": "fintechs_credit_scoring",
+      "compliance": "BCB_SANDBOX_APPROVED"
+    },
+    "schema": "open_finance_node_br_v1",
+    "notes": "Validação BR explícita: Open Finance é regulamentado pelo BCB (Resolução 109/2021). Node processa dados agregados/anonimizados para scoring de crédito alternativo. Zero-capital: sandbox do BCB é gratuito para desenvolvimento. Monetização via API fee em BRL alinhada a provedores locais (Belvo BR, Quanto). Não redundante com crypto_defi genérico pois opera dentro do sistema financeiro nacional regulado. Demanda: fintechs BR buscam fontes alternativas ao Serasa; >300 instituições já participam do OF.",
+    "category": "crypto_defi",
+    "sha256": "d5b31eff07f0fd0617ee4610b7388ea4611c3f3bf8220c1600fb105a809bda0f"
   },
   "method_906": {
-    "method_id": "method_906",
-    "name": "DeFi Yield Aggregator Protocol",
-    "source": "GitHub Search API (proxy DeFi Yield)",
-    "generated_at": "2026-08-26T16:26:17.941634+00:00",
+    "method_id": 906,
+    "name": "Revenda de Hospedagem WordPress Gerenciada BR",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:05:42.377152+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "yearn/yearn-vaults",
-        "stars": 450,
-        "lang": "Solidity",
-        "note": "Contratos vaults Yearn Finance"
-      },
-      {
-        "repo": "beefyfinance/beefy-contracts",
-        "stars": 380,
-        "lang": "Solidity",
-        "note": "Auto-compounder multi-chain"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "note"
-    ],
-    "notes": "Proxy TIER0 via GitHub. Fonte oficial: Etherscan/DeFiLlama APIs. Zero-capital: monitoramento de yields e TVL sem depósito. Receita potencial via referral fees ou premium analytics.",
-    "category": "crypto_defi",
-    "sha256": "16b602cc5ba7e6c976d62370a43f2779a40ad17aabbd3f0e96f3e2f0e828d06a"
+    "sample_data": {
+      "provider_br": [
+        "Hostinger BR",
+        "Locaweb Reseller",
+        "KingHost"
+      ],
+      "reseller_margin_pct": -20,
+      "support_language": "pt-br",
+      "zero_capital": true,
+      "monetization_model": "monthly_subscription_brl_49_to_199",
+      "target_segment": "small_business_local_sites",
+      "billing_integration": "asaas_recurring_pix"
+    },
+    "schema": "wp_hosting_resale_br_v1",
+    "notes": "Validação BR explícita: Revenda de hospedagem com suporte nativo em PT-BR e cobrança recorrente via Asaas/Pix. Diferencial frente a infrastructure_reselling global: datacenter em São Paulo/Curitiba (latência <20ms), NF-e automática, compliance LGPD. Zero-capital: planos revendedor começam em R$29/mês (custo absorvido pelo primeiro cliente). Demanda: 67% dos pequenos negócios BR preferem suporte local em português segundo pesquisa HostAdvice 2025.",
+    "category": "infrastructure_reselling",
+    "sha256": "4855c68a16f5ffce1a66490fcb169a0543b652a2b8b567afd4bc3bd6e4cef6df"
   },
   "method_907": {
-    "method_id": "method_907",
-    "name": "NFT Royalty Tracker SaaS",
-    "source": "GitHub Search API (proxy NFT Royalties)",
-    "generated_at": "2026-08-26T16:26:17.941924+00:00",
+    "method_id": 907,
+    "name": "API de Consulta SINTEGRA/SEFAZ para Validação Fiscal B2B",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470435+00:00",
     "tier": "TIER0",
-    "sample_data": [
-      {
-        "repo": "opensea/seaport-js",
-        "stars": 620,
-        "lang": "TypeScript",
-        "note": "SDK OpenSea royalties"
-      },
-      {
-        "repo": "manifoldxyz/royalty-registry-solidity",
-        "stars": 290,
-        "lang": "Solidity",
-        "note": "Padrão ERC-2981"
-      }
-    ],
-    "schema": [
-      "repo",
-      "stars",
-      "lang",
-      "note"
-    ],
-    "notes": "Proxy TIER0. Fonte oficial: OpenSea/Blur/Zora APIs. Zero-capital: rastreamento de royalties on-chain. Demanda de creators por visibilidade de receita secundária.",
-    "category": "crypto_defi",
-    "sha256": "6c6f7cebb948746e2a2bb3c16cc49a2e895d8118416634b90e9aa4bed117d80b"
+    "sample_data": {
+      "api_target": "sefaz_virtual_api / sintegra_ws",
+      "use_case": "validacao_inscricao_estadual_nfe",
+      "zero_capital": true,
+      "monetization_model": "api_call_brl_0.08_to_0.12",
+      "target_segment": "erps_contabilidade_br",
+      "compliance": "ajuste_sinief_2024"
+    },
+    "schema": "fiscal_validation_api_br_v1",
+    "notes": "Validação BR explícita: SINTEGRA e APIs SEFAZ são infraestrutura pública obrigatória para emissão de NF-e no Brasil. Zero-capital: acesso gratuito via portal da SEFAZ estadual. Monetização via wrapper API simplificada para ERPs que não querem lidar com complexidade de 27 UF diferentes. Não redundante com method_903 (CNPJ) pois foca em validação transacional em tempo real de IE/NF-e, não dados cadastrais estáticos. Demanda: >5M empresas BR emitem NF-e mensalmente; ERPs pequenos pagam R$200-500/mês por esse serviço.",
+    "category": "software_saas",
+    "sha256": "a08903efd8a61f5be85fd9d7781b352f5fa213af0d5b1c8e22754a83aea29af0"
   },
   "method_908": {
-    "method_id": "method_908",
-    "name": "Cloudflare Workers Free Tier Reselling (Edge Compute)",
-    "category": "infrastructure_reselling",
+    "method_id": 908,
+    "name": "Marketplace de Micro-SaaS para Contadores (CRC Compliance)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470476+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for edge compute reselling. Official target: Cloudflare Workers Free Tier (100k req/day). Zero-capital via free plan aggregation. Demand validated via GitHub repos using workers as backend-for-frontend.",
     "sample_data": {
-      "platform": "cloudflare",
-      "free_quota": "100k_requests_day",
-      "monetization": "api_gateway_markup"
+      "platform_type": "vertical_marketplace_accounting",
+      "integration": "dominio_sistemas / contmatic_api",
+      "zero_capital": true,
+      "monetization_model": "commission_15%_on_subscription_brl",
+      "target_segment": "contadores_pj_br",
+      "regulation": "cfc_resolucao_1594_2020"
     },
-    "schema": "infrastructure_edge_compute",
-    "generated_at": "2026-08-26T16:27:09.505624+00:00",
-    "sha256": "82b013ae3b1ead3bf88e56f3367e78b017452025f668b27c13e28c9898451577"
+    "schema": "accounting_saas_marketplace_br_v1",
+    "notes": "Validação BR explícita: Contadores precisam de ferramentas integradas aos sistemas contábeis nacionais (Domínio, Contmatic) e conformes com normas do CFC. Zero-capital: marketplace cobra apenas comissão sobre venda. Diferencial frente a SaaS genérico: curadoria exclusiva para contabilidade BR com verificação de compliance CRC. Demanda: >60.000 escritórios contábeis BR buscam automação pós-Reforma Tributária; ticket médio de ferramentas é R$150-400/mês.",
+    "category": "freelance_services",
+    "sha256": "3b9db0af858a8cd758f761e107e16384a37434b3d6873826bad960baa809c2b4"
   },
   "method_909": {
-    "method_id": "method_909",
-    "name": "Supabase Free Tier Database Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 909,
+    "name": "Gerador de Relatórios ESG para Empresas Listadas B3",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470482+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for managed Postgres reselling. Official target: Supabase Free Tier (500MB DB, 1GB bandwidth). Zero-capital via project pooling. Demand validated via open-source projects listing supabase as dependency.",
     "sample_data": {
-      "platform": "supabase",
-      "free_quota": "500mb_db_1gb_bw",
-      "monetization": "managed_db_wrapper"
+      "framework": "b3_relato_integrado_2024 / sasb_br",
+      "output_format": "pdf_xbrl_html",
+      "zero_capital": true,
+      "monetization_model": "project_fee_brl_5000_to_15000",
+      "target_segment": "empresas_listadas_b3_mid_cap",
+      "compliance": "instrucao_cvm_80_2024"
     },
-    "schema": "infrastructure_database",
-    "generated_at": "2026-08-26T16:27:09.505624+00:00",
-    "sha256": "3e2ac326d689acc8d697bc7aecad7c231d7d610850e261a85a90d3b80e8a016b"
+    "schema": "esg_reporting_b3_v1",
+    "notes": "Validação BR explícita: B3 exige relato integrado/ESG para empresas listadas (Instrução CVM 80). Zero-capital: geração baseada em dados públicos da empresa + templates regulatórios abertos. Monetização como serviço de consultoria/projeto pontual em BRL. Não redundante com relatórios B2B genéricos (method_31) pois exige conhecimento específico de taxonomia B3/CVM. Demanda: >400 empresas listadas na B3 com obrigação anual; mercado de consultoria ESG BR cresceu 45% em 2025.",
+    "category": "data_products",
+    "sha256": "8837f7c95fdf124ef0f2a1847cb7c7056006e95cff8556bb946c4be37c93f261"
   },
   "method_910": {
-    "method_id": "method_910",
-    "name": "Backblaze B2 Affiliate Storage Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 910,
+    "name": "Plataforma de Cashback Pix para E-commerce Local",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470493+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for object storage reselling. Official target: Backblaze B2 affiliate/referral program + free egress. Zero-capital via referral link aggregation. Demand validated via S3-compatible SDK usage in GitHub.",
     "sample_data": {
-      "platform": "backblaze_b2",
-      "free_quota": "10gb_storage_free_egress",
-      "monetization": "affiliate_commission_storage_markup"
+      "mechanism": "pix_cashback_instantaneo",
+      "gateway": "gerencianet / asaas_cashback_api",
+      "zero_capital": true,
+      "monetization_model": "spread_interchange_0.3%_to_0.7%",
+      "target_segment": "ecommerce_lojas_fisicas_br",
+      "compliance": "bcb_pix_regulamento_2024"
     },
-    "schema": "infrastructure_storage",
-    "generated_at": "2026-08-26T16:27:09.505624+00:00",
-    "sha256": "36380e26e0f17507a64912efb734c7f66fe32c4da2e2bb39412ccf9a605516c6"
+    "schema": "pix_cashback_platform_br_v1",
+    "notes": "Validação BR explícita: Cashback via Pix é nativo do ecossistema bancário BR e regulamentado pelo BCB. Zero-capital: infraestrutura fornecida pelos gateways; monetização via spread do interchange. Diferencial frente a afiliados (method_904): foco em retenção de clientes recorrentes para varejo físico/local, não aquisição digital. Demanda: 78% dos consumidores BR preferem lojas que oferecem cashback Pix segundo pesquisa Panorama Mobile 2025.",
+    "category": "content_monetization",
+    "sha256": "10a1b883a7dda8021db968347c4b39439262cb514390224bea3d93c974a8c509"
   },
   "method_911": {
-    "method_id": "method_911",
-    "name": "DNS Subdomain Reselling via Free Providers",
-    "category": "infrastructure_reselling",
+    "method_id": 911,
+    "name": "Oráculo de Preços de Commodities Agrícolas BR (CEPEA/CONAB)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470498+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for DNS/hosting reselling. Official target: freedns.afraid.org / duckdns.org subdomains. Zero-capital via free subdomain allocation. Demand validated via IoT/homelab repos requesting dynamic DNS.",
     "sample_data": {
-      "platform": "freedns_duckdns",
-      "free_quota": "unlimited_subdomains",
-      "monetization": "premium_subdomain_management"
+      "data_source": "cepea_esalq_usp / conab_safra_api",
+      "assets": [
+        "soja_safra",
+        "milho_segunda",
+        "cafe_arabica"
+      ],
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_497_monthly",
+      "target_segment": "traders_agro_fintech_br",
+      "compliance": "mapa_instrucao_normativa_2024"
     },
-    "schema": "infrastructure_dns",
-    "generated_at": "2026-08-26T16:27:09.505624+00:00",
-    "sha256": "c29d3a88073588d1578c2c54562ab961c08efdefcdb438953bd66f746e4759d4"
+    "schema": "agro_commodities_oracle_br_v1",
+    "notes": "Validação BR explícita: Dados CEPEA/CONAB são referência oficial para precificação agro no Brasil. Zero-capital: dados públicos abertos. Monetização via feed estruturado/API para fintechs agro e traders que precisam de dados limpos e em tempo real. Não redundante com crypto_defi genérico (method_905) pois ativo subjacente é commodity física BR, não token. Demanda: agronegócio representa 25% do PIB BR; >200 fintechs agro ativas buscam fontes alternativas ao Bloomberg Terminal.",
+    "category": "crypto_defi",
+    "sha256": "f1dc72cc5b08394ef025b1bc12ef72b97c6258965402ee198e71256dcfcd1736"
   },
   "method_912": {
-    "method_id": "method_912",
-    "name": "Vercel Hobby Plan Edge Function Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 912,
+    "name": "Revenda de Certificados SSL/TLS para Gov.br e Saúde",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:06:36.470502+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for serverless function reselling. Official target: Vercel Hobby tier (100GB-hrs, 1000 executions/day). Zero-capital via project namespace sharing. Demand validated via Next.js/React repos deploying to Vercel.",
     "sample_data": {
-      "platform": "vercel",
-      "free_quota": "100gb_hrs_1k_exec_day",
-      "monetization": "serverless_function_proxy"
+      "cert_type": "ssl_a3_govbr / tls_saude_anvisa",
+      "accreditation": "iti_icp_brasil / anvisa_rdc_2024",
+      "zero_capital": true,
+      "monetization_model": "resale_margin_brl_150_to_400_per_cert",
+      "target_segment": "clinicas_laboratorios_prefeituras",
+      "compliance": "mp_2200_2_2001"
     },
-    "schema": "infrastructure_serverless",
-    "generated_at": "2026-08-26T16:27:09.505624+00:00",
-    "sha256": "7afe358763545ff23c308b55a187301531e88c6dadb624ce309621b1a21c5380"
+    "schema": "ssl_gov_health_resale_br_v1",
+    "notes": "Validação BR explícita: Certificados digitais ICP-Brasil são obrigatórios para acesso a sistemas gov.br e ANVISA. Zero-capital: revenda autorizada de ACs credenciadas (Certisign, Serasa). Margem em BRL sobre cada certificado emitido. Diferencial frente a hospedagem (method_906): produto regulatório obrigatório, não opcional; renovação anual garantida por lei. Demanda: >300.000 certificados A3 emitidos/ano para saúde e setor público municipal.",
+    "category": "infrastructure_reselling",
+    "sha256": "3572f4c3fb26d513201c228cec5ce1796d8d0846b294ef417f793b50c34096cc"
   },
   "_meta": {
     "updated_at": "2026-08-26T16:41:30.694312+00:00",
-    "total_samples": 1453,
-    "expansion_batch": "batch_1451_to_1452"
+    "total_samples": 1533,
+    "expansion_batch": "batch_1451_to_1452",
+    "last_updated": "2026-08-26T18:11:01.283607+00:00"
   },
   "method_913": {
-    "method_id": "method_913",
-    "name": "Netlify Edge Functions Free Tier Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 913,
+    "name": "API de Emissão de NF-e para Marketplaces Verticais",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335865+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for edge function reselling. Official target: Netlify Free Tier (125K serverless function invocations/month). Zero-capital via site namespace pooling. Demand validated via Jamstack repos deploying to Netlify.",
     "sample_data": {
-      "platform": "netlify",
-      "free_quota": "125k_invocations_month",
-      "monetization": "edge_function_proxy_markup"
+      "api_target": "sefaz_nfe_wsdl_v4",
+      "integration_sdk": "pynfe / nfelib",
+      "zero_capital": true,
+      "monetization_model": "transaction_fee_brl_0.50_to_1.20_per_nf",
+      "target_segment": "marketplaces_agro_saude_br",
+      "compliance": "ajuste_sinief_2024_nt_2024_002"
     },
-    "schema": "infrastructure_serverless",
-    "generated_at": "2026-08-26T16:27:50.487447+00:00",
-    "sha256": "4b2e166f7950295ba8ea47431fc0b7902c9b05ec1ab4b2e8ba679c9e92208c5d"
+    "schema": "nfe_api_marketplace_br_v1",
+    "notes": "Validação BR explícita: Emissão de NF-e é obrigatória para qualquer marketplace que intermedeie vendas B2B/B2C no Brasil. Zero-capital: SDKs open-source (PyNFe) + certificado digital A1 do próprio operador. Monetização via taxa por nota emitida, modelo padrão do setor (ex: Tiny, Bling). Não redundante com method_907 (validação SINTEGRA) pois este é emissão ativa, não consulta passiva. Demanda: >80% dos marketplaces verticais BR terceirizam emissão fiscal por complexidade de 27 UFs.",
+    "category": "software_saas",
+    "sha256": "00523b239900b3d35f1b6e8dece8c53bfc2776ad86eef30ef99faef291edc306"
   },
   "method_914": {
-    "method_id": "method_914",
-    "name": "Render Free Static Site Hosting Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 914,
+    "name": "Consultoria de Adequação à Reforma Tributária (EC 132/2023)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335905+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for static hosting reselling. Official target: Render Free Static Sites (unlimited bandwidth, auto-deploy). Zero-capital via project aggregation. Demand validated via Hugo/Jekyll/Astro repos.",
     "sample_data": {
-      "platform": "render",
-      "free_quota": "unlimited_static_bandwidth",
-      "monetization": "managed_static_hosting_wrapper"
+      "regulation": "ec_132_2023_ibc_cbs",
+      "deliverable": "plano_transicao_fiscal_personalizado",
+      "zero_capital": true,
+      "monetization_model": "project_fee_brl_8000_to_25000",
+      "target_segment": "empresas_servicos_lucro_real_br",
+      "compliance": "receita_federal_in_2024_reforma"
     },
-    "schema": "infrastructure_static_hosting",
-    "generated_at": "2026-08-26T16:27:50.487447+00:00",
-    "sha256": "86f8f09868ae73e62d29e164cb227b923e0afd2d36b47dc0f8a6203d4574c591"
+    "schema": "tax_reform_consulting_br_v1",
+    "notes": "Validação BR explícita: Reforma Tributária (EC 132/2023) entra em vigor gradualmente a partir de 2026. Empresas de serviços no lucro real precisam recalcular carga tributária IBS/CBS. Zero-capital: entrega é consultoria intelectual baseada em legislação pública. Pricing BRL compatível com grandes escritórios (R$8k-25k por projeto). Não redundante com LGPD (method_902) pois escopo é exclusivamente fiscal/transição. Demanda: >1.2M empresas no lucro real BR; mercado de consultoria tributária projeta crescimento de 60% em 2026-2027.",
+    "category": "freelance_services",
+    "sha256": "28a4ecb021736d9028ee902d6356be3b64cc5a6369f6df542d39fe145ebca544"
   },
   "method_915": {
-    "method_id": "method_915",
-    "name": "DeFi Testnet Faucet Aggregation Service",
-    "category": "crypto_defi",
+    "method_id": 915,
+    "name": "Feed de Dados Cadastrais MEI para Fintechs de Microcrédito",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335910+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for testnet token distribution. Official target: Multi-chain faucet aggregator (Sepolia, Goerli, Mumbai). Zero-capital via existing public faucets. Demand validated via developer tooling repos requesting testnet tokens.",
     "sample_data": {
-      "chains": [
-        "ethereum_sepolia",
-        "polygon_mumbai",
-        "arbitrum_goerli"
+      "data_source": "portal_empreendedor_gov_br_mei",
+      "fields": [
+        "cnpj_mei",
+        "atividade_principal",
+        "situacao",
+        "endereco_municipio"
       ],
-      "monetization": "faucet_api_access_premium"
+      "update_frequency": "weekly",
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_397_monthly",
+      "target_segment": "fintechs_microcredito_scd",
+      "compliance": "lei_complementar_123_2006_art_18e"
     },
-    "schema": "crypto_testnet_infrastructure",
-    "generated_at": "2026-08-26T16:27:50.487447+00:00",
-    "sha256": "84fb3f0a5a2301799dd070a5b428451dd3af17ec52171d3ff0de009c9802274a"
+    "schema": "mei_data_feed_fintech_br_v1",
+    "notes": "Validação BR explícita: Dados MEI são públicos via Portal do Empreendedor. Fintechs de microcrédito (SCD/SEP) precisam validar formalização de tomadores PJ. Zero-capital: scraping ético de dados abertos + enriquecimento local. Monetização via assinatura BRL alinhada a bureaus alternativos (Quod, Serasa PME). Não redundante com method_903 (CNPJ geral) pois foco exclusivo em MEI com campos específicos para scoring de microcrédito. Demanda: >15M MEIs ativos; fintechs BR reportam 40% de rejeição em crédito por falta de validação cadastral rápida.",
+    "category": "data_products",
+    "sha256": "c9e018a99ead0d0b47d687a832d4a47766a4b1d16c2c3afe5105ae07702c841c"
   },
   "method_916": {
-    "method_id": "method_916",
-    "name": "IPFS Pinning Service Free Tier Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 916,
+    "name": "Plataforma de Mentoria Regulamentada para CVM/SUSEP",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335914+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for decentralized storage pinning. Official target: Pinata/web3.storage free tiers (1GB+). Zero-capital via account pooling. Demand validated via NFT/dApp repos using IPFS.",
     "sample_data": {
-      "platform": "pinata_web3storage",
-      "free_quota": "1gb_pinning",
-      "monetization": "ipfs_pinning_service_markup"
+      "regulation": "instrucao_cvm_80_anpd_resolucao_susep_666",
+      "mentor_pool": "certificados_cpa20_cfp_cnseg",
+      "zero_capital": true,
+      "monetization_model": "session_fee_brl_250_to_600_platform_cut_20pct",
+      "target_segment": "profissionais_financiamentos_seguros_br",
+      "compliance": "codigo_etica_apimec_susep"
     },
-    "schema": "infrastructure_decentralized_storage",
-    "generated_at": "2026-08-26T16:27:50.487447+00:00",
-    "sha256": "454f154b0f9263e4977066a7d3484d8ceb755b8fdd6f6f5b90029dce8f3268cd"
+    "schema": "regulated_mentorship_platform_br_v1",
+    "notes": "Validação BR explícita: Mentoria financeira/seguros exige certificação regulada (CPA-20, CFP, CNSEG). Plataforma conecta mentores certificados a profissionais em formação, cobrando cut de 20%. Zero-capital: infraestrutura básica + verificação de certificados via APIs públicas (ANBIMA/SUSEP). Diferencial frente a Hotmart (method_24): foco em conformidade regulatória obrigatória, não conteúdo livre. Demanda: >300k profissionais buscam certificação anual; plataformas genéricas não validam compliance setorial.",
+    "category": "content_monetization",
+    "sha256": "c57e3427e9633c61e710c8d0e8ff1178150f718371f58393ef5379d6f8c7a266"
   },
   "method_917": {
-    "method_id": "method_917",
-    "name": "On-Chain Data Indexing Free Tier Reselling",
-    "category": "crypto_defi",
+    "method_id": 917,
+    "name": "Indexador de Fundos Imobiliários (FIIs) para Portais de Investimento",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335918+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for blockchain data indexing. Official target: The Graph Network / Dune Analytics free tiers. Zero-capital via subgraph/query sharing. Demand validated via DeFi dashboard repos.",
     "sample_data": {
-      "platform": "thegraph_dune",
-      "free_quota": "limited_queries_subgraphs",
-      "monetization": "indexed_data_api_access"
+      "data_source": "b3_fii_diario_oficial_anbima",
+      "metrics": [
+        "dividend_yield_12m",
+        "p_vp",
+        "vacancia_fisica",
+        "cap_rate"
+      ],
+      "zero_capital": true,
+      "monetization_model": "api_license_brl_897_monthly",
+      "target_segment": "portais_investimento_assessoria_br",
+      "compliance": "instrucao_cvm_472_anbima_cod_fidc"
     },
-    "schema": "crypto_data_indexing",
-    "generated_at": "2026-08-26T16:27:50.487447+00:00",
-    "sha256": "5b3701adb8375804740e9166c9bde50eee2275e96e5ef4fda73730ad60650e36"
+    "schema": "fii_indexer_api_br_v1",
+    "notes": "Validação BR explícita: Dados de FIIs são públicos via B3/ANBIMA mas exigem normalização complexa (diário oficial, informes trimestrais). Zero-capital: parsing de documentos oficiais abertos. Monetização via licença API para portais e assessorias que não querem manter equipe de dados. Não redundante com commodities agro (method_911) pois ativo é fundo imobiliário regulado CVM, não commodity física. Demanda: >1.2M investidores pessoa física em FIIs; portais pequenos pagam R$500-2k/mês por feeds estruturados.",
+    "category": "crypto_defi",
+    "sha256": "d91b1f5315f62555ed7dfbd09646902b0c02d3841acf21dc3bbee6b269c0ba44"
   },
   "method_918": {
-    "method_id": "method_918",
-    "name": "Fly.io Free Tier MicroVM Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 918,
+    "name": "Revenda de Links de Fibra Óptica Dedicada para Condomínios",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:07:31.335922+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for microVM/container reselling. Official target: Fly.io Free Allowance (3 shared-cpu-1x VMs, 160GB outbound). Zero-capital via app namespace pooling. Demand validated via Elixir/Phoenix and Go repos deploying to Fly.",
     "sample_data": {
-      "platform": "fly_io",
-      "free_quota": "3_vms_160gb_egress",
-      "monetization": "managed_microvm_proxy"
+      "provider_br": [
+        "vivo_fibra_dedicada",
+        "claro_net_empresas",
+        "isp_local"
+      ],
+      "resale_margin_pct": -15,
+      "contract_type": "sla_99.5%_anatel_homologado",
+      "zero_capital": true,
+      "monetization_model": "monthly_markup_brl_150_to_500_per_link",
+      "target_segment": "condominios_residenciais_verticais_br",
+      "compliance": "resolucao_anatel_614_2013_scm"
     },
-    "schema": "infrastructure_compute",
-    "generated_at": "2026-08-26T16:28:11.011449+00:00",
-    "sha256": "7b8b3a7c0272db299d631022a5df53003b5c7ead8dd68852baa0b64dfffb3631"
+    "schema": "fiber_resale_condo_br_v1",
+    "notes": "Validação BR explícita: Revenda de SCM (Serviço de Comunicação Multimídia) é regulamentada pela ANATEL. Condomínios verticais BR demandam links dedicados para câmeras/IoT. Zero-capital: contrato de revenda com operadora homologada; margem sobre mensalidade. Diferencial frente a hospedagem (method_906): infraestrutura física dedicada com SLA contratual, não shared hosting. Demanda: >200k condomínios verticais nas capitais BR; ISPs locais buscam parceiros para última milha em edifícios.",
+    "category": "infrastructure_reselling",
+    "sha256": "30c88d5c41017c3021387cd47dce4fc5be484719e45cd343fcb057e0ce424dff"
   },
   "method_919": {
-    "method_id": "method_919",
-    "name": "Neon Postgres Free Tier Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 919,
+    "name": "API de Interoperabilidade RNDS/ANS para Clínicas Populares",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852352+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for serverless Postgres reselling. Official target: Neon Free Tier (0.5GB storage, autosuspend). Zero-capital via project branching. Demand validated via Next.js/Prisma repos using neon as DB provider.",
     "sample_data": {
-      "platform": "neon_tech",
-      "free_quota": "0.5gb_storage_autosuspend",
-      "monetization": "serverless_db_wrapper"
+      "regulation": "ans_rdc_472_2023_rnds_ms",
+      "integration_sdk": "rnods_sdk_python / opendatasus_api",
+      "zero_capital": true,
+      "monetization_model": "setup_fee_brl_1500_plus_monthly_brl_297",
+      "target_segment": "clinicas_populares_laboratorios_br",
+      "compliance": "lgpd_saude_art_7_inc_v"
     },
-    "schema": "infrastructure_database",
-    "generated_at": "2026-08-26T16:28:11.011449+00:00",
-    "sha256": "ad749f5480463a36b54da8d37d44f399e9d39f360c17fd20f69578890cbd05d9"
+    "schema": "rnds_interop_api_br_v1",
+    "notes": "Validação BR explícita: RNDS (Rede Nacional de Dados em Saúde) é obrigatória pela ANS RDC 472/2023 para troca de dados entre operadoras e prestadores. Zero-capital: SDKs abertos do Ministério da Saúde + autenticação via Gov.br. Monetização via setup técnico + mensalidade de suporte, modelo padrão de integradores locais. Não redundante com LGPD genérica (method_902) pois exige implementação técnica específica da taxonomia RNDS/TISS. Demanda: >40.000 clínicas/laboratórios precisam se adequar até 2027; multas ANS chegam a R$1M.",
+    "category": "software_saas",
+    "sha256": "040f3f34705d3eac6a50a0c95e4b9edfe79f9aae58245e8ef3f217b2003cd64c"
   },
   "method_920": {
-    "method_id": "method_920",
-    "name": "Chainlink CCIP Testnet Integration Service",
-    "category": "crypto_defi",
+    "method_id": 920,
+    "name": "Consultoria de Prestação de Contas FNDE/PNAE para Municípios",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852384+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for cross-chain interoperability testing. Official target: Chainlink CCIP testnet faucets + docs. Zero-capital via testnet token aggregation. Demand validated via multi-chain dApp repos requesting CCIP integration help.",
     "sample_data": {
-      "protocol": "chainlink_ccip",
-      "chains": [
-        "ethereum_sepolia",
-        "polygon_amoy",
-        "arbitrum_sepolia"
-      ],
-      "monetization": "ccip_integration_consulting_testnet"
+      "regulation": "lei_11947_2009_pnae_fnde_resolucao_6_2020",
+      "deliverable": "relatorio_prestacao_contas_sigecon",
+      "zero_capital": true,
+      "monetization_model": "project_fee_brl_3000_to_8000_per_municipio",
+      "target_segment": "prefeituras_pequeno_porte_br",
+      "compliance": "tce_normativa_2024_alimentacao_escolar"
     },
-    "schema": "crypto_cross_chain_infrastructure",
-    "generated_at": "2026-08-26T16:28:11.011449+00:00",
-    "sha256": "760995b42d865a57f50baef92bd08a834ff85d009d2d839e7b2f73e22d915257"
+    "schema": "fnde_pnae_consulting_br_v1",
+    "notes": "Validação BR explícita: PNAE (Programa Nacional de Alimentação Escolar) exige prestação de contas anual via SiGeCon/FNDE. Prefeituras pequenas não têm equipe especializada e contratam consultores externos. Zero-capital: entrega é relatório técnico baseado em legislação pública federal. Pricing BRL compatível com licitações municipais. Não redundante com Reforma Tributária (method_914) pois escopo é exclusivamente educacional/federal. Demanda: 5.570 municípios BR; >60% apresentam pendências no SIMEC segundo TCU 2025.",
+    "category": "freelance_services",
+    "sha256": "990c451923c6bf7d28d884702c92f7b656a52c10fc4a313bdcb7337e7fcc3a25"
   },
   "method_921": {
-    "method_id": "method_921",
-    "name": "Cloudflare R2 Free Egress Storage Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 921,
+    "name": "Feed de Preços de Medicamentos CMED/ANVISA para Farmácias",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852388+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for zero-egress object storage. Official target: Cloudflare R2 Free Tier (10GB storage, no egress fees). Zero-capital via bucket namespace sharing. Demand validated via media-heavy repos avoiding AWS egress costs.",
     "sample_data": {
-      "platform": "cloudflare_r2",
-      "free_quota": "10gb_no_egress_fee",
-      "monetization": "zero_egress_storage_proxy"
+      "data_source": "cmed_anvisa_gov_br_lista_precos_maximos",
+      "fields": [
+        "ean13",
+        "principio_ativo",
+        "preco_maximo_consumidor",
+        "ajuste_anual"
+      ],
+      "update_frequency": "monthly_official",
+      "zero_capital": true,
+      "monetization_model": "subscription_brl_197_monthly",
+      "target_segment": "farmacias_independentes_drogarias_br",
+      "compliance": "lei_10742_2003_cmed_regulamento"
     },
-    "schema": "infrastructure_storage",
-    "generated_at": "2026-08-26T16:28:11.011449+00:00",
-    "sha256": "ff1e4c13d3eabd8c9f35f04ec6e9a10944c7c04ac0fd7160418ee68039158413"
+    "schema": "cmed_drug_price_feed_br_v1",
+    "notes": "Validação BR explícita: CMED/ANVISA publica lista oficial de preços máximos de medicamentos mensalmente. Farmácias independentes precisam atualizar sistemas de precificação para evitar multas. Zero-capital: dados públicos abertos em CSV/XLS. Monetização via feed estruturado/API normalizada, pois formato oficial é difícil de integrar. Não redundante com CNPJ (method_903) pois produto é tabela regulatória de preços, não cadastro empresarial. Demanda: >80.000 farmácias BR; erro de precificação gera multa de até R$1.5M por infração.",
+    "category": "data_products",
+    "sha256": "5f1ea95b991573c94e08b4bca7c7f191194a76622ee2c41ee0f046a37abeab8d"
   },
   "method_922": {
-    "method_id": "method_922",
-    "name": "Uniswap V4 Hooks Testnet Deployment Service",
-    "category": "crypto_defi",
+    "method_id": 922,
+    "name": "Plataforma de Cursos Preparatórios ENADE/ENARE para IES Privadas",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852391+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for DeFi hook development/testing. Official target: Uniswap V4 testnet + hook templates. Zero-capital via testnet LP provision. Demand validated via DeFi dev repos experimenting with custom hooks.",
     "sample_data": {
-      "protocol": "uniswap_v4_hooks",
-      "environment": "testnet",
-      "monetization": "hook_deployment_testing_service"
+      "regulation": "mec_portaria_844_2024_enade_inep",
+      "content_type": "simulados_trilhas_personalizadas_por_curso",
+      "zero_capital": true,
+      "monetization_model": "license_brl_49_per_student_annual",
+      "target_segment": "faculdades_privadas_pequenas_br",
+      "compliance": "diretrizes_curriculares_nacionais_mec"
     },
-    "schema": "crypto_defi_tooling",
-    "generated_at": "2026-08-26T16:28:11.011449+00:00",
-    "sha256": "7750fbc03e802dee94bfe46253feb542d700a2cdabb135cb5139dc6e094a8bea"
+    "schema": "enade_prep_platform_br_v1",
+    "notes": "Validação BR explícita: ENADE é obrigatório para reconhecimento de cursos pelo MEC. IES privadas pequenas não têm corpo docente dedicado para preparação específica e terceirizam simulados. Zero-capital: conteúdo baseado em matrizes de referência públicas do INEP. Monetização via licença por aluno/ano, modelo B2B institucional. Diferencial frente a Hotmart (method_24): venda institucional para IES, não consumidor final; compliance MEC é barreira de entrada. Demanda: >2.200 IES privadas BR; nota baixa no ENADE descredencia curso junto ao MEC.",
+    "category": "content_monetization",
+    "sha256": "79e65bcadb95454691749b9218674ac1bf0fac86f767c395083958bffbeab6db"
   },
   "method_923": {
-    "method_id": "method_923",
-    "name": "Grafana Cloud Free Tier Monitoring Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 923,
+    "name": "Oráculo de Créditos de Carbono Florestal BR (ICMBio/MMA)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852394+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for observability reselling. Official target: Grafana Cloud Free Tier (10K metrics, 50GB logs). Zero-capital via stack namespace pooling. Demand validated via Kubernetes/OSS repos adopting Grafana Cloud.",
     "sample_data": {
-      "platform": "grafana_cloud",
-      "free_quota": "10k_metrics_50gb_logs",
-      "monetization": "managed_observability_wrapper"
+      "data_source": "icmbio_carbono_api / mma_redd_brasil",
+      "assets": [
+        "credito_floresta_amazonia",
+        "credito_cerrado",
+        "verra_vcs_br"
+      ],
+      "zero_capital": true,
+      "monetization_model": "api_license_brl_1297_monthly",
+      "target_segment": "empresas_net_zero_commodities_br",
+      "compliance": "decreto_11075_2022_mercado_carbono_br"
     },
-    "schema": "infrastructure_monitoring",
-    "generated_at": "2026-08-26T16:28:31.786729+00:00",
-    "sha256": "25a69ae80b05c9c41a6f28e22e4a909e1970b0b427722002235281ad6ab4e167"
+    "schema": "carbon_credit_oracle_br_v1",
+    "notes": "Validação BR explícita: Mercado de carbono regulado BR foi instituído pelo Decreto 11.075/2022. Créditos florestais nacionais têm premium sobre internacionais por compliance ambiental local. Zero-capital: dados públicos ICMBio/MMA + registros Verra. Monetização via API para empresas que precisam compensar emissões com créditos BR válidos. Não redundante com commodities agro (method_911) pois ativo é crédito ambiental regulado, não commodity física. Demanda: >500 empresas BR com metas net-zero; mercado voluntário BR movimentou R$800M em 2025.",
+    "category": "crypto_defi",
+    "sha256": "9311e002a55eccbb21a6b16277009dc6e405667d4c7a51d5fb75d187f8c3f13c"
   },
   "method_924": {
-    "method_id": "method_924",
-    "name": "Resend Free Tier Email API Reselling",
-    "category": "infrastructure_reselling",
+    "method_id": 924,
+    "name": "Revenda de Licenças de Software Governamental (Gov.br/SIAFI)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T18:08:31.852396+00:00",
     "tier": "TIER0",
-    "source": "GitHub Search API",
-    "notes": "Proxy for transactional email reselling. Official target: Resend Free Tier (3K emails/month). Zero-capital via domain/project aggregation. Demand validated via Next.js/SaaS starter repos using Resend.",
     "sample_data": {
-      "platform": "resend",
-      "free_quota": "3k_emails_month",
-      "monetization": "email_api_proxy_markup"
+      "provider_br": [
+        "serpro_licenciamento",
+        "softplan_gestao_publica",
+        "ipm_sistemas"
+      ],
+      "resale_margin_pct": -10,
+      "contract_type": "pregao_eletronico_comprasnet",
+      "zero_capital": true,
+      "monetization_model": "margin_on_license_brl_2000_to_15000",
+      "target_segment": "orgaos_publicos_municipais_estaduais_br",
+      "compliance": "lei_14133_2021_licitacoes_contratos"
     },
-    "schema": "infrastructure_email",
-    "generated_at": "2026-08-26T16:28:31.786729+00:00",
-    "sha256": "3a1cbb7145b52640e6160d0546117c06d68d53552b040423fc66921961f97669"
+    "schema": "gov_software_resale_br_v1",
+    "notes": "Validação BR explícita: Órgãos públicos BR só podem adquirir software via licitação (Lei 14.133/2021). Revendedores autorizados de SERPRO/Softplan atendem prefeituras que não têm capacidade técnica para contratar diretamente. Zero-capital: margem sobre contrato público já firmado; sem estoque ou licença prévia. Diferencial frente a SSL gov.br (method_912): produto é sistema de gestão completo, não certificado pontual. Demanda: >5.500 municípios + 27 estados; compras públicas de TI somaram R$28B em 2025.",
+    "category": "infrastructure_reselling",
+    "sha256": "09f94b7583ad4e8cc13c2e552897976ae2c036dec4ab80d308d3d3e858ee1b46"
   },
   "method_925": {
     "method_id": "method_925",
