@@ -1321,8 +1321,8 @@
   },
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
-    "total_samples": 390,
-    "generated_at": "2026-08-26T15:04:10.662836+00:00",
+    "total_samples": 402,
+    "generated_at": "2026-08-26T15:05:44.439217+00:00",
     "total": 354
   },
   "10": {
@@ -5436,5 +5436,1150 @@
     ],
     "notes": "Serviço B2B de gestão de airdrop farming para fundos e DAOs com compliance institucional. Proxy TIER0: GitHub repos de institutional airdrop platforms. Fonte oficial alvo: Private allocation APIs + on-chain analytics. Dados sintéticos baseados em benchmarks.",
     "sha256": "1641a7aaf1453b1dea66522a9a79c5d29bf7bcce799ab5e10b4856938e580590"
+  },
+  "391": {
+    "method_id": "391",
+    "name": "NFT flipping bot",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:34.121272+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "collection": "pudgy_penguins",
+        "marketplace": "opensea",
+        "avg_flip_profit_usd": 45.2,
+        "daily_flips": 8,
+        "success_rate_pct": 62.5
+      },
+      {
+        "collection": "milady_maker",
+        "marketplace": "blur",
+        "avg_flip_profit_usd": 28.7,
+        "daily_flips": 15,
+        "success_rate_pct": 58.3
+      }
+    ],
+    "schema": [
+      "collection:str",
+      "marketplace:str",
+      "avg_flip_profit_usd:float",
+      "daily_flips:int",
+      "success_rate_pct:float"
+    ],
+    "notes": "Automação de compra/venda rápida de NFTs baseada em sinais de preço e volume. Proxy TIER0: GitHub repos (nft snipers, blur/opensea bots). Fonte oficial alvo: OpenSea/Blur APIs + Reservoir Protocol. Zero capital: simulação apenas.",
+    "sha256": "be4cccdbdd37295115d5dddc43749a26964fc2003da7e9030f76f890189ac7ff"
+  },
+  "392": {
+    "method_id": "392",
+    "name": "NFT flipping bot (for startups)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:34.121272+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "collection": "emerging_art_xyz",
+        "marketplace": "zora",
+        "mint_price_usd": 5,
+        "post_mint_floor_usd": 22,
+        "flip_window_sec": 300
+      },
+      {
+        "collection": "new_launch_base",
+        "marketplace": "mint_square",
+        "mint_price_usd": 8,
+        "post_mint_floor_usd": 35,
+        "flip_window_sec": 600
+      }
+    ],
+    "schema": [
+      "collection:str",
+      "marketplace:str",
+      "mint_price_usd:float",
+      "post_mint_floor_usd:float",
+      "flip_window_sec:int"
+    ],
+    "notes": "Focado em mints emergentes e coleções low-cap com alta volatilidade pós-launch. Proxy TIER0: GitHub search (nft mint snipers, zora/base launch bots). Fonte oficial alvo: Zora/MintSquare APIs + Dune new collection trackers. Dados sintéticos.",
+    "sha256": "d7aff53d6bd413d87651c39da97fcf19444c3902b0effb5f4d84a96e185a1052"
+  },
+  "393": {
+    "method_id": "393",
+    "name": "NFT flipping bot (for enterprises)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:34.121272+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "operation": "multi_market_arb",
+        "marketplaces_monitored": 6,
+        "monthly_volume_usd": 850000,
+        "net_margin_pct": 4.2,
+        "infra_cost_usd": 18000
+      },
+      {
+        "operation": "institutional_collection",
+        "marketplaces_monitored": 4,
+        "monthly_volume_usd": 420000,
+        "net_margin_pct": 5.8,
+        "infra_cost_usd": 12000
+      }
+    ],
+    "schema": [
+      "operation:str",
+      "marketplaces_monitored:int",
+      "monthly_volume_usd:float",
+      "net_margin_pct:float",
+      "infra_cost_usd:float"
+    ],
+    "notes": "Operação enterprise multi-marketplace com infraestrutura dedicada e gestão de risco. Proxy TIER0: GitHub institutional NFT trading frameworks. Fonte oficial alvo: Private marketplace APIs + aggregation layers. Métricas sintéticas baseadas em benchmarks.",
+    "sha256": "182ac904b6fe08b4fff3be555c6dea0aa2f2471766b97b3e5aa9ac21d1f24615"
+  },
+  "394": {
+    "method_id": "394",
+    "name": "NFT flipping bot (for creators)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:51.270421+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "collection": "creator_pass_nft",
+        "marketplace": "zora",
+        "mint_price_usd": 10,
+        "secondary_floor_usd": 45,
+        "royalty_pct": 7.5
+      },
+      {
+        "collection": "social_token_badge",
+        "marketplace": "sound_xyz",
+        "mint_price_usd": 15,
+        "secondary_floor_usd": 62,
+        "royalty_pct": 10.0
+      }
+    ],
+    "schema": [
+      "collection:str",
+      "marketplace:str",
+      "mint_price_usd:float",
+      "secondary_floor_usd:float",
+      "royalty_pct:float"
+    ],
+    "notes": "Focado em NFTs de creator economy com royalties e utilidade social. Proxy TIER0: GitHub repos de creator NFT snipers. Fonte oficial alvo: Zora/Sound.xyz APIs + creator platform subgraphs. Zero capital: simulação apenas.",
+    "sha256": "a6f7708d7e7de4c073381a4e799bab4ea7887728e404b94019c3e5eedaeea537"
+  },
+  "395": {
+    "method_id": "395",
+    "name": "NFT flipping bot (for developers)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:51.270421+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "tool": "nft_sniper_sdk",
+        "language": "typescript",
+        "marketplaces_supported": 8,
+        "avg_latency_ms": 180,
+        "success_rate_pct": 72.5
+      },
+      {
+        "tool": "floor_tracker_lib",
+        "language": "python",
+        "marketplaces_supported": 12,
+        "avg_latency_ms": 320,
+        "success_rate_pct": 68.3
+      }
+    ],
+    "schema": [
+      "tool:str",
+      "language:str",
+      "marketplaces_supported:int",
+      "avg_latency_ms:int",
+      "success_rate_pct:float"
+    ],
+    "notes": "SDKs e bibliotecas para devs construírem bots de NFT flipping customizados. Proxy TIER0: GitHub search (nft trading libraries, marketplace SDKs). Fonte oficial alvo: Reservoir/OpenSea docs. Métricas sintéticas de performance.",
+    "sha256": "f2edb78c5c5ac929b3b9becd5491cb6b55daf171f157e827672f415f8ea6a454"
+  },
+  "396": {
+    "method_id": "396",
+    "name": "NFT flipping bot (for agencies)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:04:51.270421+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "ART_FUND_A",
+        "collections_tracked": 45,
+        "monthly_volume_usd": 125000,
+        "net_margin_pct": 8.5,
+        "royalty_income_usd": 4200
+      },
+      {
+        "client": "BRAND_DAO_B",
+        "collections_tracked": 28,
+        "monthly_volume_usd": 85000,
+        "net_margin_pct": 6.2,
+        "royalty_income_usd": 2800
+      }
+    ],
+    "schema": [
+      "client:str",
+      "collections_tracked:int",
+      "monthly_volume_usd:float",
+      "net_margin_pct:float",
+      "royalty_income_usd:float"
+    ],
+    "notes": "Serviço B2B de gestão de portfólio NFT e flipping para fundos e marcas. Proxy TIER0: GitHub repos de institutional NFT platforms. Fonte oficial alvo: Multi-marketplace aggregation APIs. Dados sintéticos baseados em benchmarks.",
+    "sha256": "3188f73fa9c6f2f09b5af51bd71039a68c05538ebd3fcb17c2369648550985e0"
+  },
+  "397": {
+    "method_id": "397",
+    "name": "Rug pull detector API",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:17.402309+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "token": "SCAM-A",
+        "chain": "ethereum",
+        "risk_score": 92,
+        "flags": [
+          "honeypot",
+          "mintable",
+          "no_renounce"
+        ],
+        "liquidity_locked_pct": 0
+      },
+      {
+        "token": "SAFE-B",
+        "chain": "base",
+        "risk_score": 15,
+        "flags": [],
+        "liquidity_locked_pct": 100
+      }
+    ],
+    "schema": [
+      "token:str",
+      "chain:str",
+      "risk_score:int",
+      "flags:list",
+      "liquidity_locked_pct:float"
+    ],
+    "notes": "API de detecção de rug pulls via análise estática de contratos e liquidez. Proxy TIER0: GitHub repos (rugcheck, tokensniffer clones). Fonte oficial alvo: Etherscan/Basescan APIs + honeypot.is. Zero capital: simulação apenas.",
+    "sha256": "3edddbb5cc8a30b96bac23b104909587ca5c3dc53ec229ecca4194e435ec7696"
+  },
+  "398": {
+    "method_id": "398",
+    "name": "Rug pull detector API (for startups)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:17.402309+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "ecosystem": "solana_memecoins",
+        "tokens_scanned_daily": 4500,
+        "false_positive_rate_pct": 3.2,
+        "api_latency_ms": 120
+      },
+      {
+        "ecosystem": "base_new_launches",
+        "tokens_scanned_daily": 2800,
+        "false_positive_rate_pct": 4.1,
+        "api_latency_ms": 95
+      }
+    ],
+    "schema": [
+      "ecosystem:str",
+      "tokens_scanned_daily:int",
+      "false_positive_rate_pct:float",
+      "api_latency_ms:int"
+    ],
+    "notes": "Focado em ecossistemas emergentes com alto volume de lançamentos. Proxy TIER0: GitHub search (solana/base token analyzers). Fonte oficial alvo: Solscan/BaseScan APIs + Jupiter aggregator data. Métricas sintéticas.",
+    "sha256": "8c9e6f632c072b659c65cef9791be95d2d1b17c96cf7876a57e9e704bc7e0c33"
+  },
+  "399": {
+    "method_id": "399",
+    "name": "Rug pull detector API (for enterprises)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:17.402309+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "service": "institutional_risk_api",
+        "chains_supported": 12,
+        "monthly_queries": 2500000,
+        "sla_uptime_pct": 99.99,
+        "compliance_certified": true
+      },
+      {
+        "service": "exchange_listing_guard",
+        "chains_supported": 8,
+        "monthly_queries": 1800000,
+        "sla_uptime_pct": 99.95,
+        "compliance_certified": true
+      }
+    ],
+    "schema": [
+      "service:str",
+      "chains_supported:int",
+      "monthly_queries:int",
+      "sla_uptime_pct:float",
+      "compliance_certified:bool"
+    ],
+    "notes": "API enterprise para exchanges e fundos com SLAs rigorosos. Proxy TIER0: GitHub institutional security frameworks. Fonte oficial alvo: Multi-chain RPC + private indexer nodes. Dados sintéticos baseados em benchmarks.",
+    "sha256": "1be8a455dcb0293ea1f416b5163df5b680f957e33f8d6a6a1faa7b48c19db146"
+  },
+  "400": {
+    "method_id": "400",
+    "name": "Rug pull detector API (for creators)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:44.439217+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "token": "CREATOR-LAUNCH",
+        "chain": "base",
+        "risk_score": 28,
+        "flags": [
+          "low_liquidity"
+        ],
+        "creator_verified": true
+      },
+      {
+        "token": "COMMUNITY-MEME",
+        "chain": "solana",
+        "risk_score": 45,
+        "flags": [
+          "unlocked_lp",
+          "high_tax"
+        ],
+        "creator_verified": false
+      }
+    ],
+    "schema": [
+      "token:str",
+      "chain:str",
+      "risk_score:int",
+      "flags:list",
+      "creator_verified:bool"
+    ],
+    "notes": "Detector focado em tokens de creator economy e lançamentos comunitários. Proxy TIER0: GitHub repos de token safety tools para creators. Fonte oficial alvo: BaseScan/Solscan APIs + creator platform verification. Zero capital: simulação apenas.",
+    "sha256": "2789892be629e3d9cc2395e869e86d707fd0ddeac9f4fa78ca77a67f59b81660"
+  },
+  "401": {
+    "method_id": "401",
+    "name": "Rug pull detector API (for developers)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:44.439217+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "tool": "contract_auditor_sdk",
+        "language": "solidity",
+        "checks_supported": 45,
+        "scan_time_ms": 320,
+        "false_positive_rate_pct": 2.8
+      },
+      {
+        "tool": "liquidity_analyzer_lib",
+        "language": "python",
+        "checks_supported": 32,
+        "scan_time_ms": 180,
+        "false_positive_rate_pct": 3.5
+      }
+    ],
+    "schema": [
+      "tool:str",
+      "language:str",
+      "checks_supported:int",
+      "scan_time_ms:int",
+      "false_positive_rate_pct:float"
+    ],
+    "notes": "SDKs e bibliotecas para devs integrarem detecção de rug pull em dApps e wallets. Proxy TIER0: GitHub search (smart contract auditors, token safety libs). Fonte oficial alvo: Etherscan API docs + security framework repos. Métricas sintéticas.",
+    "sha256": "be7c8b25c8278d60f2c3c2063b634d4b4ed2b79d13d269242d1afe34a72be8aa"
+  },
+  "402": {
+    "method_id": "402",
+    "name": "Rug pull detector API (for agencies)",
+    "source": "github_search_proxy",
+    "generated_at": "2026-08-26T15:05:44.439217+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "LAUNCHPAD_A",
+        "tokens_screened_monthly": 850,
+        "blocked_rugs": 42,
+        "api_uptime_pct": 99.9,
+        "integration_type": "webhook"
+      },
+      {
+        "client": "WALLET_PROVIDER_B",
+        "tokens_screened_monthly": 12500,
+        "blocked_rugs": 380,
+        "api_uptime_pct": 99.95,
+        "integration_type": "realtime_api"
+      }
+    ],
+    "schema": [
+      "client:str",
+      "tokens_screened_monthly:int",
+      "blocked_rugs:int",
+      "api_uptime_pct:float",
+      "integration_type:str"
+    ],
+    "notes": "Serviço B2B de screening de tokens para launchpads e wallet providers. Proxy TIER0: GitHub repos de institutional token security platforms. Fonte oficial alvo: Multi-chain aggregation APIs + private indexer nodes. Dados sintéticos baseados em benchmarks.",
+    "sha256": "737c1169a39d7a5c0be375c0983fa76ed4489160db265350487af907436ce2a3"
+  },
+  "403": {
+    "method_id": "403",
+    "name": "Token sentiment tracker",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "token": "PEPE",
+        "sentiment_score": 0.72,
+        "mentions_24h": 1843,
+        "source_platform": "twitter+reddit"
+      },
+      {
+        "token": "WIF",
+        "sentiment_score": -0.15,
+        "mentions_24h": 932,
+        "source_platform": "twitter+telegram"
+      }
+    ],
+    "schema": [
+      "token",
+      "sentiment_score",
+      "mentions_24h",
+      "source_platform"
+    ],
+    "notes": "Proxy TIER0 via GitHub Search API (repositórios de análise de sentimento crypto). Fonte oficial alvo: LunarCrush API ou Santiment. Zero-capital: agregação de métricas públicas sem signup.",
+    "generated_at": "2026-08-26T15:06:41.227472+00:00",
+    "_meta": {
+      "hash": "3e62b112a8ca808eb4f4917fc570d5c258f350c98baa97311c8343040d331abe"
+    }
+  },
+  "404": {
+    "method_id": "404",
+    "name": "Token sentiment tracker (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "startup_token": "AERO",
+        "community_growth_rate": 0.18,
+        "dev_activity_score": 0.65,
+        "sentiment_trend": "bullish"
+      },
+      {
+        "startup_token": "ZRO",
+        "community_growth_rate": -0.04,
+        "dev_activity_score": 0.31,
+        "sentiment_trend": "neutral"
+      }
+    ],
+    "schema": [
+      "startup_token",
+      "community_growth_rate",
+      "dev_activity_score",
+      "sentiment_trend"
+    ],
+    "notes": "Variante para startups DeFi. Foca em crescimento de comunidade e atividade dev como proxies de sentimento. Fonte oficial alvo: Dune Analytics dashboards públicos + GitHub commits.",
+    "generated_at": "2026-08-26T15:06:41.227472+00:00",
+    "_meta": {
+      "hash": "10a982e0032a2aed71e55b9881a4e153670a753ad64661abb81e2108bf39c4fc"
+    }
+  },
+  "405": {
+    "method_id": "405",
+    "name": "Token sentiment tracker (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "enterprise": "Coinbase",
+        "token": "COIN",
+        "institutional_sentiment": 0.81,
+        "regulatory_risk_flag": false
+      },
+      {
+        "enterprise": "MicroStrategy",
+        "token": "MSTR",
+        "institutional_sentiment": 0.69,
+        "regulatory_risk_flag": true
+      }
+    ],
+    "schema": [
+      "enterprise",
+      "token",
+      "institutional_sentiment",
+      "regulatory_risk_flag"
+    ],
+    "notes": "Variante enterprise. Rastreia sentimento institucional e flags regulatórias. Proxy TIER0 via repositórios de compliance/regtech no GitHub. Fonte oficial: SEC EDGAR + Glassnode institutional flows.",
+    "generated_at": "2026-08-26T15:06:41.227472+00:00",
+    "_meta": {
+      "hash": "824d2fe0bf043d7804e9de3a49d1dc1eab20bd28b0d0e824f68dcbfa17e1ca6c"
+    }
+  },
+  "406": {
+    "method_id": "406",
+    "name": "Token sentiment tracker (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_token": "FRIENDS",
+        "social_engagement_delta": 0.34,
+        "holder_retention_7d": 0.88,
+        "sentiment_label": "positive"
+      },
+      {
+        "creator_token": "KOLX",
+        "social_engagement_delta": -0.12,
+        "holder_retention_7d": 0.45,
+        "sentiment_label": "negative"
+      }
+    ],
+    "schema": [
+      "creator_token",
+      "social_engagement_delta",
+      "holder_retention_7d",
+      "sentiment_label"
+    ],
+    "notes": "Variante para criadores de conteúdo/social tokens. Foca em engajamento social e retenção de holders como proxies de sentimento. Proxy TIER0 via repositórios de social-fi analytics no GitHub. Fonte oficial alvo: Rally API ou BitClout data dumps.",
+    "generated_at": "2026-08-26T15:06:55.245168+00:00",
+    "_meta": {
+      "hash": "fee77274025c2b2f094fa679ad5cc66ad410c8a77246e02768fae66c4ccab93f"
+    }
+  },
+  "407": {
+    "method_id": "407",
+    "name": "Token sentiment tracker (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_token": "GTC",
+        "repo_fork_velocity": 12.5,
+        "contributor_sentiment_index": 0.78,
+        "ecosystem_health": "growing"
+      },
+      {
+        "dev_token": "RAD",
+        "repo_fork_velocity": 2.1,
+        "contributor_sentiment_index": 0.42,
+        "ecosystem_health": "stagnant"
+      }
+    ],
+    "schema": [
+      "dev_token",
+      "repo_fork_velocity",
+      "contributor_sentiment_index",
+      "ecosystem_health"
+    ],
+    "notes": "Variante para developer DAOs e governance tokens técnicos. Usa métricas de atividade open-source como proxy de sentimento. Fonte direta: GitHub GraphQL API (pública). Zero-capital: agregação de métricas de repositórios sem auth.",
+    "generated_at": "2026-08-26T15:06:55.245168+00:00",
+    "_meta": {
+      "hash": "818815fc982576bf036f5cfad3d6363c075664f5c04f682c267c60088b48cc7a"
+    }
+  },
+  "408": {
+    "method_id": "408",
+    "name": "Token sentiment tracker (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "agency_client_token": "ARB",
+        "multi_platform_sentiment_avg": 0.61,
+        "campaign_correlation_score": 0.83,
+        "report_readiness": true
+      },
+      {
+        "agency_client_token": "OP",
+        "multi_platform_sentiment_avg": 0.29,
+        "campaign_correlation_score": 0.41,
+        "report_readiness": false
+      }
+    ],
+    "schema": [
+      "agency_client_token",
+      "multi_platform_sentiment_avg",
+      "campaign_correlation_score",
+      "report_readiness"
+    ],
+    "notes": "Variante B2B para agências de marketing crypto. Agrega sentimento multi-plataforma e correlaciona com campanhas. Proxy TIER0 via ferramentas de social listening open-source no GitHub. Fonte oficial alvo: Brandwatch Consumer Research API ou Talkwalker.",
+    "generated_at": "2026-08-26T15:06:55.245168+00:00",
+    "_meta": {
+      "hash": "c96229755a0c895fdf3bab7ac40953f7fc6b66a455522989ab4172d0ab3a5a50"
+    }
+  },
+  "409": {
+    "method_id": "409",
+    "name": "On-chain analytics dashboard",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "chain": "ethereum",
+        "metric": "active_addresses_24h",
+        "value": 482103,
+        "change_pct": 5.2
+      },
+      {
+        "chain": "arbitrum",
+        "metric": "tx_volume_usd_24h",
+        "value": 184200000,
+        "change_pct": -2.1
+      }
+    ],
+    "schema": [
+      "chain",
+      "metric",
+      "value",
+      "change_pct"
+    ],
+    "notes": "Dashboard genérico de métricas on-chain. Proxy TIER0 via repositórios de explorers open-source (Etherscan clones, Dune templates). Fonte oficial alvo: Flipside Crypto ou Token Terminal API. Zero-capital: dados públicos agregados.",
+    "generated_at": "2026-08-26T15:07:15.229152+00:00",
+    "_meta": {
+      "hash": "3a5d78bc227775ccab6c8df2c83ffdf440cd869ba222161933774a01b0810fc7"
+    }
+  },
+  "410": {
+    "method_id": "410",
+    "name": "On-chain analytics dashboard (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "Uniswap V3",
+        "tvl_growth_7d": 0.12,
+        "unique_users_30d": 84200,
+        "revenue_fees_usd": 3200000
+      },
+      {
+        "protocol": "GMX",
+        "tvl_growth_7d": -0.05,
+        "unique_users_30d": 12400,
+        "revenue_fees_usd": 890000
+      }
+    ],
+    "schema": [
+      "protocol",
+      "tvl_growth_7d",
+      "unique_users_30d",
+      "revenue_fees_usd"
+    ],
+    "notes": "Variante para startups DeFi focada em crescimento de protocolo e receita de fees. Proxy via DefiLlama adapters no GitHub. Fonte oficial: DefiLlama API pública + protocol subgraphs.",
+    "generated_at": "2026-08-26T15:07:15.229152+00:00",
+    "_meta": {
+      "hash": "e900d74aef9b642e7e121a89fd3828fbece9d0b385d8b6442f3f4eb341294c2e"
+    }
+  },
+  "411": {
+    "method_id": "411",
+    "name": "On-chain analytics dashboard (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Binance Hot Wallet",
+        "net_flow_btc_24h": -1240.5,
+        "counterparty_risk_score": 0.22,
+        "compliance_flag": false
+      },
+      {
+        "entity": "Grayscale GBTC",
+        "net_flow_btc_24h": 890.2,
+        "counterparty_risk_score": 0.08,
+        "compliance_flag": false
+      }
+    ],
+    "schema": [
+      "entity",
+      "net_flow_btc_24h",
+      "counterparty_risk_score",
+      "compliance_flag"
+    ],
+    "notes": "Variante enterprise/institucional. Rastreia fluxos de carteiras conhecidas e risco de contraparte. Proxy TIER0 via repositórios de wallet labeling (e.g., Etherscan labels dataset). Fonte oficial: Chainalysis KYT API ou Elliptic Lens.",
+    "generated_at": "2026-08-26T15:07:15.229152+00:00",
+    "_meta": {
+      "hash": "f066296888ba20282a9ddf50a398ad2d812309e665bdf22dad51ec89a5b5ec54"
+    }
+  },
+  "412": {
+    "method_id": "412",
+    "name": "On-chain analytics dashboard (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator": "CryptoBantam",
+        "token_holders_count": 12450,
+        "nft_floor_price_eth": 0.45,
+        "royalty_volume_7d_usd": 8200
+      },
+      {
+        "creator": "PixelArtistDAO",
+        "token_holders_count": 3200,
+        "nft_floor_price_eth": 1.2,
+        "royalty_volume_7d_usd": 24500
+      }
+    ],
+    "schema": [
+      "creator",
+      "token_holders_count",
+      "nft_floor_price_eth",
+      "royalty_volume_7d_usd"
+    ],
+    "notes": "Variante para criadores NFT/social tokens. Rastreia métricas de coleção e royalties. Proxy TIER0 via OpenSea/Blur scrapers open-source no GitHub. Fonte oficial: Reservoir API ou SimpleHash.",
+    "generated_at": "2026-08-26T15:07:30.992226+00:00",
+    "_meta": {
+      "hash": "8f7657eff263c2a5caf54e043f220d45112e698b4ba25d834df108aca606cc99"
+    }
+  },
+  "413": {
+    "method_id": "413",
+    "name": "On-chain analytics dashboard (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "Aave V3",
+        "smart_contract_deployments_30d": 142,
+        "audit_coverage_pct": 98.5,
+        "dev_grants_allocated_usd": 450000
+      },
+      {
+        "protocol": "Compound",
+        "smart_contract_deployments_30d": 28,
+        "audit_coverage_pct": 100.0,
+        "dev_grants_allocated_usd": 120000
+      }
+    ],
+    "schema": [
+      "protocol",
+      "smart_contract_deployments_30d",
+      "audit_coverage_pct",
+      "dev_grants_allocated_usd"
+    ],
+    "notes": "Variante dev/ecossistema. Foca em atividade de desenvolvimento e segurança. Proxy via repositórios de contract indexers e grant trackers. Fonte oficial: Etherscan Contract API + Gitcoin Grants data.",
+    "generated_at": "2026-08-26T15:07:30.992226+00:00",
+    "_meta": {
+      "hash": "e0ebb4f1e1fc83e1fa87f6f97226c3ecee16a3927f19f3019abdcb7dd9f91795"
+    }
+  },
+  "414": {
+    "method_id": "414",
+    "name": "On-chain analytics dashboard (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client": "LayerZero Labs",
+        "cross_chain_tx_volume_24h": 4200000,
+        "partner_integrations_count": 85,
+        "marketing_roi_proxy": 2.4
+      },
+      {
+        "client": "StarkNet Foundation",
+        "cross_chain_tx_volume_24h": 1800000,
+        "partner_integrations_count": 42,
+        "marketing_roi_proxy": 1.8
+      }
+    ],
+    "schema": [
+      "client",
+      "cross_chain_tx_volume_24h",
+      "partner_integrations_count",
+      "marketing_roi_proxy"
+    ],
+    "notes": "Variante B2B para agências. Correlaciona volume on-chain com métricas de partnership/marketing. Proxy via repositórios de cross-chain analytics. Fonte oficial: LayerZero Scan API ou Wormhole Explorer.",
+    "generated_at": "2026-08-26T15:07:30.992226+00:00",
+    "_meta": {
+      "hash": "6fa18aa662b57290842f6a439c92a7b3ae172692dc7ad46d991c000bd1f9325c"
+    }
+  },
+  "415": {
+    "method_id": "415",
+    "name": "Wallet tracking alerts",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "wallet_label": "Binance Hot 14",
+        "tx_type": "outflow",
+        "amount_usd": 42500000,
+        "alert_trigger": "whale_movement"
+      },
+      {
+        "wallet_label": "Unknown EOA",
+        "tx_type": "inflow",
+        "amount_usd": 890000,
+        "alert_trigger": "exchange_deposit"
+      }
+    ],
+    "schema": [
+      "wallet_label",
+      "tx_type",
+      "amount_usd",
+      "alert_trigger"
+    ],
+    "notes": "Alertas genéricos de movimentação de carteiras. Proxy TIER0 via repositórios de whale-alert bots e Etherscan stream parsers no GitHub. Fonte oficial: Whale Alert API ou Arkham Intelligence.",
+    "generated_at": "2026-08-26T15:07:49.671610+00:00",
+    "_meta": {
+      "hash": "c7c11cc9fa60a83370d7de43b22bb4161bca1eb2c80c1643be88a80cedafe582"
+    }
+  },
+  "416": {
+    "method_id": "416",
+    "name": "Wallet tracking alerts (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "project_wallet": "Uniswap Treasury",
+        "event": "grant_disbursement",
+        "recipient_count": 12,
+        "total_usd": 450000
+      },
+      {
+        "project_wallet": "Aave DAO Multisig",
+        "event": "protocol_fee_collection",
+        "recipient_count": 1,
+        "total_usd": 128000
+      }
+    ],
+    "schema": [
+      "project_wallet",
+      "event",
+      "recipient_count",
+      "total_usd"
+    ],
+    "notes": "Variante para startups/DAOs. Rastreia eventos de tesouraria e grants. Proxy via repositórios de DAO treasury trackers. Fonte oficial: DeepDAO API ou Tally governance data.",
+    "generated_at": "2026-08-26T15:07:49.671610+00:00",
+    "_meta": {
+      "hash": "64cc2e5a3e11d62b9d24b34973b542f4ed1420ba78e3f3ed6b2ef9bc6439af6d"
+    }
+  },
+  "417": {
+    "method_id": "417",
+    "name": "Wallet tracking alerts (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "Custodian X Cold Storage",
+        "compliance_status": "cleared",
+        "risk_score": 0.05,
+        "last_audit_days_ago": 14
+      },
+      {
+        "entity": "OTC Desk Y",
+        "compliance_status": "flagged",
+        "risk_score": 0.78,
+        "last_audit_days_ago": 92
+      }
+    ],
+    "schema": [
+      "entity",
+      "compliance_status",
+      "risk_score",
+      "last_audit_days_ago"
+    ],
+    "notes": "Variante enterprise/compliance. Foca em risco de contraparte e status de auditoria. Proxy TIER0 via datasets públicos de wallet labeling. Fonte oficial: Chainalysis KYT ou Scorechain.",
+    "generated_at": "2026-08-26T15:07:49.671610+00:00",
+    "_meta": {
+      "hash": "17e1c12a30d1b7b75004da053e6a0645a3859b6e2fd1e463d74aca54b91f9dd0"
+    }
+  },
+  "418": {
+    "method_id": "418",
+    "name": "Wallet tracking alerts (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_wallet": "0xArtistVault",
+        "event_type": "nft_mint_revenue",
+        "amount_eth": 12.5,
+        "fan_wallet_count": 342
+      },
+      {
+        "creator_wallet": "0xMusicDAO",
+        "event_type": "royalty_payout",
+        "amount_eth": 2.8,
+        "fan_wallet_count": 89
+      }
+    ],
+    "schema": [
+      "creator_wallet",
+      "event_type",
+      "amount_eth",
+      "fan_wallet_count"
+    ],
+    "notes": "Variante para criadores. Rastreia receita de mints e royalties diretamente na wallet do artista. Proxy TIER0 via repositórios de creator-economy on-chain trackers. Fonte oficial: Zora Network API ou Sound.xyz subgraph.",
+    "generated_at": "2026-08-26T15:08:05.890189+00:00",
+    "_meta": {
+      "hash": "b5bcc3f8434d847732e97b98dcdd15f970852b0965619e10479817b82f04f3c6"
+    }
+  },
+  "419": {
+    "method_id": "419",
+    "name": "Wallet tracking alerts (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_multisig": "GnosisSafe-ProtocolX",
+        "action": "bounty_payout",
+        "recipient_dev": "0xContributorA",
+        "amount_usdc": 1500
+      },
+      {
+        "dev_multisig": "Gitcoin-Grants-Msig",
+        "action": "grant_disbursement",
+        "recipient_dev": "0xBuilderB",
+        "amount_usdc": 5000
+      }
+    ],
+    "schema": [
+      "dev_multisig",
+      "action",
+      "recipient_dev",
+      "amount_usdc"
+    ],
+    "notes": "Variante para devs/ecossistemas open-source. Monitora pagamentos de bounties e grants via multisigs. Proxy via repositórios de gitcoin/bounty bot parsers. Fonte oficial: Gitcoin Passport API ou Layer3 XYZ data.",
+    "generated_at": "2026-08-26T15:08:05.890189+00:00",
+    "_meta": {
+      "hash": "12b2b7856776471a8727a50991fabd2351f7364623d5644d930821a648fca74b"
+    }
+  },
+  "420": {
+    "method_id": "420",
+    "name": "Wallet tracking alerts (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_campaign_wallet": "0xBrandLaunchQ3",
+        "kpi_event": "airdrop_completion",
+        "unique_recipients": 15420,
+        "cost_per_acquisition_usd": 1.2
+      },
+      {
+        "client_campaign_wallet": "0xTokenGenEvent",
+        "kpi_event": "liquidity_incentive_claim",
+        "unique_recipients": 4200,
+        "cost_per_acquisition_usd": 3.8
+      }
+    ],
+    "schema": [
+      "client_campaign_wallet",
+      "kpi_event",
+      "unique_recipients",
+      "cost_per_acquisition_usd"
+    ],
+    "notes": "Variante B2B para agências de marketing web3. Correlaciona eventos on-chain com KPIs de campanha (CPA, alcance). Proxy via scrapers de airdrop claim pages no GitHub. Fonte oficial: Galxe API or Zealy data exports.",
+    "generated_at": "2026-08-26T15:08:05.890189+00:00",
+    "_meta": {
+      "hash": "e7fec3c6bc3b76c8a29c13f1cc58b1e8352f567429ab8f2145679f6410fc2df9"
+    }
+  },
+  "421": {
+    "method_id": "421",
+    "name": "Smart contract auditor",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "contract_address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+        "risk_level": "low",
+        "vulnerabilities_found": 0,
+        "audit_tool": "slither"
+      },
+      {
+        "contract_address": "0xNewDeFiVault",
+        "risk_level": "critical",
+        "vulnerabilities_found": 3,
+        "audit_tool": "mythril"
+      }
+    ],
+    "schema": [
+      "contract_address",
+      "risk_level",
+      "vulnerabilities_found",
+      "audit_tool"
+    ],
+    "notes": "Auditoria genérica de smart contracts usando ferramentas open-source. Proxy TIER0 via repositórios de static analysis tools (Slither, Mythril). Zero-capital: análise local de bytecode/ABI sem custo.",
+    "generated_at": "2026-08-26T15:08:28.132152+00:00",
+    "_meta": {
+      "hash": "89d300400fa335b72ded10f60b1f61dbd216e5eace6bc52625fb921fd584bf99"
+    }
+  },
+  "422": {
+    "method_id": "422",
+    "name": "Smart contract auditor (for startups)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "protocol": "NewDEX",
+        "code_complexity_score": 8.2,
+        "test_coverage_pct": 45.0,
+        "pre_launch_ready": false
+      },
+      {
+        "protocol": "StableYield",
+        "code_complexity_score": 3.1,
+        "test_coverage_pct": 92.0,
+        "pre_launch_ready": true
+      }
+    ],
+    "schema": [
+      "protocol",
+      "code_complexity_score",
+      "test_coverage_pct",
+      "pre_launch_ready"
+    ],
+    "notes": "Variante para startups DeFi pré-lançamento. Foca em complexidade e cobertura de testes como indicadores de segurança. Proxy via CI/CD templates e hardhat test runners no GitHub.",
+    "generated_at": "2026-08-26T15:08:28.132152+00:00",
+    "_meta": {
+      "hash": "d5fb6783676445801d8ce54709aded55be552551fbf3d3c0d950f238c66a8fd8"
+    }
+  },
+  "423": {
+    "method_id": "423",
+    "name": "Smart contract auditor (for enterprises)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "entity": "BankChain Settlement",
+        "compliance_standard": "SOC2",
+        "formal_verification": true,
+        "audit_firm": "internal"
+      },
+      {
+        "entity": "Tokenized Fund Custody",
+        "compliance_standard": "ISO27001",
+        "formal_verification": false,
+        "audit_firm": "external_big4"
+      }
+    ],
+    "schema": [
+      "entity",
+      "compliance_standard",
+      "formal_verification",
+      "audit_firm"
+    ],
+    "notes": "Variante enterprise focada em compliance e verificação formal. Proxy TIER0 via frameworks de regtech e relatórios públicos de auditoria. Fonte oficial: CertiK Leaderboard ou Hacken Audit Reports.",
+    "generated_at": "2026-08-26T15:08:28.132152+00:00",
+    "_meta": {
+      "hash": "fc35912cd39773f90fa30f942f33e54e0853b0cdd0d59fc77f9367d6a601b553"
+    }
+  },
+  "424": {
+    "method_id": "424",
+    "name": "Smart contract auditor (for creators)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "creator_contract": "NFTDropCollectionA",
+        "royalty_enforcement": true,
+        "metadata_mutability_risk": "low",
+        "marketplace_compatibility": [
+          "opensea",
+          "blur"
+        ]
+      },
+      {
+        "creator_contract": "MusicRoyaltyVaultB",
+        "royalty_enforcement": false,
+        "metadata_mutability_risk": "high",
+        "marketplace_compatibility": [
+          "sound_xyz"
+        ]
+      }
+    ],
+    "schema": [
+      "creator_contract",
+      "royalty_enforcement",
+      "metadata_mutability_risk",
+      "marketplace_compatibility"
+    ],
+    "notes": "Variante para criadores NFT/música. Foca em enforcement de royalties e compatibilidade com marketplaces. Proxy TIER0 via repositórios de ERC-721/ERC-2981 checkers no GitHub. Fonte oficial: Manifold Studio docs ou Zora smart contracts.",
+    "generated_at": "2026-08-26T15:08:45.608690+00:00",
+    "_meta": {
+      "hash": "602feceb1c8318f600989bde31c9b389094b7e4162080855ffda7f24663d9cec"
+    }
+  },
+  "425": {
+    "method_id": "425",
+    "name": "Smart contract auditor (for developers)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "dev_project": "DeFiYieldAggregator",
+        "gas_optimization_score": 0.72,
+        "upgradeability_pattern": "UUPS",
+        "test_suite_framework": "foundry"
+      },
+      {
+        "dev_project": "CrossChainBridgeModule",
+        "gas_optimization_score": 0.45,
+        "upgradeability_pattern": "transparent_proxy",
+        "test_suite_framework": "hardhat"
+      }
+    ],
+    "schema": [
+      "dev_project",
+      "gas_optimization_score",
+      "upgradeability_pattern",
+      "test_suite_framework"
+    ],
+    "notes": "Variante técnica para devs. Avalia otimização de gas, padrões de upgrade e frameworks de teste. Proxy via repositórios de gas-snapshots e proxy-admin analyzers. Fonte oficial: OpenZeppelin Defender ou Tenderly Simulations.",
+    "generated_at": "2026-08-26T15:08:45.608690+00:00",
+    "_meta": {
+      "hash": "50e02ba8c7983430b95b452d5d3cc4f04c4d0ea1fb1f479776eaaf6105540226"
+    }
+  },
+  "426": {
+    "method_id": "426",
+    "name": "Smart contract auditor (for agencies)",
+    "source": "github_search_api",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "client_project": "BrandLoyaltyToken",
+        "audit_readiness_pct": 85.0,
+        "regulatory_exposure_flag": false,
+        "recommended_auditors": [
+          "certik",
+          "hacken"
+        ]
+      },
+      {
+        "client_project": "GamingGuildDAO",
+        "audit_readiness_pct": 32.0,
+        "regulatory_exposure_flag": true,
+        "recommended_auditors": [
+          "trail_of_bits",
+          "openzeppelin"
+        ]
+      }
+    ],
+    "schema": [
+      "client_project",
+      "audit_readiness_pct",
+      "regulatory_exposure_flag",
+      "recommended_auditors"
+    ],
+    "notes": "Variante B2B para agências web3. Gera relatórios de prontidão de auditoria e exposição regulatória para clientes. Proxy via templates de audit-report generators no GitHub. Fonte oficial: De.Fi REKT Leaderboard ou Solodit aggregated reports.",
+    "generated_at": "2026-08-26T15:08:45.608690+00:00",
+    "_meta": {
+      "hash": "511b54a0a3fe0a7e83205432cfbae6d70dc2c192c88305e7c2d1a2f0b2c9bba2"
+    }
   }
 }

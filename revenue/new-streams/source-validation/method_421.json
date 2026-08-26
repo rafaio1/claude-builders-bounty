@@ -1,0 +1,31 @@
+{
+  "method_id": "421",
+  "name": "Smart contract auditor",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "contract_address": "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D",
+      "risk_level": "low",
+      "vulnerabilities_found": 0,
+      "audit_tool": "slither"
+    },
+    {
+      "contract_address": "0xNewDeFiVault",
+      "risk_level": "critical",
+      "vulnerabilities_found": 3,
+      "audit_tool": "mythril"
+    }
+  ],
+  "schema": [
+    "contract_address",
+    "risk_level",
+    "vulnerabilities_found",
+    "audit_tool"
+  ],
+  "notes": "Auditoria genérica de smart contracts usando ferramentas open-source. Proxy TIER0 via repositórios de static analysis tools (Slither, Mythril). Zero-capital: análise local de bytecode/ABI sem custo.",
+  "generated_at": "2026-08-26T15:08:28.132152+00:00",
+  "_meta": {
+    "hash": "89d300400fa335b72ded10f60b1f61dbd216e5eace6bc52625fb921fd584bf99"
+  }
+}

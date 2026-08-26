@@ -1,0 +1,31 @@
+{
+  "method_id": "422",
+  "name": "Smart contract auditor (for startups)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "NewDEX",
+      "code_complexity_score": 8.2,
+      "test_coverage_pct": 45.0,
+      "pre_launch_ready": false
+    },
+    {
+      "protocol": "StableYield",
+      "code_complexity_score": 3.1,
+      "test_coverage_pct": 92.0,
+      "pre_launch_ready": true
+    }
+  ],
+  "schema": [
+    "protocol",
+    "code_complexity_score",
+    "test_coverage_pct",
+    "pre_launch_ready"
+  ],
+  "notes": "Variante para startups DeFi pré-lançamento. Foca em complexidade e cobertura de testes como indicadores de segurança. Proxy via CI/CD templates e hardhat test runners no GitHub.",
+  "generated_at": "2026-08-26T15:08:28.132152+00:00",
+  "_meta": {
+    "hash": "d5fb6783676445801d8ce54709aded55be552551fbf3d3c0d950f238c66a8fd8"
+  }
+}
