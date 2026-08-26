@@ -5,18 +5,8 @@
       "repo": "OphirPay/OphirPay",
       "pr": 225,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:54:50.482347+00:00",
+      "last_action": "2026-08-26T12:00:00Z",
       "evidence": [
-        {
-          "type": "email",
-          "id": "1a03dcc01298cb75",
-          "note": "Greptile P2 review on webhook E2E"
-        },
-        {
-          "type": "email",
-          "id": "1a03dca6ce9683f4",
-          "note": "Vercel CodingAngel1 team auth pending"
-        },
         {
           "type": "gh_comment",
           "note": "Replied explaining intentional test isolation"
@@ -52,9 +42,19 @@
           "greptile_summary": "P2 review: E2E duplicates signing/retry instead of calling deliverWebhook; rebuttal prepared (intentional isolation)",
           "vercel_blocker": "CodingAngel1 team authorization pending for rafaio1",
           "action_taken": "Logged review and Vercel blocker; no code change possible until team auth or maintainer response"
+        },
+        {
+          "type": "email",
+          "id": "1a03dcc01298cb75",
+          "summary": "Greptile P2: test duplicates signing/retry instead of calling deliverWebhook"
+        },
+        {
+          "type": "email",
+          "id": "1a03dca6ce9683f4",
+          "summary": "Vercel bot: CodingAngel1 team auth required for deploy"
         }
       ],
-      "next_action": "Monitor Vercel auth and maintainer reply to Greptile rebuttal; do not push code changes",
+      "next_action": "Awaiting Vercel CodingAngel1 team auth + address Greptile P2 review (refactor to use deliverWebhook)",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 225
     },
@@ -63,18 +63,8 @@
       "repo": "ligate-io/ligate-chain",
       "pr": 567,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:54:50.482347+00:00",
+      "last_action": "2026-08-26T12:00:00Z",
       "evidence": [
-        {
-          "type": "email",
-          "id": "1a03d5fbf26dfa9f",
-          "note": "CLA Assistant CI failed"
-        },
-        {
-          "type": "email",
-          "id": "1a03d5fae6f376c9",
-          "note": "CLA bot requests signature via PR comment"
-        },
         {
           "type": "gmail_triage_cla_ci_failure",
           "timestamp": "2026-08-26T22:34:52.491414+00:00",
@@ -105,9 +95,19 @@
           "cla_bot_msg_id": "1a03d5fae6f376c9",
           "blocker": "CLA signature required; bot reports root is not a GitHub user",
           "action_taken": "Identified CLA blocker; human must sign CLA via PR comment or link email to GitHub account"
+        },
+        {
+          "type": "email",
+          "id": "1a03d5fae6f376c9",
+          "summary": "CLA Assistant Lite: root not a GitHub user, cannot sign CLA"
+        },
+        {
+          "type": "email",
+          "id": "1a03d5fbf26dfa9f",
+          "summary": "CLA Assistant workflow failed"
         }
       ],
-      "next_action": "Human action: sign CLA or associate commit email with GitHub account; preserve emails",
+      "next_action": "User must sign CLA with GitHub-linked email; bot reports root is not a GitHub user. Email preserved.",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 567
     },
@@ -116,13 +116,8 @@
       "repo": "Lilly-Protocol/lily-frontend",
       "pr": 150,
       "status": "waiting_human_action",
-      "last_action": "2026-08-26T22:54:50.482347+00:00",
+      "last_action": "2026-08-26T12:00:00Z",
       "evidence": [
-        {
-          "type": "email",
-          "id": "1a03df0244231a91",
-          "note": "Vercel Heymide team auth required"
-        },
         {
           "type": "gmail_triage_vercel_auth_pending",
           "timestamp": "2026-08-26T22:34:52.491414+00:00",
@@ -145,9 +140,14 @@
           "vercel_auth_msg_id": "1a03df0244231a91",
           "vercel_blocker": "Heymide team authorization pending for deployment",
           "action_taken": "Logged Vercel auth requirement; no contributor action possible"
+        },
+        {
+          "type": "email",
+          "id": "1a03df0244231a91",
+          "summary": "Vercel bot: Heymide team auth required for deploy"
         }
       ],
-      "next_action": "Wait for Heymide team member to authorize Vercel deploy",
+      "next_action": "Awaiting Vercel Heymide team authorization for deploy preview",
       "updated_at": "2026-08-26T22:48:30.772316Z",
       "pr_number": 150
     },
@@ -1397,6 +1397,26 @@
       "last_action": "2026-08-26T22:59:29.303379+00:00",
       "next_action": "Monitor for accepted submission or maintainer feedback rejecting existing claims; verify payout mechanism before any work",
       "discovered_at": "2026-08-26T22:59:29.303379+00:00"
+    },
+    {
+      "program": "Wolt",
+      "report_id": "3972388",
+      "title": "Unauthenticated Mass Corporate Lead Creation / Account Pre-registration via Missing Rate Limiting and CORS Misconfiguration",
+      "status": "rejected_duplicate",
+      "currency": "USD",
+      "value": 0,
+      "last_action": "2026-08-26T23:00:00Z",
+      "next_action": "No action. Report closed as duplicate of #3934930 (submitted 2026-08-12). Not eligible for reward per program policy.",
+      "evidence": [
+        {
+          "type": "email",
+          "id": "1a0404c720822bb8",
+          "summary": "HackerOne closed report #3972388 as duplicate of #3934930; same endpoint/vuln, original submitted 2026-08-12"
+        }
+      ],
+      "source": "hackerone",
+      "eligible": false,
+      "notes": "Duplicate of earlier submission; no payout eligibility."
     }
   ],
   "bounties": [
