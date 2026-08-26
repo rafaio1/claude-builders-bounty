@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-26T13:28:43+00:00",
+  "updated_at": "2026-08-26T13:30:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -532,7 +532,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T132843Z",
+      "map_id": "20260826T133026Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -559,7 +559,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260826T132843Z",
+      "map_id": "20260826T133026Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -586,7 +586,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260826T132843Z",
+      "map_id": "20260826T133026Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -615,7 +615,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260826T132843Z",
+      "map_id": "20260826T133026Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -3068,24 +3068,23 @@
       "id": "imp-20260817-valida-o-de-schema-no-ledger-do-improve",
       "key": "84a8594f7d8f6a8f",
       "canon": "33f17d648143e90b",
-      "title": "Validação de schema no ledger do improve",
+      "title": "Validação de schema do ledger no improve.py",
       "kind": "improvement",
       "priority": 3,
       "status": "pending",
-      "rationale": "Entradas inválidas na fila de develop podem travar o loop do improve silenciosamente.",
-      "change": "Adicionar validação pydantic ou jsonschema ao carregar tarefas pending do ledger antes de despachar para o Claude CLI.",
+      "rationale": "O improve.py despeja o prompt direto no Claude CLI. Se o ledger tiver entradas corrompidas, o modelo recebe lixo e gasta tokens à toa.",
+      "change": "Adicionar validação estrita dos itens pending antes de formatar o prompt para o Claude CLI.",
       "never": [
         "apagar o ledger automaticamente em caso de erro",
         "alterar a constituição ARO v1.0",
         "criar src/agentic/loop.sh"
       ],
       "files_hint": [
-        "src/agentic/improve.py",
-        "src/agentic/models.py"
+        "src/agentic/improve.py"
       ],
-      "theme": "engine",
+      "theme": "ai",
       "branch": "",
-      "map_id": "20260817T013627Z",
+      "map_id": "20260826T133026Z",
       "history": [
         {
           "at": "2026-08-17T01:36:27+00:00",
@@ -9220,6 +9219,149 @@
           "at": "2026-08-26T13:28:43+00:00",
           "event": "mapped",
           "detail": "20260826T132843Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-timeout-e-vazamento-de-processos-no-playwright-c",
+      "key": "0e80a6da3a92b14c",
+      "canon": "45fea0af74746793",
+      "title": "Timeout e vazamento de processos no playwright-cli",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "O navegador headless é executado no tick de saúde sem timeouts rígidos de subprocesso. Se a página travar, o processo pode zumbificar e bloquear iterações futuras do loop.",
+      "change": "Adicionar parâmetros de timeout explícitos na chamada do subprocess e limpeza de PID no health check do playwright.",
+      "never": [
+        "Alterar a configuração headless --no-sandbox",
+        "Ativar playwright-mcp",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133026Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:30:26+00:00",
+          "event": "mapped",
+          "detail": "20260826T133026Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-falta-de-backoff-em-chamadas-de-api-da-ghostcli",
+      "key": "016e7b8e905dc9e5",
+      "canon": "c7df25991604680c",
+      "title": "Falta de backoff em chamadas de API da GhostCLI",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O ghostcli.py faz map/review direto. Falhas transitórias de rede geram retentativas imediatas ou quebram o tick, sobrecarregando a API ou falhando a saúde.",
+      "change": "Implementar retentativa curta com backoff exponencial nas funções de rede do ghostcli.py.",
+      "never": [
+        "Expor tokens ou ANTHROPIC_BASE_URL nos logs",
+        "Alterar GHOSTCLI_MODEL"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T133026Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:30:26+00:00",
+          "event": "mapped",
+          "detail": "20260826T133026Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-gest-o-de-ciclo-de-vida-do-playwright-theme-tool",
+      "key": "24157b167cec9339",
+      "canon": "f4c1e0f45ed9ea2d",
+      "title": "Gestão de ciclo de vida do Playwright (theme=tools)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Garantir que instâncias órfãs do playwright-cli sejam terminadas antes de abrir uma nova sessão no tick de saúde, evitando estouro de memória.",
+      "change": "Adicionar verificação e kill de PIDs órfãos do playwright-cli antes da execução do smoke test.",
+      "never": [
+        "Usar playwright-mcp",
+        "Modificar o binário do playwright"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260826T133026Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:30:26+00:00",
+          "event": "mapped",
+          "detail": "20260826T133026Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-traces-estruturados-para-chamadas-ghostcli-theme",
+      "key": "5116e75da77cf97a",
+      "canon": "8d44fd235f131571",
+      "title": "Traces estruturados para chamadas GhostCLI (theme=ai)",
+      "kind": "improvement",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Não há logs estruturados de entrada/saída da IA, o que dificulta a avaliação (eval) da qualidade dos prompts despachados pelo develop/review.",
+      "change": "Emitir logs em formato JSONL com metadados de latência, status HTTP e hash do prompt para cada chamada à GhostCLI.",
+      "never": [
+        "Logar o conteúdo completo de secrets",
+        "Salvar traces em diretórios não gitignorados se contiverem dados sensíveis"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py",
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260826T133026Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:30:26+00:00",
+          "event": "mapped",
+          "detail": "20260826T133026Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260826-monitoramento-de-deadlock-via-systemd",
+      "key": "4819528df182b1b8",
+      "canon": "2d51ff5d4338bad1",
+      "title": "Monitoramento de deadlock via systemd",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Se o loop.py travar em um I/O bloqueante, o systemd não sabe que o processo está inativo devido ao --interval 90 fixo.",
+      "change": "Adicionar um WatchdogSec=120 na unit agentic-loop.service e notificar o systemd via sd_notify no final de cada tick de saúde bem-sucedido.",
+      "never": [
+        "Mudar o ExecStart para um script shell",
+        "Criar src/agentic/loop.sh"
+      ],
+      "files_hint": [
+        "deploy/agentic-loop.service",
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260826T133026Z",
+      "history": [
+        {
+          "at": "2026-08-26T13:30:26+00:00",
+          "event": "mapped",
+          "detail": "20260826T133026Z"
         }
       ]
     }
