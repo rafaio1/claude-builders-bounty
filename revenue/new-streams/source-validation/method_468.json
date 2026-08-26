@@ -1,0 +1,36 @@
+{
+  "method_id": "468",
+  "name": "DAO treasury manager (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:44.850746+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "MetaCartel Ventures",
+      "treasury_usd": 4500000,
+      "allocations": {
+        "deal_flow": 0.55,
+        "due_diligence": 0.25,
+        "admin": 0.2
+      },
+      "client_billing": "token_streaming"
+    },
+    {
+      "agency": "dOrg Tech Collective",
+      "treasury_usd": 890000,
+      "allocations": {
+        "dev_services": 0.65,
+        "tooling": 0.2,
+        "marketing": 0.15
+      },
+      "client_billing": "milestone_invoices"
+    }
+  ],
+  "schema": [
+    "agency",
+    "treasury_usd",
+    "allocations",
+    "client_billing"
+  ],
+  "notes": "Variante para Web3 agencies e service DAOs. Proxy TIER0: GitHub Search (topics: service-dao-treasury, web3-agency-finance). Fonte oficial alvo: ClarityDAO invoices + Superfluid streaming dashboards. Foco em accounts receivable tracking e token-based billing sem capital inicial."
+}

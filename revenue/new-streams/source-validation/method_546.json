@@ -1,0 +1,28 @@
+{
+  "method_id": "546",
+  "name": "Freelance rate calculator bot (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:43.098258+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_margin_target_pct": 35,
+      "overhead_allocation_model": "activity_based",
+      "client_tier_multiplier": 1.4,
+      "volume_discount_enabled": true
+    },
+    {
+      "agency_margin_target_pct": 25,
+      "overhead_allocation_model": "flat_rate",
+      "client_tier_multiplier": 1.1,
+      "volume_discount_enabled": false
+    }
+  ],
+  "schema": [
+    "agency_margin_target_pct",
+    "overhead_allocation_model",
+    "client_tier_multiplier",
+    "volume_discount_enabled"
+  ],
+  "notes": "Engine de precificação B2B com alocação de overhead e descontos por volume. Proxy: GitHub Search 'agency pricing calculator saas'. Foco em sustentabilidade de margem sem capital inicial."
+}

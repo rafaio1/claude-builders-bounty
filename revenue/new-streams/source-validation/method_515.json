@@ -1,0 +1,31 @@
+{
+  "method_id": "515",
+  "name": "Presale bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:01.255153+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "presale_platform": "PinkSale",
+      "chain": "bsc",
+      "entry_latency_ms": 320,
+      "avg_allocation_usd": 150,
+      "success_rate_pct": 42.5
+    },
+    {
+      "presale_platform": "Gempad",
+      "chain": "ethereum",
+      "entry_latency_ms": 480,
+      "avg_allocation_usd": 350,
+      "success_rate_pct": 38.2
+    }
+  ],
+  "schema": [
+    "presale_platform",
+    "chain",
+    "entry_latency_ms",
+    "avg_allocation_usd",
+    "success_rate_pct"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: presale-sniper-bot, gempad-automation). Fonte oficial alvo: PinkSale analytics + Gempad launch stats. Zero-capital: simulação de entrada e análise de alocação sem participação real."
+}

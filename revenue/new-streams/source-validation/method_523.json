@@ -1,0 +1,31 @@
+{
+  "method_id": "523",
+  "name": "Presale bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:24.448056+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token_name": "AI Infra Presale",
+      "platform": "pink_sale",
+      "auto_buy_amount_eth": 0.0,
+      "max_slippage_pct": 15,
+      "anti_rug_check": true
+    },
+    {
+      "token_name": "Gaming Guild IDO",
+      "platform": "polkastarter",
+      "auto_buy_amount_eth": 0.0,
+      "max_slippage_pct": 10,
+      "anti_rug_check": true
+    }
+  ],
+  "schema": [
+    "token_name",
+    "platform",
+    "auto_buy_amount_eth",
+    "max_slippage_pct",
+    "anti_rug_check"
+  ],
+  "notes": "Bot genérico para participação automatizada em presales/IDOs. Zero-capital: configuração de parâmetros e validação de contratos via simulador local. Proxy: GitHub Search 'presale sniper bot pink sale'. Fonte oficial: PinkSale/Polkastarter docs + Etherscan contract verification."
+}

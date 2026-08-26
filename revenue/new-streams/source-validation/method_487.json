@@ -1,0 +1,31 @@
+{
+  "method_id": "487",
+  "name": "Cross-chain bridge liquidity monitor",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:54.827649+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "bridge": "Stargate Finance",
+      "route": "ETH-AVAX-USDC",
+      "liquidity_usd": 4500000,
+      "fee_tier_bps": 6,
+      "slippage_alert_pct": 0.5
+    },
+    {
+      "bridge": "LayerZero V2",
+      "route": "ARB-OP-WETH",
+      "liquidity_usd": 2800000,
+      "fee_tier_bps": 10,
+      "slippage_alert_pct": 0.8
+    }
+  ],
+  "schema": [
+    "bridge",
+    "route",
+    "liquidity_usd",
+    "fee_tier_bps",
+    "slippage_alert_pct"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: layerzero-labs/stargate, stargate-finance/contracts). Fonte oficial alvo: DefiLlama bridges + LayerZero analytics dashboard. Zero-capital: monitoramento de liquidez e alertas de slippage sem execução de bridging real."
+}

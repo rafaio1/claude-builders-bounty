@@ -1,0 +1,36 @@
+{
+  "method_id": "467",
+  "name": "DAO treasury manager (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:44.850746+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_dao": "RadicleDAO",
+      "treasury_usd": 2100000,
+      "allocations": {
+        "protocol_dev": 0.6,
+        "security_audits": 0.25,
+        "infra": 0.15
+      },
+      "grant_mechanism": "retroactive"
+    },
+    {
+      "dev_dao": "Uniswap Foundation",
+      "treasury_usd": 18500000,
+      "allocations": {
+        "core_dev": 0.45,
+        "ecosystem_grants": 0.4,
+        "ops": 0.15
+      },
+      "grant_mechanism": "milestone_based"
+    }
+  ],
+  "schema": [
+    "dev_dao",
+    "treasury_usd",
+    "allocations",
+    "grant_mechanism"
+  ],
+  "notes": "Variante para developer collectives e protocol guilds. Proxy TIER0: GitHub Search (orgs: radicle-dev, uniswap-foundation treasury). Fonte oficial alvo: Gitcoin Grants rounds + Protocol Guild dashboard. Ênfase em retroactive public goods funding e milestone tracking zero-capital."
+}

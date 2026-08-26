@@ -1,0 +1,31 @@
+{
+  "method_id": "482",
+  "name": "MEV bundle simulator (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:16.806389+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Jito Labs Research",
+      "focus_chain": "solana",
+      "bundle_category": "liquidation",
+      "avg_profit_per_tx_usd": 2.15,
+      "infra_cost_monthly_usd": 450
+    },
+    {
+      "startup": "Skip Protocol MVP",
+      "focus_chain": "cosmos",
+      "bundle_category": "ibc_relay",
+      "avg_profit_per_tx_usd": 0.85,
+      "infra_cost_monthly_usd": 120
+    }
+  ],
+  "schema": [
+    "startup",
+    "focus_chain",
+    "bundle_category",
+    "avg_profit_per_tx_usd",
+    "infra_cost_monthly_usd"
+  ],
+  "notes": "Variante para startups focadas em MEV infrastructure ou searchers iniciantes. Proxy TIER0: GitHub Search (topics: mev-startup, solana-jito, skip-protocol). Fonte oficial alvo: Jito validator dashboards + Skip protocol stats. Foco em unit economics e infra cost analysis zero-capital."
+}

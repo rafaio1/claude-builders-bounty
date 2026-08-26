@@ -1,0 +1,38 @@
+{
+  "method_id": "499",
+  "name": "On-chain credit scoring engine",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:13.512876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "wallet": "0x7a2...f3e",
+      "score": 782,
+      "factors": {
+        "repayment_history": 0.35,
+        "asset_diversity": 0.25,
+        "protocol_tenure": 0.2,
+        "nft_collateral": 0.2
+      },
+      "risk_tier": "prime"
+    },
+    {
+      "wallet": "0x3b9...c1d",
+      "score": 645,
+      "factors": {
+        "repayment_history": 0.2,
+        "asset_diversity": 0.15,
+        "protocol_tenure": 0.3,
+        "defi_activity": 0.35
+      },
+      "risk_tier": "subprime"
+    }
+  ],
+  "schema": [
+    "wallet",
+    "score",
+    "factors",
+    "risk_tier"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: spectral-finance/credit-score, arcadia-finance/risk-engine). Fonte oficial alvo: Credora on-chain ratings + Spectral analytics. Zero-capital: geração de scores sintéticos para underwriting sem empréstimo real."
+}

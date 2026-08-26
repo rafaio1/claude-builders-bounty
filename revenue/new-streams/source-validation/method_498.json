@@ -1,0 +1,31 @@
+{
+  "method_id": "498",
+  "name": "Gas price prediction oracle (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:52.748702+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Deloitte Blockchain Ops",
+      "clients_advised": 15,
+      "monthly_gas_audit_usd": 85000,
+      "reporting_standard": "SOC2_ops",
+      "benchmark_source": "nansen_institutional"
+    },
+    {
+      "agency": "PwC Digital Assets",
+      "clients_advised": 9,
+      "monthly_gas_audit_usd": 42000,
+      "reporting_standard": "ISAE3402",
+      "benchmark_source": "coinmetrics_enterprise"
+    }
+  ],
+  "schema": [
+    "agency",
+    "clients_advised",
+    "monthly_gas_audit_usd",
+    "reporting_standard",
+    "benchmark_source"
+  ],
+  "notes": "Variante para consultorias Big4 oferecendo gas optimization como serviço. Proxy TIER0: GitHub Search (topics: big4-gas-advisory, blockchain-ops-audit). Fonte oficial alvo: SEC operational filings + Nansen institutional benchmarks. Foco em compliance reporting e client savings tracking zero-capital."
+}

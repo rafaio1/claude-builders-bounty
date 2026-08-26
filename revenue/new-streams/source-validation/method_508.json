@@ -1,0 +1,37 @@
+{
+  "method_id": "508",
+  "name": "Stablecoin peg stability monitor (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:12.546864+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "Zora Creator Fund",
+      "stables_held": [
+        "USDC",
+        "DAI"
+      ],
+      "peg_alert_channel": "discord_webhook",
+      "max_slippage_bps": 15,
+      "payout_schedule": "weekly"
+    },
+    {
+      "creator": "ArtBlocks Treasury",
+      "stables_held": [
+        "USDC",
+        "EURC"
+      ],
+      "peg_alert_channel": "telegram_bot",
+      "max_slippage_bps": 20,
+      "payout_schedule": "monthly"
+    }
+  ],
+  "schema": [
+    "creator",
+    "stables_held",
+    "peg_alert_channel",
+    "max_slippage_bps",
+    "payout_schedule"
+  ],
+  "notes": "Variante para artistas e plataformas de arte digital recebendo pagamentos em stablecoins. Proxy TIER0: GitHub Search (topics: creator-stablecoin-monitor, nft-payout-stable). Fonte oficial alvo: Zora payout logs + ArtBlocks treasury analytics. Foco em garantir paridade nos payouts sem execução direta."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": "455",
+  "name": "LP position manager (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_module": "CLM_Strategy_Core",
+      "supported_amms": [
+        "uniswap_v3",
+        "pancake_v3"
+      ],
+      "rebalance_logic": "tick_based",
+      "test_coverage_pct": 94.0
+    },
+    {
+      "dev_module": "Auto_Compound_Bot",
+      "supported_amms": [
+        "curve",
+        "balancer"
+      ],
+      "rebalance_logic": "time_based",
+      "test_coverage_pct": 78.5
+    }
+  ],
+  "schema": [
+    "dev_module",
+    "supported_amms",
+    "rebalance_logic",
+    "test_coverage_pct"
+  ],
+  "notes": "Variante técnica para devs integrando gestores de posição. Compara suporte a AMMs e lógica de rebalanceamento. Proxy via repositórios de CLM frameworks no GitHub. Fonte oficial: Arrakis Finance SDK ou Gamma.xyz API.",
+  "generated_at": "2026-08-26T15:12:09.980001+00:00",
+  "_meta": {
+    "hash": "d286a1a5e9312534aa21432aeceaf4cfdba52cc351e1b88e0d4f40e979f6ebb6"
+  }
+}

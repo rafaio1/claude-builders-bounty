@@ -1,0 +1,28 @@
+{
+  "method_id": "525",
+  "name": "Presale bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:24.448056+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "desk_name": "VC Allocation Desk",
+      "compliance_kyc": true,
+      "multi_wallet_rotation": 8,
+      "execution_venue": "copper_launch"
+    },
+    {
+      "desk_name": "Family Office Crypto",
+      "compliance_kyc": true,
+      "multi_wallet_rotation": 3,
+      "execution_venue": "dao_maker"
+    }
+  ],
+  "schema": [
+    "desk_name",
+    "compliance_kyc",
+    "multi_wallet_rotation",
+    "execution_venue"
+  ],
+  "notes": "Versão enterprise com foco em compliance KYC, rotação de wallets para evitar flags de sybil e integração com plataformas de launchpad institucionais. Proxy: GitHub Search 'institutional ido allocation bot'. Fonte oficial: Copper Launch / DAO Maker institutional docs."
+}

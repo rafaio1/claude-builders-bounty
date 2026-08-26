@@ -1,0 +1,31 @@
+{
+  "method_id": "496",
+  "name": "Gas price prediction oracle (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:52.748702+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "NFT Mint Studio",
+      "chain": "ethereum",
+      "optimization_target": "mint_batch",
+      "avg_savings_pct": 25.0,
+      "alert_channel": "discord"
+    },
+    {
+      "creator": "Music Royalty DAO",
+      "chain": "polygon",
+      "optimization_target": "payout_distribution",
+      "avg_savings_pct": 15.5,
+      "alert_channel": "telegram"
+    }
+  ],
+  "schema": [
+    "creator",
+    "chain",
+    "optimization_target",
+    "avg_savings_pct",
+    "alert_channel"
+  ],
+  "notes": "Variante para criadores NFT e músicos otimizando custos de mint/payout. Proxy TIER0: GitHub Search (topics: nft-gas-optimizer, creator-mint-cost). Fonte oficial alvo: OpenSea gas analytics + Zora mint logs. Foco em batch timing e alertas simples zero-capital."
+}

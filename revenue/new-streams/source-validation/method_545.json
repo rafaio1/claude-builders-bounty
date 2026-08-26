@@ -1,0 +1,28 @@
+{
+  "method_id": "545",
+  "name": "Freelance rate calculator bot (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:43.098258+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_role": "solidity_auditor",
+      "certification": "openzeppelin_certified",
+      "market_premium_pct": 40,
+      "retainer_discount_pct": 15
+    },
+    {
+      "dev_role": "ml_ops_engineer",
+      "certification": "aws_ml_specialty",
+      "market_premium_pct": 25,
+      "retainer_discount_pct": 10
+    }
+  ],
+  "schema": [
+    "dev_role",
+    "certification",
+    "market_premium_pct",
+    "retainer_discount_pct"
+  ],
+  "notes": "Pricing dinâmico baseado em certificações e prêmios de mercado para devs especializados. Proxy: GitHub Search 'dev freelance pricing model'. Fonte oficial: Levels.fyi / Glassdoor salary data (anon)."
+}

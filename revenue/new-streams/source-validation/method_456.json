@@ -1,0 +1,31 @@
+{
+  "method_id": "456",
+  "name": "LP position manager (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_campaign": "Token_Launch_Q3",
+      "managed_tvl_usd": 850000,
+      "performance_fee_bps": 1500,
+      "reporting_frequency": "daily"
+    },
+    {
+      "client_campaign": "Stablecoin_Yield_Fund",
+      "managed_tvl_usd": 2400000,
+      "performance_fee_bps": 1000,
+      "reporting_frequency": "weekly"
+    }
+  ],
+  "schema": [
+    "client_campaign",
+    "managed_tvl_usd",
+    "performance_fee_bps",
+    "reporting_frequency"
+  ],
+  "notes": "Variante B2B para agências oferecendo gestão de liquidez como serviço. Reporta TVL gerido e estrutura de fees. Proxy via templates de LP management dashboards. Fonte oficial: Enzyme Finance Vault API ou Yearn Partner Dashboard.",
+  "generated_at": "2026-08-26T15:12:09.980001+00:00",
+  "_meta": {
+    "hash": "3036a3d41538d92993f6feef070bf499a7e382ea8c70a2c072f1b20ef96f1927"
+  }
+}

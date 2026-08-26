@@ -1,0 +1,31 @@
+{
+  "method_id": "514",
+  "name": "Token launch sniper (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:01.255153+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Web3 Launch Advisory",
+      "client_type": "meme_coin_teams",
+      "avg_snipe_roi_pct": 145.0,
+      "risk_mitigation": "contract_audit_pre_launch",
+      "compliance_note": "no_financial_advice"
+    },
+    {
+      "agency": "DeFi GTM Partners",
+      "client_type": "protocol_foundations",
+      "avg_snipe_roi_pct": 68.5,
+      "risk_mitigation": "liquidity_lock_verification",
+      "compliance_note": "regulatory_safe_harbor"
+    }
+  ],
+  "schema": [
+    "agency",
+    "client_type",
+    "avg_snipe_roi_pct",
+    "risk_mitigation",
+    "compliance_note"
+  ],
+  "notes": "Variante para agências de lançamento e GTM Web3. Proxy TIER0: GitHub Search (topics: token-launch-agency, defi-gtm-tooling). Fonte oficial alvo: DexScreener launch analytics + Defined.fi new pair stats. Foco em risk assessment e client education zero-capital."
+}

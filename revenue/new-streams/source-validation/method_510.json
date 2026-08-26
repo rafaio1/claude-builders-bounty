@@ -1,0 +1,31 @@
+{
+  "method_id": "510",
+  "name": "Stablecoin peg stability monitor (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:12.546864+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Chainalysis Stable Advisory",
+      "clients_monitored": 18,
+      "reporting_standard": "SOC2_stable_audit",
+      "compliance_framework": "NYDFS_stablecoin",
+      "monthly_volume_usd": 45000000
+    },
+    {
+      "agency": "Elliptic Stable Risk",
+      "clients_monitored": 12,
+      "reporting_standard": "FCA_emi_compliance",
+      "compliance_framework": "EU_MiCA",
+      "monthly_volume_usd": 28000000
+    }
+  ],
+  "schema": [
+    "agency",
+    "clients_monitored",
+    "reporting_standard",
+    "compliance_framework",
+    "monthly_volume_usd"
+  ],
+  "notes": "Variante para consultorias oferecendo monitoring de stablecoins como serviço regulatório. Proxy TIER0: GitHub Search (topics: stablecoin-compliance-advisory, mica-stable-monitor). Fonte oficial alvo: NYDFS filings + EU MiCA regulatory texts. Foco em compliance reporting e client audit support zero-capital."
+}

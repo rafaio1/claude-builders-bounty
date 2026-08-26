@@ -1,0 +1,36 @@
+{
+  "method_id": "466",
+  "name": "DAO treasury manager (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:17:44.850746+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_dao": "FriendsWithBenefits",
+      "treasury_usd": 1200000,
+      "allocations": {
+        "events": 0.4,
+        "grants": 0.35,
+        "platform_ops": 0.25
+      },
+      "payout_cycle": "biweekly"
+    },
+    {
+      "creator_dao": "BoredApeYC DAO",
+      "treasury_usd": 3400000,
+      "allocations": {
+        "ip_licensing": 0.5,
+        "community_rewards": 0.3,
+        "legal": 0.2
+      },
+      "payout_cycle": "monthly"
+    }
+  ],
+  "schema": [
+    "creator_dao",
+    "treasury_usd",
+    "allocations",
+    "payout_cycle"
+  ],
+  "notes": "Variante para coletivos de criadores e NFT communities. Proxy TIER0: GitHub Search (topics: creator-dao-treasury, nft-community-finance). Fonte oficial alvo: DeepDAO creator rankings + Zora on-chain splits. Foco em royalty distribution e event funding sem custódia."
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "481",
+  "name": "MEV bundle simulator",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:16.806389+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "bundle_type": "sandwich",
+      "target_pool": "UniswapV3 WETH/USDC",
+      "est_profit_usd": 145.2,
+      "gas_cost_usd": 12.5,
+      "success_rate_pct": 68.5
+    },
+    {
+      "bundle_type": "backrun_arb",
+      "target_pool": "Curve stETH/ETH",
+      "est_profit_usd": 89.75,
+      "gas_cost_usd": 8.2,
+      "success_rate_pct": 82.3
+    }
+  ],
+  "schema": [
+    "bundle_type",
+    "target_pool",
+    "est_profit_usd",
+    "gas_cost_usd",
+    "success_rate_pct"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: flashbots/mev-boost, pmcgoohan/sandwich-detector). Fonte oficial alvo: Flashbots MEV-Explore + EigenPhi analytics. Zero-capital: simulação de bundles e análise de rentabilidade sem submissão real à relay."
+}

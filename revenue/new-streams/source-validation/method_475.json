@@ -1,0 +1,31 @@
+{
+  "method_id": "475",
+  "name": "Liquid staking arbitrage monitor",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:41.758211+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "stETH/ETH",
+      "dex_price": 0.9985,
+      "peg_deviation_pct": -0.15,
+      "arb_opportunity_usd": 4200,
+      "gas_estimate_gwei": 12
+    },
+    {
+      "pair": "rETH/ETH",
+      "dex_price": 1.0012,
+      "peg_deviation_pct": 0.12,
+      "arb_opportunity_usd": 1850,
+      "gas_estimate_gwei": 15
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex_price",
+    "peg_deviation_pct",
+    "arb_opportunity_usd",
+    "gas_estimate_gwei"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: lidofinance/lido-dao, rocket-pool/rocketpool-protocol). Fonte oficial alvo: Dune Analytics LST peg dashboards + Curve pool analytics. Zero-capital: monitoramento de desvio de peg e cálculo de arb sem execução on-chain."
+}

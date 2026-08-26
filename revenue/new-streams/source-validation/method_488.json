@@ -1,0 +1,34 @@
+{
+  "method_id": "488",
+  "name": "Cross-chain bridge liquidity monitor (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:54.827649+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Socket Protocol Early",
+      "focus_routes": [
+        "OPT-BASE-USDC",
+        "ARB-POLY-WETH"
+      ],
+      "min_liquidity_threshold_usd": 500000,
+      "alert_channel": "slack_webhook"
+    },
+    {
+      "startup": "Connext Network MVP",
+      "focus_routes": [
+        "GNOSIS-MAINNET-DAI",
+        "ZKSYNC-ETH-USDC"
+      ],
+      "min_liquidity_threshold_usd": 300000,
+      "alert_channel": "discord_bot"
+    }
+  ],
+  "schema": [
+    "startup",
+    "focus_routes",
+    "min_liquidity_threshold_usd",
+    "alert_channel"
+  ],
+  "notes": "Variante para startups building cross-chain infra ou dApps multi-chain. Proxy TIER0: GitHub Search (topics: cross-chain-startup, bridge-liquidity-monitor). Fonte oficial alvo: Connext explorer + Socket route analytics. Foco em threshold-based alerts para treasury ops zero-capital."
+}

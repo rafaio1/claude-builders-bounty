@@ -1,0 +1,44 @@
+{
+  "method_id": "483",
+  "name": "MEV bundle simulator (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:16.806389+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Wintermute MEV Desk",
+      "chains_active": [
+        "ethereum",
+        "arbitrum",
+        "polygon"
+      ],
+      "monthly_volume_usd": 4200000,
+      "compliance_framework": "internal_risk_policy",
+      "relay_providers": [
+        "flashbots",
+        "bloxroute"
+      ]
+    },
+    {
+      "enterprise": "Jane Street Crypto",
+      "chains_active": [
+        "ethereum",
+        "base"
+      ],
+      "monthly_volume_usd": 8900000,
+      "compliance_framework": "SEC_market_maker",
+      "relay_providers": [
+        "flashbots",
+        "titan"
+      ]
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "chains_active",
+    "monthly_volume_usd",
+    "compliance_framework",
+    "relay_providers"
+  ],
+  "notes": "Variante enterprise com desks de trading institucionais. Proxy TIER0: GitHub Search (orgs: wintermute-trading, janestreet crypto-tooling). Fonte oficial alvo: SEC market maker filings + Nansen institutional labels. Ênfase em compliance-aware MEV strategy e multi-relay orchestration zero-capital."
+}

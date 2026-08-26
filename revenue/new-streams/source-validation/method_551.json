@@ -1,0 +1,28 @@
+{
+  "method_id": "551",
+  "name": "Freelance invoice automation (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:27:17.364776+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "billing_model": "hourly_timesheet",
+      "time_tracker": "toggl_api",
+      "invoice_format": "pdf_json_dual",
+      "late_fee_auto_apply": true
+    },
+    {
+      "billing_model": "fixed_milestone",
+      "time_tracker": "github_pr_link",
+      "invoice_format": "pdf_only",
+      "late_fee_auto_apply": false
+    }
+  ],
+  "schema": [
+    "billing_model",
+    "time_tracker",
+    "invoice_format",
+    "late_fee_auto_apply"
+  ],
+  "notes": "Integração com rastreadores de tempo e repositórios para prova de trabalho automática. Proxy: GitHub Search 'dev freelance invoicing toggl github'. Fonte oficial: Toggl Track API / GitHub REST API."
+}

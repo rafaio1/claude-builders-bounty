@@ -1,0 +1,28 @@
+{
+  "method_id": "552",
+  "name": "Freelance invoice automation (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:27:17.364776+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_billing_cycle": "bi_weekly",
+      "consolidated_invoice": true,
+      "client_portal_access": "read_only",
+      "revenue_recognition": "accrual"
+    },
+    {
+      "agency_billing_cycle": "monthly",
+      "consolidated_invoice": false,
+      "client_portal_access": "full",
+      "revenue_recognition": "cash"
+    }
+  ],
+  "schema": [
+    "agency_billing_cycle",
+    "consolidated_invoice",
+    "client_portal_access",
+    "revenue_recognition"
+  ],
+  "notes": "Sistema de billing consolidado para agências com múltiplos freelancers. Proxy: GitHub Search 'agency billing consolidation platform'. Foco em reconhecimento de receita e portal do cliente."
+}

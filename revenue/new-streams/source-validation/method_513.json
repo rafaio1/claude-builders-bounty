@@ -1,0 +1,38 @@
+{
+  "method_id": "513",
+  "name": "Token launch sniper (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:34.028966+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_tool": "SnipeGuard SDK",
+      "chain_support": [
+        "ethereum",
+        "arbitrum",
+        "base"
+      ],
+      "detection_method": "mempool_pattern",
+      "false_positive_rate_pct": 2.1,
+      "open_source_license": "MIT"
+    },
+    {
+      "dev_tool": "LaunchShield Protocol",
+      "chain_support": [
+        "solana",
+        "sui"
+      ],
+      "detection_method": "tx_simulation",
+      "false_positive_rate_pct": 1.8,
+      "open_source_license": "Apache-2.0"
+    }
+  ],
+  "schema": [
+    "dev_tool",
+    "chain_support",
+    "detection_method",
+    "false_positive_rate_pct",
+    "open_source_license"
+  ],
+  "notes": "Variante para devs construindo ferramentas anti-snipe ou launch protection. Proxy TIER0: GitHub Search (orgs: snipeguard, launchshield tooling). Fonte oficial alvo: Ethereum R&D mempool research + Solana validator docs. Ênfase em detection accuracy e open-source contribution zero-capital."
+}

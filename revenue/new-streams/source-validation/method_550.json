@@ -1,0 +1,28 @@
+{
+  "method_id": "550",
+  "name": "Freelance invoice automation (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:27:17.364776+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_type": "patreon_podcaster",
+      "payout_schedule": "monthly_net15",
+      "tax_form_auto": "1099_nec",
+      "currency": "USD"
+    },
+    {
+      "creator_type": "ko_fi_artist",
+      "payout_schedule": "per_delivery",
+      "tax_form_auto": "w8ben",
+      "currency": "EUR"
+    }
+  ],
+  "schema": [
+    "creator_type",
+    "payout_schedule",
+    "tax_form_auto",
+    "currency"
+  ],
+  "notes": "Automação fiscal para criadores que recebem de múltiplas plataformas. Proxy: GitHub Search 'creator tax invoice generator'. Zero-capital: templates locais + lógica fiscal pública."
+}

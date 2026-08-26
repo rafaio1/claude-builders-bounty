@@ -1,0 +1,39 @@
+{
+  "method_id": "477",
+  "name": "Liquid staking arbitrage monitor (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:41.758211+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Franklin Templeton OnChain",
+      "lst_portfolio_usd": 85000000,
+      "pairs_monitored": [
+        "stETH",
+        "rETH",
+        "cbETH"
+      ],
+      "execution_venue": "cowswap_institutional",
+      "compliance_log": "SEC_13F"
+    },
+    {
+      "enterprise": "BlackRock BUIDL Fund",
+      "lst_portfolio_usd": 420000000,
+      "pairs_monitored": [
+        "stETH",
+        "wstETH",
+        "mETH"
+      ],
+      "execution_venue": "wintermute_otc",
+      "compliance_log": "CFTC_exempt"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "lst_portfolio_usd",
+    "pairs_monitored",
+    "execution_venue",
+    "compliance_log"
+  ],
+  "notes": "Variante enterprise com portfolios institucionais de LSTs. Proxy TIER0: GitHub Search (orgs: franklintempleton-onchain, blackrock-buidl tooling). Fonte oficial alvo: Nansen Institutional + SEC EDGAR filings. Ênfase em compliance-aware arb monitoring e OTC execution tracking zero-capital."
+}

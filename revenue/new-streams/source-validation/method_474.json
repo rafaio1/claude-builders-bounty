@@ -1,0 +1,37 @@
+{
+  "method_id": "474",
+  "name": "Yield aggregator optimizer (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:23.290274+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency": "Consensys Mesh Treasury",
+      "pool_size_usd": 3200000,
+      "strategies": [
+        "aave_v3_supply",
+        "compound_v3_lend"
+      ],
+      "blended_apy": 0.054,
+      "client_reporting": "monthly_pdf"
+    },
+    {
+      "agency": "Alchemy Platform Fund",
+      "pool_size_usd": 5800000,
+      "strategies": [
+        "morpho_optimizer",
+        "euler_v2_lend"
+      ],
+      "blended_apy": 0.062,
+      "client_reporting": "realtime_dashboard"
+    }
+  ],
+  "schema": [
+    "agency",
+    "pool_size_usd",
+    "strategies",
+    "blended_apy",
+    "client_reporting"
+  ],
+  "notes": "Variante para Web3 service agencies com float operacional. Proxy TIER0: GitHub Search (topics: web3-agency-treasury, defi-float-management). Fonte oficial alvo: DeFi Pulse institutional + Nansen agency labels. Foco em liquid yield strategies compatíveis com payroll cycles."
+}

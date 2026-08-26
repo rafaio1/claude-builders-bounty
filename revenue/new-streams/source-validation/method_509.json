@@ -1,0 +1,38 @@
+{
+  "method_id": "509",
+  "name": "Stablecoin peg stability monitor (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:12.546864+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_group": "MakerDAO Devs",
+      "stables_monitored": [
+        "DAI",
+        "USDS"
+      ],
+      "monitoring_stack": "grafana_prometheus",
+      "open_source_tool": "makerdao/peg-tracker",
+      "alert_threshold_bps": 25
+    },
+    {
+      "dev_group": "L2Beat Research",
+      "stables_monitored": [
+        "USDC",
+        "USDT",
+        "DAI"
+      ],
+      "monitoring_stack": "dune_alerts",
+      "open_source_tool": "l2beat/stable-dashboard",
+      "alert_threshold_bps": 30
+    }
+  ],
+  "schema": [
+    "dev_group",
+    "stables_monitored",
+    "monitoring_stack",
+    "open_source_tool",
+    "alert_threshold_bps"
+  ],
+  "notes": "Variante para protocol devs e research collectives mantendo observabilidade de stablecoins. Proxy TIER0: GitHub Search (orgs: makerdao, l2beat stable-tooling). Fonte oficial alvo: MakerDAO governance forums + L2Beat risk assessments. Ênfase em tooling open-source e documentação pública zero-capital."
+}

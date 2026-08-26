@@ -1,0 +1,28 @@
+{
+  "method_id": "554",
+  "name": "Freelance contract generator (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:27:40.178156+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_stage": "seed_funded",
+      "equity_compensation": true,
+      "vesting_schedule_months": 48,
+      "cliff_months": 12
+    },
+    {
+      "startup_stage": "bootstrapped",
+      "equity_compensation": false,
+      "payment_terms_net_days": 30,
+      "termination_notice_days": 7
+    }
+  ],
+  "schema": [
+    "startup_stage",
+    "equity_compensation",
+    "vesting_schedule_months",
+    "cliff_months"
+  ],
+  "notes": "Contratos adaptados para realidade de startups com equity e vesting. Proxy: GitHub Search 'startup freelancer equity agreement'. Fonte oficial: YC SAFE docs / Cooley GO templates."
+}

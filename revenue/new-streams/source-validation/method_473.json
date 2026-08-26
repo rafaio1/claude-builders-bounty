@@ -1,0 +1,34 @@
+{
+  "method_id": "473",
+  "name": "Yield aggregator optimizer (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:23.290274+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_collective": "LlamaPay Treasury",
+      "pool": "DAI-USDC",
+      "apy_net": 0.048,
+      "automation": "yearn_v3_stepper",
+      "audit_status": "certik_verified",
+      "multisig_threshold": "3/5"
+    },
+    {
+      "dev_collective": "Rotki DAO Fund",
+      "pool": "ETH-STETH",
+      "apy_net": 0.039,
+      "automation": "cowswap_rebalance",
+      "audit_status": "openzeppelin_reviewed",
+      "multisig_threshold": "4/7"
+    }
+  ],
+  "schema": [
+    "dev_collective",
+    "pool",
+    "apy_net",
+    "automation",
+    "audit_status",
+    "multisig_threshold"
+  ],
+  "notes": "Variante para developer DAOs e open-source collectives. Proxy TIER0: GitHub Search (orgs: rotki, llamapay treasury-tooling). Fonte oficial alvo: Gitcoin treasury reports + Protocol Guild allocations. Ênfase em audit-first strategies e multisig governance zero-capital."
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "512",
+  "name": "Token launch sniper (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:34.028966+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_project": "ArtistNFT Drop",
+      "chain": "zora",
+      "launch_type": "fair_launch",
+      "bot_protection": "allowlist_only",
+      "est_community_capture_pct": 78.0
+    },
+    {
+      "creator_project": "MusicDAO Token",
+      "chain": "optimism",
+      "launch_type": "bonding_curve",
+      "bot_protection": "captcha_verify",
+      "est_community_capture_pct": 65.5
+    }
+  ],
+  "schema": [
+    "creator_project",
+    "chain",
+    "launch_type",
+    "bot_protection",
+    "est_community_capture_pct"
+  ],
+  "notes": "Variante para criadores lançando tokens comunitários. Proxy TIER0: GitHub Search (topics: creator-token-launch, fair-launch-mechanism). Fonte oficial alvo: Zora network stats + Optimism ecosystem dashboard. Foco em proteção contra bots e captura de valor comunitário zero-capital."
+}

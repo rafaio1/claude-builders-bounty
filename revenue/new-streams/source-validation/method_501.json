@@ -1,0 +1,31 @@
+{
+  "method_id": "501",
+  "name": "On-chain credit scoring engine (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:13.512876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "BlockFi Institutional",
+      "portfolio_size_usd": 250000000,
+      "scoring_model": "hybrid_onchain_offchain",
+      "regulatory_framework": "SEC_RIA",
+      "audit_frequency": "quarterly"
+    },
+    {
+      "enterprise": "Ledn Treasury Lending",
+      "portfolio_size_usd": 180000000,
+      "scoring_model": "cashflow_based",
+      "regulatory_framework": "OSFI_canada",
+      "audit_frequency": "monthly"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "portfolio_size_usd",
+    "scoring_model",
+    "regulatory_framework",
+    "audit_frequency"
+  ],
+  "notes": "Variante enterprise com portfolios institucionais de crédito. Proxy TIER0: GitHub Search (orgs: blockfi-institutional, ledn-lending risk-tooling). Fonte oficial alvo: SEC filings + OSFI regulatory reports. Ênfase em compliance-aware underwriting zero-capital."
+}

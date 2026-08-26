@@ -1,0 +1,31 @@
+{
+  "method_id": "505",
+  "name": "Stablecoin peg stability monitor",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:53.224977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "stablecoin": "USDC",
+      "chain": "ethereum",
+      "peg_deviation_bps": 1.2,
+      "liquidity_depth_usd": 450000000,
+      "depeg_alert_threshold_bps": 5
+    },
+    {
+      "stablecoin": "DAI",
+      "chain": "arbitrum",
+      "peg_deviation_bps": 3.8,
+      "liquidity_depth_usd": 85000000,
+      "depeg_alert_threshold_bps": 10
+    }
+  ],
+  "schema": [
+    "stablecoin",
+    "chain",
+    "peg_deviation_bps",
+    "liquidity_depth_usd",
+    "depeg_alert_threshold_bps"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: makerdao/peg-stability-module, circlefin/usdc-contracts). Fonte oficial alvo: DeFiLlama stablecoins + Dune Analytics peg dashboards. Zero-capital: monitoramento de estabilidade e alertas sem execução de arbitragem."
+}

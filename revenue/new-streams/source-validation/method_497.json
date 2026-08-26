@@ -1,0 +1,31 @@
+{
+  "method_id": "497",
+  "name": "Gas price prediction oracle (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:20:52.748702+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_group": "Optimism Collective",
+      "chain": "optimism",
+      "optimization_target": "l1_posting",
+      "model_type": "time_series_arima",
+      "open_source_tool": "op-gas-tracker"
+    },
+    {
+      "dev_group": "Arbitrum DAO Devs",
+      "chain": "arbitrum",
+      "optimization_target": "retryable_ticket",
+      "model_type": "random_forest",
+      "open_source_tool": "arb-gas-estimator"
+    }
+  ],
+  "schema": [
+    "dev_group",
+    "chain",
+    "optimization_target",
+    "model_type",
+    "open_source_tool"
+  ],
+  "notes": "Variante para L2 dev teams otimizando posting costs. Proxy TIER0: GitHub Search (orgs: ethereum-optimism, offchainlabs gas-tooling). Fonte oficial alvo: L2Beat cost dashboards + Rollup economics research. Ênfase em tooling open-source e modelagem transparente zero-capital."
+}

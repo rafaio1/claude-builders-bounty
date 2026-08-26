@@ -1,0 +1,35 @@
+{
+  "method_id": "544",
+  "name": "Freelance rate calculator bot (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:26:43.098258+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_vertical": "twitch_streamer",
+      "monetization_mix": [
+        "subs",
+        "donations",
+        "merch"
+      ],
+      "hourly_equiv_usd": 35,
+      "platform_cut_pct": 50
+    },
+    {
+      "creator_vertical": "newsletter_writer",
+      "monetization_mix": [
+        "paid_subs",
+        "sponsorships"
+      ],
+      "hourly_equiv_usd": 85,
+      "platform_cut_pct": 10
+    }
+  ],
+  "schema": [
+    "creator_vertical",
+    "monetization_mix",
+    "hourly_equiv_usd",
+    "platform_cut_pct"
+  ],
+  "notes": "Calculadora de taxa horária efetiva para criadores que vendem serviços complementares. Proxy: GitHub Search 'creator economy rate calc'. Zero-capital: estimativa baseada em dados públicos de plataformas."
+}

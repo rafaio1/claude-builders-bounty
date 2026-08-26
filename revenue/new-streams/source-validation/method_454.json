@@ -1,0 +1,31 @@
+{
+  "method_id": "454",
+  "name": "LP position manager (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_token": "ARTIST_V1",
+      "pool_type": "uniswap_v3",
+      "auto_rebalance_enabled": true,
+      "fee_tier_bps": 30
+    },
+    {
+      "creator_token": "MUSIC_NFT_LP",
+      "pool_type": "aerodrome",
+      "auto_rebalance_enabled": false,
+      "fee_tier_bps": 5
+    }
+  ],
+  "schema": [
+    "creator_token",
+    "pool_type",
+    "auto_rebalance_enabled",
+    "fee_tier_bps"
+  ],
+  "notes": "Variante para criadores gerenciando liquidez de social tokens/NFTs. Foca em automação e escolha de fee tiers. Proxy TIER0 via repositórios de creator-economy LP bots. Fonte oficial: Uniswap V3 Position Manager docs ou Aerodrome Finance.",
+  "generated_at": "2026-08-26T15:12:09.980001+00:00",
+  "_meta": {
+    "hash": "24e3fe539d0bd4aab3b4e49dba91403b92ed8ab2ec24abd273471f3f20ef6774"
+  }
+}

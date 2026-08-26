@@ -1,0 +1,37 @@
+{
+  "method_id": "500",
+  "name": "On-chain credit scoring engine (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:13.512876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Goldfinch Protocol",
+      "borrower_type": "emerging_market_fintech",
+      "avg_score_threshold": 720,
+      "default_rate_pct": 1.2,
+      "data_providers": [
+        "centrifuge",
+        "maple"
+      ]
+    },
+    {
+      "startup": "TrueFi Lending",
+      "borrower_type": "institutional_sme",
+      "avg_score_threshold": 680,
+      "default_rate_pct": 0.8,
+      "data_providers": [
+        "credora",
+        "spectral"
+      ]
+    }
+  ],
+  "schema": [
+    "startup",
+    "borrower_type",
+    "avg_score_threshold",
+    "default_rate_pct",
+    "data_providers"
+  ],
+  "notes": "Variante para lending protocols em fase inicial. Proxy TIER0: GitHub Search (topics: defi-credit-scoring, underwriting-startup). Fonte oficial alvo: Goldfinch borrower reports + TrueFi risk dashboards. Foco em calibração de thresholds zero-capital."
+}

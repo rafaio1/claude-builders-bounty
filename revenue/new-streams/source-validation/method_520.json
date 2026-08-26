@@ -1,0 +1,28 @@
+{
+  "method_id": "520",
+  "name": "Token launch sniper (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:05.401876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_alias": "artblock_minter",
+      "target_platform": "foundation_app",
+      "snipe_strategy": "new_drop_monitor",
+      "gas_limit_gwei": 45
+    },
+    {
+      "creator_alias": "music_nft_dao",
+      "target_platform": "sound_xyz",
+      "snipe_strategy": "allowlist_precheck",
+      "gas_limit_gwei": 30
+    }
+  ],
+  "schema": [
+    "creator_alias",
+    "target_platform",
+    "snipe_strategy",
+    "gas_limit_gwei"
+  ],
+  "notes": "Foco em criadores NFT que buscam automatizar a aquisição de seus próprios drops ou de parceiros. Proxy: GitHub Search 'nft mint sniper creator'. Fonte oficial: Foundation/Sound.xyz docs + Etherscan gas tracker."
+}

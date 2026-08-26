@@ -1,0 +1,34 @@
+{
+  "method_id": "472",
+  "name": "Yield aggregator optimizer (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:23.290274+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "PleasrDAO Treasury",
+      "pool": "USDC-DAI",
+      "apy_base": 0.038,
+      "apy_boosted": 0.055,
+      "platform": "arrakis_finance",
+      "withdrawal_lock_days": 7
+    },
+    {
+      "creator": "SquiggleDAO Fund",
+      "pool": "WETH-USDC",
+      "apy_base": 0.042,
+      "apy_boosted": 0.061,
+      "platform": "gamma_strategies",
+      "withdrawal_lock_days": 3
+    }
+  ],
+  "schema": [
+    "creator",
+    "pool",
+    "apy_base",
+    "apy_boosted",
+    "platform",
+    "withdrawal_lock_days"
+  ],
+  "notes": "Variante para artistas e colecionadores NFT com treasury ocioso. Proxy TIER0: GitHub Search (topics: nft-dao-yield, creator-treasury-defi). Fonte oficial alvo: Zora treasury dashboards + Sound.xyz analytics. Foco em low-complexity yield sem risco de impermanent loss severo."
+}

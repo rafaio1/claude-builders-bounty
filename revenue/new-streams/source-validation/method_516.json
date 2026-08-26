@@ -1,0 +1,37 @@
+{
+  "method_id": "516",
+  "name": "Presale bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:23:01.255153+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "LaunchPad Analytics",
+      "focus_platforms": [
+        "polkastarter",
+        "daomaker"
+      ],
+      "tracking_metric": "whitelist_win_rate",
+      "avg_win_rate_pct": 18.5,
+      "data_source": "on_chain_scraping"
+    },
+    {
+      "startup": "TokenSale Tracker",
+      "focus_platforms": [
+        "seedify",
+        "gamefi_starter"
+      ],
+      "tracking_metric": "roi_at_tge",
+      "avg_roi_pct": 2.8,
+      "data_source": "api_aggregation"
+    }
+  ],
+  "schema": [
+    "startup",
+    "focus_platforms",
+    "tracking_metric",
+    "avg_win_rate_pct",
+    "data_source"
+  ],
+  "notes": "Variante para startups de analytics focadas em presales. Proxy TIER0: GitHub Search (topics: presale-analytics-startup, ido-tracker). Fonte oficial alvo: DAO Maker stats + Seedify launch reports. Foco em data aggregation e metric tracking zero-capital."
+}

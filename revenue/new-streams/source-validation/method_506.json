@@ -1,0 +1,37 @@
+{
+  "method_id": "506",
+  "name": "Stablecoin peg stability monitor (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:53.224977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "Gnosis Pay Treasury",
+      "stables_held": [
+        "EURe",
+        "USDC"
+      ],
+      "max_depeg_tolerance_pct": 0.5,
+      "rebalance_trigger": "threshold_breach",
+      "monthly_volatility_savings_usd": 280
+    },
+    {
+      "startup": "Celo Mobile Fund",
+      "stables_held": [
+        "cUSD",
+        "cEUR"
+      ],
+      "max_depeg_tolerance_pct": 1.0,
+      "rebalance_trigger": "epoch_daily",
+      "monthly_volatility_savings_usd": 150
+    }
+  ],
+  "schema": [
+    "startup",
+    "stables_held",
+    "max_depeg_tolerance_pct",
+    "rebalance_trigger",
+    "monthly_volatility_savings_usd"
+  ],
+  "notes": "Variante para startups Web3 com treasury em stablecoins regionais. Proxy TIER0: GitHub Search (topics: stablecoin-treasury-startup, regional-stable-monitor). Fonte oficial alvo: Celo reserve dashboards + Gnosis analytics. Foco em tolerância a desvio e rebalancing passivo zero-capital."
+}

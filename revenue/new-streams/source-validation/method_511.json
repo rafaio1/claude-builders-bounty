@@ -1,0 +1,34 @@
+{
+  "method_id": "511",
+  "name": "Token launch sniper",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:22:34.028966+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "token": "PEPE2_LAUNCH",
+      "chain": "ethereum",
+      "snipe_latency_ms": 420,
+      "est_roi_pct": 185.0,
+      "gas_strategy": "bribe_priority",
+      "risk_level": "high"
+    },
+    {
+      "token": "MEME_AI_NEW",
+      "chain": "base",
+      "snipe_latency_ms": 180,
+      "est_roi_pct": 92.5,
+      "gas_strategy": "fast_lane",
+      "risk_level": "medium"
+    }
+  ],
+  "schema": [
+    "token",
+    "chain",
+    "snipe_latency_ms",
+    "est_roi_pct",
+    "gas_strategy",
+    "risk_level"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos: maestro-sniper, banana-gun-bot). Fonte oficial alvo: DexScreener new pairs + Defined.fi launch analytics. Zero-capital: simulação de sniping e análise de latência sem execução real."
+}

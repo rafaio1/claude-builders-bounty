@@ -1,0 +1,35 @@
+{
+  "method_id": "522",
+  "name": "Token launch sniper (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:05.401876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_name": "LaunchPad Partners",
+      "client_count": 12,
+      "multi_chain_support": [
+        "solana",
+        "base",
+        "eth"
+      ],
+      "reporting_dashboard": "grafana"
+    },
+    {
+      "agency_name": "DeFi Growth Labs",
+      "client_count": 5,
+      "multi_chain_support": [
+        "arbitrum",
+        "optimism"
+      ],
+      "reporting_dashboard": "dune_custom"
+    }
+  ],
+  "schema": [
+    "agency_name",
+    "client_count",
+    "multi_chain_support",
+    "reporting_dashboard"
+  ],
+  "notes": "Modelo B2B onde agências oferecem sniping como serviço white-label. Proxy: GitHub Search 'crypto launch agency dashboard'. Fonte oficial: Dune Analytics API / Grafana provisioning docs."
+}

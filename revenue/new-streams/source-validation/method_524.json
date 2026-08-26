@@ -1,0 +1,28 @@
+{
+  "method_id": "524",
+  "name": "Presale bot (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:24.448056+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup_project": "DeFi Yield Agg",
+      "whitelist_strategy": "gitcoin_passport_score",
+      "gas_optimization": "eip1559_dynamic",
+      "budget_usd": 0
+    },
+    {
+      "startup_project": "NFT Marketplace V2",
+      "whitelist_strategy": "discord_role_check",
+      "gas_optimization": "batch_mint_calldata",
+      "budget_usd": 0
+    }
+  ],
+  "schema": [
+    "startup_project",
+    "whitelist_strategy",
+    "gas_optimization",
+    "budget_usd"
+  ],
+  "notes": "Foco em startups que precisam garantir alocação em IDOs estratégicos sem capital para gas wars. Proxy: GitHub Search 'ido whitelist bot startup'. Fonte oficial: Gitcoin Passport API / Discord.js + Alchemy Gas Estimator."
+}

@@ -1,0 +1,28 @@
+{
+  "method_id": "521",
+  "name": "Token launch sniper (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:24:05.401876+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_stack": "rust_solana",
+      "mempool_provider": "jito_labs",
+      "simulation_mode": true,
+      "profit_threshold_bps": 150
+    },
+    {
+      "dev_stack": "typescript_evm",
+      "mempool_provider": "bloxroute",
+      "simulation_mode": true,
+      "profit_threshold_bps": 200
+    }
+  ],
+  "schema": [
+    "dev_stack",
+    "mempool_provider",
+    "simulation_mode",
+    "profit_threshold_bps"
+  ],
+  "notes": "Variação técnica para devs integrarem snipers em seus próprios toolchains. Proxy: GitHub Search 'solana jito sniper rust' / 'evm bloxroute ts'. Zero-capital via simulação local de bundles."
+}

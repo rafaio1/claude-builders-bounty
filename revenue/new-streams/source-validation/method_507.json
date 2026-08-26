@@ -1,0 +1,38 @@
+{
+  "method_id": "507",
+  "name": "Stablecoin peg stability monitor (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:21:53.224977+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "PayPal PYUSD Ops",
+      "stables_monitored": [
+        "PYUSD",
+        "USDC",
+        "USDT"
+      ],
+      "total_volume_30d_usd": 1200000000,
+      "compliance_log": "NYDFS_stablecoin",
+      "alert_infrastructure": "pagerduty_enterprise"
+    },
+    {
+      "enterprise": "Stripe Treasury Stable",
+      "stables_monitored": [
+        "USDC",
+        "EURC"
+      ],
+      "total_volume_30d_usd": 850000000,
+      "compliance_log": "FCA_emi",
+      "alert_infrastructure": "opsgenie_financial"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "stables_monitored",
+    "total_volume_30d_usd",
+    "compliance_log",
+    "alert_infrastructure"
+  ],
+  "notes": "Variante enterprise com volumes massivos de stablecoins reguladas. Proxy TIER0: GitHub Search (orgs: paypal-crypto, stripe-treasury stable-tooling). Fonte oficial alvo: NYDFS filings + FCA register. Ênfase em compliance-aware monitoring e incident response zero-capital."
+}

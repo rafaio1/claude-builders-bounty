@@ -1,0 +1,31 @@
+{
+  "method_id": "476",
+  "name": "Liquid staking arbitrage monitor (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:18:41.758211+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "startup": "StakeWise Treasury",
+      "lst_held": "osETH",
+      "peg_alert_threshold_pct": 0.5,
+      "rebalance_tool": "cowswap_twap",
+      "monthly_savings_est_usd": 320
+    },
+    {
+      "startup": "Swell Network Fund",
+      "lst_held": "swETH",
+      "peg_alert_threshold_pct": 0.8,
+      "rebalance_tool": "paraswap_limit_order",
+      "monthly_savings_est_usd": 180
+    }
+  ],
+  "schema": [
+    "startup",
+    "lst_held",
+    "peg_alert_threshold_pct",
+    "rebalance_tool",
+    "monthly_savings_est_usd"
+  ],
+  "notes": "Variante para startups Web3 com exposure a LSTs. Proxy TIER0: GitHub Search (topics: lst-arb-startup, liquid-staking-treasury). Fonte oficial alvo: EigenLayer ecosystem dashboards + StakeWise analytics. Foco em alertas de peg e rebalancing passivo zero-capital."
+}

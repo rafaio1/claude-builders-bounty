@@ -1,0 +1,31 @@
+{
+  "method_id": "489",
+  "name": "Cross-chain bridge liquidity monitor (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:19:54.827649+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "enterprise": "Circle CCTP Treasury",
+      "routes_monitored": 24,
+      "total_volume_30d_usd": 850000000,
+      "compliance_log": "SOC2_bridge_audit",
+      "execution_api": "circle_cctp_sdk"
+    },
+    {
+      "enterprise": "Wormhole Institutional Desk",
+      "routes_monitored": 48,
+      "total_volume_30d_usd": 1200000000,
+      "compliance_log": "FINRA_cross_chain",
+      "execution_api": "wormhole_ntt_api"
+    }
+  ],
+  "schema": [
+    "enterprise",
+    "routes_monitored",
+    "total_volume_30d_usd",
+    "compliance_log",
+    "execution_api"
+  ],
+  "notes": "Variante enterprise com volumes institucionais cross-chain. Proxy TIER0: GitHub Search (orgs: circle-cctp, wormhole-foundation institutional-tooling). Fonte oficial alvo: SEC filings + Nansen bridge flows. Ênfase em compliance-aware routing e volume reconciliation zero-capital."
+}
