@@ -1,0 +1,31 @@
+{
+  "method_id": "287",
+  "name": "Sentiment analysis API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:09.409817+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "facebook/react",
+      "issue_id": 28451,
+      "sentiment_score": 0.45,
+      "label": "constructive",
+      "text_snippet": "Great work on the new compiler..."
+    },
+    {
+      "repo": "vercel/next.js",
+      "issue_id": 62100,
+      "sentiment_score": -0.67,
+      "label": "frustrated",
+      "text_snippet": "Breaking change in v14 without migration guide..."
+    }
+  ],
+  "schema": [
+    "repo",
+    "issue_id",
+    "sentiment_score",
+    "label",
+    "text_snippet"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: GitHub REST API issues/comments endpoint + NLP model próprio para developer sentiment."
+}

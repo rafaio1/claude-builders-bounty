@@ -1,0 +1,34 @@
+{
+  "method_id": "288",
+  "name": "Sentiment analysis API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:09.409823+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "retail_brand_x",
+      "campaign": "summer_sale_2026",
+      "sentiment_score": 0.91,
+      "label": "very_positive",
+      "mentions": 12400,
+      "platform": "instagram"
+    },
+    {
+      "client": "fintech_startup_y",
+      "campaign": "app_launch_q3",
+      "sentiment_score": 0.12,
+      "label": "mixed",
+      "mentions": 8700,
+      "platform": "twitter"
+    }
+  ],
+  "schema": [
+    "client",
+    "campaign",
+    "sentiment_score",
+    "label",
+    "mentions",
+    "platform"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Brandwatch / Sprinklr API para monitoring de campanhas multi-plataforma com agregação de sentimento por cliente."
+}

@@ -1,0 +1,31 @@
+{
+  "method_id": "286",
+  "name": "Sentiment analysis API (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:09:09.409786+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "platform": "youtube",
+      "video_id": "dQw4w9WgXcQ",
+      "sentiment_score": 0.82,
+      "label": "positive",
+      "comments_analyzed": 1500
+    },
+    {
+      "platform": "tiktok",
+      "video_id": "7106594312292453675",
+      "sentiment_score": -0.15,
+      "label": "neutral",
+      "comments_analyzed": 3200
+    }
+  ],
+  "schema": [
+    "platform",
+    "video_id",
+    "sentiment_score",
+    "label",
+    "comments_analyzed"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: YouTube Data API v3 / TikTok Research API para sentiment scoring de comentários em vídeos de criadores."
+}
