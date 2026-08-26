@@ -1,0 +1,31 @@
+{
+  "method_id": "651",
+  "name": "Localization engineering (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:43:14.160098+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "corp_id": "ent_771",
+      "locales_supported": 42,
+      "translation_memory_size_mb": 850,
+      "machine_translation_post_edit": true,
+      "vendor_count": 5
+    },
+    {
+      "corp_id": "ent_220",
+      "locales_supported": 28,
+      "translation_memory_size_mb": 420,
+      "machine_translation_post_edit": false,
+      "vendor_count": 3
+    }
+  ],
+  "schema": [
+    "corp_id",
+    "locales_supported",
+    "translation_memory_size_mb",
+    "machine_translation_post_edit",
+    "vendor_count"
+  ],
+  "notes": "Gestão de TM, MTPE e múltiplos vendors. Fonte oficial alvo: GILT/TAUS enterprise frameworks. Proxy TIER0: GitHub Search API para scripts de TMX alignment e quality checks."
+}

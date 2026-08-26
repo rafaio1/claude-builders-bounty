@@ -1,0 +1,41 @@
+{
+  "method_id": "649",
+  "name": "Localization engineering",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:43:14.160098+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "project_id": "loc_8821",
+      "source_lang": "en",
+      "target_langs": [
+        "es",
+        "pt",
+        "ja"
+      ],
+      "string_count": 4500,
+      "framework": "i18next",
+      "automation_level": "ci_cd"
+    },
+    {
+      "project_id": "loc_3390",
+      "source_lang": "en",
+      "target_langs": [
+        "de",
+        "fr"
+      ],
+      "string_count": 1200,
+      "framework": "react-intl",
+      "automation_level": "manual_export"
+    }
+  ],
+  "schema": [
+    "project_id",
+    "source_lang",
+    "target_langs",
+    "string_count",
+    "framework",
+    "automation_level"
+  ],
+  "notes": "Engenharia de localização geral. Fonte oficial alvo: Lokalise/Phrase docs. Proxy TIER0: GitHub Search API para configs de i18n e workflows de tradução."
+}
