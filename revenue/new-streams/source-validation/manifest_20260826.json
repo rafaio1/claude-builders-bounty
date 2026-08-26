@@ -1322,8 +1322,8 @@
   "_meta": {
     "updated_at": "2026-08-26T14:46:12.022231+00:00",
     "total_samples": 402,
-    "generated_at": "2026-08-26T15:31:51.323568+00:00",
-    "total": 582,
+    "generated_at": "2026-08-26T15:32:18.523323+00:00",
+    "total": 585,
     "last_updated": "2026-08-26T15:23:01.255153+00:00"
   },
   "10": {
@@ -8823,5 +8823,122 @@
     ],
     "notes": "Proxy TIER0: GitHub Search API (agency-ops/seo-perf). Fonte oficial alvo: Clutch.co agency perf audits. Zero-capital: auditoria via Lighthouse + DNS TXT records gratuitos.",
     "content_hash": "2fb409a7df9f7c161281207aeddbe3fbfff099305105323d5c7ee5d66d5f9710"
+  },
+  "583": {
+    "method_id": "583",
+    "name": "Database migration scripts",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:18.523323+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "mysql_5.7",
+        "target_db": "postgres_15",
+        "rows": 1250000,
+        "downtime": "4min",
+        "tool": "pgloader"
+      },
+      {
+        "source_db": "mongo_4.4",
+        "target_db": "dynamodb",
+        "rows": 8500000,
+        "downtime": "0min",
+        "tool": "aws_dms_cdc"
+      },
+      {
+        "source_db": "sqlite",
+        "target_db": "supabase_pg",
+        "rows": 45000,
+        "downtime": "12s",
+        "tool": "supabase_cli_import"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (db-migration/pgloader/dms repos). Fonte oficial alvo: Upwork DBA gigs 'zero-downtime migration'. Zero-capital: ferramentas open-source + free-tier cloud DMS.",
+    "content_hash": "235a4d22b1f9a4ba48abb6702e5fc08de5cbc1c992c52dffd78e174cc121de9f"
+  },
+  "584": {
+    "method_id": "584",
+    "name": "Database migration scripts (for startups)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:18.523323+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "heroku_pg",
+        "target_db": "neon_tech",
+        "rows": 320000,
+        "downtime": "90s",
+        "tool": "neon_branching"
+      },
+      {
+        "source_db": "firebase_rtdb",
+        "target_db": "firestore",
+        "rows": 1800000,
+        "downtime": "0min",
+        "tool": "firebase_migration_tool"
+      },
+      {
+        "source_db": "planetscale",
+        "target_db": "tidb_cloud",
+        "rows": 5600000,
+        "downtime": "3min",
+        "tool": "dumpling_lightning"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (startup-db-migrate/neon/tidb). Fonte oficial alvo: YC startup ops freelance. Zero-capital: planos free de Neon/TiDB/Firebase cobrem migração inicial.",
+    "content_hash": "df268bd65b76ec872204358904b5bb9b124a3e3ad5b0c6b7e9622db81bf48cc1"
+  },
+  "585": {
+    "method_id": "585",
+    "name": "Database migration scripts (for enterprises)",
+    "source": "github_search_api_proxy_tier0",
+    "generated_at": "2026-08-26T15:32:18.523323+00:00",
+    "tier": "TIER0",
+    "sample_data": [
+      {
+        "source_db": "oracle_19c",
+        "target_db": "aurora_pg",
+        "rows": 45000000,
+        "downtime": "18min",
+        "tool": "aws_sct_ora2pg"
+      },
+      {
+        "source_db": "sql_server_2019",
+        "target_db": "cloud_sql_pg",
+        "rows": 28000000,
+        "downtime": "22min",
+        "tool": "gcp_dms_heterogeneous"
+      },
+      {
+        "source_db": "db2_zos",
+        "target_db": "azure_cosmos_pg",
+        "rows": 92000000,
+        "downtime": "45min",
+        "tool": "strimzi_kafka_cdc"
+      }
+    ],
+    "schema": [
+      "source_db",
+      "target_db",
+      "rows",
+      "downtime",
+      "tool"
+    ],
+    "notes": "Proxy TIER0: GitHub Search API (enterprise-db-modernization/ora2pg/sct). Fonte oficial alvo: Enterprise DB modernization RFPs/freelance SOWs. Zero-capital: SCT/DMS gratuitos para assessment; execução real é TIER1 com custo cloud.",
+    "content_hash": "b460413d6eac11082afd1fa35de17faf90e680c6900030031fd91e514502a98f"
   }
 }

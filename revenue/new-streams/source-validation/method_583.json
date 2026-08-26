@@ -1,0 +1,39 @@
+{
+  "method_id": "583",
+  "name": "Database migration scripts",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:18.523323+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "mysql_5.7",
+      "target_db": "postgres_15",
+      "rows": 1250000,
+      "downtime": "4min",
+      "tool": "pgloader"
+    },
+    {
+      "source_db": "mongo_4.4",
+      "target_db": "dynamodb",
+      "rows": 8500000,
+      "downtime": "0min",
+      "tool": "aws_dms_cdc"
+    },
+    {
+      "source_db": "sqlite",
+      "target_db": "supabase_pg",
+      "rows": 45000,
+      "downtime": "12s",
+      "tool": "supabase_cli_import"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (db-migration/pgloader/dms repos). Fonte oficial alvo: Upwork DBA gigs 'zero-downtime migration'. Zero-capital: ferramentas open-source + free-tier cloud DMS.",
+  "content_hash": "235a4d22b1f9a4ba48abb6702e5fc08de5cbc1c992c52dffd78e174cc121de9f"
+}

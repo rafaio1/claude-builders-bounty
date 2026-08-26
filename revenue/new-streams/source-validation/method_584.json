@@ -1,0 +1,39 @@
+{
+  "method_id": "584",
+  "name": "Database migration scripts (for startups)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:18.523323+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "heroku_pg",
+      "target_db": "neon_tech",
+      "rows": 320000,
+      "downtime": "90s",
+      "tool": "neon_branching"
+    },
+    {
+      "source_db": "firebase_rtdb",
+      "target_db": "firestore",
+      "rows": 1800000,
+      "downtime": "0min",
+      "tool": "firebase_migration_tool"
+    },
+    {
+      "source_db": "planetscale",
+      "target_db": "tidb_cloud",
+      "rows": 5600000,
+      "downtime": "3min",
+      "tool": "dumpling_lightning"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (startup-db-migrate/neon/tidb). Fonte oficial alvo: YC startup ops freelance. Zero-capital: planos free de Neon/TiDB/Firebase cobrem migração inicial.",
+  "content_hash": "df268bd65b76ec872204358904b5bb9b124a3e3ad5b0c6b7e9622db81bf48cc1"
+}

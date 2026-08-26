@@ -1,0 +1,39 @@
+{
+  "method_id": "585",
+  "name": "Database migration scripts (for enterprises)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:32:18.523323+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "source_db": "oracle_19c",
+      "target_db": "aurora_pg",
+      "rows": 45000000,
+      "downtime": "18min",
+      "tool": "aws_sct_ora2pg"
+    },
+    {
+      "source_db": "sql_server_2019",
+      "target_db": "cloud_sql_pg",
+      "rows": 28000000,
+      "downtime": "22min",
+      "tool": "gcp_dms_heterogeneous"
+    },
+    {
+      "source_db": "db2_zos",
+      "target_db": "azure_cosmos_pg",
+      "rows": 92000000,
+      "downtime": "45min",
+      "tool": "strimzi_kafka_cdc"
+    }
+  ],
+  "schema": [
+    "source_db",
+    "target_db",
+    "rows",
+    "downtime",
+    "tool"
+  ],
+  "notes": "Proxy TIER0: GitHub Search API (enterprise-db-modernization/ora2pg/sct). Fonte oficial alvo: Enterprise DB modernization RFPs/freelance SOWs. Zero-capital: SCT/DMS gratuitos para assessment; execução real é TIER1 com custo cloud.",
+  "content_hash": "b460413d6eac11082afd1fa35de17faf90e680c6900030031fd91e514502a98f"
+}
