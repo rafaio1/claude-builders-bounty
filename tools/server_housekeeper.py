@@ -261,7 +261,7 @@ def analyze_high_ticket_duplicates() -> List[dict]:
     duplicates: List[dict] = []
     if not ht.exists() or not ht.is_dir():
         return duplicates
-    seen: dict[tuple, list[dict]] = {}
+    seen: dict[int, list[dict]] = {}
     try:
         entries = sorted(ht.iterdir())
     except OSError:
@@ -275,15 +275,15 @@ def analyze_high_ticket_duplicates() -> List[dict]:
             st = p.lstat()
             if st.st_mode & 0o170000 != 0o100000:  # apenas regular files
                 continue
-            key = (p.name, st.st_size)
+            key = st.st_size
         except OSError:
             continue
-        seen.setdefault(key, []).append({"path": str(p), "mtime_ns": st.st_mtime_ns})
+        seen.setdefault(key, []).append({"path": str(p), "name": p.name, "mtime_ns": st.st_mtime_ns})
     for key, paths in seen.items():
         if len(paths) > 1:
-            name, size_bytes = key
+            size_bytes = key
             duplicates.append({
-                "name": name,
+                "name": paths[0]["name"],
                 "size_bytes": size_bytes,
                 "count": len(paths),
                 "paths": [p["path"] for p in paths[:10]],

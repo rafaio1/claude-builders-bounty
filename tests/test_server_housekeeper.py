@@ -98,29 +98,24 @@ def test_run_apply_removes_old_cache(tmp_workspace: Path):
 
 
 def test_high_ticket_duplicates_report_only(tmp_workspace: Path):
-    ht = tmp_workspace / "high-ticket" / "lotes"
+    ht = tmp_workspace / "high-ticket"
     ht.mkdir(parents=True)
-    # Duplicados reais: mesmo nome e tamanho em subdirs diferentes
-    d1 = ht / "batch1"
-    d2 = ht / "batch2"
-    d1.mkdir()
-    d2.mkdir()
-    (d1 / "data.json").write_bytes(b"dup")
-    (d2 / "data.json").write_bytes(b"dup")
+    # Duplicados no top-level: mesmo tamanho
+    (ht / "data_a.json").write_bytes(b"dup")
+    (ht / "data_b.json").write_bytes(b"dup")
     (ht / "unique.json").write_bytes(b"unique")
-    # Forca mesmo mtime para garantir chave igual
-    import os
-    ts = 1000000000
-    os.utime(d1 / "data.json", (ts, ts))
-    os.utime(d2 / "data.json", (ts, ts))
+    # Subdir deve ser ignorado pela funcao top-level only
+    sub = ht / "lotes" / "batch1"
+    sub.mkdir(parents=True)
+    (sub / "data.json").write_bytes(b"dup")
 
     dups = hk.analyze_high_ticket_duplicates()
     assert len(dups) >= 1
     assert dups[0]["count"] == 2
     assert dups[0]["proposal"].startswith("definir_retencao")
     # Arquivos permanecem
-    assert (d1 / "data.json").exists()
-    assert (d2 / "data.json").exists()
+    assert (ht / "data_a.json").exists()
+    assert (ht / "data_b.json").exists()
 
 
 def test_lock_prevents_concurrent_runs(tmp_workspace: Path):
