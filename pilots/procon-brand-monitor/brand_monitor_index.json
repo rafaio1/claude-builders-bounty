@@ -1,0 +1,74 @@
+{
+  "source": "PROCON/Consumidor.gov.br Brand Monitor (method_1482)",
+  "generated_at": "2026-08-26T20:15:28.551966+00:00",
+  "portal_check": {
+    "portal": "Consumidor.gov.br",
+    "available": true,
+    "status_code": 200,
+    "note": "Portal público SENACON/MJSP; dados abertos de reclamações"
+  },
+  "brands_monitored": 3,
+  "sample_brands": [
+    {
+      "brand": "Magazine Luiza",
+      "cnpj": "47960950000121",
+      "monitoring_status": "scaffold_ready",
+      "data_source": "consumidor.gov.br/publico/estatisticas",
+      "metrics_available": [
+        "total_reclamacoes_ultimo_ano",
+        "indice_resposta",
+        "indice_solucao",
+        "nota_consumidor",
+        "ranking_setor"
+      ],
+      "update_frequency": "diário",
+      "monetization_tier": "R$199/mês por marca",
+      "compliance": "Dados públicos agregados, LGPD não aplica a PJ"
+    },
+    {
+      "brand": "Americanas",
+      "cnpj": "00776574000156",
+      "monitoring_status": "scaffold_ready",
+      "data_source": "consumidor.gov.br/publico/estatisticas",
+      "metrics_available": [
+        "total_reclamacoes_ultimo_ano",
+        "indice_resposta",
+        "indice_solucao",
+        "nota_consumidor",
+        "ranking_setor"
+      ],
+      "update_frequency": "diário",
+      "monetization_tier": "R$199/mês por marca",
+      "compliance": "Dados públicos agregados, LGPD não aplica a PJ"
+    },
+    {
+      "brand": "Casas Bahia",
+      "cnpj": "33041260065290",
+      "monitoring_status": "scaffold_ready",
+      "data_source": "consumidor.gov.br/publico/estatisticas",
+      "metrics_available": [
+        "total_reclamacoes_ultimo_ano",
+        "indice_resposta",
+        "indice_solucao",
+        "nota_consumidor",
+        "ranking_setor"
+      ],
+      "update_frequency": "diário",
+      "monetization_tier": "R$199/mês por marca",
+      "compliance": "Dados públicos agregados, LGPD não aplica a PJ"
+    }
+  ],
+  "summary": {
+    "zero_capital": true,
+    "br_regulated_anchor": "SENACON/MJSP",
+    "pricing_currency": "BRL",
+    "estimated_payout": "R$800-4k/mês (10-20 marcas clientes)",
+    "scraping_ethics": "Delay 5s entre requests, respeita robots.txt"
+  },
+  "compliance": {
+    "lgpd_compliant": true,
+    "data_classification": "Dados públicos agregados de reclamações",
+    "commercial_use_allowed": true,
+    "auth_required": false
+  }
+}

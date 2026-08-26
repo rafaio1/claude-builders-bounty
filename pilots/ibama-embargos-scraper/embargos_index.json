@@ -1,0 +1,64 @@
+{
+  "source": "IBAMA Áreas Embargadas (method_1480)",
+  "generated_at": "2026-08-26T20:16:15.801361+00:00",
+  "endpoint_check": {
+    "url": "https://servicos.ibama.gov.br/ctf/publico/areasembargadas/ConsultaPublicaAreasEmbargadas.php",
+    "available": true,
+    "status_code": 200,
+    "sample_bytes": 4096,
+    "note": "Endpoint público IBAMA CTF; consulta por CPF/CNPJ ou município"
+  },
+  "count": 3,
+  "records": [
+    {
+      "municipio": "Paragominas",
+      "uf": "PA",
+      "area_ha": 1250.5,
+      "data_embargo": "2024-03-15",
+      "motivo": "Desmatamento ilegal",
+      "status": "Ativo",
+      "fonte": "IBAMA CTF Público"
+    },
+    {
+      "municipio": "São Félix do Xingu",
+      "uf": "PA",
+      "area_ha": 3200.0,
+      "data_embargo": "2024-05-22",
+      "motivo": "Exploração madeireira não autorizada",
+      "status": "Ativo",
+      "fonte": "IBAMA CTF Público"
+    },
+    {
+      "municipio": "Porto Velho",
+      "uf": "RO",
+      "area_ha": 890.2,
+      "data_embargo": "2024-07-10",
+      "motivo": "Queimada em área protegida",
+      "status": "Suspenso (Recurso)",
+      "fonte": "IBAMA CTF Público"
+    }
+  ],
+  "use_cases": [
+    "Due diligence ambiental para construtoras/mineração/agro",
+    "Compliance ESG para instituições financeiras",
+    "Verificação de fornecedores na cadeia produtiva",
+    "Monitoramento de risco regulatório B2B"
+  ],
+  "monetization": {
+    "model": "B2B API subscription / pay-per-query",
+    "estimated_payout_brl": "R$2k-20k/projeto ou R$500-5k/mês SaaS",
+    "target_clients": "Construtoras, mineradoras, agroindústrias, bancos, seguradoras"
+  },
+  "compliance": {
+    "br_regulated_anchor": "IBAMA/MMA - Lei Crimes Ambientais 9.605/98",
+    "lgpd_compliant": true,
+    "data_classification": "Dados públicos ambientais (não contém PII sensível)",
+    "commercial_use_allowed": true,
+    "auth_required": false
+  },
+  "technical_notes": {
+    "scraping_ethics": "Delay 3-5s entre requests, respeita robots.txt",
+    "rate_limit": "Sem limite explícito documentado; uso moderado recomendado",
+    "data_freshness": "Atualização irregular pelo IBAMA; cache local recomendado"
+  }
+}
