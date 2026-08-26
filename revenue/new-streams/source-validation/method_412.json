@@ -1,0 +1,31 @@
+{
+  "method_id": "412",
+  "name": "On-chain analytics dashboard (for creators)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator": "CryptoBantam",
+      "token_holders_count": 12450,
+      "nft_floor_price_eth": 0.45,
+      "royalty_volume_7d_usd": 8200
+    },
+    {
+      "creator": "PixelArtistDAO",
+      "token_holders_count": 3200,
+      "nft_floor_price_eth": 1.2,
+      "royalty_volume_7d_usd": 24500
+    }
+  ],
+  "schema": [
+    "creator",
+    "token_holders_count",
+    "nft_floor_price_eth",
+    "royalty_volume_7d_usd"
+  ],
+  "notes": "Variante para criadores NFT/social tokens. Rastreia métricas de coleção e royalties. Proxy TIER0 via OpenSea/Blur scrapers open-source no GitHub. Fonte oficial: Reservoir API ou SimpleHash.",
+  "generated_at": "2026-08-26T15:07:30.992226+00:00",
+  "_meta": {
+    "hash": "8f7657eff263c2a5caf54e043f220d45112e698b4ba25d834df108aca606cc99"
+  }
+}

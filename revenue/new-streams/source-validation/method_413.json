@@ -1,0 +1,31 @@
+{
+  "method_id": "413",
+  "name": "On-chain analytics dashboard (for developers)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "protocol": "Aave V3",
+      "smart_contract_deployments_30d": 142,
+      "audit_coverage_pct": 98.5,
+      "dev_grants_allocated_usd": 450000
+    },
+    {
+      "protocol": "Compound",
+      "smart_contract_deployments_30d": 28,
+      "audit_coverage_pct": 100.0,
+      "dev_grants_allocated_usd": 120000
+    }
+  ],
+  "schema": [
+    "protocol",
+    "smart_contract_deployments_30d",
+    "audit_coverage_pct",
+    "dev_grants_allocated_usd"
+  ],
+  "notes": "Variante dev/ecossistema. Foca em atividade de desenvolvimento e segurança. Proxy via repositórios de contract indexers e grant trackers. Fonte oficial: Etherscan Contract API + Gitcoin Grants data.",
+  "generated_at": "2026-08-26T15:07:30.992226+00:00",
+  "_meta": {
+    "hash": "e0ebb4f1e1fc83e1fa87f6f97226c3ecee16a3927f19f3019abdcb7dd9f91795"
+  }
+}

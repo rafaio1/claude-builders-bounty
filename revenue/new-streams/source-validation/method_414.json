@@ -1,0 +1,31 @@
+{
+  "method_id": "414",
+  "name": "On-chain analytics dashboard (for agencies)",
+  "source": "github_search_api",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "LayerZero Labs",
+      "cross_chain_tx_volume_24h": 4200000,
+      "partner_integrations_count": 85,
+      "marketing_roi_proxy": 2.4
+    },
+    {
+      "client": "StarkNet Foundation",
+      "cross_chain_tx_volume_24h": 1800000,
+      "partner_integrations_count": 42,
+      "marketing_roi_proxy": 1.8
+    }
+  ],
+  "schema": [
+    "client",
+    "cross_chain_tx_volume_24h",
+    "partner_integrations_count",
+    "marketing_roi_proxy"
+  ],
+  "notes": "Variante B2B para agências. Correlaciona volume on-chain com métricas de partnership/marketing. Proxy via repositórios de cross-chain analytics. Fonte oficial: LayerZero Scan API ou Wormhole Explorer.",
+  "generated_at": "2026-08-26T15:07:30.992226+00:00",
+  "_meta": {
+    "hash": "6fa18aa662b57290842f6a439c92a7b3ae172692dc7ad46d991c000bd1f9325c"
+  }
+}
