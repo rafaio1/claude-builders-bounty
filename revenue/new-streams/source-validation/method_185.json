@@ -1,0 +1,35 @@
+{
+  "method_id": "185",
+  "name": "Dashboard analytics white-label (for developers)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:53:20.935111+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "api_latency_p95",
+      "value": 142,
+      "unit": "ms",
+      "period": "24h"
+    },
+    {
+      "metric": "error_rate",
+      "value": 0.3,
+      "unit": "%",
+      "period": "24h"
+    },
+    {
+      "metric": "deployment_frequency",
+      "value": 4.2,
+      "unit": "deploys/day",
+      "period": "7d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API targeting dev-tool dashboards (Grafana templates, Datadog clones). Official sources: GitHub Actions API, Sentry SDK, AWS CloudWatch Embed. White-label for devs focuses on embeddable widgets with API-key auth. Zero-capital via static-site hosting + serverless functions free tier.",
+  "_hash": "b640945b4445c7c9979350badb0693963179c2c3f2de9cb10d32a57b63ef5331"
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "186",
+  "name": "Dashboard analytics white-label (for agencies)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:53:20.935111+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "client_retention",
+      "value": 94.1,
+      "unit": "%",
+      "period": "90d"
+    },
+    {
+      "metric": "campaign_roi",
+      "value": 3.8,
+      "unit": "x",
+      "period": "30d"
+    },
+    {
+      "metric": "billable_hours",
+      "value": 1240,
+      "unit": "hrs",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for agency reporting tools (AgencyAnalytics OSS alternatives, ReportGarden clones). Official targets: HubSpot Agency API, Google Ads Reporting, Meta Marketing API. White-label requires multi-tenant architecture + custom branding endpoint. Zero-capital path uses Notion/airtable as backend + embedded views.",
+  "_hash": "50549fcfdb93ab95dd8cdc78d72f8b60fe238e41bd2bb067a3f0cd901f3a2e8a"
+}

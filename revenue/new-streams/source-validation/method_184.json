@@ -1,0 +1,35 @@
+{
+  "method_id": "184",
+  "name": "Dashboard analytics white-label (for creators)",
+  "source": "github_search_api",
+  "generated_at": "2026-08-26T15:53:20.935111+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "metric": "subscriber_growth",
+      "value": 12.4,
+      "unit": "%",
+      "period": "30d"
+    },
+    {
+      "metric": "avg_watch_time",
+      "value": 8.7,
+      "unit": "min",
+      "period": "7d"
+    },
+    {
+      "metric": "revenue_per_mille",
+      "value": 4.2,
+      "unit": "USD",
+      "period": "30d"
+    }
+  ],
+  "schema": [
+    "metric:str",
+    "value:float",
+    "unit:str",
+    "period:str"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API for open-source creator dashboard repos (e.g., Plausible, Umami forks). Target official source: Creator platform analytics APIs (YouTube Data API v3, Twitch Helix). White-label embedding requires OAuth + iframe SDK. Zero-capital path uses self-hosted OSS backend on free-tier VPS.",
+  "_hash": "6c2d90a722677593c1fef9112c9ee857324946fc4d496e33328aa6516f3e79c7"
+}
