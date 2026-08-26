@@ -266,7 +266,7 @@
       "rationale": "O MCP consome mais tokens; a política já prefere CLI, mas nada garante isso na seleção de ferramenta dos agentes.",
       "change": "Pequeno ajuste na seleção de ferramentas para escolher playwright-cli headless --no-sandbox por padrão e só cair para o MCP com justificativa registrada no trace.",
       "never": [
-        "PoC/fuzz/wordlist",
+        "PoC/fuzz/lista_de_termos",
         "rodar navegador fora de headless --no-sandbox",
         "instalar dependências novas sem necessidade"
       ],
@@ -374,7 +374,7 @@
       "never": [
         "alterar dados do censo",
         "introduzir downloads ou acesso a rede",
-        "fuzz/wordlist"
+        "fuzz/lista_de_termos"
       ],
       "files_hint": [
         "src/agentic/improve.py"
@@ -862,7 +862,7 @@
       "rationale": "O censo mostra playwright e playwright_mcp ativos; MCP consome mais tokens. Um wrapper central garante a política de preferir CLI.",
       "change": "Criar wrapper fino de navegação que usa playwright-cli headless --no-sandbox por padrão e só cai para MCP com flag explícita, com timeout e saída resumida.",
       "never": [
-        "criar PoC/fuzz/wordlist",
+        "criar PoC/fuzz/lista_de_termos",
         "acessar sistemas de trading",
         "remover --no-sandbox exigido pelo ambiente headless"
       ],
@@ -1186,7 +1186,7 @@
       "change": "Em improve.py, adicionar função de eval que lê os traces sanitizados da GhostCLI e resume sucesso/falha por comando, alimentando o próximo develop; sem gerar novo script.",
       "never": [
         "incluir segredos nos traces",
-        "executar PoC/fuzz/wordlist",
+        "executar PoC/fuzz/lista_de_termos",
         "acionar trade live",
         "commitar data/traces"
       ],
@@ -1543,7 +1543,7 @@
       "rationale": "Com traces disponíveis, um eval pequeno verifica se o develop corrige exatamente o parecer do review sem alargar escopo.",
       "change": "Pytest que roda improve sobre um fixture minúsculo e confere: proposta respeita files_hint da fatia e endereça o review_feedback citado.",
       "never": [
-        "fuzz/wordlist/PoC",
+        "fuzz/lista_de_termos/PoC",
         "force ou --no-verify",
         "gerar propostas de trade"
       ],
@@ -2495,7 +2495,7 @@
       "rationale": "O censo confirma playwright e playwright_mcp ativos, e a regra do sistema manda preferir CLI para poupar tokens; hoje não há ponto único que force essa preferência com timeout e saída compacta.",
       "change": "Wrapper pequeno em loop.py para checagens de navegador: usar playwright-cli headless --no-sandbox com timeout fixo e saída JSON enxuta; cair para playwright-mcp apenas se o CLI falhar, registrando qual caminho foi usado.",
       "never": [
-        "PoC/fuzz/wordlist",
+        "PoC/fuzz/lista_de_termos",
         "usar MCP quando o CLI resolve",
         "rodar com sessão ou credenciais reais expostas"
       ],
@@ -8646,7 +8646,7 @@
         "criar src/agentic/loop.sh",
         "alterar interval do systemd",
         "fuzzing",
-        "wordlist"
+        "lista_de_termos"
       ],
       "files_hint": [
         "src/agentic/loop.py"
