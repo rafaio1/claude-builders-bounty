@@ -1,0 +1,25 @@
+{
+  "method_id": "924",
+  "name": "Revenda de Licenças de Software Governamental (Gov.br/SIAFI)",
+  "status": "SCAFFOLD_REJECTED",
+  "decision_timestamp": "2026-08-26T19:15:00+00:00",
+  "rejection_reason": "Modelo de negócio incompatível com zero-capital. SERPRO é empresa pública federal sem programa de revenda aberto; Softplan e IPM não expõem página de parceiros com cadastro gratuito ou modelo de comissão pura. Revenda de software governamental no Brasil exige credenciamento formal, participação em licitações (Lei 14.133/2021) e capacidade técnica comprovada — barreiras que demandam capital inicial, estrutura jurídica e histórico de contratos públicos. Sem free tier permanente ou programa de afiliados/indicação acessível via curl.",
+  "validation_evidence": {
+    "serpro_gov_br": "Portal institucional Plone; seção Downloads lista apenas ferramentas auxiliares (SAR, LianeTTS). Sem menção a programa de parceiros, revenda ou licenciamento por terceiros.",
+    "softplan_com_br_parceiros": "Página retorna HTML vazio ou JS-only; grep para parceiro/revenda/gratuito/free/cadastro retornou zero matches.",
+    "ipm_com_br_parceiros": "URL /parceiros/ redireciona para homepage institucional; conteúdo exibe apenas imagens de soluções Atende.Net. Zero menção a programa de canal, revenda ou cadastro gratuito."
+  },
+  "risks": [
+    "Barreira legal: Lei 14.133/2021 exige habilitação jurídica e regularidade fiscal para contratar com governo",
+    "Barreira comercial: Fabricantes de software gov (SERPRO, Softplan, IPM) operam com canais fechados ou vendas diretas",
+    "Barreira técnica: Sem API pública ou dataset estruturado para automação zero-capital",
+    "Risco reputacional: Atuar como intermediário não autorizado em contratos públicos pode configurar irregularidade administrativa"
+  ],
+  "next_steps": [
+    "REJECTED — não prosseguir para TIER1",
+    "Manter no audit como lição aprendida: infrastructure_reselling gov BR tipicamente exige capital e credenciamento",
+    "Continuar pipeline v29 com method_925"
+  ],
+  "source_validation_ref": "revenue/new-streams/source-validation/method_924.json",
+  "category": "infrastructure_reselling"
+}
