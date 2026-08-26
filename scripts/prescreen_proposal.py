@@ -51,19 +51,18 @@ def check_proposal(proposal: dict) -> tuple[bool, str | None]:
 
     text = json.dumps(proposal, ensure_ascii=False).lower()
 
-    # Check for zero-capital/OSS signals (but don't skip if strong capital barriers exist)
-    zero_cap_hits = [kw for kw in ZERO_CAPITAL_SIGNALS if re.search(kw, text)]
-    has_zero_cap_signals = len(zero_cap_hits) >= 2
-
     capital_hits = [kw for kw in CAPITAL_KEYWORDS if re.search(kw, text)]
     tos_hits = [kw for kw in TOS_LEGAL_KEYWORDS if re.search(kw, text)]
 
-    # Reject if BOTH capital AND tos signals present (unless zero-cap signals override)
-    # OR if capital signal is very strong (>=5 matches, even with zero-cap mentions)
-    # OR if explicit TOS blockers found
-    if len(capital_hits) >= 3 and len(tos_hits) >= 1 and not has_zero_cap_signals:
+    # Check for zero-capital/OSS signals - these override CAPITAL_STRONG but NOT CAPITAL+TOS
+    zero_cap_hits = [kw for kw in ZERO_CAPITAL_SIGNALS if re.search(kw, text)]
+    has_zero_cap_override = len(zero_cap_hits) >= 2
+
+    # Reject if BOTH capital AND tos signals present (strong evidence of paid/TOS risk)
+    if len(capital_hits) >= 2 and len(tos_hits) >= 1:
         return True, f"CAPITAL+TOS: capital_keywords={len(capital_hits)}, tos_keywords={len(tos_hits)}"
-    if len(capital_hits) >= 5:
+    # Reject on capital alone only if very strong AND no zero-cap override
+    if len(capital_hits) >= 4 and not has_zero_cap_override:
         return True, f"CAPITAL_STRONG: {len(capital_hits)} capital keyword matches"
     if tos_hits and any(kw in text for kw in ["sublicens", "proibid", "resell direct"]):
         return True, f"TOS_EXPLICIT: restricted terms found"
