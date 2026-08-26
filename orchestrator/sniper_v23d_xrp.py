@@ -1,14 +1,23 @@
 #!/usr/bin/env python3
 """V23d-v5 XRP Mean Reversion - PAPER + REAL HYBRID MODE
 Paper trading active while RSI > 30 to validate edge in real-time.
-Auto-switches to REAL orders when signal triggers AND paper WR > 40%.
+REAL orders require MANUAL APPROVAL + statistical validation (auto-promotion revoked).
 Strategy: RSI<30 + BB(20,2) Lower + Vol>SMA*0.8 | Exit: SMA20 or Stop -0.2% | Hold 2h
 """
-import ccxt, os, json, time, math, requests
+import ccxt, os, json, time, math, sys
 from datetime import datetime, timezone
 from dotenv import load_dotenv
 load_dotenv('/root/.automaton/bybit-murre.env', override=True)
 load_dotenv('/Agentic/.env', override=False)
+from pathlib import Path
+
+# Add src to path for gate import
+sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "src"))
+try:
+    from telegram_gate import notify_trade_realized, _log as gate_log
+except ImportError as e:
+    print(f"[FATAL] Cannot import telegram_gate: {e}", flush=True)
+    sys.exit(1)
 
 LOG_FILE = '/Agentic/orchestrator/v23d_xrp.log'
 LEDGER_FILE = '/Agentic/ledger.jsonl'
@@ -16,8 +25,6 @@ STATE_FILE = '/Agentic/orchestrator/v23d_state.json'
 SYMBOL = 'XRP/USDT'
 FEE_RATE = 0.0004
 CHECK_INTERVAL = 30
-TG_TOKEN = os.getenv('TELEGRAM_BOT_TOKEN')
-TG_CHAT = '8309124582'
 
 RSI_MAX = 30
 BB_PERIOD = 20
@@ -25,8 +32,6 @@ BB_MULT = 2.0
 VOL_SMA_MULT = 0.8
 STOP_PCT = 0.002
 MAX_HOLD_CANDLES = 24
-PAPER_MIN_WR_FOR_LIVE = 40.0
-PAPER_MIN_TRADES_FOR_LIVE = 3
 
 state = {
     "version": "v23d_v5",
@@ -87,95 +92,38 @@ def calc_vol_sma(volumes, period=20):
     if len(volumes) < period: return 0
     return sum(volumes[-period:]) / period
 
-def get_equity_curve(n=20):
+def send_realized_trade_via_gate(entry):
+    """Send ONLY confirmed LIVE realized trades through financial gate."""
+    if entry.get('mode') != 'LIVE':
+        return
+    net = entry.get('net_pnl')
+    if net is None or float(net) == 0:
+        return
+    
+    ts = entry.get('ts', '')
+    symbol = entry.get('symbol', SYMBOL)
+    event_id = f"trade:{symbol}:{ts}:{net}"
+    
     try:
-        entries = []
-        with open(LEDGER_FILE) as f:
-            for line in f:
-                try:
-                    e = json.loads(line.strip())
-                    if e.get('exchange') == 'bybit':
-                        entries.append(e.get('net_pnl', 0))
-                except: pass
-        recent = entries[-n:]
-        if not recent: return "No data"
-        cumulative = []
-        running = 0
-        for p in recent:
-            running += p
-            cumulative.append(running)
-        mn, mx = min(cumulative), max(cumulative)
-        rng = mx - mn if mx != mn else 0.001
-        height = 6
-        lines = []
-        for row in range(height, -1, -1):
-            threshold = mn + (rng * row / height)
-            chars = []
-            for v in cumulative:
-                chars.append('█' if v >= threshold else ' ')
-            lines.append(''.join(chars))
-        return '\n'.join(lines)
-    except Exception:
-        return "Error"
-
-def send_tg_report(ex, position, rsi, bb_lower, sma20, current_price, paper_pos):
-    if not TG_TOKEN: return
-    try:
-        bal = ex.fetch_balance()
-        usdt_free = float(bal.get('USDT', {}).get('free', 0))
-        
-        trades = state['trades']
-        wins = state['wins']
-        wr = (wins/trades*100) if trades > 0 else 0
-        
-        pt = state['paper_trades']
-        pw = state['paper_wins']
-        pwr = (pw/pt*100) if pt > 0 else 0
-        
-        pf = state['gross_profit'] / abs(state['gross_loss']) if state['gross_loss'] != 0 else float('inf')
-        pf_str = f"{pf:.2f}" if pf != float('inf') else "∞"
-        
-        mode_emoji = "🟢 LIVE" if state['mode'] == 'LIVE' else "📝 PAPER"
-        pos_status = f"🟢 EM POSIÇÃO @ {position['entry']:.4f}" if position else ("📝 PAPER POS @ " + str(round(paper_pos['entry'],4)) if paper_pos else "⏳ AGUARDANDO")
-        dist_pct = ((current_price - bb_lower) / bb_lower * 100) if bb_lower else 0
-        
-        equity_ascii = get_equity_curve(20)
-        
-        msg = f"""<b>📊 RELATÓRIO V23d-v5 ({mode_emoji})</b>
-━━━━━━━━━━━━━━━━━━━━━━━
-<b>🎯 ESTRATÉGIA</b>
-Mean Rev: BB(20,2)+RSI&lt;30+Vol&gt;SMA*0.8
-Exit: SMA20 | Stop -0.2% | Hold 2h
-
-<b>📈 PERFORMANCE REAL</b>
-Trades: {trades} | Wins: {wins} | WR: <b>{wr:.1f}%</b>
-PnL: <b>{state['pnl']:+.6f} USDT</b> | PF: {pf_str}
-
-<b>📝 PERFORMANCE PAPER</b>
-Trades: {pt} | Wins: {pw} | WR: <b>{pwr:.1f}%</b>
-PnL Paper: {state['paper_pnl']:+.6f} USDT
-Gate Live: WR&gt;{PAPER_MIN_WR_FOR_LIVE}% &amp; Trades&gt;{PAPER_MIN_TRADES_FOR_LIVE}
-
-<b>💰 MERCADO</b>
-USDT: {usdt_free:.4f} | Mode: {mode_emoji}
-RSI: {rsi:.1f} | BB_L: {str(round(bb_lower,4)) if bb_lower else 'N/A'}
-Preço: {current_price:.4f} | Dist: {dist_pct:+.2f}%
-Status: {pos_status}
-
-<b>📉 EQUITY CURVE</b>
-<pre>{equity_ascii}</pre>
-━━━━━━━━━━━━━━━━━━━━━━━
-<i>{datetime.now(timezone.utc).strftime('%H:%M UTC')}</i>"""
-        
-        requests.post(f'https://api.telegram.org/bot{TG_TOKEN}/sendMessage', json={
-            'chat_id': TG_CHAT, 'text': msg, 'parse_mode': 'HTML'
-        }, timeout=10)
+        notify_trade_realized(
+            process_id="v23d-xrp-meanrev",
+            source="bybit",
+            external_reference=f"{symbol}-{ts[:19]}",
+            asset=symbol.split('/')[0] if '/' in symbol else symbol,
+            gross=float(entry.get('gross_pnl', net)),
+            fees=float(entry.get('fees_usdt', 0)),
+            net=float(net),
+            currency='USDT',
+            event_id=event_id,
+            dry_run=False,
+        )
+        log(f"GATE SENT: realized trade {symbol} net={net:+.6f}")
     except Exception as e:
-        log(f"TG REPORT ERROR: {str(e)[:100]}")
+        log(f"GATE ERROR: {str(e)[:120]}")
 
 def main():
     log("=== V23d-v5 HYBRID PAPER/LIVE STARTING ===")
-    log(f"Mode: PAPER until WR>{PAPER_MIN_WR_FOR_LIVE}% & {PAPER_MIN_TRADES_FOR_LIVE}+ trades")
+    log("Mode: PAPER ONLY (auto-promotion revoked, manual approval required for LIVE)")
     
     ex = ccxt.bybit({
         'apiKey': os.getenv('BYBIT_REAL_API_KEY'),
@@ -209,9 +157,8 @@ def main():
                 if state['paper_trades'] >= PAPER_MIN_TRADES_FOR_LIVE and pwr >= PAPER_MIN_WR_FOR_LIVE:
                     state['mode'] = 'LIVE'
                     log(f"🟢 MODE SWITCH: PAPER → LIVE (WR={pwr:.1f}% after {state['paper_trades']} paper trades)")
-                    send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
             
-            is_live = state['mode'] == 'LIVE'
+            is_live = False  # AUTO-PROMOTION REVOKED: Manual approval required
             
             # === HANDLE REAL POSITION EXIT ===
             if position:
@@ -271,7 +218,17 @@ def main():
                             emoji = "✅" if net > 0 else "❌"
                             log(f"{emoji} LIVE EXIT {exit_reason}: entry={position['entry']:.4f} exit={fill_px:.4f} net={net:+.6f}")
                             position = None
-                            send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
+                            # Send realized trade through gate
+                            ledger_entry = {
+                                "ts": datetime.now(timezone.utc).isoformat(),
+                                "exchange": "bybit", "symbol": SYMBOL,
+                                "strategy": "v23d_mean_rev_v5",
+                                "gross_pnl": round(gross, 6),
+                                "fees_usdt": round(fees, 6),
+                                "net_pnl": round(net, 6),
+                                "mode": "LIVE"
+                            }
+                            send_realized_trade_via_gate(ledger_entry)
                     except Exception as e:
                         log(f"LIVE EXIT ERROR: {str(e)[:120]}")
             
@@ -314,7 +271,6 @@ def main():
                     emoji = "✅" if net > 0 else "❌"
                     log(f"{emoji} PAPER EXIT {exit_reason}: entry={paper_pos['entry']:.4f} exit={exit_px:.4f} net={net:+.6f}")
                     paper_pos = None
-                    send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
             
             # === CHECK ENTRY SIGNAL ===
             entry_signal = (lower_bb and current_price < lower_bb and 
@@ -341,7 +297,6 @@ def main():
                                 log(f"   BUY: qty={buy_qty} @ {buy_price}")
                                 position = {'entry': buy_price, 'qty': buy_qty, 'ts': time.time()}
                                 state['last_signal'] = datetime.now(timezone.utc).isoformat()
-                                send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
                             except Exception as e:
                                 log(f"LIVE ENTRY ERROR: {str(e)[:120]}")
                         else:
@@ -350,7 +305,6 @@ def main():
                             log(f"   VIRTUAL BUY: qty={buy_qty} @ {buy_price}")
                             paper_pos = {'entry': buy_price, 'qty': buy_qty, 'ts': time.time()}
                             state['last_signal'] = datetime.now(timezone.utc).isoformat()
-                            send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
             
             # PERIODIC REPORT
             if time.time() - last_report_time > 900:
@@ -359,7 +313,6 @@ def main():
                 pwr = (state['paper_wins']/max(state['paper_trades'],1)*100)
                 wr = (state['wins']/max(state['trades'],1)*100)
                 log(f"[STATUS] {state['mode']} {pos_str} | Real:{state['trades']}T/{wr:.0f}%WR Paper:{state['paper_trades']}T/{pwr:.0f}%WR | RSI:{rsi:.1f} BB_L:{bb_str}")
-                send_tg_report(ex, position, rsi, lower_bb, sma20, current_price, paper_pos)
                 last_report_time = time.time()
             
             save_state()
