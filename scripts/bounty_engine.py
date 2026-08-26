@@ -228,6 +228,10 @@ def extract_json(text):
     if not text:
         return None
     clean = re.sub(r'\x1b\[[0-9;]*m', '', text)
+    # Normalize smart quotes and other unicode that breaks JSON parsing
+    clean = clean.replace('\u201c', '"').replace('\u201d', '"')
+    clean = clean.replace('\u2018', "'").replace('\u2019', "'")
+    clean = clean.replace('\u2013', '-').replace('\u2014', '-')
     # Strip markdown fences and explanatory text before/after JSON
     # Remove everything before first { or [
     first_brace = -1
@@ -645,6 +649,27 @@ CRITICAL CONSTRAINTS:
     log(f"Triage parsed result type: {type(selected).__name__}, len={len(selected) if isinstance(selected, (list, dict)) else 'N/A'}")
     if isinstance(selected, list) and len(selected) > 0:
         log(f"Selected {len(selected)} targets from GhostCLI")
+        # Schema validation: enforce contract before accepting
+        REQUIRED_KEYS = {"url", "title"}
+        schema_valid = []
+        for item in selected:
+            if not isinstance(item, dict):
+                log(f"  REJECTED non-dict selection item: {type(item).__name__}")
+                continue
+            missing = REQUIRED_KEYS - set(item.keys())
+            if missing:
+                log(f"  REJECTED item missing keys {missing}: {str(item)[:80]}")
+                continue
+            if not isinstance(item.get("url"), str) or not item["url"].startswith("http"):
+                log(f"  REJECTED item with invalid url: {item.get('url', '')!r}")
+                continue
+            schema_valid.append(item)
+        if not schema_valid:
+            log("All selections failed schema validation, treating as parse failure")
+            selected = None
+        else:
+            selected = schema_valid
+    if isinstance(selected, list) and len(selected) > 0:
         # Merge back value_usd from sorted_cands since GhostCLI doesn't return it
         url_to_cand = {c.get("url"): c for c in sorted_cands}
         # Validate: reject any selection not in original candidate set (hallucination guard)

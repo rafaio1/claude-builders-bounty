@@ -49,3 +49,13 @@
  workspace/bounty-exec/*/
  workspace/high-ticket/*/
  workspace/sparepack/
+ # RoboSats node secrets and runtime data
+ p2p-stack/robosats/node/lnd/tls.key
+ p2p-stack/robosats/node/lnd/*.key
+ p2p-stack/robosats/node/cln/
+ p2p-stack/robosats/node/db/
+ # Bybit futures runtime data
+ bybit_futures/data/
+ bybit_futures/logs/
+ # Improve traces (debug artifacts)
+ improve/traces/
