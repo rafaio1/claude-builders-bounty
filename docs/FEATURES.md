@@ -41,8 +41,11 @@
  
  ## Features em Progresso / Aguardando Integração
  
- | Feature | Estado | Bloqueio / Dependência | Próxima Ação |
+| Feature | Estado | Bloqueio / Dependência | Próxima Ação |
 |---------|--------|----------------------|--------------|
+| Prescreen Proposal Filter | ✅ Integrado | `scripts/prescreen_proposal.py` — rejeita propostas com keywords de capital/TOS antes do conselho; exit codes corrigidos; logs em `data/expansion/prescreen_rejections.jsonl` | Monitorar rejeições e ajustar thresholds se falso-positivo detectado |
+| Cloudflare R2 Reseller Scaffold v26 | ✅ Integrado | `pilots/cloudflare-r2-reseller-scaffold/` — free tier verificado, pricing baseline atualizado, index JSON validado; zero-capital | Avaliar piloto real com caso de teste cr_331/dv_771 quando worktree isolado disponível |
+| Watchdog Health Check | ⏳ Untracked | `scripts/watchdog_health_check.sh` — script operacional idempotente (tmux/Bybit/ledger/Telegram gate); sem secrets; não referenciado por outros módulos | Decidir integração formal ou manter como runbook local; documentar no RUNBOOK.md |
 | Service Delivery Loop | ⚠️ Placeholder | Script com 5 linhas (apenas print + sleep 1h); sem lógica real de scan/entrega | Implementar integração com AgentMail ou substituir por orquestrador funcional |
 | RoboSats Stack | ⏳ Parcial | TLS keys excluídas; código não versionado integralmente | Avaliar subset seguro para commit |
  | Email Cleanup Pipeline | ⏳ WIP | `.venv` local; lógica de negócio não isolada | Extrair scripts limpos e testar |
