@@ -48,14 +48,14 @@ def build_ledger_index(ledger: dict) -> dict:
     for entry in ledger.get("bounties", []):
         # Try multiple key formats
         keys = []
-        if "pr_url" in entry:
+        if entry.get("pr_url"):
             url = entry["pr_url"]
             parts = url.rstrip("/").split("/")
             if len(parts) >= 5:
                 repo = f"{parts[3]}/{parts[4]}"
                 num = parts[-1]
                 keys.append(f"{repo}#{num}")
-        if "issue_url" in entry:
+        if entry.get("issue_url"):
             url = entry["issue_url"]
             parts = url.rstrip("/").split("/")
             if len(parts) >= 5:
