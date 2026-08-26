@@ -1,0 +1,75 @@
+{
+  "pilot_name": "clerk-auth-reseller-scaffold",
+  "status": "SCAFFOLD_OK",
+  "category": "authentication",
+  "provider": "Clerk, Inc.",
+  "service_url": "https://clerk.com",
+  "doc_verified": true,
+  "verification_timestamp": "2026-08-27T00:00:00+00:00",
+  "free_tier_limits": {
+    "plan_name": "Hobby",
+    "price_monthly": 0,
+    "mru_per_app": 50000,
+    "applications": "unlimited",
+    "dashboard_seats": 3,
+    "social_connections": 3,
+    "machine_auth_api_keys_creations": 1000,
+    "machine_auth_api_keys_verifications": 100000,
+    "machine_auth_m2m_tokens_creations": 2500,
+    "machine_auth_m2m_tokens_verifications": 100000,
+    "session_lifetime": "fixed_7_days",
+    "logs_retention_days": 1,
+    "credit_card_required": false,
+    "notes": "MRU = Monthly Retained User (usuário que retorna após 24h). First Day Free: signup sem retorno não conta."
+  },
+  "paid_plan_baseline": {
+    "plan_name": "Pro",
+    "price_monthly": 25,
+    "price_annual_monthly_equiv": 20,
+    "included_mru_per_app": 50000,
+    "overage_mru_price": 0.02,
+    "enterprise_connections_included": 1,
+    "additional_enterprise_connection_price": 75,
+    "sms_us_canada_price": 0.01,
+    "remove_branding": true,
+    "mfa": true,
+    "satellite_domains_price": 10,
+    "custom_session_lifetime": true,
+    "logs_retention_days": 7
+  },
+  "reselling_model": {
+    "type": "MANAGED_SETUP_SERVICE",
+    "viability": "VIABLE_WITH_RESTRICTIONS",
+    "tos_compliance": {
+      "sublicensing_allowed": false,
+      "transfer_allowed": false,
+      "internal_business_only": true,
+      "customer_end_users_allowed": true,
+      "key_clause": "License is non-sublicensable, non-transferable, for Customer internal business purposes only. Authorized Users include employees/representatives AND authorized end users of Customer's customers. Explicit exception: 'except its own customers and its end users' in restriction clause (iv)."
+    },
+    "recommended_approach": "Cliente final possui sua própria conta Clerk (Customer). Agente fornece configuração gerenciada: setup de instância, templates, webhooks, integração SDK. Cliente paga Clerk diretamente. Agente cobra pelo serviço de setup/configuração (one-time ou recorrente como suporte).",
+    "prohibited_models": [
+      "Revenda direta de acesso/subcontas sob conta do agente",
+      "Sublicenciamento de features Clerk para terceiros",
+      "Service bureau / timesharing com conta compartilhada"
+    ]
+  },
+  "risks": [
+    "Licença restrita a 'internal business purposes' — uso como infraestrutura de auth para clientes externos exige interpretação de que cada cliente é um Customer separado com sua própria conta",
+    "Free tier limitado a 3 social connections e session lifetime fixo de 7 dias — pode ser insuficiente para alguns projetos de clientes",
+    "MRU billing model: clientes com alto churn mas baixa retenção podem achar econômico, mas apps virais com alta retenção escalam custo rapidamente",
+    "Sem HIPAA compliance no free/pro/business — apenas Enterprise com BAA"
+  ],
+  "next_steps": [
+    "Criar PoC: script Python que automatiza setup de instância Clerk via API para novo cliente (create instance, configure social providers, setup webhook endpoint)",
+    "Validar limites reais do free tier criando instância teste e verificando dashboard",
+    "Documentar template de contrato de serviço gerenciado alinhado ao TOS (cliente como account holder, agente como service provider)",
+    "Avaliar se modelo Managed Setup justifica promoção TIER1 ou se permanece como scaffold de referência"
+  ],
+  "sources": {
+    "terms_url": "https://clerk.com/terms",
+    "pricing_url": "https://clerk.com/pricing.md",
+    "pricing_md_curl_verified": true,
+    "terms_html_curl_verified": true
+  }
+}
