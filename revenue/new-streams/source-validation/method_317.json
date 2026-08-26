@@ -1,0 +1,31 @@
+{
+  "method_id": "317",
+  "name": "Code review automation (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:03.230092+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "ruff_linter",
+      "files_changed": 8,
+      "auto_fixes_applied": 15,
+      "security_warnings": 0,
+      "ci_runtime_sec": 45
+    },
+    {
+      "tool": "mypy_strict",
+      "files_changed": 3,
+      "type_errors_caught": 7,
+      "security_warnings": 1,
+      "ci_runtime_sec": 120
+    }
+  ],
+  "schema": [
+    "tool",
+    "files_changed",
+    "auto_fixes_applied",
+    "security_warnings",
+    "ci_runtime_sec"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Pre-commit hooks / MegaLinter para desenvolvedores que automatizam linting, type checking e segurança no fluxo de PR."
+}

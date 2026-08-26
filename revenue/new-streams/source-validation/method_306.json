@@ -1,0 +1,31 @@
+{
+  "method_id": "306",
+  "name": "Audio transcription API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:33.841611+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client_vertical": "legal",
+      "audio_hours_monthly": 800,
+      "human_review_pct": 15,
+      "deliverable_format": "transcript_with_timestamps",
+      "nda_required": true
+    },
+    {
+      "client_vertical": "market_research",
+      "audio_hours_monthly": 2500,
+      "human_review_pct": 5,
+      "deliverable_format": "coded_themes_csv",
+      "multi_language": true
+    }
+  ],
+  "schema": [
+    "client_vertical",
+    "audio_hours_monthly",
+    "human_review_pct",
+    "deliverable_format",
+    "nda_required"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Rev.com / Scribie Enterprise API para agências com volumes altos, revisão humana parcial e NDAs."
+}

@@ -1,0 +1,35 @@
+{
+  "method_id": "311",
+  "name": "Translation memory API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:15.526145+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "integration": "github_action",
+      "file_formats": [
+        "json",
+        "yaml",
+        "po"
+      ],
+      "auto_pr_on_update": true,
+      "cache_backend": "redis"
+    },
+    {
+      "integration": "vscode_extension",
+      "file_formats": [
+        "xliff",
+        "tmx"
+      ],
+      "inline_suggestions": true,
+      "offline_mode": true
+    }
+  ],
+  "schema": [
+    "integration",
+    "file_formats",
+    "auto_pr_on_update",
+    "cache_backend"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Weblate / Pontoon API para devs integrarem TM diretamente no fluxo CI/CD e IDE."
+}

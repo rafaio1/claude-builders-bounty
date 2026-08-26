@@ -1,0 +1,34 @@
+{
+  "method_id": "301",
+  "name": "Audio transcription API",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:14.787162+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "audio_format": "wav",
+      "duration_min": 45,
+      "language": "pt-BR",
+      "wer_pct": 4.2,
+      "speaker_diarization": true,
+      "output_format": "json"
+    },
+    {
+      "audio_format": "mp3",
+      "duration_min": 120,
+      "language": "en",
+      "wer_pct": 3.8,
+      "speaker_diarization": false,
+      "output_format": "srt"
+    }
+  ],
+  "schema": [
+    "audio_format",
+    "duration_min",
+    "language",
+    "wer_pct",
+    "speaker_diarization",
+    "output_format"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos Whisper/faster-whisper wrappers). Fonte oficial alvo: Deepgram / AssemblyAI para transcrição de áudio com diarização e múltiplos formatos de saída."
+}

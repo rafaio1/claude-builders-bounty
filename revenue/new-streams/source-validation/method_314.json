@@ -1,0 +1,37 @@
+{
+  "method_id": "314",
+  "name": "Code review automation (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:38.132454+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "plan": "free_tier",
+      "prs_monthly": 50,
+      "languages_supported": [
+        "python",
+        "javascript",
+        "go"
+      ],
+      "ai_model": "gpt-4o-mini",
+      "integration": "github_app"
+    },
+    {
+      "plan": "pro",
+      "prs_monthly": 500,
+      "languages_supported": [
+        "all_major"
+      ],
+      "ai_model": "claude-sonnet",
+      "custom_rules": true
+    }
+  ],
+  "schema": [
+    "plan",
+    "prs_monthly",
+    "languages_supported",
+    "ai_model",
+    "integration"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: CodeRabbit / Ellipsis AI para startups com planos gratuitos/pro acessíveis e integração nativa GitHub/GitLab."
+}

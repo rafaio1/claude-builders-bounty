@@ -1,0 +1,31 @@
+{
+  "method_id": "319",
+  "name": "Test generation service",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:26.949595+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "target_repo": "ecommerce/api-v2",
+      "files_analyzed": 45,
+      "tests_generated": 128,
+      "coverage_increase_pct": 34,
+      "framework": "pytest"
+    },
+    {
+      "target_repo": "fintech/payments-core",
+      "files_analyzed": 22,
+      "tests_generated": 67,
+      "coverage_increase_pct": 28,
+      "framework": "junit5"
+    }
+  ],
+  "schema": [
+    "target_repo",
+    "files_analyzed",
+    "tests_generated",
+    "coverage_increase_pct",
+    "framework"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos Diffblue/CodiumAI open-source). Fonte oficial alvo: CodiumAI / Diffblue Cover para geração automática de testes unitários com alta cobertura."
+}

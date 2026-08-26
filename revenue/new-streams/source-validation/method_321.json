@@ -1,0 +1,37 @@
+{
+  "method_id": "321",
+  "name": "Test generation service (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:26.949620+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "self_hosted",
+      "compliance": [
+        "SOC2",
+        "HIPAA"
+      ],
+      "custom_test_standards": true,
+      "legacy_code_support": true,
+      "sla": "99.9%"
+    },
+    {
+      "deployment": "private_cloud",
+      "compliance": [
+        "ISO27001",
+        "GDPR"
+      ],
+      "custom_test_standards": true,
+      "mutation_testing": true,
+      "audit_logging": true
+    }
+  ],
+  "schema": [
+    "deployment",
+    "compliance",
+    "custom_test_standards",
+    "legacy_code_support",
+    "sla"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Diffblue Cover Enterprise / Parasoft Jtest para empresas com código legado, compliance rigoroso e deploy privado."
+}

@@ -1,0 +1,38 @@
+{
+  "method_id": "303",
+  "name": "Audio transcription API (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:14.787187+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "private_cloud",
+      "compliance": [
+        "HIPAA",
+        "SOC2",
+        "GDPR"
+      ],
+      "custom_vocabulary": true,
+      "throughput_hrs_day": 5000,
+      "sla": "99.99%"
+    },
+    {
+      "deployment": "on_premise",
+      "compliance": [
+        "FedRAMP",
+        "ISO27001"
+      ],
+      "custom_vocabulary": true,
+      "throughput_hrs_day": 2000,
+      "air_gapped": true
+    }
+  ],
+  "schema": [
+    "deployment",
+    "compliance",
+    "custom_vocabulary",
+    "throughput_hrs_day",
+    "sla"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: AWS Transcribe Medical / Azure Speech Service Enterprise para transcrição em escala com compliance regulatório e vocabulário customizado."
+}

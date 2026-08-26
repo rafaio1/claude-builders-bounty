@@ -1,0 +1,31 @@
+{
+  "method_id": "318",
+  "name": "Code review automation (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:03.230095+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "fintech_a",
+      "repos_managed": 25,
+      "prs_reviewed_monthly": 850,
+      "avg_review_time_reduction_pct": 65,
+      "compliance_checks": true
+    },
+    {
+      "client": "healthcare_b",
+      "repos_managed": 12,
+      "prs_reviewed_monthly": 320,
+      "avg_review_time_reduction_pct": 72,
+      "hipaa_scanning": true
+    }
+  ],
+  "schema": [
+    "client",
+    "repos_managed",
+    "prs_reviewed_monthly",
+    "avg_review_time_reduction_pct",
+    "compliance_checks"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: SonarQube Enterprise / Veracode para agências de software que gerenciam múltiplos clientes com requisitos de compliance e SLAs de qualidade."
+}

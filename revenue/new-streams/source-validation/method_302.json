@@ -1,0 +1,31 @@
+{
+  "method_id": "302",
+  "name": "Audio transcription API (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:14.787183+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "use_case": "podcast_notes",
+      "cost_per_min_usd": 0.0037,
+      "turnaround_sec": 30,
+      "summary_enabled": true,
+      "max_file_size_mb": 500
+    },
+    {
+      "use_case": "meeting_recap",
+      "cost_per_min_usd": 0.005,
+      "turnaround_sec": 60,
+      "summary_enabled": true,
+      "action_items_extracted": true
+    }
+  ],
+  "schema": [
+    "use_case",
+    "cost_per_min_usd",
+    "turnaround_sec",
+    "summary_enabled",
+    "max_file_size_mb"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Gladia / Sonix API para startups com pricing por minuto, resumos automáticos e integração rápida."
+}

@@ -1,0 +1,37 @@
+{
+  "method_id": "320",
+  "name": "Test generation service (for startups)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:26.949616+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "plan": "free",
+      "monthly_tests_limit": 500,
+      "languages": [
+        "python",
+        "javascript"
+      ],
+      "ci_integration": "github_actions",
+      "ai_model": "gpt-4o-mini"
+    },
+    {
+      "plan": "startup",
+      "monthly_tests_limit": 5000,
+      "languages": [
+        "all_major"
+      ],
+      "ci_integration": "gitlab_ci_circleci",
+      "ai_model": "claude-sonnet",
+      "price_usd": 49
+    }
+  ],
+  "schema": [
+    "plan",
+    "monthly_tests_limit",
+    "languages",
+    "ci_integration",
+    "ai_model"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: CodiumAI / Qodo TestGen para startups com planos acessíveis e integração CI/CD nativa."
+}

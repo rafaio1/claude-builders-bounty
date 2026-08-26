@@ -1,0 +1,31 @@
+{
+  "method_id": "312",
+  "name": "Translation memory API (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:15.526149+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "global_retail_corp",
+      "language_pairs": 42,
+      "tm_entries_total": 8500000,
+      "monthly_cost_reduction_pct": 35,
+      "vendor_lock_in": false
+    },
+    {
+      "client": "pharma_multinational",
+      "language_pairs": 28,
+      "tm_entries_total": 12000000,
+      "monthly_cost_reduction_pct": 42,
+      "regulatory_compliance": true
+    }
+  ],
+  "schema": [
+    "client",
+    "language_pairs",
+    "tm_entries_total",
+    "monthly_cost_reduction_pct",
+    "vendor_lock_in"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: memoQ Cloud / XTM API para agências de tradução gerenciarem TMs multi-cliente com redução de custos mensurável."
+}

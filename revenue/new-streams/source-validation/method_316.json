@@ -1,0 +1,31 @@
+{
+  "method_id": "316",
+  "name": "Code review automation (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:13:03.230072+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "content_type": "tutorial_repo",
+      "pr_number": 45,
+      "readability_score": 92,
+      "broken_links_found": 0,
+      "code_snippets_validated": 12
+    },
+    {
+      "content_type": "course_exercises",
+      "pr_number": 112,
+      "readability_score": 88,
+      "broken_links_found": 2,
+      "code_snippets_validated": 34
+    }
+  ],
+  "schema": [
+    "content_type",
+    "pr_number",
+    "readability_score",
+    "broken_links_found",
+    "code_snippets_validated"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: CodeRabbit / Reviewable para criadores de conteúdo técnico que mantêm repositórios de tutoriais e cursos com código executável."
+}

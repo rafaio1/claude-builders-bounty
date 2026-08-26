@@ -1,0 +1,31 @@
+{
+  "method_id": "305",
+  "name": "Audio transcription API (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:11:33.841606+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "sdk": "python_whisper_cpp",
+      "model": "large-v3-turbo",
+      "gpu_acceleration": true,
+      "real_time_factor": 0.12,
+      "websocket_streaming": true
+    },
+    {
+      "sdk": "node_deepgram",
+      "model": "nova-2",
+      "interim_results": true,
+      "utterance_end_ms": 1500,
+      "punctuation": true
+    }
+  ],
+  "schema": [
+    "sdk",
+    "model",
+    "gpu_acceleration",
+    "real_time_factor",
+    "websocket_streaming"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Whisper.cpp / Deepgram SDK para integração developer-first com streaming em tempo real e modelos locais."
+}

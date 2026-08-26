@@ -1,0 +1,38 @@
+{
+  "method_id": "310",
+  "name": "Translation memory API (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:15.526124+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "content_type": "youtube_subtitles",
+      "source_lang": "en",
+      "target_langs": [
+        "pt-BR",
+        "es",
+        "fr"
+      ],
+      "segments_reused_pct": 65,
+      "manual_edit_time_saved_hrs": 12
+    },
+    {
+      "content_type": "course_transcript",
+      "source_lang": "pt-BR",
+      "target_langs": [
+        "en",
+        "it"
+      ],
+      "segments_reused_pct": 78,
+      "glossary_terms": 450
+    }
+  ],
+  "schema": [
+    "content_type",
+    "source_lang",
+    "target_langs",
+    "segments_reused_pct",
+    "manual_edit_time_saved_hrs"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Amara / Subtitle Edit API para criadores que legendam vídeos reutilizando memória de tradução entre episódios."
+}

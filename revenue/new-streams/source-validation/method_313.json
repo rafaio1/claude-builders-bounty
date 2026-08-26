@@ -1,0 +1,39 @@
+{
+  "method_id": "313",
+  "name": "Code review automation",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:38.132429+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "repo": "internal/backend-api",
+      "pr_number": 1420,
+      "issues_found": 3,
+      "severity_breakdown": {
+        "critical": 0,
+        "warning": 2,
+        "info": 1
+      },
+      "review_time_sec": 12
+    },
+    {
+      "repo": "mobile-app-ios",
+      "pr_number": 892,
+      "issues_found": 7,
+      "severity_breakdown": {
+        "critical": 1,
+        "warning": 4,
+        "info": 2
+      },
+      "review_time_sec": 18
+    }
+  ],
+  "schema": [
+    "repo",
+    "pr_number",
+    "issues_found",
+    "severity_breakdown",
+    "review_time_sec"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API (repos CodeRabbit/Ellipsis open-source). Fonte oficial alvo: GitHub Copilot Code Review / Qodo Merge para revisão automática de PRs com detecção de bugs e sugestões."
+}

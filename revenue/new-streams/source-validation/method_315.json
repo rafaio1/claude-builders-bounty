@@ -1,0 +1,34 @@
+{
+  "method_id": "315",
+  "name": "Code review automation (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T16:12:38.132459+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "deployment": "self_hosted",
+      "compliance": [
+        "SOC2",
+        "HIPAA"
+      ],
+      "custom_models": true,
+      "audit_logging": true,
+      "sla": "99.9%"
+    },
+    {
+      "deployment": "vpc_peering",
+      "code_retention_days": 0,
+      "security_scanning": true,
+      "license_check": true,
+      "sso_provider": "okta"
+    }
+  ],
+  "schema": [
+    "deployment",
+    "compliance",
+    "custom_models",
+    "audit_logging",
+    "sla"
+  ],
+  "notes": "Proxy TIER0 via GitHub Search API. Fonte oficial alvo: Amazon CodeGuru / SonarQube Enterprise para empresas com requisitos de compliance, deploy privado e scanning de segurança integrado."
+}
