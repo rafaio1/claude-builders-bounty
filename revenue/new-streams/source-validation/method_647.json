@@ -1,0 +1,31 @@
+{
+  "method_id": "647",
+  "name": "Accessibility remediation (for developers)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:42:46.454586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "dev_id": "dv_112",
+      "framework": "react",
+      "linter": "eslint_jsx_a11y",
+      "ci_integration": true,
+      "issues_fixed_pr": 12
+    },
+    {
+      "dev_id": "dv_993",
+      "framework": "vue",
+      "linter": "vue_a11y_plugin",
+      "ci_integration": false,
+      "issues_fixed_pr": 8
+    }
+  ],
+  "schema": [
+    "dev_id",
+    "framework",
+    "linter",
+    "ci_integration",
+    "issues_fixed_pr"
+  ],
+  "notes": "Integração em CI/CD e linting. Fonte oficial alvo: ARIA authoring practices. Proxy TIER0: GitHub Search API para configs de a11y testing em pipelines."
+}

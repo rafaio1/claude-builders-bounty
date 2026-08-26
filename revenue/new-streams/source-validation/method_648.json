@@ -1,0 +1,31 @@
+{
+  "method_id": "648",
+  "name": "Accessibility remediation (for agencies)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:42:46.454586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "agency_id": "ag_441",
+      "audit_tool": "axe_devtools_pro",
+      "report_format": "vpat_2_4",
+      "client_sector": "government",
+      "remediation_retainer_usd": 3500
+    },
+    {
+      "agency_id": "ag_772",
+      "audit_tool": "tenon_api",
+      "report_format": "wcag_2_2_matrix",
+      "client_sector": "education",
+      "remediation_retainer_usd": 2800
+    }
+  ],
+  "schema": [
+    "agency_id",
+    "audit_tool",
+    "report_format",
+    "client_sector",
+    "remediation_retainer_usd"
+  ],
+  "notes": "Relatórios formais e retainers. Fonte oficial alvo: Section 508 / EN 301 549 procurement docs. Proxy TIER0: GitHub Search API para templates de VPAT e relatórios de conformidade."
+}

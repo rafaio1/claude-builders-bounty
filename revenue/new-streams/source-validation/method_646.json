@@ -1,0 +1,31 @@
+{
+  "method_id": "646",
+  "name": "Accessibility remediation (for creators)",
+  "source": "github_search_api_proxy_tier0",
+  "generated_at": "2026-08-26T15:42:46.454586+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "creator_id": "cr_551",
+      "platform": "youtube",
+      "issue_type": "missing_captions",
+      "tool_used": "whisper_auto_caption",
+      "fix_time_min": 45
+    },
+    {
+      "creator_id": "cr_882",
+      "platform": "podcast",
+      "issue_type": "transcript_missing",
+      "tool_used": "descript_ai",
+      "fix_time_min": 30
+    }
+  ],
+  "schema": [
+    "creator_id",
+    "platform",
+    "issue_type",
+    "tool_used",
+    "fix_time_min"
+  ],
+  "notes": "Foco em conteúdo de vídeo e áudio. Fonte oficial alvo: YouTube/Podcast accessibility guidelines. Proxy TIER0: GitHub Search API para scripts de auto-caption open-source."
+}
