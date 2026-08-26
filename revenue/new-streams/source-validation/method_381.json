@@ -1,0 +1,32 @@
+{
+  "method_id": "381",
+  "name": "MEV extraction bot (for enterprises)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:12.458956+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "operation": "multi_chain_mev",
+      "chains_active": 6,
+      "monthly_revenue_usd": 185000,
+      "infra_cost_usd": 42000,
+      "builder_relationships": 8
+    },
+    {
+      "operation": "institutional_flow",
+      "chains_active": 4,
+      "monthly_revenue_usd": 125000,
+      "infra_cost_usd": 35000,
+      "builder_relationships": 5
+    }
+  ],
+  "schema": [
+    "operation:str",
+    "chains_active:int",
+    "monthly_revenue_usd:float",
+    "infra_cost_usd:float",
+    "builder_relationships:int"
+  ],
+  "notes": "Operação enterprise com infraestrutura dedicada e relacionamentos diretos com block builders. Proxy TIER0: GitHub institutional MEV frameworks. Fonte oficial alvo: Private RPC + builder APIs diretas. Métricas sintéticas baseadas em benchmarks.",
+  "sha256": "443c958c63ffe2d966d4f7bddb7bacd1e222b15755155a5ebba6c8b471d4b69c"
+}

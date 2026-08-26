@@ -1,0 +1,32 @@
+{
+  "method_id": "376",
+  "name": "Staking validator node (for creators)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:49.269447+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "chain": "akash_network",
+      "commission_pct": 12.0,
+      "delegators_count": 18,
+      "monthly_reward_usd": 95,
+      "community_engagement_score": 82
+    },
+    {
+      "chain": "juno",
+      "commission_pct": 15.0,
+      "delegators_count": 12,
+      "monthly_reward_usd": 68,
+      "community_engagement_score": 91
+    }
+  ],
+  "schema": [
+    "chain:str",
+    "commission_pct:float",
+    "delegators_count:int",
+    "monthly_reward_usd:float",
+    "community_engagement_score:int"
+  ],
+  "notes": "Validadores focados em community building e creator economy chains. Proxy TIER0: GitHub repos de social validators. Fonte oficial alvo: Chain-specific staking APIs + community dashboards. Zero capital: simulação apenas.",
+  "sha256": "c812775aa1de5635de88af58cbb9ccb818268e5412778e649bcd25f5e32d8efe"
+}

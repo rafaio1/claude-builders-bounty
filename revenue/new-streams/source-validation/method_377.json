@@ -1,0 +1,32 @@
+{
+  "method_id": "377",
+  "name": "Staking validator node (for developers)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:49.269447+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "tool": "validator_setup_kit",
+      "language": "go",
+      "chains_supported": 6,
+      "setup_time_min": 45,
+      "automation_level_pct": 85
+    },
+    {
+      "tool": "monitoring_dashboard",
+      "language": "typescript",
+      "chains_supported": 10,
+      "alert_latency_ms": 250,
+      "uptime_tracking_pct": 99.9
+    }
+  ],
+  "schema": [
+    "tool:str",
+    "language:str",
+    "chains_supported:int",
+    "setup_time_min:int",
+    "automation_level_pct:float"
+  ],
+  "notes": "Ferramentas e SDKs para devs configurarem e monitorarem validadores. Proxy TIER0: GitHub search (validator automation tools). Fonte oficial alvo: Cosmos SDK docs + Tendermint RPC. Métricas sintéticas de performance.",
+  "sha256": "447095ad4f4d23205f551dc023f6812193ad52c5fcb79e659f78ad087ce8a921"
+}

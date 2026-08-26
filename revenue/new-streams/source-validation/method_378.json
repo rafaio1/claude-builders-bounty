@@ -1,0 +1,32 @@
+{
+  "method_id": "378",
+  "name": "Staking validator node (for agencies)",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:02:49.269447+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "client": "STAKING_FUND_A",
+      "nodes_managed": 24,
+      "total_delegated_usd": 1200000,
+      "monthly_commission_usd": 8500,
+      "sla_uptime_pct": 99.95
+    },
+    {
+      "client": "DAO_COLLECTIVE_B",
+      "nodes_managed": 8,
+      "total_delegated_usd": 450000,
+      "monthly_commission_usd": 3200,
+      "sla_uptime_pct": 99.8
+    }
+  ],
+  "schema": [
+    "client:str",
+    "nodes_managed:int",
+    "total_delegated_usd:float",
+    "monthly_commission_usd:float",
+    "sla_uptime_pct:float"
+  ],
+  "notes": "Serviço B2B de gestão de infraestrutura de validação. Proxy TIER0: GitHub repos de validator-as-a-service. Fonte oficial alvo: Multi-chain aggregation APIs. Dados de receita e SLA sintéticos baseados em benchmarks.",
+  "sha256": "a8987f8a5c8dc57461cbf2e049c222f05ff54642748d7c2180674422a9efc5c5"
+}

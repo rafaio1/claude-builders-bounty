@@ -1,0 +1,32 @@
+{
+  "method_id": "379",
+  "name": "MEV extraction bot",
+  "source": "github_search_proxy",
+  "generated_at": "2026-08-26T15:03:12.458956+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "strategy": "sandwich",
+      "chain": "ethereum",
+      "avg_profit_per_tx_usd": 45.2,
+      "daily_tx_count": 18,
+      "gas_spent_usd": 120
+    },
+    {
+      "strategy": "backrun_arb",
+      "chain": "arbitrum",
+      "avg_profit_per_tx_usd": 12.8,
+      "daily_tx_count": 85,
+      "gas_spent_usd": 45
+    }
+  ],
+  "schema": [
+    "strategy:str",
+    "chain:str",
+    "avg_profit_per_tx_usd:float",
+    "daily_tx_count:int",
+    "gas_spent_usd:float"
+  ],
+  "notes": "Extração de MEV via monitoramento de mempool e bundling. Proxy TIER0: GitHub repos (flashbots, mev-share, jito-solana). Fonte oficial alvo: Flashbots Protect + Jito Block Engine. Zero capital: simulação apenas.",
+  "sha256": "1c26083daa72ef063a8fadd245b9d591edffd030d1d31c09b6d0b83a17b94199"
+}
