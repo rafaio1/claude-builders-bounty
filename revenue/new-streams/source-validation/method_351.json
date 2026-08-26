@@ -1,0 +1,34 @@
+{
+  "method_id": "351",
+  "name": "Arbitragem DEX-CEX (for enterprises)",
+  "source": "GitHub Search API (proxy TIER0) -> Institutional OMS / Prime broker integrations",
+  "generated_at": "2026-08-26T14:59:23.008832+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "BTC-USDT",
+      "dex": "UniswapV3",
+      "cex": "FalconX",
+      "spread_pct": 0.22,
+      "min_volume_usd": 50000,
+      "settlement": "T+0"
+    },
+    {
+      "pair": "ETH-USDC",
+      "dex": "Curve",
+      "cex": "Wintermute",
+      "spread_pct": 0.18,
+      "min_volume_usd": 100000,
+      "settlement": "T+0"
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex",
+    "cex",
+    "spread_pct",
+    "min_volume_usd",
+    "settlement"
+  ],
+  "notes": "Arb institucional com OMS e settlement instantâneo. Proxy GitHub. Fonte oficial TIER1: FalconX / Wintermute / GSR OMS APIs."
+}

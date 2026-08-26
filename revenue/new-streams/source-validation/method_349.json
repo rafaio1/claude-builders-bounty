@@ -1,0 +1,34 @@
+{
+  "method_id": "349",
+  "name": "Arbitragem DEX-CEX",
+  "source": "GitHub Search API (proxy TIER0) -> Open-source arb bots / DeFiLlama API",
+  "generated_at": "2026-08-26T14:59:23.008832+00:00",
+  "tier": "TIER0",
+  "sample_data": [
+    {
+      "pair": "ETH-USDT",
+      "dex": "UniswapV3",
+      "cex": "Binance",
+      "spread_pct": 0.45,
+      "est_profit_usd": 12.5,
+      "gas_cost_usd": 3.2
+    },
+    {
+      "pair": "SOL-USDC",
+      "dex": "Raydium",
+      "cex": "OKX",
+      "spread_pct": 0.62,
+      "est_profit_usd": 8.75,
+      "gas_cost_usd": 0.05
+    }
+  ],
+  "schema": [
+    "pair",
+    "dex",
+    "cex",
+    "spread_pct",
+    "est_profit_usd",
+    "gas_cost_usd"
+  ],
+  "notes": "Arbitragem espacial entre DEX e CEX. Proxy GitHub para bots open-source. Fonte oficial TIER1: DeFiLlama / Dune Analytics / CEX APIs públicas."
+}
