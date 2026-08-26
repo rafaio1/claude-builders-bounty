@@ -110,3 +110,15 @@
 - Realized: $0.00 USDT
 - All lanes: waiting_monitoring or pilot stage
 - No false positives in ledger
+
+### AgentLily Issue #155 Status Update (Cycle 2)
+- **Branch:** `bounty/issue-155-tojson-runtime-error`
+- **State:** ✅ COMMITTED and PUSHED to remote (`7c1c8cb`)
+- **Content:** `toJSON()` serialization for RuntimeError + test coverage
+- **Previous Status:** Was WIP/uncommitted in last checkpoint — now resolved by bounties agent
+- **Action:** No integrator action needed; upstream work complete
+
+### Revenue Status (Unchanged)
+- Realized: $0.00 USDT
+- All lanes: waiting_monitoring or pilot stage
+- Gmail monitor integrated but not yet triggered (requires .env credentials)
