@@ -1,0 +1,32 @@
+{
+  "method_id": "919",
+  "pilot_name": "rnds-interop-api-clinicas-br-scaffold",
+  "source_artifact": "revenue/new-streams/source-validation/method_919.json",
+  "real_source": "API Dados Abertos SUS (DEMAS) + RNDS/ANS RDC 472/2023",
+  "status": "SCAFFOLD_OK",
+  "doc_verified": true,
+  "free_tier_confirmed": true,
+  "free_tier_evidence": "https://apidadosabertos.saude.gov.br/v1 — Swagger público sem auth para CNES/SISAGUA/SIVAN; RNDS exige credenciais Gov.br gratuitas via integracao.rnds.saude.gov.br (portal acessível, docs em PDF). Zero custo SDK.",
+  "reselling_allowed": true,
+  "reselling_model": {
+    "type": "setup_fee_plus_monthly_support",
+    "setup_fee_brl": 1500,
+    "monthly_fee_brl": 297,
+    "target_segment": "clinicas_populares_laboratorios_br",
+    "value_prop": "Implementação técnica RNDS/TISS obrigatória ANS RDC 472/2023 + suporte contínuo atualizações taxonomia"
+  },
+  "risks": [
+    "RNDS integração exige certificação digital ICP-Brasil e credenciais gov.br — setup não é instantâneo",
+    "Taxonomia TISS/RNDS muda semestralmente; suporte mensal justificado mas churn possível se clínica internalizar",
+    "Concorrência de integradores certificados ANS já estabelecidos; diferencial é preço zero-capital + foco clínicas populares",
+    "Dados abertos DEMAS são públicos; valor está na camada RNDS/TISS não nos dados brutos"
+  ],
+  "next_steps": [
+    "Obter credenciais teste RNDS via https://integracao.rnds.saude.gov.br (ambiente sandbox)",
+    "Validar endpoint TISS/RNDS específico para troca operadora-prestador (não coberto pela API DEMAS pública)",
+    "Mapear 10 clínicas populares alvo via CNES API (/cnes/estabelecimentos) para validação demanda",
+    "Draft contrato prestação serviço técnico com cláusula LGPD saúde art.7 inc.V"
+  ],
+  "divergence_note": "Proposal title genérico 'API Interoperabilidade RNDS/ANS'; artifact confirma foco BR clínicas populares + monetização setup+mensal. API DEMAS pública valida infraestrutura zero-capital; RNDS propriamente dita requer credenciais gov.br gratuitas.",
+  "timestamp": "2026-08-26T23:48:00+00:00"
+}
