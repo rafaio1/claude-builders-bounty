@@ -6,21 +6,26 @@
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
 ## Estado Atual — Laboratório Receita Zero-Capital
- **Atualizado:** 2026-08-27 11:35 UTC
- **Receita Liquidada:** $0.00 (fase de validação infra)
- **Meta Aspiracional:** US$20M
+**Atualizado:** 2026-08-27 12:37 UTC
+**Receita Liquidada:** $0.00 (fase de validação infra)
+**Meta Aspiracional:** US$20M
 
- ### Último Commit de Integração
- - `f9c74fb` chore(integration): sync scanner configs, revenue opportunities and expansion state (2026-08-27T01:00Z)
- - 56 arquivos alterados (timestamps de scanners, oportunidades HATS/L3/RH, bounty ledger, PR queue, expansion verdicts)
- - Secret scan: PASSED (nenhum token/chave/wallet no diff)
- - Repo privado validado antes do push
+### Último Commit de Integração
+- `900a2a4b` sync scanner configs cycle 12:30Z (2026-08-27T12:35Z)
+- 4 arquivos alterados (defi_platforms, testnet_airdrop_state, trade_scanner, vuln_report_config)
+- Secret scan: PASSED (nenhum token/chave/wallet no diff)
+- Repo privado validado antes do push
 
- ### Próximas Verificações (waiting_monitoring)
- - Bounty PRs: OphirPay#225 (Vercel auth), OphirPay#228 (upstream glob), Lilly#150 (review), ligate-chain#567 (human action)
- - Expansion method 734: aguardar verdict (715-733 = ADIAR consecutivos)
- - Wash-trade shadow validation: monitorar `orchestrator/reconciliation_state.json`
- - Telegram gate: implementar fail-closed para eventos financeiros realizados apenas
+### Correções Recentes
+- `6e6868b7` fix post_reset_check variable scope bug (NameError em loop TARGET_PRS)
+- SBL bounty check executado: #12147/#12128 merged=None, 0 PRs encontrados por autor
+- Trading real permanece bloqueado (sem shadow validation evidence)
+
+### Próximas Verificações (waiting_monitoring)
+- Bounty PRs: OphirPay#225 (Vercel auth), OphirPay#228 (upstream glob), Lilly#150 (review), ligate-chain#567 (human action)
+- Expansion pipeline: 880 verdicts no executor_queue, maioria BLOCKED_SOURCE_UNVERIFIED; monitorar PILOTAR emergente
+- Wash-trade shadow validation: monitorar `orchestrator/reconciliation_state.json`
+- Telegram gate: ✅ COMPLETO — todos emissores roteados via src/telegram_gate.py, testes 20/20 passando
 ### Infraestrutura Operacional
 - ✅ Timer Revenue: `agentic-revenue-orchestrator.timer` ativo (6h cycle)
 - ✅ Timers Improve: map/dev/review ativos em worktree isolado
