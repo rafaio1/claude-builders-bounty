@@ -29,7 +29,7 @@ def call_agent(role_prompt, context, max_retries=2):
             resp = requests.post(
                 GHOSTCLI_URL,
                 headers={"Authorization": f"Bearer {GHOSTCLI_KEY}"},
-                json={"model": "claude-fable-5", "messages": messages, "max_tokens": 8000},
+                json={"model": "ghostcli-auto[1m]", "messages": messages, "max_tokens": 8000},
                 timeout=(30, 600),
                 stream=True
             )

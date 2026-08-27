@@ -2220,10 +2220,21 @@
         "fix_feasible": false
       },
       "action_required": "close_and_resubmit_or_abandon",
-      "next_action": "PR files contain git diff headers instead of Python; submission is malformed and cannot be fixed via patch. Evaluate closing and resubmitting clean implementation or abandoning.",
+      "next_action": "Verify CI state and maintainer activity for PR #1770; confirm bounty eligibility before further work",
       "merge_probability": "zero_without_full_rewrite",
       "maintainer_active": true,
-      "risk_level": "critical"
+      "risk_level": "critical",
+      "pr": 1770,
+      "last_action": "pr_number_resolved_via_gh",
+      "updated_at": "2026-08-27T01:20:14.953989+00:00",
+      "evidence": [
+        {
+          "type": "gh_pr_list",
+          "summary": "Resolved pr=None to PR #1770: RIP-0301: Tip Credits + Atlas Land Economy \u2014 Implementation",
+          "url": "https://github.com/Scottcjn/bottube/pull/1770",
+          "resolved_at": "2026-08-27T01:20:14.953989+00:00"
+        }
+      ]
     },
     {
       "issue_number": 477,
@@ -2797,18 +2808,24 @@
         "merged": false
       },
       "action_required": "monitor_maintainer_response",
-      "next_action": "Only bot comment (coderabbitai); no human review yet; continue monitoring",
+      "next_action": "Monitor for maintainer review; CI (CodeRabbit) SUCCESS, MERGEABLE; verify bounty eligibility and payout terms before further work",
       "merge_probability": "medium",
       "maintainer_active": true,
       "risk_level": "medium",
       "pr": 38,
-      "updated_at": "2026-08-27T00:58:37.669976+00:00",
-      "last_action": "2026-08-27T00:58:37.669976+00:00",
+      "updated_at": "2026-08-27T01:26:42.551658+00:00",
+      "last_action": "state_verified_via_gh",
       "evidence": [
         {
           "type": "gh_pr_lookup",
           "summary": "PR #38 confirmed OPEN via gh pr list on 2026-08-27",
           "date": "2026-08-27T00:58:37.669976+00:00"
+        },
+        {
+          "type": "gh_pr_view",
+          "summary": "PR #38 OPEN, MERGEABLE, CodeRabbit SUCCESS; updated 2026-08-26T14:28:14Z",
+          "url": "https://github.com/iyeanur6-cyber/ultimate-ai-platform/pull/38",
+          "verified_at": "2026-08-27T01:26:42.551658+00:00"
         }
       ]
     },
@@ -2825,7 +2842,19 @@
       "submitted_at": "2026-08-26T05:23:54.849430+00:00",
       "classification": "unverified_workspace_submission",
       "classified_at": "2026-08-26T05:28:53.672689+00:00",
-      "classified_by": "contador_cycle32_auto_enrichment"
+      "classified_by": "contador_cycle32_auto_enrichment",
+      "pr": 63,
+      "next_action": "Verify CI state and maintainer activity for PR #63; confirm bounty eligibility before further work",
+      "last_action": "pr_number_resolved_via_gh",
+      "updated_at": "2026-08-27T01:20:14.953989+00:00",
+      "evidence": [
+        {
+          "type": "gh_pr_list",
+          "summary": "Resolved pr=None to PR #63: fix: Replace localStorage mock with real BSV micro-ordinals inscription",
+          "url": "https://github.com/bitcoin-apps-suite/bitcoin-writer/pull/63",
+          "resolved_at": "2026-08-27T01:20:14.953989+00:00"
+        }
+      ]
     },
     {
       "issue_number": 7,
@@ -2837,7 +2866,19 @@
       "repo": "flaukowski/open-resonance-collective",
       "url": "https://github.com/flaukowski/open-resonance-collective/issues/7",
       "pr_url": "https://github.com/flaukowski/open-resonance-collective/pull/14",
-      "submitted_at": "2026-08-26T05:49:42.359730+00:00"
+      "submitted_at": "2026-08-26T05:49:42.359730+00:00",
+      "pr": 14,
+      "next_action": "Verify CI state and maintainer activity for PR #14; confirm bounty eligibility before further work",
+      "last_action": "pr_number_resolved_via_gh",
+      "updated_at": "2026-08-27T01:20:14.953989+00:00",
+      "evidence": [
+        {
+          "type": "gh_pr_list",
+          "summary": "Resolved pr=None to PR #14: feat(bounty): implement bounty track system with escrow, QA, matching, and economic integration",
+          "url": "https://github.com/flaukowski/open-resonance-collective/pull/14",
+          "resolved_at": "2026-08-27T01:20:14.953989+00:00"
+        }
+      ]
     },
     {
       "repo": "PesanteAnalytics/contoso-universe-gen",

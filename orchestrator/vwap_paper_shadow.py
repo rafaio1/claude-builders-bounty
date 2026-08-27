@@ -124,12 +124,9 @@ def calculate_vwap_bands(ohlcv, period):
 
 
 def run_shadow_cycle():
-    print('[CYCLE_DEBUG] >>> run_shadow_cycle ENTER', flush=True)
     if not check_kill_switch():
-        print('[CYCLE_DEBUG] Kill switch active, returning HALTED', flush=True)
         return [{'action': 'HALTED', 'reason': 'kill_switch'}]
 
-    print('[CYCLE_DEBUG] Creating exchange instance...', flush=True)
     exchange = ccxt.bybit({
         'apiKey': os.getenv('BYBIT_REAL_API_KEY'),
         'secret': os.getenv('BYBIT_REAL_API_SECRET'),
@@ -137,22 +134,16 @@ def run_shadow_cycle():
         'enableRateLimit': True
     })
 
-    print('[CYCLE_DEBUG] Exchange created. Loading state...', flush=True)
     state = load_state()
     cycle_results = []
 
-    print('[CYCLE_DEBUG] Checking balance...', flush=True)
     balance_ok = check_balance(exchange)
-    print(f'[CYCLE_DEBUG] Balance check result: {balance_ok}', flush=True)
     loss_limit_ok = check_daily_loss_limit(state)
     can_enter = balance_ok and loss_limit_ok
 
-    print(f'[CYCLE_DEBUG] Starting symbol loop for {len(SYMBOLS)} symbols...', flush=True)
     for symbol in SYMBOLS:
         try:
-            print(f'[CYCLE_DEBUG] Fetching OHLCV for {symbol}...', flush=True)
             ohlcv = exchange.fetch_ohlcv(symbol, TIMEFRAME, limit=VWAP_PERIOD + 10)
-            print(f'[CYCLE_DEBUG] Got {len(ohlcv)} candles for {symbol}', flush=True)
             vwap, std_dev, close = calculate_vwap_bands(ohlcv, VWAP_PERIOD)
 
             if vwap is None or std_dev == 0:
@@ -238,7 +229,6 @@ def run_shadow_cycle():
         except Exception as e:
             cycle_results.append({'symbol': symbol, 'error': str(e)})
 
-    print(f'[CYCLE_DEBUG] Saving state and returning {len(cycle_results)} results', flush=True)
     save_state(state)
     return cycle_results
 
