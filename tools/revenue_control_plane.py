@@ -135,19 +135,22 @@ def build_work_orders(queue: list, max_orders: int = 3) -> list:
             key = item.get("canonical_key", "")
             if key in existing_keys:
                 continue
-            # Must have official claim path and non-zero value
-            if not item.get("payment_path") and not item.get("claim_path"):
+            # Must have official claim/payment path and non-zero value
+            payment_path = item.get("payment_path") or item.get("claim_path")
+            if not payment_path:
                 continue
             value = float(item.get("value_usd", 0))
             if value <= 0:
                 continue
-            # Reject spam/honeypot/inactive
+            # Reject spam/honeypot/inactive via explicit flags or rejection_reason
             if item.get("is_spam") or item.get("is_honeypot") or item.get("repo_inactive"):
+                continue
+            if item.get("rejection_reason"):
                 continue
             ev = float(item.get("ev_net_per_hour", 0))
             if ev <= 0:
                 continue
-            state_raw = item.get("current_state", "DISCOVERED").lower()
+            state_raw = (item.get("state_current") or item.get("current_state") or "discovered").lower()
             if state_raw not in VALID_STATES:
                 state_raw = "discovered"
             candidates.append({
@@ -155,19 +158,19 @@ def build_work_orders(queue: list, max_orders: int = 3) -> list:
                 "canonical_key": key,
                 "source_issue": item.get("url"),
                 "repo": key.split("#")[0] if "#" in key else "",
-                "title": item.get("notes", "").split(".")[0] if item.get("notes") else key,
+                "title": item.get("title") or (item.get("notes", "").split(".")[0] if item.get("notes") else key),
                 "bounty_amount": value,
                 "currency": item.get("currency", "USD"),
-                "claim_path": item.get("payment_path") or item.get("claim_path", ""),
-                "bounty_program": "Opire" if "opire" in (item.get("official_source", "") + item.get("payment_path", "")).lower() else "unknown",
-                "eligibility_verified": item.get("eligibility", "") != "unknown",
+                "claim_path": payment_path,
+                "bounty_program": "Opire" if "opire" in ((item.get("source_official") or item.get("official_source") or "") + payment_path).lower() else "unknown",
+                "eligibility_verified": bool(item.get("eligibility") and item.get("eligibility") != "unknown"),
                 "maintainer_active": bool(item.get("program_maintainer_active", False)),
                 "state": state_raw,
                 "ev_per_hour_conservative": ev,
-                "estimated_hours": float(item.get("hours_remaining_estimate", 10)),
+                "estimated_hours": float(item.get("hours_remaining") or item.get("hours_remaining_estimate") or 10),
                 "capital_required": 0,
-                "next_action": item.get("next_action", "review_and_claim"),
-                "risk_notes": item.get("notes", ""),
+                "next_action": item.get("next_action_concrete") or item.get("next_action") or "review_and_claim",
+                "risk_notes": item.get("notes") or item.get("rejection_reason") or "",
                 "discovered_at": datetime.now(timezone.utc).isoformat(),
                 "updated_at": datetime.now(timezone.utc).isoformat(),
             })
