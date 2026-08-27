@@ -1,0 +1,23 @@
+{
+  "method_id": "method_934",
+  "name": "Hookdeck Free Tier Webhook Relay Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "rejection_reason": "ToS explicitly prohibits 'sell, resell, license, distribute, transfer' of Services. No exception found for proxy/wrapper/reselling models in free tier terms. Commercial redistribution requires explicit permission not granted in standard TOU.",
+  "tos_evidence": [
+    "Section (i): copy, sell, resell, license, distribute, transfer... prohibited unless otherwise permitted",
+    "No value-added or service bureau exception identified in extracted TOU text",
+    "Prohibited Actions reinforce no unauthorized commercial exploitation"
+  ],
+  "risks": [
+    "Direct ToS violation for webhook relay/proxy reselling",
+    "Account termination risk for multi-tenant pooling",
+    "No documented free-tier commercial use allowance",
+    "Webhook data privacy concerns with third-party routing"
+  ],
+  "next_steps": [
+    "REJECTED - Do not promote to TIER1",
+    "Continue pipeline to method_935"
+  ],
+  "timestamp": "2026-08-26T23:57:14.675036+00:00"
+}
