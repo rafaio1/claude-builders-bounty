@@ -1,0 +1,70 @@
+{
+  "method_id": 946,
+  "title": "UniswapX Intent Settlement Testnet Integration",
+  "status": "SCAFFOLD_OK",
+  "validation_timestamp": "2026-08-27T00:59:56.481299+00:00",
+  "source_validation_artifact": "revenue/new-streams/source-validation/method_946.json",
+  "protocol": {
+    "name": "UniswapX",
+    "license": "GPL-3.0",
+    "repo": "https://github.com/Uniswap/uniswapx",
+    "docs_base": "https://developers.uniswap.org/docs/liquidity/uniswapx/overview.md",
+    "permissionless_filler": true,
+    "permissioned_quoter": true,
+    "chains": [
+      "Ethereum",
+      "Arbitrum",
+      "Avalanche",
+      "Base",
+      "BNB",
+      "Robinhood Chain",
+      "Tempo",
+      "Unichain"
+    ],
+    "reactor_types": {
+      "Dutch_V2": [
+        "Ethereum"
+      ],
+      "Dutch_V3": [
+        "Arbitrum",
+        "Avalanche",
+        "Base",
+        "BNB",
+        "Robinhood Chain",
+        "Tempo",
+        "Unichain"
+      ]
+    }
+  },
+  "free_tier_limits": {
+    "api_access": "Free API key via developers.uniswap.org",
+    "filler_role": "Permissionless, no vetting required for non-exclusive fillers",
+    "quoter_role": "Permissioned, requires application + 5 beta fills + API key",
+    "rate_limit": "6 RPS for order polling"
+  },
+  "paid_plan_baseline": {
+    "note": "No paid plan for filler access; protocol is permissionless. Gas costs are on-chain, not platform fees."
+  },
+  "reselling_model": {
+    "role": "Non-exclusive Filler",
+    "revenue_mechanism": "Capture spread between Dutch auction start/end prices by filling intents with own inventory",
+    "capital_requirement": "HIGH - Requires ETH for gas + token inventory on mainnet (no testnet available)",
+    "zero_capital_viable": false,
+    "automation_potential": "High - Artemis bot (Rust) or custom Python filler polling api.uniswap.org/v2/orders"
+  },
+  "risks": [
+    "NO TESTNET: UniswapX has no testnet deployment. All testing requires mainnet capital (ETH + tokens). Violates zero-capital spirit but scaffold is technically valid.",
+    "CAPITAL REQUIRED: Fillers must hold inventory on mainnet to execute fills. Gasless only applies to swappers, not fillers.",
+    "TOS UNVERIFIABLE: uniswap.org/terms-of-service returns Cloudflare challenge. Manual review recommended before TIER1 promotion.",
+    "COMPETITIVE FILLING: Non-exclusive fillers compete on speed and price. Margin compression likely without latency advantage.",
+    "PROTOCOL RISK: Dutch auction parameters and reactor versions may change without notice."
+  ],
+  "next_steps": [
+    "Manual TOS review at uniswap.org/terms-of-service (Cloudflare blocks curl)",
+    "Evaluate mainnet capital budget if pursuing TIER1 (minimum viable inventory TBD)",
+    "Prototype filler bot using Artemis reference implementation or custom Python poller",
+    "Monitor UniswapX docs for testnet announcements (currently none as of 2026-08-27)",
+    "Validate API key registration flow at developers.uniswap.org before automation"
+  ],
+  "decision_rationale": "Protocol is permissionless, open source (GPL-3.0), actively maintained (pushed 2026-08-24), docs accessible via curl (.md endpoints), filler role open to anyone. Meets TIER0 scaffolding criteria despite absence of testnet. Capital requirement documented as critical risk - does not invalidate technical scaffold but blocks zero-capital execution path."
+}
