@@ -105,13 +105,15 @@ def test_launch_shell_sources_protected_ghostcli_env():
 
 
 def test_missing_tmux_server_is_bootstrapped_outside_supervisor_limits():
-    runner = SequencedRunner([1, 0, 0, 0])
+    runner = SequencedRunner([1, 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[0])
     create_argv = runner.calls[1][0]
     assert create_argv[:4] == ("systemd-run", "--scope", "--quiet", "--")
     assert create_argv[4:6] == ("tmux", "new-session")
+    assert create_argv[-1] == "/bin/bash"
     assert runner.calls[2][0][-2:] == ("remain-on-exit", "on")
     assert runner.calls[3][0][:2] == ("tmux", "select-window")
+    assert runner.calls[4][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_capture_race_becomes_missing_instead_of_crashing():
@@ -141,11 +143,13 @@ def test_incomplete_tmux_metadata_is_recoverable_missing():
 
 
 def test_new_window_is_persistent_and_selected_for_orca_client():
-    runner = SequencedRunner([0, 1, 0, 0, 0])
+    runner = SequencedRunner([0, 1, 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[2][0][:2] == ("tmux", "new-window")
+    assert runner.calls[2][0][-1] == "/bin/bash"
     assert runner.calls[3][0][-2:] == ("remain-on-exit", "on")
     assert runner.calls[4][0] == ("tmux", "select-window", "-t", ROLES[1].target)
+    assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_one_inspection_timeout_does_not_hide_other_roles(tmp_path):

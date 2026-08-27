@@ -391,7 +391,6 @@ class Tmux:
                 raise RuntimeError(f"cannot select window {role.target}: {selected.stderr.strip()}")
 
     def recover(self, role: Role) -> None:
-        shell_command = self.launch_shell(role)
         if not self._session_exists(role.session):
             create = self.runner.run(
                 [
@@ -408,13 +407,14 @@ class Tmux:
                     role.window,
                     "-c",
                     str(WORKSPACE),
-                    shell_command,
+                    "/bin/bash",
                 ],
                 timeout=15.0,
             )
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create {role.target}: {create.stderr.strip()}")
             self._prepare_window(role, focus=True)
+            self._respawn(role)
             return
 
         window_exists = self.runner.run(
@@ -432,19 +432,19 @@ class Tmux:
                     role.window,
                     "-c",
                     str(WORKSPACE),
-                    shell_command,
+                    "/bin/bash",
                 ],
                 timeout=15.0,
             )
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create window {role.target}: {create.stderr.strip()}")
             self._prepare_window(role, focus=True)
+            self._respawn(role)
             return
 
         self.relaunch(role)
 
-    def relaunch(self, role: Role) -> None:
-        self._prepare_window(role, focus=False)
+    def _respawn(self, role: Role) -> None:
         result = self.runner.run(
             [
                 "tmux",
@@ -460,6 +460,10 @@ class Tmux:
         )
         if result.returncode != 0:
             raise RuntimeError(f"cannot respawn {role.target}: {result.stderr.strip()}")
+
+    def relaunch(self, role: Role) -> None:
+        self._prepare_window(role, focus=False)
+        self._respawn(role)
 
     def reorient(self, role: Role, prompt: str) -> None:
         buffer_name = f"codex-supervisor-{role.key}"
