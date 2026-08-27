@@ -28,7 +28,9 @@ def candidate(opportunity_id: str, *, lane: str = "build", source_url: str | Non
         "title": f"Opportunity {opportunity_id}",
         "source_url": source_url
         or (
-            f"https://github.com/owner/repo-{suffix}/issues/{int(suffix) + 1}"
+            f"https://github.com/owner/repo-{suffix}/pull/{int(suffix) + 1}"
+            if lane == "receivable" and suffix.isdigit()
+            else f"https://github.com/owner/repo-{suffix}/issues/{int(suffix) + 1}"
             if suffix.isdigit()
             else "https://github.com/owner/repo/issues/1"
         ),
@@ -50,6 +52,10 @@ def official_validation(opportunity_id: str, **overrides):
         "claim_path": f"https://app.opire.dev/rewards/opire-{suffix}/claim",
         "payout_method": "stripe",
         "payer_identity": "verified-maintainer",
+        "ownership_assignee": "rafaio1",
+        "ownership_evidence_url": f"https://github.com/owner/repo-{suffix}/issues/1",
+        "ownership_evidence_kind": "github_assignment",
+        "ownership_verified": True,
         "payout_eligible": True,
         "eligibility_verified": True,
         "official_evidence_verified": True,
@@ -81,6 +87,7 @@ def seed_lead(db_path: Path, opportunity_id: str, *, lane: str = "build", source
     if lane == "receivable":
         validation.update(
             {
+                "pr_author": "rafaio1",
                 "linked_state": "merged",
                 "automation_eligible": True,
                 "human_action_required": False,
@@ -142,6 +149,60 @@ def test_pr_url_is_never_official_bounty_evidence(tmp_path):
     assert not valid
     assert "evidence_not_distinct_from_source" in reasons
     assert "build_source_not_github_issue" in reasons
+
+
+def test_third_party_pr_slash_claim_never_proves_ownership(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    seed_lead(
+        db_path,
+        "candidate-ownership",
+        lane="receivable",
+        source_url="https://github.com/owner/repo-ownership/pull/1",
+    )
+    assert revenue_db.record_official_validation(
+        "candidate-ownership",
+        {
+            "pr_author": "Bakomebandias",
+            "ownership_assignee": "rafaio1",
+            "ownership_evidence_url": (
+                "https://github.com/owner/repo-ownership/pull/1#issuecomment-1"
+            ),
+            "ownership_evidence_kind": "claim_comment",
+            "ownership_verified": True,
+        },
+        db_path,
+    )
+
+    valid, reasons = revenue_db.verify_opportunity("candidate-ownership", db_path)
+
+    assert not valid
+    assert "claim_comment_not_ownership" in reasons
+    assert "claimant_ownership_unverified" in reasons
+
+
+def test_third_party_pr_with_explicit_official_assignment_is_owned(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    seed_lead(
+        db_path,
+        "candidate-transfer",
+        lane="receivable",
+        source_url="https://github.com/owner/repo-transfer/pull/1",
+    )
+    assert revenue_db.record_official_validation(
+        "candidate-transfer",
+        {
+            "pr_author": "Bakomebandias",
+            "ownership_assignee": "rafaio1",
+            "ownership_evidence_url": "https://github.com/owner/repo-transfer/pull/1",
+            "ownership_evidence_kind": "github_assignment",
+            "ownership_verified": True,
+        },
+        db_path,
+    )
+
+    valid, reasons = revenue_db.verify_opportunity("candidate-transfer", db_path)
+
+    assert valid, reasons
 
 
 def test_platform_open_but_linked_github_issue_closed_is_rejected(tmp_path):

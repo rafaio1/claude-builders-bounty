@@ -1,8 +1,11 @@
 #!/usr/bin/env python3
 """Tests for pr_email_agent classification logic."""
 import json
+import subprocess
 import sys
 from pathlib import Path
+
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "tools"))
 from pr_email_agent import classify_message, needs_human_action, is_bot_success_only
@@ -208,7 +211,12 @@ def test_window_completion_skips_on_rerun():
     """Completed windows are skipped unless overridden."""
     from unittest.mock import patch, MagicMock
     import pr_email_agent as agent
-    cursor = {"completed_windows": ["30d", "30d-1y", "gt1y"], "current_window": None, "last_run": None}
+    cursor = {
+        "completed_windows": ["30d", "30d-1y", "gt1y"],
+        "verified_completed_windows": ["30d-1y", "gt1y"],
+        "current_window": None,
+        "last_run": None,
+    }
     mock_search = MagicMock(return_value=[])
     with patch.object(agent, "load_cursor", return_value=cursor), \
          patch.object(agent, "save_cursor"), \
@@ -216,8 +224,8 @@ def test_window_completion_skips_on_rerun():
          patch.object(agent, "load_ledger", return_value=[]), \
          patch.object(agent, "save_ledger_atomic"):
         agent.classify_and_process()
-        # All windows completed -> search never called
-        assert mock_search.call_count == 0
+        # The rolling 30d window always runs; verified historical windows are skipped.
+        assert mock_search.call_count == 1
 
 
 def test_batch_limit_stops_processing():
@@ -272,3 +280,116 @@ def test_dry_run_no_side_effects():
         assert isinstance(result, list)
         assert len(result) == 1
         assert result[0]["message_id"] == "msg_dry"
+
+
+def test_gmail_search_invalid_grant_raises_instead_of_empty():
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    failed = subprocess.CompletedProcess(
+        args=[],
+        returncode=1,
+        stdout="",
+        stderr='OAuth refresh failed: {"error":"invalid_grant"}',
+    )
+    with patch.object(agent.subprocess, "run", return_value=failed):
+        with pytest.raises(agent.GmailSearchError) as caught:
+            agent.gmail_search_paginated("from:github.com")
+    assert caught.value.code == "gmail_oauth_invalid_grant"
+
+
+def test_gmail_search_timeout_raises_instead_of_empty():
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    timeout = subprocess.TimeoutExpired(cmd=["gmail"], timeout=120)
+    with patch.object(agent.subprocess, "run", side_effect=timeout):
+        with pytest.raises(agent.GmailSearchError) as caught:
+            agent.gmail_search_paginated("from:github.com")
+    assert caught.value.code == "gmail_search_timeout"
+
+
+def test_gmail_search_successful_empty_is_distinct_from_failure():
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    success = subprocess.CompletedProcess(args=[], returncode=0, stdout="", stderr="")
+    with patch.object(agent.subprocess, "run", return_value=success):
+        assert agent.gmail_search_paginated("from:github.com") == []
+
+
+@pytest.mark.parametrize("dry_run", [False, True])
+def test_search_failure_never_advances_cursor_or_mutates(tmp_path, dry_run):
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    cursor = {
+        "completed_windows": ["30d"],
+        "verified_completed_windows": [],
+        "current_window": None,
+        "last_run": None,
+    }
+    single_window = [{"label": "30d", "query": "newer_than:30d"}]
+    with patch.object(agent, "load_cursor", return_value=cursor), \
+         patch.object(agent, "load_ledger", return_value=[]), \
+         patch.object(agent, "gmail_search_paginated", side_effect=agent.GmailSearchError("gmail_oauth_invalid_grant")), \
+         patch.object(agent, "save_cursor") as save_cursor, \
+         patch.object(agent, "save_ledger_atomic") as save_ledger, \
+         patch.object(agent, "append_action_queue") as queue, \
+         patch.object(agent, "gmail_trash") as trash, \
+         patch.object(agent, "SCAN_WINDOWS", single_window):
+        with pytest.raises(agent.GmailSearchError):
+            agent.classify_and_process(dry_run=dry_run)
+    save_cursor.assert_not_called()
+    save_ledger.assert_not_called()
+    queue.assert_not_called()
+    trash.assert_not_called()
+    assert cursor["completed_windows"] == ["30d"]
+    assert cursor["verified_completed_windows"] == []
+    assert cursor["last_run"] is None
+
+
+def test_successful_empty_historical_search_records_verified_completion():
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    cursor = {
+        "completed_windows": ["30d-1y"],
+        "verified_completed_windows": [],
+        "current_window": None,
+        "last_run": None,
+    }
+    single_window = [{"label": "30d-1y", "query": "older_than:30d newer_than:1y"}]
+    with patch.object(agent, "load_cursor", return_value=cursor), \
+         patch.object(agent, "load_ledger", return_value=[]), \
+         patch.object(agent, "gmail_search_paginated", return_value=[]), \
+         patch.object(agent, "save_cursor") as save_cursor, \
+         patch.object(agent, "save_ledger_atomic"), \
+         patch.object(agent, "SCAN_WINDOWS", single_window):
+        agent.classify_and_process()
+    assert cursor["verified_completed_windows"] == ["30d-1y"]
+    assert cursor["search_success"]["30d-1y"]["result_count"] == 0
+    assert cursor["last_run"] is not None
+    assert save_cursor.call_count >= 1
+
+
+def test_successful_empty_recurring_search_is_not_completed():
+    from unittest.mock import patch
+    import pr_email_agent as agent
+
+    cursor = {
+        "completed_windows": ["30d"],
+        "verified_completed_windows": [],
+        "current_window": None,
+        "last_run": None,
+    }
+    single_window = [{"label": "30d", "query": "newer_than:30d"}]
+    with patch.object(agent, "load_cursor", return_value=cursor), \
+         patch.object(agent, "load_ledger", return_value=[]), \
+         patch.object(agent, "gmail_search_paginated", return_value=[]), \
+         patch.object(agent, "save_cursor"), \
+         patch.object(agent, "save_ledger_atomic"), \
+         patch.object(agent, "SCAN_WINDOWS", single_window):
+        agent.classify_and_process()
+    assert cursor["verified_completed_windows"] == []
+    assert cursor["search_success"]["30d"]["result_count"] == 0

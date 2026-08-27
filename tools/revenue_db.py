@@ -15,7 +15,7 @@ import sqlite3
 from contextlib import contextmanager
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
-from typing import Any, Iterable, Iterator, Mapping, Optional
+from typing import Any, Iterable, Iterator, Mapping
 from urllib.parse import urlparse
 
 
@@ -32,6 +32,10 @@ DEFAULT_MIN_EV_PER_HOUR_USD = 5.0
 DEFAULT_EFFORT_OVERHEAD_MULTIPLIER = 1.5
 DEFAULT_FIXED_OVERHEAD_HOURS = 1.0
 MAX_SETTLEMENT_VERIFICATION_AGE = timedelta(hours=24)
+MONETIZABLE_GITHUB_LOGIN = "rafaio1"
+OWNERSHIP_EVIDENCE_KINDS = frozenset(
+    {"github_assignment", "maintainer_assignment", "official_transfer"}
+)
 
 ALLOWED_IDENTITIES = frozenset(
     {"revenue_generator", "reviewer", "integrator", "contador", "collector"}
@@ -146,6 +150,11 @@ def init_db(db_path: str | os.PathLike[str] | None = None) -> Path:
                 claim_path TEXT,
                 payout_method TEXT,
                 payer_identity TEXT,
+                pr_author TEXT,
+                ownership_assignee TEXT,
+                ownership_evidence_url TEXT,
+                ownership_evidence_kind TEXT,
+                ownership_verified INTEGER NOT NULL DEFAULT 0 CHECK(ownership_verified IN (0, 1)),
                 payout_eligible INTEGER NOT NULL DEFAULT 0 CHECK(payout_eligible IN (0, 1)),
                 eligibility_verified INTEGER NOT NULL DEFAULT 0 CHECK(eligibility_verified IN (0, 1)),
                 official_evidence_verified INTEGER NOT NULL DEFAULT 0 CHECK(official_evidence_verified IN (0, 1)),
@@ -249,6 +258,19 @@ def init_db(db_path: str | os.PathLike[str] | None = None) -> Path:
             END;
             """
         )
+        existing_columns = {
+            row["name"] for row in conn.execute("PRAGMA table_info(opportunities)").fetchall()
+        }
+        ownership_columns = {
+            "pr_author": "TEXT",
+            "ownership_assignee": "TEXT",
+            "ownership_evidence_url": "TEXT",
+            "ownership_evidence_kind": "TEXT",
+            "ownership_verified": "INTEGER NOT NULL DEFAULT 0 CHECK(ownership_verified IN (0, 1))",
+        }
+        for column, declaration in ownership_columns.items():
+            if column not in existing_columns:
+                conn.execute(f"ALTER TABLE opportunities ADD COLUMN {column} {declaration}")
     return path
 
 
@@ -423,6 +445,11 @@ VALIDATION_FIELDS = frozenset(
         "claim_path",
         "payout_method",
         "payer_identity",
+        "pr_author",
+        "ownership_assignee",
+        "ownership_evidence_url",
+        "ownership_evidence_kind",
+        "ownership_verified",
         "payout_eligible",
         "eligibility_verified",
         "official_evidence_verified",
@@ -521,6 +548,55 @@ def _is_github_issue_url(url: str) -> bool:
     return len(parts) == 4 and parts[2] == "issues" and parts[3].isdigit()
 
 
+def _is_github_pull_url(url: str) -> bool:
+    parsed = urlparse(url)
+    if parsed.scheme != "https" or parsed.hostname not in {"github.com", "www.github.com"}:
+        return False
+    parts = [part for part in parsed.path.split("/") if part]
+    return len(parts) == 4 and parts[2] == "pull" and parts[3].isdigit()
+
+
+def _ownership_evidence_matches(opportunity: Mapping[str, Any]) -> bool:
+    evidence_url = str(opportunity.get("ownership_evidence_url") or "")
+    parsed = urlparse(evidence_url)
+    parts = [part for part in parsed.path.split("/") if part]
+    repo_key = str(opportunity.get("repo_key") or "").casefold()
+    if parsed.scheme == "https" and parsed.hostname in {"github.com", "www.github.com"}:
+        return (
+            len(parts) >= 4
+            and "/".join(parts[:2]).casefold() == repo_key
+            and parts[2] in {"issues", "pull"}
+            and parts[3].isdigit()
+        )
+    return (
+        str(opportunity.get("ownership_evidence_kind") or "") == "official_transfer"
+        and _host_matches_platform(str(opportunity.get("platform") or ""), evidence_url)
+    )
+
+
+def ownership_validation_reasons(opportunity: Mapping[str, Any]) -> list[str]:
+    """Require our PR authorship or an explicit, officially verified transfer."""
+    author = str(opportunity.get("pr_author") or "").casefold()
+    if author == MONETIZABLE_GITHUB_LOGIN.casefold():
+        return []
+    kind = str(opportunity.get("ownership_evidence_kind") or "").lower()
+    if kind in {"claim_comment", "slash_claim_comment"}:
+        return ["claim_comment_not_ownership", "claimant_ownership_unverified"]
+    explicitly_assigned = (
+        bool(opportunity.get("ownership_verified"))
+        and str(opportunity.get("ownership_assignee") or "").casefold()
+        == MONETIZABLE_GITHUB_LOGIN.casefold()
+        and kind in OWNERSHIP_EVIDENCE_KINDS
+        and _ownership_evidence_matches(opportunity)
+    )
+    if explicitly_assigned:
+        return []
+    reasons = ["claimant_ownership_unverified"]
+    if _is_github_pull_url(str(opportunity.get("source_url") or "")) and author:
+        reasons.append("third_party_pr_author")
+    return reasons
+
+
 def _supported_payout_methods(methods: Iterable[str] | None) -> frozenset[str]:
     if methods is None:
         configured = os.environ.get("REVENUE_SUPPORTED_PAYOUT_METHODS")
@@ -584,6 +660,7 @@ def validate_opportunity(
 
     if lane not in {"build", "receivable"}:
         reasons.append("invalid_lane")
+    reasons.extend(ownership_validation_reasons(opportunity))
     if not repo_health:
         reasons.append("repo_health_missing")
     else:

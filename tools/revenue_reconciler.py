@@ -126,7 +126,6 @@ def classify_item_fast(item):
     if not isinstance(bounty_evidence, dict):
         return "INCOMPLETE_EVIDENCE", "bounty_evidence_not_dict"
 
-    if status in ["NOT_OURS_MISATTRIBUTED", "INVALID", "EXPIRED", "SPAM"]:
         return "REJECTED", "cached_status"
     if not github_merged:
         return "PENDING_MERGE", "not_merged"

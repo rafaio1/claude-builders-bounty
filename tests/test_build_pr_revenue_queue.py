@@ -2,14 +2,13 @@
 import json
 import sys
 from pathlib import Path
-from unittest.mock import patch
-
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 from build_pr_revenue_queue import (
     build_ledger_index,
     build_payment_queue_index,
     classify_pr,
     compute_saturation,
+    monetizable_ownership,
 )
 
 
@@ -19,6 +18,7 @@ def _pr(key="owner/repo#1", state="OPEN", merged_at=None, **kw):
         "repo": repo,
         "number": num,
         "url": f"https://github.com/{key.replace('#', '/pull/')}",
+        "author": kw.get("author", "rafaio1"),
         "title": kw.get("title", "test pr"),
         "state": state,
         "mergedAt": merged_at,
@@ -109,6 +109,37 @@ def test_claim_pending_with_evidence_is_tier_a():
     le = {"value": 300, "currency": "USD", "claim_url": "https://x.com/c"}
     c = classify_pr(pr, le, None, set())
     assert c["tier"] == "A"
+
+
+def test_third_party_pr_claim_comment_is_never_ownership():
+    pr = _pr("org/repo#14", author="Bakomebandias")
+    ledger = {
+        "ownership_assignee": "rafaio1",
+        "ownership_verified": True,
+        "ownership_evidence_kind": "claim_comment",
+        "ownership_evidence_url": "https://github.com/org/repo/pull/14#issuecomment-1",
+        "claim_evidence": {"author": "rafaio1", "body": "/claim"},
+    }
+
+    assert monetizable_ownership(pr, ledger) == (False, "claim_comment_not_ownership")
+    classified = classify_pr(pr, ledger, None, set())
+    assert classified["tier"] is None
+    assert classified["action"] == "quarantine_ownership"
+
+
+def test_third_party_pr_requires_explicit_official_assignment():
+    pr = _pr("org/repo#15", author="Bakomebandias")
+    ledger = {
+        "ownership_assignee": "rafaio1",
+        "ownership_verified": True,
+        "ownership_evidence_kind": "github_assignment",
+        "ownership_evidence_url": "https://github.com/org/repo/issues/10",
+    }
+
+    assert monetizable_ownership(pr, ledger) == (True, "explicit_official_assignment")
+
+    ledger["ownership_evidence_url"] = "https://github.com/other/repo/issues/10"
+    assert monetizable_ownership(pr, ledger) == (False, "claimant_ownership_unverified")
 
 
 # --- Tier B signals ---

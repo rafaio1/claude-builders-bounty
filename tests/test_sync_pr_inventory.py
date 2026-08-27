@@ -4,9 +4,39 @@
 import json
 import sys
 from pathlib import Path
+from unittest.mock import patch
 
 # Add scripts to path
 sys.path.insert(0, str(Path(__file__).parent.parent / "scripts"))
+import sync_pr_inventory
+
+
+def test_collector_persists_actual_pr_author():
+    page = {
+        "data": {
+            "search": {
+                "pageInfo": {"hasNextPage": False, "endCursor": None},
+                "nodes": [
+                    {
+                        "url": "https://github.com/owner/repo/pull/1",
+                        "title": "PR",
+                        "state": "OPEN",
+                        "createdAt": "2026-08-27T00:00:00Z",
+                        "updatedAt": "2026-08-27T00:00:00Z",
+                        "mergedAt": None,
+                        "author": {"login": "rafaio1"},
+                        "repository": {"nameWithOwner": "owner/repo"},
+                        "number": 1,
+                        "reviews": {"totalCount": 0},
+                        "statusCheckRollup": None,
+                    }
+                ],
+            }
+        }
+    }
+    with patch.object(sync_pr_inventory, "gh_graphql_search", return_value=page):
+        collected = sync_pr_inventory.collect_all_prs()
+    assert collected["owner/repo#1"]["author"] == "rafaio1"
 
 def test_schema_completeness():
     """Verify all PRs have required fields with explicit defaults."""
@@ -48,7 +78,7 @@ def test_stats_consistency():
     
     assert stats['open'] == open_c, f"Open mismatch: {stats['open']} vs {open_c}"
     assert stats['merged'] == merged_c, f"Merged mismatch: {stats['merged']} vs {merged_c}"
-    assert stats['closed_unmerged'] == closed_unmerged, f"Closed mismatch"
+    assert stats['closed_unmerged'] == closed_unmerged, "Closed mismatch"
     
     total = len(prs)
     state_sum = open_c + merged_c + closed_unmerged

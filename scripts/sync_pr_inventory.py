@@ -41,6 +41,7 @@ def gh_graphql_search(cursor=None):
         nodes {
           ... on PullRequest {
             url title state createdAt updatedAt mergedAt
+            author { login }
             repository { nameWithOwner }
             number
             reviews(first: 5) { totalCount }
@@ -83,6 +84,7 @@ def collect_all_prs():
                 'mergedAt': node.get("mergedAt"),
                 'createdAt': node["createdAt"],
                 'updatedAt': node["updatedAt"],
+                'author': (node.get("author") or {}).get("login"),
                 'repo': repo,
                 'number': number,
                 'reviews_count': node.get("reviews", {}).get("totalCount"),
@@ -170,7 +172,7 @@ def main():
     print("Collecting PRs from GitHub GraphQL...")
     new_prs = collect_all_prs()
     
-    print(f"Merging with existing inventory...")
+    print("Merging with existing inventory...")
     merged = merge_with_existing(new_prs)
     
     print("Enforcing schema v2.0...")
@@ -180,7 +182,7 @@ def main():
     
     output = {
         'schema_version': SCHEMA_VERSION,
-        'schema_fields': list(REQUIRED_FIELDS.keys()) + ['url', 'title', 'state', 'mergedAt', 'createdAt', 'updatedAt', 'linked_issues'],
+        'schema_fields': list(REQUIRED_FIELDS.keys()) + ['url', 'title', 'state', 'mergedAt', 'createdAt', 'updatedAt', 'author', 'linked_issues'],
         'stats': stats,
         'prs': merged
     }

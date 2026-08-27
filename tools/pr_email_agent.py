@@ -19,6 +19,7 @@ GMAIL_CLIENT = Path("/Agentic/tools/gmail_client.py")
 GMAIL_CLIENT_PATH = str(GMAIL_CLIENT)
 CURSOR_PATH = str(WORKSPACE / "scan_cursor.json")
 DEFAULT_BATCH_SIZE = 500
+RECURRING_WINDOWS = {"30d"}
 SCAN_WINDOWS = [
     {"label": "30d", "query": "newer_than:30d"},
     {"label": "30d-1y", "query": "older_than:30d newer_than:1y"},
@@ -110,6 +111,23 @@ def run_cmd_list(cmd_list, **kwargs):
     return r.returncode, r.stdout.strip(), r.stderr.strip()
 
 
+class GmailSearchError(RuntimeError):
+    """A Gmail search was not proven successful; callers must not advance state."""
+
+    def __init__(self, code):
+        self.code = code
+        super().__init__(code)
+
+
+def _gmail_search_error_code(stderr):
+    detail = (stderr or "").lower()
+    if "invalid_grant" in detail:
+        return "gmail_oauth_invalid_grant"
+    if "invalid_client" in detail or "unauthorized_client" in detail:
+        return "gmail_oauth_authentication_failed"
+    return "gmail_search_failed"
+
+
 def gh_pr_state(repo, pr_num):
     rc, out, _ = run_cmd_list(
         ["gh", "pr", "view", str(pr_num), "--repo", repo, "--json", "state,url"]
@@ -154,9 +172,9 @@ def github_latest_slash_attempt_association(repo, pr_num):
 
 
 def gmail_search(query):
-    rc, out, _ = run_cmd_list(["python3", str(GMAIL_CLIENT), "search", query])
+    rc, out, err = run_cmd_list(["python3", str(GMAIL_CLIENT), "search", query])
     if rc != 0:
-        return []
+        raise GmailSearchError(_gmail_search_error_code(err))
     return [l for l in out.strip().split("\n") if l.startswith("[")]
 
 
@@ -237,7 +255,12 @@ def load_cursor():
                 return json.load(f)
         except Exception:
             pass
-    return {"completed_windows": [], "current_window": None, "last_run": None}
+    return {
+        "completed_windows": [],
+        "verified_completed_windows": [],
+        "current_window": None,
+        "last_run": None,
+    }
 
 
 def save_cursor(cursor):
@@ -245,6 +268,19 @@ def save_cursor(cursor):
     with open(tmp, "w") as f:
         json.dump(cursor, f, indent=2)
     os.replace(tmp, CURSOR_PATH)
+
+
+def record_search_success(cursor, label, query, result_count, *, completed=False):
+    """Record proof of a successful search; legacy completion markers stay untouched."""
+    cursor.setdefault("search_success", {})[label] = {
+        "at": datetime.now(timezone.utc).isoformat(),
+        "query": query,
+        "result_count": int(result_count),
+    }
+    if completed:
+        verified = cursor.setdefault("verified_completed_windows", [])
+        if label not in verified:
+            verified.append(label)
 
 
 def gmail_search_paginated(query, max_results=500):
@@ -255,12 +291,12 @@ def gmail_search_paginated(query, max_results=500):
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=120)
         if r.returncode != 0:
-            print(f"gmail search failed: {r.stderr.strip()}")
-            return []
+            raise GmailSearchError(_gmail_search_error_code(r.stderr))
         return [l for l in r.stdout.splitlines() if l.strip()]
-    except Exception as e:
-        print(f"gmail search error: {e}")
-        return []
+    except subprocess.TimeoutExpired as exc:
+        raise GmailSearchError("gmail_search_timeout") from exc
+    except OSError as exc:
+        raise GmailSearchError("gmail_search_exec_error") from exc
 
 
 def classify_and_process(dry_run=False, batch_size=None, window_override=None):
@@ -298,7 +334,12 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
     for win in windows:
         label = win["label"]
         query = win["query"] + " from:github.com subject:PR"
-        if label in cursor.get("completed_windows", []) and not window_override:
+        verified_completed = cursor.get("verified_completed_windows", [])
+        if (
+            label not in RECURRING_WINDOWS
+            and label in verified_completed
+            and not window_override
+        ):
             print(f"Skipping completed window: {label}")
             continue
 
@@ -310,11 +351,18 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
         remaining = None
         if batch_size:
             remaining = max(0, batch_size - global_processed)
-        lines = gmail_search_paginated(query, max_results=remaining or DEFAULT_BATCH_SIZE)
+        search_limit = remaining or DEFAULT_BATCH_SIZE
+        lines = gmail_search_paginated(query, max_results=search_limit)
         if not lines:
             print(f"No emails in window {label}")
             if not window_override and not dry_run:
-                cursor.setdefault("completed_windows", []).append(label)
+                record_search_success(
+                    cursor,
+                    label,
+                    query,
+                    0,
+                    completed=label not in RECURRING_WINDOWS,
+                )
                 save_cursor(cursor)
             continue
 
@@ -429,8 +477,16 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
             global_processed += 1
 
 
-        if not window_override and not dry_run and (not batch_size or global_processed < batch_size):
-            cursor.setdefault("completed_windows", []).append(label)
+        if not window_override and not dry_run:
+            record_search_success(
+                cursor,
+                label,
+                query,
+                len(lines),
+                completed=(
+                    label not in RECURRING_WINDOWS and len(lines) < search_limit
+                ),
+            )
             save_cursor(cursor)
 
     if dry_run:
@@ -449,4 +505,12 @@ if __name__ == "__main__":
     parser.add_argument("--batch", type=int, default=None, help="Max emails per window")
     parser.add_argument("--window", type=str, default=None, choices=["30d", "30d-1y", "gt1y"], help="Scan specific window only")
     args = parser.parse_args()
-    classify_and_process(dry_run=args.dry_run, batch_size=args.batch, window_override=args.window)
+    try:
+        classify_and_process(
+            dry_run=args.dry_run,
+            batch_size=args.batch,
+            window_override=args.window,
+        )
+    except GmailSearchError as exc:
+        print(f"PR_EMAIL_AGENT_BLOCKED: {exc.code}", file=sys.stderr)
+        raise SystemExit(2)

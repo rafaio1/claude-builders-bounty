@@ -26,6 +26,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 from collections import defaultdict
+from urllib.parse import urlparse
 
 INVENTORY_PATH = Path("data/aro/github_pr_inventory.json")
 LEDGER_PATH = Path("data/aro/bounty_ledger.json")
@@ -33,6 +34,13 @@ QUEUE_PATH = Path("data/aro/approved_pr_payment_queue.json")
 OUTPUT_PATH = Path("data/aro/pr_revenue_queue.json")
 
 SATURATION_THRESHOLD = 5  # >=5 open PRs without review -> block repo for tier C
+MONETIZABLE_GITHUB_LOGIN = "rafaio1"
+OWNERSHIP_EVIDENCE_KINDS = frozenset(
+    {"github_assignment", "maintainer_assignment", "official_transfer"}
+)
+OWNERSHIP_EVIDENCE_HOSTS = frozenset(
+    {"github.com", "www.github.com", "opire.dev", "app.opire.dev", "algora.io", "console.algora.io"}
+)
 
 
 def load_json(path: Path, default=None):
@@ -82,10 +90,11 @@ def build_ledger_index(ledger: dict) -> dict:
             if "bounty_currency" in normalized and "currency" not in normalized:
                 normalized["currency"] = normalized["bounty_currency"]
             if "evidence_url" not in normalized and "claim_url" not in normalized:
-                # Use pr_url or issue_url as evidence if status indicates claim exists
+                # Use only official platform URLs (Algora/Opire) as evidence.
+                # PR URL is never bounty evidence; GitHub issue URL is valid only if it points to an open issue.
                 status = str(normalized.get("status", "")).upper()
                 if status in ("CLAIM_PENDING", "PAYMENT_PENDING", "PAID", "PR_SUBMITTED"):
-                    normalized["evidence_url"] = normalized.get("pr_url") or normalized.get("issue_url")
+                    normalized["evidence_url"] = normalized.get("issue_url")  # Only accept issue_url (official platform link), never pr_url
             # Map status to claim_status/payout_status for classify_pr
             status = str(normalized.get("status", "")).upper()
             if "claim_status" not in normalized:
@@ -170,6 +179,41 @@ def compute_saturation(prs: dict) -> dict:
     return {"open_by_repo": dict(repo_open), "saturated_repos": sorted(saturated)}
 
 
+def monetizable_ownership(pr: dict, ledger_entry: dict | None) -> tuple[bool, str]:
+    """Accept authorship or explicit verified assignment; comments never transfer ownership."""
+    author = str(pr.get("author") or (ledger_entry or {}).get("pr_author") or "").casefold()
+    if author == MONETIZABLE_GITHUB_LOGIN.casefold():
+        return True, "pr_author_matches"
+    evidence = ledger_entry or {}
+    kind = str(evidence.get("ownership_evidence_kind") or "").lower()
+    assignee = str(evidence.get("ownership_assignee") or "").casefold()
+    evidence_url = str(evidence.get("ownership_evidence_url") or "")
+    parsed = urlparse(evidence_url)
+    hostname = (parsed.hostname or "").lower()
+    parts = [part for part in parsed.path.split("/") if part]
+    repo_key = str(pr.get("repo") or "").casefold()
+    github_evidence_matches = (
+        hostname in {"github.com", "www.github.com"}
+        and len(parts) >= 4
+        and "/".join(parts[:2]).casefold() == repo_key
+        and parts[2] in {"issues", "pull"}
+        and parts[3].isdigit()
+    )
+    transfer_evidence_matches = (
+        kind == "official_transfer" and hostname in OWNERSHIP_EVIDENCE_HOSTS
+    )
+    if kind in {"claim_comment", "slash_claim_comment"}:
+        return False, "claim_comment_not_ownership"
+    if (
+        evidence.get("ownership_verified") is True
+        and assignee == MONETIZABLE_GITHUB_LOGIN.casefold()
+        and kind in OWNERSHIP_EVIDENCE_KINDS
+        and (github_evidence_matches or transfer_evidence_matches)
+    ):
+        return True, "explicit_official_assignment"
+    return False, "claimant_ownership_unverified"
+
+
 def classify_pr(pr: dict, ledger_entry: dict | None, payment_entry: dict | None, saturated_repos: set) -> dict:
     """Classify a single PR into tier A/B/C or skip."""
     key = f"{pr['repo']}#{pr['number']}"
@@ -178,13 +222,16 @@ def classify_pr(pr: dict, ledger_entry: dict | None, payment_entry: dict | None,
     # Prefer ledger fields over inventory fields (inventory often lacks these)
     if ledger_entry:
         bounty_evidence = ledger_entry.get("evidence_url") or ledger_entry.get("claim_url") or pr.get("bounty_evidence", "unknown")
+        # Fail-closed: PR URL is never official bounty evidence.
+        pr_url = pr.get("url", "")
+        if bounty_evidence == pr_url:
+            bounty_evidence = "unknown"
         claim_status = ledger_entry.get("claim_status", pr.get("claim_status", "unknown"))
         payout_status = ledger_entry.get("payout_status", pr.get("payout_status", "unknown"))
     else:
         bounty_evidence = pr.get("bounty_evidence", "unknown")
         claim_status = pr.get("claim_status", "unknown")
         payout_status = pr.get("payout_status", "unknown")
-    revenue_potential = pr.get("revenue_potential", "unknown")
     reviews_count = pr.get("reviews_count") or 0
     ci_state = pr.get("ci_state")
     audit_note = pr.get("audit_note") or ""
@@ -202,10 +249,18 @@ def classify_pr(pr: dict, ledger_entry: dict | None, payment_entry: dict | None,
         "receivable_confirmed": False,
     }
 
+    ownership_ok, ownership_reason = monetizable_ownership(pr, ledger_entry)
+    result["pr_author"] = pr.get("author") or (ledger_entry or {}).get("pr_author")
+    result["monetizable_ownership"] = ownership_ok
+    result["ownership_reason"] = ownership_reason
+    if not ownership_ok:
+        result["reason"] = ownership_reason
+        result["action"] = "quarantine_ownership"
+        return result
+
     # Tier A: Verified bounty with official evidence
     if ledger_entry and bounty_evidence not in (None, False, "unknown", "not_checked"):
         value = ledger_entry.get("value", ledger_entry.get("amount", 0))
-        currency = ledger_entry.get("currency", "USD")
         try:
             ev = float(value) if value else 0.0
         except (ValueError, TypeError):
