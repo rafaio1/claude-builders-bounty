@@ -6,26 +6,35 @@
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
 ## Estado Atual — Laboratório Receita Zero-Capital
-**Atualizado:** 2026-08-27 12:37 UTC
+**Atualizado:** 2026-08-27 13:40 UTC
 **Receita Liquidada:** $0.00 (fase de validação infra)
 **Meta Aspiracional:** US$20M
 
 ### Último Commit de Integração
-- `900a2a4b` sync scanner configs cycle 12:30Z (2026-08-27T12:35Z)
-- 4 arquivos alterados (defi_platforms, testnet_airdrop_state, trade_scanner, vuln_report_config)
+- `374c2de0` feat(revenue): add SQLite persistence layer for revenue manager v2 (2026-08-27T13:39Z)
+- RCP Source 2 evolution integrada e corrigida (field mapping aligned ao schema real)
 - Secret scan: PASSED (nenhum token/chave/wallet no diff)
 - Repo privado validado antes do push
 
 ### Correções Recentes
-- `6e6868b7` fix post_reset_check variable scope bug (NameError em loop TARGET_PRS)
-- SBL bounty check executado: #12147/#12128 merged=None, 0 PRs encontrados por autor
+- `119b3c60` fix(rcp): align Source 2 field mapping to verified_revenue_candidates schema
+- `66f0bb44` fix(rcp): use ev_per_hour_conservative for sorting to prevent KeyError
+- `afc457f8` feat(rcp): add Source 2 ingestion for verified_revenue_candidates.json
+- `374c2de0` feat(revenue): add SQLite persistence layer (revenue_db.py, WAL+CAS)
+- RCP plan gera 3 work orders ativos a partir de Source 2 (verified candidates)
 - Trading real permanece bloqueado (sem shadow validation evidence)
 
 ### Próximas Verificações (waiting_monitoring)
 - Bounty PRs: OphirPay#225 (Vercel auth), OphirPay#228 (upstream glob), Lilly#150 (review), ligate-chain#567 (human action)
 - Expansion pipeline: 880 verdicts no executor_queue, maioria BLOCKED_SOURCE_UNVERIFIED; monitorar PILOTAR emergente
+- RCP Source 2: 10 verified candidates, 3 work orders discovered; monitorar evolução para claimed/accepted
 - Wash-trade shadow validation: monitorar `orchestrator/reconciliation_state.json`
 - Telegram gate: ✅ COMPLETO — todos emissores roteados via src/telegram_gate.py, testes 20/20 passando
+
+### Scanner Config Sync (alta frequência ~15min)
+- Último ciclo: `974c11a4` sync scanner configs cycle 13:30Z
+- Arquivos: defi_platforms, testnet_airdrop_state, trade_scanner, vuln_report_config
+- Delta: timestamps/IDs apenas, sem mudanças funcionais
 ### Infraestrutura Operacional
 - ✅ Timer Revenue: `agentic-revenue-orchestrator.timer` ativo (6h cycle)
 - ✅ Timers Improve: map/dev/review ativos em worktree isolado
