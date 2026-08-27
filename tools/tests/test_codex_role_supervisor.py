@@ -156,11 +156,19 @@ def test_new_window_is_persistent_and_selected_for_orca_client():
     assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
 
 
-def test_blank_window_metadata_creates_window_instead_of_false_relaunch():
+def test_blank_window_list_creates_window_instead_of_false_relaunch():
     runner = SequencedRunner([0, (0, "\n", ""), 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[2][0][:2] == ("tmux", "new-window")
     assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
+
+
+def test_exact_window_name_avoids_tmux_fuzzy_target_match():
+    runner = SequencedRunner([0, (0, "bash\nv2\n", ""), 0, 0])
+    Tmux(runner).recover(ROLES[1])
+    assert runner.calls[1][0][:2] == ("tmux", "list-windows")
+    assert all(call[0][:2] != ("tmux", "new-window") for call in runner.calls)
+    assert runner.calls[-1][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_one_inspection_timeout_does_not_hide_other_roles(tmp_path):

@@ -417,11 +417,11 @@ class Tmux:
             self._respawn(role)
             return
 
-        window_exists = self.runner.run(
-            ["tmux", "display-message", "-p", "-t", role.target, "#{window_id}"]
+        windows = self.runner.run(
+            ["tmux", "list-windows", "-F", "#{window_name}", "-t", f"={role.session}"]
         )
-        window_id = window_exists.stdout.strip()
-        if window_exists.returncode != 0 or not window_id.startswith("@"):
+        window_names = {line.strip() for line in windows.stdout.splitlines() if line.strip()}
+        if windows.returncode != 0 or role.window not in window_names:
             create = self.runner.run(
                 [
                     "tmux",
