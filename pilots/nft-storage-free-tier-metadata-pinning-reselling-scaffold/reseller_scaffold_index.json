@@ -1,0 +1,27 @@
+{
+  "method_id": "method_937",
+  "name": "NFT.Storage Free Tier Metadata Pinning Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "decision_timestamp": "2026-08-27T00:00:00+00:00",
+  "rejection_reason": "Free tier ilimitado não existe mais. Pricing atual é $4.99/GB one-time fee (pago). TOS indisponível via curl (Webflow JS-rendered, /terms/ retorna 404). Modelo de negócio migrou para w3s.link/NFT.Storage v2 com cobrança por storage. Zero-capital reselling inviável sem free tier permanente.",
+  "validation_evidence": {
+    "pricing_url": "https://nft.storage/pricing/",
+    "pricing_fetched": "2026-08-27",
+    "pricing_model": "$4.99/GB one-time fee",
+    "free_tier_available": false,
+    "tos_url": "https://nft.storage/terms/",
+    "tos_status": "404 Not Found (Webflow JS-rendered)",
+    "curl_viable": false
+  },
+  "risks": [
+    "No permanent free tier — paid storage only ($4.99/GB)",
+    "ToS inaccessible via zero-capital curl (JS-rendered Webflow)",
+    "Business model changed from unlimited free pinning to paid endowment model",
+    "Reselling requires capital outlay for storage credits"
+  ],
+  "next_steps": [
+    "REJECTED — do not promote to TIER1",
+    "Archive pilot directory",
+    "Continue pipeline with method_938"
+  ]
+}

@@ -1218,7 +1218,7 @@ Fix issue #{issue_num}: {title} in {owner}/{repo}"""
         f"git checkout -b {unique_branch}",
         ["git", "add", "-A"],
         ["git", "commit", "-m", commit_msg],
-        f"git remote set-url origin https://github.com/{FORK_OWNER}/{repo}.git",
+        f"git remote set-url origin https://x-access-token:{os.environ.get('GH_TOKEN','')}@github.com/{FORK_OWNER}/{repo}.git",
         f"bash -c \"gh repo view {FORK_OWNER}/{repo} --json name >/dev/null 2>&1 || gh repo fork {owner}/{repo} --clone=false --remote=false; sleep 3; git fetch origin\"",
         f"git push --force origin {unique_branch}"
     ]
