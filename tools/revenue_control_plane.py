@@ -172,8 +172,8 @@ def build_work_orders(queue: list, max_orders: int = 3) -> list:
                 "updated_at": datetime.now(timezone.utc).isoformat(),
             })
 
-    candidates.sort(key=lambda x: x["ev_per_hour"], reverse=True)
-    candidates.sort(key=lambda x: x.get("ev_per_hour_conservative", x.get("ev_per_hour", 0)), reverse=True)
+    candidates.sort(key=lambda x: x.get("ev_per_hour_conservative", 0), reverse=True)
+    # Sort by EV/hour descending; use conservative estimate from verified candidates
     return candidates[:max_orders]
 
 
