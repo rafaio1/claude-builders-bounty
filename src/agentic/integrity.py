@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import fnmatch
 import re
 import shutil
 import subprocess
@@ -20,6 +21,18 @@ EXPECTED_UNITS = (
     "agentic-integrity.timer",
     "agentic-portal.service",
     "agentic-portal-snapshot.timer",
+)
+RUNTIME_STATE_PATTERNS = (
+    "config/*_scanner.json",
+    "config/*_state.json",
+    "config/defi_platforms.json",
+    "config/gitcoin_grants.json",
+    "config/vuln_report_config.json",
+    "data/aro/bounty_ledger.json",
+    "data/aro/pr_revenue_queue.json",
+    "revenue/hats_opportunities/*.json",
+    "revenue/layer3_opportunities/*.json",
+    "revenue/rabbithole_opportunities/*.json",
 )
 KILL_SWITCH_RE = re.compile(r"^Environment=AGENTIC_LIVE_TRADE=0\s*$", re.M)
 EXEC_START_RE = re.compile(r"^ExecStart=(.+)$", re.M)
@@ -57,6 +70,11 @@ def _exec_start(text: str) -> str:
     return (match.group(1).strip() if match else "")
 
 
+def is_runtime_state_path(path: str) -> bool:
+    normalized = str(path or "").replace("\\", "/")
+    return any(fnmatch.fnmatchcase(normalized, pattern) for pattern in RUNTIME_STATE_PATTERNS)
+
+
 def _systemctl(*args: str) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         ["systemctl", *args],
@@ -91,13 +109,21 @@ def run_integrity(
             current == primary,
             f"HEAD={current or 'vazio'} primary={primary}",
         )
-        dirty = git.status_text()
-        if dirty:
+        dirty_paths = git.dirty_paths()
+        runtime_dirty = [path for path in dirty_paths if is_runtime_state_path(path)]
+        source_dirty = [path for path in dirty_paths if path not in runtime_dirty]
+        if source_dirty:
             add(
                 "git_clean",
                 False,
                 "main suja; GhostCLI: proposta Restaurar git_clean "
-                "(não reset --hard, não .env/data). " + dirty,
+                "(não reset --hard, não .env/data). " + "\n".join(source_dirty),
+            )
+        elif runtime_dirty:
+            add(
+                "git_clean",
+                True,
+                f"source tree limpa; {len(runtime_dirty)} arquivo(s) de estado operacional isolado(s)",
             )
         else:
             add("git_clean", True, "working tree limpa")
