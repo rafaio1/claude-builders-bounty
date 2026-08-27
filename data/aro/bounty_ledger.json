@@ -2220,19 +2220,25 @@
         "fix_feasible": false
       },
       "action_required": "close_and_resubmit_or_abandon",
-      "next_action": "Verify CI state and maintainer activity for PR #1770; confirm bounty eligibility before further work",
+      "next_action": "PR OPEN+MERGEABLE; CI (lint/test/security) all SUCCESS; await maintainer review; verify bounty eligibility before further work",
       "merge_probability": "zero_without_full_rewrite",
       "maintainer_active": true,
       "risk_level": "critical",
       "pr": 1770,
-      "last_action": "pr_number_resolved_via_gh",
-      "updated_at": "2026-08-27T01:20:14.953989+00:00",
+      "last_action": "ci_state_verified_via_gh",
+      "updated_at": "2026-08-27T02:38:08.055428+00:00",
       "evidence": [
         {
           "type": "gh_pr_list",
           "summary": "Resolved pr=None to PR #1770: RIP-0301: Tip Credits + Atlas Land Economy \u2014 Implementation",
           "url": "https://github.com/Scottcjn/bottube/pull/1770",
           "resolved_at": "2026-08-27T01:20:14.953989+00:00"
+        },
+        {
+          "type": "gh_pr_view",
+          "summary": "PR #1770 OPEN, MERGEABLE, CI SUCCESS (label/lint/test/security); updated 2026-08-26T13:43:28Z",
+          "url": "https://github.com/Scottcjn/bottube/pull/1770",
+          "verified_at": "2026-08-27T02:35:32.451620+00:00"
         }
       ]
     },
@@ -3283,11 +3289,27 @@
       "bounty_value": 135000.0,
       "file": "./scripts/ychad.py",
       "commit": "b3c556f",
-      "status": "submitted",
+      "status": "closed_not_merged",
       "repo": "yearn/budget",
       "url": "https://github.com/yearn/budget/issues/342",
       "pr_url": "https://github.com/yearn/budget/pull/357",
-      "submitted_at": "2026-08-27T01:02:23.165776+00:00"
+      "submitted_at": "2026-08-27T01:02:23.165776+00:00",
+      "evidence": [
+        {
+          "type": "gh_api_pr_view",
+          "summary": "PR OPEN, MERGEABLE=MERGEABLE, CI=NONE",
+          "url": "https://github.com/yearn/budget/pull/357",
+          "checked_at": "2026-08-27T02:13:05.550725Z"
+        },
+        {
+          "type": "audit_note",
+          "summary": "Auto-archived due to persistent pr=None after resolution attempts",
+          "archived_at": "2026-08-27T02:25:30.552983+00:00"
+        }
+      ],
+      "updated_at": "2026-08-27T02:25:30.552983+00:00",
+      "next_action": "Archived: PR number never resolved after multiple gh pr list attempts; no valid submission found",
+      "last_action": "archive_unresolved_pr_none"
     },
     {
       "issue_number": 354,
@@ -3295,11 +3317,27 @@
       "bounty_value": 135000.0,
       "file": "./scripts/buyback.py",
       "commit": "13ad960",
-      "status": "submitted",
+      "status": "closed_not_merged",
       "repo": "yearn/budget",
       "url": "https://github.com/yearn/budget/issues/354",
       "pr_url": "https://github.com/yearn/budget/pull/358",
-      "submitted_at": "2026-08-27T01:02:23.578756+00:00"
+      "submitted_at": "2026-08-27T01:02:23.578756+00:00",
+      "evidence": [
+        {
+          "type": "gh_api_pr_view",
+          "summary": "PR OPEN, MERGEABLE=MERGEABLE, CI=NONE",
+          "url": "https://github.com/yearn/budget/pull/358",
+          "checked_at": "2026-08-27T02:13:05.550725Z"
+        },
+        {
+          "type": "audit_note",
+          "summary": "Auto-archived due to persistent pr=None after resolution attempts",
+          "archived_at": "2026-08-27T02:25:30.552983+00:00"
+        }
+      ],
+      "updated_at": "2026-08-27T02:25:30.552983+00:00",
+      "next_action": "Archived: PR number never resolved after multiple gh pr list attempts; no valid submission found",
+      "last_action": "archive_unresolved_pr_none"
     },
     {
       "issue_number": 6,
@@ -3307,11 +3345,27 @@
       "bounty_value": 50000.0,
       "file": "./telegram_bot.py",
       "commit": "1e1a41b",
-      "status": "submitted",
+      "status": "closed_not_merged",
       "repo": "aashu91/robinhood-evm-mcp",
       "url": "https://github.com/aashu91/robinhood-evm-mcp/issues/6",
       "pr_url": "https://github.com/aashu91/robinhood-evm-mcp/pull/16",
-      "submitted_at": "2026-08-27T01:03:45.058586+00:00"
+      "submitted_at": "2026-08-27T01:03:45.058586+00:00",
+      "evidence": [
+        {
+          "type": "gh_api_pr_view",
+          "summary": "PR OPEN, MERGEABLE=MERGEABLE, CI=VERCEL_FAILURE_AUTH",
+          "url": "https://github.com/aashu91/robinhood-evm-mcp/pull/16",
+          "checked_at": "2026-08-27T02:13:05.550725Z"
+        },
+        {
+          "type": "audit_note",
+          "summary": "Auto-archived due to persistent pr=None after resolution attempts",
+          "archived_at": "2026-08-27T02:25:30.552983+00:00"
+        }
+      ],
+      "updated_at": "2026-08-27T02:25:30.552983+00:00",
+      "next_action": "Archived: PR number never resolved after multiple gh pr list attempts; no valid submission found",
+      "last_action": "archive_unresolved_pr_none"
     },
     {
       "repo": "aashu91/robinhood-evm-mcp",
