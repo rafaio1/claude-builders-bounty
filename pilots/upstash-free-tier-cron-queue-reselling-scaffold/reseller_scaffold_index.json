@@ -1,0 +1,36 @@
+{
+  "method_id": "method_944",
+  "name": "Upstash Free Tier Cron/Queue Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "tier": "TIER0",
+  "rejection_reason": "SPA blocking pattern: All Upstash legal URLs (/legal/terms-of-service, /terms, /legal/acceptable-use-policy, /docs/legal/terms-of-service) return Next.js/Mintlify SPA shells via curl (HTTP 404 with JS-only content). No GitHub legal repo exists. Cannot validate free tier permanence or reselling/sublicensing restrictions without TOS access. Zero-capital validation impossible.",
+  "validation_attempts": [
+    {"url": "https://upstash.com/legal/terms-of-service", "result": "404 SPA shell (Next.js)"},
+    {"url": "https://upstash.com/terms", "result": "404 SPA shell (Next.js)"},
+    {"url": "https://raw.githubusercontent.com/upstash/legal/main/terms-of-service.md", "result": "404 Not Found"},
+    {"url": "https://upstash.com/docs/legal/terms-of-service", "result": "404 SPA shell (Mintlify Docs7)"},
+    {"url": "https://upstash.com/legal/acceptable-use-policy", "result": "404 SPA shell (Next.js)"},
+    {"url": "https://api.github.com/repos/upstash/legal/contents/", "result": "NO_GITHUB_LEGAL_REPO"}
+  ],
+  "free_tier_limits": {
+    "claimed": "10k commands/day, Redis+Kafka",
+    "verified": false,
+    "verification_blocked_by": "SPA rendering - TOS inaccessible via curl"
+  },
+  "paid_plan_baseline": null,
+  "reselling_model": null,
+  "risks": [
+    "Cannot confirm free tier is permanent vs promotional",
+    "Cannot verify absence of reselling/sublicensing/service-bureau prohibitions",
+    "No static TOS artifact available for zero-capital audit trail",
+    "Platform uses client-side rendering exclusively for legal pages"
+  ],
+  "next_steps": [
+    "REJECTED - Do not proceed to TIER1",
+    "Pattern logged: SaaS platforms with JS-only legal pages are auto-reject for zero-capital pipeline",
+    "Consider only if Upstash publishes static TOS on GitHub or plain-text endpoint in future"
+  ],
+  "decided_at": "2026-08-27T00:00:00+00:00",
+  "pipeline_version": "v29"
+}
