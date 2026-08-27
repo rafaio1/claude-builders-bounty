@@ -1,0 +1,29 @@
+[Unit]
+Description=Conservative supervisor for persistent Agentic Codex tmux roles
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=10min
+StartLimitBurst=5
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/Agentic
+Environment=HOME=/root
+Environment=PATH=/root/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+Environment=PYTHONUNBUFFERED=1
+ExecStart=/usr/bin/python3 /Agentic/tools/codex_role_supervisor.py run --interval 90 --json
+Restart=always
+RestartSec=30s
+Nice=15
+CPUWeight=10
+CPUQuota=10%
+IOWeight=10
+MemoryMax=128M
+TasksMax=32
+UMask=0077
+KillMode=process
+TimeoutStopSec=20s
+
+[Install]
+WantedBy=multi-user.target
