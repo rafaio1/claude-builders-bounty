@@ -287,6 +287,8 @@ def classify_pr(pr: dict, ledger_entry: dict | None, payment_entry: dict | None,
 
 
 def build_queue():
+    from revenue_repo_quarantine import quarantine_manifest, quarantine_pr
+
     inv = load_json(INVENTORY_PATH)
     ledger = load_json(LEDGER_PATH, {"bounties": []})
     payment_queue = load_json(QUEUE_PATH, [])
@@ -307,11 +309,14 @@ def build_queue():
         "tier_c_candidates": 0,
         "skipped": 0,
         "saturated_repos": len(sat["saturated_repos"]),
+        "quarantined": 0,
+        "quarantined_monetizable_usd": 0.0,
     }
 
     tier_a = []
     tier_b = []
     tier_c_candidates = []
+    quarantined = []
 
     for key, pr in prs.items():
         metrics["scanned"] += 1
@@ -321,6 +326,12 @@ def build_queue():
             metrics["enriched_from_ledger"] += 1
         if pe:
             metrics["enriched_from_queue"] += 1
+
+        classified = quarantine_pr(pr)
+        if classified is not None:
+            quarantined.append(classified)
+            metrics["quarantined"] += 1
+            continue
 
         classified = classify_pr(pr, le, pe, set(sat["saturated_repos"]))
 
@@ -361,8 +372,14 @@ def build_queue():
             "B": tier_b,
             "C": tier_c,
         },
+        "quarantine": {
+            "count": len(quarantined),
+            "monetizable_usd": 0.0,
+            "policies": quarantine_manifest(),
+            "items": quarantined,
+        },
         "kpi": "dinheiro_liquidado",
-        "notes": "Tier C only populated when A and B are empty. UNKNOWN never becomes receivable_confirmed.",
+        "notes": "Tier C only populated when A and B are empty. UNKNOWN and quarantined repositories never become receivable_confirmed.",
     }
 
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
@@ -371,7 +388,7 @@ def build_queue():
 
     print(json.dumps(metrics, indent=2))
     print(f"\nQueue saved to {OUTPUT_PATH}")
-    print(f"Tiers: A={len(tier_a)}, B={len(tier_b)}, C={len(tier_c)}")
+    print(f"Tiers: A={len(tier_a)}, B={len(tier_b)}, C={len(tier_c)}, quarantined={len(quarantined)}")
     return 0
 
 

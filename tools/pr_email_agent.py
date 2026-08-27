@@ -43,6 +43,18 @@ BOT_SUCCESS_PATTERNS = re.compile(
     re.IGNORECASE,
 )
 
+UNAFFILIATED_ATTEMPT_ACTION = "keep_non_actionable_unaffiliated_attempt"
+NON_ACTIONABLE_ACTIONS = frozenset({UNAFFILIATED_ATTEMPT_ACTION})
+TERMINAL_ACTIONS = frozenset(
+    {
+        "trash_closed",
+        "trash_merged",
+        "trash_bot_success",
+        UNAFFILIATED_ATTEMPT_ACTION,
+    }
+)
+SLASH_ATTEMPT_PATTERN = re.compile(r"(?im)(?:^|\n)\s*/attempt(?:\s|$)")
+
 
 def load_ledger():
     if LEDGER_PATH.exists():
@@ -111,6 +123,36 @@ def gh_pr_state(repo, pr_num):
     return data.get("state"), data.get("url")
 
 
+def github_latest_slash_attempt_association(repo, pr_num):
+    """Resolve the latest slash-attempt comment association with a read-only GET."""
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", str(repo or "")):
+        return None
+    try:
+        pr_number = int(pr_num)
+    except (TypeError, ValueError):
+        return None
+    if pr_number <= 0:
+        return None
+
+    endpoint = f"repos/{repo}/issues/{pr_number}/comments?per_page=100"
+    jq_filter = (
+        '.[] | select((.body // "") | '
+        'test("^\\\\s*/attempt(\\\\s|$)"; "i")) | .author_association'
+    )
+    try:
+        rc, out, _ = run_cmd_list(
+            ["gh", "api", "--paginate", endpoint, "--jq", jq_filter],
+            timeout=30,
+        )
+    except (OSError, subprocess.TimeoutExpired):
+        return None
+    if rc != 0:
+        return None
+
+    associations = [line.strip().upper() for line in out.splitlines() if line.strip()]
+    return associations[-1] if associations else None
+
+
 def gmail_search(query):
     rc, out, _ = run_cmd_list(["python3", str(GMAIL_CLIENT), "search", query])
     if rc != 0:
@@ -161,8 +203,19 @@ def is_bot_success_only(body_text):
     return bool(BOT_SUCCESS_PATTERNS.search(body_text))
 
 
-def classify_message(state, body_text):
+def is_slash_attempt_message(body_text):
+    """Return True only for an isolated slash-attempt command in the message."""
+    return bool(SLASH_ATTEMPT_PATTERN.search(body_text or ""))
+
+
+def classify_message(state, body_text, author_association=None):
     """Classify an open PR message. Returns (action, trash_now)."""
+    if (
+        is_slash_attempt_message(body_text)
+        and str(author_association or "").upper() == "NONE"
+    ):
+        return UNAFFILIATED_ATTEMPT_ACTION, False
+
     if state in ("CLOSED", "MERGED"):
         return f"trash_{state.lower()}", True
 
@@ -227,7 +280,7 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
         entry = ledger[idx]
         if entry.get("reprocess"):
             eligible_ids.add(mid)
-        elif entry.get("action") not in ("trash_closed", "trash_merged", "trash_bot_success"):
+        elif entry.get("action") not in TERMINAL_ACTIONS:
             # Non-terminal actions remain eligible for re-evaluation
             eligible_ids.add(mid)
 
@@ -294,7 +347,17 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
             if bdata:
                 body_text = bdata.get("body", "") + " " + bdata.get("snippet", "")
 
-            action, trash_now = classify_message(state, body_text)
+            author_association = None
+            if is_slash_attempt_message(body_text):
+                author_association = github_latest_slash_attempt_association(
+                    repo_full, pr_num
+                )
+            if author_association is None:
+                action, trash_now = classify_message(state, body_text)
+            else:
+                action, trash_now = classify_message(
+                    state, body_text, author_association
+                )
 
             if dry_run:
                 print(f"[DRY-RUN] {msg_id} | {repo_full}#{pr_num} | {state} | {action} | trash={trash_now}")
@@ -305,6 +368,7 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
                     "state": state,
                     "action": action,
                     "trash_now": trash_now,
+                    "author_association": author_association,
                     "github_url": url,
                     "window": label,
                 })
@@ -348,13 +412,17 @@ def classify_and_process(dry_run=False, batch_size=None, window_override=None):
                     "repo": repo_full,
                     "pr": pr_num,
                     "action": action,
+                    "author_association": author_association,
                     "github_url": url,
                     "commit": None,
                     "trash_at": None,
                 }
                 ledger.append(entry)
                 seen_ids[msg_id] = len(ledger) - 1
-                append_action_queue(entry)
+                if action not in NON_ACTIONABLE_ACTIONS:
+                    append_action_queue(entry)
+                else:
+                    eligible_ids.discard(msg_id)
 
             window_processed += 1
             processed += 1
