@@ -1,0 +1,32 @@
+{
+  "method_id": "method_945",
+  "name": "Chainlink Functions Testnet Oracle Service",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "crypto_defi",
+  "tier": "TIER0",
+  "rejection_reason": "Service sunset: Chainlink Functions officially sunsets June 30, 2026 (testnet: June 15, 2026). Current date is August 27, 2026 — service is already decommissioned. Docs explicitly direct users to migrate to Chainlink Runtime Environment (CRE). Zero-capital testnet oracle service impossible on deprecated infrastructure.",
+  "validation_attempts": [
+    {"url": "https://docs.chain.link/chainlink-functions", "result": "200 OK but page contains sunset notice: 'Chainlink Functions sunsets June 30, 2026 (testnet: June 15, 2026)'"},
+    {"url": "https://docs.chain.link/cre", "result": "Replacement service (CRE) exists but requires new evaluation; method_945 specifically targets deprecated Functions product"}
+  ],
+  "free_tier_limits": {
+    "claimed": "Testnet LINK faucet + free DON compute",
+    "verified": false,
+    "verification_blocked_by": "Service sunset - testnet shut down June 15, 2026"
+  },
+  "paid_plan_baseline": null,
+  "reselling_model": null,
+  "risks": [
+    "Service fully decommissioned as of June 30, 2026",
+    "Testnet infrastructure no longer available since June 15, 2026",
+    "No new subscriptions or deployments possible",
+    "Existing subscriptions must migrate to CRE or lose access"
+  ],
+  "next_steps": [
+    "REJECTED - Do not proceed to TIER1",
+    "Pattern logged: Crypto/DeFi methods targeting sunsetted protocols are auto-reject",
+    "If CRE-based oracle service is viable, submit as new method with updated source-validation artifact"
+  ],
+  "decided_at": "2026-08-27T00:00:00+00:00",
+  "pipeline_version": "v29"
+}
