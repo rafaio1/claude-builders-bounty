@@ -1,0 +1,41 @@
+{
+  "method_id": "method_939",
+  "name": "Pusher Free Tier Realtime Messaging Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "tier": "TIER0",
+  "decision_timestamp": "2026-08-27T00:00:00+00:00",
+  "rejection_reason": "ToS §3.3.4 explicitly prohibits resale: 'We do not permit resale of our Services under these Terms.' Requires approved Partner Program and separate resale agreement. §(II) prohibits transfer/resell/lease/license to third parties. Non-transferable license (§5.2). Veto automático para zero-capital reselling.",
+  "free_tier_limits": {
+    "messages_per_day": 200000,
+    "concurrent_connections": 100,
+    "channels": "unlimited",
+    "note": "Free tier exists but reselling is contractually prohibited"
+  },
+  "paid_plan_baseline": {
+    "entry_plan": "Unknown (pricing page JS-rendered)",
+    "resale_viability": "NONE"
+  },
+  "reselling_model": {
+    "viable": false,
+    "blocker": "ToS explicit prohibition + Partner Program requirement",
+    "workaround_available": false
+  },
+  "risks": [
+    "Contractual violation: ToS §3.3.4 bans resale without Partner agreement",
+    "Account termination risk: pooling/sharing keys violates §(II)",
+    "No zero-capital path to Partner status (requires commercial negotiation)",
+    "Non-transferable license prevents any sublicense model"
+  ],
+  "next_steps": [
+    "REJECTED — do not proceed to TIER1",
+    "Archive as SCAFFOLD_REJECTED in audit",
+    "Continue pipeline with method_940"
+  ],
+  "tos_evidence": {
+    "url": "https://pusher.com/legal/terms-of-service/",
+    "clauses": ["§3.3.4 Resellers", "§(II) Prohibited Uses", "§5.2 Non-transferable License"],
+    "verified_via": "curl grep",
+    "verified_at": "2026-08-27T00:00:00+00:00"
+  }
+}
