@@ -71,6 +71,31 @@ def test_safe_size_ignores_symlinks(tmp_workspace: Path):
     assert hk.safe_size(d) == 1024
 
 
+def test_active_process_snapshot_is_reused(tmp_workspace: Path, monkeypatch):
+    first = tmp_workspace / "one" / "node_modules"
+    second = tmp_workspace / "two" / "node_modules"
+    first.mkdir(parents=True)
+    second.mkdir(parents=True)
+    old_ts = 1000000000
+    os.utime(first, (old_ts, old_ts))
+    os.utime(second, (old_ts, old_ts))
+
+    calls = 0
+
+    def fake_snapshot():
+        nonlocal calls
+        calls += 1
+        return {first.resolve()}
+
+    monkeypatch.setattr(hk, "collect_active_workspace_ancestors", fake_snapshot)
+    report = hk.run_housekeeping(apply=False, max_age_days=1, skip_docker=True)
+
+    assert calls == 1
+    states = {Path(entry.path): (entry.action, entry.detail) for entry in report.entries}
+    assert states[first][1] == "active_process_detected"
+    assert states[second][0] == "dry_run"
+
+
 def test_run_dryrun_does_not_delete(tmp_workspace: Path):
     cache = tmp_workspace / "proj" / "node_modules"
     cache.mkdir(parents=True)
@@ -123,6 +148,13 @@ def test_lock_prevents_concurrent_runs(tmp_workspace: Path):
     assert hk.acquire_lock() is False
     hk.release_lock()
     assert hk.acquire_lock() is True
+    hk.release_lock()
+
+
+def test_lock_recovers_stale_owner(tmp_workspace: Path):
+    hk.LOCK_PATH.write_text("999999999:2000-01-01T00:00:00Z\n", encoding="utf-8")
+    assert hk.acquire_lock() is True
+    assert hk.LOCK_PATH.read_text(encoding="utf-8").startswith(f"{os.getpid()}:")
     hk.release_lock()
 
 

@@ -164,36 +164,67 @@ def is_protected(path: Path) -> bool:
     return False
 
 
-def has_active_process(path: Path) -> bool:
-    """Verifica se algum processo tem cwd ou fd aberto no caminho."""
+def collect_active_workspace_ancestors() -> Set[Path]:
+    """Varre /proc uma vez e retorna diretorios do workspace em uso.
+
+    A implementacao anterior repetia a varredura completa de todos os FDs para
+    cada cache candidato. Em workspaces grandes isso crescia como
+    ``candidatos x processos x FDs`` e podia manter o oneshot ativo por dezenas
+    de minutos. Guardar os ancestrais ativos preserva a protecao sem o custo
+    multiplicativo.
+    """
+    active: Set[Path] = set()
     try:
-        # Checa cwd de todos os processos
-        for pid_dir in Path("/proc").iterdir():
-            if not pid_dir.name.isdigit():
-                continue
-            cwd_link = pid_dir / "cwd"
-            try:
-                cwd_target = cwd_link.resolve()
-                if is_within(path, cwd_target) or cwd_target == path:
-                    return True
-            except (PermissionError, FileNotFoundError, OSError):
-                continue
-            # Checa fds abertos
-            fd_dir = pid_dir / "fd"
-            if fd_dir.exists():
-                try:
-                    for fd in fd_dir.iterdir():
-                        try:
-                            fd_target = fd.resolve()
-                            if is_within(path, fd_target) or fd_target == path:
-                                return True
-                        except (PermissionError, FileNotFoundError, OSError):
-                            continue
-                except (PermissionError, OSError):
-                    pass
+        workspace = WORKSPACE.resolve()
+    except OSError:
+        return active
+
+    def remember(link: Path) -> None:
+        try:
+            raw = os.readlink(link)
+            if not raw.startswith("/"):
+                return
+            if raw.endswith(" (deleted)"):
+                raw = raw[: -len(" (deleted)")]
+            current = Path(os.path.normpath(raw))
+            current.relative_to(workspace)
+            while True:
+                active.add(current)
+                if current == workspace:
+                    break
+                current = current.parent
+        except (PermissionError, FileNotFoundError, OSError, ValueError):
+            return
+
+    try:
+        proc_entries = list(Path("/proc").iterdir())
     except (PermissionError, OSError):
-        pass
-    return False
+        return active
+
+    for pid_dir in proc_entries:
+        if not pid_dir.name.isdigit():
+            continue
+        remember(pid_dir / "cwd")
+        fd_dir = pid_dir / "fd"
+        try:
+            for fd in fd_dir.iterdir():
+                remember(fd)
+        except (PermissionError, FileNotFoundError, OSError):
+            continue
+    return active
+
+
+def has_active_process(path: Path, active_ancestors: Optional[Set[Path]] = None) -> bool:
+    """Verifica se algum processo tem cwd ou fd aberto no caminho."""
+    ancestors = (
+        active_ancestors
+        if active_ancestors is not None
+        else collect_active_workspace_ancestors()
+    )
+    try:
+        return path.resolve() in ancestors
+    except OSError:
+        return False
 
 
 def check_mount_boundary(path: Path) -> bool:
@@ -325,13 +356,27 @@ def docker_prune_dangling(dry_run: bool) -> Tuple[int, str]:
 
 def acquire_lock() -> bool:
     ensure_manifest_dir()
-    try:
-        fd = os.open(str(LOCK_PATH), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
-        os.write(fd, f"{os.getpid()}:{now_iso()}\n".encode())
-        os.close(fd)
-        return True
-    except FileExistsError:
-        return False
+    for _attempt in range(2):
+        try:
+            fd = os.open(str(LOCK_PATH), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+            os.write(fd, f"{os.getpid()}:{now_iso()}\n".encode())
+            os.close(fd)
+            return True
+        except FileExistsError:
+            try:
+                owner = LOCK_PATH.read_text(encoding="utf-8").split(":", 1)[0]
+                owner_pid = int(owner)
+            except (OSError, ValueError):
+                return False
+            if Path(f"/proc/{owner_pid}").exists():
+                return False
+            try:
+                LOCK_PATH.unlink()
+            except FileNotFoundError:
+                pass
+            except OSError:
+                return False
+    return False
 
 
 def release_lock() -> None:
@@ -359,6 +404,8 @@ def run_housekeeping(apply: bool, max_age_days: int, skip_docker: bool) -> House
     cutoff = dt.datetime.now(dt.timezone.utc) - dt.timedelta(days=max_age_days)
     freed = 0
 
+    active_ancestors = collect_active_workspace_ancestors()
+
     for path, reason in targets:
         try:
             st = path.lstat()
@@ -372,7 +419,7 @@ def run_housekeeping(apply: bool, max_age_days: int, skip_docker: bool) -> House
 
         size = safe_size(path)
         age_ok = mtime < cutoff
-        active = has_active_process(path)
+        active = has_active_process(path, active_ancestors)
         mount_ok = check_mount_boundary(path)
 
         if not mount_ok:
