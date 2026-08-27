@@ -92,10 +92,10 @@ def get_config():
     raw_model = env.get("GHOSTCLI_MODEL", "z-ai/glm-5.3")
     # Strip ANSI codes and [1m] suffix, but force glm-5.3 if model is claude-fable-5
     model = re.sub(r'\x1b\[[0-9;]*m', '', raw_model).split('[')[0].strip()
-    # GLM-5.3 consistently returns empty triage results; force claude-sonnet-5[1m] for triage
-    # Keep fable override for non-triage contexts
-    if "fable" in model.lower() or "glm" in model.lower():
-        model = "claude-sonnet-5[1m]"
+    # GLM-5.3 and fable return empty/prose results; use ghostcli-auto[1m] which routes correctly
+    # Avoids identity refusal from Qwen-backed sonnet alias on ApiFable gateway
+    if "fable" in model.lower() or "glm" in model.lower() or "sonnet" in model.lower():
+        model = "ghostcli-auto[1m]"
     return api_key, base_url, model
 
 def ghostcli_complete(prompt, api_key, base_url, model, max_tokens=2000):
@@ -614,8 +614,8 @@ def triage(candidates):
     if not api_key:
         log("ERROR: No GhostCLI API key"); return []
     # Adaptive model selection: fallback to claude-sonnet after 2 consecutive GLM failures
-    if _TRIAGE_CONSECUTIVE_FAILURES >= 2 and default_model != "claude-sonnet-5[1m]":
-        model = "claude-sonnet-5[1m]"
+    if _TRIAGE_CONSECUTIVE_FAILURES >= 2 and default_model != "ghostcli-auto[1m]":
+        model = "ghostcli-auto[1m]"
         log(f"Triage model fallback: {default_model} -> {model} (failures={_TRIAGE_CONSECUTIVE_FAILURES})")
     else:
         model = default_model

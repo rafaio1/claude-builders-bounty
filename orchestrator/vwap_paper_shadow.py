@@ -251,7 +251,15 @@ if __name__ == '__main__':
                 print('[KILL_SWITCH] Detected mid-loop. Graceful shutdown.', flush=True)
                 break
 
-            results = run_shadow_cycle()
+            print(f'[MAIN_LOOP] Starting cycle at {datetime.now(timezone.utc).isoformat()}...', flush=True)
+            try:
+                results = run_shadow_cycle()
+                print(f'[MAIN_LOOP] Cycle returned {len(results)} results', flush=True)
+            except Exception as cycle_err:
+                import traceback
+                print(f'[MAIN_LOOP] CYCLE EXCEPTION: {type(cycle_err).__name__}: {cycle_err}', flush=True)
+                traceback.print_exc()
+                results = [{'error': str(cycle_err)}]
             consecutive_errors = 0
 
             output = {
