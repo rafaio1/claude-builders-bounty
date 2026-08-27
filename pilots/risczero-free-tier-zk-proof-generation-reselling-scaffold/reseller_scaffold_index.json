@@ -1,0 +1,45 @@
+{
+  "method_id": 947,
+  "title": "RiscZero Free Tier ZK Proof Generation Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "validation_timestamp": "2026-08-27T02:57:04.755022+00:00",
+  "source_validation_artifact": "revenue/new-streams/source-validation/method_947.json",
+  "protocol": {
+    "name": "RISC Zero / Bonsai (now Boundless)",
+    "license": "Apache-2.0 OR MIT",
+    "repo": "https://github.com/risc0/risc0",
+    "docs_base": "https://dev.risczero.com/api/generating-proofs/remote-proving",
+    "service_type": "Decentralized proving marketplace (Boundless)",
+    "legacy_service": "Bonsai Network (deprecated/sunsetted - redirects to Boundless)"
+  },
+  "free_tier_limits": {
+    "api_access": "NO FREE TIER FOUND - Bonsai docs redirect to Boundless decentralized marketplace",
+    "proof_generation": "Permissionless provers in Boundless marketplace; no free quota documented",
+    "local_proving": "Open source zkVM allows local proof generation (requires own hardware/GPU)",
+    "cloud_proving": "Boundless marketplace - pricing model not publicly documented via curl"
+  },
+  "paid_plan_baseline": {
+    "note": "Boundless uses decentralized prover marketplace model. Pricing is dynamic/market-driven, not fixed tier. No free tier or testnet credits found in documentation."
+  },
+  "reselling_model": {
+    "role": "ZK Proof Proxy / Marketplace Participant",
+    "revenue_mechanism": "Resell proof generation capacity or arbitrage between requestors and provers in Boundless",
+    "capital_requirement": "HIGH - Running competitive prover requires GPU infrastructure; reselling without hardware requires capital to pay provers upfront",
+    "zero_capital_viable": false,
+    "automation_potential": "Medium - SDK exists (bonsai-sdk on crates.io) but marketplace economics unclear"
+  },
+  "risks": [
+    "NO FREE TIER: Bonsai Network free tier no longer exists. Service migrated to Boundless decentralized marketplace with no documented free credits.",
+    "SERVICE MIGRATION: Bonsai \u2192 Boundless transition means original proposal assumptions are stale. Boundless pricing/economics not transparent via curl.",
+    "HARDWARE REQUIREMENT: Competitive proof generation requires significant GPU resources. Local proving is free but slow; cloud proving costs money.",
+    "MARKETPLACE RISK: Decentralized prover marketplace introduces price volatility and counterparty risk absent in centralized SaaS models.",
+    "DOCS INACCESSIBLE: dev.risczero.com returns SPA content that requires JavaScript rendering. Critical pricing/tier info unverifiable via curl."
+  ],
+  "next_steps": [
+    "REJECT as zero-capital candidate - no free tier available",
+    "If pursuing with capital: investigate Boundless prover economics and GPU requirements",
+    "Monitor RISC Zero announcements for potential future free tier or testnet credits",
+    "Consider local-only proving use cases where hardware already exists (not zero-capital)"
+  ],
+  "decision_rationale": "Original proposal assumed Bonsai Network free tier for ZK proof reselling. Validation shows Bonsai has been sunsetted/replaced by Boundless decentralized marketplace. No free tier, no testnet credits, no transparent pricing found via curl. Local proving is open-source but requires hardware investment. Zero-capital execution path does not exist. Scaffold rejected per TIER0 requirements."
+}
