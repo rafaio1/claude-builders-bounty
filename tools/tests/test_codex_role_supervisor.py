@@ -105,11 +105,78 @@ def test_launch_shell_sources_protected_ghostcli_env():
 
 
 def test_missing_tmux_server_is_bootstrapped_outside_supervisor_limits():
-    runner = SequencedRunner([1, 0])
+    runner = SequencedRunner([1, 0, 0, 0])
     Tmux(runner).recover(ROLES[0])
     create_argv = runner.calls[1][0]
     assert create_argv[:4] == ("systemd-run", "--scope", "--quiet", "--")
     assert create_argv[4:6] == ("tmux", "new-session")
+    assert runner.calls[2][0][-2:] == ("remain-on-exit", "on")
+    assert runner.calls[3][0][:2] == ("tmux", "select-window")
+
+
+def test_capture_race_becomes_missing_instead_of_crashing():
+    class CaptureRaceRunner:
+        def run(self, argv, *, input_text=None, timeout=8.0):
+            del input_text, timeout
+            if "display-message" in argv:
+                return subprocess.CompletedProcess(argv, 0, "0|100|codex\n", "")
+            return subprocess.CompletedProcess(argv, 1, "", "can't find window: v2")
+
+    observation = Tmux(CaptureRaceRunner()).inspect(ROLES[1], process_snapshot())
+    assert observation.status == "missing"
+    assert observation.hard_down
+    assert "disappeared" in observation.detail
+
+
+def test_incomplete_tmux_metadata_is_recoverable_missing():
+    class IncompleteMetadataRunner:
+        def run(self, argv, *, input_text=None, timeout=8.0):
+            del input_text, timeout
+            return subprocess.CompletedProcess(argv, 0, "||\n", "")
+
+    observation = Tmux(IncompleteMetadataRunner()).inspect(ROLES[3], process_snapshot())
+    assert observation.status == "missing"
+    assert observation.hard_down
+    assert "incomplete metadata" in observation.detail
+
+
+def test_new_window_is_persistent_and_selected_for_orca_client():
+    runner = SequencedRunner([0, 1, 0, 0, 0])
+    Tmux(runner).recover(ROLES[1])
+    assert runner.calls[2][0][:2] == ("tmux", "new-window")
+    assert runner.calls[3][0][-2:] == ("remain-on-exit", "on")
+    assert runner.calls[4][0] == ("tmux", "select-window", "-t", ROLES[1].target)
+
+
+def test_one_inspection_timeout_does_not_hide_other_roles(tmp_path):
+    instance = Supervisor(
+        NoMutationRunner(),
+        roles=ROLES[:2],
+        state_path=tmp_path / "state.json",
+        process_reader=lambda: process_snapshot(),
+    )
+
+    def inspect(role, _snapshot):
+        if role is ROLES[0]:
+            raise subprocess.TimeoutExpired(("tmux", "capture-pane"), 8)
+        return Observation(
+            role=role.key,
+            target=role.target,
+            status="missing",
+            goal_state=None,
+            pane_pid=None,
+            codex_pids=(),
+            ready_for_input=False,
+            working=False,
+            queued_or_busy=False,
+            fingerprint="missing",
+            detail="missing",
+        )
+
+    instance.tmux.inspect = inspect
+    observations = instance.observe_all()
+    assert [item.status for item in observations] == ["inspection_error", "missing"]
+    assert "TimeoutExpired" in observations[0].detail
 
 
 def test_working_footer_is_never_idle():

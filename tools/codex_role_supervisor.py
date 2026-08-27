@@ -183,6 +183,22 @@ def _hash_text(value: str) -> str:
     return hashlib.sha256(value.encode("utf-8", errors="replace")).hexdigest()
 
 
+def unavailable_observation(role: Role, *, status: str, detail: str) -> Observation:
+    return Observation(
+        role=role.key,
+        target=role.target,
+        status=status,
+        goal_state=None,
+        pane_pid=None,
+        codex_pids=(),
+        ready_for_input=False,
+        working=False,
+        queued_or_busy=False,
+        fingerprint=status,
+        detail=detail,
+    )
+
+
 def read_process_snapshot(proc_root: Path = Path("/proc")) -> dict[int, ProcessInfo]:
     snapshot: dict[int, ProcessInfo] = {}
     try:
@@ -297,22 +313,18 @@ class Tmux:
             ]
         )
         if metadata.returncode != 0:
-            return Observation(
-                role=role.key,
-                target=role.target,
+            return unavailable_observation(
+                role,
                 status="missing",
-                goal_state=None,
-                pane_pid=None,
-                codex_pids=(),
-                ready_for_input=False,
-                working=False,
-                queued_or_busy=False,
-                fingerprint="missing",
                 detail="tmux target does not exist",
             )
         parts = metadata.stdout.rstrip("\n").split("|")
-        if len(parts) < 2:
-            raise RuntimeError(f"unexpected tmux metadata for {role.target}")
+        if len(parts) < 2 or not parts[1].isdigit():
+            return unavailable_observation(
+                role,
+                status="missing",
+                detail="tmux target returned incomplete metadata",
+            )
         pane_dead = parts[0] == "1"
         pane_pid = int(parts[1])
         captured = self.runner.run(
@@ -320,6 +332,18 @@ class Tmux:
             timeout=12.0,
         )
         if captured.returncode != 0:
+            missing_markers = (
+                "can't find window",
+                "can't find pane",
+                "can't find session",
+                "no server running",
+            )
+            if any(marker in captured.stderr.lower() for marker in missing_markers):
+                return unavailable_observation(
+                    role,
+                    status="missing",
+                    detail="tmux target disappeared during capture",
+                )
             raise RuntimeError(f"tmux capture failed for {role.target}: {captured.stderr.strip()}")
         return classify_capture(
             role,
@@ -355,6 +379,17 @@ class Tmux:
         result = self.runner.run(["tmux", "has-session", "-t", f"={session}"])
         return result.returncode == 0
 
+    def _prepare_window(self, role: Role, *, focus: bool) -> None:
+        persistent = self.runner.run(
+            ["tmux", "set-option", "-w", "-t", role.target, "remain-on-exit", "on"]
+        )
+        if persistent.returncode != 0:
+            raise RuntimeError(f"cannot persist window {role.target}: {persistent.stderr.strip()}")
+        if focus:
+            selected = self.runner.run(["tmux", "select-window", "-t", role.target])
+            if selected.returncode != 0:
+                raise RuntimeError(f"cannot select window {role.target}: {selected.stderr.strip()}")
+
     def recover(self, role: Role) -> None:
         shell_command = self.launch_shell(role)
         if not self._session_exists(role.session):
@@ -379,6 +414,7 @@ class Tmux:
             )
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create {role.target}: {create.stderr.strip()}")
+            self._prepare_window(role, focus=True)
             return
 
         window_exists = self.runner.run(
@@ -402,11 +438,13 @@ class Tmux:
             )
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create window {role.target}: {create.stderr.strip()}")
+            self._prepare_window(role, focus=True)
             return
 
         self.relaunch(role)
 
     def relaunch(self, role: Role) -> None:
+        self._prepare_window(role, focus=False)
         result = self.runner.run(
             [
                 "tmux",
@@ -584,7 +622,19 @@ class Supervisor:
 
     def observe_all(self) -> list[Observation]:
         snapshot = self.process_reader()
-        return [self.tmux.inspect(role, snapshot) for role in self.roles]
+        observations: list[Observation] = []
+        for role in self.roles:
+            try:
+                observations.append(self.tmux.inspect(role, snapshot))
+            except (OSError, RuntimeError, subprocess.SubprocessError, ValueError) as error:
+                observations.append(
+                    unavailable_observation(
+                        role,
+                        status="inspection_error",
+                        detail=f"tmux inspection failed ({type(error).__name__})",
+                    )
+                )
+        return observations
 
     def plan_one(
         self,
