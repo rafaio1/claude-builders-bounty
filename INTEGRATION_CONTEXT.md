@@ -6,7 +6,7 @@
  que precise entender o estado, a arquitetura e as decisões deste repositório.
  
 ## Estado Atual — Laboratório Receita Zero-Capital
- **Atualizado:** 2026-08-27 01:00 UTC
+ **Atualizado:** 2026-08-27 11:35 UTC
  **Receita Liquidada:** $0.00 (fase de validação infra)
  **Meta Aspiracional:** US$20M
 
