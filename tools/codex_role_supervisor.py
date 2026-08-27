@@ -55,6 +55,7 @@ class Role:
     key: str
     session: str
     window: str
+    display_title: str
     model: str
     prompt_file: Path
     playwright_enabled: bool
@@ -72,6 +73,7 @@ ROLES: tuple[Role, ...] = (
         key="bug_bounty",
         session="bug_bounty",
         window="v2",
+        display_title="BUG BOUNTY ATIVO",
         model="claude-opus-5[1m]",
         prompt_file=PROMPT_ROOT / "bug_bounty.txt",
         playwright_enabled=True,
@@ -81,6 +83,7 @@ ROLES: tuple[Role, ...] = (
         key="revenue_generator",
         session="revenue_generator",
         window="v2",
+        display_title="REVENUE BUILDER",
         model="claude-sonnet-5[1m]",
         prompt_file=PROMPT_ROOT / "revenue_generator.txt",
         playwright_enabled=False,
@@ -90,6 +93,7 @@ ROLES: tuple[Role, ...] = (
         key="contador",
         session="contador",
         window="0",
+        display_title="CONTADOR FINANCEIRO",
         model="claude-sonnet-5[1m]",
         prompt_file=PROMPT_ROOT / "contador.txt",
         playwright_enabled=False,
@@ -99,6 +103,7 @@ ROLES: tuple[Role, ...] = (
         key="integrator",
         session="integrator",
         window="0",
+        display_title="INTEGRADOR REVISOR",
         model="claude-opus-5[1m]",
         prompt_file=PROMPT_ROOT / "integrator.txt",
         playwright_enabled=False,
@@ -385,6 +390,23 @@ class Tmux:
         )
         if persistent.returncode != 0:
             raise RuntimeError(f"cannot persist window {role.target}: {persistent.stderr.strip()}")
+        titles_enabled = self.runner.run(
+            ["tmux", "set-option", "-t", f"={role.session}", "set-titles", "on"]
+        )
+        if titles_enabled.returncode != 0:
+            raise RuntimeError(f"cannot enable title for {role.target}: {titles_enabled.stderr.strip()}")
+        title = self.runner.run(
+            [
+                "tmux",
+                "set-option",
+                "-t",
+                f"={role.session}",
+                "set-titles-string",
+                role.display_title,
+            ]
+        )
+        if title.returncode != 0:
+            raise RuntimeError(f"cannot title {role.target}: {title.stderr.strip()}")
         if focus:
             selected = self.runner.run(["tmux", "select-window", "-t", role.target])
             if selected.returncode != 0:

@@ -76,6 +76,12 @@ def test_roles_are_exact_and_exclude_bybit_zai_ollama():
         "claude-sonnet-5[1m]",
         "claude-opus-5[1m]",
     ]
+    assert [role.display_title for role in ROLES] == [
+        "BUG BOUNTY ATIVO",
+        "REVENUE BUILDER",
+        "CONTADOR FINANCEIRO",
+        "INTEGRADOR REVISOR",
+    ]
     assert all("bybit" not in role.key for role in ROLES)
     assert all("z-ai" not in role.model and "ollama" not in role.model for role in ROLES)
 
@@ -109,15 +115,17 @@ def test_launch_shell_sources_protected_ghostcli_env():
 
 
 def test_missing_tmux_server_is_bootstrapped_outside_supervisor_limits():
-    runner = SequencedRunner([1, 0, 0, 0, 0])
+    runner = SequencedRunner([1, 0, 0, 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[0])
     create_argv = runner.calls[1][0]
     assert create_argv[:4] == ("systemd-run", "--scope", "--quiet", "--")
     assert create_argv[4:6] == ("tmux", "new-session")
     assert create_argv[-1] == "/bin/bash"
     assert runner.calls[2][0][-2:] == ("remain-on-exit", "on")
-    assert runner.calls[3][0][:2] == ("tmux", "select-window")
-    assert runner.calls[4][0][:2] == ("tmux", "respawn-pane")
+    assert runner.calls[3][0][-2:] == ("set-titles", "on")
+    assert runner.calls[4][0][-2:] == ("set-titles-string", ROLES[0].display_title)
+    assert runner.calls[5][0][:2] == ("tmux", "select-window")
+    assert runner.calls[6][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_capture_race_becomes_missing_instead_of_crashing():
@@ -147,24 +155,26 @@ def test_incomplete_tmux_metadata_is_recoverable_missing():
 
 
 def test_new_window_is_persistent_and_selected_for_orca_client():
-    runner = SequencedRunner([0, 1, 0, 0, 0, 0])
+    runner = SequencedRunner([0, 1, 0, 0, 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[2][0][:2] == ("tmux", "new-window")
     assert runner.calls[2][0][-1] == "/bin/bash"
     assert runner.calls[3][0][-2:] == ("remain-on-exit", "on")
-    assert runner.calls[4][0] == ("tmux", "select-window", "-t", ROLES[1].target)
-    assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
+    assert runner.calls[4][0][-2:] == ("set-titles", "on")
+    assert runner.calls[5][0][-2:] == ("set-titles-string", ROLES[1].display_title)
+    assert runner.calls[6][0] == ("tmux", "select-window", "-t", ROLES[1].target)
+    assert runner.calls[7][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_blank_window_list_creates_window_instead_of_false_relaunch():
-    runner = SequencedRunner([0, (0, "\n", ""), 0, 0, 0, 0])
+    runner = SequencedRunner([0, (0, "\n", ""), 0, 0, 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[2][0][:2] == ("tmux", "new-window")
-    assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
+    assert runner.calls[7][0][:2] == ("tmux", "respawn-pane")
 
 
 def test_exact_window_name_avoids_tmux_fuzzy_target_match():
-    runner = SequencedRunner([0, (0, "bash\nv2\n", ""), 0, 0])
+    runner = SequencedRunner([0, (0, "bash\nv2\n", ""), 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[1][0][:2] == ("tmux", "list-windows")
     assert all(call[0][:2] != ("tmux", "new-window") for call in runner.calls)
