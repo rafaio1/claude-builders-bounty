@@ -420,7 +420,8 @@ class Tmux:
         window_exists = self.runner.run(
             ["tmux", "display-message", "-p", "-t", role.target, "#{window_id}"]
         )
-        if window_exists.returncode != 0:
+        window_id = window_exists.stdout.strip()
+        if window_exists.returncode != 0 or not window_id.startswith("@"):
             create = self.runner.run(
                 [
                     "tmux",

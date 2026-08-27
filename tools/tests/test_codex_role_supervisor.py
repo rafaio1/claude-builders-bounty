@@ -56,7 +56,11 @@ class SequencedRunner:
 
     def run(self, argv, *, input_text=None, timeout=8.0):
         self.calls.append((tuple(argv), input_text))
-        return subprocess.CompletedProcess(argv, self.returncodes.pop(0), "", "")
+        result = self.returncodes.pop(0)
+        if isinstance(result, tuple):
+            returncode, stdout, stderr = result
+            return subprocess.CompletedProcess(argv, returncode, stdout, stderr)
+        return subprocess.CompletedProcess(argv, result, "", "")
 
 
 def test_roles_are_exact_and_exclude_bybit_zai_ollama():
@@ -149,6 +153,13 @@ def test_new_window_is_persistent_and_selected_for_orca_client():
     assert runner.calls[2][0][-1] == "/bin/bash"
     assert runner.calls[3][0][-2:] == ("remain-on-exit", "on")
     assert runner.calls[4][0] == ("tmux", "select-window", "-t", ROLES[1].target)
+    assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
+
+
+def test_blank_window_metadata_creates_window_instead_of_false_relaunch():
+    runner = SequencedRunner([0, (0, "\n", ""), 0, 0, 0, 0])
+    Tmux(runner).recover(ROLES[1])
+    assert runner.calls[2][0][:2] == ("tmux", "new-window")
     assert runner.calls[5][0][:2] == ("tmux", "respawn-pane")
 
 
