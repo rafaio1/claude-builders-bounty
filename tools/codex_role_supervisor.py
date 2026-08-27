@@ -440,10 +440,21 @@ class Tmux:
             return
 
         windows = self.runner.run(
-            ["tmux", "list-windows", "-F", "#{window_name}", "-t", f"={role.session}"]
+            [
+                "tmux",
+                "list-windows",
+                "-F",
+                "#{window_index}|#{window_name}",
+                "-t",
+                f"={role.session}",
+            ]
         )
-        window_names = {line.strip() for line in windows.stdout.splitlines() if line.strip()}
-        if windows.returncode != 0 or role.window not in window_names:
+        window_rows = [line.strip().split("|", 1) for line in windows.stdout.splitlines() if "|" in line]
+        if role.window.isdigit():
+            window_exists = any(index == role.window for index, _name in window_rows)
+        else:
+            window_exists = any(name == role.window for _index, name in window_rows)
+        if windows.returncode != 0 or not window_exists:
             create = self.runner.run(
                 [
                     "tmux",

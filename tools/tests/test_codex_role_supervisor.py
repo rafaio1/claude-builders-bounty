@@ -176,11 +176,18 @@ def test_blank_window_list_creates_window_instead_of_false_relaunch():
 
 
 def test_exact_window_name_avoids_tmux_fuzzy_target_match():
-    runner = SequencedRunner([0, (0, "bash\nv2\n", ""), 0, 0, 0, 0])
+    runner = SequencedRunner([0, (0, "0|bash\n1|v2\n", ""), 0, 0, 0, 0])
     Tmux(runner).recover(ROLES[1])
     assert runner.calls[1][0][:2] == ("tmux", "list-windows")
     assert all(call[0][:2] != ("tmux", "new-window") for call in runner.calls)
     assert runner.calls[-1][0][:2] == ("tmux", "respawn-pane")
+
+
+def test_numeric_window_uses_exact_index_not_window_name():
+    runner = SequencedRunner([0, (0, "0|sh\n", ""), 0, 0, 0, 0])
+    Tmux(runner).recover(ROLES[2])
+    assert all(call[0][:2] != ("tmux", "new-window") for call in runner.calls)
+    assert runner.calls[-1][0][4] == ROLES[2].target
 
 
 def test_one_inspection_timeout_does_not_hide_other_roles(tmp_path):
