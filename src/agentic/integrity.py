@@ -15,9 +15,9 @@ from agentic.improve_git import ImproveGit
 LOOP_UNIT = Path("deploy") / "agentic-loop.service"
 EXPECTED_UNITS = (
     "agentic-loop.service",
-    "agentic-improve-map.timer",
-    "agentic-improve-dev.timer",
-    "agentic-improve-review.timer",
+    "bughunter-improve-map.timer",
+    "bughunter-improve-dev.timer",
+    "bughunter-improve-review.timer",
     "agentic-integrity.timer",
     "agentic-portal.service",
     "agentic-portal-snapshot.timer",
