@@ -703,6 +703,11 @@ CRITICAL CONSTRAINTS:
 - If NO valid candidates exist, return exactly: []
 - DO NOT include any text before or after the JSON array."""
     resp = ghostcli_complete(prompt, api_key, base_url, model)
+    # Retry with fallback model if response is empty or too short (gateway glitch)
+    if not resp or len(resp.strip()) < 10:
+        fallback_model = "claude-fable-5[1m]" if model != "claude-fable-5[1m]" else "claude-opus-5"
+        log(f"Triage empty/short response ({len(resp) if resp else 0} chars), retrying with {fallback_model}")
+        resp = ghostcli_complete(prompt, api_key, base_url, fallback_model)
     log(f"Triage GhostCLI response length: {len(resp) if resp else 0} chars")
     # ALWAYS dump raw response for debugging (full if short, truncated if long)
     if resp:

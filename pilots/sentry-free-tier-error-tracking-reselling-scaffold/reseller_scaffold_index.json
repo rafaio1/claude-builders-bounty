@@ -1,0 +1,24 @@
+{
+  "method_id": "method_943",
+  "name": "Sentry Free Tier Error Tracking Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "rejection_reason": "ToS §Restrictions(a) explicitly prohibits: 'provide access to (except for Users), distribute, sell or sublicense the Service to a third party'. §Restrictions(b) further prohibits: 'use the Service on behalf of, or to provide any product or service (except for Customer Applications) to, third parties'. These clauses are automatic vetos for any reselling/service-bureau/pooling model. While ToS mentions 'Purchase from Reseller', this refers to Sentry-authorized resellers only and does not permit independent free-tier pooling or wrapper services.",
+  "validation_attempts": [
+    {
+      "url": "https://sentry.io/terms/",
+      "result": "Static HTML accessible via curl. Full legal text extracted. Restrictions section contains explicit anti-resell and anti-service-bureau clauses."
+    }
+  ],
+  "tos_veto_clauses": [
+    "§Restrictions(a): 'provide access to (except for Users), distribute, sell or sublicense the Service to a third party'",
+    "§Restrictions(b): 'use the Service on behalf of, or to provide any product or service (except for Customer Applications) to, third parties'"
+  ],
+  "pattern_match": "saas_tos_explicit_resell_veto_v29",
+  "similar_rejections": ["method_939"],
+  "zero_capital_viable": false,
+  "free_tier_verified": true,
+  "tos_verified": true,
+  "created_at": "2026-08-27T00:45:00+00:00",
+  "decided_at": "2026-08-27T00:45:00+00:00"
+}
