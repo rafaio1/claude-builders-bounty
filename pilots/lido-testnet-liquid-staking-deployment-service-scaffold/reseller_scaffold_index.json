@@ -1,0 +1,28 @@
+{
+  "method_id": "method_941",
+  "name": "Lido Testnet Liquid Staking Deployment Service",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "crypto_defi",
+  "rejection_reason": "Crypto testnet pattern failure: Lido docs (docs.lido.fi) are Docusaurus SPA with client-side rendering; /guides/testnet returns 404. No static testnet guide accessible via curl. Terms of Use also Next.js SPA, legal content inaccessible without JS execution. Cannot validate testnet availability, faucet channels, or ToS restrictions for zero-capital operation.",
+  "validation_attempts": [
+    {
+      "url": "https://lido.fi/terms-of-use",
+      "result": "Next.js SPA shell only, no legal text in HTML source"
+    },
+    {
+      "url": "https://docs.lido.fi/guides/testnet",
+      "result": "404 page returned"
+    },
+    {
+      "url": "https://docs.lido.fi/",
+      "result": "No testnet links found in static HTML; site requires JS hydration"
+    }
+  ],
+  "pattern_match": "crypto_testnet_governance_failure_v29",
+  "similar_rejections": ["method_940", "method_936", "method_932", "method_931", "method_927", "method_926"],
+  "zero_capital_viable": false,
+  "free_tier_verified": false,
+  "tos_verified": false,
+  "created_at": "2026-08-27T00:00:00+00:00",
+  "decided_at": "2026-08-27T00:00:00+00:00"
+}

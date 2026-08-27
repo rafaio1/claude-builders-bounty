@@ -1,0 +1,32 @@
+{
+  "method_id": "method_942",
+  "name": "Privy Free Tier Wallet-as-a-Service Reselling",
+  "status": "SCAFFOLD_REJECTED",
+  "category": "infrastructure_reselling",
+  "rejection_reason": "SaaS ToS validation failure + SPA blocking: privy.io/terms returns 404. /terms-of-service and /developer-terms-of-service are Framer SPAs with zero legal text in HTML source. docs.privy.io/terms is Mintlify Next.js SPA, content inaccessible via curl. Cannot verify free tier permanence, reselling/sublicensing restrictions, or transferability clauses for zero-capital operation. Infrastructure reselling pattern requires accessible ToS to confirm no anti-resell/service-bureau clauses.",
+  "validation_attempts": [
+    {
+      "url": "https://www.privy.io/terms",
+      "result": "404 page"
+    },
+    {
+      "url": "https://www.privy.io/terms-of-service",
+      "result": "Framer SPA shell only, no legal text"
+    },
+    {
+      "url": "https://www.privy.io/developer-terms-of-service",
+      "result": "Framer SPA shell only, canonical redirect but no static content"
+    },
+    {
+      "url": "https://docs.privy.io/terms",
+      "result": "Mintlify Next.js SPA, RSC payload only, no readable legal text"
+    }
+  ],
+  "pattern_match": "saas_tos_spa_blocking_failure_v29",
+  "similar_rejections": ["method_939", "method_940", "method_936"],
+  "zero_capital_viable": false,
+  "free_tier_verified": false,
+  "tos_verified": false,
+  "created_at": "2026-08-27T00:40:00+00:00",
+  "decided_at": "2026-08-27T00:40:00+00:00"
+}
