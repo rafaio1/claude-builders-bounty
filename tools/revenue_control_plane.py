@@ -89,8 +89,16 @@ def compute_ev_per_hour(item: dict) -> float:
 
 
 def build_work_orders(queue: list, max_orders: int = 3) -> list:
-    """Select top Tier A payable items by EV/hour, max max_orders."""
+    """Select top Tier A payable items by EV/hour, max max_orders.
+    
+    Sources (priority order):
+    1. approved_pr_payment_queue.json — merged PRs with dict bounty_evidence
+    2. verified_revenue_candidates.json — pre-vetted open issues/bounties with official claim path
+    """
+    VERIFIED_CANDIDATES_FILE = BASE / "data/aro/verified_revenue_candidates.json"
     candidates = []
+
+    # Source 1: Traditional queue (merged PRs)
     for item in queue:
         if not is_tier_a_payable(item):
             continue
@@ -98,18 +106,74 @@ def build_work_orders(queue: list, max_orders: int = 3) -> list:
         if ev <= 0:
             continue
         candidates.append({
+            "id": f"wo-{item.get('canonical_key', '').replace('/', '-').replace('#', '-')}",
             "canonical_key": item.get("canonical_key"),
-            "url": item.get("url"),
+            "source_issue": item.get("url"),
+            "repo": item.get("canonical_key", "").split("#")[0] if item.get("canonical_key") else "",
+            "title": item.get("title", ""),
+            "bounty_amount": float(item["bounty_evidence"].get("amount", 0)),
+            "currency": item["bounty_evidence"].get("currency", "USD"),
+            "claim_path": item["bounty_evidence"].get("claim_path", ""),
+            "bounty_program": item.get("bounty_program", "unknown"),
+            "eligibility_verified": True,
+            "maintainer_active": True,
             "state": "verified",
-            "bounty_amount": item["bounty_evidence"].get("amount"),
-            "bounty_currency": item["bounty_evidence"].get("currency", "USD"),
-            "claim_path": item["bounty_evidence"].get("claim_path"),
-            "ev_per_hour": ev,
+            "ev_per_hour_conservative": ev,
+            "estimated_hours": 100.0,
+            "capital_required": 0,
             "next_action": "validate_claim_path_and_eligibility",
-            "created_at": datetime.now(timezone.utc).isoformat(),
+            "risk_notes": "",
+            "discovered_at": datetime.now(timezone.utc).isoformat(),
             "updated_at": datetime.now(timezone.utc).isoformat(),
         })
+
+    # Source 2: Verified candidates (open issues with official claim path)
+    verified = load_json(VERIFIED_CANDIDATES_FILE)
+    if isinstance(verified, list):
+        existing_keys = {c.get("canonical_key") for c in candidates}
+        for item in verified:
+            key = item.get("canonical_key", "")
+            if key in existing_keys:
+                continue
+            # Must have official claim path and non-zero value
+            if not item.get("payment_path") and not item.get("claim_path"):
+                continue
+            value = float(item.get("value_usd", 0))
+            if value <= 0:
+                continue
+            # Reject spam/honeypot/inactive
+            if item.get("is_spam") or item.get("is_honeypot") or item.get("repo_inactive"):
+                continue
+            ev = float(item.get("ev_net_per_hour", 0))
+            if ev <= 0:
+                continue
+            state_raw = item.get("current_state", "DISCOVERED").lower()
+            if state_raw not in VALID_STATES:
+                state_raw = "discovered"
+            candidates.append({
+                "id": f"wo-{key.replace('/', '-').replace('#', '-')}",
+                "canonical_key": key,
+                "source_issue": item.get("url"),
+                "repo": key.split("#")[0] if "#" in key else "",
+                "title": item.get("notes", "").split(".")[0] if item.get("notes") else key,
+                "bounty_amount": value,
+                "currency": item.get("currency", "USD"),
+                "claim_path": item.get("payment_path") or item.get("claim_path", ""),
+                "bounty_program": "Opire" if "opire" in (item.get("official_source", "") + item.get("payment_path", "")).lower() else "unknown",
+                "eligibility_verified": item.get("eligibility", "") != "unknown",
+                "maintainer_active": bool(item.get("program_maintainer_active", False)),
+                "state": state_raw,
+                "ev_per_hour_conservative": ev,
+                "estimated_hours": float(item.get("hours_remaining_estimate", 10)),
+                "capital_required": 0,
+                "next_action": item.get("next_action", "review_and_claim"),
+                "risk_notes": item.get("notes", ""),
+                "discovered_at": datetime.now(timezone.utc).isoformat(),
+                "updated_at": datetime.now(timezone.utc).isoformat(),
+            })
+
     candidates.sort(key=lambda x: x["ev_per_hour"], reverse=True)
+    candidates.sort(key=lambda x: x.get("ev_per_hour_conservative", x.get("ev_per_hour", 0)), reverse=True)
     return candidates[:max_orders]
 
 
