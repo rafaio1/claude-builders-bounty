@@ -4,12 +4,10 @@ import subprocess, json, sys, time
 from datetime import datetime, timezone
 
 TARGET_PRS = [
-    # High priority: SBL bounty candidates
-    ('SecureBananaLabs/bug-bounty', 12147),
-    ('SecureBananaLabs/bug-bounty', 12128),
-    # Closed PRs to verify merge status
-    ('IntersectMBO/govtool', None),  # Will search by author
-    ('relayhop/ClaudeEarnSelf-runtime', None),
+    ('SecureBananaLabs', 'bug-bounty', 12147),
+    ('SecureBananaLabs', 'bug-bounty', 12128),
+    ('IntersectMBO', 'govtool', None),
+    ('relayhop', 'ClaudeEarnSelf-runtime', None),
 ]
 
 def check_pr_merged(owner, repo, number):
@@ -21,7 +19,7 @@ def check_pr_merged(owner, repo, number):
         if r.returncode == 0:
             return r.stdout.strip() == 'true'
         return None
-    except:
+    except Exception:
         return None
 
 def search_author_prs(owner, repo, author='rafaio1'):
@@ -34,20 +32,18 @@ def search_author_prs(owner, repo, author='rafaio1'):
         if r.returncode == 0:
             return json.loads(r.stdout)
         return []
-    except:
+    except Exception:
         return []
 
 results = {'checked_at': datetime.now(timezone.utc).isoformat(), 'prs': [], 'searches': []}
 
-# Check specific PRs
 for owner, repo, number in TARGET_PRS:
-    if number:
+    if number is not None:
         merged = check_pr_merged(owner, repo, number)
         results['prs'].append({'owner': owner, 'repo': repo, 'number': number, 'merged': merged})
         print(f'{owner}/{repo}#{number}: merged={merged}')
-        time.sleep(1)  # Rate limit courtesy
+        time.sleep(1)
 
-# Search closed PRs by author in key repos
 for owner, repo, _ in TARGET_PRS:
     prs = search_author_prs(owner, repo)
     results['searches'].append({'owner': owner, 'repo': repo, 'count': len(prs), 'prs': prs[:10]})
