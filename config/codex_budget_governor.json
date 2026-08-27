@@ -1,0 +1,85 @@
+{
+  "version": 1,
+  "enabled": true,
+  "rollout_lookback_seconds": 86400,
+  "max_rollout_files": 96,
+  "recognized_revenue_currencies": [
+    "USD"
+  ],
+  "pricing_usd_per_million": {
+    "claude-opus-5[1m]": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "cache_write_input_tokens": null,
+      "output_tokens": null,
+      "reasoning_output_tokens": null
+    },
+    "claude-sonnet-5[1m]": {
+      "input_tokens": null,
+      "cached_input_tokens": null,
+      "cache_write_input_tokens": null,
+      "output_tokens": null,
+      "reasoning_output_tokens": null
+    }
+  },
+  "modes": {
+    "zero_revenue": {
+      "max_daily_total_tokens": 250000,
+      "roles": {
+        "bug_bounty": {
+          "max_turn_tokens": 75000,
+          "max_daily_tokens": 100000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 3600
+        },
+        "revenue_generator": {
+          "max_turn_tokens": 50000,
+          "max_daily_tokens": 80000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 21600
+        },
+        "contador": {
+          "max_turn_tokens": 20000,
+          "max_daily_tokens": 30000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 43200
+        },
+        "integrator": {
+          "max_turn_tokens": 25000,
+          "max_daily_tokens": 40000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 21600
+        }
+      }
+    },
+    "funded": {
+      "max_daily_total_tokens": 1000000,
+      "roles": {
+        "bug_bounty": {
+          "max_turn_tokens": 150000,
+          "max_daily_tokens": 350000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 1800
+        },
+        "revenue_generator": {
+          "max_turn_tokens": 125000,
+          "max_daily_tokens": 300000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 3600
+        },
+        "contador": {
+          "max_turn_tokens": 50000,
+          "max_daily_tokens": 100000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 21600
+        },
+        "integrator": {
+          "max_turn_tokens": 75000,
+          "max_daily_tokens": 250000,
+          "max_daily_cost_usd": null,
+          "min_wake_seconds": 3600
+        }
+      }
+    }
+  }
+}

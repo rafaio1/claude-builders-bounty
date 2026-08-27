@@ -26,6 +26,13 @@ from dataclasses import asdict, dataclass
 from pathlib import Path
 from typing import Any, Protocol
 
+try:
+    from codex_budget_governor import BudgetGovernor, BudgetSnapshot
+    from codex_budget_governor import load_config as load_budget_config
+except ModuleNotFoundError:
+    from tools.codex_budget_governor import BudgetGovernor, BudgetSnapshot
+    from tools.codex_budget_governor import load_config as load_budget_config
+
 WORKSPACE = Path("/Agentic")
 ENV_FILE = Path("/root/.config/ghostcli/env.sh")
 PROMPT_ROOT = WORKSPACE / "deploy/systemd/codex-role-prompts"
@@ -137,6 +144,10 @@ class Observation:
     @property
     def hard_down(self) -> bool:
         return self.status in {"missing", "dead", "exited"}
+
+    @property
+    def interruptible(self) -> bool:
+        return self.working or self.queued_or_busy or self.status == "busy_or_queued"
 
     @property
     def signature(self) -> str:
@@ -359,25 +370,23 @@ class Tmux:
         )
 
     @staticmethod
-    def launch_shell(role: Role) -> str:
+    def launch_shell(role: Role, *, include_prompt: bool = True) -> str:
         args = ["codex", "--dangerously-bypass-approvals-and-sandbox"]
         if not role.playwright_enabled:
             args.extend(["-c", "mcp_servers.playwright.enabled=false"])
-        args.extend(["--model", role.model, f"$(cat -- {shlex.quote(str(role.prompt_file))})"])
+        args.extend(["--model", role.model])
         # Keep command substitution in a quoted shell argument.  Prompt content is
         # data and is not evaluated a second time by the shell.
-        quoted_args = [shlex.quote(arg) for arg in args[:-1]]
-        prompt_arg = f'"$(cat -- {shlex.quote(str(role.prompt_file))})"'
-        body = " ".join(
-            [
-                "set -a;",
-                f". {shlex.quote(str(ENV_FILE))};",
-                "set +a;",
-                "exec",
-                *quoted_args,
-                prompt_arg,
-            ]
-        )
+        body_parts = [
+            "set -a;",
+            f". {shlex.quote(str(ENV_FILE))};",
+            "set +a;",
+            "exec",
+            *(shlex.quote(arg) for arg in args),
+        ]
+        if include_prompt:
+            body_parts.append(f'"$(cat -- {shlex.quote(str(role.prompt_file))})"')
+        body = " ".join(body_parts)
         return shlex.join(["/bin/bash", "-lc", body])
 
     def _session_exists(self, session: str) -> bool:
@@ -412,7 +421,7 @@ class Tmux:
             if selected.returncode != 0:
                 raise RuntimeError(f"cannot select window {role.target}: {selected.stderr.strip()}")
 
-    def recover(self, role: Role) -> None:
+    def recover(self, role: Role, *, include_prompt: bool = True) -> None:
         if not self._session_exists(role.session):
             create = self.runner.run(
                 [
@@ -436,7 +445,7 @@ class Tmux:
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create {role.target}: {create.stderr.strip()}")
             self._prepare_window(role, focus=True)
-            self._respawn(role)
+            self._respawn(role, include_prompt=include_prompt)
             return
 
         windows = self.runner.run(
@@ -473,12 +482,12 @@ class Tmux:
             if create.returncode != 0:
                 raise RuntimeError(f"cannot create window {role.target}: {create.stderr.strip()}")
             self._prepare_window(role, focus=True)
-            self._respawn(role)
+            self._respawn(role, include_prompt=include_prompt)
             return
 
-        self.relaunch(role)
+        self.relaunch(role, include_prompt=include_prompt)
 
-    def _respawn(self, role: Role) -> None:
+    def _respawn(self, role: Role, *, include_prompt: bool = True) -> None:
         result = self.runner.run(
             [
                 "tmux",
@@ -488,16 +497,16 @@ class Tmux:
                 role.target,
                 "-c",
                 str(WORKSPACE),
-                self.launch_shell(role),
+                self.launch_shell(role, include_prompt=include_prompt),
             ],
             timeout=15.0,
         )
         if result.returncode != 0:
             raise RuntimeError(f"cannot respawn {role.target}: {result.stderr.strip()}")
 
-    def relaunch(self, role: Role) -> None:
+    def relaunch(self, role: Role, *, include_prompt: bool = True) -> None:
         self._prepare_window(role, focus=False)
-        self._respawn(role)
+        self._respawn(role, include_prompt=include_prompt)
 
     def reorient(self, role: Role, prompt: str) -> None:
         buffer_name = f"codex-supervisor-{role.key}"
@@ -515,6 +524,11 @@ class Tmux:
         entered = self.runner.run(["tmux", "send-keys", "-t", role.target, "Enter"])
         if entered.returncode != 0:
             raise RuntimeError(f"cannot submit prompt for {role.target}: {entered.stderr.strip()}")
+
+    def interrupt(self, role: Role) -> None:
+        interrupted = self.runner.run(["tmux", "send-keys", "-t", role.target, "Escape"])
+        if interrupted.returncode != 0:
+            raise RuntimeError(f"cannot interrupt {role.target}: {interrupted.stderr.strip()}")
 
 
 def default_state() -> dict[str, Any]:
@@ -650,6 +664,7 @@ class Supervisor:
         state_path: Path = STATE_FILE,
         clock: Any = time.time,
         process_reader: Any = read_process_snapshot,
+        governor: BudgetGovernor | None = None,
     ):
         self.runner = runner
         self.tmux = Tmux(runner)
@@ -657,6 +672,7 @@ class Supervisor:
         self.state_path = state_path
         self.clock = clock
         self.process_reader = process_reader
+        self.governor = governor if governor is not None else (BudgetGovernor() if state_path == STATE_FILE else None)
 
     def observe_all(self) -> list[Observation]:
         snapshot = self.process_reader()
@@ -679,16 +695,43 @@ class Supervisor:
         state: dict[str, Any],
         observations: Sequence[Observation],
         now: float,
+        *,
+        budget: BudgetSnapshot | None = None,
     ) -> PlannedAction | None:
         if now - float(state.get("last_global_action_at", 0.0)) < GLOBAL_ACTION_COOLDOWN_SECONDS:
             return None
         by_role = {observation.role: observation for observation in observations}
         start = int(state.get("cursor", 0)) % len(self.roles)
+        if budget is not None:
+            for offset in range(len(self.roles)):
+                index = (start + offset) % len(self.roles)
+                role = self.roles[index]
+                observation = by_role[role.key]
+                decision = budget.roles.get(role.key)
+                if decision is not None and decision.should_interrupt and observation.interruptible:
+                    state["cursor"] = (index + 1) % len(self.roles)
+                    return PlannedAction(
+                        role=role.key,
+                        kind="interrupt",
+                        reason=decision.reason,
+                        expected_fingerprint=observation.fingerprint,
+                    )
         for offset in range(len(self.roles)):
             index = (start + offset) % len(self.roles)
             role = self.roles[index]
             action = _eligible_action(role, by_role[role.key], role_state(state, role), now=now)
             if action is not None:
+                decision = budget.roles.get(role.key) if budget is not None else None
+                if decision is not None and not decision.allowed_prompt:
+                    if action.kind == "recover":
+                        action = PlannedAction(
+                            role=action.role,
+                            kind="recover_idle",
+                            reason=decision.reason,
+                            expected_fingerprint=action.expected_fingerprint,
+                        )
+                    else:
+                        continue
                 state["cursor"] = (index + 1) % len(self.roles)
                 return action
         return None
@@ -699,14 +742,19 @@ class Supervisor:
     def execute(self, action: PlannedAction, before: Observation) -> None:
         role = self._role(action.role)
         refreshed = self.tmux.inspect(role, self.process_reader())
-        if action.kind == "recover":
+        if action.kind in {"recover", "recover_idle"}:
             if not refreshed.hard_down:
                 raise RuntimeError(f"recovery race: {role.target} is no longer down")
-            self.tmux.recover(role)
+            self.tmux.recover(role, include_prompt=action.kind == "recover")
             return
 
         if refreshed.fingerprint != action.expected_fingerprint:
             raise RuntimeError(f"state changed before action on {role.target}")
+        if action.kind == "interrupt":
+            if not refreshed.interruptible:
+                raise RuntimeError(f"{role.target} is no longer working or queued")
+            self.tmux.interrupt(role)
+            return
         if refreshed.working or not refreshed.ready_for_input:
             raise RuntimeError(f"{role.target} is no longer safely idle")
         if action.kind == "relaunch":
@@ -725,13 +773,18 @@ class Supervisor:
         state = load_state(self.state_path)
         observations = self.observe_all()
         update_observation_state(state, observations, now)
-        action = self.plan_one(state, observations, now)
+        budget = None
+        if self.governor is not None:
+            budget = self.governor.evaluate(now, {role.key: role.model for role in self.roles})
+        action = self.plan_one(state, observations, now, budget=budget)
         result: dict[str, Any] = {
             "time": now,
             "dry_run": dry_run,
             "action": asdict(action) if action else None,
             "observations": [asdict(observation) for observation in observations],
         }
+        if budget is not None:
+            result["budget"] = budget.to_dict()
         if action is not None and not dry_run:
             current = role_state(state, self._role(action.role))
             before = next(item for item in observations if item.role == action.role)
@@ -753,14 +806,21 @@ class Supervisor:
                 current["observed_since"] = now
                 state["last_global_action_at"] = now
                 result["executed"] = True
+                if self.governor is not None:
+                    self.governor.record_action(action.role, action.kind, now)
         if persist and not dry_run:
             save_state(state, self.state_path)
+            if self.governor is not None:
+                self.governor.save()
         return result
 
     def status(self) -> dict[str, Any]:
         now = float(self.clock())
         state = load_state(self.state_path)
         observations = self.observe_all()
+        budget = None
+        if self.governor is not None:
+            budget = self.governor.evaluate(now, {role.key: role.model for role in self.roles})
         details = []
         for observation in observations:
             current = role_state(state, self._role(observation.role))
@@ -772,7 +832,10 @@ class Supervisor:
                     "next_retry_at": current.get("next_retry_at"),
                 }
             )
-        return {"time": now, "roles": details}
+        result = {"time": now, "roles": details}
+        if budget is not None:
+            result["budget"] = budget.to_dict()
+        return result
 
 
 def validate_prerequisites(roles: Sequence[Role] = ROLES) -> list[str]:
@@ -784,6 +847,10 @@ def validate_prerequisites(roles: Sequence[Role] = ROLES) -> list[str]:
     for executable in ("codex", "systemd-run", "tmux"):
         if shutil.which(executable) is None:
             errors.append(f"missing executable: {executable}")
+    try:
+        load_budget_config()
+    except (OSError, ValueError, json.JSONDecodeError) as error:
+        errors.append(f"invalid budget governor config: {type(error).__name__}")
     for role in roles:
         if not role.prompt_file.is_file():
             errors.append(f"missing prompt for {role.key}: {role.prompt_file}")

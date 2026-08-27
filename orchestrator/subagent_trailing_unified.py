@@ -7,11 +7,17 @@
 """
 import ccxt, os, json, time, sys, math
 from dotenv import load_dotenv
+from trading_economic_guard import evaluate_live_trading
 sys.stdout.reconfigure(line_buffering=True)
 
 EXCHANGE = sys.argv[1] if len(sys.argv) > 1 else 'bybit'
 load_dotenv('/root/.automaton/bybit-murre.env' if EXCHANGE == 'bybit' else '/Agentic/.env')
 STATE_PATH = '/Agentic/orchestrator/state.json'
+
+_guard = evaluate_live_trading(exchange_name=EXCHANGE)
+if not _guard.allowed:
+    print(f"TRADING_ECONOMIC_GUARD_BLOCKED: {';'.join(_guard.reasons)}", flush=True)
+    raise SystemExit(78)
 
 if EXCHANGE == 'bybit':
     exchange = ccxt.bybit({
