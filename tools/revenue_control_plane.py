@@ -16,6 +16,7 @@ import time
 from pathlib import Path
 from typing import Any, Iterable
 
+import revenue_learning
 import revenue_db
 
 
@@ -74,8 +75,8 @@ def build_work_orders(
     max_orders: int = revenue_db.MAX_ACTIVE_WORK_ORDERS,
     supported_payout_methods: Iterable[str] | None = None,
 ) -> list[dict[str, Any]]:
-    """Schedule only hard-gated rows already verified in SQLite."""
-    return revenue_db.build_work_orders(
+    """Schedule verified rows through the realized-outcome strategy gate."""
+    return revenue_learning.build_ranked_work_orders(
         db_path,
         max_orders=max_orders,
         supported_payout_methods=supported_payout_methods,
@@ -97,6 +98,11 @@ def plan_once(
         supported_payout_methods=supported_payout_methods,
     )
     snapshot = revenue_db.status_snapshot(db_path)
+    snapshot["learning"] = revenue_learning.strategy_snapshot(
+        db_path,
+        max_orders=max_orders,
+        refresh=False,
+    )
     save_json(status_file, snapshot)
     return snapshot
 
@@ -125,7 +131,9 @@ def cmd_import_leads(args: argparse.Namespace) -> int:
 
 
 def cmd_status(args: argparse.Namespace) -> int:
-    print(json.dumps(revenue_db.status_snapshot(args.db), indent=2, sort_keys=True))
+    snapshot = revenue_db.status_snapshot(args.db)
+    snapshot["learning"] = revenue_learning.strategy_snapshot(args.db)
+    print(json.dumps(snapshot, indent=2, sort_keys=True))
     return 0
 
 
