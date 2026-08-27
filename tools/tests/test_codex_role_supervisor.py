@@ -123,7 +123,9 @@ def test_missing_tmux_server_is_bootstrapped_outside_supervisor_limits():
     assert create_argv[-1] == "/bin/bash"
     assert runner.calls[2][0][-2:] == ("remain-on-exit", "on")
     assert runner.calls[3][0][-2:] == ("set-titles", "on")
+    assert runner.calls[3][0][3] == ROLES[0].session
     assert runner.calls[4][0][-2:] == ("set-titles-string", ROLES[0].display_title)
+    assert runner.calls[4][0][3] == ROLES[0].session
     assert runner.calls[5][0][:2] == ("tmux", "select-window")
     assert runner.calls[6][0][:2] == ("tmux", "respawn-pane")
 

@@ -391,7 +391,7 @@ class Tmux:
         if persistent.returncode != 0:
             raise RuntimeError(f"cannot persist window {role.target}: {persistent.stderr.strip()}")
         titles_enabled = self.runner.run(
-            ["tmux", "set-option", "-t", f"={role.session}", "set-titles", "on"]
+            ["tmux", "set-option", "-t", role.session, "set-titles", "on"]
         )
         if titles_enabled.returncode != 0:
             raise RuntimeError(f"cannot enable title for {role.target}: {titles_enabled.stderr.strip()}")
@@ -400,7 +400,7 @@ class Tmux:
                 "tmux",
                 "set-option",
                 "-t",
-                f"={role.session}",
+                role.session,
                 "set-titles-string",
                 role.display_title,
             ]
