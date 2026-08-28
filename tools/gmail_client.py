@@ -28,6 +28,8 @@ import base64
 import json
 import os
 import re
+import stat
+import tempfile
 import time
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -45,10 +47,110 @@ ENV_PATH = ROOT / ".env"
 TOKEN_CACHE_PATH = ROOT / ".config" / "gmail_token_cache.json"
 LOG_PATH = ROOT / "logs" / "gmail_client.log"
 
+_SECRET_FIELD_RE = re.compile(
+    r"(?i)([\"']?(?:access_token|refresh_token|client_secret)[\"']?\s*[:=]\s*[\"']?)([^\"'\s,}]+)"
+)
+_BEARER_RE = re.compile(r"(?i)(\bBearer\s+)([A-Za-z0-9._~+/=-]+)")
+
+
+def _redact_sensitive_text(value: object, *known_secrets: Optional[str]) -> str:
+    """Remove tokens and OAuth secrets before text reaches stdout, logs, or errors."""
+    text = str(value)
+    for secret in known_secrets:
+        if secret:
+            text = text.replace(secret, "[REDACTED]")
+    text = _SECRET_FIELD_RE.sub(r"\1[REDACTED]", text)
+    return _BEARER_RE.sub(r"\1[REDACTED]", text)
+
+
+def _set_private_mode(fd: int, path: Path) -> None:
+    if hasattr(os, "fchmod"):
+        os.fchmod(fd, 0o600)
+    else:
+        os.chmod(path, 0o600)
+
+
+def _ensure_token_cache() -> None:
+    """Create the token cache if needed and enforce private filesystem modes."""
+    cache_dir = TOKEN_CACHE_PATH.parent
+    cache_dir.mkdir(mode=0o700, parents=True, exist_ok=True)
+    if cache_dir.is_symlink() or not cache_dir.is_dir():
+        raise RuntimeError(f"Diretorio de cache Gmail inseguro: {cache_dir}")
+    os.chmod(cache_dir, 0o700)
+
+    if TOKEN_CACHE_PATH.is_symlink():
+        raise RuntimeError(f"Cache Gmail nao pode ser symlink: {TOKEN_CACHE_PATH}")
+
+    open_flags = os.O_WRONLY | os.O_CREAT | os.O_EXCL | getattr(os, "O_NOFOLLOW", 0)
+    try:
+        fd = os.open(TOKEN_CACHE_PATH, open_flags, 0o600)
+    except FileExistsError:
+        if not TOKEN_CACHE_PATH.is_file():
+            raise RuntimeError(f"Cache Gmail nao e arquivo regular: {TOKEN_CACHE_PATH}")
+        read_fd = os.open(TOKEN_CACHE_PATH, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+        try:
+            if not stat.S_ISREG(os.fstat(read_fd).st_mode):
+                raise RuntimeError(f"Cache Gmail nao e arquivo regular: {TOKEN_CACHE_PATH}")
+            _set_private_mode(read_fd, TOKEN_CACHE_PATH)
+        finally:
+            os.close(read_fd)
+        return
+
+    try:
+        _set_private_mode(fd, TOKEN_CACHE_PATH)
+        with os.fdopen(fd, "w", encoding="utf-8") as cache_file:
+            cache_file.write("{}\n")
+            cache_file.flush()
+            os.fsync(cache_file.fileno())
+    except Exception:
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+        try:
+            TOKEN_CACHE_PATH.unlink()
+        except FileNotFoundError:
+            pass
+        raise
+
+
+def _read_token_cache() -> dict:
+    _ensure_token_cache()
+    fd = os.open(TOKEN_CACHE_PATH, os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0))
+    with os.fdopen(fd, "r", encoding="utf-8") as cache_file:
+        return json.load(cache_file)
+
+
+def _write_token_cache(payload: dict) -> None:
+    """Atomically replace the cache while keeping it readable only by its owner."""
+    _ensure_token_cache()
+    fd, temporary_name = tempfile.mkstemp(
+        prefix=".gmail_token_cache.", suffix=".tmp", dir=TOKEN_CACHE_PATH.parent
+    )
+    temporary_path = Path(temporary_name)
+    try:
+        _set_private_mode(fd, temporary_path)
+        with os.fdopen(fd, "w", encoding="utf-8") as cache_file:
+            json.dump(payload, cache_file, indent=2)
+            cache_file.write("\n")
+            cache_file.flush()
+            os.fsync(cache_file.fileno())
+        os.replace(temporary_path, TOKEN_CACHE_PATH)
+        os.chmod(TOKEN_CACHE_PATH, 0o600)
+    finally:
+        try:
+            os.close(fd)
+        except OSError:
+            pass
+        try:
+            temporary_path.unlink()
+        except FileNotFoundError:
+            pass
+
 
 def _log(msg: str) -> None:
     ts = datetime.now(timezone.utc).isoformat()
-    line = f"[{ts}] {msg}"
+    line = f"[{ts}] {_redact_sensitive_text(msg)}"
     print(line, flush=True)
     LOG_PATH.parent.mkdir(parents=True, exist_ok=True)
     with open(LOG_PATH, "a") as f:
@@ -73,6 +175,7 @@ class GmailClient:
     BASE_URL = "https://gmail.googleapis.com/gmail/v1/users/me"
 
     def __init__(self):
+        _ensure_token_cache()
         self._env = _load_env()
         self._client_id = self._env.get("GOOGLE_CLIENT_ID", "")
         self._client_secret = self._env.get("GOOGLE_CLIENT_SECRET", "")
@@ -87,15 +190,14 @@ class GmailClient:
         if self._access_token and time.time() < self._token_expires_at - 60:
             return self._access_token
 
-        if TOKEN_CACHE_PATH.exists():
-            try:
-                cached = json.loads(TOKEN_CACHE_PATH.read_text())
-                if cached.get("expires_at", 0) > time.time() + 60:
-                    self._access_token = cached["access_token"]
-                    self._token_expires_at = cached["expires_at"]
-                    return self._access_token
-            except (json.JSONDecodeError, KeyError):
-                pass
+        try:
+            cached = _read_token_cache()
+            if cached.get("expires_at", 0) > time.time() + 60:
+                self._access_token = cached["access_token"]
+                self._token_expires_at = cached["expires_at"]
+                return self._access_token
+        except (json.JSONDecodeError, KeyError):
+            pass
 
         if not all([self._client_id, self._client_secret, self._refresh_token]):
             raise RuntimeError("GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET ou GOOGLE_REFRESH_TOKEN ausentes no .env")
@@ -111,7 +213,12 @@ class GmailClient:
             timeout=15,
         )
         if resp.status_code != 200:
-            err = resp.text[:300]
+            err = _redact_sensitive_text(
+                resp.text,
+                self._access_token,
+                self._refresh_token,
+                self._client_secret,
+            )[:300]
             _log(f"Token refresh falhou: {resp.status_code} {err}")
             raise RuntimeError(f"Token refresh falhou: {err}")
 
@@ -119,11 +226,10 @@ class GmailClient:
         self._access_token = data["access_token"]
         self._token_expires_at = time.time() + data.get("expires_in", 3600)
 
-        TOKEN_CACHE_PATH.parent.mkdir(parents=True, exist_ok=True)
-        TOKEN_CACHE_PATH.write_text(json.dumps({
+        _write_token_cache({
             "access_token": self._access_token,
             "expires_at": self._token_expires_at,
-        }, indent=2))
+        })
 
         return self._access_token
 
@@ -134,8 +240,14 @@ class GmailClient:
         url = f"{self.BASE_URL}/{endpoint}"
         resp = requests.request(method, url, headers=self._headers(), timeout=30, **kwargs)
         if resp.status_code >= 400:
-            _log(f"API erro {resp.status_code}: {resp.text[:300]}")
-            raise RuntimeError(f"Gmail API {resp.status_code}: {resp.text[:300]}")
+            err = _redact_sensitive_text(
+                resp.text,
+                self._access_token,
+                self._refresh_token,
+                self._client_secret,
+            )[:300]
+            _log(f"API erro {resp.status_code}: {err}")
+            raise RuntimeError(f"Gmail API {resp.status_code}: {err}")
         return resp.json() if resp.text else {}
 
     # ---- Listar e buscar ----
