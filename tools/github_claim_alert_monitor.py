@@ -32,10 +32,32 @@ SCHEMA_VERSION = "github-claim-alert/v1"
 MAX_NOTIFICATIONS = 50
 MAX_FETCHES = 30
 MAX_ALERTS_PER_RUN = 5
+MAX_ACTIVE_CLAIM_FETCHES = 15
+MAX_COMMENTS_PER_CLAIM = 30
+MAX_STATE_EVENTS = 5000
+TRUSTED_HUMAN_ASSOCIATIONS = frozenset({"OWNER", "MEMBER", "COLLABORATOR"})
+TERMINAL_CLAIM_STATUSES = frozenset({"released", "rejected"})
+FINANCIAL_STAGE_BY_KIND = {
+    "claim_accepted": 1,
+    "payment_queued": 2,
+    "payment_confirmed": 3,
+}
+FINANCIAL_STATUS_BY_STAGE = {
+    1: ("accepted", "accepted_not_settled"),
+    2: ("payment_queued", "payment_pending_not_settled"),
+    3: (
+        "payment_reported_requires_reconciliation",
+        "settlement_candidate_requires_reconciliation",
+    ),
+}
 
 ISO_RE = re.compile(
     r"\b(?P<ts>20\d{2}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:\.\d{1,6})?Z)\b",
     re.IGNORECASE,
+)
+DATE_ONLY_RE = re.compile(
+    r"(?ix)\b(?:deadline[_ -]?date|deadline|due[_ -]?date|截止日期)\b"
+    r"\s*[：:=\-]?\s*[\"']?(?P<date>20\d{2}-\d{2}-\d{2})\b"
 )
 REWARD_RE = re.compile(
     r"(?ix)\b(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<currency>RTC|TP|USDT|USDC|USD|EUR|BRL)\b"
@@ -91,7 +113,12 @@ def iso_utc(value: datetime) -> str:
 
 
 def parse_deadline(text: str) -> str | None:
-    """Return the first valid UTC timestamp found in claim/deadline text."""
+    """Return the first valid deadline normalized as a UTC timestamp.
+
+    An explicit date-only deadline is interpreted as the inclusive end of that
+    UTC day.  Arbitrary dates are intentionally ignored: the date must be
+    attached to a deadline label such as ``deadline_date`` or ``deadline``.
+    """
     if not isinstance(text, str):
         return None
     for match in ISO_RE.finditer(text):
@@ -101,16 +128,53 @@ def parse_deadline(text: str) -> str | None:
         except ValueError:
             continue
         return raw[:-1] + "Z"
+    for match in DATE_ONLY_RE.finditer(text):
+        try:
+            deadline_date = datetime.strptime(match.group("date"), "%Y-%m-%d").replace(
+                tzinfo=timezone.utc
+            )
+        except ValueError:
+            continue
+        return deadline_date.replace(
+            hour=23,
+            minute=59,
+            second=59,
+            tzinfo=timezone.utc,
+        ).isoformat().replace("+00:00", "Z")
     return None
 
 
-def _author(latest: dict[str, Any]) -> tuple[str, str]:
+def _normalize_deadline_fields(record: dict[str, Any]) -> str | None:
+    """Normalize ``deadline``/``deadline_date`` without discarding either."""
+    raw_deadline = record.get("deadline")
+    if isinstance(raw_deadline, str) and raw_deadline:
+        if re.fullmatch(r"20\d{2}-\d{2}-\d{2}", raw_deadline):
+            normalized = parse_deadline(f"deadline_date: {raw_deadline}")
+        else:
+            normalized = parse_deadline(f"deadline: {raw_deadline}")
+        if normalized:
+            record["deadline"] = normalized
+            return normalized
+    raw_date = record.get("deadline_date")
+    if isinstance(raw_date, str) and raw_date:
+        normalized = parse_deadline(f"deadline_date: {raw_date}")
+        if normalized:
+            record["deadline"] = normalized
+            return normalized
+    return None
+
+
+def _author(latest: dict[str, Any]) -> tuple[str, str, str]:
     author = latest.get("author") or latest.get("user") or {}
     if isinstance(author, str):
-        return author, ""
+        return author, "", str(latest.get("author_association") or "").upper()
     if not isinstance(author, dict):
-        return "", ""
-    return str(author.get("login") or ""), str(author.get("type") or "")
+        return "", "", str(latest.get("author_association") or "").upper()
+    return (
+        str(author.get("login") or ""),
+        str(author.get("type") or ""),
+        str(latest.get("author_association") or "").upper(),
+    )
 
 
 def _subject_identifier(notification: dict[str, Any]) -> str:
@@ -155,8 +219,8 @@ def classify_event(
     """Classify only high-signal GitHub claim and deadline events.
 
     Assignment and release confirmations require a bot-authored event. Human
-    maintainers can still produce an action_required event when an objective
-    deadline and claim/reward context are both present.
+    operational and financial events require GitHub's OWNER, MEMBER, or
+    COLLABORATOR association in addition to their textual evidence.
     """
     if not isinstance(notification, dict) or not isinstance(latest, dict):
         return None
@@ -167,9 +231,13 @@ def classify_event(
     if not body or len(body) > 500_000:
         return None
 
-    author_login, author_type = _author(latest)
+    author_login, author_type, author_association = _author(latest)
     is_bot = author_type == "Bot" and (
         author_login.endswith("[bot]") or "<!-- claim-bot -->" in body
+    )
+    trusted_human = (
+        author_type == "User"
+        and author_association in TRUSTED_HUMAN_ASSOCIATIONS
     )
     deadline = parse_deadline(body)
     login_pattern = re.compile(CONFIRMED_RE_TEMPLATE.format(login=re.escape(login)))
@@ -184,10 +252,17 @@ def classify_event(
     potential_reward = _potential_reward(body)
     if assignment_match and not is_bot:
         return None
-    if external_actor and direct_login_reference and REJECTED_RE.search(body):
+    if (
+        trusted_human
+        and external_actor
+        and direct_login_reference
+        and REJECTED_RE.search(body)
+    ):
         kind = "claim_rejected"
         reason = "O mantenedor recusou explicitamente a claim ou o entregável."
     elif (
+        trusted_human
+        and
         external_actor
         and direct_login_reference
         and PAYMENT_CONFIRMED_RE.search(body)
@@ -195,13 +270,19 @@ def classify_event(
     ):
         kind = "payment_confirmed"
         reason = "A plataforma informou confirmação de pagamento; falta reconciliar saldo e transação."
-    elif external_actor and direct_login_reference and PAYMENT_QUEUED_RE.search(body):
+    elif (
+        trusted_human
+        and external_actor
+        and direct_login_reference
+        and PAYMENT_QUEUED_RE.search(body)
+    ):
         kind = "payment_queued"
         reason = "A plataforma informou que o pagamento foi enfileirado ou está pendente."
     elif (
+        trusted_human
+        and
         external_actor
         and direct_login_reference
-        and potential_reward
         and ACCEPTED_RE.search(body)
     ):
         kind = "claim_accepted"
@@ -209,10 +290,15 @@ def classify_event(
     elif is_bot and assignment_match:
         kind = "claim_confirmed"
         reason = "A claim foi confirmada para o usuário."
-    elif is_bot and RELEASE_RE.search(body):
+    elif is_bot and direct_login_reference and RELEASE_RE.search(body):
         kind = "claim_released"
         reason = "A claim foi liberada ou reaberta e pode exigir nova ação."
-    elif deadline and ACTION_RE.search(body) and CLAIM_CONTEXT_RE.search(body):
+    elif (
+        trusted_human
+        and deadline
+        and ACTION_RE.search(body)
+        and CLAIM_CONTEXT_RE.search(body)
+    ):
         kind = "action_required"
         reason = "Há um prazo objetivo relacionado a claim ou recompensa."
     else:
@@ -236,6 +322,7 @@ def classify_event(
         "deadline": deadline,
         "actor_login": author_login,
         "actor_type": author_type,
+        "author_association": author_association,
         "source_id": str(latest.get("id") or notification.get("id") or ""),
         "source_created_at": str(latest.get("created_at") or notification.get("updated_at") or ""),
         "reason": reason,
@@ -268,8 +355,57 @@ def default_state() -> dict[str, Any]:
         "last_poll_at": None,
         "seen": {},
         "active_claims": {},
+        "event_history": {},
+        "outbox": {},
+        "notification_cursors": {},
+        "active_claim_poll_offset": 0,
         "updated_at": None,
     }
+
+
+def _ensure_state_shape(state: dict[str, Any]) -> dict[str, Any]:
+    if isinstance(state.get("seen"), list):
+        state["seen"] = {
+            str(item): {"sent_at": None, "kind": "legacy", "url": ""}
+            for item in state["seen"]
+        }
+    state.setdefault("seen", {})
+    state.setdefault("active_claims", {})
+    state.setdefault("event_history", {})
+    state.setdefault("outbox", {})
+    state.setdefault("notification_cursors", {})
+    state.setdefault("active_claim_poll_offset", 0)
+    if not all(
+        isinstance(state.get(field), dict)
+        for field in (
+            "seen",
+            "active_claims",
+            "event_history",
+            "outbox",
+            "notification_cursors",
+        )
+    ):
+        raise ValueError("malformed claim alert state")
+    if any(
+        not isinstance(claim, dict)
+        for claim in state["active_claims"].values()
+    ):
+        raise ValueError("malformed active claim state")
+    for claim in state["active_claims"].values():
+        _normalize_deadline_fields(claim)
+        claim.setdefault("status", "active")
+        claim.setdefault("history", [])
+        cursor = claim.setdefault("comment_cursor", {})
+        if not isinstance(cursor, dict):
+            cursor = {}
+            claim["comment_cursor"] = cursor
+        if not cursor.get("last_comment_id"):
+            source_id = str(claim.get("source_id") or "")
+            if source_id.isdigit():
+                cursor["last_comment_id"] = int(source_id)
+        if not cursor.get("last_comment_created_at") and claim.get("source_created_at"):
+            cursor["last_comment_created_at"] = claim["source_created_at"]
+    return state
 
 
 def load_state(path: str | Path) -> dict[str, Any]:
@@ -279,7 +415,17 @@ def load_state(path: str | Path) -> dict[str, Any]:
     data = json.loads(state_path.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or data.get("schema_version") != SCHEMA_VERSION:
         raise ValueError("invalid or unsupported claim alert state")
-    if not isinstance(data.get("seen"), dict) or not isinstance(data.get("active_claims"), dict):
+    data = _ensure_state_shape(data)
+    if not all(
+        isinstance(data.get(field), dict)
+        for field in (
+            "seen",
+            "active_claims",
+            "event_history",
+            "outbox",
+            "notification_cursors",
+        )
+    ):
         raise ValueError("malformed claim alert state")
     return data
 
@@ -288,12 +434,7 @@ def save_state(path: str | Path, state: dict[str, Any]) -> None:
     """Atomically persist private state with mode 0600."""
     state_path = Path(path)
     state_path.parent.mkdir(parents=True, exist_ok=True)
-    if isinstance(state.get("seen"), list):
-        state["seen"] = {
-            str(item): {"sent_at": None, "kind": "legacy", "url": ""}
-            for item in state["seen"]
-        }
-    state.setdefault("active_claims", {})
+    _ensure_state_shape(state)
     state["schema_version"] = SCHEMA_VERSION
     state["updated_at"] = iso_utc(utc_now())
     payload = json.dumps(state, ensure_ascii=False, indent=2, sort_keys=True) + "\n"
@@ -365,15 +506,14 @@ def _load_env(path: str | Path) -> dict[str, str]:
 
 
 def _telegram_send(text: str, env_path: str | Path, dry_run: bool = False) -> bool:
+    if dry_run:
+        print(text)
+        return True
     env = _load_env(env_path)
     token = env.get("TELEGRAM_BOT_TOKEN", "")
     chat_id = env.get("TELEGRAM_CHAT_ID", "")
     if not token or not chat_id:
         raise RuntimeError("Telegram operational alert credentials are not configured")
-    if dry_run:
-        print(text)
-        return True
-
     url = f"https://api.telegram.org/bot{token}/sendMessage"
     payload = json.dumps(
         {
@@ -400,7 +540,14 @@ def _telegram_send(text: str, env_path: str | Path, dry_run: bool = False) -> bo
                 try:
                     detail = json.loads(exc.read().decode("utf-8"))
                     wait = int(detail.get("parameters", {}).get("retry_after", 2))
-                except Exception:
+                except (
+                    AttributeError,
+                    OSError,
+                    TypeError,
+                    UnicodeDecodeError,
+                    ValueError,
+                    json.JSONDecodeError,
+                ):
                     wait = 2
                 time.sleep(min(max(wait, 1), 15))
                 continue
@@ -472,11 +619,499 @@ def _claim_key(event: dict[str, Any]) -> str:
     return f"{event.get('platform')}|{event.get('repository')}|{event.get('identifier')}"
 
 
+EVENT_FIELDS = frozenset(
+    {
+        "schema_version",
+        "platform",
+        "kind",
+        "repository",
+        "identifier",
+        "title",
+        "url",
+        "deadline",
+        "deadline_date",
+        "actor_login",
+        "actor_type",
+        "author_association",
+        "source_id",
+        "source_created_at",
+        "reason",
+        "potential_reward",
+        "revenue_status",
+        "milestone",
+    }
+)
+
+
+def _event_snapshot(event: dict[str, Any]) -> dict[str, Any]:
+    snapshot = {
+        key: value
+        for key, value in event.items()
+        if key in EVENT_FIELDS and value is not None
+    }
+    _normalize_deadline_fields(snapshot)
+    return snapshot
+
+
+def _comment_id(value: Any) -> int:
+    try:
+        parsed = int(str(value))
+    except (TypeError, ValueError):
+        return 0
+    return max(0, parsed)
+
+
+def _claim_is_active(claim: dict[str, Any]) -> bool:
+    return str(claim.get("status") or "active") not in TERMINAL_CLAIM_STATUSES
+
+
+def _notification_for_claim(claim: dict[str, Any]) -> dict[str, Any] | None:
+    repository = str(claim.get("repository") or "")
+    identifier = str(claim.get("identifier") or "")
+    if not re.fullmatch(r"[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+", repository):
+        return None
+    if not identifier.isdigit():
+        return None
+    return {
+        "id": f"active-claim-{repository}-{identifier}",
+        "reason": "comment",
+        "unread": True,
+        "subject": {
+            "title": str(claim.get("title") or "")[:300],
+            "type": "PullRequest" if "/pull/" in str(claim.get("url") or "") else "Issue",
+            "url": f"https://api.github.com/repos/{repository}/issues/{identifier}",
+        },
+        "repository": {"full_name": repository},
+    }
+
+
+def _comments_endpoint(claim: dict[str, Any]) -> str | None:
+    notification = _notification_for_claim(claim)
+    if notification is None:
+        return None
+    subject_url = str(notification["subject"]["url"])
+    query: dict[str, str] = {
+        "per_page": str(MAX_COMMENTS_PER_CLAIM),
+    }
+    cursor = claim.get("comment_cursor") or {}
+    since = str(cursor.get("last_comment_created_at") or "")
+    if since:
+        query["since"] = since
+    return (
+        subject_url.removeprefix("https://api.github.com/")
+        + "/comments?"
+        + urllib.parse.urlencode(query)
+    )
+
+
+def _poll_active_claim_comments(
+    state: dict[str, Any],
+    login: str,
+    now: datetime,
+    fetch_budget: int,
+) -> tuple[list[dict[str, Any]], int]:
+    """Fetch every new comment, advancing a durable per-claim ID cursor.
+
+    The single-page, ascending request is intentionally bounded.  If a claim
+    has more than ``MAX_COMMENTS_PER_CLAIM`` new comments, the stored cursor
+    advances only through the processed page so the next run continues from
+    there instead of jumping to the latest comment.
+    """
+    active = [
+        (key, claim)
+        for key, claim in sorted(state["active_claims"].items())
+        if isinstance(claim, dict) and _claim_is_active(claim)
+    ]
+    if not active or fetch_budget <= 0:
+        return [], 0
+
+    offset = int(state.get("active_claim_poll_offset") or 0) % len(active)
+    rotated = active[offset:] + active[:offset]
+    limit = min(fetch_budget, MAX_ACTIVE_CLAIM_FETCHES, len(rotated))
+    candidates: list[dict[str, Any]] = []
+    fetches = 0
+    processed_claims = 0
+    for _key, claim in rotated[:limit]:
+        endpoint = _comments_endpoint(claim)
+        if not endpoint:
+            processed_claims += 1
+            continue
+        try:
+            comments = _gh_api(endpoint)
+        except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError) as exc:
+            claim["last_comment_poll_error"] = str(exc)[:300]
+            claim["last_comment_poll_at"] = iso_utc(now)
+            fetches += 1
+            processed_claims += 1
+            continue
+        fetches += 1
+        processed_claims += 1
+        claim["last_comment_poll_at"] = iso_utc(now)
+        claim.pop("last_comment_poll_error", None)
+        if not isinstance(comments, list):
+            claim["last_comment_poll_error"] = "GitHub comments response was not a list"
+            continue
+
+        notification = _notification_for_claim(claim)
+        if notification is None:
+            continue
+        cursor = claim.setdefault("comment_cursor", {})
+        last_id = _comment_id(cursor.get("last_comment_id"))
+        ordered_comments = sorted(
+            (comment for comment in comments if isinstance(comment, dict)),
+            key=lambda comment: _comment_id(comment.get("id")),
+        )
+        new_comments = [
+            comment
+            for comment in ordered_comments
+            if _comment_id(comment.get("id")) > last_id
+        ][:MAX_COMMENTS_PER_CLAIM]
+        for comment in new_comments:
+            current_id = _comment_id(comment.get("id"))
+            comment_timestamp = str(
+                comment.get("created_at") or comment.get("updated_at") or ""
+            )
+            if not comment_timestamp:
+                claim["last_comment_poll_error"] = (
+                    f"comment {current_id} has no created_at/updated_at; cursor preserved"
+                )
+                break
+            event = classify_event(notification, comment, login=login)
+            if event:
+                candidates.append(event)
+            # Advance only after this exact comment has been inspected.
+            last_id = current_id
+            cursor["last_comment_id"] = current_id
+            cursor["last_comment_created_at"] = comment_timestamp
+
+    state["active_claim_poll_offset"] = (offset + processed_claims) % len(active)
+    return candidates, fetches
+
+
+def _claim_history_entry(
+    event_id: str,
+    event: dict[str, Any],
+    detected_at: str,
+) -> dict[str, Any]:
+    fields = (
+        "kind",
+        "source_id",
+        "source_created_at",
+        "actor_login",
+        "actor_type",
+        "author_association",
+        "url",
+        "deadline",
+        "potential_reward",
+        "revenue_status",
+        "milestone",
+    )
+    entry = {key: event.get(key) for key in fields if event.get(key) is not None}
+    entry["event_id"] = event_id
+    entry["detected_at"] = detected_at
+    return entry
+
+
+def _claim_financial_stage(claim: dict[str, Any]) -> int:
+    try:
+        explicit = int(claim.get("financial_stage") or 0)
+    except (TypeError, ValueError):
+        explicit = 0
+    if "financial_stage" in claim and (
+        explicit == 0 or explicit in FINANCIAL_STATUS_BY_STAGE
+    ):
+        return explicit
+    kind = str(claim.get("last_financial_event") or "")
+    if kind in FINANCIAL_STAGE_BY_KIND:
+        return FINANCIAL_STAGE_BY_KIND[kind]
+    status = str(claim.get("status") or "")
+    return {
+        "accepted": 1,
+        "payment_queued": 2,
+        "payment_reported_requires_reconciliation": 3,
+    }.get(status, 0)
+
+
+def _apply_claim_event(
+    state: dict[str, Any],
+    event_id: str,
+    event: dict[str, Any],
+    detected_at: str,
+) -> None:
+    key = _claim_key(event)
+    claim = state["active_claims"].get(key)
+    if not isinstance(claim, dict):
+        claim = {}
+    reminders_sent = list(claim.get("reminders_sent") or [])
+    history = list(claim.get("history") or [])
+    cursor = claim.get("comment_cursor")
+    if not isinstance(cursor, dict):
+        cursor = {}
+    previous_stage = _claim_financial_stage(claim)
+    previous_status = str(claim.get("status") or "active")
+    previous_financial_event = claim.get("last_financial_event")
+
+    claim.update(_event_snapshot(event))
+    claim["reminders_sent"] = reminders_sent
+    claim["history"] = history
+    claim["comment_cursor"] = cursor
+    kind = str(event.get("kind") or "")
+    operational_status = {
+        "claim_confirmed": "active",
+        "action_required": "action_required",
+        "deadline_reminder": "deadline_reminder",
+        "claim_expired": "deadline_elapsed_pending_verification",
+        "claim_released": "released",
+        "claim_rejected": "rejected",
+    }.get(kind, "monitoring")
+    claim["operational_status"] = operational_status
+
+    incoming_stage = FINANCIAL_STAGE_BY_KIND.get(kind, 0)
+    if kind == "claim_rejected":
+        claim["status"] = "rejected"
+        claim["financial_stage"] = 0
+        claim["financial_status"] = "rejected_not_revenue"
+        claim["revenue_status"] = "rejected_not_revenue"
+        claim["last_financial_event"] = kind
+    elif kind == "claim_released":
+        claim["status"] = "released"
+        claim["financial_stage"] = 0
+        claim.pop("financial_status", None)
+        claim.pop("revenue_status", None)
+        claim.pop("last_financial_event", None)
+    elif incoming_stage and incoming_stage >= previous_stage:
+        financial_status, revenue_status = FINANCIAL_STATUS_BY_STAGE[incoming_stage]
+        claim["financial_stage"] = incoming_stage
+        claim["financial_status"] = revenue_status
+        claim["revenue_status"] = revenue_status
+        claim["status"] = financial_status
+        claim["last_financial_event"] = kind
+    elif previous_stage:
+        financial_status, revenue_status = FINANCIAL_STATUS_BY_STAGE[previous_stage]
+        claim["financial_stage"] = previous_stage
+        claim["financial_status"] = revenue_status
+        claim["revenue_status"] = revenue_status
+        claim["status"] = financial_status
+        if previous_financial_event:
+            claim["last_financial_event"] = previous_financial_event
+    elif kind == "claim_expired":
+        claim["status"] = "deadline_elapsed_pending_verification"
+    elif kind == "action_required":
+        claim["status"] = "action_required"
+    elif kind == "claim_confirmed":
+        claim["status"] = "active"
+    else:
+        claim["status"] = previous_status
+
+    claim["last_event"] = kind
+    claim["last_event_at"] = detected_at
+    if claim["status"] in TERMINAL_CLAIM_STATUSES:
+        claim["closed_at"] = detected_at
+    else:
+        claim.pop("closed_at", None)
+
+    if not any(item.get("event_id") == event_id for item in history if isinstance(item, dict)):
+        history.append(_claim_history_entry(event_id, event, detected_at))
+        claim["history"] = history[-200:]
+
+    # Initialize a newly tracked claim at its originating comment.  Existing
+    # cursors are never jumped forward by a notification's latest-comment URL.
+    if not cursor.get("last_comment_id"):
+        source_id = _comment_id(event.get("source_id"))
+        if source_id:
+            cursor["last_comment_id"] = source_id
+            cursor["last_comment_created_at"] = str(event.get("source_created_at") or detected_at)
+    _normalize_deadline_fields(claim)
+    state["active_claims"][key] = claim
+
+
+def _register_event(
+    state: dict[str, Any],
+    event: dict[str, Any],
+    detected_at: str,
+) -> bool:
+    snapshot = _event_snapshot(event)
+    event_id = fingerprint(snapshot)
+    if event_id in state["seen"]:
+        seen_record = state["seen"].get(event_id)
+        if not isinstance(seen_record, dict):
+            seen_record = {}
+        if event_id not in state["event_history"]:
+            delivered_at = seen_record.get("sent_at")
+            state["event_history"][event_id] = {
+                **snapshot,
+                "event_id": event_id,
+                "detected_at": str(delivered_at or detected_at),
+                "delivery_status": "delivered",
+                "delivered_at": delivered_at,
+            }
+        return False
+    existing_outbox = state["outbox"].get(event_id)
+    if isinstance(existing_outbox, dict):
+        if event_id not in state["event_history"]:
+            state["event_history"][event_id] = {
+                **snapshot,
+                "event_id": event_id,
+                "detected_at": str(existing_outbox.get("queued_at") or detected_at),
+                "delivery_status": str(
+                    existing_outbox.get("delivery_status") or "pending"
+                ),
+                "delivered_at": existing_outbox.get("delivered_at"),
+            }
+        return False
+    if event_id in state["event_history"]:
+        history_record = state["event_history"][event_id]
+        if (
+            event_id not in state["seen"]
+            and event_id not in state["outbox"]
+            and isinstance(history_record, dict)
+        ):
+            state["outbox"][event_id] = {
+                "event": snapshot,
+                "queued_at": str(history_record.get("detected_at") or detected_at),
+                "delivery_status": "pending",
+                "attempts": 0,
+                "last_attempt_at": None,
+                "last_error": None,
+                "delivered_at": None,
+            }
+        return False
+
+    state["event_history"][event_id] = {
+        **snapshot,
+        "event_id": event_id,
+        "detected_at": detected_at,
+        "delivery_status": "pending",
+        "delivered_at": None,
+    }
+    state["outbox"][event_id] = {
+        "event": snapshot,
+        "queued_at": detected_at,
+        "delivery_status": "pending",
+        "attempts": 0,
+        "last_attempt_at": None,
+        "last_error": None,
+        "delivered_at": None,
+    }
+    _apply_claim_event(state, event_id, snapshot, detected_at)
+    return True
+
+
+def _prune_state(state: dict[str, Any]) -> None:
+    if len(state["seen"]) > MAX_STATE_EVENTS:
+        state["seen"] = dict(
+            sorted(
+                state["seen"].items(),
+                key=lambda pair: str(pair[1].get("sent_at") or ""),
+            )[-MAX_STATE_EVENTS:]
+        )
+
+    pending_ids = {
+        event_id
+        for event_id, item in state["outbox"].items()
+        if isinstance(item, dict) and item.get("delivery_status") != "delivered"
+    }
+    if len(state["event_history"]) > MAX_STATE_EVENTS + len(pending_ids):
+        newest = sorted(
+            state["event_history"].items(),
+            key=lambda pair: str(pair[1].get("detected_at") or ""),
+        )[-MAX_STATE_EVENTS:]
+        keep = {event_id for event_id, _item in newest} | pending_ids
+        state["event_history"] = {
+            event_id: item
+            for event_id, item in state["event_history"].items()
+            if event_id in keep
+        }
+    if len(state["outbox"]) > MAX_STATE_EVENTS + len(pending_ids):
+        delivered = sorted(
+            (
+                (event_id, item)
+                for event_id, item in state["outbox"].items()
+                if event_id not in pending_ids
+            ),
+            key=lambda pair: str(pair[1].get("delivered_at") or ""),
+        )[-MAX_STATE_EVENTS:]
+        keep = {event_id for event_id, _item in delivered} | pending_ids
+        state["outbox"] = {
+            event_id: item
+            for event_id, item in state["outbox"].items()
+            if event_id in keep
+        }
+    if len(state["notification_cursors"]) > MAX_STATE_EVENTS:
+        state["notification_cursors"] = dict(
+            sorted(
+                state["notification_cursors"].items(),
+                key=lambda pair: str(pair[1]),
+            )[-MAX_STATE_EVENTS:]
+        )
+
+
+def _deliver_outbox(
+    state_path: str | Path,
+    state: dict[str, Any],
+    env_path: str | Path,
+    now: datetime,
+    limit: int = MAX_ALERTS_PER_RUN,
+) -> tuple[int, str | None]:
+    sent = 0
+    failure: str | None = None
+    pending = sorted(
+        (
+            (event_id, item)
+            for event_id, item in state["outbox"].items()
+            if isinstance(item, dict) and item.get("delivery_status") != "delivered"
+        ),
+        key=lambda pair: str(pair[1].get("queued_at") or ""),
+    )
+    for event_id, item in pending[: max(limit, 0)]:
+        event = item.get("event") or {}
+        attempt_at = iso_utc(now)
+        item["attempts"] = int(item.get("attempts") or 0) + 1
+        item["last_attempt_at"] = attempt_at
+        item["last_error"] = None
+        # Record the attempt before crossing the external Telegram boundary.
+        save_state(state_path, state)
+        try:
+            delivered = _telegram_send(format_telegram_message(event), env_path)
+        except (RuntimeError, OSError) as exc:
+            delivered = False
+            failure = str(exc)[:300]
+        if not delivered:
+            failure = failure or "Telegram operational alert delivery failed"
+            item["last_error"] = failure
+            history_record = state["event_history"].get(event_id)
+            if isinstance(history_record, dict):
+                history_record["delivery_status"] = "pending"
+                history_record["last_delivery_error"] = failure
+            save_state(state_path, state)
+            break
+
+        delivered_at = iso_utc(now)
+        item["delivery_status"] = "delivered"
+        item["delivered_at"] = delivered_at
+        item["last_error"] = None
+        state["seen"][event_id] = {
+            "sent_at": delivered_at,
+            "kind": str(event.get("kind") or ""),
+            "url": str(event.get("url") or ""),
+        }
+        history_record = state["event_history"].get(event_id)
+        if isinstance(history_record, dict):
+            history_record["delivery_status"] = "delivered"
+            history_record["delivered_at"] = delivered_at
+            history_record.pop("last_delivery_error", None)
+        save_state(state_path, state)
+        sent += 1
+    return sent, failure
+
+
 def _deadline_events(state: dict[str, Any], now: datetime) -> list[dict[str, Any]]:
     alerts: list[dict[str, Any]] = []
     thresholds = ((24, "24h"), (6, "6h"), (1, "1h"))
     for key, claim in list(state["active_claims"].items()):
-        deadline_raw = claim.get("deadline")
+        if str(claim.get("status") or "active") in TERMINAL_CLAIM_STATUSES:
+            continue
+        deadline_raw = _normalize_deadline_fields(claim)
         if not deadline_raw:
             continue
         try:
@@ -523,23 +1158,61 @@ def run_monitor(
 ) -> int:
     now = utc_now()
     state = load_state(state_path)
+
+    pre_sent, pre_failure = (0, None)
+    if not dry_run:
+        pre_sent, pre_failure = _deliver_outbox(state_path, state, env_path, now)
     notifications = _gh_api(_notification_endpoint(state, now))
     if not isinstance(notifications, list):
         raise RuntimeError("GitHub notifications response was not a list")
 
-    candidates: list[dict[str, Any]] = []
-    fetches = 0
+    fetches = 1
+    candidates, active_fetches = _poll_active_claim_comments(
+        state,
+        login,
+        now,
+        fetch_budget=max(MAX_FETCHES - fetches, 0),
+    )
+    fetches += active_fetches
     ordered = sorted(notifications[:MAX_NOTIFICATIONS], key=lambda item: item.get("updated_at", ""))
+    notification_poll_complete = True
     for notification in ordered:
-        if fetches >= MAX_FETCHES or not _should_fetch(notification):
+        if not _should_fetch(notification):
             continue
         subject = notification.get("subject") or {}
         latest_url = str(subject.get("latest_comment_url") or subject.get("url") or "")
+        notification_key = str(notification.get("id") or "")
+        if not notification_key:
+            notification_key = hashlib.sha256(
+                (
+                    str(subject.get("url") or "")
+                    + "|"
+                    + str(notification.get("updated_at") or "")
+                ).encode("utf-8")
+            ).hexdigest()
+        notification_marker = (
+            str(notification.get("updated_at") or "")
+            + "|"
+            + hashlib.sha256(latest_url.encode("utf-8")).hexdigest()
+        )
+        if state["notification_cursors"].get(notification_key) == notification_marker:
+            continue
+        if fetches >= MAX_FETCHES:
+            notification_poll_complete = False
+            continue
         if not latest_url.startswith("https://api.github.com/"):
+            notification_poll_complete = False
             continue
         endpoint = latest_url.removeprefix("https://api.github.com/")
-        latest = _gh_api(endpoint)
         fetches += 1
+        try:
+            latest = _gh_api(endpoint)
+        except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError):
+            notification_poll_complete = False
+            continue
+        if not isinstance(latest, dict):
+            notification_poll_complete = False
+            continue
         event = classify_event(notification, latest, login=login)
         if event:
             subject_url = str(subject.get("url") or "")
@@ -549,55 +1222,108 @@ def run_monitor(
                 and subject_url != latest_url
                 and fetches < MAX_FETCHES
             ):
-                subject_resource = _gh_api(subject_url.removeprefix("https://api.github.com/"))
                 fetches += 1
+                try:
+                    subject_resource = _gh_api(
+                        subject_url.removeprefix("https://api.github.com/")
+                    )
+                except (RuntimeError, subprocess.TimeoutExpired, json.JSONDecodeError):
+                    subject_resource = None
                 if isinstance(subject_resource, dict):
                     event["potential_reward"] = _potential_reward(
                         str(subject_resource.get("body") or "")
                     )
             candidates.append(event)
+        state["notification_cursors"][notification_key] = notification_marker
 
     candidates.extend(_deadline_events(state, now))
-    sent = 0
-    for event in candidates:
-        event_id = fingerprint(event)
-        if event_id in state["seen"]:
-            continue
-        if sent >= MAX_ALERTS_PER_RUN:
-            break
-        if not _telegram_send(format_telegram_message(event), env_path, dry_run=dry_run):
-            raise RuntimeError("Telegram operational alert delivery failed")
-        sent += 1
-        if not dry_run:
-            state["seen"][event_id] = {
-                "sent_at": iso_utc(now),
-                "kind": event["kind"],
-                "url": event["url"],
-            }
-            key = _claim_key(event)
-            if event["kind"] == "claim_confirmed":
-                stored = dict(event)
-                stored["reminders_sent"] = []
-                state["active_claims"][key] = stored
-            elif event["kind"] in {"claim_accepted", "payment_queued", "payment_confirmed"}:
-                stored = dict(state["active_claims"].get(key) or {})
-                reminders_sent = list(stored.get("reminders_sent") or [])
-                stored.update(event)
-                stored["reminders_sent"] = reminders_sent
-                stored["last_financial_event"] = event["kind"]
-                state["active_claims"][key] = stored
-            elif event["kind"] in {"claim_released", "claim_expired", "claim_rejected"}:
-                state["active_claims"].pop(key, None)
+    if dry_run:
+        pending_items = [
+            (event_id, item)
+            for event_id, item in state["outbox"].items()
+            if isinstance(item, dict) and item.get("delivery_status") != "delivered"
+        ]
+        previews = [
+            item.get("event") or {}
+            for _event_id, item in sorted(
+                pending_items,
+                key=lambda pair: str(pair[1].get("queued_at") or ""),
+            )
+        ]
+        observed = (
+            set(state["seen"])
+            | set(state["event_history"])
+            | set(state["outbox"])
+        )
+        for event in candidates:
+            event_id = fingerprint(_event_snapshot(event))
+            if event_id not in observed:
+                previews.append(event)
+                observed.add(event_id)
+        sent = 0
+        for event in previews[:MAX_ALERTS_PER_RUN]:
+            if not _telegram_send(
+                format_telegram_message(event),
+                env_path,
+                dry_run=True,
+            ):
+                raise RuntimeError("Telegram operational alert delivery failed")
+            sent += 1
+        print(
+            json.dumps(
+                {
+                    "notifications": len(notifications),
+                    "fetches": fetches,
+                    "events_queued": 0,
+                    "alerts_previewed": sent,
+                    "outbox_pending": len(pending_items),
+                    "notification_poll_complete": notification_poll_complete,
+                }
+            )
+        )
+        return 0
 
-    if not dry_run:
-        state["last_poll_at"] = iso_utc(now)
-        if len(state["seen"]) > 5000:
-            ordered_seen = sorted(
-                state["seen"].items(), key=lambda pair: pair[1].get("sent_at", "")
-            )[-5000:]
-            state["seen"] = dict(ordered_seen)
-        save_state(state_path, state)
-    print(json.dumps({"notifications": len(notifications), "fetches": fetches, "alerts_sent": sent}))
+    detected_at = iso_utc(now)
+    queued = sum(
+        1 for event in candidates if _register_event(state, event, detected_at)
+    )
+    # Cursors, event history and the full pending outbox are durable before the
+    # first Telegram attempt.  A delivery outage therefore cannot erase a
+    # GitHub event or make the next run jump over already-inspected comments.
+    if notification_poll_complete:
+        state["last_poll_at"] = detected_at
+    _prune_state(state)
+    save_state(state_path, state)
+
+    if pre_failure:
+        sent, failure = 0, pre_failure
+    else:
+        sent, failure = _deliver_outbox(
+            state_path,
+            state,
+            env_path,
+            now,
+            limit=MAX_ALERTS_PER_RUN - pre_sent,
+        )
+    pending = sum(
+        1
+        for item in state["outbox"].values()
+        if isinstance(item, dict) and item.get("delivery_status") != "delivered"
+    )
+    print(
+        json.dumps(
+            {
+                "notifications": len(notifications),
+                "fetches": fetches,
+                "events_queued": queued,
+                "alerts_sent": pre_sent + sent,
+                "outbox_pending": pending,
+                "notification_poll_complete": notification_poll_complete,
+            }
+        )
+    )
+    if failure:
+        raise RuntimeError(failure)
     return 0
 
 
