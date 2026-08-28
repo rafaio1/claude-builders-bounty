@@ -1,0 +1,13 @@
+[Unit]
+Description=Refresh bounded Drips Wave candidates every ten minutes
+
+[Timer]
+OnBootSec=3min
+OnUnitInactiveSec=10min
+Persistent=true
+RandomizedDelaySec=30s
+AccuracySec=15s
+Unit=agentic-drips-wave-scanner.service
+
+[Install]
+WantedBy=timers.target
