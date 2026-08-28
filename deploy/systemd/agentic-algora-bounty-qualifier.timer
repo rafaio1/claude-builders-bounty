@@ -1,0 +1,13 @@
+[Unit]
+Description=Qualify official Algora code bounties every thirty minutes
+
+[Timer]
+OnBootSec=9min
+OnUnitInactiveSec=30min
+Persistent=true
+RandomizedDelaySec=45s
+AccuracySec=15s
+Unit=agentic-algora-bounty-qualifier.service
+
+[Install]
+WantedBy=timers.target

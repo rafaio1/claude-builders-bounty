@@ -1,0 +1,37 @@
+[Unit]
+Description=Agentic read-only Algora bounty qualifier
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/Agentic/tools/algora_bounty_qualifier.py
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/Agentic
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=GH_CONFIG_DIR=/run/agentic-gh
+ExecStart=/usr/bin/python3 /Agentic/tools/algora_bounty_qualifier.py
+UMask=0077
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+CPUQuota=25%
+MemoryMax=256M
+TasksMax=16
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+BindReadOnlyPaths=/root/.config/gh:/run/agentic-gh
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/Agentic/state
+TimeoutStartSec=5min
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target
