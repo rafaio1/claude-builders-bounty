@@ -1,0 +1,13 @@
+[Unit]
+Description=Incrementally qualify Drips candidates against public GitHub every ten minutes
+
+[Timer]
+OnBootSec=5min
+OnUnitInactiveSec=10min
+Persistent=true
+RandomizedDelaySec=30s
+AccuracySec=15s
+Unit=agentic-drips-github-qualifier.service
+
+[Install]
+WantedBy=timers.target
