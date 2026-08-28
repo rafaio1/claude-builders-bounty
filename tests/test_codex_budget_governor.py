@@ -152,28 +152,54 @@ def create_db(path: Path, rows=()):
     connection.close()
 
 
-def rollout_event(path: Path, session: str, role_marker: str, total: int, input_tokens: int | None = None):
+def rollout_event(
+    path: Path,
+    session: str,
+    role_marker: str,
+    total: int,
+    input_tokens: int | None = None,
+    *,
+    last_total: int | None = None,
+    start_turn: bool = False,
+    end_event: str | None = None,
+):
     path.parent.mkdir(parents=True, exist_ok=True)
     events = [
         {"type": "session_meta", "payload": {"id": session, "cwd": "/Agentic"}},
         {"type": "response_item", "payload": {"role": "user", "content": role_marker}},
+    ]
+    if start_turn:
+        events.append({"type": "event_msg", "payload": {"type": "task_started"}})
+    info = {
+        "total_token_usage": {
+            "input_tokens": total if input_tokens is None else input_tokens,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": total - (total if input_tokens is None else input_tokens),
+            "reasoning_output_tokens": 0,
+            "total_tokens": total,
+        }
+    }
+    if last_total is not None:
+        info["last_token_usage"] = {
+            "input_tokens": last_total,
+            "cached_input_tokens": 0,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 0,
+            "reasoning_output_tokens": 0,
+            "total_tokens": last_total,
+        }
+    events.append(
         {
             "type": "event_msg",
             "payload": {
                 "type": "token_count",
-                "info": {
-                    "total_token_usage": {
-                        "input_tokens": total if input_tokens is None else input_tokens,
-                        "cached_input_tokens": 0,
-                        "cache_write_input_tokens": 0,
-                        "output_tokens": total - (total if input_tokens is None else input_tokens),
-                        "reasoning_output_tokens": 0,
-                        "total_tokens": total,
-                    }
-                },
+                "info": info,
             },
-        },
-    ]
+        }
+    )
+    if end_event is not None:
+        events.append({"type": "event_msg", "payload": {"type": end_event}})
     with path.open("a", encoding="utf-8") as handle:
         for event in events:
             handle.write(json.dumps(event) + "\n")
@@ -293,10 +319,132 @@ def test_rollout_meter_is_incremental_and_does_not_double_count(tmp_path):
     governor.save()
     second = governor.evaluate(1_787_850_010.0, MODELS)
     assert first.roles["revenue_generator"].tokens_today == 50
+    assert first.roles["revenue_generator"].turn_tokens == 50
     assert second.roles["revenue_generator"].tokens_today == 50
     rollout_event(path, "session-a", "REVENUE BUILDER", 80)
     third = governor.evaluate(1_787_850_020.0, MODELS)
     assert third.roles["revenue_generator"].tokens_today == 80
+    assert third.roles["revenue_generator"].turn_tokens == 80
+
+
+def test_daily_usage_is_cumulative_while_turn_uses_last_token_usage(tmp_path):
+    governor, rollouts, _state = make_governor(tmp_path)
+    path = rollouts / "2026/08/27/rollout-a.jsonl"
+    rollout_event(
+        path,
+        "session-a",
+        "REVENUE BUILDER",
+        150,
+        last_total=90,
+        start_turn=True,
+    )
+
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+
+    decision = snapshot.roles["revenue_generator"]
+    assert snapshot.total_tokens_today == 150
+    assert decision.tokens_today == 150
+    assert decision.turn_tokens == 90
+    assert decision.active_session_id == "session-a"
+    assert decision.exhausted is False
+
+
+def test_task_complete_releases_turn_cap_but_preserves_daily_usage(tmp_path):
+    governor, rollouts, _state = make_governor(tmp_path)
+    rollout_event(
+        rollouts / "2026/08/27/rollout-a.jsonl",
+        "session-a",
+        "REVENUE BUILDER",
+        150,
+        last_total=150,
+        start_turn=True,
+        end_event="task_complete",
+    )
+
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+
+    decision = snapshot.roles["revenue_generator"]
+    assert decision.tokens_today == 150
+    assert decision.turn_tokens == 0
+    assert decision.active_session_id is None
+    assert decision.exhausted is False
+    assert decision.allowed_prompt is True
+
+
+def test_daily_rollover_does_not_reintroduce_completed_turn(tmp_path):
+    governor, rollouts, _state = make_governor(tmp_path)
+    rollout_event(
+        rollouts / "2026/08/27/rollout-a.jsonl",
+        "session-a",
+        "REVENUE BUILDER",
+        150,
+        last_total=150,
+        start_turn=True,
+        end_event="task_complete",
+    )
+    first = governor.evaluate(1_787_850_000.0, MODELS)
+    assert first.roles["revenue_generator"].active_session_id is None
+    governor.save()
+
+    next_day = governor.evaluate(1_787_850_000.0 + 86_400, MODELS)
+
+    decision = next_day.roles["revenue_generator"]
+    assert decision.tokens_today == 0
+    assert decision.turn_tokens == 0
+    assert decision.active_session_id is None
+
+
+def test_turn_aborted_closes_active_turn(tmp_path):
+    governor, rollouts, _state = make_governor(tmp_path)
+    rollout_event(
+        rollouts / "2026/08/27/rollout-a.jsonl",
+        "session-a",
+        "REVENUE BUILDER",
+        120,
+        last_total=120,
+        start_turn=True,
+        end_event="turn_aborted",
+    )
+
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+
+    decision = snapshot.roles["revenue_generator"]
+    assert decision.tokens_today == 120
+    assert decision.turn_tokens == 0
+    assert decision.active_session_id is None
+
+
+def test_new_turn_after_complete_becomes_active_with_its_own_usage(tmp_path):
+    governor, rollouts, _state = make_governor(tmp_path)
+    path = rollouts / "2026/08/27/rollout-a.jsonl"
+    rollout_event(
+        path,
+        "session-a",
+        "REVENUE BUILDER",
+        150,
+        last_total=150,
+        start_turn=True,
+        end_event="task_complete",
+    )
+    first = governor.evaluate(1_787_850_000.0, MODELS)
+    assert first.roles["revenue_generator"].active_session_id is None
+    governor.save()
+    rollout_event(
+        path,
+        "session-a",
+        "REVENUE BUILDER",
+        180,
+        last_total=30,
+        start_turn=True,
+    )
+
+    second = governor.evaluate(1_787_850_010.0, MODELS)
+
+    decision = second.roles["revenue_generator"]
+    assert decision.tokens_today == 180
+    assert decision.turn_tokens == 30
+    assert decision.active_session_id == "session-a"
+    assert decision.exhausted is False
 
 
 def test_large_rollout_bootstrap_is_bounded_and_first_cycle_fail_closed(tmp_path):

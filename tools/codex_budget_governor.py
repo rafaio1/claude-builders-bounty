@@ -378,7 +378,7 @@ class RolloutMeter:
         complete = raw[: newline + 1]
         if not bootstrap_limited:
             file_state["offset"] = offset + len(complete)
-        token_events: list[dict[str, int]] = []
+        rollout_events: list[tuple[str, dict[str, int] | None, int | None]] = []
         for raw_line in complete.splitlines():
             try:
                 event = json.loads(raw_line)
@@ -393,9 +393,25 @@ class RolloutMeter:
                 detected = _role_from_text(_content_text(payload.get("content")))
                 if detected:
                     file_state["role"] = detected
-            elif event_type == "event_msg" and payload.get("type") == "token_count":
-                usage = payload.get("info", {}).get("total_token_usage", {})
-                token_events.append({field: max(0, int(usage.get(field, 0))) for field in (*TOKEN_FIELDS, "total_tokens")})
+            elif event_type == "event_msg":
+                message_type = payload.get("type")
+                if message_type == "token_count":
+                    info = payload.get("info", {})
+                    total_usage = info.get("total_token_usage", {})
+                    usage = {
+                        field: max(0, int(total_usage.get(field, 0)))
+                        for field in (*TOKEN_FIELDS, "total_tokens")
+                    }
+                    last_usage = info.get("last_token_usage")
+                    # Older rollouts do not include last_token_usage. Preserve
+                    # their conservative cumulative-total behavior instead of
+                    # treating the active turn as free.
+                    if not isinstance(last_usage, Mapping) or "total_tokens" not in last_usage:
+                        last_usage = total_usage
+                    turn_tokens = max(0, int(last_usage.get("total_tokens", 0)))
+                    rollout_events.append(("token_count", usage, turn_tokens))
+                elif message_type in {"task_started", "task_complete", "turn_aborted"}:
+                    rollout_events.append((str(message_type), None, None))
 
         role = file_state.get("role")
         session_id = file_state.get("session_id")
@@ -403,11 +419,32 @@ class RolloutMeter:
             return None
         session = state["sessions"].setdefault(
             session_id,
-            {"role": role, "last_usage": _empty_usage(), "last_mtime": 0.0},
+            {
+                "role": role,
+                "last_usage": _empty_usage(),
+                "last_mtime": 0.0,
+                "turn_active": False,
+                "turn_tokens": 0,
+                "lifecycle_observed": False,
+            },
         )
         if session.get("role") != role:
             return "rollout_role_conflict"
-        for usage in token_events:
+        session.setdefault("turn_active", False)
+        session.setdefault("turn_tokens", 0)
+        session.setdefault("lifecycle_observed", False)
+        for kind, usage, turn_tokens in rollout_events:
+            if kind == "task_started":
+                session["lifecycle_observed"] = True
+                session["turn_active"] = True
+                session["turn_tokens"] = 0
+                continue
+            if kind in {"task_complete", "turn_aborted"}:
+                session["lifecycle_observed"] = True
+                session["turn_active"] = False
+                session["turn_tokens"] = 0
+                continue
+            assert usage is not None and turn_tokens is not None
             previous = session.get("last_usage", _empty_usage())
             if int(usage["total_tokens"]) < int(previous.get("total_tokens", 0)):
                 return "rollout_token_counter_regressed"
@@ -419,12 +456,19 @@ class RolloutMeter:
             state["roles"][role]["tokens_today"] += delta["total_tokens"]
             state["day_total_tokens"] += delta["total_tokens"]
             session["last_usage"] = usage
+            session["turn_tokens"] = turn_tokens
+            if not session.get("lifecycle_observed"):
+                session["turn_active"] = True
         session["last_mtime"] = stat.st_mtime
         role_state = state["roles"][role]
         if stat.st_mtime >= float(role_state.get("active_session_mtime", 0.0)):
             role_state["active_session_mtime"] = stat.st_mtime
-            role_state["active_session_id"] = session_id
-            role_state["turn_tokens"] = int(session.get("last_usage", {}).get("total_tokens", 0))
+            if session.get("turn_active"):
+                role_state["active_session_id"] = session_id
+                role_state["turn_tokens"] = int(session.get("turn_tokens", 0))
+            else:
+                role_state["active_session_id"] = None
+                role_state["turn_tokens"] = 0
         return "bootstrap_limited" if bootstrap_limited else None
 
 
