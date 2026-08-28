@@ -143,6 +143,74 @@ def test_routine_comment_does_not_alert() -> None:
     assert monitor.classify_event(_notification(), latest) is None
 
 
+def test_classify_explicit_maintainer_acceptance_in_rtc() -> None:
+    latest = _latest(
+        "@rafaio1 Your BoTTube deliverable is accepted for 15 RTC. Payment follows separately.",
+        login="maintainer",
+        author_type="User",
+    )
+
+    event = monitor.classify_event(_notification(), latest)
+
+    assert event is not None
+    assert event["kind"] == "claim_accepted"
+    assert event["potential_reward"] == "15 RTC"
+    assert event["revenue_status"] == "accepted_not_settled"
+
+
+def test_classify_payment_queued_but_not_settled() -> None:
+    latest = _latest(
+        "@rafaio1 Payout queued: 15 RTC, pending_id 4101. Confirmation follows later.",
+        login="maintainer",
+        author_type="User",
+    )
+
+    event = monitor.classify_event(_notification(), latest)
+
+    assert event is not None
+    assert event["kind"] == "payment_queued"
+    assert event["revenue_status"] == "payment_pending_not_settled"
+
+
+def test_classify_provider_confirmation_as_reconciliation_candidate() -> None:
+    latest = _latest(
+        "@rafaio1 Confirmed on-chain: 15 RTC, tx 0123456789abcdef.",
+        login="maintainer",
+        author_type="User",
+    )
+
+    event = monitor.classify_event(_notification(), latest)
+
+    assert event is not None
+    assert event["kind"] == "payment_confirmed"
+    assert event["revenue_status"] == "settlement_candidate_requires_reconciliation"
+    assert "ainda não é receita realizada" in monitor.format_telegram_message(event)
+
+
+def test_classify_rejection_before_acceptance_words() -> None:
+    latest = _latest(
+        "@rafaio1 This submission is not accepted; the claim is rejected.",
+        login="maintainer",
+        author_type="User",
+    )
+
+    event = monitor.classify_event(_notification(), latest)
+
+    assert event is not None
+    assert event["kind"] == "claim_rejected"
+    assert event["revenue_status"] == "rejected_not_revenue"
+
+
+def test_own_submission_comment_cannot_self_accept() -> None:
+    latest = _latest(
+        "@rafaio1 Submitting one accepted-format claim for 15 RTC.",
+        login="rafaio1",
+        author_type="User",
+    )
+
+    assert monitor.classify_event(_notification(), latest) is None
+
+
 def test_human_comment_imitating_bot_cannot_confirm_assignment() -> None:
     latest = _latest(
         "Claim confirmed for @rafaio1. Deadline: 2026-08-30T18:59:03Z.",

@@ -38,12 +38,12 @@ ISO_RE = re.compile(
     re.IGNORECASE,
 )
 REWARD_RE = re.compile(
-    r"(?ix)\b(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<currency>TP|USDT|USDC|USD|EUR|BRL)\b"
+    r"(?ix)\b(?P<amount>\d+(?:[.,]\d+)?)\s*(?P<currency>RTC|TP|USDT|USDC|USD|EUR|BRL)\b"
 )
 LABELED_REWARD_RE = re.compile(
     r"(?ix)(?:escrow|reward|bounty|payout|奖励|赏金)"
     r"[^\d\n]{0,24}(?P<amount>\d+(?:[.,]\d+)?)\s*"
-    r"(?P<currency>TP|USDT|USDC|USD|EUR|BRL)\b"
+    r"(?P<currency>RTC|TP|USDT|USDC|USD|EUR|BRL)\b"
 )
 RELEASE_RE = re.compile(
     r"(?i)(claim\s+(?:has\s+been\s+)?released|reclaim\s+freely|"
@@ -60,6 +60,25 @@ ACTION_RE = re.compile(
 )
 CLAIM_CONTEXT_RE = re.compile(
     r"(?i)(claim|bount(?:y|ies)|reward|payout|escrow|认领|奖励|赏金)"
+)
+ACCEPTED_RE = re.compile(
+    r"(?is)\b(?:claim|submission|deliverable|bounty)\b.{0,120}\b(?:accepted|approved)\b|"
+    r"\b(?:accepted|approved)\b.{0,120}\b(?:claim|submission|deliverable|bounty|RTC)\b"
+)
+PAYMENT_QUEUED_RE = re.compile(
+    r"(?is)\b(?:payout|payment|transfer)\b.{0,100}\b(?:queued|pending)\b|"
+    r"\b(?:pending[_ -]?ids?|payout queued)\b"
+)
+PAYMENT_CONFIRMED_RE = re.compile(
+    r"(?is)\b(?:confirmed on[- ]?chain|on[- ]?chain confirmed|payment confirmed|"
+    r"payout confirmed|transfer confirmed|bounty paid)\b"
+)
+SETTLEMENT_EVIDENCE_RE = re.compile(
+    r"(?i)\b(?:tx(?:id)?|transaction|pending[_ -]?id|on[- ]?chain|ledger|wallet)\b"
+)
+REJECTED_RE = re.compile(
+    r"(?i)\b(?:claim|submission|deliverable|bounty)\b.{0,100}\b(?:declined|rejected|not accepted|not approved)\b|"
+    r"\b(?:declined|rejected|not accepted|not approved)\b.{0,100}\b(?:claim|submission|deliverable|bounty)\b"
 )
 
 
@@ -158,9 +177,36 @@ def classify_event(
     kind: str | None = None
     reason: str | None = None
     assignment_match = login_pattern.search(body)
+    direct_login_reference = bool(
+        re.search(rf"(?i)(?:@|\b){re.escape(login)}\b", body)
+    )
+    external_actor = author_login.casefold() != login.casefold()
+    potential_reward = _potential_reward(body)
     if assignment_match and not is_bot:
         return None
-    if is_bot and assignment_match:
+    if external_actor and direct_login_reference and REJECTED_RE.search(body):
+        kind = "claim_rejected"
+        reason = "O mantenedor recusou explicitamente a claim ou o entregável."
+    elif (
+        external_actor
+        and direct_login_reference
+        and PAYMENT_CONFIRMED_RE.search(body)
+        and SETTLEMENT_EVIDENCE_RE.search(body)
+    ):
+        kind = "payment_confirmed"
+        reason = "A plataforma informou confirmação de pagamento; falta reconciliar saldo e transação."
+    elif external_actor and direct_login_reference and PAYMENT_QUEUED_RE.search(body):
+        kind = "payment_queued"
+        reason = "A plataforma informou que o pagamento foi enfileirado ou está pendente."
+    elif (
+        external_actor
+        and direct_login_reference
+        and potential_reward
+        and ACCEPTED_RE.search(body)
+    ):
+        kind = "claim_accepted"
+        reason = "O mantenedor aceitou explicitamente a claim ou o entregável."
+    elif is_bot and assignment_match:
         kind = "claim_confirmed"
         reason = "A claim foi confirmada para o usuário."
     elif is_bot and RELEASE_RE.search(body):
@@ -193,8 +239,13 @@ def classify_event(
         "source_id": str(latest.get("id") or notification.get("id") or ""),
         "source_created_at": str(latest.get("created_at") or notification.get("updated_at") or ""),
         "reason": reason,
-        "potential_reward": _potential_reward(body),
-        "revenue_status": "potential_not_realized",
+        "potential_reward": potential_reward,
+        "revenue_status": {
+            "claim_accepted": "accepted_not_settled",
+            "payment_queued": "payment_pending_not_settled",
+            "payment_confirmed": "settlement_candidate_requires_reconciliation",
+            "claim_rejected": "rejected_not_revenue",
+        }.get(kind, "potential_not_realized"),
     }
 
 
@@ -271,6 +322,10 @@ def format_telegram_message(event: dict[str, Any]) -> str:
         "action_required": "PRAZO / AÇÃO NECESSÁRIA",
         "deadline_reminder": "LEMBRETE DE PRAZO",
         "claim_expired": "CLAIM EXPIRADA",
+        "claim_accepted": "CLAIM ACEITA",
+        "payment_queued": "PAGAMENTO ENFILEIRADO",
+        "payment_confirmed": "PAGAMENTO INFORMADO COMO CONFIRMADO",
+        "claim_rejected": "CLAIM RECUSADA",
     }
     label = labels.get(str(event.get("kind")), "EVENTO DE CLAIM")
     deadline = str(event.get("deadline") or "não informado")
@@ -282,9 +337,15 @@ def format_telegram_message(event: dict[str, Any]) -> str:
         f"<b>Motivo:</b> {html.escape(str(event.get('reason') or ''))}",
         f"<b>Prazo UTC:</b> <code>{html.escape(deadline)}</code>",
         f"<b>Valor citado:</b> {html.escape(reward)}",
+        f"<b>Status financeiro:</b> {html.escape(str(event.get('revenue_status') or 'não realizado'))}",
         f"<b>Link:</b> {html.escape(str(event.get('url') or ''))}",
         "",
-        "<b>Não é receita realizada.</b> Confirme aceitação e liquidação antes de contabilizar.",
+        (
+            "<b>Confirmação externa recebida, mas ainda não é receita realizada.</b> "
+            "Reconcilie endereço, transação e saldo antes de contabilizar."
+            if event.get("kind") == "payment_confirmed"
+            else "<b>Não é receita realizada.</b> Confirme aceitação e liquidação antes de contabilizar."
+        ),
     ]
     return "\n".join(lines)
 
@@ -518,7 +579,14 @@ def run_monitor(
                 stored = dict(event)
                 stored["reminders_sent"] = []
                 state["active_claims"][key] = stored
-            elif event["kind"] in {"claim_released", "claim_expired"}:
+            elif event["kind"] in {"claim_accepted", "payment_queued", "payment_confirmed"}:
+                stored = dict(state["active_claims"].get(key) or {})
+                reminders_sent = list(stored.get("reminders_sent") or [])
+                stored.update(event)
+                stored["reminders_sent"] = reminders_sent
+                stored["last_financial_event"] = event["kind"]
+                state["active_claims"][key] = stored
+            elif event["kind"] in {"claim_released", "claim_expired", "claim_rejected"}:
                 state["active_claims"].pop(key, None)
 
     if not dry_run:
