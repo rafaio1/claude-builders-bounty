@@ -1,9 +1,8 @@
 [Unit]
-Description=Agentic incremental Drips GitHub candidate qualifier
+Description=Agentic read-only Opire bounty qualifier
 Wants=network-online.target
-After=network-online.target agentic-drips-wave-scanner.service
-ConditionPathExists=/Agentic/tools/drips_github_qualifier.py
-ConditionPathExists=/Agentic/state/drips_wave_candidates_success.json
+After=network-online.target
+ConditionPathExists=/Agentic/tools/opire_bounty_qualifier.py
 
 [Service]
 Type=oneshot
@@ -11,7 +10,7 @@ User=root
 WorkingDirectory=/Agentic
 Environment=PYTHONDONTWRITEBYTECODE=1
 Environment=GH_CONFIG_DIR=/run/agentic-gh
-ExecStart=/usr/bin/python3 /Agentic/tools/drips_github_qualifier.py
+ExecStart=/usr/bin/python3 /Agentic/tools/opire_bounty_qualifier.py
 UMask=0077
 Nice=10
 IOSchedulingClass=best-effort
@@ -30,7 +29,7 @@ ProtectControlGroups=true
 LockPersonality=true
 RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
 ReadWritePaths=/Agentic/state
-TimeoutStartSec=2min
+TimeoutStartSec=3min
 StandardOutput=journal
 StandardError=journal
 

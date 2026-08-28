@@ -2,8 +2,9 @@
 
 `tools/drips_github_qualifier.py` consumes the current, matching and unexpired
 Drips discovery snapshot. It audits at most one previously unseen candidate per
-cycle using only public GitHub `GET` requests. No token, `.env`, LLM or browser
-session is loaded.
+cycle using only GitHub `GET` requests. The existing root `gh` token is read
+from its read-only systemd bind mount, never from `.env`, and is never logged or
+placed in a process argument. No LLM or browser session is loaded.
 
 ## Why this stage exists
 
@@ -36,13 +37,16 @@ Identity, current terms, KYC, Turnstile, authenticated quotas, a final
 just-in-time Drips/GitHub revalidation and maintainer assignment remain separate
 mandatory gates.
 
-## Rate and cache contract
+## Rate, authentication and cache contract
 
-The server IP has a shared unauthenticated GitHub allowance. Every cycle first
-checks `/rate_limit`, refuses to start unless at least 16 public requests remain
-(leaving roughly ten after an audit), and audits at most one
-new candidate. One audit uses six public reads: repository, issue, comments,
-timeline, recursive tree and recent closed pull requests.
+The server IP's unauthenticated allowance is shared with other scanners and can
+stall useful qualification. The systemd unit therefore exposes only
+`/root/.config/gh` at `/run/agentic-gh`; the script parses the existing token in
+memory and uses the authenticated core allowance. If no token is available, it
+fails over to the public allowance. Every cycle first checks `/rate_limit`,
+refuses to start unless at least 16 requests remain, and audits at most one new
+candidate. One audit uses six reads: repository, issue, comments, timeline,
+recursive tree and recent closed pull requests.
 
 Qualified receipts are reused for at most 15 minutes; rejected receipts for at
 most 60 minutes. Output validity never extends beyond the source Drips

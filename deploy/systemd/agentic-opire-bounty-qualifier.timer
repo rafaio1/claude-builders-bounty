@@ -1,0 +1,13 @@
+[Unit]
+Description=Qualify official Opire code bounties every thirty minutes
+
+[Timer]
+OnBootSec=7min
+OnUnitInactiveSec=30min
+Persistent=true
+RandomizedDelaySec=45s
+AccuracySec=15s
+Unit=agentic-opire-bounty-qualifier.service
+
+[Install]
+WantedBy=timers.target

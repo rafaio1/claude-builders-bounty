@@ -12,6 +12,7 @@ import hashlib
 import json
 import os
 import re
+import subprocess
 import sys
 import tempfile
 import time
@@ -55,6 +56,8 @@ TRIVIAL_PATTERNS = (
     "update dependency",
     "code quality] remove",
 )
+GH_TOKEN_PATTERN = re.compile(r"^[A-Za-z0-9_]+$")
+GITHUB_TOKEN: str | None = None
 
 
 class QualifierError(RuntimeError):
@@ -118,6 +121,42 @@ def _retryable_status(status: int) -> bool:
     return status == 429 or 500 <= status <= 599
 
 
+def resolve_github_token() -> str | None:
+    """Resolve auth without printing or placing the token in process arguments."""
+    for name in ("GITHUB_TOKEN", "GH_TOKEN"):
+        value = os.environ.get(name, "").strip()
+        if value:
+            return value
+    token_file = os.environ.get("GITHUB_TOKEN_FILE", "").strip()
+    if token_file:
+        try:
+            value = Path(token_file).read_text(encoding="utf-8").strip()
+        except OSError:
+            value = ""
+        if value:
+            return value
+    gh_config_dir = Path(os.environ.get("GH_CONFIG_DIR", "~/.config/gh")).expanduser()
+    try:
+        hosts_text = (gh_config_dir / "hosts.yml").read_text(encoding="utf-8")
+    except OSError:
+        hosts_text = ""
+    for match in re.finditer(r"(?m)^\s*oauth_token:\s*([^\s#]+)\s*$", hosts_text):
+        value = match.group(1).strip("'\"")
+        if len(value) >= 20 and GH_TOKEN_PATTERN.fullmatch(value):
+            return value
+    try:
+        result = subprocess.run(
+            ["/usr/bin/gh", "auth", "token"],
+            check=False,
+            capture_output=True,
+            text=True,
+            timeout=8,
+        )
+    except (OSError, subprocess.SubprocessError):
+        return None
+    return result.stdout.strip() if result.returncode == 0 and result.stdout.strip() else None
+
+
 def http_get_json(url: str) -> Any:
     parsed = urlparse(url)
     if parsed.scheme != "https" or parsed.hostname != "api.github.com":
@@ -125,15 +164,14 @@ def http_get_json(url: str) -> Any:
     last_code = "github_api_unavailable"
     for attempt in range(MAX_HTTP_ATTEMPTS):
         try:
-            request = Request(
-                url,
-                headers={
-                    "Accept": "application/vnd.github+json",
-                    "User-Agent": USER_AGENT,
-                    "X-GitHub-Api-Version": "2022-11-28",
-                },
-                method="GET",
-            )
+            headers = {
+                "Accept": "application/vnd.github+json",
+                "User-Agent": USER_AGENT,
+                "X-GitHub-Api-Version": "2022-11-28",
+            }
+            if GITHUB_TOKEN:
+                headers["Authorization"] = f"Bearer {GITHUB_TOKEN}"
+            request = Request(url, headers=headers, method="GET")
             with urlopen(request, timeout=HTTP_TIMEOUT_SECONDS) as response:
                 final = urlparse(str(response.geturl()))
                 if (
@@ -710,6 +748,7 @@ def qualify_market(
     *,
     now: datetime | None = None,
     run_id: str | None = None,
+    github_authenticated: bool = False,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     current = (now or utc_now()).astimezone(UTC)
     validate_drips_snapshot(drips_payload, drips_manifest, now=current)
@@ -777,7 +816,7 @@ def qualify_market(
         "audit_policy": {
             "max_new_candidates_per_run": 1,
             "public_github_only": True,
-            "authenticated_github": False,
+            "authenticated_github": github_authenticated,
             "minimum_score": MIN_SCORE,
             "qualified_cache_ttl_seconds": QUALIFIED_CACHE_TTL_SECONDS,
             "rejected_cache_ttl_seconds": REJECTED_CACHE_TTL_SECONDS,
@@ -838,6 +877,7 @@ def parse_args() -> argparse.Namespace:
 
 
 def main() -> int:
+    global GITHUB_TOKEN
     args = parse_args()
     run_id = uuid.uuid4().hex
     output_path = Path(args.output)
@@ -854,6 +894,7 @@ def main() -> int:
         },
     )
     try:
+        GITHUB_TOKEN = resolve_github_token()
         drips_payload = load_json(Path(args.drips), code="invalid_drips_output")
         drips_manifest = load_json(
             Path(args.drips_manifest),
@@ -866,6 +907,7 @@ def main() -> int:
             cache,
             fetch_json=http_get_json,
             run_id=run_id,
+            github_authenticated=bool(GITHUB_TOKEN),
         )
         atomic_json_write(cache_path, updated_cache)
         atomic_json_write(output_path, payload)

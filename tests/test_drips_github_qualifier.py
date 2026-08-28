@@ -295,6 +295,25 @@ def test_low_public_rate_budget_fails_before_candidate_reads():
     assert len(calls) == 1
 
 
+def test_token_is_read_from_existing_gh_config_without_subprocess(tmp_path, monkeypatch):
+    config = tmp_path / "gh"
+    config.mkdir()
+    (config / "hosts.yml").write_text(
+        "github.com:\n  oauth_token: gho_abcdefghijklmnopqrstuvwxyz123456\n",
+        encoding="utf-8",
+    )
+    monkeypatch.setenv("GH_CONFIG_DIR", str(config))
+    monkeypatch.delenv("GITHUB_TOKEN", raising=False)
+    monkeypatch.delenv("GH_TOKEN", raising=False)
+    monkeypatch.delenv("GITHUB_TOKEN_FILE", raising=False)
+    monkeypatch.setattr(
+        qualifier.subprocess,
+        "run",
+        lambda *args, **kwargs: pytest.fail("gh subprocess should not be called"),
+    )
+    assert qualifier.resolve_github_token() == "gho_abcdefghijklmnopqrstuvwxyz123456"
+
+
 class FakeResponse:
     status = 200
 
@@ -387,10 +406,8 @@ def test_main_writes_matching_manifest(monkeypatch, tmp_path: Path):
     assert success["realized_revenue_usd"] == 0.0
 
 
-def test_source_contains_no_external_write_or_authentication():
+def test_source_contains_no_external_write_methods():
     source = Path(qualifier.__file__).read_text(encoding="utf-8").casefold()
     assert 'method="post"' not in source
     assert 'method="patch"' not in source
     assert 'method="delete"' not in source
-    assert "authorization" not in source
-    assert "github_token" not in source
