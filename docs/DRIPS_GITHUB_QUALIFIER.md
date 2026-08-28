@@ -46,7 +46,10 @@ memory and uses the authenticated core allowance. If no token is available, it
 fails over to the public allowance. Every cycle first checks `/rate_limit`,
 refuses to start unless at least 16 requests remain, and audits at most one new
 candidate. One audit uses six reads: repository, issue, comments, timeline,
-recursive tree and recent closed pull requests.
+recursive tree and recent closed pull requests. If GitHub has no repository
+license but the root tree contains `package.json`, one additional bounded read
+may prove a known SPDX license from that manifest; arbitrary README prose and
+unknown/custom license strings remain rejected.
 
 Qualified receipts are reused for at most 15 minutes; rejected receipts for at
 most 60 minutes. Output validity never extends beyond the source Drips

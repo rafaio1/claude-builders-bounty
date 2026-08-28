@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import base64
 import json
 import os
 import sys
@@ -57,7 +58,7 @@ def drips_snapshot(rows: list[dict] | None = None) -> tuple[dict, dict]:
     return payload, manifest
 
 
-def repo_payload(repo: str = "acme/project") -> dict:
+def repo_payload(repo: str = "acme/project", *, license_spdx: str | None = "MIT") -> dict:
     return {
         "node_id": f"repo:{repo}",
         "full_name": repo,
@@ -67,7 +68,7 @@ def repo_payload(repo: str = "acme/project") -> dict:
         "fork": False,
         "private": False,
         "pushed_at": "2026-08-28T15:00:00Z",
-        "license": {"spdx_id": "MIT"},
+        "license": {"spdx_id": license_spdx} if license_spdx else None,
     }
 
 
@@ -95,7 +96,7 @@ def issue_payload(repo: str = "acme/project", issue_number: int = 7) -> dict:
     }
 
 
-def tree_payload(*, missing_path: bool = False) -> dict:
+def tree_payload(*, missing_path: bool = False, include_package_json: bool = False) -> dict:
     paths = [
         ".github/workflows/ci.yml",
         "LICENSE",
@@ -105,6 +106,8 @@ def tree_payload(*, missing_path: bool = False) -> dict:
     if not missing_path:
         paths.append("src")
         paths.append("src/client.py")
+    if include_package_json:
+        paths.append("package.json")
     return {"truncated": False, "tree": [{"path": path} for path in paths]}
 
 
@@ -119,6 +122,7 @@ def fake_fetcher(
     missing_path: bool = False,
     merged: bool = True,
     application_comment: bool = False,
+    package_license: str | None = None,
 ):
     calls: list[str] = []
     by_repo = {row["repo"]: row for row in rows}
@@ -137,7 +141,7 @@ def fake_fetcher(
         repo = f"{parts[1]}/{parts[2]}"
         row = by_repo[repo]
         if len(parts) == 3:
-            return repo_payload(repo)
+            return repo_payload(repo, license_spdx=None if package_license else "MIT")
         if parts[3] == "issues" and len(parts) == 5:
             value = issue_payload(repo, row["issue_number"])
             if application_comment:
@@ -152,7 +156,21 @@ def fake_fetcher(
         if parts[3] == "issues" and parts[5] == "timeline":
             return []
         if parts[3:5] == ["git", "trees"]:
-            return tree_payload(missing_path=missing_path)
+            return tree_payload(
+                missing_path=missing_path,
+                include_package_json=package_license is not None,
+            )
+        if parts[3] == "contents" and parts[4] == "package.json":
+            encoded = base64.b64encode(
+                json.dumps({"name": "project", "license": package_license}).encode()
+            ).decode()
+            return {
+                "type": "file",
+                "path": "package.json",
+                "encoding": "base64",
+                "size": len(base64.b64decode(encoded)),
+                "content": encoded,
+            }
         if parts[3] == "pulls":
             return pulls_payload(merged=merged)
         raise AssertionError(url)
@@ -187,6 +205,27 @@ def test_candidate_can_qualify_but_never_become_actionable_or_revenue():
     assert result["financial_truth"]["points_value_usd"] is None
     assert result["financial_truth"]["realized_revenue_usd"] == 0.0
     assert len(calls) == 6
+
+
+def test_root_package_spdx_license_is_accepted_when_github_license_is_null():
+    row = candidate()
+    fetch, calls = fake_fetcher([row], package_license="ISC")
+    result = qualifier.audit_candidate(
+        row,
+        fetch,
+        now=NOW,
+        drips_source_hash="drips-source",
+        wave_end_at="2026-08-31T12:00:00Z",
+    )
+    assert result["decision"] == "qualified"
+    assert result["gates"]["license_present"] is True
+    assert result["evidence"]["license_spdx"] == "ISC"
+    assert result["evidence"]["license_source"] == "root_package_json"
+    assert result["quality"]["license_warning"] == "missing_license_file"
+    assert result["evidence"]["package_manifest_api_url"].endswith(
+        "/contents/package.json?ref=main"
+    )
+    assert len(calls) == 7
 
 
 def test_missing_referenced_path_and_no_merged_history_reject():

@@ -8,6 +8,7 @@ work, comments, opens a pull request, or treats Drips Points as USD revenue.
 from __future__ import annotations
 
 import argparse
+import base64
 import hashlib
 import json
 import os
@@ -35,6 +36,7 @@ DEFAULT_CACHE_PATH = Path("/Agentic/state/drips_github_qualification_cache.json"
 MAX_HTTP_ATTEMPTS = 4
 HTTP_TIMEOUT_SECONDS = 20
 MAX_RESPONSE_BYTES = 12 * 1024 * 1024
+MAX_PACKAGE_JSON_BYTES = 256 * 1024
 MIN_RATE_REMAINING = 16
 QUALIFIED_CACHE_TTL_SECONDS = 15 * 60
 REJECTED_CACHE_TTL_SECONDS = 60 * 60
@@ -58,6 +60,20 @@ TRIVIAL_PATTERNS = (
 )
 GH_TOKEN_PATTERN = re.compile(r"^[A-Za-z0-9_]+$")
 GITHUB_TOKEN: str | None = None
+KNOWN_SPDX_LICENSES = {
+    "0BSD",
+    "Apache-2.0",
+    "BSD-2-Clause",
+    "BSD-3-Clause",
+    "GPL-2.0-only",
+    "GPL-3.0-only",
+    "ISC",
+    "LGPL-2.1-only",
+    "LGPL-3.0-only",
+    "MIT",
+    "MPL-2.0",
+    "Unlicense",
+}
 
 
 class QualifierError(RuntimeError):
@@ -435,8 +451,7 @@ def audit_candidate(
     license_info = repo.get("license")
     spdx = str(license_info.get("spdx_id") or "") if isinstance(license_info, Mapping) else ""
     license_present = bool(spdx and spdx not in {"NOASSERTION", "OTHER"})
-    if not license_present:
-        reasons.append("license_not_proven")
+    license_source = "github_repository_license" if license_present else None
     pushed_at = parse_timestamp(repo.get("pushed_at"))
     recent_push = pushed_at is not None and pushed_at >= now - timedelta(days=90)
     if not recent_push:
@@ -492,6 +507,39 @@ def audit_candidate(
         for row in tree_rows
         if isinstance(row, Mapping) and isinstance(row.get("path"), str)
     }
+    package_manifest_api_url: str | None = None
+    if not license_present and "package.json" in tree_paths:
+        package_manifest_api_url = _github_url(
+            f"{repo_path}/contents/package.json",
+            {"ref": default_branch},
+        )
+        package_payload = _mapping(
+            fetch_json(package_manifest_api_url),
+            code="invalid_package_manifest_schema",
+        )
+        package_size = _strict_int(package_payload.get("size"))
+        package_content = package_payload.get("content")
+        if (
+            package_payload.get("type") == "file"
+            and package_payload.get("path") == "package.json"
+            and package_payload.get("encoding") == "base64"
+            and package_size is not None
+            and package_size <= MAX_PACKAGE_JSON_BYTES
+            and isinstance(package_content, str)
+        ):
+            try:
+                decoded = base64.b64decode(package_content, validate=True)
+                package_document = json.loads(decoded.decode("utf-8"))
+            except (ValueError, UnicodeDecodeError, json.JSONDecodeError):
+                package_document = None
+            if isinstance(package_document, Mapping):
+                package_license = package_document.get("license")
+                if isinstance(package_license, str) and package_license in KNOWN_SPDX_LICENSES:
+                    spdx = package_license
+                    license_present = True
+                    license_source = "root_package_json"
+    if not license_present:
+        reasons.append("license_not_proven")
     has_ci = any(
         path.startswith(".github/workflows/") and path.endswith((".yml", ".yaml"))
         for path in tree_paths
@@ -670,6 +718,9 @@ def audit_candidate(
         },
         "quality": {
             "clarity_signals": clarity_signals,
+            "license_warning": (
+                "missing_license_file" if license_source == "root_package_json" else None
+            ),
             "referenced_paths": references,
             "missing_referenced_paths": missing_references,
             "github_points_labels": label_points,
@@ -708,6 +759,8 @@ def audit_candidate(
             "repository_pushed_at": repo.get("pushed_at"),
             "issue_updated_at": issue.get("updated_at"),
             "license_spdx": spdx or None,
+            "license_source": license_source,
+            "package_manifest_api_url": package_manifest_api_url,
         },
         "financial_truth": {
             "points": points,
