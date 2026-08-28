@@ -18,6 +18,7 @@ from typing import Any, Iterable
 
 import revenue_learning
 import revenue_db
+import revenue_workflow
 
 
 BASE = Path("/Agentic")
@@ -92,12 +93,28 @@ def plan_once(
 ) -> dict[str, Any]:
     revenue_db.init_db(db_path)
     bootstrap_runtime_identities(db_path)
-    build_work_orders(
+    settlement_revalidation = revenue_db.revalidate_confirmed_settlements(
+        db_path,
+        max_items=20,
+    )
+    work_orders = build_work_orders(
         db_path,
         max_orders=max_orders,
         supported_payout_methods=supported_payout_methods,
     )
+    workflow_results = []
+    for work_order in work_orders:
+        result = revenue_workflow.run_once(
+            str(work_order["id"]),
+            dry_run=False,
+            db_path=db_path,
+        )
+        workflow_results.append(result)
+        if result.get("advanced") is True:
+            break
     snapshot = revenue_db.status_snapshot(db_path)
+    snapshot["settlement_revalidation"] = settlement_revalidation
+    snapshot["workflow"] = workflow_results
     snapshot["learning"] = revenue_learning.strategy_snapshot(
         db_path,
         max_orders=max_orders,
@@ -134,6 +151,96 @@ def cmd_status(args: argparse.Namespace) -> int:
     snapshot = revenue_db.status_snapshot(args.db)
     snapshot["learning"] = revenue_learning.strategy_snapshot(args.db)
     print(json.dumps(snapshot, indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_workflow_once(args: argparse.Namespace) -> int:
+    result = revenue_workflow.run_once(
+        args.work_order_id,
+        dry_run=not args.apply,
+        actor_alias=args.actor,
+        db_path=args.db,
+    )
+    print(json.dumps(result, indent=2, sort_keys=True))
+    return 1 if result.get("status") in {"error", "not_found"} else 0
+
+
+def cmd_verify_evidence(args: argparse.Namespace) -> int:
+    try:
+        result = revenue_db.verify_and_record_work_order_action(
+            args.work_order_id,
+            args.action,
+            args.evidence_url,
+            args.db,
+        )
+    except (OSError, ValueError) as error:
+        print(
+            json.dumps(
+                {
+                    "status": "rejected",
+                    "reason": type(error).__name__,
+                    "work_order_id": args.work_order_id,
+                    "action": args.action,
+                },
+                sort_keys=True,
+            )
+        )
+        return 1
+    safe = {
+        key: result.get(key)
+        for key in (
+            "work_order_id",
+            "action_type",
+            "evidence_url",
+            "receipt_id",
+            "observed_at",
+            "actor_alias",
+            "expected_from_status",
+            "work_order_version",
+            "created",
+        )
+    }
+    safe["status"] = "verified"
+    print(json.dumps(safe, indent=2, sort_keys=True))
+    return 0
+
+
+def cmd_verify_settlement(args: argparse.Namespace) -> int:
+    try:
+        result = revenue_db.verify_and_record_settlement(
+            args.work_order_id,
+            args.provider,
+            args.transaction_id,
+            args.db,
+        )
+    except (OSError, ValueError) as error:
+        print(
+            json.dumps(
+                {
+                    "status": "rejected",
+                    "reason": type(error).__name__,
+                    "work_order_id": args.work_order_id,
+                    "provider": args.provider,
+                },
+                sort_keys=True,
+            )
+        )
+        return 1
+    safe = {
+        key: result.get(key)
+        for key in (
+            "id",
+            "work_order_id",
+            "provider",
+            "transaction_id",
+            "currency",
+            "net_amount",
+            "status",
+            "received_at",
+            "created",
+        )
+    }
+    print(json.dumps(safe, indent=2, sort_keys=True))
     return 0
 
 
@@ -190,6 +297,31 @@ def parser() -> argparse.ArgumentParser:
 
     status = subparsers.add_parser("status")
     status.set_defaults(handler=cmd_status)
+
+    workflow_once = subparsers.add_parser("workflow-once")
+    workflow_once.add_argument("work_order_id")
+    workflow_once.add_argument("--actor")
+    workflow_once.add_argument(
+        "--apply",
+        action="store_true",
+        help="advance one checkpoint only when its durable receipt exists",
+    )
+    workflow_once.set_defaults(handler=cmd_workflow_once)
+
+    verify_evidence = subparsers.add_parser("verify-evidence")
+    verify_evidence.add_argument("work_order_id")
+    verify_evidence.add_argument(
+        "action",
+        choices=sorted(revenue_db._WORK_ORDER_ACTION_ALLOWLIST),
+    )
+    verify_evidence.add_argument("evidence_url")
+    verify_evidence.set_defaults(handler=cmd_verify_evidence)
+
+    verify_settlement = subparsers.add_parser("verify-settlement")
+    verify_settlement.add_argument("work_order_id")
+    verify_settlement.add_argument("provider", choices=("stripe",))
+    verify_settlement.add_argument("transaction_id")
+    verify_settlement.set_defaults(handler=cmd_verify_settlement)
 
     loop = subparsers.add_parser("loop")
     loop.add_argument("--interval", type=int, default=300)

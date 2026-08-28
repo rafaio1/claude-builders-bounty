@@ -62,3 +62,25 @@ def test_plan_status_reports_zero_realized_revenue_without_settlement(tmp_path):
     assert snapshot["realized_revenue"] == {}
     assert snapshot["active_work_orders_by_lane"] == {"build": 0, "receivable": 0}
     assert json.loads(status_file.read_text(encoding="utf-8")) == snapshot
+
+
+def test_plan_once_has_global_budget_of_one_advanced_transition(
+    tmp_path, monkeypatch
+):
+    db_path = tmp_path / "revenue.db"
+    calls: list[str] = []
+    monkeypatch.setattr(
+        control_plane,
+        "build_work_orders",
+        lambda *args, **kwargs: [{"id": "wo-1"}, {"id": "wo-2"}],
+    )
+
+    def run_once(work_order_id, **kwargs):
+        calls.append(work_order_id)
+        return {"work_order_id": work_order_id, "advanced": True, "status": "advanced"}
+
+    monkeypatch.setattr(control_plane.revenue_workflow, "run_once", run_once)
+    snapshot = control_plane.plan_once(db_path)
+
+    assert calls == ["wo-1"]
+    assert len(snapshot["workflow"]) == 1

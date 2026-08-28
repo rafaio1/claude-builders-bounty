@@ -210,14 +210,17 @@ def seed_confirmed_settlement(db_path: Path, received: datetime) -> None:
         conn.execute(
             """INSERT INTO settlements
                (id, work_order_id, provider, transaction_id,
-                provider_verification_url, provider_verification_id,
-                provider_verified_at, collector_alias, currency, gross_amount,
-                fee_amount, net_amount, status, received_at, created_at, updated_at)
-               VALUES ('settlement-paid-1', 'wo-paid-1', 'stripe', 'po_learning_1',
-                       'https://dashboard.stripe.com/payouts/po_learning_1',
-                       'po_learning_1', ?, 'contador', 'USD', 100, 3, 97,
+                 provider_verification_url, provider_verification_id,
+                 provider_verified_at, verification_source,
+                 provider_payload_sha256, provider_status,
+                 collector_alias, currency, gross_amount,
+                 fee_amount, net_amount, status, received_at, created_at, updated_at)
+                VALUES ('settlement-paid-1', 'wo-paid-1', 'stripe', 'tr_learning_1',
+                       'https://dashboard.stripe.com/connect/transfers/tr_learning_1',
+                       'tr_learning_1', ?, 'stripe_transfer_api_v1', ?, 'succeeded',
+                       'contador', 'USD', 100, 3, 97,
                        'confirmed', ?, ?, ?)""",
-            (observed, observed, observed, observed),
+            (observed, "a" * 64, observed, observed, observed),
         )
 
 

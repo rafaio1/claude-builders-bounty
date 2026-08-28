@@ -13,6 +13,8 @@ from datetime import UTC, datetime, timedelta
 from pathlib import Path
 from typing import Any
 
+import revenue_db
+
 WORKSPACE = Path("/Agentic")
 DEFAULT_CONFIG_PATH = WORKSPACE / "config/codex_budget_governor.json"
 DEFAULT_STATE_PATH = WORKSPACE / "state/codex_budget_governor.json"
@@ -219,43 +221,27 @@ def read_revenue_snapshot(
     ledger_path: Path,
     recognized_currencies: set[str],
 ) -> RevenueSnapshot:
+    # Kept in the signature for deployment compatibility only.  The legacy
+    # JSONL ledger is never an authority for funded mode.
+    _ = ledger_path
     try:
-        connection = sqlite3.connect(f"file:{db_path}?mode=ro", uri=True, timeout=1.0)
-        connection.row_factory = sqlite3.Row
-        try:
-            rows = connection.execute(
-                """
-                SELECT provider, transaction_id, currency, net_amount
-                FROM settlements
-                WHERE status = 'confirmed'
-                """
-            ).fetchall()
-        finally:
-            connection.close()
-    except (OSError, sqlite3.Error) as error:
+        truth = revenue_db.read_realized_revenue(db_path, recognized_currencies)
+    except (OSError, ValueError, sqlite3.Error) as error:
         return RevenueSnapshot("zero_revenue", 0.0, False, f"revenue_db_unavailable:{type(error).__name__}")
-
-    if not rows:
-        return RevenueSnapshot("zero_revenue", 0.0, True, "no_confirmed_settlements")
-
-    try:
-        ledger_keys = _settled_ledger_keys(ledger_path)
-    except (OSError, ValueError) as error:
-        return RevenueSnapshot("zero_revenue", 0.0, False, f"realized_ledger_unavailable:{type(error).__name__}")
-
-    realized = 0.0
-    for row in rows:
-        currency = str(row["currency"]).upper()
-        key = (str(row["provider"]), str(row["transaction_id"]))
-        if currency not in recognized_currencies:
-            return RevenueSnapshot("zero_revenue", 0.0, False, f"unsupported_revenue_currency:{currency}")
-        if key not in ledger_keys:
-            return RevenueSnapshot("zero_revenue", 0.0, False, "settlement_ledger_mismatch")
-        amount = float(row["net_amount"])
-        if amount <= 0:
-            return RevenueSnapshot("zero_revenue", 0.0, False, "non_positive_confirmed_settlement")
-        realized += amount
-    return RevenueSnapshot("funded", realized, True, "confirmed_settlements_reconciled")
+    if not bool(truth.get("verified")):
+        return RevenueSnapshot(
+            "zero_revenue", 0.0, False, str(truth.get("reason") or "unverified_revenue")
+        )
+    realized = sum(
+        float(amount) for amount in dict(truth.get("realized_revenue") or {}).values()
+    )
+    if realized <= 0:
+        return RevenueSnapshot(
+            "zero_revenue", 0.0, True, str(truth.get("reason") or "no_confirmed_settlements")
+        )
+    return RevenueSnapshot(
+        "funded", realized, True, str(truth.get("reason") or "confirmed_settlements_reconciled")
+    )
 
 
 def estimate_cost_usd(

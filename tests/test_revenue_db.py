@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import sqlite3
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import pytest
@@ -13,6 +13,13 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "tools"))
 
 import revenue_db
+import revenue_evidence
+import revenue_settlement_evidence
+
+
+@pytest.fixture(autouse=True)
+def configured_stripe_destination(monkeypatch):
+    monkeypatch.setenv("STRIPE_DESTINATION_ACCOUNT_ID", "acct_test")
 
 
 def timestamp() -> str:
@@ -363,25 +370,345 @@ def test_database_trigger_enforces_three_active_orders(tmp_path):
         assert conn.execute("SELECT COUNT(*) FROM work_orders").fetchone()[0] == 3
 
 
-def test_work_order_cas_is_idempotent_and_rejects_invalid_transition(tmp_path):
+def fake_github_api(repo_key: str, issue_number: int, pr_number: int):
+    head_sha = "a" * 40
+    state = {
+        "pull": {
+            "html_url": f"https://github.com/{repo_key}/pull/{pr_number}",
+            "node_id": f"PR_{pr_number}",
+            "state": "open",
+            "draft": False,
+            "body": f"Closes #{issue_number}",
+            "user": {"login": "rafaio1"},
+            "base": {"repo": {"full_name": repo_key}},
+            "head": {"sha": head_sha},
+            "merged": False,
+            "merged_at": None,
+            "merged_by": None,
+            "merge_commit_sha": None,
+        }
+    }
+
+    def get(path: str):
+        if path.endswith(f"/issues/{issue_number}"):
+            return {
+                "html_url": f"https://github.com/{repo_key}/issues/{issue_number}",
+                "node_id": f"ISSUE_{issue_number}",
+                "state": "open",
+                "assignees": [{"login": "rafaio1"}],
+                "updated_at": "2026-08-28T10:00:00Z",
+            }
+        if path.endswith("/actions/runs/1"):
+            return {
+                "id": 1,
+                "html_url": f"https://github.com/{repo_key}/actions/runs/1",
+                "repository": {"full_name": repo_key},
+                "status": "completed",
+                "conclusion": "success",
+                "head_sha": head_sha,
+                "run_attempt": 1,
+                "event": "pull_request",
+            }
+        if path.endswith(f"/pulls/{pr_number}/reviews/77"):
+            return {
+                "id": 77,
+                "state": "APPROVED",
+                "user": {"login": "maintainer"},
+                "author_association": "MEMBER",
+                "commit_id": head_sha,
+                "submitted_at": "2026-08-28T10:10:00Z",
+            }
+        if path.endswith(f"/pulls/{pr_number}"):
+            return state["pull"]
+        raise AssertionError(f"unexpected API path: {path}")
+
+    return state, get
+
+
+def test_issue_reference_uses_numeric_boundaries():
+    assert revenue_evidence._issue_linked("Closes #1", "owner/repo", 1)
+    assert not revenue_evidence._issue_linked("Closes #10", "owner/repo", 1)
+    assert not revenue_evidence._issue_linked("Closes #100", "owner/repo", 1)
+    assert revenue_evidence._issue_linked(
+        "Fixes https://github.com/owner/repo/issues/1",
+        "owner/repo",
+        1,
+    )
+
+
+def test_work_order_cas_requires_official_receipts_and_waits_for_platform(
+    tmp_path, monkeypatch
+):
     db_path = tmp_path / "revenue.db"
     verify_seeded(db_path, "candidate-20")
-    assert revenue_db.upsert_identity("revenue_generator", "ghostcli", db_path)
+    for alias in ("revenue_generator", "reviewer", "integrator", "contador"):
+        assert revenue_db.upsert_identity(alias, "ghostcli", db_path)
     work_order_id = revenue_db.create_work_order(
         "candidate-20", "revenue_generator", db_path
     )
     assert work_order_id
 
+    # A caller cannot bypass the external-evidence checkpoint.
+    assert not revenue_db.cas_transition_work_order(
+        work_order_id, "queued", "in_progress", "revenue_generator", db_path
+    )
+    assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "queued"
+
+    state, api_get = fake_github_api("owner/repo-20", 21, 22)
+    monkeypatch.setattr(revenue_evidence, "_github_get", api_get)
+
+    claim = revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "claim_confirmed",
+        "https://github.com/owner/repo-20/issues/21",
+        db_path,
+    )
+    assert claim["actor_alias"] == "revenue_generator"
     assert revenue_db.cas_transition_work_order(
         work_order_id, "queued", "in_progress", "revenue_generator", db_path
     )
+    assert revenue_db.get_opportunity("candidate-20", db_path)["status"] == "implementing"
     assert not revenue_db.cas_transition_work_order(
         work_order_id, "queued", "in_progress", "revenue_generator", db_path
     )
     assert not revenue_db.cas_transition_work_order(
         work_order_id, "in_progress", "published", "revenue_generator", db_path
     )
-    assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "in_progress"
+
+    revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "tests_passed",
+        "https://github.com/owner/repo-20/actions/runs/1",
+        db_path,
+    )
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "in_progress", "under_review", "revenue_generator", db_path
+    )
+    revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "pr_published",
+        "https://github.com/owner/repo-20/pull/22",
+        db_path,
+    )
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "under_review", "integration_ready", "integrator", db_path
+    )
+    assert revenue_db.get_opportunity("candidate-20", db_path)["status"] == "submitted"
+    revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "review_approved",
+        "https://github.com/owner/repo-20/pull/22#pullrequestreview-77",
+        db_path,
+    )
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "integration_ready", "published", "reviewer", db_path
+    )
+    assert revenue_db.get_opportunity("candidate-20", db_path)["status"] == "reviewed"
+    state["pull"].update(
+        {
+            "state": "closed",
+            "merged": True,
+            "merged_at": "2026-08-28T10:20:00Z",
+            "merged_by": {"login": "maintainer"},
+            "merge_commit_sha": "b" * 40,
+        }
+    )
+    revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "delivery_accepted",
+        "https://github.com/owner/repo-20/pull/22",
+        db_path,
+    )
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "published", "completed", "contador", db_path
+    )
+    assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "completed"
+    assert revenue_db.get_opportunity("candidate-20", db_path)["status"] == "accepted"
+    with revenue_db.connect(db_path) as conn:
+        assert conn.execute(
+            "SELECT COUNT(*) FROM opportunities WHERE lane='receivable'"
+        ).fetchone()[0] == 0
+        event = conn.execute(
+            """SELECT event_type FROM events
+               WHERE entity_id='candidate-20'
+               ORDER BY id DESC LIMIT 1"""
+        ).fetchone()
+        assert event["event_type"] == "platform_revalidation_required"
+
+
+def test_official_action_receipt_is_idempotent_and_cannot_be_reused(
+    tmp_path, monkeypatch
+):
+    db_path = tmp_path / "revenue.db"
+    verify_seeded(db_path, "candidate-22")
+    assert revenue_db.upsert_identity("revenue_generator", "ghostcli", db_path)
+    work_order_id = revenue_db.create_work_order(
+        "candidate-22", "revenue_generator", db_path
+    )
+    _, api_get = fake_github_api("owner/repo-22", 23, 24)
+    monkeypatch.setattr(revenue_evidence, "_github_get", api_get)
+    first = revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "claim_confirmed",
+        "https://github.com/owner/repo-22/issues/23",
+        db_path,
+    )
+    replay = revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "claim_confirmed",
+        "https://github.com/owner/repo-22/issues/23",
+        db_path,
+    )
+    assert first["created"] is True
+    assert replay["created"] is False
+    assert first["payload_sha256"] == replay["payload_sha256"]
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "queued", "in_progress", "revenue_generator", db_path
+    )
+    stored = revenue_db.get_work_order_action(first["idempotency_key"], db_path)
+    assert stored["consumed_at"] is not None
+    assert revenue_db.get_work_order(work_order_id, db_path)["version"] == 1
+    with pytest.raises(ValueError, match="current work-order status"):
+        revenue_db.verify_and_record_work_order_action(
+            work_order_id,
+            "claim_confirmed",
+            "https://github.com/owner/repo-22/issues/23",
+            db_path,
+        )
+
+
+def test_review_from_unprivileged_external_account_is_rejected(
+    tmp_path, monkeypatch
+):
+    db_path = tmp_path / "revenue.db"
+    verify_seeded(db_path, "candidate-25")
+    for alias in ("revenue_generator", "reviewer", "integrator", "contador"):
+        assert revenue_db.upsert_identity(alias, "ghostcli", db_path)
+    work_order_id = revenue_db.create_work_order(
+        "candidate-25", "revenue_generator", db_path
+    )
+    _, base_get = fake_github_api("owner/repo-25", 26, 27)
+
+    def api_get(path: str):
+        response = base_get(path)
+        if path.endswith("/pulls/27/reviews/77"):
+            response = dict(response)
+            response["author_association"] = "CONTRIBUTOR"
+        return response
+
+    monkeypatch.setattr(revenue_evidence, "_github_get", api_get)
+    for action, url, expected, new, actor in (
+        (
+            "claim_confirmed",
+            "https://github.com/owner/repo-25/issues/26",
+            "queued",
+            "in_progress",
+            "revenue_generator",
+        ),
+        (
+            "tests_passed",
+            "https://github.com/owner/repo-25/actions/runs/1",
+            "in_progress",
+            "under_review",
+            "revenue_generator",
+        ),
+        (
+            "pr_published",
+            "https://github.com/owner/repo-25/pull/27",
+            "under_review",
+            "integration_ready",
+            "integrator",
+        ),
+    ):
+        revenue_db.verify_and_record_work_order_action(
+            work_order_id, action, url, db_path
+        )
+        assert revenue_db.cas_transition_work_order(
+            work_order_id, expected, new, actor, db_path
+        )
+    with pytest.raises(ValueError, match="authorized maintainer"):
+        revenue_db.verify_and_record_work_order_action(
+            work_order_id,
+            "review_approved",
+            "https://github.com/owner/repo-25/pull/27#pullrequestreview-77",
+            db_path,
+        )
+
+
+def test_official_action_rejects_wrong_repo_and_raw_receipt_api_is_absent(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    verify_seeded(db_path, "candidate-23")
+    assert revenue_db.upsert_identity("revenue_generator", "ghostcli", db_path)
+    work_order_id = revenue_db.create_work_order(
+        "candidate-23", "revenue_generator", db_path
+    )
+
+    assert not hasattr(revenue_db, "record_work_order_action")
+    with pytest.raises(ValueError, match="different repository"):
+        revenue_db.verify_and_record_work_order_action(
+            work_order_id,
+            "claim_confirmed",
+            "https://github.com/attacker/other/issues/1",
+            db_path,
+        )
+
+
+def test_typed_evidence_rejects_generic_url_and_stale_receipt(
+    tmp_path, monkeypatch
+):
+    db_path = tmp_path / "revenue.db"
+    verify_seeded(db_path, "candidate-24")
+    assert revenue_db.upsert_identity("revenue_generator", "ghostcli", db_path)
+    work_order_id = revenue_db.create_work_order(
+        "candidate-24", "revenue_generator", db_path
+    )
+
+    _, api_get = fake_github_api("owner/repo-24", 25, 26)
+    monkeypatch.setattr(revenue_evidence, "_github_get", api_get)
+    claim = revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "claim_confirmed",
+        "https://github.com/owner/repo-24/issues/25",
+        db_path,
+    )
+    with revenue_db.connect(db_path) as conn:
+        conn.execute(
+            "UPDATE work_order_actions SET observed_at=? WHERE idempotency_key=?",
+            (
+                (datetime.now(timezone.utc) - timedelta(hours=1)).isoformat(),
+                claim["idempotency_key"],
+            ),
+        )
+    assert not revenue_db.cas_transition_work_order(
+        work_order_id, "queued", "in_progress", "revenue_generator", db_path
+    )
+
+    revenue_db.verify_and_record_work_order_action(
+        work_order_id,
+        "claim_confirmed",
+        "https://github.com/owner/repo-24/issues/25",
+        db_path,
+    )
+    assert revenue_db.cas_transition_work_order(
+        work_order_id, "queued", "in_progress", "revenue_generator", db_path
+    )
+    with pytest.raises(ValueError, match="Actions run URL"):
+        revenue_db.verify_and_record_work_order_action(
+            work_order_id,
+            "tests_passed",
+            "https://github.com/owner/repo-24",
+            db_path,
+        )
+
+
+def test_partial_action_schema_aborts_instead_of_silent_if_not_exists(tmp_path):
+    db_path = tmp_path / "partial.db"
+    with sqlite3.connect(db_path) as conn:
+        conn.execute(
+            "CREATE TABLE work_order_actions (idempotency_key TEXT PRIMARY KEY)"
+        )
+    with pytest.raises(RuntimeError, match="explicit migration required"):
+        revenue_db.init_db(db_path)
 
 
 def seed_receivable_work_order(db_path: Path, opportunity_id: str = "candidate-21") -> str:
@@ -394,56 +721,97 @@ def seed_receivable_work_order(db_path: Path, opportunity_id: str = "candidate-2
     return work_order_id
 
 
-def settlement_evidence(transaction_id: str = "po_verified_1"):
-    return {
-        "collector_alias": "contador",
-        "provider_verification_url": (
-            f"https://dashboard.stripe.com/payouts/{transaction_id}"
-        ),
-        "provider_verification_id": transaction_id,
-        "provider_verified_at": timestamp(),
+def install_verified_stripe_response(
+    work_order_id: str,
+    transaction_id: str = "tr_verified_1",
+    *,
+    destination: str = "acct_test",
+    destination_status: str = "available",
+    reversed_transfer: bool = False,
+) -> None:
+    revenue_settlement_evidence._stripe_get = lambda transfer_id: {
+        "id": transfer_id,
+        "object": "transfer",
+        "livemode": True,
+        "amount": 10000,
+        "currency": "usd",
+        "created": int(datetime.now(timezone.utc).timestamp()) - 60,
+        "destination": destination,
+        "destination_payment": "py_test",
+        "balance_transaction": "txn_platform",
+        "reversed": reversed_transfer,
+        "amount_reversed": 10000 if reversed_transfer else 0,
+        "metadata": {
+            "agentic_work_order_id": work_order_id,
+            "official_reward_id": "opire-21",
+            "payer_identity": "verified-maintainer",
+        },
     }
+    revenue_settlement_evidence._stripe_get_platform_balance_transaction = (
+        lambda balance_id: {
+            "id": balance_id,
+            "object": "balance_transaction",
+            "status": "available",
+            "amount": -10000,
+            "currency": "usd",
+            "source": transaction_id,
+        }
+    )
+    revenue_settlement_evidence._stripe_get_destination_payment = (
+        lambda payment_id, destination: {
+            "id": payment_id,
+            "object": "charge",
+            "paid": True,
+            "refunded": False,
+            "amount_refunded": 0,
+            "amount": 10000,
+            "currency": "usd",
+            "balance_transaction": "txn_destination",
+        }
+    )
+    revenue_settlement_evidence._stripe_get_destination_balance_transaction = (
+        lambda balance_id, destination: {
+            "id": balance_id,
+            "object": "balance_transaction",
+            "status": destination_status,
+            "amount": 10000,
+            "net": 9700,
+            "fee": 300,
+            "currency": "usd",
+            "available_on": int(datetime.now(timezone.utc).timestamp())
+            + (3600 if destination_status != "available" else -30),
+            "source": "py_test",
+        }
+    )
 
 
 def create_verified_settlement(
     db_path: Path,
     work_order_id: str,
     settlement_id: str = "settlement-1",
-    transaction_id: str = "po_verified_1",
+    transaction_id: str = "tr_verified_1",
 ) -> bool:
-    return revenue_db.create_settlement(
-        settlement_id,
+    install_verified_stripe_response(work_order_id, transaction_id)
+    result = revenue_db.verify_and_record_settlement(
         work_order_id,
         "stripe",
         transaction_id,
-        "USD",
-        100,
-        3,
-        97,
         db_path,
-        **settlement_evidence(transaction_id),
     )
+    return bool(result.get("created"))
 
 
 def test_fake_settlement_provider_is_rejected(tmp_path):
     db_path = tmp_path / "revenue.db"
     work_order_id = seed_receivable_work_order(db_path)
 
-    assert not revenue_db.create_settlement(
-        "settlement-fake",
+    with pytest.raises(ValueError, match="eligible collection lane"):
+        revenue_db.verify_and_record_settlement(
         work_order_id,
         "fake-provider",
         "fake-1",
-        "USD",
-        100,
-        3,
-        97,
         db_path,
-        collector_alias="contador",
-        provider_verification_url="https://fake.invalid/transfers/fake-1",
-        provider_verification_id="fake-1",
-        provider_verified_at=timestamp(),
-    )
+        )
 
 
 def test_settlement_rejects_build_or_queued_work_order(tmp_path):
@@ -456,103 +824,170 @@ def test_settlement_rejects_build_or_queued_work_order(tmp_path):
     )
     assert build_order
 
-    assert not revenue_db.create_settlement(
-        "settlement-build",
+    with pytest.raises(ValueError, match="eligible collection lane"):
+        revenue_db.verify_and_record_settlement(
         build_order,
         "stripe",
         "po_build_1",
-        "USD",
-        100,
-        3,
-        97,
         db_path,
-        **settlement_evidence("po_build_1"),
-    )
+        )
 
 
-def test_settlement_requires_fresh_complete_provider_verification(tmp_path):
+def test_settlement_requires_official_live_paid_provider_response(
+    tmp_path, monkeypatch
+):
     db_path = tmp_path / "revenue.db"
     work_order_id = seed_receivable_work_order(db_path)
 
-    assert not revenue_db.create_settlement(
-        "settlement-missing",
-        work_order_id,
-        "stripe",
-        "po_missing_1",
-        "USD",
-        100,
-        3,
-        97,
-        db_path,
-        collector_alias="contador",
+    monkeypatch.setattr(
+        revenue_settlement_evidence,
+        "_stripe_get",
+        lambda transfer_id: {
+            "id": transfer_id,
+            "object": "transfer",
+            "livemode": False,
+            "amount": 10000,
+            "currency": "usd",
+            "created": int(datetime.now(timezone.utc).timestamp()) - 60,
+        },
     )
-    stale = settlement_evidence("po_stale_1")
-    stale["provider_verified_at"] = "2020-01-01T00:00:00+00:00"
-    assert not revenue_db.create_settlement(
-        "settlement-stale",
-        work_order_id,
-        "stripe",
-        "po_stale_1",
-        "USD",
-        100,
-        3,
-        97,
-        db_path,
-        **stale,
-    )
+    with pytest.raises(ValueError, match="not live money"):
+        revenue_db.verify_and_record_settlement(
+            work_order_id, "stripe", "tr_test_1", db_path
+        )
+    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
 
 
-def test_settlement_rejects_wrong_collector_and_duplicate_transaction(tmp_path):
+def test_real_stripe_transfer_unrelated_to_reward_is_rejected(
+    tmp_path, monkeypatch
+):
+    db_path = tmp_path / "revenue.db"
+    work_order_id = seed_receivable_work_order(db_path)
+    monkeypatch.setattr(
+        revenue_settlement_evidence,
+        "_stripe_get",
+        lambda transfer_id: {
+            "id": transfer_id,
+            "object": "transfer",
+            "livemode": True,
+            "amount": 10000,
+            "currency": "usd",
+            "created": int(datetime.now(timezone.utc).timestamp()) - 60,
+            "destination": "acct_test",
+            "destination_payment": "py_test",
+            "balance_transaction": "txn_test",
+            "reversed": False,
+            "amount_reversed": 0,
+            "metadata": {
+                "agentic_work_order_id": "some-other-work-order",
+                "official_reward_id": "unrelated-reward",
+                "payer_identity": "someone-else",
+            },
+        },
+    )
+    with pytest.raises(ValueError, match="not attributed to this reward"):
+        revenue_db.verify_and_record_settlement(
+            work_order_id, "stripe", "tr_unrelated_1", db_path
+        )
+    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
+
+
+def test_settlement_derives_collector_and_replay_is_idempotent(tmp_path):
     db_path = tmp_path / "revenue.db"
     work_order_id = seed_receivable_work_order(db_path)
     assert revenue_db.upsert_identity("collector", "ghostcli", db_path)
 
-    wrong_actor = settlement_evidence("po_wrong_1")
-    wrong_actor["collector_alias"] = "collector"
-    assert not revenue_db.create_settlement(
-        "settlement-wrong",
-        work_order_id,
-        "stripe",
-        "po_wrong_1",
-        "USD",
-        100,
-        3,
-        97,
-        db_path,
-        **wrong_actor,
-    )
     assert create_verified_settlement(db_path, work_order_id)
     assert not create_verified_settlement(
         db_path,
         work_order_id,
         settlement_id="settlement-duplicate",
-        transaction_id="po_verified_1",
+        transaction_id="tr_verified_1",
     )
     assert not revenue_db.confirm_settlement("settlement-1", "collector", db_path)
 
 
-def test_premature_confirmation_fails_and_pending_is_not_revenue(tmp_path):
+def test_reversed_provider_transfer_never_becomes_revenue(tmp_path, monkeypatch):
     db_path = tmp_path / "revenue.db"
     work_order_id = seed_receivable_work_order(db_path)
-    assert create_verified_settlement(db_path, work_order_id)
-    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
-    with sqlite3.connect(db_path) as conn:
-        conn.execute(
-            "UPDATE work_orders SET status='published' WHERE id=?", (work_order_id,)
+    monkeypatch.setattr(
+        revenue_settlement_evidence,
+        "_stripe_get",
+        lambda transfer_id: {
+            "id": transfer_id,
+            "object": "transfer",
+            "livemode": True,
+            "amount": 10000,
+            "currency": "usd",
+            "created": int(datetime.now(timezone.utc).timestamp()) - 60,
+            "reversed": True,
+            "amount_reversed": 10000,
+        },
+    )
+    with pytest.raises(ValueError, match="reversed"):
+        revenue_db.verify_and_record_settlement(
+            work_order_id, "stripe", "tr_reversed_1", db_path
         )
-        conn.commit()
-
-    assert not revenue_db.confirm_settlement("settlement-1", "contador", db_path)
     assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
+    assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "collection"
 
 
 def test_confirmed_settlement_completes_collection_atomically_and_is_idempotent(tmp_path):
     db_path = tmp_path / "revenue.db"
     work_order_id = seed_receivable_work_order(db_path)
     assert create_verified_settlement(db_path, work_order_id)
-
-    assert revenue_db.confirm_settlement("settlement-1", "contador", db_path)
-    assert revenue_db.confirm_settlement("settlement-1", "contador", db_path)
     assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "completed"
     assert revenue_db.get_opportunity("candidate-21", db_path)["status"] == "settled"
     assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {"USD": 97.0}
+
+
+def test_settlement_rejects_transfer_to_unconfigured_destination(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    work_order_id = seed_receivable_work_order(db_path)
+    install_verified_stripe_response(
+        work_order_id,
+        "tr_wrong_destination",
+        destination="acct_other",
+    )
+    with pytest.raises(ValueError, match="destination mismatch"):
+        revenue_db.verify_and_record_settlement(
+            work_order_id, "stripe", "tr_wrong_destination", db_path
+        )
+    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
+
+
+def test_settlement_rejects_unavailable_destination_balance(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    work_order_id = seed_receivable_work_order(db_path)
+    install_verified_stripe_response(
+        work_order_id,
+        "tr_unavailable",
+        destination_status="pending",
+    )
+    with pytest.raises(ValueError, match="not available or linked"):
+        revenue_db.verify_and_record_settlement(
+            work_order_id, "stripe", "tr_unavailable", db_path
+        )
+    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
+
+
+def test_later_transfer_reversal_removes_revenue_once(tmp_path):
+    db_path = tmp_path / "revenue.db"
+    work_order_id = seed_receivable_work_order(db_path)
+    assert create_verified_settlement(db_path, work_order_id)
+    install_verified_stripe_response(
+        work_order_id,
+        "tr_verified_1",
+        reversed_transfer=True,
+    )
+
+    result = revenue_db.revalidate_confirmed_settlements(db_path)
+    assert result == [{"work_order_id": work_order_id, "status": "reversed"}]
+    assert revenue_db.status_snapshot(db_path)["realized_revenue"] == {}
+    assert revenue_db.get_work_order(work_order_id, db_path)["status"] == "collection"
+    assert revenue_db.get_opportunity("candidate-21", db_path)["status"] == "payment_pending"
+    assert revenue_db.revalidate_confirmed_settlements(db_path) == []
+    with revenue_db.connect(db_path) as conn:
+        assert conn.execute(
+            "SELECT COUNT(*) FROM events WHERE event_type='settlement_reversal_adjustment'"
+        ).fetchone()[0] == 1

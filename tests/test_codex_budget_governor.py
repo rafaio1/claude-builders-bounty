@@ -5,9 +5,11 @@ import json
 import sqlite3
 import subprocess
 import sys
+from datetime import UTC, datetime
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parents[1] / "tools"
+sys.path.insert(0, str(TOOLS))
 
 
 def load_module(name: str, path: Path):
@@ -56,18 +58,96 @@ def write_config(path: Path):
 
 def create_db(path: Path, rows=()):
     connection = sqlite3.connect(path)
+    connection.execute("CREATE TABLE opportunities (id TEXT, status TEXT)")
+    connection.execute(
+        """CREATE TABLE work_orders (
+               id TEXT, opportunity_id TEXT, lane TEXT, status TEXT,
+               collector_alias TEXT
+           )"""
+    )
     connection.execute(
         """
         CREATE TABLE settlements (
+            work_order_id TEXT,
             provider TEXT,
             transaction_id TEXT,
             currency TEXT,
+            gross_amount REAL,
+            fee_amount REAL,
             net_amount REAL,
-            status TEXT
+            status TEXT,
+            provider_verification_url TEXT,
+            provider_verification_id TEXT,
+            provider_verified_at TEXT,
+            verification_source TEXT,
+            provider_payload_sha256 TEXT,
+            provider_status TEXT,
+            collector_alias TEXT,
+            received_at TEXT
         )
         """
     )
-    connection.executemany("INSERT INTO settlements VALUES (?, ?, ?, ?, ?)", rows)
+    for index, overrides in enumerate(rows, 1):
+        now = datetime.now(UTC).isoformat()
+        values = {
+            "provider": "stripe",
+            "transaction_id": f"tr_{index}",
+            "currency": "USD",
+            "gross_amount": 10.0,
+            "fee_amount": 0.0,
+            "net_amount": 10.0,
+            "status": "confirmed",
+            "provider_verification_url": f"https://dashboard.stripe.com/connect/transfers/tr_{index}",
+            "provider_verification_id": f"tr_{index}",
+            "provider_verified_at": now,
+            "verification_source": "stripe_transfer_api_v1",
+            "provider_payload_sha256": "a" * 64,
+            "provider_status": "succeeded",
+            "collector_alias": "contador",
+            "received_at": now,
+            "lane": "receivable",
+            "work_order_status": "completed",
+            "work_order_collector": "contador",
+            "opportunity_status": "settled",
+        }
+        values.update(overrides)
+        opportunity_id = f"opp-{index}"
+        work_order_id = f"wo-{index}"
+        connection.execute(
+            "INSERT INTO opportunities VALUES (?, ?)",
+            (opportunity_id, values["opportunity_status"]),
+        )
+        connection.execute(
+            "INSERT INTO work_orders VALUES (?, ?, ?, ?, ?)",
+            (
+                work_order_id,
+                opportunity_id,
+                values["lane"],
+                values["work_order_status"],
+                values["work_order_collector"],
+            ),
+        )
+        connection.execute(
+            "INSERT INTO settlements VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)",
+            (
+                work_order_id,
+                values["provider"],
+                values["transaction_id"],
+                values["currency"],
+                values["gross_amount"],
+                values["fee_amount"],
+                values["net_amount"],
+                values["status"],
+                values["provider_verification_url"],
+                values["provider_verification_id"],
+                values["provider_verified_at"],
+                values["verification_source"],
+                values["provider_payload_sha256"],
+                values["provider_status"],
+                values["collector_alias"],
+                values["received_at"],
+            ),
+        )
     connection.commit()
     connection.close()
 
@@ -146,23 +226,63 @@ def test_empty_settlements_are_verified_zero_revenue(tmp_path):
     assert snapshot.realized_revenue_usd == 0
 
 
-def test_unmatched_confirmed_settlement_fails_closed(tmp_path):
-    rows = [("wise", "tx-1", "USD", 10.0, "confirmed")]
+def test_legacy_ledger_cannot_enable_funded_mode(tmp_path):
+    ledger = [{"provider": "wise", "transaction_id": "tx-1", "status": "confirmed"}]
+    governor, _rollouts, _state = make_governor(tmp_path, ledger_lines=ledger)
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+    assert snapshot.revenue_mode == "zero_revenue"
+    assert snapshot.revenue_verified is True
+    assert snapshot.revenue_reason == "no_confirmed_settlements"
+
+
+def test_unverified_confirmed_settlement_fails_closed(tmp_path):
+    rows = [{"provider": "wise", "transaction_id": "tx-1"}]
     governor, _rollouts, _state = make_governor(tmp_path, rows=rows)
     snapshot = governor.evaluate(1_787_850_000.0, MODELS)
     assert snapshot.revenue_mode == "zero_revenue"
     assert snapshot.revenue_verified is False
-    assert snapshot.revenue_reason == "settlement_ledger_mismatch"
+    assert snapshot.revenue_reason == "unverified_confirmed_settlement"
 
 
-def test_matched_confirmed_settlement_enables_funded_mode(tmp_path):
-    rows = [("wise", "tx-1", "USD", 10.0, "confirmed")]
-    ledger = [{"provider": "wise", "transaction_id": "tx-1", "status": "confirmed"}]
-    governor, _rollouts, _state = make_governor(tmp_path, rows=rows, ledger_lines=ledger)
+def test_canonical_confirmed_settlement_enables_funded_mode_without_ledger(tmp_path):
+    rows = [{"transaction_id": "tr_1"}]
+    governor, _rollouts, _state = make_governor(tmp_path, rows=rows)
     snapshot = governor.evaluate(1_787_850_000.0, MODELS)
     assert snapshot.revenue_mode == "funded"
     assert snapshot.revenue_verified is True
     assert snapshot.realized_revenue_usd == 10.0
+
+
+def test_non_stripe_verification_url_never_enables_funded_mode(tmp_path):
+    rows = [
+        {
+            "transaction_id": "tr_1",
+            "provider_verification_url": "https://evil.example/tr_1",
+        }
+    ]
+    governor, _rollouts, _state = make_governor(tmp_path, rows=rows)
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+    assert snapshot.revenue_mode == "zero_revenue"
+    assert snapshot.revenue_verified is False
+    assert snapshot.revenue_reason == "unverified_confirmed_settlement"
+
+
+def test_coherent_wise_row_cannot_claim_stripe_verification(tmp_path):
+    rows = [
+        {
+            "provider": "wise",
+            "transaction_id": "tx-wise-1",
+            "provider_verification_id": "tx-wise-1",
+            "provider_verification_url": "https://wise.com/transfers/tx-wise-1",
+            "verification_source": "stripe_transfer_api_v1",
+            "provider_status": "succeeded",
+        }
+    ]
+    governor, _rollouts, _state = make_governor(tmp_path, rows=rows)
+    snapshot = governor.evaluate(1_787_850_000.0, MODELS)
+    assert snapshot.revenue_mode == "zero_revenue"
+    assert snapshot.revenue_verified is False
+    assert snapshot.revenue_reason == "unverified_confirmed_settlement"
 
 
 def test_rollout_meter_is_incremental_and_does_not_double_count(tmp_path):

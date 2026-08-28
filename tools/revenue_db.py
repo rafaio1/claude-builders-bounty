@@ -18,6 +18,9 @@ from pathlib import Path
 from typing import Any, Iterable, Iterator, Mapping
 from urllib.parse import urlparse
 
+import revenue_evidence
+import revenue_settlement_evidence
+
 
 DEFAULT_DB_PATH = Path("/Agentic/data/aro/revenue_control_plane_v2.db")
 MAX_ACTIVE_WORK_ORDERS = 3
@@ -32,6 +35,7 @@ DEFAULT_MIN_EV_PER_HOUR_USD = 5.0
 DEFAULT_EFFORT_OVERHEAD_MULTIPLIER = 1.5
 DEFAULT_FIXED_OVERHEAD_HOURS = 1.0
 MAX_SETTLEMENT_VERIFICATION_AGE = timedelta(hours=24)
+MAX_ACTION_RECEIPT_AGE = timedelta(minutes=10)
 MONETIZABLE_GITHUB_LOGIN = "rafaio1"
 OWNERSHIP_EVIDENCE_KINDS = frozenset(
     {"github_assignment", "maintainer_assignment", "official_transfer"}
@@ -190,6 +194,7 @@ def init_db(db_path: str | os.PathLike[str] | None = None) -> Path:
                     'queued', 'in_progress', 'under_review', 'integration_ready',
                     'published', 'collection', 'completed', 'failed', 'cancelled'
                 )),
+                version INTEGER NOT NULL DEFAULT 0,
                 ev_net_per_hour REAL NOT NULL,
                 created_at TEXT NOT NULL,
                 updated_at TEXT NOT NULL,
@@ -220,6 +225,9 @@ def init_db(db_path: str | os.PathLike[str] | None = None) -> Path:
                 provider_verification_url TEXT NOT NULL,
                 provider_verification_id TEXT NOT NULL,
                 provider_verified_at TEXT NOT NULL,
+                verification_source TEXT,
+                provider_payload_sha256 TEXT,
+                provider_status TEXT,
                 collector_alias TEXT NOT NULL REFERENCES identities(alias),
                 currency TEXT NOT NULL,
                 gross_amount REAL NOT NULL,
@@ -271,7 +279,319 @@ def init_db(db_path: str | os.PathLike[str] | None = None) -> Path:
         for column, declaration in ownership_columns.items():
             if column not in existing_columns:
                 conn.execute(f"ALTER TABLE opportunities ADD COLUMN {column} {declaration}")
+        work_order_columns = {
+            row["name"] for row in conn.execute("PRAGMA table_info(work_orders)").fetchall()
+        }
+        if "version" not in work_order_columns:
+            conn.execute(
+                "ALTER TABLE work_orders ADD COLUMN version INTEGER NOT NULL DEFAULT 0"
+            )
+        settlement_columns = {
+            row["name"] for row in conn.execute("PRAGMA table_info(settlements)").fetchall()
+        }
+        for column in (
+            "verification_source",
+            "provider_payload_sha256",
+            "provider_status",
+        ):
+            if column not in settlement_columns:
+                conn.execute(f"ALTER TABLE settlements ADD COLUMN {column} TEXT")
+
+        action_columns = {
+            "idempotency_key",
+            "work_order_id",
+            "action_type",
+            "evidence_url",
+            "receipt_id",
+            "payload_sha256",
+            "observed_at",
+            "actor_alias",
+            "expected_from_status",
+            "work_order_version",
+            "repo_key",
+            "issue_number",
+            "pr_number",
+            "head_sha",
+            "metadata_json",
+            "consumed_at",
+            "created_at",
+        }
+        action_table_exists = conn.execute(
+            "SELECT 1 FROM sqlite_master WHERE type='table' AND name='work_order_actions'"
+        ).fetchone()
+        if action_table_exists:
+            actual_columns = {
+                row["name"]
+                for row in conn.execute("PRAGMA table_info(work_order_actions)").fetchall()
+            }
+            if actual_columns != action_columns:
+                raise RuntimeError(
+                    "work_order_actions schema mismatch; explicit migration required"
+                )
+        else:
+            conn.execute(
+                """CREATE TABLE work_order_actions (
+                    idempotency_key TEXT PRIMARY KEY,
+                    work_order_id TEXT NOT NULL REFERENCES work_orders(id),
+                    action_type TEXT NOT NULL CHECK(action_type IN (
+                        'claim_confirmed', 'tests_passed', 'review_approved',
+                        'pr_published', 'delivery_accepted'
+                    )),
+                    evidence_url TEXT NOT NULL,
+                    receipt_id TEXT NOT NULL,
+                    payload_sha256 TEXT NOT NULL,
+                    observed_at TEXT NOT NULL,
+                    actor_alias TEXT NOT NULL REFERENCES identities(alias),
+                    expected_from_status TEXT NOT NULL,
+                    work_order_version INTEGER NOT NULL,
+                    repo_key TEXT NOT NULL,
+                    issue_number INTEGER,
+                    pr_number INTEGER,
+                    head_sha TEXT,
+                    metadata_json TEXT NOT NULL,
+                    consumed_at TEXT,
+                    created_at TEXT NOT NULL,
+                    UNIQUE(action_type, receipt_id, work_order_id),
+                    UNIQUE(work_order_id, action_type, work_order_version)
+                )"""
+            )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_woa_wo_id ON work_order_actions(work_order_id)"
+        )
+        conn.execute(
+            "CREATE INDEX IF NOT EXISTS idx_woa_receipt ON work_order_actions(receipt_id)"
+        )
+        conn.execute(
+            """CREATE UNIQUE INDEX IF NOT EXISTS idx_woa_action_receipt
+               ON work_order_actions(action_type, receipt_id, work_order_id)"""
+        )
     return path
+
+
+_WORK_ORDER_ACTION_ALLOWLIST = frozenset({
+    "claim_confirmed",
+    "tests_passed",
+    "review_approved",
+    "pr_published",
+    "delivery_accepted",
+})
+
+def _action_row(row: sqlite3.Row | None) -> dict[str, Any] | None:
+    if row is None:
+        return None
+    result = dict(row)
+    try:
+        result["metadata"] = json.loads(result.get("metadata_json") or "{}")
+    except json.JSONDecodeError:
+        result["metadata"] = {}
+    return result
+
+
+def _prior_action_rows(
+    conn: sqlite3.Connection,
+    work_order_id: str,
+ ) -> dict[str, dict[str, Any]]:
+    rows = conn.execute(
+        """SELECT * FROM work_order_actions
+           WHERE work_order_id=? AND consumed_at IS NOT NULL
+           ORDER BY work_order_version ASC""",
+        (work_order_id,),
+    ).fetchall()
+    result: dict[str, dict[str, Any]] = {}
+    for row in rows:
+        action = _action_row(row)
+        if action:
+            result[str(action["action_type"])] = action
+    return result
+
+
+def verify_and_record_work_order_action(
+    work_order_id: str,
+    action_type: str,
+    evidence_url: str,
+    db_path: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Fetch official evidence and persist only the canonical verified facts."""
+    if action_type not in _WORK_ORDER_ACTION_ALLOWLIST:
+        raise ValueError("unsupported work-order action")
+    if not isinstance(evidence_url, str) or not evidence_url.startswith("https://"):
+        raise ValueError("evidence_url must use https")
+    init_db(db_path)
+    path = resolve_db_path(db_path)
+    with connect(path) as conn:
+        row = conn.execute(
+            """SELECT w.id, w.status AS work_order_status,
+                      w.version AS work_order_version, w.lane,
+                      o.repo_key, o.source_url
+               FROM work_orders AS w
+               JOIN opportunities AS o ON o.id=w.opportunity_id
+               WHERE w.id=?""",
+            (work_order_id,),
+        ).fetchone()
+        if row is None:
+            raise ValueError("work_order not found")
+        context = dict(row)
+        if context["lane"] != "build":
+            raise ValueError("official action receipts apply only to build work orders")
+        context["monetizable_login"] = MONETIZABLE_GITHUB_LOGIN
+        prior_actions = _prior_action_rows(conn, work_order_id)
+
+    verified = revenue_evidence.verify_github_evidence(
+        action_type,
+        evidence_url,
+        context,
+        prior_actions,
+    )
+    record = verified.record()
+    expected_actor = revenue_evidence.ACTION_ACTORS[action_type]
+    if record["actor_alias"] != expected_actor:
+        raise ValueError("verified evidence actor mismatch")
+    metadata_json = json.dumps(record["metadata"], sort_keys=True, separators=(",", ":"))
+    idempotency_key = hashlib.sha256(
+        (
+            f"{work_order_id}:{action_type}:{record['work_order_version']}:"
+            f"{record['payload_sha256']}"
+        ).encode("utf-8")
+    ).hexdigest()
+    now = iso_now()
+
+    with connect(path, immediate=True) as conn:
+        current = conn.execute(
+            """SELECT w.status, w.version, o.repo_key
+               FROM work_orders AS w
+               JOIN opportunities AS o ON o.id=w.opportunity_id
+               WHERE w.id=?""",
+            (work_order_id,),
+        ).fetchone()
+        if current is None:
+            raise ValueError("work_order not found")
+        if (
+            current["status"] != record["expected_from_status"]
+            or int(current["version"]) != int(record["work_order_version"])
+            or str(current["repo_key"]).casefold() != str(record["repo_key"]).casefold()
+        ):
+            raise ValueError("work order changed while evidence was verified")
+        if not conn.execute(
+            "SELECT 1 FROM identities WHERE alias=?", (expected_actor,)
+        ).fetchone():
+            raise ValueError("derived actor identity is not bootstrapped")
+
+        existing = conn.execute(
+            """SELECT * FROM work_order_actions
+               WHERE work_order_id=? AND action_type=? AND work_order_version=?""",
+            (work_order_id, action_type, record["work_order_version"]),
+        ).fetchone()
+        if existing is not None:
+            existing_action = _action_row(existing)
+            if existing_action is None or existing_action["consumed_at"] is not None:
+                raise ValueError("work-order action version already consumed")
+            observed = _parse_timestamp(existing_action["observed_at"])
+            if existing_action["payload_sha256"] != record["payload_sha256"]:
+                if observed and utc_now() - observed <= MAX_ACTION_RECEIPT_AGE:
+                    raise ValueError("conflicting official evidence for work-order version")
+                conn.execute(
+                    "DELETE FROM work_order_actions WHERE idempotency_key=?",
+                    (existing_action["idempotency_key"],),
+                )
+            else:
+                conn.execute(
+                    """UPDATE work_order_actions
+                       SET observed_at=?, created_at=?
+                       WHERE idempotency_key=? AND consumed_at IS NULL""",
+                    (record["observed_at"], now, existing_action["idempotency_key"]),
+                )
+                refreshed = conn.execute(
+                    "SELECT * FROM work_order_actions WHERE idempotency_key=?",
+                    (existing_action["idempotency_key"],),
+                ).fetchone()
+                result = _action_row(refreshed) or {}
+                result["created"] = False
+                return result
+
+        conn.execute(
+            """INSERT INTO work_order_actions
+               (idempotency_key, work_order_id, action_type, evidence_url,
+                receipt_id, payload_sha256, observed_at, actor_alias,
+                expected_from_status, work_order_version, repo_key,
+                issue_number, pr_number, head_sha, metadata_json,
+                consumed_at, created_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NULL, ?)""",
+            (
+                idempotency_key,
+                work_order_id,
+                action_type,
+                record["evidence_url"],
+                record["receipt_id"],
+                record["payload_sha256"],
+                record["observed_at"],
+                record["actor_alias"],
+                record["expected_from_status"],
+                record["work_order_version"],
+                record["repo_key"],
+                record["issue_number"],
+                record["pr_number"],
+                record["head_sha"],
+                metadata_json,
+                now,
+            ),
+        )
+        result = _action_row(
+            conn.execute(
+                "SELECT * FROM work_order_actions WHERE idempotency_key=?",
+                (idempotency_key,),
+            ).fetchone()
+        ) or {}
+        result["created"] = True
+        return result
+
+
+def get_work_order_action(
+    idempotency_key: str,
+    db_path: str | os.PathLike[str] | None = None,
+) -> dict[str, Any] | None:
+    with connect(resolve_db_path(db_path)) as conn:
+        row = conn.execute(
+            "SELECT * FROM work_order_actions WHERE idempotency_key=?",
+            (idempotency_key,),
+        ).fetchone()
+        return _action_row(row)
+
+
+def find_work_order_action(
+    work_order_id: str,
+    action_type: str,
+    actor_alias: str,
+    db_path: str | os.PathLike[str] | None = None,
+) -> dict[str, Any] | None:
+    """Return a fresh, unconsumed receipt bound to the current state/version."""
+    if action_type not in _WORK_ORDER_ACTION_ALLOWLIST:
+        return None
+    if actor_alias not in ALLOWED_IDENTITIES:
+        return None
+    init_db(db_path)
+    with connect(db_path) as conn:
+        row = conn.execute(
+            """SELECT a.* FROM work_order_actions AS a
+               JOIN work_orders AS w ON w.id=a.work_order_id
+               WHERE a.work_order_id=? AND a.action_type=? AND a.actor_alias=?
+                 AND a.expected_from_status=w.status
+                 AND a.work_order_version=w.version
+                 AND a.consumed_at IS NULL
+               ORDER BY a.created_at DESC
+               LIMIT 1""",
+            (work_order_id, action_type, actor_alias),
+        ).fetchone()
+        action = _action_row(row)
+        if action is None:
+            return None
+        observed = _parse_timestamp(action["observed_at"])
+        if observed is None or not (
+            timedelta(minutes=-5)
+            <= utc_now() - observed
+            <= MAX_ACTION_RECEIPT_AGE
+        ):
+            return None
+        return action
 
 
 def _event(
@@ -989,6 +1309,36 @@ WORK_ORDER_TRANSITIONS = {
     "collection": frozenset({"completed", "failed"}),
 }
 
+WORK_ORDER_RECEIPT_GATES = {
+    ("queued", "in_progress"): (
+        "claim_confirmed",
+        frozenset({"revenue_generator"}),
+    ),
+    ("in_progress", "under_review"): (
+        "tests_passed",
+        frozenset({"revenue_generator"}),
+    ),
+    ("under_review", "integration_ready"): (
+        "pr_published",
+        frozenset({"integrator"}),
+    ),
+    ("integration_ready", "published"): (
+        "review_approved",
+        frozenset({"reviewer"}),
+    ),
+    ("published", "completed"): (
+        "delivery_accepted",
+        frozenset({"contador"}),
+    ),
+}
+
+WORK_ORDER_OPPORTUNITY_TRANSITIONS = {
+    ("queued", "in_progress"): ("claimed", "implementing"),
+    ("under_review", "integration_ready"): ("implementing", "submitted"),
+    ("integration_ready", "published"): ("submitted", "reviewed"),
+    ("published", "completed"): ("reviewed", "accepted"),
+}
+
 
 def cas_transition_work_order(
     work_order_id: str,
@@ -1001,15 +1351,112 @@ def cas_transition_work_order(
         return False
     if new_status not in WORK_ORDER_TRANSITIONS.get(expected_status, frozenset()):
         return False
+    init_db(db_path)
+    transition = (expected_status, new_status)
     with connect(db_path, immediate=True) as conn:
-        if not conn.execute("SELECT 1 FROM identities WHERE alias=?", (actor_alias,)).fetchone():
+        if not conn.execute(
+            "SELECT 1 FROM identities WHERE alias=?", (actor_alias,)
+        ).fetchone():
             return False
+        current = conn.execute(
+            """SELECT w.status AS work_order_status, w.version AS work_order_version,
+                      w.opportunity_id, w.lane,
+                      o.status AS opportunity_status
+               FROM work_orders AS w
+               JOIN opportunities AS o ON o.id=w.opportunity_id
+               WHERE w.id=?""",
+            (work_order_id,),
+        ).fetchone()
+        if not current or current["work_order_status"] != expected_status:
+            return False
+
+        receipt_gate = WORK_ORDER_RECEIPT_GATES.get(transition)
+        if receipt_gate:
+            action_type, allowed_actors = receipt_gate
+            if actor_alias not in allowed_actors:
+                return False
+            receipt = conn.execute(
+                """SELECT * FROM work_order_actions
+                   WHERE work_order_id=? AND action_type=? AND actor_alias=?
+                     AND expected_from_status=? AND work_order_version=?
+                     AND consumed_at IS NULL
+                   LIMIT 1""",
+                (
+                    work_order_id,
+                    action_type,
+                    actor_alias,
+                    expected_status,
+                    current["work_order_version"],
+                ),
+            ).fetchone()
+            if not receipt:
+                return False
+            observed = _parse_timestamp(receipt["observed_at"])
+            if observed is None or not (
+                timedelta(minutes=-5)
+                <= utc_now() - observed
+                <= MAX_ACTION_RECEIPT_AGE
+            ):
+                return False
+
+        opportunity_transition = WORK_ORDER_OPPORTUNITY_TRANSITIONS.get(transition)
+        if opportunity_transition:
+            expected_opportunity_status, new_opportunity_status = opportunity_transition
+            if current["opportunity_status"] != expected_opportunity_status:
+                return False
+
+        now = iso_now()
         cursor = conn.execute(
-            "UPDATE work_orders SET status=?, updated_at=? WHERE id=? AND status=?",
-            (new_status, iso_now(), work_order_id, expected_status),
+            """UPDATE work_orders
+               SET status=?, version=version+1, updated_at=?
+               WHERE id=? AND status=? AND version=?""",
+            (
+                new_status,
+                now,
+                work_order_id,
+                expected_status,
+                current["work_order_version"],
+            ),
         )
         if cursor.rowcount != 1:
             return False
+        if opportunity_transition:
+            expected_opportunity_status, new_opportunity_status = opportunity_transition
+            opportunity_cursor = conn.execute(
+                """UPDATE opportunities SET status=?, updated_at=?
+                   WHERE id=? AND status=?""",
+                (
+                    new_opportunity_status,
+                    now,
+                    current["opportunity_id"],
+                    expected_opportunity_status,
+                ),
+            )
+            if opportunity_cursor.rowcount != 1:
+                raise sqlite3.IntegrityError("opportunity CAS conflict")
+        if receipt_gate:
+            consumed = conn.execute(
+                """UPDATE work_order_actions SET consumed_at=?
+                   WHERE idempotency_key=? AND consumed_at IS NULL""",
+                (now, receipt["idempotency_key"]),
+            )
+            if consumed.rowcount != 1:
+                raise sqlite3.IntegrityError("receipt consumption CAS conflict")
+        if transition == ("published", "completed"):
+            _event(
+                conn,
+                "opportunity",
+                current["opportunity_id"],
+                "platform_revalidation_required",
+                "reviewed",
+                "accepted",
+                "contador",
+                {
+                    "acceptance_receipt_id": receipt["receipt_id"],
+                    "acceptance_evidence_url": receipt["evidence_url"],
+                    "reason": "merge_is_not_platform_payment_obligation",
+                },
+            )
         _event(
             conn,
             "work_order",
@@ -1070,6 +1517,313 @@ def _valid_provider_verification(
     return timedelta(minutes=-5) <= age <= MAX_SETTLEMENT_VERIFICATION_AGE
 
 
+def verify_and_record_settlement(
+    work_order_id: str,
+    provider: str,
+    transaction_id: str,
+    db_path: str | os.PathLike[str] | None = None,
+) -> dict[str, Any]:
+    """Confirm or revalidate live provider money against one collection lane."""
+    init_db(db_path)
+    path = resolve_db_path(db_path)
+    normalized_provider = str(provider or "").casefold()
+    normalized_transaction = str(transaction_id or "").strip()
+    with connect(path) as conn:
+        existing = conn.execute(
+            "SELECT * FROM settlements WHERE provider=? AND transaction_id=?",
+            (normalized_provider, normalized_transaction),
+        ).fetchone()
+        if existing is not None:
+            if existing["work_order_id"] != work_order_id or existing["status"] != "confirmed":
+                raise ValueError("provider transaction already bound elsewhere")
+        row = conn.execute(
+            """SELECT w.id, w.status AS work_order_status, w.lane,
+                      w.collector_alias, w.version AS work_order_version,
+                      o.id AS opportunity_id, o.status AS opportunity_status,
+                      o.payout_method, o.currency, o.bounty_amount_usd,
+                      o.official_reward_id, o.payer_identity
+               FROM work_orders AS w
+               JOIN opportunities AS o ON o.id=w.opportunity_id
+               WHERE w.id=?""",
+            (work_order_id,),
+        ).fetchone()
+        if row is None:
+            raise ValueError("collection work order not found")
+        context = dict(row)
+        is_new_collection = (
+            existing is None
+            and context["work_order_status"] == "collection"
+            and context["opportunity_status"] == "payment_pending"
+        )
+        is_confirmed_revalidation = (
+            existing is not None
+            and context["work_order_status"] == "completed"
+            and context["opportunity_status"] == "settled"
+        )
+        if (
+            context["lane"] != "receivable"
+            or context["collector_alias"] != "contador"
+            or str(context["payout_method"] or "").casefold() != normalized_provider
+            or not (is_new_collection or is_confirmed_revalidation)
+        ):
+            raise ValueError("work order is not an eligible collection lane")
+
+    destination_account = str(
+        os.environ.get("STRIPE_DESTINATION_ACCOUNT_ID") or ""
+    ).strip()
+    verification_context = {
+        "work_order_id": work_order_id,
+        "official_reward_id": context["official_reward_id"],
+        "payer_identity": context["payer_identity"],
+        "expected_amount": context["bounty_amount_usd"],
+        "expected_currency": context["currency"],
+        "expected_destination": destination_account,
+    }
+    try:
+        verified = revenue_settlement_evidence.verify_provider_settlement(
+            normalized_provider,
+            normalized_transaction,
+            verification_context,
+        ).record()
+    except revenue_settlement_evidence.SettlementReversedError:
+        if existing is None:
+            raise
+        now = iso_now()
+        with connect(path, immediate=True) as conn:
+            current = conn.execute(
+                "SELECT * FROM settlements WHERE id=?", (existing["id"],)
+            ).fetchone()
+            if current is None or current["status"] != "confirmed":
+                result = dict(current) if current is not None else {}
+                result.update({"created": False, "reversed": True})
+                return result
+            active_count = int(
+                conn.execute(
+                    f"SELECT COUNT(*) FROM work_orders WHERE status IN ({','.join('?' for _ in ACTIVE_WORK_ORDER_STATES)})",
+                    ACTIVE_WORK_ORDER_STATES,
+                ).fetchone()[0]
+            )
+            reopened_status = (
+                "collection" if active_count < MAX_ACTIVE_WORK_ORDERS else "failed"
+            )
+            conn.execute(
+                """UPDATE settlements
+                   SET status='failed', provider_status='reversed',
+                       provider_verified_at=?, updated_at=?
+                   WHERE id=? AND status='confirmed'""",
+                (now, now, current["id"]),
+            )
+            conn.execute(
+                """UPDATE work_orders
+                   SET status=?, version=version+1, updated_at=?
+                   WHERE id=? AND status='completed'""",
+                (reopened_status, now, work_order_id),
+            )
+            conn.execute(
+                """UPDATE opportunities SET status='payment_pending', updated_at=?
+                   WHERE id=? AND status='settled'""",
+                (now, context["opportunity_id"]),
+            )
+            _event(
+                conn,
+                "settlement",
+                current["id"],
+                "settlement_reversal_adjustment",
+                "confirmed",
+                "failed",
+                "contador",
+                {
+                    "currency": current["currency"],
+                    "net_adjustment": -float(current["net_amount"]),
+                    "work_order_status": reopened_status,
+                },
+            )
+            result = dict(
+                conn.execute(
+                    "SELECT * FROM settlements WHERE id=?", (current["id"],)
+                ).fetchone()
+            )
+            result.update({"created": False, "revalidated": True, "reversed": True})
+            return result
+    if verified["currency"] != str(context["currency"] or "").upper():
+        raise ValueError("provider payout currency does not match receivable")
+    if (
+        verified["gross_amount"] <= 0
+        or verified["fee_amount"] < 0
+        or verified["net_amount"] <= 0
+        or abs(
+            verified["gross_amount"]
+            - verified["fee_amount"]
+            - verified["net_amount"]
+        )
+        > 0.000001
+    ):
+        raise ValueError("provider payout amounts do not reconcile")
+    settlement_id = "settlement-" + hashlib.sha256(
+        f"{verified['provider']}:{verified['transaction_id']}".encode("utf-8")
+    ).hexdigest()[:24]
+    now = iso_now()
+    with connect(path, immediate=True) as conn:
+        existing = conn.execute(
+            "SELECT * FROM settlements WHERE provider=? AND transaction_id=?",
+            (verified["provider"], verified["transaction_id"]),
+        ).fetchone()
+        if existing is not None:
+            if existing["work_order_id"] != work_order_id or existing["status"] != "confirmed":
+                raise ValueError("provider transaction already bound elsewhere")
+            conn.execute(
+                """UPDATE settlements
+                   SET provider_verification_url=?, provider_verification_id=?,
+                       provider_verified_at=?, verification_source=?,
+                       provider_payload_sha256=?, provider_status=?, currency=?,
+                       gross_amount=?, fee_amount=?, net_amount=?, received_at=?,
+                       updated_at=?
+                   WHERE id=? AND status='confirmed'""",
+                (
+                    verified["verification_url"],
+                    verified["verification_id"],
+                    verified["verified_at"],
+                    verified["verification_source"],
+                    verified["provider_payload_sha256"],
+                    verified["provider_status"],
+                    verified["currency"],
+                    verified["gross_amount"],
+                    verified["fee_amount"],
+                    verified["net_amount"],
+                    verified["received_at"],
+                    now,
+                    existing["id"],
+                ),
+            )
+            result = dict(existing)
+            result = dict(
+                conn.execute(
+                    "SELECT * FROM settlements WHERE id=?", (existing["id"],)
+                ).fetchone()
+            )
+            result.update({"created": False, "revalidated": True, "reversed": False})
+            return result
+        current = conn.execute(
+            """SELECT w.status AS work_order_status, w.version AS work_order_version,
+                      w.collector_alias, o.status AS opportunity_status
+               FROM work_orders AS w
+               JOIN opportunities AS o ON o.id=w.opportunity_id
+               WHERE w.id=? AND w.opportunity_id=?""",
+            (work_order_id, context["opportunity_id"]),
+        ).fetchone()
+        if (
+            current is None
+            or current["work_order_status"] != "collection"
+            or int(current["work_order_version"])
+            != int(context["work_order_version"])
+            or current["opportunity_status"] != "payment_pending"
+            or current["collector_alias"] != "contador"
+        ):
+            raise ValueError("collection changed while payout was verified")
+        conn.execute(
+            """INSERT INTO settlements
+               (id, work_order_id, provider, transaction_id,
+                provider_verification_url, provider_verification_id,
+                provider_verified_at, verification_source,
+                provider_payload_sha256, provider_status, collector_alias,
+                currency, gross_amount, fee_amount, net_amount, status,
+                received_at, created_at, updated_at)
+               VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'contador', ?, ?, ?,
+                       ?, 'confirmed', ?, ?, ?)""",
+            (
+                settlement_id,
+                work_order_id,
+                verified["provider"],
+                verified["transaction_id"],
+                verified["verification_url"],
+                verified["verification_id"],
+                verified["verified_at"],
+                verified["verification_source"],
+                verified["provider_payload_sha256"],
+                verified["provider_status"],
+                verified["currency"],
+                verified["gross_amount"],
+                verified["fee_amount"],
+                verified["net_amount"],
+                verified["received_at"],
+                now,
+                now,
+            ),
+        )
+        work_cursor = conn.execute(
+            """UPDATE work_orders
+               SET status='completed', version=version+1, updated_at=?
+               WHERE id=? AND status='collection' AND version=?""",
+            (now, work_order_id, context["work_order_version"]),
+        )
+        opportunity_cursor = conn.execute(
+            """UPDATE opportunities SET status='settled', updated_at=?
+               WHERE id=? AND status='payment_pending'""",
+            (now, context["opportunity_id"]),
+        )
+        if work_cursor.rowcount != 1 or opportunity_cursor.rowcount != 1:
+            raise sqlite3.IntegrityError("official settlement CAS conflict")
+        _event(
+            conn,
+            "settlement",
+            settlement_id,
+            "official_provider_confirmed",
+            None,
+            "confirmed",
+            "contador",
+            {
+                "provider": verified["provider"],
+                "transaction_id": verified["transaction_id"],
+                "payload_sha256": verified["provider_payload_sha256"],
+            },
+        )
+        result = dict(
+            conn.execute("SELECT * FROM settlements WHERE id=?", (settlement_id,)).fetchone()
+        )
+        result["created"] = True
+        result["revalidated"] = False
+        result["reversed"] = False
+        return result
+
+
+def revalidate_confirmed_settlements(
+    db_path: str | os.PathLike[str] | None = None,
+    *,
+    max_items: int = 20,
+) -> list[dict[str, Any]]:
+    """Refresh official evidence and remove reversed money idempotently."""
+    init_db(db_path)
+    bounded = max(0, min(int(max_items), 100))
+    with connect(db_path) as conn:
+        rows = conn.execute(
+            """SELECT work_order_id, provider, transaction_id
+               FROM settlements WHERE status='confirmed'
+               ORDER BY provider_verified_at ASC, id ASC LIMIT ?""",
+            (bounded,),
+        ).fetchall()
+    results: list[dict[str, Any]] = []
+    for row in rows:
+        try:
+            result = verify_and_record_settlement(
+                row["work_order_id"], row["provider"], row["transaction_id"], db_path
+            )
+            results.append(
+                {
+                    "work_order_id": row["work_order_id"],
+                    "status": "reversed" if result.get("reversed") else "confirmed",
+                }
+            )
+        except (OSError, ValueError) as error:
+            results.append(
+                {
+                    "work_order_id": row["work_order_id"],
+                    "status": "unverified",
+                    "reason": type(error).__name__,
+                }
+            )
+    return results
+
+
 def create_settlement(
     settlement_id: str,
     work_order_id: str,
@@ -1086,87 +1840,8 @@ def create_settlement(
     provider_verification_id: str | None = None,
     provider_verified_at: str | None = None,
 ) -> bool:
-    provider = provider.lower()
-    currency = currency.upper()
-    if currency not in ALLOWED_SETTLEMENT_CURRENCIES:
-        return False
-    if collector_alias not in COLLECTOR_IDENTITIES:
-        return False
-    if not _valid_provider_verification(
-        provider,
-        transaction_id,
-        provider_verification_url or "",
-        provider_verification_id or "",
-        provider_verified_at or "",
-    ):
-        return False
-    if gross_amount <= 0 or net_amount <= 0 or fee_amount < 0:
-        return False
-    if abs((gross_amount - fee_amount) - net_amount) > 0.01:
-        return False
-    init_db(db_path)
-    now = iso_now()
-    with connect(db_path, immediate=True) as conn:
-        identity = conn.execute(
-            "SELECT alias FROM identities WHERE alias=?", (collector_alias,)
-        ).fetchone()
-        work = conn.execute(
-            """SELECT w.lane, w.status, w.collector_alias,
-                      o.status AS opportunity_status, o.payout_method, o.currency
-               FROM work_orders AS w
-               JOIN opportunities AS o ON o.id=w.opportunity_id
-               WHERE w.id=?""",
-            (work_order_id,),
-        ).fetchone()
-        if not identity or not work:
-            return False
-        if (
-            work["lane"] != "receivable"
-            or work["status"] != "collection"
-            or work["opportunity_status"] != "payment_pending"
-            or work["collector_alias"] != collector_alias
-            or str(work["payout_method"] or "").lower() != provider
-            or str(work["currency"] or "").upper() != currency
-        ):
-            return False
-        try:
-            conn.execute(
-                """INSERT INTO settlements
-                   (id, work_order_id, provider, transaction_id,
-                    provider_verification_url, provider_verification_id,
-                    provider_verified_at, collector_alias, currency, gross_amount,
-                    fee_amount, net_amount, status, created_at, updated_at)
-                   VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending', ?, ?)""",
-                (
-                    settlement_id,
-                    work_order_id,
-                    provider,
-                    transaction_id,
-                    provider_verification_url,
-                    provider_verification_id,
-                    provider_verified_at,
-                    collector_alias,
-                    currency,
-                    float(gross_amount),
-                    float(fee_amount),
-                    float(net_amount),
-                    now,
-                    now,
-                ),
-            )
-        except sqlite3.IntegrityError:
-            return False
-        _event(
-            conn,
-            "settlement",
-            settlement_id,
-            "created",
-            None,
-            "pending",
-            collector_alias,
-            {"provider": provider, "provider_verification_id": provider_verification_id},
-        )
-        return True
+    """Deprecated unsafe assertion API; callers must use official verification."""
+    return False
 
 
 def confirm_settlement(
@@ -1174,93 +1849,8 @@ def confirm_settlement(
     collector_alias: str,
     db_path: str | os.PathLike[str] | None = None,
 ) -> bool:
-    if collector_alias not in COLLECTOR_IDENTITIES:
-        return False
-    with connect(db_path, immediate=True) as conn:
-        identity = conn.execute(
-            "SELECT alias FROM identities WHERE alias=?", (collector_alias,)
-        ).fetchone()
-        row = conn.execute(
-            """SELECT s.*, w.lane, w.status AS work_order_status,
-                      w.collector_alias AS work_order_collector,
-                      w.opportunity_id, o.status AS opportunity_status
-               FROM settlements AS s
-               JOIN work_orders AS w ON w.id=s.work_order_id
-               JOIN opportunities AS o ON o.id=w.opportunity_id
-               WHERE s.id=?""",
-            (settlement_id,),
-        ).fetchone()
-        if not identity or not row:
-            return False
-        if (
-            row["collector_alias"] != collector_alias
-            or row["work_order_collector"] != collector_alias
-            or row["lane"] != "receivable"
-        ):
-            return False
-        if row["status"] == "confirmed":
-            received_at = _parse_timestamp(row["received_at"])
-            return (
-                row["work_order_status"] == "completed"
-                and row["opportunity_status"] == "settled"
-                and received_at is not None
-                and _valid_provider_verification(
-                    row["provider"],
-                    row["transaction_id"],
-                    row["provider_verification_url"],
-                    row["provider_verification_id"],
-                    row["provider_verified_at"],
-                    reference_time=received_at,
-                )
-            )
-        if (
-            row["status"] != "pending"
-            or row["work_order_status"] != "collection"
-            or row["opportunity_status"] != "payment_pending"
-        ):
-            return False
-        if not _valid_provider_verification(
-            row["provider"],
-            row["transaction_id"],
-            row["provider_verification_url"],
-            row["provider_verification_id"],
-            row["provider_verified_at"],
-        ):
-            return False
-        now = iso_now()
-        settlement_cursor = conn.execute(
-            """UPDATE settlements
-               SET status='confirmed', received_at=?, updated_at=?
-               WHERE id=? AND status='pending'""",
-            (now, now, settlement_id),
-        )
-        work_cursor = conn.execute(
-            """UPDATE work_orders SET status='completed', updated_at=?
-               WHERE id=? AND lane='receivable' AND status='collection'""",
-            (now, row["work_order_id"]),
-        )
-        opportunity_cursor = conn.execute(
-            """UPDATE opportunities SET status='settled', updated_at=?
-               WHERE id=? AND status='payment_pending'""",
-            (now, row["opportunity_id"]),
-        )
-        if (
-            settlement_cursor.rowcount != 1
-            or work_cursor.rowcount != 1
-            or opportunity_cursor.rowcount != 1
-        ):
-            raise sqlite3.IntegrityError("settlement confirmation CAS conflict")
-        _event(
-            conn,
-            "settlement",
-            settlement_id,
-            "confirmed",
-            "pending",
-            "confirmed",
-            collector_alias,
-            {"work_order_completed": row["work_order_id"]},
-        )
-        return True
+    """Deprecated unsafe confirmation API; official verifier settles atomically."""
+    return False
 
 
 def _realized_revenue_rows(conn: sqlite3.Connection) -> list[sqlite3.Row]:
@@ -1284,7 +1874,28 @@ def _is_realized_settlement(row: Mapping[str, Any]) -> bool:
     if row.get("work_order_collector") != row.get("collector_alias"):
         return False
     received_at = _parse_timestamp(row.get("received_at"))
-    if received_at is None:
+    payload_sha = str(row.get("provider_payload_sha256") or "")
+    try:
+        gross_amount = float(row.get("gross_amount"))
+        fee_amount = float(row.get("fee_amount"))
+        net_amount = float(row.get("net_amount"))
+    except (TypeError, ValueError):
+        return False
+    if (
+        received_at is None
+        or received_at > utc_now() + timedelta(minutes=5)
+        or str(row.get("provider") or "").casefold() != "stripe"
+        or not str(row.get("transaction_id") or "").startswith("tr_")
+        or row.get("verification_source") != "stripe_transfer_api_v1"
+        or row.get("provider_status") != "succeeded"
+        or str(row.get("currency") or "").upper() not in ALLOWED_SETTLEMENT_CURRENCIES
+        or gross_amount <= 0
+        or fee_amount < 0
+        or net_amount <= 0
+        or abs(gross_amount - fee_amount - net_amount) > 0.000001
+        or len(payload_sha) != 64
+        or any(character not in "0123456789abcdef" for character in payload_sha)
+    ):
         return False
     return _valid_provider_verification(
         str(row.get("provider") or ""),
@@ -1292,8 +1903,74 @@ def _is_realized_settlement(row: Mapping[str, Any]) -> bool:
         str(row.get("provider_verification_url") or ""),
         str(row.get("provider_verification_id") or ""),
         str(row.get("provider_verified_at") or ""),
-        reference_time=received_at,
+        reference_time=utc_now(),
     )
+
+
+def _canonical_realized_revenue(
+    conn: sqlite3.Connection,
+    recognized_currencies: Iterable[str] | None = None,
+) -> dict[str, Any]:
+    recognized = (
+        {str(currency).upper() for currency in recognized_currencies}
+        if recognized_currencies is not None
+        else set(ALLOWED_SETTLEMENT_CURRENCIES)
+    )
+    confirmed_count = int(
+        conn.execute(
+            "SELECT COUNT(*) FROM settlements WHERE status='confirmed'"
+        ).fetchone()[0]
+    )
+    rows = _realized_revenue_rows(conn)
+    if confirmed_count != len(rows):
+        return {
+            "realized_revenue": {},
+            "verified": False,
+            "reason": "unverified_confirmed_settlement",
+        }
+    revenue: dict[str, float] = {}
+    for settlement_row in rows:
+        settlement = dict(settlement_row)
+        currency = str(settlement.get("currency") or "").upper()
+        if currency not in recognized:
+            return {
+                "realized_revenue": {},
+                "verified": False,
+                "reason": f"unsupported_revenue_currency:{currency}",
+            }
+        if not _is_realized_settlement(settlement):
+            return {
+                "realized_revenue": {},
+                "verified": False,
+                "reason": "unverified_confirmed_settlement",
+            }
+        revenue[currency] = round(
+            revenue.get(currency, 0.0) + float(settlement["net_amount"]), 6
+        )
+    return {
+        "realized_revenue": revenue,
+        "verified": True,
+        "reason": (
+            "confirmed_settlements_reconciled"
+            if revenue
+            else "no_confirmed_settlements"
+        ),
+    }
+
+
+def read_realized_revenue(
+    db_path: str | os.PathLike[str] | None = None,
+    recognized_currencies: Iterable[str] | None = None,
+) -> dict[str, Any]:
+    """Read the sole canonical revenue predicate without mutating the database."""
+    path = resolve_db_path(db_path)
+    conn = sqlite3.connect(f"file:{path}?mode=ro", uri=True, timeout=1.0)
+    conn.row_factory = sqlite3.Row
+    try:
+        conn.execute("PRAGMA query_only=ON")
+        return _canonical_realized_revenue(conn, recognized_currencies)
+    finally:
+        conn.close()
 
 
 def status_snapshot(db_path: str | os.PathLike[str] | None = None) -> dict[str, Any]:
@@ -1308,15 +1985,7 @@ def status_snapshot(db_path: str | os.PathLike[str] | None = None) -> dict[str, 
                 ACTIVE_WORK_ORDER_STATES,
             ).fetchall()
         }
-        revenue: dict[str, float] = {}
-        for settlement_row in _realized_revenue_rows(conn):
-            settlement = dict(settlement_row)
-            if not _is_realized_settlement(settlement):
-                continue
-            currency = str(settlement["currency"])
-            revenue[currency] = round(
-                revenue.get(currency, 0.0) + float(settlement["net_amount"]), 6
-            )
+        revenue_truth = _canonical_realized_revenue(conn)
         leads = conn.execute("SELECT COUNT(*) FROM opportunities WHERE status='lead'").fetchone()[0]
         verified = conn.execute("SELECT COUNT(*) FROM opportunities WHERE status='verified'").fetchone()[0]
     return {
@@ -1324,7 +1993,9 @@ def status_snapshot(db_path: str | os.PathLike[str] | None = None) -> dict[str, 
         "active_work_orders_by_lane": {"build": lanes.get("build", 0), "receivable": lanes.get("receivable", 0)},
         "lead_count": int(leads),
         "verified_unscheduled_count": int(verified),
-        "realized_revenue": revenue,
+        "realized_revenue": revenue_truth["realized_revenue"],
+        "revenue_verified": revenue_truth["verified"],
+        "revenue_reason": revenue_truth["reason"],
     }
 
 
