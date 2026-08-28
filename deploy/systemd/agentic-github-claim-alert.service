@@ -1,0 +1,41 @@
+[Unit]
+Description=Agentic bounded GitHub claim and deadline operational alerts
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/Agentic/tools/github_claim_alert_monitor.py
+ConditionPathExists=/Agentic/.env
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/Agentic
+Environment=PYTHONDONTWRITEBYTECODE=1
+Environment=PYTHONUNBUFFERED=1
+Environment=GH_CONFIG_DIR=/run/agentic-gh
+ExecStart=/usr/bin/python3 /Agentic/tools/github_claim_alert_monitor.py --login rafaio1
+UMask=0077
+Nice=10
+IOSchedulingClass=best-effort
+IOSchedulingPriority=7
+CPUQuota=25%
+MemoryMax=256M
+TasksMax=16
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+BindReadOnlyPaths=/root/.config/gh:/run/agentic-gh
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectKernelLogs=true
+ProtectControlGroups=true
+LockPersonality=true
+RestrictSUIDSGID=true
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+ReadWritePaths=/Agentic/state
+TimeoutStartSec=3min
+StandardOutput=journal
+StandardError=journal
+
+[Install]
+WantedBy=multi-user.target

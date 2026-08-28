@@ -1,0 +1,13 @@
+[Unit]
+Description=Check GitHub claim and deadline events every ten minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitInactiveSec=10min
+Persistent=true
+RandomizedDelaySec=30s
+AccuracySec=15s
+Unit=agentic-github-claim-alert.service
+
+[Install]
+WantedBy=timers.target
