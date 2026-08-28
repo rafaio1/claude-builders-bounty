@@ -1,0 +1,12 @@
+[Unit]
+Description=Refresh Agentic GitHub PR inventory every six hours
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=6h
+Persistent=true
+RandomizedDelaySec=5min
+Unit=agentic-github-pr-inventory.service
+
+[Install]
+WantedBy=timers.target

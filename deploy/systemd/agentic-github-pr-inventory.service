@@ -1,0 +1,16 @@
+[Unit]
+Description=Agentic complete GitHub PR inventory and follow-up classifier
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+WorkingDirectory=/Agentic
+UMask=0077
+ExecStart=/usr/bin/python3 /Agentic/tools/github_pr_inventory.py --author rafaio1 --inventory-output /Agentic/state/github_pr_inventory.json --followup-output /Agentic/state/github_pr_followups.json
+TimeoutStartSec=20min
+Nice=10
+
+[Install]
+WantedBy=multi-user.target
