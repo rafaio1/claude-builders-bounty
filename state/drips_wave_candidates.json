@@ -1,0 +1,153 @@
+{
+  "active_wave": {
+    "end_at": "2026-08-31T12:00:00.749Z",
+    "id": "d2b15ecf-e1f6-4999-a671-39c660d8c846",
+    "number": 8,
+    "reward_pool_budget_usd": "75000.00",
+    "reward_pool_is_not_issue_bounty": true,
+    "start_at": "2026-08-24T12:00:00.956Z",
+    "status": "active"
+  },
+  "candidate_count": 1,
+  "candidates": [
+    {
+      "application_surface_url": "https://www.drips.network/wave/stellar/issues",
+      "assigned_applicant": null,
+      "complexity": null,
+      "drips_issue_id": "cd0bd292-ce7a-47c6-bac2-f3ad9e739796",
+      "gates": {
+        "account_restriction_status": "unverified",
+        "application_allowed": false,
+        "application_quota": "unverified",
+        "application_receipt": "missing",
+        "automation_eligible": false,
+        "fresh_revalidation_required": true,
+        "github_live_issue": "unverified",
+        "human_action_required": true,
+        "implementation_allowed": false,
+        "issue_ownership": "unverified",
+        "kyc": "unverified",
+        "maintainer_assignment": "missing",
+        "oauth_login": "unverified",
+        "repository_health": "unverified",
+        "scope_quality_review": "unverified",
+        "terms_acceptance": "unverified",
+        "turnstile": "unverified"
+      },
+      "github_assignees": [],
+      "github_created_at": "2026-08-26T18:13:56.000Z",
+      "github_updated_at": "2026-08-26T18:13:56.000Z",
+      "id": "drips:cd0bd292-ce7a-47c6-bac2-f3ad9e739796",
+      "issue_number": 251,
+      "next_action": "complete_personal_login_terms_and_kyc_then_run_live_github_quality_quota_and_application_revalidation",
+      "official_evidence_url": "https://wave-api.drips.network/api/issues/cd0bd292-ce7a-47c6-bac2-f3ad9e739796",
+      "pending_applications_count": 0,
+      "platform": "drips_wave",
+      "points": 100,
+      "program_id": "fdc01c95-806f-4b6a-998b-a6ed37e0d81b",
+      "ranking": {
+        "clarity_bonus": 100.0,
+        "effort_weight": 8.0,
+        "freshness_penalty_hours": 73.8326,
+        "points": 100.0,
+        "points_per_effort_unit": 12.5,
+        "score": 12526.1674
+      },
+      "repo": "AudioBitsStellar/AudioBlock_Backend",
+      "reward": {
+        "expected_revenue_usd": null,
+        "issue_fixed_reward_usd": null,
+        "model": "pro_rata_points_share",
+        "payment_status": "not_earned",
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0,
+        "wave_pool_budget_usd": "75000.00",
+        "wave_pool_is_not_issue_bounty": true
+      },
+      "source_url": "https://github.com/AudioBitsStellar/AudioBlock_Backend/issues/251",
+      "status": "application_candidate",
+      "title": "Build a websocket/SSE live on-chain activity feed",
+      "wave_id": "d2b15ecf-e1f6-4999-a671-39c660d8c846",
+      "wave_number": 8
+    }
+  ],
+  "financial_truth": {
+    "individual_issue_reward_guaranteed": false,
+    "points_are_currency": false,
+    "points_have_fixed_usd_value": false,
+    "realized_revenue_usd": 0.0,
+    "reward_allocation_model": "pro_rata_after_confirmed_contribution"
+  },
+  "generated_at": "2026-08-29T20:03:53.479845+00:00",
+  "program": {
+    "id": "fdc01c95-806f-4b6a-998b-a6ed37e0d81b",
+    "name": "Stellar",
+    "official_api_url": "https://wave-api.drips.network/api/wave-programs/fdc01c95-806f-4b6a-998b-a6ed37e0d81b",
+    "official_url": "https://www.drips.network/wave/stellar",
+    "paused": false,
+    "slug": "stellar"
+  },
+  "run_id": "e23d2bb7e00a485a8ec308e2811e7c51",
+  "scan": {
+    "candidate_evidence_complete": false,
+    "candidates_after_detail_revalidation": 1,
+    "detail_fetch_errors": 0,
+    "detail_source_hash": "88e53495a6c929f5713b557986da7015acf4fd1280e8eee56cf29730a631e5a4",
+    "details_became_ineligible": 0,
+    "details_changed_or_unavailable": 0,
+    "details_requested": 1,
+    "drift_retry_used": false,
+    "drips_detail_evidence_complete": true,
+    "eligible_before_detail_revalidation": 1,
+    "github_live_evidence_complete": false,
+    "global_market_complete": true,
+    "has_next_page_after_window": false,
+    "page_limit": 50,
+    "pages_collected": 1,
+    "pages_requested": 5,
+    "records_collected": 16,
+    "scan_window_complete": true,
+    "total_drift": 0,
+    "total_pages_reported": 1,
+    "total_reported_first": 16,
+    "total_reported_last": 16,
+    "window_collection_attempts": 1,
+    "window_source_hash": "80d0096c79e2ff99022164f3a63e39bd491027ecfa06d0377b5480c61d09d652"
+  },
+  "schema_version": "1.0",
+  "snapshot_ttl_seconds": 720,
+  "source_hash": "b58218fcdc00979859af2f36aae872abd8b83cbb7c39d9ef93035dc142a40c73",
+  "valid_until": "2026-08-29T20:15:53.479845+00:00",
+  "workflow_contract": {
+    "allowed_now": [
+      "discover",
+      "rank",
+      "revalidate_official_state"
+    ],
+    "application_requires": [
+      "user_terms_acceptance",
+      "user_oauth_login",
+      "user_completed_kyc",
+      "valid_turnstile_challenge",
+      "account_not_restricted",
+      "issue_not_owned_by_user",
+      "application_quota_remaining",
+      "organization_assignment_quota_remaining",
+      "live_github_issue_and_repository_quality_review",
+      "fresh_issue_revalidation",
+      "fresh_zero_application_revalidation"
+    ],
+    "current_stage": "awaiting_personal_identity_gate",
+    "forbidden_now": [
+      "submit_application",
+      "start_implementation",
+      "book_points_or_pool_as_revenue"
+    ],
+    "implementation_requires": [
+      "official_maintainer_assignment"
+    ],
+    "settlement_requires": [
+      "canonical_wallet_or_provider_transaction"
+    ]
+  }
+}

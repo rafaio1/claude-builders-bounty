@@ -1,0 +1,53 @@
+{
+  "handle": "anthropic",
+  "platform": "hackerone",
+  "fetched_at": "2026-08-27T16:58:00+00:00",
+  "source": "hackerone_graphql_live",
+  "submission_state": "open",
+  "offers_bounties": true,
+  "safe_harbor": "none",
+  "policy_excerpt": "Must use @wearehackerone.com email and X-HackerOne-Handle header. One vuln per report. Duplicates go to first reporter. Docs-only fixes $100. Beta/Research Preview treated as non-core for 1 month. AI-generated reports without PoC closed as N/A. Claude Code permission modal bypasses likely duplicates due to ongoing remediation. Auto-accept-edits mode behavior is user responsibility. GitHub Actions in in-scope repos are non-core unless impacting core assets.",
+  "out_of_scope": [
+    "General security best practices without PoC",
+    "Physical compromise",
+    "Rate limiting on unauthenticated endpoints",
+    "Insider threats",
+    "Social engineering / phishing",
+    "Reflected file downloads",
+    "Account takeover (including brute force)",
+    "Denial of service",
+    "Clickjacking without sensitive actions",
+    "Missing HttpOnly/Secure cookie flags",
+    "Dependency hijacking",
+    "Zero-days with patch <30 days",
+    "Model safety / jailbreaks / hallucinations (separate program)"
+  ],
+  "special_notes": [
+    "Claude Code permission modal bypass: active remediation, likely duplicate",
+    "Auto-accept-edits mode: user responsibility, not a vulnerability",
+    "GitHub Actions: non-core unless impacting defined core assets",
+    "Fable model jailbreaks: submit to hackerone.com/anthropic-cyber-jailbreak",
+    "Other model safety issues: email modelbugbounty@anthropic.com"
+  ],
+  "scopes": {
+    "in_scope": [
+      {"type": "URL", "asset": "claude.ai"},
+      {"type": "URL", "asset": "console.anthropic.com"},
+      {"type": "URL", "asset": "api.anthropic.com"},
+      {"type": "URL", "asset": "docs.anthropic.com"},
+      {"type": "URL", "asset": "support.anthropic.com"},
+      {"type": "URL", "asset": "anthropic.atlassian.com"},
+      {"type": "SOURCE_CODE", "asset": "github.com/anthropics"},
+      {"type": "OTHER", "asset": "Infrastructure & Internal Apps/Services"},
+      {"type": "OTHER", "asset": "Official Clients"},
+      {"type": "OTHER", "asset": "Claude Code"},
+      {"type": "OTHER", "asset": "Leaked Employee API Keys"},
+      {"type": "OTHER", "asset": "Claude Desktop Extensions and Claude.ai MCP servers"},
+      {"type": "OTHER", "asset": "Claude in Chrome"},
+      {"type": "AI_MODEL", "asset": "API & SDKs"}
+    ],
+    "out_of_scope": [
+      {"type": "SOURCE_CODE", "asset": "https://github.com/modelcontextprotocol"}
+    ]
+  }
+}

@@ -1,0 +1,65 @@
+[
+  {
+    "name": "grok_root",
+    "url": "https://grok.com/",
+    "status": 403,
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "error_body": "<!DOCTYPE html><html lang=\"en-US\"><head><title>Just a moment...</title><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"><meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"><meta name=\"robots\" content=\"noindex,nofollow\"><meta name=\"viewport\" content=\"width=device-width,initial-scal"
+  },
+  {
+    "name": "x_ai_root",
+    "url": "https://x.ai/",
+    "status": 403,
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "error_body": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!"
+  },
+  {
+    "name": "console_x",
+    "url": "https://console.x.com/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "signals": {
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "env_leak": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {
+      "Server": "cloudflare envoy",
+      "CF-RAY": "a31529c718d2a529-GRU"
+    },
+    "body_preview": "<!DOCTYPE html><!--_aggDu56simxJVG1vNOH9--><html lang=\"en\" data-theme=\"dark\" class=\"__variable_2eeb97 __variable_044d78 __variable_905cc7\"><head><meta charSet=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/><link rel=\"preload\" href=\"https://ton.twimg.com/dataproducts/de"
+  },
+  {
+    "name": "chat_x",
+    "url": "https://chat.x.com/",
+    "status": 200,
+    "content_type": "",
+    "signals": {
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "env_leak": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {
+      "Server": "cloudflare envoy",
+      "CF-RAY": "a31529c87dcc7810-GRU"
+    },
+    "body_preview": ""
+  },
+  {
+    "name": "accounts_x_ai",
+    "url": "https://accounts.x.ai/",
+    "status": 403,
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "error_body": "<!DOCTYPE html>\n<!--[if lt IE 7]> <html class=\"no-js ie6 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 7]>    <html class=\"no-js ie7 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if IE 8]>    <html class=\"no-js ie8 oldie\" lang=\"en-US\"> <![endif]-->\n<!--[if gt IE 8]><!--> <html class=\"no-js\" lang=\"en-US\"> <!"
+  }
+]

@@ -1,0 +1,42 @@
+{
+  "schema_version": 2,
+  "generated_at": "2026-08-27T18:24:11Z",
+  "host": "179.198.117.31",
+  "repository": "/Agentic",
+  "repo_head_sha": "834ddce3cd3f931e7941cab24d258d79afab0023",
+  "source_state": "committed_and_pushed_to_private_origin",
+  "diff": {
+    "tracked_diff_sha256": "48684e1024188779f475fe45d302580ed63b6bf268588fbbf26bd0e914cc538d",
+    "files": {
+      "tools/revenue_control_plane.py": "beaf5f81a14585c2ea31bb44ab2667a3e45d7928e57d969370516406e61240e8",
+      "tools/revenue_db.py": "68de43b122ef35f9e68dc7c45f00ce7642bf13f5fad965edb45dc2cf597da1d4",
+      "tests/test_revenue_control_plane.py": "89132c93e642cde03b0fe760a1364a2e820a9b112f4918e675b979af36545ee8",
+      "tests/test_revenue_db.py": "23034f511c296cd23022a4f1d7d74d9ffa7198d996b157c5526041dc641be282"
+    }
+  },
+  "tests": {
+    "command": ".venv/bin/python -m pytest -q tools/tests/test_codex_role_supervisor.py tests/test_revenue_control_plane.py tests/test_revenue_db.py tests/test_wise.py",
+    "exit_code": 0,
+    "result": "59 passed in 134.40s"
+  },
+  "known_realized_revenue_usd": 0.0,
+  "known_realized_revenue_ledger_entries": 0,
+  "ready_for_integrator_review": false,
+  "integrator_review": "approved",
+  "superseded": false,
+  "production_cutover_performed": true,
+  "services": {
+    "revenue-control-plane.service": "inactive_disabled_intentionally",
+    "agentic-revenue-control-plane-v2.service": "active_enabled",
+    "agentic-revenue-reconciler.service": "active_enabled",
+    "agentic-codex-role-supervisor.service": "active_enabled"
+  },
+  "notes": [
+    "Candidate imports remain lead/unverified and are never auto-promoted.",
+    "No default/global candidate JSON is read by scheduling.",
+    "Profitability requires positive effort, conservative overhead, bounded autonomous hours, and a configurable minimum EV per hour.",
+    "Revenue is recognized only after a fresh allowlisted provider verification and an atomic receivable collection confirmation by the assigned collector.",
+    "The durable v2 DB is isolated at /Agentic/data/aro/revenue_control_plane_v2.db and was created only during the controlled production cutover.",
+    "Commit 834ddce3 was pushed to the private origin; no external publication or financial action was performed."
+  ]
+}

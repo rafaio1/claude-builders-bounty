@@ -1,0 +1,65 @@
+{
+  "timestamp": "2026-08-26T21:30:00Z",
+  "cycle": "continuous_bounties_pr",
+  "summary": {
+    "total_pending_ledger": 47,
+    "action_needed_unique_prs": 14,
+    "ambiguous_unique_prs": 3
+  },
+  "prioritized_actions": [
+    {
+      "priority": "P0_CHANGES_REQUESTED",
+      "repo": "FuZoe/PD-Hunter",
+      "pr": 27,
+      "state": "OPEN",
+      "review": "CHANGES_REQUESTED",
+      "status": "FIX_PUSHED_AWAITING_REVIEW",
+      "evidence": "mapping.json rebuilt valid in cda0d5a; CI test added in f647279; reviewer requested JSON fix + CI test both addressed; last comment by rafaio1 at 21:17Z confirms ready for re-review",
+      "next_action": "MONITOR_REVIEW_RESPONSE",
+      "blocking": false
+    },
+    {
+      "priority": "P1_CLA_FAILURE",
+      "repo": "ligate-io/ligate-chain",
+      "pr": 567,
+      "state": "OPEN",
+      "review": "REVIEW_REQUIRED",
+      "check_failure": "CLAAssistant FAILURE",
+      "status": "BLOCKED_EXTERNAL_BOT",
+      "evidence": "CLA signed multiple times + recheck requested; bot still failing; maintainer pinged at 16:19Z; no new response",
+      "next_action": "ESCALATE_IF_NO_RESPONSE_48H",
+      "blocking": true,
+      "requires_human_confirmation": true
+    },
+    {
+      "priority": "P2_VERCEL_AUTH_PENDING",
+      "repos": ["Lilly-Protocol/lily-frontend (PRs 150-157)", "OphirPay/OphirPay (PRs 225,228)", "MyZubster-Ecosystem/myzubster (PR 736)", "derNif/payanagent (PR 120)"],
+      "state": "OPEN",
+      "check_failure": "Vercel authorization required (team owner action)",
+      "status": "BLOCKED_EXTERNAL_AUTH",
+      "evidence": "All Vercel failures are 'authorize team' links, not code errors; PRs mergeable; no review changes requested",
+      "next_action": "NO_AGENT_ACTION_POSSIBLE; MONITOR",
+      "blocking": true,
+      "requires_human_confirmation": false
+    },
+    {
+      "priority": "P3_AWAITING_MAINTAINER_REVIEW",
+      "repo": "CALLE-AI/awesome-phone-call-agents",
+      "pr": 241,
+      "state": "OPEN",
+      "review": "NONE",
+      "status": "FIXES_PUSHED_READY_FOR_REVIEW",
+      "evidence": "Commit 8486bb4 addresses all feedback; detailed summary posted; no reviewer assigned yet",
+      "next_action": "MONITOR_REVIEW_ASSIGNMENT",
+      "blocking": false
+    }
+  ],
+  "no_agent_action_possible": [
+    "Vercel auth failures across 12 PRs — external team owner must authorize; agent cannot act",
+    "ligate-io CLA bot failure — external tooling issue; already escalated in comments",
+    "MyZubster character opt-in bot — informational only; no action required unless user opts in"
+  ],
+  "ledger_integrity": "verified",
+  "scan_cursor": "all_windows_completed_2026-08-26T21:10Z",
+  "next_cycle_trigger": "new_email_or_pr_state_change"
+}

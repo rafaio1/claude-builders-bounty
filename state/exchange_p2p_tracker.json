@@ -1,0 +1,33 @@
+{
+  "created_at": "2026-08-26T03:29:05.076577+00:00",
+  "purpose": "Auxiliary tracking for P2P/Binance/Bybit revenue reconciliation per CONTADOR objective",
+  "status": "scaffold_only_no_credentials",
+  "capital_wise_compliance": "No API keys, no fund access, no autonomous trading; human approval required for any financial action",
+  "exchanges": {
+    "binance": {
+      "configured": false,
+      "api_key_present": false,
+      "payout_verified": false,
+      "notes": "Requires human KYC + API key setup"
+    },
+    "bybit": {
+      "configured": false,
+      "api_key_present": false,
+      "payout_verified": false,
+      "notes": "Requires human KYC + API key setup"
+    },
+    "p2p": {
+      "configured": false,
+      "platforms": [],
+      "notes": "Requires human account creation and payment method verification"
+    }
+  },
+  "reconciliation_log": [],
+  "pending_human_actions": [
+    "Create/configure Binance API key with read-only scope for balance verification",
+    "Create/configure Bybit API key with read-only scope for balance verification",
+    "Verify P2P platform accounts and payout methods",
+    "Authorize automated balance polling (read-only) after credentials are secured"
+  ],
+  "last_audit_utc": "2026-08-26T03:29:05.076577+00:00"
+}

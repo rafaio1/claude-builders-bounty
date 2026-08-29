@@ -1,0 +1,19 @@
+{
+  "timestamp": "2026-08-26T18:23:28.753922Z",
+  "program": "Lansweeper Bug Bounty Program",
+  "program_id": "06ea3a06-58d5-4173-af0e-c2f1f98714c6",
+  "platform": "Intigriti",
+  "finding_type": "Stack Trace Disclosure + Frontend Config Leak",
+  "asset": "eu.lansweeper.com/api/vc, us.lansweeper.com/api/vc",
+  "severity_assessed": "Low/Informational",
+  "gate_passed": false,
+  "reason": "Stack trace disclosure without exploitable impact chain; likely below bounty threshold; cannot dedup via API; program emphasizes quality over quantity",
+  "action": "ARCHIVE_AND_PIVOT",
+  "next_steps": [
+    "Pivot to higher-impact testing on Lansweeper scope (auth flows, API endpoints)",
+    "Test Auth0 tenant dev-734bjlip for misconfigurations using discovered client IDs",
+    "Probe lsauth.eu.lansweeper.com custom auth layer",
+    "Check eu.lansweeperdev.com dev environment for debug endpoints",
+    "If no medium+ finding within reasonable time, rotate to next program"
+  ]
+}

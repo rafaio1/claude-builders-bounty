@@ -1,0 +1,10 @@
+{
+  "target": "airtable",
+  "timestamp": "2026-08-26T19:38:13.485363+00:00",
+  "decision": "ARCHIVE",
+  "reason": "No vulnerability signals found. X-Powered-By:Next.js is standard framework header, not a security issue. All URLs returned expected responses (200/404). No secrets, config exposure, debug endpoints, or misconfigurations detected.",
+  "urls_tested": 3,
+  "signals_found": 0,
+  "false_positive_notes": "X-Powered-By header flagged as signal but is informational only - not exploitable",
+  "next_action": "PIVOT_TO_NEXT_TARGET"
+}

@@ -1,0 +1,125 @@
+{
+  "platform": "Intigriti",
+  "program": "Uphold / TopperPay",
+  "max_bounty_eur": 6000,
+  "target": "graphql.sandbox.topperpay.com/graphql",
+  "finding_type": "Unauthenticated GraphQL Introspection + Widget Token Generation + Internal Endpoint Leakage",
+  "severity_preliminary": "Medium-High (Sandbox)",
+  "status": "HUMAN_REVIEW_GATE - PRODUCTION_PARITY_FAILED",
+  "confirmed_issues": [
+    {
+      "id": "TP-001",
+      "title": "Unauthenticated GraphQL Introspection on Sandbox",
+      "description": "Full schema (43 mutations, 39 queries) exposed without authentication. Includes sensitive operations: registerUser, initiatePasswordlessLogin, createOrder, submitCddFormAnswer, addDepositTravelRuleDetails.",
+      "evidence": "Introspection query returns complete __schema with all types and fields",
+      "impact": "Full API surface enumeration enabling targeted attacks"
+    },
+    {
+      "id": "TP-002",
+      "title": "Unauthenticated Widget Bootstrap Token Generation",
+      "description": "openTopperWidget query generates valid signed JWT bootstrap tokens without any authentication. Token sub claim is constant (aa47e88b-59ca-404c-9171-7f5d9a6c18b6) across all calls, suggesting shared/static identity.",
+      "evidence": "3 consecutive calls returned identical sub claim with unique jti values. JWT decodes to valid claims structure.",
+      "impact": "Potential widget session hijacking or unauthorized widget embedding if tokens are accepted by production or shared backend"
+    },
+    {
+      "id": "TP-003",
+      "title": "Internal Engineering Endpoints Leaked in Widget HTML",
+      "description": "Widget HTML source contains references to internal AWS and Kubernetes endpoints: graphql-server.topper-graphql-api.enterprise.engineering-development.uphold.aws, graphql-server.topper-graphql-api.backoffice.engineering-development.uphold.aws, graphql-server.topper-graphql-api.svc.cluster.local",
+      "evidence": "Regex extraction from widget HTML body (145KB). DNS resolution fails externally but names reveal internal architecture.",
+      "impact": "Internal infrastructure disclosure aiding further reconnaissance"
+    },
+    {
+      "id": "TP-004",
+      "title": "Client Configuration Exposure via __NEXT_DATA__",
+      "description": "Widget HTML exposes runtime configuration including SSO client IDs (Apple: com.topper.sandbox.sso, Google: 448034342668-l5si0uuf3cnas5sp6099t2u8ncdj5jhd), analytics endpoints, RiskJS public key reference, and Oscilar SDK URL.",
+      "evidence": "__NEXT_DATA__ JSON extraction from widget page",
+      "impact": "Third-party integration fingerprinting and potential SSO misconfiguration testing surface"
+    }
+  ],
+  "negative_findings": [
+    "Mutations (registerUser, createOrder, etc.) return generic operational error - backend may be partially down or require specific context",
+    "me() query returns null without auth error - no direct user data leakage confirmed",
+    "Internal endpoints not externally resolvable - no direct access confirmed",
+    "Production graphql.topperpay.com correctly blocks introspection (HTTP 400)"
+  ],
+  "uncertainties": [
+    "Whether sandbox shares backend/database with staging or production",
+    "Whether constant sub claim in widget tokens represents a service account or misconfiguration",
+    "Whether widget bootstrap tokens are accepted by production widget infrastructure",
+    "Whether operational errors on mutations indicate disabled functionality or missing prerequisites"
+  ],
+  "recommendation": "Report TP-001 through TP-004 as informational/low-medium findings on sandbox scope. Request clarification on sandbox vs production parity. Do NOT attempt destructive testing or token reuse against production.",
+  "next_steps_if_approved": [
+    "Submit report to Intigriti Uphold program with all four findings bundled",
+    "Request program owner clarification on sandbox scope eligibility",
+    "If sandbox is out of scope, pivot to remaining Uphold assets: api-sandbox.uphold.com, portal.enterprise.uphold.com, GitHub repos"
+  ],
+  "production_parity_verification": {
+    "timestamp": "2026-08-26T00:00:00Z",
+    "tp001_introspection": {
+      "sandbox_result": "HTTP 200 - Full schema exposed (43 mutations, 39 queries)",
+      "production_result": "HTTP 400 - Introspection disabled by Apollo Server",
+      "production_error": "INTROSPECTION_DISABLED / GRAPHQL_VALIDATION_FAILED",
+      "reproducible_in_production": false,
+      "assessment": "Sandbox-only misconfiguration. Per program policy, sandbox findings must be reproducible in production to be valid. This finding alone would likely be closed as informational or out-of-scope."
+    },
+    "tp002_widget_tokens": {
+      "sandbox_result": "Unauthenticated JWT generation with static sub claim",
+      "production_widget_status": "HTTP 200 (app.topperpay.com reachable via Cloudflare)",
+      "production_token_acceptance": "NOT TESTED (passive-only constraint)",
+      "reproducible_in_production": "UNKNOWN - Requires active token replay against production widget which is out of scope per safe harbor",
+      "assessment": "Cannot verify production impact without active testing against production widget endpoint. The constant sub claim suggests service identity rather than user session, reducing severity even if accepted."
+    },
+    "tp003_internal_endpoints": {
+      "sandbox_result": "AWS/K8s endpoint names leaked in widget HTML",
+      "dns_resolution": "All internal endpoints fail external DNS resolution",
+      "reproducible_in_production": "UNLIKELY - Production widget served via Cloudflare, different build pipeline expected",
+      "assessment": "Informational at best. Internal naming convention disclosure without actionable access path."
+    },
+    "tp004_next_data_config": {
+      "sandbox_result": "SSO client IDs and SDK URLs exposed",
+      "reproducible_in_production": "POSSIBLE - Client-side configs often shared between environments",
+      "assessment": "Low severity. SSO client IDs are semi-public by design. No secret material confirmed."
+    }
+  },
+  "overall_production_parity": "FAILED - Primary finding (TP-001) not reproducible in production",
+  "submission_recommendation": "DO NOT SUBMIT in current form. Sandbox-only findings explicitly excluded per program policy. Pivot to production-scoped assets or new program.",
+  "pivot_targets": [
+    {
+      "asset": "portal.enterprise.uphold.com",
+      "tier": "Tier 1",
+      "type": "Production",
+      "notes": "Enterprise portal with Next.js login - test auth flows, IDOR, role escalation"
+    },
+    {
+      "asset": "api.portal.enterprise.uphold.com",
+      "tier": "Tier 1",
+      "type": "Production",
+      "notes": "Enterprise API backend - test auth bypass, parameter tampering"
+    },
+    {
+      "asset": "*.uphold.com wildcard",
+      "tier": "Tier 3",
+      "type": "Production",
+      "notes": "Subdomain enumeration for forgotten/staging assets"
+    },
+    {
+      "asset": "github.com/uphold/*",
+      "tier": "Tier 3",
+      "type": "Production",
+      "notes": "Secret scanning, CI/CD misconfigs, dependency vulnerabilities"
+    },
+    {
+      "asset": "Newpharma (Intigriti)",
+      "tier": "N/A",
+      "type": "New Program",
+      "notes": "EUR 5K bounty, fresh target"
+    },
+    {
+      "asset": "MijnJessa (Intigriti)",
+      "tier": "N/A",
+      "type": "New Program",
+      "notes": "EUR 5K bounty, healthcare sector"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "timestamp": "2026-08-26T12:10:00Z",
+  "platforms_failed": [
+    "hackerone",
+    "intigriti"
+  ],
+  "hackerone_error": "401 Unauthorized on /v1/me and /v1/programs with Basic Auth",
+  "intigriti_error": "401 UNAUTH001 on /v1/programs/{id} with X-API-KEY",
+  "decision": "PIVOT_TO_OFFLINE_ANALYSIS",
+  "policy_reference": "Rule 7: 401/403 limited retry then pivot to offline work",
+  "next_action": "Analyze cached h1_enriched.json and pipeline.json for viable targets with scope data already fetched",
+  "cached_files_count": 57
+}

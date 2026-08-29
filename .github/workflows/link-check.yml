@@ -1,0 +1,27 @@
+name: Link Check
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  link-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Install lychee
+        run: |
+          curl -sSL https://github.com/lycheeverse/lychee/releases/download/v0.18.1/lychee-x86_64-unknown-linux-gnu.tar.gz | tar xz
+          sudo mv lychee /usr/local/bin/
+
+      - name: Check relative links in README and docs
+        run: |
+          # Only check local markdown files; skip external URLs to avoid flaky CI
+          lychee --offline --no-progress \
+            --exclude-path 'docs/bcos/' \
+            --exclude-path 'docs/blog/' \
+            README.md docs/*.md rips/docs/*.md \
+            || { echo "::error::Broken relative links detected"; exit 1; }

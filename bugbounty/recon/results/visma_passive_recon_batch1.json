@@ -1,0 +1,128 @@
+[
+  {
+    "target": "accountsettings.connect.identity.stagaws.visma.com",
+    "ips": [
+      "d2hbtphm5rzodc.cloudfront.net.",
+      "3.166.152.54",
+      "3.166.152.8",
+      "3.166.152.129",
+      "3.166.152.44"
+    ],
+    "cname": "d2hbtphm5rzodc.cloudfront.net.",
+    "status": "HTTP/2 307 ",
+    "interesting": {
+      "location": "https://accountsettings.connect.identity.stagaws.visma.com/signin?callbackUrl=https%3A%2F%2Faccountsettings.connect.identity.stagaws.visma.com%2F",
+      "csp": true
+    }
+  },
+  {
+    "target": "admin.stage.vismaonline.com",
+    "ips": [
+      "voninternaladmin-stag.azurewebsites.net.",
+      "waws-prod-am2-209.sip.azurewebsites.windows.net.",
+      "waws-prod-am2-209.westeurope.cloudapp.azure.com.",
+      "51.144.182.8"
+    ],
+    "cname": "voninternaladmin-stag.azurewebsites.net.",
+    "status": "HTTP/1.1 302 Found",
+    "interesting": {
+      "location": "https://identity.stage.vismaonline.com/connect/authorize?client_id=visma.online.administration&redirect_uri=https%3A%2F%2Fadmin.stage.vismaonline.com&response_type=id_token%20token&scope=openid%20profile%20email%20roles%20onlineroles%20services%20browserid%20management%20vonid%3Aidentity&state=OpenIdConnect.AuthenticationProperties%3DtjzkgBheWDoFxHcaFZd5pyr9sMjh89VrfPGo0Ga154sqDI-JnVXkrG8qQhOHbNTyX7aOk_BlF8kckVC-PPyosyS-uDQDtRGMaujjhVEKeaBinFe4aeYms7XsaigY4c9qzydCRjtqgRXETUiFx0w2z7HjXjF8AWHQqpH2Y58dWcZa_XzjU4O44PP9VxS6aaXiMScZPKhsyzXqzNBcIT7c2_juGJW4ELw411O4Jhi40OQkZP0P&response_mode=form_post&nonce=639233518232869641.YmFhOGU1NWQtZWQ4NC00ODBkLWFhZDQtYTE2MTRiYmU5OTlmYTFhZGVkZTMtMzY4Ny00NTM2LTgzYzQtNmJkMTQxYmRmZTc2&x-client-SKU=ID_NET472&x-client-ver=6.9.0.0"
+    }
+  },
+  {
+    "target": "aiassistant.stage.vismaonline.com",
+    "ips": [
+      "calm-sea-0f0e6d203.5.azurestaticapps.net.",
+      "azurestaticapps5.trafficmanager.net.",
+      "msha-slice-5-eus2-0.msha-slice-5-eus2-0-ase.p.azurewebsites.net.",
+      "waws-prod-bn1-79ce3d91.sip.p.azurewebsites.windows.net.",
+      "20.75.112.13"
+    ],
+    "cname": "calm-sea-0f0e6d203.5.azurestaticapps.net.",
+    "status": "HTTP/2 200 ",
+    "interesting": {
+      "csp": true
+    }
+  },
+  {
+    "target": "api.workbox.dk",
+    "ips": [
+      "35.201.94.191"
+    ],
+    "cname": null,
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://developer.dinero.dk"
+    }
+  },
+  {
+    "target": "app.workbox.dk",
+    "ips": [
+      "35.201.94.191"
+    ],
+    "cname": null,
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://connect.identity.stagaws.visma.com/connect/authorize?client_id=dinero&redirect_uri=https%3A%2F%2Fapp.workbox.dk%2Fsignin-oidc&response_type=code%20id_token&scope=openid%20profile%20email%20roles&response_mode=form_post&nonce=639233518264988264.OWJmYmFiNDQtOTM1NS00ZDBmLTgzYmMtY2Y0NjI4MTc5OGYzOTkxMGY0NzMtOWUyMS00YjZjLThjNDgtZDg3YzM0NDMyOThl&state=CfDJ8IiuaGEVxBVJjTO5tUpz94Kb8iuADLtUzm4Lh8vsMv5SHcvbyMlSZwX4gtXr2enwWUQxPKj1i6Ay8KQ2pfOEuIlBKToL83Kf7u0xiBPHNAq8LV--Nb_4ONKT0-fZLJZWi8Y7gnTVZnuZ8smhyQQMwXWMOeLMoIjk_BLBvYEbdG3QcXTzrA9xyFtpArpNdBL8yGOM_FDCAOiYP095op2ADYnJnFlL3YXFSacywCLaLeSPeKNJ5vc2ZFm36NQujtEx8S2D_taghMtv7JPRadbhdiS6aJeqjfucuJolFgHNcLTJ&x-client-SKU=ID_NET10_0&x-client-ver=8.16.0.0"
+    }
+  },
+  {
+    "target": "authz.workbox.dk",
+    "ips": [
+      "35.201.94.191"
+    ],
+    "cname": null,
+    "status": "HTTP/2 200 ",
+    "interesting": {}
+  },
+  {
+    "target": "com.visma.blue",
+    "ips": [
+      "34.41.139.193"
+    ],
+    "cname": null,
+    "status": "HTTP/1.1 200 OK",
+    "interesting": {
+      "server": "nginx"
+    }
+  },
+  {
+    "target": "connect.identity.stagaws.visma.com",
+    "ips": [
+      "54.76.189.115",
+      "63.34.115.235",
+      "54.76.158.166"
+    ],
+    "cname": null,
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://home.stag.visma.com",
+      "csp": true
+    }
+  },
+  {
+    "target": "eaccounting.stage.vismaonline.com",
+    "ips": [
+      "vea-web-stage.trafficmanager.net.",
+      "app-vea-webcore-stage.azurewebsites.net.",
+      "waws-prod-am2-045.sip.azurewebsites.windows.net.",
+      "waws-prod-am2-045.westeurope.cloudapp.azure.com.",
+      "40.114.243.70"
+    ],
+    "cname": "vea-web-stage.trafficmanager.net.",
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "server": "Microsoft-IIS/10.0",
+      "location": "https://eaccounting.stage.vismaonline.com/Login?ReturnUrl=%2F"
+    }
+  },
+  {
+    "target": "eaccountingprinting.stage.vismaonline.com",
+    "ips": [
+      "NO_RESOLVE"
+    ],
+    "cname": null,
+    "status": "",
+    "interesting": {}
+  }
+]

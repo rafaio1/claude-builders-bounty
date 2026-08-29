@@ -1,0 +1,111 @@
+[
+  {
+    "asset": "*.swisspass.ch",
+    "type": "Wildcard",
+    "tier": "Tier 2",
+    "test_target": "www.swisspass.ch",
+    "dns_ips": [
+      "141.101.90.104",
+      "141.101.90.106",
+      "141.101.90.107",
+      "141.101.90.105"
+    ],
+    "cname": null,
+    "http_status": 405,
+    "server": "cloudflare",
+    "csp_present": false,
+    "interesting_headers": {},
+    "error": null
+  },
+  {
+    "asset": "www.sbb.ch",
+    "type": "Url",
+    "tier": "Tier 2",
+    "test_target": "www.sbb.ch",
+    "dns_ips": [
+      "18.64.174.41",
+      "18.64.174.65",
+      "18.64.174.24",
+      "18.64.174.87"
+    ],
+    "cname": null,
+    "http_status": 200,
+    "server": "none",
+    "csp_present": true,
+    "interesting_headers": {
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000",
+      "Referrer-Policy": "strict-origin-when-cross-origin"
+    },
+    "error": null
+  },
+  {
+    "asset": "*.sbb.ch",
+    "type": "Wildcard",
+    "tier": "Tier 3",
+    "test_target": "www.sbb.ch",
+    "dns_ips": [
+      "18.64.174.41",
+      "18.64.174.24",
+      "18.64.174.65",
+      "18.64.174.87"
+    ],
+    "cname": null,
+    "http_status": 200,
+    "server": "none",
+    "csp_present": true,
+    "interesting_headers": {
+      "X-Frame-Options": "SAMEORIGIN",
+      "X-Content-Type-Options": "nosniff",
+      "Strict-Transport-Security": "max-age=31536000",
+      "Referrer-Policy": "strict-origin-when-cross-origin"
+    },
+    "error": null
+  },
+  {
+    "asset": "www.elvetino.ch",
+    "type": "Url",
+    "tier": "Tier 3",
+    "test_target": "www.elvetino.ch",
+    "dns_ips": [
+      "193.203.120.135"
+    ],
+    "cname": null,
+    "http_status": 400,
+    "server": "Apache",
+    "csp_present": false,
+    "interesting_headers": {},
+    "error": null
+  },
+  {
+    "asset": "www.sbbcargo.com",
+    "type": "Url",
+    "tier": "Tier 3",
+    "test_target": "www.sbbcargo.com",
+    "dns_ips": [
+      "194.150.245.42"
+    ],
+    "cname": null,
+    "http_status": 400,
+    "server": "Apache",
+    "csp_present": false,
+    "interesting_headers": {},
+    "error": null
+  },
+  {
+    "asset": "www.transsicura.ch",
+    "type": "Url",
+    "tier": "Tier 3",
+    "test_target": "www.transsicura.ch",
+    "dns_ips": [
+      "193.203.120.159"
+    ],
+    "cname": null,
+    "http_status": 400,
+    "server": "Apache",
+    "csp_present": false,
+    "interesting_headers": {},
+    "error": null
+  }
+]

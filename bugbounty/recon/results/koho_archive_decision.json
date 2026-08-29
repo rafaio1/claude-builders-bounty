@@ -1,0 +1,18 @@
+{
+  "handle": "koho",
+  "program_id": "53499",
+  "decision": "ARCHIVED",
+  "reason": "Restricted scope requires explicit in-scope domain list from H1 Scope tab. Scope excerpt states: \"Please refer to the Scope tab for the domain assets in scope. Anything not listed as In Scope is considered out of scope and not permitted for testing.\" H1 API returns 401, cannot retrieve explicit asset list. Testing any koho.co/koho.ca domain without confirmed in-scope status violates policy rule 2 (unequivocal in-scope asset required). Same rationale as compass-bbp archive.",
+  "gates_failed": [
+    "scope_confirmation"
+  ],
+  "safe_harbor": "none",
+  "gold_standard": true,
+  "submission_state": "open",
+  "timestamp": "2026-08-26T18:59:35.452218Z",
+  "methodology": "offline_policy_review",
+  "next_candidates": [
+    "malwarebytes",
+    "nba-public"
+  ]
+}

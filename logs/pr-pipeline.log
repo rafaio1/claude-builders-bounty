@@ -1,0 +1,2815 @@
+Collecting PRs from GitHub GraphQL...
+Traceback (most recent call last):
+  File "/Agentic/scripts/sync_pr_inventory.py", line 197, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 171, in main
+    new_prs = collect_all_prs()
+              ^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 70, in collect_all_prs
+    data = gh_graphql_search(cursor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 59, in gh_graphql_search
+    raise RuntimeError(f"GraphQL failed: {result.stderr}")
+RuntimeError: GraphQL failed: To get started with GitHub CLI, please run:  gh auth login
+Alternatively, populate the GH_TOKEN environment variable with a GitHub API authentication token.
+
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1274,
+  "open": 442,
+  "closed_unmerged": 546,
+  "merged": 286,
+  "state_sum_validation": 1274,
+  "generated_at": "2026-08-26T17:50:35.884256+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1274,
+  "scanned": 1274,
+  "enriched_from_ledger": 51,
+  "enriched_from_queue": 0,
+  "unknown_no_signal": 612,
+  "tier_a": 0,
+  "tier_b": 590,
+  "tier_c_candidates": 72,
+  "skipped": 612,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=590, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1274,
+  "open": 442,
+  "closed_unmerged": 546,
+  "merged": 286,
+  "state_sum_validation": 1274,
+  "generated_at": "2026-08-26T17:51:31.727250+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1274,
+  "scanned": 1274,
+  "enriched_from_ledger": 51,
+  "enriched_from_queue": 0,
+  "unknown_no_signal": 612,
+  "tier_a": 0,
+  "tier_b": 590,
+  "tier_c_candidates": 72,
+  "skipped": 612,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=590, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1274,
+  "open": 442,
+  "closed_unmerged": 546,
+  "merged": 286,
+  "state_sum_validation": 1274,
+  "generated_at": "2026-08-26T18:07:46.928723+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1274,
+  "scanned": 1274,
+  "enriched_from_ledger": 52,
+  "enriched_from_queue": 0,
+  "unknown_no_signal": 607,
+  "tier_a": 5,
+  "tier_b": 590,
+  "tier_c_candidates": 72,
+  "skipped": 607,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=5, B=590, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1275,
+  "open": 443,
+  "closed_unmerged": 546,
+  "merged": 286,
+  "state_sum_validation": 1275,
+  "generated_at": "2026-08-26T19:12:41.538893+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1275,
+  "scanned": 1275,
+  "enriched_from_ledger": 60,
+  "enriched_from_queue": 0,
+  "unknown_no_signal": 607,
+  "tier_a": 7,
+  "tier_b": 588,
+  "tier_c_candidates": 73,
+  "skipped": 607,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=7, B=588, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1276,
+  "open": 443,
+  "closed_unmerged": 547,
+  "merged": 286,
+  "state_sum_validation": 1276,
+  "generated_at": "2026-08-26T20:14:15.377928+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1276,
+  "scanned": 1276,
+  "enriched_from_ledger": 79,
+  "enriched_from_queue": 0,
+  "unknown_no_signal": 555,
+  "tier_a": 57,
+  "tier_b": 591,
+  "tier_c_candidates": 73,
+  "skipped": 555,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=57, B=591, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1276,
+  "open": 441,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1276,
+  "generated_at": "2026-08-26T21:15:58.786321+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1276,
+  "scanned": 1276,
+  "enriched_from_ledger": 79,
+  "enriched_from_queue": 200,
+  "unknown_no_signal": 453,
+  "tier_a": 57,
+  "tier_b": 712,
+  "tier_c_candidates": 54,
+  "skipped": 453,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=57, B=712, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1276,
+  "open": 441,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1276,
+  "generated_at": "2026-08-26T22:19:37.455898+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/build_pr_revenue_queue.py", line 379, in <module>
+    sys.exit(build_queue())
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/build_pr_revenue_queue.py", line 295, in build_queue
+    ledger_idx = build_ledger_index(ledger)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/build_pr_revenue_queue.py", line 55, in build_ledger_index
+    reconciled = ledger.get("reconciled_bounties", None)
+                 ^^^^^^^^^^
+AttributeError: 'list' object has no attribute 'get'
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1276,
+  "open": 441,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1276,
+  "generated_at": "2026-08-26T23:24:35.904741+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1276,
+  "scanned": 1276,
+  "enriched_from_ledger": 5,
+  "enriched_from_queue": 320,
+  "unknown_no_signal": 420,
+  "tier_a": 0,
+  "tier_b": 819,
+  "tier_c_candidates": 37,
+  "skipped": 420,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=819, C=0
+/Agentic/.venv/bin/python: can't open file '/Agentic/scripts/sync_pr_inventory.py': [Errno 2] No such file or directory
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1279,
+  "open": 444,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1279,
+  "generated_at": "2026-08-27T01:35:04.252165+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1279,
+  "scanned": 1279,
+  "enriched_from_ledger": 77,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 39,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1279,
+  "open": 444,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1279,
+  "generated_at": "2026-08-27T02:34:56.753622+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1279,
+  "scanned": 1279,
+  "enriched_from_ledger": 77,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 39,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1279,
+  "open": 444,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1279,
+  "generated_at": "2026-08-27T03:38:53.751503+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1279,
+  "scanned": 1279,
+  "enriched_from_ledger": 77,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 39,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1280,
+  "open": 445,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1280,
+  "generated_at": "2026-08-27T04:42:42.557895+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1280,
+  "scanned": 1280,
+  "enriched_from_ledger": 78,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 40,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T05:44:47.455982+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T06:48:43.554281+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T07:53:12.154534+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T08:52:51.756011+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T09:54:01.752590+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T10:56:07.354303+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T11:56:53.556772+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T13:00:31.956019+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 447,
+  "closed_unmerged": 548,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T14:05:13.255000+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 13
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T15:09:03.956411+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T16:10:52.148604+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T17:13:34.958061+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T18:17:18.753151+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T19:18:17.755112+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 442,
+  "closed_unmerged": 553,
+  "merged": 287,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T20:22:15.854398+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 405,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 42,
+  "skipped": 405,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 440,
+  "closed_unmerged": 553,
+  "merged": 289,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T21:24:04.853919+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 406,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 41,
+  "skipped": 406,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 440,
+  "closed_unmerged": 553,
+  "merged": 289,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T22:27:06.151342+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 413,
+  "tier_a": 52,
+  "tier_b": 783,
+  "tier_c_candidates": 34,
+  "skipped": 413,
+  "saturated_repos": 12
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=783, C=0
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 440,
+  "closed_unmerged": 553,
+  "merged": 289,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-27T23:31:05.855523+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 438,
+  "closed_unmerged": 553,
+  "merged": 291,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-28T00:34:38.698426+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 438,
+  "closed_unmerged": 553,
+  "merged": 291,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-28T01:35:24.976697+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 438,
+  "closed_unmerged": 553,
+  "merged": 291,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-28T02:36:46.355893+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 438,
+  "closed_unmerged": 553,
+  "merged": 291,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-28T03:37:21.848366+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1282,
+  "open": 438,
+  "closed_unmerged": 553,
+  "merged": 291,
+  "state_sum_validation": 1282,
+  "generated_at": "2026-08-28T04:40:30.161756+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1282,
+  "scanned": 1282,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 373,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=373, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T05:40:57.461725+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T06:44:38.461157+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T07:47:29.150198+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T08:49:40.261693+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T09:52:32.565087+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T10:57:11.760736+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T11:59:30.245039+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T13:03:39.487726+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T14:08:25.722996+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T15:08:59.123927+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T16:13:14.586829+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T17:17:52.787829+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T18:22:33.049065+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 439,
+  "closed_unmerged": 555,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T19:24:40.748849+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 437,
+  "closed_unmerged": 557,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T20:25:37.357195+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 437,
+  "closed_unmerged": 557,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T21:29:30.606183+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 368,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 34,
+  "skipped": 368,
+  "saturated_repos": 12,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 422,
+  "closed_unmerged": 572,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T22:33:29.817687+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 373,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 29,
+  "skipped": 373,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 422,
+  "closed_unmerged": 572,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-28T23:37:22.044826+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 373,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 29,
+  "skipped": 373,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1285,
+  "open": 420,
+  "closed_unmerged": 574,
+  "merged": 291,
+  "state_sum_validation": 1285,
+  "generated_at": "2026-08-29T00:41:30.094641+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1285,
+  "scanned": 1285,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 375,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 27,
+  "skipped": 375,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1287,
+  "open": 422,
+  "closed_unmerged": 574,
+  "merged": 291,
+  "state_sum_validation": 1287,
+  "generated_at": "2026-08-29T01:42:37.310278+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1287,
+  "scanned": 1287,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 375,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 29,
+  "skipped": 375,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1287,
+  "open": 422,
+  "closed_unmerged": 574,
+  "merged": 291,
+  "state_sum_validation": 1287,
+  "generated_at": "2026-08-29T02:45:07.570233+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1287,
+  "scanned": 1287,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 375,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 29,
+  "skipped": 375,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1287,
+  "open": 421,
+  "closed_unmerged": 574,
+  "merged": 292,
+  "state_sum_validation": 1287,
+  "generated_at": "2026-08-29T03:47:17.886438+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1287,
+  "scanned": 1287,
+  "enriched_from_ledger": 80,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 376,
+  "tier_a": 52,
+  "tier_b": 376,
+  "tier_c_candidates": 28,
+  "skipped": 376,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=376, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1292,
+  "open": 426,
+  "closed_unmerged": 574,
+  "merged": 292,
+  "state_sum_validation": 1292,
+  "generated_at": "2026-08-29T04:48:18.165246+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1292,
+  "scanned": 1292,
+  "enriched_from_ledger": 85,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 377,
+  "tier_a": 52,
+  "tier_b": 379,
+  "tier_c_candidates": 29,
+  "skipped": 377,
+  "saturated_repos": 11,
+  "quarantined": 455,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=379, C=0, quarantined=455
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1299,
+  "open": 433,
+  "closed_unmerged": 574,
+  "merged": 292,
+  "state_sum_validation": 1299,
+  "generated_at": "2026-08-29T05:49:17.442490+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1299,
+  "scanned": 1299,
+  "enriched_from_ledger": 92,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 377,
+  "tier_a": 52,
+  "tier_b": 381,
+  "tier_c_candidates": 31,
+  "skipped": 377,
+  "saturated_repos": 11,
+  "quarantined": 458,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=381, C=0, quarantined=458
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1308,
+  "open": 442,
+  "closed_unmerged": 574,
+  "merged": 292,
+  "state_sum_validation": 1308,
+  "generated_at": "2026-08-29T06:49:31.196675+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1308,
+  "scanned": 1308,
+  "enriched_from_ledger": 99,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 377,
+  "tier_a": 52,
+  "tier_b": 384,
+  "tier_c_candidates": 33,
+  "skipped": 377,
+  "saturated_repos": 12,
+  "quarantined": 462,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=52, B=384, C=0, quarantined=462
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1317,
+  "open": 449,
+  "closed_unmerged": 576,
+  "merged": 292,
+  "state_sum_validation": 1317,
+  "generated_at": "2026-08-29T07:51:09.786304+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1317,
+  "scanned": 1317,
+  "enriched_from_ledger": 1,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 388,
+  "tier_a": 0,
+  "tier_b": 429,
+  "tier_c_candidates": 37,
+  "skipped": 388,
+  "saturated_repos": 13,
+  "quarantined": 463,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=429, C=0, quarantined=463
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1322,
+  "open": 454,
+  "closed_unmerged": 576,
+  "merged": 292,
+  "state_sum_validation": 1322,
+  "generated_at": "2026-08-29T08:51:55.572714+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1322,
+  "scanned": 1322,
+  "enriched_from_ledger": 5,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 388,
+  "tier_a": 0,
+  "tier_b": 429,
+  "tier_c_candidates": 41,
+  "skipped": 388,
+  "saturated_repos": 13,
+  "quarantined": 464,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=429, C=0, quarantined=464
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1330,
+  "open": 462,
+  "closed_unmerged": 576,
+  "merged": 292,
+  "state_sum_validation": 1330,
+  "generated_at": "2026-08-29T09:55:54.390623+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1330,
+  "scanned": 1330,
+  "enriched_from_ledger": 12,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 389,
+  "tier_a": 0,
+  "tier_b": 432,
+  "tier_c_candidates": 43,
+  "skipped": 389,
+  "saturated_repos": 13,
+  "quarantined": 466,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=432, C=0, quarantined=466
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1331,
+  "open": 463,
+  "closed_unmerged": 576,
+  "merged": 292,
+  "state_sum_validation": 1331,
+  "generated_at": "2026-08-29T10:59:23.365049+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1331,
+  "scanned": 1331,
+  "enriched_from_ledger": 13,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 389,
+  "tier_a": 0,
+  "tier_b": 433,
+  "tier_c_candidates": 43,
+  "skipped": 389,
+  "saturated_repos": 13,
+  "quarantined": 466,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=433, C=0, quarantined=466
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1331,
+  "open": 463,
+  "closed_unmerged": 576,
+  "merged": 292,
+  "state_sum_validation": 1331,
+  "generated_at": "2026-08-29T12:03:29.345083+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1331,
+  "scanned": 1331,
+  "enriched_from_ledger": 13,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 389,
+  "tier_a": 0,
+  "tier_b": 433,
+  "tier_c_candidates": 43,
+  "skipped": 389,
+  "saturated_repos": 13,
+  "quarantined": 466,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=433, C=0, quarantined=466
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1335,
+  "open": 466,
+  "closed_unmerged": 577,
+  "merged": 292,
+  "state_sum_validation": 1335,
+  "generated_at": "2026-08-29T13:06:01.766006+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1335,
+  "scanned": 1335,
+  "enriched_from_ledger": 14,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 389,
+  "tier_a": 0,
+  "tier_b": 433,
+  "tier_c_candidates": 43,
+  "skipped": 389,
+  "saturated_repos": 13,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=433, C=0, quarantined=470
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1345,
+  "open": 476,
+  "closed_unmerged": 577,
+  "merged": 292,
+  "state_sum_validation": 1345,
+  "generated_at": "2026-08-29T14:06:23.097390+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1345,
+  "scanned": 1345,
+  "enriched_from_ledger": 21,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 392,
+  "tier_a": 0,
+  "tier_b": 437,
+  "tier_c_candidates": 46,
+  "skipped": 392,
+  "saturated_repos": 13,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=437, C=0, quarantined=470
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1350,
+  "open": 481,
+  "closed_unmerged": 577,
+  "merged": 292,
+  "state_sum_validation": 1350,
+  "generated_at": "2026-08-29T15:07:30.529828+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1350,
+  "scanned": 1350,
+  "enriched_from_ledger": 24,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 392,
+  "tier_a": 0,
+  "tier_b": 441,
+  "tier_c_candidates": 47,
+  "skipped": 392,
+  "saturated_repos": 13,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=441, C=0, quarantined=470
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1350,
+  "open": 480,
+  "closed_unmerged": 577,
+  "merged": 293,
+  "state_sum_validation": 1350,
+  "generated_at": "2026-08-29T16:09:28.153968+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1350,
+  "scanned": 1350,
+  "enriched_from_ledger": 24,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 392,
+  "tier_a": 0,
+  "tier_b": 441,
+  "tier_c_candidates": 47,
+  "skipped": 392,
+  "saturated_repos": 13,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=441, C=0, quarantined=470
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Traceback (most recent call last):
+  File "/Agentic/scripts/sync_pr_inventory.py", line 199, in <module>
+    sys.exit(main())
+             ^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 173, in main
+    new_prs = collect_all_prs()
+              ^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 71, in collect_all_prs
+    data = gh_graphql_search(cursor)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/sync_pr_inventory.py", line 60, in gh_graphql_search
+    raise RuntimeError(f"GraphQL failed: {result.stderr}")
+RuntimeError: GraphQL failed: gh: We couldn't respond to your request in time. Sorry about that. Please try resubmitting your request and contact us if the problem persists. (HTTP 504)
+
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1359,
+  "open": 489,
+  "closed_unmerged": 577,
+  "merged": 293,
+  "state_sum_validation": 1359,
+  "generated_at": "2026-08-29T18:10:49.050951+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1359,
+  "scanned": 1359,
+  "enriched_from_ledger": 26,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 392,
+  "tier_a": 0,
+  "tier_b": 448,
+  "tier_c_candidates": 49,
+  "skipped": 392,
+  "saturated_repos": 14,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=448, C=0, quarantined=470
+Collecting PRs from GitHub GraphQL...
+Page 1: fetched 100 PRs (total so far: 100)
+Page 2: fetched 100 PRs (total so far: 200)
+Page 3: fetched 100 PRs (total so far: 300)
+Page 4: fetched 100 PRs (total so far: 400)
+Page 5: fetched 100 PRs (total so far: 500)
+Page 6: fetched 100 PRs (total so far: 600)
+Page 7: fetched 100 PRs (total so far: 700)
+Page 8: fetched 100 PRs (total so far: 800)
+Page 9: fetched 100 PRs (total so far: 900)
+Page 10: fetched 100 PRs (total so far: 1000)
+Merging with existing inventory...
+Enforcing schema v2.0...
+{
+  "total_prs": 1363,
+  "open": 485,
+  "closed_unmerged": 580,
+  "merged": 298,
+  "state_sum_validation": 1363,
+  "generated_at": "2026-08-29T19:11:18.000414+00:00"
+}
+
+Inventory saved to data/aro/github_pr_inventory.json
+{
+  "total_prs": 1363,
+  "scanned": 1363,
+  "enriched_from_ledger": 28,
+  "enriched_from_queue": 325,
+  "unknown_no_signal": 392,
+  "tier_a": 0,
+  "tier_b": 452,
+  "tier_c_candidates": 49,
+  "skipped": 392,
+  "saturated_repos": 14,
+  "quarantined": 470,
+  "quarantined_monetizable_usd": 0.0
+}
+
+Queue saved to data/aro/pr_revenue_queue.json
+Tiers: A=0, B=452, C=0, quarantined=470

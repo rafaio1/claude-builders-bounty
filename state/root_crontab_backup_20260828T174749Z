@@ -1,0 +1,18 @@
+*/15 * * * * cd /Agentic && python3 scripts/bounty_monitor.py >> logs/bounty/monitor.log 2>&1
+0 3 * * * cd /Agentic && python3 scripts/memory_expunge.py >> logs/expunge.log 2>&1
+*/15 * * * * /Agentic/scripts/cron_revenue_suite.sh >> /Agentic/logs/cron_revenue.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/gitcoin_grant_drafter.py >> /Agentic/logs/gitcoin_grant_drafter.log 2>&1
+0 */4 * * * python3 /Agentic/scripts/testnet_airdrop_executor.py >> /Agentic/logs/testnet_airdrop_executor.log 2>&1
+0 */12 * * * python3 /Agentic/scripts/bug_bounty_platform_expander.py >> /Agentic/logs/bug_bounty_platform_expander.log 2>&1
+*/10 * * * * python3 /Agentic/scripts/payout_reconciliation_monitor.py >> /Agentic/logs/payout_reconciliation.log 2>&1
+0 */8 * * * python3 /Agentic/scripts/algora_bounty_scanner.py >> /Agentic/logs/algora_bounty_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/immunefi_vault_scanner.py >> /Agentic/logs/immunefi_vault_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/code4rena_contest_scanner.py >> /Agentic/logs/code4rena_contest_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/sherlock_audit_scanner.py >> /Agentic/logs/sherlock_audit_scanner.log 2>&1
+0 */8 * * * python3 /Agentic/scripts/hats_protocol_scanner.py >> /Agentic/logs/hats_protocol_scanner.log 2>&1
+0 */4 * * * python3 /Agentic/scripts/layer3_quest_executor.py >> /Agentic/logs/layer3_quest_executor.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/rabbithole_campaign_scanner.py >> /Agentic/logs/rabbithole_campaign_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/zealy_campaign_scanner.py >> /Agentic/logs/zealy_campaign_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/galxe_campaign_scanner.py >> /Agentic/logs/galxe_campaign_scanner.log 2>&1
+0 */6 * * * python3 /Agentic/scripts/intract_campaign_scanner.py >> /Agentic/logs/intract_campaign_scanner.log 2>&1
+0 */2 * * * python3 /Agentic/scripts/quest_auto_executor.py >> /Agentic/logs/quest_auto_executor.log 2>&1

@@ -1,0 +1,74 @@
+{
+  "title": "CORS Misconfiguration on api.monzo.com and internal-api.monzo.com reflects arbitrary Origin with Access-Control-Allow-Credentials: true",
+  "platform": "Intigriti",
+  "program": "monzopublicbugbountyprogram",
+  "severity_estimate": "High",
+  "cvss_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:H/I:N/A:N",
+  "assets": [
+    "api.monzo.com",
+    "internal-api.monzo.com"
+  ],
+  "scope_confirmed": true,
+  "evidence": {
+    "description": "Both api.monzo.com and internal-api.monzo.com reflect any arbitrary Origin header in Access-Control-Allow-Origin response header while simultaneously setting Access-Control-Allow-Credentials: true. No Vary: Origin header is present. This applies to all tested endpoints including authenticated ones (/accounts returns 401 with reflected CORS, /balance returns 400 with reflected CORS). Null origin is also reflected.",
+    "affected_endpoints": [
+      "/ping",
+      "/accounts",
+      "/balance",
+      "/transactions",
+      "/"
+    ],
+    "reflection_behavior": {
+      "arbitrary_origin": "Reflected with ACAC:true",
+      "null_origin": "Reflected as ACAO:null with ACAC:true",
+      "vary_header": "Absent (no Vary: Origin)",
+      "cache_control": "Absent on most endpoints"
+    },
+    "infrastructure": {
+      "dns_cname_internal_api": "a0e88012cb437ad49.awsglobalaccelerator.com",
+      "server_header": "awselb/2.0 (on .env block), AWS Global Accelerator",
+      "host_header_reflection": "Root endpoint reflects Host header value into JSON body"
+    }
+  },
+  "exploitability_assessment": {
+    "confirmed": true,
+    "attack_scenario": "Attacker-controlled website can make credentialed cross-origin requests to api.monzo.com. If a victim visits the attacker site while logged into Monzo, the browser will send session cookies due to ACAC:true. The reflected ACAO allows the attacker JS to read responses from authenticated endpoints that return user data.",
+    "limitations": [
+      "Exploitability depends on whether api.monzo.com uses cookie-based auth vs Bearer tokens only",
+      "OAuth public client credentials in env.js are explicitly out of scope per Monzo comments",
+      "Need to verify if any authenticated GET endpoint returns PII/financial data accessible via browser session"
+    ],
+    "dedup_status": "PENDING_PORTAL_CHECK",
+    "false_positive_risk": "Medium - Monzo may use token-only auth making cookie-based CORS exploitation non-viable"
+  },
+  "next_steps": [
+    "Check Intigriti portal for existing CORS reports on Monzo",
+    "Verify authentication mechanism (cookie vs bearer-only) on api.monzo.com",
+    "If exploitable, draft report with PoC HTML page",
+    "HUMAN APPROVAL REQUIRED before submission"
+  ],
+  "timestamp": "2026-08-26T18:05:00Z",
+  "researcher": "rafaio",
+  "dedup_checked": false,
+  "dedup_method": "API_UNAVAILABLE",
+  "dedup_notes": "Intigriti Researcher API v1 has no submission/search endpoint. Portal login required for manual dedup but credentials not available in headless session.",
+  "exploitability": "LOW_TO_INFORMATIONAL",
+  "exploitability_rationale": "CORS misconfiguration confirmed on internal-api.monzo.com (reflects arbitrary Origin + ACAC:true). However: (1) api.monzo.com does NOT reflect CORS headers at all (Cloudflare strips or never sets them). (2) internal-api.monzo.com sets NO cookies whatsoever - not even __cf_bm. (3) auth.monzo.com only sets __monzo_locale_v1__ (preference) and __cf_bm (bot management), neither is a session cookie. (4) Monzo API uses OAuth2 Bearer tokens per public docs; browsers do not send Authorization headers cross-origin even with credentials:true. (5) Without cookie-based session auth on the vulnerable host, cross-origin credentialed requests cannot exfiltrate user data. Finding is technically valid CORS misconfiguration but lacks exploitability path for data theft.",
+  "auth_model": "BEARER_ONLY",
+  "auth_model_evidence": {
+    "api_monzo_com_cookies": "NONE",
+    "internal_api_monzo_com_cookies": "NONE",
+    "auth_monzo_com_cookies": [
+      "__monzo_locale_v1__ (preference)",
+      "__cf_bm (bot management)"
+    ],
+    "cors_on_api_monzo_com": "ABSENT (not reflected)",
+    "cors_on_internal_api_monzo_com": "REFLECTED (arbitrary origin + ACAC:true)",
+    "null_origin_reflected": true,
+    "session_cookie_found": false
+  },
+  "severity_revised": "Low / Informational",
+  "recommendation": "DO_NOT_SUBMIT unless cookie-based auth discovered. Misconfiguration is real but not exploitable for account takeover or data exfiltration under current auth model. Monitor for changes to session handling.",
+  "validation_timestamp": "2026-08-26T18:07:00Z",
+  "validated_by": "claude-opus-5"
+}

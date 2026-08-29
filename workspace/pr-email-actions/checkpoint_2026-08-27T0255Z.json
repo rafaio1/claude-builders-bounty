@@ -1,0 +1,17 @@
+{
+  "timestamp": "2026-08-27T02:55:00Z",
+  "cycle": "email_scan + delta_check",
+  "ledger_items": 589,
+  "prs_checked": 50,
+  "active_prs": 6,
+  "new_comments_since_last": 0,
+  "email_scan_note": "Gmail search timed out after 120s; 0 new emails processed. Ledger stable at 589.",
+  "priority_queue": {
+    "P0_FuZoe_PD-Hunter_27": "NOT_IN_OPEN_LIST (merged/closed or filtered)",
+    "P1_ligate-io_ligate-chain_567": "OPEN, CLAAssistant FAILURE (no new comments, escalation trigger 2026-08-28T16:19Z not reached)",
+    "P2_SecureBananaLabs_relayhop": "Awaiting payment confirmation (no change)",
+    "P3_Vercel_Auth_Failures": "Lilly-Protocol #151/#152/#154/#155, OphirPay #228, bitcoin-apps-suite #63 with Vercel team auth failures (no agent action possible)",
+    "P4_Mergeable": "CALLE-AI #241, credfeto #420, OphirPay #225 awaiting human triage"
+  },
+  "notes": "Email scan hit Gmail timeout but ledger intact. Delta check found 6 PRs with failing checks (all Vercel auth related), zero new comments. No deterministic actions required. Entering checkpoint wait."
+}

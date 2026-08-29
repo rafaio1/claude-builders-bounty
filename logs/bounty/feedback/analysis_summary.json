@@ -1,0 +1,72 @@
+{
+  "total_reports": 9,
+  "states": {
+    "duplicate": 6,
+    "informative": 3
+  },
+  "programs": {
+    "coinbase": 4,
+    "klarna": 1,
+    "spotify": 1,
+    "gocardless_bbp": 1,
+    "airtable": 1,
+    "wolt": 1
+  },
+  "lessons": [
+    {
+      "type": "duplicate",
+      "program": "coinbase",
+      "title_snippet": "CORS credential theft on fp.coinbase.com due to arbitrary Origin reflection with",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing coinbase reports for similar vector before submission"
+    },
+    {
+      "type": "duplicate",
+      "program": "coinbase",
+      "title_snippet": "Arquivo de configuracao exposto",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing coinbase reports for similar vector before submission"
+    },
+    {
+      "type": "duplicate",
+      "program": "coinbase",
+      "title_snippet": "Arquivo de configuracao exposto",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing coinbase reports for similar vector before submission"
+    },
+    {
+      "type": "duplicate",
+      "program": "coinbase",
+      "title_snippet": "CORS vulneravel a trusted suffix bypass",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing coinbase reports for similar vector before submission"
+    },
+    {
+      "type": "informative",
+      "program": "klarna",
+      "title_snippet": "Sinal forte de SQL Injection",
+      "actionable_rule": "IMPACT_VALIDATION: klarna requires demonstrable security impact, not just theoretical/config issues"
+    },
+    {
+      "type": "informative",
+      "program": "spotify",
+      "title_snippet": "Host Header Injection on api-partner.spotify.com leads to password reset poisoni",
+      "actionable_rule": "IMPACT_VALIDATION: spotify requires demonstrable security impact, not just theoretical/config issues"
+    },
+    {
+      "type": "informative",
+      "program": "gocardless_bbp",
+      "title_snippet": "[CVE-2026-66066] Logo upload accepts JPEG-magic-prefixed files, confirming Activ",
+      "actionable_rule": "IMPACT_VALIDATION: gocardless_bbp requires demonstrable security impact, not just theoretical/config issues"
+    },
+    {
+      "type": "duplicate",
+      "program": "airtable",
+      "title_snippet": "airtable.js find() path injection can turn an attacker-controlled recordId into ",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing airtable reports for similar vector before submission"
+    },
+    {
+      "type": "duplicate",
+      "program": "wolt",
+      "title_snippet": "Unauthenticated Mass Corporate Lead Creation / Account Pre-registration via Miss",
+      "actionable_rule": "DEDUPE_REQUIRED: Search existing wolt reports for similar vector before submission"
+    }
+  ],
+  "rules_generated": []
+}

@@ -1,0 +1,145 @@
+{
+  "id": "0d585f25-b705-4141-a961-66d6ade8942e",
+  "handle": "simscale",
+  "name": "SimScale",
+  "following": false,
+  "confidentialityLevel": {
+    "id": 4,
+    "value": "Public"
+  },
+  "status": {
+    "id": 3,
+    "value": "Open"
+  },
+  "type": {
+    "id": 1,
+    "value": "Bug Bounty"
+  },
+  "domains": {
+    "id": "9974a9e0-0556-403f-9282-c014f700113a",
+    "createdAt": 1751363897,
+    "content": [
+      {
+        "id": "497bb32d-8eaf-4482-8aea-0a7bfacbe1ad",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "SimScale API",
+        "tier": {
+          "id": 3,
+          "value": "Tier 2"
+        },
+        "description": "API URL: `https://api.simscale.com`\n\nThe API doc is available at https://api.simscale.com.\n\nAPI keys can be managed in the [API keys page](https://www.simscale.com/dashboard/api_keys).\n",
+        "requiredSkills": [
+          {
+            "id": "api",
+            "name": "API"
+          }
+        ]
+      },
+      {
+        "id": "1a99c8fa-4ef1-4099-942a-95d9a7abc702",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "SimScale Platform",
+        "tier": {
+          "id": 3,
+          "value": "Tier 2"
+        },
+        "description": "The following areas and paths under domain `https://www.simscale.com`:\n\n#### User Account & Security\nIncludes all aspects of user accounts, including signup, login, password management, API keys, and session handling.\n\nPaths: `/signup/*`, `/signin/*`, `/dashboard/profile`, `/dashboard/security`, `/dashboard/api_keys`\n\n* [User registration](https://www.simscale.com/signup/) and following onboarding\n* [Login](https://www.simscale.com/signin/)\n* [Password reset](https://www.simscale.com/signin/forgot-password/)\n* [Change password](https://www.simscale.com/dashboard/security) (login required)\n* [API key management](https://www.simscale.com/dashboard/api_keys/) (login required)\n\n\n#### Dashboard \n\nCentral space for project and permission management.\n\nPaths:  `/dashboard/*`\n\n* [Dashboard](https://www.simscale.com/dashboard/) (login required).\n\n\n#### Workbench\n\nCovers the complete simulation workflow, including CAD import and editing, meshing, simulation setup and execution, and post-processing.\n\nPaths: `/workbench/*`\n\n* [Workbench](https://www.simscale.com/workbench/?pid=1765004443902609189) (login required), opens a public project in view-only mode.\n\n\n#### Public project library\n\nPaths: `/projects/*`\n\n* [Public projects](https://www.simscale.com/projects/)\n* [Detail page of a public project](https://www.simscale.com/projects/simscale/tutorial-_pipe_junction_flow/)\n\n\n#### Related API endpoints\n\nAll API endpoints used by the areas listed above.\n\nPaths: `/api/*`, `/csm/*`, `/postprocessing/*`",
+        "requiredSkills": [
+          {
+            "id": "api",
+            "name": "API"
+          },
+          {
+            "id": "web_hacking",
+            "name": "Web Hacking"
+          },
+          {
+            "id": "cloud_hacking",
+            "name": "Cloud Hacking"
+          }
+        ]
+      },
+      {
+        "id": "b6617f89-7212-4c70-86e8-89532e7aa9a8",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "SimScale Forum",
+        "tier": {
+          "id": 1,
+          "value": "No Bounty"
+        },
+        "description": "Everything below https://www.simscale.com/forum/\n",
+        "requiredSkills": []
+      },
+      {
+        "id": "139b8238-9e70-48ae-a9c8-ecd8951306a4",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "SimScale Website",
+        "tier": {
+          "id": 1,
+          "value": "No Bounty"
+        },
+        "description": "Domain https://www.simscale.com and the remaining paths not listed under SimScale Platform or SimScale Forum.\n\n* [Landing page](https://www.simscale.com/)\n* [Documentation](https://www.simscale.com/docs/)\n* [Blog](https://www.simscale.com/blog/)\n",
+        "requiredSkills": []
+      },
+      {
+        "id": "13845b03-bee5-440f-9d73-039f940a002f",
+        "type": {
+          "id": 7,
+          "value": "Wildcard"
+        },
+        "endpoint": "https://www.simscale.com/api/v1/projects/*",
+        "tier": {
+          "id": 5,
+          "value": "Out Of Scope"
+        },
+        "description": null,
+        "requiredSkills": []
+      },
+      {
+        "id": "343cb9d0-db9f-465b-8cc3-f4cc1ea6ed33",
+        "type": {
+          "id": 7,
+          "value": "Wildcard"
+        },
+        "endpoint": "www.simscale.com/forum/users/*.json",
+        "tier": {
+          "id": 5,
+          "value": "Out Of Scope"
+        },
+        "description": null,
+        "requiredSkills": []
+      }
+    ]
+  },
+  "rulesOfEngagement": {
+    "attachments": [],
+    "id": "058ec4b7-15d3-4d3b-9cae-226205661b74",
+    "createdAt": 1772063508,
+    "content": {
+      "description": "\n#### By participating in this program, you agree to:\n\n* Respect the [Community Code of Conduct](https://go.intigriti.com/coc)\n* Respect the Intigriti [Terms and Conditions](https://go.intigriti.com/tac)\n* Respect the scope of the program\n* Not discuss or disclose vulnerability information without prior written consent (including PoC's on YouTube and Vimeo)\n* Current and former SimScale employees and contractors are not permitted to participate in this program.\n\n#### Infrastructure notes\n\n* We are hosting at AWS, so please take into account their penetration testing policy which you can find at https://aws.amazon.com/security/penetration-testing/\n* We integrate 3rd-party closed-source software. Please be aware that we won't be able to fix all bugs internally but depend on other vendors.\n* We provide compute resources, storage, and data transfer to our users. Please avoid excessive consumption of those resources.\n* Please avoid creation of too many public projects and forum posts, or delete them after testing.\n\n#### Our promise to you:\n\n* We are happy to respond to any questions, please use the button in the right top corner for this.\n* We will respond to reports within 2-3 days.\n\n",
+      "testingRequirements": {
+        "intigritiMe": true,
+        "automatedTooling": 2,
+        "userAgent": "",
+        "requestHeader": ""
+      },
+      "safeHarbour": true
+    }
+  },
+  "webLinks": {
+    "detail": "https://app.intigriti.com/auth/dashboard?redirect=/programs/simscale/simscale/detail"
+  },
+  "industry": "Manufacturing - Consumer"
+}

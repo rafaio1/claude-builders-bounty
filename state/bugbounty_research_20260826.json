@@ -1,0 +1,30 @@
+{
+  "process": "bugbounty_platform_revalidation",
+  "research_type": "autonomous_pre_pilot_checks",
+  "completed_at": "2026-08-26T03:19:15.735118+00:00",
+  "checks_completed": [
+    "scope_verification",
+    "payout_history"
+  ],
+  "findings": {
+    "scope_verification": {
+      "hackerone": "Public programs visible without auth; scope defined in policy pages",
+      "intigriti": "Program scopes public; requires account for submission",
+      "bugcrowd": "Public program list available; detailed scope requires login",
+      "yeswehack": "Public programs listed; scope verification needs authenticated session"
+    },
+    "payout_history": {
+      "hackerone": "Average first response 3-7 days; payout 1-4 weeks post-triage; min $50",
+      "intigriti": "Response 2-5 days; payout within 30 days of validation; EUR/USD",
+      "bugcrowd": "Response varies by program; payout 2-6 weeks; PayPal/bank",
+      "reliability_notes": "All major platforms have verified payment track records; delays typically in triage not payment"
+    }
+  },
+  "capital_wise_compliance": "Research only; no token usage or submission performed",
+  "next_steps_blocked_on_human": [
+    "Regenerate API tokens for HackerOne/Intigriti",
+    "Verify country eligibility for target programs",
+    "Review current program scopes for automation-friendly targets",
+    "Submit findings through authenticated channels"
+  ]
+}

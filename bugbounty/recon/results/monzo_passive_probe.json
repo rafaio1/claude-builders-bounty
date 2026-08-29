@@ -1,0 +1,485 @@
+[
+  {
+    "host": "api.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 44,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "content_type": "text/plain",
+        "server": "cloudflare",
+        "body_len": 26,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 403,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "internal-api.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 53,
+        "interesting": true
+      },
+      {
+        "path": "/api/",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "content_type": "text/plain",
+        "server": "?",
+        "body_len": 26,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 403,
+        "content_type": "text/html",
+        "server": "awselb/2.0",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 404,
+        "content_type": "application/json",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "developers.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "content_type": "text/plain",
+        "server": "cloudflare",
+        "body_len": 24,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 200,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 701,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "auth.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 2048,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "content_type": "text/plain; charset=UTF-8",
+        "server": "cloudflare",
+        "body_len": 35,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 403,
+        "content_type": "text/html",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "cloudflare",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "business.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 200,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 2048,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 200,
+        "content_type": "text/plain; charset=UTF-8",
+        "server": "?",
+        "body_len": 23,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 403,
+        "content_type": "text/html",
+        "server": "awselb/2.0",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 404,
+        "content_type": "text/html; charset=utf-8",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "fincrime-signals.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": "ERR:SSLError",
+        "content_type": "?",
+        "server": "?",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  },
+  {
+    "host": "law-enforcement.monzo.com",
+    "paths": [
+      {
+        "path": "/",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/v1/",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/graphql",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.well-known/security.txt",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/robots.txt",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/.env",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      },
+      {
+        "path": "/api/v1",
+        "status": 403,
+        "content_type": "application/xml",
+        "server": "AmazonS3",
+        "body_len": 0,
+        "interesting": false
+      }
+    ]
+  }
+]

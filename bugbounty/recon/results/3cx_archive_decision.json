@@ -1,0 +1,16 @@
+{
+  "handle": "3cx",
+  "platform": "hackerone",
+  "decision": "ARCHIVE_PIVOT",
+  "reason": "Scope focuses on 3CX Phone System V20 software components (on-premise/SMB/hosted). Public portal (portal.3cx.com) is Angular SPA with only GTM script, no API endpoints or version info exposed. Software testing requires installed instances - not feasible via passive web recon. Fail-closed.",
+  "recon_summary": {
+    "portal_status": 200,
+    "portal_size": 56312,
+    "js_bundles_found": 1,
+    "api_endpoints_found": 0,
+    "versions_found": 0,
+    "exploitable_surface": "NONE"
+  },
+  "archived_at": "2026-08-26T14:05:00Z",
+  "next_target": "bumba_bbp"
+}

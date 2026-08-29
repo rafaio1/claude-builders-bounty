@@ -1,0 +1,31 @@
+{
+  "handle": "bumba_bbp",
+  "id": "83156",
+  "decision": "ARCHIVE",
+  "timestamp": "2026-08-26T18:54:34Z",
+  "rationale": "Passive recon completed. Primary domain bumba.global behind Cloudflare. 6 subdomains resolved (www/api/admin/dev/staging/status). API endpoints return 404. Admin/dev return 403. Staging returns 503. Status returns 530. www serves Next.js app with auth keywords but JS bundle analysis found zero API URLs, zero GraphQL/Swagger indicators, zero secret patterns. External services: freshdesk, secureframetrust, social media. No exploitable attack surface identified via passive means.",
+  "recon_summary": {
+    "dns_records": {
+      "A": 3,
+      "MX": 1,
+      "NS": 2,
+      "TXT": 6
+    },
+    "subdomains_found": 6,
+    "http_probes": {
+      "api.bumba.global": "404",
+      "admin.bumba.global": "403",
+      "dev.bumba.global": "403",
+      "staging.bumba.global": "503",
+      "status.bumba.global": "530",
+      "www.bumba.global": "200 (Next.js)"
+    },
+    "js_bundles_analyzed": 3,
+    "api_endpoints_in_js": 0,
+    "graphql_detected": false,
+    "swagger_detected": false,
+    "secret_patterns_found": 0
+  },
+  "fail_closed_reason": "No API surface, no auth flow misconfigurations, no exposed secrets in client-side code. Testing would require authenticated access or active probing beyond passive scope.",
+  "next_candidate": "coinbase"
+}

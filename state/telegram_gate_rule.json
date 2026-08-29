@@ -1,0 +1,28 @@
+{
+  "rule": "TELEGRAM_GATE",
+  "version": 1,
+  "enforced_at": "2026-08-26T03:07:19.573724+00:00",
+  "policy": "Telegram notifications are EXCLUSIVELY for realized and reconciled capital.",
+  "required_fields": [
+    "net_value_after_fees",
+    "currency",
+    "process_id",
+    "external_reference",
+    "idempotency_key"
+  ],
+  "suppressed_triggers": [
+    "activity",
+    "progress",
+    "scan",
+    "waiting",
+    "paper_trading",
+    "testnet",
+    "backtest",
+    "opportunity",
+    "potential",
+    "pr_submitted",
+    "unrealized_balance"
+  ],
+  "routing": "Use central emitter only after INTEGRADOR gate confirms payment_verified=True and reconciliation complete.",
+  "fail_mode": "closed"
+}

@@ -1,0 +1,9 @@
+{
+  "handle": "x",
+  "decision": "ARCHIVE_NO_FINDING",
+  "reason": "Passive recon on grok.com, x.ai, console.x.com, chat.x.com, accounts.x.ai found no exposed debug endpoints, env leaks, or misconfiguration signals. Console and chat return 200 but with standard cloudflare envoy headers and no actionable vulnerability indicators. Grok/x.ai/accounts return 403 (CF challenge). No submission warranted.",
+  "timestamp": "2026-08-26T20:00:00Z",
+  "recon_files": [
+    "x_passive.json"
+  ]
+}

@@ -1,0 +1,93 @@
+{
+  "program_handle": "intel",
+  "program_name": "Intel\u00ae",
+  "platform": "intigriti",
+  "max_bounty": {
+    "value": 100000.0,
+    "currency": "USD"
+  },
+  "phase": "draft_report_ready_for_human_gate",
+  "status": "awaiting_human_approval",
+  "submission_ready": false,
+  "findings": [
+    {
+      "id": "INTEL-SGX-SYMLINK-REVERT-2026",
+      "title": "Regression: Symlink Protections Reverted in SGX SDK/DCAP Enables Arbitrary File Read/Write and Library Injection",
+      "severity_estimate": "Medium-High",
+      "cvss_vector_estimate": "CVSS:3.1/AV:L/AC:L/PR:L/UI:N/S:U/C:H/I:H/A:N",
+      "status": "CONFIRMED_REGRESSION",
+      "affected_components": [
+        {"file": "external/dcap_source/QuoteGeneration/qcnl/inc/local_cache.h", "line": 402, "issue": "mkdir(cache_dir, 0777) - world-writable cache creation"},
+        {"file": "external/dcap_source/QuoteGeneration/qcnl/inc/local_cache.h", "line": 195, "issue": "ofstream(file_name) - symlink-following cache write"},
+        {"file": "external/dcap_source/QuoteGeneration/qcnl/inc/local_cache.h", "line": 159, "issue": "ifstream(file_name) - symlink-following cache read"},
+        {"file": "external/dcap_source/QuoteGeneration/quote_wrapper/quote/qe_logic.cpp", "line": 248, "issue": "dlopen(qpl_path) - arbitrary library load via public API sgx_ql_set_path"},
+        {"file": "sdk/sdk/protected_fs/sgx_uprotected_fs/sgx_uprotected_fs.cpp", "line": 92, "issue": "open(filename, O_CREAT|O_RDWR, 0666) - bypasses protected FS isolation"},
+        {"file": "psw/ae/aesm_service/source/oal/linux/aesm_util.cpp", "line": 106, "issue": "fopen(full_path, wb/rb) - AESM persistent storage symlink follow"}
+      ],
+      "revert_commits": {
+        "main_repo": {"hash": "6eb2ce2514625e5f99c284932d76300ced2c8f90", "date": "2026-06-16T16:20:48+02:00", "author": "Maciej Bialaszewski <maciej.bialaszewski@intel.com>"},
+        "sdk_submodule": {"hash": "8a54d4188865314e8eedb9938954653ae12e8b1c", "date": "2026-06-16T16:20:48+02:00", "author": "Maciej Bialaszewski <maciej.bialaszewski@intel.com>"},
+        "dcap_submodule": {"hash": "44ad491f97d4940425bc54f5968790a99173d4c5", "date": "2026-06-16T16:35:20+02:00", "author": "Maciej Bialaszewski <maciej.bialaszewski@intel.com>"}
+      },
+      "original_protection_commit": "67be52a",
+      "mitigation_check": "ZERO mitigations (O_NOFOLLOW, openat2, RESOLVE_NO_SYMLINKS, safe_open) found in HEAD or any branch post-revert",
+      "scope_verification": "IN SCOPE - Software (Tier 3) / Firmware (Tier 2). IT Infrastructure explicitly excluded.",
+      "poc_concept": "Non-destructive: Place symlink in user-writable QCNL cache dir (~/.dcap-qcnl/) pointing to sensitive file → next cache operation reads/writes target. For QPL: call sgx_ql_set_path() with attacker-controlled path → dlopen loads arbitrary .so at quote generation time.",
+      "aggravating_factors": ["World-writable cache dir (0777) lowers multi-user exploitation barrier", "QPL path settable via public exported API from untrusted app context", "Protected FS mode 0666 combined with symlink follow defeats isolation guarantee"],
+      "human_gate_passed": false
+    }
+  ],
+  "recon_started": "2026-08-26T17:35:00Z",
+  "notes": "Pivoted from NVIDIA. Intel program uses UUID-based API. Tier 1 is Hardware only. Max bounty 100k USD. Requires physical/emulated testbed for SGX/TDX/ME research.",
+  "scope_analysis": {
+    "total_targets": 5,
+    "tier_1_targets": [
+      "Hardware"
+    ],
+    "tier_2_targets": [
+      "Firmware"
+    ],
+    "tier_3_targets": [
+      "Software"
+    ],
+    "tier_4_targets": [
+      "Services"
+    ],
+    "no_bounty_targets": [
+      "IT Infrastructure"
+    ],
+    "focus_areas": [
+      "SGX enclave escape",
+      "TDX trust domain breakout",
+      "Management Engine (ME/CSME) vulns",
+      "Firmware update bypass / rollback",
+      "Privilege escalation in chipset drivers",
+      "Hardware debug interface abuse (DCI/JTAG)",
+      "Side-channel on microarchitectural primitives"
+    ],
+    "testing_constraints": {
+      "safe_harbour": true,
+      "automated_tooling": "restricted",
+      "physical_access_required_for_tier1": true,
+      "notes": "Tier 1 Hardware requires physical board or emulated platform. No web endpoints in scope except documentation."
+    },
+    "key_github_repos": [
+      "https://github.com/intel/linux-sgx",
+      "https://github.com/intel/tdx",
+      "https://github.com/chipsec/chipsec",
+      "https://github.com/intel/edk2"
+    ]
+  },
+  "next_action": "HUMAN_GATE_APPROVAL_REQUIRED",
+  "human_gate_summary": {
+    "platform": "Intigriti",
+    "program_handle": "intel",
+    "program_uuid": "10eb5e95-08e2-4f4e-8d22-f8c600a7acff",
+    "asset": "Intel SGX SDK / DCAP (linux-sgx repository)",
+    "finding_type": "Regression - Security Control Removal",
+    "recommended_severity": "Medium-High",
+    "evidence_sufficiency": "Complete - commit hashes, file:line references, absence of mitigations verified across all branches",
+    "submission_blocked_until": "Explicit human approval"
+  },
+  "program_id": "10eb5e95-08e2-4f4e-8d22-f8c600a7acff"
+}

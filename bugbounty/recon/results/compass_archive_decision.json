@@ -1,0 +1,19 @@
+{
+  "handle": "compass-bbp",
+  "id": "51985",
+  "decision": "ARCHIVE",
+  "timestamp": "2026-08-26T18:57:53Z",
+  "rationale": "Passive recon completed. Scope explicitly states assets not listed on Scope page are out-of-scope. Without H1 API access (401), cannot retrieve authoritative in-scope asset list. DNS found 5 subdomains (www/api/staging/status/agent). api.compass.com returns 405 on GET (method restricted). api/v1 and graphql return 404. agent.compass.com SSL handshake failure. staging mirrors production HTML. No OIDC well-known. Login page is standard HTML form with no exposed API endpoints or misconfigurations. Cannot confirm authorization for any specific asset without scope page access.",
+  "recon_summary": {
+    "subdomains_found": 5,
+    "api_root": "405 Method Not Allowed",
+    "api_v1": "404",
+    "graphql": "404",
+    "agent_subdomain": "SSL handshake failure",
+    "staging": "200 (mirrors prod)",
+    "oidc_well_known": "404",
+    "login_page": "200 (standard form)"
+  },
+  "fail_closed_reason": "Restricted scope policy requires explicit in-scope asset confirmation. H1 API 401 prevents fetching scope page. Testing without confirmed scope violates policy rule 1. Archive and pivot.",
+  "next_candidate": "hypr-corp"
+}

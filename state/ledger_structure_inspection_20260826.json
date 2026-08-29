@@ -1,0 +1,44 @@
+{
+  "timestamp_utc": "2026-08-26T08:39:37.121476+00:00",
+  "ledgers": {
+    "bounty": {
+      "type": "dict",
+      "exists": true,
+      "keys": [
+        "reconciled_bounties",
+        "metadata",
+        "bounties",
+        "total_bounty_value",
+        "audit_metadata",
+        "goal_rules",
+        "last_audit_cleanup_utc",
+        "audit_cleanup_removed",
+        "last_integrity_check_utc",
+        "integrity_issues"
+      ],
+      "list_key": "bounties",
+      "count": 36
+    },
+    "high_ticket": {
+      "type": "dict",
+      "exists": true,
+      "keys": [
+        "bounties",
+        "total_value"
+      ],
+      "list_key": "bounties",
+      "count": 96
+    },
+    "reconciliation": {
+      "type": "dict",
+      "exists": true,
+      "keys": [
+        "generated_at",
+        "last_contador_audit",
+        "audit_summary",
+        "services",
+        "total_capital_usd"
+      ]
+    }
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "program_handle": "nvidiapublicbugbounty",
+  "program_name": "NVIDIA Public Bug Bounty",
+  "platform": "intigriti",
+  "max_bounty": {
+    "value": 15000.0,
+    "currency": "USD"
+  },
+  "phase": "passive_recon_complete",
+  "status": "variant_1_closed_pivot_pending",
+  "findings": [],
+  "submission_ready": false,
+  "recon_started": "2026-08-26T16:00:00Z",
+  "notes": "Scope is primarily binary/library/API testing rather than web apps. Focus on Tier 1 targets: Nsight tools, NVRTC, libNVVM, CDI. No web endpoints in scope except documentation. Testing requires local CUDA toolkit installation.",
+  "scope_analysis": {
+    "total_targets": 11,
+    "tier_1_targets": [
+      "CDI-based architecture (Container Device Interface)",
+      "libNVVM API",
+      "Nsight Systems",
+      "NVIDIA Nsight Developer Tools",
+      "NVRTC library"
+    ],
+    "tier_2_targets": [
+      "All Other NVIDIA Container Toolkit Assets",
+      "CUDA Libraries",
+      "NVCC",
+      "nvJitLink APIs"
+    ],
+    "tier_3_targets": [
+      "CUDA Runtime APIs",
+      "CUDA Driver APIs"
+    ],
+    "focus_areas": [
+      "Hardware misconfiguration in debuggers",
+      "Virtualization escape",
+      "User permission escalation",
+      "Context isolation in profilers",
+      "Privilege escalation via super-user commands"
+    ],
+    "testing_constraints": {
+      "intigriti_me_required": false,
+      "automated_tooling": "Not specified (assume restricted)",
+      "safe_harbour": true,
+      "platforms": "x86 desktop for Nsight; latest CUDA toolkit versions only",
+      "deprecated_platforms": [
+        "maxwell",
+        "pascal",
+        "volta"
+      ]
+    },
+    "key_github_repos": [
+      "https://github.com/cncf-tags/container-device-interface"
+    ]
+  },
+  "next_action": "ACTIVE_TESTING_PREP"
+  },
+  "pivot_status": "ready_for_next_program"
+  "closed_variants": [
+    {
+      "id": "variant_1_relative_to_root",
+      "file": "internal/lookup/root/root.go:214",
+      "verdict": "not_exploitable",
+      "reason": "Corrupted path feeds unread env var or resolves within root; no traversal or priv esc demonstrated",
+      "unfixed_instances": [
+        "internal/lookup/root/root.go:214",
+        "internal/discover/mounts.go:112",
+        "pkg/nvcdi/driver-nvml.go:311"
+      ],
+      "closed_at": "2026-08-26T17:30:00Z"
+    }
+  ],

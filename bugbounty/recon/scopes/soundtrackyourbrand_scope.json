@@ -1,0 +1,64 @@
+{
+  "handle": "soundtrackyourbrand",
+  "name": "Soundtrack Technologies",
+  "max_bounty": {
+    "value": 3500.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Url",
+      "endpoint": "https://soundtrack.io",
+      "tier": "Tier 1",
+      "description": "Our public web site."
+    },
+    {
+      "type": "Url",
+      "endpoint": "api.soundtrackyourbrand.com",
+      "tier": "Tier 1",
+      "description": "Our public API. Used by us as well as third parties. You can use your regular login token to authenticate.\n\nDocs: https://developer.soundtrackyourbrand.com/api\nGraphQL Explorer: https://api.soundtrackyourbrand.com/v2/explore\n\nPlease use one of the claimed test credentials. In order to use the API you can login using your claimed credentials (via loginUser) and use the token you get back to issue API calls."
+    },
+    {
+      "type": "Url",
+      "endpoint": "billing.api.soundtrackyourbrand.com",
+      "tier": "Tier 1",
+      "description": "Our billing service. Handles payments (one time and recurring), price and product management and subscription renewals."
+    },
+    {
+      "type": "Url",
+      "endpoint": "builds.soundtrackyourbrand.com",
+      "tier": "Tier 1",
+      "description": "Our service which does gradual rollout of our player software to our Windows client and hardware players."
+    },
+    {
+      "type": "Url",
+      "endpoint": "business.soundtrackyourbrand.com",
+      "tier": "Tier 1",
+      "description": "Our web based management console that allows users to administer their players, music and their account.\n\n**To claim bounties for this domain you need to use one of the claimed test credentials.**"
+    },
+    {
+      "type": "Android",
+      "endpoint": "com.soundtrackyourbrand.soundtrack.player",
+      "tier": "Tier 1",
+      "description": "The Android Player app that allows you to browse and play music.\n\nIn order to use the Android Player you will need a pairing code that you can obtain through https://app.soundtrack.io/ using the test credentials.\n\nhttps://www.youtube.com/watch?v=y7HGAtsB6Tg"
+    },
+    {
+      "type": "Url",
+      "endpoint": "https://auth.api.soundtrackyourbrand.com/",
+      "tier": "Tier 1",
+      "description": "Our authentication service."
+    },
+    {
+      "type": "Other",
+      "endpoint": "https://builds.soundtrackyourbrand.com/download/WIN32SOUNDTRACK/latest",
+      "tier": "Tier 1",
+      "description": "The Windows Player that allows you to play music. No user interface except for a tray icon.\n\nIn order to use the Windows Player you will need a pairing code that you can obtain through https://app.soundtrack.io/ using the test credentials.\n\nhttps://www.youtube.com/watch?v=HjFfXcjSEmM"
+    },
+    {
+      "type": "Url",
+      "endpoint": "https://radio.api.soundtrackyourbrand.com/",
+      "tier": "Tier 1",
+      "description": "Our playlisting service."
+    }
+  ]
+}

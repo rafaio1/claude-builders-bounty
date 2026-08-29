@@ -1,0 +1,39 @@
+{
+  "timestamp": "2026-08-26T09:15:38.261418+00:00",
+  "process": "adjacent_technical_services",
+  "status": "discovery_phase",
+  "criteria": {
+    "zero_capital": true,
+    "licit": true,
+    "non_duplicate": true,
+    "buyer_identifiable": true,
+    "payout_verifiable": true,
+    "kyc_compatible": true,
+    "wise_bybit_binance_receivable": true
+  },
+  "sources_to_scan": [
+    "gitcoin.co/bounties",
+    "layer3.xyz/bounties",
+    "immunefi.com/bounties",
+    "code4rena.com/contests",
+    "sherlock.xyz/contests",
+    "replit.com/bounties",
+    "github.com/sponsors",
+    "opensea.io/careers/bounties"
+  ],
+  "exclusions": [
+    "marketing",
+    "wash_trading",
+    "spam",
+    "fraud",
+    "symbolic_return_only"
+  ],
+  "capital_wise_binding": "research_and_draft_only_no_autonomous_commitment",
+  "telegram_gate": "closed_until_realized_capital_confirmed",
+  "next_action": "scan_sources_for_qualified_opportunities",
+  "human_approval_required_before": [
+    "submission",
+    "contract_acceptance",
+    "fund_movement"
+  ]
+}

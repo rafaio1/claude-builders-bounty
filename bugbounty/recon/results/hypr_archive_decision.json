@@ -1,0 +1,16 @@
+{
+  "handle": "hypr-corp",
+  "id": "51483",
+  "decision": "ARCHIVE",
+  "timestamp": "2026-08-26T18:58:24Z",
+  "rationale": "Scope excerpt explicitly targets iOS (com.hypr.one), Android (com.hypr.one), and Desktop applications. No web domains or API endpoints listed in scope. Passive web recon cannot test mobile app binaries or desktop installers without downloading and reverse-engineering, which exceeds passive-only policy. No web attack surface to evaluate.",
+  "recon_summary": {
+    "scope_type": "mobile_and_desktop_apps_only",
+    "ios_app": "com.hypr.one",
+    "android_app": "com.hypr.one",
+    "web_domains_in_scope": 0,
+    "api_endpoints_in_scope": 0
+  },
+  "fail_closed_reason": "No web assets in scope. Testing requires binary analysis of mobile/desktop apps which is outside passive recon methodology. Archive and pivot.",
+  "next_candidate": "koho"
+}

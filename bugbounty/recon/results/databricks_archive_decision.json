@@ -1,0 +1,9 @@
+{
+  "handle": "databricks",
+  "decision": "ARCHIVED",
+  "reason": "Non-web candidate with empty or insufficient scope_excerpt in offline_target_selection.json. Cannot confirm explicit in-scope testable assets (API endpoints, SDK repos, mobile binaries with public docs) without authenticated API access or full policy page rendering. Fail-closed per autonomous_directive.",
+  "gate_failed": "scope_confirmation",
+  "has_web_scope": false,
+  "archived_at": "2026-08-26T19:07:27Z",
+  "next_action": "re-evaluate_only_if_api_auth_restored_or_scope_excerpt_updated"
+}

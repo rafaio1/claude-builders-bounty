@@ -1,0 +1,36 @@
+{
+  "program": "Visma",
+  "platform": "Intigriti",
+  "handle": "visma",
+  "max_bounty_eur": 7500,
+  "scope_type": "STAGING_ONLY",
+  "targets_probed": 20,
+  "findings": [],
+  "verdict": "PIVOT_TO_NEXT_TARGET",
+  "notes": [
+    "All 20 scope assets are staging/test environments",
+    "identity.stage.vismaonline.com: Duende IdentityServer OIDC - standard config, no misconfig found",
+    "connect.identity.stagaws.visma.com: Central OAuth/OIDC hub with 200+ scopes including MCP, ebanking, AI assistant, GraphQL staging APIs",
+    "api.workbox.dk: Dinero accounting SPA frontend only, no API docs/swagger/openapi exposed",
+    "authz.workbox.dk: Minimal IDP service (Healthy! banner), no exploitable surface",
+    "testing.maventa.com / ai-testing.maventa.com: Rails e-invoicing apps, CSRF tokens visible but no debug/info endpoints exposed",
+    "autointerface.stag.visma.net: Legacy ASP.NET app, all paths return same HTML shell",
+    "eaccounting.stage.vismaonline.com: Login page only",
+    "oauth.developers.stagaws.visma.com: Developer portal SPA (service-registry base), no swagger/docs endpoints",
+    "myservices.stage.vismaonline.com: Visma Online portal SPA",
+    "photoservice.stage.vismaonline.com: HTTP 403 forbidden",
+    "All OIDC endpoints properly require client authentication (invalid_client on unauthenticated requests)",
+    "No IDOR, auth bypass, info disclosure, or takeover vectors identified in passive reconnaissance",
+    "Staging environment appears well-hardened despite being non-production"
+  ],
+  "high_interest_scopes_for_future": [
+    "mcp-studio-mcp-stag:admin/owner/user - MCP management platform staging",
+    "ebanking:* - Full banking API scopes (payments, accounts, direct debits)",
+    "business-graphql-stag:access-group-based - GraphQL API with group-based access",
+    "vsn-assistant-api:chat/internal/mobile-chat - AI assistant with internal scope",
+    "hubix-stage:* - Invoice processing and operator network",
+    "agent_builder.registry:install - Agent/plugin registry",
+    "acubiz-api:* - Expense management with finance/salary/mileage scopes"
+  ],
+  "recommendation": "Deep testing of these scoped APIs requires valid client credentials or registered application. Without authenticated access, passive recon yields no actionable vulnerabilities. Pivot to next program."
+}

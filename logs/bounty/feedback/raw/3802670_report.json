@@ -1,0 +1,92 @@
+{
+  "id": "3802670",
+  "type": "report",
+  "attributes": {
+    "title": "Arquivo de configuracao exposto",
+    "state": "duplicate",
+    "created_at": "2026-06-15T00:47:25.090Z",
+    "submitted_at": "2026-06-15T00:47:25.687Z",
+    "vulnerability_information": "# Arquivo de configuracao exposto\n\n**Template**: Web2\n**Platform**: hackerone\n**Scope**: https://commerce.coinbase.com/config.js\n**Severity**: low | **CVSS**: 6.9 (`CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:L/VI:L/VA:N/SC:N/SI:N/SA:N`)\n**CWE**: CWE-538 - Insertion of Sensitive Information into Externally-Accessible File\n**Generated**: 2026-06-15T00:47:21Z\n\n## Summary\n## Vulnerability Details\n\nArquivo de configuracao ou manifesto tecnico esta acessivel via HTTP. Ele pode conter credenciais, tokens, endpoints internos, imagens de container, dependencias e detalhes de deploy.\n\n\n**Impact:**\nVazamento de secrets ou mapa da infraestrutura. Mesmo quando nao ha senha direta, configs aceleram descoberta de endpoints internos e CVEs.\n\n\n**Impact Type:** sensitive_data_exposure\n\n## Affected endpoint/feature\nhttps://commerce.coinbase.com/config.js\n\n## Auth context\nDescribe whether the endpoint requires authentication, which role was used, and whether the action is cross-user or unauthenticated.\n\n## Steps to reproduce\n1. Acessar a URL identificada no achado\n2. Inspecionar conteudo por chaves, tokens, endpoints internos e nomes de servicos\n3. Confirmar se o arquivo pertence ao alvo antes de reportar\n\n## Expected result\nThe application should reject unauthorized or malformed access and preserve the intended security boundary.\n\n## Actual result\nGET https://commerce.coinbase.com/config.js -> HTTP 200\nContent-Type: application/javascript; charset=utf-8\nConte\u00fado sens\u00edvel detectado: False\nPr\u00e9via: window.__commerceConfig={\"DOGE_TX_URL\":\"https://chain.so/tx/DOGETEST/\",\"I18N_BASE_URL\":\"\",\"AMPLITUDE_API_KEY\":\"0798...[REDACTED]...b1e\",\"COINBASE_API_CLIENT_ID\":\"8587...[REDACTED]...75d\",\"ANNOUNCEMENT_BANNER_COLOR\":\"white\",\"BUGSNAG_API_KEY\":\"cf26eaff\nCONFIRMADO: Recurso acess\u00edvel publicamente.\n\n## Impact\nVazamento de secrets ou mapa da infraestrutura. Mesmo quando nao ha senha direta, configs aceleram descoberta de endpoints internos e CVEs.\n\n\n**Affected Asset:** `coinbase.com`\n\n**Vulnerable Endpoint/Location:** `https://commerce.coinbase.com/config.js`\n\n---\n*Auto-draft. Confirm impact and attach PoC artifacts before submitting.*\n\n## Evidence\n- `finding-10436-evidence.md` (3375 bytes, sha256 `923ed23a846dc6d5...`)\n- `find...[REDACTED]...son` (5420 bytes, sha256 `65c8a36533c5d2a6...`)\n\nVerification evidence:\n\n```text\nGET https://commerce.coinbase.com/config.js -> HTTP 200\nContent-Type: application/javascript; charset=utf-8\nConte\u00fado sens\u00edvel detectado: False\nPr\u00e9via: window.__commerceConfig={\"DOGE_TX_URL\":\"https://chain.so/tx/DOGETEST/\",\"I18N_BASE_URL\":\"\",\"AMPLITUDE_API_KEY\":\"0798...[REDACTED]...b1e\",\"COINBASE_API_CLIENT_ID\":\"8587...[REDACTED]...75d\",\"ANNOUNCEMENT_BANNER_COLOR\":\"white\",\"BUGSNAG_API_KEY\":\"cf26eaff\nCONFIRMADO: Recurso acess\u00edvel publicamente.\n```\n\nRaw finding evidence:\n\n```text\nGET https://commerce.coinbase.com/config.js -> 200\nTamanho: 2393 bytes\nTrecho: 'window.__commerceConfig={\"DOGE_TX_URL\":\"https://chain.so/tx/DOGETEST/\",\"I18N_BASE_URL\":\"\",\"AMPLITUDE_API_KEY\":\"0798...[REDACTED]...b1e\",\"COINBASE_API_CLIENT_ID\":\"8587...[REDACTED]...f38'\nPUBLIC_RUNTIME_CONFIG_ANALYSIS\nruntime_config=true\nprivate_secret_detected=false\nprivate_secret_names=none\npublic_client_values=true\npublic_value_names=AMPLITUDE_API_KEY, COINBASE_API_CLIENT_ID, BUGSNAG_API_KEY\nclassification=public_frontend_runtime_config\nsubmission_gate=needs_validation_until_abuse_or_private_secret_is_proven\n```\n\n## Remediation\nRemover configs do webroot. Bloquear dotfiles e extensoes sensiveis no servidor web. Garantir que manifests publicos nao contenham secrets.\n\n**Suggested Next Steps:**\n- Classificar quais chaves sao publicas por desenho e quais permitem abuso.\n- Testar uso controlado de client_id/API key apenas dentro do escopo autorizado.\n- Aumentar evidencia tecnica para elevar confianca do impacto.\n- Learning Memory: parecido com 3 evento(s) anterior(es); ajuste leve RS +0.\n- Validar se client_id/API keys publicos permitem abuso seguro e aceito pelo programa.\n\n## Impact\n\nVazamento de secrets ou mapa da infraestrutura. Mesmo quando nao ha senha direta, configs aceleram descoberta de endpoints internos e CVEs.\n\n\n**Affected Asset:** `coinbase.com`\n\n**Vulnerable Endpoint/Location:** `https://commerce.coinbase.com/config.js`\n\n---\n*Auto-draft. Confirm impact and attach PoC artifacts before submitting.*",
+    "triaged_at": null,
+    "closed_at": "2026-06-17T11:41:38.985Z",
+    "last_reporter_activity_at": "2026-06-15T00:47:26.070Z",
+    "first_program_activity_at": "2026-06-17T11:41:38.985Z",
+    "last_program_activity_at": "2026-06-17T11:41:38.985Z",
+    "bounty_awarded_at": null,
+    "swag_awarded_at": null,
+    "disclosed_at": null,
+    "reporter_agreed_on_going_public_at": null,
+    "last_public_activity_at": "2026-06-17T11:41:38.985Z",
+    "last_activity_at": null
+  },
+  "relationships": {
+    "reporter": {
+      "data": {
+        "id": "4483485",
+        "type": "user",
+        "attributes": {
+          "reputation": 100,
+          "username": "rafaio",
+          "name": "Rafael",
+          "disabled": false,
+          "created_at": "2026-06-10T01:56:03.570Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "82x82": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "110x110": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "260x260": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png"
+          },
+          "bio": null,
+          "website": null,
+          "location": null,
+          "hackerone_triager": false
+        }
+      }
+    },
+    "program": {
+      "data": {
+        "id": "104",
+        "type": "program",
+        "attributes": {
+          "handle": "coinbase",
+          "created_at": null,
+          "updated_at": null
+        }
+      }
+    },
+    "severity": {
+      "data": {
+        "id": "4200965",
+        "type": "severity",
+        "attributes": {
+          "rating": "low",
+          "author_type": "User",
+          "user_id": 4483485,
+          "created_at": "2026-06-15T00:47:25.347Z",
+          "max_severity": "critical",
+          "calculation_method": "manual"
+        }
+      }
+    },
+    "structured_scope": {
+      "data": {
+        "id": "18683",
+        "type": "structured-scope",
+        "attributes": {
+          "asset_type": "URL",
+          "asset_identifier": "commerce.coinbase.com",
+          "eligible_for_bounty": true,
+          "eligible_for_submission": true,
+          "instruction": "",
+          "max_severity": "critical",
+          "created_at": "2019-01-02T18:57:55.757Z",
+          "updated_at": "2023-01-24T12:35:41.862Z",
+          "reference": null,
+          "confidentiality_requirement": "medium",
+          "integrity_requirement": "high",
+          "availability_requirement": "medium"
+        }
+      }
+    }
+  }
+}

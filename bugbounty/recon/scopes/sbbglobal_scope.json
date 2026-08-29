@@ -1,0 +1,46 @@
+{
+  "handle": "sbbglobal",
+  "name": "SBB - Swiss Federal Railways",
+  "max_bounty": {
+    "value": 6666.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Wildcard",
+      "endpoint": "*.swisspass.ch",
+      "tier": "Tier 2",
+      "description": "[Swisspass](https://www.swisspass.ch/home?lang=en) is the key to mobility in Switzerland.\n\nWith SwissPass customers can manage their travelcard details easily and use the partner services.\n\nPlease note that the following URL scheme is excluded from the program: `https://mailing.swisspass.ch/r/wxmc/swisspass/{20-chars}/{20-chars}/{13-chars}/{26-chars}`"
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.sbb.ch",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.sbb.ch",
+      "tier": "Tier 3",
+      "description": "Please note that the following URL scheme is excluded from the program: `https://order.info.sbb.ch/r/wxmc/sbb/{20-chars}/{20-chars}/{13-chars}/{26-chars}`"
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.elvetino.ch",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.sbbcargo.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.transsicura.ch",
+      "tier": "Tier 3",
+      "description": null
+    }
+  ]
+}

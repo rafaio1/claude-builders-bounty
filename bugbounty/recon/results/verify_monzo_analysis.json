@@ -1,0 +1,18 @@
+{
+  "domain": "verify.monzo.com",
+  "cname": "",
+  "a_records": [
+    "104.18.37.116",
+    "172.64.150.140"
+  ],
+  "status": "404",
+  "takeover_likelihood": "LOW",
+  "info_leak": true,
+  "csp_domains": [
+    "browser.sentry-cdn.com",
+    "js.sentry-cdn.com",
+    "monzo.report-uri.com",
+    "o23827.ingest.sentry.io"
+  ],
+  "notes": "Service returns Cloudflare 404 with detailed CSP. No dangling CNAME detected. CSP references non-prod and internal endpoints which may indicate configuration oversight rather than takeover."
+}

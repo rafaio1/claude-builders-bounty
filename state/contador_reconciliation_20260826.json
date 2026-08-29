@@ -1,0 +1,52 @@
+{
+  "timestamp": "2026-08-26T08:46:21.066992+00:00",
+  "bounty_ledger": {
+    "file": "data/aro/bounty_ledger.json",
+    "total_entries": 36,
+    "status_breakdown": {
+      "submitted": 12,
+      "invalid_no_submission": 4,
+      "stale_archived": 7,
+      "artifact_missing_local": 12,
+      "closed_not_merged": 1
+    },
+    "realized_usd": 0,
+    "pending_pipeline_usd": 0.0,
+    "note": "All bounty_value fields are 0.0; no confirmed payout amounts in ledger"
+  },
+  "high_ticket_ledger": {
+    "file": "data/aro/high_ticket_ledger.json",
+    "total_entries": 96,
+    "status_breakdown": {
+      "submitted": 96
+    },
+    "realized_usd": 0,
+    "pending_pipeline_usd": 2570050.0,
+    "note": "All 96 entries marked submitted but no payment confirmation; requires Gmail reauth for verification"
+  },
+  "combined": {
+    "total_tracked_items": 132,
+    "realized_usd": 0,
+    "pending_pipeline_usd": 2570050.0,
+    "gap_to_20m_target": 20000000.0,
+    "telegram_gate": "CLOSED_no_realized_capital"
+  },
+  "blockers": [
+    "Gmail OAuth reauth required for payout verification and email follow-ups",
+    "Sherlock audit submission approval pending human authorization",
+    "PR #6131 maintainer response pending (next check 2026-08-26T12:29:19Z)",
+    "All bounty_ledger entries have bounty_value=0; no confirmed payouts"
+  ],
+  "actionable_followups": 9,
+  "email_blocked_count": 3,
+  "invariants_verified": true,
+  "deep_audit": {
+    "timestamp": "2026-08-26T08:48:38.283122+00:00",
+    "bounty_ledger_non_zero_values": 0,
+    "bounty_ledger_external_payout_refs": 0,
+    "high_ticket_non_zero_realized": 0,
+    "high_ticket_external_payout_refs": 0,
+    "high_ticket_actionable_with_confirmed_value": 0,
+    "conclusion": "All 132 entries audited; no confirmed payout amounts or external payment references found. Pending pipeline of $2.57M is entirely unverified/aspirational until Gmail reauth or human confirmation."
+  }
+}

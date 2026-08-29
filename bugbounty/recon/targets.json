@@ -1,0 +1,31 @@
+{
+  "platforms": {
+    "hackerone": {
+      "scope_types": ["web", "api", "mobile"],
+      "min_bounty_critical": 5000,
+      "min_bounty_high": 2000,
+      "filters": {
+        "asset_type": "url",
+        "response_code": [200, 301, 302, 403],
+        "tech_stack_exclude": ["wordpress", "wix"]
+      }
+    },
+    "bugcrowd": {
+      "scope_types": ["web", "api"],
+      "min_bounty_critical": 4000,
+      "min_bounty_high": 1500,
+      "filters": {
+        "asset_type": "url",
+        "in_scope_only": true
+      }
+    }
+  },
+  "vuln_focus": ["rce", "sqli", "ssrf", "idor", "auth_bypass", "xxe", "deserialization"],
+  "automation": {
+    "tools": ["nuclei", "httpx", "subfinder", "waybackurls", "paramspider"],
+    "schedule": "continuous",
+    "notify": ["slack", "email"]
+  },
+  "status": "initialized",
+  "last_scan": null
+}

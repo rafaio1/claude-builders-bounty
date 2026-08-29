@@ -1,0 +1,30 @@
+{
+  "timestamp": "2026-08-26T08:46:51.361218+00:00",
+  "integration_type": "local_oauth_client",
+  "mcp_supported": false,
+  "token_file_exists": true,
+  "credentials_file_exists": false,
+  "has_refresh_token": true,
+  "current_scopes": [
+    "https://www.googleapis.com/auth/gmail.modify"
+  ],
+  "required_scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send"
+  ],
+  "missing_scopes": [
+    "https://www.googleapis.com/auth/gmail.readonly",
+    "https://www.googleapis.com/auth/gmail.send"
+  ],
+  "human_reauth_needed": true,
+  "can_autonomously_send_email": false,
+  "can_autonomously_read_email": false,
+  "recommendation": "Human must reauthorize OAuth with gmail.readonly+gmail.send scopes; existing refresh_token present but scope insufficient and credentials.json missing for local flow.",
+  "last_verified": "2026-08-26T09:08:49.893162+00:00",
+  "refresh_token_present": true,
+  "scopes": [],
+  "reauth_required": true,
+  "autonomous_send_blocked": true,
+  "mcp_available": false,
+  "mcp_error": "unknown MCP server codex_apps__gmail"
+}

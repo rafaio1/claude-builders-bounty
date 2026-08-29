@@ -1,0 +1,30 @@
+{
+  "program": "simscale",
+  "platform": "intigriti",
+  "handle": "simscale",
+  "status": "ARCHIVED",
+  "reason": "No autonomous-exploitable finding. API fully authenticated (X-API-KEY global). Forum is standard Discourse with no PII leak. IDOR/export surfaces require multi-account or privileged context not available under autonomous policy.",
+  "surfaces_tested": [
+    "OpenAPI spec (135 endpoints, all auth-required)",
+    "Forum user enumeration (/forum/users/*.json -> 404; /u/{username}.json -> public profile only)",
+    "Forum discovery endpoints (latest.json, about.json, site.json, categories.json)",
+    "Permission schema analysis (PUT /permissions/spaces/{spaceId} returns 403 for non-owner)",
+    "Export endpoint analysis (returns signed URL but requires auth + projectId ownership)",
+    "Signup endpoint (inherits global security, no mass assignment fields)"
+  ],
+  "findings": [],
+  "false_positives": [
+    {
+      "surface": "/forum/u/{username}.json",
+      "claim": "Sensitive field disclosure",
+      "reality": "Discourse permission booleans (can_send_private_messages etc.), not PII"
+    },
+    {
+      "surface": "GET /projects/{projectId}/export/{exportId}",
+      "claim": "IDOR via signed URL",
+      "reality": "Requires valid API key + ownership of projectId; cannot test cross-user without second account"
+    }
+  ],
+  "timestamp": "2026-08-26T18:36:58Z",
+  "next_action": "PIVOT to next Intigriti program"
+}

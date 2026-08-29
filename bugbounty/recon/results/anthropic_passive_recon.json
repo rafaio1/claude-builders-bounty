@@ -1,0 +1,86 @@
+{
+  "target": "anthropic",
+  "timestamp": "2026-08-26T19:30:15.241432+00:00",
+  "assets_tested": 6,
+  "total_signals": 1,
+  "results": [
+    {
+      "url": "https://claude.ai",
+      "status": 403,
+      "redirect": null,
+      "headers": {},
+      "signals": [],
+      "error": "Forbidden"
+    },
+    {
+      "url": "https://console.anthropic.com",
+      "status": 200,
+      "redirect": "https://platform.claude.com/",
+      "headers": {
+        "server": "cloudflare",
+        "x-powered-by": "Next.js",
+        "x-frame-options": "SAMEORIGIN",
+        "content-security-policy": "script-src 'report-sample' 'strict-dynamic' https: 'nonce-rY1XhhEwHYmMsiQ+fcHPLA==' https://via.intercom.io https://api.intercom.io https://api.au.intercom.io https://api.eu.intercom.io https://api-ia",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "set-cookie": "activitySessionId=8cd36e75-cbe2-4b5f-9747-d54d5bc8fc3e; Path=/; Expires=Thu, 27 Aug 2026 07:30:10 GMT; Secure; HttpOnly; SameSite=lax"
+      },
+      "signals": [],
+      "error": null
+    },
+    {
+      "url": "https://api.anthropic.com",
+      "status": 404,
+      "redirect": null,
+      "headers": {},
+      "signals": [],
+      "error": "Not Found"
+    },
+    {
+      "url": "https://docs.anthropic.com",
+      "status": 200,
+      "redirect": "https://platform.claude.com/docs/en/home",
+      "headers": {
+        "server": "cloudflare",
+        "x-powered-by": "Next.js",
+        "x-frame-options": "SAMEORIGIN",
+        "content-security-policy": "script-src 'report-sample' 'strict-dynamic' https: 'nonce-b3b3ZpcX0bkEAFO+5akPcw==' https://via.intercom.io https://api.intercom.io https://api.au.intercom.io https://api.eu.intercom.io https://api-ia",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "set-cookie": "activitySessionId=fee54f41-11be-4518-8346-8692f6618d8f; Path=/; Expires=Thu, 27 Aug 2026 07:30:11 GMT; Secure; HttpOnly; SameSite=lax"
+      },
+      "signals": [],
+      "error": null
+    },
+    {
+      "url": "https://support.anthropic.com",
+      "status": 200,
+      "redirect": "https://support.claude.com/en/",
+      "headers": {
+        "server": "cloudflare",
+        "x-frame-options": "DENY",
+        "content-security-policy": "default-src 'self'; base-uri 'self'; connect-src 'self' wss://*.intercom.io https://*.intercom.io https://*.intercom.com https://*.fin.ai https://*.intercom-messenger.com wss://*.intercom-messenger.co",
+        "strict-transport-security": "max-age=31536000; includeSubDomains; preload",
+        "x-content-type-options": "nosniff",
+        "set-cookie": "recent_write=a2e7ff4c-9b19-4cd1-b1f6-b453e8836a2d; path=/; max-age=1; httponly"
+      },
+      "signals": [],
+      "error": null
+    },
+    {
+      "url": "https://anthropic.atlassian.net",
+      "status": 202,
+      "redirect": "https://id.atlassian.com/login?continue=https%3A%2F%2Fid.atlassian.com%2Fjoin%2Fuser-access%3Fresource%3Dari%253Acloud%253Ajira%253A%253Asite%252F06107f0d-e6f2-4c21-9c3b-70ee3ddce68a%26continue%3Dhttps%253A%252F%252Fanthropic.atlassian.net%252F&application=jira&orgId=29325d2b-c9d4-1a43-7a0k-52cc0bbac96j",
+      "headers": {
+        "server": "CloudFront",
+        "x-frame-options": "DENY",
+        "strict-transport-security": "max-age=31536000; preload",
+        "x-content-type-options": "nosniff"
+      },
+      "signals": [
+        "potential_secret_pattern:ai[a-z0-9]{32}"
+      ],
+      "error": null
+    }
+  ]
+}

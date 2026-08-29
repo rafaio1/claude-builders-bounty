@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arbitragem Fiat-Crypto & Fluxo</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --card: #1e293b;
+            --text: #f1f5f9;
+            --muted: #94a3b8;
+            --accent-green: #10b981;
+            --accent-red: #ef4444;
+            --accent-blue: #3b82f6;
+            --border: #334155;
+        }
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', system-ui, sans-serif; }
+        body { background: var(--bg); color: var(--text); padding: 2rem; min-height: 100vh; }
+        header { margin-bottom: 2rem; border-bottom: 1px solid var(--border); padding-bottom: 1rem; display: flex; justify-content: space-between; align-items: center; }
+        h1 { font-size: 1.5rem; font-weight: 600; letter-spacing: -0.02em; }
+        .status { font-size: 0.875rem; color: var(--muted); display: flex; gap: 1rem; align-items: center; }
+        .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-red); display: inline-block; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
+        .card h2 { font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); margin-bottom: 1rem; }
+        .metric { font-size: 2rem; font-weight: 700; margin-bottom: 0.25rem; }
+        .sub { font-size: 0.875rem; color: var(--muted); }
+        .neg { color: var(--accent-red); }
+        .pos { color: var(--accent-green); }
+        table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+        th { text-align: left; color: var(--muted); font-weight: 500; padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        td { padding: 0.75rem 0; border-bottom: 1px solid var(--border); }
+        tr:last-child td { border-bottom: none; }
+        .bar-container { height: 6px; background: var(--border); border-radius: 3px; margin-top: 0.5rem; overflow: hidden; }
+        .bar { height: 100%; background: var(--accent-blue); border-radius: 3px; }
+        footer { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.75rem; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Monitor de Arbitragem Fiat-Crypto</h1>
+        <div class="status">
+            <span><span class="dot"></span> Oportunidade Inativa</span>
+            <span>Atualizado: 2026-08-25 UTC</span>
+        </div>
+    </header>
+
+    <div class="grid">
+        <div class="card">
+            <h2>Spread Líquido (BTC-USDT)</h2>
+            <div class="metric neg">-0.64%</div>
+            <div class="sub">Custo total: 0.70% | Spread bruto: 0.06%</div>
+        </div>
+        <div class="card">
+            <h2>Spread Líquido (BTC-BRL)</h2>
+            <div class="metric neg">-0.69%</div>
+            <div class="sub">Custo total: 0.70% | Spread bruto: 0.01%</div>
+        </div>
+        <div class="card">
+            <h2>Taxa Implícita BRL/USDT</h2>
+            <div class="metric">5.1579</div>
+            <div class="sub">Binance Cross-Rate</div>
+        </div>
+        <div class="card">
+            <h2>Gargalo de Liquidez (BRL)</h2>
+            <div class="metric">7.7%</div>
+            <div class="sub">Volume OKX vs Binance em BRL</div>
+            <div class="bar-container"><div class="bar" style="width: 7.7%"></div></div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <div class="card" style="grid-column: span 2;">
+            <h2>Comparativo de Preços e Volumes (24h)</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Par</th>
+                        <th>Exchange</th>
+                        <th>Preço</th>
+                        <th>Volume 24h</th>
+                        <th>Quote Vol.</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>BTC/USDT</td>
+                        <td>Binance</td>
+                        <td>$78,690.00</td>
+                        <td>31,725 BTC</td>
+                        <td>$2.52B</td>
+                    </tr>
+                    <tr>
+                        <td>BTC/USDT</td>
+                        <td>OKX</td>
+                        <td>$78,735.80</td>
+                        <td>10,692 BTC</td>
+                        <td>$850.7M</td>
+                    </tr>
+                    <tr>
+                        <td>BTC/BRL</td>
+                        <td>Binance</td>
+                        <td>R$405,874.00</td>
+                        <td>136.8 BTC</td>
+                        <td>R$56.1M</td>
+                    </tr>
+                    <tr>
+                        <td>BTC/BRL</td>
+                        <td>OKX</td>
+                        <td>R$405,933.00</td>
+                        <td>10.6 BTC</td>
+                        <td>R$4.3M</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>Recomendações de Gestão de Fluxo</h2>
+        <ul style="list-style: none; display: grid; gap: 1rem; margin-top: 1rem;">
+            <li style="padding: 1rem; background: rgba(239,68,68,0.1); border-left: 3px solid var(--accent-red); border-radius: 4px;">
+                <strong>Não operar agora:</strong> Spreads líquidos negativos indicam perda garantida após taxas de trading e gateway fiat.
+            </li>
+            <li style="padding: 1rem; background: rgba(59,130,246,0.1); border-left: 3px solid var(--accent-blue); border-radius: 4px;">
+                <strong>Limite de Execução BRL:</strong> Restringir ordens a &lt; R$ 50k na OKX para evitar slippage &gt; 0.2% devido à baixa liquidez (7.7% do volume da Binance).
+            </li>
+            <li style="padding: 1rem; background: rgba(16,185,129,0.1); border-left: 3px solid var(--accent-green); border-radius: 4px;">
+                <strong>Monitoramento:</strong> Aguardar spread bruto superar 0.85% para cobrir custos de ida/volta + withdrawal antes de executar arbitragem cross-exchange.
+            </li>
+        </ul>
+    </div>
+
+    <footer>
+        Dados via Binance & OKX Public APIs | Análise gerada por Claude Fable 5
+    </footer>
+</body>
+</html>

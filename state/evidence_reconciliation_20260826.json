@@ -1,0 +1,97 @@
+{
+  "timestamp": "2026-08-26T11:05:25.349265+00:00",
+  "type": "evidence_reconciliation_investigation",
+  "evidence_files_found": 4,
+  "evidence_files": [
+    {
+      "path": "state/payment_followup_scan_20260826.json",
+      "size": 286,
+      "modified": "2026-08-26T08:39:21.294826+00:00",
+      "name": "payment_followup_scan_20260826.json"
+    },
+    {
+      "path": "state/payment_followup_candidates.json",
+      "size": 163,
+      "modified": "2026-08-26T03:25:02.821688+00:00",
+      "name": "payment_followup_candidates.json"
+    },
+    {
+      "path": "state/payment_followup_detailed_scan_20260826.json",
+      "size": 757,
+      "modified": "2026-08-26T08:39:53.645886+00:00",
+      "name": "payment_followup_detailed_scan_20260826.json"
+    },
+    {
+      "path": "state/payment_claim_draft_20260826.json",
+      "size": 1119,
+      "modified": "2026-08-26T08:40:18.413932+00:00",
+      "name": "payment_claim_draft_20260826.json"
+    }
+  ],
+  "content_samples": [
+    {
+      "path": "state/payment_followup_scan_20260826.json",
+      "preview": "{\n  \"timestamp_utc\": \"2026-08-26T08:39:21.295356+00:00\",\n  \"scan_type\": \"payment_followup_candidate_identification\",\n  \"total_entries_scanned\": 0,\n  \"followup_candidates_found\": 0,\n  \"candidates\": [],\n  \"actionable_without_gmail\": 0,\n  \"next_step\": \"no_actionable_followup_candidates\"\n}",
+      "size": 286
+    },
+    {
+      "path": "state/payment_followup_candidates.json",
+      "preview": "{\n  \"generated_at\": \"2026-08-26T03:25:02.823176+00:00\",\n  \"criteria\": \"submitted >7 days without merge or payment verification\",\n  \"count\": 0,\n  \"candidates\": []\n}",
+      "size": 163
+    },
+    {
+      "path": "state/payment_followup_detailed_scan_20260826.json",
+      "preview": "{\n  \"timestamp_utc\": \"2026-08-26T08:39:53.646112+00:00\",\n  \"bounty_ledger\": {\n    \"total_entries\": 36,\n    \"followup_candidates\": 1,\n    \"candidates\": [\n      {\n        \"id\": \"unknown\",\n        \"repo\": \"UnitOneAI/SecuritySkills\",\n        \"title\": \"[REVIEW] scanner-tuning: add scanner engine and plugin feed freshness gates\",\n        \"status\": \"closed_not_merged\",\n        \"amount_usd\": 0,\n        \"pr_url\": \"https://github.com/UnitOneAI/SecuritySkills/pull/3069\",\n        \"payment_method\": \"unknown\"",
+      "size": 757
+    },
+    {
+      "path": "state/payment_claim_draft_20260826.json",
+      "preview": "{\n  \"timestamp_utc\": \"2026-08-26T08:40:18.414638+00:00\",\n  \"type\": \"payment_claim_draft\",\n  \"status\": \"prepared_awaiting_human_review_and_gmail_reauth\",\n  \"candidate\": {\n    \"id\": \"unknown\",\n    \"repo\": \"UnitOneAI/SecuritySkills\",\n    \"title\": \"[REVIEW] scanner-tuning: add scanner engine and plugin feed freshness gates\",\n    \"amount_usd\": 0,\n    \"pr_url\": \"https://github.com/UnitOneAI/SecuritySkills/pull/3069\",\n    \"pr_number\": \"\",\n    \"merged_at\": \"\",\n    \"payment_method\": \"unknown\",\n    \"statu",
+      "size": 1119
+    }
+  ],
+  "flagged_bounty_entry": {
+    "program": "ClankerNation/OpenAgents",
+    "repo": "ClankerNation/OpenAgents",
+    "issue": 3,
+    "pr": 6131,
+    "issue_url": "https://github.com/ClankerNation/OpenAgents/issues/3",
+    "pr_url": "https://github.com/ClankerNation/OpenAgents/pull/6131",
+    "owner": "rafaio1",
+    "value": 4700,
+    "currency": "USD",
+    "status": "submitted",
+    "last_action": "2026-08-26T03:23:50.959667+00:00",
+    "evidence": "PR #6131 OPEN/MERGEABLE. Reviews=0 (API confirmed). Issue #3 last comment 2026-08-05. No maintainer engagement since submission.",
+    "next_action": "monitor_for_review",
+    "next_check_utc": "2026-08-26T12:21:38.003685+00:00",
+    "monitoring_plan": "backoff_4h_no_activity",
+    "lifecycle_stage": "review_pending",
+    "payment_verified": false,
+    "revenue_recognized": false,
+    "audit_classification": "still_open_active_repo",
+    "audit_evidence": "Verified via gh pr view on 2026-08-26. Mergeable, no feedback yet.",
+    "recoverable": true,
+    "program_honors_payments": true,
+    "bounty_value": 4700,
+    "priority": "high",
+    "ci_status": "no_checks",
+    "last_verified": "2026-08-26T03:41:52.692594+00:00",
+    "repo_activity_status": "active",
+    "last_repo_commit_utc": "2026-08-26T02:56:47Z",
+    "maintainer_responsive": false,
+    "activity_verified_utc": "2026-08-26T08:21:38.003685+00:00",
+    "issue_activity_note": "PR open, no reviews/comments/CI as of 2026-08-26T08:21Z. Backoff monitoring.",
+    "original_submission_value": 4000,
+    "value_source": "issue_bot_comment_2026-05-16",
+    "pr_state": "OPEN",
+    "pr_merged": false,
+    "last_checked": "2026-08-26T08:21:38.003685+00:00",
+    "reconciliation_date": "pending_audit_20260826",
+    "audit_note": "Auto-populated during continuous audit - requires human verification",
+    "flags": [
+      "requires_verification"
+    ]
+  },
+  "action_required": "match_evidence_to_ledger_or_flag_discrepancy"
+}

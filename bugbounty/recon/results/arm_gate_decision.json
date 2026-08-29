@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-08-26T18:27:32Z",
+  "program": "arm",
+  "platform": "intigriti",
+  "decision": "PIVOT",
+  "reason": "Scope restricted to Mali GPU firmware (CSFFW) and kernel driver (Kbase). Requires physical device with specific GPU, matching firmware version, and EL0 exploit chain. No web/API surface. Static analysis of binaries alone insufficient without hardware validation. High barrier exceeds current autonomous toolchain capability.",
+  "severity_assessed": null,
+  "finding": null,
+  "next_candidates": [
+    "fing",
+    "simscale",
+    "wireless-logic",
+    "house-of-hr",
+    "torfs"
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "timestamp": "2026-08-27T02:10:00Z",
+  "cycle": "email_scan + delta_check",
+  "ledger_items": 5165,
+  "prs_checked": 44,
+  "active_prs": 16,
+  "new_comments_since_last": 0,
+  "priority_queue": {
+    "P0_FuZoe_PD-Hunter_27": "NOT_IN_OPEN_LIST (merged/closed or filtered)",
+    "P1_ligate-io_ligate-chain_567": "OPEN, CLAAssistant FAILURE (no new comments, escalation trigger 2026-08-28T16:19Z not reached)",
+    "P2_SecureBananaLabs_relayhop": "Awaiting payment confirmation (no change)",
+    "P3_Vercel_Auth_Failures": "13 PRs with Vercel team auth failures (no agent action possible)",
+    "P4_Mergeable": "CALLE-AI #241, credfeto #420, OphirPay #225/#228 awaiting human triage"
+  },
+  "notes": "Email scan completed (ledger grew to 5165). Delta check found 16 PRs with failing checks (mostly Vercel auth) but zero new comments requiring response. P0 FuZoe/PD-Hunter #27 no longer in open PR list. P1 ligate-io/ligate-chain #567 CLA still failing, maintainer pinged previously, escalation pending. No deterministic actions required. Entering checkpoint wait."
+}

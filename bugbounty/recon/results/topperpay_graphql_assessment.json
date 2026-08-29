@@ -1,0 +1,36 @@
+{
+  "target": "TopperPay GraphQL Sandbox",
+  "endpoint": "https://graphql.sandbox.topperpay.com/graphql",
+  "introspection": "ENABLED (full schema enumerated)",
+  "public_endpoints_confirmed": [
+    "ipGeolocation",
+    "countries"
+  ],
+  "auth_gated_endpoints": [
+    "me",
+    "accounts",
+    "virtualAccounts",
+    "orderById",
+    "widgetSession",
+    "capabilities",
+    "activeCampaigns",
+    "paymentMethods",
+    "notices"
+  ],
+  "captcha_protected": [
+    "registerUser",
+    "initiatePasswordlessLogin"
+  ],
+  "session_required": [
+    "createSimulation",
+    "widgetSession"
+  ],
+  "idor_tested": {
+    "orderById": "requires auth token",
+    "accounts": "requires auth token"
+  },
+  "info_leakage_found": false,
+  "verdict": "NO_VULNERABILITY_CONFIRMED",
+  "notes": "All sensitive operations properly gated behind access tokens or captcha. Introspection enabled but this is sandbox environment. No PII leakage, no IDOR, no auth bypass detected.",
+  "recommendation": "PIVOT_TO_NEXT_TARGET"
+}

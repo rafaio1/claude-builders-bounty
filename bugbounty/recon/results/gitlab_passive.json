@@ -1,0 +1,75 @@
+[
+  {
+    "name": "gitlab_com",
+    "url": "https://gitlab.com/",
+    "status": 200,
+    "content_type": "text/html",
+    "signals": {
+      "version_disclosure": false,
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "body_preview": "<!DOCTYPE html><html lang=\"en-US\" data-country-code=\"cy\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"><title>GitLab - Speed with control for agentic software engineering</title><link rel=\"preconnect\" href=\"https://cdn.cookielaw.org\"><link rel=\"preco"
+  },
+  {
+    "name": "registry",
+    "url": "https://registry.gitlab.com/v2/",
+    "status": 401,
+    "interesting_headers": {},
+    "error_body": "{\"errors\":[{\"code\":\"UNAUTHORIZED\",\"message\":\"authentication required\",\"detail\":null}]}\n"
+  },
+  {
+    "name": "customers",
+    "url": "https://customers.gitlab.com/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "signals": {
+      "version_disclosure": false,
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "body_preview": "<!DOCTYPE html>\n<html class='gl-h-full' lang='en'>\n<head>\n<!-- OneTrust -->\n<script src=\"https://cdn.cookielaw.org/consent/7f944245-c5cd-4eed-a90e-dd955adfdd08/OtAutoBlock.js\" nonce=\"aK0uPTmKWBiVFK9NKYAXqA==\"></script>\n<script nonce=\"aK0uPTmKWBiVFK9NKYAXqA==\">\n//<![CDATA[\nconst oneTrustScript = docu"
+  },
+  {
+    "name": "design",
+    "url": "https://design.gitlab.com/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "signals": {
+      "version_disclosure": false,
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {},
+    "body_preview": "<!doctype html>\n<html data-n-head-ssr lang=\"en\" data-n-head=\"%7B%22lang%22:%7B%22ssr%22:%22en%22%7D%7D\">\n  <head>\n    <meta data-n-head=\"ssr\" charset=\"utf-8\"><meta data-n-head=\"ssr\" http-equiv=\"Content-Security-Policy\" content=\"default-src 'self';script-src 'self' 'unsafe-inline' 'unsafe-eval' https"
+  },
+  {
+    "name": "docs",
+    "url": "https://docs.gitlab.com/",
+    "status": 200,
+    "content_type": "text/html; charset=utf-8",
+    "signals": {
+      "version_disclosure": false,
+      "debug_endpoint": false,
+      "api_docs_exposed": false,
+      "error_verbose": false,
+      "sensitive_header": false
+    },
+    "interesting_headers": {
+      "Server": "cloudflare"
+    },
+    "body_preview": "<!doctype html><html lang=en-us dir=ltr><head><meta name=generator content=\"Hugo 0.154.5\"><script src=https://cdn.cookielaw.org/consent/7f944245-c5cd-4eed-a90e-dd955adfdd08/OtAutoBlock.js></script><script src=https://cdn.cookielaw.org/scripttemplates/otSDKStub.js data-domain-script=7f944245-c5cd-4ee"
+  }
+]

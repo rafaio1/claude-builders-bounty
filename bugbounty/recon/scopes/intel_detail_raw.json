@@ -1,0 +1,113 @@
+{
+  "id": "10eb5e95-08e2-4f4e-8d22-f8c600a7acff",
+  "handle": "intel",
+  "name": "Intel\u00ae",
+  "following": false,
+  "confidentialityLevel": {
+    "id": 4,
+    "value": "Public"
+  },
+  "status": {
+    "id": 3,
+    "value": "Open"
+  },
+  "type": {
+    "id": 1,
+    "value": "Bug Bounty"
+  },
+  "domains": {
+    "id": "3d44ce02-ce0c-41e4-80da-77c6db31ec14",
+    "createdAt": 1748374713,
+    "content": [
+      {
+        "id": "dd6d5718-737b-44f3-a833-fa74d0462f1f",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "Hardware",
+        "tier": {
+          "id": 4,
+          "value": "Tier 1"
+        },
+        "description": null,
+        "requiredSkills": []
+      },
+      {
+        "id": "92208b24-3ef0-43dc-9314-f3af05929360",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "Firmware",
+        "tier": {
+          "id": 3,
+          "value": "Tier 2"
+        },
+        "description": null,
+        "requiredSkills": []
+      },
+      {
+        "id": "9ddd704e-ea3a-463d-878d-6b80342f685a",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "Software",
+        "tier": {
+          "id": 2,
+          "value": "Tier 3"
+        },
+        "description": null,
+        "requiredSkills": []
+      },
+      {
+        "id": "f246e6df-7e3b-44d1-8d51-845ccbbf8916",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "Services",
+        "tier": {
+          "id": 6,
+          "value": "Tier 4"
+        },
+        "description": "Intel Cloud Service offerings are a wide range of services delivered on demand to companies and customers over the internet.",
+        "requiredSkills": []
+      },
+      {
+        "id": "9898bc2c-6e8f-4d11-af00-5072e77c15f8",
+        "type": {
+          "id": 6,
+          "value": "Other"
+        },
+        "endpoint": "IT Infrastructure",
+        "tier": {
+          "id": 1,
+          "value": "No Bounty"
+        },
+        "description": "IT Infrastructure at Intel falls out of Scope of the Intel\u00ae Bug Bounty Program. For issues related to Intel's IT infrastructure (services or systems that are not customer-facing), please contact Intel's [External Security Research](mailto:external.security.research@intel.com) team. Any submissions to the Intel\u00ae Bug Bounty Program in this category will be forwarded internally to the appropriate team and closed with a neutral rating to researcher profile statistics wherever possible.\n",
+        "requiredSkills": []
+      }
+    ]
+  },
+  "rulesOfEngagement": {
+    "attachments": [],
+    "id": "edbec5ce-5ad0-4c4a-bf54-479c8903139c",
+    "createdAt": 1782303425,
+    "content": {
+      "description": "# By participating in this program, you agree:\n1.\tTo follow the Intigriti Community Code of Conduct. See \u201c[Intigriti Community Code of Conduct](https://kb.intigriti.com/en/articles/5247238-community-code-of-conduct).\u201d\n2.\tTo follow the Intel Security Vulnerability Researcher Community Code of Conduct. See [Security Vulnerability Researcher Community Code of Conduct](https://www.intel.com/content/www/us/en/security-center/Code_of_Conduct.html)\n3.\tTo follow the Intigriti Terms and Conditions. See \u201c[Intigriti Terms and Conditions](https://go.intigriti.com/tac).\u201d\n4.\tTo follow the Rules of Engagement and scope of the program. See \u201c[Intel Bug Bounty Program Policy](https://www.intel.com/content/www/us/en/security-center/bug-bounty-program.html).\u201d\n5.\tYou will not discuss or disclose vulnerability information with anyone not authorized by Intel without prior written consent from Intel (including PoC's on YouTube, Vimeo, etc). See [Coordinated Vulnerability Disclosure](https://www.intel.com/content/www/us/en/security/security-practices/coordinated-disclosure.html). \n6.\tYou meet the eligibility criteria for this program. See \u201c**Security Researcher and Reporter Eligibility Criteria**\u201d section.\n7.\tYour submission meets the eligibility requirements for this program. See \u201c**Report Eligibility Criteria**\u201d and \u201c**Product Eligibility Criteria**\u201d section.\n8.\tYou will not attempt to access anyone else's data or personal information, including by exploiting a vulnerability. See \u201c**Sensitive and Personal Information**\u201d section.\n9.\tTo have freely given Intel a perpetual license for all information and communications provided through the reporting process. See \u201c**Intellectual Property**\u201d section.\n10.\tYou may not participate in this program if you are ordinarily resident in, or located in, any country or region subject to comprehensive sanctions, or if you are an individual or entity identified on any applicable sanctions list (including those administered by OFAC, the EU, the UN, or the UK's OFSI).\n\n\n# By participating in this program, Intel agrees:\n1.\tTo provide reasonable safe harbor to researchers following all **Rules of Engagement**. See \u201c**Safe Harbor**\u201d section.\n2.\tTo provide named acknowledgement on Intel disclosure(s) that include information provided during the reporting process. See \u201c**Intellectual Property**\u201d section.\n3.\tTo award monetary rewards for valuable security research. See \u201c**Bounties**\u201d section.\n4.\tTo use the current CVSS standard for severity scoring. See \u201c**Current Standards Used**\u201d section.\n5.\tTo follow CVE Numbering Authority Rules. See \u201c**Current Standards Used**\u201d section.\n\n# Violating these rules may result in, but is not limited to:\n1.\tRevocation of Report eligibility,\n2.\tDenial of any or all potential rewards,\n3.\tTemporary or permanent revocation of Security Researcher and Reporter eligibility, and\n4.\tRemoval from current engagements and/or prohibition from future engagement eligibility.\n\n\n# Researcher/Reporter Agreements\n## Product Eligibility Criteria\nIntel encourages the reporting of all potential vulnerabilities.  Intel\u00ae branded products and technologies which are maintained and distributed by Intel are eligible for rewards from this program. This includes but may not be limited to the following categories.\n* Processors\n* Server Products\n*\tWireless\n* Ethernet products\n*\tMemory and Storage\n*\tChipsets\n*\tGraphics\n*\tCloud Services\n\n**Hardware** \u2013 Product specifications may be found on ARK. Processor support timeline may be found [on this help page](https://www.intel.com/content/www/us/en/support/articles/000022396/processors.html). \n**Firmware** \u2013 Firmware may be found on the [Download Center](https://www.intel.com/content/www/us/en/download-center/home.html).\n**Software** \u2013 Software may be found in a variety of places on the Intel website including [Product Support Tools & Utilities](https://www.intel.com/content/www/us/en/support/topics/utility-tools.html), [Development Tools](https://www.intel.com/content/www/us/en/developer/tools/overview.html), [Developer Catalog](https://www.intel.com/content/www/us/en/developer/tools/software-catalog/overview.html?s=Newest), and [Design-iN Tools Store](https://designintools.intel.com/).\n*Note: All testing resources must be obtained by participating security researchers.*\n*Note: The [Discontinued Products](https://www.intel.com/content/www/us/en/support/discontinued-products.html) support page can be a useful list for identifying products that are not eligible for this program.*\n\n## Report Eligibility Criteria\nIntel encourages you to submit any report for consideration. For the report to be eligible for bounty award consideration, your report must meet the following requirements:\n1. The report and any accompanying material is first sent to Intel.\n2. The Intel\u00ae product(s) in your report correspond to an item in the \u201c**Product Eligibility Criteria**\u201d section.\n3. The vulnerability you identify must be original, not previously reported to Intel, and not publicly disclosed.\n4. The report must show that the potential vulnerability has been demonstrated against a currently supported (often the most recent) and publicly available version of the affected product or technology.\n5. The report must contain clear documentation that provides information required for the report to be processed.\n    1. Minimum:\n        1. Name and specific version of the Intel\u00ae product(s) the potential issue may impact\n        2.\tHow exploiting it may negatively impact confidentiality, availability, and/or integrity of the affected product(s)\n        3.\tInstructions that, if followed by the Intel product engineering team, clearly demonstrate successful exploitation of the reported issue on an impacted Intel\u00ae platform\n        4.\tIdentify the reported Common Weakness Enumeration (CWE)\n    3. Recommended Content:\n        1. Overview\n            1. An overview/summary of the reported issue\n            2. Statement of potential impact\n            3. Name and specific version of the Intel\u00ae product(s) the potential issue may impact\n        2. Details\n            1. Detailed explanation of the reported issue\n            2. How it can be exploited\n            3. How exploiting it may negatively impact confidentiality, availability, and/or integrity of the affected product(s)\n            4. Likelihood of a successful exploit\n        3. Proof of Concept (POC)\n            1. Instructions that, if followed by the Intel product engineering team, clearly demonstrate successful exploitation of the reported issue on an impacted Intel\u00ae platform\n            2. Information on how any POC code was developed and compiled\n            3. Code required to execute the POC\n            4. Description of the development environment and operating system revisions\n            5. Compiler name, version, options used to compile \n        4. Scoring\n            1. Proposed CVSS score\n            2. Proposed CVSS vector\n            3. Justification for the selections (using the stated specification).  \n            4. Identify the reported Common Weakness Enumeration (CWE)\n\nThe more details provided in the initial report, the easier it will be for Intel to evaluate your report. Omitting Proof-of-Concept or Proof-of-Exploit(ability) from a report may result in the report being ineligible for a bounty or a delay in triage of the report.\n\n## Security Researcher and Reporter Eligibility Criteria\nAll criteria must be met to participate in the Bug Bounty Program. \n1. You are reporting in your individual capacity or, if you are employed by a company or other entity and are reporting on behalf of your employer, you have your employer\u2019s written approval to submit a report to the Intel\u00ae Bug Bounty Program.\n2. You are at least 18 years of age, and, if considered a minor in your place of residence, you have your parent\u2019s or legal guardian\u2019s permission prior to reporting.\n3. You are not a resident of a U.S. (United States) Government embargoed country.\n4. You are not on a U.S. Government list of sanctioned individuals.\n5. You are not currently, nor have you been an employee of Intel Corporation, or an Intel subsidiary, within 6 months prior to submitting a report.\n6. You are not currently, nor have you been under contract to Intel Corporation, or an Intel subsidiary, within 6 months prior to submitting a report.\n7. You are neither a family nor household member of any individual who currently or within the past 6 months meets or met the criteria listed in the two bullet points directly above.\n8. You agree to participate in testing mitigation effectiveness and coordinating disclosure/release/publication of your finding with Intel.\n9. You did not and will not access any personal information that is not your own, including by exploiting the vulnerability. \n10. You did not and will not violate any applicable law or regulation, including laws prohibiting unauthorized access to information. To clarify, Intel does not view testing that is done in compliance with the terms and conditions of this Bug Bounty Program as unauthorized. \n11. There may be additional restrictions on your eligibility to participate in the bug bounty depending upon your local laws.\n\n\n## Sensitive and Personal Information\nNever attempt to access anyone else's data or personal information, including by exploiting a vulnerability. Such activity is unauthorized. If during your research, testing, or communication with Intel you interacted with or obtained access to data or personal information of others, you must:\n* Stop your testing immediately and cease any activity that involves the data or personal information or the vulnerability.\n* Do not save, copy, store, transfer, disclose, or otherwise retain the data or personal information.\n* Alert Intel immediately and support our investigation and mitigation efforts.\n\nFailure to comply with any of the above will immediately disqualify any report from bounty award eligibility.\n\n\n# Intel Agreements\n## Bounties\nBounty award arrangements under this program, including the timing, bounty amount and form of payments, are at Intel\u2019s sole discretion and will be made case-by-case following the principle of **One CVE = One Bounty**.\n\nIntel\u2019s bug bounty awards **range from $500 up to $100,000**. We consider a range of factors when determining the award amount for eligible reports. Those factors include, but are not limited to, the quality of the report, impact of the potential vulnerability, type of vulnerability, CVSS severity score, whether a POC was provided and the quality of the POC (see \u201c**Report Eligibility Criteria**\u201d section). The table below is a general guide to the potential award amounts. However, the awards may vary based on the factors mentioned.\n\n\n| Vulnerability Severity | CVSS Score Range | Intel Cloud Services | Intel Software| Intel Firmware | Intel Hardware  |\n| ------------------------------ | -------------------------- | ---------------------------- | -------------------- | ---------------------- | ---------------------- |\n| Critical                           | 9.0 - 10.0                | Up to $5,000             | Up to $10,000 | Up to $30,000   | Up to $100,000 |\n| High                               | 7.0 - 8.9                  | Up to $2,500             | Up to $5,000   | Up to $15,000   | Up to $30,000    |\n| Medium                        | 4.0 - 6.9                  | Up to $750                 | Up to $1,500   | Up to $3,000    | Up to $5,000       |\n| Low                                | 0.1 - 3.9                  | Up to $250                 | Up to $500      | Up to $1,000    | Up to $2,000      |\n\nIntel, at its sole discretion, may reject any submission that we determine does not meet the \u201c**Security Researcher and Reporter Eligibility Criteria**,\u201d \u201c**Product Eligibility Criteria**,\u201c or \u201c**Report Eligibility Criteria**\u201d sections or that are deemed as ineligible as set forth below.\nIntel makes no representations regarding the tax consequences of the payments Intel makes under this program. Participants in this program are responsible for any tax liability associated with bounty award payments.\n\n## Current Standards in Use\n* Common Vulnerability Scoring System (CVSS): [Version 4.0](https://www.first.org/cvss/calculator/4.0)\n* CVE Numbering Authority Rules: [Version 4.1.0](https://www.cve.org/Resources/Roles/Cnas/CNA_Rules_v4.1.0.pdf)\n\n## Safe Harbor\nIf you follow the program terms, we will not initiate a lawsuit or law enforcement investigation against you in response to your report. Please understand that this waiver does not apply to your security research that involves the networks, systems, information, applications, devices, products, or services of another party (which is not Intel). We cannot and do not authorize security research in the name of other entities.\n\n\n# Shared Agreements\n## Intellectual Property\nBy submitting your content to Intel (your \u201cSubmission\u201d), you agree that Intel may take all steps needed to validate, mitigate, and disclose the vulnerability, and that you grant Intel all rights to your Submission needed to do so.\n\nIntel will, to the best of its ability, offer named acknowledgement on any Intel publications which include information provided through the reporting process. For Submissions with multiple collaborators, please ensure all users are included on the report at the time of submission to ensure acknowledgement.\n\nAcknowledgements will utilize the bug bounty platform username only, unless otherwise requested at the time of submission, or anonymity if requested before publication occurs. Limits may apply. Intel will not edit the acknowledged name unless it can be proven to be inaccurate.",
+      "testingRequirements": {
+        "intigritiMe": false,
+        "automatedTooling": null,
+        "userAgent": "",
+        "requestHeader": ""
+      },
+      "safeHarbour": true
+    }
+  },
+  "webLinks": {
+    "detail": "https://app.intigriti.com/auth/dashboard?redirect=/programs/intel/intel/detail"
+  },
+  "industry": "Manufacturing - Consumer"
+}

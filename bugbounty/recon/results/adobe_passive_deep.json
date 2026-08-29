@@ -1,0 +1,50 @@
+[
+  {
+    "url": "https://firefly.adobe.com/robots.txt",
+    "status": 200,
+    "body_len": 469,
+    "signals": [],
+    "preview": "User-agent: *\nAllow: /$\nAllow: /?locale=*\nAllow: /js/\nAllow: /env.js\nAllow: /releases/*\nAllow: /*.css\nAllow: /sitemap.xml\nAllow: /fi_favicon.ico?v=3\nAllow: /fi_favicon*.png\nAllow: /fi_touch_icon*.png\nAllow: /fi_android*.png\nAllow: /generate\nAllow: /video\nAllow: /gallery\nAllow: /ai-assistant\nAllow: /upload\nAllow: /inspire\nAllow: /custom-models\nAllow: /your-stuff\nAllow: /community\nAllow: /studio\nAll"
+  },
+  {
+    "url": "https://firefly.adobe.com/.well-known/security.txt",
+    "status": 200,
+    "body_len": 8192,
+    "signals": [
+      "SECRET_LEAK"
+    ],
+    "preview": "<!doctype html><html lang=\"en\" dir=\"ltr\"><head><meta charset=\"UTF-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>Adobe Firefly: Your all-in-one AI creative studio</title><meta name=\"description\" data-ffp-head content=\"Firefly gives you the speed, control, and creative freedom to go from idea to high-quality content. Generate images, video, audio and more with 30+ AI m"
+  },
+  {
+    "url": "https://photoshop.adobe.com/robots.txt",
+    "status": 200,
+    "body_len": 29,
+    "signals": [],
+    "preview": "User-agent: *\nDisallow: /id/\n"
+  },
+  {
+    "url": "https://new.express.adobe.com/robots.txt",
+    "status": 200,
+    "body_len": 70,
+    "signals": [],
+    "preview": "User-agent: *\nDisallow: /\nAllow: /embedLink/\nAllow: /embedLinkLegacy/\n"
+  },
+  {
+    "url": "https://account.adobe.com/robots.txt",
+    "status": 200,
+    "body_len": 23,
+    "signals": [],
+    "preview": "User-agent: *\nDisallow:"
+  },
+  {
+    "url": "https://account.adobe.com/.well-known/openid-configuration",
+    "status": 200,
+    "body_len": 8192,
+    "signals": [],
+    "preview": "<!doctype html><html><head><meta charset=\"UTF-8\"/><meta name=\"viewport\" content=\"width=device-width,initial-scale=1,viewport-fit=cover\"/><meta name=\"description\" content=\"Manage your Adobe Account profile, password, security options, product and service subscriptions, privacy settings, and communication preferences.\"/><link rel=\"icon\" href=\"https://www.adobe.com/favicon.ico\" type=\"image/x-icon\"/><"
+  },
+  {
+    "url": "https://auth.services.adobe.com/.well-known/openid-configuration",
+    "error": "HTTP Error 403: Forbidden"
+  }
+]

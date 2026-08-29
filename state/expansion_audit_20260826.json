@@ -1,0 +1,461 @@
+{
+  "audit_timestamp": "2026-08-26T00:00:00+00:00",
+  "source_file": "state/expansion_new_bounties_20260826.json",
+  "total_candidates": 29,
+  "total_potential_value_usd": 166000,
+  "fresh_candidates": [
+    {
+      "number": 3,
+      "title": "[ Bounty $4k ] [ Solidity ] Fix reentrancy in StakingRewards withdraw and claimR",
+      "parsed_value_usd": 4000,
+      "updated_at": "2026-08-20T00:18:22Z",
+      "is_fresh": true,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 198,
+      "title": "[ Bounty $9k ] [ SDK ] Fix encoding.ts decodeParameter doesn't handle dynamic ty",
+      "parsed_value_usd": 9000,
+      "updated_at": "2026-08-18T23:24:18Z",
+      "is_fresh": true,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    }
+  ],
+  "stale_candidates": [
+    {
+      "number": 16,
+      "title": "[ Bounty $2k ] [ Solidity ] Fix prevrandao manipulation in RandomLottery",
+      "parsed_value_usd": 2000,
+      "updated_at": "2026-08-10T09:53:35Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 21,
+      "title": "[ Bounty $6k ] [ Solidity ] Fix donation attack on YieldAggregator deposit",
+      "parsed_value_usd": 6000,
+      "updated_at": "2026-08-10T09:53:29Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 202,
+      "title": "[ Bounty $8k ] [ API ] Add structured error responses with error codes \u2014 securit",
+      "parsed_value_usd": 8000,
+      "updated_at": "2026-08-06T11:36:17Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 199,
+      "title": "[ Bounty $3k ] [ SDK ] Add contract deployment helpers to SDK \u2014 code review find",
+      "parsed_value_usd": 3000,
+      "updated_at": "2026-08-06T02:35:48Z",
+      "is_fresh": false,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 196,
+      "title": "[ Bounty $3k ] [ SDK ] Add event subscription and decoding to OpenAgentsSDK \u2014 te",
+      "parsed_value_usd": 3000,
+      "updated_at": "2026-08-06T01:57:40Z",
+      "is_fresh": false,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 201,
+      "title": "[ Bounty $7k ] [ Solidity ] Fix Timelock queued transactions can be executed aft",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-06T01:57:31Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 46,
+      "title": "[ Bounty $4k ] [ SDK ] Fix retry utility has no max retries cap",
+      "parsed_value_usd": 4000,
+      "updated_at": "2026-08-06T01:12:25Z",
+      "is_fresh": false,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 20,
+      "title": "[ Bounty $2k ] [ Solidity ] Fix Chainlink adapter missing staleness and negative",
+      "parsed_value_usd": 2000,
+      "updated_at": "2026-08-05T21:42:45Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 19,
+      "title": "[ Bounty $2k ] [ Solidity ] Fix TWAP oracle window too short and same-block mani",
+      "parsed_value_usd": 2000,
+      "updated_at": "2026-08-05T21:38:57Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 17,
+      "title": "[ Bounty $7k ] [ Solidity ] Fix reentrancy in PrizeSplit claimPrize and rounding",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-05T21:34:25Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 12,
+      "title": "[ Bounty $7k ] [ Solidity ] Fix integer overflow in VestingWallet vested amount ",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-05T21:24:16Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 11,
+      "title": "[ Bounty $9k ] [ Solidity ] Fix no max supply cap and missing access control on ",
+      "parsed_value_usd": 9000,
+      "updated_at": "2026-08-05T21:15:44Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 14,
+      "title": "[ Bounty $9k ] [ Solidity ] Fix Timelock delay can be set to zero and lacks acce",
+      "parsed_value_usd": 9000,
+      "updated_at": "2026-08-05T21:07:21Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 8,
+      "title": "[ Bounty $3k ] [ Solidity ] Fix first-depositor inflation attack in AMMPool",
+      "parsed_value_usd": 3000,
+      "updated_at": "2026-08-05T20:59:38Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 6,
+      "title": "[ Bounty $5k ] [ Solidity ] Fix cross-chain replay attack in TokenBridge signatu",
+      "parsed_value_usd": 5000,
+      "updated_at": "2026-08-05T20:47:41Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 4,
+      "title": "[ Bounty $8k ] [ Solidity ] Fix tx.origin phishing vulnerability in GovernorAlph",
+      "parsed_value_usd": 8000,
+      "updated_at": "2026-08-05T20:40:41Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 7,
+      "title": "[ Bounty $7k ] [ Solidity ] Fix phantom reward accrual after period expiry in Yi",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-05T20:32:22Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 5,
+      "title": "[ Bounty $5k ] [ Solidity ] Fix missing slippage protection and deadline in Simp",
+      "parsed_value_usd": 5000,
+      "updated_at": "2026-08-05T20:19:33Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 187,
+      "title": "[ Bounty $7k ] [ API ] Fix agents.py doesn't validate endpoint URL format \u2014 urge",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-05T19:28:50Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 178,
+      "title": "[ Bounty $8k ] [ API ] Fix main.py doesn't have request ID middleware for log co",
+      "parsed_value_usd": 8000,
+      "updated_at": "2026-08-05T18:41:15Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 107,
+      "title": "[ Bounty $7k ] [ Solidity ] Fix GovernorAlpha execute has no quorum validation",
+      "parsed_value_usd": 7000,
+      "updated_at": "2026-08-05T18:07:47Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 100,
+      "title": "[ Bounty $8k ] [ API ] Fix JWT auth middleware accepts algorithm none \u2014 v2 imple",
+      "parsed_value_usd": 8000,
+      "updated_at": "2026-08-05T06:17:10Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 101,
+      "title": "[ Bounty $3k ] [ SDK ] Add automatic gas estimation with safety margin \u2014 gas opt",
+      "parsed_value_usd": 3000,
+      "updated_at": "2026-08-05T06:04:21Z",
+      "is_fresh": false,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 183,
+      "title": "[ Bounty $9k ] [ Solidity ] Add gas sponsorship relay for agent transactions \u2014 s",
+      "parsed_value_usd": 9000,
+      "updated_at": "2026-08-03T01:18:44Z",
+      "is_fresh": false,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 177,
+      "title": "[ Bounty $5k ] [ API ] Fix auth.py doesn't support API key authentication alongs",
+      "parsed_value_usd": 5000,
+      "updated_at": "2026-07-20T05:23:16Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 123,
+      "title": "[ Bounty $5k ] [ API ] Fix tasks.py has no websocket endpoint for real-time task",
+      "parsed_value_usd": 5000,
+      "updated_at": "2026-07-20T05:23:14Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 120,
+      "title": "[ Bounty $4k ] [ API ] Fix payments.py escrow release has no expiry auto-refund ",
+      "parsed_value_usd": 4000,
+      "updated_at": "2026-07-20T05:15:01Z",
+      "is_fresh": false,
+      "category": "API",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    }
+  ],
+  "duplicate_with_ledger": [],
+  "actionable_pipeline": [
+    {
+      "number": 198,
+      "title": "[ Bounty $9k ] [ SDK ] Fix encoding.ts decodeParameter doesn't handle dynamic ty",
+      "parsed_value_usd": 9000,
+      "updated_at": "2026-08-18T23:24:18Z",
+      "is_fresh": true,
+      "category": "SDK",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    },
+    {
+      "number": 3,
+      "title": "[ Bounty $4k ] [ Solidity ] Fix reentrancy in StakingRewards withdraw and claimR",
+      "parsed_value_usd": 4000,
+      "updated_at": "2026-08-20T00:18:22Z",
+      "is_fresh": true,
+      "category": "Solidity",
+      "zero_capital": true,
+      "requires_human_approval": true,
+      "risk_level": "low"
+    }
+  ],
+  "notes": [
+    "All 29 candidates are zero-capital and require human approval before submission",
+    "Only 2 candidates updated within last 14 days (#198 $9k SDK, #3 $4k Solidity)",
+    "27 candidates stale (>14 days since update) - may be abandoned or low priority",
+    "No duplicates found with existing bounty_ledger.json (0 OpenAgents entries in ledger)",
+    "Total potential value $166,000 but realizability uncertain for stale items",
+    "Manual verification of issue state (open/closed) required before any draft preparation",
+    "Capital Wise compliant: discovery and qualification only, no autonomous submission"
+  ],
+  "pending_qualification": {
+    "timestamp": "2026-08-26T11:53:28.631794+00:00",
+    "total_pending": 5,
+    "qualified": 2,
+    "rejected": 3,
+    "qualified_items": [
+      {
+        "url": "https://github.com/Grainlify/Grainlify-Stellar-Contracts/issues/598",
+        "org": "Grainlify",
+        "repo": "Grainlify-Stellar-Contracts",
+        "title": "bounty_escrow: duplicate enum discriminant 26 (ApprovalRequired vs UpgradeNotApp",
+        "confidence": 0.9,
+        "hours": 1,
+        "has_bounty_signal": true,
+        "is_personal_repo": false,
+        "status": "QUALIFIED_FOR_HUMAN_REVIEW",
+        "reason": "Explicit bounty signal + non-personal repo + high confidence"
+      },
+      {
+        "url": "https://github.com/marcelo-earth/marcello/issues/15",
+        "org": "marcelo-earth",
+        "repo": "marcello",
+        "title": "Add a reward-hacking audit for the top-k completions",
+        "confidence": 0.8,
+        "hours": 3,
+        "has_bounty_signal": true,
+        "is_personal_repo": false,
+        "status": "QUALIFIED_FOR_HUMAN_REVIEW",
+        "reason": "Explicit bounty signal + non-personal repo + high confidence"
+      }
+    ],
+    "rejected_items": [
+      {
+        "url": "https://github.com/eliezerkirubi-sys/quadcopter-rl-control/issues/6",
+        "org": "eliezerkirubi-sys",
+        "repo": "quadcopter-rl-control",
+        "title": "Issue #6: Implement Position-Based Distance Penalty",
+        "confidence": 0.8,
+        "hours": 2,
+        "has_bounty_signal": false,
+        "is_personal_repo": true,
+        "status": "REJECTED_NO_BOUNTY_SIGNAL",
+        "reason": "No explicit bounty/funded indicator in title; may be regular issue"
+      },
+      {
+        "url": "https://github.com/marcelo-earth/marcello/issues/30",
+        "org": "marcelo-earth",
+        "repo": "marcello",
+        "title": "Confirm the completion length distribution is not pinned at max_new_tokens",
+        "confidence": 0.85,
+        "hours": 1,
+        "has_bounty_signal": false,
+        "is_personal_repo": false,
+        "status": "REJECTED_NO_BOUNTY_SIGNAL",
+        "reason": "No explicit bounty/funded indicator in title; may be regular issue"
+      },
+      {
+        "url": "https://github.com/tadanobutubutu/screeps/issues/5",
+        "org": "tadanobutubutu",
+        "repo": "screeps",
+        "title": "Dependency Dashboard",
+        "confidence": 0.75,
+        "hours": 2,
+        "has_bounty_signal": false,
+        "is_personal_repo": false,
+        "status": "REJECTED_NO_BOUNTY_SIGNAL",
+        "reason": "No explicit bounty/funded indicator in title; may be regular issue"
+      }
+    ]
+  },
+  "last_updated": "2026-08-26T11:53:47.088110+00:00",
+  "deep_qualification": {
+    "timestamp": "2026-08-26T11:53:47.088089+00:00",
+    "results": [
+      {
+        "url": "https://github.com/Grainlify/Grainlify-Stellar-Contracts/issues/598",
+        "org": "Grainlify",
+        "repo": "Grainlify-Stellar-Contracts",
+        "risk_flags": [],
+        "risk_level": "LOW",
+        "recommendation": "QUALIFIED_FOR_REVIEW",
+        "notes": "0 risk flags detected. Requires human verification of bounty funding before any work."
+      },
+      {
+        "url": "https://github.com/marcelo-earth/marcello/issues/15",
+        "org": "marcelo-earth",
+        "repo": "marcello",
+        "risk_flags": [
+          "weak_org_signal"
+        ],
+        "risk_level": "MEDIUM",
+        "recommendation": "PROCEED_WITH_CAUTION",
+        "notes": "1 risk flags detected. Requires human verification of bounty funding before any work."
+      }
+    ],
+    "actionable_count": 1,
+    "caution_count": 1
+  }
+}

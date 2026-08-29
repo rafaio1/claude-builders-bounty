@@ -1,0 +1,91 @@
+{
+  "id": "3795116",
+  "type": "report",
+  "attributes": {
+    "title": "CORS credential theft on fp.coinbase.com due to arbitrary Origin reflection with credentials",
+    "state": "duplicate",
+    "created_at": "2026-06-10T23:50:47.740Z",
+    "submitted_at": "2026-06-10T23:50:48.040Z",
+    "vulnerability_information": "# CORS credential theft on fp.coinbase.com due to arbitrary Origin reflection with credentials\n\n**Template**: Web2\n**Platform**: hackerone\n**Scope**: https://fp.coinbase.com/\n**Severity**: high | **CVSS**: 8.5 (`CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N`)\n**CWE**: CWE-942 - Permissive Cross-domain Policy with Untrusted Domains (CORS)\n**Generated**: 2026-06-10T23:50:44Z\n\n## Summary\nThe CORS policy on fp.coinbase.com reflects attacker-controlled Origin values and returns Access-Control-Allow-Credentials: true. The scan confirmed arbitrary origin reflection, trusted-suffix bypass variants, wildcard-subdomain variants, and null-origin handling on the same host. This allows a malicious website to issue credentialed browser requests to the affected API surface when a victim is logged in.\n\n## Affected endpoint/feature\nhttps://fp.coinbase.com/\n\n## Auth context\nDescribe whether the endpoint requires authentication, which role was used, and whether the action is cross-user or unauthenticated.\n\n## Steps to reproduce\n1. Send a request to https://fp.coinbase.com/ with Origin: https://evil-attacker-sim.com.\n2. Observe HTTP 200 with Access-Control-Allow-Origin: https://evil-attacker-sim.com.\n3. Observe Access-Control-Allow-Credentials: true.\n4. Repeat with related attacker-controlled origins such as https://notcoinbase.com and https://coinbase.com.evil.com.\n5. The attached evidence bundle contains the scanner request/response evidence and the confirmed CORS_CREDENTIAL_THEFT chain.\n\nConfirmed scanner evidence:\nCORS probe to: https://fp.coinbase.com\nSent header: Origin: https://evil-attacker-sim.com\nResponse status: 200\nAccess-Control-Allow-Origin: https://evil-attacker-sim.com\nAccess-Control-Allow-Credentials: true\n\n## Expected result\nThe application should reject unauthorized or malformed access and preserve the intended security boundary.\n\n## Actual result\nGET https://fp.coinbase.com\n  Origin: https://evil-attacker.com -> ACAO=https://evil-attacker.com ACAC=true\nCONFIRMADO: Origin controlado pelo atacante refletido com credentials:true \u2014 credenciais cross-origin poss\u00edveis.\n\nAttack chain confirmada: CORS_CREDENTIAL_THEFT\nSeveridade efetiva: high\nStatus da simulacao: confirmed\nEvidencia da simulacao:\nCORS probe to: https://fp.coinbase.com\nSent header: Origin: https://evil-attacker-sim.com\nResponse status: 200\nAccess-Control-Allow-Origin: https://evil-attacker-sim.com\nAccess-Control-Allow-Credentials: true\nAccess-Control-Allow-Methods: (not set)\n\nCONFIRMED: Server reflects attacker-controlled origin AND allows credentials. Cross-origin authenticated requests to this endpoint are possible.\n\n## Impact\nA malicious origin can read responses to credentialed cross-origin browser requests if the victim has valid Coinbase cookies for the affected host/API. This can expose authenticated user data or CSRF/token material returned by affected endpoints. The scanner did not exfiltrate user data; it confirmed the browser security boundary is disabled by reflected ACAO plus ACAC:true.\n\n## Evidence\n_No files attached._\n\nVerification evidence:\n\n```text\nGET https://fp.coinbase.com\n  Origin: https://evil-attacker.com -> ACAO=https://evil-attacker.com ACAC=true\nCONFIRMADO: Origin controlado pelo atacante refletido com credentials:true \u2014 credenciais cross-origin poss\u00edveis.\n\nAttack chain confirmada: CORS_CREDENTIAL_THEFT\nSeveridade efetiva: high\nStatus da simulacao: confirmed\nEvidencia da simulacao:\nCORS probe to: https://fp.coinbase.com\nSent header: Origin: https://evil-attacker-sim.com\nResponse status: 200\nAccess-Control-Allow-Origin: https://evil-attacker-sim.com\nAccess-Control-Allow-Credentials: true\nAccess-Control-Allow-Methods: (not set)\n\nCONFIRMED: Server reflects attacker-controlled origin AND allows credentials. Cross-origin authenticated requests to this endpoint are possible.\n```\n\nRaw finding evidence:\n\n```text\nGET https://fp.coinbase.com/ com Origin: https://evil.com (origem arbitraria evil.com)\n-> Access-Control-Allow-Origin: https://evil.com (refletido/aceito)\n-> Access-Control-Allow-Credentials: true\n```\n\n## Remediation\nUse an explicit allowlist of trusted origins. Do not reflect arbitrary Origin values. Do not return Access-Control-Allow-Credentials: true for untrusted origins. Treat null origins as untrusted unless a specific, documented use case requires them.\n\n## Impact\n\nA malicious origin can read responses to credentialed cross-origin browser requests if the victim has valid Coinbase cookies for the affected host/API. This can expose authenticated user data or CSRF/token material returned by affected endpoints. The scanner did not exfiltrate user data; it confirmed the browser security boundary is disabled by reflected ACAO plus ACAC:true.",
+    "triaged_at": null,
+    "closed_at": "2026-06-11T03:13:20.562Z",
+    "last_reporter_activity_at": "2026-06-10T23:50:48.309Z",
+    "first_program_activity_at": "2026-06-11T03:13:19.160Z",
+    "last_program_activity_at": "2026-06-11T03:13:20.562Z",
+    "bounty_awarded_at": null,
+    "swag_awarded_at": null,
+    "disclosed_at": null,
+    "reporter_agreed_on_going_public_at": null,
+    "last_public_activity_at": "2026-06-11T03:13:20.562Z",
+    "last_activity_at": null
+  },
+  "relationships": {
+    "reporter": {
+      "data": {
+        "id": "4483485",
+        "type": "user",
+        "attributes": {
+          "reputation": 100,
+          "username": "rafaio",
+          "name": "Rafael",
+          "disabled": false,
+          "created_at": "2026-06-10T01:56:03.570Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "82x82": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "110x110": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "260x260": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png"
+          },
+          "bio": null,
+          "website": null,
+          "location": null,
+          "hackerone_triager": false
+        }
+      }
+    },
+    "program": {
+      "data": {
+        "id": "104",
+        "type": "program",
+        "attributes": {
+          "handle": "coinbase",
+          "created_at": null,
+          "updated_at": null
+        }
+      }
+    },
+    "severity": {
+      "data": {
+        "id": "4181518",
+        "type": "severity",
+        "attributes": {
+          "rating": "high",
+          "author_type": "User",
+          "user_id": 4483485,
+          "created_at": "2026-06-10T23:50:47.890Z",
+          "calculation_method": "manual"
+        }
+      }
+    },
+    "structured_scope": {
+      "data": {
+        "id": "120",
+        "type": "structured-scope",
+        "attributes": {
+          "asset_type": "URL",
+          "asset_identifier": "*.coinbase.com",
+          "eligible_for_bounty": true,
+          "eligible_for_submission": true,
+          "instruction": "Coinbase's main domain.",
+          "max_severity": "critical",
+          "created_at": "2017-07-20T23:32:30.242Z",
+          "updated_at": "2026-08-07T18:43:44.482Z",
+          "reference": null,
+          "confidentiality_requirement": "high",
+          "integrity_requirement": "high",
+          "availability_requirement": "high"
+        }
+      }
+    }
+  }
+}

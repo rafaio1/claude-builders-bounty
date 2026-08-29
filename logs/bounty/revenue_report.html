@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Relatório de Receita Autônoma - Codex CENTRAL</title>
+<style>
+  :root { --bg: #0f1117; --card: #1a1d27; --accent: #22c55e; --text: #e2e8f0; --muted: #94a3b8; --border: #2d3348; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', -apple-system, sans-serif; line-height: 1.6; padding: 2rem; }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { font-size: 1.8rem; margin-bottom: 0.5rem; color: var(--accent); }
+  .subtitle { color: var(--muted); margin-bottom: 2rem; font-size: 0.95rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
+  .stat-card { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; text-align: center; }
+  .stat-value { font-size: 2rem; font-weight: 700; color: var(--accent); }
+  .stat-label { color: var(--muted); font-size: 0.85rem; margin-top: 0.25rem; }
+  table { width: 100%; border-collapse: collapse; background: var(--card); border-radius: 12px; overflow: hidden; border: 1px solid var(--border); }
+  th { background: #232736; text-align: left; padding: 1rem; font-weight: 600; font-size: 0.85rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+  td { padding: 1rem; border-top: 1px solid var(--border); font-size: 0.9rem; }
+  tr:hover td { background: rgba(34,197,94,0.04); }
+  a { color: var(--accent); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .badge { display: inline-block; padding: 0.2rem 0.6rem; border-radius: 999px; font-size: 0.75rem; font-weight: 600; background: rgba(34,197,94,0.15); color: var(--accent); }
+  .footer { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border); color: var(--muted); font-size: 0.8rem; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>💰 Motor Autônomo de Receita</h1>
+  <p class="subtitle">Relatório gerado em 2026-08-26 00:59 UTC por Codex CENTRAL • @rafaio1</p>
+
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-value">$320</div>
+      <div class="stat-label">Bounties Pendentes (USD)</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">5</div>
+      <div class="stat-label">PRs Submetidos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value">Lilly-Protocol</div>
+      <div class="stat-label">Foco Atual</div>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr><th>Issue</th><th>Título</th><th>Bounty</th><th>PR</th><th>Status</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>#83</td>
+        <td>[Bounty: $90] Add a bundle-size budget check to CI</td>
+        <td><strong>$90</strong></td>
+        <td><a href="https://github.com/Lilly-Protocol/lily-sdk/pull/227" target="_blank">PR #227</a></td>
+        <td><span class="badge">Submetido</span></td>
+      </tr>
+      <tr>
+        <td>#78</td>
+        <td>[Bounty: $80] Add a typed passthrough request() on LilySdk</td>
+        <td><strong>$80</strong></td>
+        <td><a href="https://github.com/Lilly-Protocol/lily-sdk/pull/230" target="_blank">PR #230</a></td>
+        <td><span class="badge">Submetido</span></td>
+      </tr>
+      <tr>
+        <td>#81</td>
+        <td>[Bounty: $70] Add Changesets and automated npm publish workflow</td>
+        <td><strong>$70</strong></td>
+        <td><a href="https://github.com/Lilly-Protocol/lily-sdk/pull/229" target="_blank">PR #229</a></td>
+        <td><span class="badge">Submetido</span></td>
+      </tr>
+      <tr>
+        <td>#82</td>
+        <td>[Bounty: $55] Add an attw type-resolution check to CI</td>
+        <td><strong>$55</strong></td>
+        <td><a href="https://github.com/Lilly-Protocol/lily-sdk/pull/228" target="_blank">PR #228</a></td>
+        <td><span class="badge">Submetido</span></td>
+      </tr>
+      <tr>
+        <td>#84</td>
+        <td>[Bounty: $25] Smoke-test every exports subpath against packed tarball in CI</td>
+        <td><strong>$25</strong></td>
+        <td><a href="https://github.com/Lilly-Protocol/lily-sdk/pull/226" target="_blank">PR #226</a></td>
+        <td><span class="badge">Submetido</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="footer">
+    Codex CENTRAL • Agente Autônomo de Receita • Nenhum segredo exposto • Evidência exigida para lucro
+  </div>
+</div>
+</body>
+</html>

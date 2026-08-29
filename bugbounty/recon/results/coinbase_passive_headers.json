@@ -1,0 +1,56 @@
+[
+  {
+    "target": "Main Site",
+    "url": "https://www.coinbase.com",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "target": "API",
+    "url": "https://api.coinbase.com",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "target": "Exchange API",
+    "url": "https://api.exchange.coinbase.com",
+    "error": "HTTP Error 404: Not Found"
+  },
+  {
+    "target": "Pro",
+    "url": "https://pro.coinbase.com",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "target": "Cloud",
+    "url": "https://cloud.coinbase.com",
+    "error": "HTTP Error 403: Forbidden"
+  },
+  {
+    "target": "Wallet",
+    "url": "https://wallet.coinbase.com",
+    "status": 200,
+    "signals": [
+      "NO CSP",
+      "NO X-Frame-Options"
+    ],
+    "header_count": 20
+  },
+  {
+    "target": "Base L2",
+    "url": "https://base.org",
+    "status": 200,
+    "signals": [
+      "NO CSP",
+      "NO X-Frame-Options"
+    ],
+    "header_count": 22
+  },
+  {
+    "target": "Base Bridge",
+    "url": "https://bridge.base.org",
+    "status": 200,
+    "signals": [
+      "Server: Vercel"
+    ],
+    "header_count": 28
+  }
+]

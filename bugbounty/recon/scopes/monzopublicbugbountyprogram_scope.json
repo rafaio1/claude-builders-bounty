@@ -1,0 +1,82 @@
+{
+  "handle": "monzopublicbugbountyprogram",
+  "name": "Monzo Public Bug Bounty Program",
+  "max_bounty": {
+    "value": 12500.0,
+    "currency": "GBP"
+  },
+  "assets": [
+    {
+      "type": "Wildcard",
+      "endpoint": "*.monzo.com",
+      "tier": "Tier 1",
+      "description": "The crux of Monzo where the APIs live as well as Monzo Business. Excludes the main website (like `monzo.com`/`www.monzo.com`)."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.prod-ffs.io",
+      "tier": "Tier 1",
+      "description": "Where our internet-facing services are accessed"
+    },
+    {
+      "type": "Android",
+      "endpoint": "co.uk.getmondo",
+      "tier": "Tier 2",
+      "description": "The public seed of the Monzo app on Android"
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.monzo.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "monzo.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*/p2p/*",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*/contact-discovery/*",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*/inbound-p2p/*",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.monzo.me",
+      "tier": "Out Of Scope",
+      "description": "Houses the services for the pay me/request payment feature"
+    },
+    {
+      "type": "Url",
+      "endpoint": "community.monzo.com",
+      "tier": "Out Of Scope",
+      "description": "We use a third-party, Discourse for our community forums. Third-parties are out of scope for our programs."
+    },
+    {
+      "type": "Url",
+      "endpoint": "login.internal.monzo.com",
+      "tier": "Out Of Scope",
+      "description": "This is our connection to Okta for internal authentication. Third-parties are out of scope for our programs. "
+    },
+    {
+      "type": "Url",
+      "endpoint": "monzo.me",
+      "tier": "Out Of Scope",
+      "description": "Monzo.me is a service that allows Monzo users to easily receive money from others via a personalised link, even if the sender doesn't have a Monzo account."
+    }
+  ]
+}

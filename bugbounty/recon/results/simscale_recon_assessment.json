@@ -1,0 +1,37 @@
+{
+  "target": "SimScale",
+  "handle": "simscale",
+  "platform": "Intigriti",
+  "max_bounty": {
+    "value": 6000,
+    "currency": "EUR"
+  },
+  "status": "RECON_COMPLETE_NO_UNAUTH_FINDINGS",
+  "date": "2026-08-26T15:45:00Z",
+  "attack_surface": {
+    "api_base": "https://api.simscale.com/v0",
+    "openapi_spec": "https://api.simscale.com/v0/openapi.json",
+    "total_endpoints": 75,
+    "auth_scheme": "X-API-KEY header (global)",
+    "high_value_categories": [
+      "permissions",
+      "spaces",
+      "projects",
+      "ai",
+      "materials"
+    ]
+  },
+  "tests_performed": [
+    "OpenAPI spec retrieval (success, 2.3MB)",
+    "Auth bypass on GET /projects, /spaces, /materialgroups, /winddata (all 401)",
+    "Auth bypass on POST /users, /storage (all 401)",
+    "Public project thumbnail via www proxy (200 PNG - expected public asset)",
+    "CSM visualization via www proxy (200 PNG - expected public asset)",
+    "Frontend JS bundle analysis (33 bundles, no leaked secrets)",
+    "Next.js data leakage check (no __NEXT_DATA__ on project pages)",
+    "Robots.txt and security.txt reviewed"
+  ],
+  "findings": [],
+  "verdict": "PIVOT_TO_NEXT_TARGET",
+  "notes": "All API endpoints enforce X-API-KEY authentication consistently. No unauthenticated info disclosure, IDOR, or auth bypass found. Public assets served correctly via www proxy. AI endpoints (/ai/*) require auth and are not testable without valid key. Signup endpoint also requires auth (unusual but secure). Recommend revisiting only with registered account for authenticated testing."
+}

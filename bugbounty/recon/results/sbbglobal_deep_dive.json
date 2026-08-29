@@ -1,0 +1,50 @@
+{
+  "target": "SBB Global (Intigriti)",
+  "status": "NO_FINDINGS",
+  "assets_investigated": [
+    {
+      "host": "www.transsicura.ch",
+      "result": "Static brochure site. No API refs in HTML/JS. Manifest is PWA config only."
+    },
+    {
+      "host": "developer.sbb.ch",
+      "result": "Angular SPA. JS bundle contains AsyncAPI schemas and internal Confluence/DMS links. Backend api-backend.api.sbb.ch returns 401 consistently."
+    },
+    {
+      "host": "developer-int.sbb.ch",
+      "result": "Staging/int environment. Returns identical Angular SPA shell for ALL paths including /actuator, /health, /debug. Confirmed catch-all fallback. No debug endpoints exposed."
+    },
+    {
+      "host": "confluence.sbb.ch",
+      "result": "Redirects to Microsoft Azure AD SSO login. Not publicly accessible."
+    },
+    {
+      "host": "dms.sbb.ch",
+      "result": "OpenText Livelink DMS. Redirects to Microsoft Azure AD SSO login. Not publicly accessible."
+    },
+    {
+      "host": "www-int.swisspass.ch",
+      "result": "Cloudflare 403 challenge page. Protected."
+    },
+    {
+      "host": "*.sbb.ch wildcard sample",
+      "result": "Most subdomains NXDOMAIN or timeout. shop.sbb.ch (403 AWS ELB), login.sbb.ch (403). No takeover candidates found."
+    }
+  ],
+  "internal_refs_discovered": [
+    "https://confluence.sbb.ch/pages/viewpage.action?pageId=2094532145",
+    "https://confluence.sbb.ch/pages/viewpage.action?pageId=2094532229",
+    "https://confluence.sbb.ch/pages/viewpage.action?pageId=3096780610",
+    "https://dms.sbb.ch/OTCS/llisapi.dll?func=ll&objId=157506973&objAction=overview",
+    "https://developer-int.sbb.ch/",
+    "https://www-int.swisspass.ch/",
+    "https://api-backend.api.sbb.ch"
+  ],
+  "verdict": "All discovered internal assets are behind SSO/Cloudflare or return generic SPA shells. No exploitable misconfigurations, info disclosures, or takeover vectors identified. Pivot recommended.",
+  "next_pivot_targets": [
+    "Torfs",
+    "SimScale",
+    "Uphold"
+  ],
+  "timestamp": "2026-08-26T15:00:00Z"
+}

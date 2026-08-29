@@ -1,0 +1,53 @@
+[
+  {
+    "url": "https://api.slack.com/methods",
+    "status": 200,
+    "body_len": 8192,
+    "content_type": "text/html; charset=utf-8",
+    "signals": [
+      "VERSION DISCLOSURE"
+    ],
+    "body_preview": "<!doctype html><html lang=en dir=ltr class=\"docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/methods\" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content=\"Docusaurus v3.10.2\"><title data-rh=true>Methods | Slack Developer Docs</title><meta data-rh=true name=viewport content=\"width=device-width, initial-scale=1.0\"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url conte"
+  },
+  {
+    "url": "https://api.slack.com/apps",
+    "status": 200,
+    "body_len": 8192,
+    "content_type": "text/html; charset=utf-8",
+    "signals": [
+      "POTENTIAL SECRET LEAK",
+      "VERSION DISCLOSURE"
+    ],
+    "body_preview": "<!DOCTYPE html><html lang=\"en-US\" class=\"\" data-cdn=\"https://a.slack-edge.com/\"><head><script>window.ts_endpoint_url = \"https:\\/\\/slack.com\\/beacon\\/timing\";(function(e) {\n\tvar n=Date.now?Date.now():+new Date,r=e.performance||{},t=[],a={},i=function(e,n){for(var r=0,a=t.length,i=[];a>r;r++)t[r][e]==n&&i.push(t[r]);return i},o=function(e,n){for(var r,a=t.length;a--;)r=t[a],r.entryType!=e||void 0!==n&&r.name!=n||t.splice(a,1)};r.now||(r.now=r.webkitNow||r.mozNow||r.msNow||function(){return(Date.no"
+  },
+  {
+    "url": "https://api.slack.com/robots.txt",
+    "status": 200,
+    "body_len": 520,
+    "content_type": "text/plain;charset=utf-8",
+    "signals": [],
+    "body_preview": "User-agent: *\nDisallow: /messages\nDisallow: /quickstart\nDisallow: /go/\nDisallow: /unsub/\nDisallow: /answers/\nDisallow: /help/requests/new?app_id=*\nDisallow: /what-is-slack\nDisallow: /collaborating-with-slack\nDisallow: /lp/three\nDisallow: /documents/slack_pilot_dpa\nDisallow: /openid\nDisallow: /oauth\nDisallow: /careers/\nDisallow: /join/shared_invite\nDisallow: /files-pri/\n\nSitemap: https://slack.com/sitemap.xml\nSitemap: https://slack.com/sitemap_marketplace.xml\nSitemap: https://slack.com/sitemaps/b"
+  },
+  {
+    "url": "https://api.slack.com/.well-known/security.txt",
+    "status": 200,
+    "body_len": 208,
+    "content_type": "text/plain;charset=utf-8",
+    "signals": [],
+    "body_preview": "# Please report bugs that do not represent a security risk to feedback@slack.com\nContact: https://hackerone.com/slack/\nAcknowledgements: https://hackerone.com/slack/thanks\nPolicy: https://hackerone.com/slack/"
+  },
+  {
+    "url": "https://app.slack.com/api/",
+    "status": 200,
+    "body_len": 8192,
+    "content_type": "text/html; charset=utf-8",
+    "signals": [
+      "VERSION DISCLOSURE"
+    ],
+    "body_preview": "<!doctype html><html lang=en dir=ltr class=\"docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-index\" data-has-hydrated=false><head><meta charset=UTF-8><meta name=generator content=\"Docusaurus v3.10.2\"><title data-rh=true>Slack developer docs | Slack Developer Docs</title><meta data-rh=true name=viewport content=\"width=device-width, initial-scale=1.0\"/><meta data-rh=true name=twitter:card content=summary_large_image /><meta data-rh=true property=og:url cont"
+  },
+  {
+    "url": "https://edgeapi.slack.com/robots.txt",
+    "error": "HTTP Error 404: Not Found"
+  }
+]

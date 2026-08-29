@@ -1,0 +1,82 @@
+{
+  "timestamp_utc": "2026-08-26T08:39:05.865473+00:00",
+  "audit_type": "contador_reconciliation_integrity_check",
+  "files_checked": [
+    {
+      "path": "/Agentic/state/contador_waiting_20260826.json",
+      "status": "valid",
+      "size_bytes": 6899,
+      "keys": [
+        "timestamp_utc",
+        "status",
+        "reason",
+        "realized_usd",
+        "pending_usd"
+      ]
+    },
+    {
+      "path": "/Agentic/state/expansion_exhaustion_assessment_20260826.json",
+      "status": "valid",
+      "size_bytes": 1760,
+      "keys": [
+        "timestamp_utc",
+        "expansion_assessment",
+        "paths_assessed",
+        "total_actionable_zero_capital_paths",
+        "total_blocked_on_human"
+      ]
+    },
+    {
+      "path": "/Agentic/state/sherlock_qualification_20260826.json",
+      "status": "valid",
+      "size_bytes": 2749,
+      "keys": [
+        "timestamp_utc",
+        "sherlock_active_contests",
+        "total_potential_usdc",
+        "qualification_status",
+        "next_action"
+      ]
+    },
+    {
+      "path": "/Agentic/data/active_audit_sniper_targets.json",
+      "status": "valid",
+      "size_bytes": 975,
+      "keys": "list[4]"
+    },
+    {
+      "path": "/Agentic/data/aro/bounty_ledger.json",
+      "status": "valid",
+      "size_bytes": 253408,
+      "keys": [
+        "reconciled_bounties",
+        "metadata",
+        "bounties",
+        "total_bounty_value",
+        "audit_metadata"
+      ]
+    },
+    {
+      "path": "/Agentic/data/aro/high_ticket_ledger.json",
+      "status": "valid",
+      "size_bytes": 31929,
+      "keys": [
+        "bounties",
+        "total_value"
+      ]
+    }
+  ],
+  "all_valid": true,
+  "errors": [],
+  "invariants": {
+    "realized_usd_is_zero": true,
+    "gap_to_target_is_20m": true,
+    "telegram_gate_closed": true,
+    "goal_continuity_active": true,
+    "expansion_exhaustion_documented": true,
+    "next_pr_check_scheduled": true,
+    "dispatch_capability_revoked": true
+  },
+  "invariants_passed": 7,
+  "invariants_total": 7
+}

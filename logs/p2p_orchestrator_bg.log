@@ -1,0 +1,27 @@
+[2026-08-25 00:22:53] [INFO] P2P ARBITRAGE ORCHESTRATOR v1.0 INITIALIZED
+[2026-08-25 00:22:53] [INFO] Config: MIN_SPREAD=3.0% | MAX_CAPITAL=R$500.0 | GAS=$7.5
+[2026-08-25 00:22:53] [INFO] ============================================================
+[2026-08-25 00:22:53] [INFO] CYCLE START | Mode: DRY-RUN
+[2026-08-25 00:22:54] [INFO] FX Rates: USDT/BRL=5.1702 | BTC/BRL=407468 | BTC/USDT=78811
+[2026-08-25 00:22:54] [INFO] Scanning HodlHodl multi-currency order books (BRL, USD, EUR, GBP)...
+[2026-08-25 00:22:59] [INFO] Total valid offers found: 30
+[2026-08-25 00:22:59] [INFO]   BRL: 1 buy, 1 sell
+[2026-08-25 00:22:59] [INFO]   USD: 4 buy, 4 sell
+[2026-08-25 00:22:59] [INFO]   EUR: 5 buy, 5 sell
+[2026-08-25 00:22:59] [INFO]   GBP: 5 buy, 5 sell
+[2026-08-25 00:22:59] [INFO] --- BEST OPPORTUNITY: USD->BTC->BRL ---
+[2026-08-25 00:22:59] [INFO]   Implied Rate: 5.158 BRL/USD
+[2026-08-25 00:22:59] [INFO]   Market Rate:  5.1702 BRL/USD
+[2026-08-25 00:22:59] [INFO]   Spread:       -0.24% (loss)
+[2026-08-25 00:22:59] [INFO]   Buy Offer:    USD 72484.21 (ID: Pqv5Hwc9)
+[2026-08-25 00:22:59] [INFO]   Sell Offer:   BRL 373873.4 (ID: egJLFrpY)
+[2026-08-25 00:22:59] [INFO] --- PROFIT ANALYSIS (R$ 500 / $96.71) ---
+[2026-08-25 00:22:59] [INFO]   Gross Spread:  -0.24%
+[2026-08-25 00:22:59] [INFO]   Total Fees:    5.00% + $7.5 gas
+[2026-08-25 00:22:59] [INFO]   Net Spread:    -5.24%
+[2026-08-25 00:22:59] [INFO]   Net Profit:    $-12.57
+[2026-08-25 00:22:59] [INFO]   VIABLE:        False
+[2026-08-25 00:22:59] [INFO] No viable arb. Net -5.24% < 3.0% or profit $-12.57 < $5
+[2026-08-25 00:22:59] [INFO] CYCLE END
+[2026-08-25 00:22:59] [INFO] ============================================================
+[2026-08-25 00:22:59] [INFO] Sleeping 300s until next cycle...

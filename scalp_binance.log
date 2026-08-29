@@ -1,0 +1,93 @@
+[BINANCE] Bot iniciado em 2026-08-25T18:52:31.575286+00:00
+  Budget: 14.0 USDT | Reserva: 2.0 USDT | Meta: +20.0 USDT
+  TP=2.0% SL=1.5% MaxHold=300s Cooldown=60s
+  Trade size: 5.0 USDT por trade
+Limpando ordens abertas...
+[BINANCE] Bot iniciado em 2026-08-25T18:54:03.249598+00:00
+  Budget: 14.0 USDT | Reserva: 2.0 USDT | Meta: +20.0 USDT
+  TP=3.0% SL=1.5% MaxHold=480s Cooldown=45s
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: INJ/USDT RSI<40, price=5.662
+  [binance] BUY INJ/USDT qty=1.48 @ ~5.662 | TP=5.83186 SL=5.57707
+  BUY filled: qty=1.48 @ 5.663 fee=0.00148 INJ
+  [150s] INJ/USDT price=5.664 pnl=0.02%
+  [180s] INJ/USDT price=5.661 pnl=-0.04%
+  [210s] INJ/USDT price=5.66 pnl=-0.05%
+  [240s] INJ/USDT price=5.663 pnl=0.00%
+[BINANCE] Bot iniciado em 2026-08-25T19:07:13.812260+00:00
+  Budget: 14.0 USDT | Reserva: 2.0 USDT | Meta: +20.0 USDT
+  TP=0.8% SL=0.8% MaxHold=180s Cooldown=30s
+Limpando ordens abertas...
+[BINANCE] Bot iniciado em 2026-08-25T19:08:17.986603+00:00
+  Budget: 14.0 USDT | Reserva: 2.0 USDT | Meta: +20.0 USDT
+  TP=0.8% SL=0.8% MaxHold=180s Cooldown=30s
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<50, price=79064.0
+  [binance] BUY BTC/USDT qty=9e-05 @ ~79064.0 | TP=79696.512 SL=78431.488
+  BUY filled: qty=9e-05 @ 79064.0 fee=9e-08 BTC
+  [150s] BTC/USDT price=79096.93 pnl=0.04%
+  SELL error: binance Account has insufficient balance for requested action.
+Traceback (most recent call last):
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 652, in fetch
+    response.raise_for_status()
+  File "/usr/local/lib/python3.12/dist-packages/requests/models.py", line 1167, in raise_for_status
+    raise HTTPError(http_error_msg, response=self)
+requests.exceptions.HTTPError: 400 Client Error: Bad Request for url: https://api.binance.com/api/v3/order
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Agentic/orchestrator/deterministic_scalper.py", line 267, in execute_trade
+    sell_order = exchange.create_order(symbol, 'market', 'sell', filled_qty)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/binance.py", line 6772, in create_order
+    response = self.privatePostOrder(request)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/binance.py", line 12473, in request
+    response = self.fetch2(path, api, method, params, headers, body, config)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5720, in fetch2
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5701, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 668, in fetch
+    skip_further_error_handling = self.handle_errors(http_status_code, http_status_text, url, method, headers, http_response, json_response, request_headers, request_body)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/binance.py", line 12416, in handle_errors
+    self.throw_exactly_matched_exception(self.exceptions['exact'], message, self.id + ' ' + message)
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 6089, in throw_exactly_matched_exception
+    raise exact[string](message)
+ccxt.base.errors.InsufficientFunds: binance Account has insufficient balance for requested action.
+  SELL retry failed: binance Account has insufficient balance for requested action.
+  RESULT: BTC/USDT pnl_gross=0.000000 fees=0.007116 pnl_net=-0.007116 LOSS
+[LEDGER] {"ts": "2026-08-25T19:11:38.668119+00:00", "exchange": "binance", "symbol": "BTC/USDT", "entry_price": 79064.0, "exit_price": 79064.0, "qty": 9e-05, "exit_reason": "TIMEOUT", "gross_pnl": 0.0, "fees_usdt": 0.007116, "net_pnl": -0.007116, "win": false}
+
+[Cycle 2] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  Cooldown ativo, 15s restantes
+
+[Cycle 3] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  Cooldown ativo, 0s restantes
+
+[Cycle 4] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<50, price=79065.37
+  Qty invalida para BTC/USDT
+
+[Cycle 5] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<50, price=79061.16
+  Qty invalida para BTC/USDT
+
+[Cycle 6] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<50, price=79073.47
+  Qty invalida para BTC/USDT
+
+[Cycle 7] PnL realizado: 0.000000 USDT | Meta: 20.0 USDT | Progress: 0.0%
+  SIGNAL: SOL/USDT RSI<50, price=98.41
+  Qty invalida para SOL/USDT

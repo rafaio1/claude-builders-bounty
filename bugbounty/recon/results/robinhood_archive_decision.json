@@ -1,0 +1,18 @@
+{
+  "handle": "robinhood",
+  "program_id": "105208",
+  "decision": "ARCHIVED",
+  "reason": "Passive recon completed on explicit in-scope domains (*.robinhood.com, *.rhapollo.net, *.rhinternal.net). Found 110 subdomains. Identified private IPs (10.x.x.x) on dashboard.robinhood.com and vault.robinhood.com but HTTP probes return timeout/connection refused (status 000), confirming non-routable internal assets with stale DNS. All CNAMEs point to valid providers (CloudFront, Cloudflare, StatusPage) with no dangling records. No API misconfigs, OAuth issues, or exploitable vulnerabilities found. Private IP disclosure is informational only with zero exploitability. Fail-closed per policy rule 4.",
+  "gates_failed": [
+    "exploitability",
+    "impact"
+  ],
+  "safe_harbor": "none",
+  "gold_standard": true,
+  "submission_state": "open",
+  "timestamp": "2026-08-26T19:03:32.465085+00:00",
+  "methodology": "passive_dns_and_http_probe",
+  "subdomains_enumerated": 110,
+  "private_ips_found": 2,
+  "http_probe_result": "timeout_non_routable"
+}

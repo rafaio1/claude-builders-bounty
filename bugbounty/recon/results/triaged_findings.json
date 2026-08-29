@@ -1,0 +1,27 @@
+[
+  {
+    "template": "github-takeover",
+    "protocol": "http",
+    "severity": "high",
+    "url": "https://mta-sts.managed.hackerone.com",
+    "extra": "[\"hacker0x01.github.io\"]",
+    "source_file": "nuclei_https___hackerone_com.txt",
+    "detected_at": "2026-08-21T18:43:44.994005Z",
+    "status": "confirmed_valid",
+    "estimated_bounty_usd": 2500,
+    "validation_notes": "DNS CNAME points to hacker0x01.github.io which returns GitHub 404. Subdomain takeover is theoretically possible if attacker creates matching repo. High severity confirmed.",
+    "report_draft_ready": true,
+    "draft_report_path": "bugbounty/recon/results/draft_github_takeover_mta_sts.md",
+    "last_updated": "2026-08-26T14:10:00Z"
+  },
+  {
+    "asset": "mta-sts.managed.hackerone.com",
+    "title": "Subdomain Takeover via Dangling CNAME to hacker0x01.github.io",
+    "status": "REJECTED_FALSE_POSITIVE",
+    "reason": "Target namespace owned by victim (HackerOne org). Claim not feasible by external researcher.",
+    "validated_at": "2026-08-26T14:20:00Z",
+    "platform": "hackerone",
+    "program": "security",
+    "submitted": false
+  }
+]

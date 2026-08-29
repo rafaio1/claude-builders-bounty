@@ -1,0 +1,24 @@
+[2026-08-29T07:27:42.903958+00:00] === Immunefi Fast Scan Start ===
+[2026-08-29T07:27:42.904167+00:00] 
+--- Scanning Ethena (Max: $3,000,000) ---
+[2026-08-29T07:27:42.904216+00:00]   Fetching USDe.sol...
+[2026-08-29T07:27:43.142680+00:00]     SKIP: Could not fetch or empty
+[2026-08-29T07:27:43.142884+00:00]   Fetching Staking.sol...
+[2026-08-29T07:27:43.323428+00:00]     SKIP: Could not fetch or empty
+[2026-08-29T07:27:43.323629+00:00]   No actionable findings for Ethena
+[2026-08-29T07:27:43.323688+00:00] 
+--- Scanning DeXe Protocol (Max: $500,000) ---
+[2026-08-29T07:27:43.323722+00:00]   Fetching GovPool.sol...
+[2026-08-29T07:27:43.570253+00:00]     Found 1 patterns in GovPool.sol
+[2026-08-29T07:27:44.070543+00:00]   Fetching GovPool.sol...
+[2026-08-29T07:27:44.266748+00:00]     SKIP: Could not fetch or empty
+[2026-08-29T07:27:44.267083+00:00]   ✓ Report saved: dexe-fastscan-20260829-0727.md (0 high/critical)
+[2026-08-29T07:27:44.267132+00:00] 
+--- Scanning ENS (Max: $250,000) ---
+[2026-08-29T07:27:44.267164+00:00]   Fetching ENSRegistry.sol...
+[2026-08-29T07:27:44.533305+00:00]     Found 1 patterns in ENSRegistry.sol
+[2026-08-29T07:27:45.033603+00:00]   Fetching NameWrapper.sol...
+[2026-08-29T07:27:45.275679+00:00]     SKIP: Could not fetch or empty
+[2026-08-29T07:27:45.276110+00:00]   ✓ Report saved: ens-fastscan-20260829-0727.md (0 high/critical)
+[2026-08-29T07:27:45.276177+00:00] 
+=== Fast Scan Complete: 2 reports, 2 total findings ===

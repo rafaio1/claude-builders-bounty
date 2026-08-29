@@ -1,0 +1,89 @@
+{
+  "id": "3804195",
+  "type": "report",
+  "attributes": {
+    "title": "Sinal forte de SQL Injection",
+    "state": "informative",
+    "created_at": "2026-06-15T18:51:57.496Z",
+    "submitted_at": "2026-06-15T18:51:57.866Z",
+    "vulnerability_information": "# Sinal forte de SQL Injection\n\n**Template**: Web2\n**Platform**: hackerone\n**Scope**: http://pricerunner.com/search?q=test%27+AND+%271%27%3D%272\n**Severity**: high | **CVSS**: 10.0 (`CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:H/VI:H/VA:H/SC:H/SI:H/SA:H`)\n**CWE**: CWE-89 - Improper Neutralization of Special Elements in SQL Command (SQL Injection)\n**Generated**: 2026-06-15T18:51:55Z\n\n## Summary\n## Vulnerability Details\n\nParametro controlado pelo usuario apresentou erro SQL novo ou diferenca booleana consistente quando recebeu payloads inofensivos.\n\n\n**Impact:**\nLeitura e alteracao de dados, bypass de autenticacao e, dependendo do banco/configuracao, escrita de arquivos ou RCE.\n\n\n**Impact Type:** sensitive_data_exposure\n\n## Affected endpoint/feature\nhttp://pricerunner.com/search?q=test%27+AND+%271%27%3D%272\n\n## Auth context\nDescribe whether the endpoint requires authentication, which role was used, and whether the action is cross-user or unauthenticated.\n\n## Steps to reproduce\n1. Repetir a URL baseline e as URLs true/false ou de erro do achado\n2. Confirmar que o erro SQL/diferenca aparece apenas no payload\n3. Validar impacto em ambiente autorizado antes de qualquer dump\n\n## Expected result\nThe application should reject unauthorized or malformed access and preserve the intended security boundary.\n\n## Actual result\nEvidence profile xss still needs objective proof; score 95/100. Blocking gaps: Reflexo ou execucao, Log browser existente.\n\n## Impact\nLeitura e alteracao de dados, bypass de autenticacao e, dependendo do banco/configuracao, escrita de arquivos ou RCE.\n\nThis vulnerability has high severity and could lead to significant data exposure or unauthorized access.\n\n\n**Affected Asset:** `pricerunner.com`\n\n**Vulnerable Endpoint/Location:** `http://pricerunner.com/search?q=test%27+AND+%271%27%3D%272`\n\n---\n*Auto-draft. Confirm impact and attach PoC artifacts before submitting.*\n\n## Evidence\n- `finding-179199-evidence.md` (3301 bytes, sha256 `f3c1449b977044fd...`)\n- `find...[REDACTED]...son` (357 bytes, sha256 `e632b5a9ca54ef55...`)\n- `find...[REDACTED]...son` (6773 bytes, sha256 `fc70491289af04a9...`)\n- `chain-39-evidence.md` (8275 bytes, sha256 `5469b2d65b4d47a9...`)\n- `chain-39-graph.json` (13313 bytes, sha256 `4c58b408fe2150ee...`)\n- `chai...[REDACTED]...son` (2680 bytes, sha256 `750a2483d97a2f57...`)\n\nVerification evidence:\n\n```text\nEvidence profile xss still needs objective proof; score 95/100. Blocking gaps: Reflexo ou execucao, Log browser existente.\n```\n\nRaw finding evidence:\n\n```text\nParametro testado: q\nPayload true: test' OR '1'='1\nPayload false: test' AND '1'='2\nFonte: common\nBaseline: GET http://pricerunner.com/search?q=test -> status=200 len=1023499\nTrue: GET http://pricerunner.com/search?q=test%27+OR+%271%27%3D%271 -> status=200 len=972453\nFalse: GET http://pricerunner.com/search?q=test%27+AND+%271%27%3D%272 -> status=202 len=2022\nIndicador: diferenca booleana consistente (text boolean).\nTrecho false: <!DOCTYPE html>\\n<html lang=\"en\">\\n<head>\\n    <meta charset=\"utf-8\">\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">\\n    <title></title>\\n    <style>\\n        body {\\n            font-family: \"Arial\";\\n        }\\n    </style>\\n    <script type\n```\n\n## Remediation\nUsar queries parametrizadas/prepared statements, remover concatenacao de SQL, validar tipos e aplicar least privilege no usuario do banco.\n\n**Suggested Next Steps:**\n- Anexar request/response do payload seguro e evitar extra\u00e7\u00e3o de dados reais fora do escopo.\n- Learning Memory: parecido com 20 evento(s) anterior(es); ajuste leve RS +0.\n\n## Impact\n\nLeitura e alteracao de dados, bypass de autenticacao e, dependendo do banco/configuracao, escrita de arquivos ou RCE.\n\nThis vulnerability has high severity and could lead to significant data exposure or unauthorized access.\n\n\n**Affected Asset:** `pricerunner.com`\n\n**Vulnerable Endpoint/Location:** `http://pricerunner.com/search?q=test%27+AND+%271%27%3D%272`\n\n---\n*Auto-draft. Confirm impact and attach PoC artifacts before submitting.*",
+    "triaged_at": null,
+    "closed_at": "2026-06-16T06:21:54.264Z",
+    "last_reporter_activity_at": "2026-06-15T18:51:58.412Z",
+    "first_program_activity_at": "2026-06-16T06:21:54.264Z",
+    "last_program_activity_at": "2026-06-16T06:21:54.264Z",
+    "bounty_awarded_at": null,
+    "swag_awarded_at": null,
+    "disclosed_at": null,
+    "reporter_agreed_on_going_public_at": null,
+    "last_public_activity_at": "2026-06-16T06:21:54.264Z",
+    "last_activity_at": null
+  },
+  "relationships": {
+    "reporter": {
+      "data": {
+        "id": "4483485",
+        "type": "user",
+        "attributes": {
+          "reputation": 100,
+          "username": "rafaio",
+          "name": "Rafael",
+          "disabled": false,
+          "created_at": "2026-06-10T01:56:03.570Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "82x82": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "110x110": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "260x260": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png"
+          },
+          "bio": null,
+          "website": null,
+          "location": null,
+          "hackerone_triager": false
+        }
+      }
+    },
+    "program": {
+      "data": {
+        "id": "81945",
+        "type": "program",
+        "attributes": {
+          "handle": "klarna",
+          "created_at": null,
+          "updated_at": null
+        }
+      }
+    },
+    "severity": {
+      "data": {
+        "id": "4204766",
+        "type": "severity",
+        "attributes": {
+          "rating": "high",
+          "author_type": "User",
+          "user_id": 4483485,
+          "created_at": "2026-06-15T18:51:57.608Z",
+          "max_severity": "critical",
+          "calculation_method": "manual"
+        }
+      }
+    },
+    "structured_scope": {
+      "data": {
+        "id": "943896",
+        "type": "structured-scope",
+        "attributes": {
+          "asset_type": "URL",
+          "asset_identifier": "pricerunner.com",
+          "eligible_for_bounty": true,
+          "eligible_for_submission": true,
+          "instruction": "",
+          "max_severity": "critical",
+          "created_at": "2025-10-13T11:27:07.581Z",
+          "updated_at": "2025-10-13T11:27:07.581Z",
+          "reference": null
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/root/automaton/main.py", line 2, in <module>
+    from tradingagents.graph.trading_graph import TradingAgentsGraph
+  File "/root/automaton/tradingagents/graph/__init__.py", line 3, in <module>
+    from .conditional_logic import ConditionalLogic
+  File "/root/automaton/tradingagents/graph/conditional_logic.py", line 3, in <module>
+    from tradingagents.agents.utils.agent_states import AgentState
+  File "/root/automaton/tradingagents/agents/__init__.py", line 1, in <module>
+    from .analysts.fundamentals_analyst import create_fundamentals_analyst
+  File "/root/automaton/tradingagents/agents/analysts/fundamentals_analyst.py", line 1, in <module>
+    from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
+ModuleNotFoundError: No module named 'langchain_core'

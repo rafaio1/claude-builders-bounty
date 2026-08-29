@@ -1,0 +1,65 @@
+{
+  "pilot": "neon-postgres-reseller-scaffold",
+  "category": "infrastructure_reselling",
+  "status": "SCAFFOLD_OK",
+  "timestamp": "2026-08-26T20:36:52.779261+00:00",
+  "free_tier_limits": {
+    "storage_gb_per_project": 0.5,
+    "compute_cu_hrs_month_per_project": 100,
+    "max_cu_size": 2,
+    "max_ram_gb": 8,
+    "projects": 100,
+    "team_members": "unlimited",
+    "commercial_allowed": true,
+    "source_verified": "playwright-cli snapshot neon.com/pricing 2026-08-26"
+  },
+  "paid_plan_baseline": {
+    "launch_price_usd": 19.0,
+    "scale_price_usd": 69.0,
+    "storage_overage_per_gb": 0.35,
+    "compute_hour_rate": 0.1,
+    "branch_limit_launch": 100,
+    "sla_uptime": "99.9%"
+  },
+  "reselling_model": {
+    "target_segment": "micro-SaaS / indie hackers BR",
+    "managed_service_price_brl": 89.9,
+    "included_storage_mb": 500,
+    "overage_brl_per_100mb": 15.0,
+    "support_tier": "async (Discord/email)",
+    "affiliate_commission_pct": null,
+    "multi_tenancy_strategy": "1 projeto free por cliente (100 projetos disponiveis) - isolamento nativo"
+  },
+  "doc_verification": {
+    "doc_verified": true,
+    "source_url": "https://neon.com/pricing",
+    "notes": [
+      "Storage confirmado: 0.5 GB per project",
+      "Compute confirmado: 100 CU-hrs monthly per project",
+      "Projetos confirmados: 100 (nao 1 como assumido anteriormente)",
+      "Uso comercial permitido - Terms of Use Databricks nao proíbem no free tier",
+      "Validado via playwright-cli snapshot 2026-08-26T20:36Z"
+    ],
+    "commercial_allowed": true
+  },
+  "unit_economics": {
+    "revenue_per_client_brl": 89.9,
+    "cost_per_client_brl": 0.0,
+    "gross_margin_brl": 89.9,
+    "gross_margin_pct": 100.0,
+    "break_even_clients_per_project": 1,
+    "ceiling_warning": "100 projetos free = ate 100 clientes isolados sem custo; escala alem disso requer Launch ($19/mo)"
+  },
+  "risks": [
+    "CU-hrs limitadas a 100/projeto/mes; DBs com carga constante podem esgotar em ~3 dias",
+    "Idle timeout ajuda mas picos de trafego consomem CU-hrs rapidamente",
+    "Sem programa de affiliate publico confirmado - receita puramente service-based",
+    "Neon agora parte do Databricks - termos podem mudar com aquisicao"
+  ],
+  "next_steps": [
+    "Testar criacao de 5+ projetos free via API para validar limite real de 100",
+    "Benchmark de consumo CU-hrs com carga tipica de micro-SaaS",
+    "Pesquisar programa partner/affiliate Databricks pos-aquisicao",
+    "Comparar unit economics com Supabase (#38) e Backblaze (#39)"
+  ]
+}

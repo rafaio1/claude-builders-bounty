@@ -1,0 +1,23 @@
+[
+  {
+    "rule_id": "FEEDBACK-001",
+    "category": "dedupe",
+    "description": "All submissions must include dedupe search evidence against target program",
+    "source": "Derived from 6 duplicate reports",
+    "enforcement": "pre_submission_gate"
+  },
+  {
+    "rule_id": "FEEDBACK-002",
+    "category": "impact",
+    "description": "Config/info disclosure without proven exploitation path = informative",
+    "source": "Derived from 3 informative reports",
+    "enforcement": "severity_assessment"
+  },
+  {
+    "rule_id": "FEEDBACK-003",
+    "category": "evidence",
+    "description": "PoC must demonstrate actual security boundary breach, not just anomaly",
+    "source": "Cross-program pattern analysis",
+    "enforcement": "draft_review"
+  }
+]

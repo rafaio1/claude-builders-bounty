@@ -1,0 +1,92 @@
+{
+  "id": "3802671",
+  "type": "report",
+  "attributes": {
+    "title": "CORS vulneravel a trusted suffix bypass",
+    "state": "duplicate",
+    "created_at": "2026-06-15T00:47:32.138Z",
+    "submitted_at": "2026-06-15T00:47:32.634Z",
+    "vulnerability_information": "# CORS vulneravel a trusted suffix bypass\n\n**Template**: Web2\n**Platform**: hackerone\n**Scope**: coinbase.com\n**Severity**: medium | **CVSS**: 8.5 (`CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:A/VC:H/VI:H/VA:N/SC:N/SI:N/SA:N`)\n**CWE**: CWE-942 - Permissive Cross-domain Policy with Untrusted Domains (CORS)\n**Generated**: 2026-06-15T00:47:29Z\n\n## Summary\n##### Template\n\nCORS Misconfiguration\n\n##### Introducao\n\nThe endpoint at `https://fp.coinbase.com/api/profile` appears to return permissive CORS headers for an attacker-controlled Origin. This is security-relevant when the response also allows credentials and the endpoint returns data that a browser can read from another origin.\n\n##### Scanner context\n\nA validacao de CORS parece confiar em comparacao de sufixo/prefixo sem respeitar fronteiras de dominio. Padroes como notevil.com ou trusted.com.evil.com podem passar em checks do tipo endsWith().\n\n##### Analise de severidade\n\nSeverity is high when arbitrary or bypassed origins can read sensitive authenticated responses with credentials. It is lower when the endpoint is unauthenticated, public, or no readable sensitive response has been proven.\n\n## Affected endpoint/feature\ncoinbase.com\n\n## Auth context\nDescribe whether the endpoint requires authentication, which role was used, and whether the action is cross-user or unauthenticated.\n\n## Steps to reproduce\n##### Prova de conceito\n\nSend a request with a benign attacker-controlled Origin and confirm whether Access-Control-Allow-Origin reflects or accepts that value together with Access-Control-Allow-Credentials: true. Validate impact only on a safe test account or non-sensitive response.\n\n##### Passos de reproducao\n\n1. Capture a baseline request to `https://fp.coinbase.com/api/profile` without a custom Origin header.\n2. Replay the same request with an attacker-controlled Origin value such as https://coinbase.com.example.test.\n3. Record Access-Control-Allow-Origin and Access-Control-Allow-Credentials in the response.\n4. If credentials are allowed, repeat with a safe authenticated test session when program rules permit.\n5. Confirm whether sensitive authenticated data is readable cross-origin before claiming user-data theft.\n\nAdditional scanner-provided steps:\n- curl -sI -H 'Origin: https://not<dominio>' https://<alvo>/api/<endpoint>\n- curl -sI -H 'Origin: https://<dominio>.evil.com' https://<alvo>/api/<endpoint>\n- Confirmar Access-Control-Allow-Origin refletido e Access-Control-Allow-Credentials: true\n\n##### Evidencias\n\nInclude the crafted Origin, response status, CORS response headers, and a redacted response body when it proves readable sensitive data. Do not include real session cookies or personal data.\n\nRaw scanner evidence (sanitize before submission):\n\n```text\nGET https://fp.coinbase.com/api/profile com Origin: https://coinbase.com.evil.com (trusted suffix bypass com dominio confiavel como subdominio atacante)\n-> Access-Control-Allow-Origin: https://coinbase.com.evil.com (refletido/aceito)\n-> Access-Control-Allow-Credentials: true\n```\n\n## Expected result\nThe application should reject unauthorized or malformed access and preserve the intended security boundary.\n\n## Actual result\nEvidence profile generic still needs objective proof; score 77/100. Blocking gaps: Sinal tecnico vulneravel.\n\n## Impact\n##### Impacto\n\nIf confirmed on an authenticated endpoint that returns sensitive data, a malicious website could read that data from a victim browser after the victim visits the site. If no sensitive authenticated response is demonstrated, the finding should remain a CORS misconfiguration candidate or low-impact hardening issue.\n\nScanner-provided impact:\nRoubo de dados autenticados via navegador da vitima se credentials estiver habilitado.\n\n## Evidence\n- `finding-7267-evidence.md` (2238 bytes, sha256 `b1dc6cffe090662f...`)\n- `finding-7267-screenshot.png` (27242 bytes, sha256 `9e9125f8b518eb1a...`)\n- `find...[REDACTED]...son` (6177 bytes, sha256 `0d922406c6862af1...`)\n\nVerification evidence:\n\n```text\nEvidence profile generic still needs objective proof; score 77/100. Blocking gaps: Sinal tecnico vulneravel.\n```\n\nRaw finding evidence:\n\n```text\nGET https://fp.coinbase.com/api/profile com Origin: https://coinbase.com.evil.com (trusted suffix bypass com dominio confiavel como subdominio atacante)\n-> Access-Control-Allow-Origin: https://coinbase.com.evil.com (refletido/aceito)\n-> Access-Control-Allow-Credentials: true\n```\n\n## Remediation\n##### Sugestao de correcao\n\nValidate Origin values with an exact allowlist of trusted origins. Do not use suffix, substring, wildcard, or reflection-based checks for credentialed CORS. Return Access-Control-Allow-Credentials only for origins that require it.\n\nScanner-provided remediation:\nNormalizar e parsear a Origin como URL. Comparar contra allowlist de origens exatas; nao usar contains/startsWith/endsWith para autorizacao de CORS.\n\n## Impact\n\n##### Impacto\n\nIf confirmed on an authenticated endpoint that returns sensitive data, a malicious website could read that data from a victim browser after the victim visits the site. If no sensitive authenticated response is demonstrated, the finding should remain a CORS misconfiguration candidate or low-impact hardening issue.\n\nScanner-provided impact:\nRoubo de dados autenticados via navegador da vitima se credentials estiver habilitado.",
+    "triaged_at": null,
+    "closed_at": "2026-06-15T18:20:55.357Z",
+    "last_reporter_activity_at": "2026-06-15T00:47:33.115Z",
+    "first_program_activity_at": "2026-06-15T18:20:55.357Z",
+    "last_program_activity_at": "2026-06-15T18:20:55.357Z",
+    "bounty_awarded_at": null,
+    "swag_awarded_at": null,
+    "disclosed_at": null,
+    "reporter_agreed_on_going_public_at": null,
+    "last_public_activity_at": "2026-06-15T18:20:55.357Z",
+    "last_activity_at": null
+  },
+  "relationships": {
+    "reporter": {
+      "data": {
+        "id": "4483485",
+        "type": "user",
+        "attributes": {
+          "reputation": 100,
+          "username": "rafaio",
+          "name": "Rafael",
+          "disabled": false,
+          "created_at": "2026-06-10T01:56:03.570Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "82x82": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "110x110": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "260x260": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png"
+          },
+          "bio": null,
+          "website": null,
+          "location": null,
+          "hackerone_triager": false
+        }
+      }
+    },
+    "program": {
+      "data": {
+        "id": "104",
+        "type": "program",
+        "attributes": {
+          "handle": "coinbase",
+          "created_at": null,
+          "updated_at": null
+        }
+      }
+    },
+    "severity": {
+      "data": {
+        "id": "4200966",
+        "type": "severity",
+        "attributes": {
+          "rating": "medium",
+          "author_type": "User",
+          "user_id": 4483485,
+          "created_at": "2026-06-15T00:47:32.293Z",
+          "max_severity": "high",
+          "calculation_method": "manual"
+        }
+      }
+    },
+    "structured_scope": {
+      "data": {
+        "id": "572151",
+        "type": "structured-scope",
+        "attributes": {
+          "asset_type": "URL",
+          "asset_identifier": "http://coinbase.com",
+          "eligible_for_bounty": true,
+          "eligible_for_submission": true,
+          "instruction": "",
+          "max_severity": "high",
+          "created_at": "2023-12-07T21:19:36.244Z",
+          "updated_at": "2023-12-07T21:19:36.244Z",
+          "reference": null,
+          "confidentiality_requirement": "high",
+          "integrity_requirement": "high",
+          "availability_requirement": "high"
+        }
+      }
+    }
+  }
+}

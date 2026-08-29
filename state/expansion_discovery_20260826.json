@@ -1,0 +1,44 @@
+{
+  "timestamp": "2026-08-26T08:49:41.110863+00:00",
+  "trigger": "expansion_rule_current_paths_blocked",
+  "funnel_stage": "discover",
+  "constraints": {
+    "zero_capital_only": true,
+    "no_gmail_dependency": true,
+    "no_sherlock_approval_needed": true,
+    "no_autonomous_submission": true,
+    "verified_payout_required": true
+  },
+  "sources_to_scan": [
+    "data/algora_live_bounties.json",
+    "data/sherlock_full_scope_extraction.json",
+    "data/paid_bounty_candidates.json",
+    "data/active_audit_sniper_targets.json"
+  ],
+  "results": {
+    "data/algora_live_bounties.json": {
+      "total_entries": 0,
+      "actionable_count": 0,
+      "actionable_sample": [],
+      "file_exists": true
+    },
+    "data/sherlock_full_scope_extraction.json": {
+      "total_entries": 4,
+      "actionable_count": 0,
+      "actionable_sample": [],
+      "file_exists": true
+    },
+    "data/paid_bounty_candidates.json": {
+      "total_entries": 8,
+      "actionable_count": 0,
+      "actionable_sample": [],
+      "file_exists": true
+    },
+    "data/active_audit_sniper_targets.json": {
+      "total_entries": 4,
+      "actionable_count": 0,
+      "actionable_sample": [],
+      "file_exists": true
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "process": "technical_freelance_contracts",
+  "research_type": "autonomous_pre_pilot_checks",
+  "completed_at": "2026-08-26T03:17:01.554275+00:00",
+  "checks_completed": [
+    "platform_terms",
+    "automation_permission"
+  ],
+  "findings": {
+    "platform_terms": {
+      "toptal": "Allows AI-assisted work if disclosed; IP assignment to client; payout via Wise/PayPal/bank; no exclusivity",
+      "turing": "AI tool usage permitted; contractor retains IP until payment; payout via Wise/Deel; requires vetting",
+      "arc_dev": "AI assistance allowed with disclosure; freelance IP transfer on payment; payout via Wise/stripe; remote-first"
+    },
+    "automation_permission": {
+      "allowed_activities": [
+        "code_generation",
+        "test_writing",
+        "documentation",
+        "refactoring",
+        "bug_fixing"
+      ],
+      "restricted_activities": [
+        "auto_applying",
+        "auto_accepting_contracts",
+        "auto_submitting_without_review",
+        "credential_sharing"
+      ],
+      "compliance_requirement": "All deliverables must be human-reviewed before submission; AI usage must be disclosed per platform ToS"
+    }
+  },
+  "capital_wise_compliance": "Research only; no account creation, contract acceptance, or fund commitment performed",
+  "next_steps_blocked_on_human": [
+    "Create accounts on target platforms (requires KYC)",
+    "Complete technical vetting assessments",
+    "Configure payout method (Wise/Binance/Bank)",
+    "Review and accept specific contract terms"
+  ],
+  "risk_assessment": {
+    "legal": "Low - standard freelance contracts with clear IP terms",
+    "financial": "Zero capital required; payment after delivery",
+    "operational": "Medium - requires human identity verification and ongoing availability",
+    "reputational": "Low - legitimate platforms with established track records"
+  }
+}

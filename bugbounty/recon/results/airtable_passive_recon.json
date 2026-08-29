@@ -1,0 +1,33 @@
+{
+  "target": "airtable",
+  "timestamp": "2026-08-26T19:37:57.303416+00:00",
+  "urls_tested": 3,
+  "results": [
+    {
+      "url": "staging.airtable.com",
+      "status": 200,
+      "error": null,
+      "signals": [
+        "header_x-powered-by:Next.js"
+      ],
+      "content_type": "text/html; charset=utf-8",
+      "server": "Vercel"
+    },
+    {
+      "url": "api-staging.airtable.com",
+      "status": 200,
+      "error": null,
+      "signals": [],
+      "content_type": "text/html; charset=utf-8",
+      "server": "nginx"
+    },
+    {
+      "url": "mcp.staging.airtable.com",
+      "status": 404,
+      "error": "Not Found",
+      "signals": [],
+      "content_type": null,
+      "server": null
+    }
+  ]
+}

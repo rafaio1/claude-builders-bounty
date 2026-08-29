@@ -1,0 +1,48 @@
+{
+  "timestamp": "2026-08-26T18:24:50.720029+00:00",
+  "program": "Lansweeper Bug Bounty Program",
+  "platform": "Intigriti",
+  "program_id": "06ea3a06-58d5-4173-af0e-c2f1f98714c6",
+  "status": "PIVOTED",
+  "findings_assessed": [
+    {
+      "type": "Stack Trace Disclosure (/api/vc)",
+      "severity": "Low/Informational",
+      "gate_passed": false,
+      "reason": "No exploitable impact chain; below bounty threshold; cannot dedup via API"
+    },
+    {
+      "type": "Frontend Config Disclosure (Auth0/Sentry/ConfigCat keys)",
+      "severity": "Informational",
+      "gate_passed": false,
+      "reason": "Public-facing client IDs and DSNs; no secret material"
+    }
+  ],
+  "additional_testing": [
+    {
+      "target": "Auth0 Dynamic Registration",
+      "result": "DISABLED (HTTP 400)"
+    },
+    {
+      "target": "Auth0 Implicit Flow",
+      "result": "BLOCKED (HTTP 403)"
+    },
+    {
+      "target": "lsauth.eu.lansweeper.com OIDC/OAuth",
+      "result": "404 - non-standard auth"
+    },
+    {
+      "target": "eu.lansweeperdev.com /api/vc",
+      "result": "Same stack trace as prod (not separate finding)"
+    },
+    {
+      "target": "lens.eu.lansweeper.com",
+      "result": "S3 NoSuchKey - no swagger/API listing"
+    }
+  ],
+  "decision": "No medium+ vulnerability confirmed. Archiving Lansweeper for this cycle and pivoting to next open program.",
+  "files_modified": [
+    "bugbounty/recon/results/lansweeper_gate_decision.json",
+    "bugbounty/recon/results/lansweeper_final_state.json"
+  ]
+}

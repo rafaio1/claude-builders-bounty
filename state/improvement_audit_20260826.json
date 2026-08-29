@@ -1,0 +1,189 @@
+{
+  "timestamp": "2026-08-26T11:07:11.561301+00:00",
+  "type": "existing_work_improvement_audit",
+  "schema_issues_count": 53,
+  "schema_issues": [
+    {
+      "index": 0,
+      "id": "?",
+      "missing": [
+        "id",
+        "title"
+      ]
+    },
+    {
+      "index": 1,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 2,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 3,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 4,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 5,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 6,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 7,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 8,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 9,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 10,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 11,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 12,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 13,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 14,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 15,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 16,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 17,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 18,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    },
+    {
+      "index": 19,
+      "id": "?",
+      "missing": [
+        "id",
+        "bounty_value"
+      ]
+    }
+  ],
+  "test_coverage": {
+    "total_tests": 15,
+    "test_names": [
+      "tests/test_triage_contract.py::TestExtractJson::test_pure_json_array",
+      "tests/test_triage_contract.py::TestExtractJson::test_markdown_fenced_json",
+      "tests/test_triage_contract.py::TestExtractJson::test_prose_before_after_json",
+      "tests/test_triage_contract.py::TestExtractJson::test_empty_string_returns_none",
+      "tests/test_triage_contract.py::TestExtractJson::test_no_json_returns_none",
+      "tests/test_triage_contract.py::TestExtractJson::test_malformed_json_returns_none",
+      "tests/test_triage_contract.py::TestExtractJson::test_dict_with_files_to_change",
+      "tests/test_triage_contract.py::TestExtractJson::test_ansi_codes_stripped",
+      "tests/test_triage_contract.py::TestTriageSchemaContract::test_valid_selection_passes",
+      "tests/test_triage_contract.py::TestTriageSchemaContract::test_missing_key_fails",
+      "tests/test_triage_contract.py::TestTriageSchemaContract::test_invalid_url_fails",
+      "tests/test_triage_contract.py::TestTriageSchemaContract::test_confidence_out_of_range_fails",
+      "tests/test_triage_contract.py::TestTriageNoHeuristicFallback::test_returns_empty_on_schema_failure",
+      "tests/test_triage_contract.py::TestTriageNoHeuristicFallback::test_returns_empty_on_parse_failure",
+      "tests/test_triage_contract.py::TestTriageNoHeuristicFallback::test_structured_error_logged_on_failure"
+    ]
+  },
+  "new_entry_registered": "draft_scanner_tuning_2026-08-26T08-40-18",
+  "action": "fix_schema_issues_and_identify_test_gaps"
+}

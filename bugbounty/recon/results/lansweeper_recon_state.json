@@ -1,0 +1,147 @@
+{
+  "program": "lansweeper1",
+  "platform": "Intigriti",
+  "recon_date": "2026-08-26",
+  "assets_probed": [
+    {
+      "host": "edge.lansweeper.com",
+      "tier": "Tier1",
+      "status": "HTTP 464 (AWS ALB misconfig)",
+      "notes": "No listener matched; cert has *.edge wildcard"
+    },
+    {
+      "host": "api.lansweeper.com",
+      "tier": "Tier2",
+      "status": "404 all paths",
+      "notes": "Integration audience but no public endpoints found"
+    },
+    {
+      "host": "app.lansweeper.com",
+      "tier": "Tier2",
+      "status": "200 SPA",
+      "notes": "Auth0 config exposed in HTML; redirects to eu/us regional"
+    },
+    {
+      "host": "lsagentrelay.lansweeper.com",
+      "tier": "Tier2",
+      "status": "403 Cloudflare block",
+      "notes": "WAF active"
+    },
+    {
+      "host": "discovery-gateway.lansweeper.com",
+      "tier": "Wildcard",
+      "status": "Partial unauth access",
+      "notes": "/versions/v1/installers and /cloudsyncversions return version data without auth; RBAC on other paths"
+    },
+    {
+      "host": "global.cpr.lansweeper.com",
+      "tier": "Wildcard",
+      "status": "200 MSMP portal",
+      "notes": "Managed Service Provider portal; JS reveals /api/gateway endpoints"
+    },
+    {
+      "host": "eu.lansweeper.com/api/gateway",
+      "tier": "Tier2",
+      "status": "401 UNAUTHENTICATED",
+      "notes": "GraphQL gateway requires auth; proper error handling"
+    },
+    {
+      "host": "login.lansweeper.com",
+      "tier": "Tier3",
+      "status": "OIDC exposed",
+      "notes": "Auth0 tenant dev-734bjlip.eu.auth0.com; full OIDC config public"
+    }
+  ],
+  "potential_findings": [
+    {
+      "title": "Unauthenticated Version Information Disclosure via Discovery Gateway",
+      "severity": "Low/Informational",
+      "asset": "discovery-gateway.lansweeper.com",
+      "evidence": "GET /versions/v1/installers and /versions/v1/cloudsyncversions return full version history including staging environment markers without authentication",
+      "exploitable": false,
+      "notes": "Likely by design for update checks; staging versions mirror production"
+    },
+    {
+      "title": "AWS ALB Misconfiguration on Edge Service",
+      "severity": "Informational",
+      "asset": "edge.lansweeper.com",
+      "evidence": "HTTP 464 from awselb/2.0 on all paths; TLS handshake succeeds but no listener rule matches",
+      "exploitable": false,
+      "notes": "Configuration issue only; no backend exposed"
+    }
+  ],
+  "next_steps": [
+    "Register trial account at app.lansweeper.com/register using intigriti.me email to obtain valid JWT",
+    "Test GraphQL gateway (eu/us/beta) for IDOR, authorization bypass, and introspection with authenticated token",
+    "Verify if beta environment has relaxed security controls or pre-release features accessible with production credentials",
+    "Test cross-region token acceptance (EU token against US gateway and vice versa) with valid tokens",
+    "Enumerate additional subdomains via alternative CT log sources (crt.sh returned 502 earlier)",
+    "Analyze MSP portal (global.cpr.lansweeper.com) JS bundle for MSP-specific API endpoints and auth flows"
+  ],
+  "submission_ready": false,
+  "human_gate_status": "NOT_REACHED",
+  "findings": [
+    {
+      "id": "LS-2026-002",
+      "title": "Auth0 Client IDs and Regional Configuration Exposed via Login Redirect",
+      "severity": "Informational",
+      "status": "confirmed",
+      "details": {
+        "eu_client_id": "95fz4isY8xDEZKNCS4XaZpXdBRngsqhh",
+        "us_client_id": "j5hYKM7KrRt6qk42jyhoYqJBFXgrMcbt",
+        "mfa_enrollment_client_id": "8324d58f-c573-e738-f7a8-51c0bd3d2b0e",
+        "auth0_tenant": "dev-734bjlip.eu.auth0.com",
+        "eu_audience": "https://app.lansweeper.com",
+        "us_audience": "https://us.lansweeper.com",
+        "exposure_method": "Base64-encoded a0 parameter in login redirect URL",
+        "risk": "Client IDs are public by design in OAuth SPA flows; informational only unless combined with other misconfig"
+      }
+    },
+    {
+      "id": "LS-2026-003",
+      "title": "Edge Service SNI/Host Header Routing Differentiation",
+      "severity": "Informational",
+      "status": "confirmed",
+      "details": {
+        "host": "edge.lansweeper.com",
+        "normal_status": 464,
+        "host_app_status": 404,
+        "host_beta_status": 404,
+        "host_discovery_gateway_status": 403,
+        "interpretation": "AWS ALB routes based on Host header after TLS termination; different status codes confirm virtual host routing is active but no content served"
+      }
+    },
+    {
+      "id": "LS-2026-004",
+      "title": "Beta Environment Endpoints Publicly Accessible",
+      "severity": "Low",
+      "status": "confirmed",
+      "details": {
+        "beta_eu_url": "https://beta.eu.lansweeper.com/",
+        "beta_us_url": "https://beta.us.lansweeper.com/",
+        "status": 200,
+        "graphql_endpoint": "/api/gateway returns 401 UNAUTHENTICATED (proper auth enforcement)",
+        "risk": "Beta environments may contain pre-release features or relaxed security controls; requires authenticated testing to assess impact"
+      }
+    }
+  ],
+  "recon_metadata": {
+    "last_updated": "2026-08-26T15:55:00Z",
+    "auth0_clients_extracted": true,
+    "beta_endpoints_verified": true,
+    "edge_sni_tested": true,
+    "dynamic_client_registration": "disabled",
+    "password_grant": "requires_verification (not exploitable without valid credentials)"
+  },
+  "submission_gate_reason": "All findings are Informational/Low severity. Authenticated testing required to identify Medium+ vulnerabilities.",
+  "auth_testing_status": "BLOCKED",
+  "auth_blocker_reason": "Cloudflare 403 on all registration endpoints (EU/US/MFA client IDs) and free-trial page. Headless browser detected.",
+  "registration_endpoints_tested": [
+    "https://login.auth.lansweeper.com/app/register?client_id=8324d58f-c573-e738-f7a8-51c0bd3d2b0e",
+    "https://login.auth.lansweeper.com/app/register?client_id=95fz4isY8xDEZKNCS4XaZpXdBRngsqhh",
+    "https://login.auth.lansweeper.com/app/register?client_id=j5hYKM7KrRt6qk42jyhoYqJBFXgrMcbt",
+    "https://www.lansweeper.com/free-trial/"
+  ],
+  "next_action": "PIVOT_TO_NVIDIA",
+  "notes": "All passive recon complete. Authenticated testing requires manual account creation from non-datacenter IP or alternative approach. No Medium+ findings from passive phase."
+}

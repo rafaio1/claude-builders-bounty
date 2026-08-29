@@ -1,0 +1,29 @@
+{
+  "target": "Torfs",
+  "platform": "Salesforce Commerce Cloud (SFCC)",
+  "scope_tested": [
+    "www.torfs.be",
+    "www.torfs.nl",
+    "schoenentorfs.be",
+    "schoenentorfs.nl",
+    "winkels.torfs.be"
+  ],
+  "vectors_tested": [
+    "SFCC controllers (Home-Content, StoreLocator-FindStores, SearchServices-GetSuggestions, Product-Ratings, Newsletter-Subscribe, ContactUs-Show, Wishlist-Show, Account-EditProfile, Order-Confirm, Default-Start, Home-Show, CSRF-Fail)",
+    "OCAPI Shop API (/s/-/dwapi/v1/site_info with and without client_id)",
+    "Business Manager exposure (/BusinessManager/, /on/demandware.static/-/Sites/default/dm/)",
+    "Path traversal (fdid parameter)",
+    "Version fingerprinting via static paths and error pages",
+    "IDOR on Account/Order controllers with sequential IDs",
+    "XSS via SearchServices-GetSuggestions (blocked by WAF 403)"
+  ],
+  "findings": [],
+  "verdict": "NO_FINDINGS",
+  "rationale": "All SFCC controller endpoints return generic 404 HTML from Cloudflare WAF. OCAPI returns login page (auth required). No stack traces, debug info, version disclosure, or internal paths leaked. Business Manager not exposed. Path traversal mitigated. Previous HTTP 500 errors were transient/WAF-related and no longer reproducible. Target is well-hardened.",
+  "next_action": "PIVOT_TO_NEXT_TARGET",
+  "recommended_next": [
+    "SimScale",
+    "Uphold"
+  ],
+  "timestamp": "2026-08-26T00:00:00Z"
+}

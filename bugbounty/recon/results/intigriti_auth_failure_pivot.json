@@ -1,0 +1,14 @@
+{
+  "timestamp": "2026-08-26T12:00:00Z",
+  "platform": "intigriti",
+  "issue": "API 401 UNAUTH001 on program detail endpoint despite valid programs list fetch",
+  "attempts": [
+    "X-API-KEY header",
+    "Bearer token",
+    "Raw token"
+  ],
+  "decision": "PIVOT_TO_HACKERONE",
+  "policy_reference": "Rule 7: 401/403 limited retry then pivot",
+  "programs_list_available": true,
+  "detail_endpoint_blocked": true
+}

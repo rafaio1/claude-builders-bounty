@@ -1,0 +1,98 @@
+[BYBIT] Bot iniciado em 2026-08-25T18:52:11.450959+00:00
+  Budget: 15.0 USDT | Reserva: 5.0 USDT | Meta: +10.0 USDT
+  TP=2.0% SL=1.5% MaxHold=300s Cooldown=60s
+  Trade size: 5.0 USDT por trade
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 10.0 USDT | Progress: 0.0%
+  SIGNAL: WIF/USDT RSI<35, price=0.1969
+  [bybit] BUY WIF/USDT qty=25.393600812595228 @ ~0.1969 | TP=0.20083800 SL=0.19394650
+  BUY error: 'NoneType' object has no attribute 'get'
+[BYBIT] Bot iniciado em 2026-08-25T18:54:03.029858+00:00
+  Budget: 16.0 USDT | Reserva: 5.0 USDT | Meta: +10.0 USDT
+  TP=3.0% SL=1.5% MaxHold=480s Cooldown=45s
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 10.0 USDT | Progress: 0.0%
+  SIGNAL: INJ/USDT RSI<40, price=5.659
+  [bybit] BUY INJ/USDT qty=1.73 @ ~5.659 | TP=5.82877 SL=5.574115
+  BUY error: float() argument must be a string or a real number, not 'NoneType'
+Traceback (most recent call last):
+  File "/Agentic/orchestrator/deterministic_scalper.py", line 218, in execute_trade
+    filled_qty = float(buy_order.get('filled', qty))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: float() argument must be a string or a real number, not 'NoneType'
+[BYBIT] Bot iniciado em 2026-08-25T18:55:14.364287+00:00
+  Budget: 16.0 USDT | Reserva: 5.0 USDT | Meta: +10.0 USDT
+  TP=3.0% SL=1.5% MaxHold=480s Cooldown=45s
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 10.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<40, price=79044.1
+  [bybit] BUY BTC/USDT qty=0.000124 @ ~79044.1 | TP=81415.42300000001 SL=77858.4385
+  BUY filled: qty=0.000124 @ 79044.1 fee=0.0 
+  [30s] BTC/USDT price=79072.2 pnl=0.04%
+  [60s] BTC/USDT price=79069.4 pnl=0.03%
+  [90s] BTC/USDT price=79092.8 pnl=0.06%
+  [120s] BTC/USDT price=79079.6 pnl=0.04%
+  [150s] BTC/USDT price=79082.5 pnl=0.05%
+  [180s] BTC/USDT price=79104.9 pnl=0.08%
+  [210s] BTC/USDT price=79117.5 pnl=0.09%
+  [240s] BTC/USDT price=79133.9 pnl=0.11%
+[BYBIT] Bot iniciado em 2026-08-25T19:08:21.412375+00:00
+  Budget: 16.0 USDT | Reserva: 5.0 USDT | Meta: +10.0 USDT
+  TP=0.8% SL=0.8% MaxHold=180s Cooldown=30s
+Limpando ordens abertas...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 10.0 USDT | Progress: 0.0%
+  SIGNAL: BTC/USDT RSI<50, price=79057.3
+  [bybit] BUY BTC/USDT qty=0.000113 @ ~79057.3 | TP=79689.7584 SL=78424.8416
+  BUY filled: qty=0.000113 @ 79057.3 fee=0.0 
+[BYBIT] Bot iniciado em 2026-08-25T19:08:48.968882+00:00
+  Budget: 16.0 USDT | Reserva: 5.0 USDT | Meta: +10.0 USDT
+  TP=0.8% SL=0.8% MaxHold=180s Cooldown=30s
+Limpando ordens abertas...
+  [30s] BTC/USDT price=79058.4 pnl=0.00%
+  [60s] BTC/USDT price=79076.0 pnl=0.02%
+  [90s] BTC/USDT price=79066.8 pnl=0.01%
+  [120s] BTC/USDT price=79071.8 pnl=0.02%
+  [150s] BTC/USDT price=79103.8 pnl=0.06%
+  SELL error: bybit {"retCode":170131,"retMsg":"Insufficient balance.","result":{},"retExtInfo":{},"time":1787685101632}
+Traceback (most recent call last):
+  File "/Agentic/orchestrator/deterministic_scalper.py", line 267, in execute_trade
+    sell_order = exchange.create_order(symbol, 'market', 'sell', filled_qty)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/bybit.py", line 4036, in create_order
+    response = self.privatePostV5OrderCreate(orderRequest)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5724, in request
+    return self.fetch2(path, api, method, params, headers, body, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5720, in fetch2
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5701, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 696, in fetch
+    self.handle_errors(http_status_code, http_status_text, url, method, headers, http_response, json_response, request_headers, request_body)
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/bybit.py", line 9508, in handle_errors
+    self.throw_exactly_matched_exception(self.exceptions['exact'], errorCode, feedback)
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 6089, in throw_exactly_matched_exception
+    raise exact[string](message)
+ccxt.base.errors.InsufficientFunds: bybit {"retCode":170131,"retMsg":"Insufficient balance.","result":{},"retExtInfo":{},"time":1787685101632}
+  SELL retry failed: bybit {"retCode":170131,"retMsg":"Insufficient balance.","result":{},"retExtInfo":{},"time":1787685103998}
+  RESULT: BTC/USDT pnl_gross=0.000000 fees=0.000000 pnl_net=0.000000 LOSS
+[LEDGER] {"ts": "2026-08-25T19:11:44.169479+00:00", "exchange": "bybit", "symbol": "BTC/USDT", "entry_price": 79057.3, "exit_price": 79057.3, "qty": 0.000113, "exit_reason": "TIMEOUT", "gross_pnl": 0.0, "fees_usdt": 0, "net_pnl": 0.0, "win": false}
+
+[Cycle 2] PnL realizado: -0.031276 USDT | Meta: 10.0 USDT | Progress: -0.3%
+  Cooldown ativo, 13s restantes
+
+[Cycle 3] PnL realizado: -0.031276 USDT | Meta: 10.0 USDT | Progress: -0.3%
+  SIGNAL: BTC/USDT RSI<50, price=79053.4
+  [bybit] BUY BTC/USDT qty=0.000113 @ ~79053.4 | TP=79685.8272 SL=78420.97279999999
+  BUY filled: qty=0.000113 @ 79053.4 fee=0.0 
+  [30s] BTC/USDT price=79065.4 pnl=0.02%
+  [60s] BTC/USDT price=79073.0 pnl=0.02%

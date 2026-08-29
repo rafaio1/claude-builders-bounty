@@ -1,0 +1,401 @@
+[
+  {
+    "id": "5736",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "scrollkit.com,*.scrollkit.com",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "",
+      "max_severity": "none",
+      "created_at": "2018-01-31T16:37:57.248Z",
+      "updated_at": "2023-05-15T16:31:51.947Z"
+    }
+  },
+  {
+    "id": "28993",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "learnboost.com,*.learnboost.com",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "",
+      "max_severity": "none",
+      "created_at": "2019-05-21T10:07:53.312Z",
+      "updated_at": "2023-05-15T16:33:40.341Z"
+    }
+  },
+  {
+    "id": "34673",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "OTHER",
+      "asset_identifier": "*/xmlrpc.php",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "The sole presence of `xmlrpc.php` in `wordpress.com` and all the domains hosted under our platform doesn't constitute a vulnerability. If you report an issue related to this file, please make sure to provide a working proof of concept that clearly shows the impact.",
+      "max_severity": "none",
+      "created_at": "2019-07-22T16:11:07.650Z",
+      "updated_at": "2019-07-22T16:11:07.673Z"
+    }
+  },
+  {
+    "id": "42397",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "api.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:07:23.009Z",
+      "updated_at": "2020-01-15T15:19:55.637Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42398",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "safe.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:08:00.706Z",
+      "updated_at": "2020-01-09T18:08:00.724Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42399",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "secure.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:08:19.493Z",
+      "updated_at": "2020-01-09T18:08:19.509Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42400",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "assets.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:08:33.335Z",
+      "updated_at": "2020-01-09T18:08:33.365Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42401",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "embed.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:08:45.237Z",
+      "updated_at": "2020-01-09T18:08:45.258Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42402",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "*.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "**The Blog Network**\n\n*Note: Blogs are cached for 1 minute after first request (60s from first request); content is re-loaded into cache when a new request is submitted after the 61st second.*\n\nHow to identify you are looking at the Blog Network:\n* Header: `X-tumblr-user` can be used to identify if the domain is a blog on the Blog Network\n* View the domain in a browser, there will be a Tumblr banner visible. \n\nExclusions for this asset:\n* JavaScript is allowed; XSS is excluded from eligibility.\n* Pages can be framed; Clickjacking or other X-Frame-Options attacks are excluded from eligibility.",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:09:03.249Z",
+      "updated_at": "2023-05-15T16:34:49.372Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42403",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "www.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:09:16.694Z",
+      "updated_at": "2020-01-09T18:09:16.711Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42404",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "t.umblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:09:28.877Z",
+      "updated_at": "2020-01-09T18:09:28.891Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42405",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "*.srvcs.tumblr.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-01-09T18:09:42.029Z",
+      "updated_at": "2023-05-15T16:34:49.459Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42406",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "*.txmblr.com",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "",
+      "max_severity": "none",
+      "created_at": "2020-01-09T18:09:52.829Z",
+      "updated_at": "2023-05-15T16:34:49.538Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "42407",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "GOOGLE_PLAY_APP_ID",
+      "asset_identifier": "com.tumblr",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "- Minimum OS version: API 21\n\nExclusions:\n- API keys in code\n- Certificate pinning",
+      "max_severity": "high",
+      "created_at": "2020-01-09T18:10:16.598Z",
+      "updated_at": "2020-01-09T18:10:16.614Z",
+      "confidentiality_requirement": "medium",
+      "integrity_requirement": "low",
+      "availability_requirement": "low"
+    }
+  },
+  {
+    "id": "42408",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "APPLE_STORE_APP_ID",
+      "asset_identifier": "com.tumblr.tumblr",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "- Minimum OS version: iOS 11\n\nExclusions:\n- API keys in code\n- Certificate pinning",
+      "max_severity": "high",
+      "created_at": "2020-01-09T18:10:36.665Z",
+      "updated_at": "2020-01-09T18:10:36.681Z",
+      "confidentiality_requirement": "medium",
+      "integrity_requirement": "low",
+      "availability_requirement": "low"
+    }
+  },
+  {
+    "id": "47202",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "afterthedeadline.com,*.afterthedeadline.com",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "",
+      "max_severity": "none",
+      "created_at": "2020-04-27T15:22:59.361Z",
+      "updated_at": "2023-05-15T16:35:29.454Z"
+    }
+  },
+  {
+    "id": "47203",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "polishmywriting.com,*.polishmywriting.com",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "",
+      "max_severity": "none",
+      "created_at": "2020-04-27T15:24:16.738Z",
+      "updated_at": "2023-05-15T16:35:29.533Z"
+    }
+  },
+  {
+    "id": "58994",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "*.survey.fm",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "This cookieless domain contains user generated content. While we might decide to fix XSS issues, reports for this domain will not be eligible for a bounty.",
+      "max_severity": "none",
+      "created_at": "2020-11-20T11:02:43.704Z",
+      "updated_at": "2023-05-15T16:36:41.252Z"
+    }
+  },
+  {
+    "id": "58995",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "WILDCARD",
+      "asset_identifier": "*.poll.fm",
+      "eligible_for_bounty": false,
+      "eligible_for_submission": false,
+      "instruction": "This cookieless domain contains user generated content. While we might decide to fix XSS issues, reports for this domain will not be eligible for a bounty.",
+      "max_severity": "none",
+      "created_at": "2020-11-20T12:26:03.312Z",
+      "updated_at": "2023-05-15T16:36:41.323Z"
+    }
+  },
+  {
+    "id": "60222",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "wordpress.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "critical",
+      "created_at": "2020-12-30T21:29:03.362Z",
+      "updated_at": "2020-12-30T21:30:56.275Z",
+      "confidentiality_requirement": "high",
+      "integrity_requirement": "high",
+      "availability_requirement": "high"
+    }
+  },
+  {
+    "id": "60226",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "intensedebate.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "medium",
+      "created_at": "2020-12-31T10:52:08.712Z",
+      "updated_at": "2020-12-31T10:52:08.731Z",
+      "confidentiality_requirement": "low",
+      "integrity_requirement": "low",
+      "availability_requirement": "low"
+    }
+  },
+  {
+    "id": "60227",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "simplenote.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "high",
+      "created_at": "2020-12-31T10:55:03.834Z",
+      "updated_at": "2020-12-31T10:55:03.852Z",
+      "confidentiality_requirement": "medium",
+      "integrity_requirement": "low",
+      "availability_requirement": "low"
+    }
+  },
+  {
+    "id": "60241",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "URL",
+      "asset_identifier": "simperium.com",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "",
+      "max_severity": "high",
+      "created_at": "2021-01-04T14:21:10.864Z",
+      "updated_at": "2021-01-04T14:21:10.883Z",
+      "confidentiality_requirement": "medium",
+      "integrity_requirement": "low",
+      "availability_requirement": "low"
+    }
+  },
+  {
+    "id": "60242",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "SOURCE_CODE",
+      "asset_identifier": "Jetpack",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "Any issues related to the Jetpack plugin https://github.com/Automattic/jetpack and/or https://jetpack.com/",
+      "max_severity": "critical",
+      "created_at": "2021-01-04T14:23:58.837Z",
+      "updated_at": "2021-01-04T14:23:58.857Z"
+    }
+  },
+  {
+    "id": "60243",
+    "type": "structured-scope",
+    "attributes": {
+      "asset_type": "OTHER",
+      "asset_identifier": "WooCommerce",
+      "eligible_for_bounty": true,
+      "eligible_for_submission": true,
+      "instruction": "Any security issues on the WordPress WooCommerce plugin (https://wordpress.org/plugins/woocommerce/) and/or https://woocommerce.com/",
+      "max_severity": "critical",
+      "created_at": "2021-01-04T14:28:59.203Z",
+      "updated_at": "2021-01-04T14:28:59.223Z",
+      "confidentiality_requirement": "medium"
+    }
+  }
+]

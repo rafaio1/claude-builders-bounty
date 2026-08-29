@@ -1,0 +1,18 @@
+{
+  "handle": "crypto",
+  "platform": "hackerone",
+  "decision": "ARCHIVE_PIVOT",
+  "reason": "Passive recon yielded no exploitable attack surface. JS bundles return minimal content (Cloudflare challenge/geo-block). No API endpoints, GraphQL, OAuth misconfigs, or secrets found in public assets. Auth paths all 404. OIDC config returns Rails 404. Pay.crypto.com CSP includes localhost but only in connect-src/img-src (dev artifact, not exploitable).",
+  "recon_summary": {
+    "subdomains_found": 15,
+    "http_responding": 8,
+    "js_bundles_analyzed": 3,
+    "api_endpoints_found": 0,
+    "graphql_found": false,
+    "oauth_misconfig": false,
+    "secrets_found": false,
+    "exploitable_surface": "NONE"
+  },
+  "archived_at": "2026-08-26T13:40:00Z",
+  "next_target": "23andme_bbp"
+}

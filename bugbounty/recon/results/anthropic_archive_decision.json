@@ -1,0 +1,20 @@
+{
+  "target": "anthropic",
+  "platform": "hackerone",
+  "decision": "ARCHIVED",
+  "reason": "No actionable vulnerabilities found in passive recon. 6 URL assets tested (claude.ai, console.anthropic.com, api.anthropic.com, docs.anthropic.com, support.anthropic.com, anthropic.atlassian.net). All returned standard responses (200/403/404/202). 1 signal detected on atlassian login page was confirmed false positive (overly broad regex matching normal HTML content). No secrets, debug pages, misconfigs, or takeover opportunities identified.",
+  "assets_tested": 6,
+  "signals_found": 0,
+  "false_positives": 1,
+  "gate_status": {
+    "scope_confirmed": true,
+    "passive_recon_complete": true,
+    "exploitability_verified": false,
+    "impact_demonstrated": false,
+    "reproducibility_confirmed": false,
+    "dedup_checked": true,
+    "adversarial_review_passed": false
+  },
+  "submission_decision": "NOT_SUBMITTED",
+  "timestamp": "2026-08-26T19:30:44.693427+00:00"
+}

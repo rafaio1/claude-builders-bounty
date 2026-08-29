@@ -1,0 +1,99 @@
+{
+  "id": "0bcc2455-bd63-490b-b725-890a93a1c678",
+  "handle": "fing",
+  "name": "Fing Bug Bounty Program",
+  "following": false,
+  "confidentialityLevel": {
+    "id": 4,
+    "value": "Public"
+  },
+  "status": {
+    "id": 3,
+    "value": "Open"
+  },
+  "type": {
+    "id": 1,
+    "value": "Bug Bounty"
+  },
+  "domains": {
+    "id": "261ccb0c-542f-4ce5-8ee3-446e760cc232",
+    "createdAt": 1723126263,
+    "content": [
+      {
+        "id": "318f0580-d526-492d-a51f-6dd9d67d13dc",
+        "type": {
+          "id": 1,
+          "value": "Url"
+        },
+        "endpoint": "service.fing.com",
+        "tier": {
+          "id": 3,
+          "value": "Tier 2"
+        },
+        "description": "Our public cloud API for Device Recognition which can be requested on our website: https://app.fing.com/internet/business/devrecog/trial.",
+        "requiredSkills": []
+      },
+      {
+        "id": "d58d5b54-bdb8-447c-af1c-f68c124bd40a",
+        "type": {
+          "id": 1,
+          "value": "Url"
+        },
+        "endpoint": "app.fing.com",
+        "tier": {
+          "id": 2,
+          "value": "Tier 3"
+        },
+        "description": "The Fing web application that gives you an overview of all monitored networks",
+        "requiredSkills": []
+      },
+      {
+        "id": "bf781a74-615f-4085-9d0a-79a692b995e8",
+        "type": {
+          "id": 1,
+          "value": "Url"
+        },
+        "endpoint": "Fing desktop",
+        "tier": {
+          "id": 2,
+          "value": "Tier 3"
+        },
+        "description": "The free Fing App to identify connected devices, troubleshoot network and device issues, detect network intruders and run Wi-Fi and internet speed tests anywhere. It can be downloaded here: http://app.fing.com/app",
+        "requiredSkills": []
+      },
+      {
+        "id": "239d5edb-afd2-4a6d-8a96-42d207e94570",
+        "type": {
+          "id": 7,
+          "value": "Wildcard"
+        },
+        "endpoint": "www.fing.com*",
+        "tier": {
+          "id": 1,
+          "value": "No Bounty"
+        },
+        "description": "Always use \"intigriti.me\" address for any web form",
+        "requiredSkills": []
+      }
+    ]
+  },
+  "rulesOfEngagement": {
+    "attachments": [],
+    "id": "1178a9ce-fd9e-48b3-9746-5ec42a7cb8ca",
+    "createdAt": 1707139654,
+    "content": {
+      "description": "\n#### By participating in this program, you agree to:\n\n* Respect the [Community Code of Conduct](https://go.intigriti.com/coc)\n* Respect the Intigriti [Terms and Conditions](https://go.intigriti.com/tac)\n* Respect the scope of the program\n* Not discuss or disclose vulnerability information without prior written consent (including PoC's on YouTube and Vimeo)\n",
+      "testingRequirements": {
+        "intigritiMe": true,
+        "automatedTooling": 5,
+        "userAgent": null,
+        "requestHeader": null
+      },
+      "safeHarbour": true
+    }
+  },
+  "webLinks": {
+    "detail": "https://app.intigriti.com/auth/dashboard?redirect=/programs/lansweeper/fing/detail"
+  },
+  "industry": "Software"
+}

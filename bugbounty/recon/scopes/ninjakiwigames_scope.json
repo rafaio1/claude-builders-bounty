@@ -1,0 +1,130 @@
+{
+  "handle": "ninjakiwigames",
+  "name": "Ninja Kiwi Games Bug Bounty program",
+  "max_bounty": {
+    "value": 4125.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Url",
+      "endpoint": "analytics.ninjakiwi.com",
+      "tier": "Tier 1",
+      "description": "This domain hosts the API that consumed analytics events from our game clients"
+    },
+    {
+      "type": "Url",
+      "endpoint": "api.ninjakiwi.com",
+      "tier": "Tier 1",
+      "description": "This domain hosts the API for our mobile and PC games. Monitoring traffic through one of our game clients is the easiest method to investigate our main API. Most of our applications are available for free on [Steam](https://store.steampowered.com/developer/ninjakiwigames/#browse). Please carefully read the in-scope section regarding what sorts of exploits will be considering in-scope for this domain."
+    },
+    {
+      "type": "Url",
+      "endpoint": "guts.ninjakiwi.com",
+      "tier": "Tier 1",
+      "description": "This is the backend services for certain BTD6 in-game features such as Contested Territories and the Map Creator."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.ninjakiwi.me",
+      "tier": "Tier 2",
+      "description": "ninjakiwi.me is a domain which hosts many of Ninja Kiwi's employtee only services. Any subdomain is eligible for the program."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.nkstatic.com",
+      "tier": "Tier 2",
+      "description": "This domain hosts static content for Ninja Kiwi games and website."
+    },
+    {
+      "type": "Url",
+      "endpoint": "battles.tv",
+      "tier": "Tier 2",
+      "description": "Battles.tv is used to share replays from our Bloons TD Battles game."
+    },
+    {
+      "type": "Url",
+      "endpoint": "data.ninjakiwi.com",
+      "tier": "Tier 2",
+      "description": "This domain hosts our **public** data API which grants open access to in-game data from our biggest games. For example player profiles, leaderboards and event information is available through this domain."
+    },
+    {
+      "type": "Url",
+      "endpoint": "ninja.kiwi",
+      "tier": "Tier 2",
+      "description": "This domain is used by Ninja Kiwi for our URL shortener service, ie https://ninja.kiwi/intigriti."
+    },
+    {
+      "type": "Url",
+      "endpoint": "ninjakiwi.com",
+      "tier": "Tier 2",
+      "description": "Please note that the ninjakiwi.com domain has a number of subdomains which are not in-scope. These are domains which are managed by third party providers. This includes (but it not limited to):\n- support.ninjakiwi.com\n- store.ninjakiwi.com\n- btd6store.ninjakiwi.com\n- battles2store.ninjakiwi.com\n\nIf you are unsure please feel free to reach out to us at security@ninjakiwi.com."
+    },
+    {
+      "type": "Url",
+      "endpoint": "alerts.ninjakiwi.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "boomer2.ninjakiwi.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "ct.ninjakiwi.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mynk-dash.ninjakiwi.com",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mynk.ninjakiwi.com",
+      "tier": "Tier 3",
+      "description": "This is a legacy domain which powers our Flash games. Uses Flash AMF."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.souparea.com",
+      "tier": "No Bounty",
+      "description": "This domain will be considered out of scope unless it can be shown to allow an exploit on one of our Tier 1-3 domains."
+    },
+    {
+      "type": "Url",
+      "endpoint": "rancher.ninjakiwi.com",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "rancher.ninjakiwi.me",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "store.ninjakiwi.com",
+      "tier": "Out Of Scope",
+      "description": "If you've found an issue with this domain you can contact Shopify here - https://www.shopify.com/bugbounty"
+    },
+    {
+      "type": "Url",
+      "endpoint": "support.ninjakiwi.com",
+      "tier": "Out Of Scope",
+      "description": "If you've found an issue with this domain you can contact Zendesk here - https://support.zendesk.com/hc/en-us/articles/4409154830874-Zendesk-Bug-Bounty-Program"
+    },
+    {
+      "type": "Url",
+      "endpoint": "icarusadmin.ninjakiwi.com",
+      "tier": "Out Of Scope",
+      "description": null
+    }
+  ]
+}

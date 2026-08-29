@@ -1,0 +1,9 @@
+{
+  "target": "coinbase",
+  "timestamp": "2026-08-26T19:19:14.416285+00:00",
+  "gate_result": "FAIL",
+  "reason": "Passive recon on wallet/base/bridge/docs/API found no actionable vulnerability signals. Missing CSP/X-Frame-Options are informational only, not exploitable without additional context. No debug endpoints, secret leaks, admin panels, or misconfigs detected.",
+  "action": "ARCHIVE_AND_PIVOT",
+  "endpoints_checked": 8,
+  "headers_note": "wallet.coinbase.com and base.org missing CSP and X-Frame-Options but this alone is not a valid bounty finding for a hardened target like Coinbase"
+}

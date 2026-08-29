@@ -1,0 +1,13 @@
+{
+  "target": "visma",
+  "platform": "intigriti",
+  "status": "NO_CONFIRMED_FINDINGS",
+  "summary": "Passive recon of 19 Tier 2 staging assets completed. 2 Azure takeover candidates (myservices-api.stage, photoservice.stage) validated as LIKELY_CLAIMED (custom 404, not default Azure). Deep inspection of aiassistant.stage and myservices.stage found no info disclosure: myservices is Angular SPA catch-all returning identical HTML for all paths including /health, /api-docs, /.well-known/openid-configuration. aiassistant returned minimal content with CSP but no debug signals. No valid findings to report.",
+  "assets_tested": 19,
+  "takeover_candidates": 2,
+  "takeover_confirmed": 0,
+  "info_disclosure_found": false,
+  "debug_endpoints_found": false,
+  "verdict": "PIVOT_TO_NEXT_TARGET",
+  "timestamp": "2026-08-26T00:00:00Z"
+}

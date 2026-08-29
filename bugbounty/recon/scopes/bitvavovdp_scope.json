@@ -1,0 +1,34 @@
+{
+  "handle": "bitvavovdp",
+  "name": "Bitvavo VDP",
+  "max_bounty": {
+    "value": 0.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Android",
+      "endpoint": "com.bitvavo.android",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "https://api.bitvavo.com/v2/*",
+      "tier": "No Bounty",
+      "description": "This is the base REST API endpoint for Bitvavo. For the full list of available methods, endpoints, schema definition, and auth requirement consult the canonical API documentation: \n\nhttps://docs.bitvavo.com/docs/rest-api/\n\nBitvavo offers two protocols for interacting with its platform: **REST** and **WebSocket**. Both protocols return JSON-encoded responses, and use standard HTTP status codes. However, each protocol is optimized for different use cases:\n\n**REST API**\n* Best suited for synchronous, request-response interactions.\n* Client initiates every call, and the server responds with the requested data.\n\nFor more details, read carefully our API docs at https://docs.bitvavo.com/docs/get-started/"
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "wss://ws.bitvavo.com/v2 *",
+      "tier": "No Bounty",
+      "description": "This is the base WebSocket API endpoint for Bitvavo. For the full list of available methods, endpoints, schema definition, and auth requirement consult the canonical API documentation: \n\nhttps://docs.bitvavo.com/docs/websocket-api/\n\nBitvavo offers two protocols for interacting with its platform: **REST** and **WebSocket**. Both protocols return JSON-encoded responses, and use standard HTTP status codes. However, each protocol is optimized for different use cases:\n\n**WebSocket API**\n* Ideal for real-time, event-driven communication.\n* Once connected, the server continuously pushes updates to the client without requiring repeated requests.\n\nFor more details, read carefully our API docs at https://docs.bitvavo.com/docs/get-started/"
+    },
+    {
+      "type": "Url",
+      "endpoint": "https://bitvavo.com",
+      "tier": "No Bounty",
+      "description": null
+    }
+  ]
+}

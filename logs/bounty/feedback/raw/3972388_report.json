@@ -1,0 +1,83 @@
+{
+  "id": "3972388",
+  "type": "report",
+  "attributes": {
+    "title": "Unauthenticated Mass Corporate Lead Creation / Account Pre-registration via Missing Rate Limiting and CORS Misconfiguration",
+    "state": "duplicate",
+    "created_at": "2026-08-26T22:51:06.639Z",
+    "submitted_at": "2026-08-26T22:51:07.053Z",
+    "vulnerability_information": "## Summary\nThe Wolt corporate lead creation endpoint (`POST /v1/waw-api/corporate-leads`) allows unauthenticated users to create persistent corporate account records without any rate limiting, CAPTCHA, email verification, or CSRF protection. Additionally, the endpoint does not return restrictive CORS headers, accepting requests from arbitrary origins including `null`. This enables an attacker to programmatically generate unlimited fake corporate leads, potentially exhausting sales resources, polluting CRM data, and reserving corporate names for brand impersonation.\n\n## Severity\n**Medium** (CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:L)\n\n## Affected Asset\n- **URL:** `https://restaurant-api.wolt.com/v1/waw-api/corporate-leads`\n- **Program:** Wolt (HackerOne)\n- **Scope Status:** In-scope (Wolt-owned API under restaurant-api.wolt.com)\n\n## Preconditions\n- No authentication required\n- No API key or session token needed\n- Attacker-controlled HTTP client capable of sending JSON POST requests\n\n## Steps to Reproduce\n1. Send a POST request to `https://restaurant-api.wolt.com/v1/waw-api/corporate-leads` with the following headers and body:\n   ```http\n   POST /v1/waw-api/corporate-leads HTTP/2\n   Host: restaurant-api.wolt.com\n   Content-Type: application/json\n   Accept: application/json\n   X-HackerOne-Research: rafaio\n\n   {\"person_name\":\"Test Researcher\",\"email\":\"test@example.com\",\"phone_number\":\"+358401234567\",\"corporate_name\":\"Test Corp Oy\",\"corporate_country_code\":\"FIN\"}\n   ```\n2. Observe HTTP 200 response containing server-generated `corporate_id` and `id` fields confirming record creation.\n3. Repeat step 1 with different email/name values multiple times within 60 seconds.\n4. Observe that all requests succeed with HTTP 200 and unique IDs \u2014 no rate limiting, CAPTCHA challenge, or error returned.\n5. Verify CORS behavior by adding `Origin: https://evil.example.com` header; observe HTTP 200 with no `Access-Control-Allow-Origin` restriction in response.\n6. Verify null origin acceptance by setting `Origin: null`; observe identical successful response.\n\n## Impact\nAn attacker can automate mass creation of fake corporate lead records at scale without authentication or friction. This leads to:\n- **Resource Exhaustion:** Sales/onboarding teams overwhelmed by fake leads, delaying legitimate corporate partnerships.\n- **CRM Data Pollution:** Database filled with fraudulent entries, degrading analytics and reporting accuracy.\n- **Brand Impersonation Risk:** Attackers can reserve legitimate corporate names, potentially blocking real businesses or enabling phishing campaigns using reserved names.\n- **Cross-Origin Abuse:** Lack of CORS restrictions allows malicious websites to trigger lead creation on behalf of visitors without consent.\n\n## Evidence (Sanitized)\nAll test data used synthetic identities (`test-researcher@example.com`, `Test Corp Oy`). No real PII was accessed or exfiltrated. Responses consistently returned structured JSON with unique UUIDs confirming persistence. Request timestamps show 5+ successful creations within <60 seconds from same source IP.\n\n## Remediation\n1. Implement per-IP and per-email rate limiting (e.g., max 3 submissions/hour/IP).\n2. Require CAPTCHA or proof-of-work for unauthenticated submissions.\n3. Add email verification flow before persisting corporate lead records.\n4. Configure strict `Access-Control-Allow-Origin` header rejecting unknown/null origins.\n5. Consider requiring minimal authentication or session binding for lead creation endpoints.\n\n## Impact\n\nMass creation of fake corporate leads causing resource exhaustion, CRM pollution, brand impersonation risk, and cross-origin abuse.",
+    "triaged_at": null,
+    "closed_at": "2026-08-26T22:59:00.748Z",
+    "last_reporter_activity_at": "2026-08-26T22:51:07.269Z",
+    "first_program_activity_at": null,
+    "last_program_activity_at": null,
+    "bounty_awarded_at": null,
+    "swag_awarded_at": null,
+    "disclosed_at": null,
+    "reporter_agreed_on_going_public_at": null,
+    "last_public_activity_at": "2026-08-26T22:59:00.748Z",
+    "last_activity_at": null
+  },
+  "relationships": {
+    "reporter": {
+      "data": {
+        "id": "4483485",
+        "type": "user",
+        "attributes": {
+          "reputation": 100,
+          "username": "rafaio",
+          "name": "Rafael",
+          "disabled": false,
+          "created_at": "2026-06-10T01:56:03.570Z",
+          "profile_picture": {
+            "62x62": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "82x82": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "110x110": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png",
+            "260x260": "/assets/avatars/default-14ffa99f59cd01423c64904352cc130ffcb6a802eadfd11777a54485749e60f2.png"
+          },
+          "bio": null,
+          "website": null,
+          "location": null,
+          "hackerone_triager": false
+        }
+      }
+    },
+    "program": {
+      "data": {
+        "id": "114418",
+        "type": "program",
+        "attributes": {
+          "handle": "wolt",
+          "created_at": null,
+          "updated_at": null
+        }
+      }
+    },
+    "severity": {
+      "data": {
+        "id": "4600303",
+        "type": "severity",
+        "attributes": {
+          "rating": "medium",
+          "author_type": "User",
+          "user_id": 4483485,
+          "created_at": "2026-08-26T22:51:06.967Z",
+          "calculation_method": "manual"
+        }
+      }
+    },
+    "weakness": {
+      "data": {
+        "id": "799",
+        "type": "weakness",
+        "attributes": {
+          "name": "DEPRECATED: Incorrect Semantic Object Comparison",
+          "description": "This weakness has been deprecated.  It was poorly described and difficult to distinguish from other entries.  It was also inappropriate to assign a separate ID solely because of domain-specific considerations.  Its closest equivalent is CWE-1023.",
+          "external_id": "cwe-596",
+          "created_at": "2022-07-06T18:20:54.296Z"
+        }
+      }
+    }
+  }
+}

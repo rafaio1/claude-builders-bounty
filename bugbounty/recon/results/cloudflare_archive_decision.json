@@ -1,0 +1,11 @@
+{
+  "handle": "cloudflare",
+  "decision": "ARCHIVE_NO_FINDING",
+  "reason": "Passive recon on api.cloudflare.com, workers, R2/D1/AI/Pages docs found no exposed secrets, debug endpoints, or misconfiguration signals. All endpoints return expected auth errors or clean HTML. No actionable vulnerability identified.",
+  "timestamp": "2026-08-26T19:52:00Z",
+  "recon_files": [
+    "cloudflare_api_passive.json",
+    "cloudflare_workers_passive.json",
+    "cloudflare_products_passive.json"
+  ]
+}

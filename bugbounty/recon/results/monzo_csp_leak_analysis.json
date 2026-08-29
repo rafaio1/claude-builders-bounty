@@ -1,0 +1,104 @@
+[
+  {
+    "domain": "api.s101.nonprod-ffs.io",
+    "ips": [
+      "75.2.73.205",
+      "99.83.207.149"
+    ],
+    "cname": null,
+    "http_status": "200",
+    "notable_headers": {},
+    "risk_notes": [
+      "NON-PROD EXPOSED IN PROD CSP"
+    ]
+  },
+  {
+    "domain": "internal-api.monzo.com",
+    "ips": [
+      "a0e88012cb437ad49.awsglobalaccelerator.com.",
+      "13.248.178.82",
+      "76.223.40.168"
+    ],
+    "cname": "a0e88012cb437ad49.awsglobalaccelerator.com.",
+    "http_status": "200",
+    "notable_headers": {},
+    "risk_notes": [
+      "INTERNAL ENDPOINT EXPOSED",
+      "POSSIBLE TAKEOVER CNAME -> a0e88012cb437ad49.awsglobalaccelerator.com."
+    ]
+  },
+  {
+    "domain": "mondo-logo-cache.appspot.com",
+    "ips": [
+      "142.250.219.212"
+    ],
+    "cname": null,
+    "http_status": "404",
+    "notable_headers": {
+      "server": "Google Frontend"
+    },
+    "risk_notes": []
+  },
+  {
+    "domain": "public-images.monzo.com",
+    "ips": [
+      "172.64.150.140",
+      "104.18.37.116"
+    ],
+    "cname": null,
+    "http_status": "200",
+    "notable_headers": {
+      "server": "cloudflare",
+      "cf-ray": "a31386662fa900f6-GRU"
+    },
+    "risk_notes": []
+  },
+  {
+    "domain": "merchant-logos-s101.monzo.com",
+    "ips": [
+      "du4m9e01s763h.cloudfront.net.",
+      "18.67.162.92",
+      "18.67.162.95",
+      "18.67.162.87",
+      "18.67.162.127"
+    ],
+    "cname": "du4m9e01s763h.cloudfront.net.",
+    "http_status": "403",
+    "notable_headers": {
+      "x-amz-bucket-region": "eu-west-1",
+      "server": "AmazonS3"
+    },
+    "risk_notes": []
+  },
+  {
+    "domain": "merchant-logos.monzo.com",
+    "ips": [
+      "d2mrsunwsyizq8.cloudfront.net.",
+      "13.227.110.53",
+      "13.227.110.54",
+      "13.227.110.114",
+      "13.227.110.118"
+    ],
+    "cname": "d2mrsunwsyizq8.cloudfront.net.",
+    "http_status": "403",
+    "notable_headers": {
+      "x-amz-bucket-region": "eu-west-1",
+      "server": "AmazonS3"
+    },
+    "risk_notes": []
+  },
+  {
+    "domain": "monzo.report-uri.com",
+    "ips": [
+      "104.17.214.66",
+      "104.17.215.66"
+    ],
+    "cname": null,
+    "http_status": "403",
+    "notable_headers": {
+      "server": "cloudflare",
+      "cf-ray": "a3138671ff77f1a1-GRU"
+    },
+    "risk_notes": []
+  }
+]

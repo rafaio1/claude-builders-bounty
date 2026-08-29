@@ -1,0 +1,66 @@
+[
+  {
+    "id": "monzo-csp-leak-001",
+    "title": "Content-Security-Policy Leaks Non-Production and Internal Endpoints on verify.monzo.com",
+    "platform": "intigriti",
+    "program": "monzopublicbugbountyprogram",
+    "asset": "verify.monzo.com",
+    "severity": "LOW",
+    "cvss_estimate": 3.7,
+    "type": "information-disclosure",
+    "status": "DRAFT_READY_FOR_HUMAN_REVIEW",
+    "evidence": {
+      "url": "https://verify.monzo.com",
+      "http_status": "404 (but returns full CSP headers)",
+      "leaked_domains": [
+        "api.s101.nonprod-ffs.io (non-production API endpoint)",
+        "internal-api.monzo.com (internal API endpoint)",
+        "mondo-logo-cache.appspot.com (legacy branding reference)"
+      ],
+      "csp_header_snippet": "connect-src 'self' api.s101.nonprod-ffs.io api.monzo.com ... img-src 'self' ... internal-api.monzo.com",
+      "takeover_risk": "NONE - No dangling CNAME detected; A records point to Cloudflare",
+      "reproduced_at": "2026-08-26T00:00:00Z",
+      "http_status_confirmed": "HTTP/2 404 "
+    },
+    "impact": "Exposes internal infrastructure naming conventions and non-production endpoints to external researchers. May facilitate further reconnaissance or targeted attacks against internal services.",
+    "remediation": "Remove non-production and internal domain references from production CSP headers. Use environment-specific CSP policies.",
+    "validation_gates": {
+      "scope_check": "PASS - verify.monzo.com covered by *.monzo.com Tier 1 wildcard",
+      "false_positive_check": "PASS - Domains resolve and respond; not generic placeholders",
+      "destructive_test": "N/A - Passive observation only",
+      "dedup_check": "MANUAL_REQUIRED - Intigriti Researcher API does not expose report search endpoint. Researcher must verify no existing CSP leak reports for verify.monzo.com before submission.",
+      "reproduction_check": "PASS - CSP header confirmed present via passive HEAD request with X-Bug-Bounty header",
+      "dns_check": "PASS - Resolves to 104.18.37.116\n172.64.150.140; No CNAME (not a takeover vector)"
+    }
+  },
+  {
+    "id": "monzo-nonprod-exposed-002",
+    "title": "Non-Production API Endpoint (api.s101.nonprod-ffs.io) Referenced and Accessible from Production Context",
+    "platform": "intigriti",
+    "program": "monzopublicbugbountyprogram",
+    "asset": "api.s101.nonprod-ffs.io",
+    "severity": "MEDIUM",
+    "cvss_estimate": 5.3,
+    "type": "misconfiguration",
+    "status": "REJECTED_OUT_OF_SCOPE",
+    "evidence": {
+      "discovery_method": "CSP header analysis on verify.monzo.com",
+      "dns_resolution": [
+        "75.2.73.205",
+        "99.83.207.149"
+      ],
+      "http_status": "200 OK",
+      "cname": null,
+      "risk_note": "NON-PROD EXPOSED IN PROD CSP"
+    },
+    "impact": "Non-production environments often have weaker security controls, debug features enabled, or test data. Exposure in production CSP suggests potential for unauthorized access or data leakage between environments.",
+    "remediation": "Ensure non-production endpoints are not referenced in production configurations. Implement network segmentation and access controls for non-prod infrastructure.",
+    "validation_gates": {
+      "scope_check": "FAIL - nonprod-ffs.io not in scope; only *.prod-ffs.io is Tier 1",
+      "false_positive_check": "PASS - Endpoint resolves and returns 200",
+      "destructive_test": "N/A - No active testing performed",
+      "dedup_check": "PENDING"
+    },
+    "rejection_reason": "Asset api.s101.nonprod-ffs.io is not covered by any in-scope wildcard or explicit asset. *.prod-ffs.io does not cover nonprod-ffs.io."
+  }
+]

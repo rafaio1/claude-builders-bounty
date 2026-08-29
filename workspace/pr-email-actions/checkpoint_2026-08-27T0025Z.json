@@ -1,0 +1,71 @@
+{
+  "timestamp": "2026-08-27T00:25:00Z",
+  "cycle": "backoff_registration_complete",
+  "previous_checkpoint": "checkpoint_2026-08-27T0015Z.json",
+  "actions_taken_this_cycle": {
+    "stale_pr_backoff_registered": {
+      "count": 5,
+      "prs": [
+        "abhiksark/swage#61",
+        "bitcoin-apps-suite/bitcoin-writer#63",
+        "iyeanur6-cyber/ultimate-ai-platform#38",
+        "derNif/payanagent#120",
+        "malteish/goerlinator#28"
+      ],
+      "next_check_at": "2026-08-30T00:00:00Z",
+      "reason": "stale_awaiting_maintainer_7d_plus",
+      "email_action": "keep_inbox"
+    },
+    "review_pending_backoff_confirmed": {
+      "count": 4,
+      "prs": [
+        "CALLE-AI/awesome-phone-call-agents#241",
+        "FuZoe/PD-Hunter#27",
+        "OphirPay/OphirPay#225",
+        "OphirPay/OphirPay#228"
+      ],
+      "next_check_at": "2026-08-29T00:00:00Z",
+      "reason": "fix_pushed_awaiting_review_48h_backoff",
+      "email_action": "keep_inbox"
+    },
+    "tier_a_backoff_confirmed": {
+      "count": 5,
+      "prs": [3869, 3870, 3871, 3872, 3873],
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "next_check_at": "2026-08-30T00:00:00Z",
+      "reason": "tier_a_awaiting_maintainer_backoff",
+      "email_action": "keep_inbox"
+    }
+  },
+  "carried_forward": {
+    "ligate_io_567": "BLOCKED_CLA_HUMAN_ONLY",
+    "baseintelligence_base_193": "SECURITY_BLOCKER_NO_INCREMENTAL_FIX",
+    "vercel_auth_failures": 13,
+    "tenstorrent_tt_metal_54352": "CLOSED_DENYLIST_PERMANENT",
+    "lilly_protocol_batch_cleanup": "COMPLETED_9_EMAILS_TRASHED_125_LOGGED"
+  },
+  "queue_status": {
+    "action_queue_total_lines": 136,
+    "saturated_emails_trashed": 9,
+    "backoff_registrations_logged": 14,
+    "pr_revenue_queue_source": "/Agentic/data/aro/pr_revenue_queue.json",
+    "saturated_repos_denylisted": ["tenstorrent/tt-metal", "Lilly-Protocol/*", "SecureBananaLabs/*"]
+  },
+  "policy_compliance": {
+    "no_new_prs_without_verified_bounty": true,
+    "no_capital_movement_unconfirmed": true,
+    "no_email_deletion_personal_financial_security": true,
+    "merge_not_equal_bounty": true,
+    "saturated_repos_excluded": true,
+    "trash_only_after_resolution_confirmed": true,
+    "backoff_before_repoll": true
+  },
+  "ledger_integrity": "verified",
+  "next_cycle_trigger": "new_email_or_pr_state_change_or_backoff_expiry_2026-08-29",
+  "remaining_work": [
+    "BaseIntelligence/base#193 security remediation plan requires user confirmation",
+    "Regenerate pr_revenue_queue.json if >4h since last generation",
+    "Monitor backoff expiry for review-pending PRs on 2026-08-29",
+    "Monitor backoff expiry for stale and tier A PRs on 2026-08-30"
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "handle": "fing",
+  "name": "Fing Bug Bounty Program",
+  "max_bounty": {
+    "value": 3500.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Url",
+      "endpoint": "service.fing.com",
+      "tier": "Tier 2",
+      "description": "Our public cloud API for Device Recognition which can be requested on our website: https://app.fing.com/internet/business/devrecog/trial."
+    },
+    {
+      "type": "Url",
+      "endpoint": "app.fing.com",
+      "tier": "Tier 3",
+      "description": "The Fing web application that gives you an overview of all monitored networks"
+    },
+    {
+      "type": "Url",
+      "endpoint": "Fing desktop",
+      "tier": "Tier 3",
+      "description": "The free Fing App to identify connected devices, troubleshoot network and device issues, detect network intruders and run Wi-Fi and internet speed tests anywhere. It can be downloaded here: http://app.fing.com/app"
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "www.fing.com*",
+      "tier": "No Bounty",
+      "description": "Always use \"intigriti.me\" address for any web form"
+    }
+  ]
+}

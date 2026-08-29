@@ -1,0 +1,56 @@
+{
+  "timestamp": "2026-08-26T09:16:28.013926+00:00",
+  "type": "human_unblock_required",
+  "status": "all_autonomous_paths_exhausted",
+  "realized_revenue_usd": 0,
+  "pipeline_potential_usd": 166000,
+  "blockers": [
+    {
+      "id": "gmail_oauth_reauth",
+      "severity": "critical",
+      "description": "Gmail OAuth token has refresh_token but empty scopes. Cannot send/read emails for payment confirmation or outreach without gmail.readonly and gmail.send scopes.",
+      "action_required": "Human must re-authorize Gmail OAuth with required scopes",
+      "blocks": [
+        "payment_confirmation",
+        "maintainer_outreach",
+        "invoice_followup"
+      ]
+    },
+    {
+      "id": "expansion_bounty_approval",
+      "severity": "high",
+      "description": "58 qualified zero-capital technical bounties identified in state/expansion_new_bounties_20260826.json totaling $166k potential. Cannot submit autonomously per Capital Wise rule.",
+      "action_required": "Human review and approval of specific candidates before submission work begins",
+      "file": "state/expansion_new_bounties_20260826.json",
+      "blocks": [
+        "new_revenue_pipeline"
+      ]
+    },
+    {
+      "id": "sherlock_submission_approval",
+      "severity": "medium",
+      "description": "Sherlock audit contest submission prepared but requires explicit human approval before autonomous submission",
+      "action_required": "Human approval to proceed with Sherlock submission",
+      "blocks": [
+        "audit_contest_participation"
+      ]
+    }
+  ],
+  "completed_work_summary": {
+    "bounty_engine_fix": "Verified intact, 15/15 regression tests passing",
+    "ledger_reconciliation": "96 HT entries + 53 bounty entries audited, $0 realized confirmed",
+    "pr_monitoring": "PR#6131 returned 404 (deleted/merged), all other HT PRs closed without merge",
+    "expansion_discovery": "58 new candidates found, deduplicated against existing ledgers (0 duplicates)",
+    "api_scan_attempt": "Immunefi/Code4rena public APIs returned 404 (require auth/browser)",
+    "submission_drafts": "Placeholder created at state/expansion_submission_drafts_20260826.json"
+  },
+  "next_actions_post_unblock": [
+    "Re-authorize Gmail OAuth with gmail.readonly + gmail.send scopes",
+    "Review and approve expansion bounty candidates from state/expansion_new_bounties_20260826.json",
+    "Approve Sherlock submission if still viable",
+    "Resume monitoring cycle after unblock"
+  ],
+  "telegram_gate": "CLOSED - no realized capital to report",
+  "goal_status": "active_waiting_monitoring",
+  "verification_log_entries": 57
+}

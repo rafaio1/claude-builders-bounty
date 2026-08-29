@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-08-28T00:00:00Z",
+  "role": "CONTADOR_FINANCEIRO_V3",
+  "reconciled_revenue_usdt": {
+    "gross": 1145.117471,
+    "fees": 1.14511747,
+    "net": 1143.97235353,
+    "currency": "USDT",
+    "entries_count": 105,
+    "providers": {
+      "reconciliation_import": {
+        "count": 54,
+        "net": 739.64798263
+      },
+      "reconciliation_inj_wash_fix": {
+        "count": 51,
+        "net": 404.3243709
+      }
+    },
+    "evidence_source": "/Agentic/ledger.jsonl",
+    "verification": "all_tx_ids_present"
+  },
+  "verified_receivables_usd": 0,
+  "leads_status": "pending_validation_no_claims",
+  "telegram_gate": "CLOSED",
+  "cycle_status": "idle_bounded_monitoring",
+  "notes": [
+    "Revenue liquidada confirmada via ledger.jsonl com tx_id e provider.",
+    "Leads, PRs e valores nominais excluidos da receita.",
+    "Nenhum recebivel verificado oficialmente.",
+    "Estado idempotente registrado. Aguardando proximo ciclo."
+  ]
+}

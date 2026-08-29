@@ -1,0 +1,40 @@
+{
+  "handle": "innovapost",
+  "name": "Canada Post - Responsible Disclosure Program",
+  "max_bounty": {
+    "value": 0.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Wildcard",
+      "endpoint": "*.azcpggpc.ca",
+      "tier": "No Bounty",
+      "description": "Any subdomain of azcpggpc.ca (eg. alert-management-svc.prd01.retail-api.azcpggpc.ca)"
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.canadapost-postescanada.ca",
+      "tier": "No Bounty",
+      "description": "Any subdomain of canadapost-postescanada.ca (eg. www.canadapost-postescanada.ca, sso-osu.canadapost-postescanada.ca and store.canadapost-postescanada.ca)"
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.infopost.ca",
+      "tier": "No Bounty",
+      "description": "Any subdomain of infopost.ca (eg. www.infopost.ca and dev.infopost.ca)"
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.postescanada-canadapost.ca",
+      "tier": "No Bounty",
+      "description": "Any subdomain of postescanada-canadapost.ca (eg. www.postescanada-canadapost.ca)"
+    },
+    {
+      "type": "Android",
+      "endpoint": "com.canadapost.android",
+      "tier": "No Bounty",
+      "description": "Canada Post's mobile application for Android"
+    }
+  ]
+}

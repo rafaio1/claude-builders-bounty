@@ -1,0 +1,262 @@
+{
+  "handle": "uzleuven",
+  "name": "UZ Leuven",
+  "max_bounty": {
+    "value": 5000.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Url",
+      "endpoint": "boekentoy.uzleuven.be",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "uz-laboboeken.web.app",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "laboboeken.uzleuven.be",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "boekentoy.firebaseio.com",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "uz-laboboeken.firebaseio.com",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "autodiscover.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "ecrf.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "extranet-asa.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "extranet.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "liquidfiles.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mx1.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mx2.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "pcrstudioruzb.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "prddsplunkhf.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "sts.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.uzleuven.be",
+      "tier": "Tier 1",
+      "description": null
+    },
+    {
+      "type": "IpRange",
+      "endpoint": "193.58.149.121,193.58.149.98,193.58.149.82,193.58.149.101,193.58.149.107,193.58.149.108,193.58.149.111",
+      "tier": "Tier 2",
+      "description": "These are the ip's used by our reverse proxy.\nThe Host header will determine the bounty tier.\nIf a report is submitted where the Host header is not used we will default to Tier 2."
+    },
+    {
+      "type": "Url",
+      "endpoint": "wp5-truststroke.uzleuven.be",
+      "tier": "Tier 2",
+      "description": "* access to /api/ should only work from BE or NL ip's\n* access to other paths or / should not work"
+    },
+    {
+      "type": "Url",
+      "endpoint": "cardsonline.azdiest.be",
+      "tier": "Tier 2",
+      "description": "This webapp should return a http 403 error due to ip whitelisting."
+    },
+    {
+      "type": "Url",
+      "endpoint": "liquidfilestest.uzleuven.be",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "random.uzleuven.be/random/",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "teststs.uzleuven.be",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "w1.uzleuven.be",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "cardsonlinetst.azdiest.be",
+      "tier": "Tier 3",
+      "description": "This webapp should return a http 403 error due to ip whitelisting."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.kwsdose.be",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.playuzleuven.be",
+      "tier": "Tier 3",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.uzleuven.*",
+      "tier": "Tier 3",
+      "description": "#### *.uzleuven.be (tier 3) only applies to everything that hasn't been listed in the scope."
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.contactallerg(y|ie).uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.mir.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*dev.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*idp*.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*stag*.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "files.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "kumulus.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mijnacc.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "mirc.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "prddnighting01.uzleuven.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "w1.uzleuven.be/random",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "ziekenhuisschool.be",
+      "tier": "No Bounty",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "jobs.uzleuven.be",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "uzleuven.atlassian.net",
+      "tier": "Out Of Scope",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "vacatures.uzleuven.be",
+      "tier": "Out Of Scope",
+      "description": null
+    }
+  ]
+}

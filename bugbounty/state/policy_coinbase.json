@@ -1,0 +1,330 @@
+{
+  "id": "104",
+  "type": "program",
+  "attributes": {
+    "handle": "coinbase",
+    "name": "Coinbase",
+    "currency": "usd",
+    "policy": "Coinbase's Bug Bounty Program exists to protect our two highest-priority assets: **customer funds** and **customer information**. We reward researchers who responsibly disclose software vulnerabilities that could put either at risk.\n\nTo be eligible for an award, a report must present a clear list of steps that when executed demonstrate the impact of a vulnerability that harms Coinbase or its customers. Coinbase determines eligibility and reward amounts at its sole discretion.\n\n## Scope\n\nThe scope of this program is Web2 products, assets and infrastructure owned by Coinbase. Please see the Scope page for more details. If you have a Web3 finding pertaining to Coinbase, please submit through our program on [Cantina](https://cantina.xyz/bounties/55316f42-3c5e-4746-9bd0-0f18dcbc344b).\n\n## Out of scope\n\n* Social engineering  \n* Username enumeration  \n* Rate Limiting (non-critical issues)  \n* Physical security  \n* Non-security-impacting UX issues  \n* Deprecated open source libraries  \n* Vulnerabilities in third-party applications that integrate with Coinbase  \n* Ability to abuse existing banking functionality such as ACH or credit card chargebacks  \n* Publicly available leaked credentials that have since been rotated  \n* Demo apps, testnet, staging environments, etc.\n\n## Severity & Rewards\n\n---\n**Extreme** \u2014 Up to **$1,000,000**\n-  Unauthorized access to Coinbase-owned hot/cold wallet assets, funds, or private keys.\n---\n**Critical** \u2014 Up to **$15,000**\n- Market-moving API/service abuse.\n- RCE on staking infrastructure.\n- Easily-exploitable, high-severity bugs in protocols accessible from the public API (e.g., signing, DKG, TDH2 in the cb-mpc open-source library) that could lead to key compromise or RCE. Exploitation requires no material precondition beyond normal protocol operation, and broadly affects typical deployments.\n- Large-scale money laundering.\n- MNPI exposure, sustained business disruption, or significant monetary loss.\n---\n**High** \u2014 Up to **$6,000**\n- PII exposure affecting a meaningful share of users.\n- Fee-structure bypass at scale.\n- KYC bypass.\n- Single-product 2FA bypass.\n- High-severity bugs in protocols accessible from the public API (e.g., signing, DKG, TDH2 in the cb-mpc open-source library) that could lead to key compromise or RCE, but require additional\u2014yet realistic\u2014conditions, access, or effort to exploit. Exploitation must remain feasible in a realistic deployment and must not depend on unlikely conditions.\n---\n**Low / Medium** \u2014 Out of Scope \u2014 **$0**\n\n---\n##\n\nSeverity is scored on **impact** (confidentiality, integrity, availability, fund and/or data exposure) and **exploitability** (access required, prerequisites, likelihood).\n\n**Note for the cb-mpc open-source library**: the extreme category is out of scope, and hard to exploit bugs are considered medium, and therefore also out of scope.\n\n# Program Policies\n\n## Safe Harbor\n\n* Coinbase adheres to and supports the HackerOne Gold Standard Safe Harbor terms. \n\n\n## Eligibility\n\n* Not be a resident of any country under U.S. sanctions or any country that does not allow participation  \n* Be at least 14 years old with legal capacity to agree to these terms  \n* Have permission from your employer to participate  \n* Not be (for the previous 12 months) a Coinbase employee, immediate family member, contractor, or service provider\n\n## Researcher Requirements\n\n* Submit all valid, Coinbase-related bug reports through our programs on HackerOne (for Web2), and Cantina (for Web3).  \n* Provide Coinbase a reasonable amount of time to fix a vulnerability prior to sharing details with any other party.  \n* Adhere to HackerOne Disclosure Process.  \n* Make a good faith effort to preserve the confidentiality and integrity of Coinbase customer data.  \n* Do not defraud or attempt to defraud or socially engineer Coinbase customers or Coinbase itself.  \n* Do not profit from vulnerabilities outside of Bug Bounty Program payouts.  \n* Report vulnerabilities with no conditions, demands, or ransom threats.\n\nViolation of any of our policy may result in the immediate ban from further participation in the Coinbase Bug Bounty Program. Researchers who engage in extortion attempts will be reported to law enforcement.\n\n## Fine print\n\nCoinbase may modify or cancel this program at any time. Anonymous HackerOne reports are accepted but not reward-eligible. This is v5.0 of the program; see also [HackerOne's Finder Terms and Conditions](https://hackerone.com).**",
+    "profile_picture": "https://hackerone-us-west-2-production-attachments.s3.us-west-2.amazonaws.com/variants/fwfizd37a3tsttb1ff4539buzmdw/89f037b490baf3dcca1b84283f4c85141b64c213252a9c79b56c62bf903ab542?response-content-disposition=inline%3B%20filename%3D%22Coinbase.png%22%3B%20filename%2A%3DUTF-8%27%27Coinbase.png&response-content-type=image%2Fpng&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=ASIAQGK6FURQRHPJFSFZ%2F20260826%2Fus-west-2%2Fs3%2Faws4_request&X-Amz-Date=20260826T191833Z&X-Amz-Expires=3600&X-Amz-Security-Token=IQoJb3JpZ2luX2VjEFoaCXVzLXdlc3QtMiJGMEQCIDxzgBhHVEWltHWTt4dPzWz8z3Cu4JzvUl0ZN3AySKcmAiA0n8EJNVk9m%2BY2TLmsBKymAkIarSXJPfar6F5gM%2FRvqCqxBQgjEAMaDDAxMzYxOTI3NDg0OSIMVBvVqToUdhrgxx%2BAKo4FnFm0gHXvZ6fZVAq%2F6xLHNCf2oMwmpR63%2FS1DanyXmyvswIRjkoDqOoLmEMPijVvUB19XgosDOrGyF%2BFH%2Bd0q3wY6YQbWuBwHD50u1B%2BrW2D1vNn%2FjmAw3KDnt7snKf%2FKtVJk54EECVxdFMVWTAVbwVfec9jip%2BLCjus7ze%2Fh9siiDBbBHHtrQZ7wamnv0blcocWu%2B21DuS7zlXcS4tH10jvQ1zGGborSubGmvQT5XAO3VnxQN%2FZuTScqT48lQbB1Cl0PLuUoFfSYWUkTT3cfhiRt5G6OsReQ8bgtCtUpM%2BA%2B51MP7HApCVZBlthpHU%2FEfSZIO46qEwnmsdCCr9YNBUYU2HbGF9ZS%2FaNeDNNzn5CmLYxbB90Yb3HpmDvDdJ6fq7T7VX2wvJrsZ14RBoqsyeQJrr5gN2o9tb3qiETixEYKtIc9I2C6ek%2B7JAKpY8iWQ4JalNx4SgHye4o61hGFSAVmsyndwqtiO9sRiTxOKQuN783nlFJuisNcA3VvRbjLWzw89vM1uRKA4doDJaGUEa%2FDnYUqBoIT4iF1Iy5DTnnC84F8Rv1zoS%2FrSq8%2B8tS8SdoAm1ADeM9HVQDjWGWYI8YnQsCih8pjQwBKQM8Et8RG2bE50dRpWv4GgSzwFvdvX2IS07a9rnZ7AvPTSmShu7jnMWoXa3ah6XWl%2FMY4b5ehCL3BXPaIE8c%2FPvUVdQBrNrMWZ1TC%2Fo6utvxUXx5cs%2BnNRGGUQjJkeNY9a8%2Ff3a9tvl%2FcxseBwqtmZd7EDib6RYsThJYGND9K53c0%2FGdOB2spHzfVfC9Y3x8%2BotII%2Bisv%2FeUsG4Yds5nVj9ew%2Fy48p0iRIeiLgPV%2BX91PVa3WqOIaHJ0l5vw8e0G4wyLaMPjLvNQGOrIBjut8JeA%2FU6qZRr1nV5horUAyuDy7IDRAUiw1KGsv3aHjq7qQGIFbxArRDvakeZ7xzeoJ57%2Bl87xaAcwEi20H5pe2kS17nt%2F4N3yYt3BWQR4zxzOiCV%2FWarZcFCowOLvHZPOkMU78wq5uN%2B%2F%2F5Kjj%2BpH5owyyd2guxeX9TcVvN4lY0C0KHJY0Zeg2AnQ63KN2n0vKEMLr%2FtaOxWewWR4q1Uf6%2BI0648KZsEeR4nXb%2B369Uw%3D%3D&X-Amz-SignedHeaders=host&X-Amz-Signature=a9d166923d01e1a0b0a4e4fc5d0320e13886982b0b3cdc5e8c0f15de27eb7b74",
+    "submission_state": "open",
+    "triage_active": true,
+    "state": "public_mode",
+    "started_accepting_at": "2014-03-28T22:09:39.471Z",
+    "number_of_reports_for_user": 4,
+    "number_of_valid_reports_for_user": 0,
+    "bounty_earned_for_user": 0.0,
+    "last_invitation_accepted_at_for_user": null,
+    "bookmarked": false,
+    "allows_bounty_splitting": true,
+    "offers_bounties": true,
+    "open_scope": null,
+    "fast_payments": null,
+    "gold_standard_safe_harbor": true
+  },
+  "relationships": {
+    "structured_scopes": {
+      "data": [
+        {
+          "id": "21695",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "URL",
+            "asset_identifier": "status.coinbase.com",
+            "eligible_for_bounty": false,
+            "eligible_for_submission": false,
+            "instruction": "",
+            "max_severity": "none",
+            "created_at": "2019-02-15T19:03:48.916Z",
+            "updated_at": "2023-01-24T12:35:42.491Z"
+          }
+        },
+        {
+          "id": "30952",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "OTHER",
+            "asset_identifier": "N/A - Not Coinbase owned or operated",
+            "eligible_for_bounty": false,
+            "eligible_for_submission": false,
+            "instruction": "This asset labelling is used to signal to a reporter that the asset in question is not owned or operated by Coinbase in any capacity.",
+            "max_severity": "none",
+            "created_at": "2019-06-10T21:30:00.919Z",
+            "updated_at": "2023-01-24T12:35:43.447Z"
+          }
+        },
+        {
+          "id": "141",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "CIDR",
+            "asset_identifier": "54.175.255.192/27",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2017-07-20T23:47:28.999Z",
+            "updated_at": "2023-01-24T12:35:43.139Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high"
+          }
+        },
+        {
+          "id": "12689",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "URL",
+            "asset_identifier": "*.cbhq.net",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2018-07-21T00:10:30.988Z",
+            "updated_at": "2023-01-24T12:35:40.949Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high"
+          }
+        },
+        {
+          "id": "1003079",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "SOURCE_CODE",
+            "asset_identifier": "https://github.com/coinbase/cb-mpc-go",
+            "eligible_for_bounty": false,
+            "eligible_for_submission": true,
+            "instruction": "While we appreciate submissions regarding this repo, this repo is not eligible for bounties.",
+            "max_severity": "critical",
+            "created_at": "2026-03-26T17:42:26.170Z",
+            "updated_at": "2026-03-26T17:42:26.170Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high"
+          }
+        },
+        {
+          "id": "1028890",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "WILDCARD",
+            "asset_identifier": "status.*.coinbase.com",
+            "eligible_for_bounty": false,
+            "eligible_for_submission": false,
+            "instruction": "",
+            "max_severity": "none",
+            "created_at": "2026-08-07T18:42:08.177Z",
+            "updated_at": "2026-08-07T18:42:08.177Z"
+          }
+        },
+        {
+          "id": "992421",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "APPLE_STORE_APP_ID",
+            "asset_identifier": "com.vilcsak.bitcoin2",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "Coinbase's retail mobile app on iOS.",
+            "max_severity": "critical",
+            "created_at": "2026-02-09T16:12:34.987Z",
+            "updated_at": "2026-08-07T18:45:16.114Z"
+          }
+        },
+        {
+          "id": "18686",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "OTHER",
+            "asset_identifier": "Other",
+            "eligible_for_bounty": false,
+            "eligible_for_submission": true,
+            "instruction": "Applications that may have been missed as a part of our standard scope; this will be assessed on a by submission basis. ",
+            "max_severity": "medium",
+            "created_at": "2019-01-02T18:59:45.395Z",
+            "updated_at": "2026-08-07T18:40:58.937Z",
+            "confidentiality_requirement": "low",
+            "integrity_requirement": "low",
+            "availability_requirement": "low"
+          }
+        },
+        {
+          "id": "271868",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "OTHER",
+            "asset_identifier": "https://chrome.google.com/webstore/detail/coinbase-wallet-extension/hnfanknocfeofbddgcijnmhnfnkdnaad",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2022-12-01T17:28:24.052Z",
+            "updated_at": "2023-01-24T12:35:42.706Z"
+          }
+        },
+        {
+          "id": "18689",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "GOOGLE_PLAY_APP_ID",
+            "asset_identifier": "org.toshi",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "Base Android app",
+            "max_severity": "critical",
+            "created_at": "2019-01-02T19:21:57.121Z",
+            "updated_at": "2026-08-07T18:38:02.714Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "low"
+          }
+        },
+        {
+          "id": "986456",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "WILDCARD",
+            "asset_identifier": "*.coinbase-corp.com",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2025-12-12T15:37:04.055Z",
+            "updated_at": "2025-12-12T15:37:04.055Z",
+            "confidentiality_requirement": "not_defined",
+            "integrity_requirement": "not_defined",
+            "availability_requirement": "not_defined"
+          }
+        },
+        {
+          "id": "139",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "GOOGLE_PLAY_APP_ID",
+            "asset_identifier": "com.coinbase.android",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "Coinbase's retail mobile app on Android.",
+            "max_severity": "critical",
+            "created_at": "2017-07-20T23:45:59.186Z",
+            "updated_at": "2026-08-07T18:45:29.897Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high"
+          }
+        },
+        {
+          "id": "18695",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "APPLE_STORE_APP_ID",
+            "asset_identifier": "org.toshi.distribution",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "Base iOS app",
+            "max_severity": "critical",
+            "created_at": "2019-01-02T19:34:20.025Z",
+            "updated_at": "2026-08-07T18:37:43.845Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "medium"
+          }
+        },
+        {
+          "id": "1028911",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "WILDCARD",
+            "asset_identifier": "*.base.app",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2026-08-07T18:55:19.866Z",
+            "updated_at": "2026-08-07T18:55:19.866Z"
+          }
+        },
+        {
+          "id": "1028888",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "SOURCE_CODE",
+            "asset_identifier": "https://github.com/coinbase/*",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2026-08-07T18:39:35.545Z",
+            "updated_at": "2026-08-07T18:39:35.545Z"
+          }
+        },
+        {
+          "id": "1028889",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "SOURCE_CODE",
+            "asset_identifier": "https://github.com/base/*",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2026-08-07T18:40:04.837Z",
+            "updated_at": "2026-08-07T18:40:04.837Z"
+          }
+        },
+        {
+          "id": "120",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "URL",
+            "asset_identifier": "*.coinbase.com",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "Coinbase's main domain.",
+            "max_severity": "critical",
+            "created_at": "2017-07-20T23:32:30.242Z",
+            "updated_at": "2026-08-07T18:43:44.482Z",
+            "confidentiality_requirement": "high",
+            "integrity_requirement": "high",
+            "availability_requirement": "high"
+          }
+        },
+        {
+          "id": "868826",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "SOURCE_CODE",
+            "asset_identifier": "https://github.com/coinbase/cb-mpc",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": "",
+            "max_severity": "critical",
+            "created_at": "2025-04-15T14:45:05.956Z",
+            "updated_at": "2025-04-15T14:45:05.956Z",
+            "confidentiality_requirement": "not_defined",
+            "integrity_requirement": "not_defined",
+            "availability_requirement": "not_defined"
+          }
+        },
+        {
+          "id": "325327",
+          "type": "structured-scope",
+          "attributes": {
+            "asset_type": "OTHER",
+            "asset_identifier": "*.base.org",
+            "eligible_for_bounty": true,
+            "eligible_for_submission": true,
+            "instruction": null,
+            "max_severity": "critical",
+            "created_at": "2023-02-23T14:34:41.456Z",
+            "updated_at": "2026-08-07T18:56:09.399Z",
+            "confidentiality_requirement": "none",
+            "integrity_requirement": "low",
+            "availability_requirement": "medium"
+          }
+        }
+      ]
+    }
+  }
+}

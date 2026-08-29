@@ -1,0 +1,52 @@
+{
+  "handle": "devolkskrant",
+  "name": "De Volkskrant",
+  "max_bounty": {
+    "value": 2200.0,
+    "currency": "EUR"
+  },
+  "assets": [
+    {
+      "type": "Url",
+      "endpoint": "actie.volkskrant.nl",
+      "tier": "Out Of Scope",
+      "description": "SaaS platform - Report at https://qualifio.com/.well-known/security.txt"
+    },
+    {
+      "type": "Url",
+      "endpoint": "myaccount.volkskrant.nl",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "shop.volkskrant.nl",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "webwinkel.volkskrant.nl",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.volkskrant.nl",
+      "tier": "Tier 2",
+      "description": "excluding\n* volkskrant.nl/service\n* volkskrant.nl/inloggen\n* volkskrant.nl/login\n* volkskrant.nl/registreren"
+    },
+    {
+      "type": "Url",
+      "endpoint": "www.volkskrant.nl/abonnementen",
+      "tier": "Tier 2",
+      "description": null
+    },
+    {
+      "type": "Wildcard",
+      "endpoint": "*.volkskrant.nl",
+      "tier": "Tier 3",
+      "description": "excluding abonnement.volkskrant.nl"
+    }
+  ]
+}

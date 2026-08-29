@@ -1,0 +1,12 @@
+[Unit]
+Description=PR Email Agent - Process GitHub notifications
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+WorkingDirectory=/Agentic
+ExecStart=/usr/bin/python3 /Agentic/tools/pr_email_agent.py
+StandardOutput=append:/var/log/pr-email-agent.log
+StandardError=append:/var/log/pr-email-agent.log
+EnvironmentFile=/Agentic/.env

@@ -1,0 +1,37 @@
+{
+  "process": "digital_product_sales",
+  "research_type": "autonomous_pre_pilot_checks",
+  "completed_at": "2026-08-26T03:19:15.735118+00:00",
+  "checks_completed": [
+    "platform_fees",
+    "payout_methods",
+    "ip_ownership"
+  ],
+  "findings": {
+    "platform_fees": {
+      "gumroad": "10% flat fee + processing; no monthly cost",
+      "lemonsqueezy": "5% + 50¢ per transaction; includes tax handling",
+      "itchio": "0-100% creator-set revenue share; default 0%",
+      "stripe_direct": "2.9% + 30¢; requires own hosting/integration"
+    },
+    "payout_methods": {
+      "gumroad": "PayPal or direct bank deposit (weekly/biweekly)",
+      "lemonsqueezy": "Stripe Connect to bank account (daily/weekly)",
+      "itchio": "PayPal or Stripe direct",
+      "wise_compatible": "All platforms support Wise via bank details/PayPal"
+    },
+    "ip_ownership": {
+      "default": "Creator retains full IP ownership on all platforms",
+      "license_grant": "Platforms receive limited license to distribute only",
+      "exclusivity": "Non-exclusive; can sell same product on multiple platforms",
+      "ai_generated_content": "Generally permitted if disclosed; check platform ToS for specific restrictions"
+    }
+  },
+  "capital_wise_compliance": "Research only; no account creation or fund commitment",
+  "next_steps_blocked_on_human": [
+    "Create Gumroad/LemonSqueezy account",
+    "Configure payout method (Wise/PayPal/Bank)",
+    "Upload and publish bounty_automation_template product",
+    "Set pricing and marketing strategy"
+  ]
+}

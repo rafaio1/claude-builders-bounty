@@ -1,0 +1,30 @@
+{
+  "status": "PASSIVE_RECON_READY",
+  "timestamp": "2026-08-27T17:05:00+00:00",
+  "current_target": "anthropic",
+  "platform": "hackerone",
+  "scope_verified_live": true,
+  "policy_source": "hackerone_graphql_live",
+  "submission_state": "open",
+  "offers_bounties": true,
+  "safe_harbor": "none",
+  "in_scope_url_count": 6,
+  "in_scope_other_count": 8,
+  "out_of_scope_count": 1,
+  "bounty_table_available": false,
+  "h1_api_status": "graphql_public_ok_rest_401",
+  "last_action": "scope_and_policy_refreshed_from_live_graphql",
+  "next_actions": [
+    "passive_recon_on_in_scope_urls",
+    "static_analysis_of_github_com_anthropics_repos",
+    "review_claude_code_and_mcp_extensions_for_config_issues",
+    "check_docs_anthropic_com_for_sensitive_data_exposure"
+  ],
+  "constraints": {
+    "no_active_testing_without_explicit_user_go": true,
+    "non_destructive_only": true,
+    "rate_limit": "low",
+    "own_data_only": true,
+    "fail_closed_on_scope_doubt": true
+  }
+}

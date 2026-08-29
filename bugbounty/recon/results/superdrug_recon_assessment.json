@@ -1,0 +1,92 @@
+{
+  "program": "Superdrug",
+  "handle": "superdrug",
+  "platform": "Intigriti",
+  "program_id": "0cff4473-e61f-47fa-b840-154a75128796",
+  "max_bounty": 8500,
+  "currency": "USD",
+  "status": "RECON_COMPLETE_NO_HIGH_CONFIDENCE_FINDING",
+  "verdict": "PIVOT_TO_NEXT_TARGET",
+  "scope_summary": {
+    "tier1_web": [
+      "www.superdrug.com",
+      "api.superdrug.com",
+      "media.superdrug.com",
+      "app.superdrug.com"
+    ],
+    "tier1_mobile": [
+      "Superdrug iOS",
+      "Superdrug Android"
+    ],
+    "tier4_web": [
+      "campaign.superdrug.com",
+      "community.superdrug.com",
+      "ecom-data.superdrug.com",
+      "videogp-api.superdrug.com",
+      "healthclinics.superdrug.com",
+      "innovation.superdrug.com",
+      "onlinedoctor.superdrug.com",
+      "onlinepharmacy.superdrug.com",
+      "videogp.superdrug.com",
+      "app.pharmacy.superdrug.com",
+      "appt.healthclinics.superdrug.com",
+      "www.superdrugmobile.com"
+    ],
+    "tier1_savers": [
+      "www.savers.co.uk",
+      "api.savers.co.uk",
+      "media.savers.co.uk",
+      "app.savers.co.uk"
+    ],
+    "wildcard": [
+      "*.superdrug.com (Tier 5)",
+      "*.savers.co.uk (Tier 5)"
+    ]
+  },
+  "infrastructure": {
+    "primary_waf": "AkamaiGHost (www, api, campaign, healthclinics, api.savers)",
+    "secondary_cdn": "Cloudflare (community, onlinedoctor, onlinepharmacy)",
+    "backend_google": "Google Frontend (ecom-data, app.pharmacy)",
+    "backend_dotnet": "Kestrel (videogp-api)"
+  },
+  "findings_assessed": [
+    {
+      "target": "community.superdrug.com",
+      "observation": "Firebase API key and Google Maps API key exposed in __NUXT__ config",
+      "severity": "INFORMATIONAL",
+      "actionable": false,
+      "reason": "Firebase web API keys are designed to be public client-side identifiers. Security relies on Firestore/RTDB rules and App Check. No evidence of misconfigured security rules or data access without auth. Google Maps API key is similarly client-side by design."
+    },
+    {
+      "target": "appt.healthclinics.superdrug.com",
+      "observation": "Next.js app with buildId ai1p012afoT-TnRBe5nvA, empty pageProps",
+      "severity": "NONE",
+      "actionable": false,
+      "reason": "No sensitive data in __NEXT_DATA__. Data endpoints return 404. No IDOR or info disclosure vectors found via passive probing."
+    },
+    {
+      "target": "app.pharmacy.superdrug.com",
+      "observation": "Healthera Core platform, /api/v1 and /api/v2 return empty {\"data\":[]}",
+      "severity": "NONE",
+      "actionable": false,
+      "reason": "API requires authentication. Empty responses are expected for unauthenticated requests. No swagger/openapi/docs exposed."
+    },
+    {
+      "target": "www.superdrugmobile.com",
+      "observation": "Overly permissive CSP (default-src *, unsafe-inline, unsafe-eval)",
+      "severity": "LOW",
+      "actionable": false,
+      "reason": "Weak CSP alone is not a reportable vulnerability without a demonstrated XSS or injection vector. Site appears to be a simple marketing landing page with no user input or dynamic content processing."
+    }
+  ],
+  "exhausted_vectors": [
+    "Swagger/OpenAPI enumeration on api.superdrug.com and api.savers.co.uk",
+    "GraphQL endpoint discovery on app.pharmacy and appt.healthclinics",
+    "Next.js data endpoint abuse on appt.healthclinics",
+    "Nuxt devtools/debug endpoint on community",
+    "Environment file exposure (.env) on videogp",
+    "robots.txt and sitemap.xml on all responsive targets",
+    "Security headers analysis on all Tier 1 and Tier 4 targets"
+  ],
+  "recommendation": "No high-confidence actionable vulnerability identified through passive reconnaissance. Akamai WAF blocks most automated probing on Tier 1 assets. Recommend pivoting to next program. Mobile app testing (iOS/Android) would require device-level analysis not feasible in current headless environment."
+}

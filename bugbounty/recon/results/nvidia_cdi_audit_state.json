@@ -1,0 +1,63 @@
+{
+  "program": "NVIDIA Public Bug Bounty",
+  "handle": "nvidiapublicbugbounty",
+  "platform": "Intigriti",
+  "max_bounty_usd": 15000,
+  "scope_verified": true,
+  "cdi_in_scope": true,
+  "cdi_tier": "Tier 1",
+  "cdi_endpoint_desc": "new CDI-based architecture (github.com/cncf-tags/container-device-interface)",
+  "container_toolkit_in_scope": true,
+  "container_toolkit_tier": "Tier 2",
+  "finding_status": "gate_human_awaiting_decision",
+  "finding_summary": "CDI spec injection via unvalidated mount Source in runc. Theoretically valid chain but requires root write to /etc/cdi or /var/run/cdi. Likely classified as design limitation or hardening opportunity rather than critical vuln.",
+  "exploitability_blocker": "Root-only write prerequisite to CDI spec directories",
+  "recommended_action": "Submit as defense-in-depth/hardening finding OR pivot to higher-value targets (Monzo/Superdrug/SBB)",
+  "dedup_check_needed": true,
+  "last_updated": "2026-08-26T12:00:00Z",
+  "dedup_check": {
+    "method": "Intigriti Researcher API v1",
+    "endpoints_tried": [
+      "GET /v1/programs/{id}/submissions -> 404",
+      "GET /v1/submissions?programId={id} -> 404",
+      "GET /v1/submissions -> 404",
+      "GET /v1/programs/{id}/activities -> 404"
+    ],
+    "swagger_paths_available": [
+      "/v1/payouts",
+      "/v1/programs",
+      "/v1/programs/activities",
+      "/v1/programs/{programId}",
+      "/v1/programs/{programId}/domains/{versionId}",
+      "/v1/programs/{programId}/rules-of-engagements/{versionId}"
+    ],
+    "result": "API does not expose researcher submission history or activity feed for dedup",
+    "conclusion": "Cannot programmatically verify duplicates via Intigriti Researcher API. Manual web portal check required before submission."
+  },
+  "scope_verification": {
+    "cdi_architecture": {
+      "tier": "Tier 1",
+      "in_scope": true,
+      "endpoint": "new CDI-based architecture"
+    },
+    "container_toolkit": {
+      "tier": "Tier 2",
+      "in_scope": true,
+      "endpoint": "All Other NVIDIA Container Toolkit Assets"
+    },
+    "github_reference": "https://github.com/cncf-tags/container-device-interface",
+    "safe_harbour": true,
+    "automated_tooling_allowed": null,
+    "special_header_required": false
+  },
+  "submission_readiness": {
+    "all_gates_passed": false,
+    "blockers": [
+      "Dedup cannot be verified via API - requires manual portal check",
+      "Exploitability limited by root-write prerequisite",
+      "Likely classified as design limitation or hardening opportunity"
+    ],
+    "recommended_action": "PIVOT to higher-value targets (Monzo/Superdrug/SBB) unless user explicitly wants defense-in-depth submission",
+    "human_decision_required": true
+  }
+}

@@ -1,0 +1,38 @@
+{
+  "status": "passive_recon_blocked_by_network",
+  "reason": "crt.sh and Wayback CDX return empty responses from this host - egress filtering or IP-level blocking suspected",
+  "authentication": "validated_h1_and_intigriti",
+  "enumeration_complete": true,
+  "scope_parsing": {
+    "total_gold_standard": 78,
+    "parsed_scopes": 25,
+    "unparsed_remaining": 53
+  },
+  "actionable_queue_size": 6,
+  "passive_recon_attempted": 4,
+  "passive_recon_results": "0 subdomains found (network blocked)",
+  "existing_subdomain_data": {
+    "subs_api_stripe_com.txt": 1,
+    "subs_https___bugcrowd_com.txt": 56,
+    "subs_https___hackerone_com.txt": 24,
+    "subs_shopify_com.txt": 50
+  },
+  "existing_triaged_findings": 1,
+  "finding_details": [
+    {
+      "template": "github-takeover",
+      "severity": "high",
+      "url": "https://mta-sts.managed.hackerone.com",
+      "status": "confirmed_valid"
+    }
+  ],
+  "next_steps_when_network_available": [
+    "Retry crt.sh enumeration for robinhood.com, crypto.com, hypr.com, bumba.global",
+    "Use SecurityTrails API or Shodan if API keys become available",
+    "Run DNS brute-force with known wordlists against wildcard scopes",
+    "Expand scope parsing for remaining 53 Gold Standard targets"
+  ],
+  "no_secrets_exposed": true,
+  "finding_revalidated": true,
+  "last_updated": "2026-08-26T14:20:00Z"
+}

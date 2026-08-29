@@ -1,0 +1,22 @@
+{
+  "timestamp": "2026-08-26T18:31:16Z",
+  "program": "fing",
+  "platform": "intigriti",
+  "program_id": "0bcc2455-bd63-490b-b725-890a93a1c678",
+  "decision": "PIVOT",
+  "reason": "Cloud API (service.fing.com) returns 401 on all paths including spec endpoints. No public OpenAPI/Swagger. Auth mechanism unclear without account signup (prohibited by autonomous policy). Local API is localhost:49090 only - out of scope for remote testing. Web app (app.fing.com) is SPA with no exposed API refs in static JS. Insufficient attack surface for autonomous non-authenticated recon.",
+  "scope_assessed": [
+    "service.fing.com (401 all paths)",
+    "app.fing.com (SPA, no API refs)",
+    "www.fing.com* (wildcard, subdomains NXDOMAIN except api.fing.com=404)"
+  ],
+  "finding": null,
+  "severity_assessed": null,
+  "next_candidates": [
+    "simscale",
+    "wireless-logic",
+    "house-of-hr",
+    "torfs",
+    "port-of-antwerp-bruges"
+  ]
+}

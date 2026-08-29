@@ -1,0 +1,56 @@
+[BYBIT] Bot v4 iniciado em 2026-08-25T19:23:18.404401+00:00
+  Budget: 16.0 USDT | Reserva: 3.0 USDT | Meta: +10.0 USDT
+  TP=1.5% SL=1.0% MaxHold=300s Cooldown=15s
+  MaxPreco=2.0 | Simbolos: 28
+Limpando ordens abertas...
+Limpando saldos residuais...
+
+[Cycle 1] PnL realizado: 0.000000 USDT | Meta: 10.0 USDT | Progress: 0.0%
+  SIGNAL: TRX/USDT RSI=28.57 price=0.3389 info={'rsi_1m': 28.57, 'sma20_5m': 0.34034, 'vol_spike': True, 'trend_up': True}
+  [bybit] BUY TRX/USDT qty=29.5 @ ~0.3389 | TP=0.343983 SL=0.335511
+  Tentando LIMIT buy @ 0.33890000000000003 (bid=0.3389 ask=0.339)
+  Limit nao preencheu, usando MARKET
+  BUY filled: qty=29.5 @ 0.3389 fee=0.0 
+  Saldo real de TRX: 29.49581 -> sell_qty=29.49
+  [30s] TRX/USDT price=0.3389 pnl=0.00% (TP=0.343983 SL=0.335511)
+  [150s] TRX/USDT price=0.3386 pnl=-0.09% (TP=0.343983 SL=0.335511)
+  [180s] TRX/USDT price=0.3386 pnl=-0.09% (TP=0.343983 SL=0.335511)
+  SELL error: bybit {"retCode":170131,"retMsg":"Insufficient balance.","result":{},"retExtInfo":{},"time":1787686147875}
+Traceback (most recent call last):
+  File "/Agentic/orchestrator/deterministic_scalper_v4.py", line 339, in execute_trade
+    sell_order = exchange.create_order(symbol, 'market', 'sell', sell_qty)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/bybit.py", line 4036, in create_order
+    response = self.privatePostV5OrderCreate(orderRequest)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/types.py", line 43, in unbound_method
+    return _self.request(self.path, self.api, self.method, params, config=self.config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5724, in request
+    return self.fetch2(path, api, method, params, headers, body, config)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5720, in fetch2
+    raise e
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 5701, in fetch2
+    response = self.fetch(request['url'], request['method'], request['headers'], request['body'])
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 696, in fetch
+    self.handle_errors(http_status_code, http_status_text, url, method, headers, http_response, json_response, request_headers, request_body)
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/bybit.py", line 9508, in handle_errors
+    self.throw_exactly_matched_exception(self.exceptions['exact'], errorCode, feedback)
+  File "/usr/local/lib/python3.12/dist-packages/ccxt/base/exchange.py", line 6089, in throw_exactly_matched_exception
+    raise exact[string](message)
+ccxt.base.errors.InsufficientFunds: bybit {"retCode":170131,"retMsg":"Insufficient balance.","result":{},"retExtInfo":{},"time":1787686147875}
+  RESULT: TRX/USDT entry=0.3389 exit=0.3389 pnl_gross=0.000000 fees=0.000000 pnl_net=0.000000 LOSS reason=TIMEOUT
+[LEDGER] {"ts": "2026-08-25T19:29:10.397799+00:00", "exchange": "bybit", "symbol": "TRX/USDT", "entry_price": 0.3389, "exit_price": 0.3389, "qty": 29.49, "exit_reason": "TIMEOUT", "gross_pnl": 0.0, "fees_usdt": 0, "net_pnl": 0.0, "win": false}
+
+[Cycle 2] PnL realizado: -0.042430 USDT | Meta: 10.0 USDT | Progress: -0.4%
+  Cooldown ativo, 2s restantes
+
+[Cycle 3] PnL realizado: -0.042430 USDT | Meta: 10.0 USDT | Progress: -0.4%
+  SIGNAL: TRX/USDT RSI=23.53 price=0.3385 info={'rsi_1m': 23.53, 'sma20_5m': 0.34021, 'vol_spike': True, 'trend_up': False}
+  [bybit] BUY TRX/USDT qty=29.54 @ ~0.3385 | TP=0.343577 SL=0.335115
+  Tentando LIMIT buy @ 0.3385 (bid=0.3385 ask=0.3386)
+  Limit nao preencheu, usando MARKET
+  BUY filled: qty=29.54 @ 0.3385 fee=0.0 
+  Saldo real de TRX: 29.54627 -> sell_qty=29.54

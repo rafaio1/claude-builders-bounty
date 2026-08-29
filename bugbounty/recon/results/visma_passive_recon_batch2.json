@@ -1,0 +1,124 @@
+[
+  {
+    "target": "identity.stage.vismaonline.com",
+    "ips": [
+      "vonidentity-stag.trafficmanager.net.",
+      "vonidentity4-stag.azurewebsites.net.",
+      "waws-prod-am2-185.sip.azurewebsites.windows.net.",
+      "waws-prod-am2-185.westeurope.cloudapp.azure.com.",
+      "52.174.35.5"
+    ],
+    "cname": "vonidentity-stag.trafficmanager.net.",
+    "status": "HTTP/1.1 302 Found",
+    "interesting": {
+      "location": "https://myservices.stage.vismaonline.com"
+    }
+  },
+  {
+    "target": "myservices-api.stage.vismaonline.com",
+    "ips": [
+      "myservices-api-stag.azurewebsites.net.",
+      "waws-prod-am2-217.sip.azurewebsites.windows.net.",
+      "waws-prod-am2-217.westeurope.cloudapp.azure.com.",
+      "137.117.218.101"
+    ],
+    "cname": "myservices-api-stag.azurewebsites.net.",
+    "status": "HTTP/1.1 404 Not Found",
+    "interesting": {}
+  },
+  {
+    "target": "myservices.stage.vismaonline.com",
+    "ips": [
+      "172.64.149.71",
+      "104.18.38.185"
+    ],
+    "cname": null,
+    "status": "HTTP/2 200 ",
+    "interesting": {
+      "csp": true,
+      "server": "cloudflare"
+    }
+  },
+  {
+    "target": "oauth.developers.stagaws.visma.com",
+    "ips": [
+      "52.212.0.180",
+      "52.30.15.147",
+      "52.210.195.48"
+    ],
+    "cname": null,
+    "status": "HTTP/2 301 ",
+    "interesting": {
+      "server": "awselb/2.0",
+      "location": "https://oauth.developers.stagaws.visma.com:443/service-registry/"
+    }
+  },
+  {
+    "target": "photoservice.stage.vismaonline.com",
+    "ips": [
+      "vscan-service-stage.azurewebsites.net.",
+      "waws-prod-am2-175.sip.azurewebsites.windows.net.",
+      "waws-prod-am2-175.westeurope.cloudapp.azure.com.",
+      "40.118.102.46"
+    ],
+    "cname": "vscan-service-stage.azurewebsites.net.",
+    "status": "HTTP/2 403 ",
+    "interesting": {
+      "csp": true
+    }
+  },
+  {
+    "target": "ai-testing.maventa.com",
+    "ips": [
+      "stage-maventa-alb-53279635.eu-central-1.elb.amazonaws.com.",
+      "3.120.199.70",
+      "3.67.17.40"
+    ],
+    "cname": "stage-maventa-alb-53279635.eu-central-1.elb.amazonaws.com.",
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://ai-testing.maventa.com/login",
+      "csp": true
+    }
+  },
+  {
+    "target": "ax-stage.maventa.com",
+    "ips": [
+      "stage-ax-alb-931695501.eu-central-1.elb.amazonaws.com.",
+      "3.77.189.98",
+      "18.158.216.216",
+      "3.66.126.87"
+    ],
+    "cname": "stage-ax-alb-931695501.eu-central-1.elb.amazonaws.com.",
+    "status": "HTTP/2 404 ",
+    "interesting": {}
+  },
+  {
+    "target": "autointerface.stag.visma.net",
+    "ips": [
+      "autointerface-stage.maventa.com.",
+      "stage-autointerface-alb-33967274.eu-central-1.elb.amazonaws.com.",
+      "3.75.75.238",
+      "63.187.250.3"
+    ],
+    "cname": "autointerface-stage.maventa.com.",
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://autointerface.stag.visma.net/authentication/sign_in"
+    }
+  },
+  {
+    "target": "testing.maventa.com",
+    "ips": [
+      "stage-maventa-alb-53279635.eu-central-1.elb.amazonaws.com.",
+      "3.120.199.70",
+      "3.67.17.40"
+    ],
+    "cname": "stage-maventa-alb-53279635.eu-central-1.elb.amazonaws.com.",
+    "status": "HTTP/2 302 ",
+    "interesting": {
+      "location": "https://testing.maventa.com/login",
+      "csp": true
+    }
+  }
+]
