@@ -351,11 +351,14 @@ def discover_bounties():
     query_stats = {}
     # High-value queries first to maximize capital generation per API call
     search_terms = [
-        "label:\"$5000\" OR label:\"$10000\" OR label:\"$25000\" OR label:\"$50000\"",
-        "org:immunefi is:issue state:open",
-        "org:code4rena is:issue state:open",
-        "org:sherlock-xyz is:issue state:open",
-        "org:hats-finance is:issue state:open",
+        "$5000 bounty",
+        "$10000 bounty",
+        "$25000 bounty",
+        "$50000 bounty",
+        "immunefi audit reward",
+        "code4rena contest reward",
+        "sherlock audit contest",
+        "hats-finance bounty reward",
         "security audit bounty reward",
         "critical vulnerability bounty",
         "bounty",
