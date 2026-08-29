@@ -85,6 +85,34 @@
   ],
   "bounties": [
     {
+      "id": "cbb-1-changelog",
+      "platform": "opire",
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "issue": 1,
+      "pr": 3925,
+      "title": "SKILL: Generate a structured CHANGELOG from git history",
+      "value_usd": 50,
+      "currency": "USD",
+      "status": "pr_submitted",
+      "submitted_at": "2026-08-29T00:00:00Z",
+      "payout_verified": false,
+      "notes": "Created SKILL.md + changelog.sh. PR #3925 submitted."
+    },
+    {
+      "id": "cbb-3-hook",
+      "platform": "opire",
+      "repo": "claude-builders-bounty/claude-builders-bounty",
+      "issue": 3,
+      "pr": 3926,
+      "title": "HOOK: Pre-tool-use hook that blocks destructive bash commands",
+      "value_usd": 100,
+      "currency": "USD",
+      "status": "pr_submitted",
+      "submitted_at": "2026-08-29T00:00:00Z",
+      "payout_verified": false,
+      "notes": "Created pre_tool_use_hook.py blocking rm -rf, DROP TABLE, git push --force, TRUNCATE, DELETE FROM without WHERE. PR #3926 submitted."
+    },
+    {
       "repo": "capofficial/client",
       "issue": 17,
       "pr": 273,
@@ -281,7 +309,7 @@
     },
     {
       "issue_number": 6,
-      "title": "\ud83c\udfc6 [Bounty: 50,000 $ROBIN_MCP] Create a Telegram Mini-App for Launching Meme Coins & Tracking Trusts",
+      "title": "🏆 [Bounty: 50,000 $ROBIN_MCP] Create a Telegram Mini-App for Launching Meme Coins & Tracking Trusts",
       "bounty_value": 50000.0,
       "file": "telegram_bot.py",
       "commit": "458b264",
@@ -304,34 +332,6 @@
       "submitted_at": "2026-08-29T00:00:00Z",
       "payout_verified": false,
       "notes": "Added authMiddleware to POST /api/reviews. PR #12234 submitted."
-    },
-    {
-      "id": "cbb-1-changelog",
-      "platform": "opire",
-      "repo": "claude-builders-bounty/claude-builders-bounty",
-      "issue": 1,
-      "pr": 3925,
-      "title": "SKILL: Generate a structured CHANGELOG from git history",
-      "value_usd": 50,
-      "currency": "USD",
-      "status": "pr_submitted",
-      "submitted_at": "2026-08-29T00:00:00Z",
-      "payout_verified": false,
-      "notes": "Created SKILL.md + changelog.sh. PR #3925 submitted."
-    },
-    {
-      "id": "cbb-3-hook",
-      "platform": "opire",
-      "repo": "claude-builders-bounty/claude-builders-bounty",
-      "issue": 3,
-      "pr": 3926,
-      "title": "HOOK: Pre-tool-use hook that blocks destructive bash commands",
-      "value_usd": 100,
-      "currency": "USD",
-      "status": "pr_submitted",
-      "submitted_at": "2026-08-29T00:00:00Z",
-      "payout_verified": false,
-      "notes": "Created pre_tool_use_hook.py blocking rm -rf, DROP TABLE, git push --force, TRUNCATE, DELETE FROM without WHERE. PR #3926 submitted."
     }
   ],
   "total_bounty_value": 572104.0,
