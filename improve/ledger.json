@@ -7656,7 +7656,7 @@
       "title": "Validação de skills no playbook improve/integrity",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A ausência de validação prévia de skills geradas permite que diretórios órfãos ou malformados sujem a working tree, quebrando a integridade git_clean na fatia de ferramentas.",
       "change": "Adicionar hook ou validação estrutural em improve.py para checar a geração de skills antes de stagear no disco.",
       "never": [
@@ -7691,9 +7691,14 @@
           "at": "2026-08-29T11:42:42+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-valida-o-de-skills-no-playbook-improve-integrity"
+        },
+        {
+          "at": "2026-08-29T11:47:19+00:00",
+          "event": "requeued",
+          "detail": "rs': 4, 'confidence_score': 0.5, 'reason': 'heuristic_fallback'}]\n    assert [{'url': 'htt...ls': [], ...}] == []\n      \n      Left contains one more item: {'url': 'https://example.com/1', 'title': 'Fix bug', 'value_usd': '50', 'labels': [], ...}\n      Use -v to get more diff\n/Agentic/tests/test_triage_contract.py:148: AssertionError: Expected empty list on contract failure, got [{'url': 'https://…"
         }
       ],
-      "review_feedback": "claude_failed: Execution error"
+      "review_feedback": "tests_failed: rs': 4, 'confidence_score': 0.5, 'reason': 'heuristic_fallback'}]\n    assert [{'url': 'htt...ls': [], ...}] == []\n      \n      Left contains one more item: {'url': 'https://example.com/1', 'title': 'Fix bug', 'value_usd': '50', 'labels': [], ...}\n      Use -v to get more diff\n/Agentic/tests/test_triage_contract.py:148: AssertionError: Expected empty list on contract failure, got [{'url': 'https://…"
     },
     {
       "id": "imp-20260818-otimiza-o-de-recursos-do-playwright-cli",
