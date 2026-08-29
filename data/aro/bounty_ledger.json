@@ -481,6 +481,12 @@
       "payout": "N/A",
       "reason": "DEAD PLATFORM. Last maintainer commit 2019. Site /account/verify/pi broken (Stripe schema crash). No active payment mechanism. Issues are user complaints, not paid bounties.",
       "audited_at": "2026-08-29T10:05:32.977881Z"
+    },
+    {
+      "target": "SecureBananaLabs/bug-bounty",
+      "payout": "$780-$1.2k (labels only)",
+      "reason": "HONEYPOT/SYNTHETIC. 8866 open issues, 0 merged PRs ever. All recent commits are github-actions[bot] leaderboard updates. No human maintainer activity. Issues are auto-generated security scan results. No verified payment mechanism.",
+      "audited_at": "2026-08-29T10:06:32.757681Z"
     }
   ],
   "pipeline": [],
@@ -488,6 +494,10 @@
     {
       "date": "2026-08-29T10:05:32.977881Z",
       "note": "Verified kistek/boss-issues is dead platform (last commit 2019, Stripe integration broken). Removed from pipeline. Next: verify SecureBananaLabs and s6pa1rta3n-lab payment mechanisms."
+    },
+    {
+      "date": "2026-08-29T10:06:32.757681Z",
+      "note": "Rejected SecureBananaLabs/bug-bounty as synthetic honeypot (0 merges, bot-only). Remaining pipeline: claude-builders-bounty (5 PRs, $575), s6pa1rta3n-lab/universal_bounty_fleet #7 ($1200 - needs verification)."
     }
   ]
 }
