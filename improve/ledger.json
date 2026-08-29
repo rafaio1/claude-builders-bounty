@@ -5043,7 +5043,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
       "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
       "never": [
@@ -5054,7 +5054,7 @@
       ],
       "files_hint": [],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260818T030213Z",
       "history": [
         {
@@ -5111,6 +5111,11 @@
           "at": "2026-08-29T11:20:40+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-29T11:21:31+00:00",
+          "event": "blocked",
+          "detail": "Os arquivos de `.claude/skills/playwright-cli/` foram removidos do index e o .gitignore já cobre o diretório, então essa fatia de ferramentas agora está limpa. O status mostra apenas as deleções esperadas no index (que o pipeline vai commitar), sem nenhum outro arquivo tracked sujo nesta fatia.\n\nSUMMARY: Removido .claude/skills/playwright-cli/ do index git para restaurar git_clean na fatia ferrame…"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
