@@ -7,29 +7,124 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 0,
-  "drips_run_id": "719009bd5e0a416c8d3b5d9ac1b9030c",
-  "drips_source_hash": "fb93226528bf150ab3ea02dd5bd148e7dc731047c324e7d8fe2ec0ce3b65e97f",
+  "drips_candidate_count": 10,
+  "drips_run_id": "095fd32c70f046e7a2811f4fbde7e9de",
+  "drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-29T22:43:43.586834+00:00",
+  "generated_at": "2026-08-29T22:54:02.538277+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788047023
+    "reset_epoch": 1788047643
   },
-  "newly_audited_candidate_key": null,
-  "qualification_count": 0,
-  "qualifications": [],
+  "newly_audited_candidate_key": "a311ca4d9fff14bc58d3ec24edf8620a1355b6002d6fa23666d8f35e0a1a0da9",
+  "qualification_count": 1,
+  "qualifications": [
+    {
+      "candidate_id": "drips:52264c51-3960-4d69-b594-5bb2157a1d60",
+      "candidate_key": "a311ca4d9fff14bc58d3ec24edf8620a1355b6002d6fa23666d8f35e0a1a0da9",
+      "current_drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
+      "decision": "rejected",
+      "drips_issue_id": "52264c51-3960-4d69-b594-5bb2157a1d60",
+      "drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
+      "evidence": {
+        "default_branch": "main",
+        "issue_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231",
+        "issue_comments_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231/comments?per_page=100",
+        "issue_node_id": "I_kwDOTLxqYM8AAAABOdLhXQ",
+        "issue_timeline_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T22:52:02Z",
+        "license_source": "github_repository_license",
+        "license_spdx": "MIT",
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/crackedstudio/sharibo/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/crackedstudio/sharibo",
+        "repository_node_id": "R_kgDOTLxqYA",
+        "repository_pushed_at": "2026-08-06T23:48:02Z",
+        "tree_api_url": "https://api.github.com/repos/crackedstudio/sharibo/git/trees/main?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 200,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": false,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": true,
+        "implementation_allowed": false,
+        "license_present": true,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": false,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 231,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 5,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "deadline_margin_hours": -10.9,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [
+          "style.css",
+          "style.cssText"
+        ],
+        "recent_merged_prs_sample": 19,
+        "referenced_paths": [
+          "app/src/components/ArtifactProgress.tsx",
+          "app/src/style.css",
+          "packages/client/src/artifacts.ts",
+          "style.css",
+          "style.cssText"
+        ]
+      },
+      "rejection_reasons": [
+        "continuous_integration_not_proven",
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "qualification_score_below_threshold",
+        "referenced_repository_paths_missing",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "crackedstudio/sharibo",
+      "schema_version": "1.0",
+      "score": 69.5,
+      "title": "Move the SDK's DOM progress indicator into the app",
+      "valid_until": "2026-08-29T23:54:02.538277+00:00",
+      "verified_at": "2026-08-29T22:54:02.538277+00:00"
+    }
+  ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "4264daf094b043f09c2484f2042dc3ec",
+  "run_id": "c4a026fe7dc14afaa222327c24894fff",
   "schema_version": "1.0",
-  "source_hash": "a53b360fea328f4b3a1991653378e7b659cc033aad5a99aa869c6844ee33abc6",
-  "valid_until": "2026-08-29T22:51:43.546051+00:00",
+  "source_hash": "1d5806ff72192776d2c96e578a1c66a9f37d0f63a820b907b22a3f6734422981",
+  "valid_until": "2026-08-29T23:02:05.287807+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",
