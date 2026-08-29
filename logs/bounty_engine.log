@@ -36894,3 +36894,134 @@ Import is not allowed here
 [2026-08-29T21:08:05.970875+00:00] Skipping weilixiong/zeroeye: too large (290MB)
 [2026-08-29T21:08:05.971144+00:00] SKIPPED/FAILED: [$30 BOUNTY] [Python] Fix HighMemoryUsage alert ratio expression
 [2026-08-29T21:08:05.972081+00:00] Cycle 55 complete. Sleeping 300s...
+[2026-08-29T21:13:05.972377+00:00] 
+============================================================
+[2026-08-29T21:13:05.973330+00:00] CYCLE 56 - 2026-08-29T21:13:05.973314+00:00
+[2026-08-29T21:13:05.973418+00:00] ============================================================
+[2026-08-29T21:13:05.973589+00:00] === PR STATUS MONITOR ===
+[2026-08-29T21:13:05.974126+00:00] PR Monitor: 29 pending PRs, checking up to 10
+[2026-08-29T21:13:19.930252+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-29T21:13:19.930477+00:00] No PR status changes detected
+[2026-08-29T21:13:19.930635+00:00] === DISCOVERY PHASE ===
+[2026-08-29T21:13:19.930687+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-29T21:13:36.965435+00:00] Discovery progress: 5/30 queries completed, 112 candidates found
+[2026-08-29T21:13:51.714298+00:00] Discovery progress: 10/30 queries completed, 197 candidates found
+[2026-08-29T21:14:09.893254+00:00] Discovery progress: 15/30 queries completed, 364 candidates found
+[2026-08-29T21:14:26.989388+00:00] Discovery progress: 20/30 queries completed, 494 candidates found
+[2026-08-29T21:14:45.380828+00:00] Discovery progress: 25/30 queries completed, 654 candidates found
+[2026-08-29T21:16:22.384751+00:00]   Query '$25000 bounty': 50 results
+[2026-08-29T21:16:22.384988+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-29T21:16:22.385036+00:00]   Query 'defi bounty': 48 results
+[2026-08-29T21:16:22.385061+00:00]   Query 'algora bounty': 47 results
+[2026-08-29T21:16:22.385083+00:00]   Query 'bug bounty': 45 results
+[2026-08-29T21:16:22.385103+00:00]   Query 'crypto bounty': 45 results
+[2026-08-29T21:16:22.385122+00:00]   Query '$10000 bounty': 42 results
+[2026-08-29T21:16:22.385141+00:00]   Query 'infrastructure bounty': 42 results
+[2026-08-29T21:16:22.385168+00:00]   Query 'bounty reward': 41 results
+[2026-08-29T21:16:22.385215+00:00]   Query 'web3 bounty': 40 results
+[2026-08-29T21:16:22.385242+00:00]   Query 'solidity bounty': 37 results
+[2026-08-29T21:16:22.385267+00:00]   Query 'typescript bounty': 36 results
+[2026-08-29T21:16:22.385290+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-29T21:16:22.385314+00:00]   Query 'security bounty': 32 results
+[2026-08-29T21:16:22.385338+00:00]   Query 'bounty fix': 31 results
+[2026-08-29T21:16:22.385379+00:00]   Query 'frontend bounty': 31 results
+[2026-08-29T21:16:22.385410+00:00]   Query 'backend bounty': 24 results
+[2026-08-29T21:16:22.385435+00:00]   Query 'paid bounty': 23 results
+[2026-08-29T21:16:22.385459+00:00]   Query 'bounty issue': 22 results
+[2026-08-29T21:16:22.385480+00:00]   Query 'protocol bounty': 22 results
+[2026-08-29T21:16:22.385498+00:00]   Query '$5000 bounty': 20 results
+[2026-08-29T21:16:22.385542+00:00]   Query 'golang bounty': 17 results
+[2026-08-29T21:16:22.385561+00:00]   Query 'python bounty': 13 results
+[2026-08-29T21:16:22.385579+00:00]   Query 'bounty': 3 results
+[2026-08-29T21:16:22.385597+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-29T21:16:22.385620+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-29T21:16:22.385664+00:00] Total unique candidates after dedup: 796
+[2026-08-29T21:16:22.386787+00:00] Found 796 candidates
+[2026-08-29T21:16:22.387533+00:00] Pre-filtered 23 already-submitted candidates, 773 remaining
+[2026-08-29T21:16:22.387992+00:00] Cooldown-filtered 27 candidates from failed repos, 746 remaining
+[2026-08-29T21:16:22.389042+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-29T21:16:22.394398+00:00] Triage meta-filter: removed 62 internal/meta targets
+[2026-08-29T21:16:22.394841+00:00] Triage payload: 10 sanitized candidates, 4031 chars
+[2026-08-29T21:16:22.395015+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/OmniLayer/spec/issues/174",
+    "title": "Clarify whether our milestone bounty expenses depend on the number of RBBs, and how",
+    "value_usd": "6000",
+    "labels": [
+      "question"
+    ],
+    "body_preview": "I am not entirely sure I understand the fine points of the monthly bounty calculations.\n\n@dacoinminster can you clarify - do the total expenses we pay out to monthly bounties each month depend on the "
+  },
+  {
+    "url": "https://github.com/Opty-Fi/defi-adapters/issues/7",
+    "title": "Sample Template for Bounty",
+    "value_usd": "5000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Integrating Convex Finance using OptyFi's DeFi Adapter Interface\r\n\r\n### Prize Bounty\r\n5000 USDC\r\n\r\n### Description\r\nThe bounty is to build an integration with Convex Finance\u2019s liquidity pools using"
+  },
+  {
+    "url": "https://github.com/wasmerio/wasmer/issues/4218",
+    "title": "Support WASIX in Zig",
+    "value_usd": "5000",
+    "labels": [
+      "\ud83c\udf89 enhancement",
+      "priority-medium"
+    ],
+    "body_preview": "Sadly, I've been personally banned from the Zig community for disagreeing with their take stating that [Bounties damages open source](https://ziglang.org/news/bounties-damage-open-source-projects/) in"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ethb3rlin/sponsor-bounties/issues/9",
+    "title": "[BOUNTY] Manta Network by p0xeidon labs - On-chain Privacy use Cases",
+    "value_usd": "2500",
+    "labels": [
+      "sponsor-bounty"
+    ],
+    "body_preview": "# Bringing Privacy to Web3\r\n\r\nFor our bounty, we're lookin
+[2026-08-29T21:16:27.708879+00:00] Triage GhostCLI response length: 1038 chars
+[2026-08-29T21:16:27.709071+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/tenstorrent/tt-metal/issues/54016","title":"[Bounty $35000] Welford Two-Pass Statistics Optimisation","estimated_hours":80,"confidence_score":0.9,"reason":"Clear performance optimization task in C++ with defined algorithmic approach (two-pass Welford), reproducible benchmarks, and specific acceptance criteria for statistical correctness and speedup."},{"url":"https://github.com/Opty-Fi/defi-adapters/issues/7","title":"Sample Template for Bounty","estimated_hours":24,"confidence_score":0.85,"reason":"Well-specified Solidity/TS integration task for Convex Finance adapter with clear interface requirements, testable deliverables, and existing template to follow."},{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":16,"confidence_score":0.92,"reason":"Concrete Python bug fix with explicit failure scenario, clear acceptance criteria for restartability, and bounded scope focused on st'
+[2026-08-29T21:16:27.709180+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/tenstorrent/tt-metal/issues/54016', 'title': '[Bounty $35000] Welford Two-Pass Statistics Optimisation', 'estimated_hours': 80, 'confidence_score': 0.9, 'reason': 'Clear performance optimization task in C++ with defined algorithmic approach (two-pass Welford), reproducible benchmarks, and specific acceptance criteria for statistical correctness and speedup.'}, {'url': 'https://github.com/Opty-Fi/defi-adapters/issues/7', 'title': 'Sample Template for Bounty', 'estimat
+[2026-08-29T21:16:27.709221+00:00] Triage parsed result type: list, len=3
+[2026-08-29T21:16:27.709254+00:00] Selected 3 targets from GhostCLI
+[2026-08-29T21:16:27.709426+00:00] Triage value distribution: {'35000': 1, '5000': 1, '1000': 1}
+[2026-08-29T21:16:27.709470+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 746 candidates
+[2026-08-29T21:16:28.134384+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-29T21:16:28.942259+00:00] === EXECUTING: [Bounty $35000] Welford Two-Pass Statistics Optimisation ===
+[2026-08-29T21:16:28.942485+00:00] URL: https://github.com/tenstorrent/tt-metal/issues/54016
+[2026-08-29T21:16:29.409183+00:00] Skipping tenstorrent/tt-metal: too large (1580MB)
+[2026-08-29T21:16:29.409375+00:00] SKIPPED/FAILED: [Bounty $35000] Welford Two-Pass Statistics Optimisation
+[2026-08-29T21:16:30.222001+00:00]   Fork rafaio1/defi-adapters created successfully
+[2026-08-29T21:16:30.222176+00:00] === EXECUTING: Sample Template for Bounty ===
+[2026-08-29T21:16:30.222222+00:00] URL: https://github.com/Opty-Fi/defi-adapters/issues/7
+[2026-08-29T21:16:30.755943+00:00] Cloning Opty-Fi/defi-adapters -> /Agentic/workspace/bounty-exec/Opty-Fi-defi-adapters-7
+[2026-08-29T21:16:32.391564+00:00] Generating fix via GhostCLI...
+[2026-08-29T21:16:32.391712+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
