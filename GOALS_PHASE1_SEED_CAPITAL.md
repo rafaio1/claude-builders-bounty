@@ -68,3 +68,13 @@
 - Após 2 semanas sem primeira venda → Pivot para Goal 2 ou 4
 - Após 1 mês sem $500 revenue → Reavaliar toda estratégia
 - Se TOS violation detectada → Stop imediato, buscar alternativa compliant
+
+## ✅ Goal 1: ContábilHub MVP — DEPLOYED (2026-08-29)
+- **Status:** LIVE at https://rafaio1.github.io/contabilhub/
+- **Repo:** https://github.com/rafaio1/contabilhub
+- **Next Revenue Actions:**
+  1. Validate Domínio/Contmatic sandbox APIs for real tool integration
+  2. Set up Asaas split commission routing (15% platform / 85% dev)
+  3. Outreach to 10 verified CRC/CFC-compliant micro-SaaS devs via LinkedIn/email
+  4. Add "Listar Ferramenta" form with webhook to capture leads
+- **Payment Verification:** Asaas Pix split requires CNPJ + bank account. Confirm entity setup before first transaction.
