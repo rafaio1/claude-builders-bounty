@@ -166,103 +166,6 @@
       "valid_until": "2026-08-29T21:17:33.559269+00:00",
       "verified_at": "2026-08-29T20:17:33.559269+00:00"
     },
-    "15541f01f64a2efd2441aff5715d26601babc305b7a86dcb7778767767f8db49": {
-      "candidate_id": "drips:a5020203-7278-4be4-912d-404f85405d55",
-      "candidate_key": "15541f01f64a2efd2441aff5715d26601babc305b7a86dcb7778767767f8db49",
-      "decision": "rejected",
-      "drips_issue_id": "a5020203-7278-4be4-912d-404f85405d55",
-      "drips_source_hash": "ac82a29563eba61b7db3700f4e147e0f3370c774fc552c9d96876798065a4ea8",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract/issues/1017",
-        "issue_comments_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract/issues/1017/comments?per_page=100",
-        "issue_node_id": "I_kwDOS4j9fc8AAAABOSH_fQ",
-        "issue_timeline_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract/issues/1017/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T19:35:09Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "MIT",
-        "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract",
-        "repository_node_id": "R_kgDOS4j9fQ",
-        "repository_pushed_at": "2026-08-05T22:42:37Z",
-        "tree_api_url": "https://api.github.com/repos/Ledger-Lenz/Ledgerlens-contract/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": true,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": false,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": true,
-        "tests_present": true
-      },
-      "issue_number": 1017,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 7,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": true,
-          "substantive_body": true,
-          "test_expectation": true
-        },
-        "deadline_margin_hours": -7.6,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "lib.rs",
-          "src/test_*.rs",
-          "test_*.rs",
-          "test_consensus.rs",
-          "test_embargo.rs"
-        ],
-        "recent_merged_prs_sample": 0,
-        "referenced_paths": [
-          "CONTRIBUTING.md",
-          "contracts/ledgerlens-score/src/lib.rs",
-          "contracts/ledgerlens-score/src/test_*.rs",
-          "lib.rs",
-          "src/test_*.rs",
-          "test_*.rs",
-          "test_consensus.rs",
-          "test_embargo.rs"
-        ]
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "recent_merged_pr_history_missing",
-        "referenced_repository_paths_missing"
-      ],
-      "repo": "Ledger-Lenz/Ledgerlens-contract",
-      "schema_version": "1.0",
-      "score": 77.0,
-      "title": "Add an edge-case test for `get_parameter_proposal`",
-      "valid_until": "2026-08-29T20:35:53.611387+00:00",
-      "verified_at": "2026-08-29T19:35:53.611387+00:00"
-    },
     "dc01de964b28683b0ef079fb94afe10c96e6d371f0ff42b756a12ebd0e7c8b04": {
       "candidate_id": "drips:a48e3fd7-5ad1-4d17-b6b3-8657b5e26c2f",
       "candidate_key": "dc01de964b28683b0ef079fb94afe10c96e6d371f0ff42b756a12ebd0e7c8b04",
@@ -345,5 +248,5 @@
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-29T20:17:33.559269+00:00"
+  "updated_at": "2026-08-29T20:38:13.546687+00:00"
 }
