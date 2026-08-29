@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-29T11:33:26+00:00",
+  "updated_at": "2026-08-29T11:42:29+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260829T113326Z",
+      "map_id": "20260829T114229Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260829T113326Z",
+      "map_id": "20260829T114229Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260829T113326Z",
+      "map_id": "20260829T114229Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260829T113326Z",
+      "map_id": "20260829T114229Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -8278,6 +8278,186 @@
           "at": "2026-08-29T11:33:26+00:00",
           "event": "mapped",
           "detail": "20260829T113326Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-restaurar-git-clean-fatia-motor-vs-playbook-impr",
+      "key": "7cb110625ec778da",
+      "canon": "158eaa3babbdb6d4",
+      "title": "Restaurar git_clean: Fatia motor vs playbook improve/integrity",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Arquivos de estado de execução e orquestração (arb_dashboard.html, ens-app-v3/, ledger.jsonl) estão sendo gerados no root do repositório em vez de em diretórios ignorados ou no ledger canônico.",
+      "change": "Refatorar improve.py e orquestradores para gravar artefatos de playbook e dashboards estritamente em local_data/ ou no ledger.jsonl, garantindo que o motor não suje a raiz do git.",
+      "never": [
+        "git reset --hard",
+        "git clean -fd",
+        "forçar commit",
+        "criar src/agentic/loop.sh",
+        "alterar --interval do systemd"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py",
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-isolamento-de-credenciais-bybit-no-env-py",
+      "key": "4449f91520ca9431",
+      "canon": "ed3ae53fa1e62cbc",
+      "title": "Isolamento de credenciais Bybit no env.py",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "O env.py carrega credenciais Bybit. Se houver qualquer log de debug ou exceção não tratada no motor, as chaves canônicas (/root/.automaton/bybit-murre.env) podem vazar para os logs do systemd.",
+      "change": "Garantir que env.py use um wrapper de redação segura (secret masking) para qualquer variável de ambiente carregada, e que o loop.py capture exceções sem imprimir o traceback completo contendo o env.",
+      "never": [
+        "imprimir secrets no stdout",
+        "colar chaves no git",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/env.py",
+        "src/agentic/loop.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-wrapper-sanitizado-para-playwright-cli",
+      "key": "529a58a01a15aa0a",
+      "canon": "3653d1aa13f8edf4",
+      "title": "Wrapper sanitizado para playwright-cli",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-mcp está desativado para economizar tokens, mas o uso direto do playwright-cli headless pode ser propenso a erros de sintaxe ou vazamento de URLs sensíveis nos logs do agente.",
+      "change": "Criar um wrapper em src/agentic/tools/ que sanitiza URLs e argumentos antes de invocar o binário playwright-cli, garantindo headless --no-sandbox e logs limpos.",
+      "never": [
+        "ativar playwright-mcp",
+        "usar playwright assíncrono nativo",
+        "expor cookies no log"
+      ],
+      "files_hint": [
+        "src/agentic/tools/playwright_wrapper.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-sanitiza-o-de-traces-da-ghostcli-no-ledger",
+      "key": "fc28a9ecafe202eb",
+      "canon": "854a3f2aa62b365e",
+      "title": "Sanitização de traces da GhostCLI no ledger",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O develop despeja prompts no Claude CLI via GhostCLI. Se os traces ou respostas contiverem paths absolutos ou dados sensíveis, eles podem vazar para o ledger.jsonl.",
+      "change": "Adicionar um filtro de sanitização em claude_cli.py que remove padrões de paths absolutos e chaves antes de persistir a resposta e os traces no ledger.",
+      "never": [
+        "imprimir secrets no stdout",
+        "alterar ANTHROPIC_BASE_URL",
+        "desativar o uso do GhostCLI"
+      ],
+      "files_hint": [
+        "src/agentic/claude_cli.py",
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-m-tricas-de-sa-de-do-aro-v1-0",
+      "key": "7456980bd89ce574",
+      "canon": "ee0a0a4dee848cd1",
+      "title": "Métricas de saúde do ARO v1.0",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "A constituição ARO.md e src/agentic/aro/constitution.py definem OWNER_SHARE_RATE=0.20 e STOP_ALL_OPERATIONS, mas não há telemetria clara de quando essas regras são avaliadas no tick.",
+      "change": "Emitir um log estruturado no loop.py sempre que a constituição for lida e validada, assegurando que STOP_ALL_OPERATIONS está sendo respeitado a cada tick de 90s.",
+      "never": [
+        "alterar OWNER_SHARE_RATE",
+        "permitir contacto comercial",
+        "enviar ordens Bybit"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py",
+        "src/agentic/aro/constitution.py"
+      ],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-valida-o-de-integridade-do-portal-de-credenciais",
+      "key": "36f2d48034e5ac85",
+      "canon": "13be0051108832ac",
+      "title": "Validação de integridade do portal de credenciais",
+      "kind": "improvement",
+      "priority": 4,
+      "status": "pending",
+      "rationale": "O portal autenticado (agentic-portal.service) usa Argon2id em /etc/agentic-portal/credentials. Falta uma verificação periódica de que o arquivo não foi corrompido ou alterado indevidamente.",
+      "change": "Adicionar uma verificação no tick de saúde para validar a presença e permissões (ex: 0600) do arquivo de credenciais do portal, sem ler o hash.",
+      "never": [
+        "ler o hash Argon2id",
+        "gravar senhas em texto",
+        "expor a porta 8767 publicamente sem auth"
+      ],
+      "files_hint": [
+        "src/agentic/loop.py"
+      ],
+      "theme": "portal",
+      "branch": "",
+      "map_id": "20260829T114229Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:42:29+00:00",
+          "event": "mapped",
+          "detail": "20260829T114229Z"
         }
       ]
     }

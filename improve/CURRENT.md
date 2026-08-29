@@ -1,6 +1,6 @@
 # Agentic improve
 
-Atualizado: 2026-08-29T11:33:26+00:00
+Atualizado: 2026-08-29T11:42:29+00:00
 
 A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e review vivem em branches `improve/*` e só entram na execução depois do review.
 
@@ -12,17 +12,17 @@ A versão em execução é sempre `main` (ou `master`). Mapas, desenvolvimento e
 - bybit_secret: True
 - loop interval: 90
 - live_trade_disabled: True
-- last_tick: 2026-08-29T11:28:34+00:00
+- last_tick: 2026-08-29T11:34:39+00:00
 - git_clean: FALHOU
-- dirty_paths: [".codex/config.toml.bak", ".config/", ".devcontainer/", ".worktrees/", "arb_dashboard.html", "binance_spot.log", "bounties/immunefi/", "bugbounty/", "bybit_futures/logs/", "bybit_spot.pid", "ens-app-v3/", "grid_binance_v9.log", "grid_bybit_v9.log", "knowledge/", "ledger.jsonl", "local_data/", "logs/airdrop_farmer.log", "logs/algora_bounty_scanner.log", "logs/apifable.log", "logs/autonomous_executor.log", "logs/bh_advance.log", "logs/binance_margin_trader.log", "logs/binance_margin_trader.out", "logs/bounty/", "logs/bounty_engine.log", "logs/bounty_engine_stderr.log", "logs/bounty_orchestrator.log", "logs/bug_bounty_platform_expander.log", "logs/bybit_perp_compounder.log", "logs/bybit_perp_compounder.out", "logs/bybit_trader.log", "logs/capital_accel.log", "logs/capital_acceleration.log", "logs/capital_acceleration_daemon.log", "logs/code4rena_contest_scanner.log", "logs/cron_revenue.log", "logs/defi_bounty_scanner.log", "logs/expunge.log", "logs/external_rev.log", "logs/external_revenue.log"]
+- dirty_paths: ["arb_dashboard.html", "binance_spot.log", "bounties/immunefi/", "bugbounty/", "bybit_futures/logs/", "bybit_spot.pid", "ens-app-v3/", "grid_binance_v9.log", "grid_bybit_v9.log", "ledger.jsonl", "local_data/", "logs/airdrop_farmer.log", "logs/algora_bounty_scanner.log", "logs/apifable.log", "logs/autonomous_executor.log", "logs/bh_advance.log", "logs/binance_margin_trader.log", "logs/binance_margin_trader.out", "logs/bounty/", "logs/bounty_engine.log", "logs/bounty_engine_stderr.log", "logs/bounty_orchestrator.log", "logs/bug_bounty_platform_expander.log", "logs/bybit_perp_compounder.log", "logs/bybit_perp_compounder.out", "logs/bybit_trader.log", "logs/capital_accel.log", "logs/capital_acceleration.log", "logs/capital_acceleration_daemon.log", "logs/code4rena_contest_scanner.log", "logs/cron_revenue.log", "logs/defi_bounty_scanner.log", "logs/expunge.log", "logs/external_rev.log", "logs/external_revenue.log", "logs/freelance_executor.log", "logs/galxe_campaign_scanner.log", "logs/ghostcli.log", "logs/ghostcli_orchestrator.log", "logs/ghostcli_recover.log"]
 
 ## Ghost
 
-Diagnóstico de integridade git_clean fatiado por origem (motor, ferramentas, playbook) e melhorias de eval e tools.
+Mapeamento de gargalos de integridade git e melhorias de ferramentas e IA para o sistema Agentic, focado em limpeza fatiada e sanitização.
 
 ## Ledger
 
-{"developing": 4, "blocked": 16, "pending": 199, "applied": 17}
+{"developing": 4, "blocked": 17, "pending": 204, "applied": 17}
 
 - `imp-20260816-restaurar-git-clean-working-tree-limpa-na-main` [developing/p1] Restaurar git_clean: working tree limpa na main
 - `imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro` [blocked/p1] Restaurar git_clean (fatia playbook): versionar ARO.md e src/agentic/aro/
