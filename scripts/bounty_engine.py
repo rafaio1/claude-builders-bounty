@@ -397,11 +397,13 @@ def discover_bounties():
                     repo = item.get("repository", {}).get("nameWithOwner", "unknown")
                     repo_lower = repo.lower()
                     spam_indicators = ["bounty-plaza", "test-bounty", "fake-bounty", "spam",
-                                       "bountyscout", "bounty-alert", "bounty-hub", "opportunity-bot",
-                                       "bounty-finder", "bounty-tracker", "bounty-aggregator",
-                                       "claude-builders-bounty", "zhangjiayang6835-cyber", "bounty-board",
-                                       "ai-bounty", "crypto-bounty-list", "web3-bounty-feed", "open-bounties",
-                                       "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot"]
+                                      "bountyscout", "bounty-alert", "bounty-hub", "opportunity-bot",
+                                      "bounty-finder", "bounty-tracker", "bounty-aggregator",
+                                      "claude-builders-bounty", "zhangjiayang6835-cyber", "bounty-board",
+                                      "ai-bounty", "crypto-bounty-list", "web3-bounty-feed", "open-bounties",
+                                       "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot",
+                                       "relayhop", "claudeearnself", "rustchain-bounties", "scottcjn",
+                                       "tz-radar", "timezone-radar", "fresh-low-comp", "meme-bounty"]
                     if any(s in repo_lower for s in spam_indicators):
                         continue
                     labels = [l["name"] for l in item.get("labels", [])]
@@ -1511,5 +1513,7 @@ if __name__ == "__main__":
                     CLONE_BLOCKLIST_DISC.update({
                         "claude-builders-bounty", "zhangjiayang6835-cyber/bounty-plaza",
                         "bounty-board", "ai-bounty", "crypto-bounty-list", "web3-bounty-feed",
-                        "open-bounties", "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot"
+                        "open-bounties", "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot",
+                        "relayhop/ClaudeEarnSelf-runtime", "Scottcjn/rustchain-bounties",
+                        "l2labs/zkspace-whitepaper"
                     })
