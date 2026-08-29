@@ -349,7 +349,15 @@ def discover_bounties():
     log("=== DISCOVERY PHASE ===")
     found = []
     query_stats = {}
+    # High-value queries first to maximize capital generation per API call
     search_terms = [
+        "label:\"$5000\" OR label:\"$10000\" OR label:\"$25000\" OR label:\"$50000\"",
+        "org:immunefi audit",
+        "org:code4rena contest",
+        "org:sherlock-xyz contest",
+        "org:hats-finance bounty",
+        "security audit bounty reward",
+        "critical vulnerability bounty",
         "bounty",
         "bug bounty",
         "bounty reward",
