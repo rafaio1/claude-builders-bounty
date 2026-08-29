@@ -2175,7 +2175,7 @@
       "title": "Restaurar git_clean (Playbook git_clean e integrity): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "never": [
@@ -2191,7 +2191,7 @@
         "tests/test_improve.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri",
+      "branch": "",
       "map_id": "20260817T013627Z",
       "history": [
         {
@@ -2248,6 +2248,11 @@
           "at": "2026-08-29T11:13:25+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri"
+        },
+        {
+          "at": "2026-08-29T11:13:45+00:00",
+          "event": "blocked",
+          "detail": "The working tree has many untracked files, but the proposal scope is strictly limited to `improve/ledger.json` (per `files_hint`). The `.gitignore` already contains `.cursor/`, `.venv/`, and other necessary ignores. The `improve/ledger.json` file on disk already reflects the current state of this proposal (`imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri`) with status `developing` an…"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
