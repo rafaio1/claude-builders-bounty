@@ -151,7 +151,7 @@
     },
     {
       "issue_number": 6,
-      "title": "🏆 [Bounty: 50,000 $ROBIN_MCP] Create a Telegram Mini-App for Launching Meme Coins & Tracking Trusts",
+      "title": "\ud83c\udfc6 [Bounty: 50,000 $ROBIN_MCP] Create a Telegram Mini-App for Launching Meme Coins & Tracking Trusts",
       "bounty_value": 50000.0,
       "file": "telegram_bot.py",
       "commit": "458b264",
@@ -358,9 +358,45 @@
       "url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/issues/952",
       "pr_url": "https://github.com/zhangjiayang6835-cyber/bounty-plaza/pull/957",
       "submitted_at": "2026-08-29T08:37:31.496103+00:00"
+    },
+    {
+      "issue_number": 15,
+      "title": "[Track: NFT Infrastructure] Metis Bounty",
+      "bounty_value": 3000.0,
+      "file": "./migrations/5_deploy_NFT.js",
+      "commit": "bf80192",
+      "status": "submitted",
+      "repo": "MetisProtocol/metis",
+      "url": "https://github.com/MetisProtocol/metis/issues/15",
+      "pr_url": "https://github.com/MetisProtocol/metis/pull/42",
+      "submitted_at": "2026-08-29T09:29:10.179857+00:00"
+    },
+    {
+      "issue_number": 25,
+      "title": "Update bug bounty reward",
+      "bounty_value": 1100.0,
+      "file": "bitrated/pages/security.jade",
+      "commit": "b25d6ad",
+      "status": "submitted",
+      "repo": "shesek/bitrated",
+      "url": "https://github.com/shesek/bitrated/issues/25",
+      "pr_url": "https://github.com/shesek/bitrated/pull/30",
+      "submitted_at": "2026-08-29T09:44:50.922092+00:00"
+    },
+    {
+      "issue_number": 47,
+      "title": "Blocks",
+      "bounty_value": 1000.0,
+      "file": "./packages/browser-watcher/src/models/eth/headerCids.ts",
+      "commit": "f90e729",
+      "status": "submitted",
+      "repo": "raid-guild/IPLD_Block_Explorer",
+      "url": "https://github.com/raid-guild/IPLD_Block_Explorer/issues/47",
+      "pr_url": "https://github.com/raid-guild/IPLD_Block_Explorer/pull/65",
+      "submitted_at": "2026-08-29T09:53:18.214232+00:00"
     }
   ],
-  "total_bounty_value": 572104.0,
+  "total_bounty_value": 577204.0,
   "triage_log": [
     {
       "action": "search_exhaustion",
@@ -406,6 +442,36 @@
           "type": "content_monetization",
           "note": "Assess if any existing Agentic tools can be packaged for Gumroad/LemonSqueezy"
         }
+      ]
+    },
+    {
+      "action": "opire_not_claimed_verification",
+      "timestamp": "2026-08-29T10:00:27Z",
+      "findings": [
+        "6over3/zeroperl #7 (Asynchronous Web APIs $1500): Issue does not exist in repo. Opire listing is stale/orphaned.",
+        "velldharami44d/go-github ($100 x3): Synthetic bot user, likely honeypot. No real repo activity.",
+        "radumarias/rencfs ($42): Saturated with bot PRs per previous session. Still 0 solvers on Opire but repo is spam-heavy.",
+        "buape/kiai-bounties ($20): Repo private or deleted. Cannot access.",
+        "Vicentegg4212/sasmex-rss-bounty ($20): Niche Mexican RSS feed discovery. Not code bounty - research task. Low automation potential.",
+        "rodrigompy/bugb c1work ($1.2M): Unrealistic payout. Likely placeholder or scam.",
+        "Algora.io /bounties: Returns 404. Platform may have restructured or shut down public bounty explorer."
+      ],
+      "pipeline_status": {
+        "claude-builders-bounty": "5 PRs open (#3918,#3920,#3923,#3925,#3926). None merged yet. Total potential: $575.",
+        "SecureBananaLabs/bug-bounty #12234": "Open. $780 potential.",
+        "s6pa1rta3n-lab/universal_bounty_fleet #7": "Open. $1200 potential. Controlled judging rehearsal - high risk.",
+        "kistek/boss-issues #28": "Open. $1000 potential.",
+        "lllyasviel/stable-diffusion-webui-forge #3163": "Open. $1000 potential.",
+        "MetisProtocol/metis #42": "Open. $3000 potential.",
+        "shesek/bitrated #30": "Open. $1100 potential.",
+        "raid-guild/IPLD_Block_Explorer #65": "Open. $1000 potential."
+      },
+      "next_actions": [
+        "Monitor claude-builders-bounty PRs for merge/activity (highest ROI near-term)",
+        "Verify payment mechanism for kistek/boss-issues and lllyasviel/stable-diffusion-webui-forge",
+        "Scout Immunefi for smart contract audit bounties (fast payout, high value)",
+        "Check Replit Bounties or similar micro-task platforms for quick-turn work",
+        "Evaluate if any existing Agentic tools can be packaged for Gumroad/LemonSqueezy"
       ]
     }
   ]
