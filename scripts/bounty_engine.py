@@ -637,7 +637,9 @@ def triage(candidates):
                  "funding opportunity", "community update", "as a developer, i want",
                  "push notifications: native mobile",
                  "payout blocked", "payment issue", "cannot receive payment",
-                 "algora", "country is not supported", "reward status"]
+                 "algora", "country is not supported", "reward status",
+                 "sign up at", "maintainer confirmation", "claim process",
+                 "apply here", "warpspeed", "bounty claim", "application required"]
     if not candidates: return []
     api_key, base_url, default_model = get_config()
     if not api_key:
@@ -679,7 +681,9 @@ def triage(candidates):
                "global research", "r&d challenges",
                # Hackathons, grants, and large competitions (not quick bug fixes)
                "hackathon", "gitcoin", "mash", "grant", "challenge", "competition",
-               "defi hackathon", "bootcamp", "accelerator", "demo day", "pitch"]
+               "defi hackathon", "bootcamp", "accelerator", "demo day", "pitch",
+               "sign up at", "maintainer confirmation", "claim process",
+               "apply here", "warpspeed", "bounty claim", "application required"]
     filtered = [c for c in candidates if not any(kw in c.get("title","").lower() for kw in META_KW)]
     if len(filtered) < len(candidates):
         log(f"Triage meta-filter: removed {len(candidates)-len(filtered)} internal/meta targets")
@@ -1054,6 +1058,16 @@ Fix issue #{issue_num}: {title} in {owner}/{repo}"""
     
     if not has_real_changes:
         log(f"GhostCLI returned no real code changes (only metadata or README placeholder). Skipping.")
+        # Blacklist this repo to prevent re-selection in future cycles
+        try:
+            failed = load_json(FAILED_REPOS_FILE)
+            repo_key = candidate.get("repo", "") or candidate.get("url", "")
+            if repo_key and repo_key not in failed:
+                failed[repo_key] = {"reason": "no_real_code_changes", "ts": datetime.now(timezone.utc).isoformat()}
+                save_json(FAILED_REPOS_FILE, failed)
+                log(f"Added {repo_key} to failed_repos (no real code changes)")
+        except Exception as e:
+            log(f"Warning: could not update failed_repos for no-code-changes: {e}")
         return None
     
     # Apply changes
