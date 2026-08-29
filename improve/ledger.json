@@ -307,7 +307,7 @@
       "title": "Restaurar git_clean (Outros arquivos sujos): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: src/agentic/aro/work.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: src/agentic/aro/work.py.",
       "never": [
@@ -321,7 +321,7 @@
         "src/agentic/aro/work.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin",
       "map_id": "20260818T030213Z",
       "history": [
         {
@@ -393,6 +393,11 @@
           "at": "2026-08-29T11:07:58+00:00",
           "event": "released_stale",
           "detail": "developing sem diff útil; devolve à fila"
+        },
+        {
+          "at": "2026-08-29T11:07:58+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260816-restaurar-git-clean-outros-arquivos-sujos-workin"
         }
       ],
       "review_feedback": "The working tree now shows only the intended `.gitignore` modification; `.cursor/agents/` is no longer reported as untracked. The slice files (`deploy/agentic-improve-dev.service`, `src/agentic/claude_cli.py`, `tests/test_claude_cli.py`) were already clean and required no changes.\n\nSUMMARY: Adicionei `.cursor/` ao .gitignore para restaurar git_clean desta fatia, sem alterar arquivos de produto nem…"
