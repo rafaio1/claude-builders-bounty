@@ -38223,3 +38223,121 @@ To get access to the TypeScript compiler, [34mtsc[0m, from the command line ei
 [2026-08-29T22:30:54.515444+00:00] Skipping wasmerio/wasmer: too large (3225MB)
 [2026-08-29T22:30:54.515836+00:00] SKIPPED/FAILED: Support WASIX in Zig
 [2026-08-29T22:30:54.516407+00:00] Cycle 65 complete. Sleeping 300s...
+[2026-08-29T22:35:54.516635+00:00] 
+============================================================
+[2026-08-29T22:35:54.516949+00:00] CYCLE 66 - 2026-08-29T22:35:54.516943+00:00
+[2026-08-29T22:35:54.516996+00:00] ============================================================
+[2026-08-29T22:35:54.517029+00:00] === PR STATUS MONITOR ===
+[2026-08-29T22:35:54.517606+00:00] PR Monitor: 29 pending PRs, checking up to 10
+[2026-08-29T22:36:08.628443+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-29T22:36:08.628745+00:00] No PR status changes detected
+[2026-08-29T22:36:08.628891+00:00] === DISCOVERY PHASE ===
+[2026-08-29T22:36:08.628988+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-29T22:36:24.208278+00:00] Discovery progress: 5/30 queries completed, 112 candidates found
+[2026-08-29T22:36:39.078705+00:00] Discovery progress: 10/30 queries completed, 197 candidates found
+[2026-08-29T22:36:55.900340+00:00] Discovery progress: 15/30 queries completed, 364 candidates found
+[2026-08-29T22:37:07.126817+00:00] Query 'crypto bounty' rate limited, skipping remaining discovery queries this cycle
+[2026-08-29T22:38:23.581495+00:00]   Query '$25000 bounty': 50 results
+[2026-08-29T22:38:23.581822+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-29T22:38:23.582441+00:00]   Query 'algora bounty': 47 results
+[2026-08-29T22:38:23.582822+00:00]   Query 'bug bounty': 45 results
+[2026-08-29T22:38:23.583163+00:00]   Query '$10000 bounty': 42 results
+[2026-08-29T22:38:23.583287+00:00]   Query 'bounty reward': 41 results
+[2026-08-29T22:38:23.583372+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-29T22:38:23.583443+00:00]   Query 'bounty fix': 31 results
+[2026-08-29T22:38:23.583548+00:00]   Query 'paid bounty': 23 results
+[2026-08-29T22:38:23.583628+00:00]   Query 'bounty issue': 22 results
+[2026-08-29T22:38:23.583699+00:00]   Query '$5000 bounty': 20 results
+[2026-08-29T22:38:23.583764+00:00]   Query 'bounty': 3 results
+[2026-08-29T22:38:23.583807+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-29T22:38:23.583838+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-29T22:38:23.583868+00:00] Total unique candidates after dedup: 422
+[2026-08-29T22:38:23.584628+00:00] Found 422 candidates
+[2026-08-29T22:38:23.585312+00:00] Pre-filtered 16 already-submitted candidates, 406 remaining
+[2026-08-29T22:38:23.585723+00:00] Cooldown-filtered 9 candidates from failed repos, 397 remaining
+[2026-08-29T22:38:23.587061+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-29T22:38:23.589642+00:00] Triage meta-filter: removed 45 internal/meta targets
+[2026-08-29T22:38:23.589904+00:00] Triage payload: 10 sanitized candidates, 3958 chars
+[2026-08-29T22:38:23.590064+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/OmniLayer/spec/issues/174",
+    "title": "Clarify whether our milestone bounty expenses depend on the number of RBBs, and how",
+    "value_usd": "6000",
+    "labels": [
+      "question"
+    ],
+    "body_preview": "I am not entirely sure I understand the fine points of the monthly bounty calculations.\n\n@dacoinminster can you clarify - do the total expenses we pay out to monthly bounties each month depend on the "
+  },
+  {
+    "url": "https://github.com/wasmerio/wasmer/issues/4218",
+    "title": "Support WASIX in Zig",
+    "value_usd": "5000",
+    "labels": [
+      "\ud83c\udf89 enhancement",
+      "priority-medium"
+    ],
+    "body_preview": "Sadly, I've been personally banned from the Zig community for disagreeing with their take stating that [Bounties damages open source](https://ziglang.org/news/bounties-damage-open-source-projects/) in"
+  },
+  {
+    "url": "https://github.com/JoinMarket-Org/joinmarket/issues/634",
+    "title": "Make tumbler idempotent [$1,000 bounty]",
+    "value_usd": "1000",
+    "labels": [],
+    "body_preview": "Because the tumbler can crash or stall for many reasons being able to restart it and have it pick up where it left off is very useful.\n\nExample:\n\n> $ python tumbler.py -n mysession [options] wallet.js"
+  },
+  {
+    "url": "https://github.com/Mudlet/Mudlet/issues/6648",
+    "title": "Mudlet\u2019s $1,000+ bounty program!",
+    "value_usd": "1000",
+    "labels": [
+      "help wanted"
+    ],
+    "body_preview": "Hey there! We\u2019re excited to pilot a new bounty program for Mudlet, our free open-source project! ([What is Mudlet?](#What-is-Mudlet))\r\n\r\nWe\u2019re giving away a total of $1,000 USD for solving various iss"
+  },
+  {
+    "url": "https://github.com/ramimbo/mergework/issues/803",
+    "title": "Proposed work: filter bounty issues from proposed-work triage",
+    "value_usd": "600",
+    "labels": [
+      "proposed-work"
+    ],
+    "body_preview": "Bounty #722\n\nThis is a proposed-work intake item for the live #722 proposed-work bounty. It does not make implementation work claimable unless maintainers later create and reserve a separate implement"
+  },
+  {
+    "url": "https://github.com/JeremyKono/hummingbot/issues/1",
+    "title": "Bounty: 250k HBOT",
+    "value_usd": "250",
+    "labels": [
+      "bug",
+      "Bounty"
+    ],
+    "body_preview": "### What issue does this bounty fix?\r\n\r\nA bounty to fix the version issue #(0000)\r\n\r\n\r\n\r\n"
+  },
+  {
+    "
+[2026-08-29T22:38:28.001855+00:00] Triage GhostCLI response length: 943 chars
+[2026-08-29T22:38:28.002037+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/weilixiong/zeroeye/issues/1","title":"[$30 BOUNTY] [Python] Fix HighMemoryUsage alert ratio expression","estimated_hours":2,"confidence_score":0.95,"reason":"Clear Python bug fix with specific file path and defined acceptance criteria for correcting a Prometheus alert expression."},{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":12,"confidence_score":0.85,"reason":"Well-scoped Python implementation task to add restart resilience with clear functional requirements and reproducible crash scenarios."},{"url":"https://github.com/pomelo-io/Bounties/issues/10","title":"💰 88 USDT Bounty - \\"Implement script to fetch data from Discogs data..\\"","estimated_hours":4,"confidence_score":0.8,"reason":"Defined scripting task to fetch specific data from an external API, suitable for automated implementation with verifiable output."}]'
+[2026-08-29T22:38:28.002182+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/weilixiong/zeroeye/issues/1', 'title': '[$30 BOUNTY] [Python] Fix HighMemoryUsage alert ratio expression', 'estimated_hours': 2, 'confidence_score': 0.95, 'reason': 'Clear Python bug fix with specific file path and defined acceptance criteria for correcting a Prometheus alert expression.'}, {'url': 'https://github.com/JoinMarket-Org/joinmarket/issues/634', 'title': 'Make tumbler idempotent [$1,000 bounty]', 'estimated_hours': 12, 'confidence_score': 0.85, 'reason': '
+[2026-08-29T22:38:28.003434+00:00] Triage parsed result type: list, len=3
+[2026-08-29T22:38:28.003533+00:00] Selected 3 targets from GhostCLI
+[2026-08-29T22:38:28.003723+00:00] Triage value distribution: {'30': 1, '1000': 1, '88': 1}
+[2026-08-29T22:38:28.003791+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 397 candidates
+[2026-08-29T22:38:28.357822+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-29T22:38:28.377952+00:00] SKIPPING pomelo-io/Bounties: repository is archived (read-only)
+[2026-08-29T22:38:29.035463+00:00] === EXECUTING: [$30 BOUNTY] [Python] Fix HighMemoryUsage alert ratio expression ===
+[2026-08-29T22:38:29.035741+00:00] URL: https://github.com/weilixiong/zeroeye/issues/1
+[2026-08-29T22:38:29.475333+00:00] Skipping weilixiong/zeroeye: too large (290MB)
+[2026-08-29T22:38:29.475598+00:00] SKIPPED/FAILED: [$30 BOUNTY] [Python] Fix HighMemoryUsage alert ratio expression
+[2026-08-29T22:38:29.476169+00:00] Cycle 66 complete. Sleeping 300s...
