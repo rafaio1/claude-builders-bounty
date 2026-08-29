@@ -684,7 +684,11 @@ def triage(candidates):
                "defi hackathon", "bootcamp", "accelerator", "demo day", "pitch",
                "sign up at", "maintainer confirmation", "claim process",
                "apply here", "warpspeed", "bounty claim", "application required"]
-    filtered = [c for c in candidates if not any(kw in c.get("title","").lower() for kw in META_KW)]
+    # Filter by both title AND repo/url to catch application-first bounties
+    def _is_meta(c):
+        text = (c.get("title","") + " " + c.get("repo","") + " " + c.get("url","")).lower()
+        return any(kw in text for kw in META_KW)
+    filtered = [c for c in candidates if not _is_meta(c)]
     if len(filtered) < len(candidates):
         log(f"Triage meta-filter: removed {len(candidates)-len(filtered)} internal/meta targets")
     candidates = filtered if filtered else candidates
