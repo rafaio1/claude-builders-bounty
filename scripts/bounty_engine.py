@@ -386,7 +386,7 @@ def discover_bounties():
                     time.sleep(60)
                 else:
                     log(f"Query '{term}' failed (rc={res.returncode}): {err_msg[:100]}")
-                    time.sleep(8)
+                    time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
                 continue
             if res.returncode == 0 and res.stdout.strip() not in ("", "[]"):
                 items = json.loads(res.stdout)
@@ -483,7 +483,7 @@ def discover_bounties():
                     })
         except Exception as e:
             log(f"Search failed for '{term}': {e}")
-        time.sleep(8)
+        time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
     # Also search Algora bounties
     algora_queries = [
         "label:bounty state:open is:issue",
@@ -585,7 +585,7 @@ def discover_bounties():
                     })
         except Exception as e:
             log(f"Algora search failed: {e}")
-        time.sleep(3)
+        time.sleep(1)  # Reduced from 3s to fit cycle in 300s budget
     # Log discovery stats for debugging
     if query_stats:
         for q, count in sorted(query_stats.items(), key=lambda x: -x[1]):
