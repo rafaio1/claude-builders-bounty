@@ -5761,7 +5761,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia novos módulos ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Terceira fatia para os arquivos não rastreados (untracked). Isola a adição dos novos domínios (accounts, commerce, finance, opportunities, wise) e seus testes correspondentes.",
       "change": "Adicionar (git add) e commitar os novos módulos e testes. O develop não reescreve, apenas versiona o que já está em disco.",
       "never": [
@@ -5782,13 +5782,18 @@
         "tests/test_wise.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
       "map_id": "20260817T230624Z",
       "history": [
         {
           "at": "2026-08-17T23:06:24+00:00",
           "event": "mapped",
           "detail": "20260817T230624Z"
+        },
+        {
+          "at": "2026-08-29T11:24:23+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
         }
       ]
     },
