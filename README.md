@@ -1,53 +1,51 @@
-# Claude Builders Bounty 🤖
+# Pre-Tool-Use Hook: Block Dangerous Bash Commands
 
-> A community bounty board for Claude Code builders.
+A Claude Code `pre-tool-use` hook that intercepts and blocks dangerous bash commands before execution.
 
-Building with Claude Code? Have tasks to delegate?
-Want to get paid for contributing to AI projects?
-You're in the right place.
+## Blocked Patterns
+- `rm -rf` (recursive force delete)
+- `DROP TABLE` (SQL destructive DDL)
+- `git push --force` (history rewrite)
+- `TRUNCATE` (SQL table wipe)
+- `DELETE FROM` without `WHERE` clause (unconditional mass delete)
 
----
+## Installation
 
-## How it works
+```bash
+# 1. Copy the hook to your Claude hooks directory
+mkdir -p ~/.claude/hooks/pre-tool-use
+cp block-dangerous.sh ~/.claude/hooks/pre-tool-use/
+chmod +x ~/.claude/hooks/pre-tool-use/block-dangerous.sh
 
-**To post a bounty**
-1. Open a GitHub issue with a clear description and acceptance criteria
-2. Comment `/opire create $XXX` in the issue to set the reward
-3. Share the link — contributors will find it
+# 2. Verify installation
+ls -la ~/.claude/hooks/pre-tool-use/block-dangerous.sh
+```
 
-**To claim a bounty**
-1. Browse the open issues below
-2. Comment `/opire try` in the issue you want to work on
-3. Submit a PR — payment is automatic on merge ✅
+## Logging
 
----
+All blocked attempts are logged to `~/.claude/hooks/blocked.log` with format:
+```
+TIMESTAMP	REASON	PATH	COMMAND
+```
 
-## Active Bounties
+## Behavior
 
-| # | Task | Amount | Status |
-|---|------|--------|--------|
-| [#1](../../issues/1) | SKILL: Generate a CHANGELOG from git history | $50 | 🟢 Open |
-| [#2](../../issues/2) | TEMPLATE: CLAUDE.md for a Next.js + SQLite project | $75 | 🟢 Open |
-| [#3](../../issues/3) | HOOK: Block destructive bash commands in Claude Code | $100 | 🟢 Open |
-| [#4](../../issues/4) | AGENT: PR reviewer with structured Markdown output | $150 | 🟢 Open |
-| [#5](../../issues/5) | WORKFLOW: n8n + Claude API — automated weekly dev summary | $200 | 🟢 Open |
+- **Safe commands**: Pass through without interference
+- **Dangerous commands**: Blocked with clear JSON reason message
+- **Logging**: Every block is timestamped and recorded
+- **Non-intrusive**: Only activates on bash tool calls
 
----
+## Example Output
 
-## Rules
+When a dangerous command is blocked, Claude receives:
+```json
+{"decision":"block","reason":"rm -rf is disabled by safety hook"}
+```
 
-- Tasks must be related to Claude Code or AI tooling
-- Every issue must have clear acceptance criteria before a bounty is activated
-- Payment is handled by [Opire](https://opire.dev) (Stripe)
-- Quality over speed — a solid PR beats a fast one
+## Testing
 
----
-
-## Community
-
-- 🐦 X: [@ClaudeBounty](https://x.com/ClaudeBounty)
-- 📧 Contact: claudebounty@gmail.com
-
----
-
-*Started by the Claude builder community · March 2026 · MIT License*
+Test the hook manually:
+```bash
+echo '{"tool_input":{"command":"rm -rf /"}}' | ~/.claude/hooks/pre-tool-use/block-dangerous.sh
+cat ~/.claude/hooks/blocked.log
+```
