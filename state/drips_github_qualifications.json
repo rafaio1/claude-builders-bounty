@@ -7,29 +7,137 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 0,
-  "drips_run_id": "eb55fafb6ebe44cb92f9135f630df482",
-  "drips_source_hash": "fb93226528bf150ab3ea02dd5bd148e7dc731047c324e7d8fe2ec0ce3b65e97f",
+  "drips_candidate_count": 7,
+  "drips_run_id": "087238070898433ba240b61c9d13ea26",
+  "drips_source_hash": "67d5ebb0d962ef3449208b9e2a561515e8ccab3ff8eddebb7ce355a5771d45d7",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-29T20:59:03.670438+00:00",
+  "generated_at": "2026-08-29T21:09:41.125732+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788040743
+    "reset_epoch": 1788041381
   },
-  "newly_audited_candidate_key": null,
-  "qualification_count": 0,
-  "qualifications": [],
+  "newly_audited_candidate_key": "366ba370cfb720f02fa99a2b425c2b0118fefa5f2efae796851d6fea307c8e1f",
+  "qualification_count": 1,
+  "qualifications": [
+    {
+      "candidate_id": "drips:aa80d082-4108-43d9-bf46-6efa22a6cb40",
+      "candidate_key": "366ba370cfb720f02fa99a2b425c2b0118fefa5f2efae796851d6fea307c8e1f",
+      "current_drips_source_hash": "67d5ebb0d962ef3449208b9e2a561515e8ccab3ff8eddebb7ce355a5771d45d7",
+      "decision": "rejected",
+      "drips_issue_id": "aa80d082-4108-43d9-bf46-6efa22a6cb40",
+      "drips_source_hash": "67d5ebb0d962ef3449208b9e2a561515e8ccab3ff8eddebb7ce355a5771d45d7",
+      "evidence": {
+        "default_branch": "consolidation-pattern",
+        "issue_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/issues/371",
+        "issue_comments_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/issues/371/comments?per_page=100",
+        "issue_node_id": "I_kwDONtBrAc8AAAABOz1Msw",
+        "issue_timeline_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/issues/371/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T21:08:59Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/contents/package.json?ref=consolidation-pattern",
+        "pull_history_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust",
+        "repository_node_id": "R_kgDONtBrAQ",
+        "repository_pushed_at": "2026-08-28T19:42:01Z",
+        "tree_api_url": "https://api.github.com/repos/safetrustcr/dApp-SafeTrust/git/trees/consolidation-pattern?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 150,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": false,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": true,
+        "implementation_allowed": false,
+        "license_present": false,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": false,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 371,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 3,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": true,
+          "substantive_body": true,
+          "test_expectation": true
+        },
+        "deadline_margin_hours": -1.16,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [
+          "api/escrow/send-transaction",
+          "deploy.handler.js",
+          "docs/architecture/escrow-lifecycle.md",
+          "docs/stellar/trustlesswork.md",
+          "escrow.disputed",
+          "escrow.funded",
+          "escrow.released",
+          "fund.handler.js",
+          "milestone-status.handler.js",
+          "release-funds.handler.js"
+        ],
+        "recent_merged_prs_sample": 20,
+        "referenced_paths": [
+          "api/escrow/send-transaction",
+          "deploy.handler.js",
+          "docs/architecture/escrow-lifecycle.md",
+          "docs/stellar/trustlesswork.md",
+          "escrow.disputed",
+          "escrow.funded",
+          "escrow.released",
+          "fund.handler.js",
+          "milestone-status.handler.js",
+          "release-funds.handler.js"
+        ]
+      },
+      "rejection_reasons": [
+        "continuous_integration_not_proven",
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "license_not_proven",
+        "qualification_score_below_threshold",
+        "referenced_repository_paths_missing"
+      ],
+      "repo": "safetrustcr/dApp-SafeTrust",
+      "schema_version": "1.0",
+      "score": 61.75,
+      "title": "\ud83d\udcdadocs: write docs/architecture/escrow-lifecycle.md",
+      "valid_until": "2026-08-29T22:09:41.125732+00:00",
+      "verified_at": "2026-08-29T21:09:41.125732+00:00"
+    }
+  ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "606cc4dc773c473f921e2ee5256696a5",
+  "run_id": "64a7c68d94b54a9d82aef432705625d6",
   "schema_version": "1.0",
-  "source_hash": "a53b360fea328f4b3a1991653378e7b659cc033aad5a99aa869c6844ee33abc6",
-  "valid_until": "2026-08-29T21:07:39.603466+00:00",
+  "source_hash": "e64949243c9fad8a4438588701f85a6ba3772771cbf7977e7c1d2a8944cb0fec",
+  "valid_until": "2026-08-29T21:17:53.535957+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",
