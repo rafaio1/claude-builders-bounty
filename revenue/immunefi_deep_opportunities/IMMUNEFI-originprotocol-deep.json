@@ -1,0 +1,33 @@
+{
+  "program": "Origin Protocol",
+  "url": "https://immunefi.com/bug-bounty/originprotocol/information/",
+  "max_bounty_usd": 1000000,
+  "total_paid_usd": 139200,
+  "median_resolution_hours": 7,
+  "kyc_required": false,
+  "poc_required": true,
+  "vault_tvl_usd": 3.0,
+  "assets_in_scope": 28,
+  "reward_structure": {
+    "smart_contract_critical": "10% of affected funds up to $1M (min $50k)",
+    "smart_contract_high": "Flat $15,000",
+    "web_critical": "Flat $25,000"
+  },
+  "known_issues_summary": [
+    "Withdrawal queue loss-socialization in ARM (fixed in PR #223, Dec 2025 audit)",
+    "Slashing accounting in ARM redeem queue (remediated in active upgrade branch)"
+  ],
+  "prohibited_activities": [
+    "No mainnet/public testnet testing",
+    "No oracle/third-party contract testing",
+    "No phishing/social engineering",
+    "No DoS or automated traffic generation"
+  ],
+  "zero_capital_feasibility": "HIGH - Local fork PoC only, no gas needed for static analysis or unit-test based exploits. Web/App bugs pay flat $25k critical.",
+  "scanned_at": "2026-08-29T08:31:00Z",
+  "next_actions": [
+    "Clone Origin Protocol repos (arm-oeth, origin-dollar) for local static analysis",
+    "Review yAudit Dec 2025 report for residual gaps post-PR #223",
+    "Target web/app layer for flat $25k critical (no fork needed)"
+  ]
+}
