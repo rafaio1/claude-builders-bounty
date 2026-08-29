@@ -403,7 +403,8 @@ def discover_bounties():
                                       "ai-bounty", "crypto-bounty-list", "web3-bounty-feed", "open-bounties",
                                        "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot",
                                        "relayhop", "claudeearnself", "rustchain-bounties", "scottcjn",
-                                       "tz-radar", "timezone-radar", "fresh-low-comp", "meme-bounty"]
+                                       "tz-radar", "timezone-radar", "fresh-low-comp", "meme-bounty",
+                                       "templeos", "cross-compilation", "reproducible cross", "0.03 btc"]
                     if any(s in repo_lower for s in spam_indicators):
                         continue
                     labels = [l["name"] for l in item.get("labels", [])]
@@ -462,7 +463,7 @@ def discover_bounties():
                                     value_usd = nums
                                     break
                     # Skip blocklisted repos early in discovery
-                    CLONE_BLOCKLIST_DISC = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock"}
+                    CLONE_BLOCKLIST_DISC = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock", "labmain/ai-agent-pay-demo"}
                     if repo in CLONE_BLOCKLIST_DISC:
                         continue
                     # Skip meta/alert titles
@@ -572,7 +573,7 @@ def discover_bounties():
                         if m:
                             value_usd = ''.join(c for c in m.group(0) if c.isdigit() or c == '.')
                     # Skip blocklisted repos
-                    CLONE_BLOCKLIST_ALG = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock"}
+                    CLONE_BLOCKLIST_ALG = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock", "labmain/ai-agent-pay-demo"}
                     if repo in CLONE_BLOCKLIST_ALG:
                         continue
                     seen_urls.add(url)
@@ -915,7 +916,7 @@ def execute_bounty(target):
     if work_dir.exists():
         shutil.rmtree(work_dir)
     # Blocklist of repos known to timeout on clone from this server
-    CLONE_BLOCKLIST = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock"}
+    CLONE_BLOCKLIST = {"anatolykoptev/go-job", "algora-io/algora", "unlock-protocol/unlock", "labmain/ai-agent-pay-demo"}
     repo_key = f"{owner}/{repo}"
     if repo_key in CLONE_BLOCKLIST:
         log(f"Skipping {repo_key}: known clone timeout (blocklisted)")
