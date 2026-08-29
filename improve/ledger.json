@@ -6678,7 +6678,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (FATIA: ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "Ferramentas dos agentes geram logs massivos e diretórios de trabalho (bounties, bugbounty) que não devem ser versionados no repositório principal.",
       "change": "Adicionar ao .gitignore os padrões para logs/ (exceto traces sanitizados), bounties/, bugbounty/ e arb_dashboard.html, stageando a mudança.",
       "never": [
@@ -6689,7 +6689,7 @@
       ],
       "files_hint": [],
       "theme": "portal",
-      "branch": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260829T113326Z",
       "history": [
         {
@@ -6731,6 +6731,11 @@
           "at": "2026-08-29T11:37:59+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-29T11:38:55+00:00",
+          "event": "tests_failed",
+          "detail": "e 167, in _multicall\nINTERNALERROR>     raise exception\nINTERNALERROR>   File \"/Agentic/.venv/lib/python3.12/site-packages/pluggy/_callers.py\", line 139, in _multicall\nINTERNALERROR>     teardown.throw(exception)\nINTERNALERROR>   File \"/Agentic/.venv/lib/python3.12/site-packages/_pytest/fixtures.py\", line 1798, in pytest_make_collect_report\nINTERNALERROR>     result = yield\nINTERNALERROR>         …"
         }
       ],
       "review_feedback": "tests_failed: e 167, in _multicall\nINTERNALERROR>     raise exception\nINTERNALERROR>   File \"/Agentic/.venv/lib/python3.12/site-packages/pluggy/_callers.py\", line 139, in _multicall\nINTERNALERROR>     teardown.throw(exception)\nINTERNALERROR>   File \"/Agentic/.venv/lib/python3.12/site-packages/_pytest/fixtures.py\", line 1798, in pytest_make_collect_report\nINTERNALERROR>     result = yield\nINTERNALERROR>         …"
