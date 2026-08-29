@@ -7656,7 +7656,7 @@
       "title": "Validação de skills no playbook improve/integrity",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "A ausência de validação prévia de skills geradas permite que diretórios órfãos ou malformados sujem a working tree, quebrando a integridade git_clean na fatia de ferramentas.",
       "change": "Adicionar hook ou validação estrutural em improve.py para checar a geração de skills antes de stagear no disco.",
       "never": [
@@ -7686,6 +7686,11 @@
           "at": "2026-08-29T11:39:40+00:00",
           "event": "requeued",
           "detail": "Execution error"
+        },
+        {
+          "at": "2026-08-29T11:42:42+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260818-valida-o-de-skills-no-playbook-improve-integrity"
         }
       ],
       "review_feedback": "claude_failed: Execution error"
