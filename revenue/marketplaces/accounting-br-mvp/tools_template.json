@@ -1,0 +1,28 @@
+{
+  "schema_version": "1.0",
+  "tool_listing_template": {
+    "id": "string (slug único, ex: nfeauto)",
+    "name": "string (nome comercial da ferramenta)",
+    "description": "string (descrição curta em PT-BR, max 200 chars)",
+    "category": "enum [nf-e, workflow, obrigacoes, honorarios, lgpd, gestao, integracao]",
+    "integration_targets": ["dominio-sistemas", "contmatic"],
+    "pricing_brl_monthly": "number (preço base da assinatura do dev)",
+    "commission_rate_pct": 15,
+    "crc_verified": true,
+    "cfc_compliant": true,
+    "lgpd_compliant": true,
+    "website_url": "string (URL oficial do dev/ferramenta)",
+    "demo_url": "string (opcional, link para demo/sandbox)",
+    "contact_email": "string (email do desenvolvedor para split commission)",
+    "asaas_split_configured": false,
+    "status": "enum [draft, pending_verification, active, suspended]",
+    "listed_at": "ISO8601 timestamp",
+    "verified_at": "ISO8601 timestamp"
+  },
+  "validation_rules": {
+    "required_fields": ["id", "name", "description", "category", "integration_targets", "pricing_brl_monthly", "contact_email"],
+    "integration_must_include_at_least_one": ["dominio-sistemas", "contmatic"],
+    "commission_fixed_at": 15,
+    "crc_verification_required": true
+  }
+}
