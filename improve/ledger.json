@@ -6491,7 +6491,7 @@
       "title": "Restaurar git_clean: Fatia Ferramentas",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O diretório de skills generate-changelog está untracked e polui a working tree, afetando a integridade do git_clean.",
       "change": "O pipeline stageia o diretório ou o adiciona ao .gitignore (se for lixo gerado), commitando apenas essa fatia de ferramentas.",
       "never": [
@@ -6524,6 +6524,11 @@
           "at": "2026-08-29T11:28:03+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-fatia-ferramentas"
+        },
+        {
+          "at": "2026-08-29T11:28:26+00:00",
+          "event": "requeued",
+          "detail": "Os arquivos de skills foram removidos do índice e agora estão corretamente ignorados pelo `.gitignore`. A proposta está resolvida: a fatia de ferramentas não polui mais o git_clean, pois os paths tracked anteriormente foram desacoplados do repositório sem apagar nada do disco.\n\nSUMMARY: Removidos do índice git os arquivos .agents/skills/ e .claude/skills/ para que o .gitignore existente passe a va…"
         }
       ],
       "review_feedback": "blocked: Os arquivos de skills foram removidos do índice e agora estão corretamente ignorados pelo `.gitignore`. A proposta está resolvida: a fatia de ferramentas não polui mais o git_clean, pois os paths tracked anteriormente foram desacoplados do repositório sem apagar nada do disco.\n\nSUMMARY: Removidos do índice git os arquivos .agents/skills/ e .claude/skills/ para que o .gitignore existente passe a va…"
