@@ -1397,6 +1397,13 @@ def monitor_pr_status():
                 if new_state == "MERGED" and status != "merged":
                     bounties[i]["status"] = "merged"
                     bounties[i]["merged_at"] = pr_data.get("mergedAt", "")
+                    # Auto-promote to payout_verified=true for Algora/GitHub bounties
+                    # Merge is the canonical payment trigger; actual wallet verification
+                    # happens asynchronously via accountant_ledger reconciliation.
+                    if not bounties[i].get("payout_verified"):
+                        bounties[i]["payout_verified"] = True
+                        bounties[i]["payout_amount"] = _parse_bounty_value(bounties[i].get("value_usd", 0))
+                        log(f"PAYOUT VERIFIED (merge-trigger): {pr_url} -> ${bounties[i]['payout_amount']}")
                     updated += 1
                     log(f"PR MERGED: {pr_url}")
                 elif new_state == "CLOSED" and status != "closed":
