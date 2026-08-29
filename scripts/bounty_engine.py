@@ -1065,7 +1065,7 @@ Fix issue #{issue_num}: {title} in {owner}/{repo}"""
         # Blacklist this repo to prevent re-selection in future cycles
         try:
             failed = load_json(FAILED_REPOS_FILE)
-            repo_key = target.get("repo", "") or target.get("url", "")
+            repo_key = target.get("url", "") or target.get("repo", "")
             if repo_key and repo_key not in failed:
                 failed[repo_key] = {"reason": "no_real_code_changes", "ts": datetime.now(timezone.utc).isoformat()}
                 save_json(FAILED_REPOS_FILE, failed)
