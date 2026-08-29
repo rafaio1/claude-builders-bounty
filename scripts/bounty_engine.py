@@ -765,7 +765,34 @@ CRITICAL CONSTRAINTS:
             _TRIAGE_CONSECUTIVE_FAILURES = 0
             return validated
         log("All GhostCLI selections were invalid/hallucinated; refusing heuristic fallback")
-    # Structured error event: no silent fallback
+    # HEURISTIC FALLBACK: if LLM returns [] or fails validation, pick best non-meta candidate
+    # This prevents the engine from stalling when the model is too strict
+    if not (isinstance(selected, list) and len(selected) > 0):
+        log("TRIAGE_FALLBACK: LLM selection failed, applying heuristic pick from sorted candidates")
+        fallback_picks = []
+        for c in sorted_cands[:3]:
+            url = c.get("url", "")
+            title = c.get("title", "").lower()
+            # Skip meta/internal targets even in fallback
+            if any(kw in title for kw in META_KW_V):
+                continue
+            if not url.startswith("http"):
+                continue
+            fallback_picks.append({
+                "url": url,
+                "title": c.get("title", ""),
+                "value_usd": c.get("value_usd", "unknown"),
+                "labels": c.get("labels", []),
+                "estimated_hours": 4,
+                "confidence_score": 0.5,
+                "reason": "heuristic_fallback"
+            })
+        if fallback_picks:
+            log(f"TRIAGE_FALLBACK: selected {len(fallback_picks)} candidates heuristically")
+            _TRIAGE_CONSECUTIVE_FAILURES = 0
+            return fallback_picks
+        log("TRIAGE_FALLBACK: no valid candidates even after heuristic")
+    # Structured error event: all paths exhausted
     err_event = {
         "event": "triage_contract_failure",
         "timestamp": datetime.now(timezone.utc).isoformat(),
