@@ -27,7 +27,30 @@ TARGET_ORGS = [
     "calcom",
     "twentyhq",
     "hoppscotch",
-    "maybe-finance"
+    "maybe-finance",
+    # Fast-payout / auto-pay focused orgs
+    "replit",
+    "sourcegraph",
+    "gitcoin",
+    "layer3xyz",
+    "rabbyio",
+    "safe-global",
+    "ensdomains",
+    "uniswap",
+    "aave",
+    "lens-protocol",
+    "farcaster",
+    "zksync",
+    "starknet-io",
+    "celestiaorg",
+    "berachain",
+    "monad-labs",
+    "aptos-labs",
+    "sui-foundation",
+    "arbitrum",
+    "optimism",
+    "polygon-pos",
+    "solana-labs"
 ]
 
 def log(msg):
