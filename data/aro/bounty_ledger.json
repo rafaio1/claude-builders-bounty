@@ -266,9 +266,47 @@
       "submitted_at": "2026-08-29T08:54:17.982224+00:00",
       "rejection_reason": "Unrealistic payout ($517k) for README typo. High probability of scam/fake bounty.",
       "rejected_at": "2026-08-29T08:56:11.280911+00:00"
+    },
+    {
+      "issue_number": 194,
+      "title": "[Bug] useFileUpload still surfaces raw fetch errors to users",
+      "bounty_value": 0.0,
+      "file": "lib/useFileUpload.ts",
+      "status": "rejected_testnet_only",
+      "rejection_reason": "Pays 20 USDC on ARC Testnet only. No real-world value. Violates zero-capital/real-revenue constraint.",
+      "rejected_at": "2026-08-29T08:58:00.829008+00:00",
+      "repo": "Hazyshades/Sendly-Test-Repo",
+      "url": "https://github.com/Hazyshades/Sendly-Test-Repo/issues/194",
+      "platform": "ARC-Testnet"
+    },
+    {
+      "issue_number": 6,
+      "title": "\ud83c\udfc6 [Bounty: 50,000 $ROBIN_MCP] Create a Telegram Mini-App for Launching Meme Coins & Tracking Trusts",
+      "bounty_value": 50000.0,
+      "file": "telegram_bot.py",
+      "commit": "458b264",
+      "status": "submitted",
+      "repo": "aashu91/robinhood-evm-mcp",
+      "url": "https://github.com/aashu91/robinhood-evm-mcp/issues/6",
+      "pr_url": "https://github.com/aashu91/robinhood-evm-mcp/pull/17",
+      "submitted_at": "2026-08-29T09:03:48.826781+00:00"
+    },
+    {
+      "id": "sbl-2776",
+      "platform": "github",
+      "repo": "SecureBananaLabs/bug-bounty",
+      "issue": 2776,
+      "pr": 12234,
+      "title": "POST /api/reviews endpoint missing authentication middleware",
+      "value_usd": 780,
+      "currency": "USD",
+      "status": "pr_submitted",
+      "submitted_at": "2026-08-29T00:00:00Z",
+      "payout_verified": false,
+      "notes": "Added authMiddleware to POST /api/reviews. PR #12234 submitted."
     }
   ],
-  "total_bounty_value": 522104.0,
+  "total_bounty_value": 572104.0,
   "triage_log": [
     {
       "action": "search_exhaustion",
