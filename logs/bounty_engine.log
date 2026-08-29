@@ -37783,3 +37783,196 @@ To get access to the TypeScript compiler, [34mtsc[0m, from the command line ei
 [2026-08-29T22:05:45.507139+00:00] Skipping wasmerio/wasmer: too large (3225MB)
 [2026-08-29T22:05:45.507402+00:00] SKIPPED/FAILED: Support WASIX in Zig
 [2026-08-29T22:05:45.507904+00:00] Cycle 62 complete. Sleeping 300s...
+[2026-08-29T22:10:45.508746+00:00] 
+============================================================
+[2026-08-29T22:10:45.509319+00:00] CYCLE 63 - 2026-08-29T22:10:45.509306+00:00
+[2026-08-29T22:10:45.509383+00:00] ============================================================
+[2026-08-29T22:10:45.509423+00:00] === PR STATUS MONITOR ===
+[2026-08-29T22:10:45.510048+00:00] PR Monitor: 29 pending PRs, checking up to 10
+[2026-08-29T22:10:59.109652+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-29T22:10:59.109917+00:00] No PR status changes detected
+[2026-08-29T22:10:59.110056+00:00] === DISCOVERY PHASE ===
+[2026-08-29T22:10:59.110117+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-29T22:11:15.046559+00:00] Discovery progress: 5/30 queries completed, 112 candidates found
+[2026-08-29T22:11:29.707016+00:00] Discovery progress: 10/30 queries completed, 197 candidates found
+[2026-08-29T22:11:46.713368+00:00] Discovery progress: 15/30 queries completed, 364 candidates found
+[2026-08-29T22:12:00.327145+00:00] Query 'web3 bounty' rate limited, skipping remaining discovery queries this cycle
+[2026-08-29T22:13:17.469456+00:00]   Query '$25000 bounty': 50 results
+[2026-08-29T22:13:17.469782+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-29T22:13:17.469857+00:00]   Query 'algora bounty': 47 results
+[2026-08-29T22:13:17.469917+00:00]   Query 'bug bounty': 45 results
+[2026-08-29T22:13:17.469971+00:00]   Query 'crypto bounty': 45 results
+[2026-08-29T22:13:17.470017+00:00]   Query '$10000 bounty': 42 results
+[2026-08-29T22:13:17.470051+00:00]   Query 'bounty reward': 41 results
+[2026-08-29T22:13:17.470078+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-29T22:13:17.470108+00:00]   Query 'bounty fix': 31 results
+[2026-08-29T22:13:17.470136+00:00]   Query 'paid bounty': 23 results
+[2026-08-29T22:13:17.470158+00:00]   Query 'bounty issue': 22 results
+[2026-08-29T22:13:17.470179+00:00]   Query '$5000 bounty': 20 results
+[2026-08-29T22:13:17.470200+00:00]   Query 'bounty': 3 results
+[2026-08-29T22:13:17.470221+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-29T22:13:17.470243+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-29T22:13:17.470275+00:00] Total unique candidates after dedup: 467
+[2026-08-29T22:13:17.470832+00:00] Found 467 candidates
+[2026-08-29T22:13:17.471337+00:00] Pre-filtered 17 already-submitted candidates, 450 remaining
+[2026-08-29T22:13:17.471724+00:00] Cooldown-filtered 16 candidates from failed repos, 434 remaining
+[2026-08-29T22:13:17.472905+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-29T22:13:17.475958+00:00] Triage meta-filter: removed 46 internal/meta targets
+[2026-08-29T22:13:17.476478+00:00] Triage payload: 10 sanitized candidates, 3894 chars
+[2026-08-29T22:13:17.476674+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/OmniLayer/spec/issues/174",
+    "title": "Clarify whether our milestone bounty expenses depend on the number of RBBs, and how",
+    "value_usd": "6000",
+    "labels": [
+      "question"
+    ],
+    "body_preview": "I am not entirely sure I understand the fine points of the monthly bounty calculations.\n\n@dacoinminster can you clarify - do the total expenses we pay out to monthly bounties each month depend on the "
+  },
+  {
+    "url": "https://github.com/wasmerio/wasmer/issues/4218",
+    "title": "Support WASIX in Zig",
+    "value_usd": "5000",
+    "labels": [
+      "\ud83c\udf89 enhancement",
+      "priority-medium"
+    ],
+    "body_preview": "Sadly, I've been personally banned from the Zig community for disagreeing with their take stating that [Bounties damages open source](https://ziglang.org/news/bounties-damage-open-source-projects/) in"
+  },
+  {
+    "url": "https://github.com/JoinMarket-Org/joinmarket/issues/634",
+    "title": "Make tumbler idempotent [$1,000 bounty]",
+    "value_usd": "1000",
+    "labels": [],
+    "body_preview": "Because the tumbler can crash or stall for many reasons being able to restart it and have it pick up where it left off is very useful.\n\nExample:\n\n> $ python tumbler.py -n mysession [options] wallet.js"
+  },
+  {
+    "url": "https://github.com/Mudlet/Mudlet/issues/6648",
+    "title": "Mudlet\u2019s $1,000+ bounty program!",
+    "value_usd": "1000",
+    "labels": [
+      "help wanted"
+    ],
+    "body_preview": "Hey there! We\u2019re excited to pilot a new bounty program for Mudlet, our free open-source project! ([What is Mudlet?](#What-is-Mudlet))\r\n\r\nWe\u2019re giving away a total of $1,000 USD for solving various iss"
+  },
+  {
+    "url": "https://github.com/ramimbo/mergework/issues/803",
+    "title": "Proposed work: filter bounty issues from proposed-work triage",
+    "value_usd": "600",
+    "labels": [
+      "proposed-work"
+    ],
+    "body_preview": "Bounty #722\n\nThis is a proposed-work intake item for the live #722 proposed-work bounty. It does not make implementation work claimable unless maintainers later create and reserve a separate implement"
+  },
+  {
+    "url": "https://github.com/JeremyKono/hummingbot/issues/1",
+    "title": "Bounty: 250k HBOT",
+    "value_usd": "250",
+    "labels": [
+      "bug",
+      "Bounty"
+    ],
+    "body_preview": "### What issue does this bounty fix?\r\n\r\nA bounty to fix the version issue #(0000)\r\n\r\n\r\n\r\n"
+  },
+  {
+    "
+[2026-08-29T22:13:21.806046+00:00] Triage GhostCLI response length: 876 chars
+[2026-08-29T22:13:21.806584+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":20,"confidence_score":0.9,"reason":"Clear implementation task to make a Python script idempotent with reproducible crash/restart scenarios and defined acceptance criteria."},{"url":"https://github.com/capofficial/client/issues/24","title":"Show referral fee discount","estimated_hours":8,"confidence_score":0.85,"reason":"Well-scoped UI enhancement in a TypeScript/React client with specific display requirements and existing code patterns to follow."},{"url":"https://github.com/capofficial/client/issues/7","title":"Display liquidation price on chart","estimated_hours":10,"confidence_score":0.8,"reason":"Concrete feature addition to display data on a chart with clear acceptance criteria and existing charting infrastructure to extend."}]'
+[2026-08-29T22:13:21.807155+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/JoinMarket-Org/joinmarket/issues/634', 'title': 'Make tumbler idempotent [$1,000 bounty]', 'estimated_hours': 20, 'confidence_score': 0.9, 'reason': 'Clear implementation task to make a Python script idempotent with reproducible crash/restart scenarios and defined acceptance criteria.'}, {'url': 'https://github.com/capofficial/client/issues/24', 'title': 'Show referral fee discount', 'estimated_hours': 8, 'confidence_score': 0.85, 'reason': 'Well-scoped UI enhancemen
+[2026-08-29T22:13:21.807213+00:00] Triage parsed result type: list, len=3
+[2026-08-29T22:13:21.807246+00:00] Selected 3 targets from GhostCLI
+[2026-08-29T22:13:21.807422+00:00] Triage value distribution: {'1000': 1, '100': 1, '50': 1}
+[2026-08-29T22:13:21.807711+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 434 candidates
+[2026-08-29T22:13:22.200441+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-29T22:13:22.764536+00:00] === EXECUTING: Show referral fee discount ===
+[2026-08-29T22:13:22.764726+00:00] URL: https://github.com/capofficial/client/issues/24
+[2026-08-29T22:13:22.859074+00:00] === EXECUTING: Display liquidation price on chart ===
+[2026-08-29T22:13:22.859223+00:00] URL: https://github.com/capofficial/client/issues/7
+[2026-08-29T22:13:23.329593+00:00] Cloning capofficial/client -> /Agentic/workspace/bounty-exec/capofficial-client-7
+[2026-08-29T22:13:25.214706+00:00] Generating fix via GhostCLI...
+[2026-08-29T22:13:25.214890+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-29T22:13:26.375893+00:00] Cloning capofficial/client -> /Agentic/workspace/bounty-exec/capofficial-client-24
+[2026-08-29T22:13:29.026738+00:00] Generating fix via GhostCLI...
+[2026-08-29T22:13:29.026905+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-29T22:13:37.107073+00:00] GhostCLI raw response (3096 chars): {
+  "files_to_change": [
+    {
+      "path": "./src/lib/stores.js",
+      "action": "modify",
+      "diff": "@@ -1,5 +1,6 @@\n import { writable } from 'svelte/store';\n \n export const showOrdersOnChart = writable(true);\n export const showPositionsOnChart = writable(true);\n+export const showLiquidationPriceOnChart = writable(false);\n"
+    },
+    {
+      "path": "./src/lib/chart.js",
+      "action": "modify",
+      "diff": "@@ -10,6 +10,7 @@ import {\n   formatPrice\n } from './formatters';\n
+[2026-08-29T22:13:37.113263+00:00] git apply failed for ./src/lib/stores.js, attempting manual patch...
+[2026-08-29T22:13:37.114879+00:00] Manual patch applied: ./src/lib/stores.js
+[2026-08-29T22:13:37.119967+00:00] git apply failed for ./src/lib/chart.js, attempting manual patch...
+[2026-08-29T22:13:37.121226+00:00] Manual patch applied: ./src/lib/chart.js
+[2026-08-29T22:13:37.125901+00:00] git apply failed for ./src/lib/ui.js, attempting manual patch...
+[2026-08-29T22:13:37.128466+00:00] Manual patch applied: ./src/lib/ui.js
+[2026-08-29T22:13:37.128713+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-29T22:13:37.129351+00:00] Installing dependencies before build validation...
+[2026-08-29T22:13:42.729203+00:00] GhostCLI raw response (3304 chars): {
+  "files_to_change": [
+    {
+      "path": "./src/api/rewards.js",
+      "action": "modify",
+      "diff": "@@ -1,5 +1,6 @@\n import { get } from 'svelte/store';\n import { account } from '$lib/stores';\n+import { capApi } from './cap';\n \n export async function fetchFeeDiscounts() {\n   const user = get(account);\n@@ -8,6 +9,7 @@ export async function fetchFeeDiscounts() {\n   const [stakingDiscount, volumeDiscount] = await Promise.all([\n     fetchStakingDiscount(user),\n     fetchVolumeDis
+[2026-08-29T22:13:42.747400+00:00] git apply failed for ./src/api/rewards.js, attempting manual patch...
+[2026-08-29T22:13:42.748275+00:00] Manual patch applied: ./src/api/rewards.js
+[2026-08-29T22:13:42.758020+00:00] git apply failed for ./src/lib/ui.js, attempting manual patch...
+[2026-08-29T22:13:42.758728+00:00] Manual patch applied: ./src/lib/ui.js
+[2026-08-29T22:13:42.759068+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-29T22:13:42.759485+00:00] Installing dependencies before build validation...
+[2026-08-29T22:13:55.977725+00:00] Running npm build for validation...
+[2026-08-29T22:14:13.294144+00:00] Running npm build for validation...
+[2026-08-29T22:14:25.487180+00:00] VALIDATION FAILED (npm build): 
+> client-v4@1.0.0 build
+> rollup -c
+
+[36m
+[1msrc/main.js[22m → [1mbuild/bundle.b6a50d1.js[22m...[39m
+[1m[33m(!) Plugin replace: @rollup/plugin-replace: 'preventAssignment' currently defaults to false. It is recommended to set this option to `true`, as the next major version will default this option to `true`.[39m[22m
+[1m[33m(!) Plugin svelte: Unused CSS selector ".code-check"[39m[22m
+[1msrc/App.svelte[22m
+[90m210:   }
+211: 
+212:   .code-check {
+       ^
+213:     padding: 25px;
+
+[2026-08-29T22:14:25.488318+00:00] Skipping commit/PR due to validation failure
+[2026-08-29T22:14:25.489329+00:00] Added https://github.com/capofficial/client/issues/7 to failed_repos cooldown list
+[2026-08-29T22:14:25.489722+00:00] SKIPPED/FAILED: Display liquidation price on chart
+[2026-08-29T22:14:35.577781+00:00] VALIDATION FAILED (npm build): 
+> client-v4@1.0.0 build
+> rollup -c
+
+[36m
+[1msrc/main.js[22m → [1mbuild/bundle.b6a50d1.js[22m...[39m
+[1m[33m(!) Plugin replace: @rollup/plugin-replace: 'preventAssignment' currently defaults to false. It is recommended to set this option to `true`, as the next major version will default this option to `true`.[39m[22m
+[1m[33m(!) Plugin svelte: Unused CSS selector ".code-check"[39m[22m
+[1msrc/App.svelte[22m
+[90m210:   }
+211: 
+212:   .code-check {
+       ^
+213:     padding: 25px;
+
+[2026-08-29T22:14:35.577954+00:00] Skipping commit/PR due to validation failure
+[2026-08-29T22:14:35.578458+00:00] Added https://github.com/capofficial/client/issues/24 to failed_repos cooldown list
+[2026-08-29T22:14:35.582464+00:00] SKIPPED/FAILED: Show referral fee discount
+[2026-08-29T22:14:35.584036+00:00] Cycle 63 complete. Sleeping 300s...

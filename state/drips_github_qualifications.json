@@ -7,45 +7,45 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 2,
-  "drips_run_id": "b8f593ddfdec4bf4b7086ac254d7a21a",
-  "drips_source_hash": "68e8a610066b6e8fb7989a2892464c509caf4862c7a661a07a9ecddb427317fc",
+  "drips_candidate_count": 9,
+  "drips_run_id": "d824904900d44f96b4588dc66ad0fbf1",
+  "drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-29T22:01:53.807123+00:00",
+  "generated_at": "2026-08-29T22:12:23.528167+00:00",
   "github_rate_budget": {
     "limit": 5000,
-    "remaining_before": 4986,
-    "reset_epoch": 1788041257
+    "remaining_before": 5000,
+    "reset_epoch": 1788045143
   },
-  "newly_audited_candidate_key": "d632eb1320b123303855b1a629aa0b64eccc1032af04986a7ac9cdc1dec918bb",
+  "newly_audited_candidate_key": "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5",
   "qualification_count": 1,
   "qualifications": [
     {
-      "candidate_id": "drips:61de4184-72fa-40a0-86f3-c46008f8ee24",
-      "candidate_key": "d632eb1320b123303855b1a629aa0b64eccc1032af04986a7ac9cdc1dec918bb",
-      "current_drips_source_hash": "68e8a610066b6e8fb7989a2892464c509caf4862c7a661a07a9ecddb427317fc",
+      "candidate_id": "drips:cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
+      "candidate_key": "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5",
+      "current_drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
       "decision": "rejected",
-      "drips_issue_id": "61de4184-72fa-40a0-86f3-c46008f8ee24",
-      "drips_source_hash": "68e8a610066b6e8fb7989a2892464c509caf4862c7a661a07a9ecddb427317fc",
+      "drips_issue_id": "cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
+      "drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848",
-        "issue_comments_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848/comments?per_page=100",
-        "issue_node_id": "I_kwDOSah4Hs8AAAABOiiEOA",
-        "issue_timeline_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T22:00:33Z",
+        "issue_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252",
+        "issue_comments_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/comments?per_page=100",
+        "issue_node_id": "I_kwDOPJJMJ88AAAABOC7Jgw",
+        "issue_timeline_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T22:09:20Z",
         "license_source": null,
         "license_spdx": null,
         "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract",
-        "repository_node_id": "R_kgDOSah4Hg",
-        "repository_pushed_at": "2026-08-29T20:22:30Z",
-        "tree_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/git/trees/main?recursive=1"
+        "pull_history_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist",
+        "repository_node_id": "R_kgDOPJJMJw",
+        "repository_pushed_at": "2026-08-29T11:01:11Z",
+        "tree_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -72,48 +72,49 @@
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": true,
+        "scope_testable": false,
         "tests_present": true
       },
-      "issue_number": 848,
+      "issue_number": 252,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 4,
+        "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": false,
-          "substantive_body": true,
-          "test_expectation": true
+          "expected_behavior": true,
+          "substantive_body": false,
+          "test_expectation": false
         },
-        "deadline_margin_hours": -10.03,
+        "deadline_margin_hours": -10.21,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 17,
+        "recent_merged_prs_sample": 19,
         "referenced_paths": []
       },
       "rejection_reasons": [
         "github_application_comment_present",
         "insufficient_wave_deadline_margin",
         "license_not_proven",
-        "qualification_score_below_threshold"
+        "qualification_score_below_threshold",
+        "scope_not_sufficiently_testable"
       ],
-      "repo": "JSE-ORG/trust-link-contract",
+      "repo": "AudioBitsStellar/AudioBlocks_For_Artist",
       "schema_version": "1.0",
-      "score": 72.25,
-      "title": "20 ignored tests fail when forced \u2014 regression stubs without tracking issue refs",
-      "valid_until": "2026-08-29T23:01:53.807123+00:00",
-      "verified_at": "2026-08-29T22:01:53.807123+00:00"
+      "score": 68.5,
+      "title": "fix: provider.tsx error retry uses any type",
+      "valid_until": "2026-08-29T23:12:23.528167+00:00",
+      "verified_at": "2026-08-29T22:12:23.528167+00:00"
     }
   ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "44d28977b7c64d17b496cd2b24b530e7",
+  "run_id": "0d564554e97d47c8811b9f8f4d9350bd",
   "schema_version": "1.0",
-  "source_hash": "0267c2ee8de175ebfb9e4669b83e0f364f8fbeacfb976cd2d99bd13583f48042",
-  "valid_until": "2026-08-29T22:10:03.636329+00:00",
+  "source_hash": "424d6a9aa6cf5f4fd02802fd2a366d4921016f51cd7ea5b54f49b0ece809ef53",
+  "valid_until": "2026-08-29T22:20:13.789052+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",
