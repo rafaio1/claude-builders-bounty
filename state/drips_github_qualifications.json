@@ -7,114 +7,29 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 9,
-  "drips_run_id": "d824904900d44f96b4588dc66ad0fbf1",
-  "drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
+  "drips_candidate_count": 0,
+  "drips_run_id": "fc21a6ff215c41bb80556f79c7398644",
+  "drips_source_hash": "fb93226528bf150ab3ea02dd5bd148e7dc731047c324e7d8fe2ec0ce3b65e97f",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-29T22:12:23.528167+00:00",
+  "generated_at": "2026-08-29T22:33:23.562220+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788045143
+    "reset_epoch": 1788046403
   },
-  "newly_audited_candidate_key": "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5",
-  "qualification_count": 1,
-  "qualifications": [
-    {
-      "candidate_id": "drips:cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
-      "candidate_key": "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5",
-      "current_drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
-      "decision": "rejected",
-      "drips_issue_id": "cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
-      "drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252",
-        "issue_comments_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/comments?per_page=100",
-        "issue_node_id": "I_kwDOPJJMJ88AAAABOC7Jgw",
-        "issue_timeline_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T22:09:20Z",
-        "license_source": null,
-        "license_spdx": null,
-        "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist",
-        "repository_node_id": "R_kgDOPJJMJw",
-        "repository_pushed_at": "2026-08-29T11:01:11Z",
-        "tree_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": false,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": true,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": false,
-        "tests_present": true
-      },
-      "issue_number": 252,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 1,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": true,
-          "substantive_body": false,
-          "test_expectation": false
-        },
-        "deadline_margin_hours": -10.21,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": []
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "license_not_proven",
-        "qualification_score_below_threshold",
-        "scope_not_sufficiently_testable"
-      ],
-      "repo": "AudioBitsStellar/AudioBlocks_For_Artist",
-      "schema_version": "1.0",
-      "score": 68.5,
-      "title": "fix: provider.tsx error retry uses any type",
-      "valid_until": "2026-08-29T23:12:23.528167+00:00",
-      "verified_at": "2026-08-29T22:12:23.528167+00:00"
-    }
-  ],
+  "newly_audited_candidate_key": null,
+  "qualification_count": 0,
+  "qualifications": [],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "0d564554e97d47c8811b9f8f4d9350bd",
+  "run_id": "279bf3335adb4577a0bcddf566db88a9",
   "schema_version": "1.0",
-  "source_hash": "424d6a9aa6cf5f4fd02802fd2a366d4921016f51cd7ea5b54f49b0ece809ef53",
-  "valid_until": "2026-08-29T22:20:13.789052+00:00",
+  "source_hash": "a53b360fea328f4b3a1991653378e7b659cc033aad5a99aa869c6844ee33abc6",
+  "valid_until": "2026-08-29T22:41:10.203035+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",
