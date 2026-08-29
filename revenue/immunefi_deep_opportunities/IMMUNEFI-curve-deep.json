@@ -1,10 +1,23 @@
 {
   "program": "Unknown",
   "categories": [],
-  "tiers": [],
-  "raw_snippet": "### Result\n\"Not Found\"\n### Ran Playwright code\n```js\nawait page.evaluate('() => document.querySelector(\\'main\\')?.innerText?.substring(0, 10000) || document.body.innerText.substring(0, 10000)');\n```\n### Page\n- Page URL: https://immunefi.com/bug-bounty/unknown/information/\n- Page Title: Immunefi\n- HTTP status: 404\n- Console: 1 errors, 7 warnings\n### Events\n- New console entries: .playwright-cli/console-2026-08-29T07-19-56-189Z.log#L2-L8\n",
-  "scope_keywords": [],
+  "tiers": [
+    {
+      "severity": "low",
+      "payout": "."
+    },
+    {
+      "severity": "DeFi",
+      "payout": "."
+    }
+  ],
+  "raw_snippet": "Back to Explore\nEthena\n\nEthena is a synthetic dollar protocol built on Ethereum that will provide a crypto-native solution for money not reliant on traditional banking system infrastructure, alongside a globally accessible dollar denominated savings instrument - the 'Internet Bond'.\n\nStablecoin\nMaximum Bounty\n$3,000,000\nLive Since\n04 April 2024\nLast Updated\n11 August 2026\n\nTriaged by Immunefi\n\nPoC Required\n\nVault program\n\nKYC required\n\nArbitration enabled\n\nSubmit a Bug\nInformation\nScope\nResources\nImmunefi vault program\n\nFunds available\n\n$12,500\n\n30d Avg. Funds availability\n\n$12,493.04\n\nAssets in vault\n\n12.5k \u00a0USDT\n\nPublic vault address\n\n0xCd3a85aB5aF518370bc5e679C043BBE0AED1F6E5\nRewards\nEthena provides rewards in USDC on Ethereum, denominated in USD.\nRewards by Threat Level\nSmart Contract\nCritical\nMax: $3,000,000\nMin: $100,000\nPrimacy of Impact\nHigh\nMax: $75,000\nMin: $10,000\nPrimacy of Impact\nMedium\nFlat: $10,000\nPrimacy of Impact\nLow\nFlat: $2,500\nPrimacy of Impact\nCritical Reward Calculation\nMainnet assets:\n\nReward amount is 10% of the funds directly affected up to a maximum of:\n\n$3,000,000\n\nMinimum reward to discourage security researchers from withholding a bug report:\n\n$100,000\nWebsites and Applications\nCritical\nMax: $50,000\nMin: $20,000\nPrimacy of Impact\nHigh\nFlat: $15,000\nPrimacy of Rules\nRewards Body\n\nRewards are distributed according to the impact of the vulnerability based on the Immunefi Vulnerability Severity Classification System V2.3.\n\nReward Calculation for Critical Level Reports\n\nFor critical smart contract bugs, the reward amount is 10% of the funds directly affected up to a maximum of USD $3 Million. The calculation of the amount of funds at risk is based on the time and date the bug report is submitted. However, a minimum reward of USD $100,000 is to be rewarded in order to incentivize security researchers against withholding a critical bug report.\n\nRepeatable Attack Limitations\n\nIf the smart contract where the vulnerability exists can be upgraded ",
+  "scope_keywords": [
+    "staking",
+    "oracle",
+    "smart contract"
+  ],
   "source_url": "https://immunefi.com/bug-bounty/unknown/",
   "parent_opportunity_id": "IMMUNEFI-curve",
-  "scanned_at": "2026-08-29T07:20:29.194431+00:00"
+  "scanned_at": "2026-08-29T13:27:04.781812+00:00"
 }
