@@ -3922,7 +3922,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
       "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
       "never": [
@@ -3936,7 +3936,7 @@
         "src/agentic/aro/work.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
       "map_id": "20260818T030213Z",
       "history": [
         {
@@ -4043,6 +4043,11 @@
           "at": "2026-08-26T13:45:00+00:00",
           "event": "requeued",
           "detail": "watchdog: wordlist false positive fixed in scan_forbidden; ledger exemption allows pipeline to process this proposal again"
+        },
+        {
+          "at": "2026-08-29T11:14:08+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
         }
       ],
       "review_feedback": "SUMMARY: Working tree já está limpa; arquivos do core ARO (config.py, cycle.py, store.py, mail.py) e tests/test_aro.py já estão commitados nesta branch. Testes unitários validados: 11 passed em 1.78s. Nenhuma edição necessária — proposta satisfeita pelo estado atual do repositório."
