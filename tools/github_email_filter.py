@@ -17,8 +17,12 @@ try:
     from googleapiclient.discovery import build
     from google.auth.transport.requests import Request
 except ImportError:
-    print("ERROR: google-auth/google-api-python-client not installed.")
-    sys.exit(1)
+    if __name__ == "__main__":
+        print("ERROR: google-auth/google-api-python-client not installed.")
+        sys.exit(1)
+    Credentials = None
+    build = None
+    Request = None
 
 SCOPES = ['https://www.googleapis.com/auth/gmail.modify']
 TOKEN_PATH = '/Agentic/.config/gmail_oauth_token.json'
