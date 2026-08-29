@@ -490,6 +490,49 @@ def discover_bounties():
             log(f"Search failed for '{term}': {e}")
         time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
     # Also search Algora bounties
+    # High-value discovery: prioritize large payouts to accelerate capital generation
+    high_value_queries = [
+        'label:"$5000" state:open is:issue',
+        'label:"$10000" state:open is:issue',
+        'label:"$25000" state:open is:issue',
+        'label:"$50000" state:open is:issue',
+        '"audit contest" state:open is:issue',
+        '"security audit" "$" state:open is:issue',
+        '"bounty" "$10000" state:open is:issue',
+        '"bounty" "$5000" state:open is:issue',
+        'org:immunefi state:open is:issue',
+        'org:code4rena state:open is:issue',
+        'org:sherlock-xyz state:open is:issue',
+        'org:hats-finance state:open is:issue',
+    ]
+    for q in high_value_queries:
+        _check_gh_rate_limit()
+        cmd = f'gh search issues "{q}" --limit 50 --json repository,title,url,labels,createdAt,body'
+        try:
+            res = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=45)
+            if res.returncode == 0 and res.stdout.strip() not in ("", "[]"):
+                items = json.loads(res.stdout)
+                for item in items:
+                    url = item.get("url", "")
+                    if not url or url in seen_urls:
+                        continue
+                    seen_urls.add(url)
+                    repo = item.get("repository", {}).get("nameWithOwner", "unknown")
+                    labels = [l["name"] for l in item.get("labels", [])]
+                    title = item.get("title", "")
+                    body = item.get("body", "") or ""
+                    found.append({
+                        "url": url,
+                        "title": title,
+                        "repository": {"nameWithOwner": repo},
+                        "labels": [{"name": l} for l in labels],
+                        "body": body[:2000],
+                        "source": "high_value"
+                    })
+        except Exception as e:
+            log(f"High-value search failed for '{q}': {e}")
+        time.sleep(1)
+
     algora_queries = [
         "label:bounty state:open is:issue",
         "algora bounty state:open",
