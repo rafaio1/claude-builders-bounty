@@ -1,0 +1,50 @@
+{
+  "grant_id": "GRANT-20260826115218-defi_security_scanner",
+  "template": "defi_security_scanner",
+  "title": "Autonomous DeFi Security Scanner & Report Generator",
+  "category": "defi",
+  "description": "Automated scanning pipeline for DeFi smart contracts that identifies vulnerabilities, validates findings, and generates submission-ready reports for Immunefi and Code4rena bounty programs.",
+  "impact": "Increases security audit throughput by 10x compared to manual review. Enables continuous monitoring of deployed protocols.",
+  "funding_goal_usd": 8000,
+  "milestones": [
+    {
+      "name": "Scanner Core",
+      "amount": 3000,
+      "deliverable": "Static analysis engine supporting Solidity/Vyper with reentrancy, overflow, and access control detection"
+    },
+    {
+      "name": "Report Automation",
+      "amount": 2500,
+      "deliverable": "API integration with Immunefi/Code4rena for autonomous report submission"
+    },
+    {
+      "name": "False Positive Reduction",
+      "amount": 2500,
+      "deliverable": "ML-based validation layer reducing false positive rate below 5%"
+    }
+  ],
+  "tags": [
+    "security",
+    "smart-contracts",
+    "immunefi",
+    "code4rena",
+    "automation"
+  ],
+  "status": "drafted",
+  "platform": "gitcoin",
+  "submission_url": "https://grants.gitcoin.co/",
+  "requirements": {
+    "github_repo": "Required - link to agent repository",
+    "demo_video": "Recommended - 2-3 min walkthrough",
+    "team_verification": "Required - Gitcoin Passport score >= 15",
+    "quadratic_funding": "Eligible for QF rounds"
+  },
+  "drafted_at": "2026-08-26T11:52:18.033738+00:00",
+  "next_steps": [
+    "Create GitHub repository with agent source code",
+    "Record demo video showing autonomous operation",
+    "Obtain Gitcoin Passport verification",
+    "Submit via https://grants.gitcoin.co/ during active round",
+    "Share on Twitter/Discord for community support"
+  ]
+}

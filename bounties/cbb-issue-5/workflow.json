@@ -1,0 +1,156 @@
+{
+  "name": "Weekly Dev Summary (Claude)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": 5,
+              "triggerAtHour": 17
+            }
+          ]
+        }
+      },
+      "id": "cron-trigger",
+      "name": "Weekly Cron",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/commits",
+        "options": {
+          "qs": {
+            "since": "={{ new Date(Date.now() - 7*24*60*60*1000).toISOString() }}",
+            "until": "={{ new Date().toISOString() }}"
+          },
+          "headers": {
+            "Authorization": "Bearer {{ $env.GITHUB_TOKEN }}"
+          }
+        }
+      },
+      "id": "fetch-commits",
+      "name": "Fetch Commits",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [300, 0]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/issues",
+        "options": {
+          "qs": {
+            "state": "closed",
+            "since": "={{ new Date(Date.now() - 7*24*60*60*1000).toISOString() }}"
+          },
+          "headers": {
+            "Authorization": "Bearer {{ $env.GITHUB_TOKEN }}"
+          }
+        }
+      },
+      "id": "fetch-issues",
+      "name": "Fetch Issues",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [300, 200]
+    },
+    {
+      "parameters": {
+        "url": "=https://api.github.com/repos/{{ $env.GITHUB_REPO }}/pulls",
+        "options": {
+          "qs": {
+            "state": "closed",
+            "sort": "updated",
+            "direction": "desc"
+          },
+          "headers": {
+            "Authorization": "Bearer {{ $env.GITHUB_TOKEN }}"
+          }
+        }
+      },
+      "id": "fetch-prs",
+      "name": "Fetch PRs",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [300, 400]
+    },
+    {
+      "parameters": {
+        "mode": "append",
+        "options": {}
+      },
+      "id": "merge-data",
+      "name": "Merge Data",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [600, 200]
+    },
+    {
+      "parameters": {
+        "model": "claude-sonnet-4-20250514",
+        "messages": {
+          "values": [
+            {
+              "role": "user",
+              "content": "=Generate a concise weekly developer summary in {{ $env.SUMMARY_LANGUAGE || 'EN' }} for the repository {{ $env.GITHUB_REPO }}.\n\nCommits this week: {{ JSON.stringify($json.commits) }}\nClosed issues: {{ JSON.stringify($json.issues) }}\nMerged PRs: {{ JSON.stringify($json.prs) }}\n\nFormat as a narrative with sections: Highlights, Key Changes, Notable Fixes, and Next Steps."
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "claude-summary",
+      "name": "Claude Summary",
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.1,
+      "position": [900, 200],
+      "credentials": {
+        "anthropicApi": {
+          "id": "CLAUDE_API_CRED_ID",
+          "name": "Claude API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "webhookUrl": "={{ $env.DISCORD_WEBHOOK_URL }}",
+        "text": "={{ $json.summary }}",
+        "options": {}
+      },
+      "id": "discord-notify",
+      "name": "Discord Notify",
+      "type": "n8n-nodes-base.discord",
+      "typeVersion": 2,
+      "position": [1200, 200]
+    }
+  ],
+  "connections": {
+    "Weekly Cron": {
+      "main": [
+        [{ "node": "Fetch Commits", "type": "main", "index": 0 }],
+        [{ "node": "Fetch Issues", "type": "main", "index": 0 }],
+        [{ "node": "Fetch PRs", "type": "main", "index": 0 }]
+      ]
+    },
+    "Fetch Commits": {
+      "main": [[{ "node": "Merge Data", "type": "main", "index": 0 }]]
+    },
+    "Fetch Issues": {
+      "main": [[{ "node": "Merge Data", "type": "main", "index": 1 }]]
+    },
+    "Fetch PRs": {
+      "main": [[{ "node": "Merge Data", "type": "main", "index": 2 }]]
+    },
+    "Merge Data": {
+      "main": [[{ "node": "Claude Summary", "type": "main", "index": 0 }]]
+    },
+    "Claude Summary": {
+      "main": [[{ "node": "Discord Notify", "type": "main", "index": 0 }]]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
