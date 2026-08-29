@@ -8,36 +8,36 @@
     "rejected_cache_ttl_seconds": 3600
   },
   "drips_candidate_count": 10,
-  "drips_run_id": "095fd32c70f046e7a2811f4fbde7e9de",
-  "drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
+  "drips_run_id": "4877929e2a664f9686e63f715c87de4f",
+  "drips_source_hash": "3279ca0f8022b933d21b765b3339969ad3afafdcd9daddfe7513c73e6493f554",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-29T22:54:02.538277+00:00",
+  "generated_at": "2026-08-29T23:04:23.556968+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788047643
+    "reset_epoch": 1788048263
   },
-  "newly_audited_candidate_key": "a311ca4d9fff14bc58d3ec24edf8620a1355b6002d6fa23666d8f35e0a1a0da9",
+  "newly_audited_candidate_key": "29b2c55a598b2133d5babcfdb1972c182d3248174a274e55d645cf2001da9586",
   "qualification_count": 1,
   "qualifications": [
     {
-      "candidate_id": "drips:52264c51-3960-4d69-b594-5bb2157a1d60",
-      "candidate_key": "a311ca4d9fff14bc58d3ec24edf8620a1355b6002d6fa23666d8f35e0a1a0da9",
-      "current_drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
+      "candidate_id": "drips:d98d2519-f7bb-43a6-9ad0-96de671bc2b2",
+      "candidate_key": "29b2c55a598b2133d5babcfdb1972c182d3248174a274e55d645cf2001da9586",
+      "current_drips_source_hash": "3279ca0f8022b933d21b765b3339969ad3afafdcd9daddfe7513c73e6493f554",
       "decision": "rejected",
-      "drips_issue_id": "52264c51-3960-4d69-b594-5bb2157a1d60",
-      "drips_source_hash": "61652f79c59bf2288b0b46bd7d394f3309a60f2e0541b016ffbc8324430e6ca5",
+      "drips_issue_id": "d98d2519-f7bb-43a6-9ad0-96de671bc2b2",
+      "drips_source_hash": "3279ca0f8022b933d21b765b3339969ad3afafdcd9daddfe7513c73e6493f554",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231",
-        "issue_comments_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231/comments?per_page=100",
-        "issue_node_id": "I_kwDOTLxqYM8AAAABOdLhXQ",
-        "issue_timeline_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/231/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T22:52:02Z",
+        "issue_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/276",
+        "issue_comments_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/276/comments?per_page=100",
+        "issue_node_id": "I_kwDOTLxqYM8AAAABOdMwvw",
+        "issue_timeline_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/276/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T23:01:13Z",
         "license_source": "github_repository_license",
         "license_spdx": "MIT",
         "package_manifest_api_url": null,
@@ -66,65 +66,60 @@
         "points_labels_consistent": true,
         "recent_merged_pr_history": true,
         "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
+        "referenced_paths_grounded": true,
         "repository_identity": true,
         "repository_public_active": true,
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": false,
+        "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 231,
+      "issue_number": 276,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 5,
+        "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": false,
+          "expected_behavior": true,
           "substantive_body": true,
           "test_expectation": false
         },
-        "deadline_margin_hours": -10.9,
+        "deadline_margin_hours": -11.07,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "style.css",
-          "style.cssText"
-        ],
+        "missing_referenced_paths": [],
         "recent_merged_prs_sample": 19,
         "referenced_paths": [
-          "app/src/components/ArtifactProgress.tsx",
-          "app/src/style.css",
-          "packages/client/src/artifacts.ts",
-          "style.css",
-          "style.cssText"
+          "circuits/README.md",
+          "circuits/membership.template.circom",
+          "circuits/scripts/check-poseidon-constants.mjs",
+          "docs/poseidon-provenance.md",
+          "packages/client/src/identity.ts"
         ]
       },
       "rejection_reasons": [
         "continuous_integration_not_proven",
         "github_application_comment_present",
         "insufficient_wave_deadline_margin",
-        "qualification_score_below_threshold",
-        "referenced_repository_paths_missing",
-        "scope_not_sufficiently_testable"
+        "qualification_score_below_threshold"
       ],
       "repo": "crackedstudio/sharibo",
       "schema_version": "1.0",
-      "score": 69.5,
-      "title": "Move the SDK's DOM progress indicator into the app",
-      "valid_until": "2026-08-29T23:54:02.538277+00:00",
-      "verified_at": "2026-08-29T22:54:02.538277+00:00"
+      "score": 73.25,
+      "title": "Document the upgrade runbook for the Poseidon circom dependency",
+      "valid_until": "2026-08-30T00:04:23.556968+00:00",
+      "verified_at": "2026-08-29T23:04:23.556968+00:00"
     }
   ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "c4a026fe7dc14afaa222327c24894fff",
+  "run_id": "050710adfa3547858fddf7d5dd0a55d6",
   "schema_version": "1.0",
-  "source_hash": "1d5806ff72192776d2c96e578a1c66a9f37d0f63a820b907b22a3f6734422981",
-  "valid_until": "2026-08-29T23:02:05.287807+00:00",
+  "source_hash": "e7e653a11f7bb46620b8d063584088ac67b827e12f83db900d40fa0d23e66a55",
+  "valid_until": "2026-08-29T23:12:46.803040+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",
