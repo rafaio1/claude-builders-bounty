@@ -609,6 +609,13 @@ def triage(candidates):
     global _TRIAGE_CONSECUTIVE_FAILURES
     if '_TRIAGE_CONSECUTIVE_FAILURES' not in globals():
         _TRIAGE_CONSECUTIVE_FAILURES = 0
+
+    # Meta keywords filter - defined at function scope to avoid UnboundLocalError
+    META_KW_V = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
+                 "funding opportunity", "community update", "as a developer, i want",
+                 "push notifications: native mobile",
+                 "payout blocked", "payment issue", "cannot receive payment",
+                 "algora", "country is not supported", "reward status"]
     if not candidates: return []
     api_key, base_url, default_model = get_config()
     if not api_key:
@@ -744,9 +751,6 @@ CRITICAL CONSTRAINTS:
         url_to_cand = {c.get("url"): c for c in sorted_cands}
         # Validate: reject any selection not in original candidate set (hallucination guard)
         valid_urls = {c.get("url") for c in sorted_cands}
-        META_KW_V = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
-                     "funding opportunity", "community update", "as a developer, i want",
-                     "push notifications: native mobile"]
         validated = []
         for s in selected:
             url = s.get("url", "")
@@ -768,12 +772,6 @@ CRITICAL CONSTRAINTS:
     # HEURISTIC FALLBACK: if LLM returns [] or fails validation, pick best non-meta candidate
     # This prevents the engine from stalling when the model is too strict
     if not (isinstance(selected, list) and len(selected) > 0):
-        # Ensure META_KW_V is defined for fallback scope
-        META_KW_V = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
-                     "funding opportunity", "community update", "as a developer, i want",
-                     "push notifications: native mobile",
-                     "payout blocked", "payment issue", "cannot receive payment",
-                     "algora", "country is not supported", "reward status"]
         log("TRIAGE_FALLBACK: LLM selection failed, applying heuristic pick from sorted candidates")
         fallback_picks = []
         for c in sorted_cands[:3]:
