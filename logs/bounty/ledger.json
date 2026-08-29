@@ -117,15 +117,6 @@
       "date_added": "2026-08-29T13:30:03.881815+00:00"
     },
     {
-      "type": "orchestrator_cycle",
-      "timestamp": "2026-08-29T13:30:04.077141+00:00",
-      "platforms_tracked": 7,
-      "bounties_pending_usd": 0,
-      "bounties_submitted_count": 0,
-      "telegram_eligible_count": 0,
-      "status": "operational"
-    },
-    {
       "type": "trade_opportunity",
       "id": "AIRDROP-BERACHAIN_TESTNET",
       "category": "testnet_airdrop",
@@ -182,7 +173,7 @@
     },
     {
       "type": "airdrop_farming_progress",
-      "timestamp": "2026-08-29T13:30:05.050387+00:00",
+      "timestamp": "2026-08-29T13:45:03.572170+00:00",
       "completed_tasks": 5,
       "pending_human_tasks": 2,
       "total_txs": 5,
@@ -208,6 +199,63 @@
         "contracts/models/WBTCYieldStrategy.sol"
       ],
       "notes": "WBTC yield strategy implementing ModelInterface and ModelStorage. Submitted for ~$6,000 USD (600 PUNK) bounty."
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-29T13:45:03.428111+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-29T13:30:04.077141+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-743292",
+      "category": "liquidity_mining_signals",
+      "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
+      "capital_required": true,
+      "risk_level": "medium",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-29T13:45:03.508458+00:00"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-761128",
+      "category": "liquidity_mining_signals",
+      "name": "stETH/ETH on Curve (Mainnet)",
+      "capital_required": true,
+      "risk_level": "low",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-29T13:45:03.508469+00:00"
+    },
+    {
+      "date": "2026-08-29T13:51:37.170983Z",
+      "bounty_id": "Scottcjn/rustchain-bounties#16251",
+      "title": "Fix rustchain.org install script \u2014 macOS crash + shellcheck",
+      "amount_usd": 1.5,
+      "amount_rtc": 10,
+      "status": "claimed",
+      "pr_url": "https://github.com/Scottcjn/Rustchain/pull/8289",
+      "issue_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16251",
+      "branch": "fix/install-script-macos-16251",
+      "wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
+      "deliverables": [
+        "install.sh POSIX fix",
+        "shellcheck clean"
+      ],
+      "notes": "Replaced grep -oP with grep -E, quoted vars. Awaiting merge for 10 RTC payout."
     }
   ]
 }
