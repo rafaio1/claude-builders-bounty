@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-08-29T08:45:00Z",
+  "strategy": "zero_capital_fast_payout",
+  "targets": [
+    {
+      "rank": 1,
+      "program": "Ethena",
+      "max_bounty_usd": 3000000,
+      "triage": "Immunefi",
+      "kyc_required": false,
+      "action": "Clone repo and run slither/mythril on smart contracts. Focus on USDe/sUSDe logic.",
+      "priority": "CRITICAL"
+    },
+    {
+      "rank": 2,
+      "program": "The Graph",
+      "max_bounty_usd": 50000,
+      "triage": "Immunefi",
+      "total_paid_usd": 1500000,
+      "kyc_required": false,
+      "action": "Automated scan of subgraph indexing logic and staking contracts. High hit rate.",
+      "priority": "HIGH"
+    },
+    {
+      "rank": 3,
+      "program": "SSV Network",
+      "max_bounty_usd": 250000,
+      "vault_tvl_usd": 396100,
+      "kyc_required": false,
+      "action": "Audit validator registration and fee recipient logic. Standard triage requires solid PoC.",
+      "priority": "MEDIUM"
+    },
+    {
+      "rank": 4,
+      "program": "Enzyme Blue",
+      "max_bounty_usd": 200000,
+      "median_resolution_hours": 4,
+      "triage": "Immunefi",
+      "action": "Fast turnaround target. Check vault adapter integrations.",
+      "priority": "MEDIUM"
+    }
+  ],
+  "next_steps": [
+    "git clone https://github.com/ethenaprotocol/ethena-contracts.git /tmp/ethena-audit",
+    "Run static analysis suite (slither, mythril, aderyn)",
+    "Review findings against Immunefi scope for Ethena",
+    "If no criticals found in 4h, pivot to The Graph"
+  ]
+}
