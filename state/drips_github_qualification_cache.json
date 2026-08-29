@@ -443,8 +443,90 @@
       "title": "Add a zero-byte WASM file diagnostic test",
       "valid_until": "2026-08-29T22:41:03.726374+00:00",
       "verified_at": "2026-08-29T21:41:03.726374+00:00"
+    },
+    "d632eb1320b123303855b1a629aa0b64eccc1032af04986a7ac9cdc1dec918bb": {
+      "candidate_id": "drips:61de4184-72fa-40a0-86f3-c46008f8ee24",
+      "candidate_key": "d632eb1320b123303855b1a629aa0b64eccc1032af04986a7ac9cdc1dec918bb",
+      "decision": "rejected",
+      "drips_issue_id": "61de4184-72fa-40a0-86f3-c46008f8ee24",
+      "drips_source_hash": "68e8a610066b6e8fb7989a2892464c509caf4862c7a661a07a9ecddb427317fc",
+      "evidence": {
+        "default_branch": "main",
+        "issue_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848",
+        "issue_comments_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848/comments?per_page=100",
+        "issue_node_id": "I_kwDOSah4Hs8AAAABOiiEOA",
+        "issue_timeline_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/issues/848/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T22:00:33Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract",
+        "repository_node_id": "R_kgDOSah4Hg",
+        "repository_pushed_at": "2026-08-29T20:22:30Z",
+        "tree_api_url": "https://api.github.com/repos/JSE-ORG/trust-link-contract/git/trees/main?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 200,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": true,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": true,
+        "implementation_allowed": false,
+        "license_present": false,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": true,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 848,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 4,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": true
+        },
+        "deadline_margin_hours": -10.03,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [],
+        "recent_merged_prs_sample": 17,
+        "referenced_paths": []
+      },
+      "rejection_reasons": [
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "license_not_proven",
+        "qualification_score_below_threshold"
+      ],
+      "repo": "JSE-ORG/trust-link-contract",
+      "schema_version": "1.0",
+      "score": 72.25,
+      "title": "20 ignored tests fail when forced \u2014 regression stubs without tracking issue refs",
+      "valid_until": "2026-08-29T23:01:53.807123+00:00",
+      "verified_at": "2026-08-29T22:01:53.807123+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-29T21:51:40.804105+00:00"
+  "updated_at": "2026-08-29T22:01:53.807123+00:00"
 }
