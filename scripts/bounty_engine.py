@@ -768,6 +768,12 @@ CRITICAL CONSTRAINTS:
     # HEURISTIC FALLBACK: if LLM returns [] or fails validation, pick best non-meta candidate
     # This prevents the engine from stalling when the model is too strict
     if not (isinstance(selected, list) and len(selected) > 0):
+        # Ensure META_KW_V is defined for fallback scope
+        META_KW_V = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
+                     "funding opportunity", "community update", "as a developer, i want",
+                     "push notifications: native mobile",
+                     "payout blocked", "payment issue", "cannot receive payment",
+                     "algora", "country is not supported", "reward status"]
         log("TRIAGE_FALLBACK: LLM selection failed, applying heuristic pick from sorted candidates")
         fallback_picks = []
         for c in sorted_cands[:3]:
