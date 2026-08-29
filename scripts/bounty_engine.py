@@ -407,6 +407,10 @@ def discover_bounties():
                                        "templeos", "cross-compilation", "reproducible cross", "0.03 btc"]
                     if any(s in repo_lower for s in spam_indicators):
                         continue
+                    # Also check title for spam/impossible tasks (e.g. 0.03 BTC, TempleOS)
+                    title_lower = (item.get("title", "") or "").lower()
+                    if any(s in title_lower for s in spam_indicators):
+                        continue
                     labels = [l["name"] for l in item.get("labels", [])]
                     # Skip meta/alert issues that are not real bounties
                     meta_labels = {"bounty-alert", "bounty-scout", "meta", "aggregated", "tracker"}
