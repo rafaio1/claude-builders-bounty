@@ -382,8 +382,8 @@ def discover_bounties():
             if res.returncode != 0:
                 err_msg = res.stderr[:200] if res.stderr else ""
                 if "rate limit" in err_msg.lower() or "403" in err_msg:
-                    log(f"Query '{term}' rate limited, backing off 60s")
-                    time.sleep(60)
+                    log(f"Query '{term}' rate limited, skipping remaining discovery queries this cycle")
+                    break
                 else:
                     log(f"Query '{term}' failed (rc={res.returncode}): {err_msg[:100]}")
                     time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
@@ -676,7 +676,10 @@ def triage(candidates):
                "stop-hook loop", "respawn bounty", "scientific bounty system",
                "urgent – payout", "urgent – payment", "algora", "country is not supported",
                "reward status", "bounty #", "pr #", "research marketplace",
-               "global research", "r&d challenges"]
+               "global research", "r&d challenges",
+               # Hackathons, grants, and large competitions (not quick bug fixes)
+               "hackathon", "gitcoin", "mash", "grant", "challenge", "competition",
+               "defi hackathon", "bootcamp", "accelerator", "demo day", "pitch"]
     filtered = [c for c in candidates if not any(kw in c.get("title","").lower() for kw in META_KW)]
     if len(filtered) < len(candidates):
         log(f"Triage meta-filter: removed {len(candidates)-len(filtered)} internal/meta targets")
@@ -1276,7 +1279,7 @@ Fix issue #{issue_num}: {title} in {owner}/{repo}"""
         f"git checkout -b {unique_branch}",
         ["git", "add", "-A"],
         ["git", "commit", "-m", commit_msg],
-        f"git remote set-url origin https://x-access-token:{os.environ.get('GH_TOKEN','')}@github.com/{FORK_OWNER}/{repo}.git",
+        f"git remote set-url origin https://x-access-token:$(gh auth token)@github.com/{FORK_OWNER}/{repo}.git",
         f"bash -c \"gh repo view {FORK_OWNER}/{repo} --json name >/dev/null 2>&1 || gh repo fork {owner}/{repo} --clone=false --remote=false; sleep 3; git fetch origin\"",
         f"git push --force origin {unique_branch}"
     ]
