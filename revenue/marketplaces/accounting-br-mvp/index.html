@@ -124,3 +124,22 @@ footer{background:#0d4f2b;color:#fff;text-align:center;padding:24px 0;font-size:
 </footer>
 </body>
 </html>
+
+<!-- Lead Capture Modal -->
+<div id="leadModal" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);z-index:1000;align-items:center;justify-content:center">
+<div style="background:#fff;border-radius:12px;padding:32px;max-width:480px;width:90%;position:relative">
+<button onclick="document.getElementById('leadModal').style.display='none'" style="position:absolute;top:12px;right:16px;background:none;border:none;font-size:1.5rem;cursor:pointer">&times;</button>
+<h3 style="color:#0d4f2b;margin-bottom:8px">Listar sua Ferramenta</h3>
+<p style="font-size:0.9rem;color:#555;margin-bottom:16px">Preencha para receber o kit de integração e iniciar verificação CRC.</p>
+<form id="leadForm" onsubmit="event.preventDefault();alert('Obrigado! Entraremos em contato em até 24h.');document.getElementById('leadModal').style.display='none'">
+<label style="display:block;margin-bottom:12px"><span style="font-size:0.85rem;color:#333">Nome da Ferramenta *</span><input required type="text" name="tool_name" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-top:4px"></label>
+<label style="display:block;margin-bottom:12px"><span style="font-size:0.85rem;color:#333">Email do Desenvolvedor *</span><input required type="email" name="email" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-top:4px"></label>
+<label style="display:block;margin-bottom:12px"><span style="font-size:0.85rem;color:#333">Website / Demo URL</span><input type="url" name="website" placeholder="https://" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-top:4px"></label>
+<label style="display:block;margin-bottom:16px"><span style="font-size:0.85rem;color:#333">Integração Ativa *</span><select required name="integration" style="width:100%;padding:8px;border:1px solid #ccc;border-radius:4px;margin-top:4px"><option value="">Selecione...</option><option value="dominio">Domínio Sistemas</option><option value="contmatic">Contmatic</option><option value="ambos">Ambos</option></select></label>
+<button type="submit" style="width:100%;padding:12px;background:#0d4f2b;color:#fff;border:none;border-radius:6px;font-weight:600;cursor:pointer">Solicitar Verificação</button>
+</form>
+</div>
+</div>
+<script>
+document.querySelectorAll('a[href="#listar"]').forEach(function(el){el.addEventListener('click',function(e){e.preventDefault();document.getElementById('leadModal').style.display='flex'})});
+</script>
