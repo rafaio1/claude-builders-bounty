@@ -2175,7 +2175,7 @@
       "title": "Restaurar git_clean (Playbook git_clean e integrity): working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Integridade git_clean falhou. Fatia única — não misturar com outras áreas. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "change": "Não reset --hard. Só versionar esta fatia (files_hint) com o conteúdo já no disco. Ghost não reescreve esses arquivos; no máximo .gitignore ou improve/*. Paths: improve/README.md, src/agentic/improve.py, tests/test_improve.py.",
       "never": [
@@ -2191,7 +2191,7 @@
         "tests/test_improve.py"
       ],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri",
       "map_id": "20260817T013627Z",
       "history": [
         {
@@ -2243,6 +2243,11 @@
           "at": "2026-08-26T13:50:00+00:00",
           "event": "requeued",
           "detail": "watchdog: ledger.json excluded from collect_claude_changes validation; false large-file block resolved"
+        },
+        {
+          "at": "2026-08-29T11:13:25+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260817-restaurar-git-clean-playbook-git-clean-e-integri"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
@@ -7920,7 +7925,7 @@
     {
       "title": "Add monetary estimation fields to revenue catalog and stream schemas",
       "kind": "bottleneck",
-      "priority": 1,
+      "priority": 0,
       "rationale": "Revenue streams (trade_opportunities, vuln_reports, catalog methods) lack monetary value fields, making it impossible to reconcile potencial/pendente/liquidado or track progress toward the US$20M aspirational target. The watchdog cannot distinguish high-value from zero-value streams.",
       "change": "Add estimated_value_usd (nullable float) to trade_opportunity schema, bounty_estimate_usd to vuln_report schema, and projected_annual_revenue_usd to catalog method schema. Update aggregation logic in revenue reconciliation to sum these fields. Backfill existing files with null/default values.",
       "never": [
