@@ -1510,10 +1510,3 @@ if __name__ == "__main__":
         import traceback as tb
         log(tb.format_exc())
         sys.exit(1)
-                    CLONE_BLOCKLIST_DISC.update({
-                        "claude-builders-bounty", "zhangjiayang6835-cyber/bounty-plaza",
-                        "bounty-board", "ai-bounty", "crypto-bounty-list", "web3-bounty-feed",
-                        "open-bounties", "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot",
-                        "relayhop/ClaudeEarnSelf-runtime", "Scottcjn/rustchain-bounties",
-                        "l2labs/zkspace-whitepaper"
-                    })
