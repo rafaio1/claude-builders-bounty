@@ -5043,7 +5043,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "pending",
+      "status": "developing",
       "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
       "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
       "never": [
@@ -5054,7 +5054,7 @@
       ],
       "files_hint": [],
       "theme": "engine",
-      "branch": "",
+      "branch": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
       "map_id": "20260818T030213Z",
       "history": [
         {
@@ -5106,6 +5106,11 @@
           "at": "2026-08-26T13:55:00+00:00",
           "event": "requeued",
           "detail": "watchdog: wordlist scan exemption for ledger.json now active; proposal unblocked"
+        },
+        {
+          "at": "2026-08-29T11:20:40+00:00",
+          "event": "claimed",
+          "detail": "improve/dev/imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f"
         }
       ],
       "review_feedback": "blocked: arquivo grande demais: improve/ledger.json"
