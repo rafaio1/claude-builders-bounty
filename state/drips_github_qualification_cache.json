@@ -269,27 +269,27 @@
       "valid_until": "2026-08-29T23:54:02.538277+00:00",
       "verified_at": "2026-08-29T22:54:02.538277+00:00"
     },
-    "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5": {
-      "candidate_id": "drips:cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
-      "candidate_key": "ea42dca56e63f581147aab383768b745279dd1c1b476b72c1e45a4abdfae6de5",
+    "d7e10918945ffd46bd04925bb05d523fc164c44d7fd2b8b356a95cc1c2151877": {
+      "candidate_id": "drips:cd4cf4f9-f7d8-49a9-9caa-2a04cdcd32b5",
+      "candidate_key": "d7e10918945ffd46bd04925bb05d523fc164c44d7fd2b8b356a95cc1c2151877",
       "decision": "rejected",
-      "drips_issue_id": "cc96ae3e-66cb-4796-aa56-da6b71a6a0ae",
-      "drips_source_hash": "ffc1c7f7cdcb271a309970d7a09b169962a99697fc312979e6fd080fa0dcabb1",
+      "drips_issue_id": "cd4cf4f9-f7d8-49a9-9caa-2a04cdcd32b5",
+      "drips_source_hash": "cce104379649e4fa6f5d8d0804c653384c0ac46af6ddca9a22a8f52d2a316de6",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252",
-        "issue_comments_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/comments?per_page=100",
-        "issue_node_id": "I_kwDOPJJMJ88AAAABOC7Jgw",
-        "issue_timeline_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/issues/252/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T22:09:20Z",
-        "license_source": null,
-        "license_spdx": null,
+        "issue_api_url": "https://api.github.com/repos/Heliobond/backend/issues/539",
+        "issue_comments_api_url": "https://api.github.com/repos/Heliobond/backend/issues/539/comments?per_page=100",
+        "issue_node_id": "I_kwDOS4swBM8AAAABOYjKEg",
+        "issue_timeline_api_url": "https://api.github.com/repos/Heliobond/backend/issues/539/timeline?per_page=100",
+        "issue_updated_at": "2026-08-29T23:12:01Z",
+        "license_source": "github_repository_license",
+        "license_spdx": "Apache-2.0",
         "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist",
-        "repository_node_id": "R_kgDOPJJMJw",
-        "repository_pushed_at": "2026-08-29T11:01:11Z",
-        "tree_api_url": "https://api.github.com/repos/AudioBitsStellar/AudioBlocks_For_Artist/git/trees/main?recursive=1"
+        "pull_history_api_url": "https://api.github.com/repos/Heliobond/backend/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/Heliobond/backend",
+        "repository_node_id": "R_kgDOS4swBA",
+        "repository_pushed_at": "2026-07-30T07:27:56Z",
+        "tree_api_url": "https://api.github.com/repos/Heliobond/backend/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -304,13 +304,13 @@
         "deadline_margin": false,
         "github_issue_open_unassigned": true,
         "implementation_allowed": false,
-        "license_present": false,
+        "license_present": true,
         "no_application_comments": false,
         "no_linked_pull_request_activity": true,
         "points_labels_consistent": true,
         "recent_merged_pr_history": true,
         "recent_repository_activity": true,
-        "referenced_paths_grounded": true,
+        "referenced_paths_grounded": false,
         "repository_identity": true,
         "repository_public_active": true,
         "repository_tree_complete": true,
@@ -319,40 +319,49 @@
         "scope_testable": false,
         "tests_present": true
       },
-      "issue_number": 252,
+      "issue_number": 539,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
         "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": true,
-          "substantive_body": false,
+          "expected_behavior": false,
+          "substantive_body": true,
           "test_expectation": false
         },
-        "deadline_margin_hours": -10.21,
+        "deadline_margin_hours": -11.25,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [],
+        "missing_referenced_paths": [
+          "dependabot.yml",
+          "renovate.json"
+        ],
         "recent_merged_prs_sample": 19,
-        "referenced_paths": []
+        "referenced_paths": [
+          ".github",
+          "bun.lock",
+          "dependabot.yml",
+          "package.json",
+          "renovate.json"
+        ]
       },
       "rejection_reasons": [
         "github_application_comment_present",
         "insufficient_wave_deadline_margin",
-        "license_not_proven",
         "qualification_score_below_threshold",
+        "referenced_repository_paths_missing",
         "scope_not_sufficiently_testable"
       ],
-      "repo": "AudioBitsStellar/AudioBlocks_For_Artist",
+      "repo": "Heliobond/backend",
       "schema_version": "1.0",
-      "score": 68.5,
-      "title": "fix: provider.tsx error retry uses any type",
-      "valid_until": "2026-08-29T23:12:23.528167+00:00",
-      "verified_at": "2026-08-29T22:12:23.528167+00:00"
+      "score": 72.5,
+      "title": "Add Dependabot or Renovate for automated dependency updates",
+      "valid_until": "2026-08-30T00:14:53.544430+00:00",
+      "verified_at": "2026-08-29T23:14:53.544430+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-29T23:04:23.556968+00:00"
+  "updated_at": "2026-08-29T23:14:53.544430+00:00"
 }
