@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-29T11:42:29+00:00",
+  "updated_at": "2026-08-29T11:42:41+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -28,7 +28,7 @@
         "tests/test_loop.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
+      "branch": "",
       "map_id": "20260817T120129Z",
       "history": [
         {
@@ -40,6 +40,11 @@
           "at": "2026-08-18T00:14:43+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
+        },
+        {
+          "at": "2026-08-29T11:42:41+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -5646,7 +5651,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia ARO core)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Segunda fatia para limpar a working tree. Isola as alterações do núcleo do ARO (config, cycle, store) e testes associados, evitando um commit monolítico e facilitando o review.",
       "change": "Stagear e commitar os arquivos do core do ARO e o agent prompt (.cursor), garantindo que os testes unitários (test_aro.py) passem antes do commit.",
       "never": [
@@ -5664,7 +5669,7 @@
         "tests/test_aro.py"
       ],
       "theme": "ai",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260817T230624Z",
       "history": [
         {
@@ -5756,6 +5761,11 @@
           "at": "2026-08-18T11:28:27+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-29T11:42:41+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -5766,7 +5776,7 @@
       "title": "Restaurar git_clean: working tree limpa na main (fatia novos módulos ARO)",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "Terceira fatia para os arquivos não rastreados (untracked). Isola a adição dos novos domínios (accounts, commerce, finance, opportunities, wise) e seus testes correspondentes.",
       "change": "Adicionar (git add) e commitar os novos módulos e testes. O develop não reescreve, apenas versiona o que já está em disco.",
       "never": [
@@ -5787,7 +5797,7 @@
         "tests/test_wise.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "branch": "",
       "map_id": "20260817T230624Z",
       "history": [
         {
@@ -5799,6 +5809,11 @@
           "at": "2026-08-18T11:48:30+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f"
+        },
+        {
+          "at": "2026-08-29T11:42:41+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
@@ -6456,7 +6471,7 @@
       "title": "Restaurar git_clean: Fatia CLI e Playbook",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "O arquivo cli.py está modificado e precisa ser isolado para manter o histórico limpo e focado no playbook/CLI.",
       "change": "O pipeline stageia e commita exclusivamente src/agentic/cli.py na main, garantindo que o develop corrija exatamente o feedback do review.",
       "never": [
@@ -6469,7 +6484,7 @@
         "src/agentic/cli.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook",
+      "branch": "",
       "map_id": "20260818T022635Z",
       "history": [
         {
@@ -6481,6 +6496,11 @@
           "at": "2026-08-18T12:08:53+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260818-restaurar-git-clean-fatia-cli-e-playbook"
+        },
+        {
+          "at": "2026-08-29T11:42:41+00:00",
+          "event": "released_stale",
+          "detail": "developing sem diff útil; devolve à fila"
         }
       ]
     },
