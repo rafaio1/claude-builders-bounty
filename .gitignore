@@ -1,131 +1,21 @@
-
- # === NESTED VENV IN REVENUE SUBPROJECTS ===
- # === P2P STACK RUNTIME (TESTNET CHAIN DATA) ===
- config/hats_protocol_scanner.json
- config/layer3_scanner.json
- config/rabbithole_scanner.json
- revenue/*/*/.venv/
- revenue/*/.venv/
- revenue/hats_opportunities/
- revenue/layer3_opportunities/
- revenue/rabbithole_opportunities/
-# === CODEX / AGENT LOCAL CONFIG ===
-# === EMBEDDED GIT REPOSITORIES (EXTERNAL CLONES) ===
-# === IDE / OS ===
-# === KNOWLEDGE BASE (RUNTIME-GENERATED) ===
-# === LOCK FILES ===
-# === NODE / FRONTEND ===
-# === PYTHON ===
-# === RUNTIME STATE, LOGS AND DATA ===
-# === SECRETS AND CREDENTIALS (NEVER VERSION) ===
-# Virtual environment
-*.d
-*.egg-info/
-*.jsonl
-*.key
-*.lock
-*.log
-*.o
-*.pem
-*.pid
-*.pyc
-*.pyo
-.DS_Store
-.agents/skills/
-.claude/settings.local.json
-.claude/skills/
-.codex/config.toml.bak
-.config/gmail_*
-.config/last_telegram*
-.env
-.env.*
-.idea/
-.playwright-cli/
 .playwright/
-.pytest_cache/
-.venv/
-.vscode/
-.worktrees/
-Thumbs.db
-__pycache__/
-arb_dashboard.html
-bounties/immunefi/*/
-bugbounty/oss/*/
-bugbounty/recon/
-build/
-bybit_futures/data/
-bybit_futures/logs/
-config/code4rena_scanner.json
-config/defi_platforms.json
-config/galxe_scanner.json
-config/gitcoin_grants.json
-config/immunefi_scanner.json
-config/intract_scanner.json
-config/sherlock_scanner.json
-config/testnet_airdrop_state.json
-config/trade_scanner.json
-config/vuln_report_config.json
-config/zealy_scanner.json
-credentials.json
-data/
-!data/aro/bounty_ledger.json
-data/orca_codex_terminals.json
-dist/
-id_rsa*
-improve/ledger.json.disabled
-improve/traces/
-knowledge/
-local_data/
-logs/
-logs/cron_revenue.log
-logs/defi_bounty_scanner.log
-logs/gitcoin_grant_drafter.log
-logs/revenue_orchestrator.log
-logs/testnet_airdrop_executor.log
-logs/trade_scanner.log
-logs/vuln_report_pipeline.log
+.playwright-cli/
+*.png
+*.webm
 node_modules/
-orchestrator/*.bak
-orchestrator/*.err
-orchestrator/*.out
-orchestrator/.active_positions_*.json
-orchestrator/audit_report.txt
-orchestrator/backtest_recommendation.json
-orchestrator/backtest_results.json
-orchestrator/backtest_results/
-orchestrator/bybit_spot_live.log
-orchestrator/meanrev_binance.log
-orchestrator/meanrev_bybit.log
-orchestrator/reconcile_output.txt
-orchestrator/state.json
-orchestrator/telegram_chats.txt
-orchestrator/v*_state.json
-orchestrator/v22d_active.json
-p2p-stack/
-p2p-stack/mostro/
-p2p-stack/robosats/node/
-revenue/bounties/*/
-revenue/code4rena_opportunities/
-revenue/email-cleanup/.venv/
-revenue/galxe_opportunities/
-revenue/grants/
-revenue/immunefi_opportunities/
-revenue/intract_opportunities/
-revenue/sherlock_opportunities/
-revenue/trade_opportunities/
-revenue/vuln_reports/
-revenue/zealy_opportunities/
-secrets/
-state/
-typescript
-typescript/
-workspace/
-workspace/bounty-exec/*/
-workspace/high-ticket/*/
-workspace/sparepack/
-
-# Pilot outputs (runtime artifacts, not versioned)
-pilots/*/output/
-orchestrator/vwap_paper_shadow.py
-bounties/immunefi/*
-revenue/bounties/*
+.env
+.claude/settings.local.json
+.venv/
+__pycache__/
+*.pyc
+.agentic.lock
+.agentic-improve.lock
+.agentic-loop.stop
+.agentic-aro.stop
+data/
+workspaces/
+.pytest_cache/
+*.egg-info/
+build/
+improve/traces/
+.cursor/
