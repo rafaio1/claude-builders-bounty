@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "updated_at": "2026-08-29T11:27:16+00:00",
+  "updated_at": "2026-08-29T11:33:26+00:00",
   "proposals": [
     {
       "id": "imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
@@ -506,7 +506,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -533,7 +533,7 @@
       ],
       "theme": "tools",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -560,7 +560,7 @@
       ],
       "theme": "ai",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -589,7 +589,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T120202Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-16T14:33:43+00:00",
@@ -5516,12 +5516,12 @@
       "id": "imp-20260817-restaurar-git-clean-working-tree-limpa-na-main-f",
       "key": "dba7935c51373e16",
       "canon": "a3da6bfc747a6d5c",
-      "title": "Restaurar git_clean: working tree limpa na main (fatia motor ARO)",
+      "title": "Restaurar git_clean: working tree limpa na main (FATIA: motor)",
       "kind": "bottleneck",
       "priority": 1,
       "status": "blocked",
-      "rationale": "Arquivo src/agentic/aro/work.py está sujo na main, impedindo a execução limpa do loop.",
-      "change": "Stagear e commitar estritamente src/agentic/aro/work.py na main, sem alterar escopo.",
+      "rationale": "Arquivos de estado do motor (ledger, PIDs, logs de grid e bybit) sujam a main e impedem a verificação de integridade git_clean.",
+      "change": "Atualizar .gitignore para ignorar ledger.jsonl, local_data/, *.pid e logs de execução do motor. O pipeline stageia apenas o .gitignore e remove os arquivos do disco sem usar comandos proibidos.",
       "never": [
         "commitar .env com secrets",
         "usar git reset --hard",
@@ -5534,7 +5534,7 @@
       ],
       "theme": "engine",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-17T23:06:24+00:00",
@@ -6675,12 +6675,12 @@
       "id": "imp-20260818-restaurar-git-clean-working-tree-limpa-na-main-f",
       "key": "965bc386fc7b51fe",
       "canon": "b5301df79a5195e9",
-      "title": "Restaurar git_clean: working tree limpa na main (fatia ferramentas)",
+      "title": "Restaurar git_clean: working tree limpa na main (FATIA: ferramentas)",
       "kind": "bottleneck",
       "priority": 1,
       "status": "pending",
-      "rationale": "Censo aponta .claude/skills/generate-changelog/ sujo, bloqueando o pipeline de integridade.",
-      "change": "Avaliar se o diretório é lixo (adicionar ao .gitignore) ou stagear e commitar isoladamente apenas essa fatia.",
+      "rationale": "Ferramentas dos agentes geram logs massivos e diretórios de trabalho (bounties, bugbounty) que não devem ser versionados no repositório principal.",
+      "change": "Adicionar ao .gitignore os padrões para logs/ (exceto traces sanitizados), bounties/, bugbounty/ e arb_dashboard.html, stageando a mudança.",
       "never": [
         "reset --hard",
         "clean -fd",
@@ -6688,9 +6688,9 @@
         "juntar com a fatia do motor"
       ],
       "files_hint": [],
-      "theme": "engine",
+      "theme": "portal",
       "branch": "",
-      "map_id": "20260818T030213Z",
+      "map_id": "20260829T113326Z",
       "history": [
         {
           "at": "2026-08-18T03:02:13+00:00",
@@ -8108,6 +8108,124 @@
           "at": "2026-08-18T12:02:02+00:00",
           "event": "mapped",
           "detail": "20260818T120202Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-restaurar-git-clean-working-tree-limpa-na-main-f",
+      "key": "299fa25f337c166a",
+      "canon": "d3d3f6fd3ec0df4c",
+      "title": "Restaurar git_clean: working tree limpa na main (FATIA: playbook improve/integrity)",
+      "kind": "bottleneck",
+      "priority": 1,
+      "status": "pending",
+      "rationale": "Configurações de ambiente de desenvolvimento e worktrees (.devcontainer, .worktrees, .codex) vazaram para a working tree, quebrando a integridade.",
+      "change": "Ignorar .devcontainer/, .worktrees/, .codex/, .config/ e knowledge/ no .gitignore, garantindo que o playbook de integridade não tente commitar configurações locais.",
+      "never": [
+        "git reset --hard",
+        "git clean -fd",
+        "modificar ARO.md",
+        "alterar OWNER_SHARE_RATE"
+      ],
+      "files_hint": [],
+      "theme": "engine",
+      "branch": "",
+      "map_id": "20260829T113326Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:33:26+00:00",
+          "event": "mapped",
+          "detail": "20260829T113326Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-isolamento-de-escopo-no-develop-ap-s-rejei-o-de",
+      "key": "cfbdae9eb5c3c95a",
+      "canon": "190a1dcc88b0f8a3",
+      "title": "Isolamento de escopo no develop após rejeição de review",
+      "kind": "bottleneck",
+      "priority": 2,
+      "status": "pending",
+      "rationale": "Quando o reviewer rejeita um patch, o develop pode tentar corrigir o feedback alterando arquivos fora do escopo original, sujando a working tree novamente.",
+      "change": "Modificar o improve.py para restringir estritamente a correção do review_feedback aos files_hint da tarefa original em pending, abortando se o prompt tentar alargar o escopo.",
+      "never": [
+        "reset --hard",
+        "modificar ARO.md",
+        "alterar OWNER_SHARE_RATE",
+        "--no-verify"
+      ],
+      "files_hint": [
+        "src/agentic/improve.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260829T113326Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:33:26+00:00",
+          "event": "mapped",
+          "detail": "20260829T113326Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-otimiza-o-de-recursos-no-playwright-cli-theme-to",
+      "key": "516322ea03bde595",
+      "canon": "50edf449c4b70d6d",
+      "title": "Otimização de recursos no playwright-cli (theme=tools)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "O playwright-cli headless atual carrega todos os recursos da página, gastando tempo e tokens desnecessários em extrações de dados simples.",
+      "change": "Criar wrapper em src/agentic/skills/browser.py que injeta regras de bloqueio de imagens, fontes e CSS no contexto do playwright-cli antes do page.goto.",
+      "never": [
+        "ativar playwright-mcp",
+        "usar sandbox",
+        "fuzzing",
+        "PoC"
+      ],
+      "files_hint": [
+        "src/agentic/skills/browser.py"
+      ],
+      "theme": "tools",
+      "branch": "",
+      "map_id": "20260829T113326Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:33:26+00:00",
+          "event": "mapped",
+          "detail": "20260829T113326Z"
+        }
+      ]
+    },
+    {
+      "id": "imp-20260829-sanitiza-o-de-traces-da-ghostcli-para-eval-theme",
+      "key": "ed94ac5cc5c9c3c9",
+      "canon": "d0fd767042c278a6",
+      "title": "Sanitização de traces da GhostCLI para eval (theme=ai)",
+      "kind": "improvement",
+      "priority": 3,
+      "status": "pending",
+      "rationale": "Traces brutos da GhostCLI ocupam muito espaço e podem conter dados sensíveis, dificultando a análise de eval e a rotação de logs.",
+      "change": "Atualizar ghostcli.py para salvar em traces/ apenas o diff de código, status de execução e contagem de tokens, omitindo o prompt completo e sanitizando qualquer menção a credenciais.",
+      "never": [
+        "salvar secrets Bybit",
+        "enviar traces para API externa",
+        "imprimir secrets no stdout",
+        "ligar AGENTIC_LIVE_TRADE=1"
+      ],
+      "files_hint": [
+        "src/agentic/ghostcli.py"
+      ],
+      "theme": "ai",
+      "branch": "",
+      "map_id": "20260829T113326Z",
+      "history": [
+        {
+          "at": "2026-08-29T11:33:26+00:00",
+          "event": "mapped",
+          "detail": "20260829T113326Z"
         }
       ]
     }
