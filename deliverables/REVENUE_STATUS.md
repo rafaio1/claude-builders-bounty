@@ -2,6 +2,11 @@
 
 ## Lilly-Protocol Bounties (Solana Payout: `877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU`)
 
+### Terrence Bounty (essinghigh-org)
+| PR | Issue | Bounty | Title | Status |
+|----|-------|--------|-------|--------|
+| essinghigh-org/terrence#202 | #161 | TBD | fix: trigger speculative runs on pull_request reopened events | Open |
+
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
