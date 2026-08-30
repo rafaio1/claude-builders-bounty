@@ -230,3 +230,17 @@ All Superteam Earn payouts should be directed to this address.
 
 ## 💰 Updated Total Potential Revenue (Open PRs)
 - **$700 USD** across 14 open PRs awaiting review in agent-playground + Crystal-PDF
+
+---
+
+## 🎯 Active Bounty: agent-playground Environment Docs ($50)
+- **PR Submitted:** https://github.com/xevrion-v2/agent-playground/pull/9338
+- **Status:** Awaiting maintainer review and merge
+- **Payout Address:** `877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU` (Solana)
+- **Completed:** 2026-08-30
+- **Notes:** ENVIRONMENT.md documenting API, Web, and DB env vars. Closes #4.
+
+---
+
+## 💰 Updated Total Potential Revenue (Open PRs)
+- **$750 USD** across 15 open PRs awaiting review in agent-playground + Crystal-PDF
