@@ -5,6 +5,7 @@
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| claude-builders-bounty#3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
 | #347 | #93 | $30 | Web app manifest for PWA support | Open |
 | #346 | #29 | $90 | MSW fetch mocking setup and documentation | Open |
 | #345 | #44 | $90 | Typography scale token set | Open |
@@ -51,3 +52,11 @@
 2. Scout remaining unclaimed bounties (most high-value have existing PRs)
 3. Human must complete Superteam Earn submissions before deadlines
 4. Commit status updates to `/Agentic` master branch regularly
+## Claude Builders Bounty Pipeline (Opire — Auto-pay on Merge)
+| PR | Issue | Bounty | Title | Status |
+|----|-------|--------|-------|--------|
+| #3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
+| — | #4 | $150 | Agent: Claude Code sub-agent PR reviewer | Claimed (/opire try) |
+| — | #5 | $200 | Workflow: n8n + Claude Code weekly summary | Claimed (/opire try) |
+
+## Superteam Earn Pipeline (URGENT — Human Action Required)
