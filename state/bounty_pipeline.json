@@ -12,9 +12,14 @@
       ]
     },
     "code4rena": {
-      "status": "no_active_repos",
-      "note": "No 2026-08 repos found in code-423n4 org. Last created was 2026-07-10 (jupiter-lend). Previous session targets (Frax, Optimism, etc.) may be outdated or hosted elsewhere.",
-      "last_known_active": []
+      "status": "needs_verification",
+      "note": "Verify active contests via GitHub code-423n4 org or code4rena.com directly. Previous scrape showed no 2026-08 repos.",
+      "last_check": "2026-08-30T07:52:00Z"
+    },
+    "immunefi": {
+      "status": "not_checked",
+      "note": "Immunefi bug bounties are evergreen (no contest deadline). Check for high-payout DeFi protocols with open bounties.",
+      "top_bounties": []
     }
   },
   "analysis_queue": [
@@ -75,7 +80,8 @@
     "testnet_airdrops": "BLOCKED - All 3 testnets (Monad/Berachain/Linea) have broken faucets or deprecated pages",
     "sherlock_contests": "BLOCKED - Live verification shows 0 active contests as of 2026-08-30. Beefy/Frax/Kwenta/Lyra not listed.",
     "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
-    "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements"
+    "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements",
+    "immunefi_bounties": "NOT_CHECKED - Evergreen bug bounties may have actionable vectors without contest deadlines"
   },
   "human_action_required": {
     "priority_1": {
@@ -98,5 +104,5 @@
     }
   },
   "autonomous_status": "ALL_VECTORS_BLOCKED_PENDING_HUMAN_ACTION",
-  "next_agent_action": "Wait for human to complete KYC/account creation, then resume bounty execution or testnet automation"
+  "next_agent_action": "Check Immunefi for high-value evergreen bounties; verify Code4rena active contests; continue Lyra/Frax deep audit from existing repos"
 }
