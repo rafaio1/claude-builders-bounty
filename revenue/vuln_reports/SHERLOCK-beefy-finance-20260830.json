@@ -1,0 +1,28 @@
+{
+  "id": "SHERLOCK-beefy-finance-20260830",
+  "platform": "sherlock",
+  "sponsor": "Beefy Finance",
+  "contest_id": "SHERLOCK-beefy-finance-202608",
+  "prize_pool_usd": 70000,
+  "finding_type": "tx.origin_authentication",
+  "severity": "low_to_medium",
+  "title": "Uso de tx.origin para autenticação e fee exemption em múltiplas strategies",
+  "description": "Múltiplas strategies do Beefy (BaseSwap, GMX, Velodrome, Stargate, etc.) utilizam tx.origin para: (1) isentar owner de withdrawal fees, (2) determinar callFeeRecipient em harvest(). Embora seja padrão histórico no Beefy, tx.origin é vulnerável a phishing via contratos intermediários. Se um usuário interage com contrato malicioso que chama withdraw()/harvest(), o tx.origin será o EOA do usuário, não o contrato atacante - mas se o owner for enganado a chamar através de proxy, fees podem ser bypassadas ou rewards desviados.",
+  "affected_files": [
+    "contracts/BIFI/strategies/BaseSwap/StrategyBaseSwap.sol:112",
+    "contracts/BIFI/strategies/GMX/StrategyGM.sol:78",
+    "contracts/BIFI/strategies/GMX/StrategyGLPCooldown.sol:83",
+    "contracts/BIFI/strategies/Common/BaseAllToNativeStrat.sol",
+    "contracts/BIFI/strategies/Velodrome/StrategyVelodromeGaugeV2.sol",
+    "contracts/BIFI/strategies/Stargate/StrategyStargateV2.sol"
+  ],
+  "impact": "Potencial bypass de withdrawal fees ou redirecionamento de call fees se owner/usuário interagir via contrato intermediário malicioso. Impacto limitado pois requer interação ativa do owner/usuário com contrato não confiável.",
+  "recommendation": "Substituir tx.origin por msg.sender em checks de autenticação. Para callFeeRecipient, usar parâmetro explícito ou msg.sender.",
+  "poc_conceptual": "Contrato MaliciousProxy { function attack(address strat) external { StrategyBaseSwap(strat).withdraw(balance); // tx.origin = victim EOA, bypassa fee check } }",
+  "confidence": "medium",
+  "estimated_payout_usd": 1500,
+  "status": "draft_ready_for_human_review",
+  "requires_human_action": true,
+  "human_action": "Revisar finding, validar severidade, criar conta Sherlock e submeter antes do deadline (7 dias)",
+  "discovered_at": "2026-08-30T07:55:00Z"
+}
