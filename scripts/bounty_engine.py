@@ -687,6 +687,45 @@ def discover_bounties():
     return found
 
 
+def _filter_archived_repos(candidates):
+    """Filter out archived repositories before triage to prevent wasted tokens."""
+    if not candidates:
+        return candidates
+    
+    # Extract unique repos from candidates
+    unique_repos = list({c.get("repo", "") for c in candidates if c.get("repo")})
+    if not unique_repos:
+        return candidates
+    
+    log(f"Checking {len(unique_repos)} unique repos for archived status...")
+    archived_repos = set()
+    
+    # Batch check repos using gh repo view (rate limit aware)
+    for repo in unique_repos:
+        try:
+            _check_gh_rate_limit()
+            cmd = f'gh repo view {repo} --json isArchived,name'
+            res = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=15)
+            if res.returncode == 0 and res.stdout.strip():
+                info = json.loads(res.stdout)
+                if info.get("isArchived"):
+                    archived_repos.add(repo)
+                    log(f"ARCHIVED: {repo}")
+            time.sleep(1)  # Rate limit buffer
+        except Exception as e:
+            log(f"Warning: could not check archive status for {repo}: {e}")
+            continue
+    
+    if archived_repos:
+        before = len(candidates)
+        candidates = [c for c in candidates if c.get("repo") not in archived_repos]
+        filtered = before - len(candidates)
+        log(f"Filtered {filtered} candidates from {len(archived_repos)} archived repos, {len(candidates)} remaining")
+    else:
+        log("No archived repos found in candidate set")
+    
+    return candidates
+
 def triage(candidates):
     global _TRIAGE_CONSECUTIVE_FAILURES
     if '_TRIAGE_CONSECUTIVE_FAILURES' not in globals():
