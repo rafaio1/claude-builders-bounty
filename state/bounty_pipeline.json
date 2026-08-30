@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T08:25:00Z",
+  "last_updated": "2026-08-30T08:47:58Z",
   "active_contests": {
     "sherlock": {
       "status": "no_active_contests",
@@ -14,8 +14,16 @@
     "immunefi": {
       "status": "audit_in_progress",
       "top_bounties": [
-        {"protocol": "Ethena", "max_payout_usd": 3000000, "slug": "ethena"},
-        {"protocol": "DeXe Protocol", "max_payout_usd": 3000000, "slug": "dexeprotocol"}
+        {
+          "protocol": "Ethena",
+          "max_payout_usd": 3000000,
+          "slug": "ethena"
+        },
+        {
+          "protocol": "DeXe Protocol",
+          "max_payout_usd": 3000000,
+          "slug": "dexeprotocol"
+        }
       ],
       "last_check": "2026-08-30T08:07:00Z"
     }
@@ -44,15 +52,15 @@
     },
     {
       "project": "Ethena",
-      "status": "REVIEW_COMPLETE_DRAFT_WRITTEN",
-      "next_step": "Write Foundry PoC for donation attack vector",
-      "completed": "2026-08-30T08:25:00Z"
+      "status": "VECTOR_INVALIDATED",
+      "next_step": "Closed - donation attack not exploitable",
+      "completed": "2026-08-30T08:47:58Z"
     },
     {
       "project": "DeXe Protocol",
-      "status": "REVIEW_COMPLETE_DRAFT_WRITTEN",
-      "next_step": "Validate quorum math and write PoC",
-      "completed": "2026-08-30T08:25:00Z"
+      "status": "VALIDATED_HIGH_SEVERITY",
+      "next_step": "Submit report via Immunefi (requires human KYC)",
+      "completed": "2026-08-30T08:47:58Z"
     },
     {
       "project": "The Graph",
@@ -72,6 +80,6 @@
     "Review draft reports in revenue/vuln_reports/ for accuracy",
     "Fund Wise account with $500+ USD/EUR for Bybit arb fallback"
   ],
-  "autonomous_status": "THEGRAPH_EXHAUSTED_PRIORITIZE_ETHENA_POCS",
-  "git_last_commit": "audit: thegraph delegation math validated (safe), pivot to ethena/dexe"
+  "autonomous_status": "DEXE_VALIDATED_PENDING_KYC_SUBMISSION",
+  "git_last_commit": "audit: validate DeXe quorum manipulation (High severity, exploitable)"
 }
