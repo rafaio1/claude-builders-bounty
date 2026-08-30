@@ -1,14 +1,14 @@
 {
   "schema_version": "1.0",
-  "generated_at": "2026-08-30T00:23:20.448713+00:00",
+  "generated_at": "2026-08-30T01:25:37.324863+00:00",
   "metrics": {
-    "total_prs": 1370,
-    "scanned": 1370,
-    "enriched_from_ledger": 30,
+    "total_prs": 1371,
+    "scanned": 1371,
+    "enriched_from_ledger": 31,
     "enriched_from_queue": 325,
     "unknown_no_signal": 392,
     "tier_a": 0,
-    "tier_b": 459,
+    "tier_b": 460,
     "tier_c_candidates": 49,
     "skipped": 392,
     "saturated_repos": 14,
@@ -17,10 +17,10 @@
   },
   "saturation": {
     "open_by_repo": {
+      "SecureBananaLabs/bug-bounty": 46,
       "Scottcjn/ram-coffers": 2,
       "xevrion-v2/agent-playground": 7,
       "Scottcjn/Rustchain": 2,
-      "SecureBananaLabs/bug-bounty": 45,
       "Tarsnap/tarsnap": 2,
       "Scottcjn/bottube": 1,
       "elementary/panel-network": 1,
@@ -149,6 +149,21 @@
   "tiers": {
     "A": [],
     "B": [
+      {
+        "key": "SecureBananaLabs/bug-bounty#12264",
+        "url": "https://github.com/SecureBananaLabs/bug-bounty/pull/12264",
+        "title": "Fix #743: Automate Low Hanging Fruit Bug Detection",
+        "state": "OPEN",
+        "merged": false,
+        "tier": "B",
+        "ev_score": 0.0,
+        "reason": "ci_actionable",
+        "action": "recover_revenue",
+        "receivable_confirmed": false,
+        "pr_author": "rafaio1",
+        "monetizable_ownership": true,
+        "ownership_reason": "pr_author_matches"
+      },
       {
         "key": "Scottcjn/ram-coffers#696",
         "url": "https://github.com/Scottcjn/ram-coffers/pull/696",
