@@ -5,6 +5,7 @@
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| #344 | #53 | $95 | Document issue labels and triage workflow | Open |
 | #343 | #49 | $100 | Contributor guide for adding new routes | Open |
 | #342 | #65 | $100 | App-level not-found for invalid agent ids | Open |
 | #336 | #78 | $40 | Zod-based form validation foundation | Open |
@@ -24,9 +25,9 @@
 
 ### Total Potential Revenue (Lilly-Protocol)
 - **This session:** $135
-- **Latest submissions:** $200 (#342, #343)
+- **Latest submissions:** $295 (#342, #343, #344)
 - **Prior session:** $340
-- **Combined open PRs:** $675
+- **Combined open PRs:** $770
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
 | Opportunity | Value | Blocker |
