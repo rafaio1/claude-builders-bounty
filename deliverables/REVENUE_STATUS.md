@@ -49,10 +49,19 @@
 - **Action:** Insufficient capital for automated trading
 
 ## Next Steps
-1. Monitor Lilly-Protocol PRs (#336-#340) for maintainer feedback/CI failures
-2. Scout remaining unclaimed bounties (most high-value have existing PRs)
-3. Human must complete Superteam Earn submissions before deadlines
-4. Commit status updates to `/Agentic` master branch regularly
+1. Monitor Lilly-Protocol PRs (#336-#347) for maintainer feedback/CI failures
+2. **PRIORITY**: Implement `essinghigh-org/terrence#161` (GitHub PR reopen events) — UNCLAIMED, no assignment yet
+3. Verify payment status of merged Lilly-Protocol PRs and update revenue tracking
+4. Human must complete Superteam Earn submissions ($3,250 pipeline) before deadlines
+5. Commit status updates to `/Agentic` master branch after each submission
+
+## Scouting Notes — 2026-08-30
+- **OphirPay/OphirPay**: All open bounties assigned via Stellar Wave Program (due Aug 31). No unclaimed issues remain.
+- **claude-builders-bounty**: Issues #1-#5 all have open PRs from rafaio1. No new bounties posted.
+- **devpool-directory/ubiquity-os**: High-value bounties ($300+) are stale or have existing PRs. Not viable for quick payout.
+- **essinghigh-org/terrence#161**: UNCLAIMED. Bug fix for GitHub PR reopen webhook parsing. Good first issue label. No assignee. VIABLE TARGET.
+- **SkriptLang/Skript#3894**: Enhancement proposal, not a bounty. Skip.
+- **Algorand Foundation**: Marketing/community bounties only. Not code-based. Skip.
 ## Claude Builders Bounty Pipeline (Opire — Auto-pay on Merge)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
