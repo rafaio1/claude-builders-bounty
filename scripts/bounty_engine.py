@@ -393,11 +393,12 @@ def discover_bounties():
             if res.returncode != 0:
                 err_msg = res.stderr[:200] if res.stderr else ""
                 if "rate limit" in err_msg.lower() or "403" in err_msg:
-                    log(f"Query '{term}' rate limited, skipping remaining discovery queries this cycle")
-                    break
+                    log(f"Query '{term}' rate limited, invoking proactive wait")
+                    _check_gh_rate_limit()
+                    continue
                 else:
                     log(f"Query '{term}' failed (rc={res.returncode}): {err_msg[:100]}")
-                    time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
+                    time.sleep(4)  # Increased to avoid GitHub search rate limits
                 continue
             if res.returncode == 0 and res.stdout.strip() not in ("", "[]"):
                 items = json.loads(res.stdout)
@@ -499,7 +500,7 @@ def discover_bounties():
                     })
         except Exception as e:
             log(f"Search failed for '{term}': {e}")
-        time.sleep(2)  # Reduced from 8s to fit cycle in 300s budget
+        time.sleep(4)  # Increased to avoid GitHub search rate limits
     # Also search Algora bounties
     # High-value discovery: prioritize large payouts to accelerate capital generation
     high_value_queries = [
