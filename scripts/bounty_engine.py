@@ -423,6 +423,22 @@ def discover_bounties():
                     title_lower = (item.get("title", "") or "").lower()
                     if any(s in title_lower for s in spam_indicators):
                         continue
+                    # PAYMENT RAIL VERIFICATION: Only accept bounties with verifiable automated payout infrastructure
+                    body_lower = (item.get("body", "") or "").lower()
+                    title_lower_check = (item.get("title", "") or "").lower()
+                    labels_str = " ".join(labels).lower()
+                    combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    payment_rails = [
+                        "algora", "opire", "drips", "polar", "safe.gnosis", "gnosis safe",
+                        "0x", "smart contract", "escrow", "grantfox", "bountycaster",
+                        "replit bounties", "supabase bounty"
+                    ]
+                    has_payment_rail = any(rail in combined_text for rail in payment_rails)
+                    # Also accept if repo is a known bounty platform itself
+                    bounty_platform_repos = ["claude-builders-bounty", "universal_bounty_fleet"]
+                    is_platform_repo = any(plat in repo.lower() for plat in bounty_platform_repos)
+                    if not has_payment_rail and not is_platform_repo:
+                        continue
                     labels = [l["name"] for l in item.get("labels", [])]
                     # Skip meta/alert issues that are not real bounties
                     meta_labels = {"bounty-alert", "bounty-scout", "meta", "aggregated", "tracker"}
