@@ -5,6 +5,7 @@
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| #347 | #93 | $30 | Web app manifest for PWA support | Open |
 | #346 | #29 | $90 | MSW fetch mocking setup and documentation | Open |
 | #345 | #44 | $90 | Typography scale token set | Open |
 | #344 | #53 | $95 | Document issue labels and triage workflow | Open |
@@ -26,11 +27,11 @@
 | #335 | #37 | $50 | 200% zoom layout usability |
 
 ### Total Potential Revenue (Lilly-Protocol)
-- **This session:** $225
+- **This session:** $255
 - **Latest submissions:** $385 (#342, #343, #344, #345)
-- **Newest submission:** $90 (#346)
+- **Newest submissions:** $120 (#346, #347)
 - **Prior session:** $340
-- **Combined open PRs:** $950
+- **Combined open PRs:** $980
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
 | Opportunity | Value | Blocker |
