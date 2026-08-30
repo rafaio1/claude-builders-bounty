@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T07:00:00Z",
+  "last_updated": "2026-08-30T07:45:00Z",
   "active_contests": {
     "sherlock": {
       "status": "blocked",
@@ -20,14 +20,9 @@
   "analysis_queue": [
     {
       "project": "Usual Labs",
-      "source_path": "state/usual_labs_analysis.md",
-      "candidates": [
-        "Oracle Staleness",
-        "Rounding Loss",
-        "Reentrancy"
-      ],
-      "next_step": "Validate Rounding Loss in SwapperEngine via Foundry fork test",
-      "priority": "high"
+      "status": "EXHAUSTED",
+      "note": "Rounding loss and Oracle staleness vectors invalidated by PoC and code review. No exploitable bugs found.",
+      "completed": "2026-08-30T07:45:00Z"
     }
   ],
   "payout_route": "USDC -> Kraken -> Wise USD/EUR",
