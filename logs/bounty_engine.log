@@ -60056,3 +60056,272 @@ Scope: all 4 workspace projects
 [2026-08-30T21:58:01.108009+00:00] git apply failed for plugins/monk/skills/monk/SKILL.md, attempting manual patch...
 [2026-08-30T21:58:01.111480+00:00] Manual patch applied: plugins/monk/skills/monk/SKILL.md
 [2026-08-30T21:58:01.111682+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T21:58:02.587494+00:00] GhostCLI raw response (1840 chars): {
+  "files_to_change": [
+    {
+      "path": "./gateway/src/services/config-manager-v2.ts",
+      "action": "modify",
+      "diff": "--- a/gateway/src/services/config-manager-v2.ts\n+++ b/gateway/src/services/config-manager-v2.ts\n@@ -1,5 +1,6 @@\n import { ConfigManagerCertPassphrase } from './config-manager-cert-passphrase';\n import { Migration } from './config-migration/migrations';\n+import { readFileSync } from 'fs';\n \n export class ConfigManagerV2 {\n   private static _instance: ConfigM
+[2026-08-30T21:58:02.608827+00:00] git apply failed for ./gateway/src/services/config-manager-v2.ts, attempting manual patch...
+[2026-08-30T21:58:02.611368+00:00] Manual patch applied: ./gateway/src/services/config-manager-v2.ts
+[2026-08-30T21:58:02.611578+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T21:58:11.487957+00:00] PR created: https://github.com/monk-io/monk-plugin/pull/465
+[2026-08-30T21:58:11.495127+00:00] Bounty recorded. Total ledger: $851,720.00
+[2026-08-30T21:58:11.495322+00:00] SUCCESS: https://github.com/monk-io/monk-plugin/pull/465
+[2026-08-30T21:58:42.005974+00:00] PR created (master base): https://github.com/JeremyKono/hummingbot/pull/8
+[2026-08-30T21:58:42.012944+00:00] Bounty recorded. Total ledger: $851,970.00
+[2026-08-30T21:58:42.013216+00:00] SUCCESS: https://github.com/JeremyKono/hummingbot/pull/8
+[2026-08-30T21:58:42.014081+00:00] Cycle 1 complete. Sleeping 300s...
+[2026-08-30T21:59:38.376614+00:00] FATAL SIGNAL 15 received
+[2026-08-30T21:59:38.586907+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-08-30T21:59:38.587065+00:00] 
+============================================================
+[2026-08-30T21:59:38.587106+00:00] CYCLE 1 - 2026-08-30T21:59:38.587103+00:00
+[2026-08-30T21:59:38.587136+00:00] ============================================================
+[2026-08-30T21:59:38.587164+00:00] === PR STATUS MONITOR ===
+[2026-08-30T21:59:38.587682+00:00] PR Monitor: 39 pending PRs, checking up to 10
+[2026-08-30T21:59:52.534125+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-30T21:59:52.534333+00:00] No PR status changes detected
+[2026-08-30T21:59:52.534434+00:00] === DISCOVERY PHASE ===
+[2026-08-30T21:59:52.534497+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-30T22:00:10.913452+00:00] Discovery progress: 5/30 queries completed, 113 candidates found
+[2026-08-30T22:00:26.101253+00:00] Discovery progress: 10/30 queries completed, 198 candidates found
+[2026-08-30T22:00:43.117494+00:00] Discovery progress: 15/30 queries completed, 363 candidates found
+[2026-08-30T22:01:00.129853+00:00] Discovery progress: 20/30 queries completed, 495 candidates found
+[2026-08-30T22:01:18.570298+00:00] Discovery progress: 25/30 queries completed, 659 candidates found
+[2026-08-30T22:01:34.544245+00:00] Query 'infrastructure bounty' rate limited, skipping remaining discovery queries this cycle
+[2026-08-30T22:02:50.917584+00:00]   Query '$25000 bounty': 50 results
+[2026-08-30T22:02:50.917805+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-30T22:02:50.917843+00:00]   Query 'algora bounty': 47 results
+[2026-08-30T22:02:50.917871+00:00]   Query 'defi bounty': 47 results
+[2026-08-30T22:02:50.917896+00:00]   Query 'crypto bounty': 45 results
+[2026-08-30T22:02:50.917921+00:00]   Query 'bug bounty': 43 results
+[2026-08-30T22:02:50.917948+00:00]   Query '$10000 bounty': 42 results
+[2026-08-30T22:02:50.917975+00:00]   Query 'bounty reward': 41 results
+[2026-08-30T22:02:50.917998+00:00]   Query 'web3 bounty': 40 results
+[2026-08-30T22:02:50.918023+00:00]   Query 'solidity bounty': 37 results
+[2026-08-30T22:02:50.918077+00:00]   Query 'security bounty': 36 results
+[2026-08-30T22:02:50.918107+00:00]   Query 'typescript bounty': 36 results
+[2026-08-30T22:02:50.918134+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-30T22:02:50.918157+00:00]   Query 'bounty fix': 31 results
+[2026-08-30T22:02:50.918182+00:00]   Query 'frontend bounty': 30 results
+[2026-08-30T22:02:50.918207+00:00]   Query 'backend bounty': 25 results
+[2026-08-30T22:02:50.918233+00:00]   Query 'paid bounty': 24 results
+[2026-08-30T22:02:50.918258+00:00]   Query 'bounty issue': 23 results
+[2026-08-30T22:02:50.918284+00:00]   Query 'protocol bounty': 22 results
+[2026-08-30T22:02:50.918308+00:00]   Query '$5000 bounty': 21 results
+[2026-08-30T22:02:50.918332+00:00]   Query 'lua bounty': 17 results
+[2026-08-30T22:02:50.918356+00:00]   Query 'python bounty': 12 results
+[2026-08-30T22:02:50.918382+00:00]   Query 'bounty': 3 results
+[2026-08-30T22:02:50.918406+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-30T22:02:50.918431+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-30T22:02:50.918459+00:00] Total unique candidates after dedup: 773
+[2026-08-30T22:02:50.919726+00:00] Found 773 candidates
+[2026-08-30T22:02:50.920412+00:00] Pre-filtered 29 already-submitted candidates, 744 remaining
+[2026-08-30T22:02:50.921405+00:00] Cooldown-filtered 36 candidates from failed repos, 708 remaining
+[2026-08-30T22:02:50.922219+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-30T22:02:50.928005+00:00] Triage meta-filter: removed 62 internal/meta targets
+[2026-08-30T22:02:50.928859+00:00] Triage payload: 10 sanitized candidates, 4536 chars
+[2026-08-30T22:02:50.929010+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ethb3rlin/sponsor-bounties/issues/9",
+    "title": "[BOUNTY] Manta Network by p0xeidon labs - On-chain Privacy use Cases",
+    "value_usd": "2500",
+    "labels": [
+      "sponsor-bounty"
+    ],
+    "body_preview": "# Bringing Privacy to Web3\r\n\r\nFor our bounty, we're looking for some amazing privacy-enabled use cases! No, the core value of your product doesn't have to be privacy, but you should think about creati"
+  },
+  {
+    "url": "https://github.com/dinngo/furucombo-contract/issues/1",
+    "title": "Bounty Program: Furucombo combo transaction data generator",
+    "value_usd": "1800",
+    "labels": [],
+    "body_preview": "## Description\r\nFurucombo is a DeFi aggregator that enable users to connect all kinds of DeFis into one single action. The actions to take with every involved DeFi will be encoded into one transaction"
+  },
+  {
+    "url": "https://github.com/dragonghy/dota2bot/issues/261",
+    "title": "[bug] abilanc_domain.py \u7684\u6b8b\u7559\u6807\u7b7e \"REACHABLE via the selector\" \u662f\u6587\u4ef6\u7ea7\u63a8\u65ad,\u9010\u5e27\u5728\u7ad9\u70b9\u7ea7\u88ab\u8bc1\u4f2a",
+    "value_usd": "1111",
+    "labels": [],
+    "body_preview": "## \u4e00\u53e5\u8bdd\n\n`abilanc_domain.py` \u5bf9\u6bcf\u4e2a armed under-tier \u6b8b\u7559\u6253\u7684\u6807\u7b7e\n`REACHABLE via the selector -- adjudicate this one`,\u5224\u636e\u53ea\u662f**\u8be5\u82f1\u96c4\u7684 .lua \u6587\u4ef6\u91cc\u6709\u6ca1\u6709\n`J.GetMostHpUnit` \u8c03\u7528**\u3002\u5b83\u4e0d\u95ee:\u89c2\u6d4b\u5230\u7684\u8fd9\u4e2a\u6280\u80fd\u662f\u4e0d\u662f\u90a3\u4e2a\u7ad9\u70b9\u9a71\
+[2026-08-30T22:02:53.040434+00:00] FATAL SIGNAL 15 received
+[2026-08-30T22:02:53.264993+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-08-30T22:02:53.265130+00:00] 
+============================================================
+[2026-08-30T22:02:53.265168+00:00] CYCLE 1 - 2026-08-30T22:02:53.265165+00:00
+[2026-08-30T22:02:53.265196+00:00] ============================================================
+[2026-08-30T22:02:53.265222+00:00] === PR STATUS MONITOR ===
+[2026-08-30T22:02:53.265719+00:00] PR Monitor: 39 pending PRs, checking up to 10
+[2026-08-30T22:03:07.521767+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-30T22:03:07.522011+00:00] No PR status changes detected
+[2026-08-30T22:03:07.522193+00:00] === DISCOVERY PHASE ===
+[2026-08-30T22:03:07.522267+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-30T22:03:34.177144+00:00] Discovery progress: 5/30 queries completed, 113 candidates found
+[2026-08-30T22:03:59.142560+00:00] Discovery progress: 10/30 queries completed, 198 candidates found
+[2026-08-30T22:04:26.053041+00:00] Discovery progress: 15/30 queries completed, 363 candidates found
+[2026-08-30T22:04:53.004403+00:00] Discovery progress: 20/30 queries completed, 495 candidates found
+[2026-08-30T22:05:21.188791+00:00] Discovery progress: 25/30 queries completed, 659 candidates found
+[2026-08-30T22:07:09.627147+00:00]   Query '$25000 bounty': 50 results
+[2026-08-30T22:07:09.627397+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-30T22:07:09.627458+00:00]   Query 'algora bounty': 47 results
+[2026-08-30T22:07:09.627500+00:00]   Query 'defi bounty': 47 results
+[2026-08-30T22:07:09.627564+00:00]   Query 'crypto bounty': 45 results
+[2026-08-30T22:07:09.627612+00:00]   Query 'bug bounty': 43 results
+[2026-08-30T22:07:09.627657+00:00]   Query '$10000 bounty': 42 results
+[2026-08-30T22:07:09.627694+00:00]   Query 'infrastructure bounty': 42 results
+[2026-08-30T22:07:09.627735+00:00]   Query 'bounty reward': 41 results
+[2026-08-30T22:07:09.627769+00:00]   Query 'web3 bounty': 40 results
+[2026-08-30T22:07:09.627796+00:00]   Query 'solidity bounty': 37 results
+[2026-08-30T22:07:09.627818+00:00]   Query 'security bounty': 36 results
+[2026-08-30T22:07:09.627838+00:00]   Query 'typescript bounty': 36 results
+[2026-08-30T22:07:09.627858+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-30T22:07:09.627877+00:00]   Query 'bounty fix': 31 results
+[2026-08-30T22:07:09.627896+00:00]   Query 'frontend bounty': 30 results
+[2026-08-30T22:07:09.627916+00:00]   Query 'backend bounty': 25 results
+[2026-08-30T22:07:09.627935+00:00]   Query 'paid bounty': 24 results
+[2026-08-30T22:07:09.627954+00:00]   Query 'bounty issue': 23 results
+[2026-08-30T22:07:09.627973+00:00]   Query 'protocol bounty': 22 results
+[2026-08-30T22:07:09.627992+00:00]   Query '$5000 bounty': 21 results
+[2026-08-30T22:07:09.628026+00:00]   Query 'lua bounty': 17 results
+[2026-08-30T22:07:09.628048+00:00]   Query 'python bounty': 12 results
+[2026-08-30T22:07:09.628087+00:00]   Query 'bounty': 3 results
+[2026-08-30T22:07:09.628118+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-30T22:07:09.628146+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-30T22:07:09.628173+00:00] Total unique candidates after dedup: 815
+[2026-08-30T22:07:09.629377+00:00] Found 815 candidates
+[2026-08-30T22:07:09.630173+00:00] Pre-filtered 32 already-submitted candidates, 783 remaining
+[2026-08-30T22:07:09.630873+00:00] Cooldown-filtered 42 candidates from failed repos, 741 remaining
+[2026-08-30T22:07:09.631746+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-30T22:07:09.637274+00:00] Triage meta-filter: removed 67 internal/meta targets
+[2026-08-30T22:07:09.637641+00:00] Triage payload: 10 sanitized candidates, 4536 chars
+[2026-08-30T22:07:09.637804+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ethb3rlin/sponsor-bounties/issues/9",
+    "title": "[BOUNTY] Manta Network by p0xeidon labs - On-chain Privacy use Cases",
+    "value_usd": "2500",
+    "labels": [
+      "sponsor-bounty"
+    ],
+    "body_preview": "# Bringing Privacy to Web3\r\n\r\nFor our bounty, we're looking for some amazing privacy-enabled use cases! No, the core value of your product doesn't have to be privacy, but you should think about creati"
+  },
+  {
+    "url": "https://github.com/dinngo/furucombo-contract/issues/1",
+    "title": "Bounty Program: Furucombo combo transaction data generator",
+    "value_usd": "1800",
+    "labels": [],
+    "body_preview": "## Description\r\nFurucombo is a DeFi aggregator that enable users to connect all kinds of DeFis into one single action. The actions to take with every involved DeFi will be encoded into one transaction"
+  },
+  {
+    "url": "https://github.com/dragonghy/dota2bot/issues/261",
+    "title": "[bug] abilanc_domain.py \u7684\u6b8b\u7559\u6807\u7b7e \"REACHABLE via the selector\" \u662f\u6587\u4ef6\u7ea7\u63a8\u65ad,\u9010\u5e27\u5728\u7ad9\u70b9\u7ea7\u88ab\u8bc1\u4f2a",
+    "value_usd": "1111",
+    "labels": [],
+    "body_preview": "## \u4e00\u53e5\u8bdd\n\n`abilanc_domain.py` \u5bf9\u6bcf\u4e2a armed under-tier \u6b8b\u7559\u6253\u7684\u6807\u7b7e\n`REACHABLE via the selector -- adjudicate this one`,\u5224\u636e\u53ea\u662f**\u8be5\u82f1\u96c4\u7684 .lua \u6587\u4ef6\u91cc\u6709\u6ca1\u6709\n`J.GetMostHpUnit` \u8c03\u7528**\u3002\u5b83\u4e0d\u95ee:\u89c2\u6d4b\u5230\u7684\u8fd9\u4e2a\u6280\u80fd\u662f\u4e0d\u662f\u90a3\u4e2a\u7ad9\u70b9\u9a71\
+[2026-08-30T22:07:14.306869+00:00] Triage GhostCLI response length: 909 chars
+[2026-08-30T22:07:14.307031+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/dragonghy/dota2bot/issues/261","title":"[bug] abilanc_domain.py 的残留标签 \\"REACHABLE via the selector\\" 是文件级推断,逐帧在站点级被证伪","estimated_hours":8,"confidence_score":0.9,"reason":"Explicit bug report with specific file and logic error; reproducible and solvable via Python code changes."},{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":15,"confidence_score":0.85,"reason":"Clear implementation task to add restart/idempotency logic to existing Python script with defined acceptance criteria."},{"url":"https://github.com/dinngo/furucombo-contract/issues/1","title":"Bounty Program: Furucombo combo transaction data generator","estimated_hours":12,"confidence_score":0.75,"reason":"Well-scoped tooling task to generate encoded transaction data for DeFi aggregator; code-focused with clear deliverable."}]'
+[2026-08-30T22:07:14.307139+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/dragonghy/dota2bot/issues/261', 'title': '[bug] abilanc_domain.py 的残留标签 "REACHABLE via the selector" 是文件级推断,逐帧在站点级被证伪', 'estimated_hours': 8, 'confidence_score': 0.9, 'reason': 'Explicit bug report with specific file and logic error; reproducible and solvable via Python code changes.'}, {'url': 'https://github.com/JoinMarket-Org/joinmarket/issues/634', 'title': 'Make tumbler idempotent [$1,000 bounty]', 'estimated_hours': 15, 'confidence_score': 0.85, 'reason': 'Clea
+[2026-08-30T22:07:14.307194+00:00] Triage parsed result type: list, len=3
+[2026-08-30T22:07:14.307227+00:00] Selected 3 targets from GhostCLI
+[2026-08-30T22:07:14.307412+00:00] Triage value distribution: {'1111': 1, '1000': 1, '1800': 1}
+[2026-08-30T22:07:14.307483+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 741 candidates
+[2026-08-30T22:07:14.636936+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-30T22:07:14.651190+00:00] SKIPPING dinngo/furucombo-contract: repository is archived (read-only)
+[2026-08-30T22:07:16.524983+00:00]   Fork rafaio1/dota2bot created successfully
+[2026-08-30T22:07:16.525152+00:00] === EXECUTING: [bug] abilanc_domain.py 的残留标签 "REACHABLE via the selector" 是文件级推断,逐帧在站点级被证伪 ===
+[2026-08-30T22:07:16.525221+00:00] URL: https://github.com/dragonghy/dota2bot/issues/261
+[2026-08-30T22:07:17.038910+00:00] Cloning dragonghy/dota2bot -> /Agentic/workspace/bounty-exec/dragonghy-dota2bot-261
+[2026-08-30T22:07:20.718035+00:00] Generating fix via GhostCLI...
+[2026-08-30T22:07:20.718297+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-30T22:07:40.898340+00:00] GhostCLI raw response (6793 chars): {
+  "files_to_change": [
+    {
+      "path": "./tools/batch_test/behavioral/abilanc_domain.py",
+      "action": "modify",
+      "diff": "--- a/tools/batch_test/behavioral/abilanc_domain.py\n+++ b/tools/batch_test/behavioral/abilanc_domain.py\n@@ -1,5 +1,6 @@\n #!/usr/bin/env python3\n \"\"\"Adjudicate residual armed under-tier casts against source-side reachability.\"\"\"\n+import math\n import re\n import sys\n from pathlib import Path\n@@ -42,12 +43,38 @@ def _load_source_constants(repo_root: 
+[2026-08-30T22:07:40.905035+00:00] git apply failed for ./tools/batch_test/behavioral/abilanc_domain.py, attempting manual patch...
+[2026-08-30T22:07:40.906279+00:00] Manual patch applied: ./tools/batch_test/behavioral/abilanc_domain.py
+[2026-08-30T22:07:40.911771+00:00] git apply failed for ./tests/test_detector_source_constants.py, attempting manual patch...
+[2026-08-30T22:07:40.913402+00:00] Manual patch applied: ./tests/test_detector_source_constants.py
+[2026-08-30T22:07:40.913617+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T22:07:40.914059+00:00] Installing dependencies before build validation...
+[2026-08-30T22:07:43.190213+00:00] npm ci failed, trying npm install...
+[2026-08-30T22:07:43.876358+00:00] npm install also failed: npm error code ERESOLVE
+npm error ERESOLVE could not resolve
+npm error
+npm error While resolving: typescript-to-lua@1.26.2
+npm error Found: typescript@5.5.4
+npm error node_modules/typescript
+npm error   dev typescript@"^5.5.4" from the root project
+npm error   peerOptional typescript@">=4.9.5" from 
+[2026-08-30T22:07:43.876561+00:00] Running npm build for validation...
+[2026-08-30T22:07:44.210187+00:00] VALIDATION FAILED (npm build): 
+> dota2bot-focused@0.0.1 build
+> npm run build:lua
+
+
+> dota2bot-focused@0.0.1 build:lua
+> tstl -p tsconfig-tstl.json && node ./typescript/post-process/post-process-lua.js
+
+sh: 1: tstl: not found
+
+[2026-08-30T22:07:44.210386+00:00] Skipping commit/PR due to validation failure
+[2026-08-30T22:07:44.212165+00:00] Added https://github.com/dragonghy/dota2bot/issues/261 to failed_repos cooldown list
+[2026-08-30T22:07:44.212947+00:00] SKIPPED/FAILED: [bug] abilanc_domain.py 的残留标签 "REACHABLE via the selector" 是文件级推断,逐帧在站点级被证伪
+[2026-08-30T22:07:44.214045+00:00] Cycle 1 complete. Sleeping 300s...

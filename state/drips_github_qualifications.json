@@ -7,29 +7,114 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 0,
-  "drips_run_id": "535029b8b7e64347b81a3853218c1ede",
-  "drips_source_hash": "fb93226528bf150ab3ea02dd5bd148e7dc731047c324e7d8fe2ec0ce3b65e97f",
+  "drips_candidate_count": 1,
+  "drips_run_id": "940b47bbaf904cfab9ca04255db47183",
+  "drips_source_hash": "0db7ccaf0aaeb473f48b8e3b05b34c57ef6239038daac8930245e9e4227bf804",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-30T21:53:31.120014+00:00",
+  "generated_at": "2026-08-30T22:04:03.740463+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788130411
+    "reset_epoch": 1788131043
   },
-  "newly_audited_candidate_key": null,
-  "qualification_count": 0,
-  "qualifications": [],
+  "newly_audited_candidate_key": "be89e88c10da453813770198067ec8c5c5cd4e346178c58f278c6182168d59e9",
+  "qualification_count": 1,
+  "qualifications": [
+    {
+      "candidate_id": "drips:bb71e1ae-ffd3-4c7c-8d4b-2f9865f57779",
+      "candidate_key": "be89e88c10da453813770198067ec8c5c5cd4e346178c58f278c6182168d59e9",
+      "current_drips_source_hash": "0db7ccaf0aaeb473f48b8e3b05b34c57ef6239038daac8930245e9e4227bf804",
+      "decision": "rejected",
+      "drips_issue_id": "bb71e1ae-ffd3-4c7c-8d4b-2f9865f57779",
+      "drips_source_hash": "0db7ccaf0aaeb473f48b8e3b05b34c57ef6239038daac8930245e9e4227bf804",
+      "evidence": {
+        "default_branch": "main",
+        "issue_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453",
+        "issue_comments_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453/comments?per_page=100",
+        "issue_node_id": "I_kwDOS5wd788AAAABOoIZDg",
+        "issue_timeline_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T22:01:10Z",
+        "license_source": "github_repository_license",
+        "license_spdx": "Apache-2.0",
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint",
+        "repository_node_id": "R_kgDOS5wd7w",
+        "repository_pushed_at": "2026-08-30T13:25:28Z",
+        "tree_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/git/trees/main?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 100,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": true,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": false,
+        "implementation_allowed": false,
+        "license_present": true,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": true,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 453,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 7,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": false,
+          "substantive_body": false,
+          "test_expectation": false
+        },
+        "deadline_margin_hours": -18.07,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [],
+        "recent_merged_prs_sample": 20,
+        "referenced_paths": []
+      },
+      "rejection_reasons": [
+        "github_application_comment_present",
+        "github_issue_assigned_or_unknown",
+        "insufficient_wave_deadline_margin",
+        "qualification_score_below_threshold",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "PromptMintLabs/prompt-mint",
+      "schema_version": "1.0",
+      "score": 50.0,
+      "title": "Support challenge token short TTL configurable per environment",
+      "valid_until": "2026-08-30T23:04:03.740463+00:00",
+      "verified_at": "2026-08-30T22:04:03.740463+00:00"
+    }
+  ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "4394243f4613429ea7409c3e8b494c30",
+  "run_id": "eca4914069d741768305ffb415db1646",
   "schema_version": "1.0",
-  "source_hash": "a53b360fea328f4b3a1991653378e7b659cc033aad5a99aa869c6844ee33abc6",
-  "valid_until": "2026-08-30T21:58:28.221077+00:00",
+  "source_hash": "ac1a6355537951a2f1250da188117bf66f085da30cd1fe2443a8c3b429dcab77",
+  "valid_until": "2026-08-30T22:08:33.544611+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",

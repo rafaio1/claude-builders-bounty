@@ -1295,3 +1295,15 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+Traceback (most recent call last):
+  File "/Agentic/scripts/bounty_monitor.py", line 117, in <module>
+    main()
+  File "/Agentic/scripts/bounty_monitor.py", line 46, in main
+    data = json.loads(LEDGER_PATH.read_text())
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
