@@ -178,3 +178,15 @@
   2. Submit Beefy finding to Sherlock (human action, $1,500 potential).
   3. Re-run orchestration loop in 2h for fresh contest scan.
   4. Monitor Monk PR #411 and Claude Builders PRs for merge notifications.
+## Status Update — 2026-08-30T21:15Z
+- **Paraloom-Core #803 (USDC on Solana)**: UNCLAIMED, 0 comments, created 2h ago. Token-2022 co-sign bug with full PoC test in issue body. Payout address already specified by maintainer (`G4cewBfVriUmWBv3tuThMVga3n2MbpzkbZSi7bbPivGu`). HIGH PRIORITY — fix is well-scoped (carry token program through CoSignPayload), repo is Rust/Solana. Assessing feasibility for rapid submission.
+- **OpenLedger Kora-Contract #667**: APPLICATION EXISTS from @Able-faz-system via Stellar Wave. Do not claim — monitor for abandonment.
+- **davd-gzl/gno #5**: Content/blog task. Low urgency, no payout specified. SKIP for now.
+- **NSPG13 #773**: Canonical state unavailable (ActionRequired). Cannot claim. Skip.
+- **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 still OPEN, 0 reviews. Fifth ping cycle at next check.
+- **Beefy Finance Sherlock ($1,500 est.)**: POC committed and pushed. Human review/submission required within 7 days.
+- **Next Actions**:
+  1. Clone paraloom-core and validate the PoC test passes on base commit.
+  2. Implement fix for #803 (token program propagation in cosign_message.rs).
+  3. Submit PR to paraloom-core with payout wallet confirmation.
+  4. Continue polling UBF PR #9 every 30min.
