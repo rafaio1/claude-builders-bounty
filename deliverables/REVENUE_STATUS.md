@@ -1,5 +1,5 @@
 # Revenue Status Tracker
-**Last Updated:** 2026-08-30T14:00:00Z
+**Last Updated:** 2026-08-30T14:15:00Z
 **Target:** $20,000,000 USD
 **Current Balance:** $0.00
 
@@ -10,9 +10,10 @@
 | agent-playground | Various | $700 | #9314, #9326-#9338 | Open (14 PRs) |
 | Crystal-PDF | CSS/Tailwind | $50 | #109 | Open |
 | Lilly-Protocol | #47 (ADR-0001) | $75 | #270 | Open |
-| Lilly-Protocol | #71 (global-error) | $70 | #271 | **NEW** |
+| Lilly-Protocol | #71 (global-error) | $70 | #271 | Open |
+| Lilly-Protocol | #114 (FAQ accordion) | $55 | #272 | **NEW** |
 
-**Total Potential (Open PRs):** $945
+**Total Potential (Open PRs):** $1,000
 
 ## Urgent Human Action Required (Superteam Earn)
 **DEADLINE TODAY (<24h):**
@@ -27,5 +28,6 @@
 - Bybit Trading: Account equity ~$13.96 USDT (dust). Below minimum order limits.
 
 ## Next Targets (Unclaimed)
-- Lilly-Protocol #59: Storybook ($80)
-- Lilly-Protocol #114: FAQ Accordion ($55)
+- Lilly-Protocol #59: Storybook ($80) — High effort (Storybook 9 setup + 4 stories)
+- Lilly-Protocol #103: PR labeler workflow ($55)
+- Lilly-Protocol #55: .editorconfig ($65)
