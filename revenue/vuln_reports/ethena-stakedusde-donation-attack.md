@@ -70,4 +70,17 @@ When `to == address(0)`, shares are burned but NO new shares are minted. The und
 ## Recommended Fix
 Add `_checkMinShares()` call at end of `redistributeLockedAmount` when `to == address(0)`, or ensure `totalSupply` never drops below `MIN_SHARES` unless `totalAssets` is also zero.
 
-## Status: DRAFT - REQUIRES POC VALIDATION
+## Status: INVALIDATED - NOT EXPLOITABLE
+
+## PoC Validation Results (2026-08-30)
+Math invariant test `testRedistributeToZeroIsNotExploitable` PASSED.
+
+**Finding:** When `redistributeLockedAmount(attacker, address(0))` burns shares and locks assets in vesting:
+1. `totalSupply` drops to 0, but assets enter vesting (not lost).
+2. Subsequent depositor gets 1:1 shares during vesting (ERC4626 virtual offset).
+3. When vesting unlocks, share price increases → **victim profits**, not loses.
+4. Attacker cannot extract unlocked assets without being the depositor themselves.
+
+**Verdict:** This is a protocol feature (free yield from slashed/blacklisted funds), not a vulnerability. No unauthorized loss of funds occurs. Severity downgraded from Medium to Informational.
+
+**Recommendation:** Close this vector. Pivot to DeXe quorum manipulation or new Immunefi scope.
