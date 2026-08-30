@@ -1,0 +1,12 @@
+{
+  "agent_id": "immunefi-scanner-001",
+  "model": "claude-fable-5[1m]",
+  "task_type": "vulnerability_recon",
+  "objective": "Scan top 10 Immunefi programs by bounty size. Identify protocols with TVL >$50M and critical bounties >$100k. For each, produce: (1) attack surface summary, (2) known past incidents, (3) automated static analysis entry points, (4) estimated exploit complexity score.",
+  "output_file": "/Agentic/state/agents/immunefi_targets_20260830.json",
+  "priority": "critical",
+  "timeout_hours": 4,
+  "payout_route": "Immunefi USDC -> Kraken -> Wise USD",
+  "status": "completed",
+  "completed_at": "2026-08-30T05:27:27Z"
+}
