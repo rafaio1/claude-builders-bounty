@@ -1,11 +1,11 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T07:52:00Z",
+  "last_updated": "2026-08-30T08:05:00Z",
   "active_contests": {
     "sherlock": {
-      "status": "blocked",
-      "note": "1 active contest exists but UI/API scraping failed. Need manual identification or alternative source.",
+      "status": "no_active_contests",
+      "note": "Live scrape of audits.sherlock.xyz/contests on 2026-08-30 shows 0 Active contests. Only Judging (Metric, Tare) and Finished visible. Previous targets (Beefy/Frax/Kwenta/Lyra) are NOT currently active.",
       "judging": [
         "Metric ($150k)",
         "Tare ($50k)"
@@ -69,16 +69,11 @@
       "wallet_available": true
     }
   },
-  "sherlock_active_contests": [
-    "beefy-finance",
-    "frax-finance",
-    "kwenta-exchange",
-    "lyra-finance"
-  ],
+  "sherlock_active_contests": [],
   "rapid_capital_assessment": {
     "micro_bounties": "BLOCKED - All platforms (Algora/Drips/Opire) require KYC/OAuth",
     "testnet_airdrops": "BLOCKED - All 3 testnets (Monad/Berachain/Linea) have broken faucets or deprecated pages",
-    "sherlock_contests": "ACTIVE - 4 contests (Beefy/Frax/Kwenta/Lyra) but require account_creation human step",
+    "sherlock_contests": "BLOCKED - Live verification shows 0 active contests as of 2026-08-30. Beefy/Frax/Kwenta/Lyra not listed.",
     "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
     "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements"
   },
