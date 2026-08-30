@@ -755,3 +755,44 @@ json.decoder.JSONDecodeError: Expecting value: line 2652 column 9 (char 90271)
 [2026-08-29T18:00:02.626219+00:00] Added 10 Galxe campaigns to ledger
 [2026-08-29T18:00:02.626439+00:00] Scan complete: 10 campaigns found ($470 total rewards, 7 autonomous-capable)
 [2026-08-29T18:00:02.626499+00:00] === Galxe Campaign Scanner Cycle Complete ===
+[2026-08-30T00:00:02.385187+00:00] === Galxe Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:02.386796+00:00] Scanning Galxe for active OAT campaigns...
+[2026-08-30T00:00:02.386940+00:00]   Found: zkSync Era - ecosystem_odyssey - $50 ✅
+[2026-08-30T00:00:02.387056+00:00]   Found: Linea Voyage - l3_origins_nft - $45 ✅
+[2026-08-30T00:00:02.387173+00:00]   Found: Base Onchain Summer - buildathon_quest - $60 ✅
+[2026-08-30T00:00:02.387279+00:00]   Found: Scroll Origins - nft_claim - $40 ✅
+[2026-08-30T00:00:02.387462+00:00]   Found: Arbitrum STIP - governance_participation - $35 ⚠️
+[2026-08-30T00:00:02.387596+00:00]   Found: Optimism RetroPGF - retroactive_funding - $55 ⚠️
+[2026-08-30T00:00:02.387702+00:00]   Found: Polygon zkEVM - bridge_and_mint - $30 ✅
+[2026-08-30T00:00:02.387788+00:00]   Found: StarkNet DeFi - liquidity_provision - $65 ✅
+[2026-08-30T00:00:02.387883+00:00]   Found: Aptos Ecosystem - move_developer_quest - $40 ⚠️
+[2026-08-30T00:00:02.387991+00:00]   Found: Sui Network - testnet_graduate - $50 ✅
+[2026-08-30T00:00:02.385187+00:00] === Galxe Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:02.386796+00:00] Scanning Galxe for active OAT campaigns...
+[2026-08-30T00:00:02.386940+00:00]   Found: zkSync Era - ecosystem_odyssey - $50 ✅
+[2026-08-30T00:00:02.387056+00:00]   Found: Linea Voyage - l3_origins_nft - $45 ✅
+[2026-08-30T00:00:02.387173+00:00]   Found: Base Onchain Summer - buildathon_quest - $60 ✅
+[2026-08-30T00:00:02.387279+00:00]   Found: Scroll Origins - nft_claim - $40 ✅
+[2026-08-30T00:00:02.387462+00:00]   Found: Arbitrum STIP - governance_participation - $35 ⚠️
+[2026-08-30T00:00:02.387596+00:00]   Found: Optimism RetroPGF - retroactive_funding - $55 ⚠️
+[2026-08-30T00:00:02.387702+00:00]   Found: Polygon zkEVM - bridge_and_mint - $30 ✅
+[2026-08-30T00:00:02.387788+00:00]   Found: StarkNet DeFi - liquidity_provision - $65 ✅
+[2026-08-30T00:00:02.387883+00:00]   Found: Aptos Ecosystem - move_developer_quest - $40 ⚠️
+[2026-08-30T00:00:02.387991+00:00]   Found: Sui Network - testnet_graduate - $50 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/galxe_campaign_scanner.py", line 134, in <module>
+    main()
+  File "/Agentic/scripts/galxe_campaign_scanner.py", line 125, in main
+    update_ledger_with_galxe(opportunities)
+  File "/Agentic/scripts/galxe_campaign_scanner.py", line 85, in update_ledger_with_galxe
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)

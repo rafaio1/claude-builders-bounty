@@ -1,26 +1,26 @@
 {
   "entries": {
-    "1fd474bb4c3636e6ef5f39146039ad46143ed8c1233dc68a79443b8c64f22367": {
-      "candidate_id": "drips:1f8aeacf-452d-447c-99a6-73511df726e3",
-      "candidate_key": "1fd474bb4c3636e6ef5f39146039ad46143ed8c1233dc68a79443b8c64f22367",
+    "0cd8729caece46d92fdabd5cb71fef3e3a5c6c9cde19631710e327302c42c208": {
+      "candidate_id": "drips:fe4340f1-8034-4eeb-bfef-621bf745b1c0",
+      "candidate_key": "0cd8729caece46d92fdabd5cb71fef3e3a5c6c9cde19631710e327302c42c208",
       "decision": "rejected",
-      "drips_issue_id": "1f8aeacf-452d-447c-99a6-73511df726e3",
-      "drips_source_hash": "0b0fb47089f6e9d4cc16897c8417d18dd3cc02c16b777c39d8c1ce6a0644f697",
+      "drips_issue_id": "fe4340f1-8034-4eeb-bfef-621bf745b1c0",
+      "drips_source_hash": "56c63929fb87b92c4a990a8bc2927cb79bfef29c893dc6c5f747132078a0a4a1",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/300",
-        "issue_comments_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/300/comments?per_page=100",
-        "issue_node_id": "I_kwDOTLxqYM8AAAABOdNZpA",
-        "issue_timeline_api_url": "https://api.github.com/repos/crackedstudio/sharibo/issues/300/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T23:22:27Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "MIT",
-        "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/crackedstudio/sharibo/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/crackedstudio/sharibo",
-        "repository_node_id": "R_kgDOTLxqYA",
-        "repository_pushed_at": "2026-08-06T23:48:02Z",
-        "tree_api_url": "https://api.github.com/repos/crackedstudio/sharibo/git/trees/main?recursive=1"
+        "issue_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458",
+        "issue_comments_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458/comments?per_page=100",
+        "issue_node_id": "I_kwDORnwyI88AAAABOCp3og",
+        "issue_timeline_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T00:47:47Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": "https://api.github.com/repos/Rentars/Rentars/contents/package.json?ref=main",
+        "pull_history_api_url": "https://api.github.com/repos/Rentars/Rentars/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/Rentars/Rentars",
+        "repository_node_id": "R_kgDORnwyIw",
+        "repository_pushed_at": "2026-08-29T10:43:52Z",
+        "tree_api_url": "https://api.github.com/repos/Rentars/Rentars/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -31,11 +31,11 @@
       "gates": {
         "application_allowed": false,
         "automation_eligible": false,
-        "ci_present": false,
+        "ci_present": true,
         "deadline_margin": false,
         "github_issue_open_unassigned": true,
         "implementation_allowed": false,
-        "license_present": true,
+        "license_present": false,
         "no_application_comments": false,
         "no_linked_pull_request_activity": true,
         "points_labels_consistent": true,
@@ -50,125 +50,27 @@
         "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 300,
+      "issue_number": 458,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
         "application_comment_count": 2,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": true,
-          "substantive_body": true,
-          "test_expectation": false
-        },
-        "deadline_margin_hours": -11.42,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "@sharibo/client",
-          "@stellar/stellar-sdk",
-          "React.lazy",
-          "artifacts.ts",
-          "dist/stats.html"
-        ],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": [
-          "@sharibo/client",
-          "@stellar/stellar-sdk",
-          "React.lazy",
-          "app/src/App.tsx",
-          "app/src/components/Landing.tsx",
-          "app/vite.config.ts",
-          "artifacts.ts",
-          "dist/stats.html"
-        ]
-      },
-      "rejection_reasons": [
-        "continuous_integration_not_proven",
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "qualification_score_below_threshold",
-        "referenced_repository_paths_missing"
-      ],
-      "repo": "crackedstudio/sharibo",
-      "schema_version": "1.0",
-      "score": 73.25,
-      "title": "Code-split so the landing page ships no proving code",
-      "valid_until": "2026-08-30T00:25:08.324184+00:00",
-      "verified_at": "2026-08-29T23:25:08.324184+00:00"
-    },
-    "74f006c31454df40ab44acb1a19174db4f8622624bd339106b3482074460ed78": {
-      "candidate_id": "drips:a76fab74-3511-4188-8b0c-a9924193f389",
-      "candidate_key": "74f006c31454df40ab44acb1a19174db4f8622624bd339106b3482074460ed78",
-      "decision": "rejected",
-      "drips_issue_id": "a76fab74-3511-4188-8b0c-a9924193f389",
-      "drips_source_hash": "a7cf8979df404a511ae10392ae254d5589ab86253f841dd5049a22a4b1cad879",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/issues/262",
-        "issue_comments_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/issues/262/comments?per_page=100",
-        "issue_node_id": "I_kwDORQ6qEM8AAAABO0FejA",
-        "issue_timeline_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/issues/262/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T23:35:10Z",
-        "license_source": null,
-        "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend",
-        "repository_node_id": "R_kgDORQ6qEA",
-        "repository_pushed_at": "2026-08-29T23:28:22Z",
-        "tree_api_url": "https://api.github.com/repos/Space-Nebula/stellar-nebula-frontend/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": false,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": true,
-        "tests_present": true
-      },
-      "issue_number": 262,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 3,
-        "clarity_signals": {
-          "acceptance_criteria": true,
           "expected_behavior": false,
           "substantive_body": true,
           "test_expectation": true
         },
-        "deadline_margin_hours": -11.6,
+        "deadline_margin_hours": -12.81,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [
-          "security/rate-limiting"
+          "useNotifications.ts"
         ],
         "recent_merged_prs_sample": 20,
         "referenced_paths": [
-          "security/rate-limiting"
+          "useNotifications.ts"
         ]
       },
       "rejection_reasons": [
@@ -178,214 +80,34 @@
         "qualification_score_below_threshold",
         "referenced_repository_paths_missing"
       ],
-      "repo": "Space-Nebula/stellar-nebula-frontend",
+      "repo": "Rentars/Rentars",
       "schema_version": "1.0",
       "score": 72.25,
-      "title": "No Rate Limiting on Client Actions",
-      "valid_until": "2026-08-30T00:35:43.780662+00:00",
-      "verified_at": "2026-08-29T23:35:43.780662+00:00"
+      "title": "Prevent duplicate notification pagination",
+      "valid_until": "2026-08-30T01:48:31.251258+00:00",
+      "verified_at": "2026-08-30T00:48:31.251258+00:00"
     },
-    "c9379e3d08ba2d31d6407436a8b224079537cfc4994ebdaef080b7e464187fe1": {
-      "candidate_id": "drips:35a38e77-daa4-4cb8-bfdc-3e8f6bd1da43",
-      "candidate_key": "c9379e3d08ba2d31d6407436a8b224079537cfc4994ebdaef080b7e464187fe1",
+    "34ede40ac03965ba3d642e50babd0318b396f359bee78a7c298c0817c722460a": {
+      "candidate_id": "drips:12677994-1bc2-4587-8900-479a1f641ed4",
+      "candidate_key": "34ede40ac03965ba3d642e50babd0318b396f359bee78a7c298c0817c722460a",
       "decision": "rejected",
-      "drips_issue_id": "35a38e77-daa4-4cb8-bfdc-3e8f6bd1da43",
-      "drips_source_hash": "c39193c67afad8615fc1990179dc2d6c68b8e31c26f2075dccc9c8e51497a51a",
+      "drips_issue_id": "12677994-1bc2-4587-8900-479a1f641ed4",
+      "drips_source_hash": "b1865c40001248cac15af6935bf76205e545d6ee338a7eb07befd6f0a961b4ca",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/issues/262",
-        "issue_comments_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/issues/262/comments?per_page=100",
-        "issue_node_id": "I_kwDOScrqoc8AAAABOXZnRw",
-        "issue_timeline_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/issues/262/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T00:04:54Z",
+        "issue_api_url": "https://api.github.com/repos/SoroLabs/soroscope/issues/826",
+        "issue_comments_api_url": "https://api.github.com/repos/SoroLabs/soroscope/issues/826/comments?per_page=100",
+        "issue_node_id": "I_kwDOQ7td3s8AAAABOuQ8BQ",
+        "issue_timeline_api_url": "https://api.github.com/repos/SoroLabs/soroscope/issues/826/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T00:25:16Z",
         "license_source": null,
         "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen",
-        "repository_node_id": "R_kgDOScrqoQ",
-        "repository_pushed_at": "2026-08-29T23:51:27Z",
-        "tree_api_url": "https://api.github.com/repos/BigNathan1/CoopLumen/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": false,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": true,
-        "tests_present": true
-      },
-      "issue_number": 262,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 5,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": false,
-          "substantive_body": true,
-          "test_expectation": true
-        },
-        "deadline_margin_hours": -12.11,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "globals.css",
-          "hooks/__tests__",
-          "issue.md"
-        ],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": [
-          "CHANGELOG.md",
-          "CONTRIBUTING.md",
-          "frontend/src/components/__tests__",
-          "frontend/src/components/ui",
-          "globals.css",
-          "hooks/__tests__",
-          "issue.md"
-        ]
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "license_not_proven",
-        "qualification_score_below_threshold",
-        "referenced_repository_paths_missing"
-      ],
-      "repo": "BigNathan1/CoopLumen",
-      "schema_version": "1.0",
-      "score": 72.25,
-      "title": "[#189] Add responsive grid breakpoints (`sm`, `md`, `lg`, `xl`) to `globals.css`",
-      "valid_until": "2026-08-30T01:06:53.976498+00:00",
-      "verified_at": "2026-08-30T00:06:53.976498+00:00"
-    },
-    "ce20ec59b95c3905c96861b7cd46f3e2ba227774d00f8bd7c84dbc82832e8c4b": {
-      "candidate_id": "drips:c6cbc322-c56a-4d88-a2eb-73c5fed115bd",
-      "candidate_key": "ce20ec59b95c3905c96861b7cd46f3e2ba227774d00f8bd7c84dbc82832e8c4b",
-      "decision": "rejected",
-      "drips_issue_id": "c6cbc322-c56a-4d88-a2eb-73c5fed115bd",
-      "drips_source_hash": "c156aff143637bc560026c826afd126a6b067c7b54e02d862609397b5a53b418",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay/issues/1387",
-        "issue_comments_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay/issues/1387/comments?per_page=100",
-        "issue_node_id": "I_kwDORoqaQc8AAAABOVIGFw",
-        "issue_timeline_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay/issues/1387/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T00:16:15Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "MIT",
         "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay",
-        "repository_node_id": "R_kgDORoqaQQ",
-        "repository_pushed_at": "2026-08-29T22:45:25Z",
-        "tree_api_url": "https://api.github.com/repos/StellarEdu/StellarEduPay/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": false,
-        "implementation_allowed": false,
-        "license_present": true,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": true,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": false,
-        "tests_present": true
-      },
-      "issue_number": 1387,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 3,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": false,
-          "substantive_body": true,
-          "test_expectation": false
-        },
-        "deadline_margin_hours": -12.29,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": [
-          "docs/runbooks"
-        ]
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "github_issue_assigned_or_unknown",
-        "insufficient_wave_deadline_margin",
-        "qualification_score_below_threshold",
-        "scope_not_sufficiently_testable"
-      ],
-      "repo": "StellarEdu/StellarEduPay",
-      "schema_version": "1.0",
-      "score": 72.5,
-      "title": "No runbook for school wallet address rotation \u2014 changing stellarAddress drops in-flight payments with no recovery path",
-      "valid_until": "2026-08-30T01:17:33.567803+00:00",
-      "verified_at": "2026-08-30T00:17:33.567803+00:00"
-    },
-    "f918a54715ae24710018a17f6aea171747632e4ad9a3ec16c32df94c831abf8e": {
-      "candidate_id": "drips:1fb8e061-3cc9-4d62-81ab-21b08fb1385b",
-      "candidate_key": "f918a54715ae24710018a17f6aea171747632e4ad9a3ec16c32df94c831abf8e",
-      "decision": "rejected",
-      "drips_issue_id": "1fb8e061-3cc9-4d62-81ab-21b08fb1385b",
-      "drips_source_hash": "a01e0e08c7d5673bcc4d33d99f941190f1bce4a536ee2c5ec2ea6eb3ca6b5a1e",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/issues/532",
-        "issue_comments_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/issues/532/comments?per_page=100",
-        "issue_node_id": "I_kwDOOSH3Lc8AAAABOA0F5A",
-        "issue_timeline_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/issues/532/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T23:55:12Z",
-        "license_source": null,
-        "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe",
-        "repository_node_id": "R_kgDOOSH3LQ",
-        "repository_pushed_at": "2026-08-29T13:25:17Z",
-        "tree_api_url": "https://api.github.com/repos/OpSoll/noc-iq-fe/git/trees/main?recursive=1"
+        "pull_history_api_url": "https://api.github.com/repos/SoroLabs/soroscope/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/SoroLabs/soroscope",
+        "repository_node_id": "R_kgDOQ7td3g",
+        "repository_pushed_at": "2026-08-29T23:52:00Z",
+        "tree_api_url": "https://api.github.com/repos/SoroLabs/soroscope/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -412,30 +134,33 @@
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": false,
+        "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 532,
+      "issue_number": 826,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 4,
+        "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
           "expected_behavior": false,
           "substantive_body": true,
-          "test_expectation": false
+          "test_expectation": true
         },
-        "deadline_margin_hours": -11.94,
+        "deadline_margin_hours": -12.46,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [
-          "nociq-preferences-<date>.json"
+          "WalletBalanceCard.tsx",
+          "WalletModal.tsx"
         ],
         "recent_merged_prs_sample": 20,
         "referenced_paths": [
-          "nociq-preferences-<date>.json"
+          "WalletBalanceCard.tsx",
+          "WalletModal.tsx",
+          "web/components/ConnectButton.tsx"
         ]
       },
       "rejection_reasons": [
@@ -443,102 +168,16 @@
         "insufficient_wave_deadline_margin",
         "license_not_proven",
         "qualification_score_below_threshold",
-        "referenced_repository_paths_missing",
-        "scope_not_sufficiently_testable"
+        "referenced_repository_paths_missing"
       ],
-      "repo": "OpSoll/noc-iq-fe",
-      "schema_version": "1.0",
-      "score": 68.5,
-      "title": "State: Add workspace data export to JSON backup file",
-      "valid_until": "2026-08-30T00:56:26.520888+00:00",
-      "verified_at": "2026-08-29T23:56:26.520888+00:00"
-    },
-    "fc293b91472575b37ad8d498230f5554fc7a0e73597216167592ee77911c4bc7": {
-      "candidate_id": "drips:6d2f704d-e75a-4c41-8488-59f7156bb9e7",
-      "candidate_key": "fc293b91472575b37ad8d498230f5554fc7a0e73597216167592ee77911c4bc7",
-      "decision": "rejected",
-      "drips_issue_id": "6d2f704d-e75a-4c41-8488-59f7156bb9e7",
-      "drips_source_hash": "363149c0a8b5fb3cc9249761d0823169e2950237149e7e9fd0a15dec0a6dd0a6",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/issues/1038",
-        "issue_comments_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/issues/1038/comments?per_page=100",
-        "issue_node_id": "I_kwDOShTzpM8AAAABN0JI6w",
-        "issue_timeline_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/issues/1038/timeline?per_page=100",
-        "issue_updated_at": "2026-08-29T23:45:16Z",
-        "license_source": null,
-        "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/vjuliaife/TariffShield",
-        "repository_node_id": "R_kgDOShTzpA",
-        "repository_pushed_at": "2026-08-29T23:10:57Z",
-        "tree_api_url": "https://api.github.com/repos/vjuliaife/TariffShield/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": false,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": true,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": true,
-        "tests_present": true
-      },
-      "issue_number": 1038,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 3,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": true,
-          "substantive_body": true,
-          "test_expectation": false
-        },
-        "deadline_margin_hours": -11.77,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": [
-          "apps/api/src/routes/importers.ts",
-          "contracts/tariff-shield/src/lib.rs"
-        ]
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "license_not_proven",
-        "qualification_score_below_threshold"
-      ],
-      "repo": "vjuliaife/TariffShield",
+      "repo": "SoroLabs/soroscope",
       "schema_version": "1.0",
       "score": 72.25,
-      "title": "Add Dual Sign-Off Approval Workflow for Large Collateral Withdrawals",
-      "valid_until": "2026-08-30T00:46:03.767806+00:00",
-      "verified_at": "2026-08-29T23:46:03.767806+00:00"
+      "title": "[Client-Side] Issue #54: Stellar Wallet Connection Provider Integration",
+      "valid_until": "2026-08-30T01:27:51.189600+00:00",
+      "verified_at": "2026-08-30T00:27:51.189600+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-30T00:17:33.567803+00:00"
+  "updated_at": "2026-08-30T01:19:33.706000+00:00"
 }

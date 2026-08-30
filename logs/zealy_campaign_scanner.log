@@ -773,3 +773,44 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:02.149104+00:00] === Zealy Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:02.151952+00:00] Scanning Zealy for active community campaigns...
+[2026-08-30T00:00:02.152159+00:00]   Found: Sui Network - testnet_feedback - $40 ✅
+[2026-08-30T00:00:02.152294+00:00]   Found: Aptos Ecosystem - social_engagement - $35 ⚠️
+[2026-08-30T00:00:02.152415+00:00]   Found: Sei Network - validator_setup - $60 ✅
+[2026-08-30T00:00:02.153564+00:00]   Found: Celestia - node_operation - $55 ✅
+[2026-08-30T00:00:02.153685+00:00]   Found: Berachain - testnet_interaction - $45 ✅
+[2026-08-30T00:00:02.155237+00:00]   Found: Manta Network - bridge_and_swap - $30 ✅
+[2026-08-30T00:00:02.155764+00:00]   Found: Fuel Network - contract_deploy - $50 ✅
+[2026-08-30T00:00:02.155845+00:00]   Found: Monad - ecosystem_quest - $65 ✅
+[2026-08-30T00:00:02.155910+00:00]   Found: Movement Labs - move_development - $40 ⚠️
+[2026-08-30T00:00:02.155962+00:00]   Found: Abstract Chain - consumer_app_quest - $35 ✅
+[2026-08-30T00:00:02.149104+00:00] === Zealy Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:02.151952+00:00] Scanning Zealy for active community campaigns...
+[2026-08-30T00:00:02.152159+00:00]   Found: Sui Network - testnet_feedback - $40 ✅
+[2026-08-30T00:00:02.152294+00:00]   Found: Aptos Ecosystem - social_engagement - $35 ⚠️
+[2026-08-30T00:00:02.152415+00:00]   Found: Sei Network - validator_setup - $60 ✅
+[2026-08-30T00:00:02.153564+00:00]   Found: Celestia - node_operation - $55 ✅
+[2026-08-30T00:00:02.153685+00:00]   Found: Berachain - testnet_interaction - $45 ✅
+[2026-08-30T00:00:02.155237+00:00]   Found: Manta Network - bridge_and_swap - $30 ✅
+[2026-08-30T00:00:02.155764+00:00]   Found: Fuel Network - contract_deploy - $50 ✅
+[2026-08-30T00:00:02.155845+00:00]   Found: Monad - ecosystem_quest - $65 ✅
+[2026-08-30T00:00:02.155910+00:00]   Found: Movement Labs - move_development - $40 ⚠️
+[2026-08-30T00:00:02.155962+00:00]   Found: Abstract Chain - consumer_app_quest - $35 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/zealy_campaign_scanner.py", line 133, in <module>
+    main()
+  File "/Agentic/scripts/zealy_campaign_scanner.py", line 124, in main
+    update_ledger_with_zealy(opportunities)
+  File "/Agentic/scripts/zealy_campaign_scanner.py", line 84, in update_ledger_with_zealy
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)

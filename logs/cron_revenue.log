@@ -51033,3 +51033,1323 @@ Traceback (most recent call last):
 json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
 [2026-08-29T23:15:01Z] WARN: airdrop_executor failed
 [2026-08-29T23:15:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-29T23:30:01Z] === CRON REVENUE SUITE START ===
+[2026-08-29T23:30:01Z] Running OpenBugBounty monitor...
+[2026-08-29T23:30:01.272163+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-29T23:30:01.272481+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-29T23:30:01.275224+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-29T23:30:01.275358+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-29T23:30:01.275415+00:00] Scan completed: {"timestamp": "2026-08-29T23:30:01.275391+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: openbugbounty failed
+[2026-08-29T23:30:01Z] Running DeFi bounty scanner...
+[2026-08-29T23:30:01.734948+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-29T23:30:01.735177+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-29T23:30:01.735265+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-29T23:30:01.735322+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-29T23:30:01.735362+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-29T23:30:01.735406+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: defi_scanner failed
+[2026-08-29T23:30:01Z] Running vuln report pipeline...
+[2026-08-29T23:30:02.787819+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-29T23:30:02.790372+00:00] Discovering targets from known bounty programs...
+[2026-08-29T23:30:02.792411+00:00] Discovered 7 potential targets
+[2026-08-29T23:30:02.792578+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-29T23:30:02.798626+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.801177+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.816088+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.819924+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-29T23:30:02.821716+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.823791+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.829853+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.830055+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-29T23:30:02.835946+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.844036+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+[2026-08-29T23:30:02.854343+00:00] Report prepared: VULN-20260829233002 -> /Agentic/revenue/vuln_reports/VULN-20260829233002.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: vuln_pipeline failed
+[2026-08-29T23:30:01Z] Running revenue orchestrator...
+[2026-08-29T23:30:03.218268+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: orchestrator failed
+[2026-08-29T23:30:01Z] Running autonomous trade scanner...
+[2026-08-29T23:30:03.495298+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-29T23:30:03.495570+00:00] Scanning testnet airdrop campaigns...
+[2026-08-29T23:30:03.495653+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-29T23:30:03.495705+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-29T23:30:03.495787+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-29T23:30:03.495844+00:00] Scanning yield/APY signals...
+[2026-08-29T23:30:03.495892+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-29T23:30:03.495932+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: trade_scanner failed
+[2026-08-29T23:30:01Z] Running testnet airdrop executor...
+[2026-08-29T23:30:03.663490+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-29T23:30:03.664362+00:00] Processing: Monad Testnet
+[2026-08-29T23:30:03.664532+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-29T23:30:03.664586+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-29T23:30:03.664667+00:00] Processing: Linea Voyage
+[2026-08-29T23:30:03.664724+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-29T23:30:03.664769+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-29T23:30:03.664801+00:00] Processing: Berachain Testnet
+[2026-08-29T23:30:03.664860+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-29T23:30:03.664902+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-29T23:30:03.664933+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:30:01Z] WARN: airdrop_executor failed
+[2026-08-29T23:30:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-29T23:45:01Z] === CRON REVENUE SUITE START ===
+[2026-08-29T23:45:01Z] Running OpenBugBounty monitor...
+[2026-08-29T23:45:02.078299+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-29T23:45:02.087167+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-29T23:45:02.111195+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-29T23:45:02.111544+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-29T23:45:02.111679+00:00] Scan completed: {"timestamp": "2026-08-29T23:45:02.111644+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: openbugbounty failed
+[2026-08-29T23:45:01Z] Running DeFi bounty scanner...
+[2026-08-29T23:45:03.066608+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-29T23:45:03.066886+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-29T23:45:03.066950+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-29T23:45:03.066984+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-29T23:45:03.067014+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-29T23:45:03.067054+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: defi_scanner failed
+[2026-08-29T23:45:01Z] Running vuln report pipeline...
+[2026-08-29T23:45:03.322324+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-29T23:45:03.324230+00:00] Discovering targets from known bounty programs...
+[2026-08-29T23:45:03.324462+00:00] Discovered 7 potential targets
+[2026-08-29T23:45:03.324571+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-29T23:45:03.327002+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.327343+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.331996+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.332093+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-29T23:45:03.335374+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.337353+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.340712+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.340822+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-29T23:45:03.343963+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.346145+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+[2026-08-29T23:45:03.348783+00:00] Report prepared: VULN-20260829234503 -> /Agentic/revenue/vuln_reports/VULN-20260829234503.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: vuln_pipeline failed
+[2026-08-29T23:45:01Z] Running revenue orchestrator...
+[2026-08-29T23:45:03.709430+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: orchestrator failed
+[2026-08-29T23:45:01Z] Running autonomous trade scanner...
+[2026-08-29T23:45:03.967778+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-29T23:45:03.968084+00:00] Scanning testnet airdrop campaigns...
+[2026-08-29T23:45:03.968198+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-29T23:45:03.968467+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-29T23:45:03.968594+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-29T23:45:03.968672+00:00] Scanning yield/APY signals...
+[2026-08-29T23:45:03.968751+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-29T23:45:03.968914+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: trade_scanner failed
+[2026-08-29T23:45:01Z] Running testnet airdrop executor...
+[2026-08-29T23:45:04.208229+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-29T23:45:04.209175+00:00] Processing: Monad Testnet
+[2026-08-29T23:45:04.209261+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-29T23:45:04.209487+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-29T23:45:04.209628+00:00] Processing: Linea Voyage
+[2026-08-29T23:45:04.209704+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-29T23:45:04.209767+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-29T23:45:04.209839+00:00] Processing: Berachain Testnet
+[2026-08-29T23:45:04.209900+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-29T23:45:04.209970+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-29T23:45:04.210032+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-29T23:45:01Z] WARN: airdrop_executor failed
+[2026-08-29T23:45:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T00:00:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T00:00:01Z] Running OpenBugBounty monitor...
+[2026-08-30T00:00:02.825356+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T00:00:02.825557+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T00:00:02.884453+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T00:00:02.884720+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T00:00:02.884813+00:00] Scan completed: {"timestamp": "2026-08-30T00:00:02.884775+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: openbugbounty failed
+[2026-08-30T00:00:01Z] Running DeFi bounty scanner...
+[2026-08-30T00:00:06.487117+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T00:00:07.094673+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T00:00:07.094762+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T00:00:07.094796+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T00:00:07.094824+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T00:00:07.094863+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: defi_scanner failed
+[2026-08-30T00:00:01Z] Running vuln report pipeline...
+[2026-08-30T00:00:08.429786+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T00:00:08.430750+00:00] Discovering targets from known bounty programs...
+[2026-08-30T00:00:08.431055+00:00] Discovered 7 potential targets
+[2026-08-30T00:00:08.431223+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T00:00:08.431659+00:00] Report prepared: VULN-20260830000008 -> /Agentic/revenue/vuln_reports/VULN-20260830000008.json
+[2026-08-30T00:00:08.436399+00:00] Report prepared: VULN-20260830000008 -> /Agentic/revenue/vuln_reports/VULN-20260830000008.json
+[2026-08-30T00:00:08.834040+00:00] Report prepared: VULN-20260830000008 -> /Agentic/revenue/vuln_reports/VULN-20260830000008.json
+[2026-08-30T00:00:08.834297+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T00:00:08.925285+00:00] Report prepared: VULN-20260830000008 -> /Agentic/revenue/vuln_reports/VULN-20260830000008.json
+[2026-08-30T00:00:09.028235+00:00] Report prepared: VULN-20260830000008 -> /Agentic/revenue/vuln_reports/VULN-20260830000008.json
+[2026-08-30T00:00:09.028566+00:00] Report prepared: VULN-20260830000009 -> /Agentic/revenue/vuln_reports/VULN-20260830000009.json
+[2026-08-30T00:00:09.028628+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T00:00:09.028996+00:00] Report prepared: VULN-20260830000009 -> /Agentic/revenue/vuln_reports/VULN-20260830000009.json
+[2026-08-30T00:00:09.213954+00:00] Report prepared: VULN-20260830000009 -> /Agentic/revenue/vuln_reports/VULN-20260830000009.json
+[2026-08-30T00:00:09.411178+00:00] Report prepared: VULN-20260830000009 -> /Agentic/revenue/vuln_reports/VULN-20260830000009.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: vuln_pipeline failed
+[2026-08-30T00:00:01Z] Running revenue orchestrator...
+[2026-08-30T00:00:10.286952+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: orchestrator failed
+[2026-08-30T00:00:01Z] Running autonomous trade scanner...
+[2026-08-30T00:00:10.833063+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T00:00:10.833391+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T00:00:10.833458+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T00:00:10.833883+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T00:00:10.833981+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T00:00:10.834027+00:00] Scanning yield/APY signals...
+[2026-08-30T00:00:10.834170+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T00:00:10.834332+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: trade_scanner failed
+[2026-08-30T00:00:01Z] Running testnet airdrop executor...
+[2026-08-30T00:00:11.348787+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T00:00:11.351029+00:00] Processing: Monad Testnet
+[2026-08-30T00:00:11.353543+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T00:00:11.353680+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T00:00:11.353786+00:00] Processing: Linea Voyage
+[2026-08-30T00:00:11.353887+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:00:11.353985+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:00:11.355990+00:00] Processing: Berachain Testnet
+[2026-08-30T00:00:11.356164+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:00:11.356292+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:00:11.356414+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:00:01Z] WARN: airdrop_executor failed
+[2026-08-30T00:00:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T00:15:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T00:15:01Z] Running OpenBugBounty monitor...
+[2026-08-30T00:15:01.715382+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T00:15:01.715617+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T00:15:01.715936+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T00:15:01.716036+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T00:15:01.716106+00:00] Scan completed: {"timestamp": "2026-08-30T00:15:01.716084+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: openbugbounty failed
+[2026-08-30T00:15:01Z] Running DeFi bounty scanner...
+[2026-08-30T00:15:02.473575+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T00:15:02.473806+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T00:15:02.473855+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T00:15:02.477496+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T00:15:02.477639+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T00:15:02.477698+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: defi_scanner failed
+[2026-08-30T00:15:01Z] Running vuln report pipeline...
+[2026-08-30T00:15:02.822408+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T00:15:02.824492+00:00] Discovering targets from known bounty programs...
+[2026-08-30T00:15:02.824745+00:00] Discovered 7 potential targets
+[2026-08-30T00:15:02.824838+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T00:15:02.825700+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.826313+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.833132+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.833307+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T00:15:02.841947+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.853823+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.858012+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.860878+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T00:15:02.861875+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.866056+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+[2026-08-30T00:15:02.878160+00:00] Report prepared: VULN-20260830001502 -> /Agentic/revenue/vuln_reports/VULN-20260830001502.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: vuln_pipeline failed
+[2026-08-30T00:15:01Z] Running revenue orchestrator...
+[2026-08-30T00:15:03.419129+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: orchestrator failed
+[2026-08-30T00:15:01Z] Running autonomous trade scanner...
+[2026-08-30T00:15:03.648374+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T00:15:03.648623+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T00:15:03.648694+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T00:15:03.648741+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T00:15:03.648789+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T00:15:03.648827+00:00] Scanning yield/APY signals...
+[2026-08-30T00:15:03.648868+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T00:15:03.648909+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: trade_scanner failed
+[2026-08-30T00:15:01Z] Running testnet airdrop executor...
+[2026-08-30T00:15:03.881223+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T00:15:03.882144+00:00] Processing: Monad Testnet
+[2026-08-30T00:15:03.883578+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T00:15:03.883644+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T00:15:03.883689+00:00] Processing: Linea Voyage
+[2026-08-30T00:15:03.883727+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:15:03.883763+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:15:03.883803+00:00] Processing: Berachain Testnet
+[2026-08-30T00:15:03.883867+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:15:03.883911+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:15:03.883950+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:15:01Z] WARN: airdrop_executor failed
+[2026-08-30T00:15:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T00:30:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T00:30:01Z] Running OpenBugBounty monitor...
+[2026-08-30T00:30:02.616712+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T00:30:02.654423+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T00:30:02.655103+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T00:30:02.656028+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T00:30:02.656186+00:00] Scan completed: {"timestamp": "2026-08-30T00:30:02.656152+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: openbugbounty failed
+[2026-08-30T00:30:01Z] Running DeFi bounty scanner...
+[2026-08-30T00:30:04.131625+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T00:30:04.131908+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T00:30:04.131984+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T00:30:04.132042+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T00:30:04.132094+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T00:30:04.132158+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: defi_scanner failed
+[2026-08-30T00:30:01Z] Running vuln report pipeline...
+[2026-08-30T00:30:04.477433+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T00:30:04.478329+00:00] Discovering targets from known bounty programs...
+[2026-08-30T00:30:04.478587+00:00] Discovered 7 potential targets
+[2026-08-30T00:30:04.478669+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T00:30:04.478908+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.479148+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.486896+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.487045+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T00:30:04.501842+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.506333+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.525439+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.526805+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T00:30:04.531006+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.534414+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+[2026-08-30T00:30:04.536352+00:00] Report prepared: VULN-20260830003004 -> /Agentic/revenue/vuln_reports/VULN-20260830003004.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: vuln_pipeline failed
+[2026-08-30T00:30:01Z] Running revenue orchestrator...
+[2026-08-30T00:30:04.712991+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: orchestrator failed
+[2026-08-30T00:30:01Z] Running autonomous trade scanner...
+[2026-08-30T00:30:05.235036+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T00:30:05.235363+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T00:30:05.235440+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T00:30:05.235485+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T00:30:05.235556+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T00:30:05.235589+00:00] Scanning yield/APY signals...
+[2026-08-30T00:30:05.235632+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T00:30:05.235823+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: trade_scanner failed
+[2026-08-30T00:30:01Z] Running testnet airdrop executor...
+[2026-08-30T00:30:05.426068+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T00:30:05.427078+00:00] Processing: Monad Testnet
+[2026-08-30T00:30:05.427180+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T00:30:05.427283+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T00:30:05.427335+00:00] Processing: Linea Voyage
+[2026-08-30T00:30:05.427375+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:30:05.427411+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:30:05.427450+00:00] Processing: Berachain Testnet
+[2026-08-30T00:30:05.427488+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:30:05.427538+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:30:05.427578+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:30:01Z] WARN: airdrop_executor failed
+[2026-08-30T00:30:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T00:45:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T00:45:01Z] Running OpenBugBounty monitor...
+[2026-08-30T00:45:01.769125+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T00:45:01.769574+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T00:45:01.776626+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T00:45:01.776788+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T00:45:01.776849+00:00] Scan completed: {"timestamp": "2026-08-30T00:45:01.776823+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: openbugbounty failed
+[2026-08-30T00:45:01Z] Running DeFi bounty scanner...
+[2026-08-30T00:45:03.483669+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T00:45:03.484195+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T00:45:03.484416+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T00:45:03.484547+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T00:45:03.484628+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T00:45:03.484895+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: defi_scanner failed
+[2026-08-30T00:45:01Z] Running vuln report pipeline...
+[2026-08-30T00:45:04.043706+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T00:45:04.044905+00:00] Discovering targets from known bounty programs...
+[2026-08-30T00:45:04.045180+00:00] Discovered 7 potential targets
+[2026-08-30T00:45:04.045284+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T00:45:04.047952+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.048465+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.055497+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.055713+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T00:45:04.070176+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.082763+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.089722+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.089889+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T00:45:04.097988+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.114034+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+[2026-08-30T00:45:04.116467+00:00] Report prepared: VULN-20260830004504 -> /Agentic/revenue/vuln_reports/VULN-20260830004504.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: vuln_pipeline failed
+[2026-08-30T00:45:01Z] Running revenue orchestrator...
+[2026-08-30T00:45:04.665160+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: orchestrator failed
+[2026-08-30T00:45:01Z] Running autonomous trade scanner...
+[2026-08-30T00:45:05.273191+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T00:45:05.277434+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T00:45:05.277557+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T00:45:05.277606+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T00:45:05.277657+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T00:45:05.277694+00:00] Scanning yield/APY signals...
+[2026-08-30T00:45:05.277734+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T00:45:05.277772+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: trade_scanner failed
+[2026-08-30T00:45:01Z] Running testnet airdrop executor...
+[2026-08-30T00:45:05.785895+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T00:45:05.789383+00:00] Processing: Monad Testnet
+[2026-08-30T00:45:05.789572+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T00:45:05.789674+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T00:45:05.789751+00:00] Processing: Linea Voyage
+[2026-08-30T00:45:05.789822+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:45:05.789892+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T00:45:05.789964+00:00] Processing: Berachain Testnet
+[2026-08-30T00:45:05.790032+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:45:05.790099+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T00:45:05.790164+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T00:45:01Z] WARN: airdrop_executor failed
+[2026-08-30T00:45:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T01:00:02Z] === CRON REVENUE SUITE START ===
+[2026-08-30T01:00:02Z] Running OpenBugBounty monitor...
+[2026-08-30T01:00:02.429804+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T01:00:02.430185+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T01:00:02.434665+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T01:00:02.434933+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T01:00:02.435059+00:00] Scan completed: {"timestamp": "2026-08-30T01:00:02.435027+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: openbugbounty failed
+[2026-08-30T01:00:02Z] Running DeFi bounty scanner...
+[2026-08-30T01:00:03.622062+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T01:00:03.624673+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T01:00:03.624826+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T01:00:03.624904+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T01:00:03.624979+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T01:00:03.625065+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: defi_scanner failed
+[2026-08-30T01:00:02Z] Running vuln report pipeline...
+[2026-08-30T01:00:03.995176+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T01:00:03.998012+00:00] Discovering targets from known bounty programs...
+[2026-08-30T01:00:03.998209+00:00] Discovered 7 potential targets
+[2026-08-30T01:00:03.998285+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T01:00:03.998563+00:00] Report prepared: VULN-20260830010003 -> /Agentic/revenue/vuln_reports/VULN-20260830010003.json
+[2026-08-30T01:00:03.999716+00:00] Report prepared: VULN-20260830010003 -> /Agentic/revenue/vuln_reports/VULN-20260830010003.json
+[2026-08-30T01:00:04.074417+00:00] Report prepared: VULN-20260830010003 -> /Agentic/revenue/vuln_reports/VULN-20260830010003.json
+[2026-08-30T01:00:04.074550+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T01:00:04.074883+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+[2026-08-30T01:00:04.075050+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+[2026-08-30T01:00:04.077706+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+[2026-08-30T01:00:04.077800+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T01:00:04.088788+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+[2026-08-30T01:00:04.095923+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+[2026-08-30T01:00:04.097675+00:00] Report prepared: VULN-20260830010004 -> /Agentic/revenue/vuln_reports/VULN-20260830010004.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: vuln_pipeline failed
+[2026-08-30T01:00:02Z] Running revenue orchestrator...
+[2026-08-30T01:00:04.547237+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: orchestrator failed
+[2026-08-30T01:00:02Z] Running autonomous trade scanner...
+[2026-08-30T01:00:04.896664+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T01:00:04.900137+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T01:00:04.900306+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T01:00:04.902193+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T01:00:04.902309+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T01:00:04.902415+00:00] Scanning yield/APY signals...
+[2026-08-30T01:00:04.902538+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T01:00:04.904183+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: trade_scanner failed
+[2026-08-30T01:00:02Z] Running testnet airdrop executor...
+[2026-08-30T01:00:05.198024+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T01:00:05.199027+00:00] Processing: Monad Testnet
+[2026-08-30T01:00:05.199214+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T01:00:05.199278+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T01:00:05.199324+00:00] Processing: Linea Voyage
+[2026-08-30T01:00:05.199378+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T01:00:05.199419+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T01:00:05.199458+00:00] Processing: Berachain Testnet
+[2026-08-30T01:00:05.199496+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T01:00:05.199555+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T01:00:05.199597+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:00:02Z] WARN: airdrop_executor failed
+[2026-08-30T01:00:02Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T01:15:02Z] === CRON REVENUE SUITE START ===
+[2026-08-30T01:15:02Z] Running OpenBugBounty monitor...
+[2026-08-30T01:15:02.458286+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T01:15:02.459619+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T01:15:02.460035+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T01:15:02.460150+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T01:15:02.460220+00:00] Scan completed: {"timestamp": "2026-08-30T01:15:02.460200+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+Traceback (most recent call last):
+  File "/Agentic/scripts/openbugbounty_register.py", line 139, in <module>
+    main()
+  File "/Agentic/scripts/openbugbounty_register.py", line 105, in main
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: openbugbounty failed
+[2026-08-30T01:15:02Z] Running DeFi bounty scanner...
+[2026-08-30T01:15:02.653495+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T01:15:02.653863+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T01:15:02.653958+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T01:15:02.654046+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T01:15:02.654083+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T01:15:02.654125+00:00] Scanning code4rena: https://code4rena.com
+Traceback (most recent call last):
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 153, in <module>
+    main()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 146, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/defi_bounty_scanner.py", line 98, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: defi_scanner failed
+[2026-08-30T01:15:02Z] Running vuln report pipeline...
+[2026-08-30T01:15:02.974423+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T01:15:02.975280+00:00] Discovering targets from known bounty programs...
+[2026-08-30T01:15:02.975710+00:00] Discovered 7 potential targets
+[2026-08-30T01:15:02.975823+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T01:15:02.976101+00:00] Report prepared: VULN-20260830011502 -> /Agentic/revenue/vuln_reports/VULN-20260830011502.json
+[2026-08-30T01:15:02.976359+00:00] Report prepared: VULN-20260830011502 -> /Agentic/revenue/vuln_reports/VULN-20260830011502.json
+[2026-08-30T01:15:02.988942+00:00] Report prepared: VULN-20260830011502 -> /Agentic/revenue/vuln_reports/VULN-20260830011502.json
+[2026-08-30T01:15:02.989083+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T01:15:03.016851+00:00] Report prepared: VULN-20260830011502 -> /Agentic/revenue/vuln_reports/VULN-20260830011502.json
+[2026-08-30T01:15:03.023363+00:00] Report prepared: VULN-20260830011503 -> /Agentic/revenue/vuln_reports/VULN-20260830011503.json
+[2026-08-30T01:15:03.023728+00:00] Report prepared: VULN-20260830011503 -> /Agentic/revenue/vuln_reports/VULN-20260830011503.json
+[2026-08-30T01:15:03.023816+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T01:15:03.064943+00:00] Report prepared: VULN-20260830011503 -> /Agentic/revenue/vuln_reports/VULN-20260830011503.json
+[2026-08-30T01:15:03.104636+00:00] Report prepared: VULN-20260830011503 -> /Agentic/revenue/vuln_reports/VULN-20260830011503.json
+[2026-08-30T01:15:03.127593+00:00] Report prepared: VULN-20260830011503 -> /Agentic/revenue/vuln_reports/VULN-20260830011503.json
+Traceback (most recent call last):
+  File "/Agentic/scripts/vul_report_autonomous.py", line 226, in <module>
+    main()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 220, in main
+    update_ledger_with_vuln_activity()
+  File "/Agentic/scripts/vul_report_autonomous.py", line 168, in update_ledger_with_vuln_activity
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: vuln_pipeline failed
+[2026-08-30T01:15:02Z] Running revenue orchestrator...
+[2026-08-30T01:15:04.098176+00:00] === Revenue Orchestrator Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/revenue_orchestrator.py", line 167, in <module>
+    result = run_cycle()
+             ^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 113, in run_cycle
+    platforms = get_platform_status()
+                ^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 40, in get_platform_status
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/revenue_orchestrator.py", line 29, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: orchestrator failed
+[2026-08-30T01:15:02Z] Running autonomous trade scanner...
+[2026-08-30T01:15:04.391552+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T01:15:04.391766+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T01:15:04.391844+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T01:15:04.391898+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T01:15:04.391958+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T01:15:04.392001+00:00] Scanning yield/APY signals...
+[2026-08-30T01:15:04.392047+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T01:15:04.392088+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+Traceback (most recent call last):
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 190, in <module>
+    main()
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 183, in main
+    update_ledger_with_trade_opps(all_opps)
+  File "/Agentic/scripts/autonomous_trade_scanner.py", line 129, in update_ledger_with_trade_opps
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: trade_scanner failed
+[2026-08-30T01:15:02Z] Running testnet airdrop executor...
+[2026-08-30T01:15:04.586050+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T01:15:04.587498+00:00] Processing: Monad Testnet
+[2026-08-30T01:15:04.587644+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T01:15:04.587737+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T01:15:04.587907+00:00] Processing: Linea Voyage
+[2026-08-30T01:15:04.587982+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T01:15:04.588040+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T01:15:04.588080+00:00] Processing: Berachain Testnet
+[2026-08-30T01:15:04.588117+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T01:15:04.588156+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T01:15:04.588193+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
+[2026-08-30T01:15:02Z] WARN: airdrop_executor failed
+[2026-08-30T01:15:02Z] === CRON REVENUE SUITE COMPLETE ===

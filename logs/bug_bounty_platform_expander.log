@@ -284,3 +284,50 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-08-29T12:00:04.463421+00:00]       Human gates: application, vetting, background_check
 [2026-08-29T12:00:04.538274+00:00] Added 0 bug bounty platforms to ledger
 [2026-08-29T12:00:04.539419+00:00] === Bug Bounty Platform Expander Cycle Complete ===
+[2026-08-30T00:00:02.524177+00:00] === Bug Bounty Platform Expander Cycle Start ===
+[2026-08-30T00:00:02.532219+00:00] Platforms discovered: 5
+[2026-08-30T00:00:02.532314+00:00]   Autonomous-capable: 3
+[2026-08-30T00:00:02.532356+00:00]   API available: 3
+[2026-08-30T00:00:02.532394+00:00]   Human gates required: 5
+[2026-08-30T00:00:02.532433+00:00]   ✅🔌 hackerone: https://hackerone.com/
+[2026-08-30T00:00:02.532472+00:00]       Human gates: account_creation, id_verification
+[2026-08-30T00:00:02.532527+00:00]   ✅🔌 bugcrowd: https://www.bugcrowd.com/
+[2026-08-30T00:00:02.532567+00:00]       Human gates: account_creation
+[2026-08-30T00:00:02.532604+00:00]   ⚠️📝 integrity: https://integrity.sh/
+[2026-08-30T00:00:02.584717+00:00]       Human gates: account_creation, manual_submission
+[2026-08-30T00:00:02.584880+00:00]   ✅🔌 yeswehack: https://www.yeswehack.com/
+[2026-08-30T00:00:02.584960+00:00]       Human gates: account_creation, kyc
+[2026-08-30T00:00:02.585028+00:00]   ⚠️📝 synack: https://www.synack.com/
+[2026-08-30T00:00:02.595079+00:00]       Human gates: application, vetting, background_check
+[2026-08-30T00:00:02.524177+00:00] === Bug Bounty Platform Expander Cycle Start ===
+[2026-08-30T00:00:02.532219+00:00] Platforms discovered: 5
+[2026-08-30T00:00:02.532314+00:00]   Autonomous-capable: 3
+[2026-08-30T00:00:02.532356+00:00]   API available: 3
+[2026-08-30T00:00:02.532394+00:00]   Human gates required: 5
+[2026-08-30T00:00:02.532433+00:00]   ✅🔌 hackerone: https://hackerone.com/
+[2026-08-30T00:00:02.532472+00:00]       Human gates: account_creation, id_verification
+[2026-08-30T00:00:02.532527+00:00]   ✅🔌 bugcrowd: https://www.bugcrowd.com/
+[2026-08-30T00:00:02.532567+00:00]       Human gates: account_creation
+[2026-08-30T00:00:02.532604+00:00]   ⚠️📝 integrity: https://integrity.sh/
+[2026-08-30T00:00:02.584717+00:00]       Human gates: account_creation, manual_submission
+[2026-08-30T00:00:02.584880+00:00]   ✅🔌 yeswehack: https://www.yeswehack.com/
+[2026-08-30T00:00:02.584960+00:00]       Human gates: account_creation, kyc
+[2026-08-30T00:00:02.585028+00:00]   ⚠️📝 synack: https://www.synack.com/
+[2026-08-30T00:00:02.595079+00:00]       Human gates: application, vetting, background_check
+Traceback (most recent call last):
+  File "/Agentic/scripts/bug_bounty_platform_expander.py", line 172, in <module>
+    main()
+  File "/Agentic/scripts/bug_bounty_platform_expander.py", line 167, in main
+    update_ledger_with_platforms()
+  File "/Agentic/scripts/bug_bounty_platform_expander.py", line 106, in update_ledger_with_platforms
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)

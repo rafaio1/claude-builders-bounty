@@ -646,3 +646,44 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-08-29T18:00:04.027566+00:00] Added 10 RabbitHole campaigns to ledger
 [2026-08-29T18:00:04.027682+00:00] Scan complete: 10 campaigns found ($375 total rewards, 6 autonomous-capable)
 [2026-08-29T18:00:04.027730+00:00] === RabbitHole Campaign Scanner Cycle Complete ===
+[2026-08-30T00:00:03.525118+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:03.531671+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T00:00:03.531910+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T00:00:03.532045+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T00:00:03.534562+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T00:00:03.536594+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T00:00:03.536757+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T00:00:03.536865+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T00:00:03.536957+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T00:00:03.537046+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T00:00:03.537169+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T00:00:03.537266+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+[2026-08-30T00:00:03.525118+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:03.531671+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T00:00:03.531910+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T00:00:03.532045+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T00:00:03.534562+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T00:00:03.536594+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T00:00:03.536757+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T00:00:03.536865+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T00:00:03.536957+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T00:00:03.537046+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T00:00:03.537169+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T00:00:03.537266+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 133, in <module>
+    main()
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 124, in main
+    update_ledger_with_rh(opportunities)
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 84, in update_ledger_with_rh
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)

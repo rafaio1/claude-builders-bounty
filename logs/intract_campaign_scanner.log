@@ -718,3 +718,44 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-08-29T18:00:04.593095+00:00] Added 10 Intract campaigns to ledger
 [2026-08-29T18:00:04.593298+00:00] Scan complete: 10 campaigns found ($470 total rewards, 7 autonomous-capable)
 [2026-08-29T18:00:04.593357+00:00] === Intract Campaign Scanner Cycle Complete ===
+[2026-08-30T00:00:03.092817+00:00] === Intract Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:03.094331+00:00] Scanning Intract for active reward campaigns...
+[2026-08-30T00:00:03.094432+00:00]   Found: zkSync Era - ecosystem_odyssey - $50 ✅
+[2026-08-30T00:00:03.094497+00:00]   Found: Linea Voyage - l3_origins_nft - $45 ✅
+[2026-08-30T00:00:03.094574+00:00]   Found: Base Onchain Summer - buildathon_quest - $60 ✅
+[2026-08-30T00:00:03.094627+00:00]   Found: Scroll Origins - nft_claim - $40 ✅
+[2026-08-30T00:00:03.094678+00:00]   Found: Arbitrum STIP - governance_participation - $35 ⚠️
+[2026-08-30T00:00:03.094728+00:00]   Found: Optimism RetroPGF - retroactive_funding - $55 ⚠️
+[2026-08-30T00:00:03.094786+00:00]   Found: Polygon zkEVM - bridge_and_mint - $30 ✅
+[2026-08-30T00:00:03.094851+00:00]   Found: StarkNet DeFi - liquidity_provision - $65 ✅
+[2026-08-30T00:00:03.094930+00:00]   Found: Aptos Ecosystem - move_developer_quest - $40 ⚠️
+[2026-08-30T00:00:03.095000+00:00]   Found: Sui Network - testnet_graduate - $50 ✅
+[2026-08-30T00:00:03.092817+00:00] === Intract Campaign Scanner Cycle Start ===
+[2026-08-30T00:00:03.094331+00:00] Scanning Intract for active reward campaigns...
+[2026-08-30T00:00:03.094432+00:00]   Found: zkSync Era - ecosystem_odyssey - $50 ✅
+[2026-08-30T00:00:03.094497+00:00]   Found: Linea Voyage - l3_origins_nft - $45 ✅
+[2026-08-30T00:00:03.094574+00:00]   Found: Base Onchain Summer - buildathon_quest - $60 ✅
+[2026-08-30T00:00:03.094627+00:00]   Found: Scroll Origins - nft_claim - $40 ✅
+[2026-08-30T00:00:03.094678+00:00]   Found: Arbitrum STIP - governance_participation - $35 ⚠️
+[2026-08-30T00:00:03.094728+00:00]   Found: Optimism RetroPGF - retroactive_funding - $55 ⚠️
+[2026-08-30T00:00:03.094786+00:00]   Found: Polygon zkEVM - bridge_and_mint - $30 ✅
+[2026-08-30T00:00:03.094851+00:00]   Found: StarkNet DeFi - liquidity_provision - $65 ✅
+[2026-08-30T00:00:03.094930+00:00]   Found: Aptos Ecosystem - move_developer_quest - $40 ⚠️
+[2026-08-30T00:00:03.095000+00:00]   Found: Sui Network - testnet_graduate - $50 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/intract_campaign_scanner.py", line 133, in <module>
+    main()
+  File "/Agentic/scripts/intract_campaign_scanner.py", line 124, in main
+    update_ledger_with_intract(opportunities)
+  File "/Agentic/scripts/intract_campaign_scanner.py", line 84, in update_ledger_with_intract
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
