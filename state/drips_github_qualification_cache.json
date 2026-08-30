@@ -1,30 +1,30 @@
 {
   "entries": {
-    "0cd8729caece46d92fdabd5cb71fef3e3a5c6c9cde19631710e327302c42c208": {
-      "candidate_id": "drips:fe4340f1-8034-4eeb-bfef-621bf745b1c0",
-      "candidate_key": "0cd8729caece46d92fdabd5cb71fef3e3a5c6c9cde19631710e327302c42c208",
+    "6e3edbdf7f7edf6f94d5fadf1c8274689ae96fa779454db223af107f6d61391e": {
+      "candidate_id": "drips:d1235e83-1e1b-4a93-94e8-2d6c523d5a36",
+      "candidate_key": "6e3edbdf7f7edf6f94d5fadf1c8274689ae96fa779454db223af107f6d61391e",
       "decision": "rejected",
-      "drips_issue_id": "fe4340f1-8034-4eeb-bfef-621bf745b1c0",
-      "drips_source_hash": "56c63929fb87b92c4a990a8bc2927cb79bfef29c893dc6c5f747132078a0a4a1",
+      "drips_issue_id": "d1235e83-1e1b-4a93-94e8-2d6c523d5a36",
+      "drips_source_hash": "0a4ee7975561b2a9f8d1d7a1f0d452edead45164b93d55328c94d49481e9139d",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458",
-        "issue_comments_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458/comments?per_page=100",
-        "issue_node_id": "I_kwDORnwyI88AAAABOCp3og",
-        "issue_timeline_api_url": "https://api.github.com/repos/Rentars/Rentars/issues/458/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T00:47:47Z",
+        "issue_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/issues/101",
+        "issue_comments_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/issues/101/comments?per_page=100",
+        "issue_node_id": "I_kwDOQ4gf9M8AAAABO1Grcg",
+        "issue_timeline_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/issues/101/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T03:43:41Z",
         "license_source": null,
         "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/Rentars/Rentars/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/Rentars/Rentars/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/Rentars/Rentars",
-        "repository_node_id": "R_kgDORnwyIw",
-        "repository_pushed_at": "2026-08-29T10:43:52Z",
-        "tree_api_url": "https://api.github.com/repos/Rentars/Rentars/git/trees/main?recursive=1"
+        "package_manifest_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/contents/package.json?ref=main",
+        "pull_history_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend",
+        "repository_node_id": "R_kgDOQ4gf9A",
+        "repository_pushed_at": "2026-08-28T23:07:22Z",
+        "tree_api_url": "https://api.github.com/repos/TrustUp-app/TrustUp-Frontend/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
-        "points": 200,
+        "points": 150,
         "points_value_usd": null,
         "realized_revenue_usd": 0.0
       },
@@ -50,27 +50,32 @@
         "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 458,
+      "issue_number": 101,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 2,
+        "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": false,
+          "expected_behavior": true,
           "substantive_body": true,
           "test_expectation": true
         },
-        "deadline_margin_hours": -12.81,
+        "deadline_margin_hours": -7.73,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [
-          "useNotifications.ts"
+          "router.replace"
         ],
-        "recent_merged_prs_sample": 20,
+        "recent_merged_prs_sample": 16,
         "referenced_paths": [
-          "useNotifications.ts"
+          "app/create-account.tsx",
+          "app/sign-in.tsx",
+          "components/pages/CreateAccountScreen.tsx",
+          "docs/contributing.md",
+          "hooks/auth/use-create-account.ts",
+          "router.replace"
         ]
       },
       "rejection_reasons": [
@@ -80,34 +85,34 @@
         "qualification_score_below_threshold",
         "referenced_repository_paths_missing"
       ],
-      "repo": "Rentars/Rentars",
+      "repo": "TrustUp-app/TrustUp-Frontend",
       "schema_version": "1.0",
-      "score": 72.25,
-      "title": "Prevent duplicate notification pagination",
-      "valid_until": "2026-08-30T01:48:31.251258+00:00",
-      "verified_at": "2026-08-30T00:48:31.251258+00:00"
+      "score": 68.5,
+      "title": "Wire create-account Expo route to onBack and onSuccess callbacks",
+      "valid_until": "2026-08-30T04:43:47.251858+00:00",
+      "verified_at": "2026-08-30T03:43:47.251858+00:00"
     },
-    "a54e44c10c084299eabe9e8ff61942f168ca585f63ff9206040d79bfa5dc8a12": {
-      "candidate_id": "drips:8e6466a2-42ec-4493-97dd-ce2da0bd8429",
-      "candidate_key": "a54e44c10c084299eabe9e8ff61942f168ca585f63ff9206040d79bfa5dc8a12",
+    "8ebd54305a4c648d6f605126c0bf20f3dd20662b1f575bb12980b75fef204a11": {
+      "candidate_id": "drips:71c86d24-275f-4abd-ba30-ae773be42ee0",
+      "candidate_key": "8ebd54305a4c648d6f605126c0bf20f3dd20662b1f575bb12980b75fef204a11",
       "decision": "rejected",
-      "drips_issue_id": "8e6466a2-42ec-4493-97dd-ce2da0bd8429",
-      "drips_source_hash": "89d2b835d3dc667a75630257a417bc03c7499308010ad8351544c61f7cc13208",
+      "drips_issue_id": "71c86d24-275f-4abd-ba30-ae773be42ee0",
+      "drips_source_hash": "d8977f73c7edd1e89f7d6b88438d78514b05952aa2f541672ce62c89ff00bdf0",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Heliobond/backend/issues/540",
-        "issue_comments_api_url": "https://api.github.com/repos/Heliobond/backend/issues/540/comments?per_page=100",
-        "issue_node_id": "I_kwDOS4swBM8AAAABOYjMUQ",
-        "issue_timeline_api_url": "https://api.github.com/repos/Heliobond/backend/issues/540/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T01:36:45Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "Apache-2.0",
+        "issue_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse/issues/955",
+        "issue_comments_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse/issues/955/comments?per_page=100",
+        "issue_node_id": "I_kwDORoU-cs8AAAABOHk-PA",
+        "issue_timeline_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse/issues/955/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T03:31:44Z",
+        "license_source": null,
+        "license_spdx": null,
         "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/Heliobond/backend/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/Heliobond/backend",
-        "repository_node_id": "R_kgDOS4swBA",
-        "repository_pushed_at": "2026-07-30T07:27:56Z",
-        "tree_api_url": "https://api.github.com/repos/Heliobond/backend/git/trees/main?recursive=1"
+        "pull_history_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse",
+        "repository_node_id": "R_kgDORoU-cg",
+        "repository_pushed_at": "2026-08-29T05:59:47Z",
+        "tree_api_url": "https://api.github.com/repos/Soroban-Pulse/SorobanPulse/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -122,7 +127,7 @@
         "deadline_margin": false,
         "github_issue_open_unassigned": true,
         "implementation_allowed": false,
-        "license_present": true,
+        "license_present": false,
         "no_application_comments": true,
         "no_linked_pull_request_activity": true,
         "points_labels_consistent": true,
@@ -134,10 +139,10 @@
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": false,
+        "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 540,
+      "issue_number": 955,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
@@ -146,32 +151,29 @@
           "acceptance_criteria": true,
           "expected_behavior": false,
           "substantive_body": true,
-          "test_expectation": false
+          "test_expectation": true
         },
-        "deadline_margin_hours": -13.67,
+        "deadline_margin_hours": -15.55,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 19,
-        "referenced_paths": [
-          "src/lib/registry.ts",
-          "src/lib/stellar.ts"
-        ]
+        "recent_merged_prs_sample": 20,
+        "referenced_paths": []
       },
       "rejection_reasons": [
         "insufficient_wave_deadline_margin",
-        "qualification_score_below_threshold",
-        "scope_not_sufficiently_testable"
+        "license_not_proven",
+        "qualification_score_below_threshold"
       ],
-      "repo": "Heliobond/backend",
+      "repo": "Soroban-Pulse/SorobanPulse",
       "schema_version": "1.0",
-      "score": 72.5,
-      "title": "Prevent Stellar transaction replay with sequence number guard",
-      "valid_until": "2026-08-30T02:40:10.005578+00:00",
-      "verified_at": "2026-08-30T01:40:10.005578+00:00"
+      "score": 72.25,
+      "title": "[Integration] Add GCP Pub/Sub integration",
+      "valid_until": "2026-08-30T04:33:18.622454+00:00",
+      "verified_at": "2026-08-30T03:33:18.622454+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-30T01:40:10.005578+00:00"
+  "updated_at": "2026-08-30T03:43:47.251858+00:00"
 }
