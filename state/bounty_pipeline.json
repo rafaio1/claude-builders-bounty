@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T07:50:00Z",
+  "last_updated": "2026-08-30T07:52:00Z",
   "active_contests": {
     "sherlock": {
       "status": "blocked",
@@ -81,5 +81,27 @@
     "sherlock_contests": "ACTIVE - 4 contests (Beefy/Frax/Kwenta/Lyra) but require account_creation human step",
     "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
     "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements"
-  }
+  },
+  "human_action_required": {
+    "priority_1": {
+      "action": "Complete KYC/OAuth on Algora, Drips, or Opire",
+      "reason": "All micro-bounty platforms block autonomous agents at qualification step",
+      "expected_outcome": "Access to $50-$500 bounties with 24-72h payout cycles",
+      "time_estimate": "15-30 minutes manual work"
+    },
+    "priority_2": {
+      "action": "Create Sherlock account and verify wallet",
+      "reason": "4 active contests (Beefy/Frax/Kwenta/Lyra) with $35k-$80k pools require account_creation",
+      "expected_outcome": "Eligibility for audit contest submissions; Low/Info findings pay $500-$3k in 2 weeks",
+      "time_estimate": "10 minutes signup + wallet connect"
+    },
+    "priority_3": {
+      "action": "Fund Wise account with $500+ USD/EUR",
+      "reason": "Bybit spot arb requires seed capital; current R$100 BRL balance insufficient",
+      "expected_outcome": "Unlock USDC/USDT peg gap arbitrage (0.1-0.3% per cycle, 5-20 cycles/day)",
+      "capital_source": "Bounty payout from priority_1 or priority_2"
+    }
+  },
+  "autonomous_status": "ALL_VECTORS_BLOCKED_PENDING_HUMAN_ACTION",
+  "next_agent_action": "Wait for human to complete KYC/account creation, then resume bounty execution or testnet automation"
 }
