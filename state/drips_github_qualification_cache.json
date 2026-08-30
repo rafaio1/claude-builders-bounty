@@ -88,103 +88,6 @@
       "valid_until": "2026-08-30T23:35:11.569576+00:00",
       "verified_at": "2026-08-30T22:35:11.569576+00:00"
     },
-    "315d40c220b2157d116cd2814971f7c7c2f456f1cd1e784947f287a32e996c9e": {
-      "candidate_id": "drips:3c816f8e-843d-4a27-abaa-224267201d76",
-      "candidate_key": "315d40c220b2157d116cd2814971f7c7c2f456f1cd1e784947f287a32e996c9e",
-      "decision": "rejected",
-      "drips_issue_id": "3c816f8e-843d-4a27-abaa-224267201d76",
-      "drips_source_hash": "314404fcd78f9cecfcd6211846a21cf7e6e90d77d3d4d3db8974a440f66ae5d1",
-      "evidence": {
-        "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts/issues/1175",
-        "issue_comments_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts/issues/1175/comments?per_page=100",
-        "issue_node_id": "I_kwDOSgCi8c8AAAABOrxrbg",
-        "issue_timeline_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts/issues/1175/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T22:23:50Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "MIT",
-        "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts",
-        "repository_node_id": "R_kgDOSgCi8Q",
-        "repository_pushed_at": "2026-08-30T21:58:20Z",
-        "tree_api_url": "https://api.github.com/repos/scout-off/scout-off-contracts/git/trees/main?recursive=1"
-      },
-      "financial_truth": {
-        "expected_revenue_usd": null,
-        "points": 200,
-        "points_value_usd": null,
-        "realized_revenue_usd": 0.0
-      },
-      "gates": {
-        "application_allowed": false,
-        "automation_eligible": false,
-        "ci_present": true,
-        "deadline_margin": false,
-        "github_issue_open_unassigned": true,
-        "implementation_allowed": false,
-        "license_present": true,
-        "no_application_comments": false,
-        "no_linked_pull_request_activity": true,
-        "points_labels_consistent": true,
-        "recent_merged_pr_history": true,
-        "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
-        "repository_identity": true,
-        "repository_public_active": true,
-        "repository_tree_complete": true,
-        "scope_matches_declared_complexity": true,
-        "scope_nontrivial": true,
-        "scope_testable": true,
-        "tests_present": true
-      },
-      "issue_number": 1175,
-      "minimum_score": 75.0,
-      "next_action": "pivot_to_next_candidate",
-      "quality": {
-        "application_comment_count": 3,
-        "clarity_signals": {
-          "acceptance_criteria": true,
-          "expected_behavior": false,
-          "substantive_body": true,
-          "test_expectation": true
-        },
-        "deadline_margin_hours": -34.41,
-        "github_points_labels": [],
-        "license_warning": null,
-        "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "004_evidence_access_grants.sql",
-          "004_scout_subscriptions_auto_renew.sql",
-          "005_dispute_jury.sql",
-          "005_milestone_flags.sql"
-        ],
-        "recent_merged_prs_sample": 20,
-        "referenced_paths": [
-          "004_evidence_access_grants.sql",
-          "004_scout_subscriptions_auto_renew.sql",
-          "005_dispute_jury.sql",
-          "005_milestone_flags.sql",
-          "README.md",
-          "docs/DEPLOYMENT.md",
-          "docs/INDEXER.md",
-          "docs/MIGRATION_GAPS.md",
-          "migrations",
-          "scripts/check-migration-numbering.sh"
-        ]
-      },
-      "rejection_reasons": [
-        "github_application_comment_present",
-        "insufficient_wave_deadline_margin",
-        "referenced_repository_paths_missing"
-      ],
-      "repo": "scout-off/scout-off-contracts",
-      "schema_version": "1.0",
-      "score": 76.25,
-      "title": "Renumber the colliding migration files (two 004_*, two 005_*) and add a CI check for migration numbering",
-      "valid_until": "2026-08-30T23:24:33.698415+00:00",
-      "verified_at": "2026-08-30T22:24:33.698415+00:00"
-    },
     "4d65626b1b2d8e61c2f89e8baad0b9843596f110025e3f74857586da73598df4": {
       "candidate_id": "drips:0c862d7f-a409-4139-a982-42090c9d6e6f",
       "candidate_key": "4d65626b1b2d8e61c2f89e8baad0b9843596f110025e3f74857586da73598df4",
@@ -524,5 +427,5 @@
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-30T23:16:17.123377+00:00"
+  "updated_at": "2026-08-30T23:26:50.577340+00:00"
 }
