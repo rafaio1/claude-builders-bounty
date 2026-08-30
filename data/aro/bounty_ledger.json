@@ -159,8 +159,8 @@
       "value": 0,
       "status": "claimed",
       "currency": "USD",
-      "updated": "2026-08-29",
-      "note": "Auto-claimed via /claim. Shortlink clone bounty (tier:mid).",
+      "updated": "2026-08-30T13:11:16.915530+00:00",
+      "note": "Auto-claimed via /claim. Shortlink clone bounty (tier:mid). Auto-re-claimed via legacy audit.",
       "claimed_at": "2026-08-30T12:10:27.799132+00:00"
     },
     {
@@ -178,7 +178,8 @@
       "status": "claimed",
       "confidence": 0.8,
       "claimed_at": "2026-08-30T12:00:36.781856Z",
-      "note": "Auto-claimed via /claim. Python RL position penalty."
+      "note": "Auto-claimed via /claim. Python RL position penalty. Auto-re-claimed via legacy audit.",
+      "updated": "2026-08-30T13:11:18.472614+00:00"
     },
     {
       "repo": "marcelo-earth/marcello",
@@ -197,6 +198,31 @@
       "claimed_at": "2026-08-30T12:00:36.781870Z",
       "note": "Auto-claimed via /claim. Dependency dashboard bounty. Auto-detected CLOSED state via monitor.",
       "updated": "2026-08-30T12:15:33.019381+00:00"
+    },
+    {
+      "repo": "mxx1111/spare-cycles",
+      "issue": 19,
+      "status": "claimed",
+      "title": "[Task] sparepack: generalise stripPrefix into remap",
+      "value": 30,
+      "currency": "TP",
+      "claimed_at": "2026-08-30T13:09:34.447358+00:00",
+      "deadline": "2026-08-30T18:59:03.669Z",
+      "note": "Auto-claimed via urgent reminder. Potential not realized. Auto-re-claimed via legacy audit.",
+      "financial_status": "potential_not_realized",
+      "updated": "2026-08-30T13:11:20.369942+00:00"
+    },
+    {
+      "repo": "rustchain/rustchain",
+      "issue": 254,
+      "status": "wallet_provided",
+      "title": "Bug Report Credit #254",
+      "value": 0,
+      "currency": "RTC",
+      "payout_instruction": "Native RTC address required. Base/EVM rejected.",
+      "updated": "2026-08-30T15:20:10.229072+00:00",
+      "note": "Maintainer requested native RTC addr. Generate via wallet/rustchain_wallet_secure.py Native RTC wallet generated and posted.",
+      "wallet_address": "RTCe90bfdf8aea322bb48c4c6ade524cfbf55fe83eb"
     }
   ],
   "bounties": [
@@ -797,9 +823,21 @@
       "url": "https://github.com/capofficial/client/issues/8",
       "pr_url": "https://github.com/capofficial/client/pull/275",
       "submitted_at": "2026-08-30T10:23:42.743206+00:00"
+    },
+    {
+      "issue_number": 2883,
+      "title": "Add minimum currency reward filter slider on Bounties Page",
+      "bounty_value": 10.0,
+      "file": "frontend/src/pages/BountiesPage.tsx",
+      "commit": "faa4ad2",
+      "status": "submitted",
+      "repo": "nandinigoyaldev/Open-Source-Contribution-Atelier",
+      "url": "https://github.com/nandinigoyaldev/Open-Source-Contribution-Atelier/issues/2883",
+      "pr_url": "https://github.com/nandinigoyaldev/Open-Source-Contribution-Atelier/pull/2983",
+      "submitted_at": "2026-08-30T15:08:28.896239+00:00"
     }
   ],
-  "total_bounty_value": 851506.0,
+  "total_bounty_value": 851516.0,
   "triage_log": [
     {
       "action": "search_exhaustion",

@@ -1,0 +1,10 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+allow_paths = ["../../../state/repos/dexe-protocol"]
+remappings = [
+    "dexe/=../../../state/repos/dexe-protocol/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/"
+]
+solc_version = "0.8.20"

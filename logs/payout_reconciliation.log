@@ -27223,3 +27223,1132 @@ json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
 [2026-08-30T10:30:01.387556+00:00] === Payout Reconciliation Monitor Cycle Start ===
 [2026-08-30T10:30:01.391772+00:00] No submitted bounties to reconcile
 [2026-08-30T10:30:01.391978+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T10:40:01.567030+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T10:40:01.568437+00:00] No submitted bounties to reconcile
+[2026-08-30T10:40:01.568600+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T10:40:01.567030+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T10:40:01.568437+00:00] No submitted bounties to reconcile
+[2026-08-30T10:40:01.568600+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T10:50:02.277571+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T10:50:02.296168+00:00] No submitted bounties to reconcile
+[2026-08-30T10:50:02.296456+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T10:50:02.277571+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T10:50:02.296168+00:00] No submitted bounties to reconcile
+[2026-08-30T10:50:02.296456+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:00:02.224533+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:00:02.227012+00:00] No submitted bounties to reconcile
+[2026-08-30T11:00:02.227161+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:00:02.224533+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:00:02.227012+00:00] No submitted bounties to reconcile
+[2026-08-30T11:00:02.227161+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:10:02.097677+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:10:02.099811+00:00] No submitted bounties to reconcile
+[2026-08-30T11:10:02.099950+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:10:02.097677+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:10:02.099811+00:00] No submitted bounties to reconcile
+[2026-08-30T11:10:02.099950+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:20:01.472885+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:20:01.475438+00:00] No submitted bounties to reconcile
+[2026-08-30T11:20:01.475670+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:20:01.472885+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:20:01.475438+00:00] No submitted bounties to reconcile
+[2026-08-30T11:20:01.475670+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:30:01.882633+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:30:01.884947+00:00] No submitted bounties to reconcile
+[2026-08-30T11:30:01.885087+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:30:01.882633+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:30:01.884947+00:00] No submitted bounties to reconcile
+[2026-08-30T11:30:01.885087+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:40:01.579699+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:40:01.580995+00:00] No submitted bounties to reconcile
+[2026-08-30T11:40:01.581123+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:40:01.579699+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:40:01.580995+00:00] No submitted bounties to reconcile
+[2026-08-30T11:40:01.581123+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:50:01.765864+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:50:01.767116+00:00] No submitted bounties to reconcile
+[2026-08-30T11:50:01.767396+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T11:50:01.765864+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T11:50:01.767116+00:00] No submitted bounties to reconcile
+[2026-08-30T11:50:01.767396+00:00] === Payout Reconciliation Monitor Cycle Complete ===
+[2026-08-30T12:00:02.864846+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:00:02.864846+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2026-08-30T12:10:01.993566+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:10:01.993566+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T12:20:01.745783+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:20:01.745783+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T12:30:01.706896+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:30:01.706896+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T12:40:01.792110+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:40:01.792110+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T12:50:01.472422+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T12:50:01.472422+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:00:02.062588+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:00:02.062588+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:10:01.112036+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:10:01.112036+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:20:01.269151+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:20:01.269151+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:30:01.890721+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:30:01.890721+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:40:01.892406+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:40:01.892406+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T13:50:01.213196+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T13:50:01.213196+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:00:01.971047+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:00:01.971047+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:10:01.725034+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:10:01.725034+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:20:01.538793+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:20:01.538793+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:30:01.524489+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:30:01.524489+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:40:01.978064+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:40:01.978064+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T14:50:02.580585+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T14:50:02.580585+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:00:01.583545+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:00:01.583545+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:10:01.071312+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:10:01.071312+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:20:01.121027+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:20:01.121027+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:30:01.707470+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:30:01.707470+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:40:01.318753+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:40:01.318753+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T15:50:01.260056+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T15:50:01.260056+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:00:02.019295+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:00:02.019295+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:10:01.728488+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:10:01.728488+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:20:01.429089+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:20:01.429089+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:30:02.511519+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:30:02.511519+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:40:02.132669+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:40:02.132669+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:50:01.392348+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T16:50:01.392348+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:00:02.566572+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:00:02.566572+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:10:01.121832+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:10:01.121832+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:20:01.785528+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:20:01.785528+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:30:02.505799+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:30:02.505799+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:40:01.960577+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:40:01.960577+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T17:50:02.325556+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T17:50:02.325556+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:00:02.000680+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:00:02.000680+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:10:03.815133+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:10:03.815133+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:20:02.615602+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:20:02.615602+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:30:02.822034+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:30:02.822034+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:40:07.377249+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:40:07.377249+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:50:07.688139+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T18:50:07.688139+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:00:08.284759+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:00:08.284759+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:10:05.681867+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:10:05.681867+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:20:03.107109+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:20:03.107109+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:30:04.725015+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:30:04.725015+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:40:01.639254+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:40:01.639254+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T19:50:01.725531+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T19:50:01.725531+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T20:00:02.106849+00:00] === Payout Reconciliation Monitor Cycle Start ===
+[2026-08-30T20:00:02.106849+00:00] === Payout Reconciliation Monitor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 161, in <module>
+    main()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 157, in main
+    reconcile_payouts()
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 96, in reconcile_payouts
+    ledger = load_ledger()
+             ^^^^^^^^^^^^^
+  File "/Agentic/scripts/payout_reconciliation_monitor.py", line 31, in load_ledger
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

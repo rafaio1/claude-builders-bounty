@@ -174,7 +174,7 @@
     },
     {
       "type": "airdrop_farming_progress",
-      "timestamp": "2026-08-30T11:30:02.367526+00:00",
+      "timestamp": "2026-08-30T11:45:02.309723+00:00",
       "completed_tasks": 5,
       "pending_human_tasks": 2,
       "total_txs": 5,
@@ -3079,6 +3079,103 @@
       "date_added": "2026-08-30T11:15:02.015127+00:00"
     },
     {
+      "type": "trade_opportunity",
+      "id": "YIELD-828324",
+      "category": "liquidity_mining_signals",
+      "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
+      "capital_required": true,
+      "risk_level": "medium",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:30:02.223846+00:00"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-156516",
+      "category": "liquidity_mining_signals",
+      "name": "stETH/ETH on Curve (Mainnet)",
+      "capital_required": true,
+      "risk_level": "low",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:30:02.223884+00:00"
+    },
+    {
+      "date": "2026-08-30T11:37:19.906480Z",
+      "type": "execution_task",
+      "priority": "critical",
+      "action": "immunefi_scan_and_audit",
+      "target": "Immunefi Top 10 Protocols by TVL",
+      "objective": "Identify and report critical vulnerabilities in top DeFi protocols. Focus on logic bugs, access control flaws, and oracle manipulation. Use GhostCLI to automate static analysis and generate PoC.",
+      "potential_payout_usd": 1000000,
+      "status": "queued",
+      "assignee": "ghostcli-agent",
+      "notes": "Highest ROI activity. Requires deep smart contract expertise. Start with protocols that have public testnets and active bounty programs."
+    },
+    {
+      "date": "2026-08-30T11:37:19.906480Z",
+      "type": "execution_task",
+      "priority": "high",
+      "action": "superteam_earn_claim",
+      "target": "Superteam Earn Solana Bounties",
+      "objective": "Scan earn.superteam.fun for open bounties >$5k in DevTooling, DeFi, and NFT categories. Auto-apply to tasks matching AI capabilities (documentation, testing, integration scripts).",
+      "potential_payout_usd": 50000,
+      "status": "queued",
+      "assignee": "ghostcli-agent",
+      "notes": "Fast payout via on-chain transfer. Low barrier to entry compared to Immunefi."
+    },
+    {
+      "date": "2026-08-30T11:37:19.906480Z",
+      "type": "execution_task",
+      "priority": "medium",
+      "action": "poidh_pr_1467_followup",
+      "target": "picsoritdidnthappen/poidh-app#1467",
+      "objective": "Monitor PR #1467 (hasClaims fix). If no review in 48h, ping maintainers politely. This unblocks future bounty claims on poidh platform.",
+      "potential_payout_usd": 0,
+      "status": "active",
+      "assignee": "orchestrator",
+      "notes": "Strategic infrastructure fix. Enables future revenue streams on poidh."
+    },
+    {
+      "date": "2026-08-30T11:37:41.861304Z",
+      "type": "ghostcli_dispatch",
+      "action": "immunefi_top10_audit_scan",
+      "prompt_template": "Analyze the top 10 Immunefi bounty programs by TVL. For each, identify 1-3 high-severity vulnerability patterns specific to their architecture (e.g., oracle manipulation in lending protocols, reentrancy in vaults). Output a structured report with: protocol name, vulnerability class, estimated severity (Critical/High), and recommended PoC approach. Do NOT submit reports yet \u2014 this is reconnaissance only.",
+      "model": "claude-fable-5[1m]",
+      "priority": "critical",
+      "status": "dispatched",
+      "expected_output": "improve/traces/{timestamp}_immunefi_recon.json"
+    },
+    {
+      "date": "2026-08-30T11:37:41.861304Z",
+      "type": "ghostcli_dispatch",
+      "action": "superteam_earn_solana_bounty_match",
+      "prompt_template": "Search earn.superteam.fun for open Solana bounties >$5,000 in DevTooling, DeFi, or NFT categories. Filter for tasks completable by AI agents: documentation generation, test suite creation, integration scripts, smart contract boilerplate. Return top 3 matches with: title, amount, deadline, URL, and estimated hours. Prioritize those with \"Quick Payout\" tag.",
+      "model": "claude-sonnet-5[1m]",
+      "priority": "high",
+      "status": "dispatched",
+      "expected_output": "improve/traces/{timestamp}_superteam_matches.json"
+    },
+    {
+      "date": "2026-08-30T11:37:41.861304Z",
+      "type": "ghostcli_dispatch",
+      "action": "poidh_app_pr1467_review_nudge",
+      "prompt_template": "Check PR #1467 on picsoritdidnthappen/poidh-app. If no review activity in last 48h, draft a polite maintainer nudge referencing the hasClaims fix importance for bounty claim integrity. Do NOT post \u2014 output draft text only for human approval before sending.",
+      "model": "claude-sonnet-5[1m]",
+      "priority": "medium",
+      "status": "dispatched",
+      "expected_output": "improve/traces/{timestamp}_poidh_nudge_draft.txt"
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-30T11:45:02.153939+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
       "type": "orchestrator_cycle",
       "timestamp": "2026-08-30T11:30:02.060239+00:00",
       "platforms_tracked": 7,
@@ -3160,134 +3257,151 @@
       "status": "operational"
     },
     {
-      "type": "orchestrator_cycle",
-      "timestamp": "2026-08-30T09:15:03.104751+00:00",
-      "platforms_tracked": 7,
-      "bounties_pending_usd": 0,
-      "bounties_submitted_count": 0,
-      "telegram_eligible_count": 0,
-      "status": "operational"
-    },
-    {
       "type": "trade_opportunity",
-      "id": "YIELD-828324",
+      "id": "YIELD-755086",
       "category": "liquidity_mining_signals",
       "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
       "capital_required": true,
       "risk_level": "medium",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-30T11:30:02.223846+00:00"
+      "date_added": "2026-08-30T11:45:02.233976+00:00"
     },
     {
       "type": "trade_opportunity",
-      "id": "YIELD-156516",
+      "id": "YIELD-434202",
       "category": "liquidity_mining_signals",
       "name": "stETH/ETH on Curve (Mainnet)",
       "capital_required": true,
       "risk_level": "low",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-30T11:30:02.223884+00:00"
-    },
-    {
-      "date": "2026-08-30T11:33:32.553523Z",
-      "type": "orchestrator_cycle",
-      "action": "scan_high_payout_bounties",
-      "targets": [
-        "poidh-app",
-        "punk.protocol",
-        "Cognitive-OS",
-        "rustchain-bounties"
+      "date_added": "2026-08-30T11:45:02.234007+00:00"
+    }
+  ]
+}{
+      "type": "bug_bounty_platform",
+      "platform": "hackerone",
+      "url": "https://hackerone.com/",
+      "api_available": true,
+      "autonomous_submission": true,
+      "payout_methods": [
+        "paypal",
+        "bank_transfer",
+        "crypto"
       ],
-      "status": "completed",
-      "notes": "Post-follow-up cycle: scan for new high-value bounties and testnet airdrop signals to generate fast capital.",
-      "completed_at": "2026-08-30T11:34:27.502225Z",
-      "results": {
-        "new_viable_bounties_found": 0,
-        "notes": "GitHub API search rate limit hit during scan. Existing pipeline (PunkFinance $6k, Cognitive-OS $3k) remains primary focus. Follow-ups already posted. Next scan deferred to avoid 403s."
-      }
-    },
-    {
-      "date": "2026-08-30T11:36:53.668421Z",
-      "type": "orchestrator_cycle",
-      "action": "high_value_ecosystem_mapping",
-      "status": "completed",
-      "targets": [
-        {
-          "platform": "Superteam",
-          "ecosystem": "Solana",
-          "estimated_value_usd": 50000,
-          "type": "bounty/grant",
-          "focus": "Smart contract audits, DeFi tooling, NFT infrastructure",
-          "payout_speed": "fast (on-chain)",
-          "action": "scan_superteam_earn"
-        },
-        {
-          "platform": "Gitcoin",
-          "ecosystem": "Ethereum/L2",
-          "estimated_value_usd": 25000,
-          "type": "hackathon/grant",
-          "focus": "AI x Crypto integrations, ZK proofs, Public Goods",
-          "payout_speed": "medium (milestone-based)",
-          "action": "scan_gitcoin_grants"
-        },
-        {
-          "platform": "Layer3",
-          "ecosystem": "Multi-chain",
-          "estimated_value_usd": 10000,
-          "type": "quest/bounty",
-          "focus": "Protocol integrations, documentation, Testing",
-          "payout_speed": "fast (automated)",
-          "action": "scan_layer3_bounties"
-        },
-        {
-          "platform": "Immunefi",
-          "ecosystem": "Web3 Security",
-          "estimated_value_usd": 1000000,
-          "type": "bug_bounty",
-          "focus": "Critical vulnerability discovery in DeFi protocols",
-          "payout_speed": "variable (triage-dependent)",
-          "action": "scan_immunefi_critical"
-        }
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "source_code"
       ],
-      "notes": "Multi-agent spawn failed (unsupported). Mapped top 4 high-value ecosystems manually for next execution phase. Immunefi offers highest asymmetric upside ($1M+) for AI-driven audit automation."
+      "min_bounty_usd": 100,
+      "max_bounty_usd": 100000,
+      "registration_status": "pending_account_setup",
+      "human_gates": [
+        "account_creation",
+        "id_verification"
+      ],
+      "date_added": "2026-08-30T12:00:03.072210+00:00"
     },
     {
-      "date": "2026-08-30T11:37:19.906480Z",
-      "type": "execution_task",
-      "priority": "critical",
-      "action": "immunefi_scan_and_audit",
-      "target": "Immunefi Top 10 Protocols by TVL",
-      "objective": "Identify and report critical vulnerabilities in top DeFi protocols. Focus on logic bugs, access control flaws, and oracle manipulation. Use GhostCLI to automate static analysis and generate PoC.",
-      "potential_payout_usd": 1000000,
-      "status": "queued",
-      "assignee": "ghostcli-agent",
-      "notes": "Highest ROI activity. Requires deep smart contract expertise. Start with protocols that have public testnets and active bounty programs."
+      "type": "bug_bounty_platform",
+      "platform": "bugcrowd",
+      "url": "https://www.bugcrowd.com/",
+      "api_available": true,
+      "autonomous_submission": true,
+      "payout_methods": [
+        "paypal",
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "iot"
+      ],
+      "min_bounty_usd": 50,
+      "max_bounty_usd": 50000,
+      "registration_status": "pending_account_setup",
+      "human_gates": [
+        "account_creation"
+      ],
+      "date_added": "2026-08-30T12:00:03.072248+00:00"
     },
     {
-      "date": "2026-08-30T11:37:19.906480Z",
-      "type": "execution_task",
-      "priority": "high",
-      "action": "superteam_earn_claim",
-      "target": "Superteam Earn Solana Bounties",
-      "objective": "Scan earn.superteam.fun for open bounties >$5k in DevTooling, DeFi, and NFT categories. Auto-apply to tasks matching AI capabilities (documentation, testing, integration scripts).",
-      "potential_payout_usd": 50000,
-      "status": "queued",
-      "assignee": "ghostcli-agent",
-      "notes": "Fast payout via on-chain transfer. Low barrier to entry compared to Immunefi."
+      "type": "bug_bounty_platform",
+      "platform": "integrity",
+      "url": "https://integrity.sh/",
+      "api_available": false,
+      "autonomous_submission": false,
+      "payout_methods": [
+        "paypal",
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api"
+      ],
+      "min_bounty_usd": null,
+      "max_bounty_usd": null,
+      "registration_status": "discovered",
+      "human_gates": [
+        "account_creation",
+        "manual_submission"
+      ],
+      "date_added": "2026-08-30T12:00:03.072268+00:00"
     },
     {
-      "date": "2026-08-30T11:37:19.906480Z",
-      "type": "execution_task",
-      "priority": "medium",
-      "action": "poidh_pr_1467_followup",
-      "target": "picsoritdidnthappen/poidh-app#1467",
-      "objective": "Monitor PR #1467 (hasClaims fix). If no review in 48h, ping maintainers politely. This unblocks future bounty claims on poidh platform.",
-      "potential_payout_usd": 0,
-      "status": "active",
-      "assignee": "orchestrator",
-      "notes": "Strategic infrastructure fix. Enables future revenue streams on poidh."
+      "type": "bug_bounty_platform",
+      "platform": "yeswehack",
+      "url": "https://www.yeswehack.com/",
+      "api_available": true,
+      "autonomous_submission": true,
+      "payout_methods": [
+        "paypal",
+        "bank_transfer",
+        "crypto"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "smart_contract"
+      ],
+      "min_bounty_usd": 50,
+      "max_bounty_usd": 75000,
+      "registration_status": "pending_account_setup",
+      "human_gates": [
+        "account_creation",
+        "kyc"
+      ],
+      "date_added": "2026-08-30T12:00:03.072287+00:00"
+    },
+    {
+      "type": "bug_bounty_platform",
+      "platform": "synack",
+      "url": "https://www.synack.com/",
+      "api_available": false,
+      "autonomous_submission": false,
+      "payout_methods": [
+        "bank_transfer"
+      ],
+      "categories": [
+        "web",
+        "api",
+        "mobile",
+        "network"
+      ],
+      "min_bounty_usd": null,
+      "max_bounty_usd": null,
+      "registration_status": "not_autonomous_friendly",
+      "human_gates": [
+        "application",
+        "vetting",
+        "background_check"
+      ],
+      "date_added": "2026-08-30T12:00:03.072308+00:00"
     }
   ]
 }

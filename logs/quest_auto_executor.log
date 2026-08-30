@@ -3106,3 +3106,106 @@ json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
 [2026-08-30T10:00:03.677209+00:00]   SKIP: ZEALY-abstract-chain-consumer_app_quest already executed
 [2026-08-30T10:00:03.695713+00:00] Cycle complete: 0 executed, 21 pending human, 14 skipped
 [2026-08-30T10:00:03.695862+00:00] === Universal Quest Auto-Executor Cycle Complete ===
+[2026-08-30T12:00:02.977434+00:00] === Universal Quest Auto-Executor Cycle Start ===
+[2026-08-30T12:00:02.977434+00:00] === Universal Quest Auto-Executor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/quest_auto_executor.py", line 171, in <module>
+    main()
+  File "/Agentic/scripts/quest_auto_executor.py", line 139, in main
+    quests = get_autonomous_quests()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/quest_auto_executor.py", line 42, in get_autonomous_quests
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 355, in raw_decode
+    raise JSONDecodeError("Expecting value", s, err.value) from None
+json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+[2026-08-30T14:00:01.935205+00:00] === Universal Quest Auto-Executor Cycle Start ===
+[2026-08-30T14:00:01.935205+00:00] === Universal Quest Auto-Executor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/quest_auto_executor.py", line 171, in <module>
+    main()
+  File "/Agentic/scripts/quest_auto_executor.py", line 139, in main
+    quests = get_autonomous_quests()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/quest_auto_executor.py", line 42, in get_autonomous_quests
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T16:00:02.120007+00:00] === Universal Quest Auto-Executor Cycle Start ===
+[2026-08-30T16:00:02.120007+00:00] === Universal Quest Auto-Executor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/quest_auto_executor.py", line 171, in <module>
+    main()
+  File "/Agentic/scripts/quest_auto_executor.py", line 139, in main
+    quests = get_autonomous_quests()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/quest_auto_executor.py", line 42, in get_autonomous_quests
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T18:00:01.941757+00:00] === Universal Quest Auto-Executor Cycle Start ===
+[2026-08-30T18:00:01.941757+00:00] === Universal Quest Auto-Executor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/quest_auto_executor.py", line 171, in <module>
+    main()
+  File "/Agentic/scripts/quest_auto_executor.py", line 139, in main
+    quests = get_autonomous_quests()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/quest_auto_executor.py", line 42, in get_autonomous_quests
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-30T20:00:02.147047+00:00] === Universal Quest Auto-Executor Cycle Start ===
+[2026-08-30T20:00:02.147047+00:00] === Universal Quest Auto-Executor Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/quest_auto_executor.py", line 171, in <module>
+    main()
+  File "/Agentic/scripts/quest_auto_executor.py", line 139, in main
+    quests = get_autonomous_quests()
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Agentic/scripts/quest_auto_executor.py", line 42, in get_autonomous_quests
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

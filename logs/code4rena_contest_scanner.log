@@ -784,3 +784,81 @@ json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
 [2026-08-30T06:00:02.881243+00:00] Added 0 Code4rena contests to ledger
 [2026-08-30T06:00:02.881470+00:00] Scan complete: 8 contests found ($485,000 total pools, 3 active, 8 autonomous-submission capable)
 [2026-08-30T06:00:02.887599+00:00] === Code4rena Contest Scanner Cycle Complete ===
+[2026-08-30T12:00:03.216817+00:00] === Code4rena Contest Scanner Cycle Start ===
+[2026-08-30T12:00:03.323672+00:00] Scanning Code4rena for active audit contests...
+[2026-08-30T12:00:03.323876+00:00]   Found: Euler Finance - $75,000 pool - upcoming
+[2026-08-30T12:00:03.323945+00:00]   Found: Morpho Labs - $50,000 pool - upcoming
+[2026-08-30T12:00:03.325263+00:00]   Found: Notional Finance - $60,000 pool - active
+[2026-08-30T12:00:03.325330+00:00]   Found: Maple Finance - $45,000 pool - upcoming
+[2026-08-30T12:00:03.325374+00:00]   Found: Ribbon Finance - $40,000 pool - active
+[2026-08-30T12:00:03.325427+00:00]   Found: StakeDAO - $35,000 pool - upcoming
+[2026-08-30T12:00:03.325496+00:00]   Found: Arbitrum DAO - $100,000 pool - upcoming
+[2026-08-30T12:00:03.325561+00:00]   Found: Optimism Collective - $80,000 pool - active
+[2026-08-30T12:00:03.216817+00:00] === Code4rena Contest Scanner Cycle Start ===
+[2026-08-30T12:00:03.323672+00:00] Scanning Code4rena for active audit contests...
+[2026-08-30T12:00:03.323876+00:00]   Found: Euler Finance - $75,000 pool - upcoming
+[2026-08-30T12:00:03.323945+00:00]   Found: Morpho Labs - $50,000 pool - upcoming
+[2026-08-30T12:00:03.325263+00:00]   Found: Notional Finance - $60,000 pool - active
+[2026-08-30T12:00:03.325330+00:00]   Found: Maple Finance - $45,000 pool - upcoming
+[2026-08-30T12:00:03.325374+00:00]   Found: Ribbon Finance - $40,000 pool - active
+[2026-08-30T12:00:03.325427+00:00]   Found: StakeDAO - $35,000 pool - upcoming
+[2026-08-30T12:00:03.325496+00:00]   Found: Arbitrum DAO - $100,000 pool - upcoming
+[2026-08-30T12:00:03.325561+00:00]   Found: Optimism Collective - $80,000 pool - active
+Traceback (most recent call last):
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 141, in <module>
+    main()
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 131, in main
+    update_ledger_with_c4(opportunities)
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 90, in update_ledger_with_c4
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting ',' delimiter: line 1290 column 55 (char 41009)
+[2026-08-30T18:00:02.194274+00:00] === Code4rena Contest Scanner Cycle Start ===
+[2026-08-30T18:00:02.228714+00:00] Scanning Code4rena for active audit contests...
+[2026-08-30T18:00:02.228885+00:00]   Found: Euler Finance - $75,000 pool - upcoming
+[2026-08-30T18:00:02.228950+00:00]   Found: Morpho Labs - $50,000 pool - upcoming
+[2026-08-30T18:00:02.229005+00:00]   Found: Notional Finance - $60,000 pool - active
+[2026-08-30T18:00:02.229074+00:00]   Found: Maple Finance - $45,000 pool - upcoming
+[2026-08-30T18:00:02.229155+00:00]   Found: Ribbon Finance - $40,000 pool - active
+[2026-08-30T18:00:02.229229+00:00]   Found: StakeDAO - $35,000 pool - upcoming
+[2026-08-30T18:00:02.229289+00:00]   Found: Arbitrum DAO - $100,000 pool - upcoming
+[2026-08-30T18:00:02.229335+00:00]   Found: Optimism Collective - $80,000 pool - active
+[2026-08-30T18:00:02.194274+00:00] === Code4rena Contest Scanner Cycle Start ===
+[2026-08-30T18:00:02.228714+00:00] Scanning Code4rena for active audit contests...
+[2026-08-30T18:00:02.228885+00:00]   Found: Euler Finance - $75,000 pool - upcoming
+[2026-08-30T18:00:02.228950+00:00]   Found: Morpho Labs - $50,000 pool - upcoming
+[2026-08-30T18:00:02.229005+00:00]   Found: Notional Finance - $60,000 pool - active
+[2026-08-30T18:00:02.229074+00:00]   Found: Maple Finance - $45,000 pool - upcoming
+[2026-08-30T18:00:02.229155+00:00]   Found: Ribbon Finance - $40,000 pool - active
+[2026-08-30T18:00:02.229229+00:00]   Found: StakeDAO - $35,000 pool - upcoming
+[2026-08-30T18:00:02.229289+00:00]   Found: Arbitrum DAO - $100,000 pool - upcoming
+[2026-08-30T18:00:02.229335+00:00]   Found: Optimism Collective - $80,000 pool - active
+Traceback (most recent call last):
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 141, in <module>
+    main()
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 131, in main
+    update_ledger_with_c4(opportunities)
+  File "/Agentic/scripts/code4rena_contest_scanner.py", line 90, in update_ledger_with_c4
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

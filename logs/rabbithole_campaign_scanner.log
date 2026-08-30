@@ -717,3 +717,89 @@ json.decoder.JSONDecodeError: Extra data: line 1929 column 2 (char 60051)
 [2026-08-30T06:00:03.485803+00:00] Added 0 RabbitHole campaigns to ledger
 [2026-08-30T06:00:03.486102+00:00] Scan complete: 10 campaigns found ($375 total rewards, 6 autonomous-capable)
 [2026-08-30T06:00:03.486165+00:00] === RabbitHole Campaign Scanner Cycle Complete ===
+[2026-08-30T12:00:03.247459+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T12:00:03.272749+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T12:00:03.272878+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T12:00:03.272929+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T12:00:03.272972+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T12:00:03.273039+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T12:00:03.273082+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T12:00:03.273157+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T12:00:03.273200+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T12:00:03.273243+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T12:00:03.273294+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T12:00:03.273346+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+[2026-08-30T12:00:03.247459+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T12:00:03.272749+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T12:00:03.272878+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T12:00:03.272929+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T12:00:03.272972+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T12:00:03.273039+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T12:00:03.273082+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T12:00:03.273157+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T12:00:03.273200+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T12:00:03.273243+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T12:00:03.273294+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T12:00:03.273346+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 133, in <module>
+    main()
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 124, in main
+    update_ledger_with_rh(opportunities)
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 84, in update_ledger_with_rh
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 337, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 353, in raw_decode
+    obj, end = self.scan_once(s, idx)
+               ^^^^^^^^^^^^^^^^^^^^^^
+json.decoder.JSONDecodeError: Expecting property name enclosed in double quotes: line 2344 column 7 (char 73814)
+[2026-08-30T18:00:02.327707+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T18:00:02.338161+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T18:00:02.338313+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T18:00:02.338374+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T18:00:02.338527+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T18:00:02.338586+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T18:00:02.338633+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T18:00:02.338706+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T18:00:02.338754+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T18:00:02.338796+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T18:00:02.338845+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T18:00:02.338901+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+[2026-08-30T18:00:02.327707+00:00] === RabbitHole Campaign Scanner Cycle Start ===
+[2026-08-30T18:00:02.338161+00:00] Scanning RabbitHole for active reward campaigns...
+[2026-08-30T18:00:02.338313+00:00]   Found: Arbitrum Odyssey - bridge_and_swap - $45 ✅
+[2026-08-30T18:00:02.338374+00:00]   Found: Optimism Quest - nft_claim - $30 ⚠️
+[2026-08-30T18:00:02.338527+00:00]   Found: Uniswap V3 LP - provide_liquidity - $55 ✅
+[2026-08-30T18:00:02.338586+00:00]   Found: Aave V3 Deposit - supply_asset - $40 ✅
+[2026-08-30T18:00:02.338633+00:00]   Found: Compound Governance - delegate_vote - $25 ⚠️
+[2026-08-30T18:00:02.338706+00:00]   Found: ENS Registration - register_domain - $35 ⚠️
+[2026-08-30T18:00:02.338754+00:00]   Found: Gitcoin Passport - verify_identity - $20 ⚠️
+[2026-08-30T18:00:02.338796+00:00]   Found: Zora Network - mint_nft - $15 ✅
+[2026-08-30T18:00:02.338845+00:00]   Found: Base Onboarding - bridge_and_deploy - $50 ✅
+[2026-08-30T18:00:02.338901+00:00]   Found: Linea Voyage - cross_chain_quest - $60 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 133, in <module>
+    main()
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 124, in main
+    update_ledger_with_rh(opportunities)
+  File "/Agentic/scripts/rabbithole_campaign_scanner.py", line 84, in update_ledger_with_rh
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
