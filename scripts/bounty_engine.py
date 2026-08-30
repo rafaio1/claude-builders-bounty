@@ -760,6 +760,14 @@ def triage(candidates):
             val = 0.0
         return (val, x.get("discovered_at",""))
     sorted_cands = sorted(candidates, key=_sort_key, reverse=True)[:10]
+    # HARD VALUE GATE: Reject bounties with no verified payout to prevent $0 submissions
+    valued_cands = [c for c in sorted_cands if str(c.get("value_usd", "unknown")) not in ("unknown", "0", "0.0", "", "None")]
+    if len(valued_cands) < len(sorted_cands):
+        log(f"Value gate: filtered {len(sorted_cands) - len(valued_cands)} zero/unknown-value candidates")
+    if not valued_cands:
+        log("No candidates with verified value after gate; skipping triage to avoid $0 PRs")
+        return []
+    sorted_cands = valued_cands[:10]
     # Sanitize candidates to prevent JSON serialization issues or prompt injection
     safe_cands = []
     for c in sorted_cands:
