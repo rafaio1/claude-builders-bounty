@@ -76,3 +76,17 @@
 | #3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
+
+## Claude Builders Bounty Pipeline (Opire — Auto-pay on Merge)
+| PR | Issue | Bounty | Title | Status |
+|----|-------|--------|-------|--------|
+| #3981 | #4 | $150 | Claude Code PR review agent with structured Markdown output | Open |
+| #3980 | #5 | $200 | n8n workflow for weekly dev summary with Claude API | Open |
+| #3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
+| **Subtotal** | | **$425** | | **Awaiting Review** |
+
+## Scouting Notes — 2026-08-30 (Update 2)
+- **claude-builders-bounty #4 & #5**: PRs #3980 and #3981 submitted with Solana payout address. Both include full deliverables, README, and sample outputs. Payment triggers automatically on merge via Opire.
+- **eliezerkirubi-sys/quadcopter-rl-control #6**: DEAD. Repo is empty (only .gitignore). Cannot implement without creating entire project from scratch — high rejection risk. SKIPPED.
+- **tadanobutubutu/screeps #5**: Renovate dependency dashboard (bot-generated). Not a bounty. SKIPPED.
+- **marcelo-earth/marcello #15**: CLOSED. DEAD.
