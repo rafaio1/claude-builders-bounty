@@ -86,6 +86,7 @@
 | **Subtotal** | | **$425** | | **Awaiting Review** |
 
 ## Scouting Notes — 2026-08-30 (Update 2)
+- **CyberNinja-Dojo #2 ($10)**: Implementation complete (--check-stale, --max-stale-bytes, tests, docs). PR submission blocked by fork infra (git push hangs, API parent SHA mismatch). Workaround: posted full patch as public gist + comment on issue with Solana payout address. Awaiting maintainer response. Gist: https://gist.github.com/rafaio1/be35a8b1ed2743b893cad10e8351aeeb
 - **claude-builders-bounty #4 & #5**: PRs #3980 and #3981 submitted with Solana payout address. Both include full deliverables, README, and sample outputs. Payment triggers automatically on merge via Opire.
 - **eliezerkirubi-sys/quadcopter-rl-control #6**: DEAD. Repo is empty (only .gitignore). Cannot implement without creating entire project from scratch — high rejection risk. SKIPPED.
 - **tadanobutubutu/screeps #5**: Renovate dependency dashboard (bot-generated). Not a bounty. SKIPPED.
