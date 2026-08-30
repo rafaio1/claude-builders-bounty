@@ -1,150 +1,70 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T08:07:00Z",
+  "last_updated": "2026-08-30T08:25:00Z",
   "active_contests": {
     "sherlock": {
       "status": "no_active_contests",
-      "note": "Live scrape of audits.sherlock.xyz/contests on 2026-08-30 shows 0 Active contests. Only Judging (Metric, Tare) and Finished visible. Previous targets (Beefy/Frax/Kwenta/Lyra) are NOT currently active.",
-      "judging": [
-        "Metric ($150k)",
-        "Tare ($50k)"
-      ]
+      "note": "Live scrape of audits.sherlock.xyz/contests on 2026-08-30 shows 0 Active contests."
     },
     "code4rena": {
       "status": "needs_verification",
-      "note": "Verify active contests via GitHub code-423n4 org or code4rena.com directly. Previous scrape showed no 2026-08 repos.",
       "last_check": "2026-08-30T07:52:00Z"
     },
     "immunefi": {
-      "status": "scraped",
-      "note": "Top evergreen bounties identified via live scrape on 2026-08-30. No KYC required for submission.",
+      "status": "audit_in_progress",
       "top_bounties": [
-        {
-          "protocol": "Ethena",
-          "max_payout_usd": 3000000,
-          "slug": "ethena"
-        },
-        {
-          "protocol": "DeXe Protocol",
-          "max_payout_usd": 3000000,
-          "slug": "dexeprotocol"
-        },
-        {
-          "protocol": "SSV Network",
-          "max_payout_usd": 250000,
-          "slug": "ssvnetwork"
-        },
-        {
-          "protocol": "ENS",
-          "max_payout_usd": 250000,
-          "slug": "ens"
-        },
-        {
-          "protocol": "Lombard Finance",
-          "max_payout_usd": 250000,
-          "slug": "lombard-finance"
-        },
-        {
-          "protocol": "The Graph",
-          "max_payout_usd": 500000,
-          "slug": "thegraph"
-        },
-        {
-          "protocol": "StackingDAO",
-          "max_payout_usd": 100000,
-          "slug": "stackingdao"
-        },
-        {
-          "protocol": "Cosmos",
-          "max_payout_usd": 50000,
-          "slug": "cosmos"
-        }
+        {"protocol": "Ethena", "max_payout_usd": 3000000, "slug": "ethena"},
+        {"protocol": "DeXe Protocol", "max_payout_usd": 3000000, "slug": "dexeprotocol"}
       ],
       "last_check": "2026-08-30T08:07:00Z"
     }
   },
+  "draft_reports": [
+    {
+      "file": "revenue/vuln_reports/ethena-stakedusde-donation-attack.md",
+      "protocol": "Ethena",
+      "severity": "Medium",
+      "status": "DRAFT_NEEDS_POC",
+      "vector": "MIN_SHARES bypass via redistributeLockedAmount to address(0) during vesting"
+    },
+    {
+      "file": "revenue/vuln_reports/dexe-metagov-quorum-manipulation.md",
+      "protocol": "DeXe Protocol",
+      "severity": "High",
+      "status": "DRAFT_NEEDS_POC",
+      "vector": "Quorum suppression via treasury exemption in meta-governance proposals"
+    }
+  ],
   "analysis_queue": [
     {
       "project": "Usual Labs",
       "status": "EXHAUSTED",
-      "note": "Rounding loss and Oracle staleness vectors invalidated by PoC and code review. No exploitable bugs found.",
       "completed": "2026-08-30T07:45:00Z"
+    },
+    {
+      "project": "Ethena",
+      "status": "REVIEW_COMPLETE_DRAFT_WRITTEN",
+      "next_step": "Write Foundry PoC for donation attack vector",
+      "completed": "2026-08-30T08:25:00Z"
+    },
+    {
+      "project": "DeXe Protocol",
+      "status": "REVIEW_COMPLETE_DRAFT_WRITTEN",
+      "next_step": "Validate quorum math and write PoC",
+      "completed": "2026-08-30T08:25:00Z"
     }
   ],
-  "payout_route": "USDC -> Kraken -> Wise USD/EUR",
-  "micro_bounty_status": {
-    "algora": {
-      "qualified": 0,
-      "blocker": "KYC/OAuth required"
-    },
-    "drips": {
-      "qualified": 0,
-      "blocker": "KYC/OAuth required"
-    },
-    "opire": {
-      "qualified": 0,
-      "blocker": "KYC/OAuth required"
-    }
-  },
   "immediate_capital_blockers": [
-    "All micro-bounty platforms require KYC/OAuth that agent cannot complete autonomously",
-    "Wise balance R00 insufficient for Bybit arb (need 00+)",
-    "Sherlock/Code4rena active contests not discoverable via scraping",
-    "Usual Labs SwapperEngine source code missing from verified contracts"
+    "Immunefi KYC/OAuth required for submission - human action needed",
+    "PoC validation required before report submission",
+    "Wise balance insufficient for Bybit arb"
   ],
   "next_human_actions": [
-    "Complete Drips KYC at https://www.drips.network/wave/stellar/issues to unlock Wave 8 (5k pool)",
-    "Verify Kraken account linked to Wise for crypto offramp",
-    "Check email for ContabilHub outreach responses",
-    "Manually identify active Sherlock contest via Discord/Twitter"
+    "Complete Immunefi KYC at https://immunefi.com to enable report submission",
+    "Review draft reports in revenue/vuln_reports/ for accuracy",
+    "Fund Wise account with $500+ USD/EUR for Bybit arb fallback"
   ],
-  "testnet_airdrop_status": {
-    "monad": {
-      "status": "blocked",
-      "blocker": "faucet_redirects_to_freelancer_signup",
-      "wallet_available": true
-    },
-    "berachain": {
-      "status": "blocked",
-      "blocker": "faucet_domain_unreachable_artio_deprecated",
-      "wallet_available": true
-    },
-    "linea": {
-      "status": "blocked",
-      "blocker": "voyage_page_404_deprecated",
-      "wallet_available": true
-    }
-  },
-  "sherlock_active_contests": [],
-  "rapid_capital_assessment": {
-    "micro_bounties": "BLOCKED - All platforms (Algora/Drips/Opire) require KYC/OAuth",
-    "testnet_airdrops": "BLOCKED - All 3 testnets (Monad/Berachain/Linea) have broken faucets or deprecated pages",
-    "sherlock_contests": "BLOCKED - Live verification shows 0 active contests as of 2026-08-30. Beefy/Frax/Kwenta/Lyra not listed.",
-    "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
-    "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements",
-    "immunefi_bounties": "ACTIVE - 8 high-value evergreen bounties identified (Ethena/DeXe $3M, SSV/ENS/Lombard $250k). No contest deadline, no KYC for submission."
-  },
-  "human_action_required": {
-    "priority_1": {
-      "action": "Complete KYC/OAuth on Algora, Drips, or Opire",
-      "reason": "All micro-bounty platforms block autonomous agents at qualification step",
-      "expected_outcome": "Access to $50-$500 bounties with 24-72h payout cycles",
-      "time_estimate": "15-30 minutes manual work"
-    },
-    "priority_2": {
-      "action": "Create Sherlock account and verify wallet",
-      "reason": "4 active contests (Beefy/Frax/Kwenta/Lyra) with $35k-$80k pools require account_creation",
-      "expected_outcome": "Eligibility for audit contest submissions; Low/Info findings pay $500-$3k in 2 weeks",
-      "time_estimate": "10 minutes signup + wallet connect"
-    },
-    "priority_3": {
-      "action": "Fund Wise account with $500+ USD/EUR",
-      "reason": "Bybit spot arb requires seed capital; current R$100 BRL balance insufficient",
-      "expected_outcome": "Unlock USDC/USDT peg gap arbitrage (0.1-0.3% per cycle, 5-20 cycles/day)",
-      "capital_source": "Bounty payout from priority_1 or priority_2"
-    }
-  },
-  "autonomous_status": "ALL_VECTORS_BLOCKED_PENDING_HUMAN_ACTION",
-  "next_agent_action": "Clone Ethena and DeXe Protocol repos for deep audit; these have highest payout potential ($3M) and are evergreen."
+  "autonomous_status": "DRAFTS_COMPLETE_PENDING_POC_AND_KYC",
+  "git_last_commit": "feat: initial audit vectors for Ethena and DeXe (pending)"
 }
