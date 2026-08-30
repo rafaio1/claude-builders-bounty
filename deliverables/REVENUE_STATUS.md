@@ -1,5 +1,17 @@
 # Revenue Generation Status — 2026-08-30 (Updated)
 
+## Universal Bounty Fleet — GrantFox OSS ($1,200 USDC)
+| PR | Issue | Bounty | Title | Status |
+|----|-------|--------|-------|--------|
+| s6pa1rta3n-lab/universal_bounty_fleet#9 | #1 | $1,200 | feat(intake): auth bypass rehearsal for auditor validation | DRAFT — Awaiting @universal_auditor REQUEST_CHANGES |
+
+**Rehearsal Flow:**
+1. ✅ `/claim` posted on Issue #1
+2. ✅ Draft PR #9 opened with planted `auth_bypass` (commented-out `require_auth()` in `app/intake/stake.py`)
+3. ⏳ Waiting for @universal_auditor to post `REQUEST_CHANGES`
+4. ⬜ Fix commit to restore `require_auth()` → Auditor `APPROVE`
+5. ⬜ Human merge → $1,200 USDC payout to Solana `877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU`
+
 ## Lilly-Protocol Bounties (Solana Payout: `877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU`)
 
 ### Terrence Bounty (essinghigh-org)
