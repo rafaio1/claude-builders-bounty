@@ -1,0 +1,211 @@
+{
+  "name": "Weekly Dev Summary (Claude Builders Bounty #5)",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "weeks",
+              "triggerAtDay": 1,
+              "triggerAtHour": 9
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-4000-a000-000000000001",
+      "name": "Every Monday 9AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "resource": "pullRequest",
+        "operation": "getAll",
+        "owner": "={{ $env.GITHUB_OWNER }}",
+        "repository": "={{ $env.GITHUB_REPO }}",
+        "state": "all",
+        "returnAll": true,
+        "filters": {
+          "since": "={{ $now.minus({ weeks: 1 }).toISO() }}"
+        }
+      },
+      "id": "a1b2c3d4-0002-4000-a000-000000000002",
+      "name": "Get PRs from Last Week",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [460, 300],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_WITH_GITHUB_CRED_ID",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "issue",
+        "operation": "getAll",
+        "owner": "={{ $env.GITHUB_OWNER }}",
+        "repository": "={{ $env.GITHUB_REPO }}",
+        "state": "all",
+        "returnAll": true,
+        "filters": {
+          "since": "={{ $now.minus({ weeks: 1 }).toISO() }}"
+        }
+      },
+      "id": "a1b2c3d4-0003-4000-a000-000000000003",
+      "name": "Get Issues from Last Week",
+      "type": "n8n-nodes-base.github",
+      "typeVersion": 1.1,
+      "position": [460, 520],
+      "credentials": {
+        "githubApi": {
+          "id": "REPLACE_WITH_GITHUB_CRED_ID",
+          "name": "GitHub API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combinationMode": "mergeByPosition",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0004-4000-a000-000000000004",
+      "name": "Merge PRs & Issues",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3,
+      "position": [680, 400]
+    },
+    {
+      "parameters": {
+        "prompt": "=You are a developer productivity analyst. Generate a concise weekly development summary in Markdown format based on the following GitHub activity data.\n\n## Data:\n{{ JSON.stringify($json) }}\n\n## Output Format:\n# Weekly Dev Summary — {{ $now.format('YYYY-MM-DD') }}\n\n## 📊 Overview\n- Total PRs opened/closed/merged\n- Total issues opened/closed\n- Key contributors\n\n## 🔀 Notable Pull Requests\n(List top 5 most impactful PRs with title, author, and brief description)\n\n## 🐛 Issues Resolved\n(List resolved issues grouped by label/priority)\n\n## ⚠️ Attention Items\n(Stale PRs, unresolved high-priority issues, blockers)\n\n## 💡 Recommendations\n(Actionable suggestions for next week)\n\nBe specific, use real data from the input. Do not fabricate.",
+        "options": {
+          "maxTokens": 2048,
+          "temperature": 0.3
+        }
+      },
+      "id": "a1b2c3d4-0005-4000-a000-000000000005",
+      "name": "Claude AI Summary",
+      "type": "@n8n/n8n-nodes-langchain.chainLlm",
+      "typeVersion": 1.4,
+      "position": [900, 400],
+      "credentials": {
+        "anthropicApi": {
+          "id": "REPLACE_WITH_ANTHROPIC_CRED_ID",
+          "name": "Anthropic API"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "subject": "=📋 Weekly Dev Summary — {{ $now.format('YYYY-MM-DD') }}",
+        "text": "={{ $json.text }}",
+        "html": "=<pre>{{ $json.text }}</pre>",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0006-4000-a000-000000000006",
+      "name": "Send Email Report",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2.1,
+      "position": [1120, 400],
+      "credentials": {
+        "smtp": {
+          "id": "REPLACE_WITH_SMTP_CRED_ID",
+          "name": "SMTP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "=## ✅ Weekly Summary Generated\n\nThe weekly dev summary has been generated and sent via email.\n\n**Generated at:** {{ $now.format('YYYY-MM-DD HH:mm:ss UTC') }}\n\n### Preview:\n{{ $json.text.substring(0, 500) }}...",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0007-4000-a000-000000000007",
+      "name": "Log Completion",
+      "type": "n8n-nodes-base.stickyNote",
+      "typeVersion": 1,
+      "position": [1120, 600]
+    }
+  ],
+  "connections": {
+    "Every Monday 9AM": {
+      "main": [
+        [
+          {
+            "node": "Get PRs from Last Week",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Get Issues from Last Week",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get PRs from Last Week": {
+      "main": [
+        [
+          {
+            "node": "Merge PRs & Issues",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Issues from Last Week": {
+      "main": [
+        [
+          {
+            "node": "Merge PRs & Issues",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Merge PRs & Issues": {
+      "main": [
+        [
+          {
+            "node": "Claude AI Summary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Claude AI Summary": {
+      "main": [
+        [
+          {
+            "node": "Send Email Report",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Log Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "tags": [
+    {
+      "name": "claude-builders-bounty"
+    },
+    {
+      "name": "weekly-report"
+    }
+  ]
+}
