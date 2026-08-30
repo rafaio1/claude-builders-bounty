@@ -377,7 +377,7 @@ def discover_bounties():
         "solidity bounty",
         "typescript bounty",
         "python bounty",
-        "golang bounty",
+        "lua bounty",
         "defi bounty",
         "protocol bounty",
         "infrastructure bounty"
@@ -1622,3 +1622,4 @@ if __name__ == "__main__":
         import traceback as tb
         log(tb.format_exc())
         sys.exit(1)
+ - Python, TypeScript, JavaScript, or Lua ONLY
