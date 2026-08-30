@@ -684,6 +684,9 @@ def discover_bounties():
     except Exception as e:
         log(f"Warning: could not apply cooldown filter: {e}")
     
+    # Filter archived repos BEFORE returning to prevent wasted triage tokens
+    found = _filter_archived_repos(found)
+    
     return found
 
 
