@@ -55,8 +55,8 @@
 ## Claude Builders Bounty Pipeline (Opire — Auto-pay on Merge)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| #1 | #4 | $150 | Claude Code PR review agent with sample outputs | Open |
+| #2 | #5 | $200 | n8n workflow for weekly dev summary | Open |
 | #3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
-| — | #4 | $150 | Agent: Claude Code sub-agent PR reviewer | Claimed (/opire try) |
-| — | #5 | $200 | Workflow: n8n + Claude Code weekly summary | Claimed (/opire try) |
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
