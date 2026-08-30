@@ -409,6 +409,7 @@ def discover_bounties():
                     repo = item.get("repository", {}).get("nameWithOwner", "unknown")
                     repo_lower = repo.lower()
                     spam_indicators = ["bounty-plaza", "test-bounty", "fake-bounty", "spam",
+                                      "robinhood-evm-mcp", "aashu91", "xevrion-v2", "agent-playground",
                                       "bountyscout", "bounty-alert", "bounty-hub", "opportunity-bot",
                                       "bounty-finder", "bounty-tracker", "bounty-aggregator",
                                       "claude-builders-bounty", "zhangjiayang6835-cyber", "bounty-board",
