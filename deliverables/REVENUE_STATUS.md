@@ -91,3 +91,5 @@
 - **eliezerkirubi-sys/quadcopter-rl-control #6**: DEAD. Repo is empty (only .gitignore). Cannot implement without creating entire project from scratch — high rejection risk. SKIPPED.
 - **tadanobutubutu/screeps #5**: Renovate dependency dashboard (bot-generated). Not a bounty. SKIPPED.
 - **marcelo-earth/marcello #15**: CLOSED. DEAD.
+ - **CyberNinja-Dojo #10 ($10)**: Implementation complete (telemetry flush tests). Diagnostic artifact generated via isolated build.py execution with mocked modules. Comment posted on issue with Gist link, .logd filename/password, and Solana payout address. Awaiting maintainer response. Gist: https://gist.github.com/rafaio1/03915efdbae9230409e988006f293858
+ 
