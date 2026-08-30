@@ -1,127 +1,27 @@
 {
-  "last_updated": "2026-08-30T06:30:00Z",
   "target_usd": 20000000,
-  "current_balance_brl": 100.0,
-  "active_vectors": [
-    {
-      "platform": "Sherlock",
-      "type": "bug_bounty",
-      "program": "Usual Labs",
-      "max_payout": "16,000,000 USDC",
-      "url": "https://audits.sherlock.xyz/bug-bounties/56",
-      "status": "recon_needed",
-      "priority": 1
+  "current_balance_brl": 100.00,
+  "last_updated": "2026-08-30T06:30:00Z",
+  "active_contests": {
+    "sherlock": {
+      "status": "blocked",
+      "note": "1 active contest exists but UI/API scraping failed. Need manual identification or alternative source.",
+      "judging": ["Metric ($150k)", "Tare ($50k)"]
     },
+    "code4rena": {
+      "status": "no_active_repos",
+      "note": "No 2026-08 repos found in code-423n4 org. Last created was 2026-07-10 (jupiter-lend). Previous session targets (Frax, Optimism, etc.) may be outdated or hosted elsewhere.",
+      "last_known_active": []
+    }
+  },
+  "analysis_queue": [
     {
-      "platform": "Sherlock",
-      "type": "bug_bounty",
-      "program": "Usual - Fira UZR",
-      "max_payout": "7,500,000 USDC",
-      "url": "https://audits.sherlock.xyz/bug-bounties/227",
-      "status": "recon_needed",
-      "priority": 2
-    },
-    {
-      "platform": "Sherlock",
-      "type": "bug_bounty",
-      "program": "Aave V4",
-      "max_payout": "2,500,000 USD",
-      "url": "https://audits.sherlock.xyz/bug-bounties/300",
-      "status": "recon_needed",
-      "priority": 3
-    },
-    {
-      "platform": "Immunefi",
-      "type": "bug_bounty",
-      "program": "Ethena Protocol",
-      "max_payout": "3,000,000 USD",
-      "url": "https://immunefi.com/bug-bounty/ethena/information/",
-      "status": "vault_confirmed",
-      "priority": 4
+      "project": "Usual Labs",
+      "source_path": "state/usual_labs_analysis.md",
+      "candidates": ["Oracle Staleness", "Rounding Loss", "Reentrancy"],
+      "next_step": "Validate Rounding Loss in SwapperEngine via Foundry fork test",
+      "priority": "high"
     }
   ],
-  "contests": {
-    "sherlock_active": 0,
-    "sherlock_judging": [
-      "Metric ($150k)",
-      "Tare ($50k)"
-    ],
-    "code4rena_active": 0,
-    "immunefi_competitions": [
-      "ENS ($70k)"
-    ],
-    "discovered_active": [
-      {
-        "id": "SHERLOCK-frax-finance-202608",
-        "pool": 80000,
-        "platform": "sherlock",
-        "status": "active"
-      },
-      {
-        "id": "C4-optimism-collective-202608",
-        "pool": 80000,
-        "platform": "code4rena",
-        "status": "active"
-      },
-      {
-        "id": "SHERLOCK-beefy-finance-202608",
-        "pool": 70000,
-        "platform": "sherlock",
-        "status": "active"
-      },
-      {
-        "id": "SHERLOCK-kwenta-exchange-202608",
-        "pool": 65000,
-        "platform": "sherlock",
-        "status": "active"
-      },
-      {
-        "id": "C4-notional-finance-202608",
-        "pool": 60000,
-        "platform": "code4rena",
-        "status": "active"
-      },
-      {
-        "id": "SHERLOCK-lyra-finance-202608",
-        "pool": 55000,
-        "platform": "sherlock",
-        "status": "active"
-      },
-      {
-        "id": "C4-ribbon-finance-202608",
-        "pool": 40000,
-        "platform": "code4rena",
-        "status": "active"
-      }
-    ]
-  },
-  "payout_routes": {
-    "sherlock": "USDC on Ethereum \u2192 Kraken Deposit \u2192 Wise USD/EUR",
-    "immunefi": "USDC on Arbitrum/Base \u2192 Kraken Deposit \u2192 Wise USD/EUR"
-  },
-  "human_action_items": [
-    "Complete KYC on Sherlock for Usual Labs bounty eligibility",
-    "Verify wallet connection for Ethena vault access",
-    "Review and submit Arbitrum STIP grant proposal (state/proposals/arbitrum_stip_20260830.md)",
-    "Review and submit Optimism RetroPGF R5 proposal (state/proposals/optimism_retropgf_20260830.md)"
-  ],
-  "analysis_progress": {
-    "usual_labs": {
-      "contracts_fetched": [
-        "USD0",
-        "SwapperEngine",
-        "DaoCollateral",
-        "ClassicalOracle"
-      ],
-      "candidates_identified": 3,
-      "highest_severity": "Medium-High",
-      "next_step": "fork_mainnet_validation"
-    },
-    "rapid_vectors": {
-      "algora_qualified": 0,
-      "drips_qualified": 0,
-      "active_contests_found": 7,
-      "bybit_arb_status": "blocked_insufficient_capital"
-    }
-  }
+  "payout_route": "USDC -> Kraken -> Wise USD/EUR"
 }
