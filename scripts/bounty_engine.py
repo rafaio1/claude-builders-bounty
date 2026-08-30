@@ -423,6 +423,7 @@ def discover_bounties():
                     title_lower = (item.get("title", "") or "").lower()
                     if any(s in title_lower for s in spam_indicators):
                         continue
+                    labels = [l["name"] for l in item.get("labels", [])]
                     # PAYMENT RAIL VERIFICATION: Only accept bounties with verifiable automated payout infrastructure
                     body_lower = (item.get("body", "") or "").lower()
                     title_lower_check = (item.get("title", "") or "").lower()
@@ -550,6 +551,7 @@ def discover_bounties():
     ]
     for q in high_value_queries:
         _check_gh_rate_limit()
+        labels = []
         cmd = f'gh search issues "{q}" --limit 50 --json repository,title,url,labels,createdAt,body'
         try:
             res = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=45)
