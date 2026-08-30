@@ -60325,3 +60325,435 @@ sh: 1: tstl: not found
 [2026-08-30T22:07:44.212165+00:00] Added https://github.com/dragonghy/dota2bot/issues/261 to failed_repos cooldown list
 [2026-08-30T22:07:44.212947+00:00] SKIPPED/FAILED: [bug] abilanc_domain.py 的残留标签 "REACHABLE via the selector" 是文件级推断,逐帧在站点级被证伪
 [2026-08-30T22:07:44.214045+00:00] Cycle 1 complete. Sleeping 300s...
+[2026-08-30T22:10:49.253480+00:00] FATAL SIGNAL 15 received
+[2026-08-30T22:10:49.512436+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-08-30T22:10:49.512608+00:00] 
+============================================================
+[2026-08-30T22:10:49.512657+00:00] CYCLE 1 - 2026-08-30T22:10:49.512654+00:00
+[2026-08-30T22:10:49.512687+00:00] ============================================================
+[2026-08-30T22:10:49.512716+00:00] === PR STATUS MONITOR ===
+[2026-08-30T22:10:49.513423+00:00] PR Monitor: 39 pending PRs, checking up to 10
+[2026-08-30T22:11:03.827326+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-30T22:11:03.827620+00:00] No PR status changes detected
+[2026-08-30T22:11:03.827760+00:00] === DISCOVERY PHASE ===
+[2026-08-30T22:11:03.827873+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-30T22:11:29.536550+00:00] Discovery progress: 5/30 queries completed, 113 candidates found
+[2026-08-30T22:11:55.062075+00:00] Discovery progress: 10/30 queries completed, 198 candidates found
+[2026-08-30T22:12:22.474201+00:00] Discovery progress: 15/30 queries completed, 363 candidates found
+[2026-08-30T22:12:49.951345+00:00] Discovery progress: 20/30 queries completed, 495 candidates found
+[2026-08-30T22:13:19.022753+00:00] Discovery progress: 25/30 queries completed, 659 candidates found
+[2026-08-30T22:15:08.107941+00:00]   Query '$25000 bounty': 50 results
+[2026-08-30T22:15:08.108227+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-30T22:15:08.108275+00:00]   Query 'algora bounty': 47 results
+[2026-08-30T22:15:08.108301+00:00]   Query 'defi bounty': 47 results
+[2026-08-30T22:15:08.108326+00:00]   Query 'crypto bounty': 45 results
+[2026-08-30T22:15:08.108350+00:00]   Query 'bug bounty': 43 results
+[2026-08-30T22:15:08.108373+00:00]   Query '$10000 bounty': 42 results
+[2026-08-30T22:15:08.108402+00:00]   Query 'infrastructure bounty': 42 results
+[2026-08-30T22:15:08.108426+00:00]   Query 'bounty reward': 41 results
+[2026-08-30T22:15:08.108449+00:00]   Query 'web3 bounty': 40 results
+[2026-08-30T22:15:08.109277+00:00]   Query 'solidity bounty': 37 results
+[2026-08-30T22:15:08.109393+00:00]   Query 'security bounty': 36 results
+[2026-08-30T22:15:08.109431+00:00]   Query 'typescript bounty': 36 results
+[2026-08-30T22:15:08.109462+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-30T22:15:08.109491+00:00]   Query 'bounty fix': 31 results
+[2026-08-30T22:15:08.109538+00:00]   Query 'frontend bounty': 30 results
+[2026-08-30T22:15:08.109568+00:00]   Query 'backend bounty': 25 results
+[2026-08-30T22:15:08.109596+00:00]   Query 'paid bounty': 24 results
+[2026-08-30T22:15:08.109624+00:00]   Query 'bounty issue': 23 results
+[2026-08-30T22:15:08.109651+00:00]   Query 'protocol bounty': 22 results
+[2026-08-30T22:15:08.109677+00:00]   Query '$5000 bounty': 21 results
+[2026-08-30T22:15:08.109704+00:00]   Query 'lua bounty': 17 results
+[2026-08-30T22:15:08.109732+00:00]   Query 'python bounty': 12 results
+[2026-08-30T22:15:08.109760+00:00]   Query 'bounty': 3 results
+[2026-08-30T22:15:08.109789+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-30T22:15:08.109816+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-30T22:15:08.109848+00:00] Total unique candidates after dedup: 815
+[2026-08-30T22:15:08.112222+00:00] Found 815 candidates
+[2026-08-30T22:15:08.113213+00:00] Pre-filtered 32 already-submitted candidates, 783 remaining
+[2026-08-30T22:15:08.113815+00:00] Cooldown-filtered 43 candidates from failed repos, 740 remaining
+[2026-08-30T22:15:08.114911+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-30T22:15:08.121089+00:00] Triage meta-filter: removed 67 internal/meta targets
+[2026-08-30T22:15:08.121664+00:00] Triage payload: 10 sanitized candidates, 4140 chars
+[2026-08-30T22:15:08.121846+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ethb3rlin/sponsor-bounties/issues/9",
+    "title": "[BOUNTY] Manta Network by p0xeidon labs - On-chain Privacy use Cases",
+    "value_usd": "2500",
+    "labels": [
+      "sponsor-bounty"
+    ],
+    "body_preview": "# Bringing Privacy to Web3\r\n\r\nFor our bounty, we're looking for some amazing privacy-enabled use cases! No, the core value of your product doesn't have to be privacy, but you should think about creati"
+  },
+  {
+    "url": "https://github.com/dinngo/furucombo-contract/issues/1",
+    "title": "Bounty Program: Furucombo combo transaction data generator",
+    "value_usd": "1800",
+    "labels": [],
+    "body_preview": "## Description\r\nFurucombo is a DeFi aggregator that enable users to connect all kinds of DeFis into one single action. The actions to take with every involved DeFi will be encoded into one transaction"
+  },
+  {
+    "url": "https://github.com/JoinMarket-Org/joinmarket/issues/634",
+    "title": "Make tumbler idempotent [$1,000 bounty]",
+    "value_usd": "1000",
+    "labels": [],
+    "body_preview": "Because the tumbler can crash or stall for many reasons being able to restart it and have it pick up where it left off is very useful.\n\nExample:\n\n> $ python tumbler.py -n mysession [options] wallet.js"
+  },
+  {
+    "url": "https://github.com/ramimbo/mergework/issues/803",
+    "title": "Proposed work: filter bounty issues from proposed-work triage",
+    "value_usd": "600",
+    "labels": [
+      "proposed-work"
+    ],
+    "body_preview": "Bounty #722\n\nThis is a proposed-work intake item for the live #722 proposed-work bounty. It does not ma
+[2026-08-30T22:15:13.265609+00:00] Triage GhostCLI response length: 1172 chars
+[2026-08-30T22:15:13.265747+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":20,"confidence_score":0.85,"reason":"Clear implementation task in Python to add restart/resume capability to the tumbler script; well-defined acceptance criteria and reproducible failure modes make it suitable for an AI coding agent."},{"url":"https://github.com/reachingforthejack/cursortab.nvim/issues/7","title":"$250 bounty: Set up the Lua code for this extension in a clean, and customizable way and clean up the RPC communication","estimated_hours":12,"confidence_score":0.75,"reason":"Specific refactoring and setup task in Lua with clear scope (code organization and RPC cleanup); actionable for an AI agent despite being less common language."},{"url":"https://github.com/dinngo/furucombo-contract/issues/1","title":"Bounty Program: Furucombo combo transaction data generator","estimated_hours":18,"confidence_score":0.7,"reason":"Well-specified feature add'
+[2026-08-30T22:15:13.265859+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/JoinMarket-Org/joinmarket/issues/634', 'title': 'Make tumbler idempotent [$1,000 bounty]', 'estimated_hours': 20, 'confidence_score': 0.85, 'reason': 'Clear implementation task in Python to add restart/resume capability to the tumbler script; well-defined acceptance criteria and reproducible failure modes make it suitable for an AI coding agent.'}, {'url': 'https://github.com/reachingforthejack/cursortab.nvim/issues/7', 'title': '$250 bounty: Set up the Lua code for 
+[2026-08-30T22:15:13.265902+00:00] Triage parsed result type: list, len=3
+[2026-08-30T22:15:13.265926+00:00] Selected 3 targets from GhostCLI
+[2026-08-30T22:15:13.266126+00:00] Triage value distribution: {'1000': 1, '250': 1, '1800': 1}
+[2026-08-30T22:15:13.266191+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 740 candidates
+[2026-08-30T22:15:13.664633+00:00] SKIPPING reachingforthejack/cursortab.nvim: repository is archived (read-only)
+[2026-08-30T22:15:13.692759+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-30T22:15:13.736114+00:00] SKIPPING dinngo/furucombo-contract: repository is archived (read-only)
+[2026-08-30T22:15:13.736815+00:00] Cycle 1 complete. Sleeping 300s...
+[2026-08-30T22:17:53.129106+00:00] FATAL SIGNAL 15 received
+[2026-08-30T22:17:53.320852+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-08-30T22:17:53.321434+00:00] 
+============================================================
+[2026-08-30T22:17:53.321585+00:00] CYCLE 1 - 2026-08-30T22:17:53.321581+00:00
+[2026-08-30T22:17:53.321667+00:00] ============================================================
+[2026-08-30T22:17:53.321746+00:00] === PR STATUS MONITOR ===
+[2026-08-30T22:17:53.322194+00:00] PR Monitor: 39 pending PRs, checking up to 10
+[2026-08-30T22:18:07.500979+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-30T22:18:07.501273+00:00] No PR status changes detected
+[2026-08-30T22:18:07.501415+00:00] === DISCOVERY PHASE ===
+[2026-08-30T22:18:07.501465+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-30T22:18:33.801757+00:00] Discovery progress: 5/30 queries completed, 113 candidates found
+[2026-08-30T22:18:58.763682+00:00] Discovery progress: 10/30 queries completed, 198 candidates found
+[2026-08-30T22:19:25.681771+00:00] Discovery progress: 15/30 queries completed, 363 candidates found
+[2026-08-30T22:19:52.787411+00:00] Discovery progress: 20/30 queries completed, 495 candidates found
+[2026-08-30T22:20:21.241694+00:00] Discovery progress: 25/30 queries completed, 659 candidates found
+[2026-08-30T22:22:07.622743+00:00]   Query '$25000 bounty': 50 results
+[2026-08-30T22:22:07.623045+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-30T22:22:07.623107+00:00]   Query 'algora bounty': 47 results
+[2026-08-30T22:22:07.623143+00:00]   Query 'defi bounty': 47 results
+[2026-08-30T22:22:07.623170+00:00]   Query 'crypto bounty': 45 results
+[2026-08-30T22:22:07.623194+00:00]   Query 'bug bounty': 43 results
+[2026-08-30T22:22:07.623223+00:00]   Query '$10000 bounty': 42 results
+[2026-08-30T22:22:07.623252+00:00]   Query 'infrastructure bounty': 42 results
+[2026-08-30T22:22:07.623293+00:00]   Query 'bounty reward': 41 results
+[2026-08-30T22:22:07.623340+00:00]   Query 'web3 bounty': 40 results
+[2026-08-30T22:22:07.623860+00:00]   Query 'solidity bounty': 37 results
+[2026-08-30T22:22:07.623929+00:00]   Query 'security bounty': 36 results
+[2026-08-30T22:22:07.623954+00:00]   Query 'typescript bounty': 36 results
+[2026-08-30T22:22:07.623976+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-30T22:22:07.623998+00:00]   Query 'bounty fix': 31 results
+[2026-08-30T22:22:07.624054+00:00]   Query 'frontend bounty': 30 results
+[2026-08-30T22:22:07.624076+00:00]   Query 'backend bounty': 25 results
+[2026-08-30T22:22:07.624102+00:00]   Query 'paid bounty': 24 results
+[2026-08-30T22:22:07.624129+00:00]   Query 'bounty issue': 23 results
+[2026-08-30T22:22:07.624153+00:00]   Query 'protocol bounty': 22 results
+[2026-08-30T22:22:07.624173+00:00]   Query '$5000 bounty': 21 results
+[2026-08-30T22:22:07.624194+00:00]   Query 'lua bounty': 17 results
+[2026-08-30T22:22:07.624213+00:00]   Query 'python bounty': 12 results
+[2026-08-30T22:22:07.624232+00:00]   Query 'bounty': 3 results
+[2026-08-30T22:22:07.624252+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-30T22:22:07.624272+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-30T22:22:07.624294+00:00] Total unique candidates after dedup: 815
+[2026-08-30T22:22:07.625641+00:00] Found 815 candidates
+[2026-08-30T22:22:07.626465+00:00] Pre-filtered 32 already-submitted candidates, 783 remaining
+[2026-08-30T22:22:07.627189+00:00] Cooldown-filtered 43 candidates from failed repos, 740 remaining
+[2026-08-30T22:22:07.628325+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-30T22:22:07.634694+00:00] Triage meta-filter: removed 67 internal/meta targets
+[2026-08-30T22:22:07.635300+00:00] Triage payload: 10 sanitized candidates, 4140 chars
+[2026-08-30T22:22:07.635532+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ethb3rlin/sponsor-bounties/issues/9",
+    "title": "[BOUNTY] Manta Network by p0xeidon labs - On-chain Privacy use Cases",
+    "value_usd": "2500",
+    "labels": [
+      "sponsor-bounty"
+    ],
+    "body_preview": "# Bringing Privacy to Web3\r\n\r\nFor our bounty, we're looking for some amazing privacy-enabled use cases! No, the core value of your product doesn't have to be privacy, but you should think about creati"
+  },
+  {
+    "url": "https://github.com/dinngo/furucombo-contract/issues/1",
+    "title": "Bounty Program: Furucombo combo transaction data generator",
+    "value_usd": "1800",
+    "labels": [],
+    "body_preview": "## Description\r\nFurucombo is a DeFi aggregator that enable users to connect all kinds of DeFis into one single action. The actions to take with every involved DeFi will be encoded into one transaction"
+  },
+  {
+    "url": "https://github.com/JoinMarket-Org/joinmarket/issues/634",
+    "title": "Make tumbler idempotent [$1,000 bounty]",
+    "value_usd": "1000",
+    "labels": [],
+    "body_preview": "Because the tumbler can crash or stall for many reasons being able to restart it and have it pick up where it left off is very useful.\n\nExample:\n\n> $ python tumbler.py -n mysession [options] wallet.js"
+  },
+  {
+    "url": "https://github.com/ramimbo/mergework/issues/803",
+    "title": "Proposed work: filter bounty issues from proposed-work triage",
+    "value_usd": "600",
+    "labels": [
+      "proposed-work"
+    ],
+    "body_preview": "Bounty #722\n\nThis is a proposed-work intake item for the live #722 proposed-work bounty. It does not ma
+[2026-08-30T22:22:12.193936+00:00] Triage GhostCLI response length: 1200 chars
+[2026-08-30T22:22:12.194124+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/JoinMarket-Org/joinmarket/issues/634","title":"Make tumbler idempotent [$1,000 bounty]","estimated_hours":20,"confidence_score":0.9,"reason":"Clear Python implementation task with specific functional requirement (idempotency/restartability) and reproducible crash scenario; well-scoped bug fix/feature hybrid suitable for autonomous coding agent."},{"url":"https://github.com/reachingforthejack/cursortab.nvim/issues/7","title":"$250 bounty: Set up the Lua code for this extension in a clean, and customizable way and clean up the RPC communication","estimated_hours":12,"confidence_score":0.85,"reason":"Well-defined refactoring and setup task in Lua with explicit scope (code organization + RPC cleanup); actionable code changes with clear acceptance criteria for an AI agent."},{"url":"https://github.com/dinngo/furucombo-contract/issues/1","title":"Bounty Program: Furucombo combo transaction data generator","estimated_hours":25,"confidence_score":0.75,"reason":"Conc'
+[2026-08-30T22:22:12.194262+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/JoinMarket-Org/joinmarket/issues/634', 'title': 'Make tumbler idempotent [$1,000 bounty]', 'estimated_hours': 20, 'confidence_score': 0.9, 'reason': 'Clear Python implementation task with specific functional requirement (idempotency/restartability) and reproducible crash scenario; well-scoped bug fix/feature hybrid suitable for autonomous coding agent.'}, {'url': 'https://github.com/reachingforthejack/cursortab.nvim/issues/7', 'title': '$250 bounty: Set up the Lua co
+[2026-08-30T22:22:12.194340+00:00] Triage parsed result type: list, len=3
+[2026-08-30T22:22:12.194397+00:00] Selected 3 targets from GhostCLI
+[2026-08-30T22:22:12.194640+00:00] Triage value distribution: {'1000': 1, '250': 1, '1800': 1}
+[2026-08-30T22:22:12.194715+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 740 candidates
+[2026-08-30T22:22:12.523592+00:00] SKIPPING reachingforthejack/cursortab.nvim: repository is archived (read-only)
+[2026-08-30T22:22:12.575523+00:00] SKIPPING JoinMarket-Org/joinmarket: repository is archived (read-only)
+[2026-08-30T22:22:12.749533+00:00] SKIPPING dinngo/furucombo-contract: repository is archived (read-only)
+[2026-08-30T22:22:12.750198+00:00] Cycle 1 complete. Sleeping 300s...
+[2026-08-30T22:23:49.601463+00:00] FATAL SIGNAL 15 received
+[2026-08-30T22:23:49.832466+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-08-30T22:23:49.832635+00:00] 
+============================================================
+[2026-08-30T22:23:49.832683+00:00] CYCLE 1 - 2026-08-30T22:23:49.832680+00:00
+[2026-08-30T22:23:49.832716+00:00] ============================================================
+[2026-08-30T22:23:49.832748+00:00] === PR STATUS MONITOR ===
+[2026-08-30T22:23:49.833239+00:00] PR Monitor: 39 pending PRs, checking up to 10
+[2026-08-30T22:24:04.017918+00:00] PR Monitor done: checked 10, updated 0
+[2026-08-30T22:24:04.018186+00:00] No PR status changes detected
+[2026-08-30T22:24:04.018308+00:00] === DISCOVERY PHASE ===
+[2026-08-30T22:24:04.018358+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-08-30T22:24:29.845372+00:00] Discovery progress: 5/30 queries completed, 113 candidates found
+[2026-08-30T22:24:54.802569+00:00] Discovery progress: 10/30 queries completed, 198 candidates found
+[2026-08-30T22:25:22.732604+00:00] Discovery progress: 15/30 queries completed, 363 candidates found
+[2026-08-30T22:25:49.785872+00:00] Discovery progress: 20/30 queries completed, 495 candidates found
+[2026-08-30T22:26:18.777499+00:00] Discovery progress: 25/30 queries completed, 659 candidates found
+[2026-08-30T22:28:06.185788+00:00]   Query '$25000 bounty': 50 results
+[2026-08-30T22:28:06.186013+00:00]   Query 'sherlock audit contest': 50 results
+[2026-08-30T22:28:06.186091+00:00]   Query 'algora bounty': 47 results
+[2026-08-30T22:28:06.186124+00:00]   Query 'defi bounty': 47 results
+[2026-08-30T22:28:06.186152+00:00]   Query 'crypto bounty': 45 results
+[2026-08-30T22:28:06.186177+00:00]   Query 'bug bounty': 43 results
+[2026-08-30T22:28:06.186200+00:00]   Query '$10000 bounty': 42 results
+[2026-08-30T22:28:06.186226+00:00]   Query 'infrastructure bounty': 42 results
+[2026-08-30T22:28:06.186251+00:00]   Query 'bounty reward': 41 results
+[2026-08-30T22:28:06.186275+00:00]   Query 'web3 bounty': 40 results
+[2026-08-30T22:28:06.186300+00:00]   Query 'solidity bounty': 37 results
+[2026-08-30T22:28:06.186326+00:00]   Query 'security bounty': 36 results
+[2026-08-30T22:28:06.186352+00:00]   Query 'typescript bounty': 36 results
+[2026-08-30T22:28:06.186377+00:00]   Query 'critical vulnerability bounty': 32 results
+[2026-08-30T22:28:06.186405+00:00]   Query 'bounty fix': 31 results
+[2026-08-30T22:28:06.186431+00:00]   Query 'frontend bounty': 30 results
+[2026-08-30T22:28:06.186462+00:00]   Query 'backend bounty': 25 results
+[2026-08-30T22:28:06.186487+00:00]   Query 'paid bounty': 24 results
+[2026-08-30T22:28:06.186540+00:00]   Query 'bounty issue': 23 results
+[2026-08-30T22:28:06.186566+00:00]   Query 'protocol bounty': 22 results
+[2026-08-30T22:28:06.186592+00:00]   Query '$5000 bounty': 21 results
+[2026-08-30T22:28:06.186646+00:00]   Query 'lua bounty': 17 results
+[2026-08-30T22:28:06.186672+00:00]   Query 'python bounty': 12 results
+[2026-08-30T22:28:06.186695+00:00]   Query 'bounty': 3 results
+[2026-08-30T22:28:06.186717+00:00]   Query 'security audit bounty reward': 2 results
+[2026-08-30T22:28:06.186740+00:00]   Query 'code4rena contest reward': 1 results
+[2026-08-30T22:28:06.186768+00:00] Total unique candidates after dedup: 815
+[2026-08-30T22:28:06.188179+00:00] Found 815 candidates
+[2026-08-30T22:28:06.188968+00:00] Pre-filtered 32 already-submitted candidates, 783 remaining
+[2026-08-30T22:28:06.189550+00:00] Cooldown-filtered 43 candidates from failed repos, 740 remaining
+[2026-08-30T22:28:06.189759+00:00] Checking 369 unique repos for archived status...
+[2026-08-30T22:28:22.063597+00:00] ARCHIVED: smartcontractresearchforum/operations
+[2026-08-30T22:29:49.065761+00:00] ARCHIVED: openguild-labs/open-contribution-bounty
+[2026-08-30T22:30:30.557292+00:00] ARCHIVED: sherlock-audit/2024-09-symmio-v0-8-4-update-contest-judging
+[2026-08-30T22:30:32.289399+00:00] ARCHIVED: ethb3rlin/sponsor-bounties
+[2026-08-30T22:32:28.034470+00:00] ARCHIVED: GeneriedJenelle/The-World-Server-Redux
+[2026-08-30T22:33:20.866410+00:00] ARCHIVED: ikr7/arxiv-survey
+[2026-08-30T22:33:32.720474+00:00] ARCHIVED: sherlock-audit/2025-04-pareto-contest-judging
+[2026-08-30T22:34:20.745123+00:00] ARCHIVED: McCLIM/McCLIM
+[2026-08-30T22:34:24.100313+00:00] ARCHIVED: logos-messaging/bounties
+[2026-08-30T22:34:41.239243+00:00] ARCHIVED: JoinMarket-Org/joinmarket
+[2026-08-30T22:34:55.520293+00:00] ARCHIVED: reachingforthejack/cursortab.nvim
+[2026-08-30T22:36:06.442662+00:00] ARCHIVED: pomelo-io/Bounties
+[2026-08-30T22:36:46.746092+00:00] ARCHIVED: allenai/allennlp
+[2026-08-30T22:38:19.183438+00:00] ARCHIVED: sherlock-audit/2025-05-lend-audit-contest-judging
+[2026-08-30T22:38:31.254560+00:00] ARCHIVED: dinngo/furucombo-contract
+[2026-08-30T22:38:40.787824+00:00] Filtered 56 candidates from 15 archived repos, 684 remaining
+[2026-08-30T22:38:40.789683+00:00] === TRIAGE (model=ghostcli-auto[1m]) ===
+[2026-08-30T22:38:40.794759+00:00] Triage meta-filter: removed 66 internal/meta targets
+[2026-08-30T22:38:40.795289+00:00] Triage payload: 10 sanitized candidates, 4263 chars
+[2026-08-30T22:38:40.795471+00:00] TRIAGE_CANDIDATES_DUMP: [
+  {
+    "url": "https://github.com/tenstorrent/tt-metal/issues/54016",
+    "title": "[Bounty $35000] Welford Two-Pass Statistics Optimisation",
+    "value_usd": "35000",
+    "labels": [
+      "feature-request",
+      "community",
+      "bounty",
+      "bounty_difficulty/hard"
+    ],
+    "body_preview": "## Proposal\n\nWhile optimising the equal-count Welford merge path, I identified and prototyped a broader Welford-path performance improvement based on stable two-pass statistics. The proposed work repl"
+  },
+  {
+    "url": "https://github.com/keep-network/ethdenver/issues/1",
+    "title": "#ETHDenver 2020 Bounty: Build the best Bitcoin to DeFi Experience",
+    "value_usd": "3000",
+    "labels": [
+      "bounty"
+    ],
+    "body_preview": "## Build the best Bitcoin to DeFi Experience \r\n\r\n### Bounty overview\r\n\r\nUsing tBTC and Compound contracts, build the best Bitcoin to DeFi Experience. The only strict criteria is that your project must"
+  },
+  {
+    "url": "https://github.com/DAC-Portal/bogohacks-dac/issues/1",
+    "title": "[Track: Web2 to Web3] DAC Portal Bounty",
+    "value_usd": "3000",
+    "labels": [],
+    "body_preview": "### **\ud83d\udc49 For important DAC Portal Developer Materials:** [Click here](https://www.canva.com/design/DAFOMWe8Pzk/dl3iASu6r__AI66HDDqNMw/view?utm_content=DAFOMWe8Pzk&utm_campaign=designshare&utm_medium=li"
+  },
+  {
+    "url": "https://github.com/ramimbo/mergework/issues/803",
+    "title": "Proposed work: filter bounty issues from proposed-work triage",
+    "value_usd": "600",
+    "labels": [
+      "proposed-work"
+    ],
+    "body_preview": "Bounty #722\n\nThis is a proposed-work intake item for the live #722 proposed-work bounty. It does not make implementation work claimable unless maintainers later create and reserve a separate implement"
+  },
+  {
+    "url": "https://github.com/ethereumzurich/sponsor-bounties/issues/2",
+    "title": "[BOUNTY] DataverseOS Web3 Functions 1000$ in USDC",
+    "value_usd": "500",
+    "labels": [],
+    "body_preview": "# Sovereign data infrastructure for web3 dApps\r\n\r\n## Introduction\r\n[DataverseOS](http://dataverse-os.com) is the first web3-native operating system with identity sovereignty and data ownership. It is "
+  },
+  {
+    "url": "https://github.com/Christian-Sidak/awesome-mcp-tools/issues/3",
+    "title": "Add: Bug Bounty Intelligence \u2014 AI smart contract security scanner, x402 paid",
+    "value_usd": "402",
+    "labels": [],
+    "body_preview": "Request to add Bug Bounty Intelligence to the list.\n\n- GitHub: https://github.com/holistis/bug-bounty-intelligence-mcp\n- Category: Security / Web3\n- Tools: scan_contract (paid, \\ USDC), list_vulnerabi"
+  },
+  {
+    "url": "https://github.com/OpenOrg-gg/GenericBounties/issues/1",
+    "title": "Create a math function and implement it in Solidity [Paid Bounty]",
+    "value_usd": "250",
+    "labels": [],
+    "body_preview": "For this bounty you'll design a math function and implement it in Solidity.\r\n\r\nIn this 
+[2026-08-30T22:38:45.675945+00:00] Triage GhostCLI response length: 1149 chars
+[2026-08-30T22:38:45.676086+00:00] TRIAGE_RAW_FULL: '[{"url":"https://github.com/OpenOrg-gg/GenericBounties/issues/1","title":"Create a math function and implement it in Solidity [Paid Bounty]","estimated_hours":6,"confidence_score":0.92,"reason":"Clear implementation task in Solidity with defined scope (math function + on-chain logic); no design discussion required and acceptance criteria implied by functional correctness."},{"url":"https://github.com/illbnm/homelab-stack/issues/1","title":"[BOUNTY $180] Base Infrastructure — Traefik + Portainer + Watchtower","estimated_hours":5,"confidence_score":0.88,"reason":"Config-driven infrastructure setup with explicit tooling; reproducible steps and verifiable outcome via running services, suitable for automated or scripted implementation."},{"url":"https://github.com/NEXAITECHAU/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet/issues/1","title":"[NEX Agent] [bounty-952] Fail-closed Victory Audit: cheat then fix","estimated_hours":8,"confidence_score":0.75,"reason":"Well-specified audit-and-fix'
+[2026-08-30T22:38:45.676208+00:00] TRIAGE_EXTRACT_RESULT: type=list, value=[{'url': 'https://github.com/OpenOrg-gg/GenericBounties/issues/1', 'title': 'Create a math function and implement it in Solidity [Paid Bounty]', 'estimated_hours': 6, 'confidence_score': 0.92, 'reason': 'Clear implementation task in Solidity with defined scope (math function + on-chain logic); no design discussion required and acceptance criteria implied by functional correctness.'}, {'url': 'https://github.com/illbnm/homelab-stack/issues/1', 'title': '[BOUNTY $180] Base Infrastructure - Traefik
+[2026-08-30T22:38:45.676248+00:00] Triage parsed result type: list, len=3
+[2026-08-30T22:38:45.676274+00:00] Selected 3 targets from GhostCLI
+[2026-08-30T22:38:45.676437+00:00] Triage value distribution: {'250': 1, '180': 1, '200': 1}
+[2026-08-30T22:38:45.676496+00:00] Triage: 3 parsed paid + 0 label-inferred = 3 total from 684 candidates
+[2026-08-30T22:38:46.738653+00:00] === EXECUTING: Create a math function and implement it in Solidity [Paid Bounty] ===
+[2026-08-30T22:38:46.738794+00:00] URL: https://github.com/OpenOrg-gg/GenericBounties/issues/1
+[2026-08-30T22:38:47.147824+00:00] Cloning OpenOrg-gg/GenericBounties -> /Agentic/workspace/bounty-exec/OpenOrg-gg-GenericBounties-1
+[2026-08-30T22:38:47.725333+00:00]   Fork rafaio1/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet created successfully
+[2026-08-30T22:38:47.725562+00:00] === EXECUTING: [NEX Agent] [bounty-952] Fail-closed Victory Audit: cheat then fix ===
+[2026-08-30T22:38:47.725617+00:00] URL: https://github.com/NEXAITECHAU/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet/issues/1
+[2026-08-30T22:38:47.865690+00:00]   Fork rafaio1/homelab-stack created successfully
+[2026-08-30T22:38:47.865899+00:00] === EXECUTING: [BOUNTY $180] Base Infrastructure - Traefik + Portainer + Watchtower ===
+[2026-08-30T22:38:47.865972+00:00] URL: https://github.com/illbnm/homelab-stack/issues/1
+[2026-08-30T22:38:48.120604+00:00] Cloning NEXAITECHAU/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet -> /Agentic/workspace/bounty-exec/NEXAITECHAU-gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet-1
+[2026-08-30T22:38:48.264128+00:00] Cloning illbnm/homelab-stack -> /Agentic/workspace/bounty-exec/illbnm-homelab-stack-1
+[2026-08-30T22:38:48.619150+00:00] Generating fix via GhostCLI...
+[2026-08-30T22:38:48.619285+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-30T22:38:49.702700+00:00] Generating fix via GhostCLI...
+[2026-08-30T22:38:49.702831+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-30T22:38:49.843932+00:00] Generating fix via GhostCLI...
+[2026-08-30T22:38:49.844096+00:00] Routing to Senior Dev Pipeline for complex bounty generation...
+[2026-08-30T22:38:59.855692+00:00] GhostCLI raw response (2933 chars): {
+  "files_to_change": [
+    {
+      "path": "./gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet.ts",
+      "action": "modify",
+      "diff": "--- a/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet.ts\n+++ b/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet.ts\n@@ -1,5 +1,9 @@\n // NEX Agent Victory Audit: Fail-closed implementation\n \n+// SECURITY FIX (bounty-952): Enforce fail-closed victory audit.\n+// All victory conditions must be cryptographically verified before acceptance.\n+// Any missi
+[2026-08-30T22:38:59.860627+00:00] git apply failed for ./gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet.ts, attempting manual patch...
+[2026-08-30T22:38:59.861424+00:00] Manual patch applied: ./gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet.ts
+[2026-08-30T22:38:59.861626+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T22:39:09.609923+00:00] PR created: https://github.com/NEXAITECHAU/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet/pull/4
+[2026-08-30T22:39:09.617430+00:00] Bounty recorded. Total ledger: $852,170.00
+[2026-08-30T22:39:09.617657+00:00] SUCCESS: https://github.com/NEXAITECHAU/gh-disc-10-s6pa1rta3n-lab-universal_bounty_fleet/pull/4
+[2026-08-30T22:39:16.660387+00:00] GhostCLI raw response (9263 chars): {
+  "files_to_change": [
+    {
+      "path": "stacks/base/docker-compose.yml",
+      "action": "create",
+      "diff": "version: '3.8'\n\nservices:\n  socket-proxy:\n    image: tecnativa/docker-socket-proxy:0.2.0\n    container_name: socket-proxy\n    restart: unless-stopped\n    volumes:\n      - /var/run/docker.sock:/var/run/docker.sock:ro\n    environment:\n      - CONTAINERS=1\n      - SERVICES=1\n      - TASKS=1\n      - NETWORKS=1\n      - VERSION=1\n      - PING=1\n    networks:\n      - 
+[2026-08-30T22:39:16.661001+00:00] Created: stacks/base/docker-compose.yml
+[2026-08-30T22:39:16.661239+00:00] Created: stacks/base/.env.example
+[2026-08-30T22:39:16.661526+00:00] Created: stacks/base/README.md
+[2026-08-30T22:39:16.661763+00:00] Created: config/traefik/traefik.yml
+[2026-08-30T22:39:16.661977+00:00] Created: config/traefik/dynamic/tls.yml
+[2026-08-30T22:39:16.662167+00:00] Created: config/traefik/dynamic/middlewares.yml
+[2026-08-30T22:39:16.662238+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T22:39:19.350479+00:00] GhostCLI raw response (8349 chars): {
+  "files_to_change": [
+    {
+      "path": "src/SafetyMarginReward.sol",
+      "action": "create",
+      "diff": "// SPDX-License-Identifier: MIT\npragma solidity ^0.8.24;\n\n/// @title SafetyMarginReward\n/// @notice Computes a non-linear reward multiplier based on a user's safety margin.\n/// @dev The function maps safety margin (in basis points, 1e4 = 100%) to a multiplier (1e18 = 1x).\n///      - At or below 250% (25000 bps): multiplier = 0\n///      - At 400% (40000 bps): multiplier = 1e1
+[2026-08-30T22:39:19.351935+00:00] Created: src/SafetyMarginReward.sol
+[2026-08-30T22:39:19.352823+00:00] Created: test/SafetyMarginReward.t.sol
+[2026-08-30T22:39:19.352912+00:00] DEBUG: is_local_fallback=False, fix_plan keys=['files_to_change', 'branch_name', 'commit_message', 'pr_title', 'pr_body']
+[2026-08-30T22:39:28.929868+00:00] PR created (master base): https://github.com/illbnm/homelab-stack/pull/747
+[2026-08-30T22:39:28.936662+00:00] Bounty recorded. Total ledger: $852,350.00
+[2026-08-30T22:39:28.936820+00:00] SUCCESS: https://github.com/illbnm/homelab-stack/pull/747
+[2026-08-30T22:39:28.966675+00:00] PR created: https://github.com/OpenOrg-gg/GenericBounties/pull/4
+[2026-08-30T22:39:28.973308+00:00] Bounty recorded. Total ledger: $852,600.00
+[2026-08-30T22:39:28.973488+00:00] SUCCESS: https://github.com/OpenOrg-gg/GenericBounties/pull/4
+[2026-08-30T22:39:28.974033+00:00] Cycle 1 complete. Sleeping 300s...
