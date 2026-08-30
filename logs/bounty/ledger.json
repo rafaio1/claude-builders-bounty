@@ -173,7 +173,7 @@
     },
     {
       "type": "airdrop_farming_progress",
-      "timestamp": "2026-08-30T11:00:03.404694+00:00",
+      "timestamp": "2026-08-30T11:30:02.367526+00:00",
       "completed_tasks": 5,
       "pending_human_tasks": 2,
       "total_txs": 5,
@@ -226,10 +226,10 @@
     {
       "date": "2026-08-29T13:51:37.170983Z",
       "bounty_id": "Scottcjn/rustchain-bounties#16251",
-      "title": "Fix rustchain.org install script — macOS crash + shellcheck",
+      "title": "Fix rustchain.org install script \u2014 macOS crash + shellcheck",
       "amount_usd": 1.5,
       "amount_rtc": 10,
-      "status": "claimed",
+      "status": "paid",
       "pr_url": "https://github.com/Scottcjn/Rustchain/pull/8289",
       "issue_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16251",
       "branch": "fix/install-script-macos-16251",
@@ -238,7 +238,9 @@
         "install.sh POSIX fix",
         "shellcheck clean"
       ],
-      "notes": "Replaced grep -oP with grep -E, quoted vars. Awaiting merge for 10 RTC payout."
+      "notes": "Replaced grep -oP with grep -E, quoted vars. Awaiting merge for 10 RTC payout. | Paid 5 RTC per bot comment on merged PR #8289.",
+      "paid_amount_rtc": 5,
+      "paid_at": "2026-08-29T15:38:49Z"
     },
     {
       "type": "trade_opportunity",
@@ -3013,6 +3015,86 @@
       "date_added": "2026-08-30T10:45:02.581582+00:00"
     },
     {
+      "type": "trade_opportunity",
+      "id": "YIELD-214886",
+      "category": "liquidity_mining_signals",
+      "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
+      "capital_required": true,
+      "risk_level": "medium",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:00:02.995957+00:00"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-961848",
+      "category": "liquidity_mining_signals",
+      "name": "stETH/ETH on Curve (Mainnet)",
+      "capital_required": true,
+      "risk_level": "low",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:00:02.996006+00:00"
+    },
+    {
+      "date": "2026-08-30T11:15:00Z",
+      "bounty_id": "Scottcjn/rustchain-bounties#16471",
+      "title": "Silent-Success Audit Fixes (PR #16695)",
+      "amount_rtc": 35,
+      "status": "merged_pending_payout",
+      "pr_url": "https://github.com/Scottcjn/rustchain-bounties/pull/16695",
+      "issue_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16696",
+      "branch": "fix/silent-success-audit-16695",
+      "wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
+      "deliverables": [
+        "scripts/docstring_gate.py",
+        "scripts/sophia_scheduler.py",
+        "scripts/second_act.py",
+        "scripts/bounty_claim.py"
+      ],
+      "notes": "MERGED 2026-08-29. Bot flagged for maintainer payment directive. Payout of 35 RTC + defect bonuses pending manual approval."
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-844507",
+      "category": "liquidity_mining_signals",
+      "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
+      "capital_required": true,
+      "risk_level": "medium",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:15:02.015095+00:00"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-70685",
+      "category": "liquidity_mining_signals",
+      "name": "stETH/ETH on Curve (Mainnet)",
+      "capital_required": true,
+      "risk_level": "low",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-30T11:15:02.015127+00:00"
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-30T11:30:02.060239+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-30T11:15:01.966829+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
       "type": "orchestrator_cycle",
       "timestamp": "2026-08-30T11:00:02.910119+00:00",
       "platforms_tracked": 7,
@@ -3085,62 +3167,26 @@
       "status": "operational"
     },
     {
-      "type": "orchestrator_cycle",
-      "timestamp": "2026-08-30T09:00:02.572578+00:00",
-      "platforms_tracked": 7,
-      "bounties_pending_usd": 0,
-      "bounties_submitted_count": 0,
-      "telegram_eligible_count": 0,
-      "status": "operational"
-    },
-    {
-      "type": "orchestrator_cycle",
-      "timestamp": "2026-08-30T08:45:03.093814+00:00",
-      "platforms_tracked": 7,
-      "bounties_pending_usd": 0,
-      "bounties_submitted_count": 0,
-      "telegram_eligible_count": 0,
-      "status": "operational"
-    },
-    {
       "type": "trade_opportunity",
-      "id": "YIELD-214886",
+      "id": "YIELD-828324",
       "category": "liquidity_mining_signals",
       "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
       "capital_required": true,
       "risk_level": "medium",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-30T11:00:02.995957+00:00"
+      "date_added": "2026-08-30T11:30:02.223846+00:00"
     },
     {
       "type": "trade_opportunity",
-      "id": "YIELD-961848",
+      "id": "YIELD-156516",
       "category": "liquidity_mining_signals",
       "name": "stETH/ETH on Curve (Mainnet)",
       "capital_required": true,
       "risk_level": "low",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-30T11:00:02.996006+00:00"
-    },
-    {
-      "date": "2026-08-30T11:15:00Z",
-      "bounty_id": "Scottcjn/rustchain-bounties#16471",
-      "title": "Silent-Success Audit Fixes (PR #16695)",
-      "amount_rtc": 35,
-      "status": "merged_pending_payout",
-      "pr_url": "https://github.com/Scottcjn/rustchain-bounties/pull/16695",
-      "issue_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16696",
-      "branch": "fix/silent-success-audit-16695",
-      "wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
-      "deliverables": [
-        "scripts/docstring_gate.py",
-        "scripts/sophia_scheduler.py",
-        "scripts/second_act.py",
-        "scripts/bounty_claim.py"
-      ],
-      "notes": "MERGED 2026-08-29. Bot flagged for maintainer payment directive. Payout of 35 RTC + defect bonuses pending manual approval."
+      "date_added": "2026-08-30T11:30:02.223884+00:00"
     }
   ]
 }
