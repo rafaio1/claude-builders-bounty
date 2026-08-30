@@ -53,6 +53,13 @@
       "status": "REVIEW_COMPLETE_DRAFT_WRITTEN",
       "next_step": "Validate quorum math and write PoC",
       "completed": "2026-08-30T08:25:00Z"
+    },
+    {
+      "project": "The Graph",
+      "status": "MATH_VECTORS_EXHAUSTED",
+      "next_step": "Pivot to higher-value targets (Ethena/DeXe PoC or new scope)",
+      "notes": "BancorFormula rounding safe. Delegation share inflation requires unbalanced pool + withdrawal rounding-up (not present). Low ROI for $50k cap.",
+      "completed": "2026-08-30T08:45:00Z"
     }
   ],
   "immediate_capital_blockers": [
@@ -65,6 +72,6 @@
     "Review draft reports in revenue/vuln_reports/ for accuracy",
     "Fund Wise account with $500+ USD/EUR for Bybit arb fallback"
   ],
-  "autonomous_status": "DRAFTS_COMPLETE_PENDING_POC_AND_KYC",
-  "git_last_commit": "feat: initial audit vectors for Ethena and DeXe (pending)"
+  "autonomous_status": "THEGRAPH_EXHAUSTED_PRIORITIZE_ETHENA_POCS",
+  "git_last_commit": "audit: thegraph delegation math validated (safe), pivot to ethena/dexe"
 }
