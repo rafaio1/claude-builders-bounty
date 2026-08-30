@@ -1,12 +1,15 @@
 {
   "target_usd": 20000000,
-  "current_balance_brl": 100.00,
-  "last_updated": "2026-08-30T06:30:00Z",
+  "current_balance_brl": 100.0,
+  "last_updated": "2026-08-30T07:00:00Z",
   "active_contests": {
     "sherlock": {
       "status": "blocked",
       "note": "1 active contest exists but UI/API scraping failed. Need manual identification or alternative source.",
-      "judging": ["Metric ($150k)", "Tare ($50k)"]
+      "judging": [
+        "Metric ($150k)",
+        "Tare ($50k)"
+      ]
     },
     "code4rena": {
       "status": "no_active_repos",
@@ -18,10 +21,47 @@
     {
       "project": "Usual Labs",
       "source_path": "state/usual_labs_analysis.md",
-      "candidates": ["Oracle Staleness", "Rounding Loss", "Reentrancy"],
+      "candidates": [
+        "Oracle Staleness",
+        "Rounding Loss",
+        "Reentrancy"
+      ],
       "next_step": "Validate Rounding Loss in SwapperEngine via Foundry fork test",
       "priority": "high"
     }
   ],
-  "payout_route": "USDC -> Kraken -> Wise USD/EUR"
+  "payout_route": "USDC -> Kraken -> Wise USD/EUR",
+  "micro_bounty_status": {
+    "algora": {
+      "qualified": 0,
+      "status": "blocked_no_match"
+    },
+    "opire": {
+      "qualified": 0,
+      "status": "blocked_no_match"
+    },
+    "drips_wave": {
+      "candidates": 10,
+      "top_opportunity": "trustflow-sdk #127 (200pts)",
+      "blocker": "KYC + OAuth login required",
+      "status": "human_action_needed"
+    },
+    "contabilhub_outreach": {
+      "leads_contacted": 68,
+      "responses_pending": true,
+      "status": "waiting_for_replies"
+    }
+  },
+  "immediate_capital_blockers": [
+    "All micro-bounty platforms require KYC/OAuth that agent cannot complete autonomously",
+    "Wise balance R00 insufficient for Bybit arb (need 00+)",
+    "Sherlock/Code4rena active contests not discoverable via scraping",
+    "Usual Labs SwapperEngine source code missing from verified contracts"
+  ],
+  "next_human_actions": [
+    "Complete Drips KYC at https://www.drips.network/wave/stellar/issues to unlock Wave 8 (5k pool)",
+    "Verify Kraken account linked to Wise for crypto offramp",
+    "Check email for ContabilHub outreach responses",
+    "Manually identify active Sherlock contest via Discord/Twitter"
+  ]
 }
