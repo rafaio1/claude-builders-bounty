@@ -1,6 +1,6 @@
 {
   "day": "2026-08-30",
-  "day_total_tokens": 222843,
+  "day_total_tokens": 334386,
   "files": {
     "/root/.codex/sessions/2026/08/25/rollout-2026-08-25T18-38-21-01a03a37-5be9-72b1-a6dc-a7c84ea6454d.jsonl": {
       "cwd": "/Agentic",
@@ -411,7 +411,7 @@
     "/root/.codex/sessions/2026/08/29/rollout-2026-08-29T02-29-06-01a04b59-6c70-7261-aa39-27f445619e5c.jsonl": {
       "cwd": "/Agentic",
       "inode": 9786452,
-      "offset": 122885919,
+      "offset": 125604278,
       "role": null,
       "session_id": "01a04b59-6c70-7261-aa39-27f445619e5c"
     },
@@ -442,9 +442,16 @@
       "offset": 86713,
       "role": "integrator",
       "session_id": "01a05002-0286-7812-9210-b78bf170da9c"
+    },
+    "/root/.codex/sessions/2026/08/30/rollout-2026-08-30T06-12-44-01a0514c-8407-70a3-ad53-9269c1b5753f.jsonl": {
+      "cwd": "/Agentic",
+      "inode": 9716145,
+      "offset": 148044,
+      "role": "revenue_generator",
+      "session_id": "01a0514c-8407-70a3-ad53-9269c1b5753f"
     }
   },
-  "last_telemetry_at": 1788067993.8049557,
+  "last_telemetry_at": 1788070453.6061914,
   "roles": {
     "bug_bounty": {
       "active_session_id": null,
@@ -498,20 +505,20 @@
       }
     },
     "revenue_generator": {
-      "active_session_id": null,
-      "active_session_mtime": 1788048499.8744504,
-      "last_inference_at": 1788048426.4823458,
+      "active_session_id": "01a0514c-8407-70a3-ad53-9269c1b5753f",
+      "active_session_mtime": 1788070454.2002943,
+      "last_inference_at": 1788070362.1946902,
       "last_interrupt_day": "2026-08-28",
       "last_interrupt_session_id": "01a044d9-e0af-7093-9e48-93ca03c057a8",
-      "tokens_today": 77219,
-      "turn_tokens": 0,
+      "tokens_today": 188762,
+      "turn_tokens": 9287,
       "usage_today": {
         "cache_write_input_tokens": 0,
         "cached_input_tokens": 0,
-        "input_tokens": 76934,
-        "output_tokens": 285,
+        "input_tokens": 188331,
+        "output_tokens": 431,
         "reasoning_output_tokens": 0,
-        "total_tokens": 77219
+        "total_tokens": 188762
       }
     }
   },
@@ -842,6 +849,21 @@
       "role": "integrator",
       "turn_active": false,
       "turn_tokens": 0
+    },
+    "01a0514c-8407-70a3-ad53-9269c1b5753f": {
+      "last_mtime": 1788070454.2002943,
+      "last_usage": {
+        "cache_write_input_tokens": 0,
+        "cached_input_tokens": 0,
+        "input_tokens": 111397,
+        "output_tokens": 146,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 111543
+      },
+      "lifecycle_observed": true,
+      "role": "revenue_generator",
+      "turn_active": true,
+      "turn_tokens": 9287
     }
   },
   "telemetry_errors": [],
