@@ -94,9 +94,9 @@
     },
     {
       "project": "Sky Protocol (stUSDS)",
-      "status": "CORE_VECTORS_EXHAUSTED",
-      "next_step": "Pivot to UsdsJoin/DaiUsds migration or spells-mainnet governance modules",
-      "notes": "First depositor, withdrawal griefing, rounding, and RateSetter vectors all invalidated. Core stUSDS math is secure.",
+      "status": "CLOSED_SECURE",
+      "next_step": "No exploitable vectors found in core or migration contracts. Closed.",
+      "notes": "Core stUSDS math secure. Migration adapters are simple wrappers. Governance spells out of scope for autonomous bounty hunting due to KYC/signer requirements.",
       "completed": "2026-08-30T09:27:15Z"
     }
   ],
