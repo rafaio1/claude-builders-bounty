@@ -131,7 +131,11 @@ def status() -> dict[str, Any]:
         "token": _token(),
         "currency": _currency(),
         "account": account.get("result") or {},
-        "payments_count": len((payments.get("result") or {}).get("list") or []),
+        "payments_count": (
+            len(payments.get("result", []))
+            if isinstance(payments.get("result"), list)
+            else len((payments.get("result") or {}).get("list") or [])
+        ),
         "balance": balance.get("result") or {},
         "ret_msg": account.get("ret_msg") or "",
     }
