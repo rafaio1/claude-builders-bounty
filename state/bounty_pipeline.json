@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T09:27:15Z",
+  "last_updated": "2026-08-30T09:41:09Z",
   "active_contests": {
     "sherlock": {
       "status": "no_active_contests",
@@ -69,10 +69,10 @@
     },
     {
       "project": "Ethena",
-      "status": "REOPEN_FOR_NEW_VECTORS",
+      "status": "COOLDOWN_VECTORS_EXHAUSTED",
       "next_step": "Re-audit sUSDe/USDe core for flash-loan enabled vectors beyond donation attack",
-      "completed": "2026-08-30T08:47:58Z",
-      "notes": "Previous donation vector invalidated. Reopen for flash-loan + oracle manipulation + cross-protocol composability vectors."
+      "completed": "2026-08-30T09:41:09Z",
+      "notes": "Donation attack via redistributeLockedAmount invalidated. Cooldown rounding (cooldownAssets/cooldownShares) tested and safe: previewWithdraw rounds up shares correctly, _checkMinShares enforced in _withdraw path. No exploitable vectors found in V2 cooldown logic."
     },
     {
       "project": "DeXe Protocol",
@@ -113,11 +113,12 @@
     "Submit SSV EB deviation drift report at https://bugs.immunefi.com/dashboard/new-submission (KYC required)"
   ],
   "autonomous_status": "DEXE_CRITICAL_AND_SSV_MEDIUM_READY_BLOCKED_ON_KYC",
-  "git_last_commit": "feat(sky): add RateSetter attack surface analysis (cooldown/step/conv/drip ordering)",
+  "git_last_commit": "test(ethena): invalidate cooldown rounding and redistribute vectors in StakedUSDeV2",
   "autonomous_next_steps": [
-    "Audit Ethena sUSDe flash-loan + oracle manipulation vectors",
-    "Scan Immunefi bounties for non-KYC or low-KYC targets",
-    "Review Code4rena upcoming contests for audit participation",
-    "Check Sherlock.xyz for new live contests every 6 hours"
+    "Scan Code4rena upcoming contests for audit participation (faster payout than bounty)",
+    "Check Sherlock.xyz for new live contests every 6 hours",
+    "Audit Ethena StakingRewardsDistributor for operator privilege escalation or rescueTokens abuse",
+    "Investigate EthenaMinting.sol delegated signer rotation race conditions",
+    "Pivot to non-KYC Immunefi bounties if no contest opportunities found"
   ]
 }
