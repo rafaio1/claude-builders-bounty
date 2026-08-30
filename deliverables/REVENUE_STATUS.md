@@ -5,6 +5,7 @@
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| Samanyu-dev/glimmer-journal#159 | #150 | TBD | Local workspaceId schema migration + query filtering | Open |
 | claude-builders-bounty#3976 | #2 | $75 | CLAUDE.md for Next.js 15 + SQLite SaaS | Open |
 | #347 | #93 | $30 | Web app manifest for PWA support | Open |
 | #346 | #29 | $90 | MSW fetch mocking setup and documentation | Open |
