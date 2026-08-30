@@ -1,5 +1,5 @@
 # Revenue Status Tracker
-**Last Updated:** 2026-08-30T14:55:00Z
+**Last Updated:** 2026-08-30T15:05:00Z
 **Target:** $20,000,000 USD
 **Current Balance:** $0.00
 
@@ -15,9 +15,10 @@
 | Lilly-Protocol | #55 (.editorconfig) | $65 | #273 | Open |
 | Lilly-Protocol | #103 (PR labeler) | $55 | #274 | Open |
 | Lilly-Protocol | #93 (manifest) | $30 | #275 | Open |
-| Lilly-Protocol | #69 (Skeleton) | $50 | #276 | **NEW** |
+| Lilly-Protocol | #69 (Skeleton) | $50 | #276 | Open |
+| Lilly-Protocol | #108 (import order) | $35 | #277 | **NEW** |
 
-**Total Potential (Open PRs):** $1,200
+**Total Potential (Open PRs):** $1,235
 
 ## Urgent Human Action Required (Superteam Earn)
 **DEADLINE TODAY (<24h):**
@@ -33,5 +34,5 @@
 
 ## Next Targets (Unclaimed)
 - Lilly-Protocol #59: Storybook ($80) — High effort (Storybook 9 setup + 4 stories)
-- Lilly-Protocol #108: Import ordering via ESLint ($35)
 - Lilly-Protocol #51: Document testing conventions ($20)
+- Lilly-Protocol #48: Document design token system ($35)
