@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T09:15:00Z",
+  "last_updated": "2026-08-30T09:27:15Z",
   "active_contests": {
     "sherlock": {
       "status": "no_active_contests",
@@ -91,6 +91,13 @@
       "status": "VALIDATED_MEDIUM_SEVERITY",
       "next_step": "Submit report via Immunefi (requires human KYC)",
       "completed": "2026-08-30T09:15:00Z"
+    },
+    {
+      "project": "Sky Protocol (stUSDS)",
+      "status": "CORE_VECTORS_EXHAUSTED",
+      "next_step": "Pivot to UsdsJoin/DaiUsds migration or spells-mainnet governance modules",
+      "notes": "First depositor, withdrawal griefing, rounding, and RateSetter vectors all invalidated. Core stUSDS math is secure.",
+      "completed": "2026-08-30T09:27:15Z"
     }
   ],
   "immediate_capital_blockers": [
@@ -106,5 +113,5 @@
     "Submit SSV EB deviation drift report at https://bugs.immunefi.com/dashboard/new-submission (KYC required)"
   ],
   "autonomous_status": "DEXE_CRITICAL_AND_SSV_MEDIUM_READY_BLOCKED_ON_KYC",
-  "git_last_commit": "feat(ssv): validate EB deviation drift via stale vUnits on liquidation/reactivation"
+  "git_last_commit": "feat(sky): add RateSetter attack surface analysis (cooldown/step/conv/drip ordering)"
 }
