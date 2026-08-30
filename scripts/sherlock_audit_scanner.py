@@ -93,10 +93,12 @@ def update_ledger_with_sherlock(opportunities):
         data = json.load(f)
     
     entries = data.get("entries", []) if isinstance(data, dict) else data
+    # Filter out non-dict entries to prevent AttributeError on .get()
+    entries = [e for e in entries if isinstance(e, dict)]
     added = 0
-    
+
     for opp in opportunities:
-        exists = any(e.get("id") == opp["id"] for e in entries)
+        exists = any(e.get("id") == opp["id"] for e in entries if isinstance(e, dict))
         if not exists:
             entries.append({
                 "type": "sherlock_contest",
