@@ -2,6 +2,9 @@
 ## Status Update — 2026-08-30T20:05Z
 - **Workspace**: Committed and pushed checkpoint (c86646c9). All POCs, vuln reports, and logs are safe.
 - **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 OPEN, 0 reviews. Pinged @universal_auditor again. Escrow confirmed locked. Waiting for REQUEST_CHANGES to push fix commit.
+## Status Update — 2026-08-30T20:15Z
+- **Scouting (Monk Plugin Bug Bounties)**: Identified 4 fresh bug bounties in `monk-io/monk-plugin` (#407, #408, #409, #410). All are Windows PowerShell vs POSIX asymmetry issues with repro scripts. Issues #407-409 already have evidence bundles from `NyxSpecter4`; #410 has zero comments and is UNCLAIMED. These are code-read + fixture-repro tasks suitable for rapid submission.
+- **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 OPEN, 0 reviews. Pinged @universal_auditor twice. Escrow confirmed locked. Waiting for REQUEST_CHANGES to push fix commit.
 - **Callora-Contracts #1035 (GrantFox High)**: Application comment posted. Not assigned yet. Competitors: safal207 (question), devyeyostellar (application). Monitoring for assignment.
 - **Sherlock Beefy Finance Finding ($1,500 est.)**: Draft ready. Contest ID `SHERLOCK-beefy-finance-202608`. Requires human review and submission within 7 days. tx.origin auth bypass in multiple strategies.
 - **Claude Builders Pipeline ($425)**: PRs #3976, #3980, #3981 open. Auto-pay on merge via Opire.
@@ -86,11 +89,13 @@
 - **Action:** Insufficient capital for automated trading
 
 ## Next Steps
-1. Monitor Lilly-Protocol PRs (#336-#347) for maintainer feedback/CI failures
-2. **BLOCKED**: Lilly-Protocol PRs #345-347 require Vercel authorization from maintainer (fork deploy permission). Code is MERGEABLE.
-3. Verify payment status of merged Lilly-Protocol PRs and update revenue tracking
-4. Human must complete Superteam Earn submissions ($3,250 pipeline) before deadlines
-5. Commit status updates to `/Agentic` master branch after each submission
+1. **IMMEDIATE**: Draft fix PR for monk-io/monk-plugin#410 (UTF-8 BOM in Register-AntigravityMcp). This issue has 0 comments and is unclaimed. Repro script exists in issue body. Fix: replace `Set-Content -Encoding UTF8` with `[System.IO.File]::WriteAllText($path, $json, [System.Text.UTF8Encoding]::new($false))` or use `-Encoding utf8NoBOM` (PS7+). Submit as draft PR with payout address.
+2. Monitor Universal Bounty Fleet PR #9 for REQUEST_CHANGES review.
+3. Monitor Callora-Contracts #1035 for maintainer assignment.
+4. Review Sherlock Beefy Finance finding and submit within 7 days.
+5. Monitor Lilly-Protocol PRs (#345-347) for Vercel fork deploy unblocks.
+6. Monitor Claude Builders PRs (#3976, #3980, #3981) for Opire auto-pay merges.
+7. Commit status updates to `/Agentic` master branch after each submission.
 
 ## Scouting Notes — 2026-08-30
 - **OphirPay/OphirPay**: All open bounties assigned via Stellar Wave Program (due Aug 31). No unclaimed issues remain.
