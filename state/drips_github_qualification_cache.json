@@ -185,27 +185,27 @@
       "valid_until": "2026-08-30T23:24:33.698415+00:00",
       "verified_at": "2026-08-30T22:24:33.698415+00:00"
     },
-    "be89e88c10da453813770198067ec8c5c5cd4e346178c58f278c6182168d59e9": {
-      "candidate_id": "drips:bb71e1ae-ffd3-4c7c-8d4b-2f9865f57779",
-      "candidate_key": "be89e88c10da453813770198067ec8c5c5cd4e346178c58f278c6182168d59e9",
+    "4d65626b1b2d8e61c2f89e8baad0b9843596f110025e3f74857586da73598df4": {
+      "candidate_id": "drips:0c862d7f-a409-4139-a982-42090c9d6e6f",
+      "candidate_key": "4d65626b1b2d8e61c2f89e8baad0b9843596f110025e3f74857586da73598df4",
       "decision": "rejected",
-      "drips_issue_id": "bb71e1ae-ffd3-4c7c-8d4b-2f9865f57779",
-      "drips_source_hash": "0db7ccaf0aaeb473f48b8e3b05b34c57ef6239038daac8930245e9e4227bf804",
+      "drips_issue_id": "0c862d7f-a409-4139-a982-42090c9d6e6f",
+      "drips_source_hash": "26c14fb69df8c6dfe2b64b4dd39453ae2dbceabc55c0448f5816b1cdff8d1d8c",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453",
-        "issue_comments_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453/comments?per_page=100",
-        "issue_node_id": "I_kwDOS5wd788AAAABOoIZDg",
-        "issue_timeline_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/issues/453/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T22:01:10Z",
-        "license_source": "github_repository_license",
-        "license_spdx": "Apache-2.0",
+        "issue_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/335",
+        "issue_comments_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/335/comments?per_page=100",
+        "issue_node_id": "I_kwDORTDsdc8AAAABOpsFrQ",
+        "issue_timeline_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/335/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T23:00:40Z",
+        "license_source": null,
+        "license_spdx": null,
         "package_manifest_api_url": null,
-        "pull_history_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint",
-        "repository_node_id": "R_kgDOS5wd7w",
-        "repository_pushed_at": "2026-08-30T13:25:28Z",
-        "tree_api_url": "https://api.github.com/repos/PromptMintLabs/prompt-mint/git/trees/main?recursive=1"
+        "pull_history_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core",
+        "repository_node_id": "R_kgDORTDsdQ",
+        "repository_pushed_at": "2026-08-30T15:20:12Z",
+        "tree_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -218,9 +218,9 @@
         "automation_eligible": false,
         "ci_present": true,
         "deadline_margin": false,
-        "github_issue_open_unassigned": false,
+        "github_issue_open_unassigned": true,
         "implementation_allowed": false,
-        "license_present": true,
+        "license_present": false,
         "no_application_comments": false,
         "no_linked_pull_request_activity": true,
         "points_labels_consistent": true,
@@ -232,55 +232,57 @@
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": false,
+        "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 453,
+      "issue_number": 335,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 7,
+        "application_comment_count": 1,
         "clarity_signals": {
-          "acceptance_criteria": false,
+          "acceptance_criteria": true,
           "expected_behavior": false,
-          "substantive_body": false,
-          "test_expectation": false
+          "substantive_body": true,
+          "test_expectation": true
         },
-        "deadline_margin_hours": -18.07,
+        "deadline_margin_hours": -59.1,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [],
         "recent_merged_prs_sample": 20,
-        "referenced_paths": []
+        "referenced_paths": [
+          "UPGRADE.md"
+        ]
       },
       "rejection_reasons": [
         "github_application_comment_present",
-        "github_issue_assigned_or_unknown",
         "insufficient_wave_deadline_margin",
-        "qualification_score_below_threshold",
-        "scope_not_sufficiently_testable"
+        "license_not_proven",
+        "points_complexity_inconsistent",
+        "qualification_score_below_threshold"
       ],
-      "repo": "PromptMintLabs/prompt-mint",
+      "repo": "CoralSwap-Finance/coralswap-core",
       "schema_version": "1.0",
-      "score": 50.0,
-      "title": "Support challenge token short TTL configurable per environment",
-      "valid_until": "2026-08-30T23:04:03.740463+00:00",
-      "verified_at": "2026-08-30T22:04:03.740463+00:00"
+      "score": 57.25,
+      "title": "[Core] Pair has no designation of 'factory must be upgraded first' \u2014 cross-contract upgrade ordering tests",
+      "valid_until": "2026-08-31T00:06:03.979431+00:00",
+      "verified_at": "2026-08-30T23:06:03.979431+00:00"
     },
-    "fd372dc06b13c195dba0bef66c3197437de5c07e9b7dc74da23f2387703e1328": {
-      "candidate_id": "drips:f5d3d0fe-7b4a-4b2e-bece-b7b8674af42b",
-      "candidate_key": "fd372dc06b13c195dba0bef66c3197437de5c07e9b7dc74da23f2387703e1328",
+    "6d164605b952fbe039fe1afac06813ba06a623dcee1fae89d1983db0eee372e9": {
+      "candidate_id": "drips:829ea97f-e0df-4ac1-a309-d8664ac88a39",
+      "candidate_key": "6d164605b952fbe039fe1afac06813ba06a623dcee1fae89d1983db0eee372e9",
       "decision": "rejected",
-      "drips_issue_id": "f5d3d0fe-7b4a-4b2e-bece-b7b8674af42b",
-      "drips_source_hash": "7a0bf514528fcb4e0acb65d83d82b30cc5b9d395a1dd99b6aa07a2d89aa4f61e",
+      "drips_issue_id": "829ea97f-e0df-4ac1-a309-d8664ac88a39",
+      "drips_source_hash": "398acdc44fd67ee99215884e6669827eca09ae0f011a6601beec91e30fe214ac",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/179",
-        "issue_comments_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/179/comments?per_page=100",
-        "issue_node_id": "I_kwDOTcD8x88AAAABO3yhAg",
-        "issue_timeline_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/179/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T21:37:06Z",
+        "issue_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/197",
+        "issue_comments_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/197/comments?per_page=100",
+        "issue_node_id": "I_kwDOTcD8x88AAAABO5dZmA",
+        "issue_timeline_api_url": "https://api.github.com/repos/Soroban-Eas/soroban-sas/issues/197/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T22:50:00Z",
         "license_source": null,
         "license_spdx": null,
         "package_manifest_api_url": null,
@@ -318,18 +320,18 @@
         "scope_testable": true,
         "tests_present": false
       },
-      "issue_number": 179,
+      "issue_number": 197,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 3,
+        "application_comment_count": 1,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": false,
+          "expected_behavior": true,
           "substantive_body": true,
-          "test_expectation": true
+          "test_expectation": false
         },
-        "deadline_margin_hours": -33.72,
+        "deadline_margin_hours": -34.92,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
@@ -347,11 +349,98 @@
       "repo": "Soroban-Eas/soroban-sas",
       "schema_version": "1.0",
       "score": 69.25,
-      "title": "Specify and implement Merkle batch-attestation utilities",
-      "valid_until": "2026-08-30T22:43:03.717067+00:00",
-      "verified_at": "2026-08-30T21:43:03.717067+00:00"
+      "title": "Fix the Makefile WASM build target to compile contracts only",
+      "valid_until": "2026-08-30T23:55:30.150490+00:00",
+      "verified_at": "2026-08-30T22:55:30.150490+00:00"
+    },
+    "e6b0bc02e6c915bed101c3cd894c226f11c691ce4e469945005baba5f31fc85e": {
+      "candidate_id": "drips:4879730d-a97e-4cf3-9a27-c51446d7a6f9",
+      "candidate_key": "e6b0bc02e6c915bed101c3cd894c226f11c691ce4e469945005baba5f31fc85e",
+      "decision": "rejected",
+      "drips_issue_id": "4879730d-a97e-4cf3-9a27-c51446d7a6f9",
+      "drips_source_hash": "6f3d4ab42bb736dce0b41ac879d685d2a718488e58d27dc7a4698f68e5c2bbfe",
+      "evidence": {
+        "default_branch": "master",
+        "issue_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/issues/971",
+        "issue_comments_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/issues/971/comments?per_page=100",
+        "issue_node_id": "I_kwDOQ5tdMM8AAAABO4HWNw",
+        "issue_timeline_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/issues/971/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T22:39:56Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/contents/package.json?ref=master",
+        "pull_history_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend",
+        "repository_node_id": "R_kgDOQ5tdMA",
+        "repository_pushed_at": "2026-08-29T16:01:39Z",
+        "tree_api_url": "https://api.github.com/repos/kellymusk/Aframp-backend/git/trees/master?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 200,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": false,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": true,
+        "implementation_allowed": false,
+        "license_present": false,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": true,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 971,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 1,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "deadline_margin_hours": -34.76,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [],
+        "recent_merged_prs_sample": 17,
+        "referenced_paths": [
+          "src/blockchain/worker.rs",
+          "src/services"
+        ]
+      },
+      "rejection_reasons": [
+        "continuous_integration_not_proven",
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "license_not_proven",
+        "qualification_score_below_threshold",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "kellymusk/Aframp-backend",
+      "schema_version": "1.0",
+      "score": 61.75,
+      "title": "Enhancement: add structured tracing spans to all service functions for observability",
+      "valid_until": "2026-08-30T23:45:23.407642+00:00",
+      "verified_at": "2026-08-30T22:45:23.407642+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-30T22:35:11.569576+00:00"
+  "updated_at": "2026-08-30T23:06:03.979431+00:00"
 }
