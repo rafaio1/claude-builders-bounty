@@ -446,6 +446,21 @@ def discover_bounties():
                         continue
                     title_text = item.get("title", "") or ""
                     body = item.get("body", "") or ""
+                    # PAYMENT RAIL VERIFICATION (Algora search path)
+                    body_lower = (body or "").lower()
+                    title_lower_check = (title_text or "").lower()
+                    labels_str = " ".join(labels).lower()
+                    combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    payment_rails = [
+                        "algora", "opire", "drips", "polar", "safe.gnosis", "gnosis safe",
+                        "0x", "smart contract", "escrow", "grantfox", "bountycaster",
+                        "replit bounties", "supabase bounty"
+                    ]
+                    has_payment_rail = any(rail in combined_text for rail in payment_rails)
+                    bounty_platform_repos = ["claude-builders-bounty", "universal_bounty_fleet"]
+                    is_platform_repo = any(plat in repo.lower() for plat in bounty_platform_repos)
+                    if not has_payment_rail and not is_platform_repo:
+                        continue
                     value_usd = "unknown"
                     value_patterns = [
                         r'\[\$?([\d,]+(?:\.\d+)?)\]',
