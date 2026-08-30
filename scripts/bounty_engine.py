@@ -1016,25 +1016,6 @@ def execute_bounty(target):
         clone_cmd = f"git clone --depth 1 --single-branch https://github.com/{owner}/{repo}.git {work_dir}"
         log(f"Cloning {owner}/{repo} -> {work_dir}")
         res = subprocess.run(clone_cmd, shell=True, capture_output=True, text=True, timeout=300)
-    if use_sparse:
-        # Sparse checkout for large repos to avoid disk exhaustion
-        os.makedirs(work_dir, exist_ok=True)
-        init_cmd = f"git -C {work_dir} init"
-        subprocess.run(init_cmd, shell=True, capture_output=True, timeout=30)
-        remote_cmd = f"git -C {work_dir} remote add origin https://github.com/{owner}/{repo}.git"
-        subprocess.run(remote_cmd, shell=True, capture_output=True, timeout=30)
-        config_cmd = f"git -C {work_dir} config core.sparseCheckout true"
-        subprocess.run(config_cmd, shell=True, capture_output=True, timeout=30)
-        sparse_file = os.path.join(work_dir, ".git", "info", "sparse-checkout")
-        os.makedirs(os.path.dirname(sparse_file), exist_ok=True)
-        with open(sparse_file, "w") as f:
-            f.write("/*\n!*.md\n!docs/\n!test/\n!tests/\n!spec/\n!specs/\n")
-        pull_cmd = f"git -C {work_dir} pull --depth 1 origin main || git -C {work_dir} pull --depth 1 origin master"
-        res = subprocess.run(pull_cmd, shell=True, capture_output=True, text=True, timeout=300)
-    else:
-        clone_cmd = f"git clone --depth 1 --single-branch https://github.com/{owner}/{repo}.git {work_dir}"
-        log(f"Cloning {owner}/{repo} -> {work_dir}")
-        res = subprocess.run(clone_cmd, shell=True, capture_output=True, text=True, timeout=300)
     if res.returncode != 0:
         log(f"Clone stderr for {owner}/{repo}: {res.stderr[:500]}")
     if res.returncode != 0:
