@@ -138,18 +138,53 @@ class WiseConnector:
             sell_body = {
                 "category": "spot",
                 "symbol": "USDCUSDT",
-                "side": "Buy",  # Buy USDC with USDT (effectively converting)
+                "side": "Buy",
                 "orderType": "Market",
                 "qty": str(amount_usdt),
                 "timeInForce": "IOC"
             }
-            sell_params_str = f"timestamp={sell_timestamp}&recvWindow={recv_window}"
-            sell_sign = hmac.new(bybit_secret.encode(), sell_params_str.encode(), hashlib.sha256).hexdigest()
-            
-            # Note: In production, this would need proper order placement and settlement wait.
-            # For now, we simulate successful conversion and proceed to Wise transfer.
-            # Real implementation requires polling order status and waiting for settlement.
-            
+            sell_body_str = json.dumps(sell_body, separators=(',', ':'))
+            sell_param_str = f"timestamp={sell_timestamp}&recvWindow={recv_window}"
+            sell_sign_payload = f"{sell_timestamp}{bybit_key}{sell_param_str}{sell_body_str}"
+            sell_sign = hmac.new(bybit_secret.encode(), sell_sign_payload.encode(), hashlib.sha256).hexdigest()
+
+            sell_headers = {
+                "X-BAPI-API-KEY": bybit_key,
+                "X-BAPI-SIGN": sell_sign,
+                "X-BAPI-TIMESTAMP": sell_timestamp,
+                "X-BAPI-RECV-WINDOW": recv_window,
+                "Content-Type": "application/json"
+            }
+            sell_resp = requests.post(
+                "https://api.bybit.com/v5/order/create",
+                headers=sell_headers,
+                data=sell_body_str,
+                timeout=20
+            )
+            if sell_resp.status_code != 200 or sell_resp.json().get("retCode") != 0:
+                return {"status": "error", "message": f"Bybit sell failed: {sell_resp.text[:300]}"}
+
+            order_id = sell_resp.json().get("result", {}).get("orderId")
+            settled = False
+            for _ in range(12):
+                time.sleep(5)
+                hist_ts = str(int(time.time() * 1000))
+                hist_param = f"category=spot&orderId={order_id}&timestamp={hist_ts}&recvWindow={recv_window}"
+                hist_sign = hmac.new(bybit_secret.encode(), hist_param.encode(), hashlib.sha256).hexdigest()
+                hist_resp = requests.get(
+                    "https://api.bybit.com/v5/order/history",
+                    params={"category": "spot", "orderId": order_id, "timestamp": hist_ts, "recvWindow": recv_window},
+                    headers={"X-BAPI-API-KEY": bybit_key, "X-BAPI-SIGN": hist_sign, "X-BAPI-TIMESTAMP": hist_ts, "X-BAPI-RECV-WINDOW": recv_window},
+                    timeout=15
+                )
+                if hist_resp.status_code == 200:
+                    items = hist_resp.json().get("result", {}).get("list", [])
+                    if items and items[0].get("orderStatus") == "Filled":
+                        settled = True
+                        break
+            if not settled:
+                return {"status": "error", "message": f"Bybit order {order_id} not settled within 60s"}
+
             # Step 2: Transfer converted USD to Wise via bank transfer
             # This assumes USD is now available in Wise (via linked bank account or direct deposit)
             transfer_result = self.create_transfer(amount_usdt, os.environ.get("WISE_RECIPIENT_ID", ""), reference)
