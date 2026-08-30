@@ -5,6 +5,7 @@
 ### Newly Submitted PRs (This Session)
 | PR | Issue | Bounty | Title | Status |
 |----|-------|--------|-------|--------|
+| #345 | #44 | $90 | Typography scale token set | Open |
 | #344 | #53 | $95 | Document issue labels and triage workflow | Open |
 | #343 | #49 | $100 | Contributor guide for adding new routes | Open |
 | #342 | #65 | $100 | App-level not-found for invalid agent ids | Open |
@@ -25,9 +26,9 @@
 
 ### Total Potential Revenue (Lilly-Protocol)
 - **This session:** $135
-- **Latest submissions:** $295 (#342, #343, #344)
+- **Latest submissions:** $385 (#342, #343, #344, #345)
 - **Prior session:** $340
-- **Combined open PRs:** $770
+- **Combined open PRs:** $860
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
 | Opportunity | Value | Blocker |
