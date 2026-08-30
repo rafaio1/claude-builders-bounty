@@ -1,0 +1,71 @@
+[
+  {
+    "protocol_name": "LayerZero",
+    "max_bounty_usd": 15000000,
+    "tvl_usd": 4000000000,
+    "primary_chain": "Multichain (Ethereum hub)",
+    "audit_status": "Multiple independent audits (V1 and V2), active bounty since launch",
+    "attack_surface_notes": "Cross-chain messaging: ULN message verification, DVN/executor config, OFT lock/unlock and adapter flows, admin/owner roles; tvl_usd here approximates value secured in transit, not classic TVL; V2 rollout keeps code churn high",
+    "recommended_fuzzing_tools": [
+      "Echidna",
+      "Foundry invariant tests",
+      "Medusa",
+      "Halmos"
+    ]
+  },
+  {
+    "protocol_name": "Wormhole",
+    "max_bounty_usd": 10000000,
+    "tvl_usd": 4000000000,
+    "primary_chain": "Multichain (EVM endpoints in Solidity)",
+    "audit_status": "Multiple audits post-2022 incident, continuous review program",
+    "attack_surface_notes": "Bridge: guardian signature/consensus validation, EVM endpoint redemption paths, NTT (Native Token Transfers) framework, cross-chain message replay and reentrancy surfaces; tvl_usd approximates bridged value",
+    "recommended_fuzzing_tools": [
+      "Foundry",
+      "Echidna",
+      "Medusa",
+      "Kontrol"
+    ]
+  },
+  {
+    "protocol_name": "Sky (MakerDAO)",
+    "max_bounty_usd": 10000000,
+    "tvl_usd": 7000000000,
+    "primary_chain": "Ethereum",
+    "audit_status": "Extensively audited over years (core DSS, PSM, End modules), formal verification on critical paths",
+    "attack_surface_notes": "Core vault engine, PSM swap modules, flash mint, Spark integration, End/ESM emergency shutdown paths; frequent governance-driven parameter and module changes create fresh surface",
+    "recommended_fuzzing_tools": [
+      "Echidna",
+      "Foundry invariant tests",
+      "Halmos",
+      "Medusa"
+    ]
+  },
+  {
+    "protocol_name": "GMX",
+    "max_bounty_usd": 5000000,
+    "tvl_usd": 300000000,
+    "primary_chain": "Arbitrum (also Avalanche)",
+    "audit_status": "Audited V1/V2 by multiple firms, ongoing development with new feature releases",
+    "attack_surface_notes": "Perp order engine: oracle price feed handling, position accounting, liquidation and fee math, collateral token callbacks; active feature cadence means recent diffs to review",
+    "recommended_fuzzing_tools": [
+      "Echidna",
+      "Medusa",
+      "Foundry invariant tests",
+      "Halmos"
+    ]
+  },
+  {
+    "protocol_name": "Lido",
+    "max_bounty_usd": 2000000,
+    "tvl_usd": 28000000000,
+    "primary_chain": "Ethereum",
+    "audit_status": "Multiple audits on staking, withdrawal queue, and oracle modules; public audit reports",
+    "attack_surface_notes": "Staking/withdrawal queue, oracle share-rate accounting, CSM module, governance and dual-governance mechanics; share-rate math and withdrawal paths have historically been the richest targets",
+    "recommended_fuzzing_tools": [
+      "Foundry invariant tests",
+      "Echidna",
+      "Halmos"
+    ]
+  }
+]
