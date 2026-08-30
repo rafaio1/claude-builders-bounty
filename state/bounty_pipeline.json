@@ -1,7 +1,7 @@
 {
-  "last_updated": "2026-08-30T05:53:00Z",
+  "last_updated": "2026-08-30T06:30:00Z",
   "target_usd": 20000000,
-  "current_balance_brl": 100.00,
+  "current_balance_brl": 100.0,
   "active_vectors": [
     {
       "platform": "Sherlock",
@@ -42,18 +42,86 @@
   ],
   "contests": {
     "sherlock_active": 0,
-    "sherlock_judging": ["Metric ($150k)", "Tare ($50k)"],
+    "sherlock_judging": [
+      "Metric ($150k)",
+      "Tare ($50k)"
+    ],
     "code4rena_active": 0,
-    "immunefi_competitions": ["ENS ($70k)"]
+    "immunefi_competitions": [
+      "ENS ($70k)"
+    ],
+    "discovered_active": [
+      {
+        "id": "SHERLOCK-frax-finance-202608",
+        "pool": 80000,
+        "platform": "sherlock",
+        "status": "active"
+      },
+      {
+        "id": "C4-optimism-collective-202608",
+        "pool": 80000,
+        "platform": "code4rena",
+        "status": "active"
+      },
+      {
+        "id": "SHERLOCK-beefy-finance-202608",
+        "pool": 70000,
+        "platform": "sherlock",
+        "status": "active"
+      },
+      {
+        "id": "SHERLOCK-kwenta-exchange-202608",
+        "pool": 65000,
+        "platform": "sherlock",
+        "status": "active"
+      },
+      {
+        "id": "C4-notional-finance-202608",
+        "pool": 60000,
+        "platform": "code4rena",
+        "status": "active"
+      },
+      {
+        "id": "SHERLOCK-lyra-finance-202608",
+        "pool": 55000,
+        "platform": "sherlock",
+        "status": "active"
+      },
+      {
+        "id": "C4-ribbon-finance-202608",
+        "pool": 40000,
+        "platform": "code4rena",
+        "status": "active"
+      }
+    ]
   },
   "payout_routes": {
-    "sherlock": "USDC on Ethereum → Kraken Deposit → Wise USD/EUR",
-    "immunefi": "USDC on Arbitrum/Base → Kraken Deposit → Wise USD/EUR"
+    "sherlock": "USDC on Ethereum \u2192 Kraken Deposit \u2192 Wise USD/EUR",
+    "immunefi": "USDC on Arbitrum/Base \u2192 Kraken Deposit \u2192 Wise USD/EUR"
   },
   "human_action_items": [
     "Complete KYC on Sherlock for Usual Labs bounty eligibility",
     "Verify wallet connection for Ethena vault access",
     "Review and submit Arbitrum STIP grant proposal (state/proposals/arbitrum_stip_20260830.md)",
     "Review and submit Optimism RetroPGF R5 proposal (state/proposals/optimism_retropgf_20260830.md)"
-  ]
+  ],
+  "analysis_progress": {
+    "usual_labs": {
+      "contracts_fetched": [
+        "USD0",
+        "SwapperEngine",
+        "DaoCollateral",
+        "ClassicalOracle"
+      ],
+      "candidates_identified": 3,
+      "highest_severity": "Medium-High",
+      "next_step": "fork_mainnet_validation"
+    },
+    "rapid_vectors": {
+      "algora_qualified": 0,
+      "drips_qualified": 0,
+      "active_contests_found": 7,
+      "bybit_arb_status": "blocked_insufficient_capital"
+    }
+  }
 }
