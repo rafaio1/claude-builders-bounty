@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T07:45:00Z",
+  "last_updated": "2026-08-30T07:50:00Z",
   "active_contests": {
     "sherlock": {
       "status": "blocked",
@@ -29,22 +29,15 @@
   "micro_bounty_status": {
     "algora": {
       "qualified": 0,
-      "status": "blocked_no_match"
+      "blocker": "KYC/OAuth required"
+    },
+    "drips": {
+      "qualified": 0,
+      "blocker": "KYC/OAuth required"
     },
     "opire": {
       "qualified": 0,
-      "status": "blocked_no_match"
-    },
-    "drips_wave": {
-      "candidates": 10,
-      "top_opportunity": "trustflow-sdk #127 (200pts)",
-      "blocker": "KYC + OAuth login required",
-      "status": "human_action_needed"
-    },
-    "contabilhub_outreach": {
-      "leads_contacted": 68,
-      "responses_pending": true,
-      "status": "waiting_for_replies"
+      "blocker": "KYC/OAuth required"
     }
   },
   "immediate_capital_blockers": [
@@ -58,5 +51,35 @@
     "Verify Kraken account linked to Wise for crypto offramp",
     "Check email for ContabilHub outreach responses",
     "Manually identify active Sherlock contest via Discord/Twitter"
-  ]
+  ],
+  "testnet_airdrop_status": {
+    "monad": {
+      "status": "blocked",
+      "blocker": "faucet_redirects_to_freelancer_signup",
+      "wallet_available": true
+    },
+    "berachain": {
+      "status": "blocked",
+      "blocker": "faucet_domain_unreachable_artio_deprecated",
+      "wallet_available": true
+    },
+    "linea": {
+      "status": "blocked",
+      "blocker": "voyage_page_404_deprecated",
+      "wallet_available": true
+    }
+  },
+  "sherlock_active_contests": [
+    "beefy-finance",
+    "frax-finance",
+    "kwenta-exchange",
+    "lyra-finance"
+  ],
+  "rapid_capital_assessment": {
+    "micro_bounties": "BLOCKED - All platforms (Algora/Drips/Opire) require KYC/OAuth",
+    "testnet_airdrops": "BLOCKED - All 3 testnets (Monad/Berachain/Linea) have broken faucets or deprecated pages",
+    "sherlock_contests": "ACTIVE - 4 contests (Beefy/Frax/Kwenta/Lyra) but require account_creation human step",
+    "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
+    "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements"
+  }
 }
