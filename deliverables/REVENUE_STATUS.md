@@ -1,4 +1,4 @@
-# Revenue Generation Status — 2026-08-30
+# Revenue Generation Status — 2026-08-30 (Updated)
 
 ## Lilly-Protocol Bounties (Solana Payout: `877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU`)
 
@@ -9,6 +9,7 @@
 | #337 | #77 | $25 | Lightweight client-side session store | Open |
 | #338 | #56 | $25 | Husky and lint-staged pre-commit checks | Open |
 | #339 | #33 | $20 | Audit and raise color contrast of muted/line tokens | Open |
+| #340 | #97 | $25 | Internationalization routing with next-intl | Open |
 
 ### Previously Submitted (Prior Session)
 | PR | Issue | Bounty | Title |
@@ -20,9 +21,9 @@
 | #335 | #37 | $50 | 200% zoom layout usability |
 
 ### Total Potential Revenue (Lilly-Protocol)
-- **This session:** $110
+- **This session:** $135
 - **Prior session:** $340
-- **Combined open PRs:** $450
+- **Combined open PRs:** $475
 
 ## Superteam Earn Pipeline (URGENT — Human Action Required)
 | Opportunity | Value | Blocker |
@@ -38,7 +39,7 @@
 - **Action:** Insufficient capital for automated trading
 
 ## Next Steps
-1. Monitor Lilly-Protocol PRs for maintainer feedback/CI failures
-2. Human must complete Superteam Earn submissions before deadlines
-3. Scout new unclaimed bounties in Lilly-Protocol and other repos
+1. Monitor Lilly-Protocol PRs (#336-#340) for maintainer feedback/CI failures
+2. Scout remaining unclaimed bounties (most high-value have existing PRs)
+3. Human must complete Superteam Earn submissions before deadlines
 4. Commit status updates to `/Agentic` master branch regularly
