@@ -56479,3 +56479,1317 @@ json.decoder.JSONDecodeError: Expecting value: line 1 column 1 (char 0)
 [2026-08-30T08:15:02.298101+00:00] Cycle complete: 0 executed, 1 pending human action
 [2026-08-30T08:15:02.298287+00:00] === Testnet Airdrop Executor Cycle Complete ===
 [2026-08-30T08:15:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T08:30:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T08:30:01Z] Running OpenBugBounty monitor...
+[2026-08-30T08:30:01.983525+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T08:30:01.983700+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T08:30:01.984116+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T08:30:01.984268+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T08:30:01.984321+00:00] Scan completed: {"timestamp": "2026-08-30T08:30:01.984302+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T08:30:01.985479+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T08:30:01Z] Running DeFi bounty scanner...
+[2026-08-30T08:30:02.154929+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T08:30:02.164416+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T08:30:02.164499+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T08:30:02.166231+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T08:30:02.166265+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T08:30:02.166316+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T08:30:02.189372+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T08:30:02.189598+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T08:30:02.189648+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T08:30:01Z] Running vuln report pipeline...
+[2026-08-30T08:30:02.246738+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T08:30:02.247433+00:00] Discovering targets from known bounty programs...
+[2026-08-30T08:30:02.247622+00:00] Discovered 7 potential targets
+[2026-08-30T08:30:02.247688+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T08:30:02.247891+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.248118+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.250704+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.250787+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T08:30:02.253076+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.255718+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.261776+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.261922+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T08:30:02.262747+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.271444+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.272713+00:00] Report prepared: VULN-20260830083002 -> /Agentic/revenue/vuln_reports/VULN-20260830083002.json
+[2026-08-30T08:30:02.279337+00:00] Pipeline cycle complete: 3 findings validated, 3312 total reports prepared
+[2026-08-30T08:30:02.281811+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T08:30:01Z] Running revenue orchestrator...
+[2026-08-30T08:30:02.347755+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T08:30:02.350659+00:00] Platforms tracked: 7
+[2026-08-30T08:30:02.350781+00:00]   openbugbounty: pending_registration
+[2026-08-30T08:30:02.350829+00:00]   gitcoin: discovered
+[2026-08-30T08:30:02.350866+00:00]   dework: discovered
+[2026-08-30T08:30:02.350900+00:00]   layer3: discovered
+[2026-08-30T08:30:02.350933+00:00]   immunefi: discovered
+[2026-08-30T08:30:02.351271+00:00]   code4rena: discovered
+[2026-08-30T08:30:02.351340+00:00]   vuln_pipeline: operational
+[2026-08-30T08:30:02.353116+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T08:30:02.360517+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T08:30:02.374853+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T08:30:02.375015+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T08:30:01Z] Running autonomous trade scanner...
+[2026-08-30T08:30:02.413004+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T08:30:02.413234+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T08:30:02.413320+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T08:30:02.413373+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T08:30:02.413424+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T08:30:02.413460+00:00] Scanning yield/APY signals...
+[2026-08-30T08:30:02.413501+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T08:30:02.413554+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T08:30:02.432722+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T08:30:02.432932+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T08:30:02.432976+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T08:30:01Z] Running testnet airdrop executor...
+[2026-08-30T08:30:02.481474+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T08:30:02.483675+00:00] Processing: Monad Testnet
+[2026-08-30T08:30:02.483772+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T08:30:02.483816+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T08:30:02.483853+00:00] Processing: Linea Voyage
+[2026-08-30T08:30:02.483889+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T08:30:02.483923+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T08:30:02.483956+00:00] Processing: Berachain Testnet
+[2026-08-30T08:30:02.483990+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:30:02.484023+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:30:02.484067+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:30:02.489557+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T08:30:02.489668+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T08:30:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T08:45:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T08:45:01Z] Running OpenBugBounty monitor...
+[2026-08-30T08:45:01.665637+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T08:45:01.665908+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T08:45:01.667374+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T08:45:01.667532+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T08:45:01.667599+00:00] Scan completed: {"timestamp": "2026-08-30T08:45:01.667571+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T08:45:01.675305+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T08:45:01Z] Running DeFi bounty scanner...
+[2026-08-30T08:45:01.911009+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T08:45:01.924868+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T08:45:01.924955+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T08:45:01.924988+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T08:45:01.925017+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T08:45:01.925059+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T08:45:02.107298+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T08:45:02.107546+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T08:45:02.107594+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T08:45:01Z] Running vuln report pipeline...
+[2026-08-30T08:45:02.566165+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T08:45:02.569972+00:00] Discovering targets from known bounty programs...
+[2026-08-30T08:45:02.570250+00:00] Discovered 7 potential targets
+[2026-08-30T08:45:02.570366+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T08:45:02.570665+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.571744+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.580189+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.580356+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T08:45:02.583924+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.591125+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.605224+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.605404+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T08:45:02.624757+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.642852+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.662493+00:00] Report prepared: VULN-20260830084502 -> /Agentic/revenue/vuln_reports/VULN-20260830084502.json
+[2026-08-30T08:45:02.682861+00:00] Pipeline cycle complete: 3 findings validated, 3321 total reports prepared
+[2026-08-30T08:45:02.683058+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T08:45:01Z] Running revenue orchestrator...
+[2026-08-30T08:45:03.026250+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T08:45:03.058913+00:00] Platforms tracked: 7
+[2026-08-30T08:45:03.059094+00:00]   openbugbounty: pending_registration
+[2026-08-30T08:45:03.067305+00:00]   gitcoin: discovered
+[2026-08-30T08:45:03.067393+00:00]   dework: discovered
+[2026-08-30T08:45:03.067448+00:00]   layer3: discovered
+[2026-08-30T08:45:03.067495+00:00]   immunefi: discovered
+[2026-08-30T08:45:03.067557+00:00]   code4rena: discovered
+[2026-08-30T08:45:03.067601+00:00]   vuln_pipeline: operational
+[2026-08-30T08:45:03.079642+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T08:45:03.091702+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T08:45:03.121425+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T08:45:03.121608+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T08:45:01Z] Running autonomous trade scanner...
+[2026-08-30T08:45:03.287798+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T08:45:03.291830+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T08:45:03.291991+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T08:45:03.292043+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T08:45:03.292137+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T08:45:03.292191+00:00] Scanning yield/APY signals...
+[2026-08-30T08:45:03.292236+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T08:45:03.292274+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T08:45:03.322659+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T08:45:03.322932+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T08:45:03.322996+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T08:45:01Z] Running testnet airdrop executor...
+[2026-08-30T08:45:03.532799+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T08:45:03.535952+00:00] Processing: Monad Testnet
+[2026-08-30T08:45:03.536607+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T08:45:03.536693+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T08:45:03.536738+00:00] Processing: Linea Voyage
+[2026-08-30T08:45:03.536777+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T08:45:03.536817+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T08:45:03.536853+00:00] Processing: Berachain Testnet
+[2026-08-30T08:45:03.536889+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:45:03.536925+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:45:03.536960+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T08:45:03.553061+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T08:45:03.553828+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T08:45:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T09:00:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T09:00:01Z] Running OpenBugBounty monitor...
+[2026-08-30T09:00:02.088686+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T09:00:02.088862+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T09:00:02.090464+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T09:00:02.090718+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T09:00:02.090785+00:00] Scan completed: {"timestamp": "2026-08-30T09:00:02.090763+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T09:00:02.096258+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T09:00:01Z] Running DeFi bounty scanner...
+[2026-08-30T09:00:02.196598+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T09:00:02.196793+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T09:00:02.196828+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T09:00:02.196863+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T09:00:02.196888+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T09:00:02.198679+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T09:00:02.203464+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T09:00:02.203650+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T09:00:02.203682+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T09:00:01Z] Running vuln report pipeline...
+[2026-08-30T09:00:02.402443+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T09:00:02.408683+00:00] Discovering targets from known bounty programs...
+[2026-08-30T09:00:02.415046+00:00] Discovered 7 potential targets
+[2026-08-30T09:00:02.415226+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T09:00:02.415551+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.424094+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.427922+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.428094+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T09:00:02.433033+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.461159+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.472366+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.472692+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T09:00:02.487802+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.493705+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.501858+00:00] Report prepared: VULN-20260830090002 -> /Agentic/revenue/vuln_reports/VULN-20260830090002.json
+[2026-08-30T09:00:02.507278+00:00] Pipeline cycle complete: 3 findings validated, 3330 total reports prepared
+[2026-08-30T09:00:02.507393+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T09:00:01Z] Running revenue orchestrator...
+[2026-08-30T09:00:02.563476+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T09:00:02.567432+00:00] Platforms tracked: 7
+[2026-08-30T09:00:02.567619+00:00]   openbugbounty: pending_registration
+[2026-08-30T09:00:02.567696+00:00]   gitcoin: discovered
+[2026-08-30T09:00:02.567752+00:00]   dework: discovered
+[2026-08-30T09:00:02.567793+00:00]   layer3: discovered
+[2026-08-30T09:00:02.567831+00:00]   immunefi: discovered
+[2026-08-30T09:00:02.567864+00:00]   code4rena: discovered
+[2026-08-30T09:00:02.567898+00:00]   vuln_pipeline: operational
+[2026-08-30T09:00:02.569650+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T09:00:02.571752+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T09:00:02.577539+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T09:00:02.577704+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T09:00:01Z] Running autonomous trade scanner...
+[2026-08-30T09:00:02.658313+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T09:00:02.658615+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T09:00:02.658961+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T09:00:02.659058+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T09:00:02.659124+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T09:00:02.659166+00:00] Scanning yield/APY signals...
+[2026-08-30T09:00:02.659212+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T09:00:02.659257+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T09:00:02.664866+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T09:00:02.665668+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T09:00:02.665756+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T09:00:01Z] Running testnet airdrop executor...
+[2026-08-30T09:00:02.727293+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T09:00:02.728423+00:00] Processing: Monad Testnet
+[2026-08-30T09:00:02.728499+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T09:00:02.728570+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T09:00:02.728618+00:00] Processing: Linea Voyage
+[2026-08-30T09:00:02.728660+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:00:02.728697+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:00:02.728732+00:00] Processing: Berachain Testnet
+[2026-08-30T09:00:02.728770+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:00:02.728826+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:00:02.728885+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:00:02.735276+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T09:00:02.735395+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T09:00:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T09:15:02Z] === CRON REVENUE SUITE START ===
+[2026-08-30T09:15:02Z] Running OpenBugBounty monitor...
+[2026-08-30T09:15:02.851123+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T09:15:02.851347+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T09:15:02.853783+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T09:15:02.854927+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T09:15:02.855011+00:00] Scan completed: {"timestamp": "2026-08-30T09:15:02.854984+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T09:15:02.856225+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T09:15:02Z] Running DeFi bounty scanner...
+[2026-08-30T09:15:02.950108+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T09:15:02.950293+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T09:15:02.950337+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T09:15:02.950375+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T09:15:02.950405+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T09:15:02.950444+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T09:15:02.956583+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T09:15:02.956704+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T09:15:02.956736+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T09:15:02Z] Running vuln report pipeline...
+[2026-08-30T09:15:03.007924+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T09:15:03.008800+00:00] Discovering targets from known bounty programs...
+[2026-08-30T09:15:03.009015+00:00] Discovered 7 potential targets
+[2026-08-30T09:15:03.009094+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T09:15:03.009322+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.010485+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.013288+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.013374+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T09:15:03.019568+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.022286+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.027717+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.027813+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T09:15:03.037641+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.040289+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.041312+00:00] Report prepared: VULN-20260830091503 -> /Agentic/revenue/vuln_reports/VULN-20260830091503.json
+[2026-08-30T09:15:03.046669+00:00] Pipeline cycle complete: 3 findings validated, 3339 total reports prepared
+[2026-08-30T09:15:03.046756+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T09:15:02Z] Running revenue orchestrator...
+[2026-08-30T09:15:03.100929+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T09:15:03.102449+00:00] Platforms tracked: 7
+[2026-08-30T09:15:03.102557+00:00]   openbugbounty: pending_registration
+[2026-08-30T09:15:03.102608+00:00]   gitcoin: discovered
+[2026-08-30T09:15:03.102649+00:00]   dework: discovered
+[2026-08-30T09:15:03.102688+00:00]   layer3: discovered
+[2026-08-30T09:15:03.102724+00:00]   immunefi: discovered
+[2026-08-30T09:15:03.102761+00:00]   code4rena: discovered
+[2026-08-30T09:15:03.102794+00:00]   vuln_pipeline: operational
+[2026-08-30T09:15:03.103499+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T09:15:03.104140+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T09:15:03.109151+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T09:15:03.109253+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T09:15:02Z] Running autonomous trade scanner...
+[2026-08-30T09:15:03.172550+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T09:15:03.172780+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T09:15:03.173905+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T09:15:03.174020+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T09:15:03.174082+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T09:15:03.174126+00:00] Scanning yield/APY signals...
+[2026-08-30T09:15:03.174175+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T09:15:03.174219+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T09:15:03.189253+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T09:15:03.189498+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T09:15:03.189590+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T09:15:02Z] Running testnet airdrop executor...
+[2026-08-30T09:15:03.267130+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T09:15:03.268122+00:00] Processing: Monad Testnet
+[2026-08-30T09:15:03.268201+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T09:15:03.268245+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T09:15:03.268287+00:00] Processing: Linea Voyage
+[2026-08-30T09:15:03.268326+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:15:03.268362+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:15:03.268396+00:00] Processing: Berachain Testnet
+[2026-08-30T09:15:03.268430+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:15:03.268466+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:15:03.268500+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:15:03.272617+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T09:15:03.272711+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T09:15:02Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T09:30:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T09:30:01Z] Running OpenBugBounty monitor...
+[2026-08-30T09:30:01.583821+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T09:30:01.590047+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T09:30:01.590395+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T09:30:01.590528+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T09:30:01.590586+00:00] Scan completed: {"timestamp": "2026-08-30T09:30:01.590562+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T09:30:01.598670+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T09:30:01Z] Running DeFi bounty scanner...
+[2026-08-30T09:30:01.718175+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T09:30:01.718402+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T09:30:01.718456+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T09:30:01.718524+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T09:30:01.718565+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T09:30:01.718608+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T09:30:01.725689+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T09:30:01.725853+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T09:30:01.727010+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T09:30:01Z] Running vuln report pipeline...
+[2026-08-30T09:30:01.867656+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T09:30:01.869520+00:00] Discovering targets from known bounty programs...
+[2026-08-30T09:30:01.869715+00:00] Discovered 7 potential targets
+[2026-08-30T09:30:01.869788+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T09:30:01.872668+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.872947+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.875033+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.875120+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T09:30:01.878777+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.887364+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.906817+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.908279+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T09:30:01.916586+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.924339+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.936280+00:00] Report prepared: VULN-20260830093001 -> /Agentic/revenue/vuln_reports/VULN-20260830093001.json
+[2026-08-30T09:30:01.961391+00:00] Pipeline cycle complete: 3 findings validated, 3348 total reports prepared
+[2026-08-30T09:30:01.961573+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T09:30:01Z] Running revenue orchestrator...
+[2026-08-30T09:30:02.089002+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T09:30:02.093699+00:00] Platforms tracked: 7
+[2026-08-30T09:30:02.093862+00:00]   openbugbounty: pending_registration
+[2026-08-30T09:30:02.094995+00:00]   gitcoin: discovered
+[2026-08-30T09:30:02.095045+00:00]   dework: discovered
+[2026-08-30T09:30:02.095083+00:00]   layer3: discovered
+[2026-08-30T09:30:02.095117+00:00]   immunefi: discovered
+[2026-08-30T09:30:02.095148+00:00]   code4rena: discovered
+[2026-08-30T09:30:02.095179+00:00]   vuln_pipeline: operational
+[2026-08-30T09:30:02.096921+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T09:30:02.099217+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T09:30:02.113291+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T09:30:02.113455+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T09:30:01Z] Running autonomous trade scanner...
+[2026-08-30T09:30:02.389261+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T09:30:02.389614+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T09:30:02.389701+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T09:30:02.389757+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T09:30:02.389818+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T09:30:02.389875+00:00] Scanning yield/APY signals...
+[2026-08-30T09:30:02.389948+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T09:30:02.389993+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T09:30:02.401742+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T09:30:02.403297+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T09:30:02.403387+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T09:30:01Z] Running testnet airdrop executor...
+[2026-08-30T09:30:02.459163+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T09:30:02.460103+00:00] Processing: Monad Testnet
+[2026-08-30T09:30:02.460172+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T09:30:02.460217+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T09:30:02.460257+00:00] Processing: Linea Voyage
+[2026-08-30T09:30:02.460293+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:30:02.460326+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:30:02.460360+00:00] Processing: Berachain Testnet
+[2026-08-30T09:30:02.460396+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:30:02.460432+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:30:02.460470+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:30:02.467133+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T09:30:02.467265+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T09:30:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T09:45:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T09:45:01Z] Running OpenBugBounty monitor...
+[2026-08-30T09:45:01.896694+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T09:45:01.896914+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T09:45:01.897423+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T09:45:01.897545+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T09:45:01.897589+00:00] Scan completed: {"timestamp": "2026-08-30T09:45:01.897571+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T09:45:01.899350+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T09:45:01Z] Running DeFi bounty scanner...
+[2026-08-30T09:45:01.962786+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T09:45:01.964019+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T09:45:01.964079+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T09:45:01.964116+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T09:45:01.964142+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T09:45:01.964193+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T09:45:01.968763+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T09:45:01.968877+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T09:45:01.968920+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T09:45:01Z] Running vuln report pipeline...
+[2026-08-30T09:45:02.024229+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T09:45:02.025103+00:00] Discovering targets from known bounty programs...
+[2026-08-30T09:45:02.025271+00:00] Discovered 7 potential targets
+[2026-08-30T09:45:02.025352+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T09:45:02.025634+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.025918+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.032974+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.033412+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T09:45:02.033863+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.034438+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.036127+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.036212+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T09:45:02.043992+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.046384+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.050231+00:00] Report prepared: VULN-20260830094502 -> /Agentic/revenue/vuln_reports/VULN-20260830094502.json
+[2026-08-30T09:45:02.056803+00:00] Pipeline cycle complete: 3 findings validated, 3357 total reports prepared
+[2026-08-30T09:45:02.056917+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T09:45:01Z] Running revenue orchestrator...
+[2026-08-30T09:45:02.153482+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T09:45:02.154774+00:00] Platforms tracked: 7
+[2026-08-30T09:45:02.154858+00:00]   openbugbounty: pending_registration
+[2026-08-30T09:45:02.154908+00:00]   gitcoin: discovered
+[2026-08-30T09:45:02.155126+00:00]   dework: discovered
+[2026-08-30T09:45:02.155186+00:00]   layer3: discovered
+[2026-08-30T09:45:02.155249+00:00]   immunefi: discovered
+[2026-08-30T09:45:02.155289+00:00]   code4rena: discovered
+[2026-08-30T09:45:02.155323+00:00]   vuln_pipeline: operational
+[2026-08-30T09:45:02.156094+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T09:45:02.156806+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T09:45:02.166962+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T09:45:02.167099+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T09:45:01Z] Running autonomous trade scanner...
+[2026-08-30T09:45:02.209907+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T09:45:02.210155+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T09:45:02.210230+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T09:45:02.210275+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T09:45:02.210325+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T09:45:02.210362+00:00] Scanning yield/APY signals...
+[2026-08-30T09:45:02.210406+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T09:45:02.210450+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T09:45:02.216071+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T09:45:02.216265+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T09:45:02.216323+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T09:45:01Z] Running testnet airdrop executor...
+[2026-08-30T09:45:02.283335+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T09:45:02.284391+00:00] Processing: Monad Testnet
+[2026-08-30T09:45:02.284468+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T09:45:02.284533+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T09:45:02.284576+00:00] Processing: Linea Voyage
+[2026-08-30T09:45:02.284613+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:45:02.284649+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T09:45:02.284683+00:00] Processing: Berachain Testnet
+[2026-08-30T09:45:02.284718+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:45:02.284751+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:45:02.284786+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T09:45:02.289262+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T09:45:02.289363+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T09:45:01Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T10:00:03Z] === CRON REVENUE SUITE START ===
+[2026-08-30T10:00:03Z] Running OpenBugBounty monitor...
+[2026-08-30T10:00:04.894400+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T10:00:04.894615+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T10:00:04.894943+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T10:00:04.896192+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T10:00:04.896274+00:00] Scan completed: {"timestamp": "2026-08-30T10:00:04.896249+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T10:00:04.899853+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T10:00:03Z] Running DeFi bounty scanner...
+[2026-08-30T10:00:04.955220+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T10:00:04.955427+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T10:00:04.955470+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T10:00:04.955528+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T10:00:04.955557+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T10:00:04.955593+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T10:00:04.959633+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T10:00:04.959786+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T10:00:04.959817+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T10:00:03Z] Running vuln report pipeline...
+[2026-08-30T10:00:05.002738+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T10:00:05.004126+00:00] Discovering targets from known bounty programs...
+[2026-08-30T10:00:05.004331+00:00] Discovered 7 potential targets
+[2026-08-30T10:00:05.004402+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T10:00:05.004647+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.005196+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.027710+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.027888+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T10:00:05.041221+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.056791+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.063149+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.063314+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T10:00:05.079292+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.087461+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.098579+00:00] Report prepared: VULN-20260830100005 -> /Agentic/revenue/vuln_reports/VULN-20260830100005.json
+[2026-08-30T10:00:05.126189+00:00] Pipeline cycle complete: 3 findings validated, 3366 total reports prepared
+[2026-08-30T10:00:05.126389+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T10:00:03Z] Running revenue orchestrator...
+[2026-08-30T10:00:05.311123+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T10:00:05.312651+00:00] Platforms tracked: 7
+[2026-08-30T10:00:05.312750+00:00]   openbugbounty: pending_registration
+[2026-08-30T10:00:05.312798+00:00]   gitcoin: discovered
+[2026-08-30T10:00:05.312841+00:00]   dework: discovered
+[2026-08-30T10:00:05.312881+00:00]   layer3: discovered
+[2026-08-30T10:00:05.312919+00:00]   immunefi: discovered
+[2026-08-30T10:00:05.312959+00:00]   code4rena: discovered
+[2026-08-30T10:00:05.312997+00:00]   vuln_pipeline: operational
+[2026-08-30T10:00:05.314108+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T10:00:05.314893+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T10:00:05.318893+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T10:00:05.319016+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T10:00:03Z] Running autonomous trade scanner...
+[2026-08-30T10:00:05.357759+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T10:00:05.358151+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T10:00:05.358237+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T10:00:05.358286+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T10:00:05.358337+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T10:00:05.358376+00:00] Scanning yield/APY signals...
+[2026-08-30T10:00:05.358421+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T10:00:05.358464+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T10:00:05.371782+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T10:00:05.372166+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T10:00:05.372261+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T10:00:03Z] Running testnet airdrop executor...
+[2026-08-30T10:00:05.639632+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T10:00:05.640570+00:00] Processing: Monad Testnet
+[2026-08-30T10:00:05.640631+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T10:00:05.640678+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T10:00:05.640711+00:00] Processing: Linea Voyage
+[2026-08-30T10:00:05.640742+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:00:05.640772+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:00:05.640801+00:00] Processing: Berachain Testnet
+[2026-08-30T10:00:05.640829+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:00:05.640858+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:00:05.640890+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:00:05.647919+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T10:00:05.648132+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T10:00:03Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T10:15:02Z] === CRON REVENUE SUITE START ===
+[2026-08-30T10:15:02Z] Running OpenBugBounty monitor...
+[2026-08-30T10:15:02.225535+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T10:15:02.225726+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T10:15:02.226033+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T10:15:02.230069+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T10:15:02.230152+00:00] Scan completed: {"timestamp": "2026-08-30T10:15:02.230122+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T10:15:02.241470+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T10:15:02Z] Running DeFi bounty scanner...
+[2026-08-30T10:15:02.427833+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T10:15:02.428283+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T10:15:02.428361+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T10:15:02.428392+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T10:15:02.428418+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T10:15:02.428457+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T10:15:02.439775+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T10:15:02.439976+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T10:15:02.440028+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T10:15:02Z] Running vuln report pipeline...
+[2026-08-30T10:15:02.535035+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T10:15:02.535895+00:00] Discovering targets from known bounty programs...
+[2026-08-30T10:15:02.536175+00:00] Discovered 7 potential targets
+[2026-08-30T10:15:02.536269+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T10:15:02.536543+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.537025+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.539540+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.539624+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T10:15:02.545320+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.548756+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.553084+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.553209+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T10:15:02.561359+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.566873+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.573584+00:00] Report prepared: VULN-20260830101502 -> /Agentic/revenue/vuln_reports/VULN-20260830101502.json
+[2026-08-30T10:15:02.580787+00:00] Pipeline cycle complete: 3 findings validated, 3375 total reports prepared
+[2026-08-30T10:15:02.580913+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T10:15:02Z] Running revenue orchestrator...
+[2026-08-30T10:15:02.695189+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T10:15:02.696973+00:00] Platforms tracked: 7
+[2026-08-30T10:15:02.697173+00:00]   openbugbounty: pending_registration
+[2026-08-30T10:15:02.697259+00:00]   gitcoin: discovered
+[2026-08-30T10:15:02.697420+00:00]   dework: discovered
+[2026-08-30T10:15:02.697466+00:00]   layer3: discovered
+[2026-08-30T10:15:02.697525+00:00]   immunefi: discovered
+[2026-08-30T10:15:02.697565+00:00]   code4rena: discovered
+[2026-08-30T10:15:02.697599+00:00]   vuln_pipeline: operational
+[2026-08-30T10:15:02.698459+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T10:15:02.699796+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T10:15:02.704381+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T10:15:02.704487+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T10:15:02Z] Running autonomous trade scanner...
+[2026-08-30T10:15:02.759702+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T10:15:02.759919+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T10:15:02.759994+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T10:15:02.761082+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T10:15:02.761194+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T10:15:02.761244+00:00] Scanning yield/APY signals...
+[2026-08-30T10:15:02.761291+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T10:15:02.761346+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T10:15:02.774101+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T10:15:02.774401+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T10:15:02.774490+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T10:15:02Z] Running testnet airdrop executor...
+[2026-08-30T10:15:02.986374+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T10:15:02.989562+00:00] Processing: Monad Testnet
+[2026-08-30T10:15:02.989669+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T10:15:02.989737+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T10:15:02.989779+00:00] Processing: Linea Voyage
+[2026-08-30T10:15:02.989822+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:15:02.989859+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:15:02.992226+00:00] Processing: Berachain Testnet
+[2026-08-30T10:15:02.992310+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:15:02.992351+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:15:02.992388+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:15:03.000615+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T10:15:03.000755+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T10:15:02Z] === CRON REVENUE SUITE COMPLETE ===
+[2026-08-30T10:30:01Z] === CRON REVENUE SUITE START ===
+[2026-08-30T10:30:01Z] Running OpenBugBounty monitor...
+[2026-08-30T10:30:01.415681+00:00] === OpenBugBounty Monitor Cycle Start ===
+[2026-08-30T10:30:01.415860+00:00] Registration required for OpenBugBounty - preparing registration payload
+[2026-08-30T10:30:01.416154+00:00] Registration payload prepared - requires human approval for email verification
+[2026-08-30T10:30:01.416344+00:00] Scanning OpenBugBounty for new programs...
+[2026-08-30T10:30:01.416409+00:00] Scan completed: {"timestamp": "2026-08-30T10:30:01.416389+00:00", "platform": "openbugbounty", "scan_type": "program_discovery", "filters": {"min_bounty_usd": 50, "categories": ["web", "api", "defi", "smart-contract"], "payout_verified": true}, "action_required": "browser_automation_needed_for_full_scan"}
+[2026-08-30T10:30:01.417423+00:00] === OpenBugBounty Monitor Cycle Complete ===
+[2026-08-30T10:30:01Z] Running DeFi bounty scanner...
+[2026-08-30T10:30:01.553283+00:00] === DeFi Bounty Scanner Cycle Start ===
+[2026-08-30T10:30:01.553562+00:00] Scanning gitcoin: https://gitcoin.co/grants
+[2026-08-30T10:30:01.553615+00:00] Scanning dework: https://app.dework.xyz
+[2026-08-30T10:30:01.553655+00:00] Scanning layer3: https://layer3.xyz/bounties
+[2026-08-30T10:30:01.553679+00:00] Scanning immunefi: https://immunefi.com/bounties
+[2026-08-30T10:30:01.553727+00:00] Scanning code4rena: https://code4rena.com
+[2026-08-30T10:30:01.564380+00:00] Added 0 new DeFi platforms to ledger
+[2026-08-30T10:30:01.564596+00:00] Scan complete: 5 platforms, 4 autonomous-friendly
+[2026-08-30T10:30:01.564639+00:00] === DeFi Bounty Scanner Cycle Complete ===
+[2026-08-30T10:30:01Z] Running vuln report pipeline...
+[2026-08-30T10:30:01.692801+00:00] === Autonomous Vuln Report Pipeline Cycle Start ===
+[2026-08-30T10:30:01.693794+00:00] Discovering targets from known bounty programs...
+[2026-08-30T10:30:01.694015+00:00] Discovered 7 potential targets
+[2026-08-30T10:30:01.694117+00:00] Validated finding: potential_reentrancy on gitcoin (severity: medium)
+[2026-08-30T10:30:01.709320+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.716431+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.725519+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.725667+00:00] Validated finding: potential_reentrancy on dework (severity: medium)
+[2026-08-30T10:30:01.756043+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.775099+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.790693+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.793497+00:00] Validated finding: potential_reentrancy on layer3 (severity: medium)
+[2026-08-30T10:30:01.819714+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.830804+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.849844+00:00] Report prepared: VULN-20260830103001 -> /Agentic/revenue/vuln_reports/VULN-20260830103001.json
+[2026-08-30T10:30:01.862960+00:00] Pipeline cycle complete: 3 findings validated, 3384 total reports prepared
+[2026-08-30T10:30:01.863116+00:00] === Autonomous Vuln Report Pipeline Cycle Complete ===
+[2026-08-30T10:30:01Z] Running revenue orchestrator...
+[2026-08-30T10:30:01.930470+00:00] === Revenue Orchestrator Cycle Start ===
+[2026-08-30T10:30:01.932337+00:00] Platforms tracked: 7
+[2026-08-30T10:30:01.932446+00:00]   openbugbounty: pending_registration
+[2026-08-30T10:30:01.932496+00:00]   gitcoin: discovered
+[2026-08-30T10:30:01.932567+00:00]   dework: discovered
+[2026-08-30T10:30:01.932611+00:00]   layer3: discovered
+[2026-08-30T10:30:01.932650+00:00]   immunefi: discovered
+[2026-08-30T10:30:01.932685+00:00]   code4rena: discovered
+[2026-08-30T10:30:01.932721+00:00]   vuln_pipeline: operational
+[2026-08-30T10:30:01.933584+00:00] Bounties: 0 PRs submitted, $0 pending
+[2026-08-30T10:30:01.934292+00:00] No realized revenue eligible for Telegram (rule enforced)
+[2026-08-30T10:30:01.939026+00:00] Cycle complete: 0 USD pending across 0 submissions
+[2026-08-30T10:30:01.939116+00:00] === Revenue Orchestrator Cycle Complete ===
+{
+  "platforms": {
+    "openbugbounty": {
+      "status": "pending_registration",
+      "token_delivery": "email",
+      "registered": false
+    },
+    "gitcoin": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "defi",
+        "dao",
+        "infrastructure"
+      ]
+    },
+    "dework": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "governance",
+        "documentation",
+        "development"
+      ]
+    },
+    "layer3": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract",
+        "testing",
+        "audit"
+      ]
+    },
+    "immunefi": {
+      "status": "discovered",
+      "autonomous_friendly": false,
+      "categories": [
+        "security",
+        "smart-contract"
+      ]
+    },
+    "code4rena": {
+      "status": "discovered",
+      "autonomous_friendly": true,
+      "categories": [
+        "smart-contract-audit"
+      ]
+    },
+    "vuln_pipeline": {
+      "status": "operational",
+      "autonomous_capable": [
+        "immunefi",
+        "hackerone",
+        "code4rena"
+      ],
+      "human_required": [
+        "openbugbounty"
+      ]
+    }
+  },
+  "bounty_summary": {
+    "total_submitted_prs": 0,
+    "total_pending_usd": 0,
+    "by_repo": {},
+    "realized_usd": 0
+  },
+  "telegram_eligible": 0
+}
+[2026-08-30T10:30:01Z] Running autonomous trade scanner...
+[2026-08-30T10:30:02.003972+00:00] === Autonomous Trade Scanner Cycle Start ===
+[2026-08-30T10:30:02.004234+00:00] Scanning testnet airdrop campaigns...
+[2026-08-30T10:30:02.004310+00:00]   Found: Berachain Testnet (3 tasks)
+[2026-08-30T10:30:02.004361+00:00]   Found: Monad Testnet (2 tasks)
+[2026-08-30T10:30:02.004419+00:00]   Found: Linea Voyage (2 tasks)
+[2026-08-30T10:30:02.004460+00:00] Scanning yield/APY signals...
+[2026-08-30T10:30:02.004522+00:00]   Signal: USDC/ETH on Uniswap V3 (Arbitrum) @ 12.5% APY
+[2026-08-30T10:30:02.004573+00:00]   Signal: stETH/ETH on Curve (Mainnet) @ 3.8% APY
+[2026-08-30T10:30:02.010857+00:00] Added 2 new trade opportunities to ledger
+[2026-08-30T10:30:02.011059+00:00] Scan complete: 5 opportunities (3 autonomous-capable)
+[2026-08-30T10:30:02.011111+00:00] === Autonomous Trade Scanner Cycle Complete ===
+[2026-08-30T10:30:01Z] Running testnet airdrop executor...
+[2026-08-30T10:30:02.077390+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T10:30:02.078497+00:00] Processing: Monad Testnet
+[2026-08-30T10:30:02.078603+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T10:30:02.078651+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T10:30:02.078692+00:00] Processing: Linea Voyage
+[2026-08-30T10:30:02.078732+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:30:02.078771+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T10:30:02.078809+00:00] Processing: Berachain Testnet
+[2026-08-30T10:30:02.078847+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:30:02.078896+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:30:02.078934+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T10:30:02.088287+00:00] Cycle complete: 0 executed, 1 pending human action
+[2026-08-30T10:30:02.088410+00:00] === Testnet Airdrop Executor Cycle Complete ===
+[2026-08-30T10:30:01Z] === CRON REVENUE SUITE COMPLETE ===

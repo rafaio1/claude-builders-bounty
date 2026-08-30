@@ -1,30 +1,30 @@
 {
   "entries": {
-    "3acf9785bbf4e09323a17c4869e4e9f3af909f96dc877a317c287500cc169870": {
-      "candidate_id": "drips:70ebaaef-ae55-4cd6-ab1e-965c92de78ea",
-      "candidate_key": "3acf9785bbf4e09323a17c4869e4e9f3af909f96dc877a317c287500cc169870",
+    "4610aff9021b852e03157587957fec09b7ebf013dc0e355a54ce34a6eb74127c": {
+      "candidate_id": "drips:490731dc-c814-4b13-b770-58b3f2057c0e",
+      "candidate_key": "4610aff9021b852e03157587957fec09b7ebf013dc0e355a54ce34a6eb74127c",
       "decision": "rejected",
-      "drips_issue_id": "70ebaaef-ae55-4cd6-ab1e-965c92de78ea",
-      "drips_source_hash": "d218d73470e8f304d7b24ffe50c172e492d7c0353ff073a7e75bad5a03dfd5a7",
+      "drips_issue_id": "490731dc-c814-4b13-b770-58b3f2057c0e",
+      "drips_source_hash": "6bf89e0948a9e0dd5c1a14e96f8d38c50aa9a6f7b4feb878f435d22f8ff24c2d",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/issues/1118",
-        "issue_comments_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/issues/1118/comments?per_page=100",
-        "issue_node_id": "I_kwDORTOU-M8AAAABO1m6QQ",
-        "issue_timeline_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/issues/1118/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T07:45:47Z",
+        "issue_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/issues/887",
+        "issue_comments_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/issues/887/comments?per_page=100",
+        "issue_node_id": "I_kwDOQ9A3Bc8AAAABO2Wplw",
+        "issue_timeline_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/issues/887/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T10:07:50Z",
         "license_source": null,
         "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os",
-        "repository_node_id": "R_kgDORTOU-A",
-        "repository_pushed_at": "2026-08-30T07:21:11Z",
-        "tree_api_url": "https://api.github.com/repos/Farm-credit/stellar-app-os/git/trees/main?recursive=1"
+        "package_manifest_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/contents/package.json?ref=main",
+        "pull_history_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global",
+        "repository_node_id": "R_kgDOQ9A3BQ",
+        "repository_pushed_at": "2026-08-30T09:16:43Z",
+        "tree_api_url": "https://api.github.com/repos/Cylo-Traders/Agrocylo-Global/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
-        "points": 150,
+        "points": 100,
         "points_value_usd": null,
         "realized_revenue_usd": 0.0
       },
@@ -41,69 +41,162 @@
         "points_labels_consistent": true,
         "recent_merged_pr_history": true,
         "recent_repository_activity": true,
+        "referenced_paths_grounded": false,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 887,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 2,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": true
+        },
+        "deadline_margin_hours": -46.13,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [
+          "app.use",
+          "entry.status",
+          "idempotency.test.ts"
+        ],
+        "recent_merged_prs_sample": 19,
+        "referenced_paths": [
+          "app.use",
+          "entry.status",
+          "idempotency.test.ts"
+        ]
+      },
+      "rejection_reasons": [
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "license_not_proven",
+        "points_complexity_inconsistent",
+        "qualification_score_below_threshold",
+        "referenced_repository_paths_missing"
+      ],
+      "repo": "Cylo-Traders/Agrocylo-Global",
+      "schema_version": "1.0",
+      "score": 57.25,
+      "title": "[Backend] Global idempotency middleware keys only on the header \u2014 wrong-response replay, poison-locks, caches errors",
+      "valid_until": "2026-08-30T11:07:53.611926+00:00",
+      "verified_at": "2026-08-30T10:07:53.611926+00:00"
+    },
+    "74ee95055080b0cabf28b64d8e64c9ad5e460a34673ff540abf8a47f73b35a0d": {
+      "candidate_id": "drips:029315c3-31f7-4c5a-b05d-ec7c2526e9b8",
+      "candidate_key": "74ee95055080b0cabf28b64d8e64c9ad5e460a34673ff540abf8a47f73b35a0d",
+      "decision": "rejected",
+      "drips_issue_id": "029315c3-31f7-4c5a-b05d-ec7c2526e9b8",
+      "drips_source_hash": "96861eee1196afa4ee99a64fc735d28b97f2415ce914a579b6b97b54fd986d29",
+      "evidence": {
+        "default_branch": "main",
+        "issue_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus/issues/1115",
+        "issue_comments_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus/issues/1115/comments?per_page=100",
+        "issue_node_id": "I_kwDOQ9MjlM8AAAABOvNZ9w",
+        "issue_timeline_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus/issues/1115/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T10:28:02Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus",
+        "repository_node_id": "R_kgDOQ9MjlA",
+        "repository_pushed_at": "2026-08-30T10:25:15Z",
+        "tree_api_url": "https://api.github.com/repos/Hub-of-Evolution/CraftNexus/git/trees/main?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 200,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": false,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": false,
+        "implementation_allowed": false,
+        "license_present": false,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
         "referenced_paths_grounded": true,
         "repository_identity": true,
         "repository_public_active": true,
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
-        "scope_testable": false,
+        "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 1118,
+      "issue_number": 1115,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 4,
+        "application_comment_count": 2,
         "clarity_signals": {
-          "acceptance_criteria": false,
-          "expected_behavior": false,
-          "substantive_body": false,
+          "acceptance_criteria": true,
+          "expected_behavior": true,
+          "substantive_body": true,
           "test_expectation": false
         },
-        "deadline_margin_hours": -11.87,
+        "deadline_margin_hours": -22.48,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 9,
+        "recent_merged_prs_sample": 20,
         "referenced_paths": []
       },
       "rejection_reasons": [
+        "continuous_integration_not_proven",
         "github_application_comment_present",
+        "github_issue_assigned_or_unknown",
         "insufficient_wave_deadline_margin",
         "license_not_proven",
-        "qualification_score_below_threshold",
-        "scope_not_sufficiently_testable"
+        "qualification_score_below_threshold"
       ],
-      "repo": "Farm-credit/stellar-app-os",
+      "repo": "Hub-of-Evolution/CraftNexus",
       "schema_version": "1.0",
-      "score": 53.5,
-      "title": "feat(backend): API versioning - support v1, v2 endpoints with deprecation warnings",
-      "valid_until": "2026-08-30T08:52:18.591172+00:00",
-      "verified_at": "2026-08-30T07:52:18.591172+00:00"
+      "score": 69.25,
+      "title": "Add an Archival Record Policy",
+      "valid_until": "2026-08-30T11:28:53.571556+00:00",
+      "verified_at": "2026-08-30T10:28:53.571556+00:00"
     },
-    "88b569a8502ef940ca385643253cc794d1af3f771c39f786b6d113d11a4c8541": {
-      "candidate_id": "drips:570bd243-2efc-409c-9b7e-01ddea4be840",
-      "candidate_key": "88b569a8502ef940ca385643253cc794d1af3f771c39f786b6d113d11a4c8541",
+    "a81108e6a4bea4d84f916b6623a69e22523c6b8157e9e31e49bf7d14774333a7": {
+      "candidate_id": "drips:f1134728-01ed-423e-b84c-dbb826ea5216",
+      "candidate_key": "a81108e6a4bea4d84f916b6623a69e22523c6b8157e9e31e49bf7d14774333a7",
       "decision": "rejected",
-      "drips_issue_id": "570bd243-2efc-409c-9b7e-01ddea4be840",
-      "drips_source_hash": "6932c13fed4cbbb419232a4a9264635763364e2aabe326487f4bca7b3906df34",
+      "drips_issue_id": "f1134728-01ed-423e-b84c-dbb826ea5216",
+      "drips_source_hash": "06f5a41a0dbaefc678de8741291a669937ed943cd46e4100f92aa46338cb4eff",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/issues/775",
-        "issue_comments_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/issues/775/comments?per_page=100",
-        "issue_node_id": "I_kwDORTD1nc8AAAABJmS6WA",
-        "issue_timeline_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/issues/775/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T08:02:55Z",
+        "issue_api_url": "https://api.github.com/repos/mohraj123/Kovara/issues/616",
+        "issue_comments_api_url": "https://api.github.com/repos/mohraj123/Kovara/issues/616/comments?per_page=100",
+        "issue_node_id": "I_kwDOSw27D88AAAABO2UGzA",
+        "issue_timeline_api_url": "https://api.github.com/repos/mohraj123/Kovara/issues/616/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T09:56:57Z",
         "license_source": null,
         "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/SoroLabs/SoroTask",
-        "repository_node_id": "R_kgDORTD1nQ",
-        "repository_pushed_at": "2026-08-29T19:14:38Z",
-        "tree_api_url": "https://api.github.com/repos/SoroLabs/SoroTask/git/trees/main?recursive=1"
+        "package_manifest_api_url": "https://api.github.com/repos/mohraj123/Kovara/contents/package.json?ref=main",
+        "pull_history_api_url": "https://api.github.com/repos/mohraj123/Kovara/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/mohraj123/Kovara",
+        "repository_node_id": "R_kgDOSw27Dw",
+        "repository_pushed_at": "2026-08-28T18:46:33Z",
+        "tree_api_url": "https://api.github.com/repos/mohraj123/Kovara/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -133,25 +226,25 @@
         "scope_testable": false,
         "tests_present": true
       },
-      "issue_number": 775,
+      "issue_number": 616,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
         "application_comment_count": 0,
         "clarity_signals": {
-          "acceptance_criteria": false,
+          "acceptance_criteria": true,
           "expected_behavior": false,
           "substantive_body": true,
           "test_expectation": false
         },
-        "deadline_margin_hours": -20.05,
+        "deadline_margin_hours": -21.96,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
         "missing_referenced_paths": [],
-        "recent_merged_prs_sample": 16,
+        "recent_merged_prs_sample": 20,
         "referenced_paths": [
-          "contract/src/lib.rs"
+          "Backend/src/middleware"
         ]
       },
       "rejection_reasons": [
@@ -160,34 +253,34 @@
         "qualification_score_below_threshold",
         "scope_not_sufficiently_testable"
       ],
-      "repo": "SoroLabs/SoroTask",
+      "repo": "mohraj123/Kovara",
       "schema_version": "1.0",
-      "score": 64.75,
-      "title": "\ud83e\udd80 [CONTRACT] Gas-Optimized Custom Data Serializer for High-Frequency Task Payloads",
-      "valid_until": "2026-08-30T09:02:58.067889+00:00",
-      "verified_at": "2026-08-30T08:02:58.067889+00:00"
+      "score": 68.5,
+      "title": "Implement API rate limiting by address",
+      "valid_until": "2026-08-30T10:57:23.591923+00:00",
+      "verified_at": "2026-08-30T09:57:23.591923+00:00"
     },
-    "d8d47dc09ff6f92c8c44073be58ec9fdc39a581e32775e46c96dd3cdf1e11da4": {
-      "candidate_id": "drips:d41edb35-c81e-45fa-adff-8f3f0014dfb7",
-      "candidate_key": "d8d47dc09ff6f92c8c44073be58ec9fdc39a581e32775e46c96dd3cdf1e11da4",
+    "f34219f037e6518d6679286e5c3791524b349745a37499e709a7f79a23fca055": {
+      "candidate_id": "drips:4e163a10-cd6d-44a9-a82d-d4e496b4ed42",
+      "candidate_key": "f34219f037e6518d6679286e5c3791524b349745a37499e709a7f79a23fca055",
       "decision": "rejected",
-      "drips_issue_id": "d41edb35-c81e-45fa-adff-8f3f0014dfb7",
-      "drips_source_hash": "d2a63b25d5101f922933911ea67ccdc07d08cae7e5b56553c7dda07ea0fa5c5a",
+      "drips_issue_id": "4e163a10-cd6d-44a9-a82d-d4e496b4ed42",
+      "drips_source_hash": "171663a8e4bb9e77ccf84389bd41d5b949b0530eaddfa8c8b2743c02a1db5983",
       "evidence": {
         "default_branch": "main",
-        "issue_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/issues/1090",
-        "issue_comments_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/issues/1090/comments?per_page=100",
-        "issue_node_id": "I_kwDORodtHM8AAAABKHO_kg",
-        "issue_timeline_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/issues/1090/timeline?per_page=100",
-        "issue_updated_at": "2026-08-30T07:33:20Z",
-        "license_source": null,
-        "license_spdx": null,
-        "package_manifest_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/contents/package.json?ref=main",
-        "pull_history_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/pulls?state=closed&sort=updated&direction=desc&per_page=20",
-        "repository_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat",
-        "repository_node_id": "R_kgDORodtHA",
-        "repository_pushed_at": "2026-08-28T10:07:30Z",
-        "tree_api_url": "https://api.github.com/repos/leojay-net/Stellar-Dex-Chat/git/trees/main?recursive=1"
+        "issue_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts/issues/249",
+        "issue_comments_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts/issues/249/comments?per_page=100",
+        "issue_node_id": "I_kwDOS_hJcs8AAAABOgQzIw",
+        "issue_timeline_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts/issues/249/timeline?per_page=100",
+        "issue_updated_at": "2026-08-30T09:36:04Z",
+        "license_source": "github_repository_license",
+        "license_spdx": "MIT",
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts",
+        "repository_node_id": "R_kgDOS_hJcg",
+        "repository_pushed_at": "2026-07-31T03:07:53Z",
+        "tree_api_url": "https://api.github.com/repos/stellar-vortex-protocol/vortex-contracts/git/trees/main?recursive=1"
       },
       "financial_truth": {
         "expected_revenue_usd": null,
@@ -202,69 +295,55 @@
         "deadline_margin": false,
         "github_issue_open_unassigned": true,
         "implementation_allowed": false,
-        "license_present": false,
-        "no_application_comments": false,
+        "license_present": true,
+        "no_application_comments": true,
         "no_linked_pull_request_activity": true,
         "points_labels_consistent": true,
         "recent_merged_pr_history": true,
         "recent_repository_activity": true,
-        "referenced_paths_grounded": false,
+        "referenced_paths_grounded": true,
         "repository_identity": true,
         "repository_public_active": true,
         "repository_tree_complete": true,
         "scope_matches_declared_complexity": true,
         "scope_nontrivial": true,
         "scope_testable": true,
-        "tests_present": true
+        "tests_present": false
       },
-      "issue_number": 1090,
+      "issue_number": 249,
       "minimum_score": 75.0,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "application_comment_count": 3,
+        "application_comment_count": 0,
         "clarity_signals": {
           "acceptance_criteria": true,
-          "expected_behavior": false,
+          "expected_behavior": true,
           "substantive_body": true,
           "test_expectation": true
         },
-        "deadline_margin_hours": -19.7,
+        "deadline_margin_hours": -21.6,
         "github_points_labels": [],
         "license_warning": null,
         "linked_pull_request_event_count": 0,
-        "missing_referenced_paths": [
-          "lib.rs",
-          "test_deposit_fuzz.rs",
-          "test_deposit_invariants.rs",
-          "test_pause_invariants.rs",
-          "test_withdraw_fees_invariants.rs"
-        ],
-        "recent_merged_prs_sample": 19,
+        "missing_referenced_paths": [],
+        "recent_merged_prs_sample": 20,
         "referenced_paths": [
-          "Dechat/stellar-contracts/src/lib.rs",
-          "Dechat/stellar-contracts/src/test_is_circuit_breaker_tripped_invariants.rs",
-          "lib.rs",
-          "test_deposit_fuzz.rs",
-          "test_deposit_invariants.rs",
-          "test_pause_invariants.rs",
-          "test_withdraw_fees_invariants.rs"
+          "docs/solver-integration-guide.md",
+          "intent_settlement/src/lib.rs"
         ]
       },
       "rejection_reasons": [
-        "github_application_comment_present",
         "insufficient_wave_deadline_margin",
-        "license_not_proven",
-        "qualification_score_below_threshold",
-        "referenced_repository_paths_missing"
+        "test_suite_not_proven"
       ],
-      "repo": "leojay-net/Stellar-Dex-Chat",
+      "repo": "stellar-vortex-protocol/vortex-contracts",
       "schema_version": "1.0",
-      "score": 72.25,
-      "title": "test(contract): add Soroban invariant tests for is_circuit_breaker_tripped",
-      "valid_until": "2026-08-30T08:41:50.628347+00:00",
-      "verified_at": "2026-08-30T07:41:50.628347+00:00"
+      "score": 77.0,
+      "title": "[High] Add a paginated `list_open_intents` view",
+      "valid_until": "2026-08-30T10:36:16.747900+00:00",
+      "verified_at": "2026-08-30T09:36:16.747900+00:00"
     }
   },
   "schema_version": "1.0",
-  "updated_at": "2026-08-30T08:13:33.549207+00:00"
+  "updated_at": "2026-08-30T10:28:53.571556+00:00"
 }
