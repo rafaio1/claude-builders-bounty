@@ -1,7 +1,7 @@
 {
   "target_usd": 20000000,
   "current_balance_brl": 100.0,
-  "last_updated": "2026-08-30T08:05:00Z",
+  "last_updated": "2026-08-30T08:07:00Z",
   "active_contests": {
     "sherlock": {
       "status": "no_active_contests",
@@ -17,9 +17,51 @@
       "last_check": "2026-08-30T07:52:00Z"
     },
     "immunefi": {
-      "status": "not_checked",
-      "note": "Immunefi bug bounties are evergreen (no contest deadline). Check for high-payout DeFi protocols with open bounties.",
-      "top_bounties": []
+      "status": "scraped",
+      "note": "Top evergreen bounties identified via live scrape on 2026-08-30. No KYC required for submission.",
+      "top_bounties": [
+        {
+          "protocol": "Ethena",
+          "max_payout_usd": 3000000,
+          "slug": "ethena"
+        },
+        {
+          "protocol": "DeXe Protocol",
+          "max_payout_usd": 3000000,
+          "slug": "dexeprotocol"
+        },
+        {
+          "protocol": "SSV Network",
+          "max_payout_usd": 250000,
+          "slug": "ssvnetwork"
+        },
+        {
+          "protocol": "ENS",
+          "max_payout_usd": 250000,
+          "slug": "ens"
+        },
+        {
+          "protocol": "Lombard Finance",
+          "max_payout_usd": 250000,
+          "slug": "lombard-finance"
+        },
+        {
+          "protocol": "The Graph",
+          "max_payout_usd": 500000,
+          "slug": "thegraph"
+        },
+        {
+          "protocol": "StackingDAO",
+          "max_payout_usd": 100000,
+          "slug": "stackingdao"
+        },
+        {
+          "protocol": "Cosmos",
+          "max_payout_usd": 50000,
+          "slug": "cosmos"
+        }
+      ],
+      "last_check": "2026-08-30T08:07:00Z"
     }
   },
   "analysis_queue": [
@@ -81,7 +123,7 @@
     "sherlock_contests": "BLOCKED - Live verification shows 0 active contests as of 2026-08-30. Beefy/Frax/Kwenta/Lyra not listed.",
     "bybit_arb": "BLOCKED - Insufficient capital (R$100 BRL available, need $500+)",
     "immediate_actionable_vectors": "NONE - All autonomous paths blocked by KYC, broken infrastructure, or capital requirements",
-    "immunefi_bounties": "NOT_CHECKED - Evergreen bug bounties may have actionable vectors without contest deadlines"
+    "immunefi_bounties": "ACTIVE - 8 high-value evergreen bounties identified (Ethena/DeXe $3M, SSV/ENS/Lombard $250k). No contest deadline, no KYC for submission."
   },
   "human_action_required": {
     "priority_1": {
@@ -104,5 +146,5 @@
     }
   },
   "autonomous_status": "ALL_VECTORS_BLOCKED_PENDING_HUMAN_ACTION",
-  "next_agent_action": "Check Immunefi for high-value evergreen bounties; verify Code4rena active contests; continue Lyra/Frax deep audit from existing repos"
+  "next_agent_action": "Clone Ethena and DeXe Protocol repos for deep audit; these have highest payout potential ($3M) and are evergreen."
 }
