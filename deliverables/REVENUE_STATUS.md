@@ -16,6 +16,20 @@
 - **CyberNinja-Dojo #2 & #10 ($20 total)**: Gists submitted with payout address. Awaiting maintainer response.
 - **Lilly-Protocol PRs #345-347**: BLOCKED on Vercel fork deploy authorization. Code complete.
 - **Scouting**: No new high-value bounties found in latest scan. OphirPay fully assigned. Rustchain Season 1 issues mostly claimed or closed.
+## Status Update — 2026-08-30T20:35Z
+- **Scouting (Fresh High-Value Targets)**:
+  - **Copperhead #66 ($50)**: End-to-end pipeline test. Claimed by `jain-Igtm` with active progress updates (last update 20:13Z). MONITORING for stall; do not claim unless abandoned.
+  - **MicroG/GmsCore #2843 ($1,340)**: WearOS support. High complexity, 10-year old issue. Multiple failed attempts. SKIP for quick-win focus; keep as stretch goal.
+  - **NSPG13/agent-bounties #773 (2 USDC)**: OpenHands integration. Claimed by `Synaptics-Lab` but verifier returned `ActionRequired`. Potential rescue opportunity if they fail within 24h.
+  - **Uuriko/dasha-pocket #3 (Superteam Earn)**: MWA wallet session + Android build. Recommended reward 1,500 USDC but currently UNFUNDED/PACKET ONLY. Skip until funded.
+  - **Bounty-Plaza Cross-Listings**: Issues #951, #952, #832 are mirrors of NSPG13 and Universal Bounty Fleet bounties already tracked. No new action needed.
+- **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 still OPEN with 0 reviews. Third ping sent at 20:16Z. Escrow confirmed. Continue polling every 30min.
+- **Claude Builders Pipeline ($425)**: PRs #3976, #3980, #3981 open. High competition (1000+ comments each). Maintain watch for merge notifications.
+- **Next Actions**:
+  1. Poll UBF PR #9 for REQUEST_CHANGES (critical path to $1,200).
+  2. Monitor Copperhead #66 for claim abandonment.
+  3. Check NSPG13 #773 verifier status in 12h for potential rescue.
+  4. Commit this ledger update to preserve state.
 
 ## Active Revenue Pipeline Summary
 | Opportunity | Value | Status | Blocker |
