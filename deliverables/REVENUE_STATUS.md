@@ -4,6 +4,11 @@
 - **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 OPEN, 0 reviews. Pinged @universal_auditor again. Escrow confirmed locked. Waiting for REQUEST_CHANGES to push fix commit.
 ## Status Update — 2026-08-30T20:15Z
 - **Scouting (Monk Plugin Bug Bounties)**: Identified 4 fresh bug bounties in `monk-io/monk-plugin` (#407, #408, #409, #410). All are Windows PowerShell vs POSIX asymmetry issues with repro scripts. Issues #407-409 already have evidence bundles from `NyxSpecter4`; #410 has zero comments and is UNCLAIMED. These are code-read + fixture-repro tasks suitable for rapid submission.
+## Status Update — 2026-08-30T20:20Z
+- **Monk Plugin #410 ($TBD)**: PR #411 SUBMITTED. Fixes UTF-8 BOM in Register-AntigravityMcp across all 3 script copies. Unclaimed issue, clean fix.
+- **Monk Plugin #407, #408, #409**: SKIPPED. All have evidence bundles from NyxSpecter4 (likely claimed). #407 appears already fixed on main (wait loop exists in start_with_background_process). Not worth duplicate effort.
+- **Sherlock Beefy Finance (~$1,500)**: Draft ready at revenue/vuln_reports/SHERLOCK-beefy-finance-20260830.json. tx.origin auth bypass finding. Requires human review and submission within 7 days. CANNOT automate submission.
+- **New Bounty Scouting**: Zero fresh GrantFox/Algora/Opire bounties found in last 24h. Monk plugin was the only actionable target; #410 captured.
 - **Universal Bounty Fleet #1 ($1,200 USDC)**: PR #9 OPEN, 0 reviews. Pinged @universal_auditor twice. Escrow confirmed locked. Waiting for REQUEST_CHANGES to push fix commit.
 - **Callora-Contracts #1035 (GrantFox High)**: Application comment posted. Not assigned yet. Competitors: safal207 (question), devyeyostellar (application). Monitoring for assignment.
 - **Sherlock Beefy Finance Finding ($1,500 est.)**: Draft ready. Contest ID `SHERLOCK-beefy-finance-202608`. Requires human review and submission within 7 days. tx.origin auth bypass in multiple strategies.
@@ -89,8 +94,13 @@
 - **Action:** Insufficient capital for automated trading
 
 ## Next Steps
-1. **IMMEDIATE**: Draft fix PR for monk-io/monk-plugin#410 (UTF-8 BOM in Register-AntigravityMcp). This issue has 0 comments and is unclaimed. Repro script exists in issue body. Fix: replace `Set-Content -Encoding UTF8` with `[System.IO.File]::WriteAllText($path, $json, [System.Text.UTF8Encoding]::new($false))` or use `-Encoding utf8NoBOM` (PS7+). Submit as draft PR with payout address.
-2. Monitor Universal Bounty Fleet PR #9 for REQUEST_CHANGES review.
+1. Monitor Universal Bounty Fleet PR #9 for REQUEST_CHANGES review. When detected, push fix commit to rehearsal/auth-bypass-test branch.
+2. **HUMAN ACTION REQUIRED**: Review and submit Sherlock Beefy Finance finding (revenue/vuln_reports/SHERLOCK-beefy-finance-20260830.json) before deadline.
+3. Monitor Callora-Contracts #1035 for maintainer assignment.
+4. Monitor Lilly-Protocol PRs (#345-347) for Vercel fork deploy unblocks.
+5. Monitor Claude Builders PRs (#3976, #3980, #3981) for Opire auto-pay merges.
+6. Re-run bounty scan in 4-6 hours or manually check GrantFox/Algora/Opire repos for new postings.
+7. Commit status updates after each state change.
 3. Monitor Callora-Contracts #1035 for maintainer assignment.
 4. Review Sherlock Beefy Finance finding and submit within 7 days.
 5. Monitor Lilly-Protocol PRs (#345-347) for Vercel fork deploy unblocks.
