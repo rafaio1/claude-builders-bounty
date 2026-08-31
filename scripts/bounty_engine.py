@@ -964,8 +964,8 @@ def triage(candidates):
         "christian-sidak", "s6pa1rta3n-lab"
     ]
     def _is_valid_value(c):
-    # DEBUG: Log candidate value before gate evaluation
-    log(f"VALUE_GATE_CHECK: repo={c.get('repo','?')} url={c.get('url','?')} value_usd={c.get('value_usd','MISSING')} type={type(c.get('value_usd')).__name__}")
+        # DEBUG: Log candidate value before gate evaluation
+        log(f"VALUE_GATE_CHECK: repo={c.get('repo','?')} url={c.get('url','?')} value_usd={c.get('value_usd','MISSING')} type={type(c.get('value_usd')).__name__}")
     v = str(c.get("value_usd", "unknown"))
     repo = str(c.get("repo", "")).lower()
         # Allow verified org repos through even with unknown value for triage evaluation
