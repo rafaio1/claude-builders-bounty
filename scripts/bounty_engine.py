@@ -1881,13 +1881,13 @@ def main():
             # Many real bounties lack clear metadata but are valid fix opportunities
             if paid_targets or label_paid:
                 targets = paid_targets + label_paid
-            # CRITICAL FIX: Ensure inferred value is explicitly set in target dict for ledger recording
-            # The triage phase identifies label-inferred bounties but doesn't always populate value_usd
-            # This caused the ledger to record $0.0 even when bounties were valid paid work
-            for t in label_paid:
-                if _parse_bounty_value(t.get('value_usd', 0)) == 0:
-                    t['implicit_value_usd'] = "100"  # Minimum viable inferred value
-                    log(f"INFERRED_VALUE_INJECTED: {t.get('url','?')} assigned $100 from labels")
+                # CRITICAL FIX: Ensure inferred value is explicitly set in target dict for ledger recording
+                # The triage phase identifies label-inferred bounties but doesn't always populate value_usd
+                # This caused the ledger to record $0.0 even when bounties were valid paid work
+                for t in label_paid:
+                    if _parse_bounty_value(t.get('value_usd', 0)) == 0:
+                        t['implicit_value_usd'] = "100"  # Minimum viable inferred value
+                        log(f"INFERRED_VALUE_INJECTED: {t.get('url','?')} assigned $100 from labels")
             elif targets:
                 log(f"No paid targets identified, falling back to top {min(3, len(targets))} unknown-value candidates")
                 targets = targets[:3]
