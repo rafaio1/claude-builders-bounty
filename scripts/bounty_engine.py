@@ -950,14 +950,29 @@ def triage(candidates):
         return (val, x.get("discovered_at",""))
     sorted_cands = sorted(candidates, key=_sort_key, reverse=True)[:10]
     # HARD VALUE GATE: Reject bounties with no verified payout to prevent $0 submissions
+    # EXCEPTION: Verified org repos are allowed through with unknown value so triage LLM
+    # can infer actual value from issue context (many legit bounties lack regex-parseable $)
+    verified_orgs_value_bypass = [
+        "algora-io", "replit", "supabase", "safe-global", "ensdomains",
+        "uniswap", "aave", "lens-protocol", "farcaster", "matter-labs",
+        "immunefi", "code4rena", "sherlock-xyz", "hats-finance",
+        "starknet-io", "celestiaorg", "berachain", "monad-labs",
+        "aptos-labs", "mystenlabs", "arbitrum", "ethereum-optimism",
+        "maticnetwork", "solana-labs", "ubiquity", "near", "hyperledger",
+        "ethereum", "paritytech", "filecoin-project", "ipfs", "sourcegraph"
+    ]
     def _is_valid_value(c):
         v = str(c.get("value_usd", "unknown"))
+        repo = str(c.get("repo", "")).lower()
+        # Allow verified org repos through even with unknown value for triage evaluation
+        is_verified = any(org in repo for org in verified_orgs_value_bypass)
         if v in ("unknown", "0", "0.0", "", "None"):
-            return False
+            return is_verified  # Pass if verified org, fail otherwise
         try:
-            return float(v.replace(",", "")) >= 50.0
+            min_val = 25.0 if is_verified else 50.0
+            return float(v.replace(",", "")) >= min_val
         except (ValueError, TypeError):
-            return False
+            return is_verified
     valued_cands = [c for c in sorted_cands if _is_valid_value(c)]
     if len(valued_cands) < len(sorted_cands):
         log(f"Value gate: filtered {len(sorted_cands) - len(valued_cands)} zero/unknown-value candidates")
