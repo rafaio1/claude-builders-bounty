@@ -317,10 +317,10 @@ def get_spot_position(symbol="BTCUSDT"):
         coins = r.get("result", {}).get("list", [{}])[0].get("coin", [])
         for c in coins:
             if c.get("coin") == "BTC":
-                # Prefer walletBalance over availableToWithdraw (latter often empty string)
+                # Unified accounts: prefer walletBalance (availableToWithdraw often empty)
                 wb = c.get("walletBalance", "")
                 atw = c.get("availableToWithdraw", "")
-                val = atw if (atw and atw != "") else wb
+                val = wb if (wb and str(wb).strip() != "") else atw
                 if not val or val == "":
                     return 0.0
                 return float(val)
