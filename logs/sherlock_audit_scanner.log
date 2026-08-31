@@ -1048,3 +1048,44 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-31T00:00:02.842763+00:00] === Sherlock Audit Scanner Cycle Start ===
+[2026-08-31T00:00:02.859331+00:00] Scanning Sherlock for active audit contests...
+[2026-08-31T00:00:02.859478+00:00]   Found: Lyra Finance - $55,000 pool - active (audit)
+[2026-08-31T00:00:02.859576+00:00]   Found: Thales Protocol - $40,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.859645+00:00]   Found: Kwenta Exchange - $65,000 pool - active (audit)
+[2026-08-31T00:00:02.859723+00:00]   Found: Polynomial Protocol - $35,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.859812+00:00]   Found: Velodrome Finance - $50,000 pool - escalation (judging)
+[2026-08-31T00:00:02.860988+00:00]   Found: Aerodrome Finance - $45,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.870119+00:00]   Found: Beefy Finance - $70,000 pool - active (audit)
+[2026-08-31T00:00:02.870233+00:00]   Found: Convex Finance - $60,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.870297+00:00]   Found: Frax Finance - $80,000 pool - active (audit)
+[2026-08-31T00:00:02.870351+00:00]   Found: GMX V2 - $120,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.842763+00:00] === Sherlock Audit Scanner Cycle Start ===
+[2026-08-31T00:00:02.859331+00:00] Scanning Sherlock for active audit contests...
+[2026-08-31T00:00:02.859478+00:00]   Found: Lyra Finance - $55,000 pool - active (audit)
+[2026-08-31T00:00:02.859576+00:00]   Found: Thales Protocol - $40,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.859645+00:00]   Found: Kwenta Exchange - $65,000 pool - active (audit)
+[2026-08-31T00:00:02.859723+00:00]   Found: Polynomial Protocol - $35,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.859812+00:00]   Found: Velodrome Finance - $50,000 pool - escalation (judging)
+[2026-08-31T00:00:02.860988+00:00]   Found: Aerodrome Finance - $45,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.870119+00:00]   Found: Beefy Finance - $70,000 pool - active (audit)
+[2026-08-31T00:00:02.870233+00:00]   Found: Convex Finance - $60,000 pool - upcoming (audit)
+[2026-08-31T00:00:02.870297+00:00]   Found: Frax Finance - $80,000 pool - active (audit)
+[2026-08-31T00:00:02.870351+00:00]   Found: GMX V2 - $120,000 pool - upcoming (audit)
+Traceback (most recent call last):
+  File "/Agentic/scripts/sherlock_audit_scanner.py", line 146, in <module>
+    main()
+  File "/Agentic/scripts/sherlock_audit_scanner.py", line 136, in main
+    update_ledger_with_sherlock(opportunities)
+  File "/Agentic/scripts/sherlock_audit_scanner.py", line 93, in update_ledger_with_sherlock
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

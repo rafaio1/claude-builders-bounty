@@ -6234,3 +6234,141 @@ json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
 [2026-08-30T23:30:06.341387+00:00]   SKIP: Unknown network Berachain Testnet
 [2026-08-30T23:30:06.341424+00:00]   SKIP: Unknown network Berachain Testnet
 [2026-08-30T23:30:06.341461+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T23:45:02.961145+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-30T23:45:02.962186+00:00] Processing: Monad Testnet
+[2026-08-30T23:45:02.962267+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-30T23:45:02.962316+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-30T23:45:02.962356+00:00] Processing: Linea Voyage
+[2026-08-30T23:45:02.962394+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T23:45:02.962431+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-30T23:45:02.962467+00:00] Processing: Berachain Testnet
+[2026-08-30T23:45:02.962519+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T23:45:02.962563+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-30T23:45:02.962600+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.148068+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:00:03.174337+00:00] Processing: Monad Testnet
+[2026-08-31T00:00:03.174470+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:00:03.174549+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:00:03.174599+00:00] Processing: Linea Voyage
+[2026-08-31T00:00:03.174673+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:03.174725+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:03.174780+00:00] Processing: Berachain Testnet
+[2026-08-31T00:00:03.174826+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.174929+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.174992+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.148068+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:00:03.174337+00:00] Processing: Monad Testnet
+[2026-08-31T00:00:03.174470+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:00:03.174549+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:00:03.174599+00:00] Processing: Linea Voyage
+[2026-08-31T00:00:03.174673+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:03.174725+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:03.174780+00:00] Processing: Berachain Testnet
+[2026-08-31T00:00:03.174826+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.174929+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:03.174992+00:00]   SKIP: Unknown network Berachain Testnet
+Traceback (most recent call last):
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 229, in <module>
+    main()
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 223, in main
+    update_ledger_with_airdrop_progress(state)
+  File "/Agentic/scripts/testnet_airdrop_executor.py", line 156, in update_ledger_with_airdrop_progress
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-31T00:00:06.890567+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:00:06.896465+00:00] Processing: Monad Testnet
+[2026-08-31T00:00:06.896599+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:00:06.896644+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:00:06.896676+00:00] Processing: Linea Voyage
+[2026-08-31T00:00:06.896706+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:06.896736+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:00:06.896765+00:00] Processing: Berachain Testnet
+[2026-08-31T00:00:06.896794+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:06.896824+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:00:06.897587+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:15:04.259387+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:15:04.262639+00:00] Processing: Monad Testnet
+[2026-08-31T00:15:04.262762+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:15:04.262826+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:15:04.263942+00:00] Processing: Linea Voyage
+[2026-08-31T00:15:04.264009+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:15:04.264050+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:15:04.264086+00:00] Processing: Berachain Testnet
+[2026-08-31T00:15:04.264142+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:15:04.264209+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:15:04.264270+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:30:04.387648+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:30:04.388669+00:00] Processing: Monad Testnet
+[2026-08-31T00:30:04.388736+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:30:04.388778+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:30:04.388819+00:00] Processing: Linea Voyage
+[2026-08-31T00:30:04.388858+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:30:04.388905+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:30:04.388942+00:00] Processing: Berachain Testnet
+[2026-08-31T00:30:04.388977+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:30:04.389012+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:30:04.389046+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:45:03.628722+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T00:45:03.629956+00:00] Processing: Monad Testnet
+[2026-08-31T00:45:03.630037+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T00:45:03.630096+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T00:45:03.630139+00:00] Processing: Linea Voyage
+[2026-08-31T00:45:03.630173+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:45:03.630206+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T00:45:03.630237+00:00] Processing: Berachain Testnet
+[2026-08-31T00:45:03.630270+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:45:03.630302+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T00:45:03.630334+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:00:04.388020+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T01:00:04.389145+00:00] Processing: Monad Testnet
+[2026-08-31T01:00:04.389227+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T01:00:04.389274+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T01:00:04.389313+00:00] Processing: Linea Voyage
+[2026-08-31T01:00:04.389347+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:00:04.389380+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:00:04.389427+00:00] Processing: Berachain Testnet
+[2026-08-31T01:00:04.389461+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:00:04.389492+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:00:04.389547+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:15:03.996589+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T01:15:03.997983+00:00] Processing: Monad Testnet
+[2026-08-31T01:15:03.998079+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T01:15:03.998133+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T01:15:03.998182+00:00] Processing: Linea Voyage
+[2026-08-31T01:15:03.998225+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:15:03.998262+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:15:03.998303+00:00] Processing: Berachain Testnet
+[2026-08-31T01:15:03.998340+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:15:03.998381+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:15:03.998425+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:30:06.210432+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T01:30:06.216945+00:00] Processing: Monad Testnet
+[2026-08-31T01:30:06.224810+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T01:30:06.224914+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T01:30:06.224975+00:00] Processing: Linea Voyage
+[2026-08-31T01:30:06.225022+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:30:06.225063+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:30:06.225103+00:00] Processing: Berachain Testnet
+[2026-08-31T01:30:06.225146+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:30:06.225190+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:30:06.225234+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:45:03.703737+00:00] === Testnet Airdrop Executor Cycle Start ===
+[2026-08-31T01:45:03.704801+00:00] Processing: Monad Testnet
+[2026-08-31T01:45:03.704894+00:00]   PENDING_HUMAN: faucet on Monad Testnet requires browser/captcha
+[2026-08-31T01:45:03.704945+00:00]   SKIP: Already completed monad_testnet:deploy_contract
+[2026-08-31T01:45:03.704995+00:00] Processing: Linea Voyage
+[2026-08-31T01:45:03.705039+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:45:03.705078+00:00]   SKIP: Unknown network Linea Voyage
+[2026-08-31T01:45:03.705114+00:00] Processing: Berachain Testnet
+[2026-08-31T01:45:03.705154+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:45:03.705192+00:00]   SKIP: Unknown network Berachain Testnet
+[2026-08-31T01:45:03.705229+00:00]   SKIP: Unknown network Berachain Testnet

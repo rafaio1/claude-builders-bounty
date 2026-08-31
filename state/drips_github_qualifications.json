@@ -7,29 +7,115 @@
     "qualified_cache_ttl_seconds": 900,
     "rejected_cache_ttl_seconds": 3600
   },
-  "drips_candidate_count": 0,
-  "drips_run_id": "69c227f38cab4481bc2575b3becc1230",
-  "drips_source_hash": "fb93226528bf150ab3ea02dd5bd148e7dc731047c324e7d8fe2ec0ce3b65e97f",
+  "drips_candidate_count": 1,
+  "drips_run_id": "d9c8bde183d944d3941cfd9c7131b559",
+  "drips_source_hash": "2851c075762a893835adb7fc432a22ec2354682bd10b29b3f3a9934dca4430c7",
   "financial_truth": {
     "expected_revenue_usd": null,
     "points_are_usd": false,
     "realized_revenue_usd": 0.0
   },
-  "generated_at": "2026-08-30T23:26:50.577340+00:00",
+  "generated_at": "2026-08-31T01:41:43.731427+00:00",
   "github_rate_budget": {
     "limit": 5000,
     "remaining_before": 5000,
-    "reset_epoch": 1788136010
+    "reset_epoch": 1788144104
   },
-  "newly_audited_candidate_key": null,
-  "qualification_count": 0,
-  "qualifications": [],
+  "newly_audited_candidate_key": "c83421fd37e2f0c7f7fd24f4cf8c12194e020e0909203f6adc0fb7c987c4623a",
+  "qualification_count": 1,
+  "qualifications": [
+    {
+      "candidate_id": "drips:727b642b-bf58-4f72-8553-97364d6706f0",
+      "candidate_key": "c83421fd37e2f0c7f7fd24f4cf8c12194e020e0909203f6adc0fb7c987c4623a",
+      "current_drips_source_hash": "2851c075762a893835adb7fc432a22ec2354682bd10b29b3f3a9934dca4430c7",
+      "decision": "rejected",
+      "drips_issue_id": "727b642b-bf58-4f72-8553-97364d6706f0",
+      "drips_source_hash": "2851c075762a893835adb7fc432a22ec2354682bd10b29b3f3a9934dca4430c7",
+      "evidence": {
+        "default_branch": "main",
+        "issue_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/347",
+        "issue_comments_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/347/comments?per_page=100",
+        "issue_node_id": "I_kwDORTDsdc8AAAABOpslSQ",
+        "issue_timeline_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/issues/347/timeline?per_page=100",
+        "issue_updated_at": "2026-08-31T01:38:04Z",
+        "license_source": null,
+        "license_spdx": null,
+        "package_manifest_api_url": null,
+        "pull_history_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core",
+        "repository_node_id": "R_kgDORTDsdQ",
+        "repository_pushed_at": "2026-08-30T15:20:12Z",
+        "tree_api_url": "https://api.github.com/repos/CoralSwap-Finance/coralswap-core/git/trees/main?recursive=1"
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "points": 100,
+        "points_value_usd": null,
+        "realized_revenue_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "automation_eligible": false,
+        "ci_present": true,
+        "deadline_margin": false,
+        "github_issue_open_unassigned": true,
+        "implementation_allowed": false,
+        "license_present": false,
+        "no_application_comments": false,
+        "no_linked_pull_request_activity": true,
+        "points_labels_consistent": true,
+        "recent_merged_pr_history": true,
+        "recent_repository_activity": true,
+        "referenced_paths_grounded": true,
+        "repository_identity": true,
+        "repository_public_active": true,
+        "repository_tree_complete": true,
+        "scope_matches_declared_complexity": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 347,
+      "minimum_score": 75.0,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "application_comment_count": 2,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "deadline_margin_hours": -61.7,
+        "github_points_labels": [],
+        "license_warning": null,
+        "linked_pull_request_event_count": 0,
+        "missing_referenced_paths": [],
+        "recent_merged_prs_sample": 20,
+        "referenced_paths": []
+      },
+      "rejection_reasons": [
+        "github_application_comment_present",
+        "insufficient_wave_deadline_margin",
+        "license_not_proven",
+        "points_complexity_inconsistent",
+        "qualification_score_below_threshold",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "CoralSwap-Finance/coralswap-core",
+      "schema_version": "1.0",
+      "score": 53.5,
+      "title": "[Core] Router swap no-op price quote when pair is uninitialized leaks state \u2014 add init check",
+      "valid_until": "2026-08-31T02:41:43.731427+00:00",
+      "verified_at": "2026-08-31T01:41:43.731427+00:00"
+    }
+  ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "67691d61c1384a578ab1dd67c4f59b95",
+  "run_id": "8b32c6ebe9c8423c9006aa73bca4aa04",
   "schema_version": "1.0",
-  "source_hash": "a53b360fea328f4b3a1991653378e7b659cc033aad5a99aa869c6844ee33abc6",
-  "valid_until": "2026-08-30T23:32:53.555369+00:00",
+  "source_hash": "21c279cfefd418cabdffc5366fcbac3a9aebcd1db45eb5c29f8eec61fbccbe70",
+  "valid_until": "2026-08-31T01:48:17.615313+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_public_github",

@@ -1087,3 +1087,44 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-31T00:00:03.584859+00:00] === Immunefi Vault Scanner Cycle Start ===
+[2026-08-31T00:00:03.711704+00:00] Scanning Immunefi programs for active bounties...
+[2026-08-31T00:00:03.711859+00:00]   Found: Uniswap - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.711944+00:00]   Found: Aave - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712004+00:00]   Found: Curve - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712047+00:00]   Found: Lido - Max $2,000,000 - smart_contract
+[2026-08-31T00:00:03.712096+00:00]   Found: MakerDAO - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712131+00:00]   Found: Compound - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712165+00:00]   Found: Balancer - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712197+00:00]   Found: Yearn - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712238+00:00]   Found: SushiSwap - Max $250,000 - smart_contract
+[2026-08-31T00:00:03.712276+00:00]   Found: 1inch - Max $200,000 - smart_contract
+[2026-08-31T00:00:03.584859+00:00] === Immunefi Vault Scanner Cycle Start ===
+[2026-08-31T00:00:03.711704+00:00] Scanning Immunefi programs for active bounties...
+[2026-08-31T00:00:03.711859+00:00]   Found: Uniswap - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.711944+00:00]   Found: Aave - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712004+00:00]   Found: Curve - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712047+00:00]   Found: Lido - Max $2,000,000 - smart_contract
+[2026-08-31T00:00:03.712096+00:00]   Found: MakerDAO - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712131+00:00]   Found: Compound - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712165+00:00]   Found: Balancer - Max $1,000,000 - smart_contract
+[2026-08-31T00:00:03.712197+00:00]   Found: Yearn - Max $500,000 - smart_contract
+[2026-08-31T00:00:03.712238+00:00]   Found: SushiSwap - Max $250,000 - smart_contract
+[2026-08-31T00:00:03.712276+00:00]   Found: 1inch - Max $200,000 - smart_contract
+Traceback (most recent call last):
+  File "/Agentic/scripts/immunefi_vault_scanner.py", line 132, in <module>
+    main()
+  File "/Agentic/scripts/immunefi_vault_scanner.py", line 123, in main
+    update_ledger_with_immunefi(opportunities)
+  File "/Agentic/scripts/immunefi_vault_scanner.py", line 83, in update_ledger_with_immunefi
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

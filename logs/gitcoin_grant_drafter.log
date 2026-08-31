@@ -240,3 +240,22 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-31T00:00:03.277238+00:00] === Gitcoin Grant Drafter Cycle Start ===
+[2026-08-31T00:00:03.277238+00:00] === Gitcoin Grant Drafter Cycle Start ===
+Traceback (most recent call last):
+  File "/Agentic/scripts/gitcoin_grant_drafter.py", line 182, in <module>
+    main()
+  File "/Agentic/scripts/gitcoin_grant_drafter.py", line 175, in main
+    update_ledger_with_grants()
+  File "/Agentic/scripts/gitcoin_grant_drafter.py", line 118, in update_ledger_with_grants
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)

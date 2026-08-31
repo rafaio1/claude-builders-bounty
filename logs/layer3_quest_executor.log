@@ -1104,3 +1104,44 @@ Traceback (most recent call last):
   File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
     raise JSONDecodeError("Extra data", s, end)
 json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
+[2026-08-31T00:00:02.642578+00:00] === Layer3 Quest Scanner Cycle Start ===
+[2026-08-31T00:00:02.658747+00:00] Scanning Layer3 for active reward quests...
+[2026-08-31T00:00:02.658877+00:00]   Found: zkSync Era - testnet_deploy - $50 ✅
+[2026-08-31T00:00:02.658944+00:00]   Found: StarkNet - bridge_testnet - $40 ✅
+[2026-08-31T00:00:02.659012+00:00]   Found: Linea - swap_volume - $35 ✅
+[2026-08-31T00:00:02.659079+00:00]   Found: Scroll - nft_mint - $25 ⚠️
+[2026-08-31T00:00:02.659153+00:00]   Found: Base - social_follow - $15 ⚠️
+[2026-08-31T00:00:02.659212+00:00]   Found: Polygon zkEVM - liquidity_provide - $60 ✅
+[2026-08-31T00:00:02.659257+00:00]   Found: Arbitrum Nova - cross_chain_message - $45 ✅
+[2026-08-31T00:00:02.659302+00:00]   Found: Optimism Goerli - governance_vote - $20 ⚠️
+[2026-08-31T00:00:02.659353+00:00]   Found: Avalanche Fuji - subgraph_deploy - $55 ✅
+[2026-08-31T00:00:02.659398+00:00]   Found: Fantom Testnet - contract_interaction - $30 ✅
+[2026-08-31T00:00:02.642578+00:00] === Layer3 Quest Scanner Cycle Start ===
+[2026-08-31T00:00:02.658747+00:00] Scanning Layer3 for active reward quests...
+[2026-08-31T00:00:02.658877+00:00]   Found: zkSync Era - testnet_deploy - $50 ✅
+[2026-08-31T00:00:02.658944+00:00]   Found: StarkNet - bridge_testnet - $40 ✅
+[2026-08-31T00:00:02.659012+00:00]   Found: Linea - swap_volume - $35 ✅
+[2026-08-31T00:00:02.659079+00:00]   Found: Scroll - nft_mint - $25 ⚠️
+[2026-08-31T00:00:02.659153+00:00]   Found: Base - social_follow - $15 ⚠️
+[2026-08-31T00:00:02.659212+00:00]   Found: Polygon zkEVM - liquidity_provide - $60 ✅
+[2026-08-31T00:00:02.659257+00:00]   Found: Arbitrum Nova - cross_chain_message - $45 ✅
+[2026-08-31T00:00:02.659302+00:00]   Found: Optimism Goerli - governance_vote - $20 ⚠️
+[2026-08-31T00:00:02.659353+00:00]   Found: Avalanche Fuji - subgraph_deploy - $55 ✅
+[2026-08-31T00:00:02.659398+00:00]   Found: Fantom Testnet - contract_interaction - $30 ✅
+Traceback (most recent call last):
+  File "/Agentic/scripts/layer3_quest_executor.py", line 132, in <module>
+    main()
+  File "/Agentic/scripts/layer3_quest_executor.py", line 123, in main
+    update_ledger_with_l3(opportunities)
+  File "/Agentic/scripts/layer3_quest_executor.py", line 83, in update_ledger_with_l3
+    data = json.load(f)
+           ^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 293, in load
+    return loads(fp.read(),
+           ^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/__init__.py", line 346, in loads
+    return _default_decoder.decode(s)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/json/decoder.py", line 340, in decode
+    raise JSONDecodeError("Extra data", s, end)
+json.decoder.JSONDecodeError: Extra data: line 3282 column 2 (char 105576)
