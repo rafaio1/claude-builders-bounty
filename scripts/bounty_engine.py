@@ -1921,7 +1921,7 @@ def main():
                     log(f"EXECUTION ERROR: {e}")
                     return None
 
-            with ThreadPoolExecutor(max_workers=3) as executor:
+            with ThreadPoolExecutor(max_workers=8) as executor:
                 futures = {executor.submit(process_target, t): t for t in targets}
                 for future in as_completed(futures):
                     try:
