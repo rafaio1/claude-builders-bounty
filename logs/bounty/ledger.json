@@ -3596,6 +3596,17 @@
           "status": "submitted",
           "date": "2026-08-31",
           "title": "Add PR description completeness check to CI"
+        },
+        {
+          "id": "lily-106",
+          "repo": "Lilly-Protocol/lily-frontend",
+          "issue": 106,
+          "pr": 393,
+          "amount": 65,
+          "currency": "USDC",
+          "status": "submitted",
+          "date": "2026-08-31",
+          "wallet": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb"
         }
       ]
     },
@@ -3876,7 +3887,7 @@
     },
     {
       "type": "airdrop_farming_progress",
-      "timestamp": "2026-08-31T05:45:02.913781+00:00",
+      "timestamp": "2026-08-31T06:00:03.930267+00:00",
       "completed_tasks": 5,
       "pending_human_tasks": 2,
       "total_txs": 5,
@@ -4340,6 +4351,594 @@
       "date_added": "2026-08-31T05:30:02.263929+00:00"
     },
     {
+      "type": "trade_opportunity",
+      "id": "YIELD-868712",
+      "category": "liquidity_mining_signals",
+      "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
+      "capital_required": true,
+      "risk_level": "medium",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-31T05:45:02.743027+00:00"
+    },
+    {
+      "type": "trade_opportunity",
+      "id": "YIELD-867641",
+      "category": "liquidity_mining_signals",
+      "name": "stETH/ETH on Curve (Mainnet)",
+      "capital_required": true,
+      "risk_level": "low",
+      "autonomous_executable": false,
+      "status": "discovered",
+      "date_added": "2026-08-31T05:45:02.743059+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-zksync-era-ecosystem_odyssey",
+      "platform": "intract",
+      "protocol": "zkSync Era",
+      "quest_type": "ecosystem_odyssey",
+      "reward_usd": 50,
+      "chain": "zksync_era",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.695984+00:00",
+      "date_added": "2026-08-31T06:00:01.752441+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-linea-voyage-l3_origins_nft",
+      "platform": "intract",
+      "protocol": "Linea Voyage",
+      "quest_type": "l3_origins_nft",
+      "reward_usd": 45,
+      "chain": "linea_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696040+00:00",
+      "date_added": "2026-08-31T06:00:01.752465+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-base-onchain-summer-buildathon_quest",
+      "platform": "intract",
+      "protocol": "Base Onchain Summer",
+      "quest_type": "buildathon_quest",
+      "reward_usd": 60,
+      "chain": "base_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696087+00:00",
+      "date_added": "2026-08-31T06:00:01.752475+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-scroll-origins-nft_claim",
+      "platform": "intract",
+      "protocol": "Scroll Origins",
+      "quest_type": "nft_claim",
+      "reward_usd": 40,
+      "chain": "scroll_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696131+00:00",
+      "date_added": "2026-08-31T06:00:01.752484+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-arbitrum-stip-governance_participation",
+      "platform": "intract",
+      "protocol": "Arbitrum STIP",
+      "quest_type": "governance_participation",
+      "reward_usd": 35,
+      "chain": "arbitrum_one",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_bind"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696181+00:00",
+      "date_added": "2026-08-31T06:00:01.752493+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-optimism-retropgf-retroactive_funding",
+      "platform": "intract",
+      "protocol": "Optimism RetroPGF",
+      "quest_type": "retroactive_funding",
+      "reward_usd": 55,
+      "chain": "optimism_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_bind"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696220+00:00",
+      "date_added": "2026-08-31T06:00:01.752501+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-polygon-zkevm-bridge_and_mint",
+      "platform": "intract",
+      "protocol": "Polygon zkEVM",
+      "quest_type": "bridge_and_mint",
+      "reward_usd": 30,
+      "chain": "polygon_zkevm",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696257+00:00",
+      "date_added": "2026-08-31T06:00:01.767983+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-starknet-defi-liquidity_provision",
+      "platform": "intract",
+      "protocol": "StarkNet DeFi",
+      "quest_type": "liquidity_provision",
+      "reward_usd": 65,
+      "chain": "starknet_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696303+00:00",
+      "date_added": "2026-08-31T06:00:01.767999+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-aptos-ecosystem-move_developer_quest",
+      "platform": "intract",
+      "protocol": "Aptos Ecosystem",
+      "quest_type": "move_developer_quest",
+      "reward_usd": 40,
+      "chain": "aptos_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_bind"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696340+00:00",
+      "date_added": "2026-08-31T06:00:01.768010+00:00"
+    },
+    {
+      "type": "intract_campaign",
+      "id": "INTRACT-sui-network-testnet_graduate",
+      "platform": "intract",
+      "protocol": "Sui Network",
+      "quest_type": "testnet_graduate",
+      "reward_usd": 50,
+      "chain": "sui_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.696381+00:00",
+      "date_added": "2026-08-31T06:00:01.768028+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-arbitrum-odyssey-bridge_and_swap",
+      "platform": "rabbithole",
+      "protocol": "Arbitrum Odyssey",
+      "quest_type": "bridge_and_swap",
+      "reward_usd": 45,
+      "chain": "arbitrum_one",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760712+00:00",
+      "date_added": "2026-08-31T06:00:01.813547+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-optimism-quest-nft_claim",
+      "platform": "rabbithole",
+      "protocol": "Optimism Quest",
+      "quest_type": "nft_claim",
+      "reward_usd": 30,
+      "chain": "optimism_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_verification"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760777+00:00",
+      "date_added": "2026-08-31T06:00:01.813583+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-uniswap-v3-lp-provide_liquidity",
+      "platform": "rabbithole",
+      "protocol": "Uniswap V3 LP",
+      "quest_type": "provide_liquidity",
+      "reward_usd": 55,
+      "chain": "ethereum_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760821+00:00",
+      "date_added": "2026-08-31T06:00:01.813594+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-aave-v3-deposit-supply_asset",
+      "platform": "rabbithole",
+      "protocol": "Aave V3 Deposit",
+      "quest_type": "supply_asset",
+      "reward_usd": 40,
+      "chain": "polygon_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760861+00:00",
+      "date_added": "2026-08-31T06:00:01.813603+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-compound-governance-delegate_vote",
+      "platform": "rabbithole",
+      "protocol": "Compound Governance",
+      "quest_type": "delegate_vote",
+      "reward_usd": 25,
+      "chain": "ethereum_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_verification"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760914+00:00",
+      "date_added": "2026-08-31T06:00:01.813612+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-ens-registration-register_domain",
+      "platform": "rabbithole",
+      "protocol": "ENS Registration",
+      "quest_type": "register_domain",
+      "reward_usd": 35,
+      "chain": "ethereum_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_verification"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760955+00:00",
+      "date_added": "2026-08-31T06:00:01.813622+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-gitcoin-passport-verify_identity",
+      "platform": "rabbithole",
+      "protocol": "Gitcoin Passport",
+      "quest_type": "verify_identity",
+      "reward_usd": 20,
+      "chain": "ethereum_mainnet",
+      "autonomous_capable": false,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect",
+        "social_verification"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.760995+00:00",
+      "date_added": "2026-08-31T06:00:01.813635+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-zora-network-mint_nft",
+      "platform": "rabbithole",
+      "protocol": "Zora Network",
+      "quest_type": "mint_nft",
+      "reward_usd": 15,
+      "chain": "zora_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.761035+00:00",
+      "date_added": "2026-08-31T06:00:01.813645+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-base-onboarding-bridge_and_deploy",
+      "platform": "rabbithole",
+      "protocol": "Base Onboarding",
+      "quest_type": "bridge_and_deploy",
+      "reward_usd": 50,
+      "chain": "base_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.761073+00:00",
+      "date_added": "2026-08-31T06:00:01.813654+00:00"
+    },
+    {
+      "type": "rabbithole_campaign",
+      "id": "RH-linea-voyage-cross_chain_quest",
+      "platform": "rabbithole",
+      "protocol": "Linea Voyage",
+      "quest_type": "cross_chain_quest",
+      "reward_usd": 60,
+      "chain": "linea_mainnet",
+      "autonomous_capable": true,
+      "status": "active",
+      "requires_human": [
+        "wallet_connect"
+      ],
+      "payout_method": "token_or_nft",
+      "discovered_at": "2026-08-31T06:00:01.761129+00:00",
+      "date_added": "2026-08-31T06:00:01.813664+00:00"
+    },
+    {
+      "type": "grant_application",
+      "template": "autonomous_bounty_agent",
+      "title": "Autonomous Bounty Hunter Agent for Open Source Ecosystems",
+      "platform": "gitcoin",
+      "funding_goal_usd": 5000,
+      "category": "infrastructure",
+      "status": "drafted",
+      "date_added": "2026-08-31T06:00:01.992341+00:00"
+    },
+    {
+      "type": "grant_application",
+      "template": "defi_security_scanner",
+      "title": "Autonomous DeFi Security Scanner & Report Generator",
+      "platform": "gitcoin",
+      "funding_goal_usd": 8000,
+      "category": "defi",
+      "status": "drafted",
+      "date_added": "2026-08-31T06:00:01.992364+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-lyra-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Lyra Finance",
+      "prize_pool_usd": 55000,
+      "language": "solidity",
+      "duration_days": 5,
+      "status": "active",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.000804+00:00",
+      "date_added": "2026-08-31T06:00:02.242963+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-thales-protocol-202608",
+      "platform": "sherlock",
+      "sponsor": "Thales Protocol",
+      "prize_pool_usd": 40000,
+      "language": "solidity",
+      "duration_days": 4,
+      "status": "upcoming",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.000885+00:00",
+      "date_added": "2026-08-31T06:00:02.243038+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-kwenta-exchange-202608",
+      "platform": "sherlock",
+      "sponsor": "Kwenta Exchange",
+      "prize_pool_usd": 65000,
+      "language": "solidity",
+      "duration_days": 7,
+      "status": "active",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.000952+00:00",
+      "date_added": "2026-08-31T06:00:02.243057+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-polynomial-protocol-202608",
+      "platform": "sherlock",
+      "sponsor": "Polynomial Protocol",
+      "prize_pool_usd": 35000,
+      "language": "solidity",
+      "duration_days": 5,
+      "status": "upcoming",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001009+00:00",
+      "date_added": "2026-08-31T06:00:02.243069+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-velodrome-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Velodrome Finance",
+      "prize_pool_usd": 50000,
+      "language": "solidity",
+      "duration_days": 6,
+      "status": "escalation",
+      "contest_type": "judging",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001094+00:00",
+      "date_added": "2026-08-31T06:00:02.243082+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-aerodrome-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Aerodrome Finance",
+      "prize_pool_usd": 45000,
+      "language": "solidity",
+      "duration_days": 5,
+      "status": "upcoming",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001166+00:00",
+      "date_added": "2026-08-31T06:00:02.243097+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-beefy-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Beefy Finance",
+      "prize_pool_usd": 70000,
+      "language": "solidity",
+      "duration_days": 7,
+      "status": "active",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001217+00:00",
+      "date_added": "2026-08-31T06:00:02.243109+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-convex-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Convex Finance",
+      "prize_pool_usd": 60000,
+      "language": "vyper",
+      "duration_days": 6,
+      "status": "upcoming",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001266+00:00",
+      "date_added": "2026-08-31T06:00:02.243122+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-frax-finance-202608",
+      "platform": "sherlock",
+      "sponsor": "Frax Finance",
+      "prize_pool_usd": 80000,
+      "language": "solidity",
+      "duration_days": 8,
+      "status": "active",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001312+00:00",
+      "date_added": "2026-08-31T06:00:02.243134+00:00"
+    },
+    {
+      "type": "sherlock_contest",
+      "id": "SHERLOCK-gmx-v2-202608",
+      "platform": "sherlock",
+      "sponsor": "GMX V2",
+      "prize_pool_usd": 120000,
+      "language": "solidity",
+      "duration_days": 10,
+      "status": "upcoming",
+      "contest_type": "audit",
+      "autonomous_submission": true,
+      "payout_method": "crypto_wallet",
+      "requires_human": [
+        "account_creation"
+      ],
+      "submission_format": "markdown_finding_report",
+      "discovered_at": "2026-08-31T06:00:02.001369+00:00",
+      "date_added": "2026-08-31T06:00:02.243146+00:00"
+    },
+    {
+      "type": "orchestrator_cycle",
+      "timestamp": "2026-08-31T06:00:03.804413+00:00",
+      "platforms_tracked": 7,
+      "bounties_pending_usd": 0,
+      "bounties_submitted_count": 0,
+      "telegram_eligible_count": 0,
+      "status": "operational"
+    },
+    {
       "type": "orchestrator_cycle",
       "timestamp": "2026-08-31T05:45:02.462069+00:00",
       "platforms_tracked": 7,
@@ -4421,35 +5020,26 @@
       "status": "operational"
     },
     {
-      "type": "orchestrator_cycle",
-      "timestamp": "2026-08-31T03:30:01.894684+00:00",
-      "platforms_tracked": 7,
-      "bounties_pending_usd": 0,
-      "bounties_submitted_count": 0,
-      "telegram_eligible_count": 0,
-      "status": "operational"
-    },
-    {
       "type": "trade_opportunity",
-      "id": "YIELD-868712",
+      "id": "YIELD-208147",
       "category": "liquidity_mining_signals",
       "name": "USDC/ETH on Uniswap V3 (Arbitrum)",
       "capital_required": true,
       "risk_level": "medium",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-31T05:45:02.743027+00:00"
+      "date_added": "2026-08-31T06:00:03.875432+00:00"
     },
     {
       "type": "trade_opportunity",
-      "id": "YIELD-867641",
+      "id": "YIELD-433335",
       "category": "liquidity_mining_signals",
       "name": "stETH/ETH on Curve (Mainnet)",
       "capital_required": true,
       "risk_level": "low",
       "autonomous_executable": false,
       "status": "discovered",
-      "date_added": "2026-08-31T05:45:02.743059+00:00"
+      "date_added": "2026-08-31T06:00:03.875449+00:00"
     }
   ]
 }
