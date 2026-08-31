@@ -980,13 +980,21 @@ def triage(candidates):
         "yearn", "dataverse-os", "nexaitechau", "holistis", "rezearcher",
         "christian-sidak", "s6pa1rta3n-lab"
     ]
+    # Extended bypass: repos that frequently have valid bounties but lack parseable $ values
+    # These pass the value gate with unknown value so triage LLM can evaluate them
+    extended_value_bypass = [
+        "compound-finance", "ainetwork-global", "credfeto", "nexussyn",
+        "appmeee", "equipchain", "ethereumzurich", "kwizzlesurp10-ctrl",
+        "mcpdotdirect", "gitgig-io", "tarsnap", "havenonstellar"
+    ]
+    all_value_bypass = verified_orgs_value_bypass + extended_value_bypass
     def _is_valid_value(c):
         # DEBUG: Log candidate value before gate evaluation
         log(f"VALUE_GATE_CHECK: repo={c.get('repo','?')} url={c.get('url','?')} value_usd={c.get('value_usd','MISSING')} type={type(c.get('value_usd')).__name__}")
         v = str(c.get("value_usd", "unknown"))
         repo = str(c.get("repo", "")).lower()
-        # Allow verified org repos through even with unknown value for triage evaluation
-        is_verified = any(org in repo for org in verified_orgs_value_bypass)
+        # Allow verified/extended org repos through even with unknown value for triage evaluation
+        is_verified = any(org in repo for org in all_value_bypass)
         if v in ("unknown", "0", "0.0", "", "None"):
             return is_verified  # Pass if verified org, fail otherwise
         try:
