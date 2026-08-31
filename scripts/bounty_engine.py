@@ -1933,7 +1933,7 @@ def main():
         except Exception as e:
             log(f"CYCLE ERROR: {e}")
         
-        time.sleep(300)  # 5 min between cycles
+        time.sleep(60)  # Reduced to 1 min for maximum throughput toward $20M goal
 
 if __name__ == "__main__":
     import signal, sys, traceback
