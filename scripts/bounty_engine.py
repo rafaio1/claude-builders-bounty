@@ -959,7 +959,9 @@ def triage(candidates):
         "starknet-io", "celestiaorg", "berachain", "monad-labs",
         "aptos-labs", "mystenlabs", "arbitrum", "ethereum-optimism",
         "maticnetwork", "solana-labs", "ubiquity", "near", "hyperledger",
-        "ethereum", "paritytech", "filecoin-project", "ipfs", "sourcegraph"
+        "ethereum", "paritytech", "filecoin-project", "ipfs", "sourcegraph",
+        "yearn", "dataverse-os", "nexaitechau", "holistis", "rezearcher",
+        "christian-sidak", "s6pa1rta3n-lab"
     ]
     def _is_valid_value(c):
         v = str(c.get("value_usd", "unknown"))
