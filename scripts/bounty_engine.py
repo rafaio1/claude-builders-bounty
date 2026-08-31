@@ -935,7 +935,9 @@ def triage(candidates):
     log(f"=== TRIAGE (model={model}) ===")
     # HARD META-FILTER: remove internal/meta targets that waste cycles
     META_KW = ["self-improve", "model-flagged", "bounty cadence", "bounty gate",
-               "funding opportunity", "community update", "as a developer, i want",
+                "data source:", "dashboard review", "vulnerability report —",
+                "exposed .git directory", "truth status: source_review_required",
+                "funding opportunity", "community update", "as a developer, i want",
                "push notifications: native mobile",
                # Payout/admin/meta issues that are NOT code tasks
                "payout blocked", "payment issue", "cannot receive payment",
