@@ -1881,18 +1881,17 @@ def main():
             # Many real bounties lack clear metadata but are valid fix opportunities
             if paid_targets or label_paid:
                 targets = paid_targets + label_paid
-                # CRITICAL FIX: Ensure inferred value is explicitly set in target dict for ledger recording
-                # The triage phase identifies label-inferred bounties but doesn't always populate value_usd
-                # This caused the ledger to record $0.0 even when bounties were valid paid work
-                for t in label_paid:
-                    if _parse_bounty_value(t.get('value_usd', 0)) == 0:
-                        t['implicit_value_usd'] = "100"  # Minimum viable inferred value
-                        log(f"INFERRED_VALUE_INJECTED: {t.get('url','?')} assigned $100 from labels")
             elif targets:
                 log(f"No paid targets identified, falling back to top {min(3, len(targets))} unknown-value candidates")
                 targets = targets[:3]
             else:
                 targets = []
+            # CRITICAL FIX: Inject implicit value for ALL targets with unknown/zero value before execution
+            # Previous fix only targeted label_paid list, but fallback targets also need value injection
+            for t in targets:
+                if _parse_bounty_value(t.get('value_usd', 0)) == 0 and 'implicit_value_usd' not in t:
+                    t['implicit_value_usd'] = "100"
+                    log(f"INFERRED_VALUE_INJECTED: {t.get('url','?')} assigned $100 (fallback/unknown)")
             log(f'Triage: {len(paid_targets)} parsed paid + {len(label_paid)} label-inferred = {len(targets)} total from {len(candidates)} candidates')
 
             from concurrent.futures import ThreadPoolExecutor, as_completed
