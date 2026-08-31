@@ -902,7 +902,7 @@ def triage(candidates):
                  "funding opportunity", "community update", "as a developer, i want",
                  "push notifications: native mobile",
                  "payout blocked", "payment issue", "cannot receive payment",
-                 "algora", "country is not supported", "reward status",
+                 "country is not supported", "reward status",
                  "sign up at", "maintainer confirmation", "claim process",
                  "apply here", "warpspeed", "bounty claim", "application required"]
     if not candidates: return []
