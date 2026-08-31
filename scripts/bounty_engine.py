@@ -1761,7 +1761,7 @@ Fix issue #{issue_num}: {title} in {owner}/{repo}"""
     entry = {
         "issue_number": int(issue_num),
         "title": title,
-        "bounty_value": _parse_bounty_value(target.get("value_usd", 0)),
+        "bounty_value": (_parse_bounty_value(target.get("value_usd")) or _parse_bounty_value(target.get("implicit_value_usd")) or 0.0),  # FIX: preserve inferred value from triage
         "file": str(files_changed[0]["path"]) if files_changed else "",
         "commit": subprocess.run("git rev-parse HEAD", shell=True, capture_output=True, text=True, cwd=work_dir).stdout.strip()[:7],
         "status": "submitted",
