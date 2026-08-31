@@ -594,6 +594,24 @@ def discover_bounties():
                     labels = [l["name"] for l in item.get("labels", [])]
                     title = item.get("title", "")
                     body = item.get("body", "") or ""
+                    # STRICT PAYMENT RAIL VERIFICATION (high_value path)
+                    body_lower = (body or "").lower()
+                    title_lower_check = (title or "").lower()
+                    labels_str = " ".join(labels).lower() if isinstance(labels, list) else ""
+                    combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    payment_rails = [
+                        "algora.io", "console.algora", "opire.dev", "polar.sh",
+                        "bountycaster.xyz", "grantfox.io", "replit.com/bounties",
+                        "supabase.com/bounties", "immunefi.com", "code4rena.com",
+                        "sherlock.xyz", "hats.finance", "gitcoin.co", "layer3.xyz"
+                    ]
+                    has_payment_rail = any(rail in combined_text for rail in payment_rails)
+                    verified_orgs = ["algora-io", "replit", "supabase", "safe-global", "ensdomains",
+                                     "uniswap", "aave", "lens-protocol", "farcaster", "matter-labs",
+                                     "immunefi", "code4rena", "sherlock-xyz", "hats-finance"]
+                    is_platform_repo = any(org in repo.lower() for org in verified_orgs)
+                    if not has_payment_rail and not is_platform_repo:
+                        continue
                     found.append({
                         "url": url,
                         "title": title,
@@ -677,6 +695,24 @@ def discover_bounties():
                         continue
                     title_text = item.get("title", "") or ""
                     body = item.get("body", "") or ""
+                    # STRICT PAYMENT RAIL VERIFICATION (algora path)
+                    body_lower = (body or "").lower()
+                    title_lower_check = (title_text or "").lower()
+                    labels_str = " ".join(labels).lower() if isinstance(labels, list) else ""
+                    combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    payment_rails = [
+                        "algora.io", "console.algora", "opire.dev", "polar.sh",
+                        "bountycaster.xyz", "grantfox.io", "replit.com/bounties",
+                        "supabase.com/bounties", "immunefi.com", "code4rena.com",
+                        "sherlock.xyz", "hats.finance", "gitcoin.co", "layer3.xyz"
+                    ]
+                    has_payment_rail = any(rail in combined_text for rail in payment_rails)
+                    verified_orgs = ["algora-io", "replit", "supabase", "safe-global", "ensdomains",
+                                     "uniswap", "aave", "lens-protocol", "farcaster", "matter-labs",
+                                     "immunefi", "code4rena", "sherlock-xyz", "hats-finance"]
+                    is_platform_repo = any(org in repo.lower() for org in verified_orgs)
+                    if not has_payment_rail and not is_platform_repo:
+                        continue
                     value_usd = "unknown"
                     value_patterns = [
                         r'\[\$?([\d,]+(?:\.\d+)?)\]',
@@ -1055,7 +1091,38 @@ def _parse_bounty_value(val):
 def execute_bounty(target):
     url = target.get("url", "")
     title = target.get("title", "")
-    
+
+    # === HARD SECONDARY GATE: Re-verify payment rails and spam indicators ===
+    # This acts as an absolute final defense regardless of how discovery phase was bypassed
+    repo_lower = url.lower()
+    title_lower = title.lower()
+    combined_text = f"{repo_lower} {title_lower}"
+
+    # Extended spam blocklist (includes Cycle 7 honeypots)
+    hard_spam_indicators = [
+        "bounty-plaza", "test-bounty", "fake-bounty", "spam",
+        "kwizzlesurp10-ctrl", "x402-mcp", "equipchain", "sponsor-bounties",
+        "ethereumzurich/sponsor", "dataverseos web3 functions"
+    ]
+    if any(s in repo_lower or s in title_lower for s in hard_spam_indicators):
+        log(f"HARD GATE BLOCKED (spam indicator match): {url}")
+        return None
+
+    # Strict payment rails verification (must have verifiable payout mechanism)
+    hard_payment_rails = [
+        "algora.io", "algora", "polar.sh", "polar",
+        "immunefi.com", "immunefi", "gitcoin", "bountysource",
+        "opencollective", "open collective", "wise.com", "wise transfer",
+        "stripe.com/payouts", "paypal.me", "venmo",
+        "usdc on-chain", "usdc payout", "eth payout", "crypto payout verified"
+    ]
+    has_hard_payment_rail = any(rail in combined_text for rail in hard_payment_rails)
+    if not has_hard_payment_rail:
+        log(f"HARD GATE BLOCKED (no verified payment rail): {url}")
+        return None
+
+    log(f"HARD GATE PASSED: {url}")
+
     # Early gate: verify upstream repo exists and is accessible BEFORE any work
     if "/github.com/" in url:
         parts = url.replace("https://github.com/", "").split("/")
