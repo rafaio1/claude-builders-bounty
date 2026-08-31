@@ -430,15 +430,20 @@ def discover_bounties():
                     title_lower_check = (item.get("title", "") or "").lower()
                     labels_str = " ".join(labels).lower()
                     combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    # STRICT PAYMENT RAIL: Only accept bounties with VERIFIED automated payout platforms
+                    # Removed generic terms like "smart contract", "escrow", "0x" that match honeypots
                     payment_rails = [
-                        "algora", "opire", "drips", "polar", "safe.gnosis", "gnosis safe",
-                        "0x", "smart contract", "escrow", "grantfox", "bountycaster",
-                        "replit bounties", "supabase bounty"
+                        "algora.io", "console.algora", "opire.dev", "polar.sh",
+                        "bountycaster.xyz", "grantfox.io", "replit.com/bounties",
+                        "supabase.com/bounties", "immunefi.com", "code4rena.com",
+                        "sherlock.xyz", "hats.finance", "gitcoin.co", "layer3.xyz"
                     ]
                     has_payment_rail = any(rail in combined_text for rail in payment_rails)
                     # Also accept if repo is a known bounty platform itself
-                    bounty_platform_repos = ["claude-builders-bounty", "universal_bounty_fleet"]
-                    is_platform_repo = any(plat in repo.lower() for plat in bounty_platform_repos)
+                    # Whitelist of VERIFIED bounty platform orgs (not empty)
+                    verified_orgs = ["algora-io", "replit", "supabase", "safe-global", "ensdomains",
+                                     "uniswap", "aave", "lens-protocol", "farcaster", "matter-labs"]
+                    is_platform_repo = any(org in repo.lower() for org in verified_orgs)
                     if not has_payment_rail and not is_platform_repo:
                         continue
                     labels = [l["name"] for l in item.get("labels", [])]
@@ -453,14 +458,19 @@ def discover_bounties():
                     title_lower_check = (title_text or "").lower()
                     labels_str = " ".join(labels).lower()
                     combined_text = f"{title_lower_check} {body_lower} {labels_str}"
+                    # STRICT PAYMENT RAIL: Only accept bounties with VERIFIED automated payout platforms
+                    # Removed generic terms like "smart contract", "escrow", "0x" that match honeypots
                     payment_rails = [
-                        "algora", "opire", "drips", "polar", "safe.gnosis", "gnosis safe",
-                        "0x", "smart contract", "escrow", "grantfox", "bountycaster",
-                        "replit bounties", "supabase bounty"
+                        "algora.io", "console.algora", "opire.dev", "polar.sh",
+                        "bountycaster.xyz", "grantfox.io", "replit.com/bounties",
+                        "supabase.com/bounties", "immunefi.com", "code4rena.com",
+                        "sherlock.xyz", "hats.finance", "gitcoin.co", "layer3.xyz"
                     ]
                     has_payment_rail = any(rail in combined_text for rail in payment_rails)
-                    bounty_platform_repos = ["claude-builders-bounty", "universal_bounty_fleet"]
-                    is_platform_repo = any(plat in repo.lower() for plat in bounty_platform_repos)
+                    # Whitelist of VERIFIED bounty platform orgs (not empty)
+                    verified_orgs = ["algora-io", "replit", "supabase", "safe-global", "ensdomains",
+                                     "uniswap", "aave", "lens-protocol", "farcaster", "matter-labs"]
+                    is_platform_repo = any(org in repo.lower() for org in verified_orgs)
                     if not has_payment_rail and not is_platform_repo:
                         continue
                     value_usd = "unknown"
