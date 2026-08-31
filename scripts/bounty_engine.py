@@ -1846,6 +1846,30 @@ def monitor_pr_status():
 
 
 def main():
+    # Native workspace cleanup: prevent disk exhaustion by keeping only the 7 most recent execution folders
+    try:
+        if WORKSPACE.exists():
+            exec_dirs = sorted(
+                [d for d in WORKSPACE.iterdir() if d.is_dir()],
+                key=lambda p: p.stat().st_mtime,
+                reverse=True
+            )
+            stale_count = 0
+            freed_bytes = 0
+            for old_dir in exec_dirs[7:]:
+                try:
+                    dir_size = sum(f.stat().st_size for f in old_dir.rglob('*') if f.is_file())
+                    import shutil
+                    shutil.rmtree(old_dir)
+                    stale_count += 1
+                    freed_bytes += dir_size
+                except Exception as e:
+                    log(f"CLEANUP WARNING: failed to remove {old_dir.name}: {e}")
+            if stale_count > 0:
+                log(f"WORKSPACE CLEANUP: removed {stale_count} stale folders, freed ~{freed_bytes // (1024*1024)}MB")
+    except Exception as e:
+        log(f"WORKSPACE CLEANUP ERROR: {e}")
+
     log("=== BOUNTY ENGINE v3.0 STARTED ===")
     cycle = 0
     while True:
