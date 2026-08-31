@@ -1213,7 +1213,8 @@ def execute_bounty(target):
     # Strict payment rails verification (must have verifiable payout mechanism)
     hard_payment_rails = [
         "algora.io", "algora", "polar.sh", "polar",
-        "immunefi.com", "immunefi", "gitcoin", "bountysource",
+        "immunefi.com", "immunefi", "hats.finance", "hats finance",
+        "gitcoin", "bountysource", "bugcrowd", "hackerone",
         "opencollective", "open collective", "wise.com", "wise transfer",
         "stripe.com/payouts", "paypal.me", "venmo",
         "usdc on-chain", "usdc payout", "eth payout", "crypto payout verified"

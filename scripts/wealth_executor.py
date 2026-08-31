@@ -16,6 +16,12 @@ BYBIT_API_KEY = os.environ.get("BYBIT_REAL_API_KEY") or os.environ.get("BYBIT_AP
 BYBIT_API_SECRET = os.environ.get("BYBIT_REAL_API_SECRET") or os.environ.get("BYBIT_API_SECRET")
 BYBIT_BASE = "https://api.bybit.com"
 
+# === SAFETY FILTERS (Post-MEE/NEON Incident) ===
+BLACKLIST_PAIRS = {'MEEUSDT', 'NFTUSDT', 'NEONUSDT', 'FTTUSDT'}
+MIN_24H_VOLUME_USDT = 1_000_000  # Minimum $1M daily volume
+MAX_TICK_SIZE = 0.01  # Reject extreme tick sizes like 1e-10
+MIN_ORDER_AMT_USDT = 5  # Bybit minimum order amount
+
 def log(msg):
     ts = datetime.now(timezone.utc).isoformat()
     line = f"[{ts}] {msg}"
@@ -99,16 +105,23 @@ def get_bybit_balance():
         if data.get("retCode") == 0:
             coins = data["result"]["list"][0].get("coin", [])
             usdt = next((c for c in coins if c["coin"] == "USDT"), None)
-            # Unified accounts often return empty string for availableToWithdraw.
-            # Prefer walletBalance as the canonical source of tradable capital.
-            wb = usdt.get("walletBalance", "") if usdt else ""
-            atw = usdt.get("availableToWithdraw", "") if usdt else ""
-            if wb and str(wb).strip() != "":
-                balance = float(wb)
-            elif atw and str(atw).strip() != "":
-                balance = float(atw)
+            # FIX: Use totalAvailableBalance from the account level, not coin-level walletBalance.
+            # Coin-level walletBalance includes locked/margin amounts and caused the bot to see $0.62
+            # instead of the actual $12.16 tradable USDT.
+            acct = data["result"]["list"][0]
+            tab = acct.get("totalAvailableBalance", "")
+            if tab and str(tab).strip() != "":
+                balance = float(tab)
             else:
-                balance = 0.0
+                # Fallback to coin-level only if account-level field is missing
+                wb = usdt.get("walletBalance", "") if usdt else ""
+                atw = usdt.get("availableToWithdraw", "") if usdt else ""
+                if wb and str(wb).strip() != "":
+                    balance = float(wb)
+                elif atw and str(atw).strip() != "":
+                    balance = float(atw)
+                else:
+                    balance = 0.0
             equity = float(data["result"]["list"][0].get("totalEquity", 0))
             log(f"Bybit Balance: ${balance:.2f} USDT | Equity: ${equity:.2f}")
             return {"usdt": balance, "equity": equity, "available": balance}
@@ -306,9 +319,11 @@ def get_open_orders(symbol="BTCUSDT"):
         return []
 
 def get_spot_position(symbol="BTCUSDT"):
-    """Get available BTC balance in unified account"""
+    """Get available asset balance in unified account for given symbol"""
     ts = str(int(time.time() * 1000))
-    qs = "accountType=UNIFIED&coin=BTC"
+    # Extract base coin from symbol (e.g. BTCUSDT -> BTC, MEEUSDT -> MEE)
+    coin = symbol.replace("USDT", "").replace("USDC", "")
+    qs = f"accountType=UNIFIED&coin={coin}"
     sign = bybit_v5_sign_get(ts, BYBIT_API_KEY, "5000", qs, BYBIT_API_SECRET)
     try:
         r = requests.get(f"{BYBIT_BASE}/v5/account/wallet-balance?{qs}",
@@ -316,7 +331,7 @@ def get_spot_position(symbol="BTCUSDT"):
                      "X-BAPI-RECV-WINDOW": "5000", "X-BAPI-SIGN": sign}, timeout=10).json()
         coins = r.get("result", {}).get("list", [{}])[0].get("coin", [])
         for c in coins:
-            if c.get("coin") == "BTC":
+            if c.get("coin") == coin:
                 # Unified accounts: prefer walletBalance (availableToWithdraw often empty)
                 wb = c.get("walletBalance", "")
                 atw = c.get("availableToWithdraw", "")
@@ -328,6 +343,29 @@ def get_spot_position(symbol="BTCUSDT"):
     except Exception as e:
         log(f"get_spot_position error: {e}")
         return 0.0
+
+
+
+def validate_pair_safety(symbol: str, instruments_cache: dict) -> tuple[bool, str]:
+    """Validate that a trading pair meets safety criteria."""
+    if symbol in BLACKLIST_PAIRS:
+        return False, f'{symbol} is blacklisted (micro-cap/illiquid)'
+    
+    info = instruments_cache.get(symbol, {})
+    if not info:
+        return False, f'{symbol} not found in instruments cache'
+    
+    # Check tick size
+    tick_size = float(info.get('priceFilter', {}).get('tickSize', '1'))
+    if tick_size < 1e-8 or tick_size > MAX_TICK_SIZE:
+        return False, f'{symbol} tick size {tick_size} outside safe range'
+    
+    # Check min order amount
+    min_amt = float(info.get('lotSizeFilter', {}).get('minOrderAmt', '0'))
+    if min_amt > 10:
+        return False, f'{symbol} min order amt {min_amt} too high for micro account'
+    
+    return True, 'OK'
 
 def execute_cycle():
     log("=== Wealth Generation Cycle ===")
@@ -443,6 +481,15 @@ def execute_cycle():
             for sym, meta in instruments.items():
                 if not sym.endswith("USDT"):
                     continue
+                # === SAFETY FILTERS (Post-MEE/NEON Incident) ===
+                if sym in BLACKLIST_PAIRS:
+                    continue
+                t_check = ticker_map.get(sym)
+                if t_check and float(t_check.get("turnover24h", 0)) < MIN_24H_VOLUME_USDT:
+                    continue
+                ts_check = float(meta.get("tickSize", "1"))
+                if ts_check < 1e-8 or ts_check > MAX_TICK_SIZE:
+                    continue
                 t = ticker_map.get(sym)
                 if not t:
                     continue
@@ -536,10 +583,11 @@ def execute_cycle():
                     buy_result = execute_spot_trade("Buy", buy_qty, buy_price, ledger)
                     if buy_result:
                         executed += 1
-                        log(f"MAKER BUY placed: {buy_qty} BTC @ {buy_price} (0.08% below mkt)")
+                        log(f"MAKER BUY placed: {buy_qty} {pair} @ {buy_price} (0.08% below mkt)")
                         ledger.setdefault("pending_maker_sells", []).append({
                             "buy_price": buy_price,
                             "qty": buy_qty,
+                            "symbol": pair,
                             "target_sell_price": round(buy_price * 1.0015 / 0.1) * 0.1,
                             "placed_at": datetime.now(timezone.utc).isoformat()
                         })
