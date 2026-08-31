@@ -636,6 +636,23 @@ def discover_bounties():
                     if not url or url in seen_urls:
                         continue
                     repo = item.get("repository", {}).get("nameWithOwner", "unknown")
+                    repo_lower = repo.lower()
+                    # SPAM FILTER (Algora path): Block known honeypot repos
+                    spam_indicators = ["bounty-plaza", "test-bounty", "fake-bounty", "spam",
+                                      "robinhood-evm-mcp", "aashu91", "xevrion-v2", "agent-playground",
+                                      "bountyscout", "bounty-alert", "bounty-hub", "opportunity-bot",
+                                      "bounty-finder", "bounty-tracker", "bounty-aggregator",
+                                      "claude-builders-bounty", "zhangjiayang6835-cyber", "bounty-board",
+                                      "ai-bounty", "crypto-bounty-list", "web3-bounty-feed", "open-bounties",
+                                      "dev-bounty-list", "task-hub", "freelance-bounty", "micro-task-bot",
+                                      "relayhop", "claudeearnself", "rustchain-bounties", "scottcjn",
+                                      "tz-radar", "timezone-radar", "fresh-low-comp", "meme-bounty",
+                                      "templeos", "cross-compilation", "reproducible cross", "0.03 btc"]
+                    if any(s in repo_lower for s in spam_indicators):
+                        continue
+                    title_lower = (item.get("title", "") or "").lower()
+                    if any(s in title_lower for s in spam_indicators):
+                        continue
                     labels = [l["name"] for l in item.get("labels", [])]
                     # Skip meta/alert issues that are not real bounties
                     meta_labels = {"bounty-alert", "bounty-scout", "meta", "aggregated", "tracker"}
