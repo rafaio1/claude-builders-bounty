@@ -1040,6 +1040,12 @@ TASK: Select TOP 3 bounties for an AI coding agent. PREFER:
 ACCEPTABLE if no perfect matches: documentation fixes, dependency updates,
 refactoring with clear scope, or well-specified feature additions.
 REJECT ONLY: vague requests, meta/self-improve tasks, spam, or non-code work.
+STRICT REJECTION CRITERIA (MUST SKIP):
+- Tasks that only require updating README, CHANGELOG, metadata, or config files
+- "Add badge", "update docs", "fix typo in description" without code logic changes
+- Security policy updates, CODEOWNERS, CI workflow tweaks without functional impact
+- Any bounty where the primary deliverable is text/markdown rather than executable code
+If all candidates fail strict criteria, return empty array [] instead of low-quality picks.
 
 Candidates: {json.dumps(safe_cands, indent=2)}
 
