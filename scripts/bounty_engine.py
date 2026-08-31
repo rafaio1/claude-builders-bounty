@@ -924,7 +924,7 @@ def triage(candidates):
                "payout blocked", "payment issue", "cannot receive payment",
                "sensitive data leak", "security mailbox", "tracking purposes",
                "stop-hook loop", "respawn bounty", "scientific bounty system",
-               "urgent – payout", "urgent – payment", "algora", "country is not supported",
+               "urgent – payout", "urgent – payment", "country is not supported",
                "reward status", "bounty #", "pr #", "research marketplace",
                "global research", "r&d challenges",
                # Hackathons, grants, and large competitions (not quick bug fixes)
