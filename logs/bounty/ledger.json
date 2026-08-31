@@ -230,7 +230,7 @@
         {
           "date": "2026-08-29T13:51:37.170983Z",
           "bounty_id": "Scottcjn/rustchain-bounties#16251",
-          "title": "Fix rustchain.org install script \u2014 macOS crash + shellcheck",
+          "title": "Fix rustchain.org install script — macOS crash + shellcheck",
           "amount_usd": 1.5,
           "amount_rtc": 10,
           "status": "paid",
@@ -3142,7 +3142,7 @@
           "date": "2026-08-30T11:37:41.861304Z",
           "type": "ghostcli_dispatch",
           "action": "immunefi_top10_audit_scan",
-          "prompt_template": "Analyze the top 10 Immunefi bounty programs by TVL. For each, identify 1-3 high-severity vulnerability patterns specific to their architecture (e.g., oracle manipulation in lending protocols, reentrancy in vaults). Output a structured report with: protocol name, vulnerability class, estimated severity (Critical/High), and recommended PoC approach. Do NOT submit reports yet \u2014 this is reconnaissance only.",
+          "prompt_template": "Analyze the top 10 Immunefi bounty programs by TVL. For each, identify 1-3 high-severity vulnerability patterns specific to their architecture (e.g., oracle manipulation in lending protocols, reentrancy in vaults). Output a structured report with: protocol name, vulnerability class, estimated severity (Critical/High), and recommended PoC approach. Do NOT submit reports yet — this is reconnaissance only.",
           "model": "claude-fable-5[1m]",
           "priority": "critical",
           "status": "dispatched",
@@ -3162,7 +3162,7 @@
           "date": "2026-08-30T11:37:41.861304Z",
           "type": "ghostcli_dispatch",
           "action": "poidh_app_pr1467_review_nudge",
-          "prompt_template": "Check PR #1467 on picsoritdidnthappen/poidh-app. If no review activity in last 48h, draft a polite maintainer nudge referencing the hasClaims fix importance for bounty claim integrity. Do NOT post \u2014 output draft text only for human approval before sending.",
+          "prompt_template": "Check PR #1467 on picsoritdidnthappen/poidh-app. If no review activity in last 48h, draft a polite maintainer nudge referencing the hasClaims fix importance for bounty claim integrity. Do NOT post — output draft text only for human approval before sending.",
           "model": "claude-sonnet-5[1m]",
           "priority": "medium",
           "status": "dispatched",
@@ -3315,6 +3315,18 @@
           "date": "2026-08-31",
           "wallet": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
           "notes": "SiteFooter with legal/support links from route registry. PR #153 on upstream."
+        },
+        {
+          "id": "lily-127",
+          "repo": "Lilly-Protocol/lily-frontend",
+          "issue": 127,
+          "pr": 154,
+          "amount": 85,
+          "currency": "USDC",
+          "status": "submitted",
+          "date": "2026-08-31",
+          "wallet": "0x742d35Cc6634C0532925a3b844Bc9e7595f0bEb",
+          "notes": "Root-level loading.tsx for layout tree. PR #154 on upstream."
         }
       ]
     },
