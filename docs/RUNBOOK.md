@@ -180,3 +180,28 @@ bash /Agentic/scripts/watchdog_health_check.sh
 - Não reinicia serviços; apenas diagnostica.
 
 **Próxima ação recomendada:** Decidir se integra ao loop automático ou mantém como ferramenta manual de diagnóstico. Se integrar, adicionar lock file para evitar execução concorrente.
+
+## 11. Canonical Bounty Receive Ledger
+
+**Ferramenta:** `tools/bounty_receive_ledger.py`
+**Dados:** `/Agentic/data/aro/bounty_receive_ledger.json` (canônico), `/Agentic/data/aro/realized_revenue_ledger.jsonl` (receita liquidada)
+
+### Fluxo Obrigatório
+1. `audit` — inspeciona ledger legado e novos ciclos sem alterar estado.
+2. `migrate` — importa entradas legadas respeitando a máquina de estados monotônica.
+3. `bind-rail` — associa rail de recebimento; bloqueia/quarantena se chain/address incompatível.
+4. `prepare-notifications` — gera outbox Telegram/email em modo DRY-RUN; `--send` só com validação e sem secrets.
+5. `reconcile` — reporta contagens, blockers e progresso rumo à meta de US$ 20M na Wise.
+6. `settle` — grava em `realized_revenue_ledger.jsonl` SOMENTE após `provider_confirmed` + txid/confirmações.
+
+### Regras Imutáveis
+- Estados seguem ordem estrita: `candidate → claimed → submitted → accepted → payment_queued → provider_confirmed → settled`.
+- Nenhum valor é considerado realizado sem entrada `settled` reconciliada.
+- Secrets (private_key, mnemonic, API keys) NUNCA serializados, logados ou enviados.
+- Notificações falham fechadas; Gmail `invalid_grant` preserva outbox e retorna bloqueio explícito.
+- Rota Bybit/Wise exige verificação prévia de suporte a ativo/rede; caso contrário `blocked_bybit_unsupported_asset`.
+
+### Integração com Orquestrador
+- O orquestrador deve chamar `audit → bind-rail → prepare-notifications → reconcile → settle` como ciclo padrão.
+- Claims ativos permanecem em monitoramento; apenas transições válidas são permitidas.
+- Meta financeira só avança quando `realized_revenue_ledger.jsonl` contém registros `settled` com evidência on-chain/provider.

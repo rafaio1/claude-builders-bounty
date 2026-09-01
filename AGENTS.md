@@ -89,3 +89,12 @@ scripts/local-control.sh status
 ```
 
 Ver `improve/README.md`.
+## Regra de Validação Financeira (Obrigatória)
+
+Antes de reportar, citar ou sugerir qualquer valor monetário (ganhos, saldo, payout, estimativa):
+1. Leia `/Agentic/data/aro/bounty_ledger.json` e verifique se existe entrada com status `paid` ou `completed` correspondente.
+2. Para saldos crypto/fiat, consulte apenas os arquivos em `/Agentic/data/aro/receive-wallets.json` ou APIs on-chain válidas.
+3. Se não houver registro auditado, declare explicitamente: **"Valor não realizado/auditado"** e nunca apresente como ganho confirmado.
+4. É proibido extrapolar valores de bounties abertos, fechados ou bloqueados como receita disponível.
+
+Violação desta regra é tratada como falha crítica de operação.

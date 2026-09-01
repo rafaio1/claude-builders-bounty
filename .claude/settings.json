@@ -1,7 +1,7 @@
 {
-  "model": "claude-sonnet-5[1m]",
+  "model": "ghostcli-auto[1m]",
   "permissions": {
-    "defaultMode": "bypassPermissions",
+    "defaultMode": "default",
     "allow": [
       "Bash",
       "Read",
@@ -17,6 +17,11 @@
   "env": {
     "BYBIT_ENV_FILE": "/root/.automaton/bybit-murre.env",
     "BYBIT_MODE": "live",
-    "BYBIT_CATEGORY": "spot"
+    "BYBIT_CATEGORY": "spot",
+    "ANTHROPIC_BASE_URL": "http://127.0.0.1:8787",
+    "ANTHROPIC_MODEL": "ghostcli-auto[1m]",
+    "ANTHROPIC_DEFAULT_OPUS_MODEL": "ghostcli-auto[1m]",
+    "ANTHROPIC_DEFAULT_SONNET_MODEL": "ghostcli-auto[1m]",
+    "ANTHROPIC_DEFAULT_HAIKU_MODEL": "ghostcli-auto[1m]"
   }
 }
