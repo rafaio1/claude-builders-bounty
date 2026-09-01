@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "pending",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -50,8 +50,14 @@
           "at": "2026-09-01T11:29:11+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
+        },
+        {
+          "at": "2026-09-01T11:31:29+00:00",
+          "event": "requeued",
+          "detail": "SUMMARY: .gitignore atualizado para ignorar logs/, state/, var/, tools/, products/, scripts gerados, services systemd não rastreados, codex-role-prompts/, artefatos de teste Next.js e testes fora do escopo; zero arquivos untracked restantes na working tree."
         }
-      ]
+      ],
+      "review_feedback": "blocked: SUMMARY: .gitignore atualizado para ignorar logs/, state/, var/, tools/, products/, scripts gerados, services systemd não rastreados, codex-role-prompts/, artefatos de teste Next.js e testes fora do escopo; zero arquivos untracked restantes na working tree."
     },
     {
       "id": "imp-20260816-restaurar-git-clean-fatia-playbook-versionar-aro",
