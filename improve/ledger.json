@@ -9,7 +9,7 @@
       "title": "Restaurar git_clean: working tree limpa na main",
       "kind": "bottleneck",
       "priority": 1,
-      "status": "developing",
+      "status": "blocked",
       "rationale": "A working tree está suja (.cursor/agents/), o que quebra a integridade do pipeline e impede novos deployments e reviews automáticos.",
       "change": "Adicionar .cursor/ ao .gitignore para ignorar lixo de IDE, garantindo git status limpo sem reescrever histórico ou usar force.",
       "never": [
@@ -28,7 +28,7 @@
         "tests/test_loop.py"
       ],
       "theme": "engine",
-      "branch": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main",
+      "branch": "",
       "map_id": "20260817T120129Z",
       "history": [
         {
@@ -80,6 +80,11 @@
           "at": "2026-09-01T11:36:08+00:00",
           "event": "claimed",
           "detail": "improve/dev/imp-20260816-restaurar-git-clean-working-tree-limpa-na-main"
+        },
+        {
+          "at": "2026-09-01T11:37:03+00:00",
+          "event": "blocked",
+          "detail": "The `.gitignore` approach cannot clean already-tracked modified files (`M`/`m` status) — those require either committing or restoring, both forbidden by the proposal constraints. The untracked files (`?`) are now ignored. The remaining dirty state is in tracked submodules and workspace repos that the pipeline must handle separately. The `.gitignore` update covers all safe-to-ignore artifacts withi…"
         }
       ],
       "review_feedback": "blocked: The previous `git status` still shows tracked submodules and workspace files as modified (`m` lowercase = submodule dirty, `M` uppercase = tracked file changed). Adding them to `.gitignore` does not untrack them — they are already in the index. The proposal forbids `reset --hard`, `checkout --`, or `clean -fd`, and explicitly says \"Se a proposta for restaurar git_clean: NÃO reescreva arquivos sujo…"
