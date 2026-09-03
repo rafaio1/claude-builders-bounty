@@ -335,7 +335,7 @@ def phase_06_convert_gmail_proposals():
             "2. If action=reclaim_lapsed: draft exact `/claim` comment text.\n"
             "3. If action=provide_live_url: check if content exists; if yes, draft `Live-URL: <url>` comment; if no, output action=abandon with reason.\n"
             "4. If action=investigate_claim: determine correct executable action (claim, qualify_claim, submit_work, or abandon) and draft proposed_comment if applicable.\n"
-            "5. OVERWRITE the proposal file at {pf} with updated JSON containing: action (executable), proposed_comment (string or null), risks (updated), investigated_at (ISO timestamp).\n"
+            f"5. OVERWRITE the proposal file at {pf} with updated JSON containing: action (executable), proposed_comment (string or null), risks (updated), investigated_at (ISO timestamp).\n"
             "6. Do NOT post to GitHub. Do NOT modify ledgers. Only update the proposal file."
         )
         # Record mtime before dispatch to verify file was actually updated
