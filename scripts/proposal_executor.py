@@ -78,15 +78,21 @@ def execute_proposal(proposal_path):
     except Exception as e:
         return False, f"invalid_json: {e}"
 
-    action = data.get("action", "")
+    action = data.get("action") or data.get("next_action") or ""
     bounty_key = data.get("bounty_key", "unknown")
     comment = data.get("proposed_comment")
     evidence_url = data.get("evidence_url", "")
 
+    # monitor_pr_review and superseded are valid but non-executable (no comment to post)
+    if action in ("monitor_pr_review", "superseded", "abandon", "wait_for_review", "noop_blocked_onboarding",
+                  "await_maintainer_review", "monitor_verifier_response", "verify_claim_status_and_deliverable",
+                  "clone_and_investigate_rustchain_mcp",
+                  "reclaim_lapsed", "investigate_claim", "provide_live_url"):
+        return True, f"non_executable_{action}"
     if action not in ("claim", "fix_review_feedback", "submit_work", "qualify", "qualify_claim"):
         return False, f"action_not_executable: {action}"
 
-    if not comment:
+    if not comment and action not in ("monitor_pr_review", "superseded"):
         return False, "no_proposed_comment"
 
     # Try parsing bounty_key first
