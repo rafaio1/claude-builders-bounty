@@ -171,7 +171,7 @@ def parse_decimal(value: Any, *, minimum: Decimal, maximum: Decimal | None = Non
     return number
 
 
-def run_gh(arguments: list[str], timeout: int = 30) -> subprocess.CompletedProcess[str]:
+def run_gh(arguments: list[str], timeout: int | None = None) -> subprocess.CompletedProcess[str]:
     return subprocess.run(
         ["/usr/bin/gh", *arguments],
         capture_output=True,
