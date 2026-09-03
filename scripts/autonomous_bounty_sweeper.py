@@ -515,6 +515,12 @@ def sweep_cycle():
     gh_claim_result = phase_github_claim_emails()
     summary_phase_05 = gh_claim_result
 
+    # Phase 0.6: Convert non-executable gmail proposals to executable actions
+    try:
+        phase06_result = phase_06_convert_gmail_proposals()
+    except Exception as e:
+        phase06_result = {"ok": False, "error": str(e)}
+
     for e in candidates:
         status = e.get("status", "")
         bkey = e.get("bounty_key") or e.get("candidate_id") or ""
