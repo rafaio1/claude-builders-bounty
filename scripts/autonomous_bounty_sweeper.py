@@ -296,6 +296,49 @@ def phase_email_cleanup():
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
+
+def phase_06_convert_gmail_proposals():
+    """Convert non-executable gmail claim proposals into executable actions via specialist dispatch."""
+    import glob as _glob
+    converted = 0
+    errors = []
+    proposal_files = sorted(_glob.glob(str(PROPOSALS / "gmail_claim_*.json")))
+    # Filter to only those with proposed_comment == null and action in investigate set
+    targets = []
+    for pf in proposal_files:
+        try:
+            data = json.loads(pathlib.Path(pf).read_text())
+        except Exception:
+            continue
+        if data.get("proposed_comment") is None and data.get("action") in ("investigate_claim", "reclaim_lapsed", "provide_live_url"):
+            targets.append((pf, data))
+    if not targets:
+        return {"ok": True, "converted": 0, "targets": 0}
+    # Bounded: max 3 conversions per cycle to stay within timer window
+    for pf, data in targets[:3]:
+        bkey = data.get("bounty_key", "unknown")
+        evidence = data.get("evidence_url", "")
+        action = data.get("action", "")
+        directive = data.get("directive", "")
+        prompt = (
+            f"You are a bounty claim specialist. Bounty: {bkey}. Evidence: {evidence}.\n"
+            f"Current investigation action: {action}. Directive: {directive}\n\n"
+            "YOUR TASK:\n"
+            "1. Fetch the GitHub issue page and verify current state (open/closed, claim status, maintainer comments).\n"
+            "2. If action=reclaim_lapsed: draft exact `/claim` comment text.\n"
+            "3. If action=provide_live_url: check if content exists; if yes, draft `Live-URL: <url>` comment; if no, output action=abandon with reason.\n"
+            "4. If action=investigate_claim: determine correct executable action (claim, qualify_claim, submit_work, or abandon) and draft proposed_comment if applicable.\n"
+            "5. OVERWRITE the proposal file at {pf} with updated JSON containing: action (executable), proposed_comment (string or null), risks (updated), investigated_at (ISO timestamp).\n"
+            "6. Do NOT post to GitHub. Do NOT modify ledgers. Only update the proposal file."
+        )
+        task = {"bounty_key": bkey, "prompt": prompt, "_phase": "phase06_convert"}
+        result = dispatch_codex_specialist(task)
+        if result.get("ok"):
+            converted += 1
+        else:
+            errors.append({"bounty_key": bkey, "error": result.get("error", "unknown")})
+    return {"ok": True, "converted": converted, "targets": len(targets), "errors": errors}
+
 def phase_github_claim_emails():
     """Phase 0.5: Scan Gmail for GitHub claim/lapsed notifications and create proposals."""
     results = []
@@ -575,6 +618,7 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
         "cycle_finished_at": now_iso(),
         "reconciliation": recon_status,
         "github_claim_emails": summary_phase_05,
+        "phase06_conversion": phase06_result,
         "phases": phase_counts,
         "candidates_total": len(candidates),
         "tasks_queued": len(task_specs),
