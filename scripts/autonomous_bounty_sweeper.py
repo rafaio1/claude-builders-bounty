@@ -46,16 +46,51 @@ def ledger_entries():
     return d if isinstance(d, list) else []
 
 def actionable_filter(entries):
-    """Select entries that can progress autonomously right now."""
+    """Select entries that can progress autonomously right now.
+
+    Handles both legacy ledger-schema entries (with status/rail_id) and
+    scout-schema entries from monitor_only (with agent_access/asset).
+    Promotes AGENT_ALLOWED non-RTC entries with verified execution contract
+    to research_queue when autonomy gates are passable.
+    """
     out = []
     for e in entries:
-        if not isinstance(e, dict): continue
-        s = e.get("status","")
-        rail = e.get("rail_id","")
-        # Normalize rail_id for matching against wallet registry aliases
-        norm_rail = rail.replace("crypto_","").replace("_spl","").replace("_trc20","_tron") if isinstance(rail,str) else ""
-        if s in ("candidate","submitted") and (rail in (
-            "crypto_usdt_polygon","crypto_usdt_trc20","solana_spl","usdt_polygon","usdt_tron") or norm_rail in ("usdt_polygon","usdt_tron","solana")):
+        if not isinstance(e, dict):
+            continue
+        # --- Legacy ledger-schema path ---
+        s = e.get("status", "")
+        rail = e.get("rail_id", "")
+        norm_rail = rail.replace("crypto_", "").replace("_spl", "").replace("_trc20", "_tron") if isinstance(rail, str) else ""
+        if s in ("candidate", "submitted") and (rail in (
+            "crypto_usdt_polygon", "crypto_usdt_trc20", "solana_spl",
+            "usdt_polygon", "usdt_tron") or norm_rail in (
+                "usdt_polygon", "usdt_tron", "solana")):
+            out.append(e)
+            continue
+        # --- Scout-schema path (monitor_only entries) ---
+        agent_access = e.get("agent_access", "")
+        asset = e.get("asset", "")
+        qual = e.get("qualification_decision")
+        explicit_contract = e.get("explicit_execution_contract", False)
+        rail_verified = e.get("self_custody_rail_verified", False)
+        # Skip rejected or human-only entries
+        if qual == "rejected":
+            continue
+        if agent_access in ("HUMAN_ONLY", "HUMAN_REQUIRED"):
+            continue
+        # RTC has no viable bridge path; never promote
+        if asset == "RTC":
+            continue
+        # Promote AGENT_ALLOWED entries to research_queue for specialist
+        # investigation. These may lack explicit_execution_contract or
+        # self_custody_rail_verified because those fields are only populated
+        # after discovery-phase qualification. The specialist will verify
+        # autonomy gates and either promote to action_queue or reject.
+        if agent_access == "AGENT_ALLOWED":
+            out.append(e)
+            continue
+        # Promote entries with verified self-custody rail (non-RTC)
+        if rail_verified and asset != "RTC":
             out.append(e)
     return out
 
@@ -90,14 +125,37 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
 
 def build_task(entry):
     """Build a specialist prompt for one bounty."""
-    # Prevent Phase 2 spam: skip entries with zero reviews
-    if entry.get("status") in ("submitted", "pr_open", "review_feedback_pending"):
+    # Prevent Phase 2 spam: skip entries with zero reviews (legacy schema only)
+    status = entry.get("status", "")
+    if status in ("submitted", "pr_open", "review_feedback_pending"):
         if int(entry.get("reviews_count", 0)) == 0:
             return None
-    bid = entry.get("bounty_key") or entry.get("issue_or_pr") or "unknown"
-    repo = entry.get("repo","")
-    rail = entry.get("rail_id","")
-    status = entry.get("status","")
+    # Support both legacy ledger-schema and scout-schema entries
+    bid = (entry.get("bounty_key") or entry.get("issue_or_pr")
+           or entry.get("candidate_id") or "unknown")
+    repo = entry.get("repo", "")
+    rail = entry.get("rail_id") or entry.get("asset") or ""
+    agent_access = entry.get("agent_access", "")
+    # Enrich URL from source_urls.detail for scout-schema entries
+    url = entry.get("url") or ""
+    if not url and isinstance(entry.get("source_urls"), dict):
+        url = entry["source_urls"].get("detail", "")
+    # Cross-reference candidate_id against scout files when URL still missing
+    if not url and agent_access == "AGENT_ALLOWED":
+        for scout_path in [STATE / "superteam_usdc_scout.json", STATE / "superteam_large_bounty_scout.json"]:
+            scout_data = load_json(scout_path)
+            if not scout_data:
+                continue
+            entries_list = scout_data if isinstance(scout_data, list) else scout_data.get("entries", scout_data.get("candidates", []))
+            for se in entries_list:
+                if se.get("id") == bid:
+                    su = se.get("source_urls", {})
+                    if isinstance(su, dict):
+                        url = su.get("detail", "")
+                    if url:
+                        break
+            if url:
+                break
     wallet_addr = None
     wdata = load_json(WALLETS)
     if wdata:
@@ -112,16 +170,31 @@ def build_task(entry):
                         break
             if wallet_addr:
                 break
-    prompt = f"""You are a bounty execution specialist. Repo: {repo}. Bounty key: {bid}. Current status: {status}. Rail: {rail}. Receive address: {wallet_addr}.
-
-Your job:
-1. Check the latest issue/PR state on GitHub for this bounty.
-2. If claim is missing or lapsed, prepare a /claim comment draft (do NOT post).
-3. If work is submitted but unmerged, summarize review feedback and next fix.
-4. If payout info changed, note new rail/amount.
-5. Output a JSON proposal to /Agentic/data/aro/proposals/ with fields: bounty_key, action, evidence_url, proposed_comment, next_status, risks.
-
-Do NOT modify canonical ledgers. Do NOT post comments. Read-only investigation + proposal file only."""
+    # Add scout-schema context to prompt when applicable
+    if agent_access == "AGENT_ALLOWED" and not status:
+        prompt = (
+            f"You are a bounty discovery specialist. Candidate: {bid}. Asset: {rail}. "
+            f"Agent access: {agent_access}. URL: {url}.\n\n"
+            "Your job:\n"
+            f"1. Fetch the bounty detail page at {url} and verify scope, payout rail, and claim requirements.\n"
+            "2. Assess whether this bounty can be completed autonomously (no human identity, KYC, social media, or real-funds gates).\n"
+            "3. If autonomous execution is feasible, output a proposal with action=qualify_claim, evidence_url={url}, and proposed next steps.\n"
+            "4. If human gates block autonomous completion, output action=abandon with specific gate reasons.\n"
+            f"5. Write proposal JSON to /Agentic/data/aro/proposals/discovery_{bid[:8]}.json.\n\n"
+            "Do NOT modify canonical ledgers. Do NOT post comments. Read-only investigation + proposal file only."
+        )
+    else:
+        prompt = (
+            f"You are a bounty execution specialist. Repo: {repo}. Bounty key: {bid}. "
+            f"Current status: {status}. Rail: {rail}. Receive address: {wallet_addr}.\n\n"
+            "Your job:\n"
+            "1. Check the latest issue/PR state on GitHub for this bounty.\n"
+            "2. If claim is missing or lapsed, prepare a /claim comment draft (do NOT post).\n"
+            "3. If work is submitted but unmerged, summarize review feedback and next fix.\n"
+            "4. If payout info changed, note new rail/amount.\n"
+            "5. Output a JSON proposal to /Agentic/data/aro/proposals/ with fields: bounty_key, action, evidence_url, proposed_comment, next_status, risks.\n\n"
+            "Do NOT modify canonical ledgers. Do NOT post comments. Read-only investigation + proposal file only."
+        )
     return {"bounty_key": bid, "prompt": prompt}
 
 def phase_claims_finalize(entries):
@@ -342,6 +415,15 @@ def sweep_cycle():
 
 PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check scope, payout rail, and claim requirements. Output proposal to /Agentic/data/aro/proposals/ with action=qualify or action=abandon. Do NOT modify ledgers."""
             task_specs.append({"bounty_key": bid, "prompt": prompt, "_phase": "discovery"})
+
+    # Phase 5: Promoted scout entries from monitor_only (AGENT_ALLOWED bounties)
+    promoted_scouts = actionable_filter(q.get("monitor_only", [])) if q else []
+    for ps in promoted_scouts[:3]:
+        task = build_task(ps)
+        if task:
+            task["_phase"] = "scout_discovery"
+            task_specs.append(task)
+
 
     # Execute all collected tasks with bounded ThreadPoolExecutor
     all_results = []
