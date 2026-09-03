@@ -109,6 +109,8 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
         "/root/.local/bin/codex", "exec",
         "-m", "ghostcli-auto[1m]",
         "--skip-git-repo-check",
+        "-C", str(ROOT),
+        "--dangerously-bypass-approvals-and-sandbox",
         "-c", 'shell_environment_policy.inherit="all"',
         "-s", "danger-full-access",
         prompt
