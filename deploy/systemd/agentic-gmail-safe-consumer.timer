@@ -1,0 +1,13 @@
+[Unit]
+Description=Consume Gmail safe-action queue every two minutes
+
+[Timer]
+OnBootSec=2min
+OnUnitActiveSec=2min
+AccuracySec=20s
+RandomizedDelaySec=20s
+Persistent=true
+Unit=agentic-gmail-safe-consumer.service
+
+[Install]
+WantedBy=timers.target

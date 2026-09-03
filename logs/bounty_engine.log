@@ -65504,3 +65504,37 @@ SyntaxError: invalid syntax
 [2026-08-31T03:19:16.333431+00:00] === DISCOVERY PHASE ===
 [2026-08-31T03:19:16.333474+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
 [2026-08-31T03:19:16.333474+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-09-01T12:18:11.349612+00:00] WORKSPACE CLEANUP: removed 139 stale folders, freed ~9168MB
+[2026-09-01T12:18:11.349612+00:00] WORKSPACE CLEANUP: removed 139 stale folders, freed ~9168MB
+[2026-09-01T12:18:11.349818+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-09-01T12:18:11.349818+00:00] === BOUNTY ENGINE v3.0 STARTED ===
+[2026-09-01T12:18:11.349865+00:00] 
+============================================================
+[2026-09-01T12:18:11.349865+00:00] 
+============================================================
+[2026-09-01T12:18:11.349907+00:00] CYCLE 1 - 2026-09-01T12:18:11.349905+00:00
+[2026-09-01T12:18:11.349907+00:00] CYCLE 1 - 2026-09-01T12:18:11.349905+00:00
+[2026-09-01T12:18:11.349954+00:00] ============================================================
+[2026-09-01T12:18:11.349954+00:00] ============================================================
+[2026-09-01T12:18:11.349993+00:00] === PR STATUS MONITOR ===
+[2026-09-01T12:18:11.349993+00:00] === PR STATUS MONITOR ===
+[2026-09-01T12:18:11.350415+00:00] PR Monitor: 19 pending PRs, checking up to 10
+[2026-09-01T12:18:11.350415+00:00] PR Monitor: 19 pending PRs, checking up to 10
+[2026-09-01T12:18:25.747772+00:00] PR Monitor done: checked 10, updated 0
+[2026-09-01T12:18:25.747772+00:00] PR Monitor done: checked 10, updated 0
+[2026-09-01T12:18:25.748038+00:00] No PR status changes detected
+[2026-09-01T12:18:25.748038+00:00] No PR status changes detected
+[2026-09-01T12:18:25.748175+00:00] === DISCOVERY PHASE ===
+[2026-09-01T12:18:25.748175+00:00] === DISCOVERY PHASE ===
+[2026-09-01T12:18:25.748280+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-09-01T12:18:25.748280+00:00] Discovery progress: 0/30 queries completed, 0 candidates found
+[2026-09-01T12:18:52.529909+00:00] Discovery progress: 5/30 queries completed, 0 candidates found
+[2026-09-01T12:18:52.529909+00:00] Discovery progress: 5/30 queries completed, 0 candidates found
+[2026-09-01T12:19:04.145114+00:00] FATAL SIGNAL 15 received
+[2026-09-01T12:19:04.145114+00:00] FATAL SIGNAL 15 received
+  File "/Agentic/scripts/bounty_engine.py", line 2006, in <module>
+    main()
+  File "/Agentic/scripts/bounty_engine.py", line 1890, in main
+    candidates = discover_bounties()
+  File "/Agentic/scripts/bounty_engine.py", line 595, in discover_bounties
+    time.sleep(4)  # Increased to avoid GitHub search rate limits

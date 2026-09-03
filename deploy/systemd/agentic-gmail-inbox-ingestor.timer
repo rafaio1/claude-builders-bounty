@@ -1,0 +1,13 @@
+[Unit]
+Description=Ingest Gmail inbox changes every two minutes
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=2min
+AccuracySec=15s
+RandomizedDelaySec=15s
+Persistent=true
+Unit=agentic-gmail-inbox-ingestor.service
+
+[Install]
+WantedBy=timers.target

@@ -371,43 +371,9 @@ def execute_cycle():
     log("=== Wealth Generation Cycle ===")
     ledger = load_ledger()
     
-    # === PROCESS TELEGRAM INBOX COMMANDS ===
-    inbox_path = "/Agentic/data/aro/inbox/user_commands.jsonl"
-    if os.path.exists(inbox_path):
-        try:
-            with open(inbox_path, "r+") as f:
-                lines = f.readlines()
-                new_lines = []
-                for line in lines:
-                    try:
-                        cmd = json.loads(line.strip())
-                        if not cmd.get("processed"):
-                            text = cmd.get("text", "").lower()
-                            log(f"Processing TG command: {cmd.get('text', '')[:80]}")
-                            
-                            # Command routing
-                            if "saldo" in text or "balance" in text or "capital" in text:
-                                notify_telegram(f"💰 Status Financeiro:\n• Bybit: ${ledger.get('bybit_balance',0):.2f} USDT\n• Wise: ${ledger.get('wise_balance',0):.2f} USD\n• Realizado: ${ledger.get('realized_usd',0):.2f}")
-                            elif "status" in text or "progresso" in text:
-                                notify_telegram(f"📊 Progresso Meta $200k:\n• Atual: ${ledger.get('realized_usd',0):.2f}\n• Pipeline Bounty: {ledger.get('pending_bounty_count',0)} claims\n• Estratégia Trading: Maker-Only (em desenvolvimento)")
-                            elif "claim" in text or "bounty" in text:
-                                notify_telegram("🔍 Forçando verificação de bounties...\n(O bounty-engine já roda a cada 2h automaticamente)")
-                                subprocess.run(["systemctl", "start", "agentic-bounty-claimer.service"], capture_output=True)
-                            else:
-                                notify_telegram(f"✅ Comando recebido: '{cmd.get('text','')}'\n⚠️ Ainda não implementado no wealth-executor. Use 'status', 'saldo' ou 'claim'.")
-                            
-                            cmd["processed"] = True
-                            new_lines.append(json.dumps(cmd) + "\n")
-                        else:
-                            new_lines.append(line)
-                    except json.JSONDecodeError:
-                        new_lines.append(line)
-                
-                f.seek(0)
-                f.truncate()
-                f.writelines(new_lines)
-        except Exception as e:
-            log(f"Inbox processing error: {e}")
+    # Telegram commands are exclusively owned by telegram-command-dispatcher.
+    # This financial worker must never consume owner messages, infer authorization
+    # from file presence, or start services from arbitrary Telegram text.
     
     opps = []  # Placeholder; P2P scan replaced by maker strategy dev
     

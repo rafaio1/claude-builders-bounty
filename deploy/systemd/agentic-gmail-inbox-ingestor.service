@@ -1,0 +1,39 @@
+[Unit]
+Description=Incremental fail-closed Gmail inbox ingestor
+After=network-online.target
+Wants=network-online.target
+StartLimitIntervalSec=10min
+StartLimitBurst=5
+
+[Service]
+Type=oneshot
+WorkingDirectory=/
+ExecStart=/usr/local/libexec/agentic-gmail-inbox-ingestor --max-messages 2000 --workers 10 --apply-labels --archive-github-routine --archive-verified-github-actions
+User=root
+Group=root
+UMask=0077
+Environment=PYTHONUNBUFFERED=1
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=strict
+ProtectHome=true
+TemporaryFileSystem=/Agentic:ro
+BindPaths=/Agentic/state:/Agentic/state
+BindPaths=/Agentic/data/aro/inbox:/Agentic/data/aro/inbox
+StateDirectory=agentic-gmail
+StateDirectoryMode=0700
+RuntimeDirectory=agentic-gmail-ingestor
+RuntimeDirectoryMode=0700
+LoadCredential=gmail-oauth.json:/Agentic/.config/gmail_oauth_token.json
+ProtectKernelTunables=true
+ProtectKernelModules=true
+ProtectControlGroups=true
+RestrictSUIDSGID=true
+LockPersonality=true
+MemoryDenyWriteExecute=true
+RestrictRealtime=true
+SystemCallArchitectures=native
+RestrictAddressFamilies=AF_UNIX AF_INET AF_INET6
+TimeoutStartSec=15min
+Restart=on-failure
+RestartSec=30s

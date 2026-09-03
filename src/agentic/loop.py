@@ -404,20 +404,35 @@ def tick(settings: Settings) -> dict[str, Any]:
         raise RuntimeError("AGENTIC_LIVE_TRADE ligado recusado; o loop não opera Bybit")
     census = collect_census(settings.root)
     tools = census.get("tools") or {}
-    from agentic.aro.cycle import run_cycle
-
-    aro = run_cycle(
-        settings.root,
-        tools={
-            "playwright_cli": bool(tools.get("playwright")),
-            "playwright_mcp": bool(tools.get("playwright_mcp")),
-            "jq": bool(tools.get("jq")),
-        },
-        ghostcli=bool(tools.get("ghostcli")),
-        bybit=bool(tools.get("bybit_key") and tools.get("bybit_secret")),
-        live_trade=False,
-        operate=True,
-    )
+    import os as _os
+    if _os.getenv("AGENTIC_PHASED_CYCLE") == "1":
+        from agentic.aro.phases import run_phased_cycle
+        aro = run_phased_cycle(
+            settings.root,
+            tools={
+                "playwright_cli": bool(tools.get("playwright")),
+                "playwright_mcp": bool(tools.get("playwright_mcp")),
+                "jq": bool(tools.get("jq")),
+            },
+            ghostcli=bool(tools.get("ghostcli")),
+            bybit=bool(tools.get("bybit_key") and tools.get("bybit_secret")),
+            live_trade=False,
+            operate=True,
+        )
+    else:
+        from agentic.aro.cycle import run_cycle
+        aro = run_cycle(
+            settings.root,
+            tools={
+                "playwright_cli": bool(tools.get("playwright")),
+                "playwright_mcp": bool(tools.get("playwright_mcp")),
+                "jq": bool(tools.get("jq")),
+            },
+            ghostcli=bool(tools.get("ghostcli")),
+            bybit=bool(tools.get("bybit_key") and tools.get("bybit_secret")),
+            live_trade=False,
+            operate=True,
+        )
     payload = {
         "ok": True,
         "generated_at": utcnow(),
