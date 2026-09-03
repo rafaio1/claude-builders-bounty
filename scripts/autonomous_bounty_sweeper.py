@@ -162,6 +162,7 @@ def phase_code_microtask(entries):
         if status in ("claimed", "in_progress", "coding"):
             task = build_task(e)
             task["prompt"] += "\n\nPHASE 3 DIRECTIVE: Execute coding/microtask. Produce patch or implementation. Output proposal with action=submit_work."
+            task["prompt"] += "\n\nQUALITY GATE & PUSH REQUIREMENT: Before marking submit_work, you MUST: (1) run any available tests/linters in the repo and confirm they pass; (2) commit all changes to a feature branch; (3) push that branch to https://github.com/rafaio1/agentic-integration.git; (4) include the exact commit SHA and branch name in evidence_url. If tests fail or push fails, output action=fix_review_feedback instead of submit_work and describe the blocker. Never propose submit_work without a verified push to the private mirror."
             res = dispatch_codex_specialist(task)
             res["phase"] = "code_microtask"
             res["bounty_key"] = task["bounty_key"]
@@ -188,6 +189,40 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
         results.append(res)
     return results
 
+def phase_email_cleanup():
+    """Phase 5: Archive verified GitHub notification emails to reduce inbox noise."""
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from agentic_gmail_inbox_ingestor import (
+            archive_verified_github_actions,
+            GmailAPIClient,
+            load_decisions,
+            load_action_results,
+            resolve_labels,
+        )
+        client = GmailAPIClient()
+        raw_decisions = load_decisions() or {}
+        # load_decisions returns dict[(msg_id, rule_version), decision];
+        # archive_verified_github_actions expects Iterable[dict] of values.
+        decisions = list(raw_decisions.values()) if isinstance(raw_decisions, dict) else []
+        action_results = load_action_results() or {}
+        # Resolve actual Gmail label IDs; LABEL_NAMES only has display names.
+        label_ids = resolve_labels(client)
+        label_id = label_ids.get("github_verified", "")
+        if not label_id:
+            return {"ok": False, "error": "missing_label_id"}
+        eligible, archived, saturated = archive_verified_github_actions(
+            client, label_id, decisions, action_results
+        )
+        return {
+            "ok": True,
+            "eligible": eligible,
+            "archived": archived,
+            "saturated": saturated,
+        }
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
 def validate_proposal_quality(proposal_dir):
     """Quality gate: ensure proposals have evidence_url and actionable action."""
     valid = 0
@@ -209,6 +244,25 @@ def sweep_cycle():
     started = now_iso()
     entries = ledger_entries()
     candidates = actionable_filter(entries)
+
+    # Phase 0: Reconciliation (runs BEFORE task collection to update ledger status)
+    # Calls existing reconciler script; error-tolerant, does not block cycle.
+    try:
+        import subprocess
+        recon_result = subprocess.run(
+            ["python3", "/Agentic/scripts/agentic_rustchain_reconcile.py", "--root", "/Agentic"],
+            timeout=90, capture_output=True, text=True
+        )
+        recon_status = {
+            "ok": recon_result.returncode == 0,
+            "returncode": recon_result.returncode,
+            "stdout_tail": recon_result.stdout.strip().split("\n")[-5:] if recon_result.stdout else [],
+            "stderr_tail": recon_result.stderr.strip().split("\n")[-5:] if recon_result.stderr else []
+        }
+    except subprocess.TimeoutExpired:
+        recon_status = {"ok": False, "error": "timeout_90s"}
+    except Exception as e:
+        recon_status = {"ok": False, "error": str(e)}
 
     # Bounded concurrency: max 3 concurrent Codex specialists across ALL phases
     # to prevent exceeding the 5-minute systemd timer window.
@@ -273,6 +327,7 @@ def sweep_cycle():
             if task is None:
                 continue
             task["prompt"] += "\n\nPHASE 3 DIRECTIVE: Execute coding/microtask. Produce patch or implementation. Output proposal with action=submit_work."
+            task["prompt"] += "\n\nQUALITY GATE & PUSH REQUIREMENT: Before marking submit_work, you MUST: (1) run any available tests/linters in the repo and confirm they pass; (2) commit all changes to a feature branch; (3) push that branch to https://github.com/rafaio1/agentic-integration.git; (4) include the exact commit SHA and branch name in evidence_url. If tests fail or push fails, output action=fix_review_feedback instead of submit_work and describe the blocker. Never propose submit_work without a verified push to the private mirror."
             task["_phase"] = "code_microtask"
             task_specs.append(task)
 
@@ -320,6 +375,7 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
     summary = {
         "cycle_started_at": started,
         "cycle_finished_at": now_iso(),
+        "reconciliation": recon_status,
         "phases": phase_counts,
         "candidates_total": len(candidates),
         "tasks_queued": len(task_specs),
@@ -334,6 +390,11 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
     log_path = LOGS / f"sweep-{started.replace(':','-')}.json"
     save_json(log_path, summary)
     print(json.dumps(summary, indent=2))
+
+    # Phase 5: Email cleanup (runs after main phases to avoid blocking)
+    email_cleanup = phase_email_cleanup()
+    summary["email_cleanup"] = email_cleanup
+    save_json(SWEEP_STATE, summary)
 
 if __name__ == "__main__":
     sweep_cycle()
