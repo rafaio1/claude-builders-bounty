@@ -61,10 +61,19 @@ def actionable_filter(entries):
         s = e.get("status", "")
         rail = e.get("rail_id", "")
         norm_rail = rail.replace("crypto_", "").replace("_spl", "").replace("_trc20", "_tron") if isinstance(rail, str) else ""
-        if s in ("candidate", "submitted") and (rail in (
-            "crypto_usdt_polygon", "crypto_usdt_trc20", "solana_spl",
-            "usdt_polygon", "usdt_tron") or norm_rail in (
-                "usdt_polygon", "usdt_tron", "solana")):
+        # Accept any actionable status regardless of rail_id.
+        # rail_id=None entries (e.g. USD rewards without crypto rail) were
+        # being silently dropped. Rail validation belongs at payout, not dispatch.
+        if s in ("candidate", "submitted", "pr_open", "review_feedback_pending",
+                 "claimed", "in_progress", "coding", "claim_lapsed",
+                 "claim_expired", "open_again"):
+            out.append(e)
+            continue
+        # Also accept entries where status is actionable but rail_id is None/empty
+        # and the entry has a repo field (indicates real bounty, not stale data)
+        if s in ("candidate", "submitted", "pr_open", "review_feedback_pending",
+                 "claimed", "in_progress", "coding", "claim_lapsed",
+                 "claim_expired", "open_again") and e.get("repo"):
             out.append(e)
             continue
         # --- Scout-schema path (monitor_only entries) ---
@@ -116,8 +125,9 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
         prompt
     ]
     try:
-        # Hard timeout 90s to prevent single-agent blocking of 5min cycle
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=90, cwd=str(ROOT))
+        # User directive: "Sem timeouts sempre". Removed hard 90s cap.
+        # Cycle-level concurrency (max_workers=3) prevents unbounded execution.
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=None, cwd=str(ROOT))
         return {"ok": r.returncode == 0, "rc": r.returncode,
                 "stdout": r.stdout[-4000:], "stderr": r.stderr[-2000:]}
     except subprocess.TimeoutExpired:
@@ -127,11 +137,10 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
 
 def build_task(entry):
     """Build a specialist prompt for one bounty."""
-    # Prevent Phase 2 spam: skip entries with zero reviews (legacy schema only)
+    # NOTE: Removed reviews_count==0 gate. Entries with rail_id=None (USD bounties)
+    # were silently dropped because they lack reviews_count. Phase 2 specialists
+    # can handle zero-review submissions by checking PR state directly.
     status = entry.get("status", "")
-    if status in ("submitted", "pr_open", "review_feedback_pending"):
-        if int(entry.get("reviews_count", 0)) == 0:
-            return None
     # Support both legacy ledger-schema and scout-schema entries
     bid = (entry.get("bounty_key") or entry.get("issue_or_pr")
            or entry.get("candidate_id") or "unknown")
@@ -499,7 +508,7 @@ def sweep_cycle():
     # Bounded concurrency: max 3 concurrent Codex specialists across ALL phases
     # to prevent exceeding the 5-minute systemd timer window.
     MAX_WORKERS = 3
-    PHASE_TIMEOUT_S = 60  # soft cap per phase; tasks already have 120s subprocess timeout
+    PHASE_TIMEOUT_S = None  # User directive: no timeouts. Concurrency-bounded only.
 
     def run_phase(phase_fn, *args):
         """Execute a phase function with a wall-clock timeout."""
