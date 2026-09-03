@@ -1,11 +1,12 @@
 # Changelog
 
 All notable changes to this project will be documented in this file.
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+## [Unreleased] - 2026-09-03
 
-## [Unreleased]
 ### Added
-- Initial changelog structure for claude-builders-bounty repository
-- Template for tracking bounty submissions, merges, and payouts
+- feat: initial README with bounty board (1aeae2ad)
+
+### Changed
+- docs: add initial CHANGELOG.md (Issue #1) (878741a9)
