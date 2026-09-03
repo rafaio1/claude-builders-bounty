@@ -492,7 +492,7 @@ def sweep_cycle():
         import subprocess
         recon_result = subprocess.run(
             ["python3", "/Agentic/scripts/agentic_rustchain_reconcile.py", "--root", "/Agentic"],
-            timeout=90, capture_output=True, text=True
+            timeout=None, capture_output=True, text=True
         )
         recon_status = {
             "ok": recon_result.returncode == 0,
