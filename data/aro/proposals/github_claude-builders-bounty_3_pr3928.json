@@ -1,0 +1,26 @@
+{
+  "bounty_key": "github|claude-builders-bounty|3|pr3928",
+  "action": "superseded",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3928",
+  "proposed_comment": null,
+  "next_status": "submitted",
+  "risks": [
+    "No maintainer review comments found on PR #3928 or linked issue #3 despite user comment claiming feedback was addressed; possible feedback was delivered outside GitHub (e.g., Discord) or PR is awaiting first review.",
+    "Diff still shows README.md fully replaced with hook-specific content instead of appending to original repo README; if maintainer feedback was to restore original README, the fix may be incomplete or not yet pushed.",
+    "Indentation fix in hooks/pre-tool-use-block-destructive.sh appears present in diff but cannot be verified as addressing specific reviewer concern without explicit feedback thread."
+  ],
+  "review_summary": {
+    "pr_state": "OPEN",
+    "mergeable": "MERGEABLE",
+    "maintainer_reviews": [],
+    "maintainer_comments_on_issue": [],
+    "author_last_update": "2026-09-03T02:08:41Z",
+    "author_claimed_fixes": [
+      "Restored original README.md content (replaced hook-specific README that overwrote repo root)",
+      "Corrected indentation in hooks/pre-tool-use-block-destructive.sh"
+    ],
+    "verification_gap": "No visible maintainer feedback in GitHub API response; author's fix comment references feedback that is not present in retrieved comments or reviews. Diff shows README still overwritten, suggesting either fix not fully applied or diff is stale."
+  },
+  "superseded_by": "reclassified_monitor_pr_review",
+  "superseded_at": "20260903T050000Z"
+}

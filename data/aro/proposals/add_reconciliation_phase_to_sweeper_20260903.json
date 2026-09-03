@@ -1,0 +1,37 @@
+{
+  "schema_version": 1,
+  "proposal_id": "add_reconciliation_phase_to_sweeper_20260903",
+  "created_at": "2026-09-03T07:12:49Z",
+  "action": "modify_sweeper",
+  "target_file": "/Agentic/scripts/autonomous_bounty_sweeper.py",
+  "rationale": [
+    "Reconciler script exists (agentic_rustchain_reconcile.py) but has no systemd timer",
+    "Sweeper runs every 5 min but lacks reconciliation phase",
+    "#16845 MERGED_OR_PAID since 2026-09-02 but NOT in ledger = $0 realized",
+    "Without reconciliation, completed bounties never convert to revenue",
+    "Objective requires 'finalizar processos anteriores' - reconciliation IS finalization"
+  ],
+  "implementation_plan": {
+    "new_phase_name": "phase_reconciliation",
+    "insert_position": "BEFORE phase_claims_finalize (reconciliation must run first to update ledger status)",
+    "approach": "Subprocess call to agentic_rustchain_reconcile.py with --root /Agentic",
+    "timeout_seconds": 90,
+    "error_handling": "Log failure, continue to next phase, do not block sweep cycle",
+    "expected_outcome": "Merged/paid bounties get wallet_received status in ledger within 5 min of provider confirmation"
+  },
+  "safety_guards": [
+    "Reconciler uses file lock (/run/agentic-financial-ledger.lock) - safe for concurrent access",
+    "Reconciler is deterministic and read-only on public evidence",
+    "Only writes to bounty_receive_ledger.json via atomic rename",
+    "Does NOT move funds, create claims, or modify proposals",
+    "Existing __main__ guard prevents accidental import side effects"
+  ],
+  "verification_steps": [
+    "Run reconciler manually once to confirm it processes #16845",
+    "Verify ledger entry appears with status wallet_received",
+    "Confirm sweeper timer still fires every 5 min after modification",
+    "Check supervisor logs for reconciliation phase execution"
+  ],
+  "status": "pending_approval",
+  "note": "This proposal does NOT modify any files. Implementation requires owner approval per safety policy."
+}

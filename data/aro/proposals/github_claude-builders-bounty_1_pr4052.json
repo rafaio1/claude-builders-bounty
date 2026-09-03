@@ -1,0 +1,14 @@
+{
+  "bounty_key": "github|claude-builders-bounty|1|pr4052",
+  "action": "superseded",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/4052#issuecomment-5519528482",
+  "proposed_comment": "Thanks for the review. I will update this PR to include:\n\n1. A functional changelog generator script (`generate_changelog.py`) that parses git history since the last tag.\n2. Auto-categorization logic mapping commits to Added/Fixed/Changed/Removed sections based on conventional commit prefixes.\n3. A README with \u22643-step setup instructions.\n4. Sample output generated from a real repository included in the updated PR description.\n\nExpected update within 48 hours.",
+  "next_status": "in_progress",
+  "risks": [
+    "PR may be closed if fix takes too long and another contributor submits a complete solution first",
+    "Generator must handle edge cases (no tags, empty history) to pass review",
+    "Sample output must be verifiable against a real repo to avoid rejection"
+  ],
+  "superseded_by": "reclassified_monitor_pr_review",
+  "superseded_at": "20260903T050000Z"
+}

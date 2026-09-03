@@ -1,0 +1,29 @@
+{
+  "bounty_key": "github|claude-builders-bounty|2|pr3976",
+  "action": "fix_review_feedback",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3976",
+  "proposed_comment": null,
+  "next_status": "submitted",
+  "risks": [
+    "No maintainer review or feedback exists on PR #3976 as of 2026-09-03; cannot identify specific fixes required.",
+    "PR body contains a Solana payout address (877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU) that conflicts with the canonical crypto_usdt_polygon rail (0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19). If merged without correction, payout may be sent to wrong chain/address.",
+    "Issue #2 has 100+ competing claims and PRs; merge probability is low without explicit maintainer assignment or selection signal.",
+    "PHASE 2 directive assumes review feedback exists, but none was found. Action set to fix_review_feedback per directive, but actual next step should be 'wait_for_review' or 'update_payout_address'."
+  ],
+  "review_summary": {
+    "has_feedback": false,
+    "feedback_count": 0,
+    "last_activity": "2026-09-01T09:54:52Z (/opire submit by rafaio1)",
+    "merge_state": "CLEAN",
+    "state": "OPEN",
+    "required_fixes": [],
+    "notes": "Zero reviews, zero non-author comments requesting changes. PR is mergeable but unreviewed. No actionable feedback to summarize."
+  },
+  "payout_discrepancy": {
+    "pr_body_address": "877hj5d4ya4N2B5gPsazm1dudN61Fkjz1V9izhD5m2TU",
+    "pr_body_chain": "solana",
+    "canonical_rail": "crypto_usdt_polygon",
+    "canonical_address": "0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19",
+    "action_needed": "Update PR body payout address to match canonical rail before merge"
+  }
+}

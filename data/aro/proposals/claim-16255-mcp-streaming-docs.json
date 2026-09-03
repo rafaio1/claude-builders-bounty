@@ -1,0 +1,37 @@
+{
+  "proposal_id": "claim-16255-mcp-streaming-docs",
+  "created_at": "2026-09-03T09:22:00Z",
+  "type": "bounty_claim",
+  "target_repo": "Scottcjn/rustchain-mcp",
+  "bounty_issue": "Scottcjn/rustchain-bounties#16255",
+  "linked_issue": "Scottcjn/rustchain-mcp#231",
+  "title": "rustchain-mcp: document + test streaming/long-running tool behavior",
+  "reward_rtc": 8,
+  "priority_score": 8,
+  "status": "research_queued",
+  "gates": {
+    "technical_feasibility": "pending_investigation",
+    "repo_access": "public",
+    "wallet_configured": true,
+    "autonomy_qualified": false,
+    "maintainer_active": true
+  },
+  "deliverables": [
+    "Investigate actual streaming/progress behavior in rustchain-mcp server",
+    "Add 'Streaming & long-running tools' section to README.md with code references",
+    "Add test asserting documented behavior matches implementation",
+    "Reply on Scottcjn/rustchain-mcp#231 summarizing findings"
+  ],
+  "acceptance_criteria": [
+    "Docs statement backed by code references (file + line)",
+    "New test passes offline and would fail if capability claim flipped",
+    "PR closes Scottcjn/rustchain-mcp#231"
+  ],
+  "research_notes": "Documentation + test bounty. Lower complexity than #16271 but also lower reward (8 RTC vs 35 RTC). Good candidate for autonomous execution if MCP server codebase is accessible and testable.",
+  "wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
+  "next_action": "clone_and_investigate_rustchain_mcp",
+  "estimated_effort_hours": 3,
+  "expected_net_to_wise": 0,
+  "wise_path_blocked": true,
+  "blocker_reason": "RTC liquidity: native bridge requires operator/admin; no permissionless swap available"
+}

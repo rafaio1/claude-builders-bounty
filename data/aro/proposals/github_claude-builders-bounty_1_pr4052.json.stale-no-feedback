@@ -1,0 +1,26 @@
+{
+  "bounty_key": "github|claude-builders-bounty|1|pr4052",
+  "action": "fix_review_feedback",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/4052",
+  "proposed_comment": null,
+  "next_status": "submitted",
+  "risks": [
+    "PR #4052 only adds a static CHANGELOG.md file and does NOT implement the required /generate-changelog skill or bash script that parses git history since the last tag.",
+    "No review feedback exists on PR #4052 (reviews array is empty); the submission is non-compliant with acceptance criteria and unlikely to be merged without a complete rewrite.",
+    "Issue #1 has 100+ claim comments but no merged PR; bounty remains open and competitive — another contributor may submit a compliant solution first.",
+    "Payout rail is crypto_usdt_polygon at 0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19; bounty description does not specify rail, so confirm with maintainer before investing further work."
+  ],
+  "summary": {
+    "pr_state": "OPEN",
+    "pr_title": "docs: add initial CHANGELOG.md (Issue #1)",
+    "mergeable": true,
+    "reviews_count": 0,
+    "required_fixes": [
+      "Replace static CHANGELOG.md with a functional generate-changelog skill (SKILL.md) or bash/python script.",
+      "Implement git log parsing since last tag with auto-categorization into Added/Fixed/Changed/Removed.",
+      "Add README with ≤3-step setup instructions.",
+      "Include sample output from a real GitHub repo in the PR.",
+      "Ensure command works via /generate-changelog or bash changelog.sh as specified."
+    ]
+  }
+}

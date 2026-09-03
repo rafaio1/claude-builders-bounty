@@ -1,0 +1,24 @@
+{
+  "bounty_key": "github|claude-builders-bounty|3|pr3926",
+  "action": "monitor_pr_review",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3926",
+  "proposed_comment": null,
+  "next_status": "awaiting_first_review",
+  "risks": [
+    "No review comments or status checks exist yet on PR #3926; cannot identify specific fixes required until maintainer feedback is posted.",
+    "Issue #3 remains OPEN with many competing /opire try claims; bounty may be awarded to first merged PR, creating a race condition.",
+    "PR includes HOOK_README.md that duplicates the repo-level README rather than providing hook-specific installation instructions; may need replacement with focused install docs.",
+    "Payout rail in task brief (crypto_usdt_polygon) differs from addresses posted in issue comments (TRC20, Solana, Base); canonical receive-wallets.json must be authoritative."
+  ],
+  "summary": {
+    "pr_state": "OPEN",
+    "mergeable": "MERGEABLE",
+    "reviews_count": 0,
+    "status_checks": [],
+    "required_fixes": "NONE_IDENTIFIED_NO_REVIEWS_YET",
+    "hook_implementation_notes": "Python pre-tool-use hook blocks rm -rf, DROP TABLE, git push --force, TRUNCATE, DELETE FROM without WHERE. Logs to ~/.claude/hooks/blocked.log. Exits 2 on block, 0 on allow."
+  },
+  "reclassified_from": "fix_review_feedback",
+  "reclassified_at": "20260903T045315Z",
+  "reclassification_reason": "No actionable maintainer review; fix_review_feedback not executable"
+}

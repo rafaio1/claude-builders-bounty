@@ -1,0 +1,15 @@
+{
+  "bounty_key": "unknown|Expensify/App|95132|idx2",
+  "action": "noop_blocked_onboarding",
+  "evidence_url": null,
+  "proposed_comment": null,
+  "next_status": "blocked_onboarding",
+  "risks": [
+    "Network egress blocked in sandbox; unable to verify live GitHub issue state or PR status for #95132.",
+    "Local bounty_ledger.json records status as blocked_onboarding (requires Slack/Upwork onboarding) with no linked PR; this may be stale if onboarding completed offline.",
+    "Proposed rail crypto_usdt_polygon and receive address 0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19 are NOT confirmed by Expensify's official payout terms; using them without provider verification risks loss of funds.",
+    "No /claim comment drafted because the ledger indicates a hard onboarding gate that automated claims cannot bypass; posting a claim without completing Slack/Upwork onboarding would likely be rejected or ignored.",
+    "Valor não realizado/auditado — USD 250 from ledger is an expected amount, not a confirmed payout."
+  ],
+  "notes": "Read-only investigation only. Canonical ledgers unchanged. Re-run when network access is restored or after manual confirmation of issue #95132 state and Expensify's current payout rail/terms."
+}

@@ -1,0 +1,17 @@
+{
+  "bounty_key": "unknown|unknown|wormhole-circle-integration-audit-2026-09-01|idx26",
+  "action": "abandon",
+  "evidence_url": null,
+  "proposed_comment": null,
+  "next_status": "abandoned",
+  "risks": [
+    "Repo and platform are 'unknown' — no verifiable GitHub issue or PR exists to claim against.",
+    "No Circle Integration audit scope found in local Wormhole mirror (ethereum/contracts has zero matches for Circle/CCTP; only legacy SDK parser exists).",
+    "Bounty key appears only in archived ledger snapshots with expected_amount=0.0 and status=candidate since 2026-09-01 — likely stale ingestion artifact.",
+    "Wormhole SECURITY.md directs all bounties to Immunefi; no evidence of a separate 'circle-integration-audit' program or payout rail.",
+    "Rail crypto_usdt_polygon cannot be validated without a live bounty page or maintainer confirmation.",
+    "Autonomous feasibility: ZERO — cannot draft /claim without a target repository and issue number."
+  ],
+  "rationale": "Phase 1 validation failed. The bounty key references a non-existent or unscoped 'wormhole-circle-integration-audit'. Local codebase contains only a deprecated JS VAA parser for CircleIntegration deposits, not an auditable smart contract surface. No GitHub issue, no Immunefi listing, no payout amount. Claiming would violate the Financial Validation Rule (no paid/completed ledger entry, no audit trail). Recommend abandonment and removal from candidate queue.",
+  "generated_at": "2026-09-03T00:00:00Z"
+}

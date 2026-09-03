@@ -1,0 +1,40 @@
+{
+  "proposal_id": "qualify_opire_n8n_workflow_20260903",
+  "bounty_id": "claude-builders-bounty/claude-builders-bounty#5",
+  "action": "qualify",
+  "source": "github_search_v22",
+  "priority": "high",
+  "created_at": "2026-09-03T22:45:00Z",
+  "status": "pending",
+  "gates": {
+    "payout_rail_verified": true,
+    "payout_rail": "opire_auto_on_merge",
+    "autonomy_gates_clear": true,
+    "reward_amount": 200,
+    "currency": "USD",
+    "claim_mechanism": "/opire try + PR",
+    "human_approval_required": false
+  },
+  "evidence": {
+    "title": "[BOUNTY $200] WORKFLOW: n8n + Claude Code \u2014 automated weekly dev summary",
+    "state": "open",
+    "labels": [
+      "bounty",
+      "workflow"
+    ],
+    "body_confirms_payment": true,
+    "payment_trigger": "automatic on merge via Opire",
+    "acceptance_criteria_count": 8,
+    "comments": 0,
+    "last_updated": "2026-09-03T04:45:57Z",
+    "skills_match": [
+      "generate-changelog skill exists in r0/r4",
+      "playwright-cli available"
+    ]
+  },
+  "next_steps": [
+    "Verify Opire payment rail supports Wise withdrawal or USDC payout",
+    "Check if /opire try has been commented by anyone else recently",
+    "If gates pass, create claim proposal with action=claim and specialist dispatch"
+  ]
+}

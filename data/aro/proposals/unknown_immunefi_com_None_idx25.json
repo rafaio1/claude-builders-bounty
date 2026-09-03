@@ -1,0 +1,18 @@
+{
+  "bounty_key": "unknown|immunefi.com|None|idx25",
+  "action": "abandon",
+  "evidence_url": "https://immunefi.com/bounty/idx25/",
+  "proposed_comment": null,
+  "next_status": "abandoned",
+  "risks": [
+    "Bounty page returns HTTP 404 — slug idx25 does not exist or has been removed",
+    "No GitHub repository or issue tracker identified for this bounty key",
+    "Immunefi API and explore page return no matching entry for idx25",
+    "Cannot validate scope, payout amount, or autonomous feasibility without a live bounty page",
+    "Rail crypto_usdt_polygon is valid in receive-wallets.json but cannot be matched to a confirmed bounty"
+  ],
+  "rationale": "Phase 1 validation failed: the bounty URL https://immunefi.com/bounty/idx25/ returns 404. No alternative slug, project name, or GitHub repo could be discovered via Immunefi explore page or API. Without a live bounty page, scope/payout/feasibility cannot be verified per AGENTS.md financial validation rule. Action is abandon; no /claim comment drafted.",
+  "rail_validated": true,
+  "receive_address": "0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19",
+  "investigation_timestamp": "2026-09-03T07:25:00Z"
+}

@@ -1,0 +1,15 @@
+{
+  "bounty_key": "unknown|outerbase/starbasedb|71|idx4",
+  "action": "abandon",
+  "evidence_url": "https://github.com/outerbase/starbasedb/issues/71",
+  "proposed_comment": null,
+  "next_status": "abandoned",
+  "risks": [
+    "Bounty is saturated: 40+ rewarded claims already posted on issue #71 with Algora reward links",
+    "Issue remains OPEN but effective payout opportunity is near-zero; maintainers are rewarding slice-by-slice and most low-hanging coverage is taken",
+    "Open PRs with /claim #71 still pending review (e.g. #204, #268, #285) create queue risk for any new submission",
+    "Full test suite has persistent RLS baseline failures that complicate validation and reviewer acceptance",
+    "Rail mismatch risk: bounty pays via Algora (fiat/crypto per their platform), not directly via crypto_usdt_polygon; receive address may not be usable without Algora payout conversion"
+  ],
+  "rationale": "Phase 1 qualification fails on autonomous feasibility and payout clarity. The bounty is technically open but practically exhausted; new claims face extreme competition, existing claim backlog, and no clear path to unique non-overlapping coverage that would be rewarded promptly. Recommend abandoning this candidate in favor of less-saturated bounties."
+}

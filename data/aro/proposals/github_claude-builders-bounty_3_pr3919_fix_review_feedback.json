@@ -1,0 +1,26 @@
+{
+  "bounty_key": "github|claude-builders-bounty|3|pr3919",
+  "action": "superseded",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3919#issuecomment-5519496244",
+  "proposed_comment": null,
+  "next_status": "submitted",
+  "risks": [
+    "DELETE FROM regex fix may still miss edge cases like multi-line statements or comments between keywords",
+    "Case normalization changes could introduce false positives if not thoroughly tested",
+    "README scope restoration must preserve existing project documentation integrity"
+  ],
+  "review_summary": {
+    "feedback_source": "PR author self-review comment 2026-09-03T02:38:52Z",
+    "required_fixes": [
+      "Restore original repo README and move hook docs to hooks/block-destructive/README.md",
+      "Fix DELETE FROM regex to match valid SQL terminators beyond bare end-of-line",
+      "Ensure consistent case-insensitive matching for all SQL keywords in grep patterns",
+      "Add test cases for edge-case DELETE statements and verify safe command passthrough"
+    ],
+    "current_state": "OPEN",
+    "mergeable": true,
+    "has_external_reviews": false
+  },
+  "superseded_by": "reclassified_monitor_pr_review",
+  "superseded_at": "20260903T050000Z"
+}

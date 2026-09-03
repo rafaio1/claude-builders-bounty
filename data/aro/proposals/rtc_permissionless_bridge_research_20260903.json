@@ -1,0 +1,85 @@
+{
+  "type": "phase4_directive",
+  "action": "abandon",
+  "bounty_keys": [],
+  "source": "rtc_liquidity_research",
+  "scope_assessment": {
+    "verdict": "research_required",
+    "reason": "14 RTC wallet_received but native->wRTC bridge requires operator/admin. Need to verify if any permissionless DEX aggregator (Raydium, Orca, Meteora, Jupiter) supports wRTC<->USDC swap without admin bridge, or if alternative wrapping path exists."
+  },
+  "payout_rail": {
+    "currency": "RTC",
+    "rail_compatible": false,
+    "receive_wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
+    "rail_state": "blocked_no_permissionless_path",
+    "notes": "Native RTC cannot be swapped directly. wRTC quote ~3.6 USDC for 14 tokens via Raydium/SOL but bridge is admin-gated. Bybit/Jupiter/DexScreener non-viable per prior research."
+  },
+  "claim_requirements": {
+    "agent_allowed": false,
+    "existing_claim": false,
+    "claim_status": "not_applicable",
+    "maintainer_feedback": false,
+    "verifier_response": false,
+    "blocker": "No permissionless liquidity path confirmed. Research task only."
+  },
+  "financial_validation": {
+    "ledger_entry_paid_or_completed": false,
+    "gross_verified_values_are_unaudited": true,
+    "disclaimer": "Valor n\u00e3o realizado/auditado \u2014 14 RTC wallet_received are NOT revenue until settled in Wise via proven permissionless path"
+  },
+  "research_directive": {
+    "targets": [
+      "raydium",
+      "orca",
+      "meteora",
+      "jupiter",
+      "dexscreener"
+    ],
+    "questions": [
+      "Does any Solana DEX list wRTC/USDC or wRTC/SOL pool with >$1k liquidity?",
+      "Is there a permissionless wrapping contract for RTC->wRTC that does not require admin/operator?",
+      "Can RTC be bridged to Solana via Wormhole, deBridge, or Mayan without centralized approval?",
+      "What is the actual slippage and price impact for 14 wRTC -> USDC on each venue?"
+    ],
+    "output_format": "Update this proposal with findings. If viable path found, change action to qualify_claim and add evidence_url. If no path, change action to abandon.",
+    "timeout_hours": 48
+  },
+  "recommendation": "Dispatch discovery specialist to investigate permissionless RTC liquidity paths. Do NOT move funds. Do NOT update payout_route_map until path is verified end-to-end.",
+  "created_at": "2026-09-03T07:10:00+00:00",
+  "directive_version": "phase4_v1",
+  "research_results": {
+    "completed_at": "2026-09-03T07:09:50Z",
+    "verdict": "NO_VIABLE_PATH",
+    "correction_note": "Previous update incorrectly matched unrelated tokens (ALCX, DARK, BUDAPE, APU) due to DexScreener fuzzy search on 'wRTC'. Verified: zero actual wRTC or RTC pairs exist on Solana DEXes.",
+    "answers": {
+      "solana_dex_wrtc_usdc_pool_over_1k": false,
+      "pools_found": [],
+      "permissionless_wrapping_contract": false,
+      "permissionless_wrapping_evidence": "No wRTC token exists on Solana. DexScreener search for 'rustchain' returns 0 pairs. Search for 'RTC solana' returns only unrelated meme tokens. Native RTC->wRTC bridge requires operator/admin per prior state.",
+      "wormhole_debridge_mayan_bridge": false,
+      "bridge_evidence": "Jupiter quote API returned rc=6 (no route). No wRTC mint address found on-chain. Cannot bridge a token that does not exist on target chain.",
+      "slippage_for_14_wrtc_to_usdc": "NOT_AVAILABLE",
+      "slippage_evidence": "No pool, no token, no route. Slippage cannot be computed."
+    },
+    "api_checks": {
+      "dexscreener_rustchain": {
+        "solana_pairs": 0
+      },
+      "dexscreener_rtc_solana": {
+        "solana_pairs": 14,
+        "actual_rtc_pairs": 0,
+        "note": "All 14 are unrelated meme tokens"
+      },
+      "jupiter": {
+        "quote_found": false,
+        "error": "rc=6"
+      },
+      "raydium_api": {
+        "status": "404"
+      }
+    },
+    "conclusion": "NO_VIABLE_PATH: There is no wRTC token on Solana. No permissionless wrapping contract exists. No DEX pool, no Jupiter route, no bridge path. The 14 native RTC remain unreconcilable to Wise without operator/admin intervention. This research does NOT authorize fund movement. Action should change to abandon.",
+    "recommended_action": "abandon"
+  },
+  "last_updated": "2026-09-03T07:09:50Z"
+}

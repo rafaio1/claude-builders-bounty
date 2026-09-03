@@ -1,0 +1,25 @@
+{
+  "bounty_key": "github|claude-builders-bounty|3|pr3919",
+  "action": "superseded",
+  "evidence_url": "https://github.com/claude-builders-bounty/claude-builders-bounty/pull/3919#issuecomment-5519496244",
+  "proposed_comment": null,
+  "next_status": "submitted",
+  "risks": [
+    "Maintainer has not yet reviewed the proposed fixes; further iteration may be required.",
+    "DELETE FROM regex correction must be validated against edge cases to avoid false positives on safe queries.",
+    "README scope change must preserve original repo documentation integrity."
+  ],
+  "review_summary": {
+    "feedback_source": "PR author self-comment acknowledging reviewer feedback (2026-09-03T02:38:52Z)",
+    "required_fixes": [
+      "Restore original repo README and move hook-specific docs to hooks/block-destructive/README.md",
+      "Fix DELETE FROM regex to match valid SQL terminators beyond bare end-of-line",
+      "Normalize case-insensitive matching for all SQL keywords in grep patterns",
+      "Add test cases for edge-case DELETE statements and verify safe command passthrough"
+    ],
+    "author_acknowledged": true,
+    "fix_committed": false
+  },
+  "superseded_by": "reclassified_monitor_pr_review",
+  "superseded_at": "20260903T050000Z"
+}

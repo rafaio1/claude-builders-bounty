@@ -1,0 +1,37 @@
+{
+  "proposal_id": "claim-16271-vintage-x86-hardening",
+  "created_at": "2026-09-03T09:20:00Z",
+  "type": "bounty_claim",
+  "target_repo": "Scottcjn/rustchain-bounties",
+  "issue_number": 16271,
+  "title": "Harden x86 vintage-arch reward validation (anti-spoof)",
+  "reward_rtc": 35,
+  "priority_score": 35,
+  "status": "claimed_by_other",
+  "gates": {
+    "technical_feasibility": "complete",
+    "repo_access": "public",
+    "wallet_configured": true,
+    "autonomy_qualified": true,
+    "maintainer_active": true
+  },
+  "research_notes": "Bounty is currently claimed by @rafaio1 (expires 2026-09-10) with PR #8331 linked. Previous attempts (#8087, #8104) received partial credit but did not close the bounty due to regex defects and unreachable code respectively. Maintainer adjudication on 2026-07-31 confirmed ARM/console halves still open; #8106 addressed those separately. Current claim is active and valid. No action available until claim lapses or PR is rejected.",
+  "wallet": "RTC1e9bf7a2a60aac9bcbc5a0df0c65e9501e932861",
+  "action": "abandon",
+  "proposed_comment": null,
+  "risks": [
+    "Active claim by @rafaio1 expires 2026-09-10; claiming now would be duplicate effort",
+    "PR #8331 may already address remaining gaps; submission risks rejection as duplicate",
+    "Maintainer has set high bar: must pass adversarial review with no blocking findings and keep honest vintage tiers intact"
+  ],
+  "investigated_at": "2026-09-03T22:15:00Z",
+  "next_action": "monitor_claim_expiry",
+  "pr_url": "https://github.com/Scottcjn/Rustchain/pull/8331",
+  "claim_comment_url": "https://github.com/Scottcjn/rustchain-bounties/issues/16271#issuecomment-5521601934",
+  "tests_passed": 55,
+  "updated_at": "2026-09-03T22:15:00Z",
+  "estimated_effort_hours": 8,
+  "expected_net_to_wise": 0,
+  "wise_path_blocked": true,
+  "blocker_reason": "RTC liquidity: native bridge requires operator/admin; no permissionless swap available"
+}

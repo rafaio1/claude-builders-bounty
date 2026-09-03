@@ -1,0 +1,392 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-09-01T14:33:13.732720+00:00",
+  "reason": "Removed third-party work and downgraded user work lacking provider payout evidence",
+  "affected_original_entries": [
+    {
+      "schema_version": "1.0",
+      "ledger_id": "9bc4bf1e30e74083",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|88",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "88",
+      "pr_number": 435,
+      "reward_asset": "USDC",
+      "expected_amount": 85.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": "BtWo5tnfnTurE5fXwtxbeK3rZJoEimi1pPgEG84JdrkY",
+      "address_source": "pr_body_payout_wallet",
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/435",
+        "PR body states: Fixes #88 ($85 Bounty); Payout Wallet: BtWo5tnfnTurE5fXwtxbeK3rZJoEimi1pPgEG84JdrkY"
+      ],
+      "recovery_steps": [
+        "Aguardar confirma\u00e7\u00e3o de pagamento da Algora via webhook ou coment\u00e1rio na issue #88.",
+        "Ap\u00f3s txid confirmado, atualizar status para settled e registrar no realized_revenue_ledger somente ap\u00f3s concilia\u00e7\u00e3o Wise."
+      ],
+      "status_note": "blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "233c8ebca9774944",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|87",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "87",
+      "pr_number": 435,
+      "reward_asset": "USDC",
+      "expected_amount": 75.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": "BtWo5tnfnTurE5fXwtxbeK3rZJoEimi1pPgEG84JdrkY",
+      "address_source": "pr_body_payout_wallet",
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/435",
+        "PR body states: Fixes #87 ($75 Bounty); Payout Wallet: BtWo5tnfnTurE5fXwtxbeK3rZJoEimi1pPgEG84JdrkY"
+      ],
+      "recovery_steps": [
+        "Aguardar confirma\u00e7\u00e3o de pagamento da Algora via webhook ou coment\u00e1rio na issue #87.",
+        "Ap\u00f3s txid confirmado, atualizar status para settled e registrar no realized_revenue_ledger somente ap\u00f3s concilia\u00e7\u00e3o Wise."
+      ],
+      "status_note": "blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "1e4e8c5ab2634261",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|129",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "129",
+      "pr_number": 432,
+      "reward_asset": "USDC",
+      "expected_amount": 95.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": null,
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/432",
+        "Closes #129 - smoke tests for route groups"
+      ],
+      "recovery_steps": [
+        "Verificar valor da bounty #129 na plataforma Algora ou issue.",
+        "Confirmar endere\u00e7o de recebimento antes de atualizar para merged_pending_payout."
+      ],
+      "status_note": "amount_confirmed_from_issue_title_2026-09-01; blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "cec6b1c004694e65",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|130",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "130",
+      "pr_number": 431,
+      "reward_asset": "USDC",
+      "expected_amount": 95.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": null,
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/431",
+        "Closes #130 - SiteFooter component"
+      ],
+      "recovery_steps": [
+        "Verificar valor da bounty #130 na plataforma Algora ou issue.",
+        "Confirmar endere\u00e7o de recebimento antes de atualizar para merged_pending_payout."
+      ],
+      "status_note": "amount_confirmed_from_issue_title_2026-09-01; blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "0d4b5ebeeba44651",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|126",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "126",
+      "pr_number": 430,
+      "reward_asset": "USDC",
+      "expected_amount": 95.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": null,
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/430",
+        "Closes #126 - images.remotePatterns config"
+      ],
+      "recovery_steps": [
+        "Verificar valor da bounty #126 na plataforma Algora ou issue.",
+        "Confirmar endere\u00e7o de recebimento antes de atualizar para merged_pending_payout."
+      ],
+      "status_note": "amount_confirmed_from_issue_title_2026-09-01; blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "4d7fec43c9e64392",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|114",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "114",
+      "pr_number": 428,
+      "reward_asset": "USDC",
+      "expected_amount": 55.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": null,
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/428",
+        "Closes #114 - accessible FAQ accordion"
+      ],
+      "recovery_steps": [
+        "Verificar valor da bounty #114 na plataforma Algora ou issue.",
+        "Confirmar endere\u00e7o de recebimento antes de atualizar para merged_pending_payout."
+      ],
+      "status_note": "amount_confirmed_from_issue_title_2026-09-01; blocked_missing_solana_usdc_rail_2026-09-01"
+    },
+    {
+      "schema_version": "1.0",
+      "ledger_id": "67e24883985b469a",
+      "ownership_proof_status": null,
+      "address_validated_at": null,
+      "provider_payout_url": null,
+      "memo_or_tag": null,
+      "deposit_minimum": null,
+      "destination_restrictions": [],
+      "timestamps": {
+        "created_at": "2026-09-01T14:17:48.926810+00:00",
+        "candidate_at": "2026-09-01T14:17:48.926810+00:00"
+      },
+      "txid": null,
+      "amount_received": null,
+      "confirmations": null,
+      "notification_outbox": [],
+      "bybit_route_status": null,
+      "wise_route_status": null,
+      "blockers": [
+        {
+          "type": "blocked_missing_receive_rail",
+          "timestamp": "2026-09-01T14:19:32.586548+00:00",
+          "evidence": {
+            "reason": "Algora pays USDC on Solana; no active Solana USDC rail in receive-wallets.json",
+            "pr_body_wallet_not_authorized": true
+          }
+        }
+      ],
+      "updated_at": "2026-09-01T14:19:32.586548+00:00",
+      "bounty_key": "algora|Lilly-Protocol/lily-frontend|107",
+      "platform": "algora",
+      "repo": "Lilly-Protocol/lily-frontend",
+      "issue_or_pr": "107",
+      "pr_number": 427,
+      "reward_asset": "USDC",
+      "expected_amount": 65.0,
+      "expected_currency": "crypto",
+      "chain": "solana",
+      "network": "solana",
+      "rail_id": "crypto_usdc_solana",
+      "receive_address": null,
+      "status": "merged_pending_payout_blocked_rail",
+      "provider_evidence": [
+        "https://github.com/Lilly-Protocol/lily-frontend/pull/427",
+        "Closes #107 - eslint-plugin-tailwindcss integration"
+      ],
+      "recovery_steps": [
+        "Verificar valor da bounty #107 na plataforma Algora ou issue.",
+        "Confirmar endere\u00e7o de recebimento antes de atualizar para merged_pending_payout."
+      ],
+      "status_note": "amount_confirmed_from_issue_title_2026-09-01; blocked_missing_solana_usdc_rail_2026-09-01"
+    }
+  ],
+  "public_audit": {
+    "third_party_prs": [
+      435,
+      432,
+      431
+    ],
+    "user_merged_but_unpaid_prs": [
+      430,
+      428,
+      427
+    ]
+  }
+}
