@@ -366,18 +366,17 @@ def sweep_cycle():
 
     # Collect all dispatchable tasks first, then execute with bounded pool
     task_specs = []
-    # Load existing abandon proposals to prevent re-dispatching known-dead bounties
-    _existing_abandon_keys = set()
+    # Load ALL existing proposal keys to prevent re-dispatching any already-processed bounty
+    _existing_proposal_keys = set()
     try:
         import glob as _glob
         for _pf in _glob.glob(str(PROPOSALS / "*.json")):
             try:
                 with open(_pf) as _fh:
                     _pd = json.load(_fh)
-                if _pd.get("action") == "abandon":
-                    _k = _pd.get("bounty_key") or _pd.get("candidate_id")
-                    if _k:
-                        _existing_abandon_keys.add(_k)
+                _k = _pd.get("bounty_key") or _pd.get("candidate_id")
+                if _k:
+                    _existing_proposal_keys.add(_k)
             except Exception:
                 pass
     except Exception:
@@ -387,7 +386,7 @@ def sweep_cycle():
     for e in candidates:
         status = e.get("status", "")
         bkey = e.get("bounty_key") or e.get("candidate_id") or ""
-        if bkey in _existing_abandon_keys:
+        if bkey in _existing_proposal_keys:
             continue
         if status in ("claim_lapsed", "claim_expired", "open_again", "candidate"):
             task = build_task(e)
@@ -402,7 +401,7 @@ def sweep_cycle():
     for e in candidates:
         status = e.get("status", "")
         bkey = e.get("bounty_key") or e.get("candidate_id") or ""
-        if bkey in _existing_abandon_keys:
+        if bkey in _existing_proposal_keys:
             continue
         if status in ("submitted", "pr_open", "review_feedback_pending"):
             task = build_task(e)
@@ -418,7 +417,7 @@ def sweep_cycle():
     for e in candidates:
         status = e.get("status", "")
         bkey = e.get("bounty_key") or e.get("candidate_id") or ""
-        if bkey in _existing_abandon_keys:
+        if bkey in _existing_proposal_keys:
             continue
         if status in ("claimed", "in_progress", "coding"):
             task = build_task(e)
@@ -445,7 +444,7 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
     promoted_scouts = actionable_filter(q.get("monitor_only", [])) if q else []
     for ps in promoted_scouts[:3]:
         pkey = ps.get("candidate_id") or ps.get("bounty_key") or ""
-        if pkey in _existing_abandon_keys:
+        if pkey in _existing_proposal_keys:
             continue
         task = build_task(ps)
         if task:
