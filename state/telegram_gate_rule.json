@@ -1,28 +1,159 @@
 {
   "rule": "TELEGRAM_GATE",
-  "version": 1,
-  "enforced_at": "2026-08-26T03:07:19.573724+00:00",
-  "policy": "Telegram notifications are EXCLUSIVELY for realized and reconciled capital.",
-  "required_fields": [
-    "net_value_after_fees",
-    "currency",
-    "process_id",
-    "external_reference",
-    "idempotency_key"
-  ],
+  "version": 6,
+  "enforced_at": "2026-09-01T18:59:48+00:00",
+  "policy": "Telegram remains silent for routine pending states except one structured route-options notice when an asset lacks a proven autonomous path to Wise. It carries one idempotent public-only recovery receipt when a verified self-custody wallet is created, structured route_pending options, verified wallet payment receipts, trusted RTC bridge maintainer responses, reconciled settlement notices, evidence-backed hard blocks, and commands from the exact private allowlist.",
+  "channels": {
+    "settlement": {
+      "producer": "central_financial_gate",
+      "event_types": [
+        "payout_received",
+        "trade_realized",
+        "transfer_confirmed"
+      ],
+      "requires_reconciliation": true,
+      "required_fields": [
+        "net_value_after_fees",
+        "currency",
+        "process_id",
+        "external_reference",
+        "idempotency_key"
+      ]
+    },
+    "wallet_received": {
+      "producers": [
+        "dedicated_wallet_reconcilers"
+      ],
+      "statuses": [
+        "wallet_received"
+      ],
+      "requires_positive_amount": true,
+      "requires_public_wallet_history": true,
+      "requires_transaction_id": true,
+      "action_required": false,
+      "human_action": "none",
+      "requires_deterministic_evidence": true,
+      "deduplicated": true,
+      "never_implies_settlement": true
+    },
+    "wallet_recovery_ready": {
+      "producer": "wallet_recovery_notifier",
+      "event_types": [
+        "wallet_recovery_ready"
+      ],
+      "requires_role": "client_receive_self_custody",
+      "requires_receive_ready": true,
+      "requires_verified_recovery_roundtrip": true,
+      "requires_public_address": true,
+      "requires_bundle_fingerprint": true,
+      "forbids_custody_credentials_or_encrypted_payload": true,
+      "delivery_channels": [
+        "telegram",
+        "email"
+      ],
+      "action_required": false,
+      "human_action": "none",
+      "deduplicated_by_stable_notice_id": true,
+      "backfilled_once": true,
+      "never_implies_payment_or_settlement": true
+    },
+    "route_options_pending": {
+      "producer": "wallet_recovery_notifier",
+      "event_types": [
+        "route_options_pending"
+      ],
+      "status": "route_pending",
+      "requires_reason_codes": true,
+      "requires_concrete_options": true,
+      "requires_evidence_cost_and_risk_fields": true,
+      "requires_execution_enabled_false": true,
+      "requires_complete_technical_legal_destination_asset_network_and_fee_gates_before_execution": true,
+      "delivery_channels": [
+        "telegram",
+        "email"
+      ],
+      "action_required": false,
+      "human_action": "none",
+      "deduplicated_by_stable_notice_id": true,
+      "never_rejects_eligible_bounty": true,
+      "never_implies_settlement": true
+    },
+    "rtc_bridge_operator_response": {
+      "producer": "rtc-bridge-request-watcher.service",
+      "repository": "Scottcjn/Rustchain",
+      "issue_number": 8316,
+      "event_types": [
+        "rtc_bridge_operator_response"
+      ],
+      "trusted_author_associations": [
+        "OWNER",
+        "MEMBER",
+        "COLLABORATOR"
+      ],
+      "requires_canonical_github_comment_url": true,
+      "requires_display_only_content": true,
+      "requires_execution_enabled_false": true,
+      "requires_execution_authorized_false": true,
+      "requires_funds_moved_false": true,
+      "delivery_channels": [
+        "telegram",
+        "email"
+      ],
+      "action_required": false,
+      "human_action": "none",
+      "deduplicated_by_stable_notice_id": true,
+      "never_executes_comment_instructions": true,
+      "never_implies_bridge_or_settlement": true
+    },
+    "hard_block": {
+      "producers": [
+        "privileged_deterministic_controllers"
+      ],
+      "requires_terminal_blocked": true,
+      "requires_structured_public_evidence": true,
+      "excluded_reasons": [
+        "wallet_resolution_pending",
+        "conversion_pending",
+        "exchange_route_pending",
+        "bybit_asset_unsupported",
+        "bybit_destination_rotated"
+      ],
+      "action_required": false,
+      "human_action": "none",
+      "deduplicated": true
+    },
+    "commands": {
+      "consumer": "telegram-bridge.service",
+      "authorization": "exact_chat_sender_and_username_allowlist",
+      "non_allowlisted_execution_authorized": false,
+      "persistent_inbox": true,
+      "idempotent_acknowledgement": true
+    }
+  },
   "suppressed_triggers": [
-    "activity",
-    "progress",
-    "scan",
+    "heartbeat",
+    "planning",
+    "scan_without_material_change",
     "waiting",
     "paper_trading",
     "testnet",
     "backtest",
     "opportunity",
     "potential",
-    "pr_submitted",
+    "pr_submitted_without_recovery_context",
     "unrealized_balance"
+    ,
+    "candidate",
+    "submitted",
+    "provider_confirmed_without_wallet_receipt",
+    "wallet_resolution_pending",
+    "conversion_pending",
+    "exchange_route_pending",
+    "bybit_asset_unsupported",
+    "bybit_destination_rotated",
+    "rtc_bridge_comment_untrusted_association"
   ],
-  "routing": "Use central emitter only after INTEGRADOR gate confirms payment_verified=True and reconciliation complete.",
+  "human_action": "none",
+  "routing": "Bounty intake uses a stable self-custody wallet first. Creation of a verified wallet emits one public-only Telegram and email recovery receipt. An unproven end-to-end route emits one structured route_pending options notice with evidence, cost, risk, and reason codes, without rejecting the bounty or implying settlement. A GitHub response for RTC bridge is delivered only when GitHub reports OWNER, MEMBER, or COLLABORATOR, remains display-only, and never authorizes funds. Bybit is a dynamic destination only after wallet receipt and never a bounty eligibility gate. Settlement notices remain exclusive to the reconciled financial gate; commands require the exact private allowlist.",
   "fail_mode": "closed"
 }

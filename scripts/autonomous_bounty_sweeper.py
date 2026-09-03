@@ -90,6 +90,10 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
 
 def build_task(entry):
     """Build a specialist prompt for one bounty."""
+    # Prevent Phase 2 spam: skip entries with zero reviews
+    if entry.get("status") in ("submitted", "pr_open", "review_feedback_pending"):
+        if int(entry.get("reviews_count", 0)) == 0:
+            return None
     bid = entry.get("bounty_key") or entry.get("issue_or_pr") or "unknown"
     repo = entry.get("repo","")
     rail = entry.get("rail_id","")
@@ -141,6 +145,8 @@ def phase_review_adjust(entries):
         status = e.get("status", "")
         if status in ("submitted", "pr_open", "review_feedback_pending"):
             task = build_task(e)
+            if task is None:
+                continue
             task["prompt"] += "\n\nPHASE 2 DIRECTIVE: Review latest PR feedback. Summarize required fixes. Output proposal with action=fix_review_feedback."
             res = dispatch_codex_specialist(task)
             res["phase"] = "review_adjust"
@@ -251,7 +257,11 @@ def sweep_cycle():
         status = e.get("status", "")
         if status in ("submitted", "pr_open", "review_feedback_pending"):
             task = build_task(e)
+            if task is None:
+                continue
             task["prompt"] += "\n\nPHASE 2 DIRECTIVE: Review latest PR feedback. Summarize required fixes. Output proposal with action=fix_review_feedback."
+            if task is None:
+                continue
             task["_phase"] = "review_adjust"
             task_specs.append(task)
 
@@ -260,6 +270,8 @@ def sweep_cycle():
         status = e.get("status", "")
         if status in ("claimed", "in_progress", "coding"):
             task = build_task(e)
+            if task is None:
+                continue
             task["prompt"] += "\n\nPHASE 3 DIRECTIVE: Execute coding/microtask. Produce patch or implementation. Output proposal with action=submit_work."
             task["_phase"] = "code_microtask"
             task_specs.append(task)
