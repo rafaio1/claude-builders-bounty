@@ -296,6 +296,91 @@ def phase_email_cleanup():
     except Exception as e:
         return {"ok": False, "error": str(e)}
 
+def phase_github_claim_emails():
+    """Phase 0.5: Scan Gmail for GitHub claim/lapsed notifications and create proposals."""
+    results = []
+    try:
+        sys.path.insert(0, str(ROOT / "scripts"))
+        from agentic_gmail_inbox_ingestor import GmailAPIClient, extract_message_text, parsed_headers, structured_entities
+        import re as _re
+        client = GmailAPIClient()
+        # Search for recent unarchived GitHub notifications mentioning claim/lapsed/open again
+        query = 'from:github-actions[bot] ("claim lapsed" OR "open again" OR "/claim") newer_than:7d'
+        msgs = client.search(query, max_results=20)
+        if not msgs:
+            return {"ok": True, "processed": 0, "proposals_created": 0}
+        existing_keys = set()
+        import glob as _glob
+        for _pf in _glob.glob(str(PROPOSALS / "*.json")):
+            try:
+                with open(_pf) as _fh:
+                    _pd = json.load(_fh)
+                _k = _pd.get("bounty_key") or _pd.get("candidate_id")
+                if _k:
+                    existing_keys.add(_k)
+            except Exception:
+                pass
+        created = 0
+        for m in msgs:
+            mid = m.get("id", "")
+            if not mid:
+                continue
+            try:
+                raw = client.get_message(mid)
+            except Exception:
+                continue
+            payload = raw.get("payload", {}) if isinstance(raw.get("payload"), dict) else {}
+            headers = parsed_headers(payload)
+            body, _ = extract_message_text(payload)
+            subject = headers.get("subject", "")
+            entities = structured_entities("github.com", subject)
+            repo = entities.get("repo", "")
+            number = entities.get("number")
+            if not repo or not number:
+                # Try extracting from body as fallback
+                issue_match = _re.search(r'([A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+)#(\d+)', body)
+                if issue_match:
+                    repo = issue_match.group(1)
+                    number = int(issue_match.group(2))
+                else:
+                    continue
+            bkey = f"{repo}|{number}"
+            if bkey in existing_keys:
+                continue
+            # Determine action based on email content
+            needs_live_url = bool(_re.search(r'Live-URL:', body, _re.IGNORECASE))
+            is_lapsed = bool(_re.search(r'claim\s+lapsed|open\s+again', body, _re.IGNORECASE))
+            if needs_live_url:
+                action = "provide_live_url"
+                directive = "This bounty requires a Live-URL comment. Draft a proposal with the published content URL. Do NOT post."
+            elif is_lapsed:
+                action = "reclaim_lapsed"
+                directive = "This bounty claim has lapsed and is open again. Draft a fresh /claim comment. Do NOT post."
+            else:
+                action = "investigate_claim"
+                directive = "Investigate this GitHub notification for actionable claim opportunity. Draft appropriate response. Do NOT post."
+            proposal = {
+                "bounty_key": bkey,
+                "action": action,
+                "source": "gmail_github_notification",
+                "message_id": mid,
+                "evidence_url": f"https://github.com/{repo}/issues/{number}",
+                "proposed_comment": None,
+                "next_status": "claim_pending",
+                "risks": ["Email-derived; verify issue state before posting"],
+                "directive": directive,
+                "created_at": now_iso()
+            }
+            safe_name = bkey.replace("/", "_").replace("|", "_")[:60]
+            prop_path = PROPOSALS / f"gmail_claim_{safe_name}_{mid[:8]}.json"
+            save_json(prop_path, proposal)
+            existing_keys.add(bkey)
+            created += 1
+            results.append({"bounty_key": bkey, "action": action, "proposal": str(prop_path)})
+        return {"ok": True, "processed": len(msgs), "proposals_created": created, "details": results}
+    except Exception as e:
+        return {"ok": False, "error": str(e)}
+
 def validate_proposal_quality(proposal_dir):
     """Quality gate: ensure proposals have evidence_url and actionable action."""
     valid = 0
@@ -383,6 +468,10 @@ def sweep_cycle():
         pass
 
     # Phase 1: Claims/Finalize
+    # Phase 0.5: GitHub claim emails from Gmail (runs before ledger-based Phase 1)
+    gh_claim_result = phase_github_claim_emails()
+    summary_phase_05 = gh_claim_result
+
     for e in candidates:
         status = e.get("status", "")
         bkey = e.get("bounty_key") or e.get("candidate_id") or ""
@@ -485,6 +574,7 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
         "cycle_started_at": started,
         "cycle_finished_at": now_iso(),
         "reconciliation": recon_status,
+        "github_claim_emails": summary_phase_05,
         "phases": phase_counts,
         "candidates_total": len(candidates),
         "tasks_queued": len(task_specs),
