@@ -22,6 +22,9 @@ SWEEP_STATE = STATE / "autonomous_sweep_state.json"
 LOGS.mkdir(parents=True, exist_ok=True)
 PROPOSALS.mkdir(parents=True, exist_ok=True)
 
+# In-cycle dedup for Phase 5 to prevent duplicate dispatches
+_phase5_dispatched_normalized = set()
+
 def now_iso():
     return dt.datetime.utcnow().strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -44,6 +47,16 @@ def ledger_entries():
     if isinstance(d, dict):
         return d.get("entries", [])
     return d if isinstance(d, list) else []
+
+def _normalize_proposal_key(k):
+    """Normalize bounty/candidate keys for dedup matching.
+    Strips trailing -YYYYMM suffix so C4-foo-202608 and C4-foo-202609
+    are treated as the same bounty family, preventing infinite re-dispatch
+    when specialists write a different month variant than what was queued."""
+    import re
+    if not isinstance(k, str):
+        return ""
+    return re.sub(r'-\d{6}$', '', k).strip()
 
 def actionable_filter(entries):
     """Select entries that can progress autonomously right now.
@@ -87,16 +100,12 @@ def actionable_filter(entries):
             continue
         if agent_access in ("HUMAN_ONLY", "HUMAN_REQUIRED"):
             continue
-        # RTC has no viable bridge path; never promote
-        if asset == "RTC":
-            continue
-        # Promote AGENT_ALLOWED entries to research_queue for specialist
-        # investigation. These may lack explicit_execution_contract or
-        # self_custody_rail_verified because those fields are only populated
-        # after discovery-phase qualification. The specialist will verify
-        # autonomy gates and either promote to action_queue or reject.
+        # Promote AGENT_ALLOWED entries FIRST — specialist handles asset viability
         if agent_access == "AGENT_ALLOWED":
             out.append(e)
+            continue
+        # RTC has no viable bridge path; block non-agent entries only
+        if asset == "RTC":
             continue
         # Promote entries with verified self-custody rail (non-RTC)
         if rail_verified and asset != "RTC":
@@ -505,37 +514,16 @@ def sweep_cycle():
     except Exception as e:
         recon_status = {"ok": False, "error": str(e)}
 
-    # Bounded concurrency: max 3 concurrent Codex specialists across ALL phases
-    # to prevent exceeding the 5-minute systemd timer window.
-    MAX_WORKERS = 3
-    PHASE_TIMEOUT_S = None  # User directive: no timeouts. Concurrency-bounded only.
-
-    def run_phase(phase_fn, *args):
-        """Execute a phase function with a wall-clock timeout."""
-        import threading
-        result_container = {"value": []}
-        exc_container = {"error": None}
-
-        def target():
-            try:
-                result_container["value"] = phase_fn(*args)
-            except Exception as e:
-                exc_container["error"] = str(e)
-
-        t = threading.Thread(target=target)
-        t.start()
-        t.join(timeout=None)
-        if t.is_alive():
-            # Phase exceeded timeout; return partial/empty and log
-            return [], {"timeout": True, "phase": getattr(phase_fn, "__name__", "unknown")}
-        if exc_container["error"]:
-            return [], {"error": exc_container["error"], "phase": getattr(phase_fn, "__name__", "unknown")}
-        return result_container["value"], None
+    # Sequential execution model: no timeouts, no concurrency.
+    # User directive: "Sem timeouts sempre". Phases run synchronously.
+    MAX_WORKERS = 1
+    PHASE_TIMEOUT_S = None
 
     # Collect all dispatchable tasks first, then execute with bounded pool
     task_specs = []
     # Load ALL existing proposal keys to prevent re-dispatching any already-processed bounty
     _existing_proposal_keys = set()
+    _existing_proposal_keys_normalized = set()
     try:
         import glob as _glob
         for _pf in _glob.glob(str(PROPOSALS / "*.json")):
@@ -545,6 +533,7 @@ def sweep_cycle():
                 _k = _pd.get("bounty_key") or _pd.get("candidate_id")
                 if _k:
                     _existing_proposal_keys.add(_k)
+                    _existing_proposal_keys_normalized.add(_normalize_proposal_key(_k))
             except Exception:
                 pass
     except Exception:
@@ -620,32 +609,40 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
 
     # Phase 5: Promoted scout entries from monitor_only (AGENT_ALLOWED bounties)
     promoted_scouts = actionable_filter(q.get("monitor_only", [])) if q else []
-    for ps in promoted_scouts[:3]:
+    _phase5_dispatched = 0
+    _PHASE5_MAX = 6
+    for ps in promoted_scouts:
+        if _phase5_dispatched >= _PHASE5_MAX:
+            break
         pkey = ps.get("candidate_id") or ps.get("bounty_key") or ""
         if pkey in _existing_proposal_keys:
+            continue
+        norm_pkey = _normalize_proposal_key(pkey)
+        if norm_pkey in _existing_proposal_keys_normalized:
+            continue
+        if norm_pkey in _phase5_dispatched_normalized:
             continue
         task = build_task(ps)
         if task:
             task["_phase"] = "scout_discovery"
             task_specs.append(task)
+            _phase5_dispatched_normalized.add(norm_pkey)
+            _phase5_dispatched += 1
 
 
     # Execute all collected tasks with bounded ThreadPoolExecutor
+    # Execute all collected tasks SEQUENTIALLY (no concurrency, no timeouts).
+    # User directive: "Sem timeouts sempre". Strict sequential order enforced.
     all_results = []
     phase_errors = []
-    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        future_to_task = {executor.submit(dispatch_codex_specialist, t): t for t in task_specs}
-        for future in concurrent.futures.as_completed(future_to_task, timeout=None):
-            task = future_to_task[future]
-            try:
-                res = future.result(timeout=None)
-                res["phase"] = task.get("_phase", "unknown")
-                res["bounty_key"] = task.get("bounty_key", "unknown")
-                all_results.append(res)
-            except concurrent.futures.TimeoutError:
-                all_results.append({"ok": False, "error": "future_timeout", "phase": task.get("_phase"), "bounty_key": task.get("bounty_key")})
-            except Exception as e:
-                all_results.append({"ok": False, "error": str(e), "phase": task.get("_phase"), "bounty_key": task.get("bounty_key")})
+    for task in task_specs:
+        try:
+            res = dispatch_codex_specialist(task)
+            res["phase"] = task.get("_phase", "unknown")
+            res["bounty_key"] = task.get("bounty_key", "unknown")
+            all_results.append(res)
+        except Exception as e:
+            all_results.append({"ok": False, "error": str(e), "phase": task.get("_phase", "unknown"), "bounty_key": task.get("bounty_key", "unknown")})
 
     dispatched = sum(1 for r in all_results if r.get("ok"))
     errors = sum(1 for r in all_results if not r.get("ok"))
