@@ -114,12 +114,12 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
         prompt
     ]
     try:
-        # Reduced timeout to 120s to prevent single-agent blocking of 5min cycle
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=None, cwd=str(ROOT))
+        # Hard timeout 90s to prevent single-agent blocking of 5min cycle
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=90, cwd=str(ROOT))
         return {"ok": r.returncode == 0, "rc": r.returncode,
                 "stdout": r.stdout[-4000:], "stderr": r.stderr[-2000:]}
     except subprocess.TimeoutExpired:
-        return {"ok": False, "error": "timeout"}
+        return {"ok": False, "error": "timeout_90s"}
     except FileNotFoundError:
         return {"ok": False, "error": "codex_not_found"}
 
@@ -299,19 +299,24 @@ def phase_email_cleanup():
 
 def phase_06_convert_gmail_proposals():
     """Convert non-executable gmail claim proposals into executable actions via specialist dispatch."""
-    import glob as _glob
-    converted = 0
-    errors = []
-    proposal_files = sorted(_glob.glob(str(PROPOSALS / "gmail_claim_*.json")))
-    # Filter to only those with proposed_comment == null and action in investigate set
+    import glob as _glob, sys as _sys, os as _os
+    converted, errors = 0, []
+    pattern = str(PROPOSALS / "gmail_claim_*.json")
+    proposal_files = sorted(_glob.glob(pattern))
+    _sys.stderr.write(f"[P06] glob({pattern}) -> {len(proposal_files)} files\n")
+    _sys.stderr.flush()
     targets = []
     for pf in proposal_files:
-        try:
-            data = json.loads(pathlib.Path(pf).read_text())
-        except Exception:
+        data = load_json(pf)
+        if not isinstance(data, dict):
+            _sys.stderr.write(f"[P06] skip {pf}: load_json returned {type(data).__name__}\n")
             continue
-        if data.get("proposed_comment") is None and data.get("action") in ("investigate_claim", "reclaim_lapsed", "provide_live_url"):
+        pc = data.get("proposed_comment")
+        act = data.get("action")
+        if pc is None and act in ("investigate_claim", "reclaim_lapsed", "provide_live_url"):
             targets.append((pf, data))
+    _sys.stderr.write(f"[P06] targets={len(targets)} from {len(proposal_files)} files\n")
+    _sys.stderr.flush()
     if not targets:
         return {"ok": True, "converted": 0, "targets": 0}
     # Bounded: max 3 conversions per cycle to stay within timer window
@@ -331,10 +336,34 @@ def phase_06_convert_gmail_proposals():
             "5. OVERWRITE the proposal file at {pf} with updated JSON containing: action (executable), proposed_comment (string or null), risks (updated), investigated_at (ISO timestamp).\n"
             "6. Do NOT post to GitHub. Do NOT modify ledgers. Only update the proposal file."
         )
+        # Record mtime before dispatch to verify file was actually updated
+        pre_mtime = _os.path.getmtime(pf) if _os.path.exists(pf) else 0
         task = {"bounty_key": bkey, "prompt": prompt, "_phase": "phase06_convert"}
         result = dispatch_codex_specialist(task)
+        # Verify the file was actually updated with an executable action
         if result.get("ok"):
-            converted += 1
+            try:
+                post_mtime = _os.path.getmtime(pf) if _os.path.exists(pf) else 0
+                if post_mtime > pre_mtime:
+                    updated_data = load_json(pf)
+                    new_action = updated_data.get("action", "")
+                    new_comment = updated_data.get("proposed_comment")
+                    executable_actions = ("claim", "fix_review_feedback", "submit_work", "qualify", "qualify_claim")
+                    if new_action in executable_actions and new_comment:
+                        converted += 1
+                        _sys.stderr.write(f"[P06] OK {bkey}: action={new_action} comment_len={len(new_comment)}\n")
+                    elif new_action == "abandon":
+                        converted += 1
+                        _sys.stderr.write(f"[P06] ABANDON {bkey}: terminal\n")
+                    else:
+                        errors.append({"bounty_key": bkey, "error": f"non_executable_result: action={new_action}"})
+                        _sys.stderr.write(f"[P06] FAIL {bkey}: action={new_action}\n")
+                else:
+                    errors.append({"bounty_key": bkey, "error": "file_not_modified"})
+                    _sys.stderr.write(f"[P06] SKIP {bkey}: file not modified\n")
+            except Exception as e:
+                errors.append({"bounty_key": bkey, "error": f"verify_failed: {str(e)[:100]}"})
+                _sys.stderr.write(f"[P06] VERIFY_ERROR {bkey}: {str(e)[:100]}\n")
         else:
             errors.append({"bounty_key": bkey, "error": result.get("error", "unknown")})
     return {"ok": True, "converted": converted, "targets": len(targets), "errors": errors}
