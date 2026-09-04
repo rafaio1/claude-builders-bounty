@@ -167,7 +167,7 @@ def phase1_sweep_claims():
 def phase2_microtask_orchestration():
     """Dispatch actionable proposals to Claude microtasks."""
     log("PHASE 2: Microtask orchestration")
-    results = {"dispatched": 0, "completed": 0, "failed": 0}
+    results = {"dispatched": 0, "completed": 0, "failed": 0, "skipped_superseded": 0}
 
     # Find pending execution proposals
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
@@ -176,9 +176,24 @@ def phase2_microtask_orchestration():
         prop = load_json(pf)
         if not prop:
             continue
-        if prop.get("status") == "pending_execution" and prop.get("type") in ("reclaim_proposal", "execution_proposal", "discovery_proposal"):
+        # Skip superseded proposals entirely
+        if prop.get("action") == "superseded":
+            results["skipped_superseded"] += 1
+            continue
+        # Accept both legacy status field and next_status field for actionable items
+        status = prop.get("status", "")
+        next_status = prop.get("next_status", "")
+        action = prop.get("action", "")
+        is_actionable_status = status == "pending_execution" or next_status in (
+            "claim_pending", "in_progress", "candidate", "submitted", "awaiting_first_review"
+        )
+        is_valid_type = prop.get("type") in ("reclaim_proposal", "execution_proposal", "discovery_proposal", None)
+        # For next_status-based proposals, also accept by action type
+        is_valid_action = action in ("qualify_claim", "investigate_claim", "submit_work", "fix_review_feedback", "monitor_pr_review", "claim", "reclaim_lapsed", None)
+        if is_actionable_status and (is_valid_type or is_valid_action):
             actionable.append((pf, prop))
 
+    log(f"  Found {len(actionable)} actionable proposals (skipped {results['skipped_superseded']} superseded)")
     for pf, prop in actionable[:5]:  # Max 5 microtasks per cycle
         task_id = prop.get("candidate_id", Path(pf).stem)
         ctx = prop.get("context", {})
