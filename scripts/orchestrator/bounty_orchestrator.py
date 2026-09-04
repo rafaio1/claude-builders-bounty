@@ -67,6 +67,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             "-p", prompt, "--output-format", "text"
         ]
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env, cwd="/Agentic")
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=540, env=env, cwd="/Agentic")
         actual_output = r.stdout.strip() if r.stdout else ""
         # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
         if actual_output and len(actual_output) > 20:
@@ -80,7 +81,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             log(f"  Microtask {task_id} failed: rc={r.returncode} stderr={err_msg[:500]}", "ERROR")
             return {"status": "error", "error": err_msg, "task_id": task_id}
     except subprocess.TimeoutExpired:
-        log(f"  Microtask {task_id} timed out after 300s", "ERROR")
+        log(f"  Microtask {task_id} timed out after 540s", "ERROR")
         return {"status": "timeout", "task_id": task_id}
     except Exception as e:
         log(f"  Microtask {task_id} exception: {e}", "ERROR")
@@ -283,8 +284,13 @@ def phase2_microtask_orchestration():
         prompt = f"""Execute bounty task: {ctx.get('title', 'unknown')}
 URL: {ctx.get('url', 'N/A')}
 Type: {prop.get('type')}
-Instructions: Review the bounty requirements, prepare claim or submission, and report status.
-Do NOT modify canonical ledgers. Write findings to proposals directory.
+Instructions: You MUST produce a concrete deliverable for this bounty. Do NOT write status reports, summaries, or "no actionable" notes.
+1. Read the issue/PR at the URL above. Identify the exact fix, feature, or content required.
+2. Implement the change in code OR draft the exact claim/comment text that satisfies the bounty.
+3. Output ONLY the final artifact: a patch/diff, complete file content, or the exact comment body to post.
+4. If the bounty is genuinely closed/lapsed/duplicate with proof, output exactly "INACTIVE: <reason>" and nothing else.
+5. Do NOT reference other proposals, consolidated reports, or prior status files. Produce fresh work now.
+6. Do NOT modify canonical ledgers. Save any supporting files to proposals directory.
 Provider: {GHOSTCLI_MODEL}"""
         
         result = run_claude_microtask(prompt, task_id)
@@ -367,7 +373,8 @@ def phase3_5_submit_approved():
     _submit_count = 0
     for pf in proposal_files:
         if _submit_count >= 2:
-            log("  Phase 3.5 batch limit reached (2 submits)")
+        if _submit_count >= 5:
+            log("  Phase 3.5 batch limit reached (5 submits)")
             break
         prop = load_json(pf)
         if not prop or prop.get("status") not in ("review_approved",):
