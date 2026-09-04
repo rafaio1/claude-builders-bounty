@@ -391,26 +391,39 @@ def phase3_5_submit_approved():
                 url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
         output = prop.get("microtask_result", "")
         
-        # Skip proposals with no real work content
-        skip_output = False
-        if not output:
-            skip_output = True
-        elif isinstance(output, str) and (
-            output.startswith("Bounty task `unknown`")
-            or "no actionable bounty" in output.lower()
-            or "no actionable target" in output.lower()
-            or "no valid bounty" in output.lower()
-            or "consolidated report" in output.lower()
-            or "bounty-status-unknown" in output.lower()
-            or "already captures" in output.lower()
-            or "already exists" in output.lower()
-            or "status report" in output.lower()
-            or "no duplicate work" in output.lower()
+       # Skip proposals with no real work content
+       skip_output = False
+       if not output:
+           skip_output = True
+       elif isinstance(output, str) and (
+           output.startswith("Bounty task `unknown`")
+           or "no actionable bounty" in output.lower()
+           or "no actionable target" in output.lower()
+           or "no valid bounty" in output.lower()
+           or "consolidated report" in output.lower()
+           or "bounty-status-unknown" in output.lower()
+           or "already captures" in output.lower()
+           or "already exists" in output.lower()
+           or "status report" in output.lower()
+           or "no duplicate work" in output.lower()
+       ):
+           skip_output = True
+        # Gate: reject approvals that are just status reports with no executable claim/PR
+        if isinstance(output, str) and (
+            "status report written" in output.lower()
+            or "no_actionable_bounty" in output.lower()
+            or "no actionable" in output.lower()
+            or "not autonomous" in output.lower()
+            or "blocked" in output.lower()
         ):
-            skip_output = True
-        if not url or skip_output:
+            prop["status"] = "review_rejected"
+            prop["rejection_reason"] = "output_indicates_no_actionable_work"
+            save_json(pf, prop)
             results["skipped_no_context"] += 1
             continue
+       if not url or skip_output:
+           results["skipped_no_context"] += 1
+           continue
         # Skip proposals that are just status reports with no real work
         if prop.get("status") == "no_actionable_bounty" or (prop.get("context") is None and prop.get("action") is None):
             results["skipped_no_context"] += 1
