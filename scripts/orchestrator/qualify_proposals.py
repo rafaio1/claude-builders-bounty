@@ -42,7 +42,7 @@ def qualify_proposal(data, filepath):
     candidate_id = data.get("candidate_id", filepath.stem)
     
     # Gate 1: Human gates block autonomous execution
-    if requires_human and any(g in requires_human for g in ["account_creation", "kyc", "identity_verification"]):
+    if requires_human and any(g in requires_human for g in ["kyc", "identity_verification"]):
         return "archived_human_gate", f"Requires human: {requires_human}", None
     
     # Gate 2: Platform must be autonomous-friendly

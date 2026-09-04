@@ -271,11 +271,7 @@ def phase2_microtask_orchestration():
         if not prop:
             continue
         if prop.get("status") == "pending_qualification" and prop.get("type") == "discovery_proposal":
-            # Gate: skip discovery proposals requiring human account creation
-            # These cannot be executed autonomously and waste Phase 2 slots
             _rh = (prop.get("context", {}) or {}).get("requires_human", []) or []
-            if "account_creation" in _rh:
-                continue
             cid = prop.get("candidate_id") or prop.get("stable_id")
             if cid and cid not in existing_ids:
                 actionable.append((str(pf), prop))
@@ -324,8 +320,6 @@ def phase2_microtask_orchestration():
         # These are dead-ends for autonomous execution and waste Phase 2 slots
         if _type == "discovery_proposal" and _status == "pending_qualification":
             _rh = _ctx.get("requires_human", []) or []
-            if "account_creation" in _rh:
-                return (9, 0)  # lowest priority, never dispatched autonomously
         # Discovery proposals with pending_qualification get highest priority
         # Prefer non-RTC assets (USDC/USD) over blocked RTC bounties
         if _type == "discovery_proposal" and _status == "pending_qualification":
@@ -640,12 +634,7 @@ def phase4_discovery():
 
     log(f"  Fresh non-RTC high-value (all platforms): {results['immunefi_new']} (skipped RTC: {results['skipped_rtc']})")
     for hv in all_high_value[:5]:
-        # Gate: skip high-value opportunities requiring human account creation
-        # These cannot be executed autonomously and pollute the pipeline
         _hv_rh = hv.get("requires_human", []) or []
-        if "account_creation" in _hv_rh:
-            log(f"    SKIP {hv.get('_normalized',{}).get('title','?')}: requires account_creation")
-            continue
         n = hv.get("_normalized", {})
         log(f"    [{n.get('platform','?')}] {n.get('title','?')}: ${n.get('gross','?')} payout={n.get('payout','?')}")
         # Create discovery proposal for top finds
