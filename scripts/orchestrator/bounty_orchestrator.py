@@ -247,8 +247,9 @@ def phase2_microtask_orchestration():
         _pf, _prop = item
         _type = _prop.get("type", "")
         _status = _prop.get("status", "")
-        _ctx = _prop.get("context", {})
+        _ctx = _prop.get("context", {}) or {}
         _gross = _ctx.get("gross_verified") or _ctx.get("payout_amount") or 0
+        _asset = _ctx.get("asset", "")
         # Gate: skip discovery proposals that require human account creation
         # These are dead-ends for autonomous execution and waste Phase 2 slots
         if _type == "discovery_proposal" and _status == "pending_qualification":
@@ -256,16 +257,19 @@ def phase2_microtask_orchestration():
             if "account_creation" in _rh:
                 return (9, 0)  # lowest priority, never dispatched autonomously
         # Discovery proposals with pending_qualification get highest priority
+        # Prefer non-RTC assets (USDC/USD) over blocked RTC bounties
         if _type == "discovery_proposal" and _status == "pending_qualification":
-            return (0, -_gross)
+            if _asset and _asset != "RTC":
+                return (0, -_gross)
+            return (1, -_gross)
         # Other discovery proposals
         if _type == "discovery_proposal":
-            return (1, -_gross)
+            return (2, -_gross)
         # Execution/reclaim proposals
         if _type in ("execution_proposal", "reclaim_proposal"):
-            return (2, -_gross)
+            return (3, -_gross)
         # Everything else (rustchain abandon tasks etc)
-        return (3, -_gross)
+        return (4, -_gross)
     actionable.sort(key=_dispatch_priority)
     log(f"  Found {len(actionable)} actionable proposals (skipped {results['skipped_superseded']} superseded)")
     for pf, prop in actionable[:2]:  # Max 2 microtasks per cycle — immunefi tasks take ~2min each
