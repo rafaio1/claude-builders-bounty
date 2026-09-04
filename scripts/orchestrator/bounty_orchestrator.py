@@ -167,12 +167,13 @@ def phase1_sweep_claims():
 def phase2_microtask_orchestration():
     """Dispatch actionable proposals to Claude microtasks."""
     log("PHASE 2: Microtask orchestration")
-    results = {"dispatched": 0, "completed": 0, "failed": 0, "skipped_superseded": 0}
+    results = {"dispatched": 0, "completed": 0, "failed": 0, "skipped_superseded": 0, "total_scanned": 0}
 
-    # Find pending execution proposals
+    # Scan ALL proposals, not just last 50 — actionable items may be anywhere
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
+    results["total_scanned"] = len(proposal_files)
     actionable = []
-    for pf in proposal_files[-50:]:
+    for pf in proposal_files:
         prop = load_json(pf)
         if not prop:
             continue
@@ -211,13 +212,19 @@ Provider: {GHOSTCLI_MODEL}"""
             results["completed"] += 1
             # Update proposal status
             prop["status"] = "microtask_completed"
-            prop["microtask_result"] = result.get("output", "")[:500]
+            raw_output = result.get("output", "")
+            if not isinstance(raw_output, str):
+                raw_output = str(raw_output)
+            prop["microtask_result"] = raw_output[:500]
             prop["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
             save_json(pf, prop)
         else:
             results["failed"] += 1
             prop["status"] = "microtask_failed"
-            prop["error"] = result.get("error", "unknown")[:500]
+            raw_error = result.get("error", "unknown")
+            if not isinstance(raw_error, str):
+                raw_error = str(raw_error)
+            prop["error"] = raw_error[:500]
             save_json(pf, prop)
 
     log(f"  Phase 2 result: {results}")
