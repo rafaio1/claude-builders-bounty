@@ -1,0 +1,95 @@
+diff --git a/tests/setup.ts b/tests/setup.ts
+index 1234567..abcdefg 100644
+--- a/tests/setup.ts
++++ b/tests/setup.ts
+@@ -1,5 +1,7 @@
+ import "@testing-library/jest-dom";
+ import { vi } from "vitest";
++import { webcrypto } from "node:crypto";
+ import React from "react";
+
+ // Mock Next.js router
+@@ -28,18 +30,12 @@ vi.mock("next/image", () => ({
+ }));
+
+ // Provide real Web Crypto API for tests (SHA-256, getRandomValues)
+-Object.defineProperty(globalThis, "crypto", {
+-  value: {
+-    subtle: {
+-      digest: async (_algorithm: string, data: ArrayBuffer) => {
+-        const text = new TextDecoder().decode(data);
+-        const hash = new Uint8Array(32);
+-        for (let i = 0; i < text.length && i < 32; i++) {
+-          hash[i] = text.charCodeAt(i);
+-        }
+-        return hash.buffer;
+-      },
+-    },
+-    getRandomValues: (arr: Uint8Array) => {
+-      for (let i = 0; i < arr.length; i++) {
+-        arr[i] = Math.floor(Math.random() * 256);
+-      }
+-      return arr;
+-    },
+-  },
++if (!globalThis.crypto?.subtle) {
++  Object.defineProperty(globalThis, "crypto", {
++    value: webcrypto,
++    writable: true,
++    configurable: true,
++  });
++} else if (!globalThis.crypto.getRandomValues) {
++  // jsdom may provide subtle but not getRandomValues
++  Object.defineProperty(globalThis.crypto, "getRandomValues", {
++    value: (arr: Uint8Array) => webcrypto.getRandomValues(arr),
++    writable: true,
++    configurable: true,
++  });
+ });
+
+ // Mock environment variables
+diff --git a/lib/stellar/scval.test.ts b/lib/stellar/scval.test.ts
+new file mode 100644
+index 0000000..1234567
+--- /dev/null
++++ b/lib/stellar/scval.test.ts
+@@ -0,0 +1,42 @@
++import { describe, it, expect } from "vitest";
++import { hashOrderId } from "./scval";
++
++describe("hashOrderId", () => {
++  it("returns exactly 32 bytes", async () => {
++    const result = await hashOrderId("test-order-id");
++    expect(result).toBeInstanceOf(Uint8Array);
++    expect(result.byteLength).toBe(32);
++  });
++
++  it("is deterministic across calls", async () => {
++    const a = await hashOrderId("deterministic-check");
++    const b = await hashOrderId("deterministic-check");
++    expect(a).toEqual(b);
++  });
++
++  it("produces different hashes for inputs that share a 32-byte prefix", async () => {
++    const base = "a".repeat(40);
++    const extended = base + "x";
++
++    const hashBase = await hashOrderId(base);
++    const hashExtended = await hashOrderId(extended);
++
++    expect(hashBase.byteLength).toBe(32);
++    expect(hashExtended.byteLength).toBe(32);
++    expect(hashBase).not.toEqual(hashExtended);
++  });
++
++  it("matches known SHA-256 output for a fixed input", async () => {
++    // SHA-256("hello") = 2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824
++    const result = await hashOrderId("hello");
++    const hex = Array.from(result)
++      .map((b) => b.toString(16).padStart(2, "0"))
++      .join("");
++    expect(hex).toBe(
++      "2cf24dba5fb0a30e26e83b2ac5b9e29e1b161e5c1fa7425e73043362938b9824"
++    );
++  });
++});

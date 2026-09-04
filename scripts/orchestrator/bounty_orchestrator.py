@@ -68,11 +68,14 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         ]
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=540, env=env, cwd="/Agentic")
         actual_output = r.stdout.strip() if r.stdout else ""
+        # Quality gate: reject status-report-only or empty outputs before accepting as success
+        _reject_markers = ("status report written", "no_actionable_bounty", "blocked", "nothing to do", "no action needed")
+        _is_meaningful = bool(actual_output) and len(actual_output) > 50 and not any(m in actual_output.lower() for m in _reject_markers)
         # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
-        if actual_output and len(actual_output) > 20:
+        if _is_meaningful:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)}, rc={r.returncode})")
             return {"status": "success", "output": actual_output, "task_id": task_id}
-        elif r.returncode == 0 and actual_output:
+        elif r.returncode == 0 and actual_output and len(actual_output) > 50:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)})")
             return {"status": "success", "output": actual_output, "task_id": task_id}
         else:
@@ -391,23 +394,24 @@ def phase3_5_submit_approved():
                 url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
         output = prop.get("microtask_result", "")
         
-       # Skip proposals with no real work content
-       skip_output = False
-       if not output:
-           skip_output = True
-       elif isinstance(output, str) and (
-           output.startswith("Bounty task `unknown`")
-           or "no actionable bounty" in output.lower()
-           or "no actionable target" in output.lower()
-           or "no valid bounty" in output.lower()
-           or "consolidated report" in output.lower()
-           or "bounty-status-unknown" in output.lower()
-           or "already captures" in output.lower()
-           or "already exists" in output.lower()
-           or "status report" in output.lower()
-           or "no duplicate work" in output.lower()
-       ):
-           skip_output = True
+      # Skip proposals with no real work content
+        # Skip proposals with no real work content
+        skip_output = False
+        if not output:
+            skip_output = True
+        elif isinstance(output, str) and (
+            output.startswith("Bounty task `unknown`")
+            or "no actionable bounty" in output.lower()
+            or "no actionable target" in output.lower()
+            or "no valid bounty" in output.lower()
+            or "consolidated report" in output.lower()
+            or "bounty-status-unknown" in output.lower()
+            or "already captures" in output.lower()
+            or "already exists" in output.lower()
+            or "status report" in output.lower()
+            or "no duplicate work" in output.lower()
+        ):
+            skip_output = True
         # Gate: reject approvals that are just status reports with no executable claim/PR
         if isinstance(output, str) and (
             "status report written" in output.lower()
@@ -421,9 +425,9 @@ def phase3_5_submit_approved():
             save_json(pf, prop)
             results["skipped_no_context"] += 1
             continue
-       if not url or skip_output:
-           results["skipped_no_context"] += 1
-           continue
+        if not url or skip_output:
+            results["skipped_no_context"] += 1
+            continue
         # Skip proposals that are just status reports with no real work
         if prop.get("status") == "no_actionable_bounty" or (prop.get("context") is None and prop.get("action") is None):
             results["skipped_no_context"] += 1
