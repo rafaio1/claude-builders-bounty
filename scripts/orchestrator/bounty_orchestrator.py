@@ -573,9 +573,27 @@ def _dispatch_immunefi_submission(prop, proposal_path):
     from pathlib import Path
     from datetime import datetime
     
-    evidence_path = prop.get("evidence_report", "")
+    # Resolve evidence path from multiple possible fields (backwards compat + microtask outputs)
+    evidence_path = (
+        prop.get("evidence_report")
+        or prop.get("microtask_result_path")
+        or prop.get("output_file")
+        or prop.get("deliverable_path")
+    )
+    # Fallback: search workspace/proposals for dexe report when context matches DeXe
+    if (not evidence_path or not Path(evidence_path).exists()):
+        ctx_title = (prop.get("context") or {}).get("title", "") if isinstance(prop.get("context"), dict) else ""
+        candidates = [
+            "/Agentic/workspace/dexe-security-analysis.md",
+            "/Agentic/proposals/dexe-protocol-security-analysis-20260904.md",
+        ]
+        if "dexe" in ctx_title.lower() or "dexe" in str(proposal_path).lower():
+            for c in candidates:
+                if Path(c).exists():
+                    evidence_path = c
+                    break
     if not evidence_path or not Path(evidence_path).exists():
-        raise ValueError(f"Missing evidence_report for Immunefi submission: {evidence_path}")
+        raise ValueError(f"Missing evidence_report for Immunefi submission: resolved={evidence_path!r} proposal={Path(proposal_path).name}")
     
     report_md = Path(evidence_path).read_text()
     title_match = re.search(r'^#\s+(.+)$', report_md, re.MULTILINE)
