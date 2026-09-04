@@ -62,7 +62,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
     log(f"  Dispatching microtask {task_id} to {GHOSTCLI_MODEL}")
     try:
         env = os.environ.copy()
-        env["ANTHROPIC_BASE_URL"] = "https://ghostcli.dev"
+        env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787"
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
             "-p", prompt, "--output-format", "text"
