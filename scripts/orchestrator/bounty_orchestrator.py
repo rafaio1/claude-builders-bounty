@@ -736,7 +736,18 @@ def _dispatch_immunefi_submission(prop, proposal_path):
     import subprocess, json, re
     from pathlib import Path
     from datetime import datetime
-    
+
+    # Gate: skip gracefully if no evidence available (avoid repeated dispatch failures)
+    evidence_check = (
+        prop.get("evidence_report")
+        or prop.get("microtask_result_path")
+        or prop.get("output_file")
+        or prop.get("deliverable_path")
+    )
+    if not evidence_check:
+        log(f"    SKIP immunefi dispatch: no evidence_report for {Path(proposal_path).name}")
+        return False
+
     # Resolve evidence path from multiple possible fields (backwards compat + microtask outputs)
     evidence_path = (
         prop.get("evidence_report")
