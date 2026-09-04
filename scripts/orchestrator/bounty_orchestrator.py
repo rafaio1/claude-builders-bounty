@@ -1067,6 +1067,7 @@ def phase4_discovery():
             "type": "discovery_proposal",
             "status": "pending_qualification",
             "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+            "bounty_key": f"{plat}|{safe_title}-{int(time.time())}",
             "bounty_value": float(n.get("gross", 0) or 0),
             "currency": str(hv.get("asset", "USDC")).upper(),
             "context": {
@@ -1102,11 +1103,14 @@ def phase4_discovery():
             log(f"  Top non-RTC research: {item.get('title', 'untitled')[:80]}")
             cid = item.get("candidate_id", f"research-{int(time.time())}")
             gross_val = item.get("max_payout_usd") or item.get("gross_verified") or 0
+            plat_rq = item.get("platform", "immunefi")
+            safe_title_rq = str(item.get("title","")).replace(" ","-").lower()[:30]
             proposal = {
                 "candidate_id": cid,
                 "type": "discovery_proposal",
                 "status": "pending_qualification",
                 "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
+                "bounty_key": f"{plat_rq}|{safe_title_rq}-{int(time.time())}",
                 "context": {
                     "source": "research_queue",
                     "title": item.get("title", ""),
