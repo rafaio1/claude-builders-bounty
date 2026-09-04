@@ -355,10 +355,24 @@ def phase2_microtask_orchestration():
         _has_meaningful_title = (len(_title) > 10 and not _title.startswith("rustchain-")) or _is_fetchable_discovery
         if not _desc and not _has_meaningful_title:
             return (5, 0)
+        # Gate: skip proposals with no actionable target (url, repo, scope, description all empty)
+        # These produce INSUFFICIENT_DATA outputs that waste Phase 2/3 capacity
+        _target_repo = (_ctx.get("target_repo") or _ctx.get("repo") or _ctx.get("github_repo") or "").strip()
+        _scope = (_ctx.get("scope") or _ctx.get("assets_in_scope") or _ctx.get("in_scope") or "").strip()
+        if not _url and not _target_repo and not _scope and not _desc:
+            return (5, 0)
+        # Gate: skip rustchain proposals requiring hardware/social proof (non-autonomous)
+        import re as _re
+        _hw_pattern = r"hardware|photo|video proof|physical|social media|reddit|mastodon|bottube|x\.com|twitter|youtube"
+        if _title.lower().startswith("rustchain-") or "rustchain" in (_target_repo or "").lower():
+            if _re.search(_hw_pattern, (_desc + " " + _title).lower()):
+                return (5, 0)
         # Gate: skip discovery proposals that require human account creation
         # These are dead-ends for autonomous execution and waste Phase 2 slots
         if _type == "discovery_proposal" and _status == "pending_qualification":
             _rh = _ctx.get("requires_human", []) or []
+            if "account_creation" in _rh:
+                return (5, 0)
         # Discovery proposals with pending_qualification get highest priority
         # Prefer non-RTC assets (USDC/USD) over blocked RTC bounties
         if _type == "discovery_proposal" and _status == "pending_qualification":
@@ -415,13 +429,19 @@ If this requires code changes:
 2. Write the EXACT fix as a unified diff or complete file
 3. Include brief explanation of why it fixes the issue
 
-### PATH B: Security Research / Analysis  
-If this is a bug bounty requiring analysis:
-1. Identify SPECIFIC vulnerable functions/contracts/endpoints by name
-2. Describe the attack vector with concrete parameters and data flow
-3. Provide step-by-step reproduction or proof-of-concept CODE (not prose)
-4. Explain impact with quantified loss scenario and severity assessment
-5. List affected files/lines from the target repository
+### PATH B: Security Research / Scope Extraction
+You MUST return a structured report with these exact sections:
+## Assets In Scope
+- List each contract/address/endpoint with name and type
+## Payout Tiers
+- Critical: $X | High: $X | Medium: $X | Low: $X
+## Out of Scope
+- List excluded items explicitly
+## Vulnerability Focus Areas
+- Specific attack vectors relevant to this protocol
+
+DO NOT return a list of source links. DO NOT return generic advice.
+If you cannot extract concrete scope details, state "INSUFFICIENT_DATA" and explain why.
 
 ### PATH C: Content Creation
 If this requires article/video/post:
@@ -882,6 +902,29 @@ def phase4_discovery():
             payout = opp.get("payout_type") or opp.get("payout_method") or "crypto"
             
             if today in discovered and gross >= 10000 and url:
+                # Pre-fetch URL content to prevent empty microtask output
+                _prefetched_desc = ""
+                try:
+                    _fetch_cmd = [
+                        "claude", "--print", "--model", GHOSTCLI_MODEL,
+                        "-p", f"Fetch and extract the full bounty scope, assets in scope, payout tiers, and out-of-scope items from this URL. Return ONLY the extracted content as plain text, max 3000 chars: {url}",
+                        "--output-format", "text"
+                    ]
+                    _fetch_env = os.environ.copy()
+                    for k in list(_fetch_env.keys()):
+                        if k.startswith("ANTHROPIC_") or k.startswith("OPENAI_"):
+                            del _fetch_env[k]
+                    _fetch_env["GHOSTCLI_BASE_URL"] = "http://127.0.0.1:8787/v1"
+                    _fetch_env["GHOSTCLI_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
+                    _fetch_env["GHOSTCLI_MODEL"] = GHOSTCLI_MODEL
+                    _fetch_env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787/v1"
+                    _fetch_env["ANTHROPIC_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
+                    _fr = subprocess.run(_fetch_cmd, capture_output=True, text=True, timeout=120, env=_fetch_env, cwd="/Agentic")
+                    if _fr.returncode == 0 and _fr.stdout and len(_fr.stdout.strip()) > 100:
+                        _prefetched_desc = _fr.stdout.strip()[:3000]
+                        log(f"    Pre-fetched {len(_prefetched_desc)} chars for {title}")
+                except Exception as _fe:
+                    log(f"    Pre-fetch failed for {title}: {_fe}")
                 opp["_normalized"] = {"title": title, "gross": gross, "url": url, "payout": payout, "platform": platform_name}
                 all_high_value.append(opp)
                 results["immunefi_new"] += 1  # Keep counter name for compat
@@ -904,6 +947,7 @@ def phase4_discovery():
                 "source": f"{plat}_live",
                 "title": n.get("title", ""),
                 "url": n.get("url", ""),
+                "description": _prefetched_desc if _prefetched_desc else "",
                 "asset": hv.get("asset", "USDC"),
                 "gross": n.get("gross", 0),
                 "payout_type": n.get("payout", "crypto"),
