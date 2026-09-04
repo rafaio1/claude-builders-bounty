@@ -268,6 +268,54 @@ def phase3_self_review():
     log(f"  Phase 3 result: {results}")
     return results
 
+# ── Phase 3.5: Submit Approved Work ─────────────────────────────────
+def phase3_5_submit_approved():
+    """Take review_approved proposals and submit them to GitHub (PR or claim comment)."""
+    log("PHASE 3.5: Submitting approved work to platforms")
+    results = {"submitted": 0, "failed": 0, "skipped_no_context": 0}
+    
+    proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
+    for pf in proposal_files:
+        prop = load_json(pf)
+        if not prop or prop.get("status") != "review_approved":
+            continue
+        
+        ctx = prop.get("context", {})
+        url = ctx.get("url", "")
+        output = prop.get("microtask_result", "")
+        
+        if not url or not output:
+            results["skipped_no_context"] += 1
+            continue
+            
+        # Dispatch submission microtask
+        task_id = f"submit-{prop.get('candidate_id', Path(pf).stem)}"
+        prompt = f"""Submit this completed bounty work to the platform.
+Target URL: {url}
+Work Output: {output[:2000]}
+
+Instructions:
+1. If URL is a GitHub issue/PR, post a comment with the work summary or create/update a PR.
+2. If it's a claim flow, execute the claim command if available in context.
+3. Return the submission URL or confirmation.
+4. Do NOT modify canonical ledgers.
+Provider: {GHOSTCLI_MODEL}"""
+        
+        result = run_claude_microtask(prompt, task_id)
+        if result["status"] in ("success", "success_raw"):
+            prop["status"] = "submitted_to_platform"
+            prop["submission_result"] = str(result.get("output", ""))[:500]
+            prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            save_json(pf, prop)
+            results["submitted"] += 1
+            log(f"  Submitted {Path(pf).name} -> {url[:60]}")
+        else:
+            results["failed"] += 1
+            log(f"  Submission failed for {Path(pf).name}: {result.get('error','?')[:100]}", "WARN")
+    
+    log(f"  Phase 3.5 result: {results}")
+    return results
+
 # ── Phase 4: Discovery (Non-RTC Focus) ───────────────────────────────
 def phase4_discovery():
     """Discover new bounties with autonomous payout paths (skip RTC-blocked)."""
@@ -387,6 +435,7 @@ def main():
     p1 = phase1_sweep_claims()
     p2 = phase2_microtask_orchestration()
     p3 = phase3_self_review()
+    p3_5 = phase3_5_submit_approved()
     p4 = phase4_discovery()
     p5 = phase5_cleanup_and_mirror()
 
@@ -396,6 +445,7 @@ def main():
         "phase1_sweep": p1,
         "phase2_microtask": p2,
         "phase3_review": p3,
+        "phase3_5_submit": p3_5,
         "phase4_discovery": p4,
         "phase5_cleanup": p5,
         "next_cycle_minutes": 5
