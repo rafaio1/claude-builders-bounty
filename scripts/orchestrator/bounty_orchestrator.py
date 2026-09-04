@@ -375,6 +375,14 @@ def phase2_microtask_orchestration():
         ctx = prop.get("context", {})
         # Build enriched context for security research tasks (Immunefi etc)
         _bounty_desc = ctx.get('description', ctx.get('summary', ''))[:3000]
+        _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or ''
+        _scope = ctx.get('scope') or ctx.get('assets_in_scope') or ctx.get('in_scope') or ''
+        # If no description and we have a URL, instruct the model to fetch and analyze it
+        _url = (ctx.get('url') or '').strip()
+        if not _bounty_desc and _url:
+            _bounty_desc = f"[NO DESCRIPTION IN CONTEXT — You MUST fetch and analyze this URL: {_url}]"
+        elif not _bounty_desc:
+            _bounty_desc = "No description available. Check URL or target repo for details."
         _payout = ctx.get('payout_amount', ctx.get('gross_verified', 'unknown'))
         _asset = ctx.get('asset', 'unknown')
         _platform = prop.get('platform', ctx.get('platform', 'unknown'))
@@ -386,13 +394,15 @@ def phase2_microtask_orchestration():
 - Platform: {_platform}
 - Payout: {_payout} {_asset}
 - URL: {ctx.get('url', 'N/A')}
+- Target Repo: {_target_repo if _target_repo else 'N/A'}
+- Scope: {_scope if _scope else 'N/A'}
 - Type: {prop.get('type')}
 
 ## DESCRIPTION
 {_bounty_desc if _bounty_desc else 'No description available - check URL'}
 
 ## YOUR TASK
-Produce a CONCRETE DELIVERABLE. Choose ONE path:
+Produce a CONCRETE DELIVERABLE with SUBSTANTIVE TECHNICAL CONTENT. Choose ONE path:
 
 ### PATH A: Code Fix / Implementation
 If this requires code changes:
@@ -402,9 +412,11 @@ If this requires code changes:
 
 ### PATH B: Security Research / Analysis  
 If this is a bug bounty requiring analysis:
-1. Describe the attack surface and potential vulnerability
-2. Provide step-by-step reproduction or proof-of-concept
-3. Explain impact and severity assessment
+1. Identify SPECIFIC vulnerable functions/contracts/endpoints by name
+2. Describe the attack vector with concrete parameters and data flow
+3. Provide step-by-step reproduction or proof-of-concept CODE (not prose)
+4. Explain impact with quantified loss scenario and severity assessment
+5. List affected files/lines from the target repository
 
 ### PATH C: Content Creation
 If this requires article/video/post:
@@ -416,9 +428,12 @@ If you need to claim via GitHub comment:
 Output the EXACT comment text starting with /claim
 
 ## CRITICAL RULES
-- Output MUST be >200 characters of substantive content
+- Output MUST be >500 characters of SUBSTANTIVE TECHNICAL content
 - Do NOT write status reports, meta-commentary, or "I cannot" refusals  
 - Do NOT say "will do later" or "needs more info" - produce the artifact NOW
+- Do NOT output only URLs, links, or source references without analysis
+- Do NOT write introductions or summaries without actual vulnerability findings
+- If the bounty page has no actionable scope or is inactive, output exactly: INACTIVE:<specific reason>
 - If genuinely impossible, output exactly: INACTIVE:<specific reason>
 - Do NOT modify canonical ledgers or financial files
 
