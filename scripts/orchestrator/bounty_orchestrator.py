@@ -543,6 +543,7 @@ def phase3_self_review():
         # These will never pass LLM review because they contain no real work
         if isinstance(output, str) and (
             output.startswith("INACTIVE:")
+            or output.startswith("INSUFFICIENT_DATA:")
             or "bounty task is undefined" in output.lower()
             or "bounty task is unspecified" in output.lower()
             or "bounty target unknown" in output.lower()
@@ -550,9 +551,11 @@ def phase3_self_review():
             or "cannot be actioned" in output.lower()
             or "cannot be executed" in output.lower()
             or "cannot be resolved" in output.lower()
+            or "no url, target repository" in output.lower()
+            or "no target to analyze" in output.lower()
         ):
             prop["status"] = "review_rejected"
-            prop["rejection_reason"] = "inactive_no_actionable_target"
+            prop["rejection_reason"] = "inactive_or_insufficient_data"
             prop["review_method"] = "local_heuristic_auto_reject"
             results["rejected"] += 1
             save_json(pf, prop)
