@@ -567,6 +567,50 @@ Do NOT include preamble, explanation, or markdown formatting outside the above."
     log(f"  Phase 3 result: {results}")
     return results
 
+def _dispatch_github_claim_comment(prop, proposal_path):
+    """Post a /claim comment to a GitHub issue for bounty claiming."""
+    import subprocess, json
+    from datetime import datetime
+    from pathlib import Path
+    
+    bounty_key = prop.get("bounty_key", "")
+    parts = bounty_key.split("|")
+    # Support both "github|owner/repo|issue" and "owner/repo|issue" formats
+    if len(parts) == 3 and parts[0] == "github":
+        owner_repo = parts[1]
+        issue_number = parts[2]
+    elif len(parts) == 2 and "/" in parts[0]:
+        owner_repo = parts[0]
+        issue_number = parts[1]
+    else:
+        raise ValueError(f"Invalid github bounty_key format: {bounty_key}")
+    
+    # Check if Live-URL is required (content bounties)
+    live_url = prop.get("live_url") or prop.get("evidence_url") or ""
+    comment_body = "/claim"
+    if live_url and any(host in live_url for host in ["bottube.ai", "x.com", "twitter.com", "youtube.com", "youtu.be", "hackaday.io", "dev.to", "hashnode.dev", "medium.com"]):
+        comment_body = f"/claim\n\nLive-URL: {live_url}"
+    
+    cmd = [
+        "gh", "api",
+        f"repos/{owner_repo}/issues/{issue_number}/comments",
+        "-f", f"body={comment_body}"
+    ]
+    
+    result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+    if result.returncode != 0:
+        raise RuntimeError(f"gh api failed ({result.returncode}): {result.stderr[:300]}")
+    
+    response = json.loads(result.stdout) if result.stdout.strip() else {}
+    comment_id = response.get("id")
+    
+    prop["claim_comment_sent"] = True
+    prop["claim_comment_id"] = comment_id
+    prop["submitted_at"] = datetime.now(datetime.timezone.utc).isoformat()
+    prop["status"] = "claim_pending"
+    save_json(proposal_path, prop)
+    log(f"    Posted /claim to {owner_repo}#{issue_number} (comment_id={comment_id})")
+
 def _dispatch_immunefi_submission(prop, proposal_path):
     """Submit an approved Immunefi report via playwright-cli web form automation."""
     import subprocess, json, re
@@ -649,15 +693,27 @@ def phase3_5_submit_approved():
             log("  Phase 3.5 batch limit reached (20 submits)")
             break
         prop = load_json(pf)
-        if not prop or prop.get("status") not in ("review_approved", "approved_pending_submission"):
+        if not prop or prop.get("status") not in ("review_approved", "approved_pending_submission", "claim_submitted"):
             continue
         # Idempotency: skip if already submitted (handles re-classified duplicates)
-        if prop.get("submitted_at"):
+        if prop.get("submitted_at") and prop.get("action") != "claim":
             results["skipped_no_context"] += 1
             continue
         
         ctx = prop.get("context", {})
         submission_type = prop.get("submission_type", "")
+        
+        # Branch for GitHub /claim comment submissions (highest priority)
+        if prop.get("action") == "claim" and ("|" in prop.get("bounty_key", "")):
+            from pathlib import Path as _Path; log(f"  Phase 3.5: Dispatching GitHub /claim comment for {_Path(pf).name}")
+            try:
+                _dispatch_github_claim_comment(prop, pf)
+                results["submitted"] += 1
+                _submit_count += 1
+            except Exception as e:
+                log(f"  Phase 3.5 GitHub claim dispatch failed: {e}")
+                results["failed"] += 1
+            continue
         
         # Branch for Immunefi web-form submissions
         if submission_type == "immunefi_web_form":
