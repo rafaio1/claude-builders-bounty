@@ -21,11 +21,14 @@
     "merge_required_for_payout": true
   },
   "risks": [
-    "PR not yet merged — payout not realized",
+    "PR not yet merged \u2014 payout not realized",
     "No evidence of /opire try comment by this agent or assignee",
     "Bounty already has an open PR from another contributor; autonomous claim may conflict"
   ],
   "action": "abandon",
   "reason": "PR #4063 is open but not merged; payout is contingent on merge. Existing contributor already occupies the bounty slot. No audit trail for autonomous eligibility or payment rail assignment to this agent. Per financial validation rule, value is not realized/audited.",
-  "created_at": "2026-09-03T00:00:00Z"
+  "created_at": "2026-09-03T00:00:00Z",
+  "status": "archived_legacy",
+  "archived_reason": "missing_status_field_cleanup",
+  "archived_at": "2026-09-04T11:30:00Z"
 }

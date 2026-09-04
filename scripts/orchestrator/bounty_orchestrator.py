@@ -66,7 +66,6 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             "claude", "--model", GHOSTCLI_MODEL,
             "-p", prompt, "--output-format", "text"
         ]
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env, cwd="/Agentic")
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=540, env=env, cwd="/Agentic")
         actual_output = r.stdout.strip() if r.stdout else ""
         # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
@@ -372,7 +371,6 @@ def phase3_5_submit_approved():
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
     _submit_count = 0
     for pf in proposal_files:
-        if _submit_count >= 2:
         if _submit_count >= 5:
             log("  Phase 3.5 batch limit reached (5 submits)")
             break

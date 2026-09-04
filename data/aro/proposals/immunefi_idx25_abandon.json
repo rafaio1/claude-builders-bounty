@@ -5,11 +5,14 @@
   "proposed_comment": null,
   "next_status": "abandoned",
   "risks": [
-    "Bounty slug 'idx25' returns HTTP 404 on immunefi.com — program may have been removed, renamed, or never existed.",
+    "Bounty slug 'idx25' returns HTTP 404 on immunefi.com \u2014 program may have been removed, renamed, or never existed.",
     "No scope, payout rail, or GitHub repository can be validated from public sources.",
     "Receive address 0x33951177e62C2ff3f7f87eeCceFA14d5809dDa19 (crypto_usdt_polygon) cannot be matched to a live bounty; any claim would be speculative and non-payable.",
     "Autonomous execution infeasible without a confirmed target asset and reward terms."
   ],
   "investigation_summary": "Fetched https://immunefi.com/bounty/idx25 via curl on 2026-09-03. Server returned Next.js 404 fallback page with digest NEXT_HTTP_ERROR_FALLBACK;404. No bounty metadata, assets-in-scope, reward table, or linked GitHub repo found in HTML or embedded RSC payload. Grep for idx25/reward/payout/usdt/polygon returned zero matches beyond boilerplate. Cannot qualify claim.",
-  "timestamp_utc": "2026-09-03T00:00:00Z"
+  "timestamp_utc": "2026-09-03T00:00:00Z",
+  "status": "archived_legacy",
+  "archived_reason": "missing_status_field_cleanup",
+  "archived_at": "2026-09-04T11:30:00Z"
 }

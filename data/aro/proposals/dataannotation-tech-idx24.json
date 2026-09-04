@@ -10,7 +10,7 @@
     "No matching entry in canonical bounty_ledger.json",
     "dataannotation.tech is a private AI training platform; no public open-source bounty program found",
     "Receive rail crypto_usdt_polygon cannot be validated against any official payout source",
-    "Bounty key contains 'unknown' source — likely auto-generated candidate without verification"
+    "Bounty key contains 'unknown' source \u2014 likely auto-generated candidate without verification"
   ],
   "rationale": "Phase 1 validation failed. The target repo does not exist as a public GitHub entity with issues or bounties. dataannotation.tech is a closed platform for AI data labeling contractors, not an open-source project with a bounty program. No issue, PR, or payout mechanism can be verified. Autonomous claim execution is impossible without a valid target repository.",
   "investigation_summary": {
@@ -21,5 +21,8 @@
     "ledger_match": "No entry in bounty_ledger.json matching dataannotation or idx24",
     "receive_wallet_verified": true
   },
-  "created_at": "2026-09-03T00:00:00Z"
+  "created_at": "2026-09-03T00:00:00Z",
+  "status": "archived_legacy",
+  "archived_reason": "missing_status_field_cleanup",
+  "archived_at": "2026-09-04T11:30:00Z"
 }
