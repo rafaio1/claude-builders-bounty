@@ -75,7 +75,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         tmp_path = f"/tmp/microtask_{task_id}_{os.getpid()}.txt"
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
-            "-p", prompt, "--output-format", "text", "--max-tokens", "8000"
+            "-p", prompt, "--output-format", "text"
         ]
         with open(tmp_path, 'w') as outf:
             r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, timeout=540, env=env, cwd="/Agentic")
@@ -860,7 +860,7 @@ def phase4_discovery():
             url = opp.get("url", "")
             payout = opp.get("payout_type") or opp.get("payout_method") or "crypto"
             
-            if today in discovered and gross >= 10000:
+            if today in discovered and gross >= 10000 and url:
                 opp["_normalized"] = {"title": title, "gross": gross, "url": url, "payout": payout, "platform": platform_name}
                 all_high_value.append(opp)
                 results["immunefi_new"] += 1  # Keep counter name for compat
