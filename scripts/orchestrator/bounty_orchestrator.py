@@ -394,8 +394,32 @@ def phase2_microtask_orchestration():
     for pf, prop in actionable[:5]:  # Increased to 5 microtasks per cycle for higher throughput
         task_id = prop.get("candidate_id", Path(pf).stem)
         ctx = prop.get("context", {})
+        # Dedup & description enrichment: if this proposal lacks a description but
+        # another file for the same candidate_id has one, copy it forward so the
+        # microtask prompt receives real scope instead of "No description available".
+        _bounty_desc_raw = (ctx.get('description') or ctx.get('summary') or '').strip()
+        if not _bounty_desc_raw:
+            import glob as _glob
+            _cid = prop.get("candidate_id")
+            if _cid:
+                _best_desc = ""
+                for _pf2 in _glob.glob(f"data/aro/proposals/{_cid}-*.json"):
+                    if _pf2 == pf:
+                        continue
+                    try:
+                        with open(_pf2) as _f2:
+                            _d2 = json.load(_f2)
+                        _c2 = _d2.get("context", {})
+                        _desc2 = (_c2.get('description') or _c2.get('summary') or '').strip()
+                        if len(_desc2) > len(_best_desc):
+                            _best_desc = _desc2
+                    except Exception:
+                        pass
+                if _best_desc:
+                    ctx['description'] = _best_desc
+                    log(f"  Enriched {task_id} with description from sibling proposal ({len(_best_desc)} chars)")
         # Build enriched context for security research tasks (Immunefi etc)
-        _bounty_desc = ctx.get('description', ctx.get('summary', ''))[:3000]
+        _bounty_desc = (ctx.get('description') or ctx.get('summary') or '')[:3000]
         _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or ''
         _scope = ctx.get('scope') or ctx.get('assets_in_scope') or ctx.get('in_scope') or ''
         # If no description and we have a URL, instruct the model to fetch and analyze it
