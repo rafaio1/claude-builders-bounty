@@ -277,7 +277,7 @@ def phase2_microtask_orchestration():
         return (4, -_gross)
     actionable.sort(key=_dispatch_priority)
     log(f"  Found {len(actionable)} actionable proposals (skipped {results['skipped_superseded']} superseded)")
-    for pf, prop in actionable[:2]:  # Max 2 microtasks per cycle — immunefi tasks take ~2min each
+    for pf, prop in actionable[:5]:  # Increased to 5 microtasks per cycle for higher throughput
         task_id = prop.get("candidate_id", Path(pf).stem)
         ctx = prop.get("context", {})
         prompt = f"""Execute bounty task: {ctx.get('title', 'unknown')}
@@ -326,15 +326,31 @@ def phase3_self_review():
         if not prop or prop.get("status") != "microtask_completed":
             continue
         results["reviewed"] += 1
+        task_id = prop.get("task_id") or prop.get("id") or Path(pf).stem
         
         # Basic validation: must have non-empty result
         output = prop.get("microtask_result", "")
-        if len(output) > 50 and "error" not in output.lower():
+        # Enhanced review: dispatch code quality check via Claude microtask
+        review_prompt = f"""Review this bounty microtask output for quality and correctness.
+Output length: {len(output)} chars.
+First 500 chars: {output[:500]}
+Last 500 chars: {output[-500:] if len(output) > 500 else output}
+
+Criteria:
+1. Contains actual implementation or analysis (not just placeholder text)
+2. No obvious errors, exceptions, or 'I cannot' refusals
+3. Addresses the bounty requirements
+4. Code quality is acceptable (if code present)
+
+Respond with exactly: APPROVED or REJECTED:<reason>"""
+        review_result = run_claude_microtask(review_prompt, f"review-{task_id}")
+        review_out = review_result.get("output", "").strip()
+        if review_out.startswith("APPROVED"):
             prop["status"] = "review_approved"
             results["approved"] += 1
         else:
             prop["status"] = "review_rejected"
-            prop["rejection_reason"] = "insufficient_output_or_error_detected"
+            prop["rejection_reason"] = review_out.replace("REJECTED:", "").strip() or "quality_gate_failed"
             results["rejected"] += 1
         save_json(pf, prop)
 
