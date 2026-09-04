@@ -88,8 +88,15 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             pass
         # Quality gate: reject status-report-only or empty outputs before accepting as success
         _reject_markers = ("status report written", "no_actionable_bounty", "nothing to do", "no action needed")
+        # INACTIVE is a VALID terminal signal from the model (e.g. bounty already claimed).
+        # Treat it as meaningful output so it gets stored and processed by Phase 3 auto-reject,
+        # rather than being discarded as empty_output which triggers wasteful retries.
+        _is_inactive_signal = bool(actual_output) and actual_output.strip().startswith("INACTIVE:")
+        if _is_inactive_signal:
+            log(f"  Microtask {task_id} returned INACTIVE signal: {actual_output.strip()[:100]}")
+             return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
         # Relaxed: only reject if output is truly empty or very short
-        # Security research outputs may contain 'blocked' in vulnerability descriptions
+       # Security research outputs may contain 'blocked' in vulnerability descriptions
         _is_meaningful = bool(actual_output) and len(actual_output) > 100
         if actual_output and len(actual_output) > 100:
             # Only reject if ALL content is just a reject marker (not embedded in analysis)
@@ -257,6 +264,8 @@ def phase1_sweep_claims():
             "status": "pending_execution",
             "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "original_proposal": Path(pf).name,
+            "bounty_value": float(merged_ctx.get("gross_verified") or merged_ctx.get("payout_amount") or prop.get("bounty_value") or 0),
+            "currency": str(merged_ctx.get("asset") or prop.get("currency") or "RTC").upper(),
             "context": merged_ctx,
         }
         prop_hash = hashlib.sha256(
@@ -1005,6 +1014,8 @@ def phase4_discovery():
             "type": "discovery_proposal",
             "status": "pending_qualification",
             "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "bounty_value": float(n.get("gross", 0) or 0),
+            "currency": str(hv.get("asset", "USDC")).upper(),
             "context": {
                 "source": f"{plat}_live",
                 "title": n.get("title", ""),
