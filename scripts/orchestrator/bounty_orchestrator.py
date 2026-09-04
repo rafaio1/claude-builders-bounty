@@ -180,6 +180,38 @@ def phase1_sweep_claims():
         if orig_title:
             merged_ctx["title"] = orig_title
         merged_ctx["original_proposal_file"] = Path(pf).name
+        # Gate: verify bounty is actually reclaimable before creating proposal
+        # Skip if original proposal was already rejected as inactive or has no valid URL
+        orig_status = prop.get("status", "")
+        orig_rejection = prop.get("rejection_reason", "")
+        if orig_status == "review_rejected" and "inactive" in orig_rejection.lower():
+            log(f"  SKIP reclaim {Path(pf).name}: original was rejected as inactive")
+            continue
+        # Verify URL points to a lapsed/reopened bounty, not an active PR by another author
+        if orig_url and "/pull/" in orig_url:
+            try:
+                import re as _re_pr
+                _pr_match = _re_pr.search(r'/repos/([^/]+/[^/]+)/pulls/(\d+)', orig_url)
+                if not _pr_match:
+                    _pr_match = _re_pr.search(r'github\.com/([^/]+/[^/]+)/pull/(\d+)', orig_url)
+                if _pr_match:
+                    _pr_repo = _pr_match.group(1)
+                    _pr_num = _pr_match.group(2)
+                    _pr_r = subprocess.run(
+                        ["curl", "-sf", f"https://api.github.com/repos/{_pr_repo}/pulls/{_pr_num}"],
+                        capture_output=True, text=True, timeout=15
+                    )
+                    if _pr_r.returncode == 0:
+                        _pr_data = json.loads(_pr_r.stdout)
+                        _pr_state = _pr_data.get("state", "")
+                        _pr_merged = _pr_data.get("merged", False)
+                        _pr_author = (_pr_data.get("user") or {}).get("login", "")
+                        # Skip if PR is still open and authored by someone else (not reclaimable)
+                        if _pr_state == "open" and not _pr_merged and _pr_author not in ("rafaio1", ""):
+                            log(f"  SKIP reclaim {Path(pf).name}: PR #{_pr_num} is open by {_pr_author}, not reclaimable")
+                            continue
+            except Exception as _pr_e:
+                log(f"  WARN: could not verify PR state for {Path(pf).name}: {_pr_e}")
         reclaim_prop = {
             "candidate_id": cid,
             "type": "reclaim_proposal",
