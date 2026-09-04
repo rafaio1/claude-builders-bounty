@@ -292,6 +292,14 @@ def phase3_5_submit_approved():
         if not url or not output or output.startswith("Bounty task `unknown`"):
             results["skipped_no_context"] += 1
             continue
+        # Skip proposals that are just status reports with no real work
+        if prop.get("status") == "no_actionable_bounty" or (prop.get("context") is None and prop.get("action") is None):
+            results["skipped_no_context"] += 1
+            continue
+        # Skip if microtask_result confirms no actionable bounty
+        if isinstance(output, str) and ("no_actionable_bounty" in output.lower() or "no valid bounty" in output.lower()):
+            results["skipped_no_context"] += 1
+            continue
             
         # Dispatch submission microtask
         task_id = f"submit-{prop.get('candidate_id', Path(pf).stem)}"
