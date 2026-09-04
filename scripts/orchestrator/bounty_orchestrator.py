@@ -201,6 +201,11 @@ def phase2_microtask_orchestration():
         if not prop:
             continue
         if prop.get("status") == "pending_qualification" and prop.get("type") == "discovery_proposal":
+            # Gate: skip discovery proposals requiring human account creation
+            # These cannot be executed autonomously and waste Phase 2 slots
+            _rh = (prop.get("context", {}) or {}).get("requires_human", []) or []
+            if "account_creation" in _rh:
+                continue
             cid = prop.get("candidate_id") or prop.get("stable_id")
             if cid and cid not in existing_ids:
                 actionable.append((str(pf), prop))
