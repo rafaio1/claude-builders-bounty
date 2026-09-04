@@ -234,10 +234,12 @@ Provider: {GHOSTCLI_MODEL}"""
 def phase3_self_review():
     """Validate microtask outputs before promoting to mirror."""
     log("PHASE 3: Self-review of completed microtasks")
-    results = {"reviewed": 0, "approved": 0, "rejected": 0}
+    results = {"reviewed": 0, "approved": 0, "rejected": 0, "total_scanned": 0}
 
+    # Scan ALL proposals, not just last 30 — completed microtasks may be anywhere
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
-    for pf in proposal_files[-30:]:
+    results["total_scanned"] = len(proposal_files)
+    for pf in proposal_files:
         prop = load_json(pf)
         if not prop or prop.get("status") != "microtask_completed":
             continue
