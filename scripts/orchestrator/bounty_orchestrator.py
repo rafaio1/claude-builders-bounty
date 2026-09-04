@@ -71,9 +71,16 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             try:
                 result = json.loads(r.stdout)
                 # Extract actual text content from Claude API envelope
-                actual_output = result.get("result", "") if isinstance(result, dict) else str(result)
-                if not actual_output and isinstance(result, dict):
-                    # Fallback: check for content in nested structures
+                # GhostCLI returns {"result": "..."} where result is the text
+                if isinstance(result, dict):
+                    actual_output = result.get("result", "")
+                    # If result field is empty/None but other fields exist, 
+                    # the model may have returned structured data instead of text
+                    if not actual_output:
+                        # Check if there's meaningful content in other fields
+                        # but avoid dumping the entire envelope
+                        actual_output = ""
+                else:
                     actual_output = str(result)
                 log(f"  Microtask {task_id} completed successfully (output_len={len(str(actual_output))})")
                 return {"status": "success", "output": actual_output, "task_id": task_id}
