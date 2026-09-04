@@ -343,10 +343,12 @@ def phase2_microtask_orchestration():
         _asset = _ctx.get("asset", "")
         _url = (_ctx.get("url") or "").strip()
         _desc = (_ctx.get("description") or _ctx.get("summary") or "").strip()
-        # Gate: skip discovery proposals with no description/summary
-        # Even with a valid URL, Claude cannot produce deliverables without context
-        # and these block Phase 2 with repeated empty_output failures
-        if _type == "discovery_proposal" and not _desc:
+        # Gate: skip ANY proposal with no description/summary AND no meaningful title
+        # Reclaim/discovery proposals without context produce empty Claude output
+        # and block Phase 2 indefinitely with retry loops
+        _title = (_ctx.get("title") or prop.get("title") or "").strip()
+        _has_meaningful_title = len(_title) > 10 and not _title.startswith("rustchain-")
+        if not _desc and not _has_meaningful_title:
             return (5, 0)
         # Gate: skip discovery proposals that require human account creation
         # These are dead-ends for autonomous execution and waste Phase 2 slots
