@@ -189,6 +189,20 @@ def phase1_sweep_claims():
             pr_state = prop.get("pr_state", "")
             if pr_state in ("closed_unmerged", "closed_merged"):
                 continue
+        # Gate: skip lapsed/abandon proposals with no actionable context
+        # These are dead-end reclaim attempts that waste Phase 2 slots
+        _orig_ctx_check = prop.get("context", {}) or {}
+        # evidence_url alone is NOT sufficient — it's just the issue link, not actionable scope
+        # Only accept url from context (which contains full bounty description/scope)
+        _check_url = (_orig_ctx_check.get("url") or "").strip()
+        _check_desc = (_orig_ctx_check.get("description") or prop.get("description") or "").strip()
+        _check_title = (_orig_ctx_check.get("title") or prop.get("title") or "").strip()
+        _check_repo = (_orig_ctx_check.get("target_repo") or _orig_ctx_check.get("repo") or "").strip()
+        # Must have EITHER a context URL (with scope) OR description+repo
+        # evidence_url-only proposals are dead ends (issue link without bounty details)
+        if not _check_url and not (_check_desc and _check_repo):
+            log(f"  SKIP reclaim {Path(pf).name}: no url/desc/repo in context")
+            continue
         results["lapsed_found"] += 1
         log(f"  Lapsed proposal: {Path(pf).name} status={status} action={action}")
         raw_cid = prop.get("candidate_id") or prop.get("bounty_key") or f"reclaim-{int(time.time())}"
@@ -905,23 +919,12 @@ def phase4_discovery():
                 # Pre-fetch URL content to prevent empty microtask output
                 _prefetched_desc = ""
                 try:
-                    _fetch_cmd = [
-                        "claude", "--print", "--model", GHOSTCLI_MODEL,
-                        "-p", f"Fetch and extract the full bounty scope, assets in scope, payout tiers, and out-of-scope items from this URL. Return ONLY the extracted content as plain text, max 3000 chars: {url}",
-                        "--output-format", "text"
-                    ]
-                    _fetch_env = os.environ.copy()
-                    for k in list(_fetch_env.keys()):
-                        if k.startswith("ANTHROPIC_") or k.startswith("OPENAI_"):
-                            del _fetch_env[k]
-                    _fetch_env["GHOSTCLI_BASE_URL"] = "http://127.0.0.1:8787/v1"
-                    _fetch_env["GHOSTCLI_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
-                    _fetch_env["GHOSTCLI_MODEL"] = GHOSTCLI_MODEL
-                    _fetch_env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787/v1"
-                    _fetch_env["ANTHROPIC_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
-                    _fr = subprocess.run(_fetch_cmd, capture_output=True, text=True, timeout=120, env=_fetch_env, cwd="/Agentic")
-                    if _fr.returncode == 0 and _fr.stdout and len(_fr.stdout.strip()) > 100:
-                        _prefetched_desc = _fr.stdout.strip()[:3000]
+                    # Use playwright-cli directly to avoid MCP hang (AGENTS.md compliance)
+                    _pw_open = subprocess.run(["playwright-cli", "open", url], capture_output=True, text=True, timeout=30, cwd="/Agentic")
+                    _pw_snap = subprocess.run(["playwright-cli", "snapshot"], capture_output=True, text=True, timeout=30, cwd="/Agentic")
+                    subprocess.run(["playwright-cli", "close"], capture_output=True, text=True, timeout=10, cwd="/Agentic")
+                    if _pw_snap.returncode == 0 and _pw_snap.stdout and len(_pw_snap.stdout.strip()) > 100:
+                        _prefetched_desc = _pw_snap.stdout.strip()[:3000]
                         log(f"    Pre-fetched {len(_prefetched_desc)} chars for {title}")
                 except Exception as _fe:
                     log(f"    Pre-fetch failed for {title}: {_fe}")
