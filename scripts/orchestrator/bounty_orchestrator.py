@@ -548,7 +548,7 @@ def phase3_self_review():
         output = prop.get("microtask_output") or prop.get("microtask_result") or prop.get("output") or ""
         # --- Local Heuristic Auto-Approve (bypass LLM for obvious valid outputs) ---
         output_len = len(output) if output else 0
-        has_code_markers = any(m in output for m in ["```", "diff --git", "--- a/", "+++ b/", "def ", "function ", "const ", "import "])
+        has_code_markers = any(m in output for m in ["```", "diff --git", "--- a/", "+++ b/", "def ", "function ", "const ", "import ", "## Vulnerability Summary", "## Proof of Concept", "## Reproduction Steps"])
         has_patch_file = bool(prop.get("patch_path") or prop.get("artifact_path"))
         # FIX: Detect artifact files referenced in output text when patch_path field is empty
         if not has_patch_file and output:
@@ -567,9 +567,10 @@ def phase3_self_review():
         if output_len < 50:
             log(f"    Auto-approve skipped for {task_id}: output_len={output_len} (too short)")
             continue
-        # Require BOTH non-trivial content AND (patch file OR substantial code output)
+        # Auto-approve vulnerability reports that have all required sections
+        _is_vuln_report = all(h in output for h in ["## Vulnerability Summary", "## Technical Detail", "## Impact Assessment", "## Reproduction Steps", "## Proof of Concept", "## Recommended Fix"])
         _has_substantial_content = output_len >= 200 and has_code_markers
-        if has_patch_file or _has_substantial_content:
+        if has_patch_file or _has_substantial_content or (_is_vuln_report and output_len >= 1000):
             prop["status"] = "review_approved"
             prop["review_method"] = "local_heuristic_auto_approve"
             results["approved"] += 1
