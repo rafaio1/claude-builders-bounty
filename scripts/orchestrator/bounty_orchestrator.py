@@ -341,6 +341,13 @@ def phase2_microtask_orchestration():
         _ctx = _prop.get("context", {}) or {}
         _gross = _ctx.get("gross_verified") or _ctx.get("payout_amount") or 0
         _asset = _ctx.get("asset", "")
+        _url = (_ctx.get("url") or "").strip()
+        _desc = (_ctx.get("description") or _ctx.get("summary") or "").strip()
+        # Gate: skip discovery proposals with no description/summary
+        # Even with a valid URL, Claude cannot produce deliverables without context
+        # and these block Phase 2 with repeated empty_output failures
+        if _type == "discovery_proposal" and not _desc:
+            return (5, 0)
         # Gate: skip discovery proposals that require human account creation
         # These are dead-ends for autonomous execution and waste Phase 2 slots
         if _type == "discovery_proposal" and _status == "pending_qualification":
@@ -634,7 +641,7 @@ def phase3_5_submit_approved():
         
         # Branch for Immunefi web-form submissions
         if submission_type == "immunefi_web_form":
-            log(f"  Phase 3.5: Dispatching Immunefi web-form submission for {pf.name}")
+            from pathlib import Path as _Path; log(f"  Phase 3.5: Dispatching Immunefi web-form submission for {_Path(pf).name}")
             try:
                 _dispatch_immunefi_submission(prop, pf)
                 results["submitted"] += 1
