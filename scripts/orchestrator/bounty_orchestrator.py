@@ -277,7 +277,11 @@ def phase3_5_submit_approved():
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
     for pf in proposal_files:
         prop = load_json(pf)
-        if not prop or prop.get("status") != "review_approved":
+        if not prop or prop.get("status") not in ("review_approved",):
+            continue
+        # Idempotency: skip if already submitted (handles re-classified duplicates)
+        if prop.get("submitted_at"):
+            results["skipped_no_context"] += 1
             continue
         
         ctx = prop.get("context", {})
