@@ -63,7 +63,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         env = os.environ.copy()
         env["ANTHROPIC_BASE_URL"] = "https://ghostcli.dev"
         cmd = [
-            "claude", "--model", GHOSTCLI_MODEL,
+            "claude", "--print", "--model", GHOSTCLI_MODEL,
             "-p", prompt, "--output-format", "text"
         ]
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=540, env=env, cwd="/Agentic")
