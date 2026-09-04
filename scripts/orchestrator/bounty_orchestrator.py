@@ -94,9 +94,9 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         _is_inactive_signal = bool(actual_output) and actual_output.strip().startswith("INACTIVE:")
         if _is_inactive_signal:
             log(f"  Microtask {task_id} returned INACTIVE signal: {actual_output.strip()[:100]}")
-             return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
         # Relaxed: only reject if output is truly empty or very short
-       # Security research outputs may contain 'blocked' in vulnerability descriptions
+        # Security research outputs may contain 'blocked' in vulnerability descriptions
         _is_meaningful = bool(actual_output) and len(actual_output) > 100
         if actual_output and len(actual_output) > 100:
             # Only reject if ALL content is just a reject marker (not embedded in analysis)
