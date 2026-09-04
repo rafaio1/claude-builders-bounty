@@ -1070,6 +1070,20 @@ def main():
     log("=== ORCHESTRATOR v4 CYCLE START ===")
 
     p1 = phase1_sweep_claims()
+    # Phase 4.5: Qualify pending_qualification proposals before Phase 2 consumes them
+    # This prevents INSUFFICIENT_DATA microtask outputs from empty-context proposals
+    try:
+        import subprocess as _sp
+        _qual_result = _sp.run(
+            ["/usr/bin/python3", "/Agentic/scripts/orchestrator/qualify_proposals.py"],
+            capture_output=True, text=True, timeout=120, cwd="/Agentic"
+        )
+        if _qual_result.returncode == 0:
+            log(f"  Phase 4.5 qualification: {_qual_result.stdout.strip().split(chr(10))[-1] if _qual_result.stdout else 'ok'}")
+        else:
+            log(f"  Phase 4.5 qualification FAILED: {_qual_result.stderr[:200]}", "WARN")
+    except Exception as _qe:
+        log(f"  Phase 4.5 qualification error: {_qe}", "WARN")
     p2 = phase2_microtask_orchestration()
     p3 = phase3_self_review()
     p3_5 = phase3_5_submit_approved()
