@@ -533,7 +533,13 @@ def phase3_self_review():
                 except Exception:
                     pass
 
-        if has_patch_file or (output_len > 500 and has_code_markers):
+        # GATE: Never auto-approve empty or near-empty outputs regardless of markers
+        if output_len < 50:
+            log(f"    Auto-approve skipped for {task_id}: output_len={output_len} (too short)")
+            continue
+        # Require BOTH non-trivial content AND (patch file OR substantial code output)
+        _has_substantial_content = output_len >= 200 and has_code_markers
+        if has_patch_file or _has_substantial_content:
             prop["status"] = "review_approved"
             prop["review_method"] = "local_heuristic_auto_approve"
             results["approved"] += 1
