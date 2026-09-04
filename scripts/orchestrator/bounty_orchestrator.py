@@ -16,6 +16,7 @@ Constraints:
 - Financial validation: only paid/completed ledger entries count as revenue
 """
 import json, os, sys, subprocess, datetime, hashlib, glob, time
+import re
 from pathlib import Path
 
 STATE_DIR = Path("/Agentic/state")
@@ -165,7 +166,8 @@ def phase1_sweep_claims():
                 continue
         results["lapsed_found"] += 1
         log(f"  Lapsed proposal: {Path(pf).name} status={status} action={action}")
-        cid = prop.get("candidate_id") or prop.get("bounty_key") or f"reclaim-{int(time.time())}"
+        raw_cid = prop.get("candidate_id") or prop.get("bounty_key") or f"reclaim-{int(time.time())}"
+        cid = re.sub(r"[^a-zA-Z0-9_\-]", "_", str(raw_cid))
         reclaim_prop = {
             "candidate_id": cid,
             "type": "reclaim_proposal",
