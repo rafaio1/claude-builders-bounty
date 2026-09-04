@@ -34,7 +34,7 @@ PROPOSALS_DIR.mkdir(parents=True, exist_ok=True)
 IMMUNEFI_OPPS_DIR.mkdir(parents=True, exist_ok=True)
 
 def log(msg, level="INFO"):
-    ts = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    ts = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
     line = f"[{ts}] [{level}] {msg}"
     print(line, flush=True)
     log_file = LOG_DIR / f"orchestrator-{datetime.date.today().isoformat()}.log"
@@ -132,7 +132,7 @@ def sync_private_mirror():
     try:
         cmds = [
             ["git", "add", "-A"],
-            ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
+            ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
             ["git", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
         ]
         for cmd in cmds:
@@ -266,7 +266,7 @@ def phase1_sweep_claims():
             "candidate_id": cid,
             "type": "reclaim_proposal",
             "status": "pending_execution",
-            "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
             "original_proposal": Path(pf).name,
             "bounty_value": float(merged_ctx.get("gross_verified") or merged_ctx.get("payout_amount") or prop.get("bounty_value") or 0),
             "currency": str(merged_ctx.get("asset") or prop.get("currency") or "RTC").upper(),
@@ -539,7 +539,7 @@ BEGIN WORK PRODUCT:"""
                 raw_output = str(raw_output)
             prop["microtask_output"] = raw_output
             prop["microtask_result"] = raw_output  # FIX: store full output; was truncated to 500 chars causing Phase 3 rejections
-            prop["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            prop["completed_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
             # Clear any stale error from prior attempts so Phase 3 sees clean state
             prop.pop("error", None)
             save_json(pf, prop)
@@ -726,7 +726,7 @@ def _dispatch_github_claim_comment(prop, proposal_path):
     
     prop["claim_comment_sent"] = True
     prop["claim_comment_id"] = comment_id
-    prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    prop["submitted_at"] = datetime.now(tz=__import__('datetime').timezone.utc).isoformat()
     prop["status"] = "claim_pending"
     save_json(proposal_path, prop)
     log(f"    Posted /claim to {owner_repo}#{issue_number} (comment_id={comment_id})")
@@ -794,7 +794,7 @@ def _dispatch_immunefi_submission(prop, proposal_path):
             log(f"    Immunefi CLI error: {e}")
             break
     
-    prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    prop["submitted_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
     prop["submission_method"] = "immunefi_web_form_playwright"
     save_json(proposal_path, prop)
     log(f"    Immunefi submission recorded for {Path(proposal_path).name}")
@@ -827,7 +827,7 @@ def phase3_5_submit_approved():
             prop["submission_type"] = "immunefi_web_form"
         else:
             prop["submission_type"] = "platform_submission"
-        prop["promoted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+        prop["promoted_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
         save_json(pf, prop)
         promoted += 1
     if promoted:
@@ -975,7 +975,7 @@ Provider: {GHOSTCLI_MODEL}"""
             if has_proof:
                 prop["status"] = "submitted_to_platform"
                 prop["submission_result"] = raw_output[:500]
-                prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                prop["submitted_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
                 save_json(pf, prop)
                 results["submitted"] += 1
                 _submit_count += 1
@@ -985,7 +985,7 @@ Provider: {GHOSTCLI_MODEL}"""
                 prop["status"] = "terminal_failure"
                 prop["failure_reason"] = reason
                 prop["submission_attempt_output"] = raw_output[:500]
-                prop["failed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                prop["failed_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
                 save_json(pf, prop)
                 results["failed"] += 1
                 log(f"  Submission REJECTED ({reason}) for {Path(pf).name}: {raw_output[:120]}", "WARN")
@@ -1066,7 +1066,7 @@ def phase4_discovery():
             "candidate_id": cid,
             "type": "discovery_proposal",
             "status": "pending_qualification",
-            "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
             "bounty_value": float(n.get("gross", 0) or 0),
             "currency": str(hv.get("asset", "USDC")).upper(),
             "context": {
@@ -1106,7 +1106,7 @@ def phase4_discovery():
                 "candidate_id": cid,
                 "type": "discovery_proposal",
                 "status": "pending_qualification",
-                "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+                "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
                 "context": {
                     "source": "research_queue",
                     "title": item.get("title", ""),
@@ -1135,7 +1135,7 @@ def phase5_cleanup_and_mirror():
     results = {"cleaned": 0, "mirror_synced": False}
 
     # Archive old completed/rejected proposals (>7 days)
-    cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=7)).isoformat()
+    cutoff = (__import__("datetime").datetime.now(__import__("datetime").timezone.utc) - datetime.timedelta(days=7)).isoformat()
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
     archive_dir = PROPOSALS_DIR / "archive"
     archive_dir.mkdir(exist_ok=True)
@@ -1161,7 +1161,7 @@ def phase5_cleanup_and_mirror():
 
 # ── Main Cycle ────────────────────────────────────────────────────────
 def main():
-    cycle_start = datetime.datetime.now(datetime.timezone.utc).isoformat()
+    cycle_start = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
     log("=== ORCHESTRATOR v4 CYCLE START ===")
 
     p1 = phase1_sweep_claims()
