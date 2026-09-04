@@ -13,19 +13,19 @@
     "realized_revenue_usd": 0.0,
     "receivable_usd": 0.0
   },
-  "generated_at": "2026-09-04T21:26:35.565003+00:00",
+  "generated_at": "2026-09-04T21:57:35.608428+00:00",
   "github_rate_budget": {
     "core_limit": 5000,
     "core_remaining_before": 5000,
-    "core_reset_epoch": 1788560796,
+    "core_reset_epoch": 1788562656,
     "search_limit": 30,
     "search_remaining_before": 30,
-    "search_reset_epoch": 1788557256
+    "search_reset_epoch": 1788559116
   },
   "newly_audited_candidate_keys": [
-    "fa42c1c915445ae702d7d1c4409328a683cbe748c92d3e51b30883b47741407b",
-    "ccfc67d3b4f6d80aa3e0cdf3e14eb5e420b65226d1d528870756e72b68114e78",
-    "986bf74c4294bd515d976c022c80bfa48fe9acfb7397a65e16b76b2735fb7aaf"
+    "abeea412bd6e2719a99e4eb0abfba30ed28f9908fc42acd425cd2578a5a6c8d8",
+    "cd2cc08f84efc09b0a3c7aefb2a061d83f6e6a48310bba0d7bb4e5bba9e40590",
+    "292295ffa17e1f6bf16875423de2a1f7a2f91d7e127a1cf066a6988c2d02f7c7"
   ],
   "qualification_count": 94,
   "qualifications": [
@@ -2013,14 +2013,14 @@
       "verified_at": "2026-09-04T21:26:35.565003+00:00"
     },
     {
-      "candidate_key": "993e8c4466e8ef7faca48b9a1a180c7d817d97860832060b8b0089246b6e59c2",
+      "candidate_key": "abeea412bd6e2719a99e4eb0abfba30ed28f9908fc42acd425cd2578a5a6c8d8",
       "decision": "rejected",
       "evidence": {
         "active_bounty_components": [
           {
-            "amount_cents": 100,
-            "comment_id": 4442553869,
-            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/319#issuecomment-4442553869",
+            "amount_cents": 2000,
+            "comment_id": 4454527837,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/652#issuecomment-4454527837",
             "line_number": 1,
             "sponsor_slug": "stacylia"
           }
@@ -2031,31 +2031,31 @@
             "board_amount_cents": null,
             "board_url": "https://algora.io/stacylia/bounties",
             "error_code": null,
-            "expected_component_cents": 100,
+            "expected_component_cents": 2000,
             "present": false,
             "sponsor_slug": "stacylia"
           }
         ],
-        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/319/comments?per_page=100",
-        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/319",
-        "issue_node_id": "I_kwDOScC6ZM8AAAABCJckrw",
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/652/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/652",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCS_JBg",
         "license_spdx": "Apache-2.0",
         "malformed_bounty_headers": [],
         "official_awards": [],
         "official_bounty_comment_urls": [
-          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/319#issuecomment-4442553869"
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/652#issuecomment-4454527837"
         ],
         "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
         "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
         "repository_node_id": "R_kgDOScC6ZA",
         "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
-        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/319/timeline?per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/652/timeline?per_page=100",
         "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
         "withdrawn_bounty_components": []
       },
       "financial_truth": {
         "expected_revenue_usd": null,
-        "face_value_usd": 1.0,
+        "face_value_usd": 20.0,
         "realized_revenue_usd": 0.0,
         "receivable_usd": 0.0
       },
@@ -2082,10 +2082,10 @@
         "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 319,
+      "issue_number": 652,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "active_attempt_table_row_count": 7,
+        "active_attempt_table_row_count": 5,
         "active_bounty_component_count": 1,
         "bot_competition_comment_count": 0,
         "claim_command_count": 0,
@@ -2093,47 +2093,46 @@
           "acceptance_criteria": true,
           "expected_behavior": true,
           "substantive_body": true,
-          "test_expectation": false
+          "test_expectation": true
         },
         "demo_video_required_by_algora": true,
         "inactive_attempt_table_row_count": 0,
         "issue_author_association": "CONTRIBUTOR",
-        "linked_pull_request_event_count": 24,
+        "linked_pull_request_event_count": 18,
         "malformed_attempt_table_row_count": 0,
         "malformed_bounty_header_count": 0,
         "official_award_count": 0,
-        "pending_attempt_command_count": 1,
+        "pending_attempt_command_count": 2,
         "recent_merged_prs_sample": 0,
-        "repository_age_days": 107.66,
-        "repository_idle_days": 1.8,
-        "reward_action_link_count": 6,
+        "repository_age_days": 114.67,
+        "repository_idle_days": 0.49,
+        "reward_action_link_count": 4,
         "trivial_scope_markers": [],
         "unautomatable_scope_markers": [],
         "withdrawn_bounty_component_count": 0
       },
       "rejection_reasons": [
         "algora_attempt_or_claim_activity_present",
-        "bounty_below_minimum",
         "canonical_algora_open_board_conflict",
         "linked_pull_request_activity_present",
         "recent_merged_pr_history_missing"
       ],
       "repo": "UnsafeLabs/Bounty-Hunters",
       "schema_version": "1.0",
-      "title": "[ Scripts ] Fix string vs arithmetic comparison in cleanup.sh",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/319",
-      "valid_until": "2026-09-04T21:42:15.841440+00:00",
-      "verified_at": "2026-08-28T21:42:15.841440+00:00"
+      "title": "[ Brainfuck ] Implement a program that prints the first 20 prime numbers",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/652",
+      "valid_until": "2026-09-11T21:57:35.608428+00:00",
+      "verified_at": "2026-09-04T21:57:35.608428+00:00"
     },
     {
-      "candidate_key": "0ed0bc6226e662e45a86b4557dfebdd4ca47215af474200910b00cefebabf5e4",
+      "candidate_key": "cd2cc08f84efc09b0a3c7aefb2a061d83f6e6a48310bba0d7bb4e5bba9e40590",
       "decision": "rejected",
       "evidence": {
         "active_bounty_components": [
           {
-            "amount_cents": 100,
-            "comment_id": 4442552585,
-            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/318#issuecomment-4442552585",
+            "amount_cents": 2000,
+            "comment_id": 4454527575,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/651#issuecomment-4454527575",
             "line_number": 1,
             "sponsor_slug": "stacylia"
           }
@@ -2144,31 +2143,31 @@
             "board_amount_cents": null,
             "board_url": "https://algora.io/stacylia/bounties",
             "error_code": null,
-            "expected_component_cents": 100,
+            "expected_component_cents": 2000,
             "present": false,
             "sponsor_slug": "stacylia"
           }
         ],
-        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/318/comments?per_page=100",
-        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/318",
-        "issue_node_id": "I_kwDOScC6ZM8AAAABCJcgfA",
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/651/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/651",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCS_HTg",
         "license_spdx": "Apache-2.0",
         "malformed_bounty_headers": [],
         "official_awards": [],
         "official_bounty_comment_urls": [
-          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/318#issuecomment-4442552585"
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/651#issuecomment-4454527575"
         ],
         "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
         "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
         "repository_node_id": "R_kgDOScC6ZA",
         "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
-        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/318/timeline?per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/651/timeline?per_page=100",
         "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
         "withdrawn_bounty_components": []
       },
       "financial_truth": {
         "expected_revenue_usd": null,
-        "face_value_usd": 1.0,
+        "face_value_usd": 20.0,
         "realized_revenue_usd": 0.0,
         "receivable_usd": 0.0
       },
@@ -2195,10 +2194,10 @@
         "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 318,
+      "issue_number": 651,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "active_attempt_table_row_count": 9,
+        "active_attempt_table_row_count": 10,
         "active_bounty_component_count": 1,
         "bot_competition_comment_count": 0,
         "claim_command_count": 0,
@@ -2211,42 +2210,41 @@
         "demo_video_required_by_algora": true,
         "inactive_attempt_table_row_count": 0,
         "issue_author_association": "CONTRIBUTOR",
-        "linked_pull_request_event_count": 26,
+        "linked_pull_request_event_count": 29,
         "malformed_attempt_table_row_count": 0,
         "malformed_bounty_header_count": 0,
         "official_award_count": 0,
-        "pending_attempt_command_count": 1,
+        "pending_attempt_command_count": 2,
         "recent_merged_prs_sample": 0,
-        "repository_age_days": 107.66,
-        "repository_idle_days": 1.8,
-        "reward_action_link_count": 6,
+        "repository_age_days": 114.67,
+        "repository_idle_days": 0.49,
+        "reward_action_link_count": 9,
         "trivial_scope_markers": [],
         "unautomatable_scope_markers": [],
         "withdrawn_bounty_component_count": 0
       },
       "rejection_reasons": [
         "algora_attempt_or_claim_activity_present",
-        "bounty_below_minimum",
         "canonical_algora_open_board_conflict",
         "linked_pull_request_activity_present",
         "recent_merged_pr_history_missing"
       ],
       "repo": "UnsafeLabs/Bounty-Hunters",
       "schema_version": "1.0",
-      "title": "[ Scripts ] Add missing shebang to cleanup.sh",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/318",
-      "valid_until": "2026-09-04T21:42:15.841440+00:00",
-      "verified_at": "2026-08-28T21:42:15.841440+00:00"
+      "title": "[ Brainfuck ] Implement FizzBuzz that prints numbers 1 to 100 with correct FizzBuzz substitutions",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/651",
+      "valid_until": "2026-09-11T21:57:35.608428+00:00",
+      "verified_at": "2026-09-04T21:57:35.608428+00:00"
     },
     {
-      "candidate_key": "b94a3789fe809d6d3b5ffc5fa730ee59de560ee34d1f460edb2bfac425077303",
+      "candidate_key": "292295ffa17e1f6bf16875423de2a1f7a2f91d7e127a1cf066a6988c2d02f7c7",
       "decision": "rejected",
       "evidence": {
         "active_bounty_components": [
           {
             "amount_cents": 100,
-            "comment_id": 4442551143,
-            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/317#issuecomment-4442551143",
+            "comment_id": 4452164924,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/578#issuecomment-4452164924",
             "line_number": 1,
             "sponsor_slug": "stacylia"
           }
@@ -2262,20 +2260,20 @@
             "sponsor_slug": "stacylia"
           }
         ],
-        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/317/comments?per_page=100",
-        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/317",
-        "issue_node_id": "I_kwDOScC6ZM8AAAABCJcb_w",
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/578/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/578",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCRKW1w",
         "license_spdx": "Apache-2.0",
         "malformed_bounty_headers": [],
         "official_awards": [],
         "official_bounty_comment_urls": [
-          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/317#issuecomment-4442551143"
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/578#issuecomment-4452164924"
         ],
         "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
         "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
         "repository_node_id": "R_kgDOScC6ZA",
         "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
-        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/317/timeline?per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/578/timeline?per_page=100",
         "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
         "withdrawn_bounty_components": []
       },
@@ -2308,10 +2306,10 @@
         "scope_testable": true,
         "tests_present": true
       },
-      "issue_number": 317,
+      "issue_number": 578,
       "next_action": "pivot_to_next_candidate",
       "quality": {
-        "active_attempt_table_row_count": 8,
+        "active_attempt_table_row_count": 4,
         "active_bounty_component_count": 1,
         "bot_competition_comment_count": 0,
         "claim_command_count": 0,
@@ -2324,15 +2322,15 @@
         "demo_video_required_by_algora": true,
         "inactive_attempt_table_row_count": 0,
         "issue_author_association": "CONTRIBUTOR",
-        "linked_pull_request_event_count": 26,
+        "linked_pull_request_event_count": 17,
         "malformed_attempt_table_row_count": 0,
         "malformed_bounty_header_count": 0,
         "official_award_count": 0,
         "pending_attempt_command_count": 1,
         "recent_merged_prs_sample": 0,
-        "repository_age_days": 107.66,
-        "repository_idle_days": 1.8,
-        "reward_action_link_count": 7,
+        "repository_age_days": 114.67,
+        "repository_idle_days": 0.49,
+        "reward_action_link_count": 3,
         "trivial_scope_markers": [],
         "unautomatable_scope_markers": [],
         "withdrawn_bounty_component_count": 0
@@ -2346,10 +2344,10 @@
       ],
       "repo": "UnsafeLabs/Bounty-Hunters",
       "schema_version": "1.0",
-      "title": "[ Scripts ] Fix dangerous rm -rf with unset variable guard in deploy.sh",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/317",
-      "valid_until": "2026-09-04T21:42:15.841440+00:00",
-      "verified_at": "2026-08-28T21:42:15.841440+00:00"
+      "title": "[ English ] Complete missing verses and choruses in songs.md \u2014 three songs need lines",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/578",
+      "valid_until": "2026-09-11T21:57:35.608428+00:00",
+      "verified_at": "2026-09-04T21:57:35.608428+00:00"
     },
     {
       "candidate_key": "8262c1cb6e88a4d9ce4537f8c17f656ff56fa219a3d6fae8207fcd611ee455e6",
@@ -10361,7 +10359,7 @@
   ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "51f551112f8e4ab895e36987c2fa1676",
+  "run_id": "5a237b73cfd74371a08cca9955db14dc",
   "schema_version": "1.0",
   "source": {
     "official_search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
@@ -10374,8 +10372,8 @@
     "source_row_count": 100,
     "valid_candidate_count": 100
   },
-  "source_hash": "2bf17f09117318a36f2516ea0134851659a0993c4d366f042127105c91af7d08",
-  "valid_until": "2026-09-04T21:36:35.565003+00:00",
+  "source_hash": "d05c9067b765e6c09ddf8046e8511d08f220f85ec5fcf467c8870c345762646e",
+  "valid_until": "2026-09-04T22:07:35.608428+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_github",

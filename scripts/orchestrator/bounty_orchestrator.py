@@ -726,8 +726,7 @@ def _dispatch_github_claim_comment(prop, proposal_path):
     
     prop["claim_comment_sent"] = True
     prop["claim_comment_id"] = comment_id
-    from datetime import timezone
-    prop["submitted_at"] = datetime.now(timezone.utc).isoformat()
+    prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     prop["status"] = "claim_pending"
     save_json(proposal_path, prop)
     log(f"    Posted /claim to {owner_repo}#{issue_number} (comment_id={comment_id})")
@@ -795,7 +794,7 @@ def _dispatch_immunefi_submission(prop, proposal_path):
             log(f"    Immunefi CLI error: {e}")
             break
     
-    prop["submitted_at"] = datetime.utcnow().isoformat() + "Z"
+    prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     prop["submission_method"] = "immunefi_web_form_playwright"
     save_json(proposal_path, prop)
     log(f"    Immunefi submission recorded for {Path(proposal_path).name}")
@@ -828,7 +827,7 @@ def phase3_5_submit_approved():
             prop["submission_type"] = "immunefi_web_form"
         else:
             prop["submission_type"] = "platform_submission"
-        prop["promoted_at"] = datetime.utcnow().isoformat() + "Z"
+        prop["promoted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
         save_json(pf, prop)
         promoted += 1
     if promoted:
