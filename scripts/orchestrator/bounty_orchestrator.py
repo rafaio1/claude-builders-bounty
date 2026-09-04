@@ -955,14 +955,18 @@ def phase4_discovery():
     queue = load_json(QUEUE_PATH)
     if queue:
         rq = queue.get("research_queue", [])
-        for item in rq[:5]:
+        # Sort by max_payout_usd descending to prioritize highest value bounties
+        rq_sorted = sorted(rq, key=lambda x: float(x.get("max_payout_usd", 0) or 0), reverse=True)
+        for item in rq_sorted[:10]:
             asset = item.get("asset", "").lower()
-            if "rtc" in asset or "rustchain" in asset:
+            payout_asset = (item.get("payout_asset") or "").lower()
+            if "rtc" in asset or "rustchain" in asset or "rtc" in payout_asset:
                 results["skipped_rtc"] += 1
                 continue
             results["research_promoted"] += 1
             log(f"  Top non-RTC research: {item.get('title', 'untitled')[:80]}")
             cid = item.get("candidate_id", f"research-{int(time.time())}")
+            gross_val = item.get("max_payout_usd") or item.get("gross_verified") or 0
             proposal = {
                 "candidate_id": cid,
                 "type": "discovery_proposal",
@@ -972,14 +976,19 @@ def phase4_discovery():
                     "source": "research_queue",
                     "title": item.get("title", ""),
                     "url": item.get("url", ""),
-                    "asset": item.get("asset", "unknown"),
-                    "gross": item.get("gross_verified", 0)
+                    "asset": item.get("payout_asset") or item.get("asset", "unknown"),
+                    "gross_verified": gross_val,
+                    "gross": gross_val,
+                    "max_payout_usd": gross_val,
+                    "platform": item.get("platform", "immunefi"),
+                    "autonomous_submission": True
                 }
             }
             prop_hash = hashlib.sha256(json.dumps(proposal, sort_keys=True, default=str).encode()).hexdigest()[:12]
             save_json(PROPOSALS_DIR / f"{cid}-{prop_hash}.json", proposal)
             results["proposals_created"] += 1
-            break  # Only promote one per cycle
+            if results["research_promoted"] >= 3:
+                break  # Promote up to 3 high-value items per cycle
 
     log(f"  Phase 4 result: {results}")
     return results
