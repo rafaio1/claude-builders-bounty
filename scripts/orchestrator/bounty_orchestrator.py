@@ -281,10 +281,15 @@ def phase3_5_submit_approved():
             continue
         
         ctx = prop.get("context", {})
-        url = ctx.get("url", "")
+        # Fallback to evidence_url or bounty_key-derived URL when context.url is missing
+        url = ctx.get("url", "") or prop.get("evidence_url", "")
+        if not url and prop.get("bounty_key"):
+            parts = prop["bounty_key"].split("|")
+            if len(parts) >= 3 and parts[0] == "github":
+                url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
         output = prop.get("microtask_result", "")
         
-        if not url or not output:
+        if not url or not output or output.startswith("Bounty task `unknown`"):
             results["skipped_no_context"] += 1
             continue
             
