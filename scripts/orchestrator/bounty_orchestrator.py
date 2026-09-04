@@ -142,27 +142,43 @@ def phase1_sweep_claims():
 
     # Scan proposals for stale/lapsed items needing re-claim
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
-    for pf in proposal_files[-30:]:
+    reclaim_statuses = {"lapsed", "claim_expired", "needs_reclaim"}
+    for pf in proposal_files:
         prop = load_json(pf)
         if not prop:
             continue
         status = prop.get("status", "")
-        if status in ("lapsed", "claim_expired", "needs_reclaim"):
-            results["lapsed_found"] += 1
-            log(f"  Lapsed proposal: {Path(pf).name} status={status}")
-            # Create reclaim proposal
-            cid = prop.get("candidate_id", f"reclaim-{int(time.time())}")
-            reclaim_prop = {
-                "candidate_id": cid,
-                "type": "reclaim_proposal",
-                "status": "pending_execution",
-                "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
-                "original_proposal": Path(pf).name,
-                "context": prop.get("context", {})
-            }
-            prop_hash = hashlib.sha256(json.dumps(reclaim_prop, sort_keys=True, default=str).encode()).hexdigest()[:12]
-            save_json(PROPOSALS_DIR / f"{cid}-reclaim-{prop_hash}.json", reclaim_prop)
-            results["proposals_created"] += 1
+        action = prop.get("action", "")
+        claim_type = prop.get("claim_type", "")
+        is_lapsed_status = status in reclaim_statuses
+        is_abandoned_claim = (
+            status == "claim_submitted"
+            and (action == "abandon" or claim_type == "lapsed_reclaim")
+        )
+        if not (is_lapsed_status or is_abandoned_claim):
+            continue
+        # Skip abandon proposals where PR is definitively closed; only reclaim
+        # if there is evidence the bounty was reopened after lapse.
+        if is_abandoned_claim and action == "abandon":
+            pr_state = prop.get("pr_state", "")
+            if pr_state in ("closed_unmerged", "closed_merged"):
+                continue
+        results["lapsed_found"] += 1
+        log(f"  Lapsed proposal: {Path(pf).name} status={status} action={action}")
+        cid = prop.get("candidate_id") or prop.get("bounty_key") or f"reclaim-{int(time.time())}"
+        reclaim_prop = {
+            "candidate_id": cid,
+            "type": "reclaim_proposal",
+            "status": "pending_execution",
+            "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
+            "original_proposal": Path(pf).name,
+            "context": prop.get("context", {}),
+        }
+        prop_hash = hashlib.sha256(
+            json.dumps(reclaim_prop, sort_keys=True, default=str).encode()
+        ).hexdigest()[:12]
+        save_json(PROPOSALS_DIR / f"{cid}-reclaim-{prop_hash}.json", reclaim_prop)
+        results["proposals_created"] += 1
 
     log(f"  Phase 1 result: {results}")
     return results
