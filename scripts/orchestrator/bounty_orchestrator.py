@@ -67,13 +67,18 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             "-p", prompt, "--output-format", "text"
         ]
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env, cwd="/Agentic")
-        if r.returncode == 0 and r.stdout.strip():
-            actual_output = r.stdout.strip()
+        actual_output = r.stdout.strip() if r.stdout else ""
+        # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
+        if actual_output and len(actual_output) > 20:
+            log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)}, rc={r.returncode})")
+            return {"status": "success", "output": actual_output, "task_id": task_id}
+        elif r.returncode == 0 and actual_output:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)})")
             return {"status": "success", "output": actual_output, "task_id": task_id}
         else:
-            log(f"  Microtask {task_id} failed: rc={r.returncode} stderr={r.stderr[:500]}", "ERROR")
-            return {"status": "error", "error": r.stderr[:1000], "task_id": task_id}
+            err_msg = r.stderr[:1000] if r.stderr else f"empty_output_rc={r.returncode}"
+            log(f"  Microtask {task_id} failed: rc={r.returncode} stderr={err_msg[:500]}", "ERROR")
+            return {"status": "error", "error": err_msg, "task_id": task_id}
     except subprocess.TimeoutExpired:
         log(f"  Microtask {task_id} timed out after 300s", "ERROR")
         return {"status": "timeout", "task_id": task_id}
