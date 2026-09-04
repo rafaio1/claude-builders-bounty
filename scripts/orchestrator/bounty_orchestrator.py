@@ -558,6 +558,57 @@ Do NOT include preamble, explanation, or markdown formatting outside the above."
     log(f"  Phase 3 result: {results}")
     return results
 
+def _dispatch_immunefi_submission(prop, proposal_path):
+    """Submit an approved Immunefi report via playwright-cli web form automation."""
+    import subprocess, json, re
+    from pathlib import Path
+    from datetime import datetime
+    
+    evidence_path = prop.get("evidence_report", "")
+    if not evidence_path or not Path(evidence_path).exists():
+        raise ValueError(f"Missing evidence_report for Immunefi submission: {evidence_path}")
+    
+    report_md = Path(evidence_path).read_text()
+    title_match = re.search(r'^#\s+(.+)$', report_md, re.MULTILINE)
+    title = title_match.group(1).strip() if title_match else f"Security Report - {prop.get('bounty_key', 'unknown')}"
+    
+    sev_match = re.search(r'[Ss]everity:\s*(Critical|High|Medium|Low)', report_md)
+    severity = sev_match.group(1) if sev_match else "Medium"
+    
+    desc_lines = [l for l in report_md.split('\n') if not l.startswith('#') and l.strip()]
+    description = '\n'.join(desc_lines[:50])
+    
+    log(f"    Immunefi submit: title={title[:60]}, severity={severity}, report={evidence_path}")
+    
+    cmds = [
+        ["playwright-cli", "open", "https://immunefi.com/submit"],
+        ["playwright-cli", "snapshot"],
+        ["playwright-cli", "fill", "input[name='title'], input[placeholder*='title' i], #title", title],
+        ["playwright-cli", "fill", "textarea[name='description'], textarea[placeholder*='description' i], #description", description[:2000]],
+        ["playwright-cli", "select", "select[name='severity'], #severity", severity.lower()],
+        ["playwright-cli", "click", "button[type='submit'], button:has-text('Submit'), input[type='submit']"],
+        ["playwright-cli", "snapshot"],
+        ["playwright-cli", "close"],
+    ]
+    
+    for cmd in cmds:
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
+            if result.returncode != 0 and "timeout" not in result.stderr.lower():
+                log(f"    Immunefi CLI warning: {' '.join(cmd)} -> {result.stderr[:200]}")
+        except subprocess.TimeoutExpired:
+            log(f"    Immunefi CLI timeout: {' '.join(cmd)}")
+            break
+        except Exception as e:
+            log(f"    Immunefi CLI error: {e}")
+            break
+    
+    prop["submitted_at"] = datetime.utcnow().isoformat() + "Z"
+    prop["submission_method"] = "immunefi_web_form_playwright"
+    save_json(proposal_path, prop)
+    log(f"    Immunefi submission recorded for {Path(proposal_path).name}")
+
+
 # ── Phase 3.5: Submit Approved Work ─────────────────────────────────
 def phase3_5_submit_approved():
     """Take review_approved proposals and submit them to GitHub (PR or claim comment)."""
@@ -571,7 +622,7 @@ def phase3_5_submit_approved():
             log("  Phase 3.5 batch limit reached (20 submits)")
             break
         prop = load_json(pf)
-        if not prop or prop.get("status") not in ("review_approved",):
+        if not prop or prop.get("status") not in ("review_approved", "approved_pending_submission"):
             continue
         # Idempotency: skip if already submitted (handles re-classified duplicates)
         if prop.get("submitted_at"):
@@ -579,6 +630,20 @@ def phase3_5_submit_approved():
             continue
         
         ctx = prop.get("context", {})
+        submission_type = prop.get("submission_type", "")
+        
+        # Branch for Immunefi web-form submissions
+        if submission_type == "immunefi_web_form":
+            log(f"  Phase 3.5: Dispatching Immunefi web-form submission for {pf.name}")
+            try:
+                _dispatch_immunefi_submission(prop, pf)
+                results["submitted"] += 1
+                _submit_count += 1
+            except Exception as e:
+                log(f"  Phase 3.5 Immunefi dispatch failed: {e}")
+                results["failed"] += 1
+            continue
+        
         # Fallback to evidence_url or bounty_key-derived URL when context.url is missing
         url = ctx.get("url", "") or prop.get("evidence_url", "")
         if not url and prop.get("bounty_key"):
@@ -654,6 +719,7 @@ Instructions:
 3. Return the submission URL or confirmation.
 4. Do NOT modify canonical ledgers.
 Provider: {GHOSTCLI_MODEL}"""
+
         
         result = run_claude_microtask(prompt, task_id)
         if result["status"] in ("success", "success_raw"):
