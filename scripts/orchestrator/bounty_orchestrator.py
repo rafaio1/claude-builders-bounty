@@ -393,6 +393,18 @@ def phase3_5_submit_approved():
         if isinstance(output, str) and ("no_actionable_bounty" in output.lower() or "no valid bounty" in output.lower()):
             results["skipped_no_context"] += 1
             continue
+        # Gate: skip submission when qualification indicates bounty is not actionable
+        _inactive_signals = [
+            "overdue", "awaiting payment", "do not claim", "already fixed",
+            "closed", "expired", "lapsed", "not open", "unavailable",
+            "already claimed", "duplicate", "rejected", "invalid"
+        ]
+        if isinstance(output, str) and any(sig in output.lower() for sig in _inactive_signals):
+            prop["status"] = "qualified_inactive"
+            prop["inactivity_reason"] = "microtask_result_indicates_non_actionable"
+            save_json(pf, prop)
+            results["skipped_no_context"] += 1
+            continue
             
         # Dispatch submission microtask
         task_id = f"submit-{prop.get('candidate_id', Path(pf).stem)}"
