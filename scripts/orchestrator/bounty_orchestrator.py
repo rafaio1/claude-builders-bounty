@@ -62,18 +62,26 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
     log(f"  Dispatching microtask {task_id} to {GHOSTCLI_MODEL}")
     try:
         env = os.environ.copy()
-        env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787"
-        import tempfile
-        with tempfile.NamedTemporaryFile(mode='w+', suffix='.txt', delete=False, dir='/tmp') as tmp_out:
-            tmp_path = tmp_out.name
+        # Force GhostCLI provider vars; strip any upstream Anthropic/OpenAI keys
+        # that the claude CLI might prefer over GHOSTCLI_BASE_URL.
+        for k in list(env.keys()):
+            if k.startswith("ANTHROPIC_") or k.startswith("OPENAI_"):
+                del env[k]
+        env["GHOSTCLI_BASE_URL"] = "http://127.0.0.1:8787/v1"
+        env["GHOSTCLI_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
+        env["GHOSTCLI_MODEL"] = GHOSTCLI_MODEL
+        env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787/v1"
+        env["ANTHROPIC_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
+        tmp_path = f"/tmp/microtask_{task_id}_{os.getpid()}.txt"
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
             "-p", prompt, "--output-format", "text"
         ]
         with open(tmp_path, 'w') as outf:
-            r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, text=True, timeout=540, env=env, cwd="/Agentic")
+            r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, timeout=540, env=env, cwd="/Agentic")
         with open(tmp_path, 'r') as inf:
             actual_output = inf.read().strip()
+        log(f"  Microtask {task_id} raw: rc={r.returncode} file_size={os.path.getsize(tmp_path)} output_len={len(actual_output)}")
         try:
             os.unlink(tmp_path)
         except OSError:
