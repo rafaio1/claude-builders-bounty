@@ -513,7 +513,7 @@ BEGIN WORK PRODUCT:"""
             if not isinstance(raw_output, str):
                 raw_output = str(raw_output)
             prop["microtask_output"] = raw_output
-            prop["microtask_result"] = raw_output[:500]  # short preview only
+            prop["microtask_result"] = raw_output  # FIX: store full output; was truncated to 500 chars causing Phase 3 rejections
             prop["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
             save_json(pf, prop)
         else:

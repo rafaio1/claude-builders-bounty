@@ -9,7 +9,7 @@
   "risks": [
     "Issue has 57 comments and multiple prior claims; must select a repo not already claimed to avoid rejection",
     "Lapse reason unclear from API alone; maintainer may have specific expectations for reclaim eligibility",
-    "Wallet format must be native RTC (RTC...) — handle-only or non-RTC addresses were flagged in prior comments"
+    "Wallet format must be native RTC (RTC...) \u2014 handle-only or non-RTC addresses were flagged in prior comments"
   ],
   "directive": "This bounty claim has lapsed and is open again. Draft a fresh /claim comment. Do NOT post.",
   "investigated_at": "2026-09-03T08:15:00Z",
@@ -17,7 +17,7 @@
   "executed_at": "2026-09-03T23:36:20Z",
   "execution_status": "posted",
   "execution_rc": 0,
-  "status": "review_rejected",
+  "status": "pending_microtask_retry",
   "microtask_result": "Bounty task `unknown` has no actionable target. Status report written to `/Agentic/data/aro/proposals/bounty_status_report_unknown_20260904T063200Z.json`.\n\n**Summary:**\n- **Status:** `no_actionable_bounty`\n- **Queue:** 126 entries, all `route_pending` with incomplete human gates\n- **Action taken:** None (no valid bounty URL or type provided)\n- **Next step:** Await a specific bounty target with a valid URL and type before any claim or submission can proceed",
   "completed_at": "2026-09-04T06:32:23.540447+00:00",
   "submission_result": "The bounty task cannot be submitted as instructed.\n\n**Reason:** The work output explicitly states the task is **NOT_EXECUTABLE** due to missing metadata (no valid task description, URL, or instructions). There is no completed deliverable to post.\n\nFurthermore, GitHub issue #13226 is currently **claimed by @rafaio1** (expires 2026-09-10) and already has a linked PR submission (`Scottcjn/clawrtc-tigerbrew#2`). Posting a \"not executable\" status report to an active, claimed bounty thread would be in",
@@ -29,5 +29,5 @@
     "bounty_url": "https://github.com/Scottcjn/rustchain-bounties/issues/13226",
     "url": "https://github.com/Scottcjn/rustchain-bounties/issues/13226"
   },
-  "rejection_reason": "microtask_result_indicates_no_actionable_work"
+  "retry_reason": "output_truncated_full_lost"
 }
