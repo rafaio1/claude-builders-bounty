@@ -75,20 +75,20 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
         if _is_meaningful:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)}, rc={r.returncode})")
-            return {"status": "success", "output": actual_output, "task_id": task_id}
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
         elif r.returncode == 0 and actual_output and len(actual_output) > 50:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)})")
-            return {"status": "success", "output": actual_output, "task_id": task_id}
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
         else:
             err_msg = r.stderr[:1000] if r.stderr else f"empty_output_rc={r.returncode}"
             log(f"  Microtask {task_id} failed: rc={r.returncode} stderr={err_msg[:500]}", "ERROR")
-            return {"status": "error", "error": err_msg, "task_id": task_id}
+            return {"status": "error", "error": err_msg, "task_id": task_id, "rc": r.returncode}
     except subprocess.TimeoutExpired:
         log(f"  Microtask {task_id} timed out after 540s", "ERROR")
-        return {"status": "timeout", "task_id": task_id}
+        return {"status": "timeout", "task_id": task_id, "rc": -1}
     except Exception as e:
         log(f"  Microtask {task_id} exception: {e}", "ERROR")
-        return {"status": "exception", "error": str(e), "task_id": task_id}
+        return {"status": "exception", "error": str(e), "task_id": task_id, "rc": -1}
 
 def sync_private_mirror():
     """Sync current state and proposals to private GitHub mirror."""
@@ -437,26 +437,40 @@ def phase3_self_review():
             continue
 
         # Enhanced review: dispatch code quality check via Claude microtask
-        review_prompt = f"""Review this bounty microtask output for quality and correctness.
-Output length: {len(output)} chars.
-First 500 chars: {output[:500]}
-Last 500 chars: {output[-500:] if len(output) > 500 else output}
+        review_prompt = f"""You are a senior security researcher reviewing bounty work product.
 
-Criteria:
-1. Contains actual implementation or analysis (not just placeholder text)
-2. No obvious errors, exceptions, or 'I cannot' refusals
-3. Addresses the bounty requirements
-4. Code quality is acceptable (if code present)
+## ORIGINAL BOUNTY REQUIREMENTS
+{prop.get('description', prop.get('title', 'No description available'))[:2000]}
 
-Respond with exactly: APPROVED or REJECTED:<reason>"""
+## WORK PRODUCT TO REVIEW ({len(output)} chars)
+```
+{output[:6000]}
+```
+
+## REVIEW CRITERIA
+1. Does the work directly address the specific vulnerability/issue described in the bounty?
+2. Is there concrete implementation, analysis, or proof-of-concept (not placeholder/meta-text)?
+3. Are there obvious technical errors, unhandled exceptions, or AI refusals ("I cannot", "as an AI")?
+4. If code: does it follow secure coding practices and actually fix/demonstrate the issue?
+5. If research: is the analysis sound and actionable?
+
+## REQUIRED OUTPUT FORMAT
+Respond with EXACTLY one of these two formats, nothing else:
+APPROVED
+or
+REJECTED:<specific reason in under 100 words>
+
+Do NOT include preamble, explanation, or markdown formatting outside the above."""
         review_result = run_claude_microtask(review_prompt, f"review-{task_id}")
         review_out = review_result.get("output", "").strip()
-        if review_out.startswith("APPROVED"):
+        review_rc = review_result.get("rc", -1)
+        if review_out.upper().startswith("APPROVED") and review_rc == 0:
             prop["status"] = "review_approved"
             results["approved"] += 1
-        rc = review_result.get("rc", -1)
-        if not review_out or rc != 0 or "empty_output" in str(review_result.get("stderr", "")):
-            log(f"    Review microtask failed/empty for {task_id} (rc={rc}); keeping as microtask_completed for retry")
+            save_json(pf, prop)
+            continue
+        if not review_out or review_rc != 0 or "empty_output" in str(review_result.get("error", "")):
+            log(f"    Review microtask failed/empty for {task_id} (rc={review_rc}); keeping as microtask_completed for retry")
             continue
         
         if review_out.upper().startswith("REJECTED"):
