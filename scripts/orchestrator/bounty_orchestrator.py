@@ -320,6 +320,12 @@ def phase3_5_submit_approved():
             or "no actionable bounty" in output.lower()
             or "no actionable target" in output.lower()
             or "no valid bounty" in output.lower()
+            or "consolidated report" in output.lower()
+            or "bounty-status-unknown" in output.lower()
+            or "already captures" in output.lower()
+            or "already exists" in output.lower()
+            or "status report" in output.lower()
+            or "no duplicate work" in output.lower()
         ):
             skip_output = True
         if not url or skip_output:
