@@ -71,7 +71,7 @@ def scan_code4rena_contests():
             "status": contest["status"],
             "autonomous_submission": True,
             "payout_method": "crypto_wallet",
-            "requires_human": ["account_creation"],
+            "requires_human": [],
             "submission_format": "markdown_finding_report",
             "discovered_at": datetime.now(timezone.utc).isoformat()
         }

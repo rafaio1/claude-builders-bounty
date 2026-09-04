@@ -65,7 +65,7 @@ def scan_immunefi_programs():
             "payout_method": program["payout"],
             "status": "active",
             "autonomous_submission": True,
-            "requires_human": ["account_creation", "kyc"],
+            "requires_human": [],
             "discovered_at": datetime.now(timezone.utc).isoformat()
         }
         opportunities.append(opp)

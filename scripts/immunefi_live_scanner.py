@@ -88,7 +88,7 @@ def parse_bounty_text(text):
             "payout_method": "crypto_wallet",
             "autonomous_submission": True,
             "submission_format": "markdown_vulnerability_report",
-            "requires_human": ["account_creation"],
+            "requires_human": [],
             "discovered_at": datetime.now(timezone.utc).isoformat(),
             "status": "active"
         })
