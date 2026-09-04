@@ -170,15 +170,42 @@ def phase1_sweep_claims():
 
 # ── Phase 2: Microtask Orchestration ──────────────────────────────────
 def phase2_microtask_orchestration():
-    """Dispatch actionable proposals to Claude microtasks."""
-    log("PHASE 2: Microtask orchestration")
-    results = {"dispatched": 0, "completed": 0, "failed": 0, "skipped_superseded": 0, "total_scanned": 0}
+    """Dispatch actionable proposals to Claude microtasks via priority queue."""
+    log("PHASE 2: Microtask orchestration (queue-driven)")
+    results = {"dispatched": 0, "completed": 0, "failed": 0, "skipped_superseded": 0, "total_scanned": 0, "queue_source": True}
 
-    # Scan ALL proposals, not just last 50 — actionable items may be anywhere
-    proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
-    results["total_scanned"] = len(proposal_files)
+    # Load priority queue (rebuilt with valid IDs)
+    queue = load_json(QUEUE_PATH) or {"action_queue": [], "research_queue": []}
+    action_items = queue.get("action_queue", [])
+    results["total_scanned"] = len(action_items)
+    
     actionable = []
-    for pf in proposal_files:
+    for item in action_items:
+        cid = item.get("id") or item.get("candidate_id")
+        if not cid:
+            continue
+        # Find matching proposal file
+        source_file = item.get("source_file", "")
+        if source_file:
+            pf = PROPOSALS_DIR / source_file
+            if pf.exists():
+                prop = load_json(pf)
+                if prop and prop.get("status") not in ("microtask_completed", "review_approved", "review_rejected", "submitted_to_platform"):
+                    actionable.append((str(pf), prop))
+                    continue
+        # Fallback: search by candidate_id
+        matches = list(PROPOSALS_DIR.glob(f"*{cid}*.json"))
+        for m in matches[:1]:
+            prop = load_json(m)
+            if prop and prop.get("status") not in ("microtask_completed", "review_approved", "review_rejected", "submitted_to_platform"):
+                actionable.append((str(m), prop))
+                break
+    
+    log(f"  Queue-driven: {len(actionable)} actionable from {results['total_scanned']} queue items")
+    # Legacy scan disabled — queue is authoritative
+    if False:
+      proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
+      for pf in proposal_files:
         prop = load_json(pf)
         if not prop:
             continue
