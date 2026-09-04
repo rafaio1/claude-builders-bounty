@@ -81,6 +81,10 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, timeout=540, env=env, cwd="/Agentic")
         with open(tmp_path, 'r') as inf:
             actual_output = inf.read().strip()
+        # Detect CLI-level execution errors written to stdout file
+        if actual_output and set(actual_output.split()) <= {"Execution", "error"}:
+            log(f"  Microtask {task_id} got CLI execution error in stdout, treating as empty", "WARN")
+            actual_output = ""
         log(f"  Microtask {task_id} raw: rc={r.returncode} file_size={os.path.getsize(tmp_path)} output_len={len(actual_output)}")
         try:
             os.unlink(tmp_path)
