@@ -1,0 +1,26 @@
+--- a/src/app/layout.tsx
++++ b/src/app/layout.tsx
+@@ -1,10 +1,9 @@
+-import type { Viewport } from "next";
+ import { IBM_Plex_Mono, Space_Grotesk } from "next/font/google";
+
+ import { SiteFooter } from "@/components/site-footer";
+ import { createOrganizationJsonLd, serializeJsonLd } from "@/config/json-ld";
+ import { createSiteMetadata } from "@/config/site";
++import { rootViewport } from "@/config/viewport";
+
+ import "./globals.css";
+
+@@ -18,12 +17,7 @@ const ibmPlexMono = IBM_Plex_Mono({
+   weight: ['400', '500'],
+ });
+
+-export const viewport: Viewport = {
+-  width: "device-width",
+-  initialScale: 1,
+-  themeColor: "#f7f7f5",
+-  colorScheme: "light",
+-};
++export const viewport = rootViewport;
+
+ export const metadata = createSiteMetadata();
