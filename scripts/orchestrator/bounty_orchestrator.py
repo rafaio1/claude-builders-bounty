@@ -64,29 +64,13 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         env["ANTHROPIC_BASE_URL"] = "https://ghostcli.dev"
         cmd = [
             "claude", "--model", GHOSTCLI_MODEL,
-            "-p", prompt, "--output-format", "json"
+            "-p", prompt, "--output-format", "text"
         ]
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env, cwd="/Agentic")
         if r.returncode == 0 and r.stdout.strip():
-            try:
-                result = json.loads(r.stdout)
-                # Extract actual text content from Claude API envelope
-                # GhostCLI returns {"result": "..."} where result is the text
-                if isinstance(result, dict):
-                    actual_output = result.get("result", "")
-                    # If result field is empty/None but other fields exist, 
-                    # the model may have returned structured data instead of text
-                    if not actual_output:
-                        # Check if there's meaningful content in other fields
-                        # but avoid dumping the entire envelope
-                        actual_output = ""
-                else:
-                    actual_output = str(result)
-                log(f"  Microtask {task_id} completed successfully (output_len={len(str(actual_output))})")
-                return {"status": "success", "output": actual_output, "task_id": task_id}
-            except json.JSONDecodeError:
-                log(f"  Microtask {task_id} returned non-JSON output", "WARN")
-                return {"status": "success_raw", "output": r.stdout[:2000], "task_id": task_id}
+            actual_output = r.stdout.strip()
+            log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)})")
+            return {"status": "success", "output": actual_output, "task_id": task_id}
         else:
             log(f"  Microtask {task_id} failed: rc={r.returncode} stderr={r.stderr[:500]}", "ERROR")
             return {"status": "error", "error": r.stderr[:1000], "task_id": task_id}
