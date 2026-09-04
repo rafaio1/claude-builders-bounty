@@ -244,6 +244,12 @@ def phase2_microtask_orchestration():
         _status = _prop.get("status", "")
         _ctx = _prop.get("context", {})
         _gross = _ctx.get("gross_verified") or _ctx.get("payout_amount") or 0
+        # Gate: skip discovery proposals that require human account creation
+        # These are dead-ends for autonomous execution and waste Phase 2 slots
+        if _type == "discovery_proposal" and _status == "pending_qualification":
+            _rh = _ctx.get("requires_human", []) or []
+            if "account_creation" in _rh:
+                return (9, 0)  # lowest priority, never dispatched autonomously
         # Discovery proposals with pending_qualification get highest priority
         if _type == "discovery_proposal" and _status == "pending_qualification":
             return (0, -_gross)
