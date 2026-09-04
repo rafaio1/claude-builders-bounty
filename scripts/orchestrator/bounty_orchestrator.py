@@ -350,41 +350,68 @@ def phase4_discovery():
     log("PHASE 4: Discovery (non-RTC autonomous bounties)")
     results = {"immunefi_new": 0, "research_promoted": 0, "proposals_created": 0, "skipped_rtc": 0}
 
-    # Count fresh Immunefi opportunities (created today, high value)
+    # Count fresh opportunities from ALL platforms (created today, high value)
     today = datetime.date.today().isoformat()
-    opp_files = sorted(glob.glob(str(IMMUNEFI_OPPS_DIR / "*.json")))
-    high_value = []
-    for of in opp_files:
-        opp = load_json(of)
-        if not opp:
+    
+    # Multi-platform discovery directories
+    PLATFORM_DIRS = {
+        "immunefi": IMMUNEFI_OPPS_DIR,
+        "code4rena": Path("/Agentic/revenue/code4rena_opportunities"),
+        "sherlock": Path("/Agentic/revenue/sherlock_opportunities"),
+        "hats": Path("/Agentic/revenue/hats_opportunities"),
+        "galxe": Path("/Agentic/revenue/galxe_opportunities"),
+        "layer3": Path("/Agentic/revenue/layer3_opportunities"),
+    }
+    
+    all_high_value = []
+    for platform_name, pdir in PLATFORM_DIRS.items():
+        if not pdir.exists():
             continue
-        discovered = opp.get("discovered_at", "")
-        asset = opp.get("asset", "").lower()
-        # Skip RTC assets
-        if "rtc" in asset or "rustchain" in asset:
-            results["skipped_rtc"] += 1
-            continue
-        if today in discovered and opp.get("max_bounty_usd", 0) >= 10000:
-            high_value.append(opp)
-            results["immunefi_new"] += 1
+        opp_files = sorted(glob.glob(str(pdir / "*.json")))
+        for of in opp_files:
+            opp = load_json(of)
+            if not opp:
+                continue
+            discovered = opp.get("discovered_at", "")
+            asset = opp.get("asset", "").lower()
+            # Skip RTC assets
+            if "rtc" in asset or "rustchain" in asset:
+                results["skipped_rtc"] += 1
+                continue
+            # Normalize field names across platforms
+            gross = opp.get("max_bounty_usd") or opp.get("prize_pool_usd") or 0
+            title = opp.get("name") or opp.get("sponsor") or opp.get("title") or opp.get("id", "")
+            url = opp.get("url", "")
+            payout = opp.get("payout_type") or opp.get("payout_method") or "crypto"
+            
+            if today in discovered and gross >= 10000:
+                opp["_normalized"] = {"title": title, "gross": gross, "url": url, "payout": payout, "platform": platform_name}
+                all_high_value.append(opp)
+                results["immunefi_new"] += 1  # Keep counter name for compat
 
-    log(f"  Fresh non-RTC high-value Immunefi: {results['immunefi_new']} (skipped RTC: {results['skipped_rtc']})")
-    for hv in high_value[:3]:
-        log(f"    {hv['name']}: ${hv.get('max_bounty_display', '?')} asset={hv.get('asset','?')}")
+    log(f"  Fresh non-RTC high-value (all platforms): {results['immunefi_new']} (skipped RTC: {results['skipped_rtc']})")
+    for hv in all_high_value[:5]:
+        n = hv.get("_normalized", {})
+        log(f"    [{n.get('platform','?')}] {n.get('title','?')}: ${n.get('gross','?')} payout={n.get('payout','?')}")
         # Create discovery proposal for top finds
-        cid = f"immunefi-{hv.get('name','').replace(' ','-').lower()[:30]}-{int(time.time())}"
+        plat = n.get("platform", "unknown")
+        safe_title = str(n.get("title","")).replace(" ","-").lower()[:30]
+        cid = f"{plat}-{safe_title}-{int(time.time())}"
         proposal = {
             "candidate_id": cid,
             "type": "discovery_proposal",
             "status": "pending_qualification",
             "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "context": {
-                "source": "immunefi_live",
-                "title": hv.get("name", ""),
-                "url": hv.get("url", ""),
-                "asset": hv.get("asset", "unknown"),
-                "gross": hv.get("max_bounty_usd", 0),
-                "payout_type": hv.get("payout_type", "crypto")
+                "source": f"{plat}_live",
+                "title": n.get("title", ""),
+                "url": n.get("url", ""),
+                "asset": hv.get("asset", "USDC"),
+                "gross": n.get("gross", 0),
+                "payout_type": n.get("payout", "crypto"),
+                "platform": plat,
+                "autonomous_submission": hv.get("autonomous_submission", False),
+                "requires_human": hv.get("requires_human", [])
             }
         }
         prop_hash = hashlib.sha256(json.dumps(proposal, sort_keys=True, default=str).encode()).hexdigest()[:12]
