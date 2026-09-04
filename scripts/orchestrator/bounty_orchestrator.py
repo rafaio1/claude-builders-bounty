@@ -97,7 +97,7 @@ def sync_private_mirror():
         cmds = [
             ["git", "add", "-A"],
             ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {datetime.datetime.now(datetime.timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
-            ["git", "push", "fork", "main"]
+            ["git", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
         ]
         for cmd in cmds:
             r = subprocess.run(cmd, capture_output=True, text=True, timeout=60, cwd="/Agentic")
