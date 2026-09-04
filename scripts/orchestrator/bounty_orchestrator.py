@@ -346,8 +346,13 @@ def phase2_microtask_orchestration():
         # Gate: skip ANY proposal with no description/summary AND no meaningful title
         # Reclaim/discovery proposals without context produce empty Claude output
         # and block Phase 2 indefinitely with retry loops
+        # EXCEPTION: Immunefi/high-value discovery proposals with a URL are fetchable
+        # Short titles like "Ethena", "ENS", "Hedera" are valid project names
         _title = (_ctx.get("title") or prop.get("title") or "").strip()
-        _has_meaningful_title = len(_title) > 10 and not _title.startswith("rustchain-")
+        _is_fetchable_discovery = (
+            _type == "discovery_proposal" and bool(_url) and _gross and float(_gross) >= 1000
+        )
+        _has_meaningful_title = (len(_title) > 10 and not _title.startswith("rustchain-")) or _is_fetchable_discovery
         if not _desc and not _has_meaningful_title:
             return (5, 0)
         # Gate: skip discovery proposals that require human account creation
