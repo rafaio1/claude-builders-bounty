@@ -933,13 +933,36 @@ Provider: {GHOSTCLI_MODEL}"""
         
         result = run_claude_microtask(prompt, task_id)
         if result["status"] in ("success", "success_raw"):
-            prop["status"] = "submitted_to_platform"
-            prop["submission_result"] = str(result.get("output", ""))[:500]
-            prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
-            save_json(pf, prop)
-            results["submitted"] += 1
-            _submit_count += 1
-            log(f"  Submitted {Path(pf).name} -> {url[:60]}")
+            raw_output = str(result.get("output", ""))
+            output_lower = raw_output.lower()
+            _false_positive_markers = [
+                "not a submission endpoint", "information page", "no submission was made",
+                "does not accept submissions via url", "not a github issue/pr",
+                "no vulnerability was identified", "discovery record only",
+                "reviewed — no submission filed", "program analysis and scope review",
+                "not a direct claim/submission", "no actionable bounty",
+                "cannot submit", "no claim has been", "requires manual submission",
+                "informational page", "not an endpoint"
+            ]
+            is_false_positive = any(marker in output_lower for marker in _false_positive_markers)
+            has_proof = len(raw_output) > 200 and not is_false_positive
+            if has_proof:
+                prop["status"] = "submitted_to_platform"
+                prop["submission_result"] = raw_output[:500]
+                prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                save_json(pf, prop)
+                results["submitted"] += 1
+                _submit_count += 1
+                log(f"  Submitted {Path(pf).name} -> {url[:60]}")
+            else:
+                reason = "false_positive_submission" if is_false_positive else "insufficient_proof"
+                prop["status"] = "terminal_failure"
+                prop["failure_reason"] = reason
+                prop["submission_attempt_output"] = raw_output[:500]
+                prop["failed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+                save_json(pf, prop)
+                results["failed"] += 1
+                log(f"  Submission REJECTED ({reason}) for {Path(pf).name}: {raw_output[:120]}", "WARN")
         else:
             results["failed"] += 1
             log(f"  Submission failed for {Path(pf).name}: {result.get('error','?')[:100]}", "WARN")
