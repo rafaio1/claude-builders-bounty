@@ -668,7 +668,7 @@ def _dispatch_github_claim_comment(prop, proposal_path):
     
     prop["claim_comment_sent"] = True
     prop["claim_comment_id"] = comment_id
-    prop["submitted_at"] = datetime.now(datetime.timezone.utc).isoformat()
+    prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
     prop["status"] = "claim_pending"
     save_json(proposal_path, prop)
     log(f"    Posted /claim to {owner_repo}#{issue_number} (comment_id={comment_id})")
