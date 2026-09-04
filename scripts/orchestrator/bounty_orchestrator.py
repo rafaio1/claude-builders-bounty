@@ -738,6 +738,26 @@ def phase3_5_submit_approved():
     log("PHASE 3.5: Submitting approved work to platforms")
     results = {"submitted": 0, "failed": 0, "skipped_no_context": 0}
     
+    # ── Promotion Gate: review_approved → claim_submitted for GitHub bounties ──
+    promoted = 0
+    for pf in sorted(glob.glob(str(PROPOSALS_DIR / "*.json"))):
+        prop = load_json(pf)
+        if not prop:
+            continue
+        if prop.get("status") != "review_approved":
+            continue
+        bk = prop.get("bounty_key", "")
+        if not bk.startswith("github|"):
+            continue
+        prop["status"] = "claim_submitted"
+        prop["action"] = "claim"
+        prop["submission_type"] = "github_claim_comment"
+        prop["promoted_at"] = datetime.utcnow().isoformat() + "Z"
+        save_json(pf, prop)
+        promoted += 1
+    if promoted:
+        log(f"  Phase 3.5 Promotion: {promoted} review_approved → claim_submitted (GitHub)")
+
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
     _submit_count = 0
     for pf in proposal_files:
