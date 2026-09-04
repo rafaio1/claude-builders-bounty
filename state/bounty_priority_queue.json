@@ -3763,7 +3763,6 @@
         "deadline_missing_or_invalid",
         "expected_wise_net_not_verified",
         "human_gates_incomplete",
-        "listing_or_source_stale",
         "net_if_paid_not_verified",
         "payment_confidence_lcb_missing",
         "route_human_gate",
@@ -3775,7 +3774,7 @@
       "route_status": "route_pending",
       "self_custody_rail_verified": true,
       "source": "rustchain",
-      "source_fresh": false,
+      "source_fresh": true,
       "stable_id": "rustchain:rustchain-14480",
       "time_to_wise_p90_seconds": null,
       "title": "Claim: [BOUNTY: 5 RTC] Add video player keyboard shortcuts to BoTTube watch page",
@@ -7744,12 +7743,12 @@
   ],
   "aggregator": "bounty_priority_queue",
   "funds_moved": false,
-  "generated_at": "2026-09-04T19:16:29.171654Z",
+  "generated_at": "2026-09-04T19:26:52.314131Z",
   "input_hashes": {
-    "algora": "8241d6d69dbd5ca6c519ca02170ff12da5dc5239e8b53761201706970470bd7f",
+    "algora": "6a515046f023aa626fb66f8b0a4eaae14b0b282889bcf9ab7fd94b0e4ebf2d2a",
     "opire": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
     "payout_route_map": "c47a9d0c18e689859baa641f001e2bc23ab89b20003c1e8404789cbae18477da",
-    "rustchain": "0fb32995c78bf4cb135da6a23fbd2c1622c99311237cef948d41fbf298cd4c0f",
+    "rustchain": "ae51e19978936be652ea58c40c251111bf4ff553e5972a10f8d804473aeda850",
     "superteam_large": "8df8a3e93c7faaee87ea77bfd95218368f88804fb71edbfcb5583766845385b3"
   },
   "monitor_only": [
@@ -8874,74 +8873,6 @@
     {
       "action": null,
       "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": "USD",
-      "asset_network_exact": false,
-      "candidate_id": "f38a76d0be75df0ea4dbbfdf83f0585896347ba8c5beae1fe33a622ac6fb1a58",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "verified_unrealized_opportunity_not_revenue",
-      "gross_verified": 500,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": true,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": true,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_active",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:github_issue_assigned_or_unknown",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:recent_merged_pr_history_missing",
-        "qualifier:repository_is_fork_or_unknown",
-        "qualifier:scope_not_sufficiently_testable",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:f38a76d0be75df0ea4dbbfdf83f0585896347ba8c5beae1fe33a622ac6fb1a58",
-      "time_to_wise_p90_seconds": null,
-      "title": "Bump actions/create-github-app",
-      "url": "https://github.com/Rumixyz/zio/issues/2"
-    },
-    {
-      "action": null,
-      "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDG",
       "asset_network_exact": false,
@@ -9609,74 +9540,6 @@
       "time_to_wise_p90_seconds": null,
       "title": "\ud83c\udfaf Support new GitHub App stateless installation token format",
       "url": "https://github.com/velldharami44d/go-github/issues/1"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": "USD",
-      "asset_network_exact": false,
-      "candidate_id": "1ba0528b1304af5a97efa20ac395880fcbea1b1fbf60b787d16c80b549b77b68",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "verified_unrealized_opportunity_not_revenue",
-      "gross_verified": 100,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": true,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": true,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_active",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:github_issue_assigned_or_unknown",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:recent_merged_pr_history_missing",
-        "qualifier:repository_not_recently_active",
-        "qualifier:scope_not_sufficiently_testable",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:1ba0528b1304af5a97efa20ac395880fcbea1b1fbf60b787d16c80b549b77b68",
-      "time_to_wise_p90_seconds": null,
-      "title": "[REVER-51] Workable Integration",
-      "url": "https://github.com/revertinc/revert/issues/551"
     },
     {
       "action": null,
@@ -10878,77 +10741,6 @@
       "time_to_wise_p90_seconds": null,
       "title": "[ FastAPI ] Add SSE disconnect detection, event filtering, and reconnect replay",
       "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/798"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
-      "candidate_id": "1ec28ef49f7a5a2b071410fdb525f2f95c2ae0ae442eccab10fdc7e549322608",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:canonical_algora_open_board_conflict",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:official_algora_bounty_already_awarded",
-        "qualifier:recent_merged_pr_history_missing",
-        "qualifier:repository_not_recently_active",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:1ec28ef49f7a5a2b071410fdb525f2f95c2ae0ae442eccab10fdc7e549322608",
-      "time_to_wise_p90_seconds": null,
-      "title": "UI for Database Connection Add and Delete",
-      "url": "https://github.com/scratchdata/scratchdata/issues/170"
     },
     {
       "action": null,
@@ -13309,76 +13101,6 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
-      "candidate_id": "95402955c8b3b9b6afd648de8ea9f0412db8ded86bb7606cfed9f3b536ef68d1",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:bounty_below_minimum",
-        "qualifier:canonical_algora_open_board_conflict",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:recent_merged_pr_history_missing",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:95402955c8b3b9b6afd648de8ea9f0412db8ded86bb7606cfed9f3b536ef68d1",
-      "time_to_wise_p90_seconds": null,
-      "title": "[ Docs ] Fix missing Step 4 in setup-guide.md",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/305"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
       "candidate_id": "986bf74c4294bd515d976c022c80bfa48fe9acfb7397a65e16b76b2735fb7aaf",
       "claim_command": null,
       "deadline": null,
@@ -13719,77 +13441,6 @@
       "time_to_wise_p90_seconds": null,
       "title": "[ T3 Code ] Add fuzzy search with match highlighting to CommandPalette",
       "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/830"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
-      "candidate_id": "a23e8944f3dd5c874ef0ccd58093cb0874a0308f8bc0cdf3900912562d18ba00",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_active",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:canonical_algora_open_board_conflict",
-        "qualifier:github_issue_assigned_or_unknown",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:scope_not_sufficiently_testable",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:a23e8944f3dd5c874ef0ccd58093cb0874a0308f8bc0cdf3900912562d18ba00",
-      "time_to_wise_p90_seconds": null,
-      "title": "`shape: cycle`",
-      "url": "https://github.com/d2lang/d2/issues/1578"
     },
     {
       "action": null,
@@ -16012,76 +15663,6 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
-      "candidate_id": "e98c5900eab05a87ba7ff3cf0fa29d28c681b91053526c2352d84aa3648fe8c9",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:official_algora_active_bounty_not_proven",
-        "qualifier:scope_not_sufficiently_testable",
-        "qualifier:test_suite_not_proven",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:e98c5900eab05a87ba7ff3cf0fa29d28c681b91053526c2352d84aa3648fe8c9",
-      "time_to_wise_p90_seconds": null,
-      "title": "ClassCassException when using HandlerAspect and Path parameters.",
-      "url": "https://github.com/zio/zio-http/issues/3141"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
       "candidate_id": "ee6ac1e3f9f35c00d508171d705d086c604ac204141f1ae518d45bab3b449604",
       "claim_command": null,
       "deadline": null,
@@ -16661,7 +16242,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649118+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405125+00:00"
     },
     {
       "stable_id": "code4rena:C4-euler-finance",
@@ -16693,7 +16274,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649266+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405276+00:00"
     },
     {
       "stable_id": "code4rena:C4-maple-finance",
@@ -16725,7 +16306,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649344+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405348+00:00"
     },
     {
       "stable_id": "code4rena:C4-morpho-labs",
@@ -16757,7 +16338,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649435+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405406+00:00"
     },
     {
       "stable_id": "code4rena:C4-notional-finance",
@@ -16789,7 +16370,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649528+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405459+00:00"
     },
     {
       "stable_id": "code4rena:C4-optimism-collective",
@@ -16821,7 +16402,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649597+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405667+00:00"
     },
     {
       "stable_id": "code4rena:C4-ribbon-finance",
@@ -16853,7 +16434,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649722+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405817+00:00"
     },
     {
       "stable_id": "code4rena:C4-stakedao",
@@ -16885,7 +16466,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.649795+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.405902+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-aerodrome-finance",
@@ -16917,7 +16498,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650062+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406165+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-beefy-finance",
@@ -16949,7 +16530,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650147+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406259+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-convex-finance",
@@ -16981,7 +16562,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650255+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406326+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-frax-finance",
@@ -17013,7 +16594,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650347+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406402+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-gmx-v2",
@@ -17045,7 +16626,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650450+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406532+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-kwenta-exchange",
@@ -17077,7 +16658,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650576+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406759+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-lyra-finance",
@@ -17109,7 +16690,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650667+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406869+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-polynomial-protocol",
@@ -17141,7 +16722,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650777+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.406984+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-thales-protocol",
@@ -17173,7 +16754,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650863+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.407058+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-velodrome-finance",
@@ -17205,7 +16786,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T19:18:20.650936+00:00"
+      "_ingested_at": "2026-09-04T19:28:22.407141+00:00"
     }
   ],
   "policy": {
@@ -17240,22 +16821,22 @@
   },
   "realized": 0,
   "research_queue": [],
-  "result_sha256": "c820a6f425063c808fbe8439420834f699876648c2e57aa377ccfb20c9a835e2",
+  "result_sha256": "dd0a83042234356f1148febb54cb0f549b5cdda958e8054affee8e9b4053fcb9",
   "schema_version": "1.0",
   "source_health": {
     "algora": {
-      "age_seconds": 1400,
+      "age_seconds": 177,
       "fresh": true,
-      "input_sha256": "8241d6d69dbd5ca6c519ca02170ff12da5dc5239e8b53761201706970470bd7f",
+      "input_sha256": "6a515046f023aa626fb66f8b0a4eaae14b0b282889bcf9ab7fd94b0e4ebf2d2a",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-04T18:53:08.807995Z",
+      "observed_at": "2026-09-04T19:23:54.499066Z",
       "reason_codes": [],
       "source": "algora",
       "status": "ok",
       "timestamp_field": "generated_at"
     },
     "opire": {
-      "age_seconds": 36415,
+      "age_seconds": 37038,
       "fresh": false,
       "input_sha256": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
       "max_age_seconds": 7200,
@@ -17268,7 +16849,7 @@
       "timestamp_field": "generated_at"
     },
     "payout_route_map": {
-      "age_seconds": 255,
+      "age_seconds": 878,
       "fresh": true,
       "input_sha256": "c47a9d0c18e689859baa641f001e2bc23ab89b20003c1e8404789cbae18477da",
       "max_age_seconds": 7200,
@@ -17279,18 +16860,18 @@
       "timestamp_field": "generated_at"
     },
     "rustchain": {
-      "age_seconds": 1306,
+      "age_seconds": 128,
       "fresh": true,
-      "input_sha256": "0fb32995c78bf4cb135da6a23fbd2c1622c99311237cef948d41fbf298cd4c0f",
+      "input_sha256": "ae51e19978936be652ea58c40c251111bf4ff553e5972a10f8d804473aeda850",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-04T18:54:43.153113Z",
+      "observed_at": "2026-09-04T19:24:44.076678Z",
       "reason_codes": [],
       "source": "rustchain",
       "status": "ok",
       "timestamp_field": "scouted_at"
     },
     "superteam_large": {
-      "age_seconds": 969,
+      "age_seconds": 1592,
       "fresh": true,
       "input_sha256": "8df8a3e93c7faaee87ea77bfd95218368f88804fb71edbfcb5583766845385b3",
       "max_age_seconds": 7200,
@@ -17304,16 +16885,16 @@
   "status": "degraded_fail_closed",
   "summary": {
     "action_count": 125,
-    "candidate_count": 258,
+    "candidate_count": 252,
     "duplicate_source_candidate_count": 0,
     "funds_moved": false,
-    "human_gate_monitor_count": 125,
-    "monitor_only_count": 133,
+    "human_gate_monitor_count": 119,
+    "monitor_only_count": 127,
     "realized": 0,
     "research_count": 0,
     "route_pending_research_count": 0,
     "source_count": 5,
     "source_fresh_count": 4,
-    "verified_gross_opportunity_count": 164
+    "verified_gross_opportunity_count": 162
   }
 }

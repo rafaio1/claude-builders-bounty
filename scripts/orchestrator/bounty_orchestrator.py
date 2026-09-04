@@ -626,8 +626,10 @@ def _dispatch_github_claim_comment(prop, proposal_path):
     from pathlib import Path
     
     bounty_key = prop.get("bounty_key", "")
-    parts = bounty_key.split("|")
-    # Support both "github|owner/repo|issue" and "owner/repo|issue" formats
+    # Parse bounty_key OR derive from evidence_url when key lacks pipe format
+    parts = bounty_key.split("|") if bounty_key else []
+    owner_repo = None
+    issue_number = None
     if len(parts) == 3 and parts[0] == "github":
         owner_repo = parts[1]
         issue_number = parts[2]
@@ -635,7 +637,15 @@ def _dispatch_github_claim_comment(prop, proposal_path):
         owner_repo = parts[0]
         issue_number = parts[1]
     else:
-        raise ValueError(f"Invalid github bounty_key format: {bounty_key}")
+        # Fallback: extract owner/repo and issue/PR number from evidence_url
+        ev = prop.get("evidence_url") or ""
+        import re as _re
+        m = _re.match(r"https?://github\.com/([^/]+/[^/]+)/(issues|pull)/(\d+)", ev)
+        if m:
+            owner_repo = m.group(1)
+            issue_number = m.group(3)
+        else:
+            raise ValueError(f"Invalid github bounty_key format and no derivable evidence_url: {bounty_key}")
     
     # Check if Live-URL is required (content bounties)
     live_url = prop.get("live_url") or prop.get("evidence_url") or ""
