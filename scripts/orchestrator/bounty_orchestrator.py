@@ -303,20 +303,8 @@ def phase2_microtask_orchestration():
     
     log(f"  Queue-driven: {len(actionable)} actionable from {results['total_scanned']} queue items")
 
-    # Fallback: scan discovery proposals with pending_qualification that lack queue entries
-    existing_ids = {prop.get("candidate_id") or prop.get("stable_id") for _, prop in actionable}
-    for pf in sorted(PROPOSALS_DIR.glob("*.json")):
-        prop = load_json(pf)
-        if not prop:
-            continue
-        if prop.get("status") == "pending_qualification" and prop.get("type") == "discovery_proposal":
-            _rh = (prop.get("context", {}) or {}).get("requires_human", []) or []
-            cid = prop.get("candidate_id") or prop.get("stable_id")
-            if cid and cid not in existing_ids:
-                actionable.append((str(pf), prop))
-                existing_ids.add(cid)
-    if len(actionable) > results["total_scanned"]:
-        log(f"  Fallback added {len(actionable) - results['total_scanned']} discovery proposals without queue entries")
+    # Legacy fallback removed — qualification pipeline is authoritative.
+    # Proposals must pass qualify_proposals.py before entering research_queue.
     # Legacy scan disabled — queue is authoritative
     if False:
       proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))

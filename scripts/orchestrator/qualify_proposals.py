@@ -36,7 +36,19 @@ def qualify_proposal(data, filepath):
     ctx = data.get("context", {})
     platform = ctx.get("platform", "").lower()
     requires_human = ctx.get("requires_human", [])
-    gross = ctx.get("gross", 0) or 0
+    gross_raw = (
+        ctx.get("gross_verified")
+        or ctx.get("gross")
+        or ctx.get("max_payout_usd")
+        or ctx.get("payout_amount")
+        or data.get("gross_verified")
+        or data.get("gross")
+        or 0
+    )
+    try:
+        gross = float(gross_raw)
+    except (TypeError, ValueError):
+        gross = 0.0
     asset = ctx.get("asset", "UNKNOWN")
     autonomous = ctx.get("autonomous_submission", False)
     candidate_id = data.get("candidate_id", filepath.stem)
