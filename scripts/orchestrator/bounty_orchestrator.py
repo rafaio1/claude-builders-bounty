@@ -70,8 +70,13 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         if r.returncode == 0 and r.stdout.strip():
             try:
                 result = json.loads(r.stdout)
-                log(f"  Microtask {task_id} completed successfully")
-                return {"status": "success", "output": result, "task_id": task_id}
+                # Extract actual text content from Claude API envelope
+                actual_output = result.get("result", "") if isinstance(result, dict) else str(result)
+                if not actual_output and isinstance(result, dict):
+                    # Fallback: check for content in nested structures
+                    actual_output = str(result)
+                log(f"  Microtask {task_id} completed successfully (output_len={len(str(actual_output))})")
+                return {"status": "success", "output": actual_output, "task_id": task_id}
             except json.JSONDecodeError:
                 log(f"  Microtask {task_id} returned non-JSON output", "WARN")
                 return {"status": "success_raw", "output": r.stdout[:2000], "task_id": task_id}
