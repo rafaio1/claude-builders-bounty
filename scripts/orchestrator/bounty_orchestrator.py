@@ -397,8 +397,8 @@ def phase3_5_submit_approved():
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
     _submit_count = 0
     for pf in proposal_files:
-        if _submit_count >= 5:
-            log("  Phase 3.5 batch limit reached (5 submits)")
+        if _submit_count >= 20:
+            log("  Phase 3.5 batch limit reached (20 submits)")
             break
         prop = load_json(pf)
         if not prop or prop.get("status") not in ("review_approved",):
