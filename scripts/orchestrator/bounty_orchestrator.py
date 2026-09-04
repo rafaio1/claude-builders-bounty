@@ -75,7 +75,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         tmp_path = f"/tmp/microtask_{task_id}_{os.getpid()}.txt"
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
-            "-p", prompt, "--output-format", "text"
+            "-p", prompt, "--output-format", "text", "--max-tokens", "8000"
         ]
         with open(tmp_path, 'w') as outf:
             r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, timeout=540, env=env, cwd="/Agentic")
@@ -704,7 +704,7 @@ def phase3_5_submit_approved():
         submission_type = prop.get("submission_type", "")
         
         # Branch for GitHub /claim comment submissions (highest priority)
-        if prop.get("action") == "claim" and ("|" in prop.get("bounty_key", "")):
+        if prop.get("status") == "claim_submitted" and ("|" in prop.get("bounty_key", "")) and not prop.get("claim_comment_sent"):
             from pathlib import Path as _Path; log(f"  Phase 3.5: Dispatching GitHub /claim comment for {_Path(pf).name}")
             try:
                 _dispatch_github_claim_comment(prop, pf)
