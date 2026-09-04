@@ -63,12 +63,21 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
     try:
         env = os.environ.copy()
         env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787"
+        import tempfile
+        with tempfile.NamedTemporaryFile(mode='w+', suffix='.txt', delete=False, dir='/tmp') as tmp_out:
+            tmp_path = tmp_out.name
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
             "-p", prompt, "--output-format", "text"
         ]
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=540, env=env, cwd="/Agentic")
-        actual_output = r.stdout.strip() if r.stdout else ""
+        with open(tmp_path, 'w') as outf:
+            r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, text=True, timeout=540, env=env, cwd="/Agentic")
+        with open(tmp_path, 'r') as inf:
+            actual_output = inf.read().strip()
+        try:
+            os.unlink(tmp_path)
+        except OSError:
+            pass
         # Quality gate: reject status-report-only or empty outputs before accepting as success
         _reject_markers = ("status report written", "no_actionable_bounty", "nothing to do", "no action needed")
         # Relaxed: only reject if output is truly empty or very short
@@ -88,8 +97,8 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
         else:
             err_msg = r.stderr[:1000] if r.stderr else f"empty_output_rc={r.returncode}"
-            stdout_preview = r.stdout[:200] if r.stdout else "(no stdout)"
-            log(f"  Microtask {task_id} failed: rc={r.returncode} stdout_len={len(r.stdout) if r.stdout else 0} stderr={err_msg[:300]} stdout_preview={stdout_preview}", "ERROR")
+            stdout_preview = actual_output[:200] if actual_output else "(no stdout)"
+            log(f"  Microtask {task_id} failed: rc={r.returncode} stdout_len={len(actual_output)} stderr={err_msg[:300]} stdout_preview={stdout_preview}", "ERROR")
             return {"status": "error", "error": err_msg, "task_id": task_id, "rc": r.returncode}
     except subprocess.TimeoutExpired:
         log(f"  Microtask {task_id} timed out after 540s", "ERROR")
