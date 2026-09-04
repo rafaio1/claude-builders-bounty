@@ -440,7 +440,8 @@ BEGIN WORK PRODUCT:"""
             raw_output = result.get("output", "")
             if not isinstance(raw_output, str):
                 raw_output = str(raw_output)
-            prop["microtask_result"] = raw_output[:500]
+            prop["microtask_output"] = raw_output
+            prop["microtask_result"] = raw_output[:500]  # short preview only
             prop["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
             save_json(pf, prop)
         else:
@@ -472,7 +473,7 @@ def phase3_self_review():
         task_id = prop.get("task_id") or prop.get("id") or Path(pf).stem
         
         # Basic validation: must have non-empty result
-        output = prop.get("microtask_result") or prop.get("output") or ""
+        output = prop.get("microtask_output") or prop.get("microtask_result") or prop.get("output") or ""
         # --- Local Heuristic Auto-Approve (bypass LLM for obvious valid outputs) ---
         output_len = len(output) if output else 0
         has_code_markers = any(m in output for m in ["```", "diff --git", "--- a/", "+++ b/", "def ", "function ", "const ", "import "])
@@ -733,7 +734,7 @@ def phase3_5_submit_approved():
             parts = prop["bounty_key"].split("|")
             if len(parts) >= 3 and parts[0] == "github":
                 url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
-        output = prop.get("microtask_result") or prop.get("output") or ""
+        output = prop.get("microtask_output") or prop.get("microtask_result") or prop.get("output") or ""
         
       # Skip proposals with no real work content
         # Skip proposals with no real work content
