@@ -512,6 +512,18 @@ BEGIN WORK PRODUCT:"""
         result = run_claude_microtask(prompt, task_id)
         results["dispatched"] += 1
         
+
+        # Pre-dispatch gate: skip abandon/blocked proposals that waste Phase 2 slots
+        _action = prop.get("action", "")
+        _next_status = prop.get("next_status", "")
+        if _action == "abandon" and _next_status in ("blocked_by_existing_pr", "terminal_failure"):
+            log(f"  SKIP {task_id}: abandon+{_next_status} is non-actionable, marking terminal_failure")
+            prop["status"] = "terminal_failure"
+            prop["error"] = "skipped_non_actionable_abandon"
+            save_json(pf, prop)
+            results["failed"] += 1
+            continue
+
         # Retry once if empty output (common with security research tasks)
         if result.get("status") == "error" and "empty_output" in str(result.get("error", "")):
             log(f"  Retrying {task_id} with enriched context after empty output")
@@ -528,6 +540,8 @@ BEGIN WORK PRODUCT:"""
             prop["microtask_output"] = raw_output
             prop["microtask_result"] = raw_output  # FIX: store full output; was truncated to 500 chars causing Phase 3 rejections
             prop["completed_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
+            # Clear any stale error from prior attempts so Phase 3 sees clean state
+            prop.pop("error", None)
             save_json(pf, prop)
         else:
             results["failed"] += 1
