@@ -193,6 +193,20 @@ def phase2_microtask_orchestration():
                 break
     
     log(f"  Queue-driven: {len(actionable)} actionable from {results['total_scanned']} queue items")
+
+    # Fallback: scan discovery proposals with pending_qualification that lack queue entries
+    existing_ids = {prop.get("candidate_id") or prop.get("stable_id") for _, prop in actionable}
+    for pf in sorted(PROPOSALS_DIR.glob("*.json")):
+        prop = load_json(pf)
+        if not prop:
+            continue
+        if prop.get("status") == "pending_qualification" and prop.get("type") == "discovery_proposal":
+            cid = prop.get("candidate_id") or prop.get("stable_id")
+            if cid and cid not in existing_ids:
+                actionable.append((str(pf), prop))
+                existing_ids.add(cid)
+    if len(actionable) > results["total_scanned"]:
+        log(f"  Fallback added {len(actionable) - results['total_scanned']} discovery proposals without queue entries")
     # Legacy scan disabled — queue is authoritative
     if False:
       proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
@@ -215,14 +229,35 @@ def phase2_microtask_orchestration():
         is_actionable_status = status == "pending_execution" or next_status in (
             "claim_pending", "in_progress", "candidate", "submitted", "awaiting_first_review"
         )
+        if status == "pending_qualification" and prop.get("type") == "discovery_proposal":
+            is_actionable_status = True
         is_valid_type = prop.get("type") in ("reclaim_proposal", "execution_proposal", "discovery_proposal", None)
         # For next_status-based proposals, also accept by action type
         is_valid_action = action in ("qualify_claim", "investigate_claim", "submit_work", "fix_review_feedback", "monitor_pr_review", "claim", "reclaim_lapsed", None)
         if is_actionable_status and (is_valid_type or is_valid_action):
             actionable.append((pf, prop))
 
+    # Prioritize discovery proposals (high-value immunefi/c1work) over low-value rustchain abandon tasks
+    def _dispatch_priority(item):
+        _pf, _prop = item
+        _type = _prop.get("type", "")
+        _status = _prop.get("status", "")
+        _ctx = _prop.get("context", {})
+        _gross = _ctx.get("gross_verified") or _ctx.get("payout_amount") or 0
+        # Discovery proposals with pending_qualification get highest priority
+        if _type == "discovery_proposal" and _status == "pending_qualification":
+            return (0, -_gross)
+        # Other discovery proposals
+        if _type == "discovery_proposal":
+            return (1, -_gross)
+        # Execution/reclaim proposals
+        if _type in ("execution_proposal", "reclaim_proposal"):
+            return (2, -_gross)
+        # Everything else (rustchain abandon tasks etc)
+        return (3, -_gross)
+    actionable.sort(key=_dispatch_priority)
     log(f"  Found {len(actionable)} actionable proposals (skipped {results['skipped_superseded']} superseded)")
-    for pf, prop in actionable[:5]:  # Max 5 microtasks per cycle
+    for pf, prop in actionable[:2]:  # Max 2 microtasks per cycle — immunefi tasks take ~2min each
         task_id = prop.get("candidate_id", Path(pf).stem)
         ctx = prop.get("context", {})
         prompt = f"""Execute bounty task: {ctx.get('title', 'unknown')}
@@ -293,7 +328,11 @@ def phase3_5_submit_approved():
     results = {"submitted": 0, "failed": 0, "skipped_no_context": 0}
     
     proposal_files = sorted(glob.glob(str(PROPOSALS_DIR / "*.json")))
+    _submit_count = 0
     for pf in proposal_files:
+        if _submit_count >= 2:
+            log("  Phase 3.5 batch limit reached (2 submits)")
+            break
         prop = load_json(pf)
         if not prop or prop.get("status") not in ("review_approved",):
             continue
@@ -360,6 +399,7 @@ Provider: {GHOSTCLI_MODEL}"""
             prop["submitted_at"] = datetime.datetime.now(datetime.timezone.utc).isoformat()
             save_json(pf, prop)
             results["submitted"] += 1
+            _submit_count += 1
             log(f"  Submitted {Path(pf).name} -> {url[:60]}")
         else:
             results["failed"] += 1
