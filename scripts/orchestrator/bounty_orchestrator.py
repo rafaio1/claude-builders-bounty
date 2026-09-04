@@ -168,13 +168,25 @@ def phase1_sweep_claims():
         log(f"  Lapsed proposal: {Path(pf).name} status={status} action={action}")
         raw_cid = prop.get("candidate_id") or prop.get("bounty_key") or f"reclaim-{int(time.time())}"
         cid = re.sub(r"[^a-zA-Z0-9_\-]", "_", str(raw_cid))
+        # Propagate URL and title from original proposal so Phase 2/3 have actionable context
+        orig_ctx = prop.get("context", {}) or {}
+        orig_url = orig_ctx.get("url") or prop.get("evidence_url") or prop.get("url")
+        orig_title = orig_ctx.get("title") or prop.get("title") or prop.get("bounty_key")
+        if not orig_url:
+            log(f"  SKIP reclaim {Path(pf).name}: no URL in context or evidence_url")
+            continue
+        merged_ctx = dict(orig_ctx)
+        merged_ctx["url"] = orig_url
+        if orig_title:
+            merged_ctx["title"] = orig_title
+        merged_ctx["original_proposal_file"] = Path(pf).name
         reclaim_prop = {
             "candidate_id": cid,
             "type": "reclaim_proposal",
             "status": "pending_execution",
             "created_at": datetime.datetime.now(datetime.timezone.utc).isoformat(),
             "original_proposal": Path(pf).name,
-            "context": prop.get("context", {}),
+            "context": merged_ctx,
         }
         prop_hash = hashlib.sha256(
             json.dumps(reclaim_prop, sort_keys=True, default=str).encode()
