@@ -293,7 +293,18 @@ def phase3_5_submit_approved():
                 url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
         output = prop.get("microtask_result", "")
         
-        if not url or not output or output.startswith("Bounty task `unknown`"):
+        # Skip proposals with no real work content
+        skip_output = False
+        if not output:
+            skip_output = True
+        elif isinstance(output, str) and (
+            output.startswith("Bounty task `unknown`")
+            or "no actionable bounty" in output.lower()
+            or "no actionable target" in output.lower()
+            or "no valid bounty" in output.lower()
+        ):
+            skip_output = True
+        if not url or skip_output:
             results["skipped_no_context"] += 1
             continue
         # Skip proposals that are just status reports with no real work
