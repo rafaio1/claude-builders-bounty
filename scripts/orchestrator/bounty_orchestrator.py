@@ -290,14 +290,14 @@ def phase2_microtask_orchestration():
             pf = PROPOSALS_DIR / source_file
             if pf.exists():
                 prop = load_json(pf)
-                if prop and prop.get("status") not in ("microtask_completed", "review_approved", "review_rejected", "submitted_to_platform"):
+                if prop and prop.get("status") not in ("microtask_completed", "review_rejected", "submitted_to_platform"):
                     actionable.append((str(pf), prop))
                     continue
         # Fallback: search by candidate_id
         matches = list(PROPOSALS_DIR.glob(f"*{cid}*.json"))
         for m in matches[:1]:
             prop = load_json(m)
-            if prop and prop.get("status") not in ("microtask_completed", "review_approved", "review_rejected", "submitted_to_platform"):
+            if prop and prop.get("status") not in ("microtask_completed", "review_rejected", "submitted_to_platform"):
                 actionable.append((str(m), prop))
                 break
     
