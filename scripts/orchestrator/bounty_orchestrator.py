@@ -466,6 +466,12 @@ def phase4_discovery():
 
     log(f"  Fresh non-RTC high-value (all platforms): {results['immunefi_new']} (skipped RTC: {results['skipped_rtc']})")
     for hv in all_high_value[:5]:
+        # Gate: skip high-value opportunities requiring human account creation
+        # These cannot be executed autonomously and pollute the pipeline
+        _hv_rh = hv.get("requires_human", []) or []
+        if "account_creation" in _hv_rh:
+            log(f"    SKIP {hv.get('_normalized',{}).get('title','?')}: requires account_creation")
+            continue
         n = hv.get("_normalized", {})
         log(f"    [{n.get('platform','?')}] {n.get('title','?')}: ${n.get('gross','?')} payout={n.get('payout','?')}")
         # Create discovery proposal for top finds
