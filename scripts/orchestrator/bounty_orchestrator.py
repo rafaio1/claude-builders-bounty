@@ -317,7 +317,7 @@ def phase2_microtask_orchestration():
             results["skipped_superseded"] += 1
             continue
         # Skip proposals already processed by Phase 2 or promoted by Phase 3
-        if prop.get("status") in ("microtask_completed", "review_approved", "review_rejected"):
+        if prop.get("status") in ("microtask_completed", "review_rejected"):
             results["skipped_superseded"] += 1
             continue
         # Accept both legacy status field and next_status field for actionable items
