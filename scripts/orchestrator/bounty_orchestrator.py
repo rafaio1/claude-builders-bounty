@@ -361,6 +361,24 @@ def phase3_self_review():
             results["approved"] += 1
             save_json(pf, prop)
             continue
+        # FIX: Auto-reject INACTIVE/unknown proposals that have no actionable target
+        # These will never pass LLM review because they contain no real work
+        if isinstance(output, str) and (
+            output.startswith("INACTIVE:")
+            or "bounty task is undefined" in output.lower()
+            or "bounty task is unspecified" in output.lower()
+            or "bounty target unknown" in output.lower()
+            or "bounty target is unspecified" in output.lower()
+            or "cannot be actioned" in output.lower()
+            or "cannot be executed" in output.lower()
+            or "cannot be resolved" in output.lower()
+        ):
+            prop["status"] = "review_rejected"
+            prop["rejection_reason"] = "inactive_no_actionable_target"
+            prop["review_method"] = "local_heuristic_auto_reject"
+            results["rejected"] += 1
+            save_json(pf, prop)
+            continue
 
         # Enhanced review: dispatch code quality check via Claude microtask
         review_prompt = f"""Review this bounty microtask output for quality and correctness.
