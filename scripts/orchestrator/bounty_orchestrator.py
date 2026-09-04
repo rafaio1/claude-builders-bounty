@@ -816,11 +816,18 @@ def phase3_5_submit_approved():
         if prop.get("status") != "review_approved":
             continue
         bk = prop.get("bounty_key", "")
-        if not bk.startswith("github|"):
+        # Allow promotion for GitHub, Immunefi, and C1Work bounties
+        if not (bk.startswith("github|") or bk.startswith("immunefi|") or bk.startswith("c1work|")):
             continue
         prop["status"] = "claim_submitted"
         prop["action"] = "claim"
-        prop["submission_type"] = "github_claim_comment"
+        # Set submission type based on platform
+        if bk.startswith("github|"):
+            prop["submission_type"] = "github_claim_comment"
+        elif bk.startswith("immunefi|"):
+            prop["submission_type"] = "immunefi_web_form"
+        else:
+            prop["submission_type"] = "platform_submission"
         prop["promoted_at"] = datetime.utcnow().isoformat() + "Z"
         save_json(pf, prop)
         promoted += 1
@@ -874,8 +881,12 @@ def phase3_5_submit_approved():
             parts = prop["bounty_key"].split("|")
             if len(parts) >= 3 and parts[0] == "github":
                 url = f"https://github.com/{parts[1]}/issues/{parts[2]}"
+            elif len(parts) >= 2 and parts[0] == "immunefi":
+                url = f"https://immunefi.com/bounty/{parts[1]}/"
+            elif len(parts) >= 2 and parts[0] == "c1work":
+                url = f"https://app.c1.work/bounties/{parts[1]}"
         output = prop.get("microtask_output") or prop.get("microtask_result") or prop.get("output") or ""
-        
+      
       # Skip proposals with no real work content
         # Skip proposals with no real work content
         skip_output = False
@@ -883,30 +894,26 @@ def phase3_5_submit_approved():
             skip_output = True
         elif isinstance(output, str) and (
             output.startswith("Bounty task `unknown`")
-            or "no actionable bounty" in output.lower()
-            or "no actionable target" in output.lower()
-            or "no valid bounty" in output.lower()
             or "consolidated report" in output.lower()
-            or "bounty-status-unknown" in output.lower()
-            or "already captures" in output.lower()
-            or "already exists" in output.lower()
-            or "status report" in output.lower()
-            or "no duplicate work" in output.lower()
         ):
             skip_output = True
         # Gate: reject approvals that are just status reports with no executable claim/PR
         if isinstance(output, str) and (
             "status report written" in output.lower()
-            or "no_actionable_bounty" in output.lower()
-            or "no actionable" in output.lower()
-            or "not autonomous" in output.lower()
-            or "blocked" in output.lower()
         ):
-            prop["status"] = "review_rejected"
-            prop["rejection_reason"] = "output_indicates_no_actionable_work"
-            save_json(pf, prop)
-            results["skipped_no_context"] += 1
-            continue
+            # Only reject if the ENTIRE output is a status report (>80% match or starts with marker)
+            out_stripped = output.strip().lower()
+            is_pure_status = (
+                out_stripped.startswith("status report written")
+                or out_stripped.startswith("no_actionable_bounty")
+                or (len(out_stripped) < 500 and ("status report" in out_stripped or "no actionable" in out_stripped))
+            )
+            if is_pure_status:
+                prop["status"] = "review_rejected"
+                prop["rejection_reason"] = "output_indicates_no_actionable_work"
+                save_json(pf, prop)
+                results["skipped_no_context"] += 1
+                continue
         if not url or skip_output:
             results["skipped_no_context"] += 1
             continue
@@ -950,15 +957,21 @@ Provider: {GHOSTCLI_MODEL}"""
             raw_output = str(result.get("output", ""))
             output_lower = raw_output.lower()
             _false_positive_markers = [
-                "not a submission endpoint", "information page", "no submission was made",
-                "does not accept submissions via url", "not a github issue/pr",
-                "no vulnerability was identified", "discovery record only",
-                "reviewed — no submission filed", "program analysis and scope review",
-                "not a direct claim/submission", "no actionable bounty",
-                "cannot submit", "no claim has been", "requires manual submission",
-                "informational page", "not an endpoint"
+                "no submission was made",
+                "does not accept submissions via url",
+                "reviewed — no submission filed",
+                "requires manual submission",
             ]
-            is_false_positive = any(marker in output_lower for marker in _false_positive_markers)
+            # Only flag false positive if marker appears at start of output or constitutes >80% of short outputs
+            out_stripped = raw_output.strip().lower()
+            is_false_positive = False
+            for marker in _false_positive_markers:
+                if out_stripped.startswith(marker):
+                    is_false_positive = True
+                    break
+                if len(out_stripped) < 500 and marker in out_stripped:
+                    is_false_positive = True
+                    break
             has_proof = len(raw_output) > 200 and not is_false_positive
             if has_proof:
                 prop["status"] = "submitted_to_platform"
