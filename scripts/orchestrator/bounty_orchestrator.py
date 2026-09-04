@@ -342,6 +342,18 @@ def phase3_self_review():
         output_len = len(output) if output else 0
         has_code_markers = any(m in output for m in ["```", "diff --git", "--- a/", "+++ b/", "def ", "function ", "const ", "import "])
         has_patch_file = bool(prop.get("patch_path") or prop.get("artifact_path"))
+        # FIX: Detect artifact files referenced in output text when patch_path field is empty
+        if not has_patch_file and output:
+            import re as _re
+            _mentioned = _re.findall(r'/Agentic/[^\s`\'"]+', output)
+            for _mp in _mentioned:
+                try:
+                    if os.path.exists(_mp):
+                        has_patch_file = True
+                        prop["artifact_path"] = _mp
+                        break
+                except Exception:
+                    pass
 
         if has_patch_file or (output_len > 500 and has_code_markers):
             prop["status"] = "review_approved"
