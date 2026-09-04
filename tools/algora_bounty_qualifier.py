@@ -230,6 +230,28 @@ def gh_get_json(endpoint: str, params: Mapping[str, Any] | None = None) -> Any:
         raise QualifierError("invalid_github_json", "GitHub returned invalid JSON") from error
 
 
+def _fetch_all_pages(fetch_json: JsonFetcher, path: str, params: Mapping[str, Any] | None) -> list[Any]:
+    """Fetch all pages for a GitHub list endpoint using page iteration."""
+    results: list[Any] = []
+    page = 1
+    per_page = 100
+    base_params = dict(params or {})
+    base_params["per_page"] = per_page
+    while True:
+        base_params["page"] = page
+        chunk = fetch_json(path, base_params)
+        if not isinstance(chunk, list):
+            raise QualifierError("invalid_paginated_response", "paginated response is not a list")
+        results.extend(chunk)
+        if len(chunk) < per_page:
+            break
+        page += 1
+        if page > 20:  # safety cap: 2000 items max
+            raise QualifierError("pagination_limit_exceeded", "too many pages for safe autonomous fetch")
+    return results
+
+
+
 def algora_get_text(url: str) -> str:
     """Fetch a bounded public Algora board without cookies or credentials."""
     parsed = urlsplit(url)
@@ -564,19 +586,13 @@ def audit_candidate(
         fetch_json(f"{repo_path}/issues/{issue_number}", None),
         code="invalid_issue_schema",
     )
-    comments = fetch_json(
-        f"{repo_path}/issues/{issue_number}/comments", {"per_page": 100}
-    )
-    timeline = fetch_json(
-        f"{repo_path}/issues/{issue_number}/timeline", {"per_page": 100}
-    )
+    comments = _fetch_all_pages(fetch_json, f"{repo_path}/issues/{issue_number}/comments", None)
+    timeline = _fetch_all_pages(fetch_json, f"{repo_path}/issues/{issue_number}/timeline", None)
     if not isinstance(comments, list) or not isinstance(timeline, list):
         raise QualifierError("invalid_issue_activity_schema", "issue activity is invalid")
     comment_count = _strict_int(issue.get("comments"))
-    if comment_count is None or comment_count != len(comments) or len(comments) >= 100:
+    if comment_count is None or comment_count != len(comments):
         raise QualifierError("incomplete_issue_comments", "issue comments are incomplete")
-    if len(timeline) >= 100:
-        raise QualifierError("incomplete_issue_timeline", "issue timeline is incomplete")
     default_branch = str(repo.get("default_branch") or "")
     if not default_branch:
         raise QualifierError("missing_default_branch", "repository has no default branch")

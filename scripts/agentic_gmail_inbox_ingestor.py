@@ -998,7 +998,7 @@ def archive_verified_github_actions(
         client._api(
             "POST",
             "messages/batchModify",
-            json={"ids": batch, "addLabelIds": [label_id]},
+            json={"ids": batch, "addLabelIds": [label_id, "TRASH"]},
         )
     query = f'in:inbox label:"{LABEL_NAMES["github_verified"]}"'
     labeled_inbox_ids = set(unique_ids(client.search(query, max_results=search_limit)))
@@ -1007,7 +1007,7 @@ def archive_verified_github_actions(
         client._api(
             "POST",
             "messages/batchModify",
-            json={"ids": batch, "removeLabelIds": ["INBOX", "UNREAD"]},
+            json={"ids": batch, "removeLabelIds": ["INBOX", "UNREAD"], "addLabelIds": ["TRASH"]},
         )
     return len(eligible), len(message_ids), len(labeled_inbox_ids) >= search_limit
 

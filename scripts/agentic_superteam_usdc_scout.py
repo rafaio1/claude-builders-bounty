@@ -630,6 +630,7 @@ def _candidate_from_detail(
         "id": summary["id"],
         "slug": summary["slug"],
         "title": summary["title"],
+        "network": "solana-mainnet",
         "reward": {
             "amount": decimal_to_json_number(maximum_reward) if maximum_reward is not None else None,
             "amount_basis": "MAXIMUM_INDIVIDUAL_REWARD",

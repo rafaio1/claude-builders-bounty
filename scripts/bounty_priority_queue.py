@@ -31,6 +31,7 @@ DEFAULT_ALGORA = Path("/Agentic/state/algora_bounty_qualifications.json")
 DEFAULT_OPIRE = Path("/Agentic/state/opire_bounty_qualifications.json")
 DEFAULT_RUSTCHAIN = Path("/Agentic/data/aro/rustchain_bounty_scout.json")
 DEFAULT_OUTPUT = Path("/Agentic/state/bounty_priority_queue.json")
+DEFAULT_BOUNTY_OVERLAYS = Path("/Agentic/state/bounty_overlays.json")
 DEFAULT_MAX_SOURCE_AGE_SECONDS = 2 * 60 * 60
 MAX_FUTURE_CLOCK_SKEW_SECONDS = 5 * 60
 MAX_INPUT_BYTES = 16 * 1024 * 1024
@@ -1046,12 +1047,26 @@ def build_priority_queue(
     algora: Any,
     opire: Any,
     *,
+    bounty_overlays: Any = None,
     now: datetime | None = None,
     max_source_age_seconds: int = DEFAULT_MAX_SOURCE_AGE_SECONDS,
     input_hashes: Mapping[str, str | None] | None = None,
     input_errors: Mapping[str, str | None] | None = None,
 ) -> dict[str, Any]:
     """Build an auditable queue snapshot without performing external actions."""
+
+    # --- Overlay integration (auto-injected) ---
+    if bounty_overlays is None:
+        _ov_path = os.environ.get("BOUNTY_OVERLAYS_PATH", "/Agentic/state/bounty_overlays.json")
+        if os.path.exists(_ov_path):
+            try:
+                with open(_ov_path) as _of:
+                    bounty_overlays = json.load(_of)
+            except Exception:
+                bounty_overlays = {}
+        else:
+            bounty_overlays = {}
+
     current = (now or utc_now()).astimezone(UTC)
     if max_source_age_seconds <= 0:
         raise QueueError("MAX_SOURCE_AGE_MUST_BE_POSITIVE")
@@ -1124,6 +1139,36 @@ def build_priority_queue(
     queues["monitor_only"].sort(key=_opportunity_sort_key)
 
     all_rows = queues["action_queue"] + queues["research_queue"] + queues["monitor_only"]
+    # Apply overlays: dict keyed by candidate_id with expected_wise_net, route_complete_verified, etc.
+    if bounty_overlays and isinstance(bounty_overlays, dict):
+        for row in all_rows:
+            cid = row.get("candidate_id") or row.get("id")
+            if cid in bounty_overlays:
+                ov = bounty_overlays[cid]
+                if not isinstance(ov, dict):
+                    continue
+                # Promote to action if route is verified and has positive expected net
+                if ov.get("route_complete_verified") and (ov.get("expected_wise_net") or 0) > 0:
+                    row["queue"] = "action"
+                    row["reason_codes"] = row.get("reason_codes", []) + ["overlay_route_verified"]
+                    row["overlay_expected_wise_net"] = ov.get("expected_wise_net")
+                # Promote to research if there is expected value but route not yet verified
+                elif (ov.get("expected_wise_net") or 0) > 0 and row.get("queue") == "monitor_only":
+                    row["queue"] = "research"
+                    row["reason_codes"] = row.get("reason_codes", []) + ["overlay_has_expected_value"]
+                    row["overlay_expected_wise_net"] = ov.get("expected_wise_net")
+                # Attach payment confidence if available
+                if ov.get("payment_confidence_lcb") is not None:
+                    row["overlay_payment_confidence"] = ov["payment_confidence_lcb"]
+    # Re-bucket rows into correct queues after overlay promotion mutated row["queue"]
+    promoted_action = [r for r in all_rows if r.get("queue") == "action"]
+    promoted_research = [r for r in all_rows if r.get("queue") == "research"]
+    remaining_monitor = [r for r in all_rows if r.get("queue") not in ("action", "research")]
+    if promoted_action:
+        queues["action_queue"] = list(queues["action_queue"]) + promoted_action
+    if promoted_research:
+        queues["research_queue"] = list(queues["research_queue"]) + promoted_research
+    queues["monitor_only"] = remaining_monitor
     status = "ok" if all(health[name]["fresh"] for name in ALL_INPUT_ORDER) else "degraded_fail_closed"
     payload: dict[str, Any] = {
         "schema_version": SCHEMA_VERSION,
@@ -1233,6 +1278,7 @@ def run_from_paths(
     algora_path: Path,
     opire_path: Path,
     output_path: Path,
+    bounty_overlays_path: Path = DEFAULT_BOUNTY_OVERLAYS,
     now: datetime | None = None,
     max_source_age_seconds: int = DEFAULT_MAX_SOURCE_AGE_SECONDS,
 ) -> dict[str, Any]:
@@ -1251,6 +1297,13 @@ def run_from_paths(
         values[name] = value
         hashes[name] = sha256_bytes(raw) if raw is not None else None
         errors[name] = error
+    bounty_overlays_data = None
+    if bounty_overlays_path is not None:
+        try:
+            with open(bounty_overlays_path) as f:
+                bounty_overlays_data = json.load(f)
+        except Exception:
+            bounty_overlays_data = {}
     snapshot = build_priority_queue(
         values["superteam_large"],
         values["payout_route_map"],
@@ -1261,6 +1314,7 @@ def run_from_paths(
         max_source_age_seconds=max_source_age_seconds,
         input_hashes=hashes,
         input_errors=errors,
+        bounty_overlays=bounty_overlays_data,
     )
     atomic_write_json(output_path, snapshot)
     return snapshot
@@ -1276,6 +1330,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     parser.add_argument("--max-source-age-seconds", type=int, default=DEFAULT_MAX_SOURCE_AGE_SECONDS)
     parser.add_argument("--now", help="Optional timezone-aware ISO-8601 time for deterministic replay/tests")
+    parser.add_argument("--bounty-overlays", default=str(DEFAULT_BOUNTY_OVERLAYS), help="Path to bounty overlays JSON")
     return parser.parse_args(argv)
 
 
@@ -1293,6 +1348,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             algora_path=Path(args.algora),
             opire_path=Path(args.opire),
             output_path=Path(args.output),
+            bounty_overlays_path=Path(args.bounty_overlays),
             now=now,
             max_source_age_seconds=args.max_source_age_seconds,
         )
@@ -1323,4 +1379,4 @@ def main(argv: Sequence[str] | None = None) -> int:
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    main()

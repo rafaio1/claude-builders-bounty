@@ -123,6 +123,9 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
     prompt = task_spec.get("prompt","")
     if not prompt:
         return {"ok": False, "error": "empty_prompt"}
+    # Pre-dispatch snapshot of discovery files for post-dispatch enforcement
+    import glob as _glob
+    _pre_discovery = set(_glob.glob(str(PROPOSALS / "discovery_*.json")))
     cmd = [
         "/root/.local/bin/codex", "exec",
         "-m", "ghostcli-auto[1m]",
@@ -137,8 +140,26 @@ def dispatch_codex_specialist(task_spec: dict) -> dict:
         # User directive: "Sem timeouts sempre". Removed hard 90s cap.
         # Cycle-level concurrency (max_workers=3) prevents unbounded execution.
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=None, cwd=str(ROOT))
-        return {"ok": r.returncode == 0, "rc": r.returncode,
-                "stdout": r.stdout[-4000:], "stderr": r.stderr[-2000:]}
+        result = {"ok": r.returncode == 0, "rc": r.returncode,
+                  "stdout": r.stdout[-4000:], "stderr": r.stderr[-2000:]}
+        # Post-dispatch enforcement: if agent wrote to wrong filename, fix it
+        _bid = task_spec.get("bounty_key", "")
+        if _bid and result.get("ok"):
+            _expected = PROPOSALS / f"discovery_{_bid.replace('/', '_')}.json"
+            if not _expected.exists():
+                _post_discovery = set(_glob.glob(str(PROPOSALS / "discovery_*.json")))
+                _new_files = _post_discovery - _pre_discovery
+                if len(_new_files) == 1:
+                    _wrong = list(_new_files)[0]
+                    try:
+                        os.rename(_wrong, str(_expected))
+                        result["filename_enforced"] = {
+                            "from": os.path.basename(_wrong),
+                            "to": _expected.name
+                        }
+                    except OSError:
+                        pass
+        return result
     except subprocess.TimeoutExpired:
         return {"ok": False, "error": "timeout_90s"}
     except FileNotFoundError:
@@ -200,7 +221,7 @@ def build_task(entry):
             "2. Assess whether this bounty can be completed autonomously (no human identity, KYC, social media, or real-funds gates).\n"
             "3. If autonomous execution is feasible, output a proposal with action=qualify_claim, evidence_url={url}, and proposed next steps.\n"
             "4. If human gates block autonomous completion, output action=abandon with specific gate reasons.\n"
-            f"5. Write proposal JSON to /Agentic/data/aro/proposals/discovery_{bid[:8]}.json.\n\n"
+            f"5. Write proposal JSON to /Agentic/data/aro/proposals/discovery_{bid}.json (use the FULL candidate_id as filename, replacing '/' with '_').\n\n"
             "Do NOT modify canonical ledgers. Do NOT post comments. Read-only investigation + proposal file only."
         )
     else:
@@ -388,6 +409,75 @@ def phase_06_convert_gmail_proposals():
             errors.append({"bounty_key": bkey, "error": result.get("error", "unknown")})
     return {"ok": True, "converted": converted, "targets": len(targets), "errors": errors}
 
+def phase_07_execute_ready_claims():
+    """Post comments to GitHub for proposals that have action=claim/reclaim_lapsed and proposed_comment populated."""
+    import glob as _glob, sys as _sys, subprocess as _sp, os as _os, datetime as _dt
+    pattern = str(PROPOSALS / "gmail_claim_*.json")
+    proposal_files = sorted(_glob.glob(pattern))
+    _sys.stderr.write(f"[P07] glob({pattern}) -> {len(proposal_files)} files\n")
+    _sys.stderr.flush()
+    executed, errors = 0, []
+    for pf in proposal_files:
+        data = load_json(pf)
+        if not isinstance(data, dict):
+            continue
+        act = data.get("action")
+        pc = data.get("proposed_comment")
+        already = data.get("executed_at")
+        if already:
+            continue
+        if act not in ("claim", "reclaim_lapsed"):
+            continue
+        if not pc:
+            continue
+        evidence = data.get("evidence_url", "")
+        bkey = data.get("bounty_key", "unknown")
+        # Extract issue URL from evidence_url or construct from bounty_key
+        url = evidence
+        if not url or "github.com" not in url:
+            parts = bkey.split("|")
+            if len(parts) >= 2:
+                repo = parts[0]
+                num = parts[-1]
+                url = f"https://github.com/{repo}/issues/{num}"
+        if not url:
+            errors.append({"bounty_key": bkey, "error": "no_url"})
+            _sys.stderr.write(f"[P07] SKIP {bkey}: no evidence_url\n")
+            continue
+        try:
+            r = _sp.run(
+                ["gh", "issue", "comment", url, "--body", pc],
+                capture_output=True, text=True, timeout=60
+            )
+            if r.returncode == 0:
+                data["executed_at"] = _dt.datetime.now(_dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+                data["execution_status"] = "posted"
+                data["execution_rc"] = 0
+                import json as _json
+                tmp_path = pf + ".tmp"
+                fd = _os.open(tmp_path, _os.O_WRONLY | _os.O_CREAT | _os.O_TRUNC, 0o600)
+                try:
+                    _os.write(fd, _json.dumps(data, indent=2).encode())
+                    _os.fsync(fd)
+                finally:
+                    _os.close(fd)
+                _os.rename(tmp_path, pf)
+                executed += 1
+                _sys.stderr.write(f"[P07] OK {bkey}: posted to {url}\n")
+            else:
+                err_msg = (r.stderr or r.stdout or "unknown")[:200]
+                errors.append({"bounty_key": bkey, "error": f"gh_rc_{r.returncode}", "detail": err_msg})
+                _sys.stderr.write(f"[P07] FAIL {bkey}: rc={r.returncode} {err_msg}\n")
+        except _sp.TimeoutExpired:
+            errors.append({"bounty_key": bkey, "error": "timeout_60s"})
+            _sys.stderr.write(f"[P07] TIMEOUT {bkey}\n")
+        except Exception as e:
+            errors.append({"bounty_key": bkey, "error": str(e)[:200]})
+            _sys.stderr.write(f"[P07] ERROR {bkey}: {str(e)[:200]}\n")
+    _sys.stderr.write(f"[P07] executed={executed} errors={len(errors)}\n")
+    _sys.stderr.flush()
+    return {"ok": True, "executed": executed, "errors": errors}
+
 def phase_github_claim_emails():
     """Phase 0.5: Scan Gmail for GitHub claim/lapsed notifications and create proposals."""
     results = []
@@ -495,6 +585,38 @@ def sweep_cycle():
     entries = ledger_entries()
     candidates = actionable_filter(entries)
 
+    # Phase 0.1: Inject action_queue items from priority queue into candidates.
+    # The action_queue holds validated bounties that have NOT yet been processed
+    # into proposals. Without this injection, the sweeper only processes ledger
+    # entries and ignores the 125+ queued bounties entirely.
+    try:
+        _pq = load_json(QUEUE)
+        if _pq:
+            _aq = _pq.get("action_queue", [])
+            _existing_keys_in_candidates = set()
+            for _c in candidates:
+                _ck = _c.get("bounty_key") or _c.get("candidate_id") or ""
+                if _ck:
+                    _existing_keys_in_candidates.add(_ck)
+            _injected = 0
+            for _aqi in _aq:
+                _aqk = _aqi.get("bounty_key") or _aqi.get("candidate_id") or ""
+                if not _aqk:
+                    continue
+                if _aqk in _existing_keys_in_candidates:
+                    continue
+                # Normalize status: action_queue items often lack status field.
+                # Map to "candidate" so Phase 1 picks them up for qualification.
+                if not _aqi.get("status"):
+                    _aqi["status"] = "candidate"
+                candidates.append(_aqi)
+                _existing_keys_in_candidates.add(_aqk)
+                _injected += 1
+            if _injected > 0:
+                print(f"[sweep] Injected {_injected} action_queue items into candidates")
+    except Exception as _aq_err:
+        print(f"[sweep] action_queue injection failed: {_aq_err}")
+
     # Phase 0: Reconciliation (runs BEFORE task collection to update ledger status)
     # Calls existing reconciler script; error-tolerant, does not block cycle.
     try:
@@ -549,6 +671,12 @@ def sweep_cycle():
         phase06_result = phase_06_convert_gmail_proposals()
     except Exception as e:
         phase06_result = {"ok": False, "error": str(e)}
+
+    # Phase 0.7: Execute ready claims (post comments to GitHub)
+    try:
+        phase07_result = phase_07_execute_ready_claims()
+    except Exception as e:
+        phase07_result = {"ok": False, "error": str(e)}
 
     for e in candidates:
         status = e.get("status", "")
@@ -609,8 +737,12 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
 
     # Phase 5: Promoted scout entries from monitor_only (AGENT_ALLOWED bounties)
     promoted_scouts = actionable_filter(q.get("monitor_only", [])) if q else []
+    promoted_scouts.sort(key=lambda e: (
+        0 if e.get("asset") in ("USDC", "USDT", "USDG") and e.get("url") else 1,
+        e.get("candidate_id", "")
+    ))
     _phase5_dispatched = 0
-    _PHASE5_MAX = 6
+    _PHASE5_MAX = 12
     for ps in promoted_scouts:
         if _phase5_dispatched >= _PHASE5_MAX:
             break
@@ -662,6 +794,7 @@ PHASE 4 DIRECTIVE: Investigate this bounty for autonomous eligibility. Check sco
         "reconciliation": recon_status,
         "github_claim_emails": summary_phase_05,
         "phase06_conversion": phase06_result,
+        "phase07_execution": phase07_result,
         "phases": phase_counts,
         "candidates_total": len(candidates),
         "tasks_queued": len(task_specs),
