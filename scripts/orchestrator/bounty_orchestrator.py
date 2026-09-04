@@ -455,19 +455,25 @@ If this requires code changes:
 2. Write the EXACT fix as a unified diff or complete file
 3. Include brief explanation of why it fixes the issue
 
-### PATH B: Security Research / Scope Extraction
-You MUST return a structured report with these exact sections:
-## Assets In Scope
-- List each contract/address/endpoint with name and type
-## Payout Tiers
-- Critical: $X | High: $X | Medium: $X | Low: $X
-## Out of Scope
-- List excluded items explicitly
-## Vulnerability Focus Areas
-- Specific attack vectors relevant to this protocol
+### PATH B: Security Vulnerability Report (ORIGINAL ANALYSIS REQUIRED)
+You MUST produce an ORIGINAL vulnerability finding or security analysis. DO NOT summarize the bounty scope, payout tiers, focus areas, or assets in scope. The reviewer WILL REJECT any output that merely restates program information.
 
-DO NOT return a list of source links. DO NOT return generic advice.
-If you cannot extract concrete scope details, state "INSUFFICIENT_DATA" and explain why.
+Required sections (ALL mandatory):
+## Vulnerability Summary
+- 1-2 sentences describing the specific vulnerability you found
+## Technical Detail
+- Exact code paths, function names, state transitions, or logic flaws
+- Reference specific lines/functions from the target repo if available
+## Impact Assessment
+- Concrete loss scenario with conditions and estimated impact
+## Reproduction Steps
+- Numbered, executable steps to reproduce the issue
+## Proof of Concept
+- Code, script, test case, or transaction demonstrating the vulnerability
+## Recommended Fix
+- Specific remediation with code or configuration changes
+
+If you cannot identify a real vulnerability after thorough analysis, output exactly: INACTIVE:NO_VULNERABILITY_FOUND
 
 ### PATH C: Content Creation
 If this requires article/video/post:
