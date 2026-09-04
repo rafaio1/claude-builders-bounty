@@ -851,7 +851,7 @@ def phase3_5_submit_approved():
         submission_type = prop.get("submission_type", "")
         
         # Branch for GitHub /claim comment submissions (highest priority)
-        if prop.get("status") == "claim_submitted" and ("|" in prop.get("bounty_key", "")) and not prop.get("claim_comment_sent"):
+        if prop.get("status") == "claim_submitted" and ("|" in prop.get("bounty_key", "")) and not prop.get("claim_comment_sent") and prop.get("bounty_key", "").startswith("github|"):
             from pathlib import Path as _Path; log(f"  Phase 3.5: Dispatching GitHub /claim comment for {_Path(pf).name}")
             try:
                 _dispatch_github_claim_comment(prop, pf)
