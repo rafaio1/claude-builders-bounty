@@ -180,8 +180,10 @@ def sync_private_mirror():
         ]
         for cmd in cmds:
             r = subprocess.run(cmd, capture_output=True, text=True, timeout=120, cwd="/Agentic", env=_git_env)
-            if r.returncode != 0 and "nothing to commit" not in r.stdout:
+            if r.returncode != 0 and "nothing to commit" not in r.stdout and "nothing to commit" not in r.stderr:
                 log(f"  Mirror sync step failed: {' '.join(cmd)} rc={r.returncode}", "WARN")
+                if r.stderr:
+                    log(f"    stderr: {r.stderr[:300]}", "WARN")
                 return False
         log("  Private mirror sync complete")
         return True
