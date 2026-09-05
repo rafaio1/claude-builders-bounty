@@ -854,6 +854,37 @@ def _dispatch_immunefi_submission(prop, proposal_path):
     from pathlib import Path
     from datetime import datetime
 
+    # Fail closed: security disclosures are external actions and require explicit,
+    # machine-verifiable scope, reproduction, readiness, and review gates.
+    gate_checks = {
+        "current_scope": (
+            prop.get("scope_verified") is True
+            or prop.get("scope_status") in {"verified", "verified_current", "in_scope"}
+        ),
+        "reproducible_evidence": (
+            prop.get("reproducible_evidence") is True
+            or prop.get("reproduction_status") in {"verified", "reproduced"}
+        ),
+        "readiness": (
+            prop.get("readiness_gate_passed") is True
+            or prop.get("readiness_status") in {"passed", "ready"}
+        ),
+        "review": (
+            prop.get("review_gate_passed") is True
+            or prop.get("review_status") in {"passed", "approved"}
+        ),
+    }
+    missing_gates = [name for name, passed in gate_checks.items() if not passed]
+    if missing_gates:
+        prop["status"] = "blocked_submission_gate"
+        prop["submission_blockers"] = missing_gates
+        save_json(proposal_path, prop)
+        log(
+            "    BLOCK immunefi dispatch: missing verified gates "
+            f"{','.join(missing_gates)} for {Path(proposal_path).name}"
+        )
+        return False
+
     # Gate: skip gracefully if no evidence available (avoid repeated dispatch failures)
     evidence_check = (
         prop.get("evidence_report")
@@ -862,6 +893,9 @@ def _dispatch_immunefi_submission(prop, proposal_path):
         or prop.get("deliverable_path")
     )
     if not evidence_check:
+        prop["status"] = "blocked_submission_gate"
+        prop["submission_blockers"] = ["evidence_report"]
+        save_json(proposal_path, prop)
         log(f"    SKIP immunefi dispatch: no evidence_report for {Path(proposal_path).name}")
         return False
 
@@ -885,7 +919,14 @@ def _dispatch_immunefi_submission(prop, proposal_path):
                     evidence_path = c
                     break
     if not evidence_path or not Path(evidence_path).exists():
-        raise ValueError(f"Missing evidence_report for Immunefi submission: resolved={evidence_path!r} proposal={Path(proposal_path).name}")
+        prop["status"] = "blocked_submission_gate"
+        prop["submission_blockers"] = ["evidence_report_missing"]
+        save_json(proposal_path, prop)
+        log(
+            "    BLOCK immunefi dispatch: evidence report missing "
+            f"resolved={evidence_path!r} proposal={Path(proposal_path).name}"
+        )
+        return False
     
     report_md = Path(evidence_path).read_text()
     title_match = re.search(r'^#\s+(.+)$', report_md, re.MULTILINE)
@@ -899,33 +940,49 @@ def _dispatch_immunefi_submission(prop, proposal_path):
     
     log(f"    Immunefi submit: title={title[:60]}, severity={severity}, report={evidence_path}")
     
-    cmds = [
-        ["playwright-cli", "open", "https://immunefi.com/submit"],
-        ["playwright-cli", "snapshot"],
-        ["playwright-cli", "fill", "input[name='title'], input[placeholder*='title' i], #title", title],
-        ["playwright-cli", "fill", "textarea[name='description'], textarea[placeholder*='description' i], #description", description[:2000]],
-        ["playwright-cli", "select", "select[name='severity'], #severity", severity.lower()],
-        ["playwright-cli", "click", "button[type='submit'], button:has-text('Submit'), input[type='submit']"],
-        ["playwright-cli", "snapshot"],
-        ["playwright-cli", "close"],
-    ]
-    
-    for cmd in cmds:
-        try:
-            result = subprocess.run(cmd, capture_output=True, text=True, timeout=30)
-            if result.returncode != 0 and "timeout" not in result.stderr.lower():
-                log(f"    Immunefi CLI warning: {' '.join(cmd)} -> {result.stderr[:200]}")
-        except subprocess.TimeoutExpired:
-            log(f"    Immunefi CLI timeout: {' '.join(cmd)}")
-            break
-        except Exception as e:
-            log(f"    Immunefi CLI error: {e}")
-            break
-    
-    prop["submitted_at"] = __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat()
-    prop["submission_method"] = "immunefi_web_form_playwright"
-    save_json(proposal_path, prop)
-    log(f"    Immunefi submission recorded for {Path(proposal_path).name}")
+    # Build a single compound shell command so all playwright-cli calls share
+    # the same browser session (daemon socket). Separate subprocess.run() calls
+    # each spawn a new process that cannot find the open browser.
+    safe_title = title.replace("'", "'\\''")
+    safe_desc = description[:2000].replace("'", "'\\''")
+    safe_sev = severity.lower().replace("'", "'\\''")
+
+    compound = (
+        "set -e && "
+        f"playwright-cli open 'https://immunefi.com/submit' && "
+        "sleep 3 && "
+        "playwright-cli snapshot && "
+        f"playwright-cli fill \"input[name='title'], input[placeholder*='title' i], #title\" '{safe_title}' && "
+        f"playwright-cli fill \"textarea[name='description'], textarea[placeholder*='description' i], #description\" '{safe_desc}' && "
+        f"playwright-cli select \"select[name='severity'], #severity\" '{safe_sev}' && "
+        "playwright-cli click \"button[type='submit'], button:has-text('Submit'), input[type='submit']\" && "
+        "sleep 2 && "
+        "playwright-cli snapshot && "
+        "playwright-cli close"
+    )
+
+    try:
+        result = subprocess.run(
+            ["bash", "-c", compound],
+            capture_output=True, text=True, timeout=120
+        )
+        if result.returncode != 0:
+            log(f"    Immunefi submit FAILED (rc={result.returncode}): {result.stderr[:300]}")
+            return False
+        log(f"    Immunefi submit OK: {result.stdout[:200]}")
+        prop["submitted_at"] = __import__("datetime").datetime.now(
+            __import__("datetime").timezone.utc
+        ).isoformat()
+        prop["submission_method"] = "immunefi_web_form_playwright"
+        prop["status"] = "submitted_pending_provider_confirmation"
+        save_json(proposal_path, prop)
+        log(f"    Immunefi submission recorded for {Path(proposal_path).name}")
+        return True
+    except subprocess.TimeoutExpired:
+        log(f"    Immunefi submit TIMEOUT after 120s")
+        # Ensure browser is cleaned up on timeout
+        subprocess.run(["playwright-cli", "close"], capture_output=True, timeout=10)
+        return False
 
 
 # ── Phase 3.5: Submit Approved Work ─────────────────────────────────
@@ -994,9 +1051,11 @@ def phase3_5_submit_approved():
         if submission_type == "immunefi_web_form":
             from pathlib import Path as _Path; log(f"  Phase 3.5: Dispatching Immunefi web-form submission for {_Path(pf).name}")
             try:
-                _dispatch_immunefi_submission(prop, pf)
-                results["submitted"] += 1
-                _submit_count += 1
+                if _dispatch_immunefi_submission(prop, pf):
+                    results["submitted"] += 1
+                    _submit_count += 1
+                else:
+                    results["failed"] += 1
             except Exception as e:
                 log(f"  Phase 3.5 Immunefi dispatch failed: {e}")
                 results["failed"] += 1
