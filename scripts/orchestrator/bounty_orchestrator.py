@@ -129,11 +129,17 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
 def sync_private_mirror():
     """Sync current state and proposals to private GitHub mirror."""
     log("  Syncing to private mirror")
-    import fcntl, errno
+    import fcntl, errno, time
     lock_path = "/Agentic/.git/index.lock"
+    # Remove stale lock file before attempting flock — git leaves these on crash
+    if os.path.exists(lock_path):
+        try:
+            os.remove(lock_path)
+        except OSError:
+            pass
     lock_fd = None
     try:
-        lock_fd = open(lock_path, "a+")
+        lock_fd = open(lock_path, "w")
         fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except (IOError, OSError) as e:
         if getattr(e, "errno", None) in (errno.EACCES, errno.EAGAIN):
@@ -141,19 +147,13 @@ def sync_private_mirror():
             return False
         lock_fd = None
     try:
-        # Clean stale lock before git ops
-        if os.path.exists(lock_path):
-            try:
-                os.remove(lock_path)
-            except OSError:
-                pass
         cmds = [
             ["git", "add", "-A"],
-            ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
+            ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
             ["git", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
         ]
         for cmd in cmds:
-            r = subprocess.run(cmd, capture_output=True, text=True, timeout=60, cwd="/Agentic")
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=120, cwd="/Agentic")
             if r.returncode != 0 and "nothing to commit" not in r.stdout:
                 log(f"  Mirror sync step failed: {' '.join(cmd)} rc={r.returncode}", "WARN")
                 return False
