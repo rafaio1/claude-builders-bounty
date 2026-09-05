@@ -601,20 +601,8 @@ def phase3_self_review():
                     pass
 
         # GATE: Never auto-approve empty or near-empty outputs regardless of markers
-        if output_len < 50:
-            log(f"    Auto-approve skipped for {task_id}: output_len={output_len} (too short)")
-            continue
-        # Auto-approve vulnerability reports that have all required sections
-        _is_vuln_report = all(h in output for h in ["## Vulnerability Summary", "## Technical Detail", "## Impact Assessment", "## Reproduction Steps", "## Proof of Concept", "## Recommended Fix"])
-        _has_substantial_content = output_len >= 200 and has_code_markers
-        if has_patch_file or _has_substantial_content or (_is_vuln_report and output_len >= 1000):
-            prop["status"] = "review_approved"
-            prop["review_method"] = "local_heuristic_auto_approve"
-            results["approved"] += 1
-            save_json(pf, prop)
-            continue
-        # FIX: Auto-reject INACTIVE/unknown proposals that have no actionable target
-        # These will never pass LLM review because they contain no real work
+        # FIX: Auto-reject INACTIVE/unknown proposals BEFORE length gate
+        # These signals are valid terminal states but short; they must not be skipped
         if isinstance(output, str) and (
             output.startswith("INACTIVE:")
             or output.startswith("INSUFFICIENT_DATA:")
@@ -634,6 +622,21 @@ def phase3_self_review():
             results["rejected"] += 1
             save_json(pf, prop)
             continue
+
+        if output_len < 50:
+            log(f"    Auto-approve skipped for {task_id}: output_len={output_len} (too short)")
+            continue
+        # Auto-approve vulnerability reports that have all required sections
+        _is_vuln_report = all(h in output for h in ["## Vulnerability Summary", "## Technical Detail", "## Impact Assessment", "## Reproduction Steps", "## Proof of Concept", "## Recommended Fix"])
+        _has_substantial_content = output_len >= 200 and has_code_markers
+        if has_patch_file or _has_substantial_content or (_is_vuln_report and output_len >= 1000):
+            prop["status"] = "review_approved"
+            prop["review_method"] = "local_heuristic_auto_approve"
+            results["approved"] += 1
+            save_json(pf, prop)
+            continue
+        # FIX: Auto-reject INACTIVE/unknown proposals that have no actionable target
+        # INACTIVE check moved above length gate to prevent short signals from being skipped
 
         # Enhanced review: dispatch code quality check via Claude microtask
         review_prompt = f"""You are a senior security researcher reviewing bounty work product.
