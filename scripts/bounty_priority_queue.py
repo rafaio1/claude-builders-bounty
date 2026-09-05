@@ -30,6 +30,7 @@ DEFAULT_PAYOUT_ROUTE_MAP = Path("/Agentic/state/payout_route_map.json")
 DEFAULT_ALGORA = Path("/Agentic/state/algora_bounty_qualifications.json")
 DEFAULT_OPIRE = Path("/Agentic/state/opire_bounty_qualifications.json")
 DEFAULT_RUSTCHAIN = Path("/Agentic/data/aro/rustchain_bounty_scout.json")
+DEFAULT_PROPOSALS_DIR = Path("/Agentic/data/aro/proposals")
 DEFAULT_OUTPUT = Path("/Agentic/state/bounty_priority_queue.json")
 DEFAULT_BOUNTY_OVERLAYS = Path("/Agentic/state/bounty_overlays.json")
 DEFAULT_MAX_SOURCE_AGE_SECONDS = 2 * 60 * 60
@@ -1048,6 +1049,7 @@ def build_priority_queue(
     opire: Any,
     *,
     bounty_overlays: Any = None,
+    proposals_dir: Path | None = None,
     now: datetime | None = None,
     max_source_age_seconds: int = DEFAULT_MAX_SOURCE_AGE_SECONDS,
     input_hashes: Mapping[str, str | None] | None = None,
@@ -1133,6 +1135,50 @@ def build_priority_queue(
                 max_age_seconds=max_source_age_seconds,
             )
             queues[queue_name].append(normalized)
+
+
+    # --- Ingest pending_execution proposals from proposals dir ---
+    if proposals_dir is not None and proposals_dir.exists():
+        import glob as _glob
+        _prop_files = sorted(_glob.glob(str(proposals_dir / "*.json")))
+        _ingested = 0
+        for _pf in _prop_files:
+            try:
+                with open(_pf) as _f:
+                    _pd = json.load(_f)
+                _pstatus = _pd.get("status", "") or _pd.get("next_status", "")
+                if _pstatus != "pending_execution":
+                    continue
+                _pcid = _pd.get("candidate_id") or _pd.get("bounty_key") or ""
+                if not _pcid:
+                    continue
+                _pidentity = ("proposals_dir", _pcid)
+                if _pidentity in seen:
+                    continue
+                seen.add(_pidentity)
+                _pctx = _pd.get("context", {}) or {}
+                _pgross = parse_decimal(_pctx.get("gross_verified") or _pctx.get("payout_amount"))
+                _pentry = {
+                    "candidate_id": _pcid,
+                    "source": "proposals_dir",
+                    "type": _pd.get("type", "execution_proposal"),
+                    "status": _pstatus,
+                    "url": (_pctx.get("url") or "").strip(),
+                    "title": (_pctx.get("title") or _pd.get("title") or "").strip(),
+                    "description": (_pctx.get("description") or _pctx.get("summary") or "").strip(),
+                    "asset": (_pctx.get("asset") or "").strip(),
+                    "gross_verified": json_number(_pgross),
+                    "expected_wise_net": json_number(_pgross),
+                    "route_complete_verified": False,
+                    "human_gates": [],
+                    "generated_at": iso_timestamp(current),
+                }
+                queues["action_queue"].append(_pentry)
+                _ingested += 1
+            except Exception:
+                pass
+        if _ingested > 0:
+            pass  # silent; summary will reflect count
 
     queues["action_queue"].sort(key=_action_sort_key)
     queues["research_queue"].sort(key=_opportunity_sort_key)
@@ -1278,6 +1324,7 @@ def run_from_paths(
     algora_path: Path,
     opire_path: Path,
     output_path: Path,
+    proposals_dir_path: Path = DEFAULT_PROPOSALS_DIR,
     bounty_overlays_path: Path = DEFAULT_BOUNTY_OVERLAYS,
     now: datetime | None = None,
     max_source_age_seconds: int = DEFAULT_MAX_SOURCE_AGE_SECONDS,
@@ -1315,6 +1362,7 @@ def run_from_paths(
         input_hashes=hashes,
         input_errors=errors,
         bounty_overlays=bounty_overlays_data,
+        proposals_dir=proposals_dir_path,
     )
     atomic_write_json(output_path, snapshot)
     return snapshot
@@ -1327,6 +1375,7 @@ def parse_args(argv: Sequence[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--algora", default=str(DEFAULT_ALGORA))
     parser.add_argument("--opire", default=str(DEFAULT_OPIRE))
     parser.add_argument("--rustchain", default=str(DEFAULT_RUSTCHAIN))
+    parser.add_argument("--proposals-dir", default=str(DEFAULT_PROPOSALS_DIR), help="Directory containing pending_execution proposal JSONs")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
     parser.add_argument("--max-source-age-seconds", type=int, default=DEFAULT_MAX_SOURCE_AGE_SECONDS)
     parser.add_argument("--now", help="Optional timezone-aware ISO-8601 time for deterministic replay/tests")
@@ -1348,6 +1397,7 @@ def main(argv: Sequence[str] | None = None) -> int:
             algora_path=Path(args.algora),
             opire_path=Path(args.opire),
             output_path=Path(args.output),
+            proposals_dir_path=Path(args.proposals_dir),
             bounty_overlays_path=Path(args.bounty_overlays),
             now=now,
             max_source_age_seconds=args.max_source_age_seconds,
