@@ -131,10 +131,33 @@ def sync_private_mirror():
     log("  Syncing to private mirror")
     import fcntl, errno, time
     lock_path = "/Agentic/.git/index.lock"
+    # Pre-flight: rebuild empty/corrupt index BEFORE any git operation
+    index_path = "/Agentic/.git/index"
+    try:
+        if os.path.exists(index_path) and os.path.getsize(index_path) == 0:
+            log("  CRITICAL: .git/index is empty, rebuilding from HEAD", "ERROR")
+            subprocess.run(["git", "read-tree", "HEAD"], cwd="/Agentic", timeout=60, capture_output=True)
+            subprocess.run(["git", "checkout-index", "-a", "-f"], cwd="/Agentic", timeout=60, capture_output=True)
+            new_size = os.path.getsize(index_path) if os.path.exists(index_path) else 0
+            log(f"  Index rebuild result: size={new_size}")
+    except Exception as e:
+        log(f"  Index rebuild failed: {e}", "ERROR")
+    # Build explicit git environment to avoid subprocess rc=128 failures
+    _git_env = os.environ.copy()
+    _git_env["HOME"] = "/root"
+    _git_env["GIT_CONFIG_GLOBAL"] = "/root/.gitconfig"
+    _git_env["GIT_OPTIONAL_LOCKS"] = "0"
     # Remove stale lock file before attempting flock — git leaves these on crash
     if os.path.exists(lock_path):
         try:
-            os.remove(lock_path)
+            st = os.stat(lock_path)
+            age = time.time() - st.st_mtime
+            if st.st_size == 0 or age > 300:
+                os.remove(lock_path)
+                log(f"  Removed stale lock (size={st.st_size}, age={age:.0f}s)")
+            else:
+                log(f"  Lock held by active process (size={st.st_size}, age={age:.0f}s), skipping sync", "WARN")
+                return False
         except OSError:
             pass
     lock_fd = None
@@ -148,12 +171,12 @@ def sync_private_mirror():
         lock_fd = None
     try:
         cmds = [
-            ["git", "add", "-A"],
-            ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
-            ["git", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
+            ["git", "--no-optional-locks", "add", "-A"],
+            ["git", "--no-optional-locks", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
+            ["git", "--no-optional-locks", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
         ]
         for cmd in cmds:
-            r = subprocess.run(cmd, capture_output=True, text=True, timeout=120, cwd="/Agentic")
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=120, cwd="/Agentic", env=_git_env)
             if r.returncode != 0 and "nothing to commit" not in r.stdout:
                 log(f"  Mirror sync step failed: {' '.join(cmd)} rc={r.returncode}", "WARN")
                 return False
@@ -167,6 +190,10 @@ def sync_private_mirror():
             try:
                 fcntl.flock(lock_fd, fcntl.LOCK_UN)
                 lock_fd.close()
+                # Remove lock file after releasing flock to prevent stale 0-byte
+                # locks from blocking subsequent cycles
+                if os.path.exists(lock_path):
+                    os.remove(lock_path)
             except Exception:
                 pass
 
