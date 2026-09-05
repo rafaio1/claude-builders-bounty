@@ -8,6 +8,7 @@ STATE_DIR = Path("/Agentic/state")
 LOG_DIR = Path("/Agentic/logs/supervisor")
 RECEIPT_PATH = STATE_DIR / "gmail_github_trash_receipts.jsonl"
 PROPOSALS_DIR = Path("/Agentic/data/aro/proposals")
+DECISION_PATH = Path("/Agentic/data/aro/inbox/gmail_decisions.jsonl")
 
 RULE_VERSION = "gmail-inbox-v1"
 GITHUB_DOMAINS = {"github.com", "notifications.github.com"}
@@ -97,7 +98,22 @@ def already_applied(msg_id):
             continue
     return False
 
-def process_message(service, msg_id):
+def load_durable_decision_ids():
+    decision_ids = set()
+    if not DECISION_PATH.exists():
+        return decision_ids
+    for line in DECISION_PATH.read_text().splitlines():
+        try:
+            value = json.loads(line)
+            message_id = str(value.get("message_id") or "")
+            if message_id:
+                decision_ids.add(message_id)
+        except (json.JSONDecodeError, OSError):
+            continue
+    return decision_ids
+
+
+def process_message(service, msg_id, durable_decision_ids):
     if already_applied(msg_id):
         return "skipped_already_applied"
     msg = service.users().messages().get(userId="me", id=msg_id, format="metadata").execute()
@@ -107,9 +123,11 @@ def process_message(service, msg_id):
         write_receipt(msg_id, "classified_untrusted_input", auth_reason, RULE_VERSION, fp, {"sender_domain": domain})
         return f"not_github:{auth_reason}"
     preserve = has_preserve_signal(msg)
+    if preserve and msg_id not in durable_decision_ids:
+        write_receipt(msg_id, "classified_preserved", "awaiting_durable_ingest", RULE_VERSION, fp, {"sender_domain": domain})
+        return "preserved_awaiting_durable_ingest"
     if preserve:
-        write_receipt(msg_id, "classified_preserved", "financial_signal_detected", RULE_VERSION, fp, {"sender_domain": domain})
-        return "preserved_financial_signal"
+        write_receipt(msg_id, "evidence_preserved", "durable_gmail_decision_recorded", RULE_VERSION, fp, {"sender_domain": domain})
     write_receipt(msg_id, "intent", "pending_batch_modify", RULE_VERSION, fp, {"sender_domain": domain})
     try:
         service.users().messages().batchModify(
@@ -127,9 +145,10 @@ def main():
     service = get_gmail_service()
     results = service.users().messages().list(userId="me", q="in:inbox from:github.com", maxResults=50).execute()
     messages = results.get("messages", [])
+    durable_decision_ids = load_durable_decision_ids()
     stats = {"total": len(messages), "applied": 0, "preserved": 0, "skipped": 0, "failed": 0, "not_github": 0}
     for m in messages:
-        outcome = process_message(service, m["id"])
+        outcome = process_message(service, m["id"], durable_decision_ids)
         if outcome == "applied":
             stats["applied"] += 1
         elif "preserved" in outcome:

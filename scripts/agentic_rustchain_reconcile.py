@@ -80,15 +80,21 @@ def rustchain_entries_hash(entries: list[dict[str, Any]]) -> str:
 def fetch_json(url: str) -> Any:
     if url.startswith("https://api.github.com/") and Path("/usr/bin/gh").exists():
         endpoint = url.removeprefix("https://api.github.com")
-        result = subprocess.run(
-            ["/usr/bin/gh", "api", endpoint],
-            text=True,
-            capture_output=True,
-            check=False,
-            timeout=HTTP_TIMEOUT_SECONDS,
-        )
-        if result.returncode == 0:
-            return json.loads(result.stdout)
+        try:
+            result = subprocess.run(
+                ["/usr/bin/gh", "api", endpoint],
+                text=True,
+                capture_output=True,
+                check=False,
+                timeout=HTTP_TIMEOUT_SECONDS,
+            )
+            if result.returncode == 0:
+                try:
+                    return json.loads(result.stdout)
+                except json.JSONDecodeError:
+                    pass
+        except subprocess.TimeoutExpired:
+            pass
     request = urllib.request.Request(
         url,
         headers={
@@ -183,6 +189,13 @@ def confirmed_incoming_transfers(history: dict[str, Any]) -> list[dict[str, Any]
     for index, row in enumerate(history.get("transactions") or []):
         if str(row.get("type") or "") != "transfer_in":
             continue
+        transfer_status = str(row.get("status") or "").strip().lower()
+        if transfer_status in {"voided", "reversed", "failed", "cancelled", "canceled"}:
+            continue
+        require(
+            transfer_status in {"", "confirmed", "settled", "completed", "success"},
+            f"wallet history transfer {index} has unknown status {transfer_status!r}",
+        )
         txid = str(row.get("tx_hash") or "").lower()
         require(bool(re.fullmatch(r"[0-9a-f]{32,64}", txid)), f"wallet history transfer {index} has invalid tx_hash")
         require(txid not in seen, f"wallet history repeats tx_hash {txid}")
