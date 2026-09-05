@@ -130,7 +130,10 @@ def sync_private_mirror():
     """Sync current state and proposals to private GitHub mirror."""
     log("  Syncing to private mirror")
     import fcntl, errno, time
-    lock_path = "/Agentic/.git/index.lock"
+    # Use a dedicated lock file for orchestrator sync coordination.
+    # NEVER use .git/index.lock — git creates that internally during add/commit
+    # and if we hold an flock on it, git sees "File exists" and aborts with rc=128.
+    _sync_lock_path = "/Agentic/.git/mirror-sync.lock"
     # Pre-flight: rebuild empty/corrupt index BEFORE any git operation
     index_path = "/Agentic/.git/index"
     try:
@@ -147,13 +150,13 @@ def sync_private_mirror():
     _git_env["HOME"] = "/root"
     _git_env["GIT_CONFIG_GLOBAL"] = "/root/.gitconfig"
     _git_env["GIT_OPTIONAL_LOCKS"] = "0"
-    # Remove stale lock file before attempting flock — git leaves these on crash
-    if os.path.exists(lock_path):
+    # Remove stale sync lock file before attempting flock
+    if os.path.exists(_sync_lock_path):
         try:
-            st = os.stat(lock_path)
+            st = os.stat(_sync_lock_path)
             age = time.time() - st.st_mtime
             if st.st_size == 0 or age > 300:
-                os.remove(lock_path)
+                os.remove(_sync_lock_path)
                 log(f"  Removed stale lock (size={st.st_size}, age={age:.0f}s)")
             else:
                 log(f"  Lock held by active process (size={st.st_size}, age={age:.0f}s), skipping sync", "WARN")
@@ -162,10 +165,6 @@ def sync_private_mirror():
             pass
     lock_fd = None
     try:
-        # Use a separate lock file so git's own index.lock is not blocked.
-        # Git internally creates .git/index.lock during add/commit; if we hold
-        # an flock on that same path, git sees "File exists" and aborts with rc=128.
-        _sync_lock_path = "/Agentic/.git/mirror-sync.lock"
         lock_fd = open(_sync_lock_path, "w")
         fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except (IOError, OSError) as e:
@@ -194,7 +193,6 @@ def sync_private_mirror():
             try:
                 fcntl.flock(lock_fd, fcntl.LOCK_UN)
                 lock_fd.close()
-                _sync_lock_path = "/Agentic/.git/mirror-sync.lock"
                 if os.path.exists(_sync_lock_path):
                     os.remove(_sync_lock_path)
             except Exception:
