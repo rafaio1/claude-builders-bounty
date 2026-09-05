@@ -1,6 +1,70 @@
 {
   "action_queue": [
     {
+      "candidate_id": "C4-euler-finance-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-euler-finance-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-maple-finance-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-maple-finance-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-morpho-labs-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-morpho-labs-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-notional-finance-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-notional-finance-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-optimism-collective-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-optimism-collective-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-ribbon-finance-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-ribbon-finance-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "C4-stakedao-202608",
+      "source_file": "/Agentic/data/aro/proposals/C4-stakedao-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
+      "candidate_id": "SHERLOCK-convex-finance-202608",
+      "source_file": "/Agentic/data/aro/proposals/SHERLOCK-convex-finance-202608.json",
+      "type": "execution_proposal",
+      "status": "pending_microtask",
+      "priority_score": 9000,
+      "expected_net_to_wise": 0
+    },
+    {
       "action": null,
       "action_contract": {
         "provider": "rustchain",
@@ -7727,13 +7791,13 @@
   ],
   "aggregator": "bounty_priority_queue",
   "funds_moved": false,
-  "generated_at": "2026-09-04T23:54:05.612689Z",
+  "generated_at": "2026-09-05T00:04:11.466663Z",
   "input_hashes": {
-    "algora": "a9e8d3b8febccf65566c0c93ff7e2b52621d2ccec71cb006f170954ab9bb5203",
+    "algora": "b81f9f6a5b835a079d48f6bdbbe0bb9e33610236a1628a2f33fbd70e744a8caf",
     "opire": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
     "payout_route_map": "fb72ebe1cccd05d6f31fd0721293fea7a4dd67df55473e47ef9fd583464e4e4d",
-    "rustchain": "a49a5a90c1b28075b36e453c4be7e4008a6c7c1e205a2b8801b5781e2cb3a276",
-    "superteam_large": "b6e3ebccf455cc5665e6b7f24fbc3a42f385865cdb06d1671b9fac5104457357"
+    "rustchain": "c81a183241451259144cb1f69843944741ed267c09850a816f5735ada5844be3",
+    "superteam_large": "22fad8c3f04c07cebcd8ae6cd87e40aa45ab131b84fd3b5b16ae10ad731245a1"
   },
   "monitor_only": [
     {
@@ -10253,6 +10317,76 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
+      "candidate_id": "07bfe40073a357ab02ea022e6c5d43dec3ac407ac942d8dd30dd434f8d8c069f",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:bounty_below_minimum",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:07bfe40073a357ab02ea022e6c5d43dec3ac407ac942d8dd30dd434f8d8c069f",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Config ] Fix port mapping in docker-compose.yml",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/312"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
       "candidate_id": "0a7fdd071b0bce17729b4981d01ffc8ccafa2fd70a0229b76bd89159b8e6a216",
       "claim_command": null,
       "deadline": null,
@@ -11293,76 +11427,6 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
-      "candidate_id": "33662888fb04338b2d6f78027128ba1d6848f7d24d1c036359967959b5bb3951",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:bounty_below_minimum",
-        "qualifier:canonical_algora_open_board_conflict",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:recent_merged_pr_history_missing",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:33662888fb04338b2d6f78027128ba1d6848f7d24d1c036359967959b5bb3951",
-      "time_to_wise_p90_seconds": null,
-      "title": "[ Docs ] Fix broken markdown table in api-reference.md",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/303"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
       "candidate_id": "34979bf2ae0a0e20166956b5b9ad2561ce139f905df95dd78db97adb8e706c3e",
       "claim_command": null,
       "deadline": null,
@@ -12322,6 +12386,76 @@
       "time_to_wise_p90_seconds": null,
       "title": "Improve DynamicValue error handling",
       "url": "https://github.com/zio/zio-schema/issues/480"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
+      "candidate_id": "6c6dfb525053b0fb6889579ea23ad141a7aa074bafbff404435e8db5e52a63b2",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:bounty_below_minimum",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:6c6dfb525053b0fb6889579ea23ad141a7aa074bafbff404435e8db5e52a63b2",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Config ] Fix image tag typo in docker-compose.yml",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/310"
     },
     {
       "action": null,
@@ -14682,76 +14816,6 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
-      "candidate_id": "d22a20bbf497c24267056444859b8c1bc2e660bcd56068cb683e9a3550287d98",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "unverified_not_revenue",
-      "gross_verified": null,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": false,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": false,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_missing",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "gross_not_verified",
-        "human_gate_manual",
-        "human_gate_video",
-        "listing_not_verified",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_not_verified",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:bounty_below_minimum",
-        "qualifier:canonical_algora_open_board_conflict",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:recent_merged_pr_history_missing",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:d22a20bbf497c24267056444859b8c1bc2e660bcd56068cb683e9a3550287d98",
-      "time_to_wise_p90_seconds": null,
-      "title": "[ Docs ] Fix wrong package name in setup-guide.md",
-      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/306"
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": null,
-      "asset_network_exact": false,
       "candidate_id": "d27e3e629907e1a0ef38da6bc450ab227b94212b123b381bfaadfcc0f284d4e3",
       "claim_command": null,
       "deadline": null,
@@ -14814,6 +14878,76 @@
       "time_to_wise_p90_seconds": null,
       "title": "[ Laravel ] Add email verification flow and fix mail configuration for SMTP fallback",
       "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/756"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
+      "candidate_id": "d361fa928358e68fc76679b156b8542765112f1d2415ce011faebdef5e69445e",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:bounty_below_minimum",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:d361fa928358e68fc76679b156b8542765112f1d2415ce011faebdef5e69445e",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Config ] Fix missing semicolon in nginx.conf",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/311"
     },
     {
       "action": null,
@@ -16164,7 +16298,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.321655+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.059890+00:00"
     },
     {
       "stable_id": "code4rena:C4-euler-finance",
@@ -16196,7 +16330,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.321816+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060041+00:00"
     },
     {
       "stable_id": "code4rena:C4-maple-finance",
@@ -16228,7 +16362,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.321931+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060163+00:00"
     },
     {
       "stable_id": "code4rena:C4-morpho-labs",
@@ -16260,7 +16394,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322023+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060417+00:00"
     },
     {
       "stable_id": "code4rena:C4-notional-finance",
@@ -16292,7 +16426,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322117+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060628+00:00"
     },
     {
       "stable_id": "code4rena:C4-optimism-collective",
@@ -16324,7 +16458,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322213+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060743+00:00"
     },
     {
       "stable_id": "code4rena:C4-ribbon-finance",
@@ -16356,7 +16490,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322295+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060838+00:00"
     },
     {
       "stable_id": "code4rena:C4-stakedao",
@@ -16388,7 +16522,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322401+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.060910+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-aerodrome-finance",
@@ -16420,7 +16554,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322677+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061160+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-beefy-finance",
@@ -16452,7 +16586,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322766+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061527+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-convex-finance",
@@ -16484,7 +16618,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322837+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061609+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-frax-finance",
@@ -16516,7 +16650,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.322923+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061676+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-gmx-v2",
@@ -16548,7 +16682,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323001+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061767+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-kwenta-exchange",
@@ -16580,7 +16714,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323070+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061842+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-lyra-finance",
@@ -16612,7 +16746,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323142+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061916+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-polynomial-protocol",
@@ -16644,7 +16778,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323211+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.061990+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-thales-protocol",
@@ -16676,7 +16810,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323278+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.062071+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-velodrome-finance",
@@ -16708,7 +16842,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-04T23:54:56.323363+00:00"
+      "_ingested_at": "2026-09-05T00:05:01.062153+00:00"
     }
   ],
   "policy": {
@@ -16744,36 +16878,14 @@
   "realized": 0,
   "research_queue": [
     {
-      "candidate_id": "immunefi-cosmos-1788566087",
-      "platform": "immunefi",
-      "title": "Cosmos",
-      "max_payout_usd": 50000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/cosmos/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-cosmos-1788566087-f56302fd4ed8.json",
-      "qualified_at": "2026-09-04T23:55:45.108665+00:00",
-      "expected_net_to_wise": null
-    },
-    {
       "candidate_id": "immunefi-dexe-protocol-1788566087",
       "platform": "immunefi",
       "title": "DeXe Protocol",
       "max_payout_usd": 500000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/dexe-protocol/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-dexe-protocol-1788566087-602085d71b6e.json",
-      "qualified_at": "2026-09-04T23:55:45.115001+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-ens-1788566087",
-      "platform": "immunefi",
-      "title": "ENS",
-      "max_payout_usd": 250000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/ens/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ens-1788566087-201063a84ad7.json",
-      "qualified_at": "2026-09-04T23:55:45.118364+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-dexe-protocol-1788566087-85163f4cf061.json",
+      "qualified_at": "2026-09-05T00:05:46.262388+00:00",
       "expected_net_to_wise": null
     },
     {
@@ -16783,52 +16895,8 @@
       "max_payout_usd": 3000000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/ethena/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788566087-4b21853ac1c8.json",
-      "qualified_at": "2026-09-04T23:55:45.121531+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-hedera-1788566087",
-      "platform": "immunefi",
-      "title": "Hedera",
-      "max_payout_usd": 30000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/hedera/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-hedera-1788566087-dfc10035dd64.json",
-      "qualified_at": "2026-09-04T23:55:45.151254+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-cosmos-1788566322",
-      "platform": "immunefi",
-      "title": "Cosmos",
-      "max_payout_usd": 50000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/cosmos/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-cosmos-1788566322-16ebccf8d393.json",
-      "qualified_at": "2026-09-05T00:00:45.702393+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-dexe-protocol-1788566322",
-      "platform": "immunefi",
-      "title": "DeXe Protocol",
-      "max_payout_usd": 500000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/dexe-protocol/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-dexe-protocol-1788566322-fb9e37efebfa.json",
-      "qualified_at": "2026-09-05T00:00:45.710443+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-ens-1788566322",
-      "platform": "immunefi",
-      "title": "ENS",
-      "max_payout_usd": 250000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/ens/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ens-1788566322-1100d6ebac1d.json",
-      "qualified_at": "2026-09-05T00:00:45.721427+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788566087-08fcfbac3325.json",
+      "qualified_at": "2026-09-05T00:05:46.265640+00:00",
       "expected_net_to_wise": null
     },
     {
@@ -16838,38 +16906,27 @@
       "max_payout_usd": 3000000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/ethena/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788566322-65a25b1f43f8.json",
-      "qualified_at": "2026-09-05T00:00:45.751994+00:00",
-      "expected_net_to_wise": null
-    },
-    {
-      "candidate_id": "immunefi-hedera-1788566322",
-      "platform": "immunefi",
-      "title": "Hedera",
-      "max_payout_usd": 30000.0,
-      "payout_asset": "USDC",
-      "url": "https://immunefi.com/bug-bounty/hedera/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-hedera-1788566322-9a6c724f9688.json",
-      "qualified_at": "2026-09-05T00:00:45.759499+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788566322-3d37ae0423ab.json",
+      "qualified_at": "2026-09-05T00:05:46.268398+00:00",
       "expected_net_to_wise": null
     }
   ],
-  "result_sha256": "0d36966da14461306be5a2dfef0d141843db0c06164700f28089b199f6a364a3",
+  "result_sha256": "f67db8d55700eeeb0ede63ba60b4eeda9a52a4a053baf9497f6d56d1535f1097",
   "schema_version": "1.0",
   "source_health": {
     "algora": {
-      "age_seconds": 1459,
+      "age_seconds": 227,
       "fresh": true,
-      "input_sha256": "a9e8d3b8febccf65566c0c93ff7e2b52621d2ccec71cb006f170954ab9bb5203",
+      "input_sha256": "b81f9f6a5b835a079d48f6bdbbe0bb9e33610236a1628a2f33fbd70e744a8caf",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-04T23:29:45.615542Z",
+      "observed_at": "2026-09-05T00:00:23.473040Z",
       "reason_codes": [],
       "source": "algora",
       "status": "ok",
       "timestamp_field": "generated_at"
     },
     "opire": {
-      "age_seconds": 53072,
+      "age_seconds": 53678,
       "fresh": false,
       "input_sha256": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
       "max_age_seconds": 7200,
@@ -16882,7 +16939,7 @@
       "timestamp_field": "generated_at"
     },
     "payout_route_map": {
-      "age_seconds": 684,
+      "age_seconds": 1290,
       "fresh": true,
       "input_sha256": "fb72ebe1cccd05d6f31fd0721293fea7a4dd67df55473e47ef9fd583464e4e4d",
       "max_age_seconds": 7200,
@@ -16893,22 +16950,22 @@
       "timestamp_field": "generated_at"
     },
     "rustchain": {
-      "age_seconds": 1749,
+      "age_seconds": 555,
       "fresh": true,
-      "input_sha256": "a49a5a90c1b28075b36e453c4be7e4008a6c7c1e205a2b8801b5781e2cb3a276",
+      "input_sha256": "c81a183241451259144cb1f69843944741ed267c09850a816f5735ada5844be3",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-04T23:24:56.197155Z",
+      "observed_at": "2026-09-04T23:54:56.165361Z",
       "reason_codes": [],
       "source": "rustchain",
       "status": "ok",
       "timestamp_field": "scouted_at"
     },
     "superteam_large": {
-      "age_seconds": 1440,
+      "age_seconds": 236,
       "fresh": true,
-      "input_sha256": "b6e3ebccf455cc5665e6b7f24fbc3a42f385865cdb06d1671b9fac5104457357",
+      "input_sha256": "22fad8c3f04c07cebcd8ae6cd87e40aa45ab131b84fd3b5b16ae10ad731245a1",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-04T23:30:05.568756Z",
+      "observed_at": "2026-09-05T00:00:14.922685Z",
       "reason_codes": [],
       "source": "superteam_large",
       "status": "ok",
@@ -16918,11 +16975,11 @@
   "status": "degraded_fail_closed",
   "summary": {
     "action_count": 125,
-    "candidate_count": 251,
+    "candidate_count": 252,
     "duplicate_source_candidate_count": 0,
     "funds_moved": false,
-    "human_gate_monitor_count": 118,
-    "monitor_only_count": 126,
+    "human_gate_monitor_count": 119,
+    "monitor_only_count": 127,
     "realized": 0,
     "research_count": 0,
     "route_pending_research_count": 0,
