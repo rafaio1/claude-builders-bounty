@@ -445,11 +445,35 @@ def phase2_microtask_orchestration():
         _bounty_desc = (ctx.get('description') or ctx.get('summary') or '')[:3000]
         _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or ''
         _scope = ctx.get('scope') or ctx.get('assets_in_scope') or ctx.get('in_scope') or ''
-        # If no description and we have a URL, instruct the model to fetch and analyze it
+        # ACTIVE ENRICHMENT: If description is missing/placeholder but URL exists,
+        # fetch content NOW via playwright-cli so Claude receives real scope.
         _url = (ctx.get('url') or '').strip()
-        if not _bounty_desc and _url:
-            _bounty_desc = f"[NO DESCRIPTION IN CONTEXT — You MUST fetch and analyze this URL: {_url}]"
-        elif not _bounty_desc:
+        _needs_fetch = (
+            not _bounty_desc
+            or len(_bounty_desc) < 60
+            or "to be fetched at dispatch time" in _bounty_desc.lower()
+            or "no description in context" in _bounty_desc.lower()
+        )
+        if _needs_fetch and _url and _url.startswith("http"):
+            try:
+                import subprocess as _sp
+                _sp.run(["playwright-cli", "open", _url], capture_output=True, timeout=20, cwd="/Agentic")
+                _snap = _sp.run(["playwright-cli", "snapshot"], capture_output=True, text=True, timeout=20, cwd="/Agentic")
+                _sp.run(["playwright-cli", "close"], capture_output=True, timeout=8, cwd="/Agentic")
+                if _snap.returncode == 0 and _snap.stdout and len(_snap.stdout.strip()) > 80:
+                    _fetched = _snap.stdout.strip()[:3000]
+                    ctx['description'] = _fetched
+                    _bounty_desc = _fetched
+                    prop.setdefault('context', {})['description'] = _fetched
+                    try:
+                        with open(pf, 'w') as _wf:
+                            json.dump(prop, _wf, indent=2)
+                    except Exception:
+                        pass
+                    log(f"  LIVE-ENRICHED {task_id}: fetched {len(_fetched)} chars from {_url[:80]}")
+            except Exception as _e:
+                log(f"  LIVE-FETCH FAILED {task_id}: {_e}")
+        if not _bounty_desc:
             _bounty_desc = "No description available. Check URL or target repo for details."
         _payout = ctx.get('payout_amount', ctx.get('gross_verified', 'unknown'))
         _asset = ctx.get('asset', 'unknown')
