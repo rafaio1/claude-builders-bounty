@@ -1167,10 +1167,15 @@ def build_priority_queue(
                     "title": (_pctx.get("title") or _pd.get("title") or "").strip(),
                     "description": (_pctx.get("description") or _pctx.get("summary") or "").strip(),
                     "asset": (_pctx.get("asset") or "").strip(),
-                    "gross_verified": json_number(_pgross),
-                    "expected_wise_net": json_number(_pgross),
+                    "gross_verified": json_number(_pgross) if _pgross is not None else 0,
+                    "expected_wise_net_verified": json_number(_pgross) if _pgross is not None else 0,
+                    "net_if_paid_verified": json_number(_pgross) if _pgross is not None else 0,
+                    "payment_confidence_lcb_ppm": int(_pctx.get("payment_confidence_lcb_ppm") or 0),
+                    "time_to_wise_p90_seconds": int(_pctx.get("time_to_wise_p90_seconds") or 86400 * 30),
+                    "deadline": str(_pctx.get("deadline") or "9999-12-31T23:59:59Z"),
+                    "reason_codes": ["ingested_from_proposals_dir"],
+                    "human_gates": {},
                     "route_complete_verified": False,
-                    "human_gates": [],
                     "generated_at": iso_timestamp(current),
                 }
                 queues["action_queue"].append(_pentry)
