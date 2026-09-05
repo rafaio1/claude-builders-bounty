@@ -15,7 +15,12 @@
   "directive": "Abandon this claim. PR is closed unmerged and another party now holds the active claim slot. No comment to post.",
   "created_at": "2026-09-03T09:17:49Z",
   "investigated_at": "2026-09-03T09:30:00Z",
-  "status": "archived_legacy",
+  "status": "review_rejected",
   "archived_reason": "missing_status_field_cleanup",
-  "archived_at": "2026-09-04T11:30:00Z"
+  "archived_at": "2026-09-04T11:30:00Z",
+  "microtask_output": "INACTIVE:NO_TARGET_REPOSITORY_PROVIDED\n\nThe bounty task specification lacks all actionable parameters required for security research or code remediation. Specifically, the \"Target Repo,\" \"URL,\" and \"Scope\" fields are explicitly set to `N/A` or left empty, and the description states \"No description available.\" Without a target codebase, smart contract address, API endpoint, or software artifact to analyze, it is technically impossible to perform static analysis, dynamic testing, or vulnerability discovery. Security research requires a defined attack surface; producing a vulnerability report without one would constitute fabrication rather than legitimate analysis. To proceed, this task must be updated with a valid repository URL, documentation link, or specific asset identifier within scope.",
+  "microtask_result": "INACTIVE:NO_TARGET_REPOSITORY_PROVIDED\n\nThe bounty task specification lacks all actionable parameters required for security research or code remediation. Specifically, the \"Target Repo,\" \"URL,\" and \"Scope\" fields are explicitly set to `N/A` or left empty, and the description states \"No description available.\" Without a target codebase, smart contract address, API endpoint, or software artifact to analyze, it is technically impossible to perform static analysis, dynamic testing, or vulnerability discovery. Security research requires a defined attack surface; producing a vulnerability report without one would constitute fabrication rather than legitimate analysis. To proceed, this task must be updated with a valid repository URL, documentation link, or specific asset identifier within scope.",
+  "completed_at": "2026-09-05T04:30:38.453839+00:00",
+  "rejection_reason": "inactive_or_insufficient_data",
+  "review_method": "local_heuristic_auto_reject"
 }

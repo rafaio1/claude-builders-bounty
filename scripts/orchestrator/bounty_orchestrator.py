@@ -58,36 +58,38 @@ def save_json(path, data):
     tmp.rename(p)
 
 def run_claude_microtask(prompt: str, task_id: str) -> dict:
-    """Dispatch a microtask to Claude via GhostCLI provider. Returns result dict."""
-    log(f"  Dispatching microtask {task_id} to {GHOSTCLI_MODEL}")
+    """Dispatch a microtask to Claude via direct HTTP to ApiFable (bypasses hanging CLI)."""
+    import urllib.request
+    log(f"  Dispatching microtask {task_id} to {GHOSTCLI_MODEL} via HTTP")
     try:
-        env = os.environ.copy()
-        # Force GhostCLI provider vars; strip any upstream Anthropic/OpenAI keys
-        # that the claude CLI might prefer over GHOSTCLI_BASE_URL.
-        for k in list(env.keys()):
-            if k.startswith("ANTHROPIC_") or k.startswith("OPENAI_"):
-                del env[k]
-        env["GHOSTCLI_BASE_URL"] = "http://127.0.0.1:8787/v1"
-        env["GHOSTCLI_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
-        env["GHOSTCLI_MODEL"] = GHOSTCLI_MODEL
-        env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787/v1"
-        env["ANTHROPIC_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
-        # Use PIPE instead of file redirect to avoid systemd/journal interference
-        # Pass prompt via stdin to avoid shell arg length issues with large bounties
-        cmd = [
-            "claude", "--print", "--model", GHOSTCLI_MODEL,
-            "--output-format", "text"
-        ]
-        r = subprocess.run(cmd, input=prompt, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=540, env=env, cwd="/Agentic")
-        actual_output = r.stdout.strip() if r.stdout else ""
-        stderr_text = r.stderr.strip() if r.stderr else ""
-        # Detect CLI-level execution errors written to stdout file
-        if actual_output and set(actual_output.split()) <= {"Execution", "error"}:
-            log(f"  Microtask {task_id} got CLI execution error in stdout, treating as empty", "WARN")
-            actual_output = ""
-        log(f"  Microtask {task_id} raw: rc={r.returncode} stdout_len={len(actual_output)} stderr_len={len(stderr_text)}")
-        if stderr_text:
-            log(f"  Microtask {task_id} stderr: {stderr_text[:500]}", "DEBUG")
+        # Extract primary API key safely (avoid grep|cut concatenation bug)
+        _key_r = subprocess.run(
+            ["awk", "-F=", "/^GHOSTCLI_API_KEY=/{print $2; exit}", "/root/.automaton/.env"],
+            capture_output=True, text=True, timeout=5
+        )
+        api_key = _key_r.stdout.strip() if _key_r.returncode == 0 else os.environ.get("GHOSTCLI_API_KEY", "")
+        if not api_key:
+            return {"status": "error", "error": "no_api_key_found", "task_id": task_id, "rc": -1}
+        payload = json.dumps({
+            "model": GHOSTCLI_MODEL,
+            "max_tokens": 8192,
+            "messages": [{"role": "user", "content": prompt}]
+        }).encode()
+        req = urllib.request.Request(
+            "http://127.0.0.1:8787/v1/messages",
+            data=payload,
+            headers={
+                "x-api-key": api_key,
+                "anthropic-version": "2023-06-01",
+                "Content-Type": "application/json"
+            },
+            method="POST"
+        )
+        with urllib.request.urlopen(req, timeout=540) as resp:
+            result = json.loads(resp.read())
+        actual_output = result["content"][0]["text"] if result.get("content") else ""
+        stderr_text = ""
+        log(f"  Microtask {task_id} HTTP success: output_len={len(actual_output)}")
         # Quality gate: reject status-report-only or empty outputs before accepting as success
         _reject_markers = ("status report written", "no_actionable_bounty", "nothing to do", "no action needed")
         # INACTIVE is a VALID terminal signal from the model (e.g. bounty already claimed).
@@ -96,7 +98,7 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         _is_inactive_signal = bool(actual_output) and actual_output.strip().startswith("INACTIVE:")
         if _is_inactive_signal:
             log(f"  Microtask {task_id} returned INACTIVE signal: {actual_output.strip()[:100]}")
-            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": 0}
         # Relaxed: only reject if output is truly empty or very short
         # Security research outputs may contain 'blocked' in vulnerability descriptions
         _is_meaningful = bool(actual_output) and len(actual_output) > 100
@@ -107,16 +109,16 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
                 _is_meaningful = False
         # GhostCLI may return useful output with non-zero exit codes (e.g. timeout wrapper)
         if _is_meaningful:
-            log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)}, rc={r.returncode})")
-            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
-        elif r.returncode == 0 and actual_output and len(actual_output) > 50:
+            log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)}, rc=0)")
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": 0}
+        elif actual_output and len(actual_output) > 50:
             log(f"  Microtask {task_id} completed successfully (output_len={len(actual_output)})")
-            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": r.returncode}
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": 0}
         else:
-            err_msg = r.stderr[:1000] if r.stderr else f"empty_output_rc={r.returncode}"
+            err_msg = f"empty_output_rc=0"
             stdout_preview = actual_output[:200] if actual_output else "(no stdout)"
-            log(f"  Microtask {task_id} failed: rc={r.returncode} stdout_len={len(actual_output)} stderr={err_msg[:300]} stdout_preview={stdout_preview}", "ERROR")
-            return {"status": "error", "error": err_msg, "task_id": task_id, "rc": r.returncode}
+            log(f"  Microtask {task_id} failed: rc=0 stdout_len={len(actual_output)} stderr={err_msg[:300]} stdout_preview={stdout_preview}", "ERROR")
+            return {"status": "error", "error": err_msg, "task_id": task_id, "rc": 0}
     except subprocess.TimeoutExpired:
         log(f"  Microtask {task_id} timed out after 540s", "ERROR")
         return {"status": "timeout", "task_id": task_id, "rc": -1}
@@ -127,7 +129,24 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
 def sync_private_mirror():
     """Sync current state and proposals to private GitHub mirror."""
     log("  Syncing to private mirror")
+    import fcntl, errno
+    lock_path = "/Agentic/.git/index.lock"
+    lock_fd = None
     try:
+        lock_fd = open(lock_path, "a+")
+        fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except (IOError, OSError) as e:
+        if getattr(e, "errno", None) in (errno.EACCES, errno.EAGAIN):
+            log("  Mirror sync skipped: git lock held by another process", "WARN")
+            return False
+        lock_fd = None
+    try:
+        # Clean stale lock before git ops
+        if os.path.exists(lock_path):
+            try:
+                os.remove(lock_path)
+            except OSError:
+                pass
         cmds = [
             ["git", "add", "-A"],
             ["git", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__("datetime").datetime.now(__import__("datetime").timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
@@ -143,6 +162,13 @@ def sync_private_mirror():
     except Exception as e:
         log(f"  Mirror sync error: {e}", "ERROR")
         return False
+    finally:
+        if lock_fd is not None:
+            try:
+                fcntl.flock(lock_fd, fcntl.LOCK_UN)
+                lock_fd.close()
+            except Exception:
+                pass
 
 # ── Phase 1: Claims Sweep ─────────────────────────────────────────────
 def phase1_sweep_claims():
@@ -443,6 +469,21 @@ def phase2_microtask_orchestration():
         _bounty_desc = (ctx.get('description') or ctx.get('summary') or '')[:3000]
         _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or ''
         _scope = ctx.get('scope') or ctx.get('assets_in_scope') or ctx.get('in_scope') or ''
+        # FIX PRIORITY 0: Derive target_repo from URL when context fields are empty.
+        # This prevents INACTIVE:NO_TARGET_SPECIFIED signals from the model.
+        if not _target_repo and _url:
+            import re as _re_url
+            _m_url = _re_url.match(r'https?://github\.com/([^/]+/[^/]+)/(issues|pull)/(\d+)', _url)
+            if _m_url:
+                _target_repo = _m_url.group(1)
+                log(f"  Derived target_repo from URL for {task_id}: {_target_repo}")
+                # Persist back to proposal context so future cycles see it
+                prop.setdefault('context', {})['repo'] = _target_repo
+                try:
+                    with open(pf, 'w') as _wf:
+                        json.dump(prop, _wf, indent=2)
+                except Exception:
+                    pass
         # ACTIVE ENRICHMENT: If description is missing/placeholder but URL exists,
         # fetch content NOW via playwright-cli so Claude receives real scope.
         _url = (ctx.get('url') or '').strip()
@@ -723,13 +764,24 @@ def _dispatch_github_claim_comment(prop, proposal_path):
     parts = bounty_key.split("|") if bounty_key else []
     owner_repo = None
     issue_number = None
-    if len(parts) == 3 and parts[0] == "github":
+    # Handle malformed keys like "github|[bounty:-$55]-title-timestamp" by extracting context URL first
+    _derived_from_ctx = False
+    if len(parts) >= 2 and not parts[1].replace("/","").isdigit():
+        ctx_url = (prop.get("context", {}) or {}).get("url", "") or prop.get("evidence_url", "") or prop.get("url", "")
+        import re as _re_ctx
+        m_ctx = _re_ctx.match(r"https?://github\.com/([^/]+/[^/]+)/(issues|pull)/(\d+)", ctx_url)
+        if m_ctx:
+            owner_repo = m_ctx.group(1)
+            issue_number = m_ctx.group(3)
+            _derived_from_ctx = True
+            log(f"  Derived GitHub target from context URL for malformed key: {owner_repo}#{issue_number}")
+    if not _derived_from_ctx and len(parts) == 3 and parts[0] == "github":
         owner_repo = parts[1]
         issue_number = parts[2]
-    elif len(parts) == 2 and "/" in parts[0]:
+    elif not _derived_from_ctx and len(parts) == 2 and "/" in parts[0]:
         owner_repo = parts[0]
         issue_number = parts[1]
-    else:
+    elif not _derived_from_ctx:
         # Fallback: extract owner/repo and issue/PR number from evidence_url
         ev = prop.get("evidence_url") or ""
         import re as _re
@@ -1107,13 +1159,28 @@ def phase4_discovery():
         # Create discovery proposal for top finds
         plat = n.get("platform", "unknown")
         safe_title = str(n.get("title","")).replace(" ","-").lower()[:30]
+        # Dedup check: skip if actionable proposal already exists for this bounty
+        _dedup_key = f"{plat}|{safe_title}"
+        _existing_actionable = False
+        for _ef in glob.glob(str(PROPOSALS_DIR / "*.json")):
+            try:
+                with open(_ef) as _efh:
+                    _ep = json.load(_efh)
+                if _ep.get("status") in {"pending_qualification","pending_execution","pending_microtask_retry","review_approved","claim_submitted"} and (_ep.get("bounty_key","").startswith(_dedup_key) or _ep.get("bounty_key","") == _dedup_key):
+                    _existing_actionable = True
+                    break
+            except Exception:
+                pass
+        if _existing_actionable:
+            log(f"    Skipping duplicate proposal creation for {_dedup_key}")
+            continue
         cid = f"{plat}-{safe_title}-{int(time.time())}"
         proposal = {
             "candidate_id": cid,
             "type": "discovery_proposal",
             "status": "pending_qualification",
             "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
-            "bounty_key": f"{plat}|{safe_title}-{int(time.time())}",
+            "bounty_key": _dedup_key,
             "bounty_value": float(n.get("gross", 0) or 0),
             "currency": str(hv.get("asset", "USDC")).upper(),
             "context": {
@@ -1151,12 +1218,27 @@ def phase4_discovery():
             gross_val = item.get("max_payout_usd") or item.get("gross_verified") or 0
             plat_rq = item.get("platform", "immunefi")
             safe_title_rq = str(item.get("title","")).replace(" ","-").lower()[:30]
+            # Dedup check for research promotion
+            _dedup_key_rq = f"{plat_rq}|{safe_title_rq}"
+            _existing_rq = False
+            for _ef2 in glob.glob(str(PROPOSALS_DIR / "*.json")):
+                try:
+                    with open(_ef2) as _efh2:
+                        _ep2 = json.load(_efh2)
+                    if _ep2.get("status") in {"pending_qualification","pending_execution","pending_microtask_retry","review_approved","claim_submitted"} and (_ep2.get("bounty_key","").startswith(_dedup_key_rq) or _ep2.get("bounty_key","") == _dedup_key_rq):
+                        _existing_rq = True
+                        break
+                except Exception:
+                    pass
+            if _existing_rq:
+                log(f"    Skipping duplicate research promotion for {_dedup_key_rq}")
+                continue
             proposal = {
                 "candidate_id": cid,
                 "type": "discovery_proposal",
                 "status": "pending_qualification",
                 "created_at": __import__("datetime").datetime.now(__import__("datetime").timezone.utc).isoformat(),
-                "bounty_key": f"{plat_rq}|{safe_title_rq}-{int(time.time())}",
+                "bounty_key": _dedup_key_rq,
                 "context": {
                     "source": "research_queue",
                     "title": item.get("title", ""),

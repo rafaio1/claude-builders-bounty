@@ -15,7 +15,12 @@
   "directive": "Monitor PR for merge. Do NOT re-claim or post. Payout triggers automatically on merge.",
   "created_at": "2026-09-03T08:02:02Z",
   "investigated_at": "2026-09-03T09:22:00Z",
-  "status": "archived_legacy",
+  "status": "review_rejected",
   "archived_reason": "missing_status_field_cleanup",
-  "archived_at": "2026-09-04T11:30:00Z"
+  "archived_at": "2026-09-04T11:30:00Z",
+  "microtask_output": "INACTIVE:NO_TARGET_OR_SCOPE_DEFINED\n\nThe bounty task specification is critically incomplete: Title, Platform, Payout, URL, Target Repo, Scope, and Type are all explicitly marked as \"unknown\" or \"N/A\", and the Description states \"No description available.\" Without a target repository, application endpoint, smart contract address, or defined scope of assets, it is technically impossible to perform static analysis, dynamic testing, or code review. Security research requires a concrete artifact (source code, binary, API spec, or deployed environment) to identify vulnerabilities; generating a report without one would constitute fabrication rather than original analysis. No vulnerability can be validated, reproduced, or remediated against a null target. To proceed, this bounty must be updated with at minimum a valid Target Repo URL or in-scope asset identifier. Until such information is provided, no substantive technical deliverable under Path A, B, C, or D can be produced. This is not a refusal but a factual determination based on the absence of required inputs for security research execution.",
+  "microtask_result": "INACTIVE:NO_TARGET_OR_SCOPE_DEFINED\n\nThe bounty task specification is critically incomplete: Title, Platform, Payout, URL, Target Repo, Scope, and Type are all explicitly marked as \"unknown\" or \"N/A\", and the Description states \"No description available.\" Without a target repository, application endpoint, smart contract address, or defined scope of assets, it is technically impossible to perform static analysis, dynamic testing, or code review. Security research requires a concrete artifact (source code, binary, API spec, or deployed environment) to identify vulnerabilities; generating a report without one would constitute fabrication rather than original analysis. No vulnerability can be validated, reproduced, or remediated against a null target. To proceed, this bounty must be updated with at minimum a valid Target Repo URL or in-scope asset identifier. Until such information is provided, no substantive technical deliverable under Path A, B, C, or D can be produced. This is not a refusal but a factual determination based on the absence of required inputs for security research execution.",
+  "completed_at": "2026-09-05T04:30:46.152431+00:00",
+  "rejection_reason": "inactive_or_insufficient_data",
+  "review_method": "local_heuristic_auto_reject"
 }
