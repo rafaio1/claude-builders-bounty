@@ -162,7 +162,11 @@ def sync_private_mirror():
             pass
     lock_fd = None
     try:
-        lock_fd = open(lock_path, "w")
+        # Use a separate lock file so git's own index.lock is not blocked.
+        # Git internally creates .git/index.lock during add/commit; if we hold
+        # an flock on that same path, git sees "File exists" and aborts with rc=128.
+        _sync_lock_path = "/Agentic/.git/mirror-sync.lock"
+        lock_fd = open(_sync_lock_path, "w")
         fcntl.flock(lock_fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
     except (IOError, OSError) as e:
         if getattr(e, "errno", None) in (errno.EACCES, errno.EAGAIN):
@@ -171,7 +175,7 @@ def sync_private_mirror():
         lock_fd = None
     try:
         cmds = [
-            ["git", "--no-optional-locks", "add", "-A"],
+            ["git", "--no-optional-locks", "add", "-u", "state/", "data/", "logs/"],
             ["git", "--no-optional-locks", "commit", "-m", f"auto-mirror: orchestrator-v4 cycle {__import__('datetime').datetime.now(__import__('datetime').timezone.utc).strftime('%Y%m%d-%H%M%S')}"],
             ["git", "--no-optional-locks", "push", "fork", "sync/autonomous-pipeline-20260903:main", "--force-with-lease"]
         ]
@@ -190,10 +194,9 @@ def sync_private_mirror():
             try:
                 fcntl.flock(lock_fd, fcntl.LOCK_UN)
                 lock_fd.close()
-                # Remove lock file after releasing flock to prevent stale 0-byte
-                # locks from blocking subsequent cycles
-                if os.path.exists(lock_path):
-                    os.remove(lock_path)
+                _sync_lock_path = "/Agentic/.git/mirror-sync.lock"
+                if os.path.exists(_sync_lock_path):
+                    os.remove(_sync_lock_path)
             except Exception:
                 pass
 
