@@ -76,11 +76,13 @@
       "bounty_value": 1200.0,
       "file": "app/audit/gemini_auditor.py",
       "commit": "bf9d0a3",
-      "status": "submitted",
+      "status": "quarantine_unverified_opportunity",
       "repo": "s6pa1rta3n-lab/universal_bounty_fleet",
       "url": "https://github.com/s6pa1rta3n-lab/universal_bounty_fleet/issues/1",
       "pr_url": "https://github.com/s6pa1rta3n-lab/universal_bounty_fleet/pull/7",
-      "submitted_at": "2026-08-29T07:46:22.532635+00:00"
+      "submitted_at": "2026-08-29T07:46:22.532635+00:00",
+      "note": "Quarantined: Controlled rehearsal/test harness. No verified external funding source. Do not count as revenue.",
+      "updated": "2026-09-05T21:52:37Z"
     },
     {
       "repo": "claude-builders-bounty",
@@ -166,11 +168,11 @@
     {
       "repo": "marcelo-earth/marcello",
       "issue": 30,
-      "status": "completed_pending_payout",
+      "status": "false_positive_unverified",
       "confidence": 0.85,
       "claimed_at": "2026-08-30T12:00:36.781833Z",
-      "note": "Auto-claimed via /claim. Python ML token distribution audit. Auto-detected CLOSED state via monitor.",
-      "updated": "2026-08-30T12:15:24.953785+00:00"
+      "note": "Reclassified: No settlement proof. Auto-detected CLOSED state is insufficient for payout confirmation. Value not realized.",
+      "updated": "2026-09-05T21:52:37Z"
     },
     {
       "repo": "eliezerkirubi-sys/quadcopter-rl-control",
@@ -184,20 +186,20 @@
     {
       "repo": "marcelo-earth/marcello",
       "issue": 15,
-      "status": "completed_pending_payout",
+      "status": "false_positive_unverified",
       "confidence": 0.8,
       "claimed_at": "2026-08-30T12:00:36.781864Z",
-      "note": "Auto-claimed via /claim. Reward-hacking audit script. Auto-detected CLOSED state via monitor.",
-      "updated": "2026-08-30T12:15:30.656994+00:00"
+      "note": "Reclassified: No settlement proof. Auto-detected CLOSED state is insufficient for payout confirmation. Value not realized.",
+      "updated": "2026-09-05T21:52:37Z"
     },
     {
       "repo": "tadanobutubutu/screeps",
       "issue": 5,
-      "status": "completed_pending_payout",
+      "status": "false_positive_unverified",
       "confidence": 0.75,
       "claimed_at": "2026-08-30T12:00:36.781870Z",
-      "note": "Auto-claimed via /claim. Dependency dashboard bounty. Auto-detected CLOSED state via monitor.",
-      "updated": "2026-08-30T12:15:33.019381+00:00"
+      "note": "Reclassified: No settlement proof. Auto-detected CLOSED state is insufficient for payout confirmation. Value not realized.",
+      "updated": "2026-09-05T21:52:37Z"
     },
     {
       "repo": "mxx1111/spare-cycles",
@@ -260,11 +262,11 @@
       "repo": "s6pa1rta3n-lab/universal_bounty_fleet",
       "issue": 1,
       "pr": null,
-      "status": "rejected_rehearsal",
+      "status": "quarantine_unverified_opportunity",
       "value_usd": 0,
       "program": "GrantFox OSS",
       "submitted_at": "2026-08-29",
-      "notes": "REJECTED: Controlled judging rehearsal / test harness. No real external funding.",
+      "notes": "Quarantined: Controlled rehearsal/test harness. No verified external funding. Not realizable revenue.",
       "rejected_at": "2026-08-30T23:32:05.968041+00:00"
     },
     {
@@ -273,13 +275,13 @@
       "bounty_value": 1200.0,
       "file": "app/audit/gemini_auditor.py",
       "commit": "480720c",
-      "status": "rejected_rehearsal",
+      "status": "quarantine_unverified_opportunity",
       "repo": "s6pa1rta3n-lab/universal_bounty_fleet",
       "url": "https://github.com/s6pa1rta3n-lab/universal_bounty_fleet/issues/1",
       "pr_url": "https://github.com/s6pa1rta3n-lab/universal_bounty_fleet/pull/11",
       "submitted_at": "2026-08-30T23:05:16.314992+00:00",
       "value_usd": 0,
-      "notes": "REJECTED: Controlled judging rehearsal / test harness. No real external funding.",
+      "notes": "Quarantined: Controlled rehearsal/test harness. No verified external funding. Not realizable revenue.",
       "rejected_at": "2026-08-30T23:32:05.968041+00:00"
     },
     {
@@ -777,5 +779,8 @@
       "note": "Merge check complete: 0 PRs merged yet on claude-builders-bounty. All 11 submissions (5 unique bounties, $575 total) remain open and awaiting review. Pipeline revenue realized: $0. Next action: monitor for merges, explore Immunefi/Web3 quests for faster payout cycles."
     }
   ],
-  "total_value_usd": 150.0
+  "total_value_usd": 150.0,
+  "settled_total": 0,
+  "last_audit": "2026-09-05T21:52:37Z",
+  "audit_action": "Reclassified false positives (marcello#30, marcello#15, screeps#5); Quarantined universal_bounty_fleet#1/PR#7; Confirmed settled_total=0 per financial validation rule."
 }
