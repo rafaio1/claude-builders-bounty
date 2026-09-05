@@ -72,24 +72,22 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
         env["GHOSTCLI_MODEL"] = GHOSTCLI_MODEL
         env["ANTHROPIC_BASE_URL"] = "http://127.0.0.1:8787/v1"
         env["ANTHROPIC_API_KEY"] = os.environ.get("GHOSTCLI_API_KEY", "")
-        tmp_path = f"/tmp/microtask_{task_id}_{os.getpid()}.txt"
+        # Use PIPE instead of file redirect to avoid systemd/journal interference
+        # Pass prompt via stdin to avoid shell arg length issues with large bounties
         cmd = [
             "claude", "--print", "--model", GHOSTCLI_MODEL,
-            "-p", prompt, "--output-format", "text"
+            "--output-format", "text"
         ]
-        with open(tmp_path, 'w') as outf:
-            r = subprocess.run(cmd, stdout=outf, stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, timeout=540, env=env, cwd="/Agentic")
-        with open(tmp_path, 'r') as inf:
-            actual_output = inf.read().strip()
+        r = subprocess.run(cmd, input=prompt, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, timeout=540, env=env, cwd="/Agentic")
+        actual_output = r.stdout.strip() if r.stdout else ""
+        stderr_text = r.stderr.strip() if r.stderr else ""
         # Detect CLI-level execution errors written to stdout file
         if actual_output and set(actual_output.split()) <= {"Execution", "error"}:
             log(f"  Microtask {task_id} got CLI execution error in stdout, treating as empty", "WARN")
             actual_output = ""
-        log(f"  Microtask {task_id} raw: rc={r.returncode} file_size={os.path.getsize(tmp_path)} output_len={len(actual_output)}")
-        try:
-            os.unlink(tmp_path)
-        except OSError:
-            pass
+        log(f"  Microtask {task_id} raw: rc={r.returncode} stdout_len={len(actual_output)} stderr_len={len(stderr_text)}")
+        if stderr_text:
+            log(f"  Microtask {task_id} stderr: {stderr_text[:500]}", "DEBUG")
         # Quality gate: reject status-report-only or empty outputs before accepting as success
         _reject_markers = ("status report written", "no_actionable_bounty", "nothing to do", "no action needed")
         # INACTIVE is a VALID terminal signal from the model (e.g. bounty already claimed).
