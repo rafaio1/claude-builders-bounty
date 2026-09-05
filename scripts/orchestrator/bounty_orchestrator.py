@@ -307,7 +307,17 @@ def phase2_microtask_orchestration():
                     actionable.append((str(pf), prop))
                     continue
         # Fallback: search by candidate_id
-        matches = list(PROPOSALS_DIR.glob(f"*{cid}*.json"))
+        # Enhanced fallback: extract issue number from candidate_id for legacy proposals
+        import re as _re
+        issue_match = _re.search(r'(\d{4,})$', str(cid))
+        if issue_match:
+            issue_num = issue_match.group(1)
+            # Prefer non-abandon files matching the issue number
+            candidates = sorted(PROPOSALS_DIR.glob(f"*[_-]{issue_num}.json")) + \
+                         sorted(PROPOSALS_DIR.glob(f"*[_-]{issue_num}_*.json"))
+            matches = [m for m in candidates if '_abandon_' not in m.name] or candidates[:1]
+        else:
+            matches = list(PROPOSALS_DIR.glob(f"*{cid}*.json"))
         for m in matches[:1]:
             prop = load_json(m)
             if prop and prop.get("status") not in ("microtask_completed", "review_rejected", "submitted_to_platform"):
