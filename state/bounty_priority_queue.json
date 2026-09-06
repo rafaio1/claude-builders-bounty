@@ -7420,9 +7420,9 @@
   ],
   "aggregator": "bounty_priority_queue",
   "funds_moved": false,
-  "generated_at": "2026-09-06T00:12:27.753978Z",
+  "generated_at": "2026-09-06T00:22:42.052561Z",
   "input_hashes": {
-    "algora": "8ebf45b741a8189823d052e7182b6ce720e158dcd5eeb5c8e0679546a2206e7f",
+    "algora": "4821f1d28faa220510b75e4b6374ba4060384dc46375766ba129b33dc6225912",
     "opire": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
     "payout_route_map": "64e7ee8ef3a88ca4c2a1fe73aad06ca1e233af6b35a03cd82302b0731a6599d7",
     "rustchain": "0fffe06668093f24752cde05c9d84f6e1c1d233906475edbf3dabeaef8423705",
@@ -9033,71 +9033,6 @@
       "time_to_wise_p90_seconds": null,
       "title": "Create a Video About Swap.io",
       "url": null
-    },
-    {
-      "action": null,
-      "action_contract": null,
-      "agent_access": "HUMAN_REQUIRED",
-      "asset": "USD",
-      "asset_network_exact": false,
-      "candidate_id": "c4869c6251d3c5ef1088421729b7282aa1b8477a8525de609f8408edebd286ed",
-      "claim_command": null,
-      "deadline": null,
-      "expected_wise_net_verified": null,
-      "explicit_execution_contract": false,
-      "financial_classification": "unrealized_opportunity_not_revenue",
-      "funds_moved": false,
-      "gross_classification": "verified_unrealized_opportunity_not_revenue",
-      "gross_verified": 150,
-      "human_gates": {
-        "identity": false,
-        "kyc": false,
-        "manual": true,
-        "real_funds": false,
-        "social": false,
-        "trading": false,
-        "video": true
-      },
-      "human_gates_complete": true,
-      "listing_verified": true,
-      "net_if_paid_verified": null,
-      "network": null,
-      "payment_confidence_lcb_ppm": null,
-      "platform": null,
-      "provider": "algora",
-      "provider_verified": true,
-      "qualification_decision": "rejected",
-      "realized": 0,
-      "reason_codes": [
-        "agent_access_not_allowed",
-        "deadline_missing_or_invalid",
-        "exact_asset_network_route_missing",
-        "exact_network_missing",
-        "expected_wise_net_not_verified",
-        "explicit_execution_contract_missing",
-        "human_gate_manual",
-        "human_gate_video",
-        "net_if_paid_not_verified",
-        "payment_confidence_lcb_missing",
-        "provider_workflow_human_gate",
-        "qualification_rejected",
-        "qualifier:algora_attempt_or_claim_activity_present",
-        "qualifier:license_not_proven",
-        "qualifier:linked_pull_request_activity_present",
-        "qualifier:repository_is_fork_or_unknown",
-        "route_pending",
-        "self_custody_rail_not_verified",
-        "time_to_wise_p90_missing"
-      ],
-      "route_id": null,
-      "route_status": "route_pending",
-      "self_custody_rail_verified": false,
-      "source": "algora",
-      "source_fresh": true,
-      "stable_id": "algora:c4869c6251d3c5ef1088421729b7282aa1b8477a8525de609f8408edebd286ed",
-      "time_to_wise_p90_seconds": null,
-      "title": "\ud83d\udcf1 Epic: BAWES Universe Mobile App (Android + iOS)",
-      "url": "https://github.com/BAWES-Universe/workadventure-universe/issues/1"
     },
     {
       "action": null,
@@ -12158,6 +12093,75 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
+      "candidate_id": "a7a05cc2e8012dbff5f7811ba4a480fb459ad8a06c092ac5bee77351fc728f2a",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:a7a05cc2e8012dbff5f7811ba4a480fb459ad8a06c092ac5bee77351fc728f2a",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Laravel ] Add failed job monitoring listener and summary command",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/789"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
       "candidate_id": "abeea412bd6e2719a99e4eb0abfba30ed28f9908fc42acd425cd2578a5a6c8d8",
       "claim_command": null,
       "deadline": null,
@@ -12220,6 +12224,75 @@
       "time_to_wise_p90_seconds": null,
       "title": "[ Brainfuck ] Implement a program that prints the first 20 prime numbers",
       "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/652"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
+      "candidate_id": "b03e5395fe966929fb444ddfa7c6588725e0a420d09a2bf07a7cddbe7d278c5f",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:b03e5395fe966929fb444ddfa7c6588725e0a420d09a2bf07a7cddbe7d278c5f",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Laravel ] Add database health check endpoint with retry logic",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/785"
     },
     {
       "action": null,
@@ -13265,6 +13338,75 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
+      "candidate_id": "d69df67155754d78a8dac0b5342fe97172cacbbdda2b8497f18ed8851e74074d",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:d69df67155754d78a8dac0b5342fe97172cacbbdda2b8497f18ed8851e74074d",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ Laravel ] Add Slack notification service with retry and timeout handling",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/791"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
       "candidate_id": "d83078c081e2db6fe1701611aa8be87417d0bb1ee5363579e31f2fc09aa5946c",
       "claim_command": null,
       "deadline": null,
@@ -13915,7 +14057,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.555364+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.250395+00:00"
     },
     {
       "stable_id": "code4rena:C4-euler-finance",
@@ -13947,7 +14089,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.555498+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.349937+00:00"
     },
     {
       "stable_id": "code4rena:C4-maple-finance",
@@ -13979,7 +14121,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.555582+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350051+00:00"
     },
     {
       "stable_id": "code4rena:C4-morpho-labs",
@@ -14011,7 +14153,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.555638+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350122+00:00"
     },
     {
       "stable_id": "code4rena:C4-notional-finance",
@@ -14043,7 +14185,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.555728+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350186+00:00"
     },
     {
       "stable_id": "code4rena:C4-optimism-collective",
@@ -14075,7 +14217,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.654023+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350254+00:00"
     },
     {
       "stable_id": "code4rena:C4-ribbon-finance",
@@ -14107,7 +14249,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.654254+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350306+00:00"
     },
     {
       "stable_id": "code4rena:C4-stakedao",
@@ -14139,7 +14281,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.654349+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350367+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-aerodrome-finance",
@@ -14171,7 +14313,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.654726+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.350937+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-beefy-finance",
@@ -14203,7 +14345,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.655438+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351034+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-convex-finance",
@@ -14235,7 +14377,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.655739+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351149+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-frax-finance",
@@ -14267,7 +14409,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850260+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351234+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-gmx-v2",
@@ -14299,7 +14441,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850618+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351334+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-kwenta-exchange",
@@ -14331,7 +14473,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850723+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351409+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-lyra-finance",
@@ -14363,7 +14505,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850794+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351569+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-polynomial-protocol",
@@ -14395,7 +14537,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850862+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351690+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-thales-protocol",
@@ -14427,7 +14569,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850915+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351803+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-velodrome-finance",
@@ -14459,7 +14601,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T00:15:16.850974+00:00"
+      "_ingested_at": "2026-09-06T00:25:19.351904+00:00"
     }
   ],
   "policy": {
@@ -14494,22 +14636,22 @@
   },
   "realized": 0,
   "research_queue": [],
-  "result_sha256": "0d3ce91089d17f5aa801978d6827f7f3408463efb63ff574b5f959cf375de794",
+  "result_sha256": "ae97573492a3daa909610e238a59f62ccf4ae46ac01f1c6e0a12cff4e811a2a7",
   "schema_version": "1.0",
   "source_health": {
     "algora": {
-      "age_seconds": 2143,
+      "age_seconds": 656,
       "fresh": true,
-      "input_sha256": "8ebf45b741a8189823d052e7182b6ce720e158dcd5eeb5c8e0679546a2206e7f",
+      "input_sha256": "4821f1d28faa220510b75e4b6374ba4060384dc46375766ba129b33dc6225912",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-05T23:36:43.851674Z",
+      "observed_at": "2026-09-06T00:11:45.254612Z",
       "reason_codes": [],
       "source": "algora",
       "status": "ok",
       "timestamp_field": "generated_at"
     },
     "opire": {
-      "age_seconds": 140574,
+      "age_seconds": 141188,
       "fresh": false,
       "input_sha256": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
       "max_age_seconds": 7200,
@@ -14522,7 +14664,7 @@
       "timestamp_field": "generated_at"
     },
     "payout_route_map": {
-      "age_seconds": 1153,
+      "age_seconds": 1768,
       "fresh": true,
       "input_sha256": "64e7ee8ef3a88ca4c2a1fe73aad06ca1e233af6b35a03cd82302b0731a6599d7",
       "max_age_seconds": 7200,
@@ -14533,7 +14675,7 @@
       "timestamp_field": "generated_at"
     },
     "rustchain": {
-      "age_seconds": 996,
+      "age_seconds": 1610,
       "fresh": true,
       "input_sha256": "0fffe06668093f24752cde05c9d84f6e1c1d233906475edbf3dabeaef8423705",
       "max_age_seconds": 7200,
@@ -14544,7 +14686,7 @@
       "timestamp_field": "scouted_at"
     },
     "superteam_large": {
-      "age_seconds": 469,
+      "age_seconds": 1083,
       "fresh": true,
       "input_sha256": "b4b450649b19afe2f4bd3317751cf1a9a07ae3550f1ef7ad9fa2c494e4ca4abd",
       "max_age_seconds": 7200,
@@ -14558,16 +14700,16 @@
   "status": "degraded_fail_closed",
   "summary": {
     "action_count": 120,
-    "candidate_count": 218,
+    "candidate_count": 220,
     "duplicate_source_candidate_count": 0,
     "funds_moved": false,
-    "human_gate_monitor_count": 91,
-    "monitor_only_count": 98,
+    "human_gate_monitor_count": 93,
+    "monitor_only_count": 100,
     "realized": 0,
     "research_count": 0,
     "route_pending_research_count": 0,
     "source_count": 5,
     "source_fresh_count": 4,
-    "verified_gross_opportunity_count": 157
+    "verified_gross_opportunity_count": 156
   }
 }
