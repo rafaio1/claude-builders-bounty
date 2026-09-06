@@ -7442,13 +7442,13 @@
   ],
   "aggregator": "bounty_priority_queue",
   "funds_moved": false,
-  "generated_at": "2026-09-06T07:26:15.559465Z",
+  "generated_at": "2026-09-06T07:46:50.458002Z",
   "input_hashes": {
-    "algora": "934cfefa41b2bc4ea6bfc2f6823f601d90f03385b134b886b19a6a330ac1c156",
+    "algora": "f2a7b32eb637cc25a95d4cfb06db5fe3b4bc6ad00f8b7f9fdad73e9f9a74da7b",
     "opire": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
-    "payout_route_map": "43b3f8bc66241751d45dff83ef7ef84782b3e88f3c3ee39fbc9a1e5bb74072cd",
-    "rustchain": "72d8e204670e5d622ccf3ed7eff4603e0757f9a1085a2df2db0172e1ad1b73eb",
-    "superteam_large": "9ed70d9f7bf2f787cc377b270e6cc68ce195f3a184367f4e618e4ba3e34bcef2"
+    "payout_route_map": "87e140f7e927599c4c1d4dafe90f789b6191bc4266f9187842e45b13a8f553aa",
+    "rustchain": "19531b48001a4a50d921943bbc4088fd86c4a364663be71d419e35051ad30381",
+    "superteam_large": "0e3f7d65dd54e00a82fb6b0011c84838335e8b408e6bb758718ed4397e2c7ed2"
   },
   "monitor_only": [
     {
@@ -15438,6 +15438,75 @@
       "agent_access": "HUMAN_REQUIRED",
       "asset": null,
       "asset_network_exact": false,
+      "candidate_id": "dbf00d7f8709a4e9597323bf376dddd9a75b0eb2d390d6ec00a1e9949260ce35",
+      "claim_command": null,
+      "deadline": null,
+      "expected_wise_net_verified": null,
+      "explicit_execution_contract": false,
+      "financial_classification": "unrealized_opportunity_not_revenue",
+      "funds_moved": false,
+      "gross_classification": "unverified_not_revenue",
+      "gross_verified": null,
+      "human_gates": {
+        "identity": false,
+        "kyc": false,
+        "manual": true,
+        "real_funds": false,
+        "social": false,
+        "trading": false,
+        "video": true
+      },
+      "human_gates_complete": true,
+      "listing_verified": false,
+      "net_if_paid_verified": null,
+      "network": null,
+      "payment_confidence_lcb_ppm": null,
+      "platform": null,
+      "provider": "algora",
+      "provider_verified": false,
+      "qualification_decision": "rejected",
+      "realized": 0,
+      "reason_codes": [
+        "agent_access_not_allowed",
+        "deadline_missing_or_invalid",
+        "exact_asset_missing",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
+        "expected_wise_net_not_verified",
+        "explicit_execution_contract_missing",
+        "gross_not_verified",
+        "human_gate_manual",
+        "human_gate_video",
+        "listing_not_verified",
+        "net_if_paid_not_verified",
+        "payment_confidence_lcb_missing",
+        "provider_not_verified",
+        "provider_workflow_human_gate",
+        "qualification_rejected",
+        "qualifier:algora_attempt_or_claim_activity_present",
+        "qualifier:canonical_algora_open_board_conflict",
+        "qualifier:linked_pull_request_activity_present",
+        "qualifier:recent_merged_pr_history_missing",
+        "route_pending",
+        "self_custody_rail_not_verified",
+        "time_to_wise_p90_missing"
+      ],
+      "route_id": null,
+      "route_status": "route_pending",
+      "self_custody_rail_verified": false,
+      "source": "algora",
+      "source_fresh": true,
+      "stable_id": "algora:dbf00d7f8709a4e9597323bf376dddd9a75b0eb2d390d6ec00a1e9949260ce35",
+      "time_to_wise_p90_seconds": null,
+      "title": "[ T3 Code ] Add Developer and Git menus to Electron application menu bar",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/831"
+    },
+    {
+      "action": null,
+      "action_contract": null,
+      "agent_access": "HUMAN_REQUIRED",
+      "asset": null,
+      "asset_network_exact": false,
       "candidate_id": "dcecc11eff5ee480d2b247126a5ffb818bf705b82d88cbc3a7ad587e585a685c",
       "claim_command": null,
       "deadline": null,
@@ -16294,7 +16363,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.257631+00:00"
+      "_ingested_at": "2026-09-06T07:51:45.957039+00:00"
     },
     {
       "stable_id": "code4rena:C4-euler-finance",
@@ -16326,7 +16395,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.257783+00:00"
+      "_ingested_at": "2026-09-06T07:51:45.957237+00:00"
     },
     {
       "stable_id": "code4rena:C4-maple-finance",
@@ -16358,7 +16427,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.257864+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052107+00:00"
     },
     {
       "stable_id": "code4rena:C4-morpho-labs",
@@ -16390,7 +16459,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.257935+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052199+00:00"
     },
     {
       "stable_id": "code4rena:C4-notional-finance",
@@ -16422,7 +16491,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.258005+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052329+00:00"
     },
     {
       "stable_id": "code4rena:C4-optimism-collective",
@@ -16454,7 +16523,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.258077+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052429+00:00"
     },
     {
       "stable_id": "code4rena:C4-ribbon-finance",
@@ -16486,7 +16555,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.258181+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052493+00:00"
     },
     {
       "stable_id": "code4rena:C4-stakedao",
@@ -16518,7 +16587,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.258277+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.052578+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-aerodrome-finance",
@@ -16550,7 +16619,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.258539+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055152+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-beefy-finance",
@@ -16582,7 +16651,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.754554+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055243+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-convex-finance",
@@ -16614,7 +16683,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.754742+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055336+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-frax-finance",
@@ -16646,7 +16715,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.754859+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055400+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-gmx-v2",
@@ -16678,7 +16747,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.754944+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055465+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-kwenta-exchange",
@@ -16710,7 +16779,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.755021+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055549+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-lyra-finance",
@@ -16742,7 +16811,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.755139+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055612+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-polynomial-protocol",
@@ -16774,7 +16843,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.755201+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055683+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-thales-protocol",
@@ -16806,7 +16875,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.755258+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055747+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-velodrome-finance",
@@ -16838,7 +16907,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T07:26:45.755311+00:00"
+      "_ingested_at": "2026-09-06T07:51:46.055810+00:00"
     }
   ],
   "policy": {
@@ -16874,77 +16943,77 @@
   "realized": 0,
   "research_queue": [
     {
-      "candidate_id": "immunefi-cosmos-1788680017",
+      "candidate_id": "immunefi-cosmos-1788680731",
       "platform": "immunefi",
       "title": "Cosmos",
       "max_payout_usd": 50000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/cosmos/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-cosmos-1788680017-569afccfb77d.json",
-      "qualified_at": "2026-09-06T07:39:59.161887+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-cosmos-1788680731-668a5a60174f.json",
+      "qualified_at": "2026-09-06T07:49:57.354073+00:00",
       "expected_net_to_wise": null
     },
     {
-      "candidate_id": "immunefi-dexe-protocol-1788680017",
+      "candidate_id": "immunefi-dexe-protocol-1788680732",
       "platform": "immunefi",
       "title": "DeXe Protocol",
       "max_payout_usd": 500000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/dexe-protocol/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-dexe-protocol-1788680017-557316d89b0f.json",
-      "qualified_at": "2026-09-06T07:39:59.557181+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-dexe-protocol-1788680732-920606493eb0.json",
+      "qualified_at": "2026-09-06T07:49:57.555822+00:00",
       "expected_net_to_wise": null
     },
     {
-      "candidate_id": "immunefi-ens-1788680018",
+      "candidate_id": "immunefi-ens-1788680733",
       "platform": "immunefi",
       "title": "ENS",
       "max_payout_usd": 250000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/ens/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ens-1788680018-3d58b4f2ebf4.json",
-      "qualified_at": "2026-09-06T07:39:59.561140+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-ens-1788680733-09423b2bf5ff.json",
+      "qualified_at": "2026-09-06T07:49:57.855095+00:00",
       "expected_net_to_wise": null
     },
     {
-      "candidate_id": "immunefi-ethena-1788680019",
+      "candidate_id": "immunefi-ethena-1788680734",
       "platform": "immunefi",
       "title": "Ethena",
       "max_payout_usd": 3000000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/ethena/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788680019-9adc1ff02df5.json",
-      "qualified_at": "2026-09-06T07:40:00.458786+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-ethena-1788680734-50f540849d34.json",
+      "qualified_at": "2026-09-06T07:49:57.953069+00:00",
       "expected_net_to_wise": null
     },
     {
-      "candidate_id": "immunefi-hedera-1788680019",
+      "candidate_id": "immunefi-hedera-1788680736",
       "platform": "immunefi",
       "title": "Hedera",
       "max_payout_usd": 30000.0,
       "payout_asset": "USDC",
       "url": "https://immunefi.com/bug-bounty/hedera/information/",
-      "source_file": "/Agentic/data/aro/proposals/immunefi-hedera-1788680019-65af5a143ff9.json",
-      "qualified_at": "2026-09-06T07:40:00.466932+00:00",
+      "source_file": "/Agentic/data/aro/proposals/immunefi-hedera-1788680736-0a42fd5a3e5a.json",
+      "qualified_at": "2026-09-06T07:49:57.957270+00:00",
       "expected_net_to_wise": null
     }
   ],
-  "result_sha256": "cbd336418952a785e71b5a8921fad02b691dd0259bb4f99668b0b67afd032b96",
+  "result_sha256": "f409da5d2656207ff4819b2b618bd8c8f3ab4e48bf9dc76905eef64f6bf5d15b",
   "schema_version": "1.0",
   "source_health": {
     "algora": {
-      "age_seconds": 2209,
+      "age_seconds": 1207,
       "fresh": true,
-      "input_sha256": "934cfefa41b2bc4ea6bfc2f6823f601d90f03385b134b886b19a6a330ac1c156",
+      "input_sha256": "f2a7b32eb637cc25a95d4cfb06db5fe3b4bc6ad00f8b7f9fdad73e9f9a74da7b",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-06T06:49:25.950594Z",
+      "observed_at": "2026-09-06T07:26:43.253747Z",
       "reason_codes": [],
       "source": "algora",
       "status": "ok",
       "timestamp_field": "generated_at"
     },
     "opire": {
-      "age_seconds": 166602,
+      "age_seconds": 167837,
       "fresh": false,
       "input_sha256": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
       "max_age_seconds": 7200,
@@ -16957,33 +17026,33 @@
       "timestamp_field": "generated_at"
     },
     "payout_route_map": {
-      "age_seconds": 1089,
+      "age_seconds": 467,
       "fresh": true,
-      "input_sha256": "43b3f8bc66241751d45dff83ef7ef84782b3e88f3c3ee39fbc9a1e5bb74072cd",
+      "input_sha256": "87e140f7e927599c4c1d4dafe90f789b6191bc4266f9187842e45b13a8f553aa",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-06T07:08:06.353571Z",
+      "observed_at": "2026-09-06T07:39:03.060275Z",
       "reason_codes": [],
       "source": "payout_route_map",
       "status": "ok",
       "timestamp_field": "generated_at"
     },
     "rustchain": {
-      "age_seconds": 1796,
+      "age_seconds": 1232,
       "fresh": true,
-      "input_sha256": "72d8e204670e5d622ccf3ed7eff4603e0757f9a1085a2df2db0172e1ad1b73eb",
+      "input_sha256": "19531b48001a4a50d921943bbc4088fd86c4a364663be71d419e35051ad30381",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-06T06:56:19.353528Z",
+      "observed_at": "2026-09-06T07:26:17.459046Z",
       "reason_codes": [],
       "source": "rustchain",
       "status": "ok",
       "timestamp_field": "scouted_at"
     },
     "superteam_large": {
-      "age_seconds": 1537,
+      "age_seconds": 970,
       "fresh": true,
-      "input_sha256": "9ed70d9f7bf2f787cc377b270e6cc68ce195f3a184367f4e618e4ba3e34bcef2",
+      "input_sha256": "0e3f7d65dd54e00a82fb6b0011c84838335e8b408e6bb758718ed4397e2c7ed2",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-06T07:00:38.552367Z",
+      "observed_at": "2026-09-06T07:30:39.956091Z",
       "reason_codes": [],
       "source": "superteam_large",
       "status": "ok",
@@ -16993,11 +17062,11 @@
   "status": "degraded_fail_closed",
   "summary": {
     "action_count": 120,
-    "candidate_count": 252,
+    "candidate_count": 253,
     "duplicate_source_candidate_count": 0,
     "funds_moved": false,
-    "human_gate_monitor_count": 126,
-    "monitor_only_count": 132,
+    "human_gate_monitor_count": 127,
+    "monitor_only_count": 133,
     "realized": 0,
     "research_count": 0,
     "route_pending_research_count": 0,
