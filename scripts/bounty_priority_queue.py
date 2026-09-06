@@ -1041,6 +1041,10 @@ def _normalized_candidate(
         "source": source,
         "candidate_id": candidate_id,
         "stable_id": f"{source}:{candidate_id}",
+        "status": (
+            str(raw.get("status") or raw.get("listing_status") or "").strip().lower()
+            or ("open" if source == "rustchain" and isinstance(raw.get("execution_contract"), dict) and raw["execution_contract"].get("autonomous") else None)
+        ),
         "title": title[:300],
         "provider": provider_name[:100],
         "platform": platform.lower()[:40] if platform else None,
