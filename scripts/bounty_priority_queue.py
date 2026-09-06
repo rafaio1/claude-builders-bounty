@@ -1279,6 +1279,10 @@ def build_priority_queue(
                 # Attach payment confidence if available
                 if ov.get("payment_confidence_lcb") is not None:
                     row["overlay_payment_confidence"] = ov["payment_confidence_lcb"]
+    # Re-sort action_queue after overlay promotion mutated verified metrics
+    queues["action_queue"].sort(key=_action_sort_key)
+    queues["research_queue"].sort(key=_opportunity_sort_key)
+    queues["monitor_only"].sort(key=_opportunity_sort_key)
     # Re-bucket rows into correct queues after overlay promotion mutated row["queue"]
     promoted_action = [r for r in all_rows if r.get("queue") == "action"]
     promoted_research = [r for r in all_rows if r.get("queue") == "research"]
