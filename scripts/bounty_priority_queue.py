@@ -1267,10 +1267,22 @@ def build_priority_queue(
                         row.setdefault("economics", {})["expected_wise_net_verified"] = ov["expected_wise_net"]
                         row["economics"]["economics_verified"] = True
                         row["route_complete_verified"] = True
+                        # Also promote to top-level keys for _action_sort_key
+                        row["expected_wise_net_verified"] = ov["expected_wise_net"]
                     if ov.get("payment_confidence_lcb") is not None:
                         row.setdefault("economics", {})["payment_confidence_lcb"] = ov["payment_confidence_lcb"]
+                        # Convert fraction to ppm for top-level sort key
+                        lcb_val = ov["payment_confidence_lcb"]
+                        if isinstance(lcb_val, (int, float)) and 0 <= lcb_val <= 1:
+                            row["payment_confidence_lcb_ppm"] = int(lcb_val * 1_000_000)
+                        elif isinstance(lcb_val, (int, float)) and lcb_val > 1:
+                            row["payment_confidence_lcb_ppm"] = int(lcb_val)
                     if ov.get("time_to_wise_p90_hours") is not None:
                         row.setdefault("economics", {})["time_to_wise_p90_hours"] = ov["time_to_wise_p90_hours"]
+                        # Convert hours to seconds for top-level sort key
+                        hrs = ov["time_to_wise_p90_hours"]
+                        if isinstance(hrs, (int, float)):
+                            row["time_to_wise_p90_seconds"] = int(hrs * 3600)
                 # Promote to research if there is expected value but route not yet verified
                 elif (ov.get("expected_wise_net") or 0) > 0 and row.get("queue") == "monitor_only":
                     row["queue"] = "research"
