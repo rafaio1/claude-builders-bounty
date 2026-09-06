@@ -51,3 +51,18 @@ workspace/elya-nes-bench/mesen2-src/
 workspace/elya-nes-bench/repo/
 workspace/pr-email-actions/ophirpay/
 workspace/rustchain-poa-explainer/
+
+# Volatile state/logs excluded from auto-mirror (not durable evidence)
+state/bounty_priority_queue.json
+state/github_usdc_bounty_scanner_state.json
+state/rustchain_bounty_scout_state.json
+state/superteam_large_bounty_scout.json
+state/superteam_usdc_scout.json
+state/email_outbox_dispatcher_state.json
+logs/*.log
+logs/audits/
+
+# Additional volatile artifacts excluded from auto-mirror
+p2p-stack/robosats/node/db/pg_stat_tmp/
+revenue/code4rena_opportunities/*.json
+revenue/github_title_opportunities/*.json
