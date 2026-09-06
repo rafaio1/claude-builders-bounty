@@ -366,6 +366,14 @@ def phase2_microtask_orchestration():
     except Exception as _ble:
         log.warning(f"blocklist post-filter skipped: {_ble}")
     # --- END BLOCKLIST POST-FILTER ---
+    # --- NULL-ID / ZERO-GROSS POST-FILTER ---
+    for _qname in ("action_queue", "research_queue"):
+        queue[_qname] = [
+            e for e in queue.get(_qname, [])
+            if (e.get("id") or e.get("candidate_id"))
+            and (float(e.get("gross_verified", 0) or e.get("bounty_value", 0) or e.get("max_payout_usd", 0) or 0) > 0)
+        ]
+    # --- END NULL-ID / ZERO-GROSS POST-FILTER ---
     action_items = queue.get("action_queue", [])
     research_items = queue.get("research_queue", [])
     results["total_scanned"] = len(action_items) + len(research_items)
