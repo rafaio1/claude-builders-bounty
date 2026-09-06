@@ -1205,7 +1205,7 @@ def build_priority_queue(
                 with open(_pf) as _f:
                     _pd = json.load(_f)
                 _pstatus = _pd.get("status", "") or _pd.get("next_status", "")
-                if _pstatus not in ("pending_execution", "review_approved"):
+                if _pstatus != "pending_execution":
                     continue
                 _pcid = _pd.get("candidate_id") or _pd.get("bounty_key") or ""
                 if not _pcid:
@@ -1215,12 +1215,7 @@ def build_priority_queue(
                     continue
                 seen.add(_pidentity)
                 _pctx = _pd.get("context", {}) or {}
-                _pgross = parse_decimal(
-                    _pctx.get("gross_verified")
-                    or _pctx.get("payout_amount")
-                    or _pctx.get("gross")
-                    or _pd.get("bounty_value")
-                )
+                _pgross = parse_decimal(_pctx.get("gross_verified") or _pctx.get("payout_amount"))
                 _pentry = {
                     "candidate_id": _pcid,
                     "source": "proposals_dir",
@@ -1241,10 +1236,7 @@ def build_priority_queue(
                     "route_complete_verified": False,
                     "generated_at": iso_timestamp(current),
                 }
-                if _pstatus == "review_approved":
-                    queues["research_queue"].append(_pentry)
-                else:
-                    queues["action_queue"].append(_pentry)
+                queues["action_queue"].append(_pentry)
                 _ingested += 1
             except Exception:
                 pass
