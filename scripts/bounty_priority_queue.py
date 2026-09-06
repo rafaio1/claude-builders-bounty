@@ -1242,6 +1242,20 @@ def build_priority_queue(
                     "generated_at": iso_timestamp(current),
                 }
                 if _pstatus == "review_approved":
+                    _ra_action = _pd.get("action") or _pd.get("next_action")
+                    _ra_comment = _pd.get("proposed_comment") or _pd.get("comment")
+                    _ra_skip = False
+                    if not _ra_action or (isinstance(_ra_action, (int, float)) and _ra_action == 0):
+                        _ra_skip = True
+                    elif isinstance(_ra_action, str) and not _ra_action.strip():
+                        _ra_skip = True
+                    if not _ra_skip:
+                        if not _ra_comment or (isinstance(_ra_comment, (int, float)) and _ra_comment == 0):
+                            _ra_skip = True
+                        elif isinstance(_ra_comment, str) and not _ra_comment.strip():
+                            _ra_skip = True
+                    if _ra_skip:
+                        continue
                     queues["research_queue"].append(_pentry)
                 else:
                     queues["action_queue"].append(_pentry)
