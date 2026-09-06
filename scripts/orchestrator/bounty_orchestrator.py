@@ -1323,7 +1323,7 @@ def phase4_discovery():
                 results["skipped_rtc"] += 1
                 continue
             # Normalize field names across platforms
-            gross = opp.get("max_bounty_usd") or opp.get("prize_pool_usd") or 0
+            gross = opp.get("max_bounty_usd") or opp.get("prize_pool_usd") or opp.get("amount_usd") or 0
             title = opp.get("name") or opp.get("sponsor") or opp.get("title") or opp.get("id", "")
             url = opp.get("url", "")
             payout = opp.get("payout_type") or opp.get("payout_method") or "crypto"
