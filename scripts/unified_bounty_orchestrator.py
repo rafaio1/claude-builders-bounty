@@ -219,9 +219,13 @@ def phase4_discovery():
     log("=== PHASE 4: DISCOVERY ===")
     # Trigger existing discovery scripts asynchronously with strict timeouts
     discovery_scripts = [
-        ROOT / "scripts" / "superteam_bounty_scout.py",
+        ROOT / "scripts" / "agentic_superteam_large_bounty_scout.py",
+        ROOT / "scripts" / "agentic_superteam_usdc_scout.py",
         ROOT / "scripts" / "algora_bounty_scanner.py",
-        ROOT / "scripts" / "opire_bounty_scanner.py",
+        ROOT / "scripts" / "rustchain_bounty_scout.py",
+        ROOT / "scripts" / "immunefi_live_scanner.py",
+        ROOT / "scripts" / "code4rena_contest_scanner.py",
+        ROOT / "scripts" / "sherlock_audit_scanner.py",
     ]
     triggered = 0
     procs = []
