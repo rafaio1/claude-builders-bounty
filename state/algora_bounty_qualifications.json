@@ -13,21 +13,21 @@
     "realized_revenue_usd": 0.0,
     "receivable_usd": 0.0
   },
-  "generated_at": "2026-09-06T00:11:45.254612+00:00",
+  "generated_at": "2026-09-06T00:47:02.655119+00:00",
   "github_rate_budget": {
     "core_limit": 5000,
     "core_remaining_before": 5000,
-    "core_reset_epoch": 1788657118,
+    "core_reset_epoch": 1788659238,
     "search_limit": 30,
     "search_remaining_before": 30,
-    "search_reset_epoch": 1788653578
+    "search_reset_epoch": 1788655698
   },
   "newly_audited_candidate_keys": [
-    "d69df67155754d78a8dac0b5342fe97172cacbbdda2b8497f18ed8851e74074d",
-    "a7a05cc2e8012dbff5f7811ba4a480fb459ad8a06c092ac5bee77351fc728f2a",
-    "b03e5395fe966929fb444ddfa7c6588725e0a420d09a2bf07a7cddbe7d278c5f"
+    "ff8998ad3fa843f6e1d988617caf8fb811b3caae20d28def71e443784df0a97b",
+    "c5c3c5fe2a6646ccec3ca0d66170d8fb213f0f93db4d6d3c1ccc6909fcbb084d",
+    "fbd9f230cac43e8e56ed155b5d80c19018b1ba2f2ee8eac994d7e1f08286b7a6"
   ],
-  "qualification_count": 67,
+  "qualification_count": 70,
   "qualifications": [
     {
       "candidate_key": "c911b5ffa90ddff89ecd527c7362d92364025acb1321d3d8dc6b0d2dfb8f492c",
@@ -6533,6 +6533,342 @@
       "verified_at": "2026-09-06T00:11:45.254612+00:00"
     },
     {
+      "candidate_key": "ff8998ad3fa843f6e1d988617caf8fb811b3caae20d28def71e443784df0a97b",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 5500,
+            "comment_id": 4457751479,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/794#issuecomment-4457751479",
+            "line_number": 1,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": false,
+            "board_amount_cents": null,
+            "board_url": "https://algora.io/stacylia/bounties",
+            "error_code": null,
+            "expected_component_cents": 5500,
+            "present": false,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/794/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/794",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCVxz1g",
+        "license_spdx": "Apache-2.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/794#issuecomment-4457751479"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
+        "repository_node_id": "R_kgDOScC6ZA",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/794/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 55.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": false,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": true,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": false,
+        "recent_merged_pr_history": false,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": true,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 794,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 7,
+        "active_bounty_component_count": 1,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 0,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": true,
+          "substantive_body": true,
+          "test_expectation": true
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 0,
+        "issue_author_association": "CONTRIBUTOR",
+        "linked_pull_request_event_count": 20,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 2,
+        "recent_merged_prs_sample": 0,
+        "repository_age_days": 115.79,
+        "repository_idle_days": 0.01,
+        "reward_action_link_count": 5,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "canonical_algora_open_board_conflict",
+        "linked_pull_request_activity_present",
+        "recent_merged_pr_history_missing"
+      ],
+      "repo": "UnsafeLabs/Bounty-Hunters",
+      "schema_version": "1.0",
+      "title": "[ Laravel ] Fix phpunit.xml coverage config and add route and model test suites",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/794",
+      "valid_until": "2026-09-13T00:47:02.655119+00:00",
+      "verified_at": "2026-09-06T00:47:02.655119+00:00"
+    },
+    {
+      "candidate_key": "c5c3c5fe2a6646ccec3ca0d66170d8fb213f0f93db4d6d3c1ccc6909fcbb084d",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 6000,
+            "comment_id": 4457355862,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/755#issuecomment-4457355862",
+            "line_number": 1,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": false,
+            "board_amount_cents": null,
+            "board_url": "https://algora.io/stacylia/bounties",
+            "error_code": null,
+            "expected_component_cents": 6000,
+            "present": false,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/755/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/755",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCVd_0A",
+        "license_spdx": "Apache-2.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/755#issuecomment-4457355862"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
+        "repository_node_id": "R_kgDOScC6ZA",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/755/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 60.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": false,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": true,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": false,
+        "recent_merged_pr_history": false,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": true,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 755,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 8,
+        "active_bounty_component_count": 1,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 0,
+        "clarity_signals": {
+          "acceptance_criteria": true,
+          "expected_behavior": true,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 0,
+        "issue_author_association": "CONTRIBUTOR",
+        "linked_pull_request_event_count": 25,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 2,
+        "recent_merged_prs_sample": 0,
+        "repository_age_days": 115.79,
+        "repository_idle_days": 0.01,
+        "reward_action_link_count": 7,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "canonical_algora_open_board_conflict",
+        "linked_pull_request_activity_present",
+        "recent_merged_pr_history_missing"
+      ],
+      "repo": "UnsafeLabs/Bounty-Hunters",
+      "schema_version": "1.0",
+      "title": "[ Laravel ] Fix .htaccess missing compression rules and add performance optimizations to public/index.php",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/755",
+      "valid_until": "2026-09-13T00:47:02.655119+00:00",
+      "verified_at": "2026-09-06T00:47:02.655119+00:00"
+    },
+    {
+      "candidate_key": "fbd9f230cac43e8e56ed155b5d80c19018b1ba2f2ee8eac994d7e1f08286b7a6",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 7500,
+            "comment_id": 4457346619,
+            "comment_url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/746#issuecomment-4457346619",
+            "line_number": 1,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": false,
+            "board_amount_cents": null,
+            "board_url": "https://algora.io/stacylia/bounties",
+            "error_code": null,
+            "expected_component_cents": 7500,
+            "present": false,
+            "sponsor_slug": "stacylia"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/746/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/746",
+        "issue_node_id": "I_kwDOScC6ZM8AAAABCVdWLw",
+        "license_spdx": "Apache-2.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/UnsafeLabs/Bounty-Hunters/issues/746#issuecomment-4457346619"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters",
+        "repository_node_id": "R_kgDOScC6ZA",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/issues/746/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/UnsafeLabs/Bounty-Hunters/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 75.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": false,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": true,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": false,
+        "recent_merged_pr_history": false,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": true,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": true,
+        "tests_present": true
+      },
+      "issue_number": 746,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 11,
+        "active_bounty_component_count": 1,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 1,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": true,
+          "substantive_body": true,
+          "test_expectation": true
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 0,
+        "issue_author_association": "CONTRIBUTOR",
+        "linked_pull_request_event_count": 33,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 2,
+        "recent_merged_prs_sample": 0,
+        "repository_age_days": 115.79,
+        "repository_idle_days": 0.01,
+        "reward_action_link_count": 10,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "canonical_algora_open_board_conflict",
+        "linked_pull_request_activity_present",
+        "recent_merged_pr_history_missing"
+      ],
+      "repo": "UnsafeLabs/Bounty-Hunters",
+      "schema_version": "1.0",
+      "title": "[ Laravel ] Fix DatabaseSeeder creating duplicate test user on re-run and add proper seeder structure",
+      "url": "https://github.com/UnsafeLabs/Bounty-Hunters/issues/746",
+      "valid_until": "2026-09-13T00:47:02.655119+00:00",
+      "verified_at": "2026-09-06T00:47:02.655119+00:00"
+    },
+    {
       "candidate_key": "0330dfa483d6208d14a82aaf290ce9e4be0b0965b61af277c152f62f73fd6b12",
       "decision": "rejected",
       "evidence": {
@@ -7376,7 +7712,7 @@
   ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "d30ce2af9c0a411ea69d60d0f65d9da1",
+  "run_id": "23d1a56e23b6457196e471a83937fba2",
   "schema_version": "1.0",
   "source": {
     "official_search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
@@ -7389,8 +7725,8 @@
     "source_row_count": 100,
     "valid_candidate_count": 100
   },
-  "source_hash": "382094e3eb65a46c8962712f70c9994c5073d2ea2692f8de78c29f223d88bc52",
-  "valid_until": "2026-09-06T00:21:45.254612+00:00",
+  "source_hash": "1dd0df000df6cb92dc02f2a96aa72b0e167577c7838d91e0fef70d2b71def7f7",
+  "valid_until": "2026-09-06T00:57:02.655119+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_github",
