@@ -217,26 +217,41 @@ Respond with JSON: {{"approved": true/false, "issues": [...], "suggested_improve
 def phase4_discovery():
     """Scout new bounties via existing scanners."""
     log("=== PHASE 4: DISCOVERY ===")
-    # Trigger existing discovery scripts if available
+    # Trigger existing discovery scripts asynchronously with strict timeouts
     discovery_scripts = [
         ROOT / "scripts" / "superteam_bounty_scout.py",
         ROOT / "scripts" / "algora_bounty_scanner.py",
         ROOT / "scripts" / "opire_bounty_scanner.py",
     ]
     triggered = 0
+    procs = []
     for script in discovery_scripts:
         if script.exists():
             try:
-                subprocess.run([sys.executable, str(script)],
-                             capture_output=True, text=True, timeout=120, cwd=str(ROOT))
+                p = subprocess.Popen(
+                    [sys.executable, str(script)],
+                    stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                    cwd=str(ROOT)
+                )
+                procs.append((script.name, p))
                 triggered += 1
                 log(f"Triggered discovery: {script.name}")
             except Exception as e:
                 log(f"Discovery script {script.name} failed: {e}")
+    # Wait up to 45s total for all discovery scripts; kill stragglers
+    deadline = time.time() + 45
+    for name, p in procs:
+        remaining = max(1, int(deadline - time.time()))
+        try:
+            p.wait(timeout=remaining)
+        except subprocess.TimeoutExpired:
+            p.kill()
+            p.wait()
+            log(f"Discovery script {name} killed after timeout")
     # Also run gh search for fresh bounties
     try:
         cmd = 'gh search issues "label:bounty state:open" --limit 10 --json repository,title,url,createdAt --jq ".[] | select(.createdAt > \\"2026-09-05\\")"'
-        r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=30)
+        r = subprocess.run(cmd, shell=True, capture_output=True, text=True, timeout=20)
         if r.returncode == 0 and r.stdout.strip():
             items = json.loads(f"[{r.stdout.strip()}]") if r.stdout.strip().startswith("{") else []
             log(f"GitHub search found {len(items)} recent bounty issues")
@@ -247,7 +262,7 @@ def phase4_discovery():
     if pq_script.exists():
         try:
             subprocess.run([sys.executable, str(pq_script)],
-                         capture_output=True, text=True, timeout=60, cwd=str(ROOT))
+                         capture_output=True, text=True, timeout=30, cwd=str(ROOT))
             log("Priority queue refreshed after discovery")
         except Exception as e:
             log(f"Priority queue refresh failed: {e}")
