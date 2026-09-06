@@ -13,21 +13,21 @@
     "realized_revenue_usd": 0.0,
     "receivable_usd": 0.0
   },
-  "generated_at": "2026-09-06T02:35:09.551446+00:00",
+  "generated_at": "2026-09-06T03:10:26.355158+00:00",
   "github_rate_budget": {
     "core_limit": 5000,
     "core_remaining_before": 5000,
-    "core_reset_epoch": 1788665719,
+    "core_reset_epoch": 1788667849,
     "search_limit": 30,
     "search_remaining_before": 30,
-    "search_reset_epoch": 1788662179
+    "search_reset_epoch": 1788664309
   },
   "newly_audited_candidate_keys": [
-    "beaacbe07a516fbb2f6891b1afecbd76bba5c7d8e69015c8a1e5bea35e13aaac",
-    "1a2a2d7875ebde63e4be3b09978f9b9776cd0a820a1da57e57d513b2ae3d4d7f",
-    "109399ce1fc1a98d00567d34fea76f263438b7b1023b59daa0dd37112c2f42a5"
+    "f318cf714e0665741d9c80e521bed9238e8600fda14dab71e3b9634304d5f085",
+    "67dad2ecc888a81386d17af0634b7ddc2c338deeb68c7cdb0abf28cbfa0bf2c6",
+    "451ae19c7b5e8e104b8250b7a0c94271b66577c52176a1b10dcabd4b649a55d1"
   ],
-  "qualification_count": 78,
+  "qualification_count": 81,
   "qualifications": [
     {
       "candidate_key": "beaacbe07a516fbb2f6891b1afecbd76bba5c7d8e69015c8a1e5bea35e13aaac",
@@ -7990,6 +7990,363 @@
       "verified_at": "2026-09-06T02:35:09.551446+00:00"
     },
     {
+      "candidate_key": "f318cf714e0665741d9c80e521bed9238e8600fda14dab71e3b9634304d5f085",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 2500,
+            "comment_id": 2614512641,
+            "comment_url": "https://github.com/coollabsio/coolify/issues/4972#issuecomment-2614512641",
+            "line_number": 1,
+            "sponsor_slug": "v-iliescu"
+          },
+          {
+            "amount_cents": 1000,
+            "comment_id": 2614512641,
+            "comment_url": "https://github.com/coollabsio/coolify/issues/4972#issuecomment-2614512641",
+            "line_number": 2,
+            "sponsor_slug": "zaaakher"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": false,
+            "board_amount_cents": null,
+            "board_url": "https://algora.io/v-iliescu/bounties",
+            "error_code": null,
+            "expected_component_cents": 2500,
+            "present": false,
+            "sponsor_slug": "v-iliescu"
+          },
+          {
+            "amount_matches": false,
+            "board_amount_cents": null,
+            "board_url": "https://algora.io/zaaakher/bounties",
+            "error_code": null,
+            "expected_component_cents": 1000,
+            "present": false,
+            "sponsor_slug": "zaaakher"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/coollabsio/coolify/issues/4972/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/coollabsio/coolify/issues/4972",
+        "issue_node_id": "I_kwDOE9dbMc6nltPd",
+        "license_spdx": "Apache-2.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/coollabsio/coolify/issues/4972#issuecomment-2614512641"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/coollabsio/coolify/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/coollabsio/coolify",
+        "repository_node_id": "MDEwOlJlcG9zaXRvcnkzMzI4ODA2ODk=",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/coollabsio/coolify/issues/4972/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/coollabsio/coolify/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 35.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": false,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": true,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": false,
+        "recent_merged_pr_history": true,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": true,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 4972,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 4,
+        "active_bounty_component_count": 2,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 0,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 0,
+        "issue_author_association": "CONTRIBUTOR",
+        "linked_pull_request_event_count": 4,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 0,
+        "recent_merged_prs_sample": 10,
+        "repository_age_days": 2049.26,
+        "repository_idle_days": 0.33,
+        "reward_action_link_count": 3,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "canonical_algora_open_board_conflict",
+        "linked_pull_request_activity_present",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "coollabsio/coolify",
+      "schema_version": "1.0",
+      "title": "[Enhancement]: Deploy from Github on release",
+      "url": "https://github.com/coollabsio/coolify/issues/4972",
+      "valid_until": "2026-09-13T03:10:26.355158+00:00",
+      "verified_at": "2026-09-06T03:10:26.355158+00:00"
+    },
+    {
+      "candidate_key": "67dad2ecc888a81386d17af0634b7ddc2c338deeb68c7cdb0abf28cbfa0bf2c6",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 7000,
+            "comment_id": 2673857472,
+            "comment_url": "https://github.com/TheSolaAI/sola-application/issues/157#issuecomment-2673857472",
+            "line_number": 1,
+            "sponsor_slug": "sola"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": true,
+            "board_amount_cents": 7000,
+            "board_url": "https://algora.io/sola/bounties",
+            "error_code": null,
+            "expected_component_cents": 7000,
+            "present": true,
+            "sponsor_slug": "sola"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/TheSolaAI/sola-application/issues/157/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/TheSolaAI/sola-application/issues/157",
+        "issue_node_id": "I_kwDONg_lWs6nt07C",
+        "license_spdx": "GPL-3.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/TheSolaAI/sola-application/issues/157#issuecomment-2673857472"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/TheSolaAI/sola-application/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/TheSolaAI/sola-application",
+        "repository_node_id": "R_kgDONg_lWg",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/TheSolaAI/sola-application/issues/157/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/TheSolaAI/sola-application/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 70.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": true,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": false,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": true,
+        "recent_merged_pr_history": false,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": false,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": false
+      },
+      "issue_number": 157,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 4,
+        "active_bounty_component_count": 1,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 0,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 0,
+        "issue_author_association": "COLLABORATOR",
+        "linked_pull_request_event_count": 2,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 1,
+        "recent_merged_prs_sample": 0,
+        "repository_age_days": 622.5,
+        "repository_idle_days": 268.65,
+        "reward_action_link_count": 2,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "github_issue_assigned_or_unknown",
+        "linked_pull_request_activity_present",
+        "recent_merged_pr_history_missing",
+        "repository_not_recently_active",
+        "scope_not_sufficiently_testable",
+        "test_suite_not_proven"
+      ],
+      "repo": "TheSolaAI/sola-application",
+      "schema_version": "1.0",
+      "title": "Make blinks interaction Handsfree",
+      "url": "https://github.com/TheSolaAI/sola-application/issues/157",
+      "valid_until": "2026-09-13T03:10:26.355158+00:00",
+      "verified_at": "2026-09-06T03:10:26.355158+00:00"
+    },
+    {
+      "candidate_key": "451ae19c7b5e8e104b8250b7a0c94271b66577c52176a1b10dcabd4b649a55d1",
+      "decision": "rejected",
+      "evidence": {
+        "active_bounty_components": [
+          {
+            "amount_cents": 10000,
+            "comment_id": 2082482523,
+            "comment_url": "https://github.com/revertinc/revert/issues/372#issuecomment-2082482523",
+            "line_number": 1,
+            "sponsor_slug": "revertinc"
+          }
+        ],
+        "canonical_board_results": [
+          {
+            "amount_matches": true,
+            "board_amount_cents": 10000,
+            "board_url": "https://algora.io/revertinc/bounties",
+            "error_code": null,
+            "expected_component_cents": 10000,
+            "present": true,
+            "sponsor_slug": "revertinc"
+          }
+        ],
+        "comments_api_url": "https://api.github.com/repos/revertinc/revert/issues/372/comments?per_page=100",
+        "issue_api_url": "https://api.github.com/repos/revertinc/revert/issues/372",
+        "issue_node_id": "I_kwDOIyojJM53TKnv",
+        "license_spdx": "AGPL-3.0",
+        "malformed_bounty_headers": [],
+        "official_awards": [],
+        "official_bounty_comment_urls": [
+          "https://github.com/revertinc/revert/issues/372#issuecomment-2082482523"
+        ],
+        "pull_history_api_url": "https://api.github.com/repos/revertinc/revert/pulls?state=closed&sort=updated&direction=desc&per_page=20",
+        "repository_api_url": "https://api.github.com/repos/revertinc/revert",
+        "repository_node_id": "R_kgDOIyojJA",
+        "search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
+        "timeline_api_url": "https://api.github.com/repos/revertinc/revert/issues/372/timeline?per_page=100",
+        "tree_api_url": "https://api.github.com/repos/revertinc/revert/git/trees/main?recursive=1",
+        "withdrawn_bounty_components": []
+      },
+      "financial_truth": {
+        "expected_revenue_usd": null,
+        "face_value_usd": 100.0,
+        "realized_revenue_usd": 0.0,
+        "receivable_usd": 0.0
+      },
+      "gates": {
+        "application_allowed": false,
+        "bounty_not_awarded": true,
+        "canonical_algora_open_board": true,
+        "ci_present": true,
+        "implementation_allowed": false,
+        "issue_open_unassigned": false,
+        "license_present": true,
+        "no_attempt_or_claim_activity": false,
+        "no_linked_pull_request_activity": false,
+        "official_algora_active_bounty": true,
+        "official_algora_bot_identity": true,
+        "payment_authority_proven": true,
+        "recent_merged_pr_history": false,
+        "repository_age_sufficient": true,
+        "repository_public_active": true,
+        "repository_recent": false,
+        "revenue_recognition_allowed": false,
+        "scope_automatable": true,
+        "scope_nontrivial": true,
+        "scope_testable": false,
+        "tests_present": true
+      },
+      "issue_number": 372,
+      "next_action": "pivot_to_next_candidate",
+      "quality": {
+        "active_attempt_table_row_count": 2,
+        "active_bounty_component_count": 1,
+        "bot_competition_comment_count": 0,
+        "claim_command_count": 0,
+        "clarity_signals": {
+          "acceptance_criteria": false,
+          "expected_behavior": false,
+          "substantive_body": true,
+          "test_expectation": false
+        },
+        "demo_video_required_by_algora": true,
+        "inactive_attempt_table_row_count": 1,
+        "issue_author_association": "NONE",
+        "linked_pull_request_event_count": 3,
+        "malformed_attempt_table_row_count": 0,
+        "malformed_bounty_header_count": 0,
+        "official_award_count": 0,
+        "pending_attempt_command_count": 1,
+        "recent_merged_prs_sample": 0,
+        "repository_age_days": 1327.67,
+        "repository_idle_days": 516.86,
+        "reward_action_link_count": 2,
+        "trivial_scope_markers": [],
+        "unautomatable_scope_markers": [],
+        "withdrawn_bounty_component_count": 0
+      },
+      "rejection_reasons": [
+        "algora_attempt_or_claim_activity_present",
+        "github_issue_assigned_or_unknown",
+        "linked_pull_request_activity_present",
+        "recent_merged_pr_history_missing",
+        "repository_not_recently_active",
+        "scope_not_sufficiently_testable"
+      ],
+      "repo": "revertinc/revert",
+      "schema_version": "1.0",
+      "title": "[REVER-48] Workday Integration",
+      "url": "https://github.com/revertinc/revert/issues/372",
+      "valid_until": "2026-09-13T03:10:26.355158+00:00",
+      "verified_at": "2026-09-06T03:10:26.355158+00:00"
+    },
+    {
       "candidate_key": "5c3d24d41811f35114dd537da529dc280d2d3672fc2c8f869518923aec6eb177",
       "decision": "rejected",
       "evidence": {
@@ -8609,7 +8966,7 @@
   ],
   "qualified_candidates": [],
   "qualified_count": 0,
-  "run_id": "a3a2565f124a481ab7e72c9ded512602",
+  "run_id": "50d50386e20642d8814bc3c1ce6c56ab",
   "schema_version": "1.0",
   "source": {
     "official_search_api_url": "https://api.github.com/search/issues?q=commenter%3Aapp%2Falgora-pbc+is%3Aissue+is%3Aopen+-label%3ARewarded+comments%3A%3C25&sort=updated&order=desc&per_page=100",
@@ -8622,8 +8979,8 @@
     "source_row_count": 100,
     "valid_candidate_count": 100
   },
-  "source_hash": "428344f755d9110988d2f19353dca855c2d8937c6bb50742a42c2afc61149f18",
-  "valid_until": "2026-09-06T02:45:09.551446+00:00",
+  "source_hash": "33bdcdeff9aec9ca50fa4f4c7af5862b075e01ea7616c6c22c6bd67e0d9032a1",
+  "valid_until": "2026-09-06T03:20:26.355158+00:00",
   "workflow_contract": {
     "allowed_now": [
       "read_github",
