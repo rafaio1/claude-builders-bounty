@@ -1339,7 +1339,9 @@ def phase4_discovery():
             if _disc_date:
                 _delta = (datetime.date.today() - _disc_date).days
                 _is_recent = 0 <= _delta <= 7
-            if _is_recent and gross >= 10000 and url:
+            # Lower threshold for github_direct to capture mid-tier autonomous bounties
+            _min_gross = 200 if platform_name == "github_direct" else 10000
+            if _is_recent and gross >= _min_gross and url:
                 # Pre-fetch URL content to prevent empty microtask output
                 _prefetched_desc = ""
                 # Non-blocking pre-fetch via curl (playwright-cli hangs on this server).

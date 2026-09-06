@@ -9,7 +9,7 @@ PRIORITY_QUEUE = Path("/Agentic/state/bounty_priority_queue.json")
 LOG_FILE = Path("/Agentic/logs/supervisor/qualification_run.log")
 
 # Autonomous-friendly platforms that don't require human account creation
-AUTONOMOUS_PLATFORMS = {"immunefi", "code4rena", "sherlock", "hats"}
+AUTONOMOUS_PLATFORMS = {"immunefi", "code4rena", "sherlock", "hats", "github_direct"}
 HUMAN_GATE_PLATFORMS = {"galxe", "layer3"}  # Typically require social/wallet auth
 
 def log(msg):
