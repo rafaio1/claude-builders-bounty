@@ -425,7 +425,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "657bf11b-89e4-42ea-bd96-c4339df44f2e",
       "claim_command": null,
       "deadline": "2026-09-16T15:59:59.999000Z",
@@ -453,7 +453,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "overlay_expected_wise_net": 100.0,
       "overlay_payment_confidence": 0.9,
       "payment_confidence_lcb_ppm": 900000,
@@ -465,19 +465,22 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing",
         "overlay_route_verified"
       ],
       "route_complete_verified": true,
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:657bf11b-89e4-42ea-bd96-c4339df44f2e",
@@ -8469,13 +8472,13 @@
   ],
   "aggregator": "bounty_priority_queue",
   "funds_moved": false,
-  "generated_at": "2026-09-06T17:59:58.251063Z",
+  "generated_at": "2026-09-06T18:05:48.851881Z",
   "input_hashes": {
     "algora": "4298ad36a5182d7a1c8725696620561962aacb521f29ce94cbc0e45376c06602",
     "opire": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
     "payout_route_map": "537fea99ff6c10c6559dcaa2f8e496627a590fef7c4ea698c223dfe25ccee534",
     "rustchain": "4523d622fe62bb5b6712c291e2834498067a6d446aeb16315b35f13997413ce2",
-    "superteam_large": "454c7a26fee1e03f20663071c67202203504d7800825174fac907de17cd44249"
+    "superteam_large": "4ca0d6c55a7358b9bf3e5c2ccebc64e95abb8c70c37d97c9ff0ae178dedfb2a9"
   },
   "monitor_only": [
     {
@@ -8579,7 +8582,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8589,6 +8592,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -8636,7 +8640,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8646,6 +8650,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
@@ -8692,7 +8697,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8702,6 +8707,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
@@ -8748,7 +8754,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8758,6 +8764,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
@@ -8782,7 +8789,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "9b5747cc-1943-47b4-ba1f-bbc3f55a8cbe",
       "claim_command": null,
       "deadline": "2026-09-17T20:59:59Z",
@@ -8804,7 +8811,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8813,6 +8820,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -8824,11 +8833,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:9b5747cc-1943-47b4-ba1f-bbc3f55a8cbe",
@@ -8864,7 +8874,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8874,6 +8884,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -8899,7 +8910,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "7bd4dd40-577d-4cce-98e3-0263274c291e",
       "claim_command": null,
       "deadline": "2026-09-07T21:59:59.999000Z",
@@ -8921,7 +8932,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8930,6 +8941,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -8938,11 +8951,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:7bd4dd40-577d-4cce-98e3-0263274c291e",
@@ -8978,7 +8992,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -8988,6 +9002,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
@@ -9079,7 +9094,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "343fd311-ae91-43f7-9e95-c1b0420f2dc8",
       "claim_command": null,
       "deadline": "2026-09-22T06:59:59Z",
@@ -9101,7 +9116,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9110,6 +9125,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_trading",
@@ -9117,11 +9134,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:343fd311-ae91-43f7-9e95-c1b0420f2dc8",
@@ -9157,7 +9175,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9167,6 +9185,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -9214,7 +9233,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9224,6 +9243,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_trading",
@@ -9271,7 +9291,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9281,6 +9301,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_video",
@@ -9329,7 +9350,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9339,6 +9360,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "net_if_paid_not_verified",
@@ -9363,7 +9385,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "d777e3ce-3942-4d2f-ab9a-3793327e389f",
       "claim_command": null,
       "deadline": "2026-09-22T21:59:59Z",
@@ -9385,7 +9407,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9394,6 +9416,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9403,11 +9427,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:d777e3ce-3942-4d2f-ab9a-3793327e389f",
@@ -9512,7 +9537,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9522,6 +9547,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -9569,7 +9595,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9579,6 +9605,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -9604,7 +9631,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "7ec8100f-6e21-46be-8fac-a77b88b2bd10",
       "claim_command": null,
       "deadline": "2026-09-09T06:59:59Z",
@@ -9626,7 +9653,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9635,6 +9662,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9646,11 +9675,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:7ec8100f-6e21-46be-8fac-a77b88b2bd10",
@@ -9664,7 +9694,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "15e41eef-e4ce-4991-b893-58bfdc091715",
       "claim_command": null,
       "deadline": "2026-09-09T15:59:59.999000Z",
@@ -9686,7 +9716,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9695,6 +9725,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_manual",
@@ -9705,11 +9737,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:15e41eef-e4ce-4991-b893-58bfdc091715",
@@ -9745,7 +9778,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9755,6 +9788,7 @@
       "reason_codes": [
         "agent_access_not_allowed",
         "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9783,7 +9817,7 @@
       "action_contract": null,
       "agent_access": "AGENT_ALLOWED",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "43f663e0-ef0b-40b4-89c9-b4e11375cff5",
       "claim_command": null,
       "deadline": "2026-09-20T21:59:59Z",
@@ -9805,7 +9839,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9813,6 +9847,8 @@
       "qualification_decision": null,
       "realized": 0,
       "reason_codes": [
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9823,11 +9859,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:43f663e0-ef0b-40b4-89c9-b4e11375cff5",
@@ -9841,7 +9878,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "4b22c4d1-ce45-41f1-8b63-df8296b145a2",
       "claim_command": null,
       "deadline": "2026-09-20T18:29:59Z",
@@ -9863,7 +9900,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9872,6 +9909,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9881,11 +9920,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:4b22c4d1-ce45-41f1-8b63-df8296b145a2",
@@ -9899,7 +9939,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "ad7dfc28-cb9b-4448-a111-426619506fe1",
       "claim_command": null,
       "deadline": "2026-09-23T13:59:59Z",
@@ -9921,7 +9961,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9930,6 +9970,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -9939,11 +9981,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:ad7dfc28-cb9b-4448-a111-426619506fe1",
@@ -9957,7 +10000,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "a57a791c-200f-466f-9321-e1e0e024a2e8",
       "claim_command": null,
       "deadline": "2026-09-13T13:59:59Z",
@@ -9979,7 +10022,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -9988,6 +10031,8 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
@@ -9997,11 +10042,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:a57a791c-200f-466f-9321-e1e0e024a2e8",
@@ -10223,7 +10269,7 @@
       "action_contract": null,
       "agent_access": "AGENT_ALLOWED",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "e92e317b-0d0f-49f4-9937-0623d4816df6",
       "claim_command": null,
       "deadline": "2026-09-09T21:59:59.999000Z",
@@ -10245,7 +10291,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -10253,6 +10299,8 @@
       "qualification_decision": null,
       "realized": 0,
       "reason_codes": [
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_identity",
@@ -10262,11 +10310,12 @@
         "payment_confidence_lcb_missing",
         "provider_not_verified",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:e92e317b-0d0f-49f4-9937-0623d4816df6",
@@ -10280,7 +10329,7 @@
       "action_contract": null,
       "agent_access": "HUMAN_ONLY",
       "asset": "USDC",
-      "asset_network_exact": true,
+      "asset_network_exact": false,
       "candidate_id": "1d376894-e9ce-4579-80a7-ed07b798e471",
       "claim_command": null,
       "deadline": "2026-09-10T18:14:59.999000Z",
@@ -10302,7 +10351,7 @@
       "human_gates_complete": true,
       "listing_verified": true,
       "net_if_paid_verified": null,
-      "network": "solana-mainnet",
+      "network": null,
       "payment_confidence_lcb_ppm": null,
       "platform": null,
       "provider": "superteam",
@@ -10311,17 +10360,20 @@
       "realized": 0,
       "reason_codes": [
         "agent_access_not_allowed",
+        "exact_asset_network_route_missing",
+        "exact_network_missing",
         "expected_wise_net_not_verified",
         "explicit_execution_contract_missing",
         "human_gate_social",
         "net_if_paid_not_verified",
         "payment_confidence_lcb_missing",
         "route_pending",
+        "self_custody_rail_not_verified",
         "time_to_wise_p90_missing"
       ],
-      "route_id": "solana_spl_to_wise",
+      "route_id": null,
       "route_status": "route_pending",
-      "self_custody_rail_verified": true,
+      "self_custody_rail_verified": false,
       "source": "superteam_large",
       "source_fresh": true,
       "stable_id": "superteam_large:1d376894-e9ce-4579-80a7-ed07b798e471",
@@ -17417,7 +17469,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.950717+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556201+00:00"
     },
     {
       "stable_id": "code4rena:C4-euler-finance",
@@ -17449,7 +17501,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.950917+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556351+00:00"
     },
     {
       "stable_id": "code4rena:C4-maple-finance",
@@ -17481,7 +17533,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951003+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556423+00:00"
     },
     {
       "stable_id": "code4rena:C4-morpho-labs",
@@ -17513,7 +17565,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951095+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556535+00:00"
     },
     {
       "stable_id": "code4rena:C4-notional-finance",
@@ -17545,7 +17597,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951154+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556617+00:00"
     },
     {
       "stable_id": "code4rena:C4-optimism-collective",
@@ -17577,7 +17629,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951266+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556693+00:00"
     },
     {
       "stable_id": "code4rena:C4-ribbon-finance",
@@ -17609,7 +17661,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951349+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.556788+00:00"
     },
     {
       "stable_id": "code4rena:C4-stakedao",
@@ -17641,7 +17693,7 @@
       "source_fresh": true,
       "provider": "code4rena",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951424+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.650501+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-aerodrome-finance",
@@ -17673,7 +17725,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951830+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.650932+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-beefy-finance",
@@ -17705,7 +17757,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.951926+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651045+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-convex-finance",
@@ -17737,7 +17789,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952028+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651120+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-frax-finance",
@@ -17769,7 +17821,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952116+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651188+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-gmx-v2",
@@ -17801,7 +17853,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952182+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651248+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-kwenta-exchange",
@@ -17833,7 +17885,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952235+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651300+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-lyra-finance",
@@ -17865,7 +17917,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952294+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651351+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-polynomial-protocol",
@@ -17897,7 +17949,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952352+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651420+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-thales-protocol",
@@ -17929,7 +17981,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952402+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651480+00:00"
     },
     {
       "stable_id": "sherlock:SHERLOCK-velodrome-finance",
@@ -17961,7 +18013,7 @@
       "source_fresh": true,
       "provider": "sherlock",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.952454+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.651570+00:00"
     },
     {
       "stable_id": "algora:ALGORA-GOATNetwork-bitvm-node-457",
@@ -17991,7 +18043,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953127+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652373+00:00"
     },
     {
       "stable_id": "algora:ALGORA-HHS-simpler-grants-protocol-1146",
@@ -18021,7 +18073,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953175+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652435+00:00"
     },
     {
       "stable_id": "algora:ALGORA-IIIT-Sricity-FSD-2024-2028-19_TheBoogiemen-48",
@@ -18051,7 +18103,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953209+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652473+00:00"
     },
     {
       "stable_id": "algora:ALGORA-Monkestation-Monkestation2.0-12496",
@@ -18081,7 +18133,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953238+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652540+00:00"
     },
     {
       "stable_id": "algora:ALGORA-NEXAITECHAU-gh-disc-968-zhangjiayang6835-cyber-bounty-plaza-1",
@@ -18111,7 +18163,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953268+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652618+00:00"
     },
     {
       "stable_id": "algora:ALGORA-NSPG13-agent-bounties-863",
@@ -18141,7 +18193,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953301+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652683+00:00"
     },
     {
       "stable_id": "algora:ALGORA-Trauma-Station-Trauma-Station-4418",
@@ -18171,7 +18223,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953336+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652737+00:00"
     },
     {
       "stable_id": "algora:ALGORA-Trauma-Station-Trauma-Station-4419",
@@ -18201,7 +18253,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953363+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652803+00:00"
     },
     {
       "stable_id": "algora:ALGORA-ZecHub-zec-bounties-196",
@@ -18231,7 +18283,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953392+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652876+00:00"
     },
     {
       "stable_id": "algora:ALGORA-chatmcp-mcpso-3926",
@@ -18261,7 +18313,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953421+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652933+00:00"
     },
     {
       "stable_id": "algora:ALGORA-claude-builders-bounty-claude-builders-bounty-3806",
@@ -18291,7 +18343,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953448+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.652979+00:00"
     },
     {
       "stable_id": "algora:ALGORA-claude-builders-bounty-claude-builders-bounty-3813",
@@ -18321,7 +18373,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953481+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653037+00:00"
     },
     {
       "stable_id": "algora:ALGORA-claude-builders-bounty-claude-builders-bounty-3815",
@@ -18351,7 +18403,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953525+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653096+00:00"
     },
     {
       "stable_id": "algora:ALGORA-claude-builders-bounty-claude-builders-bounty-3820",
@@ -18381,7 +18433,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953553+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653161+00:00"
     },
     {
       "stable_id": "algora:ALGORA-emmanuel-musau-cardano-slips-74",
@@ -18411,7 +18463,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953580+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653199+00:00"
     },
     {
       "stable_id": "algora:ALGORA-michaelchessall-SS14-Persistence-666",
@@ -18441,7 +18493,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953607+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653230+00:00"
     },
     {
       "stable_id": "algora:ALGORA-ted8686-stark-test-1788631294-1",
@@ -18471,7 +18523,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953643+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653258+00:00"
     },
     {
       "stable_id": "algora:ALGORA-yetanotheridentifier-dmgCtrl-467",
@@ -18501,7 +18553,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953681+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653285+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-180",
@@ -18531,7 +18583,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953710+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653314+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-186",
@@ -18561,7 +18613,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953745+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653350+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-188",
@@ -18591,7 +18643,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953781+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653382+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-191",
@@ -18621,7 +18673,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953810+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653409+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-192",
@@ -18651,7 +18703,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953858+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653441+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-193",
@@ -18681,7 +18733,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953894+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653468+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-194",
@@ -18711,7 +18763,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953930+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653495+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-201",
@@ -18741,7 +18793,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.953966+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653550+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-222",
@@ -18771,7 +18823,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954032+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653578+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-223",
@@ -18801,7 +18853,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954078+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653617+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-231",
@@ -18831,7 +18883,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954134+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653656+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-233",
@@ -18861,7 +18913,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954179+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653693+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-240",
@@ -18891,7 +18943,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954212+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653726+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-248",
@@ -18921,7 +18973,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954240+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653752+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-249",
@@ -18951,7 +19003,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954287+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653778+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-253",
@@ -18981,7 +19033,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954347+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653804+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-254",
@@ -19011,7 +19063,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954384+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653846+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-255",
@@ -19041,7 +19093,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954444+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653874+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-256",
@@ -19071,7 +19123,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954495+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653900+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-257",
@@ -19101,7 +19153,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954544+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653927+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-258",
@@ -19131,7 +19183,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954588+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.653966+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-259",
@@ -19161,7 +19213,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954652+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654008+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-260",
@@ -19191,7 +19243,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954719+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654055+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-261",
@@ -19221,7 +19273,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954763+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654084+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-262",
@@ -19251,7 +19303,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954793+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654110+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-263",
@@ -19281,7 +19333,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954821+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654136+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-264",
@@ -19311,7 +19363,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954857+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654167+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-265",
@@ -19341,7 +19393,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954908+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654223+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-266",
@@ -19371,7 +19423,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.954963+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654283+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-267",
@@ -19401,7 +19453,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955002+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654333+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-268",
@@ -19431,7 +19483,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955031+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654375+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-269",
@@ -19461,7 +19513,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955058+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654457+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-270",
@@ -19491,7 +19543,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955088+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654501+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-271",
@@ -19521,7 +19573,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955117+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654547+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-272",
@@ -19551,7 +19603,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955145+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654576+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-273",
@@ -19581,7 +19633,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955195+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654602+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-274",
@@ -19611,7 +19663,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955250+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654629+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-275",
@@ -19641,7 +19693,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955291+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654663+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-276",
@@ -19671,7 +19723,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955318+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654692+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-277",
@@ -19701,7 +19753,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955380+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654746+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-278",
@@ -19731,7 +19783,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955423+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654795+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-279",
@@ -19761,7 +19813,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955460+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654843+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-280",
@@ -19791,7 +19843,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955491+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654909+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-281",
@@ -19821,7 +19873,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955533+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.654969+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-282",
@@ -19851,7 +19903,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955562+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655021+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-283",
@@ -19881,7 +19933,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955607+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655052+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-284",
@@ -19911,7 +19963,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955644+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655080+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-285",
@@ -19941,7 +19993,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:41.955712+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655118+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-286",
@@ -19971,7 +20023,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050241+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655147+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-287",
@@ -20001,7 +20053,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050371+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655175+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-288",
@@ -20031,7 +20083,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050435+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655205+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-289",
@@ -20061,7 +20113,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050469+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655264+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-290",
@@ -20091,7 +20143,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050500+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655306+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-291",
@@ -20121,7 +20173,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050559+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655361+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-292",
@@ -20151,7 +20203,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050592+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655421+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-293",
@@ -20181,7 +20233,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050621+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655467+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-294",
@@ -20211,7 +20263,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050650+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.655688+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-295",
@@ -20241,7 +20293,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050808+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751078+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-296",
@@ -20271,7 +20323,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050849+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751300+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-297",
@@ -20301,7 +20353,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050879+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751375+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-298",
@@ -20331,7 +20383,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050908+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751417+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-299",
@@ -20361,7 +20413,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050936+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751450+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-300",
@@ -20391,7 +20443,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.050963+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751481+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-301",
@@ -20421,7 +20473,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051004+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751551+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-302",
@@ -20451,7 +20503,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051031+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751584+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-303",
@@ -20481,7 +20533,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051064+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751655+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-304",
@@ -20511,7 +20563,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051093+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751709+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-305",
@@ -20541,7 +20593,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051120+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751768+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-306",
@@ -20571,7 +20623,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051150+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751843+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-307",
@@ -20601,7 +20653,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051178+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751889+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-308",
@@ -20631,7 +20683,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051204+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751919+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-309",
@@ -20661,7 +20713,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051234+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751952+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-310",
@@ -20691,7 +20743,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051260+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.751999+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-311",
@@ -20721,7 +20773,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051299+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752062+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-312",
@@ -20751,7 +20803,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051326+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752095+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-504",
@@ -20781,7 +20833,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051353+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752124+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-626",
@@ -20811,7 +20863,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051380+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752153+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-815",
@@ -20841,7 +20893,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051406+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752181+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-816",
@@ -20871,7 +20923,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051435+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752249+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-817",
@@ -20901,7 +20953,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051461+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752337+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-818",
@@ -20931,7 +20983,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051487+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752392+00:00"
     },
     {
       "stable_id": "algora:ALGORA-zhangjiayang6835-cyber-bounty-plaza-951",
@@ -20961,7 +21013,7 @@
       "source_fresh": true,
       "provider": "algora",
       "provider_verified": false,
-      "_ingested_at": "2026-09-06T18:03:42.051536+00:00"
+      "_ingested_at": "2026-09-06T18:08:42.752423+00:00"
     }
   ],
   "policy": {
@@ -20996,11 +21048,11 @@
   },
   "realized": 0,
   "research_queue": [],
-  "result_sha256": "7385141ef3a962e27c4d634c34c35cf493c3d6f298381f2687c02df5a79c33f7",
+  "result_sha256": "18d3b70b4f949ecfb229653e445c313b029832f29c469e03814f2059298c57fd",
   "schema_version": "1.0",
   "source_health": {
     "algora": {
-      "age_seconds": 268,
+      "age_seconds": 618,
       "fresh": true,
       "input_sha256": "4298ad36a5182d7a1c8725696620561962aacb521f29ce94cbc0e45376c06602",
       "max_age_seconds": 7200,
@@ -21011,7 +21063,7 @@
       "timestamp_field": "generated_at"
     },
     "opire": {
-      "age_seconds": 204624,
+      "age_seconds": 204975,
       "fresh": false,
       "input_sha256": "51abfa2eb329e0457c0fcb3bc450be8bd8cc3cd701a76a50bcb84a2187104147",
       "max_age_seconds": 7200,
@@ -21024,7 +21076,7 @@
       "timestamp_field": "generated_at"
     },
     "payout_route_map": {
-      "age_seconds": 375,
+      "age_seconds": 725,
       "fresh": true,
       "input_sha256": "537fea99ff6c10c6559dcaa2f8e496627a590fef7c4ea698c223dfe25ccee534",
       "max_age_seconds": 7200,
@@ -21035,7 +21087,7 @@
       "timestamp_field": "generated_at"
     },
     "rustchain": {
-      "age_seconds": 73,
+      "age_seconds": 424,
       "fresh": true,
       "input_sha256": "4523d622fe62bb5b6712c291e2834498067a6d446aeb16315b35f13997413ce2",
       "max_age_seconds": 7200,
@@ -21046,11 +21098,11 @@
       "timestamp_field": "scouted_at"
     },
     "superteam_large": {
-      "age_seconds": 93,
+      "age_seconds": 303,
       "fresh": true,
-      "input_sha256": "454c7a26fee1e03f20663071c67202203504d7800825174fac907de17cd44249",
+      "input_sha256": "4ca0d6c55a7358b9bf3e5c2ccebc64e95abb8c70c37d97c9ff0ae178dedfb2a9",
       "max_age_seconds": 7200,
-      "observed_at": "2026-09-06T17:58:24.352190Z",
+      "observed_at": "2026-09-06T18:00:45.254953Z",
       "reason_codes": [],
       "source": "superteam_large",
       "status": "ok",
