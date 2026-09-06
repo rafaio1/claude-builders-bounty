@@ -25,6 +25,7 @@ PROPOSALS_DIR = Path("/Agentic/data/aro/proposals")
 QUEUE_PATH = STATE_DIR / "bounty_priority_queue.json"
 CYCLE_STATE_PATH = STATE_DIR / "orchestrator_cycle_state.json"
 IMMUNEFI_OPPS_DIR = Path("/Agentic/revenue/immunefi_opportunities")
+PLATFORM_BLOCKLIST_PATH = Path("/Agentic/state/platform_blocklist.json")
 GMAIL_TRASH_STATE = STATE_DIR / "gmail_trash_backfill_v2_state.json"
 PRIVATE_MIRROR_REPO = "rafaio1/claude-builders-bounty.git"
 GHOSTCLI_MODEL = "ghostcli-auto[1m]"
@@ -101,6 +102,13 @@ def run_claude_microtask(prompt: str, task_id: str) -> dict:
             return {"status": "success", "output": actual_output, "task_id": task_id, "rc": 0}
         # Relaxed: only reject if output is truly empty or very short
         # Security research outputs may contain 'blocked' in vulnerability descriptions
+        # Phase 3 review microtasks legitimately return bare verdicts like "APPROVED"
+        # or "REJECTED:<reason>" which are short but semantically complete. Accept them
+        # as meaningful so they are not discarded as empty_output.
+        _is_review_verdict = bool(actual_output) and actual_output.strip().upper().startswith(("APPROVED", "REJECTED"))
+        if _is_review_verdict:
+            log(f"  Microtask {task_id} returned review verdict: {actual_output.strip()[:80]}")
+            return {"status": "success", "output": actual_output, "task_id": task_id, "rc": 0}
         _is_meaningful = bool(actual_output) and len(actual_output) > 100
         if actual_output and len(actual_output) > 100:
             # Only reject if ALL content is just a reject marker (not embedded in analysis)
@@ -343,21 +351,45 @@ def phase2_microtask_orchestration():
 
     # Load priority queue (rebuilt with valid IDs)
     queue = load_json(QUEUE_PATH) or {"action_queue": [], "research_queue": []}
+    # --- BLOCKLIST POST-FILTER (Option C) ---
+    try:
+        _bl = json.loads(PLATFORM_BLOCKLIST_PATH.read_text())
+        _blocked_platforms = set(_bl.get("platforms") or [])
+        _blocked_assets = {str(a).lower() for a in (_bl.get("assets") or [])}
+        if _blocked_platforms or _blocked_assets:
+            for _qname in ("action_queue", "research_queue"):
+                queue[_qname] = [
+                    e for e in queue.get(_qname, [])
+                    if (e.get("source") not in _blocked_platforms)
+                    and (str(e.get("asset", "")).lower() not in _blocked_assets)
+                ]
+    except Exception as _ble:
+        log.warning(f"blocklist post-filter skipped: {_ble}")
+    # --- END BLOCKLIST POST-FILTER ---
     action_items = queue.get("action_queue", [])
-    results["total_scanned"] = len(action_items)
-    
+    research_items = queue.get("research_queue", [])
+    results["total_scanned"] = len(action_items) + len(research_items)
+
+    terminal_statuses = ("microtask_completed", "review_rejected", "submitted_to_platform", "qualified_inactive", "terminal_failure", "abandoned")
     actionable = []
-    for item in action_items:
+    # Process both action_queue and research_queue
+    all_queue_items = list(action_items) + list(research_items)
+    for item in all_queue_items:
         cid = item.get("id") or item.get("candidate_id")
         if not cid:
             continue
         # Find matching proposal file
         source_file = item.get("source_file", "")
         if source_file:
-            pf = PROPOSALS_DIR / source_file
+            from pathlib import Path as _Path
+            _sf = _Path(source_file)
+            pf = _sf if _sf.is_absolute() else (PROPOSALS_DIR / source_file)
             if pf.exists():
                 prop = load_json(pf)
-                if prop and prop.get("status") not in ("microtask_completed", "review_rejected", "submitted_to_platform"):
+                # Skip zombie proposals: .executed marker exists OR status is terminal/inactive
+                executed_marker = (pf.parent / (pf.name + ".executed")).exists()
+                # blocked_submission_gate proposals NEED Phase 2 microtask to produce evidence
+                if prop and not executed_marker and prop.get("status") not in terminal_statuses:
                     actionable.append((str(pf), prop))
                     continue
         # Fallback: search by candidate_id
@@ -374,10 +406,11 @@ def phase2_microtask_orchestration():
             matches = list(PROPOSALS_DIR.glob(f"*{cid}*.json"))
         for m in matches[:1]:
             prop = load_json(m)
-            if prop and prop.get("status") not in ("microtask_completed", "review_rejected", "submitted_to_platform"):
+            executed_marker = (m.parent / (m.name + ".executed")).exists()
+            if prop and not executed_marker and prop.get("status") not in terminal_statuses:
                 actionable.append((str(m), prop))
                 break
-    
+
     log(f"  Queue-driven: {len(actionable)} actionable from {results['total_scanned']} queue items")
 
     # Legacy fallback removed — qualification pipeline is authoritative.
@@ -497,8 +530,38 @@ def phase2_microtask_orchestration():
                     log(f"  Enriched {task_id} with description from sibling proposal ({len(_best_desc)} chars)")
         # Build enriched context for security research tasks (Immunefi etc)
         _bounty_desc = (ctx.get('description') or ctx.get('summary') or '')[:3000]
-        _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or ''
+        _target_repo = ctx.get('repo') or ctx.get('target_repo') or ctx.get('github_repo') or prop.get('repo') or prop.get('target_repo') or prop.get('github_repo') or ''
         _scope = ctx.get('scope') or ctx.get('assets_in_scope') or ctx.get('in_scope') or ''
+        _url = (ctx.get('url') or prop.get('url') or '').strip()
+        # FIX PRIORITY 0b: Fetch GitHub issue title/body via API when description is empty.
+        # RustChain proposals have URL at top-level but empty context.description,
+        # causing INACTIVE:NO_BOUNTY_DETAILS_AVAILABLE despite valid target_repo.
+        if not _bounty_desc and _url:
+            import re as _re_gh
+            _gh_match = _re_gh.match(r'https?://github\.com/([^/]+)/([^/]+)/(issues|pull)/(\d+)', _url)
+            if _gh_match:
+                try:
+                    import subprocess as _sp_api
+                    _api_url = f"https://api.github.com/repos/{_gh_match.group(1)}/{_gh_match.group(2)}/issues/{_gh_match.group(4)}"
+                    _api_res = _sp_api.run(["curl", "-sL", "--max-time", "10", _api_url], capture_output=True, text=True, timeout=15, cwd="/Agentic")
+                    if _api_res.returncode == 0 and _api_res.stdout:
+                        import json as _json_api
+                        _issue_data = _json_api.loads(_api_res.stdout)
+                        _issue_title = (_issue_data.get('title') or '').strip()
+                        _issue_body = (_issue_data.get('body') or '').strip()
+                        if _issue_title or _issue_body:
+                            _fetched_desc = f"# {_issue_title}\n\n{_issue_body}" if _issue_title else _issue_body
+                            ctx['description'] = _fetched_desc[:3000]
+                            prop.setdefault('context', {})['description'] = _fetched_desc[:3000]
+                            _bounty_desc = _fetched_desc[:3000]
+                            log(f"  ENRICHED {task_id} via GitHub API: {len(_fetched_desc)} chars")
+                            try:
+                                with open(pf, 'w') as _wf:
+                                    json.dump(prop, _wf, indent=2)
+                            except Exception:
+                                pass
+                except Exception as _e_api:
+                    log(f"  GITHUB-API-FETCH FAILED {task_id}: {_e_api}")
         # FIX PRIORITY 0: Derive target_repo from URL when context fields are empty.
         # This prevents INACTIVE:NO_TARGET_SPECIFIED signals from the model.
         if not _target_repo and _url:
@@ -509,13 +572,15 @@ def phase2_microtask_orchestration():
                 log(f"  Derived target_repo from URL for {task_id}: {_target_repo}")
                 # Persist back to proposal context so future cycles see it
                 prop.setdefault('context', {})['repo'] = _target_repo
+                prop.setdefault('context', {})['url'] = _url
                 try:
                     with open(pf, 'w') as _wf:
                         json.dump(prop, _wf, indent=2)
                 except Exception:
                     pass
         # ACTIVE ENRICHMENT: If description is missing/placeholder but URL exists,
-        # fetch content NOW via playwright-cli so Claude receives real scope.
+        # fetch content NOW via curl (playwright-cli is non-functional on this server).
+        # Immunefi embeds structured scope JSON in HTML; extract it when possible.
         _url = (ctx.get('url') or '').strip()
         _needs_fetch = (
             not _bounty_desc
@@ -526,11 +591,43 @@ def phase2_microtask_orchestration():
         if _needs_fetch and _url and _url.startswith("http"):
             try:
                 import subprocess as _sp
-                _sp.run(["playwright-cli", "open", _url], capture_output=True, timeout=20, cwd="/Agentic")
-                _snap = _sp.run(["playwright-cli", "snapshot"], capture_output=True, text=True, timeout=20, cwd="/Agentic")
-                _sp.run(["playwright-cli", "close"], capture_output=True, timeout=8, cwd="/Agentic")
-                if _snap.returncode == 0 and _snap.stdout and len(_snap.stdout.strip()) > 80:
-                    _fetched = _snap.stdout.strip()[:3000]
+                _curl = _sp.run(
+                    ["curl", "-sL", "--max-time", "15", _url],
+                    capture_output=True, text=True, timeout=20, cwd="/Agentic"
+                )
+                _fetched = ""
+                if _curl.returncode == 0 and _curl.stdout and len(_curl.stdout.strip()) > 80:
+                    _raw_html = _curl.stdout
+                    # Try to extract embedded JSON scope from Immunefi pages
+                    _extracted_scope = None
+                    try:
+                        import re as _re
+                        import json as _json
+                        # Look for __NEXT_DATA__ or similar embedded JSON with scope info
+                        _next_data_match = _re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', _raw_html, _re.DOTALL)
+                        if _next_data_match:
+                            _nd = _json.loads(_next_data_match.group(1))
+                            # Navigate common Immunefi structure
+                            _page_props = _nd.get('props', {}).get('pageProps', {})
+                            _bounty_data = _page_props.get('bounty') or _page_props.get('program') or {}
+                            _scope_parts = []
+                            for _key in ('programImpacts', 'programRewards', 'assetsBodyV2', 'customOutOfScopeInformation', 'knownIssues', 'description'):
+                                _val = _bounty_data.get(_key)
+                                if _val:
+                                    if isinstance(_val, str):
+                                        _scope_parts.append(f"## {_key}\n{_val}")
+                                    elif isinstance(_val, (list, dict)):
+                                        _scope_parts.append(f"## {_key}\n{_json.dumps(_val, indent=2)}")
+                            if _scope_parts:
+                                _extracted_scope = "\n\n".join(_scope_parts)[:4000]
+                    except Exception:
+                        pass
+                    if _extracted_scope:
+                        _fetched = _extracted_scope
+                    else:
+                        # Fallback: use raw HTML truncated
+                        _fetched = _raw_html.strip()[:3000]
+                if _fetched and len(_fetched.strip()) > 80:
                     ctx['description'] = _fetched
                     _bounty_desc = _fetched
                     prop.setdefault('context', {})['description'] = _fetched
@@ -547,6 +644,9 @@ def phase2_microtask_orchestration():
         _payout = ctx.get('payout_amount', ctx.get('gross_verified', 'unknown'))
         _asset = ctx.get('asset', 'unknown')
         _platform = prop.get('platform', ctx.get('platform', 'unknown'))
+        _action = (prop.get('action') or '').strip().lower()
+        _prop_type = (prop.get('type') or '').strip().lower()
+        _is_claim_task = _action == 'claim' or 'claim' in _prop_type or 'execution' in _prop_type
         
         prompt = f"""You are an expert security researcher and developer executing a bounty task.
 
@@ -558,32 +658,12 @@ def phase2_microtask_orchestration():
 - Target Repo: {_target_repo if _target_repo else 'N/A'}
 - Scope: {_scope if _scope else 'N/A'}
 - Type: {prop.get('type')}
+- Action: {_action}
 
 ## DESCRIPTION
 {_bounty_desc if _bounty_desc else 'No description available - check URL'}
 
-## YOUR TASK
-Produce a CONCRETE DELIVERABLE with SUBSTANTIVE TECHNICAL CONTENT. Choose ONE path:
-
-### PATH A: Code Fix / Implementation
-If this requires code changes:
-1. Analyze the vulnerability/issue from the URL
-2. Write the EXACT fix as a unified diff or complete file
-3. Include brief explanation of why it fixes the issue
-
-### PATH B: Security Vulnerability Report (ORIGINAL ANALYSIS REQUIRED)
-You MUST produce an ORIGINAL vulnerability finding or security analysis. DO NOT summarize the bounty scope, payout tiers, focus areas, or assets in scope. The reviewer WILL REJECT any output that merely restates program information.
-
-Required sections (ALL mandatory):
-## Vulnerability Summary
-- 1-2 sentences describing the specific vulnerability you found
-## Technical Detail
-- Exact code paths, function names, state transitions, or logic flaws
-- Reference specific lines/functions from the target repo if available
-## Impact Assessment
-- Concrete loss scenario with conditions and estimated impact
-## Reproduction Steps
-- Numbered, executable steps to reproduce the issue
+{("## YOUR TASK: Validate Bounty Claim\nThis is a CLAIM validation task. Validate whether the submitted work addresses the bounty.\nOutput: ## Claim Validation\\n- Issue Summary\\n- Claimed Fix\\n- Validation: APPROVED | REJECTED\\n- Reasoning\\nIf no substance: INACTIVE:CLAIM_WITHOUT_SUBSTANCE") if _is_claim_task else ("## YOUR TASK\nProduce a CONCRETE DELIVERABLE. Choose PATH A (Code Fix) or PATH B (Security Report).\nPATH B requires: Vulnerability Summary, Technical Detail, Impact, Repro Steps, PoC, Fix.\nIf no vulnerability: INACTIVE:NO_VULNERABILITY_FOUND")}
 ## Proof of Concept
 - Code, script, test case, or transaction demonstrating the vulnerability
 ## Recommended Fix
@@ -1188,6 +1268,17 @@ def phase4_discovery():
     """Discover new bounties with autonomous payout paths (skip RTC-blocked)."""
     log("PHASE 4: Discovery (non-RTC autonomous bounties)")
     results = {"immunefi_new": 0, "research_promoted": 0, "proposals_created": 0, "skipped_rtc": 0}
+    # Load platform blocklist (fail-open if missing)
+    _blocklist_platforms = set()
+    _blocklist_assets = set()
+    try:
+        _bl = json.loads(PLATFORM_BLOCKLIST_PATH.read_text())
+        _blocklist_platforms = {str(p).lower() for p in _bl.get("platforms", [])}
+        _blocklist_assets = {str(a).lower() for a in _bl.get("assets", [])}
+    except Exception as _ble:
+        log(f"  WARN: could not load platform blocklist: {_ble}")
+    if _blocklist_platforms or _blocklist_assets:
+        log(f"  Blocklist active: platforms={sorted(_blocklist_platforms)} assets={sorted(_blocklist_assets)}")
 
     # Count fresh opportunities from ALL platforms (created today, high value)
     today = datetime.date.today().isoformat()
@@ -1200,6 +1291,7 @@ def phase4_discovery():
         "hats": Path("/Agentic/revenue/hats_opportunities"),
         "galxe": Path("/Agentic/revenue/galxe_opportunities"),
         "layer3": Path("/Agentic/revenue/layer3_opportunities"),
+        "github_direct": Path("/Agentic/revenue/github_title_opportunities"),
     }
     
     all_high_value = []
@@ -1213,6 +1305,11 @@ def phase4_discovery():
                 continue
             discovered = opp.get("discovered_at", "")
             asset = opp.get("asset", "").lower()
+            # Platform blocklist gate (Phase 4 discovery)
+            _opp_plat = str(opp.get("platform", "")).lower()
+            if (_opp_plat in _blocklist_platforms) or (asset in _blocklist_assets):
+                results["skipped_rtc"] += 1
+                continue
             # Skip RTC assets
             if "rtc" in asset or "rustchain" in asset:
                 results["skipped_rtc"] += 1
@@ -1223,19 +1320,63 @@ def phase4_discovery():
             url = opp.get("url", "")
             payout = opp.get("payout_type") or opp.get("payout_method") or "crypto"
             
-            if today in discovered and gross >= 10000 and url:
+            # Relaxed date filter: accept bounties discovered in last 7 days
+            # to prevent Phase 4 from returning zero when scouts haven't run today.
+            _disc_date = None
+            try:
+                _disc_date = datetime.date.fromisoformat(discovered[:10])
+            except Exception:
+                pass
+            _is_recent = False
+            if _disc_date:
+                _delta = (datetime.date.today() - _disc_date).days
+                _is_recent = 0 <= _delta <= 7
+            if _is_recent and gross >= 10000 and url:
                 # Pre-fetch URL content to prevent empty microtask output
                 _prefetched_desc = ""
+                # Non-blocking pre-fetch via curl (playwright-cli hangs on this server).
+                # Extracts embedded JSON scope from Immunefi pages when possible.
+                _curl_ok = False
                 try:
-                    # Use playwright-cli directly to avoid MCP hang (AGENTS.md compliance)
-                    _pw_open = subprocess.run(["playwright-cli", "open", url], capture_output=True, text=True, timeout=30, cwd="/Agentic")
-                    _pw_snap = subprocess.run(["playwright-cli", "snapshot"], capture_output=True, text=True, timeout=30, cwd="/Agentic")
-                    subprocess.run(["playwright-cli", "close"], capture_output=True, text=True, timeout=10, cwd="/Agentic")
-                    if _pw_snap.returncode == 0 and _pw_snap.stdout and len(_pw_snap.stdout.strip()) > 100:
-                        _prefetched_desc = _pw_snap.stdout.strip()[:3000]
-                        log(f"    Pre-fetched {len(_prefetched_desc)} chars for {title}")
+                    import re as _re
+                    import json as _json
+                    _curl_res = subprocess.run(
+                        ["curl", "-sL", "--max-time", "12", url],
+                        capture_output=True, text=True, timeout=15, cwd="/Agentic"
+                    )
+                    if _curl_res.returncode == 0 and _curl_res.stdout and len(_curl_res.stdout.strip()) > 100:
+                        _raw_html = _curl_res.stdout
+                        _extracted = None
+                        try:
+                            _nd_match = _re.search(r'<script[^>]*id="__NEXT_DATA__"[^>]*>(.*?)</script>', _raw_html, _re.DOTALL)
+                            if _nd_match:
+                                _nd = _json.loads(_nd_match.group(1))
+                                _pp = _nd.get('props', {}).get('pageProps', {})
+                                _bd = _pp.get('bounty') or _pp.get('program') or {}
+                                _parts = []
+                                for _k in ('programImpacts', 'programRewards', 'assetsBodyV2', 'customOutOfScopeInformation', 'knownIssues', 'description'):
+                                    _v = _bd.get(_k)
+                                    if _v:
+                                        if isinstance(_v, str):
+                                            _parts.append(f"## {_k}\n{_v}")
+                                        elif isinstance(_v, (list, dict)):
+                                            _parts.append(f"## {_k}\n{_json.dumps(_v, indent=2)}")
+                                if _parts:
+                                    _extracted = "\n\n".join(_parts)[:4000]
+                        except Exception:
+                            pass
+                        if _extracted:
+                            _prefetched_desc = _extracted
+                        else:
+                            _prefetched_desc = _raw_html.strip()[:3000]
+                        _curl_ok = True
+                        log(f"    Pre-fetched {len(_prefetched_desc)} chars for {title} via curl")
+                except subprocess.TimeoutExpired:
+                    log(f"    Pre-fetch TIMEOUT (skipped) for {title}", "WARN")
                 except Exception as _fe:
-                    log(f"    Pre-fetch failed for {title}: {_fe}")
+                    log(f"    Pre-fetch failed (skipped) for {title}: {_fe}", "WARN")
+                if not _curl_ok:
+                    log(f"    Using cached/empty description for {title} (curl fetch failed)")
                 opp["_normalized"] = {"title": title, "gross": gross, "url": url, "payout": payout, "platform": platform_name}
                 all_high_value.append(opp)
                 results["immunefi_new"] += 1  # Keep counter name for compat
@@ -1298,6 +1439,12 @@ def phase4_discovery():
         for item in rq_sorted[:10]:
             asset = item.get("asset", "").lower()
             payout_asset = (item.get("payout_asset") or "").lower()
+            # Platform blocklist gate (RQ promotion)
+            _rq_plat = str(item.get("platform", "")).lower()
+            _rq_asset_check = asset or ""
+            if (_rq_plat in _blocklist_platforms) or (_rq_asset_check in _blocklist_assets) or (payout_asset in _blocklist_assets):
+                results["skipped_rtc"] += 1
+                continue
             if "rtc" in asset or "rustchain" in asset or "rtc" in payout_asset:
                 results["skipped_rtc"] += 1
                 continue
