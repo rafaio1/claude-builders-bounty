@@ -24,7 +24,19 @@
 .worktrees/
 __pycache__/
 build/
-data/
+# Exclude volatile state but preserve canonical financial ledgers and receipts
+data/*
+!data/aro/
+data/aro/*
+!data/aro/bounty_receive_ledger.json
+!data/aro/bounty_ledger.json
+!data/aro/rustchain_reconciliation.json
+!data/aro/realized_revenue_ledger.jsonl
+!data/aro/revenue_manager_v2_status.json
+!data/aro/proposals/*.json
+!data/aro/inbox/user_commands.jsonl
+!data/aro/inbox/command_receipts.jsonl
+!data/aro/receive-wallets-public.json
 improve/traces/
 knowledge/
 node_modules/
